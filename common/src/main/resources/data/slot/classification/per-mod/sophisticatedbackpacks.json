@@ -1,0 +1,3625 @@
+{
+  "schema_version": 1,
+  "layer": "per-mod",
+  "source": "sophisticatedbackpacks",
+  "entries": {
+    "sophisticatedbackpacks:advanced_alchemy_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack in UI"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable, not rare"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used to enhance storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary source is crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "backpack_restricted"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — goes in backpack upgrade slot"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-brew potions in backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — alchemy upgrade function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_compacting_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack in UI"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable, not rare"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used to enhance storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary source is crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "backpack_restricted"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — goes in backpack upgrade slot"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-compact items in backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — compacting upgrade function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_deposit_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack in UI"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable, not rare"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used to enhance storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary source is crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "backpack_restricted"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — goes in backpack upgrade slot"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-deposit items into chests"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — deposit upgrade function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_feeding_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack in UI"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable, not rare"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used to enhance storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary source is crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "backpack_restricted"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — goes in backpack upgrade slot"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-feed player from backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — feeding upgrade function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_filter_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack in UI"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable, not rare"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used to enhance storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary source is crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "backpack_restricted"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — goes in backpack upgrade slot"
+        },
+        "primary_uses": {
+          "values": [
+            "filter which items are picked up"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — filter upgrade function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_jukebox_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack in UI"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable, not rare"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used to enhance storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary source is crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "backpack_restricted"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — goes in backpack upgrade slot"
+        },
+        "primary_uses": {
+          "values": [
+            "play music discs from backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — jukebox upgrade function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_magnet_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack in UI"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — not carried daily"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — found in end city loot"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used to enhance storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only",
+            "end_city",
+            "woodland_mansion"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — loot sources available"
+        },
+        "storage_categories": {
+          "values": [
+            "backpack_restricted"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — goes in backpack upgrade slot"
+        },
+        "primary_uses": {
+          "values": [
+            "attract nearby items into backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — magnet upgrade function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_pickup_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "sophisticatedcore:upgrade_next_tier"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack in UI"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable, not rare"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used to enhance storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary source is crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "backpack_restricted"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — goes in backpack upgrade slot"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-pick up items into backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — pickup upgrade function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_pump_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack in UI"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable, not rare"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used to enhance storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary source is crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "backpack_restricted"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — goes in backpack upgrade slot"
+        },
+        "primary_uses": {
+          "values": [
+            "pump fluids in/out of backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — pump upgrade function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_refill_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack in UI"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable, not rare"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used to enhance storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary source is crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "backpack_restricted"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — goes in backpack upgrade slot"
+        },
+        "primary_uses": {
+          "values": [
+            "refill hotbar from backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — refill upgrade function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_restock_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack in UI"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable, not rare"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used to enhance storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary source is crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "backpack_restricted"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — goes in backpack upgrade slot"
+        },
+        "primary_uses": {
+          "values": [
+            "restock items from chests into backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — restock upgrade function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_tool_swapper_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack in UI"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable, not rare"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used to enhance storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary source is crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "backpack_restricted"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — goes in backpack upgrade slot"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-swap tools from backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — tool swapper upgrade function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:advanced_void_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack in UI"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable, not rare"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used to enhance storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary source is crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "backpack_restricted"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — goes in backpack upgrade slot"
+        },
+        "primary_uses": {
+          "values": [
+            "void excess items in backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — void upgrade function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:alchemy_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "sophisticatedcore:upgrade_next_tier"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack in UI"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable, not rare"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used to enhance storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary source is crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "backpack_restricted"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — goes in backpack upgrade slot"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-brew potions in backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — alchemy upgrade function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:anvil_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack in UI"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable, not rare"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used to enhance storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary source is crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "backpack_restricted"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — goes in backpack upgrade slot"
+        },
+        "primary_uses": {
+          "values": [
+            "repair items in backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — anvil upgrade function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:auto_blasting_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack in UI"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable, not rare"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used to enhance storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary source is crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "backpack_restricted"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — goes in backpack upgrade slot"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-blast smelt ores in backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — auto-blasting upgrade function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:auto_smelting_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack in UI"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable, not rare"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used to enhance storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary source is crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "backpack_restricted"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — goes in backpack upgrade slot"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-smelt ores in backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — auto-smelting upgrade function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:auto_smoking_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack in UI"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable, not rare"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used to enhance storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary source is crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "backpack_restricted"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — goes in backpack upgrade slot"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-smoke food in backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — auto-smoking upgrade function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:backpack": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "sophisticatedbackpacks:backpack_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "container_portable",
+          "confidence": 0.95,
+          "source": "llm:stage3",
+          "rationale": "[named] — display name 'Backpack'"
+        },
+        "material_family": {
+          "value": "leather",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — backpack is made of leather"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — worn constantly by player"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable, found in loot"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used for storing items"
+        },
+        "origin": {
+          "values": [
+            "crafted_only",
+            "mineshaft"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable and loot from mineshafts"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried in inventory"
+        },
+        "primary_uses": {
+          "values": [
+            "carry items",
+            "organize inventory",
+            "portable storage"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — core function of backpack"
+        }
+      }
+    },
+    "sophisticatedbackpacks:battery_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack in UI"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable, not rare"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used to enhance storage"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary source is crafting"
+        },
+        "storage_categories": {
+          "values": [
+            "backpack_restricted"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — goes in backpack upgrade slot"
+        },
+        "primary_uses": {
+          "values": [
+            "store energy in backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — battery upgrade function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:blasting_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "sophisticatedcore:upgrade_next_tier"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — id ends _upgrade + upgrade tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — auto-smelts ores in backpack"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:processing_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — auto-smelting upgrade"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common materials"
+        }
+      }
+    },
+    "sophisticatedbackpacks:compacting_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "sophisticatedcore:upgrade_next_tier"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — id ends _upgrade + upgrade tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — auto-compacts items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:processing_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — auto-compacting upgrade"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common materials"
+        }
+      }
+    },
+    "sophisticatedbackpacks:copper_backpack": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "sophisticatedbackpacks:backpack_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "container_portable",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — wearable backpack with curios tag"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — often worn by players"
+        },
+        "activity": {
+          "values": [
+            "logistics",
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — portable storage and item movement"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — backpack tier item"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — found in mineshaft/desert chests"
+        }
+      }
+    },
+    "sophisticatedbackpacks:crafting_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — id ends _upgrade + upgrade tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — allows crafting in backpack"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:utility_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — utility upgrade for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common materials"
+        }
+      }
+    },
+    "sophisticatedbackpacks:deposit_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "sophisticatedcore:upgrade_next_tier"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — id ends _upgrade + upgrade tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried"
+        },
+        "activity": {
+          "values": [
+            "logistics"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — auto-deposits items to chests"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:utility_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — utility upgrade for deposit"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common materials"
+        }
+      }
+    },
+    "sophisticatedbackpacks:diamond_backpack": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "sophisticatedbackpacks:smithing_backpack_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "container_portable",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — wearable backpack with curios tag"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — often worn by players"
+        },
+        "activity": {
+          "values": [
+            "logistics",
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — portable storage and item movement"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — backpack tier item"
+        },
+        "rarity": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — found in end city chests"
+        }
+      }
+    },
+    "sophisticatedbackpacks:everlasting_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — id ends _upgrade + upgrade tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:utility_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — prevents item loss on death"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted only, no loot"
+        }
+      }
+    },
+    "sophisticatedbackpacks:feeding_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "sophisticatedcore:upgrade_next_tier"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — id ends _upgrade + upgrade tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:utility_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — auto-feeds player"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — found in nether structures"
+        }
+      }
+    },
+    "sophisticatedbackpacks:filter_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "sophisticatedcore:upgrade_next_tier"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — id ends _upgrade + upgrade tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — filters items in backpack"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:utility_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — utility upgrade for filtering"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common materials"
+        }
+      }
+    },
+    "sophisticatedbackpacks:gold_backpack": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "sophisticatedbackpacks:backpack_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "container_portable",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — wearable backpack with curios tag"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — often worn by players"
+        },
+        "activity": {
+          "values": [
+            "logistics",
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — portable storage and item movement"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — backpack tier item"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — found in various structures"
+        }
+      }
+    },
+    "sophisticatedbackpacks:inception_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — id ends _upgrade + upgrade tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — allows nesting backpacks"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:storage_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — increases storage by nesting"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted only, no loot"
+        }
+      }
+    },
+    "sophisticatedbackpacks:infinity_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "admin",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — display name says Admin, no recipes"
+        },
+        "is_creative_only": {
+          "value": true,
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — no recipe, admin item"
+        },
+        "carry_frequency": {
+          "value": "display_only",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — creative-only item"
+        }
+      }
+    },
+    "sophisticatedbackpacks:iron_backpack": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "sophisticatedbackpacks:backpack_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "container_portable",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — wearable backpack with curios tag"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — often worn by players"
+        },
+        "activity": {
+          "values": [
+            "logistics",
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — portable storage and item movement"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — backpack tier item"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — found in many chests"
+        }
+      }
+    },
+    "sophisticatedbackpacks:jukebox_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "sophisticatedcore:upgrade_next_tier"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — id ends _upgrade + upgrade tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:utility_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — plays music from backpack"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common materials"
+        }
+      }
+    },
+    "sophisticatedbackpacks:magnet_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "sophisticatedcore:upgrade_next_tier"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — id ends _upgrade + upgrade tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried"
+        },
+        "activity": {
+          "values": [
+            "logistics"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — auto-collects items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:utility_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — magnet utility upgrade"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — found in mineshaft/desert"
+        }
+      }
+    },
+    "sophisticatedbackpacks:netherite_backpack": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "container_portable",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — wearable backpack with curios tag"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — often worn by players"
+        },
+        "activity": {
+          "values": [
+            "logistics",
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — portable storage and item movement"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — backpack tier item"
+        },
+        "rarity": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted only, top tier"
+        }
+      }
+    },
+    "sophisticatedbackpacks:pickup_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "sophisticatedcore:upgrade_next_tier"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — id ends _upgrade + upgrade tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried"
+        },
+        "activity": {
+          "values": [
+            "logistics"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — auto-pickup items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:utility_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — pickup utility upgrade"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — found in dungeon chests"
+        }
+      }
+    },
+    "sophisticatedbackpacks:pump_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "sophisticatedcore:upgrade_next_tier"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — id ends _upgrade + upgrade tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried"
+        },
+        "activity": {
+          "values": [
+            "logistics"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — auto-pumps fluids"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:utility_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — fluid handling upgrade"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common materials"
+        }
+      }
+    },
+    "sophisticatedbackpacks:refill_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "sophisticatedcore:upgrade_next_tier"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — id ends _upgrade + upgrade tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried"
+        },
+        "activity": {
+          "values": [
+            "logistics"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — auto-refills hotbar"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:utility_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — refill utility upgrade"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common materials"
+        }
+      }
+    },
+    "sophisticatedbackpacks:restock_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "sophisticatedcore:upgrade_next_tier"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — id ends _upgrade + upgrade tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried"
+        },
+        "activity": {
+          "values": [
+            "logistics"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — auto-restocks inventory from chests"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:utility_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — restock utility upgrade"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common materials"
+        }
+      }
+    },
+    "sophisticatedbackpacks:smelting_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "sophisticatedcore:upgrade_next_tier"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack via UI"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — auto-smelts items in backpack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common materials"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — upgrade for processing"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:processing_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — auto-smelting backpack upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "automatically smelt ores/food in backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary function"
+        },
+        "storage_categories": {
+          "values": [
+            "standard"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stored in any container"
+        }
+      }
+    },
+    "sophisticatedbackpacks:smithing_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack via UI"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — allows on-the-go smithing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common materials"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — upgrade for crafting"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:processing_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — smithing table in backpack"
+        },
+        "primary_uses": {
+          "values": [
+            "repair/rename items in backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:smoking_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "sophisticatedcore:upgrade_next_tier"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack via UI"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — auto-smokes food in backpack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common materials"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — upgrade for food processing"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:processing_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — auto-smoking backpack upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "automatically smoke food in backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:stack_downgrade_tier_1": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack via UI"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — reduces stack size limits"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — rarely used, niche"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common materials"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — storage modification"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:storage_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stack size modification"
+        },
+        "primary_uses": {
+          "values": [
+            "limit stack sizes for balance"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:stack_downgrade_tier_2": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack via UI"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — reduces stack size limits more"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — rarely used, niche"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common materials"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — storage modification"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:storage_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stack size modification"
+        },
+        "primary_uses": {
+          "values": [
+            "further limit stack sizes"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:stack_downgrade_tier_3": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack via UI"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — reduces stack size limits even more"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — rarely used, niche"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common materials"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — storage modification"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:storage_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stack size modification"
+        },
+        "primary_uses": {
+          "values": [
+            "maximum stack size reduction"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:stack_upgrade_omega_tier": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack via UI"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — massively increases stack size"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried daily"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — requires many materials"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — top-tier storage upgrade"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:storage_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stack size upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "increase stack capacity to 2^31"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:stack_upgrade_starter_tier": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack via UI"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — slight increase in stack size"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — easy to craft"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — basic stack upgrade"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:storage_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stack size upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "small stack size increase"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:stack_upgrade_tier_1": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack via UI"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — increases stack size"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common items"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stack upgrade"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:storage_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stack size upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "increase stack capacity"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:stack_upgrade_tier_2": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack via UI"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — further increase stack size"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common items"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stack upgrade"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:storage_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stack size upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "increase stack capacity more"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:stack_upgrade_tier_3": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack via UI"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — large stack size increase"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried daily"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — requires more materials"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stack upgrade"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:storage_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stack size upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "significantly increase stack capacity"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:stack_upgrade_tier_4": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack via UI"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — max stack size increase before omega"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried daily"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — requires rarer materials"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stack upgrade"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:storage_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stack size upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "huge stack capacity increase"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:stonecutter_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack via UI"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stonecutting on the go"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common materials"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — backpack stonecutter"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:processing_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stonecutting in backpack"
+        },
+        "primary_uses": {
+          "values": [
+            "cut stones/slabs/stairs in backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:survival_infinity_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack via UI"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — infinite arrow/fire charges"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — very niche, possibly creative only"
+        },
+        "rarity": {
+          "value": "unique",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — no recipe, possibly creative"
+        },
+        "flavor": {
+          "values": [
+            "fancy",
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — infinite ammo upgrade"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:utility_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — utility upgrade"
+        },
+        "primary_uses": {
+          "values": [
+            "provide infinite arrows/fire charges"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:tank_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack via UI"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — adds fluid storage to backpack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common materials"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — fluid storage upgrade"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:storage_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — adds fluid tank to backpack"
+        },
+        "primary_uses": {
+          "values": [
+            "store fluids in backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:tool_swapper_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "sophisticatedcore:upgrade_next_tier"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack via UI"
+        },
+        "activity": {
+          "values": [
+            "combat",
+            "farming",
+            "mining"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — auto-swaps tools based on blocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common materials"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — tool management upgrade"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:utility_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — utility upgrade for tools"
+        },
+        "primary_uses": {
+          "values": [
+            "auto-swap tool when breaking blocks"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:upgrade_base": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "sophisticatedcore:upgrade_next_tier"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafting component for all upgrades"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — kept in inventory while crafting upgrades"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — easy to craft"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — base for mechanical upgrades"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:upgrade_base"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — base component for upgrades"
+        },
+        "primary_uses": {
+          "values": [
+            "craft all types of backpack upgrades"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary use"
+        }
+      }
+    },
+    "sophisticatedbackpacks:void_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "sophisticatedcore:upgrade_next_tier"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack via UI"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — auto-trash certain items"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common materials"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — auto-trash upgrade"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:utility_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — utility upgrade for filtering"
+        },
+        "primary_uses": {
+          "values": [
+            "automatically void unwanted items"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary function"
+        }
+      }
+    },
+    "sophisticatedbackpacks:xp_pump_upgrade": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedbackpacks",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "upgrade",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — applied to backpack via UI"
+        },
+        "activity": {
+          "values": [
+            "enchanting",
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — transfers XP orbs to/from backpack"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — installed once, not carried daily"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common materials"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — XP management upgrade"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedbackpacks:utility_upgrade"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — utility upgrade for XP"
+        },
+        "primary_uses": {
+          "values": [
+            "store or retrieve XP from backpack"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — primary function"
+        }
+      }
+    }
+  },
+  "generated_by": "slot-classify v0.1.0",
+  "generated_at": "2026-04-27T03:27:46.375Z"
+}

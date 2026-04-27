@@ -1,6 +1,10 @@
 package dev.imagio.slot.debug;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.triage.IslandSignal;
+import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
+import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
+import dev.imagio.slot.inventory.triage.IslandTemplateMatch;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
 import net.minecraft.world.item.ItemStack;
@@ -10,9 +14,11 @@ import java.util.ArrayList;
 import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import java.util.function.Function;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -23,7 +29,7 @@ class RealisticAtlasGeneratorTest {
     @Test
     void emptyPoolProducesEmptyPlan() {
         RealisticAtlasPlan plan = RealisticAtlasGenerator.generate(
-                List.of(), PopulateProfile.ORGANIZED, new Random(1L), stack -> SemanticBucket.MISC);
+                List.of(), PopulateProfile.ORGANIZED, new Random(1L), stack -> IslandSuggestionTemplate.MISC);
 
         assertTrue(plan.islands().isEmpty());
         assertTrue(plan.assignments().isEmpty());
@@ -34,9 +40,9 @@ class RealisticAtlasGeneratorTest {
 
     @Test
     void homedStackCountMatchesAssignmentCount() {
-        BucketPool pool = new BucketPool();
-        pool.add(SemanticBucket.MATERIALS, 40);
-        pool.add(SemanticBucket.TOOLS, 10);
+        TemplatePool pool = new TemplatePool();
+        pool.add(IslandSuggestionTemplate.MATERIALS, 40);
+        pool.add(IslandSuggestionTemplate.TOOLS, 10);
 
         RealisticAtlasPlan plan = RealisticAtlasGenerator.generate(
                 pool.stacks(),
@@ -53,12 +59,12 @@ class RealisticAtlasGeneratorTest {
     }
 
     @Test
-    void organizedProfileCreatesOneIslandPerNonEmptyBucket() {
-        BucketPool pool = new BucketPool();
-        pool.add(SemanticBucket.MATERIALS, 40);
-        pool.add(SemanticBucket.BUILDING, 20);
-        pool.add(SemanticBucket.TOOLS, 10);
-        pool.add(SemanticBucket.FOOD, 10);
+    void organizedProfileCreatesOneIslandPerNonEmptyTemplate() {
+        TemplatePool pool = new TemplatePool();
+        pool.add(IslandSuggestionTemplate.MATERIALS, 40);
+        pool.add(IslandSuggestionTemplate.BUILDING, 20);
+        pool.add(IslandSuggestionTemplate.TOOLS, 10);
+        pool.add(IslandSuggestionTemplate.FOOD, 10);
 
         RealisticAtlasPlan plan = RealisticAtlasGenerator.generate(
                 pool.stacks(),
@@ -67,25 +73,32 @@ class RealisticAtlasGeneratorTest {
                 pool::classify
         );
 
-        HashSet<String> islandIds = new HashSet<>();
         HashSet<String> labels = new HashSet<>();
+        HashSet<String> islandIds = new HashSet<>();
         for (VisualAtlasIsland island : plan.islands()) {
             islandIds.add(island.id());
             labels.add(island.label());
         }
         assertEquals(4, plan.islands().size());
-        assertTrue(labels.contains(SemanticBucket.MATERIALS.label()));
-        assertTrue(labels.contains(SemanticBucket.BUILDING.label()));
-        assertTrue(labels.contains(SemanticBucket.TOOLS.label()));
-        assertTrue(labels.contains(SemanticBucket.FOOD.label()));
+        assertTrue(labels.contains(IslandSuggestionTemplate.MATERIALS.defaultLabel()));
+        assertTrue(labels.contains(IslandSuggestionTemplate.BUILDING.defaultLabel()));
+        assertTrue(labels.contains(IslandSuggestionTemplate.TOOLS.defaultLabel()));
+        assertTrue(labels.contains(IslandSuggestionTemplate.FOOD.defaultLabel()));
+
+        // Populated island IDs match what chip-accept would create — the
+        // template's defaultIslandId. That alignment lets a chip-accept
+        // on a populated atlas land in the existing island instead of
+        // duplicating it.
+        assertTrue(islandIds.contains(IslandSuggestionTemplate.MATERIALS.defaultIslandId()));
+        assertTrue(islandIds.contains(IslandSuggestionTemplate.TOOLS.defaultIslandId()));
     }
 
     @Test
     void assignmentsReferenceValidIslandsAndFitInsideBounds() {
-        BucketPool pool = new BucketPool();
-        pool.add(SemanticBucket.MATERIALS, 30);
-        pool.add(SemanticBucket.REDSTONE, 12);
-        pool.add(SemanticBucket.STORAGE, 5);
+        TemplatePool pool = new TemplatePool();
+        pool.add(IslandSuggestionTemplate.MATERIALS, 30);
+        pool.add(IslandSuggestionTemplate.REDSTONE, 12);
+        pool.add(IslandSuggestionTemplate.STORAGE, 5);
 
         RealisticAtlasPlan plan = RealisticAtlasGenerator.generate(
                 pool.stacks(),
@@ -107,8 +120,8 @@ class RealisticAtlasGeneratorTest {
 
     @Test
     void triageStacksMatchProfileFraction() {
-        BucketPool pool = new BucketPool();
-        pool.add(SemanticBucket.MATERIALS, 200);
+        TemplatePool pool = new TemplatePool();
+        pool.add(IslandSuggestionTemplate.MATERIALS, 200);
 
         RealisticAtlasPlan plan = RealisticAtlasGenerator.generate(
                 pool.stacks(),
@@ -128,9 +141,9 @@ class RealisticAtlasGeneratorTest {
 
     @Test
     void chestCountMatchesProfile() {
-        BucketPool pool = new BucketPool();
-        pool.add(SemanticBucket.MATERIALS, 40);
-        pool.add(SemanticBucket.TOOLS, 10);
+        TemplatePool pool = new TemplatePool();
+        pool.add(IslandSuggestionTemplate.MATERIALS, 40);
+        pool.add(IslandSuggestionTemplate.TOOLS, 10);
 
         RealisticAtlasPlan plan = RealisticAtlasGenerator.generate(
                 pool.stacks(),
@@ -143,11 +156,11 @@ class RealisticAtlasGeneratorTest {
     }
 
     @Test
-    void linkedChestsMostlyContainBucketMatchedItems() {
-        BucketPool pool = new BucketPool();
-        pool.add(SemanticBucket.MATERIALS, 40);
-        pool.add(SemanticBucket.FOOD, 20);
-        pool.add(SemanticBucket.TOOLS, 15);
+    void linkedChestsMostlyContainTemplateMatchedItems() {
+        TemplatePool pool = new TemplatePool();
+        pool.add(IslandSuggestionTemplate.MATERIALS, 40);
+        pool.add(IslandSuggestionTemplate.FOOD, 20);
+        pool.add(IslandSuggestionTemplate.TOOLS, 15);
 
         RealisticAtlasPlan plan = RealisticAtlasGenerator.generate(
                 pool.stacks(),
@@ -156,36 +169,36 @@ class RealisticAtlasGeneratorTest {
                 pool::classify
         );
 
-        EnumMap<SemanticBucket, String> islandByBucket = new EnumMap<>(SemanticBucket.class);
+        EnumMap<IslandSuggestionTemplate, String> islandByTemplate = new EnumMap<>(IslandSuggestionTemplate.class);
         for (VisualAtlasIsland island : plan.islands()) {
-            for (SemanticBucket bucket : SemanticBucket.values()) {
-                if (island.id().endsWith(bucket.id())) {
-                    islandByBucket.put(bucket, island.id());
+            for (IslandSuggestionTemplate template : IslandSuggestionTemplate.values()) {
+                if (island.id().equals(template.defaultIslandId())) {
+                    islandByTemplate.put(template, island.id());
                     break;
                 }
             }
         }
 
         int linkedChests = 0;
-        int bucketMatches = 0;
+        int templateMatches = 0;
         int totalContents = 0;
         for (ChestSpec chest : plan.chests()) {
             if (!chest.isLinked()) {
                 continue;
             }
             linkedChests++;
-            SemanticBucket linkedBucket = null;
-            for (Map.Entry<SemanticBucket, String> entry : islandByBucket.entrySet()) {
+            IslandSuggestionTemplate linkedTemplate = null;
+            for (Map.Entry<IslandSuggestionTemplate, String> entry : islandByTemplate.entrySet()) {
                 if (entry.getValue().equals(chest.linkedIslandId())) {
-                    linkedBucket = entry.getKey();
+                    linkedTemplate = entry.getKey();
                     break;
                 }
             }
-            assertNotNull(linkedBucket, "linked chest references unknown island: " + chest.linkedIslandId());
+            assertNotNull(linkedTemplate, "linked chest references unknown island: " + chest.linkedIslandId());
             for (ChestContentEntry entry : chest.contents()) {
                 totalContents++;
-                if (pool.classify(entry.stack()) == linkedBucket) {
-                    bucketMatches++;
+                if (pool.classify(entry.stack()) == linkedTemplate) {
+                    templateMatches++;
                 }
             }
         }
@@ -193,21 +206,21 @@ class RealisticAtlasGeneratorTest {
         assertTrue(linkedChests > 0, "expected some linked chests");
         assertTrue(totalContents > 0, "expected some chest contents");
         // Content bias is 85%; allow generous slack so RNG variance doesn't flake.
-        double ratio = (double) bucketMatches / (double) totalContents;
+        double ratio = (double) templateMatches / (double) totalContents;
         assertTrue(ratio >= 0.6,
-                "expected at least 60% bucket-match in linked chests, got " + ratio);
+                "expected at least 60% template-match in linked chests, got " + ratio);
     }
 
     @Test
-    void islandsFromDifferentBucketsDoNotOverlap() {
-        BucketPool pool = new BucketPool();
-        pool.add(SemanticBucket.TOOLS, 8);
-        pool.add(SemanticBucket.COMBAT, 6);
-        pool.add(SemanticBucket.MATERIALS, 30);
-        pool.add(SemanticBucket.NATURAL, 12);
-        pool.add(SemanticBucket.REDSTONE, 5);
-        pool.add(SemanticBucket.MECHANISMS, 18);
-        pool.add(SemanticBucket.STORAGE, 4);
+    void islandsFromDifferentTemplatesDoNotOverlap() {
+        TemplatePool pool = new TemplatePool();
+        pool.add(IslandSuggestionTemplate.TOOLS, 8);
+        pool.add(IslandSuggestionTemplate.WEAPONS, 6);
+        pool.add(IslandSuggestionTemplate.MATERIALS, 30);
+        pool.add(IslandSuggestionTemplate.NATURAL, 12);
+        pool.add(IslandSuggestionTemplate.REDSTONE, 5);
+        pool.add(IslandSuggestionTemplate.MECHANISMS, 18);
+        pool.add(IslandSuggestionTemplate.STORAGE, 4);
 
         RealisticAtlasPlan plan = RealisticAtlasGenerator.generate(
                 pool.stacks(),
@@ -229,17 +242,475 @@ class RealisticAtlasGeneratorTest {
         }
     }
 
-    private static final class BucketPool {
+    @Test
+    void qualifiedSubsystemSpawnsItsOwnIsland() {
+        // 12 Create-mechanical-power items + 10 Create-logistics items
+        // + a small hand of generic mechanism items. Both subsystems clear
+        // the threshold (=10), so each gets its own island. The generic
+        // mechanism items fall back to MECHANISMS.
+        DescriptorPool pool = new DescriptorPool();
+        for (int i = 0; i < 12; i++) {
+            pool.addModded("create:cog_" + i, "mechanism", "create:mechanical_power");
+        }
+        for (int i = 0; i < 10; i++) {
+            pool.addModded("create:funnel_" + i, "mechanism", "create:logistics");
+        }
+        for (int i = 0; i < 5; i++) {
+            pool.addModded("modded:plain_gear_" + i, "mechanism", null);
+        }
+
+        RealisticAtlasPlan plan = RealisticAtlasGenerator.generateWithDescriptors(
+                pool.stacks(),
+                PopulateProfile.ORGANIZED,
+                new Random(42L),
+                pool::describe
+        );
+
+        Set<String> ids = new HashSet<>();
+        for (VisualAtlasIsland island : plan.islands()) {
+            ids.add(island.id());
+        }
+        assertTrue(ids.contains(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX + "create:mechanical_power"),
+                "create:mechanical_power should qualify as its own island");
+        assertTrue(ids.contains(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX + "create:logistics"),
+                "create:logistics should qualify as its own island");
+        assertTrue(ids.contains(IslandSuggestionTemplate.MECHANISMS.defaultIslandId()),
+                "non-subsystem mechanism items should still land on MECHANISMS");
+    }
+
+    @Test
+    void belowThresholdSubsystemFallsBackToParentTemplate() {
+        // 5 items in a subsystem — below the 10-item threshold, so no
+        // dedicated island; everything folds into MECHANISMS.
+        DescriptorPool pool = new DescriptorPool();
+        for (int i = 0; i < 5; i++) {
+            pool.addModded("create:tiny_" + i, "mechanism", "create:mechanical_power");
+        }
+
+        RealisticAtlasPlan plan = RealisticAtlasGenerator.generateWithDescriptors(
+                pool.stacks(),
+                PopulateProfile.ORGANIZED,
+                new Random(7L),
+                pool::describe
+        );
+
+        Set<String> ids = new HashSet<>();
+        for (VisualAtlasIsland island : plan.islands()) {
+            ids.add(island.id());
+        }
+        assertEquals(1, plan.islands().size(),
+                "subsystem below threshold → exactly one MECHANISMS island");
+        assertTrue(ids.contains(IslandSuggestionTemplate.MECHANISMS.defaultIslandId()));
+        for (String id : ids) {
+            assertTrue(!id.startsWith(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX),
+                    "no subsystem island should be created when items are below threshold");
+        }
+    }
+
+    @Test
+    void decorationSubsystemNeverFiresEvenWhenQualified() {
+        // 30 decorative_block items all sharing create:decoration. Even at
+        // 30 items (well above threshold), the parent template (DECORATION)
+        // is not in the subsystem-grouping whitelist, so they all collapse
+        // into the single DECORATION island.
+        DescriptorPool pool = new DescriptorPool();
+        for (int i = 0; i < 30; i++) {
+            pool.addModded("create:fancy_block_" + i, "decorative_block", "create:decoration");
+        }
+
+        RealisticAtlasPlan plan = RealisticAtlasGenerator.generateWithDescriptors(
+                pool.stacks(),
+                PopulateProfile.ORGANIZED,
+                new Random(11L),
+                pool::describe
+        );
+
+        Set<String> ids = new HashSet<>();
+        for (VisualAtlasIsland island : plan.islands()) {
+            ids.add(island.id());
+        }
+        assertEquals(1, plan.islands().size(),
+                "decoration items must collapse into DECORATION even with a qualified subsystem");
+        assertTrue(ids.contains(IslandSuggestionTemplate.DECORATION.defaultIslandId()));
+    }
+
+    @Test
+    void trophyShuntRoutesToCuriosityIslandRegardlessOfRole() {
+        // Modded "trophy" item with role=trophy — must land on CURIOSITY,
+        // not bucket through its declared role.
+        DescriptorPool pool = new DescriptorPool();
+        pool.addTrophy("modded:legendary_skull", "trophy");
+        pool.addRoleOnly("modded:plain_block", "building_block");
+
+        RealisticAtlasPlan plan = RealisticAtlasGenerator.generateWithDescriptors(
+                pool.stacks(),
+                PopulateProfile.ORGANIZED,
+                new Random(9L),
+                pool::describe
+        );
+
+        Map<ItemIdentity, VisualHomeAssignment> assignments = plan.assignments();
+        VisualHomeAssignment trophyAssignment = null;
+        for (VisualHomeAssignment a : assignments.values()) {
+            if ("modded:legendary_skull".equals(a.identity().itemId())) {
+                trophyAssignment = a;
+            }
+        }
+        assertNotNull(trophyAssignment);
+        assertEquals(IslandSuggestionTemplate.CURIOSITY.defaultIslandId(), trophyAssignment.islandId());
+    }
+
+    @Test
+    void withinIslandSortClustersFamilyViaIdAlphabetical() {
+        // Three oak items + three birch items in a BUILDING island.
+        // The carry rank ties (all null frequency) so the secondary id
+        // sort takes over — and since the family is in the id prefix
+        // (birch_*, oak_*), siblings naturally cluster contiguously.
+        DescriptorPool pool = new DescriptorPool();
+        pool.addBuilding("modded:birch_thing_1", "wood_birch");
+        pool.addBuilding("modded:oak_thing_1", "wood_oak");
+        pool.addBuilding("modded:birch_thing_2", "wood_birch");
+        pool.addBuilding("modded:oak_thing_2", "wood_oak");
+        pool.addBuilding("modded:oak_thing_3", "wood_oak");
+        pool.addBuilding("modded:birch_thing_3", "wood_birch");
+
+        RealisticAtlasPlan plan = RealisticAtlasGenerator.generateWithDescriptors(
+                pool.stacks(),
+                PopulateProfile.ORGANIZED,
+                new Random(13L),
+                pool::describe
+        );
+
+        // Find the BUILDING island and read its assignments in ordinal
+        // order. All wood_birch items should appear before all wood_oak
+        // items (or vice versa) — never interleaved.
+        String buildingIslandId = IslandSuggestionTemplate.BUILDING.defaultIslandId();
+        List<String> buildingItemIds = new ArrayList<>();
+        VisualHomeAssignment[] sorted = plan.assignments().values().stream()
+                .filter(a -> buildingIslandId.equals(a.islandId()))
+                .sorted((a, b) -> Integer.compare(a.ordinal(), b.ordinal()))
+                .toArray(VisualHomeAssignment[]::new);
+        for (VisualHomeAssignment a : sorted) {
+            buildingItemIds.add(a.identity().itemId());
+        }
+        assertEquals(6, buildingItemIds.size());
+
+        boolean seenOak = false;
+        boolean seenBirchAfterOak = false;
+        boolean seenOakAfterBirch = false;
+        boolean firstFamilyIsBirch = buildingItemIds.get(0).contains("birch");
+        for (String id : buildingItemIds) {
+            if (firstFamilyIsBirch) {
+                if (id.contains("oak")) {
+                    seenOak = true;
+                } else if (seenOak) {
+                    seenBirchAfterOak = true;
+                }
+            } else {
+                if (id.contains("birch")) {
+                    seenOak = true;
+                } else if (seenOak) {
+                    seenOakAfterBirch = true;
+                }
+            }
+        }
+        assertTrue(!seenBirchAfterOak && !seenOakAfterBirch,
+                "items of one material_family should be contiguous; got " + buildingItemIds);
+    }
+
+    @Test
+    void carriedSampleBiasesTowardEverydayItems() {
+        // 30 everyday + 30 rare items, STARTER profile (identityCount=30,
+        // carriedCap=20). With weight 6 (everyday) vs 0.2 (rare) = 30:1
+        // ratio, the carried 20 should land overwhelmingly on everyday.
+        DescriptorPool pool = new DescriptorPool();
+        for (int i = 0; i < 30; i++) {
+            pool.addBuildingWithFrequency("modded:every_" + i, "wood_oak", "everyday");
+        }
+        for (int i = 0; i < 30; i++) {
+            pool.addBuildingWithFrequency("modded:rare_" + i, "wood_oak", "rare");
+        }
+
+        RealisticAtlasPlan plan = RealisticAtlasGenerator.generateWithDescriptors(
+                pool.stacks(),
+                PopulateProfile.STARTER,
+                new Random(101L),
+                pool::describe
+        );
+
+        int everydayCount = 0;
+        for (ItemStack stack : plan.homedStacks()) {
+            if (stackId(stack).contains("every_")) {
+                everydayCount++;
+            }
+        }
+        // Floor is conservative: even with the homed-pool selection
+        // being uniform-random, the carried-sample weighting alone
+        // should push the everyday-share well above 50%.
+        assertTrue(everydayCount >= plan.homedStacks().size() * 3 / 4,
+                "expected ≥75% of carried picks to be everyday-frequency; got "
+                        + everydayCount + "/" + plan.homedStacks().size());
+    }
+
+    private static String stackId(ItemStack stack) {
+        try {
+            return (String) stack.getClass().getMethod("itemId").invoke(stack);
+        } catch (Exception ignored) {
+            return "";
+        }
+    }
+
+    @Test
+    void carryRankDominatesMaterialFamilyGrouping() {
+        // Items with the highest carry rank (everyday > frequent > rare)
+        // cluster at the TOP of an island, regardless of material
+        // family. Within a carry-rank band, items still group by family
+        // for residual locality. So the order is:
+        //   everyday_birch, everyday_oak, frequent_birch, frequent_oak,
+        //   rare_birch, rare_oak
+        // — not the old "tier 0 = both everyday and frequent grouped by
+        // family" interleave that put every-frequent-pairs together.
+        DescriptorPool pool = new DescriptorPool();
+        pool.addBuildingWithFrequency("modded:rare_oak", "wood_oak", "rare");
+        pool.addBuildingWithFrequency("modded:rare_birch", "wood_birch", "rare");
+        pool.addBuildingWithFrequency("modded:every_oak", "wood_oak", "everyday");
+        pool.addBuildingWithFrequency("modded:every_birch", "wood_birch", "everyday");
+        pool.addBuildingWithFrequency("modded:frequent_oak", "wood_oak", "frequent");
+        pool.addBuildingWithFrequency("modded:frequent_birch", "wood_birch", "frequent");
+
+        RealisticAtlasPlan plan = RealisticAtlasGenerator.generateWithDescriptors(
+                pool.stacks(),
+                PopulateProfile.ORGANIZED,
+                new Random(31L),
+                pool::describe
+        );
+
+        String buildingIslandId = IslandSuggestionTemplate.BUILDING.defaultIslandId();
+        List<String> ordered = plan.assignments().values().stream()
+                .filter(a -> buildingIslandId.equals(a.islandId()))
+                .sorted((a, b) -> Integer.compare(a.ordinal(), b.ordinal()))
+                .map(a -> a.identity().itemId())
+                .toList();
+
+        assertEquals(List.of(
+                "modded:every_birch",
+                "modded:every_oak",
+                "modded:frequent_birch",
+                "modded:frequent_oak",
+                "modded:rare_birch",
+                "modded:rare_oak"
+        ), ordered);
+    }
+
+    @Test
+    void rarityPenalizesUncommonAndAboveOnly() {
+        // abundant / common / null rarities are treated as
+        // equivalently-carry-friendly and tie on carry rank — only
+        // uncommon+ tiers contribute a meaningful penalty. So among
+        // three frequent items, the uncommon one sorts last while the
+        // common+null ones tie and fall back to alphabetical id.
+        DescriptorPool pool = new DescriptorPool();
+        pool.addBuildingWithFrequencyAndRarity("modded:asphalt", "asphalt", "frequent", null);
+        pool.addBuildingWithFrequencyAndRarity("modded:stone", "stone", "frequent", "common");
+        pool.addBuildingWithFrequencyAndRarity("modded:obsidian", "obsidian", "frequent", "uncommon");
+
+        RealisticAtlasPlan plan = RealisticAtlasGenerator.generateWithDescriptors(
+                pool.stacks(),
+                PopulateProfile.ORGANIZED,
+                new Random(7L),
+                pool::describe
+        );
+
+        String buildingIslandId = IslandSuggestionTemplate.BUILDING.defaultIslandId();
+        List<String> ordered = plan.assignments().values().stream()
+                .filter(a -> buildingIslandId.equals(a.islandId()))
+                .sorted((a, b) -> Integer.compare(a.ordinal(), b.ordinal()))
+                .map(a -> a.identity().itemId())
+                .toList();
+
+        assertEquals(List.of(
+                "modded:asphalt",   // frequent + null → carry rank 10
+                "modded:stone",     // frequent + common → carry rank 10 (tie, "stone" > "asphalt" alphabetically)
+                "modded:obsidian"   // frequent + uncommon → carry rank 12 (penalized)
+        ), ordered);
+    }
+
+    @Test
+    void frequencyOrdersWithinIslandFromUbiquitousToRare() {
+        DescriptorPool pool = new DescriptorPool();
+        pool.addBuildingWithFrequency("modded:rare_block", "wood_oak", "rare");
+        pool.addBuildingWithFrequency("modded:every_block", "wood_oak", "everyday");
+        pool.addBuildingWithFrequency("modded:occasional_block", "wood_oak", "occasional");
+        pool.addBuildingWithFrequency("modded:frequent_block", "wood_oak", "frequent");
+
+        RealisticAtlasPlan plan = RealisticAtlasGenerator.generateWithDescriptors(
+                pool.stacks(),
+                PopulateProfile.ORGANIZED,
+                new Random(21L),
+                pool::describe
+        );
+
+        String buildingIslandId = IslandSuggestionTemplate.BUILDING.defaultIslandId();
+        List<String> ordered = plan.assignments().values().stream()
+                .filter(a -> buildingIslandId.equals(a.islandId()))
+                .sorted((a, b) -> Integer.compare(a.ordinal(), b.ordinal()))
+                .map(a -> a.identity().itemId())
+                .toList();
+
+        assertEquals(List.of(
+                "modded:every_block",
+                "modded:frequent_block",
+                "modded:occasional_block",
+                "modded:rare_block"
+        ), ordered);
+    }
+
+    private static final class DescriptorPool {
         private final ArrayList<ItemStack> stacks = new ArrayList<>();
-        private final HashMap<String, SemanticBucket> buckets = new HashMap<>();
+        private final LinkedHashMap<String, IslandSignalDescriptor> descriptorsById = new LinkedHashMap<>();
         private int nextId = 0;
 
-        void add(SemanticBucket bucket, int count) {
+        List<ItemStack> stacks() {
+            return stacks;
+        }
+
+        IslandSignalDescriptor describe(ItemStack stack) {
+            if (stack == null || stack.isEmpty()) {
+                return IslandSignalDescriptor.empty(ItemIdentity.of("minecraft:air"));
+            }
+            String id;
+            try {
+                id = (String) stack.getClass().getMethod("itemId").invoke(stack);
+            } catch (Exception ignored) {
+                id = "";
+            }
+            IslandSignalDescriptor descriptor = descriptorsById.get(id);
+            return descriptor == null
+                    ? IslandSignalDescriptor.empty(ItemIdentity.of(id))
+                    : descriptor;
+        }
+
+        void addModded(String itemId, String role, String subsystemId) {
+            registerStack(itemId);
+            descriptorsById.put(itemId, new IslandSignalDescriptor(
+                    ItemIdentity.of(itemId),
+                    Set.of(),
+                    Set.of(),
+                    namespaceOf(itemId),
+                    "",
+                    role,
+                    null,
+                    null,
+                    subsystemId == null ? List.of() : List.of(subsystemId),
+                    List.of(),
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    false
+            ));
+        }
+
+        void addRoleOnly(String itemId, String role) {
+            registerStack(itemId);
+            descriptorsById.put(itemId, new IslandSignalDescriptor(
+                    ItemIdentity.of(itemId),
+                    Set.of(),
+                    Set.of(),
+                    namespaceOf(itemId),
+                    "",
+                    role
+            ));
+        }
+
+        void addBuilding(String itemId, String materialFamily) {
+            registerStack(itemId);
+            descriptorsById.put(itemId, new IslandSignalDescriptor(
+                    ItemIdentity.of(itemId),
+                    Set.of(),
+                    Set.of(),
+                    namespaceOf(itemId),
+                    "",
+                    "building_block",
+                    null,
+                    materialFamily,
+                    List.of(),
+                    List.of(),
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    false
+            ));
+        }
+
+        void addBuildingWithFrequency(String itemId, String materialFamily, String frequency) {
+            addBuildingWithFrequencyAndRarity(itemId, materialFamily, frequency, null);
+        }
+
+        void addBuildingWithFrequencyAndRarity(String itemId, String materialFamily,
+                                                String frequency, String rarity) {
+            registerStack(itemId);
+            descriptorsById.put(itemId, new IslandSignalDescriptor(
+                    ItemIdentity.of(itemId),
+                    Set.of(),
+                    Set.of(),
+                    namespaceOf(itemId),
+                    "",
+                    "building_block",
+                    null,
+                    materialFamily,
+                    List.of(),
+                    List.of(),
+                    null,
+                    frequency,
+                    rarity,
+                    null,
+                    null,
+                    null,
+                    false
+            ));
+        }
+
+        void addTrophy(String itemId, String role) {
+            registerStack(itemId);
+            descriptorsById.put(itemId, new IslandSignalDescriptor(
+                    ItemIdentity.of(itemId),
+                    Set.of(),
+                    Set.of(),
+                    namespaceOf(itemId),
+                    "",
+                    role
+            ));
+        }
+
+        private void registerStack(String itemId) {
+            ItemStack stack = new ItemStack(itemId, 1, 64);
+            stacks.add(stack);
+            nextId++;
+        }
+
+        private static String namespaceOf(String itemId) {
+            int colon = itemId.indexOf(':');
+            return colon <= 0 ? "" : itemId.substring(0, colon);
+        }
+    }
+
+    private static final class TemplatePool {
+        private final ArrayList<ItemStack> stacks = new ArrayList<>();
+        private final HashMap<String, IslandSuggestionTemplate> templatesById = new HashMap<>();
+        private int nextId = 0;
+
+        void add(IslandSuggestionTemplate template, int count) {
             for (int index = 0; index < count; index++) {
-                String id = "slot_test:" + bucket.id() + "_" + (nextId++);
+                String id = "slot_test:" + template.name().toLowerCase() + "_" + (nextId++);
                 ItemStack stack = new ItemStack(id, 1, 64);
                 stacks.add(stack);
-                buckets.put(id, bucket);
+                templatesById.put(id, template);
             }
         }
 
@@ -247,9 +718,9 @@ class RealisticAtlasGeneratorTest {
             return stacks;
         }
 
-        SemanticBucket classify(ItemStack stack) {
+        IslandSuggestionTemplate classify(ItemStack stack) {
             if (stack == null || stack.isEmpty()) {
-                return SemanticBucket.MISC;
+                return IslandSuggestionTemplate.MISC;
             }
             try {
                 Function<ItemStack, String> itemIdExtractor = s -> {
@@ -259,9 +730,9 @@ class RealisticAtlasGeneratorTest {
                         return "";
                     }
                 };
-                return buckets.getOrDefault(itemIdExtractor.apply(stack), SemanticBucket.MISC);
+                return templatesById.getOrDefault(itemIdExtractor.apply(stack), IslandSuggestionTemplate.MISC);
             } catch (RuntimeException ignored) {
-                return SemanticBucket.MISC;
+                return IslandSuggestionTemplate.MISC;
             }
         }
     }

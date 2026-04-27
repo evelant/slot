@@ -157,7 +157,7 @@ final class AtlasCardBuilder {
         float labelHeight = atlas.worldUnitsForPixels(labelScreenHeight);
         addCommonAtlasSignals(body, atlas, item, budget, searchMatch);
         float shellLeft = (place.width() - shell) / 2f;
-        body.addChild(slotPreview(atlas, item, shellPx, iconPx).layout(layout -> layout
+        body.addChild(slotPreview(atlas, item, shellPx, iconPx, budget.level()).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
                 .left(shellLeft)
                 .top(shellTop)));
@@ -202,7 +202,7 @@ final class AtlasCardBuilder {
         float secondaryHeight = atlas.worldUnitsForPixels(budget.secondaryLineHeightPx());
         addCommonAtlasSignals(body, atlas, item, budget, searchMatch);
         float shellLeft = (place.width() - shell) / 2f;
-        body.addChild(slotPreview(atlas, item, shellPx, iconPx).layout(layout -> layout
+        body.addChild(slotPreview(atlas, item, shellPx, iconPx, budget.level()).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
                 .left(shellLeft)
                 .top(topPad)));
@@ -268,7 +268,7 @@ final class AtlasCardBuilder {
         float shellTop = topPad;
         float auxLineHeight = atlas.worldUnitsForPixels(budget.secondaryLineHeightPx());
         addCommonAtlasSignals(body, atlas, item, budget, searchMatch);
-        body.addChild(slotPreview(atlas, item, shellPx, iconPx).layout(layout -> layout
+        body.addChild(slotPreview(atlas, item, shellPx, iconPx, budget.level()).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
                 .left(sidePad)
                 .top(shellTop)));
@@ -423,36 +423,83 @@ final class AtlasCardBuilder {
             SlotWorkspaceViewModel.AtlasItem item,
             AtlasRenderBudget budget
     ) {
-        return slotPreview(atlas, item, budget.shellPx(), budget.iconPx());
+        return slotPreview(atlas, item, budget.shellPx(), budget.iconPx(), budget.level());
     }
 
     UIElement slotPreview(
             SlotAtlasGraphView atlas,
             SlotWorkspaceViewModel.AtlasItem item,
             float shellPx,
-            float iconPx
+            float iconPx,
+            Band band
     ) {
         AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
         float cardBound = Math.min(place.width(), place.height());
-        float shell = Math.min(cardBound, atlas.worldUnitsForPixels(shellPx));
-        float inset = Math.min(shell * 0.5f, atlas.worldUnitsForPixels(1f));
-        float icon = Math.max(0f, Math.min(shell - inset * 2f, atlas.worldUnitsForPixels(iconPx)));
+        float fullShell = Math.min(cardBound, atlas.worldUnitsForPixels(shellPx));
+        float fullIcon = atlas.worldUnitsForPixels(iconPx);
+
         boolean carried = item.carried();
+        // Ghost cards (visible but not in inventory) shrink as we zoom out
+        // so the carried items dominate the silhouette — that's the "what
+        // am I actually carrying?" overview the player needs at low zoom.
+        // Stays full-size at DETAIL/INSPECT where you can read every cell.
+        float ghostScale = ghostScaleFor(carried, band);
+        float shell = fullShell * ghostScale;
+        float icon = fullIcon * ghostScale;
+        float inset = Math.min(shell * 0.5f, atlas.worldUnitsForPixels(1f) * ghostScale);
+        icon = Math.max(0f, Math.min(shell - inset * 2f, icon));
+
         int shellColor = carried ? 0xB0141B23 : dimAlpha(0xB0141B23, GHOST_CARD_ALPHA);
         int innerColor = carried ? 0xD90A1218 : dimAlpha(0xD90A1218, GHOST_CARD_ALPHA);
-        UIElement shellElement = panel(shellColor).layout(layout -> layout.width(shell).height(shell));
+
+        // Wrapper occupies the full-size cell so the call site's centering
+        // math (which still uses the un-scaled shell) keeps the ghost
+        // visually centered within the card slot.
+        UIElement wrapper = new UIElement().layout(layout -> layout.width(fullShell).height(fullShell));
+        wrapper.setAllowHitTest(false);
+
+        float shellOffset = (fullShell - shell) / 2f;
+        UIElement shellElement = panel(shellColor).layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .left(shellOffset)
+                .top(shellOffset)
+                .width(shell)
+                .height(shell));
         shellElement.setAllowHitTest(false);
+        final float finalShell = shell;
+        final float finalIcon = icon;
+        final float finalInset = inset;
         shellElement.addChild(panel(innerColor).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
-                .left(inset)
-                .top(inset)
-                .width(shell - inset * 2f)
-                .height(shell - inset * 2f)));
-        shellElement.addChild(itemIcon(item.displayStack(), icon, carried).layout(layout -> layout
+                .left(finalInset)
+                .top(finalInset)
+                .width(finalShell - finalInset * 2f)
+                .height(finalShell - finalInset * 2f)));
+        shellElement.addChild(itemIcon(item.displayStack(), finalIcon, carried).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
-                .left(centeredWorld(shell, icon))
-                .top(centeredWorld(shell, icon))));
-        return shellElement;
+                .left(centeredWorld(finalShell, finalIcon))
+                .top(centeredWorld(finalShell, finalIcon))));
+        wrapper.addChild(shellElement);
+        return wrapper;
+    }
+
+    /**
+     * Visual size multiplier for non-carried ("ghost") atlas cards. Carried
+     * items always render at full size. Ghosts shrink progressively as we
+     * zoom out, becoming a small dot at REGION/PIP and full-size at
+     * DETAIL/INSPECT — at high zoom you can already see every card.
+     */
+    static float ghostScaleFor(boolean carried, Band band) {
+        if (carried || band == null) {
+            return 1f;
+        }
+        return switch (band) {
+            case DETAIL -> 1f;
+            case INSPECT -> 0.95f;
+            case READ -> 0.7f;
+            case BROWSE -> 0.5f;
+            case REGION, PIP -> 0.4f;
+        };
     }
 
     UIElement slotPreview(SlotWorkspaceViewModel.AtlasItem item, int size, boolean showMarker) {

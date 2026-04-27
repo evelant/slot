@@ -90,6 +90,20 @@ final class SlotWorkspaceUiController {
     int hoveredHotbarIndex = -1;
     final List<Observable.Subscription> atlasContentSubscriptions = new ArrayList<>();
     final java.util.Map<Integer, UIElement> hotbarSlotElements = new java.util.HashMap<>();
+    /**
+     * Dim non-proximate link-thread elements, keyed by island id. Built
+     * once per atlas rebuild for every chest-linked island that has at
+     * least one non-proximate linked chest, hidden by default, and
+     * toggled visible on hover via
+     * {@link IslandChestBuilder#attachIslandHoverListeners}. Pre-creating
+     * the elements lets the hover handler call {@code setVisible} without
+     * forcing a full {@link #rebuildNow()} — a rebuild on hover would
+     * destroy the element holding the listener mid-event, fire a
+     * synthetic MOUSE_LEAVE on the destroyed element, fire MOUSE_ENTER on
+     * the freshly recreated one, and oscillate every frame. That loop is
+     * what previously made chest-linked island headers undraggable.
+     */
+    final java.util.Map<String, java.util.List<UIElement>> dimLinkThreadsByIsland = new java.util.HashMap<>();
     SlotWorkspaceViewModel.IdentityRef contextMenuAtlasIdentity;
     int contextMenuHotbarIndex = -1;
     String contextMenuKitId;
@@ -435,10 +449,14 @@ final class SlotWorkspaceUiController {
     }
 
     static String chipLabelText(ChipSuggestion chip) {
+        // No hard truncation — chip labels live inside flex(1) layouts that
+        // soft-clip when the container is narrower than the text. A fixed
+        // 10-char cap was ellipsizing well-formed labels (e.g. "Mechanis...")
+        // even when the surrounding row had plenty of horizontal slack.
         String label = chip.kind() == ChipSuggestion.ChipKind.TEMPLATE && chip.template() != null
                 ? chip.template().defaultLabel()
                 : chip.label();
-        return label == null ? "" : shorten(label, 10);
+        return label == null ? "" : label;
     }
 
 

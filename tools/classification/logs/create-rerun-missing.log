@@ -1,0 +1,54 @@
+[create] (stages 1+2 skipped — bundle load skipped)
+[stage1] (skipped; loaded 740 records from /Users/imagio/dev/mc/slot/tools/classification/out/create.items.ndjson)
+[stage2] (skipped; loaded 740 entries)
+[subsystems] using cached vocabulary (6 entries) from /Users/imagio/dev/mc/slot/tools/classification/out/create.subsystems.json
+[stage3] running against 59 items (sampled)
+[recording-cache] cached fixture rejected by validator (LLM response was not valid JSON: JSON Parse error: Unterminated string
+---
+{
+  "items": {
+    "create:tiled_glass": {
+  ); falling through to live call
+[stage3] batch 3/3 parsed=19/19 warnings=3 elapsed=100656ms
+[stage3] batch 2/3 parsed=20/20 warnings=0 elapsed=100952ms
+[stage3] batch 1/3 parsed=20/20 warnings=0 elapsed=119450ms
+
+========================================================================
+Stage 3 run complete
+========================================================================
+
+Coverage added (LLM-authored facets, sorted by frequency):
+  role                        59
+  frequency                   59
+  activity                    53
+  rarity                      39
+  material_family             24
+  mod_subsystem               23
+  flavor                      23
+  primary_uses                20
+  palette                     15
+  dye_color                   14
+  origin                      13
+  environmental_property       6
+  (filled 59 items total)
+
+Output files (2):
+  /Users/imagio/dev/mc/slot/tools/classification/out/create.facets.complete.json
+    merged layer (stage 2 + stage 3)
+  /Users/imagio/dev/mc/slot/tools/classification/out/create.facets.corrections.json
+    1 stage-2 correction(s) flagged by the LLM — review and patch the rule files if valid
+
+Review queue (2 section(s)):
+
+  STAGE-2 CORRECTIONS — 1 item(s) where the LLM thinks a deterministic stage-2 facet is wrong
+    file: /Users/imagio/dev/mc/slot/tools/classification/out/create.facets.corrections.json
+      • create:warped_window origin: '[object Object]' → '[object Object]'  (0.80) — Item is crafted, not naturally generated in nether
+
+  WARNINGS — 4 warning(s) (most are stage-2 disagreements + format-fix wraps; usually fine)
+      • create:zinc_block activity: value 'crafting' not in multi_enum
+      • create:zinc_ingot activity: value 'crafting' not in multi_enum
+      • create:zinc_nugget activity: value 'crafting' not in multi_enum
+      • create:warped_window origin: stage 2 asserted ["nether"]; LLM value ["crafted_only"] dropped — add to corrections if clearly wrong
+
+========================================================================
+done in 119.49s

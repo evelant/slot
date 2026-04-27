@@ -13,6 +13,7 @@ import {
   type ParsedFacetEntry,
   type SchemaProposal,
   type StageCorrection,
+  type StageFillIn,
 } from "./parse.ts";
 
 export interface Stage3Options {
@@ -42,6 +43,16 @@ export interface Stage3Options {
    * Omit for vanilla / mods with no meaningful subsystem groupings.
    */
   subsystemVocabulary?: readonly { id: string; rationale?: string }[];
+  /**
+   * Verbose-prompt extras. Defaults align with {@link LlmPromptInput.prompt_extras}:
+   * disambiguation ON (principle-based, generalizes well), misconceptions
+   * OFF (item-level enumeration, kept in reserve for regressions). Pass
+   * either as `false` to flip off, or as `true` to force on.
+   */
+  promptExtras?: {
+    verboseFacetDisambiguation?: boolean;
+    verboseCommonMisconceptions?: boolean;
+  };
 }
 
 export interface BatchProgress {
@@ -64,12 +75,29 @@ export interface Stage3Result {
   proposals: SchemaProposal[];
   /** Aggregated stage-2 corrections the LLM suggested (NOT auto-merged). */
   corrections: StageCorrection[];
+  /** Aggregated stage-2 fill-ins the LLM noticed (deterministic facets
+   *  the rules failed to derive). NOT auto-merged — surfaced for human
+   *  review of the stage-2 rule files. */
+  fillIns: StageFillIn[];
   /** Warnings collected across all batches. */
   warnings: string[];
 }
 
-const DEFAULT_MODEL = "haiku";
+// Production default: deepseek-v4-flash via OpenRouter pinned to the
+// deepseek provider. Locked in 2026-04-26 after A/B-ing against Claude
+// haiku / sonnet on the 60-item playtest sample: 60/62 hits, no batch
+// dropping, ~20× cheaper than sonnet, ~3× faster than sonnet.
+// Anyone wanting Claude can pass --backend claude-cli --model haiku/sonnet/opus.
+const DEFAULT_MODEL = "deepseek/deepseek-v4-flash";
 const DEFAULT_BATCH_SIZE = 20;
+/**
+ * Per-mod batch concurrency default. OpenRouter handles 4 in-flight
+ * calls comfortably and most mods finish in under 5 minutes at this
+ * level. Bump on the cli with `--concurrency N` for fast modes; the
+ * upper limit is governed by upstream provider rate limits, not the
+ * client.
+ */
+const DEFAULT_BATCH_CONCURRENCY = 4;
 
 /**
  * Drive stage 3 end-to-end: slice the record list into batches, call the LLM
@@ -89,10 +117,11 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
     : options.records;
 
   const batches = chunk(selected, batchSize);
-  const concurrency = Math.max(1, options.concurrency ?? 1);
+  const concurrency = Math.max(1, options.concurrency ?? DEFAULT_BATCH_CONCURRENCY);
   const warnings: string[] = [];
   const proposals: SchemaProposal[] = [];
   const corrections: StageCorrection[] = [];
+  const fillIns: StageFillIn[] = [];
   const coverageAdded: Record<string, number> = {};
 
   // Deep-clone only what we'll mutate; the entries map itself is new but
@@ -121,12 +150,35 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
     // `claude --system-prompt` and the per-batch item data on stdin. This
     // maximizes prompt-cache hit rate and keeps Claude Code's default
     // system prompt from interfering with classification context.
-    const queryOptions = { model, ...options.clientOptions };
+    //
+    // Validator: an upstream truncation can produce a non-empty but
+    // unparseable response (we hit this on 3 batches of the create
+    // modpack run, losing 60 items). When the client supports it
+    // (currently only OpenRouterClient), we hand it a `parseLlmResponse`
+    // shim so it can re-ask while the prompt cache is still warm.
+    const queryOptions: Partial<QueryOptions> & { model: string } = {
+      model,
+      ...options.clientOptions,
+      responseValidator: (text) => {
+        try {
+          parseLlmResponse(text);
+          return { ok: true };
+        } catch (err) {
+          return { ok: false, reason: (err as Error).message.slice(0, 120) };
+        }
+      },
+    };
     let responseText: string;
     const promptInput = {
       items: payloads,
       target_facets: targetFacets,
       subsystem_vocabulary: options.subsystemVocabulary,
+      prompt_extras: options.promptExtras
+        ? {
+            verbose_facet_disambiguation: options.promptExtras.verboseFacetDisambiguation,
+            verbose_common_misconceptions: options.promptExtras.verboseCommonMisconceptions,
+          }
+        : undefined,
     };
     if (options.client.querySplit) {
       const { system, user } = buildSplitPrompt(promptInput);
@@ -154,6 +206,7 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
     warnings.push(...parsed.warnings);
     proposals.push(...parsed.proposals);
     corrections.push(...parsed.corrections);
+    fillIns.push(...parsed.fillIns);
 
     for (const [itemId, itemFacets] of parsed.items) {
       if (!recordIndex.has(itemId)) {
@@ -177,6 +230,34 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
       }
       mergedEntries[itemId] = { facets: next };
       if (itemAdded) filledItems++;
+    }
+
+    // Merge fill-ins: the LLM put these in `fill_ins` instead of
+    // `facets` because they're deterministic facets stage-2 missed.
+    // The data still needs to reach the layer — fill_ins are tracked
+    // separately for audit (stage-2 rule gaps), but the runtime
+    // doesn't care which channel produced them.
+    for (const fill of parsed.fillIns) {
+      if (!recordIndex.has(fill.item)) {
+        warnings.push(`${fill.item}: fill_in for item not in the extract set, ignoring`);
+        continue;
+      }
+      const existing = mergedEntries[fill.item]?.facets ?? {};
+      if (existing[fill.facet]) {
+        warnings.push(
+          `${fill.item} ${fill.facet}: fill_in proposed but stage-2 already has a value (${describeEntry(existing[fill.facet])}); ignoring`,
+        );
+        continue;
+      }
+      const next: LayerFile["entries"][string]["facets"] = { ...existing };
+      next[fill.facet] = {
+        value: fill.value,
+        confidence: 0.85,
+        source: "llm:stage3-fill-in",
+        rationale: fill.rationale,
+      } as unknown as LayerFile["entries"][string]["facets"][string];
+      mergedEntries[fill.item] = { facets: next };
+      coverageAdded[fill.facet] = (coverageAdded[fill.facet] ?? 0) + 1;
     }
 
     options.onBatch?.({
@@ -210,7 +291,7 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
     generated_at: new Date().toISOString(),
   };
 
-  return { layer, filledItems, coverageAdded, proposals, corrections, warnings };
+  return { layer, filledItems, coverageAdded, proposals, corrections, fillIns, warnings };
 }
 
 /** Compact string summary of a layer entry for warning text. */

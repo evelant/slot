@@ -129,13 +129,35 @@ const ID_SUFFIX_TO_FORM: Array<[suffix: string, form: string]> = [
   ["_bed", "bed"],
   ["_ladder", "ladder"],
   ["_bars", "bars"],
+  // Window / glass / pane family — covers Create's _window blocks
+  // (form was previously null because nothing matched) plus vanilla
+  // glass + pane variants. `_glass_pane` and `_pane` both map to pane;
+  // `_window`, `_window_pane`, `_glass`, and bare `glass` map to a
+  // single `pane` form so the form-keyed WINDOWS template fires
+  // uniformly. Players don't distinguish window vs pane vs glass at
+  // the level that matters for inventory organization.
+  ["_window_pane", "pane"],
+  ["_glass_pane", "pane"],
+  ["_window", "pane"],
   ["_pane", "pane"],
+  ["_stained_glass", "pane"],
+  ["_glass", "pane"],
   ["_sapling", "sapling"],
   ["_boat", "vehicle"],
   ["_minecart", "vehicle"],
   ["_ore", "ore"],
   ["_crystal", "crystal"],
 ];
+
+/**
+ * Bare ids (no suffix prefix) that should map to a form. Mostly the
+ * one-off "glass" / "ladder" cases where the item is the canonical
+ * thing and has no material prefix.
+ */
+const BARE_ID_TO_FORM: Record<string, string> = {
+  glass: "pane",
+  ladder: "ladder",
+};
 
 export const formRule: Rule = {
   id: "form",
@@ -172,6 +194,9 @@ export const formRule: Rule = {
         return emit(form, "rule:form_from_id", `suffix ${suffix}`);
       }
     }
+
+    const bare = BARE_ID_TO_FORM[record.path];
+    if (bare) return emit(bare, "rule:form_from_id", `bare id`);
 
     return [];
   },

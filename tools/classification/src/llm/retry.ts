@@ -66,6 +66,13 @@ export interface RetryOptions {
   /** Same as Stage3Options.subsystemVocabulary; the retry pass should use
    *  the same canonical vocabulary as the first pass to avoid drift. */
   subsystemVocabulary?: readonly { id: string; rationale?: string }[];
+  /** Same as Stage3Options.promptExtras; retry should use the same prompt
+   *  shape as the first pass so divergence between the two is purely about
+   *  model strength, not prompt content. */
+  promptExtras?: {
+    verboseFacetDisambiguation?: boolean;
+    verboseCommonMisconceptions?: boolean;
+  };
 }
 
 export interface RetryResult extends Stage3Result {
@@ -108,6 +115,7 @@ export async function runStage3Retry(
       coverageAdded: {},
       proposals: [],
       corrections: [],
+      fillIns: [],
       warnings: [],
       retriedItems: [],
       facetsChanged,
@@ -132,6 +140,7 @@ export async function runStage3Retry(
     clientOptions: options.effort ? { effort: options.effort } : undefined,
     onBatch: options.onBatch,
     subsystemVocabulary: options.subsystemVocabulary,
+    promptExtras: options.promptExtras,
   });
   warnings.push(...retry.warnings);
 
@@ -202,6 +211,7 @@ export async function runStage3Retry(
     coverageAdded,
     proposals: retry.proposals,
     corrections: retry.corrections,
+    fillIns: retry.fillIns,
     warnings,
     retriedItems: candidates,
     facetsChanged,

@@ -1,0 +1,624 @@
+[modpack] create-civilization: 17 entr(y/ies)
+[modpack] Test-instance modpack — Create-family + Sophisticated storage + Tom's, plus the libraries we ship behind the scenes.
+
+────────────────────────────────────────────────────────────────────────
+[modpack] create                       processing — source /Users/imagio/dev/mc/slot/reference/classification/Create
+────────────────────────────────────────────────────────────────────────
+[create] loading mod source bundle from /Users/imagio/dev/mc/slot/reference/classification/Create
+[create] roots: 2; items: 740; tags(item): 98; recipes: 1884
+[stage1] 740 items → /Users/imagio/dev/mc/slot/tools/classification/out/create.items.ndjson
+[stage2] 740 items with ≥1 facet → /Users/imagio/dev/mc/slot/tools/classification/out/create.facets.partial.json
+[stage2] coverage:
+  mod_namespace            740/740 (100.0%)
+  is_block_item            643/740 (86.9%)
+  required_tool            561/740 (75.8%)
+  origin                   549/740 (74.2%)
+  processing_in            509/740 (68.8%)
+  form                     251/740 (33.9%)
+  material_family           86/740 (11.6%)
+  required_tool_tier        53/740 (7.2%)
+  y_level_range              7/740 (0.9%)
+  is_fuel                    4/740 (0.5%)
+[subsystems] using cached vocabulary (6 entries) from /Users/imagio/dev/mc/slot/tools/classification/out/create.subsystems.json
+[stage3] running against 740 items
+[stage3] resume: found existing fixture(s); cached batches will skip the LLM.
+[stage3] batch 1/37 parsed=20/20 warnings=0 elapsed=4ms
+[stage3] batch 2/37 parsed=20/20 warnings=3 elapsed=4ms
+[stage3] batch 3/37 parsed=20/20 warnings=0 elapsed=4ms
+[stage3] batch 4/37 parsed=20/20 warnings=85 elapsed=4ms
+[stage3] batch 5/37 parsed=20/20 warnings=0 elapsed=4ms
+[stage3] batch 6/37 parsed=20/20 warnings=19 elapsed=4ms
+[stage3] batch 7/37 parsed=20/20 warnings=21 elapsed=4ms
+[stage3] batch 8/37 parsed=20/20 warnings=19 elapsed=4ms
+[stage3] batch 9/37 parsed=20/20 warnings=0 elapsed=5ms
+[stage3] batch 10/37 parsed=20/20 warnings=0 elapsed=5ms
+[stage3] batch 11/37 parsed=20/20 warnings=0 elapsed=5ms
+[stage3] batch 12/37 parsed=20/20 warnings=0 elapsed=5ms
+[stage3] batch 13/37 parsed=20/20 warnings=0 elapsed=5ms
+[stage3] batch 14/37 parsed=20/20 warnings=20 elapsed=5ms
+[stage3] batch 16/37 parsed=20/20 warnings=1 elapsed=73351ms
+[stage3] batch 18/37 parsed=20/20 warnings=3 elapsed=90664ms
+[openrouter] transient error (code=429); retrying in 5s (attempt 2/5)
+[stage3] batch 15/37 parsed=20/20 warnings=19 elapsed=92324ms
+[openrouter] transient error (code=429); retrying in 5s (attempt 2/5)
+[stage3] batch 19/37 parsed=20/20 warnings=3 elapsed=93497ms
+[openrouter] transient error (code=429); retrying in 5s (attempt 2/5)
+[openrouter] transient error (code=429); retrying in 10s (attempt 3/5)
+[stage3] batch 22/37 parsed=20/20 warnings=30 elapsed=115457ms
+[stage3] batch 17/37 parsed=20/20 warnings=1 elapsed=123471ms
+[stage3] batch 21/37 parsed=20/20 warnings=0 elapsed=130882ms
+[stage3] batch 20/37 parsed=20/20 warnings=0 elapsed=147420ms
+[stage3] batch 25/37 parsed=20/20 warnings=0 elapsed=97714ms
+[stage3] batch 27/37 parsed=20/20 warnings=2 elapsed=81602ms
+[stage3] batch 29/37 parsed=20/20 warnings=0 elapsed=66885ms
+[stage3] batch 23/37 parsed=20/20 warnings=6 elapsed=136763ms
+[openrouter] transient error (code=429); retrying in 5s (attempt 2/5)
+[stage3] batch 26/37 parsed=20/20 warnings=0 elapsed=130470ms
+[stage3] batch 24/37 parsed=20/20 warnings=0 elapsed=139578ms
+[openrouter] transient error (code=429); retrying in 5s (attempt 2/5)
+[openrouter] transient error (code=429); retrying in 10s (attempt 3/5)
+[stage3] batch 28/37 parsed=20/20 warnings=2 elapsed=130560ms
+[stage3] batch 30/37 parsed=21/20 warnings=0 elapsed=111934ms
+[stage3] batch 31/37 parsed=20/20 warnings=20 elapsed=75331ms
+[stage3] batch 32/37 parsed=20/20 warnings=0 elapsed=89575ms
+[stage3] batch 33/37 parsed=20/20 warnings=1 elapsed=99871ms
+[stage3] batch 36/37 parsed=0/20 warnings=1 elapsed=74395ms
+[stage3] batch 34/37 parsed=0/20 warnings=1 elapsed=96457ms
+[stage3] batch 37/37 parsed=0/20 warnings=1 elapsed=59638ms
+[stage3] batch 35/37 parsed=21/20 warnings=0 elapsed=145239ms
+
+========================================================================
+Stage 3 run complete
+========================================================================
+
+Coverage added (LLM-authored facets, sorted by frequency):
+  role                       681
+  activity                   619
+  frequency                  576
+  primary_uses               480
+  material_family            454
+  mod_subsystem              395
+  flavor                     387
+  rarity                     321
+  storage_categories         198
+  palette                    163
+  origin                      97
+  dye_color                   97
+  environmental_property      32
+  spawn_interaction           20
+  tier                        12
+  is_creative_only            10
+  material_secondary           9
+  transport_medium             4
+  multiblock_component_of      1
+  (filled 681 items total)
+
+Output files (2):
+  /Users/imagio/dev/mc/slot/tools/classification/out/create.facets.complete.json
+    merged layer (stage 2 + stage 3)
+  /Users/imagio/dev/mc/slot/tools/classification/out/create.facets.corrections.json
+    5 stage-2 correction(s) flagged by the LLM — review and patch the rule files if valid
+
+Review queue (2 section(s)):
+
+  STAGE-2 CORRECTIONS — 5 item(s) where the LLM thinks a deterministic stage-2 facet is wrong
+    file: /Users/imagio/dev/mc/slot/tools/classification/out/create.facets.corrections.json
+      • create:crimsite origin: 'crafted_only' → 'overworld_cave'  (0.80) — crimsite is mined from the world, not only crafted
+      • create:crimsite_pillar origin: 'crafted_only' → 'overworld_cave'  (0.80) — pillar is stonecut from mined crimsite
+      • create:ochrum origin: 'crafted_only' → 'overworld_cave'  (0.90) — ochrum is a natural stone block mined from the world, not crafted
+      • create:limestone origin: '[object Object]' → '[object Object]'  (0.00) — Limestone generates naturally in the world as a stone
+      • create:warped_window_pane material_family: 'wood_warped' → 'glass'  (0.80) — Item is a glass pane, player thinks of it as glass
+      … (full list in /Users/imagio/dev/mc/slot/tools/classification/out/create.facets.corrections.json)
+
+  WARNINGS — 265 warning(s) (most are stage-2 disagreements + format-fix wraps; usually fine)
+      • create:basin activity: value 'processing' not in multi_enum
+      • create:black_nixie_tube palette: value 'black' not in multi_enum
+      • create:blaze_burner activity: value 'processing' not in multi_enum
+      • create:brass_nugget flavor: emitted single 'value' for multi facet; wrapped as [value] (informational)
+      • create:brass_nugget palette: emitted single 'value' for multi facet; wrapped as [value] (informational)
+
+========================================================================
+done in 369.95s
+
+────────────────────────────────────────────────────────────────────────
+[modpack] createaddition               processing — source /Users/imagio/dev/mc/slot/reference/classification/createaddition
+────────────────────────────────────────────────────────────────────────
+[createaddition] loading mod source bundle from /Users/imagio/dev/mc/slot/reference/classification/createaddition
+[createaddition] roots: 2; items: 54; tags(item): 41; recipes: 148
+[stage1] 54 items → /Users/imagio/dev/mc/slot/tools/classification/out/createaddition.items.ndjson
+[stage2] 54 items with ≥1 facet → /Users/imagio/dev/mc/slot/tools/classification/out/createaddition.facets.partial.json
+[stage2] coverage:
+  mod_namespace             54/54 (100.0%)
+  processing_in             23/54 (42.6%)
+  is_block_item             21/54 (38.9%)
+  required_tool             16/54 (29.6%)
+  origin                    14/54 (25.9%)
+  form                       4/54 (7.4%)
+  required_tool_tier         1/54 (1.9%)
+  material_family            1/54 (1.9%)
+[subsystems] proposing canonical vocabulary for createaddition (deepseek/deepseek-v4-flash via openrouter)
+[subsystems] wrote 3 entr(y/ies) → /Users/imagio/dev/mc/slot/tools/classification/out/createaddition.subsystems.json
+  createaddition:electricity               Items for generating, converting, storing, or transmitting electrical energy.
+  createaddition:rolling                   Rolling mill process and its products like rods, wires, sheets, spools.
+  createaddition:biofuel                   Liquid biofuels (e.g., bioethanol, seed oil) and their production items.
+[stage3] running against 54 items
+[openrouter] transient error (code=429); retrying in 5s (attempt 2/5)
+[openrouter] transient error (code=429); retrying in 5s (attempt 2/5)
+[stage3] batch 2/3 parsed=20/20 warnings=0 elapsed=64090ms
+[stage3] batch 1/3 parsed=20/20 warnings=0 elapsed=86711ms
+[stage3] batch 3/3 parsed=14/14 warnings=0 elapsed=152878ms
+
+========================================================================
+Stage 3 run complete
+========================================================================
+
+Coverage added (LLM-authored facets, sorted by frequency):
+  role                        54
+  material_family             41
+  frequency                   35
+  flavor                      31
+  mod_subsystem               27
+  activity                    25
+  origin                      21
+  primary_uses                16
+  palette                     15
+  rarity                      14
+  storage_categories           2
+  spawn_interaction            2
+  transport_medium             2
+  environmental_property       2
+  tier                         1
+  material_secondary           1
+  (filled 54 items total)
+
+Output files (1):
+  /Users/imagio/dev/mc/slot/tools/classification/out/createaddition.facets.complete.json
+    merged layer (stage 2 + stage 3)
+
+Review queue: clean — no proposals, corrections, or warnings.
+
+========================================================================
+done in 179.18s
+
+────────────────────────────────────────────────────────────────────────
+[modpack] creategoggles                processing — source /Users/imagio/dev/mc/slot/reference/classification/CreateGoggles
+────────────────────────────────────────────────────────────────────────
+[creategoggles] loading mod source bundle from /Users/imagio/dev/mc/slot/reference/classification/CreateGoggles
+[creategoggles] roots: 1; items: 0; tags(item): 0; recipes: 0
+[stage1] 0 items → /Users/imagio/dev/mc/slot/tools/classification/out/creategoggles.items.ndjson
+[stage2] 0 items with ≥1 facet → /Users/imagio/dev/mc/slot/tools/classification/out/creategoggles.facets.partial.json
+[stage2] coverage:
+[subsystems] proposing canonical vocabulary for creategoggles (deepseek/deepseek-v4-flash via openrouter)
+[subsystems] wrote 2 entr(y/ies) → /Users/imagio/dev/mc/slot/tools/classification/out/creategoggles.subsystems.json
+  creategoggles:goggle_helmet              Helmets that display goggle overlay for Create mod
+  creategoggles:armored_backtank           Backtanks with added armor protection
+[stage3] running against 0 items
+
+========================================================================
+Stage 3 run complete
+========================================================================
+
+Coverage added (LLM-authored facets, sorted by frequency):
+  (filled 0 items total)
+
+Output files (1):
+  /Users/imagio/dev/mc/slot/tools/classification/out/creategoggles.facets.complete.json
+    merged layer (stage 2 + stage 3)
+
+Review queue: clean — no proposals, corrections, or warnings.
+
+========================================================================
+done in 25.76s
+
+────────────────────────────────────────────────────────────────────────
+[modpack] createoreexcavation          processing — source /Users/imagio/dev/mc/slot/reference/classification/Create-Ore-Excavation
+────────────────────────────────────────────────────────────────────────
+[createoreexcavation] loading mod source bundle from /Users/imagio/dev/mc/slot/reference/classification/Create-Ore-Excavation
+[createoreexcavation] roots: 3; items: 14; tags(item): 1; recipes: 41
+[stage1] 14 items → /Users/imagio/dev/mc/slot/tools/classification/out/createoreexcavation.items.ndjson
+[stage2] 14 items with ≥1 facet → /Users/imagio/dev/mc/slot/tools/classification/out/createoreexcavation.facets.partial.json
+[stage2] coverage:
+  mod_namespace             14/14 (100.0%)
+  is_block_item              6/14 (42.9%)
+  required_tool              6/14 (42.9%)
+  required_tool_tier         6/14 (42.9%)
+  processing_in              4/14 (28.6%)
+  origin                     3/14 (21.4%)
+[subsystems] proposing canonical vocabulary for createoreexcavation (deepseek/deepseek-v4-flash via openrouter)
+[subsystems] wrote 4 entr(y/ies) → /Users/imagio/dev/mc/slot/tools/classification/out/createoreexcavation.subsystems.json
+  createoreexcavation:drilling             Drills, drilling machine, and related drilling components.
+  createoreexcavation:fluid_extraction     Fluid well extractor and fluid extraction equipment.
+  createoreexcavation:ore_vein_detection   Tools to locate and map ore veins.
+  createoreexcavation:multiblock           Structure blocks for drilling/extraction multiblock.
+[stage3] running against 14 items
+[stage3] batch 1/1 parsed=14/14 warnings=0 elapsed=73484ms
+
+========================================================================
+Stage 3 run complete
+========================================================================
+
+Coverage added (LLM-authored facets, sorted by frequency):
+  role                        14
+  frequency                   14
+  primary_uses                14
+  activity                    13
+  mod_subsystem               11
+  material_family              6
+  storage_categories           6
+  tier                         3
+  multiblock_component_of      3
+  multiblock_role              3
+  origin                       3
+  (filled 14 items total)
+
+Output files (1):
+  /Users/imagio/dev/mc/slot/tools/classification/out/createoreexcavation.facets.complete.json
+    merged layer (stage 2 + stage 3)
+
+Review queue: clean — no proposals, corrections, or warnings.
+
+========================================================================
+done in 84.08s
+
+────────────────────────────────────────────────────────────────────────
+[modpack] dndesires                    processing — source /Users/imagio/dev/mc/slot/reference/classification/Create-Dreams-and-Desires
+────────────────────────────────────────────────────────────────────────
+[dndesires] loading mod source bundle from /Users/imagio/dev/mc/slot/reference/classification/Create-Dreams-and-Desires
+[dndesires] roots: 2; items: 97; tags(item): 25; recipes: 212
+[stage1] 97 items → /Users/imagio/dev/mc/slot/tools/classification/out/dndesires.items.ndjson
+[stage2] 97 items with ≥1 facet → /Users/imagio/dev/mc/slot/tools/classification/out/dndesires.facets.partial.json
+[stage2] coverage:
+  mod_namespace             97/97 (100.0%)
+  is_block_item             84/97 (86.6%)
+  required_tool             79/97 (81.4%)
+  origin                    77/97 (79.4%)
+  processing_in             68/97 (70.1%)
+  form                      19/97 (19.6%)
+[subsystems] proposing canonical vocabulary for dndesires (deepseek/deepseek-v4-flash via openrouter)
+[openrouter] transient error (code=429); retrying in 5s (attempt 2/5)
+[subsystems] wrote 6 entr(y/ies) → /Users/imagio/dev/mc/slot/tools/classification/out/dndesires.subsystems.json
+  dndesires:dragon_breathing               Items used in dragon breathing processing
+  dndesires:freezing                       Items used in freezing processing
+  dndesires:hydraulic_compacting           Items used in hydraulic compacting
+  dndesires:sanding                        Items used in sanding processing
+  dndesires:seething                       Items used in seething processing
+  dndesires:milkshake                      Milkshake consumables and their buckets
+[stage3] running against 97 items
+[stage3] batch 3/5 parsed=20/20 warnings=0 elapsed=85040ms
+[stage3] batch 5/5 parsed=17/17 warnings=0 elapsed=93165ms
+[stage3] batch 4/5 parsed=20/20 warnings=4 elapsed=109011ms
+[stage3] batch 1/5 parsed=20/20 warnings=8 elapsed=109505ms
+[stage3] batch 2/5 parsed=20/20 warnings=0 elapsed=120839ms
+
+========================================================================
+Stage 3 run complete
+========================================================================
+
+Coverage added (LLM-authored facets, sorted by frequency):
+  role                        97
+  frequency                   89
+  activity                    88
+  flavor                      87
+  primary_uses                80
+  material_family             62
+  rarity                      40
+  dye_color                   32
+  mod_subsystem               27
+  storage_categories          21
+  palette                     18
+  origin                      12
+  transport_medium             3
+  tier                         2
+  material_secondary           2
+  is_creative_only             1
+  (filled 97 items total)
+
+Output files (1):
+  /Users/imagio/dev/mc/slot/tools/classification/out/dndesires.facets.complete.json
+    merged layer (stage 2 + stage 3)
+
+Review queue (1 section(s)):
+
+  WARNINGS — 12 warning(s) (most are stage-2 disagreements + format-fix wraps; usually fine)
+      • dndesires:orange_asphalt palette: value 'orange' not in multi_enum
+      • dndesires:pink_asphalt palette: value 'pink' not in multi_enum
+      • dndesires:purple_asphalt palette: value 'purple' not in multi_enum
+      • dndesires:red_asphalt palette: value 'red' not in multi_enum
+      • dndesires:black_asphalt palette: value 'black' not in multi_enum
+
+========================================================================
+done in 156.21s
+
+────────────────────────────────────────────────────────────────────────
+[modpack] create_new_age               processing — source /Users/imagio/dev/mc/slot/reference/classification/create-new-age
+────────────────────────────────────────────────────────────────────────
+[create_new_age] loading mod source bundle from /Users/imagio/dev/mc/slot/reference/classification/create-new-age
+[create_new_age] roots: 2; items: 54; tags(item): 5; recipes: 56
+[stage1] 54 items → /Users/imagio/dev/mc/slot/tools/classification/out/create_new_age.items.ndjson
+[stage2] 54 items with ≥1 facet → /Users/imagio/dev/mc/slot/tools/classification/out/create_new_age.facets.partial.json
+[stage2] coverage:
+  mod_namespace             54/54 (100.0%)
+  is_block_item             36/54 (66.7%)
+  required_tool             36/54 (66.7%)
+  origin                    34/54 (63.0%)
+  processing_in             27/54 (50.0%)
+  required_tool_tier         5/54 (9.3%)
+  form                       1/54 (1.9%)
+  y_level_range              1/54 (1.9%)
+[subsystems] proposing canonical vocabulary for create_new_age (deepseek/deepseek-v4-flash via openrouter)
+[subsystems] wrote 6 entr(y/ies) → /Users/imagio/dev/mc/slot/tools/classification/out/create_new_age.subsystems.json
+  create_new_age:electrical_infrastructure Wires, connectors, circuits, coils for power transmission and distribution.
+  create_new_age:motors                    Motors, motor extensions, generator coils, brushes, and engines.
+  create_new_age:nuclear_reactor           Reactor casing, fuel, vents, rods, thorium, corium, and related parts.
+  create_new_age:thermal_management        Heat pipes, pumps, heaters, solar heating plates for heat transfer.
+  create_new_age:magnetic_materials        Magnets, magnetite blocks, and fluxuated forms used in motors and generators.
+  create_new_age:advanced_materials        Overcharged diamonds, gold, iron, sheets, wires, and blocks for high-tier crafting.
+[stage3] running against 54 items
+[stage3] batch 1/3 parsed=20/20 warnings=3 elapsed=81730ms
+[stage3] batch 2/3 parsed=20/20 warnings=19 elapsed=91852ms
+[stage3] batch 3/3 parsed=14/14 warnings=1 elapsed=93125ms
+
+========================================================================
+Stage 3 run complete
+========================================================================
+
+Coverage added (LLM-authored facets, sorted by frequency):
+  role                        54
+  frequency                   54
+  mod_subsystem               48
+  material_family             44
+  activity                    33
+  flavor                      31
+  primary_uses                23
+  rarity                      15
+  storage_categories          14
+  tier                        12
+  origin                       6
+  multiblock_component_of      5
+  multiblock_role              5
+  (filled 54 items total)
+
+Output files (2):
+  /Users/imagio/dev/mc/slot/tools/classification/out/create_new_age.facets.complete.json
+    merged layer (stage 2 + stage 3)
+  /Users/imagio/dev/mc/slot/tools/classification/out/create_new_age.facets.corrections.json
+    3 stage-2 correction(s) flagged by the LLM — review and patch the rule files if valid
+
+Review queue (2 section(s)):
+
+  STAGE-2 CORRECTIONS — 3 item(s) where the LLM thinks a deterministic stage-2 facet is wrong
+    file: /Users/imagio/dev/mc/slot/tools/classification/out/create_new_age.facets.corrections.json
+      • create_new_age:advanced_energiser required_tool: 'axe' → 'pickaxe'  (0.80) — player expects pickaxe for metal machine
+      • create_new_age:basic_energiser required_tool: 'axe' → 'pickaxe'  (0.80) — player expects pickaxe for metal machine
+      • create_new_age:copper_wire_block required_tool: 'axe' → 'pickaxe'  (0.80) — metal block, should be pickaxe
+
+  WARNINGS — 23 warning(s) (most are stage-2 disagreements + format-fix wraps; usually fine)
+      • create_new_age:corium flavor: value 'glowing' not in multi_enum
+      • create_new_age:corium environmental_property: value 'damages_entities' not in multi_enum
+      • create_new_age:fluxuated_magnetite flavor: value 'magnetic' not in multi_enum
+      • create_new_age:incomplete_enchanted_golden_apple origin: emitted single 'value' for multi facet; wrapped as [value] (informational)
+      • create_new_age:incomplete_fuel origin: emitted single 'value' for multi facet; wrapped as [value] (informational)
+
+========================================================================
+done in 106.42s
+
+────────────────────────────────────────────────────────────────────────
+[modpack] sophisticatedbackpacks       processing — source /Users/imagio/dev/mc/slot/reference/classification/SophisticatedBackpacks
+────────────────────────────────────────────────────────────────────────
+[sophisticatedbackpacks] loading mod source bundle from /Users/imagio/dev/mc/slot/reference/classification/SophisticatedBackpacks
+[sophisticatedbackpacks] roots: 2; items: 59; tags(item): 3; recipes: 73
+[stage1] 59 items → /Users/imagio/dev/mc/slot/tools/classification/out/sophisticatedbackpacks.items.ndjson
+[stage2] 59 items with ≥1 facet → /Users/imagio/dev/mc/slot/tools/classification/out/sophisticatedbackpacks.facets.partial.json
+[stage2] coverage:
+  mod_namespace             59/59 (100.0%)
+  processing_in             30/59 (50.8%)
+  is_block_item              6/59 (10.2%)
+  origin                     1/59 (1.7%)
+[subsystems] proposing canonical vocabulary for sophisticatedbackpacks (deepseek/deepseek-v4-flash via openrouter)
+[subsystems] wrote 5 entr(y/ies) → /Users/imagio/dev/mc/slot/tools/classification/out/sophisticatedbackpacks.subsystems.json
+  sophisticatedbackpacks:backpack          Backpack containers of all tiers (basic, copper, iron, gold, diamond, netherite).
+  sophisticatedbackpacks:upgrade_base      Crafting component used to create all upgrade items.
+  sophisticatedbackpacks:storage_upgrade   Upgrades that increase storage capacity, stack size, or add fluid/energy tanks.
+  sophisticatedbackpacks:processing_upgrade Upgrades that automatically smelt, compact, alchemize, or cut items.
+  sophisticatedbackpacks:utility_upgrade   Upgrades providing miscellaneous functions like feeding, magnet, filter, jukebox, etc.
+[stage3] running against 59 items
+[stage3] batch 1/3 parsed=20/20 warnings=2 elapsed=65376ms
+[stage3] batch 2/3 parsed=20/20 warnings=23 elapsed=92095ms
+[stage3] batch 3/3 parsed=19/19 warnings=0 elapsed=108027ms
+
+========================================================================
+Stage 3 run complete
+========================================================================
+
+Coverage added (LLM-authored facets, sorted by frequency):
+  role                        59
+  mod_subsystem               59
+  primary_uses                59
+  frequency                   59
+  origin                      49
+  activity                    35
+  rarity                      19
+  flavor                      19
+  storage_categories          19
+  tier                        14
+  material_family              5
+  is_creative_only             1
+  (filled 59 items total)
+
+Output files (1):
+  /Users/imagio/dev/mc/slot/tools/classification/out/sophisticatedbackpacks.facets.complete.json
+    merged layer (stage 2 + stage 3)
+
+Review queue (1 section(s)):
+
+  WARNINGS — 25 warning(s) (most are stage-2 disagreements + format-fix wraps; usually fine)
+      • sophisticatedbackpacks:advanced_magnet_upgrade origin: value 'shipwreck_treasure' not in multi_enum
+      • sophisticatedbackpacks:backpack origin: value 'dungeon' not in multi_enum
+      • sophisticatedbackpacks:blasting_upgrade mod_subsystem: emitted single 'value' for multi facet; wrapped as [value] (informational)
+      • sophisticatedbackpacks:compacting_upgrade mod_subsystem: emitted single 'value' for multi facet; wrapped as [value] (informational)
+      • sophisticatedbackpacks:copper_backpack mod_subsystem: emitted single 'value' for multi facet; wrapped as [value] (informational)
+
+========================================================================
+done in 132.29s
+
+────────────────────────────────────────────────────────────────────────
+[modpack] sophisticatedcore            processing — source /Users/imagio/dev/mc/slot/reference/classification/SophisticatedCore
+────────────────────────────────────────────────────────────────────────
+[sophisticatedcore] loading mod source bundle from /Users/imagio/dev/mc/slot/reference/classification/SophisticatedCore
+[sophisticatedcore] roots: 2; items: 1; tags(item): 0; recipes: 1
+[stage1] 1 items → /Users/imagio/dev/mc/slot/tools/classification/out/sophisticatedcore.items.ndjson
+[stage2] 1 items with ≥1 facet → /Users/imagio/dev/mc/slot/tools/classification/out/sophisticatedcore.facets.partial.json
+[stage2] coverage:
+  mod_namespace              1/1 (100.0%)
+  form                       1/1 (100.0%)
+[subsystems] proposing canonical vocabulary for sophisticatedcore (deepseek/deepseek-v4-flash via openrouter)
+[subsystems] wrote 3 entr(y/ies) → /Users/imagio/dev/mc/slot/tools/classification/out/sophisticatedcore.subsystems.json
+  sophisticatedcore:upgrades               Functional upgrades that modify storage or backpack properties
+  sophisticatedcore:upgrade_components     Crafting materials used to create upgrades
+  sophisticatedcore:experience             Items that hold, transfer, or interact with experience
+[stage3] running against 1 items
+[stage3] batch 1/1 parsed=1/1 warnings=1 elapsed=31568ms
+
+========================================================================
+Stage 3 run complete
+========================================================================
+
+Coverage added (LLM-authored facets, sorted by frequency):
+  role                         1
+  activity                     1
+  flavor                       1
+  palette                      1
+  origin                       1
+  storage_categories           1
+  transport_medium             1
+  primary_uses                 1
+  mod_subsystem                1
+  is_creative_only             1
+  (filled 1 items total)
+
+Output files (1):
+  /Users/imagio/dev/mc/slot/tools/classification/out/sophisticatedcore.facets.complete.json
+    merged layer (stage 2 + stage 3)
+
+Review queue (1 section(s)):
+
+  WARNINGS — 1 warning(s) (most are stage-2 disagreements + format-fix wraps; usually fine)
+      • sophisticatedcore:xp_bucket flavor: emitted single 'value' for multi facet; wrapped as [value] (informational)
+
+========================================================================
+done in 44.74s
+
+────────────────────────────────────────────────────────────────────────
+[modpack] sophisticatedstorage         processing — source /Users/imagio/dev/mc/slot/reference/classification/SophisticatedStorage
+────────────────────────────────────────────────────────────────────────
+[sophisticatedstorage] loading mod source bundle from /Users/imagio/dev/mc/slot/reference/classification/SophisticatedStorage
+[sophisticatedstorage] roots: 2; items: 113; tags(item): 7; recipes: 332
+[stage1] 113 items → /Users/imagio/dev/mc/slot/tools/classification/out/sophisticatedstorage.items.ndjson
+[stage2] 113 items with ≥1 facet → /Users/imagio/dev/mc/slot/tools/classification/out/sophisticatedstorage.facets.partial.json
+[stage2] coverage:
+  mod_namespace            113/113 (100.0%)
+  processing_in             84/113 (74.3%)
+  is_block_item             48/113 (42.5%)
+  required_tool             48/113 (42.5%)
+  origin                    48/113 (42.5%)
+[subsystems] proposing canonical vocabulary for sophisticatedstorage (deepseek/deepseek-v4-flash via openrouter)
+[subsystems] wrote 8 entr(y/ies) → /Users/imagio/dev/mc/slot/tools/classification/out/sophisticatedstorage.subsystems.json
+  sophisticatedstorage:barrel              Wood and metal barrel storage containers.
+  sophisticatedstorage:shulker_box         Shulker box storage containers of various tiers.
+  sophisticatedstorage:tier_upgrade        Items that upgrade the tier of a storage container.
+  sophisticatedstorage:stack_upgrade       Items that modify the stack size of a container.
+  sophisticatedstorage:automation_upgrade  Upgrades for automated crafting, smelting, compacting.
+  sophisticatedstorage:item_transport_upgrade Upgrades for item movement: hopper, magnet, pump.
+  sophisticatedstorage:storage_network     Components for linking and managing multiple storages.
+  sophisticatedstorage:utility_upgrade     Miscellaneous upgrades like feeding, alchemy, infinity.
+[stage3] running against 113 items
+[openrouter] transient error (code=429); retrying in 5s (attempt 2/5)
+[openrouter] transient error (code=429); retrying in 5s (attempt 2/5)
+[modpack] sophisticatedstorage         FAILED — OpenRouter returned an empty / unrecognized content shape. Expected string or array of {type:'text', text:string} parts.
+
+────────────────────────────────────────────────────────────────────────
+[modpack] toms_storage                 processing — source /Users/imagio/dev/mc/slot/reference/classification/Toms-Storage
+────────────────────────────────────────────────────────────────────────
+[toms_storage] loading mod source bundle from /Users/imagio/dev/mc/slot/reference/classification/Toms-Storage
+[toms_storage] roots: 2; items: 22; tags(item): 2; recipes: 25
+[stage1] 22 items → /Users/imagio/dev/mc/slot/tools/classification/out/toms_storage.items.ndjson
+[stage2] 22 items with ≥1 facet → /Users/imagio/dev/mc/slot/tools/classification/out/toms_storage.facets.partial.json
+[stage2] coverage:
+  mod_namespace             22/22 (100.0%)
+  is_block_item             15/22 (68.2%)
+  required_tool             14/22 (63.6%)
+  origin                    14/22 (63.6%)
+  processing_in             10/22 (45.5%)
+[subsystems] proposing canonical vocabulary for toms_storage (deepseek/deepseek-v4-flash via openrouter)
+[subsystems] wrote 8 entr(y/ies) → /Users/imagio/dev/mc/slot/tools/classification/out/toms_storage.subsystems.json
+  toms_storage:terminal                    Blocks that provide GUI access to the storage network
+  toms_storage:cable                       Wiring for connecting network components
+  toms_storage:connector                   Blocks that attach external inventories to the network
+  toms_storage:filter                      Item filters for precise routing in the network
+  toms_storage:storage_block               Storage blocks that hold items and connect to network
+  toms_storage:hopper                      Active device that transfers items between network and world
+  toms_storage:sensor                      Redstone emitter that reacts to network contents
+  toms_storage:tool                        Items used to configure or customize the network
+[stage3] running against 22 items
+[stage3] batch 2/2 parsed=2/2 warnings=0 elapsed=31911ms
+[stage3] batch 2/6 parsed=20/20 warnings=0 elapsed=70625ms
+[stage3] batch 3/6 parsed=20/20 warnings=0 elapsed=72061ms
+[stage3] batch 6/6 parsed=13/13 warnings=0 elapsed=83820ms
+[stage3] batch 1/6 parsed=20/20 warnings=20 elapsed=90961ms
+[stage3] batch 5/6 parsed=20/20 warnings=0 elapsed=93887ms
+[stage3] batch 1/2 parsed=20/20 warnings=47 elapsed=133928ms
+
+========================================================================
+Stage 3 run complete
+========================================================================
+
+Coverage added (LLM-authored facets, sorted by frequency):
+  role                        22
+  frequency                   22
+  activity                    22
+  primary_uses                22
+  mod_subsystem               21
+  rarity                      20
+  flavor                      20
+  material_family             13
+  origin                       8
+  transport_medium             5
+  storage_categories           1
+  (filled 22 items total)
+
+Output files (1):
+  /Users/imagio/dev/mc/slot/tools/classification/out/toms_storage.facets.complete.json
+    merged layer (stage 2 + stage 3)
+
+Review queue (1 section(s)):
+
+  WARNINGS — 47 warning(s) (most are stage-2 disagreements + format-fix wraps; usually fine)
+      • toms_storage:adv_wireless_terminal flavor: emitted single 'value' for multi facet; wrapped as [value] (informational)
+      • toms_storage:adv_wireless_terminal origin: emitted single 'value' for multi facet; wrapped as [value] (informational)
+      • toms_storage:adv_wireless_terminal mod_subsystem: emitted single 'value' for multi facet; wrapped as [value] (informational)
+      • toms_storage:basic_inventory_hopper flavor: emitted single 'value' for multi facet; wrapped as [value] (informational)
+      • toms_storage:basic_inventory_hopper mod_subsystem: emitted single 'value' for multi facet; wrapped as [value] (informational)
+
+========================================================================
+done in 158.29s
+[modpack] architectury                 skipped — library — no classifiable items
+[modpack] emi                          skipped — recipe viewer — no classifiable items
+[modpack] embers_text_api              skipped — renderer library — no classifiable items
+[modpack] ldlib2                       skipped — UI library — no classifiable items
+[modpack] mousetweaks                  skipped — input UX — no classifiable items
+[modpack] shouldersurfing              skipped — camera mod — no classifiable items
+[modpack] slot                         skipped — this mod — classifies others, doesn't need its own classification
+
+========================================================================
+Modpack run complete: create-civilization
+========================================================================
+Total mods:           17
+  skipped (library):  7
+  already classified: 0
+  processed:          9
+  failed:             1
+Wall time:            1296.8s
+
+Failures:
+  - sophisticatedstorage: OpenRouter returned an empty / unrecognized content shape. Expected string or array of {type:'text', text:string} parts.
+========================================================================

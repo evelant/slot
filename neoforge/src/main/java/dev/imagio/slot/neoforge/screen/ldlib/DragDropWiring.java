@@ -207,14 +207,44 @@ final class DragDropWiring {
         atlas.addEventListener(UIEvents.DRAG_UPDATE, event -> updateAtlasBackgroundDropOverlay(atlas, event));
         atlas.addEventListener(UIEvents.DRAG_LEAVE, event -> clearDropOverlay(atlas), true);
         atlas.addEventListener(UIEvents.DRAG_PERFORM, event -> {
-            if (!isDirectDragTarget(event, atlas)) {
-                return;
-            }
+            // Atlas cards live as direct children of the SlotAtlasGraphView
+            // (not as children of their owning island panels), so a drop on
+            // a card bubbles to the atlas — not to the panel that owns the
+            // card's island. We intentionally do NOT early-return on
+            // !isDirectDragTarget for atlas-item drags: instead, resolve the
+            // world coord against the layout to find the target
+            // island+ordinal. Drops on cards thus route to ordinal placement
+            // inside the card's island; drops on bare atlas (no resolution)
+            // still take the create-island / return-to-inbox fallback.
+            //
+            // Other drag types still gate on isDirectDragTarget so their
+            // existing semantics (move-island, move-chest-tile, etc.)
+            // don't accidentally fire when the user drops on a card or
+            // panel that should own the event.
             clearDropOverlay(atlas);
             AtlasItemDrag atlasItem = atlasItemDrag(event);
             if (atlasItem != null) {
                 int worldX = atlas.worldX(event.x);
                 int worldY = atlas.worldY(event.y);
+                AtlasDropResolver.Resolution resolution = AtlasDropResolver.resolve(
+                        host.viewModel, host.currentLayout, worldX, worldY);
+                if (resolution != null && !resolution.islandId().isBlank()
+                        && !SlotWorkspaceAtlasLayout.ISLAND_TRIAGE.equals(resolution.islandId())) {
+                    host.rpc.sendAssignHome(
+                            atlasItem.identity(),
+                            resolution.islandId(),
+                            resolution.ordinal()
+                    );
+                    event.stopPropagation();
+                    return;
+                }
+                if (!isDirectDragTarget(event, atlas)) {
+                    // No resolution AND target isn't atlas itself — let the
+                    // panel/island handler take it (this branch is reached
+                    // when the panel handler hasn't yet stopped propagation,
+                    // e.g., a future event-order change).
+                    return;
+                }
                 if (wasDraggedFromTriage(atlasItem)) {
                     SlotWorkspaceViewModel.AtlasItem item = host.viewModel.atlasItem(atlasItem.identity());
                     if (item == null) {
@@ -234,6 +264,9 @@ final class DragDropWiring {
                     );
                 }
                 event.stopPropagation();
+                return;
+            }
+            if (!isDirectDragTarget(event, atlas)) {
                 return;
             }
             IslandDrag islandDrag = islandDrag(event);

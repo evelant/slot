@@ -327,6 +327,51 @@ describe("response parsing", () => {
     expect(parsed.corrections.length).toBe(0);
     expect(parsed.warnings.length).toBe(1);
   });
+
+  test("fill_ins surface stage-2 gaps and route to fillIns array", () => {
+    const response = JSON.stringify({
+      items: {},
+      fill_ins: [
+        {
+          item: "create:dark_oak_window",
+          facet: "form",
+          value: "pane",
+          rationale: "stage-2 form rule didn't catch _window suffix",
+        },
+        {
+          item: "create:brass_pipe",
+          facet: "material_family",
+          value: "brass",
+          rationale: "id prefix brass_ implies family",
+        },
+      ],
+    });
+    const parsed = parseLlmResponse(response);
+    expect(parsed.fillIns.length).toBe(2);
+    expect(parsed.fillIns[0]!.item).toBe("create:dark_oak_window");
+    expect(parsed.fillIns[0]!.facet).toBe("form");
+    expect(parsed.fillIns[0]!.value).toBe("pane");
+  });
+
+  test("fill_ins for llm-authored facets are dropped with a warning", () => {
+    // The LLM should put role / activity / carry_frequency etc. in
+    // `facets`, not `fill_ins` — the runner enforces that boundary so
+    // judgment-call facets don't sneak through the audit channel.
+    const response = JSON.stringify({
+      items: {},
+      fill_ins: [
+        {
+          item: "minecraft:iron_ingot",
+          facet: "role",
+          value: "material",
+          rationale: "obvious",
+        },
+      ],
+    });
+    const parsed = parseLlmResponse(response);
+    expect(parsed.fillIns.length).toBe(0);
+    expect(parsed.warnings.some((w) => w.includes("llm-authored"))).toBe(true);
+  });
 });
 
 describe("runStage3", () => {
@@ -354,7 +399,7 @@ describe("runStage3", () => {
               values: ["crafting tools and armor", "anvil repairs"],
               confidence: 0.95,
             },
-            frequency: { value: "frequent", confidence: 0.8 },
+            carry_frequency: { value: "frequent", confidence: 0.8 },
             // stage 2 already set material_family — this should be dropped by the merger
             material_family: { value: "gold", confidence: 0.1 },
           },

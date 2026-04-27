@@ -258,7 +258,10 @@ function buildProposerUser(meta: ModMetadata): string {
   return parts.join("\n");
 }
 
-const DEFAULT_MODEL = "haiku";
+// Production default — same as the main stage-3 path. The proposer
+// is a small README-summarization call; deepseek-v4-flash handles it
+// quickly and cheaply.
+const DEFAULT_MODEL = "deepseek/deepseek-v4-flash";
 
 /**
  * Ask the LLM for a canonical mod_subsystem vocabulary based on the mod's

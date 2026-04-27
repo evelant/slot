@@ -168,22 +168,34 @@ final class AtlasPanelBuilder {
                 host.islandChest.addLinkAffordances(atlas, tile, island);
             }
         }
-        // Hover preview: if the host.player is hovering an island, draw dim link
-        // threads to any of its NON-proximate linked chests so the relationship
-        // is discoverable without walking to the chest. Also added before
-        // islands so the dim line gets obscured by the island body.
-        if (host.hoveredIslandId != null) {
-            SlotWorkspaceViewModel.AtlasIsland hovered = host.viewModel.island(host.hoveredIslandId);
-            if (hovered != null) {
-                for (SlotWorkspaceViewModel.ClaimedChestTile tile : host.viewModel.claimedChestTiles()) {
-                    if (tile.proximate() || !tile.linkedIslandIds().contains(host.hoveredIslandId)) {
-                        continue;
-                    }
-                    UIElement dimThread = host.islandChest.dimLinkThread(tile, hovered);
-                    if (dimThread != null) {
-                        atlas.addContentChild(dimThread);
-                    }
+        // Hover preview: dim link threads from each non-proximate chest
+        // back to its linked islands, so the relationship is discoverable
+        // without walking to the chest. Build them eagerly for every
+        // chest-linked island and hide them by default — the hover
+        // handlers in IslandChestBuilder.attachIslandHoverListeners flip
+        // visibility without rebuilding, which avoids a feedback loop
+        // where the rebuild destroys the listener-bearing element and
+        // re-fires MOUSE_LEAVE/ENTER every frame. Added before islands
+        // so the dim line gets obscured by the island body.
+        host.dimLinkThreadsByIsland.clear();
+        for (SlotWorkspaceViewModel.ClaimedChestTile tile : host.viewModel.claimedChestTiles()) {
+            if (tile.proximate()) {
+                continue;
+            }
+            for (String linkedIslandId : tile.linkedIslandIds()) {
+                SlotWorkspaceViewModel.AtlasIsland linked = host.viewModel.island(linkedIslandId);
+                if (linked == null) {
+                    continue;
                 }
+                UIElement dimThread = host.islandChest.dimLinkThread(tile, linked);
+                if (dimThread == null) {
+                    continue;
+                }
+                dimThread.setVisible(linkedIslandId.equals(host.hoveredIslandId));
+                host.dimLinkThreadsByIsland
+                        .computeIfAbsent(linkedIslandId, k -> new java.util.ArrayList<>())
+                        .add(dimThread);
+                atlas.addContentChild(dimThread);
             }
         }
         Set<String> highlightedIslandIds = host.islandChest.highlightedIslandIdsFromProximateTiles();

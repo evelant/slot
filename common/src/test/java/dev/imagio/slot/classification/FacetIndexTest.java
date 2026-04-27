@@ -1,0 +1,389 @@
+package dev.imagio.slot.classification;
+
+import org.junit.jupiter.api.Test;
+
+import java.io.StringReader;
+import java.util.List;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+class FacetIndexTest {
+
+    @Test
+    void emptyIndexHasNoRoles() {
+        FacetIndex index = FacetIndex.empty();
+        assertTrue(index.isEmpty());
+        assertEquals(0, index.size());
+        assertEquals(Optional.empty(), index.role("minecraft:diamond_pickaxe"));
+        assertEquals(Optional.empty(), index.role(null));
+        assertEquals(Optional.empty(), index.role(""));
+    }
+
+    @Test
+    void loadsRoleFromSingleValueEntry() {
+        String json = """
+                {
+                  "schema_version": 1,
+                  "layer": "vanilla-base",
+                  "entries": {
+                    "minecraft:diamond_pickaxe": {
+                      "facets": {
+                        "role": {"value": "tool", "confidence": 0.95}
+                      }
+                    }
+                  }
+                }
+                """;
+        FacetIndex index = FacetIndex.load(new StringReader(json));
+        assertEquals(1, index.size());
+        assertEquals(Optional.of("tool"), index.role("minecraft:diamond_pickaxe"));
+        assertEquals(Optional.empty(), index.role("minecraft:unknown"));
+    }
+
+    @Test
+    void loadsRoleFromAmbiguousEntryAsFirstCandidate() {
+        String json = """
+                {
+                  "schema_version": 1,
+                  "layer": "per-mod",
+                  "entries": {
+                    "create:cogwheel": {
+                      "facets": {
+                        "role": {"values": ["mechanism", "redstone_component"], "ambiguous": true, "confidence": 0.6}
+                      }
+                    }
+                  }
+                }
+                """;
+        FacetIndex index = FacetIndex.load(new StringReader(json));
+        assertEquals(Optional.of("mechanism"), index.role("create:cogwheel"));
+    }
+
+    @Test
+    void itemsWithoutAnyKnownFacetAreSkipped() {
+        // Entries with only facets we don't load (e.g. tier, has_durability)
+        // shouldn't pollute the index. role / material_family / form / the
+        // multi-value facets all qualify an entry for inclusion.
+        String json = """
+                {
+                  "schema_version": 1,
+                  "layer": "vanilla-base",
+                  "entries": {
+                    "minecraft:tier_only_entry": {
+                      "facets": {
+                        "tier": {"value": "diamond"}
+                      }
+                    }
+                  }
+                }
+                """;
+        FacetIndex index = FacetIndex.load(new StringReader(json));
+        assertEquals(0, index.size());
+        assertEquals(Optional.empty(), index.role("minecraft:tier_only_entry"));
+        assertEquals(Optional.empty(), index.materialFamily("minecraft:tier_only_entry"));
+    }
+
+    @Test
+    void itemWithOnlyFormFacetIsStillIndexed() {
+        // Form-keyed templates (Stairs, Slabs, Doors, …) need the form
+        // facet to fire even when the LLM-authored facets are missing.
+        String json = """
+                {
+                  "schema_version": 1,
+                  "layer": "vanilla-base",
+                  "entries": {
+                    "modded:strange_stair": {
+                      "facets": {
+                        "form": {"value": "stairs"}
+                      }
+                    }
+                  }
+                }
+                """;
+        FacetIndex index = FacetIndex.load(new StringReader(json));
+        assertEquals(Optional.of("stairs"), index.form("modded:strange_stair"));
+        assertEquals(Optional.empty(), index.role("modded:strange_stair"));
+    }
+
+    @Test
+    void itemEntriesWithMalformedIdsAreSkipped() {
+        String json = """
+                {
+                  "schema_version": 1,
+                  "layer": "vanilla-base",
+                  "entries": {
+                    "BadId": {"facets": {"role": {"value": "tool"}}},
+                    "minecraft:diamond_pickaxe": {"facets": {"role": {"value": "tool"}}}
+                  }
+                }
+                """;
+        FacetIndex index = FacetIndex.load(new StringReader(json));
+        assertEquals(1, index.size());
+        assertEquals(Optional.of("tool"), index.role("minecraft:diamond_pickaxe"));
+        assertEquals(Optional.empty(), index.role("BadId"));
+    }
+
+    @Test
+    void rejectsUnsupportedSchemaVersion() {
+        String json = """
+                {"schema_version": 99, "layer": "vanilla-base", "entries": {}}
+                """;
+        assertThrows(IllegalArgumentException.class,
+                () -> FacetIndex.load(new StringReader(json)));
+    }
+
+    @Test
+    void rejectsUnknownLayerName() {
+        String json = """
+                {"schema_version": 1, "layer": "fictitious", "entries": {}}
+                """;
+        assertThrows(IllegalArgumentException.class,
+                () -> FacetIndex.load(new StringReader(json)));
+    }
+
+    @Test
+    void bundledVanillaBaseLoadsAndCoversKnownItems() {
+        FacetIndex index = FacetIndexBootstrap.loadVanillaBase();
+        assertFalse(index.isEmpty(),
+                "bundled vanilla-base.json must produce a non-empty FacetIndex");
+        assertTrue(index.size() >= 1000,
+                "bundled vanilla-base.json should contain at least 1000 role entries; got " + index.size());
+
+        assertEquals(Optional.of("tool"), index.role("minecraft:diamond_pickaxe"));
+        assertEquals(Optional.of("weapon"), index.role("minecraft:diamond_sword"));
+        assertEquals(Optional.of("armor"), index.role("minecraft:diamond_helmet"));
+        assertEquals(Optional.of("consumable"), index.role("minecraft:cooked_beef"));
+        assertEquals(Optional.of("material"), index.role("minecraft:iron_ingot"));
+        assertEquals(Optional.of("building_block"), index.role("minecraft:oak_planks"));
+        assertEquals(Optional.of("storage_block"), index.role("minecraft:chest"));
+
+        // material_family unifies wood blocks across role inconsistencies
+        // — e.g. birch_wood is currently labelled natural_resource while
+        // birch_planks is building_block, but both share wood_birch and
+        // that shared family is what learned-rule adjacency keys on.
+        assertEquals(Optional.of("wood_birch"), index.materialFamily("minecraft:birch_wood"));
+        assertEquals(Optional.of("wood_birch"), index.materialFamily("minecraft:birch_planks"));
+        assertEquals(Optional.of("wood_oak"), index.materialFamily("minecraft:oak_planks"));
+    }
+
+    @Test
+    void parsesMaterialFamilyFromSingleValueEntry() {
+        String json = """
+                {
+                  "schema_version": 1,
+                  "layer": "vanilla-base",
+                  "entries": {
+                    "minecraft:iron_ingot": {
+                      "facets": {
+                        "role": {"value": "material"},
+                        "material_family": {"value": "iron"}
+                      }
+                    }
+                  }
+                }
+                """;
+        FacetIndex index = FacetIndex.load(new StringReader(json));
+        assertEquals(Optional.of("material"), index.role("minecraft:iron_ingot"));
+        assertEquals(Optional.of("iron"), index.materialFamily("minecraft:iron_ingot"));
+        assertEquals(Optional.empty(), index.materialFamily("minecraft:unknown"));
+    }
+
+    @Test
+    void mergedWithLayersOtherOnTopOfThis() {
+        String baseJson = """
+                {
+                  "schema_version": 1,
+                  "layer": "vanilla-base",
+                  "entries": {
+                    "minecraft:diamond_pickaxe": {"facets": {"role": {"value": "tool"}}},
+                    "minecraft:iron_ingot":      {"facets": {"role": {"value": "material"}}}
+                  }
+                }
+                """;
+        String overlayJson = """
+                {
+                  "schema_version": 1,
+                  "layer": "per-mod",
+                  "entries": {
+                    "create:cogwheel":           {"facets": {"role": {"value": "mechanism"}}},
+                    "minecraft:iron_ingot":      {"facets": {"role": {"value": "material_overridden"}}}
+                  }
+                }
+                """;
+        FacetIndex base = FacetIndex.load(new StringReader(baseJson));
+        FacetIndex overlay = FacetIndex.load(new StringReader(overlayJson));
+        FacetIndex merged = base.mergedWith(overlay);
+
+        // base-only entries pass through
+        assertEquals(Optional.of("tool"), merged.role("minecraft:diamond_pickaxe"));
+        // overlay-only entries land
+        assertEquals(Optional.of("mechanism"), merged.role("create:cogwheel"));
+        // conflict: overlay wins
+        assertEquals(Optional.of("material_overridden"), merged.role("minecraft:iron_ingot"));
+        assertEquals(3, merged.size());
+    }
+
+    @Test
+    void mergedWithEmptyIsIdentity() {
+        FacetIndex base = FacetIndex.load(new StringReader("""
+                {
+                  "schema_version": 1,
+                  "layer": "vanilla-base",
+                  "entries": {
+                    "minecraft:diamond_pickaxe": {"facets": {"role": {"value": "tool"}}}
+                  }
+                }
+                """));
+        assertEquals(1, base.mergedWith(FacetIndex.empty()).size());
+        assertEquals(1, FacetIndex.empty().mergedWith(base).size());
+    }
+
+    @Test
+    void bundledLoadAllIncludesPerModEntries() {
+        FacetIndex index = FacetIndexBootstrap.loadAll();
+        // Vanilla items remain accessible.
+        assertEquals(Optional.of("tool"), index.role("minecraft:diamond_pickaxe"));
+        // A handful of mod items from each per-mod layer should resolve.
+        // These IDs come from the bundled per-mod files; if any are
+        // renamed upstream, update the assertion alongside the bump.
+        assertEquals(Optional.of("mechanism"), index.role("create:cogwheel"));
+        assertEquals(Optional.of("upgrade"),
+                index.role("sophisticatedstorage:advanced_alchemy_upgrade"));
+        assertTrue(index.size() > 1500,
+                "bundled per-mod entries should push total size above vanilla-base alone");
+    }
+
+    @Test
+    void parsesSubsystemsAsMultiValueList() {
+        String json = """
+                {
+                  "schema_version": 1,
+                  "layer": "per-mod",
+                  "entries": {
+                    "create:cogwheel": {
+                      "facets": {
+                        "role": {"value": "mechanism"},
+                        "mod_subsystem": {
+                          "values": ["create:mechanical_power"],
+                          "mode": "add"
+                        },
+                        "activity": {
+                          "values": ["redstone", "transportation"],
+                          "mode": "add"
+                        },
+                        "flavor": {"values": ["mechanical"], "mode": "add"},
+                        "carry_frequency": {"value": "frequent"},
+                        "rarity": {"value": "common"},
+                        "origin": {"values": ["crafted_only"]},
+                        "dye_color": {"value": "black"}
+                      }
+                    }
+                  }
+                }
+                """;
+        FacetIndex index = FacetIndex.load(new StringReader(json));
+        assertEquals(List.of("create:mechanical_power"), index.subsystems("create:cogwheel"));
+        assertEquals(List.of("redstone", "transportation"), index.activities("create:cogwheel"));
+        assertEquals(Optional.of("mechanical"), index.flavor("create:cogwheel"));
+        assertEquals(Optional.of("frequent"), index.carryFrequency("create:cogwheel"));
+        assertEquals(Optional.of("common"), index.rarity("create:cogwheel"));
+        assertEquals(Optional.of("crafted_only"), index.origin("create:cogwheel"));
+        assertEquals(Optional.of("black"), index.dyeColor("create:cogwheel"));
+    }
+
+    @Test
+    void missingFacetAccessorsReturnEmpty() {
+        String json = """
+                {
+                  "schema_version": 1,
+                  "layer": "vanilla-base",
+                  "entries": {
+                    "minecraft:apple": {
+                      "facets": {
+                        "role": {"value": "consumable"}
+                      }
+                    }
+                  }
+                }
+                """;
+        FacetIndex index = FacetIndex.load(new StringReader(json));
+        assertTrue(index.subsystems("minecraft:apple").isEmpty());
+        assertTrue(index.activities("minecraft:apple").isEmpty());
+        assertEquals(Optional.empty(), index.flavor("minecraft:apple"));
+        assertEquals(Optional.empty(), index.carryFrequency("minecraft:apple"));
+        assertEquals(Optional.empty(), index.rarity("minecraft:apple"));
+        assertEquals(Optional.empty(), index.origin("minecraft:apple"));
+        assertEquals(Optional.empty(), index.dyeColor("minecraft:apple"));
+        // Unknown items return empty as well.
+        assertTrue(index.subsystems("minecraft:unknown").isEmpty());
+        assertTrue(index.activities("minecraft:unknown").isEmpty());
+    }
+
+    @Test
+    void singleFacetReaderPrefersValueWhenBothShapesPresent() {
+        // Defensive: if a facet is emitted with both `value` and `values`,
+        // prefer the canonical single value over the list.
+        String json = """
+                {
+                  "schema_version": 1,
+                  "layer": "vanilla-base",
+                  "entries": {
+                    "modded:weird": {
+                      "facets": {
+                        "carry_frequency": {"value": "frequent", "values": ["rare"]}
+                      }
+                    }
+                  }
+                }
+                """;
+        FacetIndex index = FacetIndex.load(new StringReader(json));
+        assertEquals(Optional.of("frequent"), index.carryFrequency("modded:weird"));
+    }
+
+    @Test
+    void itemWithOnlySubsystemFacetIsStillIndexed() {
+        // After phase 1, items whose only useful facets are the new ones
+        // (no role, no material_family) must still land in the index so
+        // subsystem-primary matching can fire on them.
+        String json = """
+                {
+                  "schema_version": 1,
+                  "layer": "per-mod",
+                  "entries": {
+                    "modded:gizmo": {
+                      "facets": {
+                        "mod_subsystem": {"values": ["modded:logistics"]}
+                      }
+                    }
+                  }
+                }
+                """;
+        FacetIndex index = FacetIndex.load(new StringReader(json));
+        assertEquals(List.of("modded:logistics"), index.subsystems("modded:gizmo"));
+        assertEquals(Optional.empty(), index.role("modded:gizmo"));
+    }
+
+    @Test
+    void itemWithOnlyMaterialFamilyStillIndexed() {
+        String json = """
+                {
+                  "schema_version": 1,
+                  "layer": "vanilla-base",
+                  "entries": {
+                    "modded:mystery_alloy": {
+                      "facets": {
+                        "material_family": {"value": "iron"}
+                      }
+                    }
+                  }
+                }
+                """;
+        FacetIndex index = FacetIndex.load(new StringReader(json));
+        assertEquals(Optional.empty(), index.role("modded:mystery_alloy"));
+        assertEquals(Optional.of("iron"), index.materialFamily("modded:mystery_alloy"));
+    }
+}

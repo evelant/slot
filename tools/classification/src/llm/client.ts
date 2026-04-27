@@ -51,6 +51,21 @@ export interface QueryOptions {
   claudeBinary?: string;
   /** Maximum call duration in ms. Default 120s. */
   timeoutMs?: number;
+  /**
+   * Optional content validator. Called inside the client's retry loop
+   * after the upstream response unwraps to a non-empty string. When
+   * the validator returns `{ ok: false }`, the client treats the
+   * response as a transient failure and retries (subject to its own
+   * backoff budget). Use this to recover from upstream truncations
+   * that pass HTTP-level checks but produce unparseable content (e.g.
+   * a connection drop mid-JSON or a token-limit cut-off).
+   *
+   * Implementations that don't have an internal retry loop
+   * (`ClaudeCliClient`, `ReplayLlmClient`) ignore this field — the
+   * caller is responsible for its own retry in that case. Currently
+   * honored by `OpenRouterClient`.
+   */
+  responseValidator?: (content: string) => { ok: boolean; reason?: string };
 }
 
 /** Shell out to `claude -p --model <m> --output-format json` with the prompt on stdin. */
@@ -298,7 +313,7 @@ export class RecordingLlmClient implements LlmClient {
   async query(prompt: string, options: QueryOptions): Promise<string> {
     const hash = fixtureHash(prompt);
     const cached = this.readCachedResponse(hash);
-    if (cached !== null) {
+    if (cached !== null && this.cachedResponseIsValid(cached, options)) {
       this.onCache?.({ hit: true, hash, mode: "combined" });
       return cached;
     }
@@ -315,7 +330,7 @@ export class RecordingLlmClient implements LlmClient {
     const key = splitFixtureKey(system, user);
     const hash = fixtureHash(key);
     const cached = this.readCachedResponse(hash);
-    if (cached !== null) {
+    if (cached !== null && this.cachedResponseIsValid(cached, options)) {
       this.onCache?.({ hit: true, hash, mode: "split" });
       return cached;
     }
@@ -325,6 +340,26 @@ export class RecordingLlmClient implements LlmClient {
     writeFileSync(join(this.fixtureDir, `${hash}.user.md`), user);
     this.persistEnvelope(hash, response);
     return response;
+  }
+
+  /**
+   * A cached response is only useful if downstream parsing accepts it.
+   * Apply the caller-supplied {@link QueryOptions.responseValidator} (if
+   * any) before returning the cache hit. When validation fails, fall
+   * through to the live call — the new response will overwrite the
+   * stale fixture. Without this, a fixture written from a truncated /
+   * unparseable upstream response (which we recover from on the live
+   * path via the same validator) would replay forever.
+   */
+  private cachedResponseIsValid(cached: string, options: QueryOptions): boolean {
+    if (!options.responseValidator) return true;
+    const verdict = options.responseValidator(cached);
+    if (!verdict.ok) {
+      console.warn(
+        `[recording-cache] cached fixture rejected by validator (${verdict.reason ?? "unknown"}); falling through to live call`,
+      );
+    }
+    return verdict.ok;
   }
 
   private readCachedResponse(hash: string): string | null {
@@ -382,27 +417,64 @@ function formatEnvelope(raw: string): string {
 }
 
 /**
- * Extract the model's actual output from the envelope, strip the ```json fence
- * if present, re-parse, and pretty-print. Returns null when the response
- * doesn't fit the expected shape (the envelope is still preserved separately).
+ * Extract the model's classification JSON from whatever wire shape the
+ * upstream client returned, and pretty-print it. Two shapes are supported:
+ *
+ *   1. Claude-CLI envelope: `{ result: "...inner JSON or fenced JSON..." }`
+ *      (`claude -p --output-format json` always wraps this way). Pull
+ *      `.result` out, strip a ```json fence if present, parse the inner.
+ *   2. Raw classification JSON returned directly by the inner client (the
+ *      OpenRouter path — `OpenRouterClient.send` already unwraps
+ *      `message.content` for us so the recorder receives the raw model
+ *      text, not an OpenRouter HTTP envelope). Recognized by the presence
+ *      of any of `items` / `schema_proposals` / `corrections` at the top
+ *      level — those are the canonical classification-output keys.
+ *
+ * Returns null when neither shape applies (the raw envelope is still
+ * preserved in `response.json` regardless).
  */
 function extractParsedContent(raw: string): string | null {
   let envelope: unknown;
   try {
     envelope = JSON.parse(raw.trim());
   } catch {
+    // Raw text wasn't JSON — could be a fenced markdown response from a
+    // model that didn't honor "strict JSON only". Try unwrapping the
+    // fence as a last resort.
+    const stripped = stripFence(raw.trim());
+    try {
+      const inner = JSON.parse(stripped);
+      if (looksLikeClassificationOutput(inner)) {
+        return JSON.stringify(inner, null, 2) + "\n";
+      }
+    } catch { /* fallthrough */ }
     return null;
   }
   if (!envelope || typeof envelope !== "object") return null;
+
+  // Shape 1: Claude-CLI envelope.
   const result = (envelope as { result?: unknown }).result;
-  if (typeof result !== "string") return null;
-  const stripped = stripFence(result.trim());
-  try {
-    const inner = JSON.parse(stripped);
-    return JSON.stringify(inner, null, 2) + "\n";
-  } catch {
-    return null;
+  if (typeof result === "string") {
+    const stripped = stripFence(result.trim());
+    try {
+      const inner = JSON.parse(stripped);
+      return JSON.stringify(inner, null, 2) + "\n";
+    } catch {
+      return null;
+    }
   }
+
+  // Shape 2: raw classification output (OpenRouter path).
+  if (looksLikeClassificationOutput(envelope)) {
+    return JSON.stringify(envelope, null, 2) + "\n";
+  }
+  return null;
+}
+
+function looksLikeClassificationOutput(value: unknown): boolean {
+  if (!value || typeof value !== "object") return false;
+  const obj = value as Record<string, unknown>;
+  return "items" in obj || "schema_proposals" in obj || "corrections" in obj;
 }
 
 function stripFence(text: string): string {

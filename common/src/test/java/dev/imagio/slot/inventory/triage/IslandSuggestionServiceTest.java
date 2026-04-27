@@ -55,7 +55,9 @@ class IslandSuggestionServiceTest {
         assertEquals(ChipSuggestion.ChipKind.LEARNED, chips.get(0).kind());
         assertEquals("island.mining", chips.get(0).islandId());
         assertEquals(ChipSuggestion.ChipKind.TEMPLATE, chips.get(1).kind());
-        assertEquals(IslandSuggestionTemplate.MATERIALS, chips.get(1).template());
+        // c:ingots tag now routes to the dedicated INGOTS template
+        // (split out of the broader MATERIALS catch-all).
+        assertEquals(IslandSuggestionTemplate.INGOTS, chips.get(1).template());
     }
 
     @Test

@@ -110,6 +110,15 @@ public final class LearnedIslandRuleStore {
         for (String tag : descriptor.itemTags()) {
             keys.add(LearnedAdjacencyKey.tag(tag));
         }
+        // FacetIndex material_family adjacency lets the rule fire across
+        // shape variants of the same material — e.g. homing oak_planks +
+        // oak_log + oak_stairs to "Wood" suggests the same island for
+        // oak_wood, even though their item-tag sets differ. Tag-only
+        // adjacency couldn't span that gap.
+        String materialFamily = descriptor.materialFamily();
+        if (materialFamily != null && !materialFamily.isBlank()) {
+            keys.add(LearnedAdjacencyKey.materialFamily(materialFamily));
+        }
         String namespace = descriptor.namespace();
         if (!namespace.isBlank() && !OVERLY_BROAD_NAMESPACES.contains(namespace)) {
             keys.add(LearnedAdjacencyKey.namespace(namespace));

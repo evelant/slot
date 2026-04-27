@@ -1,0 +1,92 @@
+{
+  "$schema": "./schema.json",
+  "name": "test-modset",
+  "description": "Test modset — Create-family + Sophisticated storage + Tom's, plus the libraries we ship behind the scenes. Used by SLOT's classification pipeline as the canonical multi-mod fixture.",
+  "mods": [
+    {
+      "namespace": "create",
+      "displayName": "Create",
+      "sourcePath": "reference/classification/Create"
+    },
+    {
+      "namespace": "createaddition",
+      "displayName": "Create Crafts & Additions",
+      "sourcePath": "reference/classification/createaddition"
+    },
+    {
+      "namespace": "creategoggles",
+      "displayName": "Create Goggles",
+      "sourcePath": "reference/classification/CreateGoggles"
+    },
+    {
+      "namespace": "createoreexcavation",
+      "displayName": "Create Ore Excavation",
+      "sourcePath": "reference/classification/Create-Ore-Excavation"
+    },
+    {
+      "namespace": "dndesires",
+      "displayName": "Create: Dreams n' Desires",
+      "sourcePath": "reference/classification/Create-Dreams-and-Desires"
+    },
+    {
+      "namespace": "create_new_age",
+      "displayName": "Create: New Age",
+      "sourcePath": "reference/classification/create-new-age"
+    },
+    {
+      "namespace": "sophisticatedbackpacks",
+      "displayName": "Sophisticated Backpacks",
+      "sourcePath": "reference/classification/SophisticatedBackpacks"
+    },
+    {
+      "namespace": "sophisticatedcore",
+      "displayName": "Sophisticated Core",
+      "sourcePath": "reference/classification/SophisticatedCore"
+    },
+    {
+      "namespace": "sophisticatedstorage",
+      "displayName": "Sophisticated Storage",
+      "sourcePath": "reference/classification/SophisticatedStorage"
+    },
+    {
+      "namespace": "toms_storage",
+      "displayName": "Tom's Simple Storage Mod",
+      "sourcePath": "reference/classification/Toms-Storage"
+    },
+    {
+      "namespace": "architectury",
+      "displayName": "Architectury",
+      "skip": "library — no classifiable items"
+    },
+    {
+      "namespace": "emi",
+      "displayName": "EMI",
+      "skip": "recipe viewer — no classifiable items"
+    },
+    {
+      "namespace": "embers_text_api",
+      "displayName": "Ember's Text API",
+      "skip": "renderer library — no classifiable items"
+    },
+    {
+      "namespace": "ldlib2",
+      "displayName": "LowDragLib2",
+      "skip": "UI library — no classifiable items"
+    },
+    {
+      "namespace": "mousetweaks",
+      "displayName": "Mouse Tweaks",
+      "skip": "input UX — no classifiable items"
+    },
+    {
+      "namespace": "shouldersurfing",
+      "displayName": "Shoulder Surfing Reloaded",
+      "skip": "camera mod — no classifiable items"
+    },
+    {
+      "namespace": "slot",
+      "displayName": "SLOT",
+      "skip": "this mod — classifies others, doesn't need its own classification"
+    }
+  ]
+}

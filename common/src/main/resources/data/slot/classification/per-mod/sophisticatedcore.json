@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "layer": "per-mod",
+  "source": "sophisticatedcore",
+  "entries": {
+    "sophisticatedcore:xp_bucket": {
+      "facets": {
+        "mod_namespace": {
+          "value": "sophisticatedcore",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "form": {
+          "value": "bucket",
+          "confidence": 1,
+          "source": "rule:form_from_id",
+          "rationale": "suffix _bucket"
+        },
+        "role": {
+          "value": "utility",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — bucket-like tool for XP collection"
+        },
+        "activity": {
+          "values": [
+            "enchanting",
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — collects XP for enchanting and storage"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — specialized XP tool"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable mod item"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — made from bucket + experience"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid",
+            "standard"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — holds XP fluid, carried in inventory"
+        },
+        "transport_medium": {
+          "values": [
+            "fluid"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — moves experience fluid"
+        },
+        "primary_uses": {
+          "values": [
+            "Collect and store XP orbs",
+            "Transfer experience to tanks"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — bucket for XP"
+        },
+        "mod_subsystem": {
+          "values": [
+            "sophisticatedcore:experience"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — mod namespace + experience subsystem"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 0.85,
+          "source": "llm:stage3-fill-in",
+          "rationale": "bucket form implies iron material"
+        }
+      }
+    }
+  },
+  "generated_by": "slot-classify v0.1.0",
+  "generated_at": "2026-04-27T03:26:34.289Z"
+}

@@ -65,6 +65,57 @@ class AtlasDropResolverTest {
     }
 
     @Test
+    void dropInGapBetweenItemsTargetsTheRightOrdinal() {
+        // 3 cards in one island. Drop in the chrome strip just LEFT of
+        // the second card → insert at ordinal 1 (push GOLD and COPPER
+        // down by one), not append.
+        SlotWorkspaceViewModel.AtlasIsland tools = synthIsland("tools", 0, 0);
+        SlotWorkspaceViewModel vm = viewModel(
+                List.of(tools),
+                List.of(atlasItem(IRON, "tools"), atlasItem(GOLD, "tools"), atlasItem(COPPER, "tools"))
+        );
+        AtlasLayoutResult layout = AtlasLayout.layout(vm, RelevanceContext.empty(),
+                List.of(), AtlasLayoutConfig.DEFAULT);
+
+        AtlasLayoutResult.ItemPlacement goldPlace = layout.placementOf(SlotWorkspaceViewModel.IdentityRef.from(GOLD));
+        assertNotNull(goldPlace);
+        // 1 px to the left of GOLD's left edge, vertically centered on GOLD.
+        AtlasDropResolver.Resolution resolution = AtlasDropResolver.resolve(
+                vm, layout,
+                goldPlace.x() - 1,
+                goldPlace.y() + goldPlace.height() / 2
+        );
+        assertNotNull(resolution);
+        assertEquals("tools", resolution.islandId());
+        assertEquals(1, resolution.ordinal());
+    }
+
+    @Test
+    void dropInGapBeforeFirstItemTargetsOrdinalZero() {
+        SlotWorkspaceViewModel.AtlasIsland tools = synthIsland("tools", 0, 0);
+        SlotWorkspaceViewModel vm = viewModel(
+                List.of(tools),
+                List.of(atlasItem(IRON, "tools"), atlasItem(GOLD, "tools"))
+        );
+        AtlasLayoutResult layout = AtlasLayout.layout(vm, RelevanceContext.empty(),
+                List.of(), AtlasLayoutConfig.DEFAULT);
+        AtlasLayoutResult.IslandPlacement islandPlace = layout.islandPlacementOf("tools");
+        AtlasLayoutResult.ItemPlacement ironPlace = layout.placementOf(SlotWorkspaceViewModel.IdentityRef.from(IRON));
+        assertNotNull(islandPlace);
+        assertNotNull(ironPlace);
+
+        // Drop in the chrome above the first card.
+        AtlasDropResolver.Resolution resolution = AtlasDropResolver.resolve(
+                vm, layout,
+                ironPlace.x() + ironPlace.width() / 2,
+                islandPlace.y() + 1
+        );
+        assertNotNull(resolution);
+        assertEquals("tools", resolution.islandId());
+        assertEquals(0, resolution.ordinal());
+    }
+
+    @Test
     void dropOutsideAllIslandsReturnsNull() {
         SlotWorkspaceViewModel.AtlasIsland tools = synthIsland("tools", 0, 0);
         SlotWorkspaceViewModel vm = viewModel(

@@ -7,9 +7,23 @@
   "scripts": {
     "classify": "bun run src/cli.ts",
     "validate": "bun run src/cli.ts validate",
-    "test": "bun test"
+    "test": "bun test",
+    "reclassify:vanilla": "bun run src/cli.ts classify --mod minecraft --source ../mcmeta --stages 1,2,3 --concurrency 8",
+    "reclassify:test-modset": "bun run src/cli.ts classify-modpack modpacks/test-modset.json --out out --stages 1,2,3 --force --concurrency 8 --mod-concurrency 4",
+    "reclassify:test-modset:full": "bun run src/cli.ts classify-modpack modpacks/test-modset.json --out out --stages 1,2,3 --force --force-subsystems --concurrency 8 --mod-concurrency 4",
+    "reclassify:all": "bun run reclassify:vanilla && bun run reclassify:test-modset",
+    "sync": "bun run scripts/sync-to-runtime.ts",
+    "sync:vanilla": "bun run scripts/sync-to-runtime.ts --vanilla",
+    "sync:test-modset": "bun run scripts/sync-to-runtime.ts --modpack modpacks/test-modset.json",
+    "ship:vanilla": "bun run reclassify:vanilla && bun run sync:vanilla",
+    "ship:test-modset": "bun run reclassify:test-modset && bun run sync:test-modset",
+    "ship:all": "bun run reclassify:all && bun run sync",
+    "eval:sonnet": "bash scripts/eval-prompt.sh sonnet",
+    "eval:deepseek": "bash scripts/eval-prompt.sh deepseek-v4-flash",
+    "eval:deepseek-pro": "bash scripts/eval-prompt.sh deepseek-v4-pro"
   },
   "dependencies": {
+    "@openrouter/sdk": "^0.12.21",
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1"
   },

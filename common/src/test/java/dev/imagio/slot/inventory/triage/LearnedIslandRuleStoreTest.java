@@ -139,6 +139,60 @@ class LearnedIslandRuleStoreTest {
         assertEquals(1, firing.size());
     }
 
+    @Test
+    void materialFamilyAdjacencyFiresAcrossShapeVariants() {
+        // The motivating case: player has homed wood-family items into a
+        // custom "Wood" island. Item tags differ across shape variants
+        // (planks/log/stairs each carry distinct tag sets), but they all
+        // share material_family=wood_birch via FacetIndex. Two
+        // confirmations on wood_birch are enough to fire a learned rule
+        // for a third wood_birch item — even if its item-tag set has
+        // nothing in common with the first two.
+        LearnedIslandRuleStore store = new LearnedIslandRuleStore();
+        store.recordAssignment(woodDescriptor("minecraft:birch_planks", "wood_birch", Set.of("minecraft:planks")), "island.wood", 10L);
+        store.recordAssignment(woodDescriptor("minecraft:birch_stairs", "wood_birch", Set.of("minecraft:wooden_stairs")), "island.wood", 20L);
+
+        List<LearnedIslandRule> firing = store.firingRulesFor(
+                woodDescriptor("minecraft:birch_wood", "wood_birch", Set.of("minecraft:logs"))
+        );
+
+        assertEquals(1, firing.size());
+        assertEquals("island.wood", firing.get(0).islandId());
+        assertEquals(LearnedAdjacencyKey.Kind.MATERIAL_FAMILY, firing.get(0).adjacency().kind());
+    }
+
+    @Test
+    void materialFamilyKeyIsDistinctFromTagOfTheSameValue() {
+        // Defensive: if a tag id ever literally equals a material_family
+        // value (e.g. "iron"), the two should still partition cleanly.
+        LearnedIslandRuleStore store = new LearnedIslandRuleStore();
+        store.recordAssignment(
+                new IslandSignalDescriptor(
+                        ItemIdentity.of("minecraft:iron_ingot"),
+                        Set.of(),
+                        Set.of("iron"),
+                        "minecraft", "", null, null),
+                "island.tag-only", 10L);
+        store.recordAssignment(
+                new IslandSignalDescriptor(
+                        ItemIdentity.of("minecraft:iron_block"),
+                        Set.of(),
+                        Set.of("iron"),
+                        "minecraft", "", null, null),
+                "island.tag-only", 20L);
+
+        // A descriptor that only carries material_family=iron (no tag)
+        // must NOT collide with the tag-only learnings above.
+        List<LearnedIslandRule> firing = store.firingRulesFor(
+                new IslandSignalDescriptor(
+                        ItemIdentity.of("minecraft:raw_iron"),
+                        Set.of(),
+                        Set.of(),
+                        "minecraft", "", null, "iron"));
+        assertTrue(firing.isEmpty(),
+                "MATERIAL_FAMILY:iron should not match against learnings recorded under TAG:iron");
+    }
+
     private static IslandSignalDescriptor descriptor(String itemId, Set<String> tags) {
         return new IslandSignalDescriptor(
                 ItemIdentity.of(itemId),
@@ -146,6 +200,18 @@ class LearnedIslandRuleStoreTest {
                 tags,
                 itemId.contains(":") ? itemId.substring(0, itemId.indexOf(':')) : "",
                 ""
+        );
+    }
+
+    private static IslandSignalDescriptor woodDescriptor(String itemId, String materialFamily, Set<String> tags) {
+        return new IslandSignalDescriptor(
+                ItemIdentity.of(itemId),
+                Set.of(),
+                tags,
+                itemId.contains(":") ? itemId.substring(0, itemId.indexOf(':')) : "",
+                "",
+                "building_block",
+                materialFamily
         );
     }
 }

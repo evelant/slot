@@ -1,26 +1,38 @@
 package dev.imagio.slot.inventory.triage;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
+import java.util.function.Predicate;
 
 public enum IslandSuggestionTemplate {
     FOOD(
             "template.food",
             "Food",
             0xCC7D5A3A,
+            0, 3,
             Set.of(IslandSignal.FOOD),
+            Set.of(),
+            Set.of("consumable"),
+            Set.of("eating"),
             Set.of()
     ),
     TOOLS(
             "template.tools",
             "Tools",
             0xCC5A6E3D,
+            0, 0,
             Set.of(IslandSignal.DIGGER_TOOL),
+            Set.of(),
+            Set.of("tool"),
+            Set.of("mining", "harvesting", "tool_use"),
             Set.of()
     ),
     WEAPONS(
             "template.weapons",
             "Weapons",
             0xCC6E3D3D,
+            0, 1,
             Set.of(
                     IslandSignal.SWORD,
                     IslandSignal.BOW,
@@ -28,53 +40,338 @@ public enum IslandSuggestionTemplate {
                     IslandSignal.TRIDENT,
                     IslandSignal.MACE
             ),
+            Set.of(),
+            Set.of("weapon", "ammunition"),
+            Set.of("combat"),
             Set.of()
     ),
     ARMOR(
             "template.armor",
             "Armor",
             0xCC3D5A6E,
+            0, 2,
             Set.of(
                     IslandSignal.ARMOR_HEAD,
                     IslandSignal.ARMOR_CHEST,
                     IslandSignal.ARMOR_LEGS,
                     IslandSignal.ARMOR_FEET
             ),
+            Set.of(),
+            Set.of("armor"),
+            Set.of("combat", "defense"),
+            Set.of()
+    ),
+    // Lighting — torches, lanterns, glowstone, shroomlight, etc.
+    // Cluster cave/base lighting in its own island so the player can
+    // grab "a torch" without scanning DECORATION or UTILITY. Fires on
+    // the emits_light facet (rule-derived from a vanilla id list +
+    // suffix patterns). Declared early so it wins over UTILITY (which
+    // would catch torch via role) and DECORATION (which would catch
+    // glowstone via role).
+    LIGHTING(
+            "template.lighting",
+            "Lighting",
+            0xCC8A7A28,
+            0, 4,
+            Set.of(),
+            Set.of(),
+            Set.of(),
+            Set.of(),
+            Set.of()
+    ),
+    // Materials family — split by tag so common ingredients (sticks,
+    // string, leather) cluster separately from refined output (ingots,
+    // gems, raw chunks). Players grab "a stick" or "an iron ingot"
+    // distinctly; a single Materials pile lumps the two and pushes
+    // ingredients halfway down.
+    INGOTS(
+            "template.ingots",
+            "Ingots",
+            0xCC3D6E5A,
+            1, 0,
+            Set.of(),
+            Set.of("c:ingots"),
+            Set.of(),
+            Set.of(),
+            Set.of()
+    ),
+    GEMS(
+            "template.gems",
+            "Gems",
+            0xCC3D6E70,
+            1, 0,
+            Set.of(),
+            Set.of("c:gems"),
+            Set.of(),
+            Set.of(),
+            Set.of()
+    ),
+    RAW_MATERIALS(
+            "template.raw_materials",
+            "Raw Materials",
+            0xCC3D5C4A,
+            1, 0,
+            Set.of(),
+            Set.of("c:raw_materials", "c:ores"),
+            Set.of(),
+            Set.of(),
             Set.of()
     ),
     MATERIALS(
             "template.materials",
             "Materials",
             0xCC3D6E5A,
+            1, 0,
             Set.of(),
-            Set.of("c:ingots", "c:gems", "c:raw_materials", "c:ores")
+            Set.of(),
+            Set.of("material"),
+            Set.of(),
+            Set.of()
     ),
     STORAGE(
             "template.storage",
             "Storage",
             0xCC5A3D6E,
+            2, 3,
             Set.of(),
-            Set.of("c:chests", "c:shulker_boxes", "c:barrels")
+            Set.of("c:chests", "c:shulker_boxes", "c:barrels"),
+            Set.of("storage_block", "container_portable"),
+            Set.of("storage"),
+            Set.of()
+    ),
+    // Roles below are role-only (FacetIndex-driven). The legacy
+    // class/tag fallback can't reliably distinguish them — a stone
+    // brick block has no equivalent of `DiggerItem` — so they fire
+    // exclusively when the precomputed dataset has classified the
+    // item. That's the whole point of the FacetIndex track: lift
+    // chip coverage past what subclass + tag heuristics can do.
+    //
+    // Building family — declared BEFORE the catch-all BUILDING so
+    // form-keyed templates fire first (an _stairs item lands on
+    // STAIRS, not on BUILDING). Form lookup comes from the classifier
+    // dataset's `form` facet, which is rule-derived from id suffix +
+    // tag, so coverage is high even without LLM input.
+    STAIRS(
+            "template.stairs",
+            "Stairs",
+            0xCC55534A,
+            1, 1,
+            Set.of(),
+            Set.of(),
+            Set.of(),
+            Set.of("building", "construction"),
+            Set.of("stairs")
+    ),
+    SLABS(
+            "template.slabs",
+            "Slabs",
+            0xCC55504A,
+            1, 1,
+            Set.of(),
+            Set.of(),
+            Set.of(),
+            Set.of("building", "construction"),
+            Set.of("slab")
+    ),
+    WALLS(
+            "template.walls",
+            "Walls",
+            0xCC4A4A4A,
+            1, 1,
+            Set.of(),
+            Set.of(),
+            Set.of(),
+            Set.of("building", "construction"),
+            Set.of("wall")
+    ),
+    DOORS(
+            "template.doors",
+            "Doors",
+            0xCC553A2A,
+            1, 1,
+            Set.of(),
+            Set.of(),
+            Set.of(),
+            Set.of("building", "construction"),
+            Set.of("door", "trapdoor", "fence_gate")
+    ),
+    FENCES(
+            "template.fences",
+            "Fences",
+            0xCC504A38,
+            1, 1,
+            Set.of(),
+            Set.of(),
+            Set.of(),
+            Set.of("building", "construction"),
+            Set.of("fence")
+    ),
+    WINDOWS(
+            "template.windows",
+            "Windows",
+            0xCC4A6E70,
+            1, 1,
+            Set.of(),
+            Set.of(),
+            Set.of(),
+            Set.of("building", "construction"),
+            Set.of("pane", "bars")
+    ),
+    BUILDING(
+            "template.building",
+            "Building Blocks",
+            0xCC5A5A5A,
+            1, 1,
+            Set.of(),
+            Set.of(),
+            Set.of("building_block"),
+            Set.of("building", "construction"),
+            Set.of()
+    ),
+    DECORATION(
+            "template.decoration",
+            "Decoration",
+            0xCC5A3C6E,
+            1, 3,
+            Set.of(),
+            Set.of(),
+            Set.of("decorative_block"),
+            Set.of("decorating"),
+            Set.of()
+    ),
+    NATURAL(
+            "template.natural",
+            "Natural",
+            0xCC3C6E3C,
+            1, 2,
+            Set.of(),
+            Set.of(),
+            Set.of("natural_resource"),
+            Set.of("farming", "gathering"),
+            Set.of()
+    ),
+    WORKBENCHES(
+            "template.workbenches",
+            "Workbenches",
+            0xCC6E3C24,
+            2, 2,
+            Set.of(),
+            Set.of(),
+            Set.of("functional_block"),
+            Set.of("crafting", "automation", "smelting"),
+            Set.of()
+    ),
+    MECHANISMS(
+            "template.mechanisms",
+            "Mechanisms",
+            0xCC8A5E24,
+            2, 1,
+            Set.of(),
+            Set.of(),
+            Set.of("mechanism"),
+            Set.of("automation"),
+            Set.of()
+    ),
+    REDSTONE(
+            "template.redstone",
+            "Redstone",
+            0xCC6E2E2E,
+            2, 0,
+            Set.of(),
+            Set.of(),
+            Set.of("redstone_component"),
+            Set.of("redstone"),
+            Set.of()
+    ),
+    UPGRADES(
+            "template.upgrades",
+            "Upgrades",
+            0xCC4A5E8A,
+            3, 0,
+            Set.of(),
+            Set.of(),
+            Set.of("upgrade"),
+            Set.of("enchanting"),
+            Set.of()
+    ),
+    TRANSPORT(
+            "template.transport",
+            "Transport",
+            0xCC3D6E6E,
+            3, 1,
+            Set.of(),
+            Set.of(),
+            Set.of("transport"),
+            Set.of("transportation", "logistics"),
+            Set.of()
+    ),
+    UTILITY(
+            "template.utility",
+            "Utility",
+            0xCC555575,
+            3, 2,
+            Set.of(),
+            Set.of(),
+            Set.of("utility"),
+            Set.of(),
+            Set.of()
+    ),
+    CURIOSITY(
+            "template.curiosity",
+            "Curiosities",
+            0xCC4F3D6E,
+            3, 3,
+            Set.of(),
+            Set.of(),
+            Set.of("curiosity", "trophy"),
+            Set.of("display"),
+            Set.of()
+    ),
+    MISC(
+            "template.misc",
+            "Miscellaneous",
+            0xCC4A4A4A,
+            4, 0,
+            Set.of(),
+            Set.of(),
+            Set.of("admin"),
+            Set.of(),
+            Set.of()
     );
 
     private final String defaultIslandId;
     private final String defaultLabel;
     private final int defaultColor;
+    private final int clusterRow;
+    private final int clusterColumn;
     private final Set<IslandSignal> classSignals;
     private final Set<String> itemTagTriggers;
+    private final Set<String> roleTriggers;
+    private final Set<String> activityTriggers;
+    private final Set<String> formTriggers;
 
     IslandSuggestionTemplate(
             String defaultIslandId,
             String defaultLabel,
             int defaultColor,
+            int clusterRow,
+            int clusterColumn,
             Set<IslandSignal> classSignals,
-            Set<String> itemTagTriggers
+            Set<String> itemTagTriggers,
+            Set<String> roleTriggers,
+            Set<String> activityTriggers,
+            Set<String> formTriggers
     ) {
         this.defaultIslandId = defaultIslandId;
         this.defaultLabel = defaultLabel;
         this.defaultColor = defaultColor;
+        this.clusterRow = clusterRow;
+        this.clusterColumn = clusterColumn;
         this.classSignals = Set.copyOf(classSignals);
         this.itemTagTriggers = Set.copyOf(itemTagTriggers);
+        this.roleTriggers = Set.copyOf(roleTriggers);
+        this.activityTriggers = Set.copyOf(activityTriggers);
+        this.formTriggers = Set.copyOf(formTriggers);
     }
 
     public String defaultIslandId() {
@@ -89,9 +386,76 @@ public enum IslandSuggestionTemplate {
         return defaultColor;
     }
 
+    public int clusterRow() {
+        return clusterRow;
+    }
+
+    public int clusterColumn() {
+        return clusterColumn;
+    }
+
+    /**
+     * Whether this template's items are meaningfully grouped by mod
+     * subsystem on the atlas. Players think of "my Create machines area"
+     * as a real area in their base — but they don't think of "Create's
+     * decoration" as separate from vanilla decoration. Decoration,
+     * Materials, Building, Food, Tools, Weapons, Armor, Natural, Storage,
+     * Utility, Redstone, and Upgrades are cross-mod-shared in player
+     * mental model: items live in one role-based pile regardless of mod.
+     * Only the heavy machinery / construction / movement templates
+     * benefit from a mod-subsystem split.
+     */
+    public boolean allowsSubsystemGrouping() {
+        return switch (this) {
+            case MECHANISMS, WORKBENCHES, TRANSPORT -> true;
+            default -> false;
+        };
+    }
+
     public boolean matches(IslandSignalDescriptor descriptor) {
         if (descriptor == null) {
             return false;
+        }
+        // LIGHTING fires when the descriptor's emits_light facet is set
+        // — declared first so torches and glowstone don't fall through
+        // to UTILITY / DECORATION first. Light emission is a stronger
+        // signal for "where would the player look for this" than role.
+        if (this == LIGHTING) {
+            return descriptor.emitsLight();
+        }
+        // Form-keyed templates (STAIRS, SLABS, DOORS, …) are
+        // form-sufficient: a stair is a stair regardless of role. The
+        // form facet is rule-derived from id suffix + tag, but coverage
+        // misses some modded items (Create's `dark_oak_window` is
+        // role=building_block with form=null because there's no
+        // window-form derivation rule). For those, fall back to an
+        // id-suffix check so the WINDOWS / DOORS / etc. templates still
+        // capture them.
+        if (!formTriggers.isEmpty()) {
+            String form = descriptor.form();
+            if (form != null && formTriggers.contains(form)) {
+                return true;
+            }
+            String itemId = descriptor.identity() == null ? "" : descriptor.identity().itemId();
+            if (itemId != null && !itemId.isBlank()) {
+                int colon = itemId.indexOf(':');
+                String path = colon >= 0 ? itemId.substring(colon + 1) : itemId;
+                for (String suffix : idSuffixFallbacksFor(this)) {
+                    if (path.endsWith(suffix)) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        // Classification role wins when present — that's the precomputed
+        // signal we trust most. Fall through to the legacy class/tag
+        // checks when no role is available (datapack items, KubeJS
+        // additions, unknown mods, or FacetIndex.ENABLED == false).
+        for (String candidate : descriptor.roleAlternatives()) {
+            if (candidate != null && roleTriggers.contains(candidate)) {
+                return true;
+            }
         }
         for (IslandSignal signal : classSignals) {
             if (descriptor.classSignals().contains(signal)) {
@@ -103,6 +467,182 @@ public enum IslandSuggestionTemplate {
                 return true;
             }
         }
+        // RAW_MATERIALS id-suffix fallback: "Block of X" items
+        // (raw_iron_block, iron_block, gold_block, diamond_block,
+        // copper_block, netherite_block, etc.) cluster with raw chunks
+        // and ingots in the player's "ore stockpile" mental model. The
+        // c:ingots / c:gems / c:raw_materials tags don't catch them
+        // (they sit in c:storage_blocks alongside chests, which we
+        // don't want to share an island with), so route by id pattern.
+        if (this == RAW_MATERIALS) {
+            String itemId = descriptor.identity() == null ? "" : descriptor.identity().itemId();
+            if (itemId != null) {
+                int colon = itemId.indexOf(':');
+                String path = colon >= 0 ? itemId.substring(colon + 1) : itemId;
+                if (RAW_MATERIALS_BLOCK_IDS.contains(path)
+                        || path.startsWith("raw_") && path.endsWith("_block")) {
+                    return true;
+                }
+            }
+        }
         return false;
+    }
+
+    /**
+     * Specific id paths that route to RAW_MATERIALS via the "ore
+     * stockpile" id-fallback. Vanilla compressed material blocks plus
+     * common modded equivalents. Anything matching {@code raw_*_block}
+     * is also caught by a startsWith/endsWith check.
+     */
+    private static final Set<String> RAW_MATERIALS_BLOCK_IDS = Set.of(
+            "iron_block",
+            "gold_block",
+            "diamond_block",
+            "emerald_block",
+            "lapis_block",
+            "copper_block",
+            "netherite_block",
+            "amethyst_block",
+            "quartz_block",
+            "redstone_block"
+    );
+
+    /**
+     * Id-suffix fallbacks for form-keyed templates whose `form` facet
+     * coverage is incomplete. Stuff like Create's `dark_oak_window`
+     * has role=building_block but form=null, so the WINDOWS template
+     * relies on the `_window` suffix to catch it.
+     */
+    private static Set<String> idSuffixFallbacksFor(IslandSuggestionTemplate template) {
+        return switch (template) {
+            case STAIRS -> Set.of("_stairs");
+            case SLABS -> Set.of("_slab");
+            case WALLS -> Set.of("_wall");
+            case DOORS -> Set.of("_door", "_trapdoor", "_fence_gate");
+            case FENCES -> Set.of("_fence");
+            case WINDOWS -> Set.of("_window", "_pane", "glass");
+            default -> Set.of();
+        };
+    }
+
+    /**
+     * First template that matches the descriptor in declaration order, or
+     * {@code null} when nothing fires. The chip-suggestion path treats
+     * this as "no chip" — it's the right answer when role / class / tag
+     * signals are all absent (e.g. an unmatched modded item with no
+     * precomputed layer).
+     *
+     * <p>When multiple templates match (e.g. a multi-valued role like
+     * {@code track_signal} with both {@code mechanism} and
+     * {@code redstone_component}), an activity tie-break narrows the
+     * choice — see {@link #firstMatchWithActivityTieBreak}.
+     */
+    public static IslandSuggestionTemplate firstMatch(IslandSignalDescriptor descriptor) {
+        return firstMatchWithActivityTieBreak(descriptor);
+    }
+
+    /**
+     * Like {@link #firstMatch(IslandSignalDescriptor)} but never returns
+     * {@code null} — falls back to {@link #MISC} for items without a
+     * matching template. Used by the populate-time classifier so every
+     * synthesised stack lands on some island, mirroring "every chip
+     * action drops the item somewhere" UX.
+     */
+    public static IslandSuggestionTemplate firstMatchOrMisc(IslandSignalDescriptor descriptor) {
+        IslandSuggestionTemplate match = firstMatch(descriptor);
+        return match != null ? match : MISC;
+    }
+
+    /**
+     * Subsystem-aware extension of {@link #firstMatchOrMisc}. When the
+     * descriptor carries any subsystem id passing the supplied
+     * {@code subsystemQualifier}, returns a synthetic
+     * {@link IslandTemplateMatch} keyed on that subsystem (with the
+     * resolved parent template providing color and cluster placement).
+     * Otherwise returns the parent template alone.
+     *
+     * <p>{@code subsystemQualifier == null} disables the subsystem
+     * branch — equivalent to legacy behavior. Trophies (rarity =
+     * {@code unique} or role = {@code trophy}) bypass the subsystem
+     * branch because they belong on display, not filed.
+     */
+    public static IslandTemplateMatch firstMatchExtendedOrMisc(
+            IslandSignalDescriptor descriptor,
+            Predicate<String> subsystemQualifier
+    ) {
+        if (descriptor == null) {
+            return IslandTemplateMatch.of(MISC);
+        }
+        IslandSuggestionTemplate parent = firstMatchOrMisc(descriptor);
+        if (isTrophy(descriptor)) {
+            return IslandTemplateMatch.of(CURIOSITY);
+        }
+        if (subsystemQualifier != null && parent.allowsSubsystemGrouping()) {
+            for (String subsystemId : descriptor.subsystems()) {
+                if (subsystemId == null || subsystemId.isBlank()) {
+                    continue;
+                }
+                if (subsystemQualifier.test(subsystemId)) {
+                    return IslandTemplateMatch.subsystem(parent, subsystemId, null);
+                }
+            }
+        }
+        return IslandTemplateMatch.of(parent);
+    }
+
+    /**
+     * True for items the dataset marks as a trophy — either via
+     * {@code role = "trophy"} or {@code rarity = "unique"} (the rarest
+     * tier in the canonical schema; nether_star / dragon_egg /
+     * wither_skeleton_skull and modded analogs).
+     */
+    public static boolean isTrophy(IslandSignalDescriptor descriptor) {
+        if (descriptor == null) {
+            return false;
+        }
+        if ("trophy".equals(descriptor.role())) {
+            return true;
+        }
+        return "unique".equals(descriptor.rarity());
+    }
+
+    private static IslandSuggestionTemplate firstMatchWithActivityTieBreak(IslandSignalDescriptor descriptor) {
+        if (descriptor == null) {
+            return null;
+        }
+        ArrayList<IslandSuggestionTemplate> matches = new ArrayList<>(2);
+        for (IslandSuggestionTemplate template : values()) {
+            if (template.matches(descriptor)) {
+                matches.add(template);
+                if (matches.size() >= 3) {
+                    break;
+                }
+            }
+        }
+        if (matches.isEmpty()) {
+            return null;
+        }
+        if (matches.size() == 1) {
+            return matches.get(0);
+        }
+        // Multiple templates fired (e.g. a multi-value role list, or a
+        // role + class signal pointing at different templates). When the
+        // descriptor carries activity hints, prefer a template whose
+        // activityTriggers intersect — that's the more specific signal.
+        // Fall back to declaration order when activities don't help.
+        List<String> activities = descriptor.activities();
+        if (activities != null && !activities.isEmpty()) {
+            for (String activity : activities) {
+                if (activity == null || activity.isBlank()) {
+                    continue;
+                }
+                for (IslandSuggestionTemplate candidate : matches) {
+                    if (candidate.activityTriggers.contains(activity)) {
+                        return candidate;
+                    }
+                }
+            }
+        }
+        return matches.get(0);
     }
 }

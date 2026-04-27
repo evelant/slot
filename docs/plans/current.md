@@ -8,23 +8,113 @@ short operational handoff, read [../status.md](../status.md) first.
 **Active plan:** core-workflow UX pass landed (all six slices in
 [core-workflow-ux.md](core-workflow-ux.md), plus playtest follow-ups
 documented in [../status.md](../status.md)). Relevance-LOD prototype
-through Phase 2.2 has landed (with UI polish on top). The active
-near-term track is:
+through Phase 2.2 has landed (with UI polish on top). The thin
+`FacetIndex` runtime + atlas-homing wiring (item-classification
+milestones 6 & 7) has landed; classification-driven Triage chip
+suggestions (Phase 4a) followed:
 
-1. **`FacetIndex` runtime.** Load the shipped vanilla dataset
-   ([`tools/classification/datasets/minecraft/`](../../tools/classification/datasets/minecraft/),
-   1536 items / 30 facets) into a thin `common/` `FacetIndex`,
-   JSONSchema-validated, exposing `role` lookup. Wire it behind a
-   feature flag at the homing call site
-   ([SlotTestCommands.java:128](../../neoforge/src/main/java/dev/imagio/slot/neoforge/command/SlotTestCommands.java#L128))
-   with `SemanticBucketResolver` as the no-data fallback.
-   Regression-check `RealisticAtlasGeneratorTest`. Stop and playtest
-   before stage-4 NN work. See [item-classification.md](item-classification.md)
-   milestones 6 (FacetIndex) and 7 (atlas wiring); the concrete
-   6-step plan is in [item-classification.md § Runtime](item-classification.md#runtime).
+- Bundled vanilla dataset shipped at
+  [`common/src/main/resources/data/slot/classification/vanilla-base.json`](../../common/src/main/resources/data/slot/classification/vanilla-base.json)
+  (1536 items / 30 facets).
+- Pure-logic loader / role lookup at
+  [`common/.../classification/FacetIndex`](../../common/src/main/java/dev/imagio/slot/classification/FacetIndex.java)
+  with the singleton in
+  [`FacetIndexHolder`](../../common/src/main/java/dev/imagio/slot/classification/FacetIndexHolder.java).
+  Feature flag: static `FacetIndex.ENABLED`.
+- Role → `SemanticBucket` mapping in
+  [`RoleSemanticBucketMap`](../../common/src/main/java/dev/imagio/slot/classification/RoleSemanticBucketMap.java);
+  classifier shim at
+  [`FacetIndexBucketClassifier`](../../common/src/main/java/dev/imagio/slot/debug/FacetIndexBucketClassifier.java).
+- `SlotTestCommands.runPopulate` now classifies the realistic-populate
+  pool through `FacetIndexBucketClassifier`, falling back to
+  `SemanticBucketResolver::classify` for items the dataset doesn't cover.
+- Triage chip suggestions: `IslandSignalDescriptor` carries the FacetIndex
+  `role` and `material_family` populated by
+  [`IslandSignalExtractor`](../../neoforge/src/main/java/dev/imagio/slot/neoforge/triage/IslandSignalExtractor.java);
+  each `IslandSuggestionTemplate` has a `roleTriggers` set and matches
+  on role first, falling through to the existing class/tag signals when
+  no role is available. Template enum covers the full v1 role
+  taxonomy: FOOD, TOOLS, WEAPONS, ARMOR, MATERIALS, STORAGE, BUILDING,
+  DECORATION, NATURAL, WORKBENCHES, MECHANISMS, REDSTONE, UPGRADES,
+  TRANSPORT, UTILITY, CURIOSITY, MISC (17 templates). Bug fix in this
+  pass: the `MATERIALS` template no longer claims `natural_resource`
+  (NATURAL captured it but never fired due to enum-order overlap).
+  Coverage smoke test
+  ([`IslandSuggestionTemplateCoverageTest`](../../common/src/test/java/dev/imagio/slot/inventory/triage/IslandSuggestionTemplateCoverageTest.java))
+  asserts every role-bearing entry in the bundled vanilla dataset
+  routes to some template.
+- Learned-rule adjacency now also keys on `MATERIAL_FAMILY` — homing
+  e.g. `oak_planks` + `oak_log` + `oak_stairs` to a custom "Wood"
+  island fires a learned chip for the next `oak_*` item even when its
+  item-tag set has nothing in common with the previous placements.
+  Tag-only adjacency couldn't span that gap; this closes it.
+- Debug populate generator
+  ([`RealisticAtlasGenerator`](../../common/src/main/java/dev/imagio/slot/debug/RealisticAtlasGenerator.java))
+  is now template-keyed: it groups items by `IslandSuggestionTemplate`
+  via [`FacetIndexTemplateClassifier`](../../common/src/main/java/dev/imagio/slot/debug/FacetIndexTemplateClassifier.java)
+  and emits islands with the same `defaultIslandId` /
+  `defaultLabel` / `defaultColor` a chip-accept would create — so
+  accepting a chip on a populated atlas lands the item in the existing
+  template island instead of duplicating it. Replaces the prior
+  `SemanticBucket` + `SubBucketResolver` path; legacy
+  `SemanticBucket`, `SemanticBucketResolver`, `ParentKeywordRules`,
+  `SubBucket*`, `RoleSemanticBucketMap`, and `FacetIndexBucketClassifier`
+  are deleted.
+
+Next near-term tracks:
+
+1. **Facet-driven suggestions** — see
+   [facet-driven-suggestions.md](facet-driven-suggestions.md). The
+   suggestion engine and debug populate today read only `role` +
+   `material_family` from the classified dataset; the rest
+   (`mod_subsystem`, `activity`, `flavor`, `frequency`, `rarity`,
+   `origin`, …) is on disk but unused. Five-phase plan to plumb the
+   richer facets through, with subsystem-primary matching as the
+   biggest UX win and trophy / frequency placement priority closing
+   the loop. **Start here in a fresh session.**
+2. **Modded classification layers — LANDED 2026-04-26.** Per-mod LLM
+   passes for the test modset (10 mods: create,
+   createaddition, createoreexcavation, dndesires, create_new_age,
+   sophisticatedbackpacks, sophisticatedcore, sophisticatedstorage,
+   toms_storage, plus creategoggles which has 0 items) shipped to
+   [`common/.../classification/per-mod/`](../../common/src/main/resources/data/slot/classification/per-mod/)
+   with a manifest at
+   [`per-mod/index.json`](../../common/src/main/resources/data/slot/classification/per-mod/index.json).
+   `FacetIndexBootstrap.loadAll()` now merges vanilla-base + every
+   per-mod layer into the runtime singleton (~1100 modded entries on
+   top of vanilla's 1500). Validator-backed retry in
+   [`OpenRouterClient`](../../tools/classification/src/llm/openrouter-client.ts)
+   handles upstream truncations + cache invalidation so future regens
+   self-heal.
+3. **Runtime-crawl as deterministic fallback** — still open
+   ([item-classification.md § Runtime discovery](item-classification.md#runtime-discovery),
+   milestone 8). Walks the live registry to derive deterministic
+   facets for mods we don't have LLM data for. Lifts
+   `material_family` / `form` / `processing_in` / etc. without
+   lifting role-driven chips. Defer until facet-driven-suggestions
+   plays out — the next gap might already be covered by a richer
+   prompt regen rather than crawling.
+4. **Playtest the FacetIndex-driven populate path and role-driven
+   Triage chips.** Run `/slot test populate organized` on a fresh
+   world, sample chip suggestions on Triage rows, and decide whether
+   the precomputed classification feels meaningfully better before
+   - stage-4 NN priming,
+   - confidence-band suggestion ranking (Phase 4b),
+   - acceptance-rate logging (Phase 4c).
+   See [item-classification.md § Integration sequence](item-classification.md#integration-sequence-next-concrete-work)
+   step 6.
 
 Parallel tracks (deferred, available when FacetIndex stalls):
 
+- **Storage areas rework.** Group claimed chests into player-named
+  areas (Main Base, Mountain Mine, Oil Derrick, …) that default to
+  chip size and expand on proximity / search / pin. Five-phase plan
+  at [storage-areas.md](storage-areas.md); previously gated on the
+  Phase-2 relevance-LOD playtest, which is now in.
+- **Storage prototype tail.** Slice 4b (deposit with Kit holdouts)
+  and Slice 5 explicit/implicit withdraw are unblocked now that Kit
+  prototype slice 5 has landed. See
+  [storage-prototype.md](storage-prototype.md).
 - **Relevance-LOD UI refinement.** Playtest-driven polish — pip
   readability at modded scale, atlas convulse on pickup, drag-drop
   ordinal feel. See "Risks and open questions" in

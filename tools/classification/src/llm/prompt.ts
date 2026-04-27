@@ -72,37 +72,104 @@ export interface LlmPromptInput {
    * paired with a short rationale describing which kinds of items it covers.
    */
   subsystem_vocabulary?: readonly { id: string; rationale?: string }[];
+  /**
+   * Optional verbose-prompt sections.
+   *
+   * `verbose_facet_disambiguation` (default **ON**) — principle-level
+   * reasoning per facet: how a player thinks about, uses, and groups
+   * items in each category. A/B testing on the 40-item playtest sample
+   * showed adding this carries sonnet from ~50% accuracy (cardinal
+   * rule alone) to ~93% on hard categories. It generalizes to novel
+   * items because the rules are reasoning-based, not enumerative.
+   * Flip OFF only for experimentation against the lean baseline.
+   *
+   * `verbose_common_misconceptions` (default **OFF**) — item-level
+   * checklist of past LLM failures (logs / doors / beds / rails /
+   * spawn-eggs / Block-of-X / mob-drops). Useful when a new category
+   * surfaces a regression and we want to nudge the LLM with explicit
+   * cases, but routinely keeping it on biases toward pattern-matching
+   * enumerated examples over trusting the principle.
+   */
+  prompt_extras?: {
+    verbose_facet_disambiguation?: boolean;
+    verbose_common_misconceptions?: boolean;
+  };
 }
 
-const SYSTEM_PREAMBLE = `You are classifying Minecraft items for an inventory mod called Slot. \
-For each input item you will emit a concise facet record per the schema below.
+const SYSTEM_PREAMBLE = `You are classifying Minecraft items for the
+inventory mod Slot, which uses these classifications to organize a
+player's inventory. Your job is to capture **how a player thinks about
+each item** — what they call it, where they store it, what they use it
+with, how they interact with it — by emitting a concise facet record
+per the schema below.
 
-Rules:
+# Cardinal rule (overrides everything else in this prompt)
+
+Classify items by **how a player thinks about them, uses and interacts
+with them, and organizes them in practice**, NOT by the raw technical
+data attached. The data is input; the player's mental model is the
+answer.
+
+This rule applies to every facet — role, material_family, activity,
+primary_uses, carry_frequency, palette, processing_in, etc. — not just
+\`role\`. Every other rule below is a concretization of this principle;
+your job is to make judgment calls about player perception, not to
+mechanically transform the data into a category.
+
+The concrete test, applied on every facet decision:
+
+> "If a player handed me this item and asked 'where in my organized
+> inventory would I expect to find this, what activities would I use it
+> for, and which other items belong with it?', what's the answer?"
+
+That answer beats the literal reading of any rule. After picking a
+value, do one more pass: "Would a player be surprised by this answer,
+or surprised to NOT see this item grouped with its siblings?" If yes,
+reconsider.
+
+# Output rules
 - Only output values from the facet's allowed list, or (for free_text facets) values matching the pattern.
-- Only emit facets that actually apply to the item. If a facet doesn't apply (e.g. combat_bonus on bread, biome on crafted_only items), OMIT it from the facets object. Do not emit \`null\`, empty arrays, or placeholder values.
+- Only emit facets that actually apply to the item. The test: would a player consider this facet meaningful for this item? \`combat_bonus\` on bread, \`biome\` on a crafted-only item — players wouldn't expect a value, so omit. Do not emit \`null\`, empty arrays, or placeholder values to satisfy a target-facet list.
 - For single-value enum facets where two values could apply with similar confidence, emit a two-element \`values\` array AND set \`ambiguous: true\`. Downstream reviewers see both.
-- **Each facet entry MUST include a \`signal\` field** — it drives the confidence score automatically. Format:
-    \`{value, signal: "named|pattern|inferred|guess", rationale: "<≤40 char terse reason>"}\`
-    The four signal levels:
-      • \`named\` — the value is explicitly stated in a tag/component/lore string. You're transcribing, not judging.
-      • \`pattern\` — the value follows mechanically from an id/tag/model pattern (e.g. _ingot + *_tool_materials → material).
-      • \`inferred\` — you're making a judgment call from context (recipes, lore, mod conventions, similar items, gameplay knowledge). This is the **normal case** for most classification decisions — Minecraft items rarely announce what they are; you're the judge. Use this freely when your reasoning is sound.
-      • \`guess\` — you have essentially no information and are applying a default. Use sparingly; prefer \`ambiguous: true\` + two values, or omit the facet entirely.
-    An optional \`evidence: "<short quote>"\` field is allowed if you want to cite the specific input that informed the decision. Not required — skip it to save output tokens.
-    \`confidence\` is computed from \`signal\` (named=0.95, pattern=0.80, inferred=0.60, guess=0.30). You may include \`confidence\` to nudge DOWN within the band, but the runner caps it at the signal floor — overclaiming on a guess is silently demoted.
+- **Each facet entry MUST include a \`signal\` field** — a marker for
+    downstream review tools, NOT a quality grade. All four levels are
+    valid answers. Format:
+    \`{value, signal: "named|pattern|inferred|guess", rationale: "<≤40 char>"}\`
+
+    The signal records HOW the value happens to be supported so review
+    tools can filter (e.g. "show me only the judgment calls"). Player
+    perception is the design target; most facets, most items, are
+    judgment calls and emit \`inferred\` — that's correct, not a
+    consolation tier.
+
+      • \`named\` — an in-game string explicitly states the value (lore,
+        display name, a tag whose name IS the value) AND a player would
+        agree.
+      • \`pattern\` — a regular id/tag pattern points at the value AND a
+        player would agree (e.g. _ingot + *_tool_materials → role=material).
+      • \`inferred\` — **the normal case**: you're judging how a player
+        thinks about, uses, organizes, or interacts with the item. The
+        literal data may be ambiguous, absent, or point the wrong way;
+        player perception is the answer regardless. Use freely.
+      • \`guess\` — no confident read either way. Prefer \`ambiguous: true\`
+        with two candidates, or omit the facet.
+
+    \`confidence\` is computed from \`signal\` (named=0.95, pattern=0.80,
+    inferred=0.60, guess=0.30). You may nudge DOWN within the band; the
+    runner caps overclaiming. The numbers are for filtering, not
+    grading — an \`inferred\` answer that follows the cardinal rule is
+    as correct as a \`pattern\` one.
+
+    Optional \`evidence: "<short quote>"\` field allowed for citing a
+    specific input. Skip to save tokens.
 - **Be terse**: rationales must be ≤40 characters. No evidence field unless it adds real information beyond the rationale. Compact output means more items fit in a batch before hitting the token cap.
-- If the item's lore, component_highlights, or display_name explicitly names a behaviour, weight that over generic defaults.
+- Lore, display_name, and component_highlights are **player-perception signals** — they're strings the player actually reads and forms expectations from. Take them seriously when present.
 - If you want to use a value that isn't in the schema, DO NOT emit the facet; instead add an entry to \`schema_proposals\` at the top level.
 - Don't re-emit facets listed under \`stage2_facets\` inside \`facets\` — those are already fixed by deterministic rules. But if you think a stage 2 assertion is **clearly wrong** (e.g. wrong material, wrong form), record it in the top-level \`corrections\` array instead of silently accepting it. Only flag stage 2 values you're confident are wrong (confidence ≥ 0.7) — it costs a human review round.
+- **Stage-2 fill-in.** If a deterministic facet is *missing* from \`stage2_facets\` but the item obviously has a value (e.g., \`dark_oak_window\` clearly has \`form=window\` even though stage-2's \`form_from_id\` rule didn't catch it; \`copper_pipe\` clearly has \`material_family=copper\`; \`lime_concrete\` clearly has \`dye_color=lime\`; a modded glowing block whose stage-2 \`emits_light\` is missing), record it in the top-level \`fill_ins\` array — DON'T emit it inside \`facets\`. \`fill_ins\` exists alongside \`schema_proposals\` and \`corrections\` so downstream review tools can audit gaps in the stage-2 deterministic layer separately from your judgment-call work. Format each entry as \`{item, facet, value, rationale}\`. Use sparingly: only obvious gaps where a player would clearly agree, not edge cases. The deterministic facets you can fill: \`form\`, \`material_family\`, \`dye_color\`, \`required_tool\`, \`required_tool_tier\`, \`is_fuel\`, \`emits_light\`. \`emits_light\` specifically catches modded lit blocks (Create's lit variants, glowing crystals, modded glowstones) — set \`value: true\` when the block visibly emits light when placed, even if stage-2's id-list and suffix patterns missed it. Don't fill role / activity / carry_frequency / rarity / etc. — those are llm-authored, just emit them in \`facets\` normally.
 - Output strict JSON only: no markdown, no code fences, no comments (// or /* */), no trailing commas, no commentary outside the JSON object.
 - Your response MUST start with \`{\` and end with \`}\`. Do NOT prepend any narration (no "Here is…", "Continuing with…", etc.). Do NOT append any text after the closing brace.
-- Classify every item listed in the \`items\` array. If output is getting long, shorten rationales further rather than dropping items.
-
-Common confusions to avoid:
-- \`activity\` does NOT include \`crafting\` — every item is craftable, so "crafting" is noise. If the item is used as a crafting ingredient, that's already captured in \`processing_in\`. Pick an end-use activity instead (\`building\`, \`mining\`, \`combat\`, \`redstone\`, etc.) or omit.
-- \`flavor\` is a small set of **aesthetic categories** (\`plain\`, \`variant\`, \`fancy\`, \`ominous\`, \`ancient\`, \`mystical\`, \`mechanical\`, \`natural\`, \`colored\`). Colors, finishes, and moods go in \`palette\`, not \`flavor\`.
-- \`palette\` values are in the schema's enum — don't invent new ones like \`green\`, \`colored\`, \`wool_light\`. Use \`leaf_green\` for green, \`pastel\`/\`light\` for soft tones, \`dye_color\` (separate facet) when the item is actually one of the 16 dye colors.
-- \`environmental_property\` is world/physics behaviour (fireproof, slippery, waterlogs, piston_movable). \`spawn_interaction\` is mob-farm behaviour (blocks_monster_spawn, allows_spawning, damages_entities). Pick the right facet before picking a value.`;
+- Classify every item listed in the \`items\` array. If output is getting long, shorten rationales further rather than dropping items.`;
 
 /**
  * Build a combined prompt for the legacy single-message path. Kept for
@@ -133,23 +200,36 @@ export function buildSplitPrompt(input: LlmPromptInput): { system: string; user:
   const neighborsNote = renderNeighborsSection(input.neighbors);
   const subsystemHint = renderSubsystemVocabulary(input.subsystem_vocabulary);
 
-  const system = [
+  // Default-on for `verbose_facet_disambiguation`: A/B testing on the
+  // 40-item playtest sample showed it carries production accuracy from
+  // ~50% (lean prompt) to ~93% on hard categories (doors, beds, rails,
+  // spawn eggs, Block-of-X). It's principle-based, not item-enumeration,
+  // so it generalizes to novel items. Caller can flip it OFF for
+  // experimentation by passing `verbose_facet_disambiguation: false`.
+  //
+  // Default-off for `verbose_common_misconceptions`: that's the
+  // item-level checklist of past LLM failures. Useful when a new
+  // category surfaces a category-wide regression and we want to nudge
+  // the LLM with explicit cases, but routinely keeping it on biases
+  // toward pattern-matching enumerated examples instead of trusting
+  // the principle.
+  const extras = input.prompt_extras ?? {};
+  const includeDisambiguation = extras.verbose_facet_disambiguation ?? true;
+  const includeMisconceptions = extras.verbose_common_misconceptions ?? false;
+  const sections: string[] = [
     SYSTEM_PREAMBLE,
     "",
     "# Facet schema",
     schemaDoc,
-    "",
-    FACET_DISAMBIGUATION,
-    "",
-    "# Common misconceptions to avoid",
-    COMMON_MISCONCEPTIONS,
-    "",
-    subsystemHint,
-    "# Expected output shape",
-    outputShape,
-  ]
-    .filter((section) => section.length > 0)
-    .join("\n");
+  ];
+  if (includeDisambiguation) {
+    sections.push("", FACET_DISAMBIGUATION);
+  }
+  if (includeMisconceptions) {
+    sections.push("", "# Common misconceptions to avoid", COMMON_MISCONCEPTIONS);
+  }
+  sections.push("", subsystemHint, "# Expected output shape", outputShape);
+  const system = sections.filter((section) => section.length > 0).join("\n");
 
   const user = [
     neighborsNote,
@@ -165,47 +245,326 @@ export function buildSplitPrompt(input: LlmPromptInput): { system: string; user:
 }
 
 /**
- * Inline guidance for facets with commonly-misapplied values. Kept adjacent
- * to the schema so the LLM reads it while facet vocabulary is top-of-mind.
+ * Reasoning notes for the trickiest facet distinctions. These are
+ * principle-led: each section gives the player-perception question to
+ * ask and one or two anchor examples, NOT a list of items per category.
+ * The rules generalize to novel items by teaching the reasoning rather
+ * than enumerating cases.
  */
 const FACET_DISAMBIGUATION = `# Facet disambiguation (read before emitting)
 
-## role: material vs natural_resource
-- \`natural_resource\` — items obtained **from the world** in raw form: ores,
-  raw ore chunks (raw_iron, raw_gold, raw_copper, ancient_debris), logs, mob
-  drops (feather, leather, bone, slime_ball, string), unprocessed plants
-  (sugar_cane, kelp, bamboo, nether_wart).
-- \`material\` — **processed / intermediate** crafting ingredients: ingots,
-  nuggets, gems, dusts, plates, dyes, shards. You made it from something raw.
-- Test: "did the player pick this up from the world as-is, or is it a
-  refined product?" If raw → natural_resource. If refined → material.
+These notes give the *reasoning* behind tricky facet calls. Apply the
+principle, then sanity-check with the cardinal-rule test ("where would
+a player expect to find this?"). The goal is to think like a player
+organizing items, not to match items to a list.
 
-## role: building_block vs decorative_block vs functional_block
-- \`building_block\` — primary purpose is structure: planks, stairs, slabs,
-  walls, logs (when placed), bricks, sandstone, stone variants.
-- \`decorative_block\` — primary purpose is aesthetics: banners, carpets,
-  paintings, flower pots, candles (unlit or as decor), heads.
-- \`functional_block\` — active interactive behaviour: crafting table,
-  furnace, anvil, beacon, jukebox, composter, cauldron, lectern, grindstone.
-- A block that's *usable* for decoration but primarily structural (like
-  stairs) is \`building_block\`, not \`decorative_block\`.
+## role: where does the player put this in their inventory?
+
+The role facet sorts every item into a single home. The framing
+question: **"if the player held this and asked which island it belongs
+on, what's the answer?"**
+
+### Inventory-side vs placement-side
+
+The biggest single source of role mistakes is choosing a placement
+role (\`building_block\`, \`decorative_block\`, \`functional_block\`,
+\`storage_block\`) for an item the player thinks of as inventory-side
+(\`material\`, \`utility\`, \`ammunition\`, \`consumable\`). Items that
+are technically placeable but spend most of their life in a player's
+inventory or hotbar belong on the inventory side.
+
+- Test: *"if a player had 32 of these, what's the next thing they
+  do?"* If the answer is "deploy / craft / spend / drink / shoot,"
+  it's an inventory-side role. If the answer is "place once and
+  forget," it's a placement-side role.
+- Anchors:
+  - **Torch**: placeable lighting, but the player's mental model is
+    "thing I bring to caves" — stacks of 64 deployed disposably while
+    exploring. Inventory dominates. → \`utility\`, not
+    \`decorative_block\` or \`functional_block\`. The same logic
+    applies to **ladders** (carried and deployed for traversal).
+  - **Buckets-of-X** (water, lava, fish, mob, powder snow, empty bucket):
+    the player wields these as tools — scoop, pour, deliver. → \`utility\`.
+    The exception is \`milk_bucket\` which is \`consumable\` because the
+    player drinks it. Buckets are NOT \`container_portable\` —
+    \`container_portable\` is for open-and-put-items-in pouches like
+    bundles or ender_pouches, not for tool-wielded fluid carriers.
+  - **Ingredient-stage variants** of building blocks (\`*_concrete_powder\`,
+    \`packed_mud\`, \`clay_ball\`): the player stacks them in inventory
+    waiting to craft into the placed final form (\`*_concrete\`,
+    \`mud_bricks\`, \`bricks\`). → \`material\`. The crafted final form is
+    the placement-side block.
+
+### natural_resource vs material
+
+- \`natural_resource\` — the player **plants it or places it as living
+  nature**. The mental tag is "garden / forest" (saplings, flowers,
+  kelp, mushrooms, sugar_cane).
+- \`material\` — the player **keeps it in their crafting stash**: refined
+  ingredients (ingots, dyes), mob drops they craft with (feather,
+  leather, blaze_rod), raw chunks (raw_iron), and compressed material
+  blocks (\`iron_block\`, \`diamond_block\` — these are 9× the base material,
+  not containers). The mental tag is "stuff I use in a recipe."
+- Test: *garden or crafting stash?*
+- Anchor: \`raw_iron\` is mined and smelted; players store it next to
+  ingots, not next to saplings. → \`material\`.
+- "How was it obtained?" is the wrong test. Players sort by where they
+  USE the item, not by its origin. A blaze_rod comes from a mob and
+  becomes blaze_powder — it lives in the crafting stash.
+- **Single-narrow-purpose crafting inputs are \`material\` even when
+  individually rare-feeling.** disc_fragment (only crafts a music
+  disc), glistering_melon_slice (only brews potion of healing). The
+  player accumulates them as crafting stock and spends them; they're
+  not trophies to display. Test: *"if I have a stack of these, am I
+  planning to display them or to craft them?"* If craft → \`material\`.
+
+  **Pottery sherds are an exception** — they come in 20+ archeology
+  patterns and players think of them as a *collected set* (like spawn
+  eggs / banner patterns). Their craft sink (decorated_pot) is
+  decorative-only and rare. → \`curiosity\`. The "set of patterns I've
+  found" mental model dominates over "crafting stock." Same for any
+  modded find-a-set archeology items.
+
+### building_block vs decorative_block vs functional_block
+
+When a player places this, what are they DOING?
+
+- **Building** the structure → \`building_block\`. Walls, floors, roofs,
+  fences, doors and trapdoors of any material, planks, stairs, slabs,
+  bricks, glass. Doors are interactive but they're part of the
+  building's openings — they're structural, not workstations.
+- **Decorating** for looks → \`decorative_block\`. Banners, carpets,
+  paintings, candles, heads, beds, decorated pots, item frames, flower
+  pots. Beds are interactive (sleep) but the player puts one per home
+  and treats it as bedroom decor; that's decorating, not operating.
+- **Operating it to perform a task** → \`functional_block\`. The player
+  walks up to a **single block**, opens a **UI**, and performs a craft
+  / smelt / brew / enchant / repair / bake / read / play-record. Anvil,
+  furnace, smithing_table, enchanting_table, lectern, jukebox, beacon,
+  brewing_stand. The shared shape: it appears in JEI/EMI as a
+  workstation icon. The strict tests are *single-block* AND *opens a
+  UI* — failing either disqualifies the item.
+- Test: place the item; what verb describes what the player just did?
+  *Built / decorated / went to work at it.*
+- Anchor: doors — oak / iron / oxidized_copper alike — share role
+  because they're all openings in the building's envelope. Don't let
+  the metal prefix flip the role; the family is structural.
+
+### Processing-machine PARTS vs workstations (Create / similar tech mods)
+
+A common LLM failure is reaching for \`functional_block\` whenever an
+item participates in a processing recipe. Most Create-style processing
+blocks are NOT workstations — they're kinetic / power-transmitting /
+recipe-input components the player chains together to form a
+multi-block contraption. The player interacts with the system, not
+with each block individually.
+
+- \`mechanism\` — kinetic / power-transmitting / processing-input parts
+  the player builds INTO a multi-block contraption. The block has no
+  single-block UI in vanilla NEI/EMI sense; recipes route through it
+  because it sits in a processing line. Examples: basin, mechanical_press,
+  mechanical_mixer, mechanical_fan, crushing_wheel, deployer,
+  mechanical_saw, mechanical_drill, mechanical_harvester, mechanical_plough,
+  encased_fan, portable_storage_interface, portable_fluid_interface,
+  portable_energy_interface, electrical connectors, accumulators,
+  industrial_fan, item_drains, weighted_ejector, smart_chute. All
+  \`mechanism\` — none are \`functional_block\`.
+- \`functional_block\` is rare in Create — the genuine workstation
+  examples are blocks the player walks up to and opens a configuration
+  UI on (e.g., \`mechanical_crafter\` faces accept a recipe slot,
+  \`schematic_table\` opens a schematic-load UI). When in doubt, prefer
+  \`mechanism\` over \`functional_block\` for any block whose primary
+  role is "step in a processing line."
+- Test (more strict than the generic functional_block test): *can I
+  place this single block, walk up to it alone, right-click, and see a
+  UI that lets me perform a one-shot craft?* If the block needs a
+  contraption-mate (a basin under a mixer, a fan blowing through
+  something, a press above a basin) to do anything, → \`mechanism\`.
+
+### Vanilla edge cases that are NOT workstations
+
+- **Lightning rod**: emits a redstone signal when struck by lightning.
+  Player interacts via the redstone wire it powers, not a UI on the
+  rod itself. → \`redstone_component\`, not \`functional_block\`.
+- **Hanging signs (every variant — oak / spruce / birch / jungle /
+  dark_oak / acacia / cherry / mangrove / bamboo / crimson / warped)**:
+  one-shot text-edit interaction at place-time, like regular signs.
+  Players treat them as decoration. → \`decorative_block\`, not
+  \`functional_block\` and not \`building_block\`.
+- **Pointed dripstone** and **dripstone block**: cave nature; pointed
+  dripstone grows / falls / acts as a spike trap. → \`natural_resource\`
+  for pointed_dripstone (organic-stalactite that grows in caves);
+  dripstone_block is a building_block (placeable terrain block crafted
+  from pointed pieces).
+
+### storage_block
+
+- \`storage_block\` — a placeable container the player **opens** and
+  puts OTHER items inside. Chest, barrel, shulker_box, ender_chest,
+  drawers. Opens into a slot grid in the UI.
+- Test: *can the player open this and see other items inside?*
+- Compressed material blocks (\`iron_block\`, \`diamond_block\`) FAIL this
+  test — they're 9× a base material via crafting, not containers.
+  → \`material\`.
+
+### transport
+
+- \`transport\` — the item **moves the player or items through the
+  world**. Rails of every kind, minecarts, boats, saddles, lead, elytra
+  (also armor — emit ambiguous), horse_armor.
+- Test: *is this part of getting around or hauling things?*
+- Anchor: powered_rail / detector_rail / activator_rail are powered by
+  redstone, but their job is the rail network — players store them
+  with the rest of the rails, not with redstone components.
+
+### upgrade — applied to other items in a UI
+
+\`upgrade\` covers items the player **applies to another item to enhance
+it** in a smithing-table / anvil / enchanting-style transformation.
+Each one is consumed on a single upgrade event; the player keeps a
+small accumulating stash of them.
+
+- **Smithing templates** — netherite_upgrade_smithing_template and
+  every armor-trim template (coast, dune, eye, host, raiser, rib, sentry,
+  shaper, silence, snout, spire, tide, vex, ward, wayfinder, wild,
+  bolt, flow). Even though trim templates come in many varieties,
+  the player's mental model is "my upgrade stash for smithing-table
+  use," not "a display set." → \`upgrade\`.
+- Tool / armor enhancement modules from mods (sophisticatedbackpacks
+  upgrade modules, sophisticatedstorage upgrade modules,
+  netherite-style tier-bump items).
+- Test: *does the player put this item into another item's UI to
+  enhance it?* If yes → \`upgrade\`. If they only look at it / display
+  it / read it → \`curiosity\`. If they wear / wield / consume it
+  themselves → not upgrade.
+- Anchor: a smithing template is consumed in the smithing table
+  alongside diamond armor + a netherite ingot to upgrade the armor.
+  That's the upgrade verb. Don't be misled by "many varieties exist"
+  — variety doesn't make something a curiosity; **what the player DOES
+  with it** does.
+
+### curiosity vs trophy vs utility vs admin
+
+- \`trophy\` — a **single iconic item from a hard-won fight or rare
+  achievement** the player keeps as a permanent display. Dragon_egg,
+  wither_skeleton_skull. Nether_star also fits here even though it
+  crafts a beacon — the player treats it as the trophy from defeating
+  the wither and spends it once on a long-term build, not as routine
+  crafting stock.
+- \`curiosity\` — items the player **collects as a set or novelty**
+  (multiple-of-many, accumulated over time, primarily for display or
+  reference). Spawn eggs, music_discs, banner patterns, mob heads,
+  written books, paintings the player rotates through.
+
+  Smithing templates are NOT curiosities even though they come in many
+  varieties — see \`upgrade\` below.
+- \`utility\` — the player **keeps it around for a recurring helper
+  job**. Not a tool (pickaxe-class), not a workstation. Inventory-side
+  helpers carried for their function: shears, lead, name_tag,
+  totem_of_undying, ender_pearl, bucket variants, torches, ladders.
+- \`admin\` — the item **only appears in the worldgen / debug tab**, not
+  any survival-creative tab. command_block, barrier, structure_block,
+  jigsaw, debug_stick, light, structure_void.
+- Test order:
+  *Iconic single trophy?* → \`trophy\`.
+  *Set the player collects?* → \`curiosity\`.
+  *Recurring helper they keep handy?* → \`utility\`.
+  *Debug-tab only?* → \`admin\`.
+- Anchor for trophy vs curiosity: dragon_egg is a one-of-a-kind boss
+  reward (\`trophy\`); spawn eggs come in 80+ varieties players
+  accumulate (\`curiosity\`).
+- Anchor for trophy vs material: nether_star crafts a beacon, but the
+  player's mental relationship is "I beat the wither — keeping this"
+  until the rare moment they commit to a beacon. → \`trophy\`, not
+  \`material\` (despite the crafting use).
+
+## Consistency within material_family
+
+When two items share a \`material_family\` (e.g. \`wood_oak\`), they
+should share a role unless one variant fundamentally functions
+differently. Players who organize by material want the whole family
+in one island, not scattered across roles.
+
+- Test: *would a player be surprised to see this variant on a
+  different island from its siblings?* If yes, align it.
+- Anchor: an oak family has its planks, stairs, slabs, walls, fences,
+  doors, trapdoors, logs, and stripped logs all on one island.
+  → all \`building_block\`. The exceptions are variants that genuinely
+  belong elsewhere: \`oak_sapling\` (planted plant → natural_resource),
+  \`oak_button\` (redstone trigger → redstone_component), \`oak_boat\`
+  (transport).
 
 ## tier
-- Apply to tools/weapons/armor (their progression tier) and to the raw
-  materials they're made from (iron_ingot, diamond, netherite_ingot — each
-  has tier=iron/diamond/netherite).
-- Ingots/gems that aren't part of a tool-tier progression (redstone,
-  emerald, amethyst_shard, lapis) do **not** have a \`tier\`.
 
-## activity — "what you DO with this item"
-- Pick the gameplay activities where this item is **actively used**, not
-  activities it's an ingredient of. A pickaxe is \`mining\` (used to mine);
-  a diamond is not \`mining\` (it's crafted into pickaxes).
-- A crafting ingredient gets activities from its **downstream use**, not
-  from the act of crafting — so \`feather\` gets \`combat\` (via arrows),
-  not \`mining\` (even though you might mine to get emeralds to trade for
-  feathers).
-- If unsure, omit \`activity\` rather than guess.
+Apply to tools / weapons / armor (their progression rung) and to the
+raw materials those rungs are MADE from (iron_ingot, diamond,
+netherite_ingot all carry tier=iron/diamond/netherite). Items not
+part of the tool-tier ladder don't get a tier — emerald, redstone,
+lapis, amethyst_shard.
+
+## activity — what you DO with the item
+
+Pick activities the player **actively performs with the item**, not
+activities the item is an ingredient of.
+
+- A pickaxe \`mining\`s. A diamond does not — diamonds are crafted
+  INTO pickaxes; the activity belongs to the tool.
+- A feather's activity comes from its downstream use: it becomes an
+  arrow, so → \`combat\`. Crafting itself is never an activity (every
+  item is craftable; the value would be noise).
+- If unsure, omit. One good activity beats three weak ones.
+
+## mod_subsystem — what part of the mod IS this item
+
+The \`mod_subsystem\` facet groups items by the **functional sub-area
+of the mod they themselves belong to** — Create's mechanical-power
+network, Create's logistics network, Sophisticated Backpacks' upgrade
+modules. The question is **identity**, not **interaction graph**.
+
+The single biggest failure mode here is assigning a subsystem based on
+which recipes the item appears in. A \`golden_sheet\` is *processed by*
+Create's mechanical_press (so it appears in \`create:processing\`
+recipes), but it IS a refined metal sheet — a \`material\` in the
+player's inventory, NOT a processing machine. Its mod_subsystem is
+omitted entirely.
+
+The test, applied per item:
+
+> "Is this item itself a member of the named subsystem — a part the
+> player installs / wields / configures / chains into the subsystem's
+> machinery — or does it merely appear as an ingredient/output of
+> recipes the subsystem owns?"
+
+Only the first earns a mod_subsystem assignment. If the item is a
+material, food, decorative_block, building_block, natural_resource,
+upgrade, tool, weapon, or armor that some processing recipe happens to
+consume or produce, OMIT mod_subsystem and let the role decide.
+
+Cross-check: the runtime only honors mod_subsystem for parent
+templates the player *wants* mod-segregated — \`mechanism\`,
+\`functional_block\`, \`transport\`, and \`redstone_component\` items.
+Items with role \`material\`, \`building_block\`, \`decorative_block\`,
+\`consumable\`, \`natural_resource\`, \`upgrade\`, \`tool\`, \`weapon\`,
+\`armor\`, \`storage_block\`, \`utility\`, \`curiosity\` should generally
+NOT carry mod_subsystem. Exceptions are rare; if you're not certain,
+omit.
+
+Concrete anchors:
+- \`create:cogwheel\` IS a mechanical_power part the player chains into
+  contraptions. → mod_subsystem=create:mechanical_power.
+- \`create:mechanical_press\` IS a processing machine. →
+  mod_subsystem=create:processing.
+- \`create:golden_sheet\` is a refined material output by the
+  mechanical_press. → no mod_subsystem; role=material.
+- \`create:honeyed_apple\` is a food consumable. → no mod_subsystem;
+  role=consumable.
+- \`create:metal_girder\` is a building_block (the player builds with
+  it as part of an industrial-aesthetic structure). → no
+  mod_subsystem; role=building_block.
+- \`sophisticatedstorage:diamond_barrel\` is a storage_block sibling of
+  vanilla chests. → no mod_subsystem; role=storage_block.
+- A smithing-style upgrade module from a storage mod: → no
+  mod_subsystem; role=upgrade.
 `;
 
 const COMMON_MISCONCEPTIONS = `These factual errors recur in LLM output — avoid them:
@@ -226,6 +585,81 @@ const COMMON_MISCONCEPTIONS = `These factual errors recur in LLM output — avoi
   \`decorative_block\` or \`utility\`.
 - **Totem of undying**: role=\`utility\` (consumed on lethal damage; NOT
   \`trophy\` even though it's rare-ish).
+- **Logs and wood (all species, all states)**: role=\`building_block\`,
+  not \`natural_resource\` and not \`material\`. Logs are predominantly a
+  crafting input (processed into planks/sticks/charcoal), but players
+  group them with the rest of the wood family — planks, stairs, slabs,
+  fences — in a single wood-themed island. Don't split logs off into a
+  separate raw-materials or Nature category just because their dominant
+  use is crafting. Same family rule applies across all states (log / wood
+  / stripped_log / stripped_wood) and all species (oak / birch / spruce /
+  jungle / dark_oak / acacia / cherry / mangrove / bamboo / crimson /
+  warped). Saplings and bamboo-as-plant ARE \`natural_resource\` —
+  they're organic and planted.
+- **Stone variants**: role=\`building_block\`. cobblestone, mossy_cobblestone,
+  cracked_stone_bricks, all stone-brick variants, deepslate variants —
+  all \`building_block\`. Don't flip role between the base block and its
+  cracked/mossy/chiseled siblings.
+- **Doors / trapdoors / fence_gates of all materials**: role=\`building_block\`,
+  not \`functional_block\`. They open and close, but their primary use is
+  sealing a building. Includes iron_door, copper_door (every oxidation
+  state, every wax state), and every wood species. Same family rule as
+  wood/stone: don't flip role across siblings (a recurring failure mode
+  has been e.g. exposed_copper_door=building_block but
+  oxidized_copper_door=functional_block).
+- **Beds (every color)**: role=\`decorative_block\`, not
+  \`functional_block\`. Sleeping is a use, but the player has one bed
+  per home — beds belong on a Decoration island.
+- **Decorated pot**: role=\`decorative_block\`, not \`functional_block\`.
+  It holds a single display item; it's a pot, not a workstation.
+- **Rails (rail / powered_rail / detector_rail / activator_rail)**:
+  role=\`transport\`, not \`functional_block\` and not
+  \`redstone_component\`. The redstone-powered variants are part of a
+  rail network; their primary purpose is moving minecarts.
+- **Mob drops + raw ore chunks used as crafting ingredients**:
+  role=\`material\`, not \`natural_resource\`. feather, leather, bone,
+  string, slime_ball, blaze_rod, ghast_tear, magma_cream, gunpowder,
+  phantom_membrane, prismarine_shard, prismarine_crystals, ink_sac,
+  glow_ink_sac, nautilus_shell, rabbit_hide, armadillo_scute,
+  turtle_scute, honeycomb, scute, raw_iron, raw_copper, raw_gold,
+  ancient_debris — all \`material\`. natural_resource is reserved for
+  placeable nature (saplings, leaves, flowers, crops, kelp, sugar_cane,
+  bamboo, mushrooms, fungi).
+- **Compressed material blocks (Block of X)**: role=\`material\`, not
+  \`storage_block\`. iron_block, gold_block, diamond_block, emerald_block,
+  lapis_block, coal_block, copper_block (every oxidation/wax state),
+  netherite_block, raw_iron_block, raw_copper_block, raw_gold_block,
+  amethyst_block, quartz_block — all \`material\`. \`storage_block\` is
+  for container-UI blocks (chests, barrels, shulker boxes, drawers).
+- **Spawn eggs (every mob)**: role=\`curiosity\`, not \`utility\` and not
+  \`admin\`. They're creative-collectible.
+- **Smithing templates (every variant — netherite_upgrade and every
+  armor-trim template)**: role=\`upgrade\`, not \`curiosity\`. The player
+  applies them in the smithing table to upgrade gear; they're consumed
+  in a UI, not displayed as a collection. Storage mod
+  upgrade-modules (sophisticatedbackpacks / sophisticatedstorage
+  *_upgrade items) are also \`upgrade\`.
+- **Storage-network parts (tom's storage \`storage_terminal\` /
+  \`storage_output\` / \`inventory_proxy\` / \`inventory_connector\`,
+  Sophisticated Storage controllers and links, Applied Energistics ME
+  terminals and controllers, refined-storage grids)**: role=
+  \`storage_block\` or \`functional_block\` — the player walks up to
+  them and opens a UI to view, search, or move items. NOT
+  \`mechanism\` and NOT \`redstone_component\`, even when they have
+  redstone-driven IO. The shared mental model is "storage UI I open,"
+  not "kinetic gizmo." Default to \`storage_block\` for the chest-like
+  ones and \`functional_block\` for the workstation-like ones (the
+  search terminal you stand at to look something up).
+- **mod_subsystem on materials / food / building / decoration /
+  upgrade / tool / weapon / armor / storage / utility / curiosity
+  / natural items**: omit. mod_subsystem is for items the player
+  thinks of as "part of [mod]'s [subsystem network]" —
+  cogwheels, funnels, tracks, processing machines. A wood
+  variant from a mod, an ingot from a mod, a food item from a
+  mod, a smithing-template-style upgrade from a mod, a chest
+  variant from a mod — those collapse into the cross-mod
+  role-based pile. Don't tag them with their mod's subsystem
+  even if recipes connect them.
 - **Elytra**: ambiguous between \`armor\` and \`transport\`. Emit
   \`ambiguous: true\` with \`values: [armor, transport]\` rather than picking
   one.
@@ -261,6 +695,7 @@ function renderExpectedOutput(targetFacets: readonly string[]): string {
     },
     schema_proposals: [],
     corrections: [],
+    fill_ins: [],
   };
   return [
     "Structure (pure JSON, no comments):",
@@ -272,6 +707,7 @@ function renderExpectedOutput(targetFacets: readonly string[]): string {
     "- Ambiguous single-value (enum / free_text only): `values: [a, b]` AND `ambiguous: true`.",
     "- `schema_proposals` (optional top-level array, default `[]`): use when you want a value the schema doesn't include. Each entry is `{kind: 'add_value', facet, value, rationale}` or `{kind: 'add_facet', name, suggested_kind, rationale}`.",
     "- `corrections` (optional top-level array, default `[]`): use when a stage 2 facet is clearly wrong. Each entry is `{item, facet, current, suggested, rationale, confidence}` — confidence ≥ 0.7 required.",
+    "- `fill_ins` (optional top-level array, default `[]`): use when a stage-2 deterministic facet is *missing* but the item obviously has a value. Each entry is `{item, facet, value, rationale}`. Only the deterministic facets (`form`, `material_family`, `dye_color`, `required_tool`, `required_tool_tier`, `is_fuel`) — NOT llm-authored facets like role/activity/carry_frequency.",
   ].join("\n");
 }
 

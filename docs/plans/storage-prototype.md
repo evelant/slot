@@ -1,13 +1,19 @@
 # Storage Prototype Plan
 
-Last updated: 2026-04-17
+Last updated: 2026-04-26
 
 Status: near-term engineering plan for the first end-to-end prototype of the
 atlas scale features and island-to-chest storage integration. Slices 0–3,
 4a, 5 Take-All, 6, and 7 landed. The storage prototype's Kit-free
-surface is complete. Slice 4b (Kit-holdout deposit) and the withdraw
-half of Slice 5 wait on Kit prototype slice 5. See per-slice status
-headers below.
+surface is complete. **Kit prototype slice 5 has since landed**, so
+Slice 4b (Kit-holdout deposit) and the withdraw half of Slice 5 are now
+unblocked. See per-slice status headers below.
+
+For the storage-zone topology rework into player-named areas (Main
+Base, Mountain Mine, Oil Derrick, …) — a peer plan that layers a
+containment level above this prototype's claim/link/deposit shape —
+see [storage-areas.md](storage-areas.md). The two plans are
+independent; areas can land before or after Slice 4b/5-withdraw.
 
 For the storage concept and interaction model, see
 [../design/storage.md](../design/storage.md). For the atlas concept that this
@@ -168,11 +174,14 @@ Status:
   the `Capabilities.ItemHandler.ITEM` capability. The docked Triage
   panel re-populates with the now-unhomed carried items.
 - command gated on `source.hasPermission(2)` (op)
-- generator and resolver live in `dev.imagio.slot.debug`
-  (`RealisticAtlasGenerator`, `SemanticBucketResolver`,
-  `PopulateProfile`, `SemanticBucket`) with unit tests covering the
-  island layout, chest bucket-match ratio, triage fraction, and
-  empty-pool safety
+- generator + classifier live in `dev.imagio.slot.debug`
+  (`RealisticAtlasGenerator`, `FacetIndexTemplateClassifier`,
+  `PopulateProfile`) and group items by `IslandSuggestionTemplate`
+  via `FacetIndex`; unit tests cover island layout, chest
+  template-match ratio, triage fraction, and empty-pool safety. The
+  pre-FacetIndex `SemanticBucket(Resolver)` + `SubBucket*` path was
+  retired 2026-04-26 once template-driven classification covered its
+  use cases.
 
 Deliverables (historical — see Status above for the landed shape):
 

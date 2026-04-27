@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-04-25 (first vanilla classification dataset shipped; runtime FacetIndex integration is the next track)
+Last updated: 2026-04-26 (vanilla role-corrections sweep — 182 entries patched; doors / beds / rails / spawn_eggs / Block-of-X / mob-drops now route to the right templates; prompt tightened so future regenerations converge)
 
 This is the operational handoff document for planning and implementation. Read
 this after [../README.md](../README.md), then follow the linked architecture
@@ -207,10 +207,28 @@ Currently landed:
   [tools/classification/datasets/minecraft/](../tools/classification/datasets/minecraft/)
   (1536 vanilla items, 30 facets, 11 plank `material_family` entries
   patched in-place after the corrections sweep). Validated end-to-end
-  on createaddition, AE2, and SophisticatedStorage runs. Runtime
-  consumption side (`FacetIndex` in `common/`) is not yet wired —
-  see [plans/item-classification.md](plans/item-classification.md)
-  milestones 6+.
+  on createaddition, AE2, and SophisticatedStorage runs.
+- runtime classification consumption: the vanilla dataset now also
+  ships as a mod resource at
+  [`common/src/main/resources/data/slot/classification/vanilla-base.json`](../common/src/main/resources/data/slot/classification/vanilla-base.json)
+  and is loaded at first use by
+  [`FacetIndex`](../common/src/main/java/dev/imagio/slot/classification/FacetIndex.java)
+  /
+  [`FacetIndexHolder`](../common/src/main/java/dev/imagio/slot/classification/FacetIndexHolder.java).
+  The realistic-populate classifier
+  ([`FacetIndexTemplateClassifier`](../common/src/main/java/dev/imagio/slot/debug/FacetIndexTemplateClassifier.java))
+  resolves an item's `role` facet, picks the first matching
+  `IslandSuggestionTemplate`, and falls back to
+  `IslandSuggestionTemplate.MISC` for items outside the bundled
+  dataset (or when the static feature flag `FacetIndex.ENABLED` is
+  flipped off and class/tag signals don't match anything either).
+  Populated islands carry the same `defaultIslandId` /
+  `defaultLabel` / `defaultColor` a chip-accept would create, so
+  populate output and chip flow share one taxonomy. V1 surface only:
+  multi-layer merge, inverted indices, expression AST, and other
+  facet readers (runtime-crawl, modpack/server/player layers) stay
+  deferred — see [plans/item-classification.md](plans/item-classification.md)
+  milestones 8+.
 
 Current prototype validation point:
 
@@ -222,27 +240,64 @@ Current prototype validation point:
   **no silent auto-homing**: a fresh atlas contains no islands at all,
   and unhomed carried items appear in the docked Triage panel (a fixed
   left-edge overlay, not an atlas region — see core-workflow-ux.md
-  slice 1). A small set of conservative per-card suggestion chips
-  (driven by item class / tag / component signals, never id substring
-  matching) lets the player materialize Food / Tools / Weapons / Armor /
-  Materials / Storage islands on demand; everything beyond those six
-  seeds is player-authored or driven by rules learned from the player's
-  own manual placements
+  slice 1). Per-card suggestion chips are driven by FacetIndex `role`
+  lookup first, falling through to item class / tag / component
+  signals (never id substring matching). The 17-template enum (FOOD,
+  TOOLS, WEAPONS, ARMOR, MATERIALS, STORAGE, BUILDING, DECORATION,
+  NATURAL, WORKBENCHES, MECHANISMS, REDSTONE, UPGRADES, TRANSPORT,
+  UTILITY, CURIOSITY, MISC) covers the full v1 role taxonomy so every
+  classified item can materialize an island via chip-accept;
+  everything beyond those seeds is player-authored or driven by rules
+  learned from the player's own manual placements
 
 ## Current Focus
 
-**Active focus: `FacetIndex` runtime**
-([plans/item-classification.md](plans/item-classification.md)
-milestone 6) — load the shipped vanilla classification dataset
-(`tools/classification/datasets/minecraft/minecraft.facets.complete.json`,
-1536 items / 30 facets) into a thin `common/.../classification/FacetIndex`,
-JSONSchema-validated, exposing `index.role(itemId) → Optional<RoleValue>`.
-Wire it behind a feature flag at the homing call site
-([SlotTestCommands.java:128](../neoforge/src/main/java/dev/imagio/slot/neoforge/command/SlotTestCommands.java#L128))
-with `SemanticBucketResolver` as the no-data fallback. Regression-check
-`RealisticAtlasGeneratorTest`. Stop and playtest before stage-4 NN
-work; see the 6-step "Integration sequence" in
-[item-classification.md § Runtime](plans/item-classification.md#runtime).
+**Active focus: playtest the FacetIndex-driven populate path + the
+role-driven Triage chips.** [item-classification.md](plans/item-classification.md)
+milestones 6 + 7 + the V1 surface of Phase 4a all landed:
+
+- Vanilla dataset ships as a mod resource; `FacetIndex` loads it at
+  first use; `FacetIndex.ENABLED` static flag toggles the whole
+  classification path.
+- `SlotTestCommands.runPopulate` classifies through
+  `FacetIndexTemplateClassifier` (role → `IslandSuggestionTemplate`)
+  with `IslandSuggestionTemplate.MISC` as the catch-all when no
+  template matches. Populated islands and chip-suggested islands share
+  the same id / label / color, so chip-accept on a populated atlas
+  lands the item in the existing template island.
+- `IslandSignalExtractor` populates the FacetIndex `role` and
+  `material_family` onto every `IslandSignalDescriptor`. Each
+  `IslandSuggestionTemplate` carries a `roleTriggers` set and matches
+  on role first, falling back to the legacy class/tag signals when no
+  role is available. Template enum expanded from 6 to 13 (added
+  BUILDING / DECORATION / NATURAL / WORKBENCHES / MECHANISMS /
+  REDSTONE / UPGRADES); vanilla items now resolve to a template at
+  ~85% coverage, with the remaining ~15% intentionally miscellaneous
+  (`utility` / `admin` / `curiosity` / `transport` / `trophy` /
+  no-role).
+- `LearnedIslandRuleStore` adjacency keys now also include
+  `MATERIAL_FAMILY` (alongside `TAG`, `NAMESPACE`, `CREATIVE_TAB`).
+  Homing e.g. `oak_planks` + `oak_log` to a custom "Wood" island
+  fires a learned chip on the next `oak_*` item — including
+  shape-variant pairs whose item-tag sets don't overlap (planks vs.
+  logs vs. stripped wood). This was the bug that surfaced when
+  `birch_wood` was being suggested under the dataset's
+  `natural_resource` template instead of the player's existing
+  wood-family island.
+- **Modded items currently get no role-driven chip.** Only
+  `vanilla-base.json` ships as a runtime layer; mod-authored items
+  (Create / Create New Age / Create Dreams n Desires / etc.) fall
+  through to the legacy class/tag signals, which only match a
+  fraction of modded blocks/items. Lifting modded chip coverage
+  requires either per-mod LLM classification layers
+  ([item-classification.md milestones 10–11](plans/item-classification.md#milestones))
+  or the runtime-crawl deterministic layer (milestone 8 — note that
+  `role` is LLM-authored, so runtime-crawl alone won't lift chips).
+
+Next track is the modded classification layers question: ship per-mod
+LLM-authored layers for the active modset, build runtime-crawl, or
+hybrid — see [plans/current.md "Next near-term tracks"](plans/current.md).
+After that, the Phase 4a "Stop and playtest" gate.
 
 **Recently landed: Relevance-LOD Phase 2.2 + UI polish.** Phase 1,
 Phase 2.1, and Phase 2.2 are all in. The atlas renders
@@ -520,10 +575,10 @@ bias; WARN-level diagnostics now fire at every failure stage
 returned false) so next-time debugging is a single log grep.
 Generator lives in
 [common/debug/RealisticAtlasGenerator.java](../common/src/main/java/dev/imagio/slot/debug/RealisticAtlasGenerator.java)
-with an injected `Function<ItemStack, SemanticBucket>` classifier so
-layout + chest-linking logic is testable in common without a
-Minecraft bootstrap. Non-deterministic per run — no seed argument,
-regenerate with `/slot test clear` then re-run.
+with an injected `Function<ItemStack, IslandSuggestionTemplate>`
+classifier so layout + chest-linking logic is testable in common
+without a Minecraft bootstrap. Non-deterministic per run — no seed
+argument, regenerate with `/slot test clear` then re-run.
 
 **Active-kit belt sync landed.** Drag-to-edit on an active kit's
 active page now re-plans + executes that page via the usual

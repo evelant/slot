@@ -1,10 +1,28 @@
 # Item Classification & Facet Schema
 
-Status: **first vanilla dataset shipped**. Stages 1–3 of the pipeline are
-implemented and have produced [`tools/classification/datasets/minecraft/minecraft.facets.complete.json`](../../tools/classification/datasets/minecraft/minecraft.facets.complete.json)
-(1536 items, validated against `layer.schema.json`). The remaining work is
-runtime integration (`FacetIndex` + atlas-homing) — see milestone 6 onward.
-Last updated: 2026-04-25.
+Status: **vanilla dataset shipped + thin FacetIndex runtime + atlas-homing
+wired + role-driven Triage chips (vanilla-only)**. Stages 1–3 of the
+pipeline are implemented and have produced
+[`tools/classification/datasets/minecraft/minecraft.facets.complete.json`](../../tools/classification/datasets/minecraft/minecraft.facets.complete.json)
+(1536 items, validated against `layer.schema.json`). That dataset now also
+ships as a mod resource at
+[`common/src/main/resources/data/slot/classification/vanilla-base.json`](../../common/src/main/resources/data/slot/classification/vanilla-base.json),
+loaded at runtime by
+[`common/.../classification/FacetIndex`](../../common/src/main/java/dev/imagio/slot/classification/FacetIndex.java)
+and consumed by both the realistic-populate classifier
+([`FacetIndexBucketClassifier`](../../common/src/main/java/dev/imagio/slot/debug/FacetIndexBucketClassifier.java))
+and the Triage chip pipeline
+([`IslandSignalExtractor`](../../neoforge/src/main/java/dev/imagio/slot/neoforge/triage/IslandSignalExtractor.java)
+populates `IslandSignalDescriptor.role`; templates check role first,
+then fall through to existing class/tag signals). The
+[`IslandSuggestionTemplate`](../../common/src/main/java/dev/imagio/slot/inventory/triage/IslandSuggestionTemplate.java)
+enum expanded from 6 to 13 (added BUILDING / DECORATION / NATURAL /
+WORKBENCHES / MECHANISMS / REDSTONE / UPGRADES) so the full role
+taxonomy gets coverage; vanilla items reach ~85% chip coverage.
+Modded items still fall through to the legacy class/tag signals
+because no per-mod layer is shipped yet — that's the next concrete
+track (milestones 10–11). Milestones 6, 7, and the V1 surface of
+Phase 4a are landed. Last updated: 2026-04-25.
 
 ## Reading order for a fresh session
 
@@ -25,10 +43,9 @@ The **[Test strategy](#test-strategy)** section is the contract for what must be
 
 ## Purpose
 
-Replace the current keyword/tag rule resolver
-([SemanticBucketResolver.java](../../common/src/main/java/dev/imagio/slot/debug/SemanticBucketResolver.java),
-[ParentKeywordRules.java](../../common/src/main/java/dev/imagio/slot/debug/ParentKeywordRules.java))
-with a structured, queryable item metadata layer that powers:
+Replace the (now-deleted) keyword/tag rule resolver — `SemanticBucketResolver`
++ `ParentKeywordRules`, retired 2026-04-26 — with a structured, queryable
+item metadata layer that powers:
 
 - High-quality default home/island suggestions (the immediate pain point — current match rate feels ~40%).
 - Future surfacing features (smart search, recipe-aware highlighting, deposit hints, clutter review, theme detection).
@@ -1090,9 +1107,11 @@ New component: `dev.imagio.slot.classification.FacetIndex` in the `common` modul
   per-item denormalized record including provenance.
 - Query API: `index.query(Expr)` where `Expr` is a tiny AST (`and`, `or`, `not`, `eq`, `in`, `has`).
 - Per-item lookup: `index.facets(itemId): ItemRecord`.
-- Fallback: if an item has no facet entries from any layer, fall through to the existing
-  [SemanticBucketResolver.java](../../common/src/main/java/dev/imagio/slot/debug/SemanticBucketResolver.java)
-  so brand-new mods / datapacks / custom items still get a reasonable answer.
+- Fallback: if an item has no facet entries from any layer, the chip pipeline still
+  fires whatever class/tag triggers `IslandSuggestionTemplate` already declares
+  (subclass + tag matching), so brand-new mods / datapacks / custom items still get
+  a reasonable answer. The legacy `SemanticBucketResolver` rule resolver was retired
+  2026-04-26 once role-driven templates + class/tag fallback covered its use cases.
 
 ### Homing rule (V1)
 
@@ -1102,8 +1121,10 @@ Exactly one rule, hardcoded:
 1. If the item has any `player_island` entry, its home is the first player island listed.
 2. Otherwise, its home is the island that corresponds to the item's `role` value
    (one island per role: `mechanism-island`, `mining-island`, `building-island`, etc.).
-3. If the item has no `role` (classification gap), fall through to
-   `SemanticBucketResolver` for a best-effort bucket.
+3. If the item has no `role` (classification gap), `IslandSuggestionTemplate.matches`
+   falls through to its class-signal + item-tag triggers (FOOD/TOOLS/WEAPONS/ARMOR/
+   MATERIALS/STORAGE), and lands on `IslandSuggestionTemplate.MISC` only when even
+   those produce no match.
 
 No priority list, no "default island map" as a separate artifact — just `role`. The
 bundled roles (~20 values) map 1:1 to islands. That's close enough to the current
@@ -1151,25 +1172,23 @@ query API yet — is:
    Armor, Materials, Storage, …). Anything new (e.g. `mechanism`, `transport`, `magic`)
    gets a placeholder island id; islands themselves don't need to be pre-created since
    the atlas materializes them on first item placement.
-4. **Wire `FacetIndex` into the homing call site.** Replace
+4. **Wire `FacetIndex` into the homing + chip call sites.** Replace
    `SemanticBucketResolver::classify` at
-   [`SlotTestCommands.java:128`](../../neoforge/src/main/java/dev/imagio/slot/neoforge/command/SlotTestCommands.java)
-   with a function that:
-     1. Looks up the item's `role` in `FacetIndex`.
-     2. Maps it to an island id via the table above.
-     3. Falls through to `SemanticBucketResolver::classify` when the item has no
-        precomputed role (datapack items, KubeJS additions, unknown mods — anything
-        that hasn't been through the offline pipeline). This is the explicit
-        no-data fallback called out in [Runtime](#runtime).
-   Gate the new path behind a feature flag (a static boolean in `FacetIndex` is
-   sufficient — no config UI for V1) so we can A/B against the resolver during
-   playtesting.
+   [`SlotTestCommands.java`](../../neoforge/src/main/java/dev/imagio/slot/neoforge/command/SlotTestCommands.java)
+   with [`FacetIndexTemplateClassifier`](../../common/src/main/java/dev/imagio/slot/debug/FacetIndexTemplateClassifier.java)
+   so populated atlases group by the same `IslandSuggestionTemplate` chips create.
+   On the chip side, the platform-side
+   [`IslandSignalExtractor`](../../neoforge/src/main/java/dev/imagio/slot/neoforge/triage/IslandSignalExtractor.java)
+   reads `role` + `material_family` from `FacetIndex` and stamps them onto every
+   `IslandSignalDescriptor`; templates check role first, falling back to the
+   existing class/tag signals when role is null. Feature flag is the static
+   `FacetIndex.ENABLED` boolean. **Landed 2026-04-25 — 2026-04-26.**
 5. **Verify against the existing atlas tests.**
    [`RealisticAtlasGeneratorTest`](../../common/src/test/java/dev/imagio/slot/debug/RealisticAtlasGeneratorTest.java)
-   already exercises the bucket-classification path on representative item sets;
-   keep that test green by default and add a parallel test that exercises the
-   `FacetIndex` path. The two paths producing the same island assignment for the
-   shared subset of items is the correctness target.
+   has been retargeted at the template-keyed generator;
+   [`IslandSuggestionTemplateCoverageTest`](../../common/src/test/java/dev/imagio/slot/inventory/triage/IslandSuggestionTemplateCoverageTest.java)
+   asserts every `role` value in the bundled vanilla dataset resolves to some
+   template (the contract: every classified vanilla item gets a chip).
 6. **Stop here and playtest.** Before building stage-4 nearest-neighbor priming, the
    runtime-crawl layer (milestone 8), or the player layer (milestone 9), confirm
    that the precomputed homing actually feels meaningfully better than the keyword
@@ -1189,10 +1208,10 @@ What we are explicitly NOT doing in this slice:
 - **No inverted-index query API.** Until the atlas does more than role-keyed
   homing, every facet read is a per-item lookup. `Map<ItemId, Map<FacetId, Value>>`
   serves us fine for the V1 surface area.
-- **No multi-layer merging beyond `vanilla-base + fallback`.** The merge machinery
+- **No multi-layer merging beyond `vanilla-base`.** The merge machinery
   spec'd above is the right end state, but the V1 surface only needs the precomputed
-  layer plus the `SemanticBucketResolver` fallback. Modpack / server / player layers
-  arrive with milestones 9–11.
+  vanilla layer plus the class/tag fallback baked into `IslandSuggestionTemplate`.
+  Modpack / server / player layers arrive with milestones 9–11.
 
 ## Runtime discovery
 
@@ -1332,12 +1351,12 @@ One-liner per component. Concretely written so "does this have tests?" is answer
 - **Homing rule** — given fixture item, assert home island. Cover: has-player-island, has-role, has-neither.
 - **Runtime-crawl** — integration test with a minimal in-memory registry: one vanilla item, one tag, one recipe, one loot table. Assert produced layer has expected entries. More comprehensive integration via the testinstance mod setup.
 - **Player layer persistence** — create island, assert serialization; reload, assert round-trip; mutate, assert re-serialization.
-- **Shadow-mode divergence logger** (per milestone 7) — test that when `FacetIndex` and `SemanticBucketResolver` disagree, divergence is logged with both results attached.
+- ~~**Shadow-mode divergence logger** (per milestone 7) — test that when `FacetIndex` and `SemanticBucketResolver` disagree, divergence is logged with both results attached.~~ Obsolete — `SemanticBucketResolver` was retired 2026-04-26 once role-driven templates + class/tag fallback covered its use cases.
 
 ### Schema + docs
 
 - **Schema validator** — linter that loads `schema.v1.json` and verifies every facet declares a valid kind, that enum value lists are non-empty, that regex patterns compile.
-- **Cross-check** — test that every facet referenced in `SemanticBucketResolver`'s fallback logic exists in the schema.
+- **Cross-check** — test that every facet referenced in `IslandSuggestionTemplate.roleTriggers` exists in the schema's `ROLE_VALUES` enum (lock-step between the runtime template-set and the dataset author's vocabulary).
 - **Link check** — all inter-doc markdown links resolve (cheap CI step once a link-check action is wired up).
 
 ### What we explicitly *don't* test
@@ -1405,8 +1424,8 @@ without a changelog entry). CI (once present) enforces the same rule.
 3. **Extractor** (stage 1, Bun/TS) against vanilla and mod source trees. *(Done: [tools/classification/src/extract/](../../tools/classification/src/extract/). Vanilla reads mcmeta `summary` worktree; mod target walks `src/main/resources/`, `src/generated/resources/`, `neoforge/`, `forge/`, and `templates/` layouts and resolves `${mod_*}` placeholders from `gradle.properties` for mods that template their `mods.toml`. Per-record output: tags, recipe role + recipe-type counts, loot sources, model chain, item components.)*
 4. **Deterministic facet extractor** (stage 2) against vanilla. *(Done: [tools/classification/src/deterministic/](../../tools/classification/src/deterministic/). Rules cover `mod_namespace`, `material_family`, `form`, `dye_color`, `equip_slot`, `required_tool`/`required_tool_tier`, `processing_in`, `origin`, `rarity`, `y_level_range`, `is_creative_only`, `is_fuel`, and the derived booleans. Vanilla v1 stage-2 coverage: `mod_namespace` 100%, `is_stackable` 84%, `origin` 71%, `is_block_item` 68%, `required_tool` 53%, `processing_in` 46%, `form` 43%, `material_family` 38%, `is_fuel` 20%, `dye_color` 14%, smaller slices for the rest. Vanilla v1 corrections sweep applied 17 stage-2 rule fixes + ~40 per-item overrides (origin world-gen / structural, rarity, spawn-eggs, glow_lichen, honeycomb_block, etc.).)*
 5. **LLM completer** (stage 3) against vanilla and the first three mods. *(Done: [tools/classification/src/llm/](../../tools/classification/src/llm/). Vanilla full pass produced 1536-item layer in [`datasets/minecraft/`](../../tools/classification/datasets/minecraft/) at concurrency 4 with split-prompt + fixture record/replay + transient-error retry. Per-mod `mod_subsystem` proposer pre-pass reads README + mods.toml (with `gradle.properties` fallback) + recipe types and pins a 3–8 entry canonical vocabulary into the system prompt — validated on createaddition (5 vocab/49-item coverage), AE2 (7 vocab/284-item coverage), and SophisticatedStorage (5 vocab/112-item coverage), all with zero synonym drift.)*
-6. **Runtime `FacetIndex`** — layer loading + merging + queries + lookup in `common/`, integrated behind a feature flag. **(NEXT.)** Stages 4 (nearest-neighbor) and the explicit "compile" step (stage 5) are deferred — the stage-3 output is already a valid layer file and can be loaded directly. Revisit those if NN priming actually moves the needle on the next stage-3 generation.
-7. **Atlas-homing wiring** — replace `SemanticBucketResolver` as the homing source with the `FacetIndex` `role`-based rule, with the resolver as the no-data fallback. Regression-check the existing `RealisticAtlasGenerator` tests with vanilla items.
+6. **Runtime `FacetIndex`** — layer loading + merging + queries + lookup in `common/`, integrated behind a feature flag. **(LANDED, V1 surface only.)** [`FacetIndex`](../../common/src/main/java/dev/imagio/slot/classification/FacetIndex.java) loads the bundled `vanilla-base.json`, validates `schema_version`/`layer`, and exposes `Optional<String> role(String itemId)`. Multi-layer merging, inverted indices, and the expression AST are deferred until a second feature actually needs them. Stages 4 (nearest-neighbor) and the explicit "compile" step (stage 5) stay deferred for the same reason — the stage-3 output is already a valid layer file. Feature flag is `FacetIndex.ENABLED` (static boolean, default on). Tests at [`FacetIndexTest`](../../common/src/test/java/dev/imagio/slot/classification/FacetIndexTest.java).
+7. **Atlas-homing wiring** — **(LANDED.)** `FacetIndexBucketClassifier` (in [`common/.../debug/`](../../common/src/main/java/dev/imagio/slot/debug/FacetIndexBucketClassifier.java) next to `SemanticBucketResolver`) runs role-lookup → `RoleSemanticBucketMap` → `SemanticBucket`, falling through to `SemanticBucketResolver::classify` when the item is absent from the dataset, when its role doesn't map to a bucket, or when `FacetIndex.ENABLED == false`. Wired in at [`SlotTestCommands.runPopulate`](../../neoforge/src/main/java/dev/imagio/slot/neoforge/command/SlotTestCommands.java) (the only existing homing call site). `RealisticAtlasGeneratorTest` continues to pass against an in-test classifier; production `runPopulate` now uses `FacetIndexHolder.get()`. Mapping table at [`RoleSemanticBucketMap`](../../common/src/main/java/dev/imagio/slot/classification/RoleSemanticBucketMap.java).
 8. **Runtime-crawl layer** — direct registry walk to populate deterministic facets for items without a precomputed layer (datapacks, KubeJS, unknown mods). Ship without EMI/ALI enrichment first; add those as follow-ups once the base crawl is proven.
 9. **Player-island layer** — persist player island assignments as a player layer; read back into `FacetIndex`. Exercise the merge path end-to-end.
 10. **Expand to Create** as the first modded target. Identify schema gaps and merge-mode edge cases the vanilla-only run didn't reveal.
@@ -1464,3 +1483,9 @@ continue with mod expansion. If the abstraction isn't working, rewind.
 - **Schema additions surfaced by the vanilla v1 canary** (2026-04-25): `origin: creative_only/brewing`, `combat_bonus: disables_blocking/inflicts_glowing`, `environmental_property: sustains_fire/piglin_repellent/trample_sensitive/climbable`, `material_family: honeycomb/netherrack`. *(2026-04-25.)*
 - **Stage-2 rule bugs surfaced by the vanilla v1 canary**: `wooden_tool_materials → wood_oak` over-tagged every plank type as oak (fixed: removed; id-prefix wins); `crimson_/warped_` prefixes mis-classified `_fungus`/`_nylium` as wood (fixed: suffix exclusion); nether woods labelled `is_fuel=true` (fixed: `non_flammable_wood` tag check + nether prefix override); `end_portal_frame` placed in The End (fixed: routed to `underground`); `smooth_basalt` placed in nether (fixed: routed to `underground` because of overworld geodes). *(All fixes in [tools/classification/src/deterministic/rules/](../../tools/classification/src/deterministic/rules/).)*
 - **Per-mod `mod_subsystem` consistency** (2026-04-24): `claude -p` proposer pre-pass reads README + mods.toml + recipe types and pins a 3–8 entry canonical vocabulary into the system prompt. Validated on createaddition (5 entries, 49/54 items labelled), AE2 (7 entries, 284/364 items labelled), SophisticatedStorage (5 entries, 112/113 items labelled). Zero synonym drift across all three.
+- **Stage-3 prompt fix: wood/log/stripped variants always `building_block`** (2026-04-26). Surfaced by playtest: `birch_wood` was classified `natural_resource` while `oak_wood` was `building_block` — same shape, same family, role flipped per LLM dice roll. Root cause: the role disambiguation in [`tools/classification/src/llm/prompt.ts`](../../tools/classification/src/llm/prompt.ts) listed "logs" under both `natural_resource` ("obtained from the world") and `building_block` ("logs when placed"), so the LLM could legitimately pick either. Fix: removed the contradiction, made placement-as-block the deciding test for ALL wood/log/stripped variants, and added explicit consistency rules ("all shape variants of the same `material_family` share a role") + new `COMMON_MISCONCEPTIONS` bullets for wood and stone variants. Future stage-3 runs converge on `building_block` for the whole wood family.
+- **Cardinal rule added to stage-3 system prompt** (2026-04-26). After two consecutive playtest rounds surfaced category-wide misclassifications (wood/log family, then doors / beds / rails / spawn_eggs / Block-of-X / mob-drops), the underlying pattern was always the same: a *literal* reading of the rule produced a technically-defensible answer that didn't match how players use the item. Fix: a new "Cardinal rule" section was added to the very top of `SYSTEM_PREAMBLE` in [`tools/classification/src/llm/prompt.ts`](../../tools/classification/src/llm/prompt.ts), framed as overriding everything else. The rule states classification must follow the *player mental model* ("if a player handed me this item, where would they expect to find it in their organized inventory?"), with five concrete examples (door, bed, Block of Diamond, blaze_rod, spawn egg, log) showing the literal-vs-player-mental-model conflict and which one wins. Future categories the LLM hasn't been explicitly briefed on should now resolve in the right direction by default.
+- **Stage-3 prompt + dataset corrections sweep** (2026-04-26). Playtest of `/slot test populate organized` surfaced systematic mis-classifications across nine vanilla-item categories. Root cause for each was the same shape: the prompt's role disambiguation was generous enough that the LLM made plausible-but-wrong calls, and the calls were *inconsistent within the same family* (e.g. `oak_door`=building_block but `iron_door`=functional_block; `exposed_copper_door`=building_block but `oxidized_copper_door`=functional_block). Two-layer fix:
+  - **Prompt:** rewrote the `material vs natural_resource`, `building_block vs decorative_block vs functional_block`, and added new `storage_block` / `transport` / `curiosity vs utility` sections, plus 6 new `COMMON_MISCONCEPTIONS` bullets enumerating the affected categories. Future regenerations should converge on the right call.
+  - **Dataset:** [`tools/classification/scripts/apply-vanilla-role-corrections.ts`](../../tools/classification/scripts/apply-vanilla-role-corrections.ts) is the idempotent patch script that applies the corrections to the shipped `vanilla-base.json`. 182 entries patched across 9 rules: doors → building_block, trapdoors → building_block, fence_gates → building_block, beds → decorative_block, decorated_pot → decorative_block, rails → transport, spawn_eggs → curiosity, compressed material blocks (Block of X) → material, mob drops + raw ores → material. The same JSON also lives at `common/src/main/resources/data/slot/classification/vanilla-base.json` and is rewritten by the script in lockstep.
+  - **Tests:** [`IslandSuggestionTemplateCoverageTest.shippedDatasetClassifiesPlaytestProblemItemsCorrectly`](../../common/src/test/java/dev/imagio/slot/inventory/triage/IslandSuggestionTemplateCoverageTest.java) locks in the specific items the user flagged so a future regeneration that regresses any of them fails cleanly.

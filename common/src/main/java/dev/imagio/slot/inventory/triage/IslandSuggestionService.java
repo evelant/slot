@@ -114,6 +114,16 @@ public final class IslandSuggestionService {
             Map<String, TriageIslandRef> islandsById,
             Set<String> dismissedTemplateIds
     ) {
+        // Trophy shunt: rarity=unique or role=trophy items belong on
+        // display (CURIOSITY), regardless of whatever else they'd match.
+        // Mirrors the same rule the populate generator applies.
+        if (IslandSuggestionTemplate.isTrophy(descriptor)
+                && !dismissedTemplateIds.contains(IslandSuggestionTemplate.CURIOSITY.defaultIslandId())) {
+            if (isTemplateSuppressed(IslandSuggestionTemplate.CURIOSITY, existingChips, islandsById)) {
+                return null;
+            }
+            return ChipSuggestion.template(IslandSuggestionTemplate.CURIOSITY, descriptor.identity());
+        }
         for (IslandSuggestionTemplate template : IslandSuggestionTemplate.values()) {
             if (!template.matches(descriptor)) {
                 continue;
@@ -124,7 +134,49 @@ public final class IslandSuggestionService {
             if (isTemplateSuppressed(template, existingChips, islandsById)) {
                 return null;
             }
+            // Subsystem-aware: if any existing island matches one of this
+            // descriptor's subsystems, route the chip there instead of the
+            // generic template island. Mirrors the player's mental model
+            // ("Create — Mechanical Power" already exists, drop into it
+            // rather than spawning a parallel MECHANISMS pile).
+            // Only honored for parent templates the player actually wants
+            // mod-segregated — see IslandSuggestionTemplate#allowsSubsystemGrouping.
+            if (template.allowsSubsystemGrouping()) {
+                ChipSuggestion subsystemChip = subsystemChipIfExists(descriptor, islandsById);
+                if (subsystemChip != null) {
+                    return subsystemChip;
+                }
+            }
             return ChipSuggestion.template(template, descriptor.identity());
+        }
+        // Even when no template fired (very rare for classified items), a
+        // subsystem-island that already exists should still capture the
+        // item — the chip surfaces the place the player has already
+        // sanctioned.
+        return subsystemChipIfExists(descriptor, islandsById);
+    }
+
+    private static ChipSuggestion subsystemChipIfExists(
+            IslandSignalDescriptor descriptor,
+            Map<String, TriageIslandRef> islandsById
+    ) {
+        if (descriptor.subsystems().isEmpty() || islandsById.isEmpty()) {
+            return null;
+        }
+        for (String subsystemId : descriptor.subsystems()) {
+            if (subsystemId == null || subsystemId.isBlank()) {
+                continue;
+            }
+            String islandId = IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX + subsystemId;
+            TriageIslandRef island = islandsById.get(islandId);
+            if (island != null) {
+                return ChipSuggestion.learned(
+                        island.islandId(),
+                        island.label(),
+                        island.color(),
+                        island.iconIdentity()
+                );
+            }
         }
         return null;
     }

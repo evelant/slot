@@ -18,6 +18,7 @@ import { yLevelRangeRule } from "./rules/y_level_range.ts";
 import { isCreativeOnlyRule } from "./rules/is_creative_only.ts";
 import { isFuelRule } from "./rules/is_fuel.ts";
 import { tierRule } from "./rules/tier.ts";
+import { emitsLightRule } from "./rules/emits_light.ts";
 
 /** The ordered rule set. Order matters only for the (rare) case where two rules
  *  assert the same single-value facet — earlier wins. We currently don't have
@@ -37,6 +38,7 @@ export const DEFAULT_RULES: Rule[] = [
   isCreativeOnlyRule,
   isFuelRule,
   tierRule,
+  emitsLightRule,
 ];
 
 export interface DeterministicRunOptions {

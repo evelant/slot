@@ -1,0 +1,3958 @@
+{
+  "schema_version": 1,
+  "layer": "per-mod",
+  "source": "create_new_age",
+  "entries": {
+    "create_new_age:advanced_energiser": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — electrical energy transfer block"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of electrical power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once, not carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted intermediate tier"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — industrial machine component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:electrical_infrastructure"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — energy storage/distribution device"
+        },
+        "primary_uses": {
+          "values": [
+            "energy storage and distribution"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — name and context"
+        }
+      }
+    },
+    "create_new_age:advanced_motor": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — motor providing rotational power"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of motor system"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — advanced crafting"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — motor component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:motors"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — motor part"
+        },
+        "primary_uses": {
+          "values": [
+            "generating rotational power"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — motor function"
+        }
+      }
+    },
+    "create_new_age:advanced_motor_extension": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — extends motor range"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of motor system"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — advanced crafting"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — motor component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:motors"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — motor extension"
+        },
+        "primary_uses": {
+          "values": [
+            "extending motor reach"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — name"
+        }
+      }
+    },
+    "create_new_age:advanced_solar_heating_plate": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — solar thermal collector"
+        },
+        "activity": {
+          "values": [
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — generates heat from sun"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — advanced tier"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — thermal component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:thermal_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — heat collection device"
+        },
+        "primary_uses": {
+          "values": [
+            "collecting solar heat"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — name"
+        }
+      }
+    },
+    "create_new_age:basic_energiser": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — basic energy storage"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of electrical network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — basic crafting"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — industrial machine"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:electrical_infrastructure"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — energy distributor"
+        },
+        "primary_uses": {
+          "values": [
+            "energy storage and distribution"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — name and context"
+        }
+      }
+    },
+    "create_new_age:basic_motor": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — basic rotational motor"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — motor system"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — basic tier"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — motor component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:motors"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — basic motor"
+        },
+        "primary_uses": {
+          "values": [
+            "generating rotational power"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — motor function"
+        }
+      }
+    },
+    "create_new_age:basic_motor_extension": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — extends basic motor"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of motor system"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — basic tier"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — motor extension"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:motors"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — motor extension part"
+        },
+        "primary_uses": {
+          "values": [
+            "extending motor reach"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — name"
+        }
+      }
+    },
+    "create_new_age:basic_solar_heating_plate": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — basic solar thermal"
+        },
+        "activity": {
+          "values": [
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — collects solar heat"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — basic tier"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — thermal component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:thermal_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — heat collection"
+        },
+        "primary_uses": {
+          "values": [
+            "collecting solar heat"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — name"
+        }
+      }
+    },
+    "create_new_age:blank_circuit": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "create:deploying"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafting ingredient for circuits"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — kept in stash for crafting"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — basic component"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — unfinished circuit board"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting copper circuits"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — ingredient in recipes"
+        }
+      }
+    },
+    "create_new_age:carbon_brushes": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — component block for motors"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — motor part"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — basic crafted block"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — motor consumable"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:motors"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — brush component for motors"
+        },
+        "primary_uses": {
+          "values": [
+            "conducting electricity in motors"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — name and context"
+        }
+      }
+    },
+    "create_new_age:copper_circuit": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "create:mechanical_crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafting intermediate for advanced parts"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in recipes"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from blank circuit"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — circuit board"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting motor extensions"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — ingredient in mechanical crafting"
+        }
+      }
+    },
+    "create_new_age:copper_wire": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "create:deploying"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — basic crafting material for circuits and blocks"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — common component, kept in stacks"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — easily crafted"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — wire"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting circuits and wire blocks"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — ingredient in many recipes"
+        }
+      }
+    },
+    "create_new_age:copper_wire_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "required_tool_tier": {
+          "value": "stone",
+          "confidence": 1,
+          "source": "rule:required_tool_tier_from_block_tag",
+          "rationale": "tag minecraft:needs_stone_tool"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — decorative/structural block made of wire"
+        },
+        "material_family": {
+          "value": "copper",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — made of copper wire"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used as building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed in builds"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from common material"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — industrial wire pattern, copper color"
+        },
+        "primary_uses": {
+          "values": [
+            "industrial building material",
+            "storage of copper wire"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placeable block and wire storage"
+        }
+      }
+    },
+    "create_new_age:corium": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "role": {
+          "value": "curiosity",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — hazardous byproduct with no use"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — not commonly carried"
+        },
+        "rarity": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — from reactor meltdown, no recipe"
+        },
+        "emits_light": {
+          "value": true,
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — likely glows like lava"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "novelty display"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — rare block with no crafting use"
+        }
+      }
+    },
+    "create_new_age:electrical_connector": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — connects electrical components"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of electrical network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — basic crafting"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — electrical component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:electrical_infrastructure"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — connector for power lines"
+        },
+        "primary_uses": {
+          "values": [
+            "connecting wires and machines"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — name"
+        }
+      }
+    },
+    "create_new_age:fluxuated_magnetite": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — processed magnetite block for storage"
+        },
+        "material_family": {
+          "value": "magnetite",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — based on name and tag"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — advanced material, not commonly carried"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from magnetite"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — magnetic material block"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting magnetic components",
+            "decorative block"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — material block and ingredient"
+        }
+      }
+    },
+    "create_new_age:generator_coil": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of electrical generator"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — generates electricity"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — advanced component"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — coil winding"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:electrical_infrastructure"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — generator part"
+        },
+        "primary_uses": {
+          "values": [
+            "generating electricity from rotation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — name and context"
+        }
+      }
+    },
+    "create_new_age:heat_pipe": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — transfers heat between blocks"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — thermal management"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — basic crafting"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — pipe for heat"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:thermal_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — heat transport pipe"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting heat between machines"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — name"
+        }
+      }
+    },
+    "create_new_age:heat_pump": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — moves heat actively"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — thermal management"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — advanced thermal component"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — pump"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:thermal_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — heat pump device"
+        },
+        "primary_uses": {
+          "values": [
+            "pumping heat between locations"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — name"
+        }
+      }
+    },
+    "create_new_age:heater": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — generates heat from fuel"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — produces heat for machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — advanced thermal component"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — heating device"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:thermal_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — heat source"
+        },
+        "primary_uses": {
+          "values": [
+            "providing heat for thermal system"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — name"
+        }
+      }
+    },
+    "create_new_age:incomplete_enchanted_golden_apple": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — intermediate crafting component"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted in sequence assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — transient assembly step"
+        },
+        "primary_uses": {
+          "values": [
+            "step to craft enchanted golden apple"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — assembly sequence part"
+        }
+      }
+    },
+    "create_new_age:incomplete_fuel": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — intermediate for nuclear fuel"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted in assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — transient step"
+        },
+        "primary_uses": {
+          "values": [
+            "step to craft nuclear fuel"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — assembly sequence part"
+        }
+      }
+    },
+    "create_new_age:incomplete_reactor_casing": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — intermediate for casing"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted in assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — transient step"
+        },
+        "primary_uses": {
+          "values": [
+            "step to craft reactor casing"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — assembly sequence part"
+        }
+      }
+    },
+    "create_new_age:incomplete_wire": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — intermediate for wire"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted in assembly"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — transient step"
+        },
+        "primary_uses": {
+          "values": [
+            "step to craft overcharged wire"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — assembly sequence part"
+        }
+      }
+    },
+    "create_new_age:lamp_post": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "decorative_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed light source"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 0.3,
+          "source": "llm:stage3",
+          "rationale": "[guess] — metal lamp post"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craftable block"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once decor"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — lighting and building"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative lighting",
+            "path illumination"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — aesthetic light source"
+        },
+        "emits_light": {
+          "value": true,
+          "confidence": 0.85,
+          "source": "llm:stage3-fill-in",
+          "rationale": "lamp post should emit light"
+        }
+      }
+    },
+    "create_new_age:layered_magnet": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — component for motors/generators"
+        },
+        "material_family": {
+          "value": "magnet",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — tag create_new_age:magnet"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from magnetite"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried for building generators"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in electrical generation"
+        },
+        "primary_uses": {
+          "values": [
+            "magnetic component for motors"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — key part in advanced motors"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:magnetic_materials"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — magnet tag and recipe context"
+        }
+      }
+    },
+    "create_new_age:magnetite_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — raw magnetic material block"
+        },
+        "material_family": {
+          "value": "magnetite",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — name indicates magnetite"
+        },
+        "rarity": {
+          "value": "common",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used as crafting stock"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in motor crafting"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting magnets and motors"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — base material for magnetic items"
+        }
+      }
+    },
+    "create_new_age:netherite_magnet": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — high-tier magnetic component"
+        },
+        "material_family": {
+          "value": "netherite",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — name includes netherite"
+        },
+        "tier": {
+          "value": "netherite",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from netherite materials"
+        },
+        "rarity": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — requires netherite and energising"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used sparingly in advanced builds"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of high-end generators"
+        },
+        "primary_uses": {
+          "values": [
+            "top-tier magnet for motors"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — best magnetic component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:magnetic_materials"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — magnet tag and netherite tier"
+        }
+      }
+    },
+    "create_new_age:nuclear_fuel": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "create:mechanical_crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — fuel resource for reactor"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — requires assembly processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried to fuel reactor"
+        },
+        "activity": {
+          "values": [
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used as fuel in reactor"
+        },
+        "primary_uses": {
+          "values": [
+            "fuel for nuclear reactor"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — consumed in reactor"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:nuclear_reactor"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — tag create_new_age:nuclear/fuel"
+        }
+      }
+    },
+    "create_new_age:overcharged_diamond": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "create:mechanical_crafting",
+            "create:sequenced_assembly"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — advanced material for crafting"
+        },
+        "material_family": {
+          "value": "diamond",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — name indicates diamond base"
+        },
+        "tier": {
+          "value": "diamond",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — diamond-level advanced material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — requires energising process"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried for advanced crafting"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in motor/generator recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafts advanced motors and wires"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — key ingredient in high-tier items"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:advanced_materials"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — overcharged material line"
+        }
+      }
+    },
+    "create_new_age:overcharged_diamond_wire": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — energy conductor component"
+        },
+        "material_family": {
+          "value": "diamond",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — made from diamond"
+        },
+        "tier": {
+          "value": "diamond",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — diamond-tier wire"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — requires overcharged diamond"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used extensively in wiring"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of electrical network"
+        },
+        "primary_uses": {
+          "values": [
+            "conducts energy in power network"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — wire for electrical infrastructure"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:electrical_infrastructure"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — wire for energy distribution"
+        }
+      }
+    },
+    "create_new_age:overcharged_diamond_wire_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "required_tool_tier": {
+          "value": "iron",
+          "confidence": 1,
+          "source": "rule:required_tool_tier_from_block_tag",
+          "rationale": "tag minecraft:needs_iron_tool"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dense energy conductor block"
+        },
+        "material_family": {
+          "value": "diamond",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — made from diamond wire"
+        },
+        "tier": {
+          "value": "diamond",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — diamond-tier block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — requires wire conversion"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed as bulk conductor"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of electrical infrastructure"
+        },
+        "primary_uses": {
+          "values": [
+            "compact energy conductor block"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — block form of diamond wire"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:electrical_infrastructure"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of wiring system"
+        }
+      }
+    },
+    "create_new_age:overcharged_gold": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "create:pressing"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — advanced gold material"
+        },
+        "material_family": {
+          "value": "gold",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — name indicates gold base"
+        },
+        "tier": {
+          "value": "gold",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — gold-tier advanced material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — requires energising"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried for advanced crafting"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafts overcharged gold items"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — base material for gold line"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:advanced_materials"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — overcharged material line"
+        }
+      }
+    },
+    "create_new_age:overcharged_golden_sheet": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "create:cutting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — sheet form of overcharged gold"
+        },
+        "material_family": {
+          "value": "gold",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — made from gold"
+        },
+        "tier": {
+          "value": "gold",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — gold-tier sheet"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — requires pressing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried for crafting"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafts overcharged gold wire"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — intermediate for wire"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:advanced_materials"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of gold line"
+        }
+      }
+    },
+    "create_new_age:overcharged_golden_wire": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — gold energy conductor"
+        },
+        "material_family": {
+          "value": "gold",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — made from gold"
+        },
+        "tier": {
+          "value": "gold",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — gold-tier wire"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — requires sheet and cutting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in wiring"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — electrical component"
+        },
+        "primary_uses": {
+          "values": [
+            "conducts energy in power network"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — gold wire for infrastructure"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:electrical_infrastructure"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — wire for energy distribution"
+        }
+      }
+    },
+    "create_new_age:overcharged_golden_wire_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "required_tool_tier": {
+          "value": "iron",
+          "confidence": 1,
+          "source": "rule:required_tool_tier_from_block_tag",
+          "rationale": "tag minecraft:needs_iron_tool"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dense gold conductor block"
+        },
+        "material_family": {
+          "value": "gold",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — made from gold wire"
+        },
+        "tier": {
+          "value": "gold",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — gold-tier block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — requires wire conversion"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed as bulk conductor"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of electrical infrastructure"
+        },
+        "primary_uses": {
+          "values": [
+            "compact energy conductor block"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — block form of gold wire"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:electrical_infrastructure"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of wiring system"
+        }
+      }
+    },
+    "create_new_age:overcharged_iron": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "create:pressing"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — advanced iron material"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — name indicates iron base"
+        },
+        "tier": {
+          "value": "iron",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — iron-tier advanced material"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — requires energising"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried for advanced crafting"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafts overcharged iron items"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — base material for iron line"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:advanced_materials"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — overcharged material line"
+        }
+      }
+    },
+    "create_new_age:overcharged_iron_sheet": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "create:cutting",
+            "create:mechanical_crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — sheet form of overcharged iron"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — made from iron"
+        },
+        "tier": {
+          "value": "iron",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — iron-tier sheet"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — requires pressing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried for crafting"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in recipes"
+        },
+        "primary_uses": {
+          "values": [
+            "crafts overcharged iron wire"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — intermediate for wire"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:advanced_materials"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of iron line"
+        }
+      }
+    },
+    "create_new_age:overcharged_iron_wire": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — iron energy conductor"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — made from iron"
+        },
+        "tier": {
+          "value": "iron",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — iron-tier wire"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — requires sheet and cutting"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in wiring"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — electrical component"
+        },
+        "primary_uses": {
+          "values": [
+            "conducts energy in power network"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — iron wire for infrastructure"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:electrical_infrastructure"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — wire for energy distribution"
+        }
+      }
+    },
+    "create_new_age:overcharged_iron_wire_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "required_tool_tier": {
+          "value": "stone",
+          "confidence": 1,
+          "source": "rule:required_tool_tier_from_block_tag",
+          "rationale": "tag minecraft:needs_stone_tool"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dense iron conductor block"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — made from iron wire"
+        },
+        "tier": {
+          "value": "iron",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — iron-tier block"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — requires wire conversion"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed as bulk conductor"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of electrical infrastructure"
+        },
+        "primary_uses": {
+          "values": [
+            "compact energy conductor block"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — block form of iron wire"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:electrical_infrastructure"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of wiring system"
+        }
+      }
+    },
+    "create_new_age:radioactive_thorium": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "create:sequenced_assembly"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — intermediate crafting material for nuclear fuel"
+        },
+        "material_family": {
+          "value": "thorium",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — variant of thorium"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — requires crushing thorium ore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried when crafting reactor fuel"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in nuclear fuel production"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:nuclear_reactor"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of nuclear fuel chain"
+        }
+      }
+    },
+    "create_new_age:reactor_casing": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "create:mechanical_crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — multiblock component for reactor structure"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — likely metal casing"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — builds nuclear reactor"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried when constructing reactor"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:nuclear_reactor"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — casing for nuclear reactor"
+        },
+        "multiblock_component_of": {
+          "values": [
+            "create_new_age:nuclear_reactor"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — forms reactor walls"
+        },
+        "multiblock_role": {
+          "value": "casing",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — outer structural block"
+        }
+      }
+    },
+    "create_new_age:reactor_fuel_acceptor": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of reactor fuel input"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — accepts fuel for reactor"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried when building reactor"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:nuclear_reactor"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — fuel input port"
+        },
+        "multiblock_component_of": {
+          "values": [
+            "create_new_age:nuclear_reactor"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — fuel acceptor block"
+        },
+        "multiblock_role": {
+          "value": "port",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — fuel input port"
+        }
+      }
+    },
+    "create_new_age:reactor_glass": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "form": {
+          "value": "pane",
+          "confidence": 1,
+          "source": "rule:form_from_id",
+          "rationale": "suffix _glass"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "create:mechanical_crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — transparent reactor wall"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of reactor build"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried when building reactor"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:nuclear_reactor"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — reactor viewing pane"
+        },
+        "multiblock_component_of": {
+          "values": [
+            "create_new_age:nuclear_reactor"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — transparent wall"
+        },
+        "multiblock_role": {
+          "value": "wall",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — transparent casing"
+        },
+        "palette": {
+          "values": [
+            "translucent"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — glass block"
+        }
+      }
+    },
+    "create_new_age:reactor_heat_vent": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — heat vent for reactor"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — manages reactor heat"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried when building reactor"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:nuclear_reactor"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — heat management part"
+        },
+        "multiblock_component_of": {
+          "values": [
+            "create_new_age:nuclear_reactor"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — heat vent block"
+        },
+        "multiblock_role": {
+          "value": "valve",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — heat output port"
+        }
+      }
+    },
+    "create_new_age:reactor_rod": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — core component of reactor"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — contains fuel for fission"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried when fueling reactor"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:nuclear_reactor"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — fuel rod"
+        },
+        "multiblock_component_of": {
+          "values": [
+            "create_new_age:nuclear_reactor"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — fuel rod inside reactor"
+        },
+        "multiblock_role": {
+          "value": "core",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — central fuel element"
+        }
+      }
+    },
+    "create_new_age:redstone_magnet": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — magnetic mechanism block"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — interacts with redstone and items"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed in contraptions"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:magnetic_materials"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — magnet block"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — likely iron construction"
+        }
+      }
+    },
+    "create_new_age:reinforced_energiser": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — generates or transmits energy"
+        },
+        "activity": {
+          "values": [
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — produces electrical power"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed in power grid"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:electrical_infrastructure"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — energy generation part"
+        }
+      }
+    },
+    "create_new_age:reinforced_motor": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "create:mechanical_crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — motor for mechanical power"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — converts energy to rotation"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed in contraptions"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:motors"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — reinforced motor variant"
+        }
+      }
+    },
+    "create_new_age:solid_corium": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "role": {
+          "value": "curiosity",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — byproduct of reactor meltdown"
+        },
+        "material_family": {
+          "value": "corium",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — radioactive waste material"
+        },
+        "rarity": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — only from reactor accidents"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — kept as novelty or warning"
+        },
+        "activity": {
+          "values": [],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — no functional use"
+        }
+      }
+    },
+    "create_new_age:stirling_engine": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — heat-to-power engine"
+        },
+        "activity": {
+          "values": [
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — converts heat to energy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed in thermal setup"
+        },
+        "mod_subsystem": {
+          "values": [
+            "create_new_age:thermal_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — heat engine"
+        }
+      }
+    },
+    "create_new_age:street_light": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "decorative_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed for aesthetic lighting"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — lights up streets and paths"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once, not carried"
+        },
+        "emits_light": {
+          "value": true,
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — provides light when placed"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "glowing"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — metal lamp post with light"
+        }
+      }
+    },
+    "create_new_age:thorium": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "create:crushing",
+            "create:mixing"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — refined metal for crafting"
+        },
+        "material_family": {
+          "value": "thorium",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — main component"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — requires mining and processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried when crafting"
+        }
+      }
+    },
+    "create_new_age:thorium_ore": {
+      "facets": {
+        "mod_namespace": {
+          "value": "create_new_age",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "form": {
+          "value": "ore",
+          "confidence": 1,
+          "source": "rule:form_from_id",
+          "rationale": "suffix _ore"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "required_tool_tier": {
+          "value": "iron",
+          "confidence": 1,
+          "source": "rule:required_tool_tier_from_block_tag",
+          "rationale": "tag minecraft:needs_iron_tool"
+        },
+        "origin": {
+          "values": [
+            "overworld_cave"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "y_level_range": {
+          "value": "underground",
+          "confidence": 1,
+          "source": "rule:y_level_range_from_id",
+          "rationale": "id pattern"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — mined and smelted into thorium"
+        },
+        "material_family": {
+          "value": "thorium",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — ore of thorium"
+        },
+        "rarity": {
+          "value": "uncommon",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — underground ore"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried when mining"
+        }
+      }
+    }
+  },
+  "generated_by": "slot-classify v0.1.0",
+  "generated_at": "2026-04-27T03:27:25.866Z"
+}

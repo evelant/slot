@@ -1,0 +1,116 @@
+[modpack] create-civilization: 17 entr(y/ies)
+[modpack] Test-instance modpack — Create-family + Sophisticated storage + Tom's, plus the libraries we ship behind the scenes.
+[modpack] create                       already classified — 740 entries → /Users/imagio/dev/mc/slot/tools/classification/out/create.facets.complete.json
+[modpack] createaddition               already classified — 54 entries → /Users/imagio/dev/mc/slot/tools/classification/out/createaddition.facets.complete.json
+
+────────────────────────────────────────────────────────────────────────
+[modpack] creategoggles                processing — source /Users/imagio/dev/mc/slot/reference/classification/CreateGoggles
+────────────────────────────────────────────────────────────────────────
+[creategoggles] loading mod source bundle from /Users/imagio/dev/mc/slot/reference/classification/CreateGoggles
+[creategoggles] roots: 1; items: 0; tags(item): 0; recipes: 0
+[stage1] 0 items → /Users/imagio/dev/mc/slot/tools/classification/out/creategoggles.items.ndjson
+[stage2] 0 items with ≥1 facet → /Users/imagio/dev/mc/slot/tools/classification/out/creategoggles.facets.partial.json
+[stage2] coverage:
+[subsystems] using cached vocabulary (2 entries) from /Users/imagio/dev/mc/slot/tools/classification/out/creategoggles.subsystems.json
+[stage3] running against 0 items
+
+========================================================================
+Stage 3 run complete
+========================================================================
+
+Coverage added (LLM-authored facets, sorted by frequency):
+  (filled 0 items total)
+
+Output files (1):
+  /Users/imagio/dev/mc/slot/tools/classification/out/creategoggles.facets.complete.json
+    merged layer (stage 2 + stage 3)
+
+Review queue: clean — no proposals, corrections, or warnings.
+
+========================================================================
+done in 0.03s
+[modpack] createoreexcavation          already classified — 14 entries → /Users/imagio/dev/mc/slot/tools/classification/out/createoreexcavation.facets.complete.json
+[modpack] dndesires                    already classified — 97 entries → /Users/imagio/dev/mc/slot/tools/classification/out/dndesires.facets.complete.json
+[modpack] create_new_age               already classified — 54 entries → /Users/imagio/dev/mc/slot/tools/classification/out/create_new_age.facets.complete.json
+[modpack] sophisticatedbackpacks       already classified — 59 entries → /Users/imagio/dev/mc/slot/tools/classification/out/sophisticatedbackpacks.facets.complete.json
+[modpack] sophisticatedcore            already classified — 1 entries → /Users/imagio/dev/mc/slot/tools/classification/out/sophisticatedcore.facets.complete.json
+
+────────────────────────────────────────────────────────────────────────
+[modpack] sophisticatedstorage         processing — source /Users/imagio/dev/mc/slot/reference/classification/SophisticatedStorage
+────────────────────────────────────────────────────────────────────────
+[sophisticatedstorage] loading mod source bundle from /Users/imagio/dev/mc/slot/reference/classification/SophisticatedStorage
+[sophisticatedstorage] roots: 2; items: 113; tags(item): 7; recipes: 332
+[stage1] 113 items → /Users/imagio/dev/mc/slot/tools/classification/out/sophisticatedstorage.items.ndjson
+[stage2] 113 items with ≥1 facet → /Users/imagio/dev/mc/slot/tools/classification/out/sophisticatedstorage.facets.partial.json
+[stage2] coverage:
+  mod_namespace            113/113 (100.0%)
+  processing_in             84/113 (74.3%)
+  is_block_item             48/113 (42.5%)
+  required_tool             48/113 (42.5%)
+  origin                    48/113 (42.5%)
+[subsystems] using cached vocabulary (8 entries) from /Users/imagio/dev/mc/slot/tools/classification/out/sophisticatedstorage.subsystems.json
+[stage3] running against 113 items
+[stage3] resume: found existing fixture(s); cached batches will skip the LLM.
+[stage3] batch 1/6 parsed=20/20 warnings=20 elapsed=7ms
+[stage3] batch 2/6 parsed=20/20 warnings=0 elapsed=6ms
+[stage3] batch 3/6 parsed=20/20 warnings=0 elapsed=6ms
+[stage3] batch 5/6 parsed=20/20 warnings=0 elapsed=4ms
+[stage3] batch 6/6 parsed=13/13 warnings=0 elapsed=4ms
+[stage3] batch 4/6 parsed=20/20 warnings=0 elapsed=139156ms
+
+========================================================================
+Stage 3 run complete
+========================================================================
+
+Coverage added (LLM-authored facets, sorted by frequency):
+  role                       113
+  frequency                  112
+  activity                   110
+  mod_subsystem               84
+  primary_uses                73
+  rarity                      63
+  origin                      53
+  storage_categories          50
+  material_family             43
+  tier                        36
+  flavor                      20
+  palette                     20
+  spawn_interaction           20
+  environmental_property      20
+  is_creative_only             2
+  (filled 113 items total)
+
+Output files (1):
+  /Users/imagio/dev/mc/slot/tools/classification/out/sophisticatedstorage.facets.complete.json
+    merged layer (stage 2 + stage 3)
+
+Review queue (1 section(s)):
+
+  WARNINGS — 20 warning(s) (most are stage-2 disagreements + format-fix wraps; usually fine)
+      • sophisticatedstorage:advanced_alchemy_upgrade origin: emitted single 'value' for multi facet; wrapped as [value] (informational)
+      • sophisticatedstorage:advanced_compacting_upgrade origin: emitted single 'value' for multi facet; wrapped as [value] (informational)
+      • sophisticatedstorage:advanced_feeding_upgrade origin: emitted single 'value' for multi facet; wrapped as [value] (informational)
+      • sophisticatedstorage:advanced_filter_upgrade origin: emitted single 'value' for multi facet; wrapped as [value] (informational)
+      • sophisticatedstorage:advanced_hopper_upgrade origin: emitted single 'value' for multi facet; wrapped as [value] (informational)
+
+========================================================================
+done in 139.24s
+[modpack] toms_storage                 already classified — 22 entries → /Users/imagio/dev/mc/slot/tools/classification/out/toms_storage.facets.complete.json
+[modpack] architectury                 skipped — library — no classifiable items
+[modpack] emi                          skipped — recipe viewer — no classifiable items
+[modpack] embers_text_api              skipped — renderer library — no classifiable items
+[modpack] ldlib2                       skipped — UI library — no classifiable items
+[modpack] mousetweaks                  skipped — input UX — no classifiable items
+[modpack] shouldersurfing              skipped — camera mod — no classifiable items
+[modpack] slot                         skipped — this mod — classifies others, doesn't need its own classification
+
+========================================================================
+Modpack run complete: create-civilization
+========================================================================
+Total mods:           17
+  skipped (library):  7
+  already classified: 8
+  processed:          2
+  failed:             0
+Wall time:            139.3s
+========================================================================

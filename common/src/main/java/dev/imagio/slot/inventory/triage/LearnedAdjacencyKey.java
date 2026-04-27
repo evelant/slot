@@ -14,6 +14,10 @@ public record LearnedAdjacencyKey(Kind kind, String value) implements Comparable
         return new LearnedAdjacencyKey(Kind.TAG, tagId);
     }
 
+    public static LearnedAdjacencyKey materialFamily(String value) {
+        return new LearnedAdjacencyKey(Kind.MATERIAL_FAMILY, value);
+    }
+
     public static LearnedAdjacencyKey namespace(String namespace) {
         return new LearnedAdjacencyKey(Kind.NAMESPACE, namespace);
     }
@@ -37,6 +41,11 @@ public record LearnedAdjacencyKey(Kind kind, String value) implements Comparable
 
     public enum Kind {
         TAG(0),
+        // FacetIndex `material_family` (e.g. wood_birch, iron, copper).
+        // Same priority as TAG: both are strong specific signals. Tags are
+        // game-authored; material_family is dataset-authored; we want
+        // either to fire a learned rule when N≥2 confirmations land.
+        MATERIAL_FAMILY(0),
         NAMESPACE(1),
         CREATIVE_TAB(2);
 

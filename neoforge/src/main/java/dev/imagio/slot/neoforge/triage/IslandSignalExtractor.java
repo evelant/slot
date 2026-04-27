@@ -1,5 +1,7 @@
 package dev.imagio.slot.neoforge.triage;
 
+import dev.imagio.slot.classification.FacetIndex;
+import dev.imagio.slot.classification.FacetIndexHolder;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.triage.IslandSignal;
@@ -18,6 +20,7 @@ import net.minecraft.world.item.TridentItem;
 
 import java.util.EnumSet;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 public final class IslandSignalExtractor {
@@ -39,7 +42,71 @@ public final class IslandSignalExtractor {
             tags = Set.of();
         }
         String namespace = namespaceOf(identity.itemId());
-        return new IslandSignalDescriptor(identity, signals, tags, namespace, "");
+        Facets facets = facetsFor(identity);
+        return new IslandSignalDescriptor(
+                identity,
+                signals,
+                tags,
+                namespace,
+                "",
+                facets.role,
+                facets.roleAlternatives,
+                facets.materialFamily,
+                facets.subsystems,
+                facets.activities,
+                facets.flavor,
+                facets.carryFrequency,
+                facets.rarity,
+                facets.origin,
+                facets.dyeColor,
+                facets.form,
+                facets.emitsLight
+        );
+    }
+
+    private record Facets(
+            String role,
+            List<String> roleAlternatives,
+            String materialFamily,
+            List<String> subsystems,
+            List<String> activities,
+            String flavor,
+            String carryFrequency,
+            String rarity,
+            String origin,
+            String dyeColor,
+            String form,
+            boolean emitsLight
+    ) {
+        static Facets empty() {
+            return new Facets(null, List.of(), null, List.of(), List.of(), null, null, null, null, null, null, false);
+        }
+    }
+
+    private static Facets facetsFor(ItemIdentity identity) {
+        if (!FacetIndex.ENABLED || identity == null) {
+            return Facets.empty();
+        }
+        try {
+            FacetIndex index = FacetIndexHolder.get();
+            String itemId = identity.itemId();
+            return new Facets(
+                    index.role(itemId).orElse(null),
+                    index.roleAlternatives(itemId),
+                    index.materialFamily(itemId).orElse(null),
+                    index.subsystems(itemId),
+                    index.activities(itemId),
+                    index.flavor(itemId).orElse(null),
+                    index.carryFrequency(itemId).orElse(null),
+                    index.rarity(itemId).orElse(null),
+                    index.origin(itemId).orElse(null),
+                    index.dyeColor(itemId).orElse(null),
+                    index.form(itemId).orElse(null),
+                    index.emitsLight(itemId)
+            );
+        } catch (RuntimeException | LinkageError ignored) {
+            return Facets.empty();
+        }
     }
 
     private static void populateClassSignals(ItemStack stack, Set<IslandSignal> signals) {

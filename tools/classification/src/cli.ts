@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { parseArgs } from "node:util";
 import {
@@ -21,6 +21,7 @@ import {
   ReplayLlmClient,
   type LlmClient,
 } from "./llm/client.ts";
+import { OpenRouterClient } from "./llm/openrouter-client.ts";
 import { runStage3 } from "./llm/run.ts";
 import { runStage3Retry, selectRetryCandidates } from "./llm/retry.ts";
 import {
@@ -34,6 +35,14 @@ import {
   proposeSubsystems,
   type SubsystemEntry,
 } from "./llm/mod_metadata.ts";
+import {
+  loadModpackManifest,
+  planModpack,
+  formatRunSummary,
+  type ModpackProcessingDecision,
+  type ModpackRunSummary,
+  type ResolvedModpack,
+} from "./modpack.ts";
 
 const TOOL_VERSION = "slot-classify v0.1.0";
 
@@ -71,6 +80,15 @@ function parseEffort(
   return input as "low" | "medium" | "high" | "xhigh" | "max";
 }
 
+function parseBackend(input: string | undefined): "claude-cli" | "openrouter" | undefined {
+  if (!input) return undefined;
+  const allowed = ["claude-cli", "openrouter"] as const;
+  if (!(allowed as readonly string[]).includes(input)) {
+    throw new Error(`unknown --backend value: ${input} (use one of ${allowed.join("|")})`);
+  }
+  return input as "claude-cli" | "openrouter";
+}
+
 function parseStages(input: string | undefined): StageSelection {
   if (!input) return { stage1: true, stage2: true, stage3: false };
   const set = new Set(input.split(",").map((s) => s.trim()));
@@ -80,6 +98,18 @@ function parseStages(input: string | undefined): StageSelection {
   }
   return { stage1: set.has("1"), stage2: set.has("2"), stage3: set.has("3") };
 }
+
+// Bun's default behavior on an unhandled promise rejection is to terminate
+// the process. The OpenRouter SDK has internal retry / matcher machinery
+// that occasionally fires non-awaited promises (e.g. on truncated upstream
+// JSON bodies); when those reject they bypass our `sendWithRetry` guard.
+// Logging and continuing is safe — the awaited code path either retries
+// successfully or surfaces the error to `runModpack`, which catches per-mod
+// failures.
+process.on("unhandledRejection", (reason) => {
+  const msg = reason instanceof Error ? reason.message : String(reason);
+  console.warn(`[unhandled-rejection] ${msg.slice(0, 200)} (continuing)`);
+});
 
 async function main() {
   const [cmd, ...rest] = Bun.argv.slice(2);
@@ -102,6 +132,9 @@ async function main() {
           stages: { type: "string" },
           // stage 3 knobs
           model: { type: "string" },
+          backend: { type: "string" }, // claude-cli (default) | openrouter
+          "ignore-provider": { type: "string", multiple: true },
+          "only-provider": { type: "string", multiple: true },
           "batch-size": { type: "string" },
           concurrency: { type: "string" },
           effort: { type: "string" },
@@ -125,6 +158,15 @@ async function main() {
           // mod's README/metadata before stage 3 runs.
           "no-propose-subsystems": { type: "boolean" },
           "subsystems-model": { type: "string" },
+          // verbose prompt extras. disambiguation defaults ON (principle-
+          // based per-facet reasoning; carries production accuracy on hard
+          // categories from ~50% → ~93%). misconceptions defaults OFF
+          // (item-level enumeration kept in reserve for regressions).
+          // Pass `--no-verbose-disambiguation` to flip off, or
+          // `--verbose-misconceptions` to flip on.
+          "verbose-disambiguation": { type: "boolean" },
+          "no-verbose-disambiguation": { type: "boolean" },
+          "verbose-misconceptions": { type: "boolean" },
         },
         allowPositionals: false,
         strict: true,
@@ -142,6 +184,9 @@ async function main() {
 
       const stage3CliOpts: Stage3CliOptions = {
         model: args.values.model,
+        backend: parseBackend(args.values.backend),
+        ignoredProviders: (args.values["ignore-provider"] as string[] | undefined) ?? undefined,
+        onlyProviders: (args.values["only-provider"] as string[] | undefined) ?? undefined,
         batchSize: args.values["batch-size"] ? Number(args.values["batch-size"]) : undefined,
         concurrency: args.values.concurrency ? Number(args.values.concurrency) : undefined,
         effort: parseEffort(args.values.effort),
@@ -167,6 +212,13 @@ async function main() {
         retryRecordReplay: args.values["retry-record-replay"],
         proposeSubsystems: !(args.values["no-propose-subsystems"] ?? false),
         subsystemsModel: args.values["subsystems-model"],
+        // disambiguation defaults ON; --no-verbose-disambiguation flips off.
+        // --verbose-disambiguation is a no-op (always-on by default) — kept
+        // for symmetry / discoverability.
+        verboseFacetDisambiguation: args.values["no-verbose-disambiguation"]
+          ? false
+          : (args.values["verbose-disambiguation"] ?? true),
+        verboseCommonMisconceptions: args.values["verbose-misconceptions"] ?? false,
       };
 
       if (mod === "minecraft") {
@@ -177,6 +229,85 @@ async function main() {
       // The source path should be the mod's repo root; the loader walks
       // src/main/resources + src/generated/resources for the given namespace.
       await runMod(mod!, sourcePath!, outDir, stages, stage3CliOpts);
+      return;
+    }
+
+    case "classify-modpack": {
+      const args = parseArgs({
+        args: rest,
+        options: {
+          out: { type: "string" },
+          stages: { type: "string" },
+          // stage 3 knobs (same surface as `classify`).
+          model: { type: "string" },
+          backend: { type: "string" },
+          "ignore-provider": { type: "string", multiple: true },
+          "only-provider": { type: "string", multiple: true },
+          "batch-size": { type: "string" },
+          concurrency: { type: "string" },
+          "mod-concurrency": { type: "string" },
+          effort: { type: "string" },
+          "thinking-budget": { type: "string" },
+          "disable-adaptive-thinking": { type: "boolean" },
+          "fixture-dir": { type: "string" },
+          "use-replay": { type: "boolean" },
+          "record-replay": { type: "boolean" },
+          "dry-run": { type: "boolean" },
+          "no-propose-subsystems": { type: "boolean" },
+          "subsystems-model": { type: "string" },
+          "verbose-disambiguation": { type: "boolean" },
+          "no-verbose-disambiguation": { type: "boolean" },
+          "verbose-misconceptions": { type: "boolean" },
+          force: { type: "boolean" },
+          "force-subsystems": { type: "boolean" },
+        },
+        allowPositionals: true,
+        strict: true,
+      });
+      const manifestPath = args.positionals[0];
+      if (!manifestPath) {
+        console.error("usage: classify-modpack <manifest.json> [options]");
+        process.exit(2);
+        return;
+      }
+      const outDir = resolve(args.values.out ?? "out");
+      mkdirSync(outDir, { recursive: true });
+
+      const stages = parseStages(args.values.stages);
+
+      const stage3CliOpts: Stage3CliOptions = {
+        model: args.values.model,
+        backend: parseBackend(args.values.backend),
+        ignoredProviders: (args.values["ignore-provider"] as string[] | undefined) ?? undefined,
+        onlyProviders: (args.values["only-provider"] as string[] | undefined) ?? undefined,
+        batchSize: args.values["batch-size"] ? Number(args.values["batch-size"]) : undefined,
+        concurrency: args.values.concurrency ? Number(args.values.concurrency) : undefined,
+        effort: parseEffort(args.values.effort),
+        thinkingBudget: args.values["thinking-budget"]
+          ? Number(args.values["thinking-budget"])
+          : undefined,
+        disableAdaptiveThinking: args.values["disable-adaptive-thinking"] ?? false,
+        fixtureDir: args.values["fixture-dir"],
+        useReplay: args.values["use-replay"] ?? false,
+        recordReplay: args.values["record-replay"] ?? false,
+        dryRun: args.values["dry-run"] ?? false,
+        proposeSubsystems: !(args.values["no-propose-subsystems"] ?? false),
+        subsystemsModel: args.values["subsystems-model"],
+        verboseFacetDisambiguation: args.values["no-verbose-disambiguation"]
+          ? false
+          : (args.values["verbose-disambiguation"] ?? true),
+        verboseCommonMisconceptions: args.values["verbose-misconceptions"] ?? false,
+      };
+
+      const modpackOpts: ModpackRunOptions = {
+        force: args.values.force ?? false,
+        forceSubsystems: args.values["force-subsystems"] ?? false,
+        modConcurrency: args.values["mod-concurrency"]
+          ? Math.max(1, Number(args.values["mod-concurrency"]))
+          : 1,
+      };
+
+      await runModpack(manifestPath, outDir, stages, stage3CliOpts, modpackOpts);
       return;
     }
 
@@ -213,6 +344,19 @@ async function main() {
 
 interface Stage3CliOptions {
   model?: string;
+  /** Live backend selector. `claude-cli` (default) shells out to
+   *  `claude -p`. `openrouter` calls the OpenRouter SDK with
+   *  `OPENROUTER_API_KEY` from env. Replay mode bypasses both. */
+  backend?: "claude-cli" | "openrouter";
+  /** Provider slugs to exclude from OpenRouter routing (e.g.
+   *  `["deepinfra"]`). Forwarded as `provider.ignore` per request.
+   *  Useful when an upstream provider is rate-limited or returning
+   *  flaky responses for our prompt shape. Ignored on claude-cli. */
+  ignoredProviders?: readonly string[];
+  /** Provider slugs to **pin** OpenRouter to (e.g. `["deepseek"]`).
+   *  Forwarded as `provider.only` + `allow_fallbacks: false`. Takes
+   *  precedence over ignoredProviders. Ignored on claude-cli. */
+  onlyProviders?: readonly string[];
   batchSize?: number;
   concurrency?: number;
   effort?: "low" | "medium" | "high" | "xhigh" | "max";
@@ -245,6 +389,14 @@ interface Stage3CliOptions {
   /** Pre-resolved canonical vocabulary, plumbed through to stage 3. Set
    *  inside `runMod` after the proposer runs; consumed by `executeStage3`. */
   subsystemVocabulary?: readonly { id: string; rationale?: string }[];
+  /** Verbose-prompt extras. disambiguation defaults ON
+   *  (principle-based per-facet reasoning; A/B testing showed it
+   *  carries sonnet from ~50% → ~93% on hard categories). misconceptions
+   *  defaults OFF (item-level enumeration kept in reserve for
+   *  regressions). CLI: --no-verbose-disambiguation flips disambiguation
+   *  off; --verbose-misconceptions flips misconceptions on. */
+  verboseFacetDisambiguation?: boolean;
+  verboseCommonMisconceptions?: boolean;
 }
 
 async function runVanilla(
@@ -254,10 +406,22 @@ async function runVanilla(
   stage3Opts: Stage3CliOptions,
 ) {
   const start = Date.now();
-  console.log(`[vanilla] loading summary bundle from ${sourcePath}`);
-  const source = ensureVanillaSource(sourcePath);
-  const bundle = loadSummaryBundle(source);
-  console.log(`[vanilla] MC version ${bundle.version}`);
+  // The mcmeta summary bundle is only needed for stage 1 (extract) and
+  // stage 2 (deterministic rules over the live tag closure). When the
+  // caller is running stage 3 alone — typical for prompt experimentation
+  // against an already-extracted dataset — there's no point cloning a
+  // ~1GB worktree just to read a version string. Skip the bundle load
+  // and let `records` come from the ndjson on disk.
+  const needsBundle = stages.stage1 || stages.stage2;
+  let bundle: ReturnType<typeof loadSummaryBundle> | null = null;
+  if (needsBundle) {
+    console.log(`[vanilla] loading summary bundle from ${sourcePath}`);
+    const source = ensureVanillaSource(sourcePath);
+    bundle = loadSummaryBundle(source);
+    console.log(`[vanilla] MC version ${bundle.version}`);
+  } else {
+    console.log(`[vanilla] (stages 1+2 skipped — bundle load skipped)`);
+  }
 
   const ndjsonPath = join(outDir, "minecraft.items.ndjson");
   const metaPath = join(outDir, "minecraft.items.meta.json");
@@ -267,7 +431,7 @@ async function runVanilla(
 
   let records: ItemExtractRecord[];
   if (stages.stage1) {
-    const { records: extracted, meta } = extractFromBundle(bundle, TOOL_VERSION);
+    const { records: extracted, meta } = extractFromBundle(bundle!, TOOL_VERSION);
     records = extracted;
     const ndjson = records.map((r) => JSON.stringify(r)).join("\n") + "\n";
     writeFileSync(ndjsonPath, ndjson);
@@ -282,7 +446,7 @@ async function runVanilla(
   if (stages.stage2) {
     const { layer, coverage, warnings } = runDeterministic({
       records,
-      bundle,
+      bundle: bundle!,
       namespace: VANILLA_NAMESPACE,
     });
     layer.generated_by = TOOL_VERSION;
@@ -342,9 +506,18 @@ async function runMod(
   stage3Opts: Stage3CliOptions,
 ) {
   const start = Date.now();
-  console.log(`[${modNamespace}] loading mod source bundle from ${modPath}`);
-  const bundle = loadModSourceBundle({ modPath, modNamespace });
-  console.log(`[${modNamespace}] roots: ${bundle.roots.length}; items: ${bundle.registries.item?.length ?? 0}; tags(item): ${Object.keys(bundle.itemTags).length}; recipes: ${Object.keys(bundle.recipes).length}`);
+  // Same shape as runVanilla: skip the source-bundle load when stages
+  // 1+2 are both off so stage-3-only experiments work against
+  // already-extracted ndjson without requiring the mod's repo.
+  const needsBundle = stages.stage1 || stages.stage2;
+  let bundle: ReturnType<typeof loadModSourceBundle> | null = null;
+  if (needsBundle) {
+    console.log(`[${modNamespace}] loading mod source bundle from ${modPath}`);
+    bundle = loadModSourceBundle({ modPath, modNamespace });
+    console.log(`[${modNamespace}] roots: ${bundle.roots.length}; items: ${bundle.registries.item?.length ?? 0}; tags(item): ${Object.keys(bundle.itemTags).length}; recipes: ${Object.keys(bundle.recipes).length}`);
+  } else {
+    console.log(`[${modNamespace}] (stages 1+2 skipped — bundle load skipped)`);
+  }
 
   const ndjsonPath = join(outDir, `${modNamespace}.items.ndjson`);
   const metaPath = join(outDir, `${modNamespace}.items.meta.json`);
@@ -354,7 +527,7 @@ async function runMod(
 
   let records: ItemExtractRecord[];
   if (stages.stage1) {
-    const { records: extracted, meta } = extractFromModBundle(bundle, TOOL_VERSION);
+    const { records: extracted, meta } = extractFromModBundle(bundle!, TOOL_VERSION);
     records = extracted;
     const ndjson = records.map((r) => JSON.stringify(r)).join("\n") + "\n";
     writeFileSync(ndjsonPath, ndjson);
@@ -369,7 +542,7 @@ async function runMod(
   if (stages.stage2) {
     const { layer, coverage, warnings } = runDeterministic({
       records,
-      bundle,
+      bundle: bundle!,
       namespace: modNamespace,
     });
     layer.layer = "per-mod";
@@ -428,6 +601,175 @@ async function runMod(
 }
 
 /**
+ * Drive a manifest of mods through `runMod` in sequence. Per-mod failures
+ * are caught and recorded — they don't abort the rest of the pack.
+ *
+ * Idempotent: an entry whose `<modid>.facets.complete.json` already exists
+ * with ≥1 entry is skipped, so re-running the command picks up where the
+ * previous run left off (or after a manually removed file).
+ */
+/**
+ * Knobs that govern the modpack run itself (cache invalidation,
+ * cross-mod parallelism). Stage-3 LLM knobs come from
+ * {@link Stage3CliOptions} — these stay one level up so the
+ * cache/parallelism story is independently observable in the run
+ * banner.
+ */
+export interface ModpackRunOptions {
+  /** Delete `<modid>.facets.complete.json` for every non-skipped mod
+   *  before processing, so the run reclassifies every mod from
+   *  scratch instead of resuming. Subsystem vocabulary caches stay
+   *  intact (they're stable across LLM runs). */
+  force?: boolean;
+  /** Also delete `<modid>.subsystems.json` so the subsystem proposer
+   *  re-runs and the canonical vocabulary is regenerated. Slower; use
+   *  when the proposer prompt itself has changed. */
+  forceSubsystems?: boolean;
+  /** Process this many mods in parallel. Each mod independently runs
+   *  its own batch-level worker pool (see {@link Stage3CliOptions#concurrency}),
+   *  so the total in-flight LLM call count is roughly
+   *  `modConcurrency × concurrency`. OpenRouter handles dozens of
+   *  parallel calls comfortably; defaults to 1 (sequential) for
+   *  predictable progress reporting. */
+  modConcurrency?: number;
+}
+
+async function runModpack(
+  manifestPath: string,
+  outDir: string,
+  stages: StageSelection,
+  stage3Opts: Stage3CliOptions,
+  modpackOpts: ModpackRunOptions = {},
+) {
+  const start = Date.now();
+  const resolved = loadModpackManifest(manifestPath);
+  console.log(`[modpack] ${resolved.pack.name}: ${resolved.pack.mods.length} entr(y/ies)`);
+  if (resolved.pack.description) {
+    console.log(`[modpack] ${resolved.pack.description}`);
+  }
+  const modConcurrency = Math.max(1, modpackOpts.modConcurrency ?? 1);
+  const batchConcurrency = stage3Opts.concurrency ?? 4;
+  console.log(
+    `[modpack] settings: mod-concurrency=${modConcurrency} batch-concurrency=${batchConcurrency}` +
+      (modpackOpts.force ? ` force=true` : ``) +
+      (modpackOpts.forceSubsystems ? ` force-subsystems=true` : ``),
+  );
+
+  // Cache-clear pass — runs before planModpack so the planner sees
+  // post-clean state and routes every non-skipped mod to "process".
+  if (modpackOpts.force || modpackOpts.forceSubsystems) {
+    const cleared = clearModpackCaches(resolved, outDir, {
+      facets: modpackOpts.force ?? false,
+      subsystems: modpackOpts.forceSubsystems ?? false,
+    });
+    console.log(
+      `[modpack] cleared caches: ${cleared.facets} facets-complete, ${cleared.subsystems} subsystems`,
+    );
+  }
+
+  const decisions = planModpack(resolved, outDir);
+  let processed = 0;
+  let skipped = 0;
+  let alreadyClassified = 0;
+  const failures: ModpackRunSummary["failures"] = [];
+
+  // First: report the skips (libraries + already-classified) up front
+  // so the user sees what's queued. Then process the rest, optionally
+  // in parallel.
+  const toProcess: ModpackProcessingDecision[] = [];
+  for (const d of decisions) {
+    const tag = `${d.entry.namespace}`.padEnd(28);
+    if (d.decision === "skipped:library") {
+      skipped++;
+      console.log(`[modpack] ${tag} skipped — ${d.reason}`);
+      continue;
+    }
+    if (d.decision === "skipped:already-classified") {
+      alreadyClassified++;
+      console.log(`[modpack] ${tag} already classified — ${d.reason} → ${d.completePath}`);
+      continue;
+    }
+    toProcess.push(d);
+  }
+
+  let nextIndex = 0;
+  const worker = async (workerId: number): Promise<void> => {
+    while (true) {
+      const idx = nextIndex++;
+      if (idx >= toProcess.length) return;
+      const d = toProcess[idx]!;
+      const tag = `${d.entry.namespace}`.padEnd(28);
+      const workerLabel = modConcurrency > 1 ? `[w${workerId}] ` : ``;
+      console.log("");
+      console.log("─".repeat(72));
+      console.log(`[modpack] ${workerLabel}${tag} processing — source ${d.sourcePath}`);
+      console.log("─".repeat(72));
+      try {
+        await runMod(d.entry.namespace, d.sourcePath!, outDir, stages, stage3Opts);
+        processed++;
+      } catch (err) {
+        const message = err instanceof Error ? err.message : String(err);
+        console.error(`[modpack] ${workerLabel}${tag} FAILED — ${message}`);
+        failures.push({ namespace: d.entry.namespace, error: message });
+      }
+    }
+  };
+  await Promise.all(
+    Array.from(
+      { length: Math.min(modConcurrency, toProcess.length || 1) },
+      (_, i) => worker(i + 1),
+    ),
+  );
+
+  const summary: ModpackRunSummary = {
+    pack: resolved.pack.name,
+    total: decisions.length,
+    skipped,
+    alreadyClassified,
+    processed,
+    failed: failures.length,
+    failures,
+    elapsedSeconds: (Date.now() - start) / 1000,
+  };
+  console.log(formatRunSummary(summary));
+  if (failures.length > 0) {
+    process.exitCode = 1;
+  }
+}
+
+/**
+ * Delete classification caches for every non-skipped mod in the
+ * manifest. Returns the count of files actually removed for each
+ * cache kind (caller logs the totals).
+ */
+function clearModpackCaches(
+  resolved: ResolvedModpack,
+  outDir: string,
+  what: { facets: boolean; subsystems: boolean },
+): { facets: number; subsystems: number } {
+  let facets = 0;
+  let subsystems = 0;
+  for (const entry of resolved.pack.mods) {
+    if (entry.skip) continue;
+    if (what.facets) {
+      const completePath = resolve(outDir, `${entry.namespace}.facets.complete.json`);
+      if (existsSync(completePath)) {
+        rmSync(completePath);
+        facets++;
+      }
+    }
+    if (what.subsystems) {
+      const subsystemsPath = resolve(outDir, `${entry.namespace}.subsystems.json`);
+      if (existsSync(subsystemsPath)) {
+        rmSync(subsystemsPath);
+        subsystems++;
+      }
+    }
+  }
+  return { facets, subsystems };
+}
+
+/**
  * Resolve the canonical `mod_subsystem` vocabulary for a mod run. Uses an
  * on-disk cache (`<outDir>/<modid>.subsystems.json`) so the proposer LLM call
  * only fires once per mod — subsequent runs read the saved vocabulary.
@@ -437,7 +779,11 @@ async function runMod(
  */
 async function resolveModSubsystems(args: {
   modPath: string;
-  bundle: import("./extract/mod/source.ts").ModSourceBundle;
+  /** Source bundle for the live proposer call. Optional — when omitted
+   *  (e.g. stage-3-only runs against pre-extracted ndjson), only the
+   *  cached `<modid>.subsystems.json` will be consulted; if that's
+   *  missing the proposer is skipped. */
+  bundle: import("./extract/mod/source.ts").ModSourceBundle | null;
   outDir: string;
   modNamespace: string;
   opts: Stage3CliOptions;
@@ -477,7 +823,19 @@ async function resolveModSubsystems(args: {
     return [];
   }
 
-  console.log(`[subsystems] proposing canonical vocabulary for ${modNamespace} via claude -p`);
+  if (!bundle) {
+    console.log(
+      `[subsystems] no cache and no source bundle (stage-3-only run); skipping proposer (stage 3 will run without canonical vocabulary).`,
+    );
+    return [];
+  }
+  // Pick a sane default proposer model that matches the live backend so
+  // we don't ship a `haiku` alias to OpenRouter (or a vendor-slash slug
+  // to claude-cli). Override with --subsystems-model.
+  const backend = opts.backend ?? inferBackend(opts.model);
+  const proposerModel =
+    opts.subsystemsModel ?? (backend === "openrouter" ? (opts.model ?? "deepseek/deepseek-v4-flash") : "haiku");
+  console.log(`[subsystems] proposing canonical vocabulary for ${modNamespace} (${proposerModel} via ${backend})`);
   const meta = extractModMetadata({ modPath, bundle });
   if (
     !meta.readme &&
@@ -491,7 +849,7 @@ async function resolveModSubsystems(args: {
   const client = buildClient(opts);
   const proposal = await proposeSubsystems(meta, {
     client,
-    model: opts.subsystemsModel ?? "haiku",
+    model: proposerModel,
   });
   if (proposal.vocabulary.length === 0) {
     console.warn(
@@ -551,6 +909,10 @@ async function executeStage3(
     only,
     clientOptions: buildClientOptions(opts.effort, opts.thinkingBudget, opts.disableAdaptiveThinking),
     subsystemVocabulary: opts.subsystemVocabulary,
+    promptExtras: {
+      verboseFacetDisambiguation: opts.verboseFacetDisambiguation,
+      verboseCommonMisconceptions: opts.verboseCommonMisconceptions,
+    },
     onBatch: (info) => {
       console.log(
         `[stage3] batch ${info.batchIndex + 1}/${info.batchCount} ` +
@@ -597,6 +959,10 @@ async function executeStage3(
         threshold: opts.retryThreshold,
         batchSize: opts.retryBatchSize,
         subsystemVocabulary: opts.subsystemVocabulary,
+        promptExtras: {
+          verboseFacetDisambiguation: opts.verboseFacetDisambiguation,
+          verboseCommonMisconceptions: opts.verboseCommonMisconceptions,
+        },
         onBatch: (info) => {
           console.log(
             `[stage3-retry] batch ${info.batchIndex + 1}/${info.batchCount} ` +
@@ -610,6 +976,7 @@ async function executeStage3(
       result.warnings.push(...retryResult.warnings);
       result.proposals.push(...retryResult.proposals);
       result.corrections.push(...retryResult.corrections);
+      result.fillIns.push(...retryResult.fillIns);
       console.log(
         `[stage3-retry] changed: ${Object.values(retryResult.facetsChanged).reduce((a, b) => a + b, 0)} facet(s), confirmed: ${Object.values(retryResult.facetsConfirmed).reduce((a, b) => a + b, 0)} facet(s)`,
       );
@@ -650,6 +1017,14 @@ async function executeStage3(
     writtenFiles.push({
       path: correctionsPath,
       description: `${result.corrections.length} stage-2 correction(s) flagged by the LLM — review and patch the rule files if valid`,
+    });
+  }
+  if (result.fillIns.length) {
+    const fillInsPath = completePath.replace(/\.complete\.json$/, ".fill-ins.json");
+    writeFileSync(fillInsPath, JSON.stringify(result.fillIns, null, 2) + "\n");
+    writtenFiles.push({
+      path: fillInsPath,
+      description: `${result.fillIns.length} stage-2 fill-in(s) — deterministic facets the rule layer missed; expand stage-2 rules to cover these patterns`,
     });
   }
 
@@ -703,6 +1078,16 @@ async function executeStage3(
         return JSON.stringify(p);
       }),
       path: completePath.replace(/\.complete\.json$/, ".schema-proposals.json"),
+    });
+  }
+  if (result.fillIns.length) {
+    reviewItems.push({
+      kind: "STAGE-2 FILL-INS",
+      summary: `${result.fillIns.length} item(s) where the LLM filled a deterministic facet that the stage-2 rules missed`,
+      detail: result.fillIns.slice(0, 10).map((f) =>
+        `${f.item} ${f.facet} = '${f.value}' — ${f.rationale}`,
+      ),
+      path: completePath.replace(/\.complete\.json$/, ".fill-ins.json"),
     });
   }
   if (result.warnings.length) {
@@ -814,7 +1199,7 @@ function buildClient(opts: Stage3CliOptions): LlmClient {
     }
     return new ReplayLlmClient(resolve(opts.fixtureDir));
   }
-  const live = new ClaudeCliClient();
+  const live = buildLiveClient(opts);
   if (opts.recordReplay) {
     if (!opts.fixtureDir) {
       console.error("--record-replay requires --fixture-dir");
@@ -837,6 +1222,46 @@ function buildClient(opts: Stage3CliOptions): LlmClient {
   return live;
 }
 
+function buildLiveClient(opts: Stage3CliOptions): LlmClient {
+  const backend = opts.backend ?? inferBackend(opts.model);
+  switch (backend) {
+    case "claude-cli":
+      return new ClaudeCliClient();
+    case "openrouter":
+      return new OpenRouterClient({
+        ignoredProviders: opts.ignoredProviders,
+        // Auto-pin to the official deepseek upstream when the model
+        // is a deepseek/* slug and the caller didn't override. This
+        // matches the "lock in v4-flash via deepseek" production
+        // recipe without requiring every script to repeat the flag.
+        onlyProviders: opts.onlyProviders ?? inferOnlyProviders(opts.model),
+      });
+    default:
+      throw new Error(`unknown backend: ${backend}`);
+  }
+}
+
+/**
+ * Infer the live backend from the model id when --backend wasn't
+ * specified. OpenRouter slugs always include a vendor prefix
+ * (`vendor/name`); Claude aliases (haiku/sonnet/opus) and full Claude
+ * model ids (claude-haiku-4-5, …) don't.
+ */
+function inferBackend(model: string | undefined): "claude-cli" | "openrouter" {
+  if (!model) return "openrouter"; // matches DEFAULT_MODEL = "deepseek/deepseek-v4-flash"
+  if (model.includes("/")) return "openrouter";
+  return "claude-cli";
+}
+
+function inferOnlyProviders(model: string | undefined): readonly string[] | undefined {
+  if (!model) {
+    // DEFAULT_MODEL is deepseek/* — pin to deepseek by default.
+    return ["deepseek"];
+  }
+  if (model.startsWith("deepseek/")) return ["deepseek"];
+  return undefined;
+}
+
 function readNdjson(path: string): ItemExtractRecord[] {
   const text = readFileSync(path, "utf8");
   return text
@@ -853,6 +1278,33 @@ Commands:
       Run stages against a source. Currently only --mod minecraft is wired up;
       the source must be a clone of misode/mcmeta (use tools/mcmeta submodule).
 
+  classify-modpack <manifest.json> [options]
+      Run \`classify\` for every mod listed in a modpack manifest. By
+      default skips entries marked \`skip\` and entries whose
+      <modid>.facets.complete.json already exists in --out
+      (so the command is idempotent / resumable). Pass --force to
+      reclassify every non-skipped mod from scratch. Per-mod failures
+      are collected into an end-of-run summary instead of aborting
+      the pack. Manifests live under tools/classification/modpacks/.
+
+      Modpack-only flags:
+        --force                Delete <modid>.facets.complete.json
+                               for every non-skipped mod before
+                               processing, forcing a full rerun.
+                               Subsystem vocabulary stays cached
+                               (it's stable across runs).
+        --force-subsystems     Also delete <modid>.subsystems.json
+                               so the proposer regenerates the
+                               canonical mod_subsystem vocabulary.
+                               Use when the proposer prompt has
+                               changed.
+        --mod-concurrency <n>  Process N mods in parallel (default 1).
+                               Each mod runs its own batch worker
+                               pool, so total in-flight LLM calls
+                               ≈ mod-concurrency × concurrency.
+                               OpenRouter handles dozens comfortably;
+                               recommend 3-4 for fast wall-time.
+
   validate <layer.json>
       Validate a layer file against layer.schema.json.
 
@@ -860,14 +1312,41 @@ Stage selection:
   --stages 1,2[,3]          Which stages to run. Default: 1,2 (stage 3 opt-in).
 
 Stage 3 (LLM) knobs — only used when 3 is in --stages:
-  --model <id>              Claude model id (default haiku). Accepts aliases
-                            (haiku/sonnet/opus) or full model names.
+  --backend <name>          Live backend: claude-cli or openrouter.
+                            **Default: auto-inferred from --model.** A
+                            vendor-slash slug (e.g. deepseek/deepseek-v4-flash)
+                            routes to openrouter; a plain Claude alias
+                            (haiku/sonnet/opus) or claude-* full id
+                            routes to claude-cli. Pass explicitly to
+                            override. openrouter requires OPENROUTER_API_KEY
+                            in env. Replay mode ignores this.
+  --only-provider <slug>    (openrouter) Pin routing to a single upstream
+                            provider — sends provider.only + allow_fallbacks=false.
+                            Repeatable. Falls back to OPENROUTER_ONLY_PROVIDERS
+                            env var (CSV) when unset. **Auto-defaults to
+                            'deepseek' when --model starts with deepseek/.**
+                            Useful for price/caching/throughput/data-policy
+                            reasons. Avoids known-flaky providers
+                            (deepinfra, siliconflow) for the deepseek family.
+  --ignore-provider <slug>  (openrouter) Exclude a provider from routing
+                            — sends provider.ignore. Repeatable. Falls
+                            back to OPENROUTER_IGNORE_PROVIDERS env var.
+                            Overridden by --only-provider when both set.
+  --model <id>              Model id. **Default: deepseek/deepseek-v4-flash**
+                            (production recipe — locked in 2026-04-26 after
+                            A/B vs Claude on the 60-item playtest sample).
+                            For claude-cli: aliases (haiku/sonnet/opus) or
+                            full Claude model names. For openrouter: full
+                            slug (e.g. 'deepseek/deepseek-v4-flash',
+                            'deepseek/deepseek-v4-pro', 'openai/gpt-4o-mini').
   --effort <level>          Reasoning effort: low|medium|high|xhigh|max.
+                            claude-cli only — ignored on openrouter.
   --batch-size <n>          Items per LLM call (default 20 for haiku, try 10 for sonnet).
-  --concurrency <n>         Run up to N batches in parallel (default 1 = serial).
-                            Each parallel batch spawns its own claude -p process.
-                            Recommended: 4 for sonnet on Max plan; cuts wall time
-                            ~4x without affecting cost (each batch identical work).
+  --concurrency <n>         Run up to N batches in parallel (default 4).
+                            Each parallel batch is an independent LLM call.
+                            OpenRouter handles 4-8 comfortably; bump higher
+                            (--concurrency 8) for the fastest wall-time.
+                            Set to 1 for serial / debugging.
   --sample canary|N|id,...  Restrict to a subset:
                               canary   – the hand-picked 102-item set.
                               N        – first N records from the extract.
@@ -891,6 +1370,21 @@ Mod-only subsystem proposer (default: on for mods):
                             Cached at <out>/<modid>.subsystems.json — delete
                             to regenerate.
 
+Prompt extras (defaults: disambiguation ON, misconceptions OFF):
+  --no-verbose-disambiguation
+                            Drop the principle-based per-facet reasoning
+                            section (role / building vs decorative vs
+                            functional / storage / transport / curiosity
+                            vs utility / consistency-within-family / tier
+                            / activity). Lean prompt only — for A/B
+                            testing the cardinal rule alone.
+  --verbose-misconceptions  Add an item-level checklist of past LLM
+                            failure modes (logs / doors / beds / rails /
+                            spawn-eggs / Block-of-X / mob-drops). Useful
+                            when a regression surfaces a category-wide
+                            failure; off by default to avoid biasing
+                            toward enumerated examples.
+
 Examples:
   bun run src/cli.ts classify --mod minecraft --source ../mcmeta
   bun run src/cli.ts classify --mod minecraft --source ../mcmeta --stages 3 --sample canary --dry-run
@@ -900,6 +1394,36 @@ Examples:
       --model haiku --record-replay --fixture-dir test/fixtures/stage3-canary-haiku \\
       --retry-model sonnet --retry-effort max --retry-threshold 0.6 \\
       --retry-fixture-dir test/fixtures/stage3-canary-sonnet-retry
+
+  # OpenRouter backend — same prompt, different model family:
+  OPENROUTER_API_KEY=sk-or-... \\
+    bun run src/cli.ts classify --mod minecraft --source ../mcmeta --stages 3 --sample canary \\
+      --backend openrouter --model deepseek/deepseek-v4-flash \\
+      --record-replay --fixture-dir test/fixtures/stage3-canary-deepseek
+
+  # Classify every mod in a modpack manifest (idempotent — re-run to resume):
+  OPENROUTER_API_KEY=sk-or-... \\
+    bun run src/cli.ts classify-modpack modpacks/test-modset.json --out out
+
+  # FAST: reclassify the whole pack with high parallelism (after a prompt
+  # change). --force clears the per-mod completion markers; --concurrency
+  # 8 puts 8 batches in flight per mod; --mod-concurrency 4 runs 4 mods
+  # at once. Total in-flight LLM calls ≈ 32, well within OpenRouter's
+  # comfort zone for the deepseek family.
+  OPENROUTER_API_KEY=sk-or-... \\
+    bun run src/cli.ts classify-modpack modpacks/test-modset.json --out out \\
+      --stages 1,2,3 --force --concurrency 8 --mod-concurrency 4
+
+  # Convenience aliases (same as the FAST recipe above):
+  bun run reclassify:test-modset       # reclassify only what changed
+  bun run reclassify:test-modset:full  # also regenerate subsystem vocabularies
+
+Prompt-evaluation presets (60-item playtest sample; reads stage-1/2 from out/):
+  bun run eval:sonnet                  # claude-cli + sonnet (the baseline)
+  OPENROUTER_API_KEY=... bun run eval:deepseek
+                                       # openrouter + deepseek/deepseek-v4-flash
+  scripts/eval-prompt.sh --backend openrouter --model openai/gpt-4o-mini
+                                       # any backend/model combo
 `);
 }
 

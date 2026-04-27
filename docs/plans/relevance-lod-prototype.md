@@ -18,12 +18,57 @@ client-owned layout), see
    `localX/localY`-as-sort-key.
 3. **Phase 2.2** — drag-drop ordinal semantics + auto-square islands
    + freeform-helper cleanup. **Landed.**
-4. **`FacetIndex` runtime** — [item-classification.md](item-classification.md)
-   milestone 6. **NEXT.**
-5. **Phase 4** — classification-driven Triage chip suggestions.
-6. **Deferred** — `StorageArea` domain + `area_proximity` /
-   `chest_holds_relevant`; `shopping_list`; per-player weights;
-   anti-relevance; max-relevance hold-toggle.
+4. **`FacetIndex` runtime + atlas-homing wiring** —
+   [item-classification.md](item-classification.md) milestones 6 + 7.
+   **Landed** (V1 surface). Bundled `vanilla-base.json` resource +
+   role lookup + `RoleSemanticBucketMap` + `FacetIndexBucketClassifier`
+   with `SemanticBucketResolver::classify` as the no-data fallback.
+   Awaiting playtest.
+5. **Phase 4a** — classification-driven Triage chip suggestions.
+   **Landed.** `IslandSignalDescriptor.role` + `materialFamily`
+   populated from `FacetIndex` in `IslandSignalExtractor`; each
+   `IslandSuggestionTemplate` carries a `roleTriggers` set and prefers
+   role-based matching, falling through to the existing class/tag
+   signals when role is absent. Template enum now covers the full v1
+   role taxonomy (17 templates: FOOD, TOOLS, WEAPONS, ARMOR,
+   MATERIALS, STORAGE, BUILDING, DECORATION, NATURAL, WORKBENCHES,
+   MECHANISMS, REDSTONE, UPGRADES, TRANSPORT, UTILITY, CURIOSITY,
+   MISC) — every classified vanilla item resolves to some template,
+   guarded by `IslandSuggestionTemplateCoverageTest`. Bug fix in the
+   same pass: `MATERIALS` no longer overlaps with `NATURAL` on
+   `natural_resource` (was first-match-wins and NATURAL never fired).
+   `MATERIAL_FAMILY` `LearnedAdjacencyKey.Kind` lets learned rules
+   span shape variants of the same material (planks/log/stripped/wood
+   within the same species), where item-tag adjacency couldn't. The
+   stage-3 prompt was also tightened so future regenerations converge
+   on `building_block` for all wood/log/stripped/stone variants. The
+   debug populate generator (`RealisticAtlasGenerator`) is now
+   template-keyed via `FacetIndexTemplateClassifier`: populated
+   islands carry the same `defaultIslandId` / label / color that
+   chip-accept would create, so test-data atlases and chip flow share
+   one taxonomy. Legacy `SemanticBucket(Resolver)`, `SubBucket*`,
+   `ParentKeywordRules`, `RoleSemanticBucketMap`, and
+   `FacetIndexBucketClassifier` deleted. Vanilla role-corrections
+   sweep (2026-04-26) patched 182 entries the LLM had inconsistently
+   classified: doors / trapdoors / fence_gates → `building_block`,
+   beds / decorated_pot → `decorative_block`, rails → `transport`,
+   spawn_eggs → `curiosity`, compressed material blocks (Block of X)
+   → `material`, mob drops + raw ores → `material`. Locked in by
+   [`IslandSuggestionTemplateCoverageTest`](../../common/src/test/java/dev/imagio/slot/inventory/triage/IslandSuggestionTemplateCoverageTest.java).
+6. **Modded classification layers** —
+   [item-classification.md milestones 10–11](item-classification.md#milestones).
+   Per-mod LLM passes for the active modset (Create, Create New Age,
+   Create Dreams n Desires, etc.) so role-driven chips fire on modded
+   items the same way they do on vanilla. Vanilla-only V1 leaves modded
+   items chip-less.
+7. **Phase 4b/c** — confidence bands + acceptance-rate logging.
+   Deferred until playtest decides whether the role-only matching at
+   Phase 4a is sharp enough.
+6. **Released as a peer plan** — `StorageArea` domain +
+   `area_proximity` / `chest_holds_relevant` contributors. See
+   [storage-areas.md](storage-areas.md). Still deferred from this
+   doc: `shopping_list`; per-player weights; anti-relevance;
+   max-relevance hold-toggle.
 
 The flat `ClaimedChest` model gives us enough storage signal to test
 the Phase-1+2 core. Re-evaluate StorageArea after Phase 2 playtest.
@@ -302,37 +347,76 @@ Tests added (or revised):
 
 ### Out of scope this phase (still)
 
-- `area_proximity` — depends on `StorageArea`. Deferred.
+- `area_proximity` — depends on `StorageArea`. See
+  [storage-areas.md § Phase 4](storage-areas.md).
 - `chest_holds_relevant` — same.
 - `shopping_list` — feature doesn't exist.
 
-## Phase 3 — `FacetIndex` runtime
+## Phase 3 — `FacetIndex` runtime (LANDED, V1 surface)
 
-Owned by [item-classification.md milestone 6](item-classification.md).
-Summary here so the relevance-LOD plan flows; full spec in that doc.
+Owned by [item-classification.md milestones 6 + 7](item-classification.md).
+The V1 slice of these milestones — thin loader + role lookup + homing
+wiring — has landed. The full multi-layer / merge / inverted-index /
+expression-AST shape stays deferred until a second consumer actually
+demands it.
+
+What landed:
 
 - New package: `common/.../classification/`.
-- `FacetIndex` — load layered JSON, merge per the layer order
-  (`vanilla-base` < `per-mod` < `runtime-crawl` < `modpack` < `server`
-  < `player`), expose:
-  - `Optional<FacetRecord> lookup(ItemIdentity)`
-  - `Stream<ItemIdentity> where(FacetPredicate)`
-  - `Set<String> facetValues(String facetName)`
-- Bundle the vanilla dataset as a resource:
-  `common/src/main/resources/data/slot/classification/vanilla-base.json`
-  (copy of `tools/classification/datasets/minecraft/minecraft.facets.complete.json`).
-- Layer-merge rules: per-facet `mode` (`replace` / `merge` / `add` /
-  `subtract`) drives entry combination.
-- Init-time merge: build the merged in-memory index once at boot, no
-  lazy merging.
-- Feature flag (`slot.classification.facetIndex.enabled`) so we can
-  ship without flipping homing behavior until Phase 4 lands.
+- [`FacetIndex`](../../common/src/main/java/dev/imagio/slot/classification/FacetIndex.java)
+  — pure-logic loader; `FacetIndex.load(Reader)` validates
+  `schema_version == 1` and the `layer` enum, then exposes
+  `Optional<String> role(String itemId)`. Other facets aren't
+  materialized in V1.
+- [`FacetIndexBootstrap`](../../common/src/main/java/dev/imagio/slot/classification/FacetIndexBootstrap.java)
+  reads `/data/slot/classification/vanilla-base.json` from the classpath,
+  using `System.Logger` so the loader stays free of MC dependencies and
+  is unit-testable from `:common:test`.
+- Singleton in
+  [`FacetIndexHolder`](../../common/src/main/java/dev/imagio/slot/classification/FacetIndexHolder.java)
+  — lazy first-use init, with `install(...)` + `reset()` for tests.
+- Static feature flag `FacetIndex.ENABLED` (default on). Per the
+  integration plan, no config UI for V1.
+- Bundled dataset shipped at
+  [`common/src/main/resources/data/slot/classification/vanilla-base.json`](../../common/src/main/resources/data/slot/classification/vanilla-base.json)
+  alongside the schema as `layer.schema.json`.
+- [`RoleSemanticBucketMap`](../../common/src/main/java/dev/imagio/slot/classification/RoleSemanticBucketMap.java)
+  maps the 19 `ROLE_VALUES` entries onto existing `SemanticBucket`
+  enum values; loosely-typed roles (`utility`, `curiosity`, `transport`,
+  `trophy`, `admin`) target `MISC` so the atlas materializes them as a
+  miscellaneous island until a richer SLOT-side role-island taxonomy
+  lands.
+- [`FacetIndexBucketClassifier`](../../common/src/main/java/dev/imagio/slot/debug/FacetIndexBucketClassifier.java)
+  is the homing adapter: lookup → role → bucket, with
+  `SemanticBucketResolver::classify` as the no-data fallback (also
+  used when `FacetIndex.ENABLED == false`).
+- Wired in at
+  [`SlotTestCommands.runPopulate`](../../neoforge/src/main/java/dev/imagio/slot/neoforge/command/SlotTestCommands.java)
+  — the only homing call site we own today; replaces the previous
+  `SemanticBucketResolver::classify` reference.
 
-### Tests added
+What's still **not** done in this slice (kept deferred):
 
-- Load + merge the vanilla dataset; spot-check known items.
-- Layer merge: synthetic player layer overrides a vanilla entry.
-- `where(role=tool && material=iron)` returns expected identities.
+- Multi-layer support beyond `vanilla-base` (per-mod / modpack / server
+  / player layers, runtime-crawl). The loader accepts any `layer` enum
+  value but `FacetIndexHolder` only loads the bundled vanilla file.
+- Layer-merge rules + inverted indices + expression AST.
+- Other facet readers (`material_family`, `form`, `processing_in`, …).
+  Phase 4 chip suggestions are the natural next consumer.
+
+Tests landed:
+
+- [`FacetIndexTest`](../../common/src/test/java/dev/imagio/slot/classification/FacetIndexTest.java)
+  — empty index, single-value parse, ambiguous-entry first-candidate
+  rule, missing-role item skip, malformed-id skip, schema-version /
+  layer rejection, plus a smoke test against the bundled vanilla
+  dataset (≥1000 entries; spot-checks `diamond_pickaxe → tool`,
+  `diamond_sword → weapon`, `diamond_helmet → armor`,
+  `cooked_beef → consumable`, `iron_ingot → material`,
+  `oak_planks → building_block`, `chest → storage_block`).
+- [`RoleSemanticBucketMapTest`](../../common/src/test/java/dev/imagio/slot/classification/RoleSemanticBucketMapTest.java)
+  — every mapped role lands on the expected `SemanticBucket`; loosely
+  typed roles fall to `MISC`; unknown / null / blank roles return empty.
 
 ## Phase 4 — Classification-driven Triage suggestions
 
@@ -408,8 +492,9 @@ classification facets + carried + active kit) and call
 ## Deferred (write down so we don't forget)
 
 - `StorageArea` domain type + claim-flow change + `area_proximity` /
-  `chest_holds_relevant` contributors. Re-evaluate after Phase 2
-  playtest decides whether the model needs them to feel right.
+  `chest_holds_relevant` contributors. **Plan released as a peer doc:
+  see [storage-areas.md](storage-areas.md).** Phase 2 playtest is in;
+  the area model is the chosen direction.
 - `shopping_list` contributor — depends on a craft-planner that
   doesn't exist.
 - "Max relevance everywhere" hold-modifier — implement only if

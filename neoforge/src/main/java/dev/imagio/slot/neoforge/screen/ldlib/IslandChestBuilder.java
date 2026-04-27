@@ -99,18 +99,43 @@ final class IslandChestBuilder {
             return;
         }
         String islandId = island.islandId();
+        // Toggle dim-thread visibility in place rather than triggering a
+        // host.rebuild(). A rebuild here destroys the element holding
+        // this listener mid-event, which fires a synthetic MOUSE_LEAVE on
+        // the destroyed element (clearing hoveredIslandId + scheduling
+        // another rebuild) and a fresh MOUSE_ENTER on the recreated
+        // element (setting hoveredIslandId + scheduling yet another
+        // rebuild). The result is a per-frame oscillation that visibly
+        // flickers the header and prevents drag-from-header from ever
+        // crossing the drag-start threshold. The threads are pre-built
+        // for every chest-linked island in AtlasPanelBuilder.buildAtlas
+        // and stored in host.dimLinkThreadsByIsland.
         element.addEventListener(UIEvents.MOUSE_ENTER, event -> {
             if (!islandId.equals(host.hoveredIslandId)) {
+                setDimLinkThreadVisibility(host.hoveredIslandId, false);
                 host.hoveredIslandId = islandId;
-                host.rebuild();
+                setDimLinkThreadVisibility(islandId, true);
             }
         }, true);
         element.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
             if (islandId.equals(host.hoveredIslandId)) {
                 host.hoveredIslandId = null;
-                host.rebuild();
+                setDimLinkThreadVisibility(islandId, false);
             }
         }, true);
+    }
+
+    private void setDimLinkThreadVisibility(String islandId, boolean visible) {
+        if (islandId == null) {
+            return;
+        }
+        List<UIElement> threads = host.dimLinkThreadsByIsland.get(islandId);
+        if (threads == null) {
+            return;
+        }
+        for (UIElement thread : threads) {
+            thread.setVisible(visible);
+        }
     }
 
     boolean islandHasNonProximateLinks(String islandId) {

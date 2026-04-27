@@ -14,6 +14,11 @@ export interface ParsedLlmResponse {
   /** Flags from the LLM that a stage-2 facet looks wrong. These are never
    *  merged into the layer automatically — they surface for human review. */
   corrections: StageCorrection[];
+  /** Flags from the LLM that a stage-2 deterministic facet was missing
+   *  for an item where the value is obvious. Surfaced for review so we
+   *  can patch the stage-2 rule rather than relying on the LLM to fill
+   *  the gap on every regen. */
+  fillIns: StageFillIn[];
   /** Non-fatal issues (unknown facet, value out of enum, etc.) — the
    *  affected entries are dropped but the rest of the response is kept. */
   warnings: string[];
@@ -26,6 +31,20 @@ export interface StageCorrection {
   suggested?: string | number | boolean | null;
   rationale: string;
   confidence?: number;
+}
+
+/**
+ * "Stage-2 should have caught this." The LLM noticed a deterministic
+ * facet (form, material_family, dye_color, …) wasn't derived for an
+ * item where it's obvious — e.g., `dark_oak_window` clearly has
+ * `form=window` even though `form_from_id` only matches `_pane`. Each
+ * fill-in is a hint that the stage-2 rule has a gap worth patching.
+ */
+export interface StageFillIn {
+  item: string;
+  facet: string;
+  value: string | number | boolean | null;
+  rationale: string;
 }
 
 export interface ParsedItemFacets {
@@ -109,6 +128,7 @@ export function parseLlmResponse(raw: string): ParsedLlmResponse {
   const rootItems = (parsed as { items?: unknown }).items;
   const rootProposals = (parsed as { schema_proposals?: unknown }).schema_proposals;
   const rootCorrections = (parsed as { corrections?: unknown }).corrections;
+  const rootFillIns = (parsed as { fill_ins?: unknown }).fill_ins;
 
   const items = new Map<string, ParsedItemFacets>();
   if (rootItems && typeof rootItems === "object") {
@@ -150,7 +170,38 @@ export function parseLlmResponse(raw: string): ParsedLlmResponse {
     }
   }
 
-  return { items, proposals, corrections, warnings };
+  const fillIns: StageFillIn[] = [];
+  if (Array.isArray(rootFillIns)) {
+    for (const raw of rootFillIns) {
+      if (!raw || typeof raw !== "object") continue;
+      const f = raw as Record<string, unknown>;
+      if (typeof f.item !== "string" || typeof f.facet !== "string"
+          || typeof f.rationale !== "string") {
+        warnings.push(`fill_in missing required field(s): ${JSON.stringify(raw).slice(0, 120)}`);
+        continue;
+      }
+      const value = f.value;
+      if (value === undefined) {
+        warnings.push(`fill_in for ${f.item} ${f.facet} missing 'value'`);
+        continue;
+      }
+      // Only deterministic facets — llm-authored facets should be in
+      // `facets`, not `fill_ins`.
+      const def = FACETS[f.facet];
+      if (def && def.llm_authored && !def.deterministic) {
+        warnings.push(`fill_in for ${f.item} ${f.facet}: facet is llm-authored, emit in facets block instead`);
+        continue;
+      }
+      fillIns.push({
+        item: f.item,
+        facet: f.facet,
+        value: value as StageFillIn["value"],
+        rationale: f.rationale,
+      });
+    }
+  }
+
+  return { items, proposals, corrections, fillIns, warnings };
 }
 
 function parseItemEntry(

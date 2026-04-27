@@ -1,0 +1,1292 @@
+{
+  "schema_version": 1,
+  "layer": "per-mod",
+  "source": "toms_storage",
+  "entries": {
+    "toms_storage:adv_wireless_terminal": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "utility",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — remote storage access item"
+        },
+        "activity": {
+          "values": [
+            "logistics",
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — wireless network access"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — kept in inventory for remote access"
+        },
+        "mod_subsystem": {
+          "values": [
+            "toms_storage:terminal"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — wireless terminal component"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted via smithing"
+        }
+      }
+    },
+    "toms_storage:basic_inventory_hopper": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network item transport device"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network item transfer"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once as infrastructure"
+        },
+        "mod_subsystem": {
+          "values": [
+            "toms_storage:hopper"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network hopper component"
+        }
+      }
+    },
+    "toms_storage:crafting_terminal": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafting with network access UI"
+        },
+        "activity": {
+          "values": [
+            "logistics",
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — craft from network inventory"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed workstation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "toms_storage:terminal"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — terminal with crafting functionality"
+        }
+      }
+    },
+    "toms_storage:filing_cabinet": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "storage_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network storage container"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stores items in network"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed as storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "toms_storage:storage_block"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network storage component"
+        }
+      }
+    },
+    "toms_storage:inventory_cable": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network wiring"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — connects network components"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed as infrastructure"
+        },
+        "mod_subsystem": {
+          "values": [
+            "toms_storage:cable"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network cable component"
+        }
+      }
+    },
+    "toms_storage:inventory_cable_connector": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — attaches cables to inventories"
+        },
+        "activity": {
+          "values": [
+            "logistics"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network connection point"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed as infrastructure"
+        },
+        "mod_subsystem": {
+          "values": [
+            "toms_storage:connector"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network connector component"
+        }
+      }
+    },
+    "toms_storage:inventory_cable_connector_framed": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — decorative variant of connector"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "logistics"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — connects cables with style"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed as infrastructure"
+        },
+        "mod_subsystem": {
+          "values": [
+            "toms_storage:connector"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network connector with trim"
+        }
+      }
+    },
+    "toms_storage:inventory_cable_framed": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — decorative cable"
+        },
+        "activity": {
+          "values": [
+            "decorating",
+            "logistics"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — connects components with style"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed as infrastructure"
+        },
+        "mod_subsystem": {
+          "values": [
+            "toms_storage:cable"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network cable with trim"
+        }
+      }
+    },
+    "toms_storage:inventory_configurator": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "utility",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — tool to configure network components"
+        },
+        "activity": {
+          "values": [
+            "logistics",
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — configure filters, hoppers, etc."
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used during network setup"
+        },
+        "mod_subsystem": {
+          "values": [
+            "toms_storage:tool"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network configuration tool"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted"
+        }
+      }
+    },
+    "toms_storage:inventory_connector": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — links external inventories to network"
+        },
+        "activity": {
+          "values": [
+            "logistics"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network inventory integration"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed as infrastructure"
+        },
+        "mod_subsystem": {
+          "values": [
+            "toms_storage:connector"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — connector to external storage"
+        }
+      }
+    },
+    "toms_storage:inventory_interface": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — interface to interact with network"
+        },
+        "activity": {
+          "values": [
+            "logistics"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network interaction point"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed as infrastructure"
+        },
+        "mod_subsystem": {
+          "values": [
+            "toms_storage:connector"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network interface component"
+        }
+      }
+    },
+    "toms_storage:inventory_proxy": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network proxy block"
+        },
+        "activity": {
+          "values": [
+            "logistics"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network traffic routing"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed as infrastructure"
+        },
+        "mod_subsystem": {
+          "values": [
+            "toms_storage:connector"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network proxy component"
+        }
+      }
+    },
+    "toms_storage:item_filter": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "utility",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — filters items in network hoppers"
+        },
+        "activity": {
+          "values": [
+            "logistics"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — precise item routing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in network configuration"
+        },
+        "mod_subsystem": {
+          "values": [
+            "toms_storage:filter"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — basic item filter"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted"
+        }
+      }
+    },
+    "toms_storage:level_emitter": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "redstone_component",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — emits redstone based on network contents"
+        },
+        "activity": {
+          "values": [
+            "logistics",
+            "redstone"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network level monitoring"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed as part of redstone setup"
+        },
+        "mod_subsystem": {
+          "values": [
+            "toms_storage:sensor"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network redstone sensor"
+        }
+      }
+    },
+    "toms_storage:open_crate": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "storage_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dumping crate for network items"
+        },
+        "activity": {
+          "values": [
+            "logistics",
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — drops items when broken"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed as storage"
+        },
+        "mod_subsystem": {
+          "values": [
+            "toms_storage:storage_block"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network dumping storage"
+        }
+      }
+    },
+    "toms_storage:paint_kit": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "utility",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — tool to paint network components"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — apply paint to cables and connectors"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used occasionally for customization"
+        },
+        "mod_subsystem": {
+          "values": [
+            "toms_storage:tool"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — painting tool for network"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted"
+        }
+      }
+    },
+    "toms_storage:painted_trim": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "decorative_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — decorative trim for network blocks"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — aesthetic outline for network components"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed as decoration"
+        }
+      }
+    },
+    "toms_storage:polymorphic_item_filter": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "utility",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — filter that matches item type"
+        },
+        "activity": {
+          "values": [
+            "logistics"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — polymorphic item routing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in network configuration"
+        },
+        "mod_subsystem": {
+          "values": [
+            "toms_storage:filter"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — polymorphic filter variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted"
+        }
+      }
+    },
+    "toms_storage:storage_terminal": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — network access terminal UI"
+        },
+        "activity": {
+          "values": [
+            "logistics",
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — view and manage network inventory"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed workstation"
+        },
+        "mod_subsystem": {
+          "values": [
+            "toms_storage:terminal"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — basic network terminal"
+        }
+      }
+    },
+    "toms_storage:tag_item_filter": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "utility",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — filter that matches item tags"
+        },
+        "activity": {
+          "values": [
+            "logistics"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — tag-based item routing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in network configuration"
+        },
+        "mod_subsystem": {
+          "values": [
+            "toms_storage:filter"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — tag filter variant"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted"
+        }
+      }
+    },
+    "toms_storage:trim": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "decorative_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — block placed for aesthetic/storage network trim"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried when building storage network"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used to build storage decor"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting inventory configurator",
+            "decorative trim for storage network"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — two main uses"
+        }
+      }
+    },
+    "toms_storage:wireless_terminal": {
+      "facets": {
+        "mod_namespace": {
+          "value": "toms_storage",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "smithing"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "utility",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — handheld device for wireless storage access"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — often used by network owners"
+        },
+        "activity": {
+          "values": [
+            "storage_management"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — access and manage storage network"
+        },
+        "primary_uses": {
+          "values": [
+            "wireless access to storage network"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — core function"
+        },
+        "mod_subsystem": {
+          "values": [
+            "toms_storage:terminal"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — terminal of Tom's Storage network"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — no loot sources — only obtainable via crafting"
+        }
+      }
+    }
+  },
+  "generated_by": "slot-classify v0.1.0",
+  "generated_at": "2026-04-27T03:28:48.785Z"
+}

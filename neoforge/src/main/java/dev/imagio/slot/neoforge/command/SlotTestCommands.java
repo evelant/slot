@@ -11,11 +11,12 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.debug.ChestContentEntry;
 import dev.imagio.slot.debug.ChestSpec;
+import dev.imagio.slot.debug.FacetIndexTemplateClassifier;
 import dev.imagio.slot.debug.PopulateProfile;
 import dev.imagio.slot.debug.RealisticAtlasGenerator;
 import dev.imagio.slot.debug.RealisticAtlasPlan;
-import dev.imagio.slot.debug.SemanticBucketResolver;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.neoforge.triage.IslandSignalExtractor;
 import dev.imagio.slot.neoforge.storage.ChestClaimServerService;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
@@ -125,8 +126,9 @@ public final class SlotTestCommands {
         }
 
         Random random = new Random();
-        RealisticAtlasPlan plan = RealisticAtlasGenerator.generate(
-                pool, profile, random, SemanticBucketResolver::classify);
+        FacetIndexTemplateClassifier classifier = new FacetIndexTemplateClassifier(IslandSignalExtractor::extract);
+        RealisticAtlasPlan plan = RealisticAtlasGenerator.generateWithDescriptors(
+                pool, profile, random, classifier::describe);
 
         WorkflowDomainRuntime runtime = SlotPlayerWorkflowRuntimeService.runtime(player);
         VisualAtlasWorkflowDomainService workflow = runtime.visualAtlasWorkflow();

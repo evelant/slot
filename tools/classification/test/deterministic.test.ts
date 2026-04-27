@@ -122,6 +122,46 @@ describe("formRule", () => {
     expect(out[0]!).toMatchObject({ value: "ingot" });
   });
 
+  test("window suffix maps to pane (Create's _window blocks)", () => {
+    const out = formRule.run(ctx(record({
+      id: "create:dark_oak_window",
+      path: "dark_oak_window",
+    })));
+    expect(out[0]!).toMatchObject({ value: "pane" });
+  });
+
+  test("glass_pane suffix maps to pane", () => {
+    const out = formRule.run(ctx(record({
+      id: "minecraft:black_stained_glass_pane",
+      path: "black_stained_glass_pane",
+    })));
+    expect(out[0]!).toMatchObject({ value: "pane" });
+  });
+
+  test("stained_glass suffix maps to pane", () => {
+    const out = formRule.run(ctx(record({
+      id: "minecraft:black_stained_glass",
+      path: "black_stained_glass",
+    })));
+    expect(out[0]!).toMatchObject({ value: "pane" });
+  });
+
+  test("bare 'glass' id maps to pane", () => {
+    const out = formRule.run(ctx(record({
+      id: "minecraft:glass",
+      path: "glass",
+    })));
+    expect(out[0]!).toMatchObject({ value: "pane" });
+  });
+
+  test("framed_glass suffix maps to pane", () => {
+    const out = formRule.run(ctx(record({
+      id: "create:framed_glass",
+      path: "framed_glass",
+    })));
+    expect(out[0]!).toMatchObject({ value: "pane" });
+  });
+
   test("exact id override for projectile", () => {
     const out = formRule.run(ctx(record({
       id: "minecraft:arrow",

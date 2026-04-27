@@ -344,34 +344,19 @@ final class WorkspaceRpcDispatcher {
         }
         host.selectedAtlasIdentity.set(item.identity());
         String templateName = chip.template() == null ? "" : chip.template().name();
-        int accepted = 0;
-        // Triage items carry their own chips but live in host.viewModel.triageItems(),
-        // so we need to walk both lists. Walk atlas items first (the batch-apply
-        // semantic: accept the same template for every matching homed card) then
-        // also include triage items — this fires for the single clicked inbox
-        // item that triggered the chip even when no homed cards match.
-        java.util.LinkedHashSet<SlotWorkspaceViewModel.AtlasItem> candidates = new java.util.LinkedHashSet<>();
-        candidates.addAll(host.viewModel.atlasItems());
-        candidates.addAll(host.viewModel.triageItems());
-        // Always include the clicked item so a chip click on an item the view model
-        // no longer returns (e.g., a momentary projection race) still fires.
-        candidates.add(item);
-        for (SlotWorkspaceViewModel.AtlasItem candidate : candidates) {
-            if (!SlotWorkspaceUiController.chipMatches(candidate, chip)) {
-                continue;
-            }
-            acceptChipEmitter.send(
-                    candidate.identity().itemId(),
-                    candidate.identity().comparisonMode(),
-                    candidate.identity().componentFingerprint(),
-                    chip.islandId(),
-                    templateName
-            );
-            accepted++;
-        }
-        host.localStatus.set(accepted <= 1
-                ? "accepting chip: " + chip.label()
-                : "accepting chip: " + chip.label() + " x" + accepted);
+        // Move only the clicked item. The previous batch-apply semantic
+        // (move every atlas + triage item with a matching chip target)
+        // looked like a runaway from the player's perspective: clicking
+        // one Tools chip emptied half the inbox at once. Single-item is
+        // the predictable mental model — one click, one move.
+        acceptChipEmitter.send(
+                item.identity().itemId(),
+                item.identity().comparisonMode(),
+                item.identity().componentFingerprint(),
+                chip.islandId(),
+                templateName
+        );
+        host.localStatus.set("accepting chip: " + chip.label());
         host.rebuild();
     }
 

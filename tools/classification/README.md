@@ -90,7 +90,64 @@ Curated outputs (committed):
 
 ## LLM gateway
 
-Stage 3 shells out to `claude -p` (Claude Code CLI in print mode). Contributors who
-want to re-run stage 3 locally need their own Claude subscription. See
-[LLM gateway: `claude -p`](../../docs/plans/item-classification.md#llm-gateway-claude--p)
-for the rationale.
+Stage 3 has two backends behind the same `LlmClient` interface
+([`src/llm/client.ts`](src/llm/client.ts),
+[`src/llm/openrouter-client.ts`](src/llm/openrouter-client.ts)):
+
+- **`openrouter` (default)** — calls the official `@openrouter/sdk` against
+  the OpenRouter API. The default model is `deepseek/deepseek-v4-flash`,
+  pinned to the `deepseek` upstream provider for price / caching /
+  throughput / known-good behaviour. Set `OPENROUTER_API_KEY` in env (the
+  repo-root `.env` is auto-sourced by `scripts/eval-prompt.sh`).
+- **`claude-cli`** — shells out to `claude -p` (Claude Code CLI in print
+  mode). Selected automatically when `--model` is a Claude alias
+  (`haiku`/`sonnet`/`opus`) or a `claude-*` full id; pass explicitly via
+  `--backend claude-cli` to force it. See
+  [LLM gateway: `claude -p`](../../docs/plans/item-classification.md#llm-gateway-claude--p)
+  for the rationale we kept it as a backend.
+
+Backend is auto-inferred from `--model`: a slug containing `/` routes to
+openrouter; otherwise claude-cli. The `--only-provider` flag also auto-
+defaults to `deepseek` when the model is in the deepseek family — avoids
+the SiliconFlow/DeepInfra flakiness we hit during evaluation.
+
+Reasoning-effort flags (`--effort`, `--thinking-budget`) and Claude-specific
+`--model` aliases are claude-cli-only and silently ignored on the openrouter
+path.
+
+Both backends round-trip through the same fixture-based record/replay
+machinery; replay mode (`--use-replay --fixture-dir <path>`) bypasses the
+network entirely.
+
+### Why deepseek-v4-flash as default?
+
+A/B-tested 2026-04-26 against Claude haiku/sonnet on a 60-item playtest
+sample covering doors, beds, Block-of-X, rails, spawn eggs, mob drops,
+buckets, ingredient-stage blocks, lighting, trophy items, and canonical
+sanity items:
+
+| Backend / model | Hits / 62 | Wall time | Notes |
+|---|---|---|---|
+| Claude haiku (lean prompt) | 20 | ~9 min | low cost, low accuracy |
+| Claude sonnet | 41 + 17 dropped | ~6.5 min | accuracy capped by silent batch drops |
+| **deepseek-v4-flash (deepseek pin)** | **60** | **~2 min** | best accuracy, ~20× cheaper than sonnet |
+| deepseek-v4-pro (deepseek pin) | 59 | ~23 min | no quality lift; ~10× cost of flash |
+
+v4-flash hits the sweet spot: better accuracy than sonnet, no batch
+dropping, dramatically cheaper, ~3× faster wall time.
+
+## Prompt-evaluation presets
+
+[`scripts/eval-prompt.sh`](scripts/eval-prompt.sh) runs a 60-item playtest
+sample (covering doors, beds, Block-of-X, rails, spawn eggs, mob drops,
+buckets, ingredient-stage blocks, lighting, trophy/progression items, and
+canonical sanity items) against a chosen model. Reads stage-1/2 outputs
+from `out/` so it doesn't require an mcmeta clone.
+
+```sh
+bun run eval:sonnet                          # claude-cli + sonnet
+OPENROUTER_API_KEY=... bun run eval:deepseek # openrouter + deepseek/deepseek-v4-flash
+scripts/eval-prompt.sh --backend openrouter --model openai/gpt-4o-mini
+```
+
+Output writes to `/tmp/slot-prompt-eval-<label>/`.

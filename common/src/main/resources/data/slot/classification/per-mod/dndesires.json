@@ -1,0 +1,6829 @@
+{
+  "schema_version": 1,
+  "layer": "per-mod",
+  "source": "dndesires",
+  "entries": {
+    "dndesires:asphalt": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — solid block used for roads/floors"
+        },
+        "material_family": {
+          "value": "asphalt",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — default block material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried when building"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed as building material"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — undyed base variant"
+        },
+        "palette": {
+          "values": [
+            "dark",
+            "earthy"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dark road-like color"
+        },
+        "primary_uses": {
+          "values": [
+            "building roads and structures"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — main use"
+        }
+      }
+    },
+    "dndesires:black_asphalt": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed building block"
+        },
+        "material_family": {
+          "value": "asphalt",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — asphalt base"
+        },
+        "dye_color": {
+          "value": "black",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed variant"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried when decorating"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used for colored roads"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building black roads"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — main use"
+        }
+      }
+    },
+    "dndesires:black_bore_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "decorative_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed decorative stone block"
+        },
+        "material_family": {
+          "value": "stone",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stone-like material"
+        },
+        "dye_color": {
+          "value": "black",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed variant"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in building projects"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed for decoration"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building"
+          ],
+          "mode": "add",
+          "source": "llm:stage3"
+        }
+      }
+    },
+    "dndesires:blasting_sail": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — fan catalyst block for processing"
+        },
+        "material_family": {
+          "value": "wood",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — mined with axe"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried for automation builds"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in fan processing"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — automation component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:fan_catalyst"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of fan catalyst system"
+        },
+        "primary_uses": {
+          "values": [
+            "blasting items with fans"
+          ],
+          "mode": "add",
+          "source": "llm:stage3"
+        }
+      }
+    },
+    "dndesires:blue_asphalt": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed building block"
+        },
+        "material_family": {
+          "value": "asphalt",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — asphalt base"
+        },
+        "dye_color": {
+          "value": "blue",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed variant"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried when building"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used for colored roads"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed"
+        },
+        "primary_uses": {
+          "values": [
+            "building blue roads"
+          ],
+          "mode": "add",
+          "source": "llm:stage3"
+        }
+      }
+    },
+    "dndesires:blue_bore_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "decorative_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed decorative stone"
+        },
+        "material_family": {
+          "value": "stone",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stone-like"
+        },
+        "dye_color": {
+          "value": "blue",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in builds"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed for decoration"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building"
+          ],
+          "mode": "add",
+          "source": "llm:stage3"
+        }
+      }
+    },
+    "dndesires:bore_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — solid stone block"
+        },
+        "material_family": {
+          "value": "stone",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — standard stone material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — common building material"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed as structure"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — undyed base"
+        },
+        "primary_uses": {
+          "values": [
+            "building with stone"
+          ],
+          "mode": "add",
+          "source": "llm:stage3"
+        }
+      }
+    },
+    "dndesires:breccia": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "dndesires:hydraulic_compacting",
+            "stonecutting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — natural stone block"
+        },
+        "material_family": {
+          "value": "stone",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stone type"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried for building"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in construction"
+        },
+        "flavor": {
+          "values": [
+            "natural"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stone-like"
+        },
+        "palette": {
+          "values": [
+            "earthy"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — earthy stone color"
+        },
+        "primary_uses": {
+          "values": [
+            "building material"
+          ],
+          "mode": "add",
+          "source": "llm:stage3"
+        }
+      }
+    },
+    "dndesires:breccia_pillar": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "stonecutting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — pillar variant"
+        },
+        "material_family": {
+          "value": "stone",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stone material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in builds"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — structural pillar"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — shape variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building pillars"
+          ],
+          "mode": "add",
+          "source": "llm:stage3"
+        }
+      }
+    },
+    "dndesires:brown_asphalt": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed building block"
+        },
+        "material_family": {
+          "value": "asphalt",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — asphalt base"
+        },
+        "dye_color": {
+          "value": "brown",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried when building"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — colored roads"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed"
+        },
+        "primary_uses": {
+          "values": [
+            "building brown roads"
+          ],
+          "mode": "add",
+          "source": "llm:stage3"
+        }
+      }
+    },
+    "dndesires:brown_bore_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "decorative_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed decorative stone"
+        },
+        "material_family": {
+          "value": "stone",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stone"
+        },
+        "dye_color": {
+          "value": "brown",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in builds"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — decoration"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed"
+        },
+        "primary_uses": {
+          "values": [
+            "decorative building"
+          ],
+          "mode": "add",
+          "source": "llm:stage3"
+        }
+      }
+    },
+    "dndesires:burner": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "blasting",
+            "crafting",
+            "smelting",
+            "smoking"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — fuel/crafting component"
+        },
+        "material_family": {
+          "value": "coal",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — similar to coal nugget"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — common fuel"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — no special texture"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted/smelted"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component",
+            "fuel for furnaces"
+          ],
+          "mode": "add",
+          "source": "llm:stage3"
+        }
+      }
+    },
+    "dndesires:chocolate_milkshake": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "create:emptying"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "decorative_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placeable fluid novelty block"
+        },
+        "material_family": {
+          "value": "chocolate",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — milkshake material"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — not typically carried"
+        },
+        "flavor": {
+          "values": [
+            "fancy"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — novelty fluid"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — mixing recipe"
+        },
+        "primary_uses": {
+          "values": [
+            "decoration",
+            "milkshake storage"
+          ],
+          "mode": "add",
+          "source": "llm:stage3"
+        }
+      }
+    },
+    "dndesires:chocolate_milkshake_bucket": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "form": {
+          "value": "bucket",
+          "confidence": 1,
+          "source": "rule:form_from_id",
+          "rationale": "suffix _bucket"
+        },
+        "role": {
+          "value": "utility",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — fluid carrier tool"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — bucket base material"
+        },
+        "material_secondary": {
+          "values": [
+            "chocolate"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — contents"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried for fluid transport"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in fluid logistics"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted via filling"
+        },
+        "primary_uses": {
+          "values": [
+            "transporting chocolate milkshake"
+          ],
+          "mode": "add",
+          "source": "llm:stage3"
+        }
+      }
+    },
+    "dndesires:coal_piece": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — coal nugget"
+        },
+        "material_family": {
+          "value": "coal",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — tag c:nuggets/coal"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — common fuel"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — crafted from coal"
+        },
+        "primary_uses": {
+          "values": [
+            "crafting component",
+            "fuel"
+          ],
+          "mode": "add",
+          "source": "llm:stage3"
+        }
+      }
+    },
+    "dndesires:cog_crank": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — hand crank for rotational power"
+        },
+        "material_family": {
+          "value": "wood",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — mined with axe"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — carried for contraptions"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — generates rotation manually"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — machine component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:mechanical_power"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — hand crank subsystem"
+        },
+        "primary_uses": {
+          "values": [
+            "providing manual rotation"
+          ],
+          "mode": "add",
+          "source": "llm:stage3"
+        }
+      }
+    },
+    "dndesires:creative_gear_motor": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "role": {
+          "value": "admin",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — creative-only item"
+        },
+        "is_creative_only": {
+          "value": true,
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — no survival recipe"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — rarely in survival inventory"
+        },
+        "origin": {
+          "values": [
+            "creative_only"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — creative only"
+        }
+      }
+    },
+    "dndesires:cut_breccia": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "stonecutting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — cut stone block"
+        },
+        "material_family": {
+          "value": "stone",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stone material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — common building block"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in construction"
+        },
+        "flavor": {
+          "values": [
+            "plain",
+            "variant"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — cut variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building with cut stone"
+          ],
+          "mode": "add",
+          "source": "llm:stage3"
+        }
+      }
+    },
+    "dndesires:cut_breccia_brick_slab": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "form": {
+          "value": "slab",
+          "confidence": 1,
+          "source": "rule:form_from_tag",
+          "rationale": "tag minecraft:slabs"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — slab building block"
+        },
+        "material_family": {
+          "value": "stone",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stone material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — common in building"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used for slabs"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — slab shape"
+        },
+        "primary_uses": {
+          "values": [
+            "building slabs"
+          ],
+          "mode": "add",
+          "source": "llm:stage3"
+        }
+      }
+    },
+    "dndesires:cut_breccia_brick_stairs": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "form": {
+          "value": "stairs",
+          "confidence": 1,
+          "source": "rule:form_from_tag",
+          "rationale": "tag minecraft:stairs"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "stonecutting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stairs building block"
+        },
+        "material_family": {
+          "value": "stone",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stone material"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — common in building"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used for stairs"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stairs shape"
+        },
+        "primary_uses": {
+          "values": [
+            "building stairs"
+          ],
+          "mode": "add",
+          "source": "llm:stage3"
+        }
+      }
+    },
+    "dndesires:cut_breccia_brick_wall": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "form": {
+          "value": "wall",
+          "confidence": 1,
+          "source": "rule:form_from_tag",
+          "rationale": "tag minecraft:walls"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "stonecutting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Stone wall block for builds"
+        },
+        "material_family": {
+          "value": "breccia",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Tag stone_types/breccia"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed once, not carried"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Used for structural walls"
+        }
+      }
+    },
+    "dndesires:cut_breccia_bricks": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "stonecutting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Stone brick block for builds"
+        },
+        "material_family": {
+          "value": "breccia",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Tag stone_types/breccia"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed, kept in storage"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Full block for construction"
+        }
+      }
+    },
+    "dndesires:cut_breccia_slab": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "form": {
+          "value": "slab",
+          "confidence": 1,
+          "source": "rule:form_from_tag",
+          "rationale": "tag minecraft:slabs"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Stone slab for builds"
+        },
+        "material_family": {
+          "value": "breccia",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Part of breccia stone set"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed, not carried"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Structural slab"
+        }
+      }
+    },
+    "dndesires:cut_breccia_stairs": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "form": {
+          "value": "stairs",
+          "confidence": 1,
+          "source": "rule:form_from_tag",
+          "rationale": "tag minecraft:stairs"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "stonecutting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Stone stairs for builds"
+        },
+        "material_family": {
+          "value": "breccia",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Part of breccia stone set"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed, not carried"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Stairs for access"
+        }
+      }
+    },
+    "dndesires:cut_breccia_wall": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "form": {
+          "value": "wall",
+          "confidence": 1,
+          "source": "rule:form_from_tag",
+          "rationale": "tag minecraft:walls"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "stonecutting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Stone wall for builds"
+        },
+        "material_family": {
+          "value": "breccia",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Part of breccia stone set"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed once"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Wall for enclosures"
+        }
+      }
+    },
+    "dndesires:cyan_asphalt": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Colored road block for builds"
+        },
+        "material_family": {
+          "value": "asphalt",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Tag asphalt"
+        },
+        "dye_color": {
+          "value": "cyan",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Name implies cyan dye"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed, not carried"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Used for roads/decoration"
+        }
+      }
+    },
+    "dndesires:cyan_bore_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Colored bore block for builds"
+        },
+        "material_family": {
+          "value": "bore",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Tag bore_blocks"
+        },
+        "dye_color": {
+          "value": "cyan",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Name implies cyan dye"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed once"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Used for structured builds"
+        }
+      }
+    },
+    "dndesires:diamond_shard": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "form": {
+          "value": "shard",
+          "confidence": 1,
+          "source": "rule:form_from_id",
+          "rationale": "suffix _shard"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Nugget-like crafting component"
+        },
+        "material_family": {
+          "value": "diamond",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Tag c:nuggets/diamond"
+        },
+        "tier": {
+          "value": "diamond",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Derived from diamond"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Kept in storage for crafting"
+        }
+      }
+    },
+    "dndesires:dragon_breathing_sail": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Fan catalyst block for processing"
+        },
+        "material_family": {
+          "value": "wood",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Required tool axe suggests wood"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed in processing line"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Part of automated dragon breathing"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:dragon_breathing"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Name implies subsystem"
+        }
+      }
+    },
+    "dndesires:fluid_gauge": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "redstone_component",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Gauge outputs redstone signal based on fluid"
+        },
+        "material_family": {
+          "value": "metal",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Common for gauge blocks"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed for monitoring"
+        },
+        "activity": {
+          "values": [
+            "logistics",
+            "redstone"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Used to measure and signal fluid levels"
+        }
+      }
+    },
+    "dndesires:fluid_hatch": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Fluid port block for processing lines"
+        },
+        "material_family": {
+          "value": "metal",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Common for fluid handling"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed as part of automation"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Transfers fluids between machines"
+        }
+      }
+    },
+    "dndesires:freezing_sail": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Fan catalyst block for freezing"
+        },
+        "material_family": {
+          "value": "wood",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Required tool axe suggests wood"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed in processing line"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Part of automated freezing"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:freezing"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Name implies subsystem"
+        }
+      }
+    },
+    "dndesires:gatling_breaker": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "tool",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Tags c:tools and mining enchantments"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Common tool material"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Carried for breaking blocks"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Mining enchantment tags"
+        }
+      }
+    },
+    "dndesires:glowberry_milkshake": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "create:emptying"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "consumable",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Milkshake item eaten by player"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Carried for hunger restoration"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:milkshake"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Part of milkshake subsystem"
+        }
+      }
+    },
+    "dndesires:glowberry_milkshake_bucket": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "form": {
+          "value": "bucket",
+          "confidence": 1,
+          "source": "rule:form_from_id",
+          "rationale": "suffix _bucket"
+        },
+        "role": {
+          "value": "utility",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Bucket used to carry and pour milkshake"
+        },
+        "material_family": {
+          "value": "metal",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Bucket material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Carried for fluid handling"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:milkshake"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Part of milkshake subsystem"
+        }
+      }
+    },
+    "dndesires:gold_mixer": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Machine block for mixing processing"
+        },
+        "material_family": {
+          "value": "gold",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Name says golden"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed in processing line"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Part of automated mixing"
+        }
+      }
+    },
+    "dndesires:gold_whisk": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Crafting component for gold mixer"
+        },
+        "material_family": {
+          "value": "gold",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Name says golden"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Kept in storage for crafting"
+        }
+      }
+    },
+    "dndesires:gray_asphalt": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Colored road block for builds"
+        },
+        "material_family": {
+          "value": "asphalt",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Tag asphalt"
+        },
+        "dye_color": {
+          "value": "gray",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Name implies gray dye"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed, not carried"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Used for roads/decoration"
+        }
+      }
+    },
+    "dndesires:gray_bore_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Colored bore block for builds"
+        },
+        "material_family": {
+          "value": "bore",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Tag bore_blocks"
+        },
+        "dye_color": {
+          "value": "gray",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Name implies gray dye"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed once"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Used for structured builds"
+        }
+      }
+    },
+    "dndesires:green_asphalt": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Colored road block for builds"
+        },
+        "material_family": {
+          "value": "asphalt",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Tag asphalt"
+        },
+        "dye_color": {
+          "value": "green",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Name implies green dye"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed, not carried"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Used for roads/decoration"
+        }
+      }
+    },
+    "dndesires:green_bore_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Part of a bore machine assembly"
+        },
+        "dye_color": {
+          "value": "green",
+          "confidence": 0.95,
+          "source": "llm:stage3",
+          "rationale": "[named] — Color in name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed as machine component"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Used in bore machinery"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Dyed machine block"
+        },
+        "primary_uses": {
+          "values": [
+            "construct bore machines",
+            "dyed machine casing"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Bore block set"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:bore"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Bore subsystem"
+        }
+      }
+    },
+    "dndesires:handheld_drill": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "tool",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Tool for drilling"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Player carries regularly"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "mode": "add",
+          "confidence": 0.95,
+          "source": "llm:stage3",
+          "rationale": "[named] — Enchantable/mining tag"
+        },
+        "primary_uses": {
+          "values": [
+            "drill through blocks"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Handheld drill"
+        }
+      }
+    },
+    "dndesires:handheld_saw": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "role": {
+          "value": "tool",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Tool for sawing"
+        },
+        "carry_frequency": {
+          "value": "everyday",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Player carries regularly"
+        },
+        "activity": {
+          "values": [
+            "mining"
+          ],
+          "mode": "add",
+          "confidence": 0.95,
+          "source": "llm:stage3",
+          "rationale": "[named] — Enchantable/mining tag"
+        },
+        "primary_uses": {
+          "values": [
+            "cut through blocks"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Handheld saw"
+        }
+      }
+    },
+    "dndesires:haunting_sail": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Fan catalyst component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Component for fan"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Used in processing"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Machine part"
+        },
+        "primary_uses": {
+          "values": [
+            "upgrade fan for haunting"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Haunting catalyst"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:fan_catalyst"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Recipe path implies subsystem"
+        }
+      }
+    },
+    "dndesires:hydraulic_press": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Processing machine"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed in factory"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Processing block"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Machine"
+        },
+        "primary_uses": {
+          "values": [
+            "hydraulic compacting"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Press function"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:hydraulic_compacting"
+          ],
+          "mode": "add",
+          "confidence": 0.95,
+          "source": "llm:stage3",
+          "rationale": "[named] — Suggested vocabulary"
+        }
+      }
+    },
+    "dndesires:industrial_casing": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Casing for machines"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Used in construction"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Machine housing"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Industrial part"
+        },
+        "primary_uses": {
+          "values": [
+            "encase machinery"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Industrial casing"
+        }
+      }
+    },
+    "dndesires:industrial_fan": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Fan for processing"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed in line"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Blows air for processes"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Fan machine"
+        },
+        "primary_uses": {
+          "values": [
+            "move air for processing"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Industrial fan"
+        }
+      }
+    },
+    "dndesires:inverse_gearshift": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Gearshift component"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed in power network"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Reverses rotation"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Machine part"
+        },
+        "primary_uses": {
+          "values": [
+            "reverse rotational direction"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Inverse gearshift"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:mechanical_power"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Power transmission"
+        }
+      }
+    },
+    "dndesires:lapis_lazuli_shard": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "form": {
+          "value": "shard",
+          "confidence": 1,
+          "source": "rule:form_from_id",
+          "rationale": "suffix _shard"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "material",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Nugget of lapis"
+        },
+        "material_family": {
+          "value": "lapis_lazuli",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Tag c:nuggets/lapis"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Crafting ingredient"
+        },
+        "primary_uses": {
+          "values": [
+            "craft lapis lazuli",
+            "ingredient in recipes"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Lapis shard uses"
+        }
+      }
+    },
+    "dndesires:large_cog_crank": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Crank for power"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed as interface"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Provides manual power"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Machine part"
+        },
+        "primary_uses": {
+          "values": [
+            "manually power contraptions"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Large cog crank"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:mechanical_power"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Power source"
+        }
+      }
+    },
+    "dndesires:layered_breccia": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "stonecutting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Decorative stone block"
+        },
+        "material_family": {
+          "value": "breccia",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — Tag stone_types/breccia"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Used in construction"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Stone building block"
+        },
+        "flavor": {
+          "values": [
+            "plain"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Stone variant"
+        },
+        "primary_uses": {
+          "values": [
+            "build with breccia"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Layered breccia"
+        }
+      }
+    },
+    "dndesires:light_blue_asphalt": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Colored road block"
+        },
+        "dye_color": {
+          "value": "light_blue",
+          "confidence": 0.95,
+          "source": "llm:stage3",
+          "rationale": "[named] — Color in name"
+        },
+        "material_family": {
+          "value": "asphalt",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Asphalt block"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Used in building"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Building material"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Dyed block"
+        },
+        "primary_uses": {
+          "values": [
+            "build colored roads"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Light blue asphalt"
+        }
+      }
+    },
+    "dndesires:light_blue_bore_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Bore machine component"
+        },
+        "dye_color": {
+          "value": "light_blue",
+          "confidence": 0.95,
+          "source": "llm:stage3",
+          "rationale": "[named] — Color in name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed in machine"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Bore machinery"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Dyed machine part"
+        },
+        "primary_uses": {
+          "values": [
+            "construct bore machines"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Bore block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:bore"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Bore subsystem"
+        }
+      }
+    },
+    "dndesires:light_gray_asphalt": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Colored road block"
+        },
+        "dye_color": {
+          "value": "light_gray",
+          "confidence": 0.95,
+          "source": "llm:stage3",
+          "rationale": "[named] — Color in name"
+        },
+        "material_family": {
+          "value": "asphalt",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Asphalt"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — For building"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Building block"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Dyed"
+        },
+        "primary_uses": {
+          "values": [
+            "build colored roads"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Light gray asphalt"
+        }
+      }
+    },
+    "dndesires:light_gray_bore_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Bore component"
+        },
+        "dye_color": {
+          "value": "light_gray",
+          "confidence": 0.95,
+          "source": "llm:stage3",
+          "rationale": "[named] — Color in name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Bore machine"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Dyed machine"
+        },
+        "primary_uses": {
+          "values": [
+            "construct bore machines"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Bore block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:bore"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Bore"
+        }
+      }
+    },
+    "dndesires:lime_asphalt": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Road block"
+        },
+        "dye_color": {
+          "value": "lime",
+          "confidence": 0.95,
+          "source": "llm:stage3",
+          "rationale": "[named] — Color in name"
+        },
+        "material_family": {
+          "value": "asphalt",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Asphalt"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Building"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Building block"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Dyed"
+        },
+        "primary_uses": {
+          "values": [
+            "build colored roads"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Lime asphalt"
+        }
+      }
+    },
+    "dndesires:lime_bore_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Bore machine part"
+        },
+        "dye_color": {
+          "value": "lime",
+          "confidence": 0.95,
+          "source": "llm:stage3",
+          "rationale": "[named] — Color in name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Bore machinery"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Dyed machine"
+        },
+        "primary_uses": {
+          "values": [
+            "construct bore machines"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Bore block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:bore"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Bore subsystem"
+        }
+      }
+    },
+    "dndesires:magenta_asphalt": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Road block"
+        },
+        "dye_color": {
+          "value": "magenta",
+          "confidence": 0.95,
+          "source": "llm:stage3",
+          "rationale": "[named] — Color in name"
+        },
+        "material_family": {
+          "value": "asphalt",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Asphalt"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Building"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Building block"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Dyed"
+        },
+        "primary_uses": {
+          "values": [
+            "build colored roads"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Magenta asphalt"
+        }
+      }
+    },
+    "dndesires:magenta_bore_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Bore machine part"
+        },
+        "dye_color": {
+          "value": "magenta",
+          "confidence": 0.95,
+          "source": "llm:stage3",
+          "rationale": "[named] — Color in name"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Placed"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Bore machinery"
+        },
+        "flavor": {
+          "values": [
+            "colored",
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Dyed machine"
+        },
+        "primary_uses": {
+          "values": [
+            "construct bore machines"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Bore block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:bore"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Bore subsystem"
+        }
+      }
+    },
+    "dndesires:multimeter": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Measurement device"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Used for diagnostics"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "redstone"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Measures power"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Tool"
+        },
+        "primary_uses": {
+          "values": [
+            "measure speed and stress"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Multimeter"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:mechanical_power"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — Power monitoring"
+        }
+      }
+    },
+    "dndesires:omni_gearbox": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — gearbox for rotational power"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of mechanical power network"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once, not carried"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — a gearbox component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:mechanical_power"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — core power transmission"
+        },
+        "primary_uses": {
+          "values": [
+            "transmit rotational power"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — as gearbox"
+        }
+      }
+    },
+    "dndesires:omni_speed_controller": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — control rotational speed"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — adjusts speed in contraptions"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once, not carried"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — speed control block"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:mechanical_power"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — speed regulation"
+        },
+        "primary_uses": {
+          "values": [
+            "control rotational speed"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — speed controller"
+        }
+      }
+    },
+    "dndesires:orange_asphalt": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — flooring/road block"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed, not carried"
+        },
+        "dye_color": {
+          "value": "orange",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — tag dyed_blocks"
+        },
+        "material_family": {
+          "value": "asphalt",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — asphalt block type"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — orange dyed block"
+        }
+      }
+    },
+    "dndesires:orange_bore_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "decorative_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — colored decorative block"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used for decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed, not carried"
+        },
+        "dye_color": {
+          "value": "orange",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — tag dyed_blocks"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — orange dyed block"
+        }
+      }
+    },
+    "dndesires:overburden_casing": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — casing for structures"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used as building material"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed, not carried"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — casing for machinery"
+        }
+      }
+    },
+    "dndesires:pink_asphalt": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — flooring/road block"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed, not carried"
+        },
+        "dye_color": {
+          "value": "pink",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — tag dyed_blocks"
+        },
+        "material_family": {
+          "value": "asphalt",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — asphalt block type"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — pink dyed block"
+        }
+      }
+    },
+    "dndesires:pink_bore_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "decorative_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — colored decorative block"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used for decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed, not carried"
+        },
+        "dye_color": {
+          "value": "pink",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — tag dyed_blocks"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — pink dyed block"
+        }
+      }
+    },
+    "dndesires:polished_cut_breccia": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "stonecutting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — polished stone block"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed, not carried"
+        },
+        "material_family": {
+          "value": "breccia",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stone type breccia"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — polished variant"
+        },
+        "primary_uses": {
+          "values": [
+            "building with polished stone"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — decoration"
+        }
+      }
+    },
+    "dndesires:polished_cut_breccia_slab": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "form": {
+          "value": "slab",
+          "confidence": 1,
+          "source": "rule:form_from_tag",
+          "rationale": "tag minecraft:slabs"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — slab variant"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed, not carried"
+        },
+        "material_family": {
+          "value": "breccia",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stone type breccia"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — slab variant"
+        }
+      }
+    },
+    "dndesires:polished_cut_breccia_stairs": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "form": {
+          "value": "stairs",
+          "confidence": 1,
+          "source": "rule:form_from_tag",
+          "rationale": "tag minecraft:stairs"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "stonecutting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stairs variant"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed, not carried"
+        },
+        "material_family": {
+          "value": "breccia",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stone type breccia"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stairs variant"
+        }
+      }
+    },
+    "dndesires:polished_cut_breccia_wall": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "form": {
+          "value": "wall",
+          "confidence": 1,
+          "source": "rule:form_from_tag",
+          "rationale": "tag minecraft:walls"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "stonecutting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — wall variant"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed, not carried"
+        },
+        "material_family": {
+          "value": "breccia",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stone type breccia"
+        },
+        "flavor": {
+          "values": [
+            "variant"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — wall variant"
+        }
+      }
+    },
+    "dndesires:powered_flywheel": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — flywheel for power"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stores rotational energy"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed, not carried"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — mechanical component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:mechanical_power"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — power storage"
+        },
+        "primary_uses": {
+          "values": [
+            "store rotational energy"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — flywheel"
+        }
+      }
+    },
+    "dndesires:pumpkin_milkshake": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "create:emptying"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "consumable",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — drinkable milkshake"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — snack kept in inventory"
+        }
+      }
+    },
+    "dndesires:pumpkin_milkshake_bucket": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "form": {
+          "value": "bucket",
+          "confidence": 1,
+          "source": "rule:form_from_id",
+          "rationale": "suffix _bucket"
+        },
+        "role": {
+          "value": "utility",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — bucket of milkshake"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — tool for fluid handling"
+        }
+      }
+    },
+    "dndesires:purple_asphalt": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — flooring/road block"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed, not carried"
+        },
+        "dye_color": {
+          "value": "purple",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — tag dyed_blocks"
+        },
+        "material_family": {
+          "value": "asphalt",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — asphalt block type"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — purple dyed block"
+        }
+      }
+    },
+    "dndesires:purple_bore_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "decorative_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — colored decorative block"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used for decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed, not carried"
+        },
+        "dye_color": {
+          "value": "purple",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — tag dyed_blocks"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — purple dyed block"
+        }
+      }
+    },
+    "dndesires:red_asphalt": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — flooring/road block"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in construction"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed, not carried"
+        },
+        "dye_color": {
+          "value": "red",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — tag dyed_blocks"
+        },
+        "material_family": {
+          "value": "asphalt",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — asphalt block type"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — red dyed block"
+        }
+      }
+    },
+    "dndesires:red_bore_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "decorative_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — colored decorative block"
+        },
+        "activity": {
+          "values": [
+            "decorating"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used for decoration"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed, not carried"
+        },
+        "dye_color": {
+          "value": "red",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — tag dyed_blocks"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "mode": "add",
+          "confidence": 0.8,
+          "source": "llm:stage3",
+          "rationale": "[pattern] — red dyed block"
+        }
+      }
+    },
+    "dndesires:roll_table": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "functional_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — workstation table"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed, not carried"
+        }
+      }
+    },
+    "dndesires:sanding_sail": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — fan catalyst for sanding"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in processing line"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed, not carried"
+        },
+        "flavor": {
+          "values": [
+            "mechanical"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — sail attachment"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:sanding"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — sanding processing"
+        },
+        "primary_uses": {
+          "values": [
+            "enable sanding with fan"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — catalyst"
+        }
+      }
+    },
+    "dndesires:seething_sail": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — fan catalyst for processing contraption"
+        },
+        "material_family": {
+          "value": "wood",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — sail made of wood/cloth, axe-mineable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed on fan then left"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of processing line"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:seething"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — catalyst for seething process"
+        }
+      }
+    },
+    "dndesires:small_breccia_brick_slab": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "form": {
+          "value": "slab",
+          "confidence": 1,
+          "source": "rule:form_from_tag",
+          "rationale": "tag minecraft:slabs"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stone slab used in construction"
+        },
+        "material_family": {
+          "value": "breccia",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once, not carried often"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used for building"
+        }
+      }
+    },
+    "dndesires:small_breccia_brick_stairs": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "form": {
+          "value": "stairs",
+          "confidence": 1,
+          "source": "rule:form_from_tag",
+          "rationale": "tag minecraft:stairs"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "stonecutting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stone stairs for building"
+        },
+        "material_family": {
+          "value": "breccia",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used for building"
+        }
+      }
+    },
+    "dndesires:small_breccia_brick_wall": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "form": {
+          "value": "wall",
+          "confidence": 1,
+          "source": "rule:form_from_tag",
+          "rationale": "tag minecraft:walls"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "stonecutting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stone wall for building"
+        },
+        "material_family": {
+          "value": "breccia",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used for building"
+        }
+      }
+    },
+    "dndesires:small_breccia_bricks": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting",
+            "stonecutting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stone bricks for building"
+        },
+        "material_family": {
+          "value": "breccia",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — stone type from id"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed once"
+        },
+        "activity": {
+          "values": [
+            "building"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used for building"
+        }
+      }
+    },
+    "dndesires:smart_hopper": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — upgraded hopper for logistics"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — likely metal component"
+        },
+        "carry_frequency": {
+          "value": "frequent",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — commonly used in automation"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "logistics"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — item transfer and filtering"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:logistics"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of item logistics system"
+        }
+      }
+    },
+    "dndesires:smoking_sail": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — fan catalyst for smoking"
+        },
+        "material_family": {
+          "value": "wood",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — sail material, axe-mineable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed on fan then left"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — processing component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:smoking"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — catalyst for smoking process"
+        }
+      }
+    },
+    "dndesires:splashing_sail": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "axe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/axe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — fan catalyst for splashing"
+        },
+        "material_family": {
+          "value": "wood",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — sail material, axe-mineable"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed on fan then left"
+        },
+        "activity": {
+          "values": [
+            "automation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — processing component"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:splashing"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — catalyst for splashing process"
+        }
+      }
+    },
+    "dndesires:stirling_engine": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — generates power via heat"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed and left running"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "power_generation"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — generates rotational power"
+        }
+      }
+    },
+    "dndesires:strawberry_milkshake": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "create:emptying"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "consumable",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — food/drink item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — drink when needed"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — produced from mixing ingredients"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:milkshake"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — milkshake consumable"
+        }
+      }
+    },
+    "dndesires:strawberry_milkshake_bucket": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "form": {
+          "value": "bucket",
+          "confidence": 1,
+          "source": "rule:form_from_id",
+          "rationale": "suffix _bucket"
+        },
+        "role": {
+          "value": "utility",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — bucket to carry milkshake fluid"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — bucket metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in automation or drinking"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "farming"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — filling/emptying, making milkshakes"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — holds fluid"
+        }
+      }
+    },
+    "dndesires:vanilla_milkshake": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "processing_in": {
+          "values": [
+            "create:emptying"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "role": {
+          "value": "consumable",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — food/drink item"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — drink when needed"
+        },
+        "activity": {
+          "values": [
+            "farming"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — produced from mixing"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:milkshake"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — milkshake consumable"
+        }
+      }
+    },
+    "dndesires:vanilla_milkshake_bucket": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "form": {
+          "value": "bucket",
+          "confidence": 1,
+          "source": "rule:form_from_id",
+          "rationale": "suffix _bucket"
+        },
+        "role": {
+          "value": "utility",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — bucket to carry milkshake fluid"
+        },
+        "material_family": {
+          "value": "iron",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — bucket metal"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in automation or drinking"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "farming"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — filling/emptying"
+        },
+        "storage_categories": {
+          "values": [
+            "fluid"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — holds fluid"
+        }
+      }
+    },
+    "dndesires:white_asphalt": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed asphalt block for building"
+        },
+        "material_family": {
+          "value": "asphalt",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — asphalt block from tag"
+        },
+        "dye_color": {
+          "value": "white",
+          "confidence": 0.95,
+          "source": "llm:stage3",
+          "rationale": "[named] — item name includes white"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — building material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — decorative building block"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed block"
+        }
+      }
+    },
+    "dndesires:white_bore_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of bore multiblock"
+        },
+        "material_family": {
+          "value": "stone",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — pickaxe-mineable block"
+        },
+        "dye_color": {
+          "value": "white",
+          "confidence": 0.95,
+          "source": "llm:stage3",
+          "rationale": "[named] — item name includes white"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed in bore machine"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "mining"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in bore for mining"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:bore"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of bore system"
+        },
+        "multiblock_component_of": {
+          "values": [
+            "dndesires:bore"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — component of bore multiblock"
+        },
+        "multiblock_role": {
+          "value": "wall",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — likely structural wall"
+        }
+      }
+    },
+    "dndesires:yellow_asphalt": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "building_block",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed asphalt block for building"
+        },
+        "material_family": {
+          "value": "asphalt",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — asphalt block from tag"
+        },
+        "dye_color": {
+          "value": "yellow",
+          "confidence": 0.95,
+          "source": "llm:stage3",
+          "rationale": "[named] — item name includes yellow"
+        },
+        "carry_frequency": {
+          "value": "occasional",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — building material"
+        },
+        "activity": {
+          "values": [
+            "building",
+            "decorating"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — decorative building block"
+        },
+        "flavor": {
+          "values": [
+            "colored"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — dyed block"
+        }
+      }
+    },
+    "dndesires:yellow_bore_block": {
+      "facets": {
+        "mod_namespace": {
+          "value": "dndesires",
+          "confidence": 1,
+          "source": "rule:mod_namespace"
+        },
+        "is_block_item": {
+          "value": true,
+          "confidence": 1,
+          "source": "rule:is_block_item_from_registry"
+        },
+        "required_tool": {
+          "value": "pickaxe",
+          "confidence": 1,
+          "source": "rule:required_tool_from_block_tag",
+          "rationale": "tag minecraft:mineable/pickaxe"
+        },
+        "processing_in": {
+          "values": [
+            "crafting"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:processing_in_from_recipes"
+        },
+        "origin": {
+          "values": [
+            "crafted_only"
+          ],
+          "mode": "add",
+          "confidence": 1,
+          "source": "rule:origin_from_loot_tables"
+        },
+        "role": {
+          "value": "mechanism",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of bore multiblock"
+        },
+        "material_family": {
+          "value": "stone",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — pickaxe-mineable block"
+        },
+        "dye_color": {
+          "value": "yellow",
+          "confidence": 0.95,
+          "source": "llm:stage3",
+          "rationale": "[named] — item name includes yellow"
+        },
+        "carry_frequency": {
+          "value": "rare",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — placed in bore machine"
+        },
+        "activity": {
+          "values": [
+            "automation",
+            "mining"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — used in bore for mining"
+        },
+        "mod_subsystem": {
+          "values": [
+            "dndesires:bore"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — part of bore system"
+        },
+        "multiblock_component_of": {
+          "values": [
+            "dndesires:bore"
+          ],
+          "mode": "add",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — component of bore multiblock"
+        },
+        "multiblock_role": {
+          "value": "wall",
+          "confidence": 0.6,
+          "source": "llm:stage3",
+          "rationale": "[inferred] — likely structural wall"
+        }
+      }
+    }
+  },
+  "generated_by": "slot-classify v0.1.0",
+  "generated_at": "2026-04-27T03:26:09.227Z"
+}

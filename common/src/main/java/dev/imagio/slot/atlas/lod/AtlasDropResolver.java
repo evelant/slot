@@ -73,17 +73,68 @@ public final class AtlasDropResolver {
             }
         }
         // 2) No item hit — fall back to the island chrome the drop
-        //    landed inside. Append to its end.
+        //    landed inside. Pick an insertion ordinal based on which
+        //    direction the drop coord sits relative to the existing
+        //    cards: drop above-or-left of card N → insert at N (shift it
+        //    +1); drop below-or-right of the last card → append. This
+        //    lets players reorder by dropping in the gap between two
+        //    cards rather than having to drop directly onto a target.
         for (SlotWorkspaceViewModel.AtlasIsland island : viewModel.islands()) {
             if (island == null || island.kind() == VisualAtlasIslandKind.TRIAGE) {
                 continue;
             }
             AtlasLayoutResult.IslandPlacement place = layout.islandPlacementOf(island.islandId());
             if (place != null && containsIslandPoint(place, worldX, worldY)) {
-                return new Resolution(island.islandId(), countItemsInIsland(viewModel, island.islandId()));
+                int ordinal = nearestInsertionOrdinal(viewModel, layout, island.islandId(), worldX, worldY);
+                return new Resolution(island.islandId(), ordinal);
             }
         }
         return null;
+    }
+
+    /**
+     * Pick the insertion ordinal for a drop landing inside an island's
+     * chrome but not on any existing card. Walks the island's cards in
+     * canonical (ordinal) order and returns the index of the first card
+     * whose center sits below-or-right of the drop coord; if none, we're
+     * past every existing card and the result is "append" (count).
+     *
+     * <p>Row-major comparison: drops on row N take priority over row
+     * N+1, so dropping below the first row inserts after every item in
+     * the first row, even if the X coord would have been "left of" some
+     * specific card on row N+1.
+     */
+    private static int nearestInsertionOrdinal(
+            SlotWorkspaceViewModel viewModel,
+            AtlasLayoutResult layout,
+            String islandId,
+            int worldX,
+            int worldY
+    ) {
+        int ordinal = 0;
+        for (SlotWorkspaceViewModel.AtlasItem item : viewModel.atlasItems()) {
+            if (item == null || !islandId.equals(item.islandId())) {
+                continue;
+            }
+            AtlasLayoutResult.ItemPlacement place = layout.placementOf(item.identity());
+            if (place == null) {
+                ordinal++;
+                continue;
+            }
+            int cardCenterX = place.x() + place.width() / 2;
+            int cardCenterY = place.y() + place.height() / 2;
+            // Strict row-major: if the drop's Y is above the card's
+            // vertical midpoint, insert here. If on the same row (within
+            // a card's height), insert when the drop is left of center.
+            if (worldY < cardCenterY - place.height() / 2) {
+                return ordinal;
+            }
+            if (worldY < cardCenterY + place.height() / 2 && worldX < cardCenterX) {
+                return ordinal;
+            }
+            ordinal++;
+        }
+        return ordinal;
     }
 
     /**

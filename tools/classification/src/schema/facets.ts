@@ -66,7 +66,7 @@ export const ACTIVITY_VALUES = [
   "power_generation", "transportation",
 ] as const;
 
-export const FREQUENCY_VALUES = [
+export const CARRY_FREQUENCY_VALUES = [
   "everyday", "frequent", "occasional", "rare", "display_only",
 ] as const;
 
@@ -290,10 +290,16 @@ export const FACETS: Record<string, FacetDef> = {
     deterministic: true,
     llm_authored: true,
   },
-  frequency: {
+  emits_light: {
+    kind: "boolean",
+    description: "True if the item emits light when placed (or while held in some cases). Drives the dedicated 'Lighting' island so players group their cave/base lighting separately from generic decor or utility. Examples: torch, soul_torch, lantern, soul_lantern, glowstone, sea_lantern, shroomlight, end_rod, jack_o_lantern, redstone_lamp, candles (lit), beacon, sea_pickle, crying_obsidian, magma_block. Stage-2 derives this from a known-id list + minecraft:light_emission component when present; the LLM should fill it in for items the rule missed (modded glowing blocks).",
+    deterministic: true,
+    llm_authored: true,
+  },
+  carry_frequency: {
     kind: "enum",
-    values: FREQUENCY_VALUES,
-    description: "How often a player realistically *uses* this item once obtained.",
+    values: CARRY_FREQUENCY_VALUES,
+    description: "How often this item lives in a player's carried inventory (hotbar / main inventory) during normal play. Distinct from `rarity` (which is world-abundance) and from how often the item is used in crafting recipes — what we want here is whether opening a random player's inventory mid-play is likely to find this in their pockets. A crafting_table is touched constantly but placed once and not carried, so it's `occasional` here despite being heavily used. A pickaxe is `everyday` because the player carries it everywhere. cobblestone / sticks / oak_planks / iron_ingot / bread / torch / shovel / sword: `everyday`. stairs / slabs / fence_gates / building variants: `occasional` (placed not carried). chiseled / polished / cracked decorative variants: `rare`. dragon_egg / wither_skeleton_skull: `display_only`.",
     llm_authored: true,
   },
 
