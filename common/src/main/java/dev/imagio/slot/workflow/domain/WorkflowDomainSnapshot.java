@@ -57,6 +57,10 @@ public record WorkflowDomainSnapshot(
         return workflowProjection.claimedChestMap();
     }
 
+    public StorageAreaMap storageAreaMap() {
+        return workflowProjection.storageAreaMap();
+    }
+
     public ChestLinkMap chestLinkMap() {
         return workflowProjection.chestLinkMap();
     }

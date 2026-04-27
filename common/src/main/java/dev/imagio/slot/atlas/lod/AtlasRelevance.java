@@ -1,7 +1,9 @@
 package dev.imagio.slot.atlas.lod;
 
 import dev.imagio.slot.atlas.AtlasSearchIndex;
+import dev.imagio.slot.atlas.lod.contributors.AreaProximityContributor;
 import dev.imagio.slot.atlas.lod.contributors.CarriedContributor;
+import dev.imagio.slot.atlas.lod.contributors.ChestHoldsRelevantContributor;
 import dev.imagio.slot.atlas.lod.contributors.KitMemberContributor;
 import dev.imagio.slot.atlas.lod.contributors.KitMissingContributor;
 import dev.imagio.slot.atlas.lod.contributors.RecentlyTouchedContributor;
@@ -41,7 +43,9 @@ public final class AtlasRelevance {
             new KitMemberContributor(),
             new KitMissingContributor(),
             new CarriedContributor(),
-            new RecentlyTouchedContributor()
+            new RecentlyTouchedContributor(),
+            new AreaProximityContributor(),
+            new ChestHoldsRelevantContributor()
     );
 
     private AtlasRelevance() {

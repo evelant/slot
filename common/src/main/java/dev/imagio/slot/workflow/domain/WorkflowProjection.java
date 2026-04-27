@@ -39,6 +39,7 @@ public final class WorkflowProjection {
         LinkedHashMap<ItemIdentity, VisualHomeAssignment> visualHomes = new LinkedHashMap<>(current.visualHomeMap().assignments());
         LinkedHashSet<String> dismissedTemplateIds = new LinkedHashSet<>(current.visualHomeMap().dismissedTemplateIds());
         LinkedHashMap<UUID, ClaimedChest> claimedChests = indexChests(current.claimedChestMap().chests());
+        LinkedHashMap<UUID, StorageArea> storageAreas = indexStorageAreas(current.storageAreaMap().areas());
         LinkedHashSet<ChestLink> chestLinks = new LinkedHashSet<>(current.chestLinkMap().links());
         KitMap kitMap = current.kitMap();
 
@@ -336,6 +337,51 @@ public final class WorkflowProjection {
                     chestLinks.removeIf(link -> event.storageId().equals(link.storageId()));
                 }
             }
+            case WorkflowEvent.ClaimedChestAreaChanged event -> {
+                if (event.storageId() != null && event.areaId() != null) {
+                    ClaimedChest existing = claimedChests.get(event.storageId());
+                    if (existing != null && storageAreas.containsKey(event.areaId())) {
+                        claimedChests.put(event.storageId(), existing.withAreaId(event.areaId()));
+                    }
+                }
+            }
+            case WorkflowEvent.StorageAreaCreated event -> {
+                if (event.area() != null) {
+                    storageAreas.put(event.area().areaId(), event.area());
+                }
+            }
+            case WorkflowEvent.StorageAreaRenamed event -> {
+                if (event.areaId() != null && !event.label().isBlank()) {
+                    StorageArea existing = storageAreas.get(event.areaId());
+                    if (existing != null) {
+                        storageAreas.put(event.areaId(), existing.withLabel(event.label()));
+                    }
+                }
+            }
+            case WorkflowEvent.StorageAreaRecolored event -> {
+                if (event.areaId() != null) {
+                    StorageArea existing = storageAreas.get(event.areaId());
+                    if (existing != null) {
+                        storageAreas.put(event.areaId(), existing.withColor(event.color()));
+                    }
+                }
+            }
+            case WorkflowEvent.StorageAreaMoved event -> {
+                if (event.areaId() != null) {
+                    StorageArea existing = storageAreas.get(event.areaId());
+                    if (existing != null) {
+                        storageAreas.put(event.areaId(), existing.withAtlasPosition(event.atlasX(), event.atlasY()));
+                    }
+                }
+            }
+            case WorkflowEvent.StorageAreaDeleted event -> {
+                // The default Main Base area is non-deletable; the projection
+                // ignores delete events for it so a buggy producer can't strand
+                // chests with a dangling areaId reference.
+                if (event.areaId() != null && !StorageAreaMap.DEFAULT_AREA_ID.equals(event.areaId())) {
+                    storageAreas.remove(event.areaId());
+                }
+            }
             case WorkflowEvent.ChestLinkCreated event -> {
                 if (!event.islandId().isBlank() && event.storageId() != null
                         && claimedChests.containsKey(event.storageId())
@@ -394,6 +440,7 @@ public final class WorkflowProjection {
                 recentDismissals,
                 new VisualHomeMap(playerIslands, visualHomes, dismissedTemplateIds),
                 new ClaimedChestMap(new ArrayList<>(claimedChests.values())),
+                new StorageAreaMap(new ArrayList<>(storageAreas.values())),
                 new ChestLinkMap(chestLinks),
                 kitMap
         );
@@ -501,6 +548,19 @@ public final class WorkflowProjection {
         return indexed;
     }
 
+    private static LinkedHashMap<UUID, StorageArea> indexStorageAreas(List<StorageArea> source) {
+        LinkedHashMap<UUID, StorageArea> indexed = new LinkedHashMap<>();
+        if (source == null) {
+            return indexed;
+        }
+        for (StorageArea area : source) {
+            if (area != null) {
+                indexed.put(area.areaId(), area);
+            }
+        }
+        return indexed;
+    }
+
     public static Snapshot replay(WorkflowEventStore.Snapshot storeSnapshot, Snapshot checkpoint) {
         Snapshot current = checkpoint == null ? Snapshot.empty() : checkpoint;
         WorkflowEventStore.Snapshot resolved = storeSnapshot == null ? WorkflowEventStore.Snapshot.empty() : storeSnapshot;
@@ -521,6 +581,7 @@ public final class WorkflowProjection {
             Map<ItemIdentity, Long> recentDismissedUpToByIdentity,
             VisualHomeMap visualHomeMap,
             ClaimedChestMap claimedChestMap,
+            StorageAreaMap storageAreaMap,
             ChestLinkMap chestLinkMap,
             KitMap kitMap
     ) {
@@ -535,6 +596,7 @@ public final class WorkflowProjection {
             recentDismissedUpToByIdentity = copyRecentDismissals(recentDismissedUpToByIdentity);
             visualHomeMap = visualHomeMap == null ? VisualHomeMap.empty() : visualHomeMap;
             claimedChestMap = claimedChestMap == null ? ClaimedChestMap.empty() : claimedChestMap;
+            storageAreaMap = storageAreaMap == null ? StorageAreaMap.empty() : storageAreaMap;
             chestLinkMap = chestLinkMap == null ? ChestLinkMap.empty() : chestLinkMap;
             kitMap = kitMap == null ? KitMap.empty() : kitMap;
         }
@@ -551,6 +613,7 @@ public final class WorkflowProjection {
                     Map.of(),
                     VisualHomeMap.empty(),
                     ClaimedChestMap.empty(),
+                    StorageAreaMap.empty(),
                     ChestLinkMap.empty(),
                     KitMap.empty()
             );

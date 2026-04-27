@@ -3,6 +3,7 @@ package dev.imagio.slot.atlas.lod;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 
 import java.util.Set;
+import java.util.UUID;
 
 /**
  * Inputs every {@link RelevanceContributor} reads when scoring an
@@ -26,10 +27,15 @@ public record RelevanceContext(
         Set<ItemIdentity> recentIdentities,
         Set<ItemIdentity> activeKitMembers,
         Set<ItemIdentity> activeKitMissing,
-        Set<ItemIdentity> searchMatchedIdentities
+        Set<ItemIdentity> searchMatchedIdentities,
+        Set<UUID> proximateAreaIds,
+        Set<UUID> relevantStorageIds,
+        Set<ItemIdentity> areaProximityBoostedIdentities,
+        Set<ItemIdentity> chestHoldsRelevantIdentities
 ) {
     private static final RelevanceContext EMPTY = new RelevanceContext(
-            Set.of(), Set.of(), Set.of(), Set.of(), Set.of());
+            Set.of(), Set.of(), Set.of(), Set.of(), Set.of(),
+            Set.of(), Set.of(), Set.of(), Set.of());
 
     public RelevanceContext {
         carriedIdentities = carriedIdentities == null ? Set.of() : Set.copyOf(carriedIdentities);
@@ -37,6 +43,10 @@ public record RelevanceContext(
         activeKitMembers = activeKitMembers == null ? Set.of() : Set.copyOf(activeKitMembers);
         activeKitMissing = activeKitMissing == null ? Set.of() : Set.copyOf(activeKitMissing);
         searchMatchedIdentities = searchMatchedIdentities == null ? Set.of() : Set.copyOf(searchMatchedIdentities);
+        proximateAreaIds = proximateAreaIds == null ? Set.of() : Set.copyOf(proximateAreaIds);
+        relevantStorageIds = relevantStorageIds == null ? Set.of() : Set.copyOf(relevantStorageIds);
+        areaProximityBoostedIdentities = areaProximityBoostedIdentities == null ? Set.of() : Set.copyOf(areaProximityBoostedIdentities);
+        chestHoldsRelevantIdentities = chestHoldsRelevantIdentities == null ? Set.of() : Set.copyOf(chestHoldsRelevantIdentities);
     }
 
     public static RelevanceContext empty() {
@@ -71,12 +81,32 @@ public record RelevanceContext(
         return identity != null && searchMatchedIdentities.contains(identity);
     }
 
+    public boolean isProximateArea(UUID areaId) {
+        return areaId != null && proximateAreaIds.contains(areaId);
+    }
+
+    public boolean isRelevantStorage(UUID storageId) {
+        return storageId != null && relevantStorageIds.contains(storageId);
+    }
+
+    public boolean isAreaProximityBoosted(ItemIdentity identity) {
+        return identity != null && areaProximityBoostedIdentities.contains(identity);
+    }
+
+    public boolean chestHoldsRelevant(ItemIdentity identity) {
+        return identity != null && chestHoldsRelevantIdentities.contains(identity);
+    }
+
     public static final class Builder {
         private Set<ItemIdentity> carriedIdentities = Set.of();
         private Set<ItemIdentity> recentIdentities = Set.of();
         private Set<ItemIdentity> activeKitMembers = Set.of();
         private Set<ItemIdentity> activeKitMissing = Set.of();
         private Set<ItemIdentity> searchMatchedIdentities = Set.of();
+        private Set<UUID> proximateAreaIds = Set.of();
+        private Set<UUID> relevantStorageIds = Set.of();
+        private Set<ItemIdentity> areaProximityBoostedIdentities = Set.of();
+        private Set<ItemIdentity> chestHoldsRelevantIdentities = Set.of();
 
         private Builder() {
         }
@@ -106,13 +136,37 @@ public record RelevanceContext(
             return this;
         }
 
+        public Builder proximateAreaIds(Set<UUID> values) {
+            this.proximateAreaIds = values == null ? Set.of() : values;
+            return this;
+        }
+
+        public Builder relevantStorageIds(Set<UUID> values) {
+            this.relevantStorageIds = values == null ? Set.of() : values;
+            return this;
+        }
+
+        public Builder areaProximityBoostedIdentities(Set<ItemIdentity> values) {
+            this.areaProximityBoostedIdentities = values == null ? Set.of() : values;
+            return this;
+        }
+
+        public Builder chestHoldsRelevantIdentities(Set<ItemIdentity> values) {
+            this.chestHoldsRelevantIdentities = values == null ? Set.of() : values;
+            return this;
+        }
+
         public RelevanceContext build() {
             return new RelevanceContext(
                     carriedIdentities,
                     recentIdentities,
                     activeKitMembers,
                     activeKitMissing,
-                    searchMatchedIdentities
+                    searchMatchedIdentities,
+                    proximateAreaIds,
+                    relevantStorageIds,
+                    areaProximityBoostedIdentities,
+                    chestHoldsRelevantIdentities
             );
         }
     }

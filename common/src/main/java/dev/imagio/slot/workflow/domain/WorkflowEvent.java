@@ -42,6 +42,12 @@ public sealed interface WorkflowEvent permits
         WorkflowEvent.ClaimedChestAnchorsChanged,
         WorkflowEvent.ClaimedChestRelabeled,
         WorkflowEvent.ClaimedChestDeleted,
+        WorkflowEvent.ClaimedChestAreaChanged,
+        WorkflowEvent.StorageAreaCreated,
+        WorkflowEvent.StorageAreaRenamed,
+        WorkflowEvent.StorageAreaRecolored,
+        WorkflowEvent.StorageAreaMoved,
+        WorkflowEvent.StorageAreaDeleted,
         WorkflowEvent.ChestLinkCreated,
         WorkflowEvent.ChestLinkRemoved,
         WorkflowEvent.KitCreated,
@@ -306,6 +312,44 @@ public sealed interface WorkflowEvent permits
 
     record ClaimedChestDeleted(
             UUID storageId
+    ) implements WorkflowEvent {
+    }
+
+    record ClaimedChestAreaChanged(
+            UUID storageId,
+            UUID areaId
+    ) implements WorkflowEvent {
+    }
+
+    record StorageAreaCreated(
+            StorageArea area
+    ) implements WorkflowEvent {
+    }
+
+    record StorageAreaRenamed(
+            UUID areaId,
+            String label
+    ) implements WorkflowEvent {
+        public StorageAreaRenamed {
+            label = label == null ? "" : label.trim();
+        }
+    }
+
+    record StorageAreaRecolored(
+            UUID areaId,
+            int color
+    ) implements WorkflowEvent {
+    }
+
+    record StorageAreaMoved(
+            UUID areaId,
+            int atlasX,
+            int atlasY
+    ) implements WorkflowEvent {
+    }
+
+    record StorageAreaDeleted(
+            UUID areaId
     ) implements WorkflowEvent {
     }
 

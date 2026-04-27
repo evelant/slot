@@ -6,12 +6,16 @@ import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.workflow.domain.ChestLinkMap;
+import dev.imagio.slot.workflow.domain.ClaimedChest;
+import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
 import dev.imagio.slot.workflow.domain.VisualHomeMap;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
@@ -25,13 +29,34 @@ public final class DepositPlanner {
             ChestLinkMap chestLinkMap,
             Set<String> proximateStorageIds
     ) {
+        return plan(authority, visualHomeMap, chestLinkMap, null, proximateStorageIds, Set.of());
+    }
+
+    /**
+     * Area-aware planner: accepts a chest as a deposit target when its
+     * {@code storageId} is in {@code proximateStorageIds} OR its {@code areaId}
+     * is in {@code proximateAreaIds}. Phase 5 of
+     * {@code docs/plans/storage-areas.md}: deposit gates on area membership
+     * so chests inside the player's current base are eligible even when
+     * they're outside the immediate per-chest proximity bubble.
+     */
+    public static DepositPlan plan(
+            InventoryAuthoritySnapshot authority,
+            VisualHomeMap visualHomeMap,
+            ChestLinkMap chestLinkMap,
+            ClaimedChestMap claimedChestMap,
+            Set<String> proximateStorageIds,
+            Set<UUID> proximateAreaIds
+    ) {
         if (authority == null || visualHomeMap == null || chestLinkMap == null) {
             return DepositPlan.empty();
         }
         Set<String> resolvedProximate = proximateStorageIds == null ? Set.of() : proximateStorageIds;
-        if (resolvedProximate.isEmpty()) {
+        Set<UUID> resolvedAreas = proximateAreaIds == null ? Set.of() : proximateAreaIds;
+        if (resolvedProximate.isEmpty() && resolvedAreas.isEmpty()) {
             return DepositPlan.empty();
         }
+        Map<UUID, UUID> areaByStorage = indexAreasByStorage(claimedChestMap);
 
         ArrayList<DepositPlan.Assignment> assignments = new ArrayList<>();
         // Walk every carried source (main, hotbar, offhand, backpacks, curios,
@@ -74,6 +99,11 @@ public final class DepositPlanner {
                     String idString = storageId.toString();
                     if (resolvedProximate.contains(idString)) {
                         candidates.add(idString);
+                        continue;
+                    }
+                    UUID areaId = areaByStorage.get(storageId);
+                    if (areaId != null && resolvedAreas.contains(areaId)) {
+                        candidates.add(idString);
                     }
                 }
                 if (candidates.isEmpty()) {
@@ -89,5 +119,18 @@ public final class DepositPlanner {
             }
         }
         return new DepositPlan(assignments);
+    }
+
+    private static Map<UUID, UUID> indexAreasByStorage(ClaimedChestMap claimedChestMap) {
+        if (claimedChestMap == null || claimedChestMap.chests().isEmpty()) {
+            return Map.of();
+        }
+        LinkedHashMap<UUID, UUID> indexed = new LinkedHashMap<>();
+        for (ClaimedChest chest : claimedChestMap.chests()) {
+            if (chest != null) {
+                indexed.put(chest.storageId(), chest.areaId());
+            }
+        }
+        return indexed;
     }
 }

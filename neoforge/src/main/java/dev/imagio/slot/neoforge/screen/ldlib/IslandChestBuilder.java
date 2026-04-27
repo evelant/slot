@@ -327,6 +327,141 @@ final class IslandChestBuilder {
         );
     }
 
+    /**
+     * Bounding box around a single storage area's chest tiles (with the
+     * standard zone padding). Used by Phase 3 to render per-area
+     * backdrops/headers when the area is expanded. Returns null if the
+     * area is empty.
+     */
+    StorageZoneBounds storageAreaBounds(SlotWorkspaceViewModel.StorageAreaSnapshot area) {
+        if (area == null || area.chestTiles().isEmpty()) {
+            return null;
+        }
+        int minX = Integer.MAX_VALUE;
+        int minY = Integer.MAX_VALUE;
+        int maxX = Integer.MIN_VALUE;
+        int maxY = Integer.MIN_VALUE;
+        for (SlotWorkspaceViewModel.ClaimedChestTile tile : area.chestTiles()) {
+            minX = Math.min(minX, tile.atlasX());
+            minY = Math.min(minY, tile.atlasY());
+            maxX = Math.max(maxX, tile.atlasX() + tile.width());
+            maxY = Math.max(maxY, tile.atlasY() + tile.height());
+        }
+        int pad = SlotWorkspaceAtlasLayout.STORAGE_ZONE_PADDING;
+        return new StorageZoneBounds(
+                minX - pad,
+                minY - pad,
+                (maxX - minX) + pad * 2,
+                (maxY - minY) + pad * 2
+        );
+    }
+
+    /**
+     * Per-area header strip — same chrome as the legacy global storage
+     * zone header but labelled with the area's name + chest count.
+     */
+    UIElement storageAreaHeader(
+            StorageZoneBounds bounds,
+            SlotAtlasGraphView atlas,
+            SlotWorkspaceViewModel.StorageAreaSnapshot area
+    ) {
+        int headerHeight = STORAGE_ZONE_HEADER_HEIGHT;
+        UIElement header = panel(STORAGE_ZONE_HEADER_FILL).layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .left(bounds.left())
+                .top(bounds.top() - headerHeight)
+                .width(bounds.width())
+                .height(headerHeight)
+                .paddingHorizontal(8)
+                .alignItems(AlignItems.CENTER)
+                .flexDirection(FlexDirection.ROW));
+        header.style(style -> style.zIndex(1));
+        String labelText = area.label() + " · " + area.chestCount();
+        Label title = label(labelText, ACCENT);
+        title.layout(layout -> layout.flex(1).height(headerHeight));
+        title.textStyle(style -> style
+                .textColor(ACCENT)
+                .textShadow(false)
+                .fontSize(8)
+                .textAlignHorizontal(Horizontal.LEFT)
+                .textAlignVertical(Vertical.CENTER));
+        title.setAllowHitTest(false);
+        header.addChild(title);
+
+        // Click-to-collapse: clicking the header re-folds an explicitly
+        // expanded area. Proximity-expanded areas can also be clicked
+        // closed; the next proximity tick will reopen them.
+        String areaId = area.areaId();
+        header.addEventListener(UIEvents.CLICK, event -> {
+            if (event.button != 0) {
+                return;
+            }
+            event.stopPropagation();
+            host.expandedAreaIds.remove(areaId);
+            host.rebuild();
+        });
+        return header;
+    }
+
+    /**
+     * Compact chip rendered when an area is collapsed. Click expands it.
+     * Phase 3 of {@code docs/plans/storage-areas.md}: at default zoom an
+     * atlas with multiple bases shows their chips taking ~40% of the old
+     * storage-zone footprint.
+     */
+    UIElement storageAreaChip(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.StorageAreaSnapshot area) {
+        int chipWidth = 120;
+        int chipHeight = 24;
+        int fill = area.proximate()
+                ? area.color()
+                : (area.color() & 0x00FFFFFF) | 0x60000000;
+        int textColor = area.proximate() ? TEXT : MUTED;
+
+        UIElement chip = panel(fill).layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .left(area.atlasX())
+                .top(area.atlasY())
+                .width(chipWidth)
+                .height(chipHeight)
+                .paddingHorizontal(6)
+                .alignItems(AlignItems.CENTER)
+                .flexDirection(FlexDirection.ROW));
+        chip.style(style -> style.zIndex(1));
+
+        Label labelEl = label(area.label(), textColor);
+        labelEl.layout(layout -> layout.flex(1).height(chipHeight));
+        labelEl.textStyle(style -> style
+                .textColor(textColor)
+                .textShadow(false)
+                .fontSize(9)
+                .textAlignHorizontal(Horizontal.LEFT)
+                .textAlignVertical(Vertical.CENTER));
+        labelEl.setAllowHitTest(false);
+        chip.addChild(labelEl);
+
+        Label countEl = label("· " + area.chestCount(), MUTED);
+        countEl.layout(layout -> layout.width(28).height(chipHeight));
+        countEl.textStyle(style -> style
+                .textColor(MUTED)
+                .textShadow(false)
+                .fontSize(8)
+                .textAlignHorizontal(Horizontal.RIGHT)
+                .textAlignVertical(Vertical.CENTER));
+        countEl.setAllowHitTest(false);
+        chip.addChild(countEl);
+
+        String areaId = area.areaId();
+        chip.addEventListener(UIEvents.CLICK, event -> {
+            if (event.button != 0) {
+                return;
+            }
+            event.stopPropagation();
+            host.expandedAreaIds.add(areaId);
+            host.rebuild();
+        });
+        return chip;
+    }
+
     UIElement storageZoneBackdrop(StorageZoneBounds bounds) {
         UIElement backdrop = panel(STORAGE_ZONE_FILL).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
@@ -408,7 +543,7 @@ final class IslandChestBuilder {
     }
 
     UIElement chestTilePanel(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.ClaimedChestTile tile) {
-        int fill = tile.proximate() ? STORAGE_TILE_FILL : STORAGE_TILE_FILL_DIM;
+        int fill = chestTileFill(tile);
         int textColor = tile.proximate() ? TEXT : MUTED;
         int cellSize = SlotWorkspaceAtlasLayout.CHEST_TILE_CELL;
         int cols = SlotWorkspaceAtlasLayout.CHEST_TILE_COLUMNS;
@@ -851,19 +986,31 @@ final class IslandChestBuilder {
     record HoverTrailEndpoints(int hotbarIndex, SlotWorkspaceViewModel.AtlasItem atlasItem) {
     }
 
+    /**
+     * Resolves the fill color for a chest tile. Phase 3 of
+     * {@code docs/plans/storage-areas.md}: tiles inherit their area's
+     * color so the player can see at a glance which base a chest
+     * belongs to. Falls back to the legacy storage-tile fill when the
+     * tile's area cannot be resolved (shouldn't happen post-migration
+     * but the projection doesn't hard-fail on dangling area refs).
+     */
+    private int chestTileFill(SlotWorkspaceViewModel.ClaimedChestTile tile) {
+        SlotWorkspaceViewModel.StorageAreaSnapshot area = host.viewModel.storageArea(tile.areaId());
+        if (area == null) {
+            return tile.proximate() ? STORAGE_TILE_FILL : STORAGE_TILE_FILL_DIM;
+        }
+        int areaColor = area.color();
+        if (tile.proximate()) {
+            return areaColor;
+        }
+        // Match the legacy proximity-dim ratio: alpha drops from ~0xD0 to
+        // ~0x60 while RGB is preserved.
+        return (areaColor & 0x00FFFFFF) | 0x60000000;
+    }
+
     UIElement chestTileCell(ItemStack stack, boolean proximate, int cellSize) {
         int chromeColor = proximate ? STORAGE_TILE_CELL_FILL : STORAGE_TILE_CELL_FILL_DIM;
-        UIElement cell = panel(chromeColor);
-        if (stack != null && !stack.isEmpty()) {
-            int iconSize = Math.max(8, cellSize - 2);
-            UIElement icon = itemIcon(stack, iconSize, proximate);
-            icon.layout(layout -> layout
-                    .positionType(TaffyPosition.ABSOLUTE)
-                    .left(1)
-                    .top(1));
-            cell.addChild(icon);
-        }
-        return cell;
+        return itemSlotCard(stack, cellSize, chromeColor, proximate);
     }
 
 }

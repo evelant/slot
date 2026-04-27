@@ -25,6 +25,8 @@ import dev.imagio.slot.workflow.domain.InventoryActivityProducer;
 import dev.imagio.slot.workflow.domain.LoadoutTarget;
 import dev.imagio.slot.workflow.domain.QuickAccessLoadoutEntry;
 import dev.imagio.slot.workflow.domain.QuickAccessLoadoutDefinition;
+import dev.imagio.slot.workflow.domain.StorageArea;
+import dev.imagio.slot.workflow.domain.StorageAreaMap;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import dev.imagio.slot.workflow.domain.WorkflowDomainPersistenceService;
@@ -181,13 +183,15 @@ class WorkflowDomainFileStoreTest {
                 Set.of(primaryAnchor, pairedAnchor),
                 2400,
                 0,
-                "Base Machines"
+                "Base Machines",
+                StorageAreaMap.DEFAULT_AREA_ID
         );
         ClaimedChest alsoKept = runtime.chestClaimWorkflow().claim(
                 Set.of(new ChestAnchor("minecraft:overworld", 120, 64, 200)),
                 2560,
                 0,
-                ""
+                "",
+                StorageAreaMap.DEFAULT_AREA_ID
         );
         runtime.chestClaimWorkflow().relabelChest(alsoKept.storageId(), "Pantry");
         runtime.chestClaimWorkflow().moveChest(alsoKept.storageId(), 2720, 160);
@@ -196,7 +200,8 @@ class WorkflowDomainFileStoreTest {
                 Set.of(new ChestAnchor("minecraft:overworld", 200, 64, 200)),
                 2600,
                 320,
-                "Scrap"
+                "Scrap",
+                StorageAreaMap.DEFAULT_AREA_ID
         );
         runtime.chestClaimWorkflow().deleteChest(doomed.storageId());
 
@@ -232,6 +237,95 @@ class WorkflowDomainFileStoreTest {
         assertTrue(restored.workflowProjection().chestLinkMap().contains(machines.id(), keptId));
         assertTrue(restored.workflowProjection().chestLinkMap().contains(food.id(), alsoKeptId));
         assertEquals(2, restored.workflowProjection().chestLinkMap().links().size());
+    }
+
+    @Test
+    void fileStoreRoundTripsStorageAreasAndChestAssignments() {
+        InMemoryWorkflowDomainStateRepository source = new InMemoryWorkflowDomainStateRepository();
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(source, null);
+
+        StorageArea mountain = runtime.storageAreaWorkflow().createArea("Mountain Mine", 4000, 0);
+        StorageArea derrick = runtime.storageAreaWorkflow().createArea("Oil Derrick", 4400, 0);
+        runtime.storageAreaWorkflow().recolorArea(mountain.areaId(), 0xFF112233);
+
+        ClaimedChest defaultChest = runtime.chestClaimWorkflow().claim(
+                Set.of(new ChestAnchor("minecraft:overworld", 1, 64, 1)),
+                2400, 0, "", StorageAreaMap.DEFAULT_AREA_ID
+        );
+        ClaimedChest mountainChest = runtime.chestClaimWorkflow().claim(
+                Set.of(new ChestAnchor("minecraft:overworld", 100, 64, 1)),
+                4000, 0, "Iron", mountain.areaId()
+        );
+        runtime.chestClaimWorkflow().moveChestToArea(defaultChest.storageId(), derrick.areaId());
+
+        WorkflowDomainFileStore fileStore = new WorkflowDomainFileStore(tempDir.resolve("slot-areas.json"));
+        WorkflowDomainPersistenceService service = new WorkflowDomainPersistenceService(fileStore);
+        service.saveFrom(source);
+
+        InMemoryWorkflowDomainStateRepository restored = new InMemoryWorkflowDomainStateRepository();
+        service.loadInto(restored);
+
+        StorageAreaMap restoredAreas = restored.workflowProjection().storageAreaMap();
+        assertEquals(3, restoredAreas.areas().size(), "default + Mountain Mine + Oil Derrick");
+        assertEquals(0xFF112233, restoredAreas.area(mountain.areaId()).color());
+        assertEquals("Oil Derrick", restoredAreas.area(derrick.areaId()).label());
+
+        assertEquals(derrick.areaId(),
+                restored.workflowProjection().claimedChestMap().chest(defaultChest.storageId()).areaId());
+        assertEquals(mountain.areaId(),
+                restored.workflowProjection().claimedChestMap().chest(mountainChest.storageId()).areaId());
+    }
+
+    @Test
+    void fileStoreMigratesPreAreaSavesIntoMainBase() throws Exception {
+        Path checkpoint = tempDir.resolve("slot-legacy.json");
+        // Synthesised v6 checkpoint that pre-dates the storageAreas field on
+        // chests + the storageAreas array on the workflow checkpoint. The
+        // decoder must materialise a Main Base area at the chests' centroid.
+        Files.writeString(checkpoint, """
+                {
+                  "version": 6,
+                  "workflowCheckpoint": {
+                    "claimedChests": [
+                      {
+                        "storageId": "11111111-1111-1111-1111-111111111111",
+                        "anchors": [
+                          {"dimensionId": "minecraft:overworld", "x": 1, "y": 64, "z": 1}
+                        ],
+                        "atlasX": 1000,
+                        "atlasY": 100,
+                        "label": "Old Chest A"
+                      },
+                      {
+                        "storageId": "22222222-2222-2222-2222-222222222222",
+                        "anchors": [
+                          {"dimensionId": "minecraft:overworld", "x": 2, "y": 64, "z": 2}
+                        ],
+                        "atlasX": 2000,
+                        "atlasY": 300,
+                        "label": "Old Chest B"
+                      }
+                    ]
+                  }
+                }
+                """);
+
+        InMemoryWorkflowDomainStateRepository restored = new InMemoryWorkflowDomainStateRepository();
+        WorkflowDomainFileStore fileStore = new WorkflowDomainFileStore(checkpoint);
+        WorkflowDomainPersistenceService service = new WorkflowDomainPersistenceService(fileStore);
+        service.loadInto(restored);
+
+        StorageAreaMap areas = restored.workflowProjection().storageAreaMap();
+        StorageArea defaultArea = areas.area(StorageAreaMap.DEFAULT_AREA_ID);
+        assertNotNull(defaultArea, "default Main Base must be synthesised on legacy load");
+        assertEquals(StorageAreaMap.DEFAULT_AREA_LABEL, defaultArea.label());
+        assertEquals(1500, defaultArea.atlasX(), "centroid of (1000, 2000)");
+        assertEquals(200, defaultArea.atlasY(), "centroid of (100, 300)");
+
+        for (ClaimedChest chest : restored.workflowProjection().claimedChestMap().chests()) {
+            assertEquals(StorageAreaMap.DEFAULT_AREA_ID, chest.areaId(),
+                    "every legacy chest lands in Main Base after migration");
+        }
     }
 
     @Test

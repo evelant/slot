@@ -3,21 +3,39 @@ package dev.imagio.slot.atlas;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 public final class StorageZoneAutoPlacement {
     private StorageZoneAutoPlacement() {
     }
 
     public static Result compute(List<ClaimedChest> existing, ChestAnchor newAnchor, Config config) {
+        return compute(existing, newAnchor, null, config);
+    }
+
+    /**
+     * Area-relative variant. When {@code targetAreaId} is non-null, neighbor
+     * lookup and occupancy collision are limited to chests in that area, so
+     * a new tile lands within its own area's cluster instead of seeding off
+     * a chest in a different base.
+     */
+    public static Result compute(
+            List<ClaimedChest> existing,
+            ChestAnchor newAnchor,
+            UUID targetAreaId,
+            Config config
+    ) {
         if (newAnchor == null) {
             throw new IllegalArgumentException("newAnchor must not be null");
         }
         Config resolved = config == null ? Config.defaults() : config;
+        List<ClaimedChest> areaChests = filterByArea(existing, targetAreaId);
 
-        Neighbor nearest = findNearestNeighbor(existing, newAnchor, resolved.worldRadius());
+        Neighbor nearest = findNearestNeighbor(areaChests, newAnchor, resolved.worldRadius());
         int baseX;
         int baseY;
         if (nearest == null) {
@@ -33,9 +51,22 @@ public final class StorageZoneAutoPlacement {
         int snappedX = snap(baseX, resolved.atlasStepX());
         int snappedY = snap(baseY, resolved.atlasStepY());
 
-        Set<Long> occupied = buildOccupiedSet(existing, resolved);
+        Set<Long> occupied = buildOccupiedSet(areaChests, resolved);
         int[] freeCell = findFreeCell(snappedX, snappedY, resolved, occupied);
         return new Result(freeCell[0], freeCell[1], nearest != null);
+    }
+
+    private static List<ClaimedChest> filterByArea(List<ClaimedChest> existing, UUID targetAreaId) {
+        if (targetAreaId == null || existing == null) {
+            return existing == null ? List.of() : existing;
+        }
+        List<ClaimedChest> filtered = new ArrayList<>();
+        for (ClaimedChest chest : existing) {
+            if (chest != null && targetAreaId.equals(chest.areaId())) {
+                filtered.add(chest);
+            }
+        }
+        return filtered;
     }
 
     private static Neighbor findNearestNeighbor(
@@ -65,6 +96,22 @@ public final class StorageZoneAutoPlacement {
             }
         }
         return best;
+    }
+
+    /**
+     * World-space proximity-area inference. Returns the {@code areaId} of the
+     * nearest claimed chest (in any area) within {@code worldRadius} of
+     * {@code anchor}, or {@code null} if no chest is close enough. Used by
+     * the claim flow to default new chests into a base the player is
+     * standing inside.
+     */
+    public static UUID inferProximityArea(
+            List<ClaimedChest> existing,
+            ChestAnchor anchor,
+            int worldRadius
+    ) {
+        Neighbor nearest = findNearestNeighbor(existing, anchor, Math.max(1, worldRadius));
+        return nearest == null ? null : nearest.chest().areaId();
     }
 
     private static int scaleToAtlas(int worldDelta, double scale) {

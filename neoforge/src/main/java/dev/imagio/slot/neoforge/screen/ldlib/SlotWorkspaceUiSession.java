@@ -223,11 +223,19 @@ final class SlotWorkspaceUiSession {
         InventoryAuthoritySnapshot authority = host == null
                 ? InventoryAuthoritySnapshot.empty()
                 : InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
+        java.util.LinkedHashSet<java.util.UUID> proximateAreaIds = new java.util.LinkedHashSet<>();
+        for (dev.imagio.slot.workflow.domain.ClaimedChest chest : claimedChestMap.chests()) {
+            if (proximate.contains(chest.storageId().toString())) {
+                proximateAreaIds.add(chest.areaId());
+            }
+        }
         DepositPlan plan = DepositPlanner.plan(
                 authority,
                 runtime.snapshot().visualHomeMap(),
                 runtime.snapshot().chestLinkMap(),
-                proximate
+                claimedChestMap,
+                proximate,
+                proximateAreaIds
         );
         DepositExecutor.DepositOutcome outcome = DepositExecutor.execute(serverPlayer, plan, claimedChestMap);
         if (outcome.deposited() == 0 && outcome.failed() == 0) {
@@ -310,15 +318,20 @@ final class SlotWorkspaceUiSession {
             return;
         }
         TakeAllExecutor.TakeAllOutcome outcome = TakeAllExecutor.execute(serverPlayer, chest);
+        dev.imagio.slot.workflow.domain.StorageArea area =
+                runtime.storageAreaWorkflow().area(chest.areaId());
+        String areaTag = area == null
+                ? ""
+                : " area=" + area.label();
         if (outcome.movedStacks() == 0 && outcome.leftoverSlots() == 0) {
             status = "nothing_to_take";
             diagnostics = "";
         } else if (outcome.leftoverSlots() == 0) {
             status = "took_all";
-            diagnostics = "moved=" + outcome.movedStacks();
+            diagnostics = "moved=" + outcome.movedStacks() + areaTag;
         } else {
             status = "took_all_partial";
-            diagnostics = "moved=" + outcome.movedStacks() + " leftover_slots=" + outcome.leftoverSlots();
+            diagnostics = "moved=" + outcome.movedStacks() + " leftover_slots=" + outcome.leftoverSlots() + areaTag;
         }
         broadcast(serverPlayer);
     }

@@ -10,7 +10,14 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.Level;
 
-public record SlotChestClaimPayload(ResourceKey<Level> dimension, BlockPos pos) implements CustomPacketPayload {
+import java.util.UUID;
+
+public record SlotChestClaimPayload(
+        ResourceKey<Level> dimension,
+        BlockPos pos,
+        String areaId,
+        String newAreaLabel
+) implements CustomPacketPayload {
     public static final Type<SlotChestClaimPayload> TYPE = new Type<>(SlotCommon.id("chest_claim"));
     public static final StreamCodec<RegistryFriendlyByteBuf, SlotChestClaimPayload> STREAM_CODEC =
             StreamCodec.composite(
@@ -21,8 +28,35 @@ public record SlotChestClaimPayload(ResourceKey<Level> dimension, BlockPos pos) 
                     SlotChestClaimPayload::dimension,
                     BlockPos.STREAM_CODEC,
                     SlotChestClaimPayload::pos,
+                    ByteBufCodecs.STRING_UTF8,
+                    SlotChestClaimPayload::areaId,
+                    ByteBufCodecs.STRING_UTF8,
+                    SlotChestClaimPayload::newAreaLabel,
                     SlotChestClaimPayload::new
             );
+
+    public SlotChestClaimPayload(ResourceKey<Level> dimension, BlockPos pos) {
+        this(dimension, pos, "", "");
+    }
+
+    public SlotChestClaimPayload(ResourceKey<Level> dimension, BlockPos pos, String areaId) {
+        this(dimension, pos, areaId == null ? "" : areaId, "");
+    }
+
+    public UUID requestedAreaId() {
+        if (areaId == null || areaId.isBlank()) {
+            return null;
+        }
+        try {
+            return UUID.fromString(areaId);
+        } catch (IllegalArgumentException ignored) {
+            return null;
+        }
+    }
+
+    public String newAreaLabelTrimmed() {
+        return newAreaLabel == null ? "" : newAreaLabel.trim();
+    }
 
     @Override
     public Type<? extends CustomPacketPayload> type() {

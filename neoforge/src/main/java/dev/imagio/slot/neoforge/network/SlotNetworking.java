@@ -18,5 +18,6 @@ public final class SlotNetworking {
         PayloadRegistrar registrar = event.registrar(PROTOCOL_VERSION);
         registrar.playToServer(SlotWorkspaceOpenPayload.TYPE, SlotWorkspaceOpenPayload.STREAM_CODEC, SlotWorkspaceOpenPayloadHandler::handle);
         registrar.playToServer(SlotChestClaimPayload.TYPE, SlotChestClaimPayload.STREAM_CODEC, SlotChestClaimPayloadHandler::handle);
+        registrar.playToServer(SlotChestUnclaimPayload.TYPE, SlotChestUnclaimPayload.STREAM_CODEC, SlotChestUnclaimPayloadHandler::handle);
     }
 }

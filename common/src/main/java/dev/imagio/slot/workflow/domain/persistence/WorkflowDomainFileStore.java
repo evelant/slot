@@ -43,6 +43,8 @@ import dev.imagio.slot.workflow.domain.ProtectionSnapshotPolicy;
 import dev.imagio.slot.workflow.domain.QuickAccessLoadoutDefinition;
 import dev.imagio.slot.workflow.domain.QuickAccessLoadoutEntry;
 import dev.imagio.slot.workflow.domain.RecentView;
+import dev.imagio.slot.workflow.domain.StorageArea;
+import dev.imagio.slot.workflow.domain.StorageAreaMap;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
@@ -313,6 +315,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 Map.of(),
                 VisualHomeMap.empty(),
                 ClaimedChestMap.empty(),
+                StorageAreaMap.empty(),
                 ChestLinkMap.empty(),
                 KitMap.empty()
         );
@@ -368,6 +371,10 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         for (ClaimedChest chest : resolved.claimedChestMap().chests()) {
             claimedChests.add(claimedChest(chest));
         }
+        ArrayList<StorageAreaData> storageAreas = new ArrayList<>();
+        for (StorageArea area : resolved.storageAreaMap().areas()) {
+            storageAreas.add(storageArea(area));
+        }
         ArrayList<ChestLinkData> chestLinks = new ArrayList<>();
         for (ChestLink link : resolved.chestLinkMap().links()) {
             chestLinks.add(chestLink(link));
@@ -403,6 +410,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                         .toList(),
                 List.copyOf(resolved.visualHomeMap().dismissedTemplateIds()),
                 claimedChests,
+                storageAreas,
                 chestLinks,
                 kitDefinitions,
                 activationData
@@ -549,6 +557,37 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 }
             }
         }
+        LinkedHashMap<UUID, StorageArea> storageAreas = new LinkedHashMap<>();
+        if (data.storageAreas != null) {
+            for (StorageAreaData areaData : data.storageAreas) {
+                StorageArea area = decodeStorageArea(areaData);
+                if (area != null) {
+                    storageAreas.put(area.areaId(), area);
+                }
+            }
+        }
+        // Migrate pre-StorageArea saves: any chest pointing at the default
+        // area must have a Main Base record to land in. Position seeds from
+        // the centroid of those chests' atlas coords so the chip lands near
+        // the cluster.
+        if (!storageAreas.containsKey(StorageAreaMap.DEFAULT_AREA_ID)) {
+            int sumX = 0;
+            int sumY = 0;
+            int count = 0;
+            for (ClaimedChest chest : claimedChests) {
+                if (StorageAreaMap.DEFAULT_AREA_ID.equals(chest.areaId())) {
+                    sumX += chest.atlasX();
+                    sumY += chest.atlasY();
+                    count++;
+                }
+            }
+            if (count > 0) {
+                storageAreas.put(
+                        StorageAreaMap.DEFAULT_AREA_ID,
+                        StorageAreaMap.defaultArea(sumX / count, sumY / count)
+                );
+            }
+        }
         LinkedHashSet<ChestLink> chestLinks = new LinkedHashSet<>();
         if (data.chestLinks != null) {
             for (ChestLinkData linkData : data.chestLinks) {
@@ -599,6 +638,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 recentDismissals,
                 new VisualHomeMap(playerIslands, visualHomes, dismissedTemplateIds),
                 new ClaimedChestMap(claimedChests),
+                new StorageAreaMap(new ArrayList<>(storageAreas.values())),
                 new ChestLinkMap(chestLinks),
                 kitMap
         );
@@ -887,6 +927,38 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 data.kind = "ClaimedChestDeleted";
                 data.storageId = event.storageId() == null ? "" : event.storageId().toString();
             }
+            case WorkflowEvent.ClaimedChestAreaChanged event -> {
+                data.kind = "ClaimedChestAreaChanged";
+                data.storageId = event.storageId() == null ? "" : event.storageId().toString();
+                data.areaId = event.areaId() == null ? "" : event.areaId().toString();
+            }
+            case WorkflowEvent.StorageAreaCreated event -> {
+                data.kind = "StorageAreaCreated";
+                data.storageArea = storageArea(event.area());
+                if (event.area() != null) {
+                    data.areaId = event.area().areaId().toString();
+                }
+            }
+            case WorkflowEvent.StorageAreaRenamed event -> {
+                data.kind = "StorageAreaRenamed";
+                data.areaId = event.areaId() == null ? "" : event.areaId().toString();
+                data.label = event.label();
+            }
+            case WorkflowEvent.StorageAreaRecolored event -> {
+                data.kind = "StorageAreaRecolored";
+                data.areaId = event.areaId() == null ? "" : event.areaId().toString();
+                data.color = event.color();
+            }
+            case WorkflowEvent.StorageAreaMoved event -> {
+                data.kind = "StorageAreaMoved";
+                data.areaId = event.areaId() == null ? "" : event.areaId().toString();
+                data.x = event.atlasX();
+                data.y = event.atlasY();
+            }
+            case WorkflowEvent.StorageAreaDeleted event -> {
+                data.kind = "StorageAreaDeleted";
+                data.areaId = event.areaId() == null ? "" : event.areaId().toString();
+            }
             case WorkflowEvent.ChestLinkCreated event -> {
                 data.kind = "ChestLinkCreated";
                 data.islandId = event.islandId();
@@ -993,6 +1065,33 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             case "ClaimedChestDeleted" -> {
                 UUID storageId = parseUuid(data.storageId);
                 yield storageId == null ? null : new WorkflowEvent.ClaimedChestDeleted(storageId);
+            }
+            case "ClaimedChestAreaChanged" -> {
+                UUID storageId = parseUuid(data.storageId);
+                UUID areaId = parseUuid(data.areaId);
+                yield storageId == null || areaId == null
+                        ? null
+                        : new WorkflowEvent.ClaimedChestAreaChanged(storageId, areaId);
+            }
+            case "StorageAreaCreated" -> {
+                StorageArea area = decodeStorageArea(data.storageArea);
+                yield area == null ? null : new WorkflowEvent.StorageAreaCreated(area);
+            }
+            case "StorageAreaRenamed" -> {
+                UUID areaId = parseUuid(data.areaId);
+                yield areaId == null ? null : new WorkflowEvent.StorageAreaRenamed(areaId, nonNull(data.label));
+            }
+            case "StorageAreaRecolored" -> {
+                UUID areaId = parseUuid(data.areaId);
+                yield areaId == null ? null : new WorkflowEvent.StorageAreaRecolored(areaId, data.color);
+            }
+            case "StorageAreaMoved" -> {
+                UUID areaId = parseUuid(data.areaId);
+                yield areaId == null ? null : new WorkflowEvent.StorageAreaMoved(areaId, data.x, data.y);
+            }
+            case "StorageAreaDeleted" -> {
+                UUID areaId = parseUuid(data.areaId);
+                yield areaId == null ? null : new WorkflowEvent.StorageAreaDeleted(areaId);
             }
             case "ChestLinkCreated" -> {
                 UUID storageId = parseUuid(data.storageId);
@@ -1242,7 +1341,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 anchors,
                 chest.atlasX(),
                 chest.atlasY(),
-                chest.label()
+                chest.label(),
+                chest.areaId().toString()
         );
     }
 
@@ -1266,7 +1366,40 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         if (anchors.isEmpty()) {
             return null;
         }
-        return new ClaimedChest(storageId, anchors, data.atlasX, data.atlasY, nonNull(data.label));
+        UUID areaId = parseUuid(data.areaId);
+        if (areaId == null) {
+            areaId = StorageAreaMap.DEFAULT_AREA_ID;
+        }
+        return new ClaimedChest(storageId, anchors, data.atlasX, data.atlasY, nonNull(data.label), areaId);
+    }
+
+    private static StorageAreaData storageArea(StorageArea area) {
+        if (area == null) {
+            return null;
+        }
+        return new StorageAreaData(
+                area.areaId().toString(),
+                area.label(),
+                area.color(),
+                area.atlasX(),
+                area.atlasY(),
+                area.displayOrder()
+        );
+    }
+
+    private static StorageArea decodeStorageArea(StorageAreaData data) {
+        if (data == null) {
+            return null;
+        }
+        UUID areaId = parseUuid(data.areaId);
+        if (areaId == null) {
+            return null;
+        }
+        String label = nonNull(data.label);
+        if (label.isBlank() && StorageAreaMap.DEFAULT_AREA_ID.equals(areaId)) {
+            label = StorageAreaMap.DEFAULT_AREA_LABEL;
+        }
+        return new StorageArea(areaId, label, data.color, data.atlasX, data.atlasY, data.displayOrder);
     }
 
     private static ChestAnchorData chestAnchor(ChestAnchor anchor) {
@@ -1565,6 +1698,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             List<VisualHomeData> visualHomes,
             List<String> dismissedTemplateIds,
             List<ClaimedChestData> claimedChests,
+            List<StorageAreaData> storageAreas,
             List<ChestLinkData> chestLinks,
             List<KitDefinitionData> kits,
             KitActivationData kitActivation
@@ -1596,7 +1730,18 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             List<ChestAnchorData> anchors,
             int atlasX,
             int atlasY,
-            String label
+            String label,
+            String areaId
+    ) {
+    }
+
+    private record StorageAreaData(
+            String areaId,
+            String label,
+            int color,
+            int atlasX,
+            int atlasY,
+            int displayOrder
     ) {
     }
 
@@ -1646,6 +1791,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         private String storageId;
         private List<ChestAnchorData> anchors;
         private ClaimedChestData claimedChest;
+        private String areaId;
+        private StorageAreaData storageArea;
         private String kitId;
         private int pageIndex;
         private KitDefinitionData kit;

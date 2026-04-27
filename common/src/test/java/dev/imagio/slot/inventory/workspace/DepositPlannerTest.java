@@ -7,8 +7,12 @@ import dev.imagio.slot.inventory.query.InventoryEntryKey;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.query.InventorySourceSnapshot;
 import dev.imagio.slot.inventory.query.CursorStateSnapshot;
+import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ChestLink;
 import dev.imagio.slot.workflow.domain.ChestLinkMap;
+import dev.imagio.slot.workflow.domain.ClaimedChest;
+import dev.imagio.slot.workflow.domain.ClaimedChestMap;
+import dev.imagio.slot.workflow.domain.StorageAreaMap;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
@@ -220,5 +224,53 @@ class DepositPlannerTest {
 
     private static ChestLinkMap linkMap(List<ChestLink> links) {
         return new ChestLinkMap(new LinkedHashSet<>(links));
+    }
+
+    @Test
+    void chestInProximateAreaIsAcceptedEvenWhenNotInProximateStorageSet() {
+        UUID mountainArea = UUID.randomUUID();
+        ClaimedChestMap chestMap = new ClaimedChestMap(List.of(
+                new ClaimedChest(
+                        CHEST_MACHINES,
+                        Set.of(new ChestAnchor("minecraft:overworld", 1, 64, 1)),
+                        2400, 0, "Iron Chest", mountainArea
+                )
+        ));
+        DepositPlan plan = DepositPlanner.plan(
+                authority(Map.of(BuiltinInventoryIds.PLAYER_MAIN,
+                        List.of(entry(BuiltinInventoryIds.PLAYER_MAIN, 0, stack("minecraft:redstone", 16))))),
+                homeMap(Map.of(ItemIdentity.of("minecraft:redstone"), assignment(MACHINES_ID))),
+                linkMap(List.of(new ChestLink(MACHINES_ID, CHEST_MACHINES))),
+                chestMap,
+                Set.of(),                       // no per-storage proximity
+                Set.of(mountainArea)            // but the area is proximate
+        );
+        assertEquals(1, plan.assignments().size());
+        assertTrue(plan.assignments().get(0).candidateStorageIds()
+                .contains(CHEST_MACHINES.toString()));
+    }
+
+    @Test
+    void chestOutsideProximateAreaAndStorageIsRejected() {
+        UUID derrickArea = UUID.randomUUID();
+        UUID mountainArea = UUID.randomUUID();
+        ClaimedChestMap chestMap = new ClaimedChestMap(List.of(
+                new ClaimedChest(
+                        CHEST_MACHINES,
+                        Set.of(new ChestAnchor("minecraft:overworld", 1, 64, 1)),
+                        2400, 0, "Iron", derrickArea
+                )
+        ));
+        DepositPlan plan = DepositPlanner.plan(
+                authority(Map.of(BuiltinInventoryIds.PLAYER_MAIN,
+                        List.of(entry(BuiltinInventoryIds.PLAYER_MAIN, 0, stack("minecraft:redstone", 16))))),
+                homeMap(Map.of(ItemIdentity.of("minecraft:redstone"), assignment(MACHINES_ID))),
+                linkMap(List.of(new ChestLink(MACHINES_ID, CHEST_MACHINES))),
+                chestMap,
+                Set.of(),
+                Set.of(mountainArea)
+        );
+        assertTrue(plan.isEmpty(),
+                "chest in derrick area must be rejected when only mountain is proximate");
     }
 }

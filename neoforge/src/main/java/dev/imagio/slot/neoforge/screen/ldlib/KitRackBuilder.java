@@ -539,17 +539,7 @@ final class KitRackBuilder {
                 .height(KIT_CELL_SIZE)
                 .paddingAll(1)
                 .alignItems(AlignItems.CENTER));
-        cell.addEventListener(UIEvents.HOVER_TOOLTIPS, event -> {
-            if (item.displayStack().isEmpty()) {
-                return;
-            }
-            event.hoverTooltips = new HoverTooltips(
-                    List.copyOf(DrawerHelper.getItemToolTip(item.displayStack())),
-                    item.displayStack().getTooltipImage().orElse(null),
-                    null,
-                    item.displayStack()
-            );
-        });
+        WorkspaceUi.installItemTooltip(cell, item.displayStack());
         cell.addEventListener(UIEvents.MOUSE_DOWN, event -> {
             if (event.button == 0) {
                 event.stopPropagation();
@@ -645,17 +635,7 @@ final class KitRackBuilder {
             UIElement icon = itemIcon(slot.displayStack(), KIT_CELL_ICON_SIZE, slot.ready());
             icon.setAllowHitTest(false);
             cell.addChild(icon);
-            cell.addEventListener(UIEvents.HOVER_TOOLTIPS, event -> {
-                if (slot.displayStack().isEmpty()) {
-                    return;
-                }
-                event.hoverTooltips = new HoverTooltips(
-                        List.copyOf(DrawerHelper.getItemToolTip(slot.displayStack())),
-                        slot.displayStack().getTooltipImage().orElse(null),
-                        null,
-                        slot.displayStack()
-                );
-            });
+            WorkspaceUi.installItemTooltip(cell, slot.displayStack());
             cell.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
                 if (!cell.isMouseDown(0) || host.drag.isDragging(cell)) {
                     return;

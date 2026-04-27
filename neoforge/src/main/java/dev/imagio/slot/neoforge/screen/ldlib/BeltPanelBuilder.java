@@ -200,25 +200,11 @@ final class BeltPanelBuilder {
             });
         }
 
-        UIElement iconSlot = slot.occupied() ? itemIcon(slot.displayStack(), 16) : emptyIcon();
+        UIElement iconSlot = slot.occupied()
+                ? itemSlotCard(slot.displayStack(), 16, 0x00000000, true, slot.count())
+                : emptyIcon();
         iconSlot.layout(layout -> layout.width(16).height(16));
         button.addChild(iconSlot);
-        if (slot.occupied() && slot.count() > 1) {
-            Label countBadge = label(compactCount(slot.count()), ACCENT);
-            countBadge.layout(layout -> layout
-                    .positionType(TaffyPosition.ABSOLUTE)
-                    .right(1)
-                    .bottom(0)
-                    .height(6));
-            countBadge.textStyle(style -> style
-                    .textColor(ACCENT)
-                    .fontSize(6)
-                    .textShadow(true)
-                    .textAlignHorizontal(Horizontal.RIGHT)
-                    .textAlignVertical(Vertical.BOTTOM));
-            countBadge.setAllowHitTest(false);
-            button.addChild(countBadge);
-        }
         Label indexBadge = label(Integer.toString(slot.hotbarIndex() + 1), slot.selected() ? WARNING : MUTED);
         indexBadge.layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
@@ -247,25 +233,11 @@ final class BeltPanelBuilder {
         button.noText();
         button.setActive(false);
         host.installOffhandHoverTooltip(button, offhand);
-        UIElement iconSlot = offhand.occupied() ? itemIcon(offhand.displayStack(), 16) : emptyIcon();
+        UIElement iconSlot = offhand.occupied()
+                ? itemSlotCard(offhand.displayStack(), 16, 0x00000000, true, offhand.count())
+                : emptyIcon();
         iconSlot.layout(layout -> layout.width(16).height(16));
         button.addChild(iconSlot);
-        if (offhand.occupied() && offhand.count() > 1) {
-            Label countBadge = label(compactCount(offhand.count()), MUTED);
-            countBadge.layout(layout -> layout
-                    .positionType(TaffyPosition.ABSOLUTE)
-                    .right(1)
-                    .bottom(0)
-                    .height(6));
-            countBadge.textStyle(style -> style
-                    .textColor(MUTED)
-                    .fontSize(6)
-                    .textShadow(true)
-                    .textAlignHorizontal(Horizontal.RIGHT)
-                    .textAlignVertical(Vertical.BOTTOM));
-            countBadge.setAllowHitTest(false);
-            button.addChild(countBadge);
-        }
         Label offLabel = label("off", MUTED);
         offLabel.layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)

@@ -86,6 +86,14 @@ final class SlotWorkspaceUiController {
     final Observable<SlotWorkspaceViewModel.IdentityRef> selectedAtlasIdentity = new Observable<>(null);
     SlotWorkspaceViewModel.IdentityRef hoveredAtlasIdentity;
     String hoveredIslandId;
+    /**
+     * Storage areas the player has explicitly pinned-expanded by clicking
+     * their chip. Phase 3 of {@code docs/plans/storage-areas.md}: areas
+     * default-collapsed when nothing is proximate; the user can pin one
+     * open to inspect contents off-base. Persists across rebuilds within
+     * a session — a fresh screen open starts with everything collapsed.
+     */
+    final java.util.Set<String> expandedAreaIds = new java.util.HashSet<>();
     final Observable<Integer> selectedHotbarIndex = new Observable<>(-1);
     int hoveredHotbarIndex = -1;
     final List<Observable.Subscription> atlasContentSubscriptions = new ArrayList<>();
@@ -223,6 +231,7 @@ final class SlotWorkspaceUiController {
                 .remoteSetter(tag -> {
                     session.acceptRemoteView(tag);
                     viewModel = session.viewModel();
+                    dev.imagio.slot.neoforge.client.SlotClientWorkspaceCache.update(viewModel);
                     localStatus.set("");
                     rebuild();
                 })
@@ -500,31 +509,17 @@ final class SlotWorkspaceUiController {
 
 
     void installHotbarHoverTooltip(Button button, SlotWorkspaceViewModel.HotbarSlot slot) {
-        button.addEventListener(UIEvents.HOVER_TOOLTIPS, event -> {
-            if (!slot.occupied() || slot.displayStack().isEmpty()) {
-                return;
-            }
-            event.hoverTooltips = new HoverTooltips(
-                    List.copyOf(DrawerHelper.getItemToolTip(slot.displayStack())),
-                    slot.displayStack().getTooltipImage().orElse(null),
-                    null,
-                    slot.displayStack()
-            );
-        });
+        if (!slot.occupied()) {
+            return;
+        }
+        WorkspaceUi.installItemTooltip(button, slot.displayStack());
     }
 
     void installOffhandHoverTooltip(Button button, SlotWorkspaceViewModel.OffhandSlot offhand) {
-        button.addEventListener(UIEvents.HOVER_TOOLTIPS, event -> {
-            if (!offhand.occupied() || offhand.displayStack().isEmpty()) {
-                return;
-            }
-            event.hoverTooltips = new HoverTooltips(
-                    List.copyOf(DrawerHelper.getItemToolTip(offhand.displayStack())),
-                    offhand.displayStack().getTooltipImage().orElse(null),
-                    null,
-                    offhand.displayStack()
-            );
-        });
+        if (!offhand.occupied()) {
+            return;
+        }
+        WorkspaceUi.installItemTooltip(button, offhand.displayStack());
     }
 
 

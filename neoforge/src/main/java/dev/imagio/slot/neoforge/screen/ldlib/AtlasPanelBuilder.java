@@ -141,23 +141,33 @@ final class AtlasPanelBuilder {
     }
 
     void buildAtlas(SlotAtlasGraphView atlas) {
-        StorageZoneBounds bounds = host.islandChest.storageZoneBounds();
-        if (bounds != null) {
-            atlas.addContentChild(host.islandChest.storageZoneBackdrop(bounds));
-            atlas.addContentChild(host.islandChest.storageZoneHeader(bounds, atlas));
+        // Phase 3 of docs/plans/storage-areas.md: render storage areas as
+        // first-class atlas containers. Each area is either expanded (its
+        // chest tiles render with a per-area backdrop + header, link
+        // threads draw normally) or collapsed (a small chip stands in).
+        java.util.Set<String> visibleStorageIds = new java.util.HashSet<>();
+        for (SlotWorkspaceViewModel.StorageAreaSnapshot area : host.viewModel.storageAreas()) {
+            boolean expanded = area.shouldExpand() || host.expandedAreaIds.contains(area.areaId());
+            if (expanded) {
+                StorageZoneBounds bounds = host.islandChest.storageAreaBounds(area);
+                if (bounds != null) {
+                    atlas.addContentChild(host.islandChest.storageZoneBackdrop(bounds));
+                    atlas.addContentChild(host.islandChest.storageAreaHeader(bounds, atlas, area));
+                }
+                for (SlotWorkspaceViewModel.ClaimedChestTile tile : area.chestTiles()) {
+                    visibleStorageIds.add(tile.storageId());
+                }
+            }
         }
         // Link threads + arrows go in FIRST. LDLib's draw order is
         // child-insertion order (UIElement.drawContents iterates the
         // children list, not getSortedChildren — zIndex only affects
         // hit testing). So anything drawn later sits visually on top.
-        // Adding threads before islands/chests/items ensures the line's
-        // middle section is visible over atlas backdrop while the
-        // portion that passes through a chest or island body is hidden
-        // behind that body — exactly the intended "connected but not
-        // overlapping" look. Arrows sit just outside the tile/island
-        // edges, so they never overlap those bodies anyway.
+        // Threads + dim threads only render when the source chest is
+        // visible (its area is expanded); when the area is collapsed
+        // into a chip, the chip itself stands in for the affordance.
         for (SlotWorkspaceViewModel.ClaimedChestTile tile : host.viewModel.claimedChestTiles()) {
-            if (!tile.proximate()) {
+            if (!tile.proximate() || !visibleStorageIds.contains(tile.storageId())) {
                 continue;
             }
             for (String islandId : tile.linkedIslandIds()) {
@@ -168,18 +178,9 @@ final class AtlasPanelBuilder {
                 host.islandChest.addLinkAffordances(atlas, tile, island);
             }
         }
-        // Hover preview: dim link threads from each non-proximate chest
-        // back to its linked islands, so the relationship is discoverable
-        // without walking to the chest. Build them eagerly for every
-        // chest-linked island and hide them by default — the hover
-        // handlers in IslandChestBuilder.attachIslandHoverListeners flip
-        // visibility without rebuilding, which avoids a feedback loop
-        // where the rebuild destroys the listener-bearing element and
-        // re-fires MOUSE_LEAVE/ENTER every frame. Added before islands
-        // so the dim line gets obscured by the island body.
         host.dimLinkThreadsByIsland.clear();
         for (SlotWorkspaceViewModel.ClaimedChestTile tile : host.viewModel.claimedChestTiles()) {
-            if (tile.proximate()) {
+            if (tile.proximate() || !visibleStorageIds.contains(tile.storageId())) {
                 continue;
             }
             for (String linkedIslandId : tile.linkedIslandIds()) {
@@ -213,8 +214,25 @@ final class AtlasPanelBuilder {
                 host.islandChest.addIslandHighlightFrame(atlas, island);
             }
         }
-        for (SlotWorkspaceViewModel.ClaimedChestTile tile : host.viewModel.claimedChestTiles()) {
-            atlas.addContentChild(host.islandChest.chestTilePanel(atlas, tile));
+        // Render chest tiles for expanded areas, and chips for collapsed.
+        for (SlotWorkspaceViewModel.StorageAreaSnapshot area : host.viewModel.storageAreas()) {
+            boolean expanded = area.shouldExpand() || host.expandedAreaIds.contains(area.areaId());
+            if (expanded) {
+                for (SlotWorkspaceViewModel.ClaimedChestTile tile : area.chestTiles()) {
+                    atlas.addContentChild(host.islandChest.chestTilePanel(atlas, tile));
+                }
+            } else {
+                atlas.addContentChild(host.islandChest.storageAreaChip(atlas, area));
+            }
+        }
+        // Backwards-compat: if a save somehow has chest tiles outside any
+        // area (shouldn't happen post-Phase 1 migration, but the projection
+        // doesn't hard-fail on dangling area refs), still render them at
+        // their atlas position so the player can see + relabel them.
+        if (host.viewModel.storageAreas().isEmpty()) {
+            for (SlotWorkspaceViewModel.ClaimedChestTile tile : host.viewModel.claimedChestTiles()) {
+                atlas.addContentChild(host.islandChest.chestTilePanel(atlas, tile));
+            }
         }
         for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.atlasItems()) {
             atlas.addContentChild(host.atlasCard.atlasCardButton(atlas, item));

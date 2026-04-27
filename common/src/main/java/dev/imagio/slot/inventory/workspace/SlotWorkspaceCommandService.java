@@ -20,6 +20,8 @@ import dev.imagio.slot.workflow.domain.LoadoutApplyExecutor;
 import dev.imagio.slot.workflow.domain.LoadoutApplyResult;
 import dev.imagio.slot.workflow.domain.LoadoutApplyService;
 import dev.imagio.slot.workflow.domain.ProtectionPolicy;
+import dev.imagio.slot.workflow.domain.StorageArea;
+import dev.imagio.slot.workflow.domain.StorageAreaMap;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
@@ -413,6 +415,147 @@ public final class SlotWorkspaceCommandService {
         }
         SlotDebugLog.log("LDLib atlas chest moved {} -> {},{}", storageId, atlasX, atlasY);
         return WorkspaceCommandOutcome.accepted("chest moved", storageId);
+    }
+
+    public static WorkspaceCommandOutcome moveChestToArea(
+            WorkflowDomainRuntime runtime,
+            SlotWorkspaceViewModel viewModel,
+            String storageId,
+            String areaId
+    ) {
+        if (storageId == null || storageId.isBlank() || areaId == null || areaId.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("invalid_chest_move_to_area");
+        }
+        UUID storageUuid;
+        UUID areaUuid;
+        try {
+            storageUuid = UUID.fromString(storageId);
+            areaUuid = UUID.fromString(areaId);
+        } catch (IllegalArgumentException exception) {
+            return WorkspaceCommandOutcome.rejected("invalid_chest_storage_id");
+        }
+        SlotWorkspaceViewModel.ClaimedChestTile tile = viewModel == null ? null : viewModel.claimedChestTile(storageId);
+        if (tile == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_chest_tile");
+        }
+        StorageArea targetArea = runtime.storageAreaWorkflow().area(areaUuid);
+        if (targetArea == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_storage_area");
+        }
+        ClaimedChest moved = runtime.chestClaimWorkflow().moveChestToArea(
+                storageUuid,
+                areaUuid,
+                DomainEventMetadata.origin("slot_workspace.ldlib.chest_move_to_area")
+        );
+        if (moved == null) {
+            return WorkspaceCommandOutcome.rejected("chest_move_to_area_rejected");
+        }
+        SlotDebugLog.log("LDLib chest reassigned {} -> area {} ({})", storageId, areaId, targetArea.label());
+        return WorkspaceCommandOutcome.accepted("chest moved to area", targetArea.label());
+    }
+
+    public static WorkspaceCommandOutcome createStorageArea(
+            WorkflowDomainRuntime runtime,
+            String label,
+            Integer atlasX,
+            Integer atlasY
+    ) {
+        if (label == null || label.trim().isEmpty() || atlasX == null || atlasY == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_storage_area_create");
+        }
+        StorageArea created = runtime.storageAreaWorkflow().createArea(
+                label,
+                atlasX,
+                atlasY,
+                DomainEventMetadata.origin("slot_workspace.ldlib.storage_area_create")
+        );
+        if (created == null) {
+            return WorkspaceCommandOutcome.rejected("storage_area_create_rejected");
+        }
+        SlotDebugLog.log("LDLib storage area created {} '{}'", created.areaId(), created.label());
+        return WorkspaceCommandOutcome.accepted("area created", created.label());
+    }
+
+    public static WorkspaceCommandOutcome renameStorageArea(
+            WorkflowDomainRuntime runtime,
+            String areaId,
+            String label
+    ) {
+        if (areaId == null || areaId.isBlank() || label == null || label.trim().isEmpty()) {
+            return WorkspaceCommandOutcome.rejected("invalid_storage_area_rename");
+        }
+        UUID areaUuid;
+        try {
+            areaUuid = UUID.fromString(areaId);
+        } catch (IllegalArgumentException exception) {
+            return WorkspaceCommandOutcome.rejected("invalid_storage_area_id");
+        }
+        StorageArea renamed = runtime.storageAreaWorkflow().renameArea(
+                areaUuid,
+                label,
+                DomainEventMetadata.origin("slot_workspace.ldlib.storage_area_rename")
+        );
+        if (renamed == null) {
+            return WorkspaceCommandOutcome.rejected("storage_area_rename_rejected");
+        }
+        return WorkspaceCommandOutcome.accepted("area renamed", renamed.label());
+    }
+
+    public static WorkspaceCommandOutcome moveStorageArea(
+            WorkflowDomainRuntime runtime,
+            String areaId,
+            Integer atlasX,
+            Integer atlasY
+    ) {
+        if (areaId == null || areaId.isBlank() || atlasX == null || atlasY == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_storage_area_move");
+        }
+        UUID areaUuid;
+        try {
+            areaUuid = UUID.fromString(areaId);
+        } catch (IllegalArgumentException exception) {
+            return WorkspaceCommandOutcome.rejected("invalid_storage_area_id");
+        }
+        StorageArea moved = runtime.storageAreaWorkflow().moveArea(
+                areaUuid,
+                atlasX,
+                atlasY,
+                DomainEventMetadata.origin("slot_workspace.ldlib.storage_area_move")
+        );
+        if (moved == null) {
+            return WorkspaceCommandOutcome.rejected("storage_area_move_rejected");
+        }
+        return WorkspaceCommandOutcome.accepted("area moved", moved.label());
+    }
+
+    public static WorkspaceCommandOutcome deleteStorageArea(
+            WorkflowDomainRuntime runtime,
+            String areaId
+    ) {
+        if (areaId == null || areaId.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("invalid_storage_area_delete");
+        }
+        UUID areaUuid;
+        try {
+            areaUuid = UUID.fromString(areaId);
+        } catch (IllegalArgumentException exception) {
+            return WorkspaceCommandOutcome.rejected("invalid_storage_area_id");
+        }
+        if (StorageAreaMap.DEFAULT_AREA_ID.equals(areaUuid)) {
+            return WorkspaceCommandOutcome.rejected("storage_area_default_undeletable");
+        }
+        StorageArea before = runtime.storageAreaWorkflow().area(areaUuid);
+        boolean deleted = runtime.storageAreaWorkflow().deleteArea(
+                areaUuid,
+                DomainEventMetadata.origin("slot_workspace.ldlib.storage_area_delete")
+        );
+        if (!deleted) {
+            return WorkspaceCommandOutcome.rejected("storage_area_delete_rejected");
+        }
+        return WorkspaceCommandOutcome.accepted(
+                "area deleted",
+                before == null ? areaId : before.label()
+        );
     }
 
     public static WorkspaceCommandOutcome renameIsland(

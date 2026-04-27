@@ -71,6 +71,12 @@ public final class SlotWorkspaceViewModelCodec {
         }
         tag.put("claimedChestTiles", chestTileTags);
 
+        ListTag storageAreaTags = new ListTag();
+        for (SlotWorkspaceViewModel.StorageAreaSnapshot area : viewModel.storageAreas()) {
+            storageAreaTags.add(encodeStorageAreaSnapshot(area));
+        }
+        tag.put("storageAreas", storageAreaTags);
+
         ListTag hotbarTags = new ListTag();
         for (SlotWorkspaceViewModel.HotbarSlot slot : viewModel.hotbarSlots()) {
             hotbarTags.add(encodeHotbar(slot, provider));
@@ -115,6 +121,12 @@ public final class SlotWorkspaceViewModelCodec {
             claimedChestTiles.add(decodeClaimedChestTile(provider, chestTileTags.getCompound(index)));
         }
 
+        ArrayList<SlotWorkspaceViewModel.StorageAreaSnapshot> storageAreas = new ArrayList<>();
+        ListTag storageAreaTags = compoundTag.getList("storageAreas", Tag.TAG_COMPOUND);
+        for (int index = 0; index < storageAreaTags.size(); index++) {
+            storageAreas.add(decodeStorageAreaSnapshot(storageAreaTags.getCompound(index), claimedChestTiles));
+        }
+
         ArrayList<SlotWorkspaceViewModel.HotbarSlot> hotbarSlots = new ArrayList<>();
         ListTag hotbarTags = compoundTag.getList("hotbarSlots", Tag.TAG_COMPOUND);
         for (int index = 0; index < hotbarTags.size(); index++) {
@@ -143,9 +155,62 @@ public final class SlotWorkspaceViewModelCodec {
                 atlasItems,
                 triageItems,
                 claimedChestTiles,
+                storageAreas,
                 hotbarSlots.isEmpty() ? SlotWorkspaceViewModel.emptyHotbar() : hotbarSlots,
                 decodeOffhand(provider, compoundTag.getCompound("offhand")),
                 kits
+        );
+    }
+
+    private static CompoundTag encodeStorageAreaSnapshot(SlotWorkspaceViewModel.StorageAreaSnapshot area) {
+        CompoundTag tag = new CompoundTag();
+        tag.putString("areaId", area.areaId());
+        tag.putString("label", area.label());
+        tag.putInt("color", area.color());
+        tag.putInt("atlasX", area.atlasX());
+        tag.putInt("atlasY", area.atlasY());
+        tag.putInt("displayOrder", area.displayOrder());
+        tag.putInt("chestCount", area.chestCount());
+        tag.putInt("totalSlotCount", area.totalSlotCount());
+        tag.putBoolean("proximate", area.proximate());
+        tag.putBoolean("expanded", area.expanded());
+        ListTag tileIdTags = new ListTag();
+        for (SlotWorkspaceViewModel.ClaimedChestTile tile : area.chestTiles()) {
+            CompoundTag entry = new CompoundTag();
+            entry.putString("storageId", tile.storageId());
+            tileIdTags.add(entry);
+        }
+        tag.put("tileIds", tileIdTags);
+        return tag;
+    }
+
+    private static SlotWorkspaceViewModel.StorageAreaSnapshot decodeStorageAreaSnapshot(
+            CompoundTag tag,
+            List<SlotWorkspaceViewModel.ClaimedChestTile> claimedChestTiles
+    ) {
+        ListTag tileIdTags = tag.getList("tileIds", Tag.TAG_COMPOUND);
+        ArrayList<SlotWorkspaceViewModel.ClaimedChestTile> resolved = new ArrayList<>();
+        for (int index = 0; index < tileIdTags.size(); index++) {
+            String storageId = tileIdTags.getCompound(index).getString("storageId");
+            for (SlotWorkspaceViewModel.ClaimedChestTile tile : claimedChestTiles) {
+                if (tile.storageId().equals(storageId)) {
+                    resolved.add(tile);
+                    break;
+                }
+            }
+        }
+        return new SlotWorkspaceViewModel.StorageAreaSnapshot(
+                tag.getString("areaId"),
+                tag.getString("label"),
+                tag.getInt("color"),
+                tag.getInt("atlasX"),
+                tag.getInt("atlasY"),
+                tag.getInt("displayOrder"),
+                tag.getInt("chestCount"),
+                tag.getInt("totalSlotCount"),
+                tag.getBoolean("proximate"),
+                tag.getBoolean("expanded"),
+                resolved
         );
     }
 
@@ -355,6 +420,8 @@ public final class SlotWorkspaceViewModelCodec {
         tag.putString("storageId", entry.storageId());
         tag.putString("label", entry.label());
         tag.putInt("count", entry.count());
+        tag.putString("areaId", entry.areaId());
+        tag.putString("areaLabel", entry.areaLabel());
         return tag;
     }
 
@@ -362,7 +429,9 @@ public final class SlotWorkspaceViewModelCodec {
         return new SlotWorkspaceViewModel.ChestPresenceEntry(
                 tag.getString("storageId"),
                 tag.getString("label"),
-                tag.getInt("count")
+                tag.getInt("count"),
+                tag.contains("areaId") ? tag.getString("areaId") : "",
+                tag.contains("areaLabel") ? tag.getString("areaLabel") : ""
         );
     }
 
@@ -475,6 +544,10 @@ public final class SlotWorkspaceViewModelCodec {
             linkedIslandTags.add(entry);
         }
         tag.put("linkedIslandIds", linkedIslandTags);
+        tag.putString("areaId", tile.areaId());
+        tag.putInt("worldX", tile.worldX());
+        tag.putInt("worldY", tile.worldY());
+        tag.putInt("worldZ", tile.worldZ());
         return tag;
     }
 
@@ -509,7 +582,11 @@ public final class SlotWorkspaceViewModelCodec {
                 contents,
                 contentSlotIndices,
                 tag.getBoolean("proximate"),
-                linkedIslandIds
+                linkedIslandIds,
+                tag.contains("areaId") ? tag.getString("areaId") : "",
+                tag.contains("worldX") ? tag.getInt("worldX") : 0,
+                tag.contains("worldY") ? tag.getInt("worldY") : 0,
+                tag.contains("worldZ") ? tag.getInt("worldZ") : 0
         );
     }
 

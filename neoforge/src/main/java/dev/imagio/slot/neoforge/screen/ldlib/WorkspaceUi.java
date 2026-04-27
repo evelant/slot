@@ -1,5 +1,7 @@
 package dev.imagio.slot.neoforge.screen.ldlib;
 
+import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceFormat.compactCount;
+import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.ACCENT;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.FONT_UI;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.GHOST_ICON_OVERLAY_COLOR;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.MUTED;
@@ -18,8 +20,15 @@ import com.lowdragmc.lowdraglib2.gui.ui.data.TextWrap;
 import com.lowdragmc.lowdraglib2.gui.ui.data.Vertical;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
+import com.lowdragmc.lowdraglib2.gui.ui.event.HoverTooltips;
+import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
+import com.lowdragmc.lowdraglib2.gui.util.DrawerHelper;
+import dev.vfyjxf.taffy.style.TaffyPosition;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
+
+import java.util.List;
+import java.util.function.Supplier;
 
 final class WorkspaceUi {
     private WorkspaceUi() {
@@ -133,5 +142,105 @@ final class WorkspaceUi {
 
     static float centeredWorld(float container, float child) {
         return Math.max(0f, (container - child) / 2f);
+    }
+
+    /**
+     * Primitive 1: a square cell of {@code size} world units filled with
+     * {@code fillColor}. Hit-testing is left at the UIElement default — a
+     * caller that wraps this in a Button (atlas card slot preview) will
+     * disable hit testing on the cell itself, while a caller using the
+     * cell as the click surface (chest tile cell) leaves it enabled.
+     *
+     * <p>This is the foundation primitive — the same square that every
+     * inventory slot, hotbar slot, kit slot, and chest slot has been
+     * open-coding. Centralising it gives a single place to change the
+     * size/padding conventions if we ever standardise on a different
+     * frame style.
+     */
+    static UIElement itemSlotShell(float size, int fillColor) {
+        return panel(fillColor).layout(layout -> layout.width(size).height(size));
+    }
+
+    /**
+     * Primitive 2: a complete item-display cell — shell + centered icon
+     * (via {@link #itemIcon}) + optional count badge in the bottom-right
+     * corner.
+     *
+     * <p>Caller wraps this in their own button or interactive element to
+     * attach behavior (click, drag, context menu). Decorations beyond
+     * count (selection outline, kit-slot ready pip, hotbar index badge)
+     * stay with the caller — they're surface-specific and don't belong
+     * inside a generic primitive.
+     *
+     * @param stack the stack to render; null/empty draws an empty shell
+     * @param size cell width/height in world units
+     * @param fillColor cell background ARGB
+     * @param activeIcon true → icon at full opacity; false → ghost overlay
+     * @param countBadge null or ≤1 → no badge; >1 → badge with the count
+     */
+    static UIElement itemSlotCard(
+            ItemStack stack,
+            float size,
+            int fillColor,
+            boolean activeIcon,
+            Integer countBadge
+    ) {
+        UIElement card = itemSlotShell(size, fillColor);
+        if (stack != null && !stack.isEmpty()) {
+            float iconSize = Math.max(8f, size - 2f);
+            UIElement icon = itemIcon(stack, iconSize, activeIcon);
+            icon.layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .left(centeredWorld(size, iconSize))
+                    .top(centeredWorld(size, iconSize)));
+            card.addChild(icon);
+        }
+        if (countBadge != null && countBadge > 1) {
+            Label badge = label(compactCount(countBadge), ACCENT);
+            badge.layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .right(1)
+                    .bottom(0)
+                    .height(6));
+            badge.textStyle(style -> style
+                    .textColor(ACCENT)
+                    .fontSize(6)
+                    .textShadow(true)
+                    .textAlignHorizontal(Horizontal.RIGHT)
+                    .textAlignVertical(Vertical.BOTTOM));
+            card.addChild(badge);
+        }
+        return card;
+    }
+
+    static UIElement itemSlotCard(ItemStack stack, float size, int fillColor, boolean activeIcon) {
+        return itemSlotCard(stack, size, fillColor, activeIcon, null);
+    }
+
+    /**
+     * Primitive 3: install the standard vanilla-tooltip handler on the
+     * element. The supplier is re-invoked on every hover, so callers
+     * whose stack changes between renders don't have to reinstall.
+     */
+    static void installItemTooltip(UIElement element, ItemStack stack) {
+        installItemTooltip(element, () -> stack);
+    }
+
+    static void installItemTooltip(UIElement element, Supplier<ItemStack> stackSupplier) {
+        if (element == null || stackSupplier == null) {
+            return;
+        }
+        element.addEventListener(UIEvents.HOVER_TOOLTIPS, event -> {
+            ItemStack stack = stackSupplier.get();
+            if (stack == null || stack.isEmpty()) {
+                return;
+            }
+            event.hoverTooltips = new HoverTooltips(
+                    List.copyOf(DrawerHelper.getItemToolTip(stack)),
+                    stack.getTooltipImage().orElse(null),
+                    null,
+                    stack
+            );
+        });
     }
 }
