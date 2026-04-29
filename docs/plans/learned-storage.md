@@ -1,0 +1,505 @@
+# Learned Storage — Design Sketch
+
+Last updated: 2026-04-29
+
+> **Status:** Phases 1–4 landed in one structural swap (chest tiles → chips,
+> ChestLink/StorageArea deleted, deposit routing reads ChestAffinityMap, and
+> proximate-chest contents project as faded ghost cards on homed islands).
+> Phases 5–8 deferred:
+>
+> - **Auto-claim hook** — explicit claim flow is gone; chests currently
+>   only enter the workspace via `/slot test populate`. The vanilla-chest-
+>   GUI deposit observer hasn't been wired yet.
+> - **Search-as-find / loot-chest panel / kit ghost markers** — additive
+>   layers on top of the new model; not yet built.
+> - **Cluster derivation** — clusters/areas are gone entirely; chest chips
+>   are flat (sorted proximate-first). Cluster grouping + rename can be
+>   added on top later.
+> - **Affinity decay + accidental-placement guard** — affinity score is
+>   monotonically non-decreasing for now; tune from playtest.
+> - **Cross-surface highlight pulses** — only the title-bar overlap-paint
+>   is wired (replaces explicit chest-island link).
+>
+> Two intertwined moves:
+>
+> 1. **Replace the explicit-link / explicit-claim / explicit-area-
+>    assignment trio** with a transparent, learned-affinity routing
+>    model. (Affinity, auto-claim, auto-cluster.)
+> 2. **Surface external storage as ghost cards on atlas islands**
+>    (faded, count-badged) for items present in *proximate* chests.
+>    No separate chest grid in the workspace; the chest panel is a
+>    minimal chip stack. Search and kit-activation extend the same
+>    ghost machinery to non-proximate items.
+>
+> The two compose: affinity drives routing; proximate-ghosts make
+> reachable storage visible without inventing a new surface.
+>
+> Per AGENTS.md, when this lands the old artifacts are deleted in
+> the same change — no migration, no dual-write, no
+> soft-deprecation.
+
+## Why this exists
+
+Today the player has to manage three explicit concepts to make
+deposits work the way they want:
+
+1. **Claim** a chest in world (right-click) before SLOT touches it.
+2. **Assign** that chest to a Storage Area (Main Base, Mountain Mine, …).
+3. **Link** the chest to one or more atlas islands so deposit-from-
+   island routes there.
+
+All three exist to encode the same underlying intent: *"this chest
+holds these kinds of items."* Three concepts is twice too many. The
+link UI in particular is the worst part — a popup picker that
+overflows the screen, can only be opened from the chest side, and
+hides which islands are already linked.
+
+## Player goals (what we're actually serving)
+
+1. **Don't run between chests** to keep things organised. Standing
+   near a chest cluster + a deposit gesture should put each carried
+   item where it belongs.
+2. **Find stuff** across thousands of items without remembering which
+   chest is which.
+3. **Quickly grab kits** of items the player knows they need.
+
+Existing pieces already cover some of this: the kits system handles
+(3) once routing exists, and `ChestPresenceEntry` on item cards
+already tells you "iron lives in chest A and B". What's missing is
+the routing layer for (1) and the discoverability layer for "this
+chest *wants* iron, currently empty of it" for (2).
+
+## Concept
+
+**Learned per-(chest, item) affinity** is the single relation. It
+replaces ChestLinkMap and the explicit-claim and explicit-area-assign
+gestures.
+
+- Every player-initiated deposit of item X into chest C raises
+  `affinity[C, X]` by one increment.
+- Affinity decays slowly over time so chests that haven't seen an
+  item in weeks stop claiming it.
+- Affinity is *not* recorded if the player takes the item back out
+  within a short window (default 30 s), or if they undo the deposit.
+  This is the accidental-placement guard.
+- Chest contents *now* (not history) also count as affinity — if a
+  chest has 12 iron in it right now, it has affinity for iron
+  regardless of history.
+
+Routing reads from `affinity[C, X]`. Discoverability reads from it
+too (ghost-slot "wants").
+
+## Auto-claim
+
+A chest becomes part of the workspace the first time the player
+**deposits** into it (not on open, not on take). This naturally
+filters dungeon and structure chests, since the player only loots
+those. A "Forget chest" gesture on the chest tile removes it from
+the workspace and clears its affinity.
+
+Open question: do we need a stronger threshold (N deposits, or
+deposit + open-twice) before claiming? Probably not; one deposit is
+already a strong intent signal, and Forget is cheap.
+
+## Auto-clustered areas
+
+Chests cluster into named regions purely from spatial proximity
+(connected components within ~16 blocks of each other in the same
+dimension, threshold TBD). Cluster names default to a stable ordinal
+("Storage Area 1", "Storage Area 2", …) assigned in cluster-creation
+order; the player can rename. World coordinates aren't meaningful UI
+for the player so we don't surface them in the default name. Ordinals
+are sticky — splitting an existing cluster keeps the original
+ordinal on the larger half and the next free ordinal goes to the
+smaller half, so existing names don't shuffle when the topology
+changes. There is no behavioural consequence to which cluster a chest
+belongs to — clusters are visual grouping only.
+
+Risk: clusters can split or merge as the player adds chests. Mitigated
+by a generous threshold and by the fact that area boundaries don't
+gate behaviour (routing is per-chest, not per-area). The strip just
+re-groups.
+
+## Routing policy
+
+For each carried item the player wants to deposit:
+
+1. Restrict to **proximate** chests (already gated by
+   `ChestProximityResolver`).
+2. Among those, find chests with `affinity[C, X] > 0`.
+3. If exactly one chest has clearly the highest affinity (e.g.
+   2× the runner-up), prefer it; deposit until full, then spill to
+   the next-highest, etc.
+4. If no proximate chest has affinity for X, the item stays in
+   carry. Surface it as a "needs a home" hint (Triage already
+   handles unhomed items; reuse that surface).
+
+Open question: when many chests have similar affinity (e.g. four
+chests all hold building blocks), should deposit consolidate
+into one or split across all? Recommendation: prefer one, spill
+when full. Splitting feels random in practice.
+
+## Hover and cross-highlighting
+
+Hovering anything that carries an item identity should make every
+other surface representing that identity respond. The principle:
+*one item identity, one cross-surface highlight pass, in both
+directions.* This subsumes several UX bugs from the link era (chest
+card glowing the whole tile when its linked island is hovered, no
+glow when an atlas item is hovered, etc.).
+
+Concretely:
+
+- **Hover atlas item card →** highlight matching cells in proximate
+  chests, pulse the ghost slot in chests with affinity for that
+  item but currently empty of it, light the title bar of every
+  chest tile that participates.
+- **Hover chest cell (real item) →** highlight the matching atlas
+  card.
+- **Hover chest ghost slot (affinity, empty) →** highlight other
+  chests with affinity for the same item, plus the matching atlas
+  card. Communicates "this is where else iron lives / would live."
+- **Hover chest tile title →** highlight every atlas card the chest
+  has stock or affinity for. Communicates "this chest is for these
+  items."
+- **Hover atlas island title →** light the title bars of chests
+  whose stock/affinity overlaps the island. (This is what the
+  link-era island-hover-glows-chest behaviour was trying to do; it
+  becomes a derived overlap query instead of an explicit link
+  lookup.)
+
+Highlight scope: only the title bar lights up, not the whole tile,
+to avoid the "blinding" effect from the current implementation
+where the entire chest panel glows. The hover state plumbing
+(`hoveredAtlasIdentity`, `hoveredChestCellIdentity`,
+`hoveredIslandId`, `hoveredStorageId`) is already in place; this is
+a wiring exercise on top of the same fields.
+
+**Drawing visible link lines** between hovered-item and its chests
+is tempting but defer — common items (sticks, planks, cobble) would
+fill the screen with lines. Revisit if highlight + pulse turns out
+to be insufficient.
+
+## Proximate-ghost UX model
+
+The core UX primitive: every item present in a *proximate* chest renders
+as a *faded ghost card on its homed island*. Ghost cards aggregate counts
+across all proximate chests holding that item; per-chest breakdowns
+surface on zoom (LOD).
+
+This collapses several previously separate surfaces into one consistent
+rendering. The atlas now shows:
+
+| State | Render |
+|---|---|
+| Carried, not in any proximate chest | vibrant card |
+| Carried, also in some proximate chest | vibrant card with "also stored" pip |
+| Not carried, in some proximate chest | faded ghost card with aggregate count |
+| Not carried, not in any proximate chest | not rendered (search reveals) |
+
+The exact visual balance — how prominent the "also stored" pip is, how
+faded the ghost is, how the count is laid out — needs playtest tuning.
+We already have a pip glyph and a faded-ghost render path from the
+old "homed but not carried" model; we re-use them with this new
+semantic.
+
+**Atlas-as-reachable-state** is the principle. Ghost = "you can grab
+this from where you're standing." Items in non-proximate chests stay
+invisible until search or kit-activation surfaces them; this preserves
+the model.
+
+### Proximate chest panel
+
+A small left-side panel above Triage stacks *chest chips* — one chip
+per proximate chest. Each chip:
+
+- Chest name (default `Chest #abcd`, renamable)
+- Slot fullness summary (e.g., `16/27`)
+- Forget on hover/right-click
+- Drag target (deposit routes by affinity)
+
+Chips do **not** render the chest grid. Contents surface as ghosts on
+islands; the chip is awareness + drag target + forget handle. The
+chest's actual slot grid is a *detail surface* opened only on demand
+(right-click chest in world, or a "show contents" action on the chip
+if needed). The default workspace never has a chest grid visible.
+
+If the chip count grows large (>5–7), the panel becomes scrollable.
+Sort by recent affinity / use so the relevant chests sit on top.
+
+### Interactions
+
+Mirror vanilla / InventoryTweaks / MouseTweaks for muscle memory.
+Existing keyboard primitives (shift+scroll for incremental take/push,
+spacebar to zoom) carry over.
+
+- **Click ghost** → take one stack from highest-affinity proximate
+  chest into carry.
+- **Shift+click ghost** → take all matching to carry (or until carry
+  is full).
+- **Shift+scroll on ghost** → incremental take.
+- **Drag ghost** → take to drop target.
+- **Drag carried card onto ghost / onto chest chip** → deposit
+  (routed to highest-affinity proximate chest with capacity).
+- **Spacebar zoom on ghost** → reveal per-chest breakdown (which
+  chest holds how many) via existing LOD.
+
+LOD already drives detail surfacing on zoom; explicit "click for
+details" is unnecessary because spacebar zoom is the existing gesture.
+
+### Forget gestures
+
+- **Forget chest** on a chest chip → chest leaves the workspace.
+  Affinity for that chest is cleared.
+- **Forget item** on a ghost (right-click → menu? gesture TBD) →
+  resets `affinity[C, X]` to 0 across all proximate chests for that
+  item, OR for a specific chest if the player drilled into the
+  per-chest breakdown. Use case: chest repurposed.
+
+### Cluster rename
+
+Cluster rename happens on the cluster header in the chest panel
+(if we surface clusters as visual groupings of chips) — replaces
+the old area-rename UI.
+
+## Loot chests and unhomed-reachable items
+
+A chest the player has never deposited into is a *loot chest* — its
+contents do **not** participate in island ghosts. Loot chests live in
+a different mental model: random world chests, dungeon caches,
+village storage, NPC chests. Treating their contents as ghosts on
+islands would pollute the atlas with items the player is not trying
+to organise.
+
+Instead, opening a loot chest surfaces its contents in a
+*Triage-like docked panel*:
+
+- **Items the player has homed elsewhere** → suggestion chip points
+  to the existing home (`→ Materials`). Accept = deposit-route to
+  that island's affinity-matched chest, or take into carry.
+- **Items the player has not homed** → standard Triage-style chip
+  suggestions (FacetIndex roles, etc.). Accept = home and either
+  carry or deposit-route.
+- **Take-all** action on the loot panel → unhomed items go to
+  Triage; homed items take into carry (or deposit-route, configurable).
+
+The loot chest panel is *transient*: it exists only while the chest
+is open. Closing the chest dismisses the panel. The chest itself is
+**not** auto-claimed into the workspace until the player explicitly
+deposits into it (consistent with the auto-claim trigger above).
+
+Two distinct mental models:
+- *Storage chests* — your organised storage, surfaced as ghosts on
+  islands.
+- *Loot chests* — random world chests you encounter, surfaced as a
+  Triage-style overlay only while open.
+
+A chest moves from "loot chest" to "storage chest" the moment the
+player deposits into it (auto-claim).
+
+## Search behaviour
+
+Search currently zooms the atlas to results. With proximate-ghosts,
+the better behaviour is:
+
+- **Carried matches** → highlight matching cards on their islands
+  (no zoom).
+- **Proximate-chest matches** → already rendered as ghosts; highlight.
+- **Non-proximate chest matches** → temporarily render as ghosts on
+  the appropriate island with an "elsewhere" badge. Spacebar zoom on
+  the ghost reveals which chest holds the item ("Mountain Mine
+  Chest #3, in nether").
+
+Search becomes a *find-where* tool, not a *zoom-to* tool. The atlas
+stays in place; ghosts reveal the locations.
+
+## Kits integration
+
+Kit activation surfaces non-carried needed items as *temporary
+ghosts* on their homed islands, with a "kit-needs" indicator. Same
+rendering machinery as proximate-chest ghosts; different driver.
+
+- **Reachable items** (in proximate chests) appear as standard
+  ghosts; the player grabs them with normal click/shift-click.
+- **Non-reachable items** (in non-proximate chests) appear as
+  ghosts with an "elsewhere" badge. Spacebar zoom shows the source
+  chest. Player walks there; ghosts upgrade to reachable as
+  proximity changes.
+- Once the kit's needed amount is satisfied (carry meets target),
+  that item's kit-needs marker fades; satisfied slots render normally.
+
+Routing primitive symmetry stays:
+
+- **Kit activate** = `route(item) → take` against
+  `affinity[C, item]` for proximate chests. Items the player can
+  reach now are pulled; the rest are surfaced as ghost markers
+  guiding the walk.
+- **Kit deactivate** = `route(item) → put` against the same map.
+  Excess items deposit-route opportunistically as the player walks
+  past proximate chests.
+
+The kit's "bring along" list reuses the same fetch logic.
+
+**Open question:** when a player ends a kit far from any storage
+chest, should the carry items return to the player's main inventory
+(today's behaviour) or stay in carry until next deposit-near-chests?
+Recommendation: stay in carry, surface "kit returned X items to
+carry — deposit when near storage" in the status line. Avoids the
+"kit-end mysteriously dumps items into hotbar" surprise.
+
+## Standing orders (tentative)
+
+Beyond kits, a player commonly wants persistent baseline carry:
+sleeping bag × 1, pickaxe × 1, full armor set, food × 16. This is
+worth a separate concept from kits — a flat per-player "always
+carry" list with desired counts. Implementation deferred; sketched
+here to keep the model coherent:
+
+- Standing orders + active kit compose: target = max-overlap union.
+- Same fetch primitive: ghosts surface needed-but-not-carried items
+  on their islands, walk to grab.
+- Implicit defaults from item type (tool=1, food=16, blocks=64)
+  cover 90% of cases; scroll-wheel on a slot overrides.
+
+## What gets deleted (per AGENTS.md no-migration rule)
+
+When this lands, the same change removes:
+
+- `ChestLink`, `ChestLinkMap`, `ChestLinkWorkflowDomainService`
+- `WorkflowEvent.ChestLinkCreated`, `ChestLinkRemoved`
+- `linkedIslandIds` field on `ClaimedChestTile` and codec entries
+- The Link button + popover (`ContextMenuBuilder.beginChestLinkEdit`,
+  `chestLinkPopover`)
+- `WorkflowEvent.StorageAreaCreated/Renamed/Recolored/Moved/Deleted`
+  (replaced by cluster derivation + rename)
+- `StorageArea`, `StorageAreaMap`, `StorageAreaWorkflowDomainService`
+  (becomes derived state)
+- The right-click-in-world claim flow (`ChestClaimButtonController`)
+  and the dedicated claim RPC; auto-claim happens on deposit
+- Explicit `areaId` on chest tile; replaced by derived cluster id
+- `/slot test populate`'s area-creation pass
+- `/slot test clear`'s area-deletion pass (just added — would have
+  to come back out)
+- `StoragePanelBuilder` storage strip + tab chips. Replaced by the
+  proximate chest panel (chest chips, no grid).
+- The chest-tile-as-primary-surface rendering in `IslandChestBuilder`
+  (`chestTilePanelInFlow`, `chestTilePanelCompact`). Chest grids
+  become a detail/edit surface only — opened via right-click chest
+  in world, not rendered in the workspace by default.
+- Drag-island-to-chest-tile / drag-chest-cell-to-island handlers,
+  since neither tile nor cell render by default. Replaced by
+  drag-card-to-ghost / drag-card-to-chest-chip.
+
+What gets added:
+
+- `WorkflowEvent.ChestDeposit{Recorded,Forgotten}` (or just record
+  via a per-chest affinity projection input)
+- `ChestAffinityMap` projection
+- Affinity-driven deposit routing in `DepositPlanner`
+- Cluster derivation helper (pure function over chest world coords)
+- *Proximate-chest ghost projection*: walk the proximate chest set,
+  union their contents into per-identity counts, emit as ghost
+  `AtlasItem` records (faded, count badge, "in chest" pip).
+  Re-uses the rendering pipeline we just retired for homed-but-not-
+  carried items, with a different upstream driver.
+- Proximate chest panel (left side, above Triage): chip per chest
+  with name + slot summary + forget.
+- Loot-chest Triage-style overlay (transient, lives only while a
+  loot chest is open).
+- Search-as-find: temporary ghosts for non-proximate matches
+  instead of zoom-to-result.
+- Forget-chest (chip) and forget-item (ghost) gestures.
+
+## Edge cases / open questions
+
+- **Bootstrapping.** First-ever deposit into a never-touched chest:
+  no affinity anywhere, item stays in carry. Player manually
+  drops one stack into the chest of their choice; affinity now
+  exists; future deposits route. Acceptable cold start.
+- **Decay rate.** TBD. Probably play-time-based, not wall-clock,
+  so a player who shelves the mod for a month doesn't lose state.
+- **Take-window for accidental-placement guard.** 30 s as a
+  starting point. Tune from playtest.
+- **Cluster threshold distance.** 16 blocks as a starting point;
+  generous enough that a base feels like one cluster.
+- **Multi-stack split policy.** Prefer single chest, spill on
+  full. Open question: if the player is carrying a 64-stack of
+  building blocks and the highest-affinity chest can take only
+  16, do we offer them a choice or just spill silently? Silent
+  spill matches "transparent" but loses control. Default to
+  silent + status line summary ("deposited 64 building blocks
+  across 3 chests"); add an explicit "deposit one stack to
+  active chest" gesture if needed.
+- **Server multi-player.** Affinity is per-player today
+  (`SlotPlayerWorkflowRuntimeService.runtime(player)` is
+  per-UUID). That stays right here.
+- **Cross-dimension chests.** Items in non-current-dimension chests
+  do not appear as ghosts on the atlas (the atlas is "reachable
+  now"). Search reveals them with an "elsewhere" badge.
+  Cross-dimension chests still own their affinity — the moment the
+  player crosses the portal, their items materialise as ghosts and
+  routing kicks in. Open question: should the chest panel show a
+  collapsed "+N chests in nether" entry while in overworld, or stay
+  silent? Probably the former — surface the existence of the other
+  base, just don't pollute the atlas with its contents.
+- **Loot vs storage chest ambiguity.** A chest *could* be both —
+  player loots a dungeon chest, then deposits something into it
+  intending to use it. Auto-claim on first deposit handles this:
+  one deposit moves the chest from loot to storage. There is no
+  "in between" state.
+- **Loot chest opened from a remote source** (e.g., Refined Storage
+  remote-access mods). The loot panel should fire on the chest
+  GUI open event regardless of how it was opened, since the player
+  expects the same Triage-style help. Sources without GUI events
+  (auto-loot machines, etc.) are out of scope; treat as the
+  player's own internal storage.
+- **Backpack contents and carried containers.** Don't deposit
+  *contents of carried containers* — only loose carried items.
+  Already the existing rule, no change.
+
+## Phasing
+
+Not required (per the no-migration rule we can swap in one change),
+but a sensible bite size for playtest signal:
+
+1. **Proximate-chest ghosts.** Re-enable the ghost-rendering path
+   we just disabled, with a new driver: identities that are present
+   in any proximate chest, count = sum across proximate chests.
+   This is a tiny diff to `groupedAtlasEntries` (swap the second
+   loop's source) and reuses existing render paths. Provides
+   immediate "where can I grab iron from" signal without changing
+   the data model.
+2. **Proximate chest panel + delete strip.** Replace the storage
+   strip with the chest-chip panel (no grid). Delete chest-tile
+   primary rendering. Chest grid only opens on demand.
+3. **Affinity events + projection + decay + take-window guard.**
+   Observation-only — routing still uses links if both exist. Tune
+   decay rate and take-window from playtest data.
+4. **Switch deposit routing to affinity.** Delete links and popover.
+5. **Auto-claim + auto-cluster.** Delete explicit claim flow and
+   explicit area-assignment events. Add forget-chest gesture.
+6. **Search-as-find.** Replace zoom-to-result with non-proximate
+   ghost overlay.
+7. **Loot-chest panel.** Triage-style transient overlay for chests
+   the player hasn't deposited into.
+8. **Kit ghost markers.** Surface kit-needed items as temporary
+   ghosts during activation.
+
+Step 1 alone is single-session reversible — same low-risk
+experiment shape as the ghost-removal we just landed. If
+proximate-chest ghosts feel right, the rest layers on. Steps 4–5
+are each one PR; the others fit comfortably alongside them.
+
+## Risks
+
+- **Decay tuning.** Too fast → chests stop claiming items the
+  player still wants there. Too slow → repurposed chests cling to
+  old affinity. Forget gesture is the escape hatch; tune from
+  playtest.
+- **Cluster instability.** Adding a chest that bridges two
+  clusters merges them, which renames the visual area. Mitigated
+  by leaving rename intact; clusters are visual only.
+- **"My deposit went to the wrong chest."** With links the player
+  could verify intent; with affinity they can't. Surface the
+  routing decision in the post-deposit status line ("deposited X
+  to chest Y") and rely on undo for the recovery path.

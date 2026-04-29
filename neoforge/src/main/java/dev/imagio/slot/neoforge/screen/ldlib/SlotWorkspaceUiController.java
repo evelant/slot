@@ -34,7 +34,6 @@ import dev.imagio.slot.atlas.lod.AtlasRelevance;
 import dev.imagio.slot.atlas.lod.Band;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.AtlasItemDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.ChestStackDrag;
-import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.ChestTileDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.HotbarSlotDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.IslandDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.KitBringDrag;
@@ -85,13 +84,6 @@ final class SlotWorkspaceUiController {
     SlotWorkspaceViewModel.IdentityRef hoveredAtlasIdentity;
     String hoveredIslandId;
     /**
-     * Manual override for the active storage tab. {@code null} means
-     * "follow proximity". Set when the player clicks a tab chip in the
-     * storage strip; cleared when the player clicks the active tab again.
-     * Per-session, not persisted to the projection.
-     */
-    String activeStorageAreaId;
-    /**
      * Cross-surface hover cursor for storage chest cards. Mirrors
      * {@link #hoveredIslandId} in pattern: hovering a chest card sets
      * this; island elements observe it to highlight their linked-from
@@ -114,7 +106,6 @@ final class SlotWorkspaceUiController {
     static final int RECENT_REHOME_MAX_DISPLAYED = 3;
     static final int RECENT_REHOME_CAPACITY = 6;
     String editingIslandId = null;
-    String editingChestStorageId = null;
     String islandLabelDraft = "";
     float islandEditScreenX = Float.NaN;
     float islandEditScreenY = Float.NaN;
@@ -144,6 +135,7 @@ final class SlotWorkspaceUiController {
     final StoragePanelBuilder storagePanel = new StoragePanelBuilder(this);
     SlotAtlasGraphView atlasView;
     UIElement atlasPanelElement;
+    UIElement storagePanelElement;
     UIElement hoverTrailOverlayElement;
     UIElement carriedFreeSlotsChipElement;
     UIElement topRightActionsElement;
@@ -159,6 +151,15 @@ final class SlotWorkspaceUiController {
     // the UI dirty; flushRebuildIfPending() in the per-frame tick
     // collapses any number of requests into one actual rebuild per frame.
     boolean rebuildPending;
+    /**
+     * Per-island state carried across renders by {@link AtlasNudgeLayout}.
+     * Records each island's home (player-authored), current render position
+     * (post-push / pre-pull-home), and current size, so the next call can
+     * detect "this grew" / "the player just dragged this" / etc. and react
+     * with the correct local response.
+     */
+    private final java.util.Map<String, dev.imagio.slot.atlas.lod.AtlasNudgeLayout.PrevIslandState> nudgeState =
+            new java.util.HashMap<>();
     SlotWorkspaceViewModel.IdentityRef hoveredChestCellIdentity;
     String hoveredChestCellStorageId;
     // Set by drop targets that handle a ChestStackDrag for something OTHER
@@ -253,9 +254,50 @@ final class SlotWorkspaceUiController {
                 viewModel,
                 searchController.normalizedQuery(),
                 AtlasRelevance.DEFAULT_CONTRIBUTORS,
-                AtlasLayoutConfig.DEFAULT
+                AtlasLayoutConfig.DEFAULT,
+                nudgeState
         );
     }
+
+    /**
+     * Manual compaction gesture (Shift+click on island body): slide the
+     * island toward its nearest axis-aligned neighbour and set its new
+     * home {@code TIGHTEN_FOLLOW_DELTA} units past the stop position so
+     * subsequent shrinks of the snap target are absorbed automatically.
+     * See {@code docs/plans/atlas-nudge-layout.md}.
+     */
+    void tightenIsland(String islandId) {
+        if (islandId == null || islandId.isBlank() || viewModel == null) {
+            return;
+        }
+        SlotWorkspaceViewModel.AtlasIsland island = viewModel.island(islandId);
+        if (island == null || island.kind() == VisualAtlasIslandKind.TRIAGE) {
+            return;
+        }
+        dev.imagio.slot.atlas.lod.AtlasNudgeLayout.TightenResult result =
+                dev.imagio.slot.atlas.lod.AtlasNudgeLayout.tighten(
+                        nudgeState, islandId, TIGHTEN_FOLLOW_DELTA);
+        if (result == null) {
+            localStatus.set("nothing to snap to");
+            return;
+        }
+        // Convert padded → body coordinates for the move RPC.
+        AtlasLayoutConfig cfg = AtlasLayoutConfig.DEFAULT;
+        double leftPad = cfg.atlasIslandGap() / 2.0;
+        int headerBand = SlotWorkspaceAtlasLayout.ISLAND_HEADER_RESERVE;
+        double bodyHomeX = result.newHomeX() + leftPad;
+        double bodyHomeY = result.newHomeY() + headerBand;
+        // Optimistic: keep the local view model in sync so a stray rebuild
+        // before the server round-trip lands doesn't observe the old home
+        // (which would trigger HOME_MOVED and undo the snap).
+        viewModel = viewModel.withIslandHome(islandId, bodyHomeX, bodyHomeY);
+        rpc.sendMoveIsland(islandId, bodyHomeX, bodyHomeY);
+        rebuild();
+    }
+
+    /** One card-row of follow-on-shrink absorption. ~36 px in default config. */
+    private static final double TIGHTEN_FOLLOW_DELTA =
+            SlotWorkspaceAtlasLayout.CARD_WIDTH + SlotWorkspaceAtlasLayout.CARD_GAP;
 
     /**
      * World-space placement for an atlas item under the current
@@ -297,8 +339,8 @@ final class SlotWorkspaceUiController {
         }
         return new AtlasLayoutResult.IslandPlacement(
                 island.islandId(),
-                island.x(),
-                island.y(),
+                (int) Math.round(island.x()),
+                (int) Math.round(island.y()),
                 SlotWorkspaceAtlasLayout.PLAYER_ISLAND_MIN_WIDTH,
                 SlotWorkspaceAtlasLayout.PLAYER_ISLAND_MIN_HEIGHT,
                 island.itemCount()
@@ -358,6 +400,7 @@ final class SlotWorkspaceUiController {
             // which destroys+rebuilds just the atlas-content subtree
             // (islands/cards/chest tiles). That subtree is what the
             // server sync actually invalidates.
+            storagePanel.repopulate();
             atlasPanel.atlasPanel();
         }
         content.markTaffyStyleDirty();
@@ -475,16 +518,17 @@ final class SlotWorkspaceUiController {
         return -1;
     }
 
+    /**
+     * Whether this carried atlas item has a "push" target. With affinity
+     * routing the answer is just "any proximate chest is available", since
+     * the deposit RPC walks affinity server-side. Without proximate chests
+     * there's nothing to push to.
+     */
     boolean atlasItemHasDepositTarget(SlotWorkspaceViewModel.AtlasItem item) {
-        if (item == null || item.islandId() == null || item.islandId().isBlank()) {
+        if (item == null) {
             return false;
         }
-        for (SlotWorkspaceViewModel.ClaimedChestTile tile : viewModel.claimedChestTiles()) {
-            if (tile.proximate() && tile.linkedIslandIds().contains(item.islandId())) {
-                return true;
-            }
-        }
-        return false;
+        return anyChestProximate();
     }
 
 
@@ -582,30 +626,9 @@ final class SlotWorkspaceUiController {
 
 
 
-    /**
-     * Resolve which storage area the strip should expand. Manual
-     * override wins; otherwise the highest-displayOrder proximate area;
-     * otherwise null (strip stays collapsed).
-     */
-    String effectiveStorageAreaId() {
-        if (activeStorageAreaId != null && viewModel.storageArea(activeStorageAreaId) != null) {
-            return activeStorageAreaId;
-        }
-        SlotWorkspaceViewModel.StorageAreaSnapshot best = null;
-        for (SlotWorkspaceViewModel.StorageAreaSnapshot area : viewModel.storageAreas()) {
-            if (!area.proximate()) {
-                continue;
-            }
-            if (best == null || area.displayOrder() > best.displayOrder()) {
-                best = area;
-            }
-        }
-        return best == null ? null : best.areaId();
-    }
-
     boolean anyChestProximate() {
-        for (SlotWorkspaceViewModel.ClaimedChestTile tile : viewModel.claimedChestTiles()) {
-            if (tile.proximate()) {
+        for (SlotWorkspaceViewModel.ChestChip chip : viewModel.chestChips()) {
+            if (chip.proximate()) {
                 return true;
             }
         }

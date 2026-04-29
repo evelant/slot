@@ -16,8 +16,6 @@ public final class WorkflowDomainRuntime {
     private final CollectionWorkflowDomainService collectionWorkflow;
     private final VisualAtlasWorkflowDomainService visualAtlasWorkflow;
     private final ChestClaimWorkflowDomainService chestClaimWorkflow;
-    private final StorageAreaWorkflowDomainService storageAreaWorkflow;
-    private final ChestLinkWorkflowDomainService chestLinkWorkflow;
     private final KitWorkflowDomainService kitWorkflow;
     private final InventoryBrowsePreferencesStore browsePreferences;
     private final InventoryBrowseSessionStateStore browseSessionState;
@@ -33,9 +31,7 @@ public final class WorkflowDomainRuntime {
         this.browseSessionState = new ObservedInventoryBrowseSessionStateStore(repository.browseSessionState(), this::saveNow);
         this.collectionWorkflow = new CollectionWorkflowDomainService(repository, this::saveNow);
         this.visualAtlasWorkflow = new VisualAtlasWorkflowDomainService(repository, this::saveNow);
-        this.storageAreaWorkflow = new StorageAreaWorkflowDomainService(repository, this::saveNow);
-        this.chestClaimWorkflow = new ChestClaimWorkflowDomainService(repository, this.storageAreaWorkflow, this::saveNow);
-        this.chestLinkWorkflow = new ChestLinkWorkflowDomainService(repository, this::saveNow);
+        this.chestClaimWorkflow = new ChestClaimWorkflowDomainService(repository, this::saveNow);
         this.kitWorkflow = new KitWorkflowDomainService(repository, this::saveNow);
         this.undoStack = new UndoStack();
     }
@@ -54,14 +50,6 @@ public final class WorkflowDomainRuntime {
 
     public ChestClaimWorkflowDomainService chestClaimWorkflow() {
         return chestClaimWorkflow;
-    }
-
-    public StorageAreaWorkflowDomainService storageAreaWorkflow() {
-        return storageAreaWorkflow;
-    }
-
-    public ChestLinkWorkflowDomainService chestLinkWorkflow() {
-        return chestLinkWorkflow;
     }
 
     public KitWorkflowDomainService kitWorkflow() {

@@ -1,6 +1,8 @@
 package dev.imagio.slot.neoforge.storage;
 
 import dev.imagio.slot.SlotCommon;
+import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
@@ -11,13 +13,13 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
 public final class DepositExecutor {
-    private static final int OFFHAND_SENTINEL = -2;
-
     private DepositExecutor() {
     }
 
@@ -39,6 +41,7 @@ public final class DepositExecutor {
         int deposited = 0;
         int failed = 0;
         LinkedHashSet<UUID> destinations = new LinkedHashSet<>();
+        ArrayList<DepositRecord> records = new ArrayList<>();
 
         for (DepositPlan.Assignment assignment : plan.assignments()) {
             ItemStack sourceStack = carried.peek(player, assignment.laneId(), assignment.slotIndex());
@@ -77,16 +80,17 @@ public final class DepositExecutor {
                 continue;
             }
 
+            int depositedCount = sourceStack.getCount();
+            ItemIdentity identity = ItemIdentityMatcher.create(sourceStack);
             ItemStack removed = carried.extract(
-                    player, assignment.laneId(), assignment.slotIndex(), sourceStack.getCount(), false);
+                    player, assignment.laneId(), assignment.slotIndex(), depositedCount, false);
             if (removed == null || removed.isEmpty()) {
-                // Shouldn't happen: we already peeked non-empty. Best-effort: count
-                // as failure rather than crash.
                 failed++;
                 continue;
             }
             deposited++;
             destinations.add(chosen);
+            records.add(new DepositRecord(chosen, identity, depositedCount));
         }
 
         if (deposited > 0 || failed > 0) {
@@ -95,7 +99,7 @@ public final class DepositExecutor {
                     deposited, failed, destinations
             );
         }
-        return new DepositOutcome(deposited, failed, destinations);
+        return new DepositOutcome(deposited, failed, destinations, records);
     }
 
     public static SingleStackOutcome depositSingleItem(
@@ -128,6 +132,7 @@ public final class DepositExecutor {
         if (!committed.isEmpty()) {
             return SingleStackOutcome.failed("commit_partial");
         }
+        ItemIdentity identity = ItemIdentityMatcher.create(sourceStack);
         ItemStack removed = carried.extract(player, laneId, slotIndex, 1, false);
         if (removed == null || removed.isEmpty()) {
             return SingleStackOutcome.failed("extract_failed");
@@ -136,7 +141,7 @@ public final class DepositExecutor {
                 "[SLOT] deposit-one lane={} slot={} chest={}",
                 laneId, slotIndex, chest.storageId()
         );
-        return SingleStackOutcome.deposited();
+        return SingleStackOutcome.deposited(new DepositRecord(chest.storageId(), identity, 1));
     }
 
     public static SingleStackOutcome depositSingleStack(
@@ -167,7 +172,9 @@ public final class DepositExecutor {
         if (!committed.isEmpty()) {
             return SingleStackOutcome.failed("commit_partial");
         }
-        ItemStack removed = carried.extract(player, laneId, slotIndex, sourceStack.getCount(), false);
+        int depositedCount = sourceStack.getCount();
+        ItemIdentity identity = ItemIdentityMatcher.create(sourceStack);
+        ItemStack removed = carried.extract(player, laneId, slotIndex, depositedCount, false);
         if (removed == null || removed.isEmpty()) {
             return SingleStackOutcome.failed("extract_failed");
         }
@@ -175,32 +182,40 @@ public final class DepositExecutor {
                 "[SLOT] deposit-single lane={} slot={} chest={}",
                 laneId, slotIndex, chest.storageId()
         );
-        return SingleStackOutcome.deposited();
+        return SingleStackOutcome.deposited(new DepositRecord(chest.storageId(), identity, depositedCount));
     }
 
-    public record DepositOutcome(int deposited, int failed, Set<UUID> destinations) {
+    /** One observed deposit: identity, count, target chest. Drives affinity bumps. */
+    public record DepositRecord(UUID storageId, ItemIdentity identity, int count) {
+        public DepositRecord {
+            count = Math.max(1, count);
+        }
+    }
+
+    public record DepositOutcome(int deposited, int failed, Set<UUID> destinations, List<DepositRecord> records) {
         public DepositOutcome {
             deposited = Math.max(0, deposited);
             failed = Math.max(0, failed);
             destinations = destinations == null ? Set.of() : Set.copyOf(destinations);
+            records = records == null ? List.of() : List.copyOf(records);
         }
 
         public static DepositOutcome empty() {
-            return new DepositOutcome(0, 0, Set.of());
+            return new DepositOutcome(0, 0, Set.of(), List.of());
         }
     }
 
-    public record SingleStackOutcome(boolean success, String diagnostic) {
+    public record SingleStackOutcome(boolean success, String diagnostic, DepositRecord record) {
         public SingleStackOutcome {
             diagnostic = diagnostic == null ? "" : diagnostic;
         }
 
-        public static SingleStackOutcome deposited() {
-            return new SingleStackOutcome(true, "");
+        public static SingleStackOutcome deposited(DepositRecord record) {
+            return new SingleStackOutcome(true, "", record);
         }
 
         public static SingleStackOutcome failed(String reason) {
-            return new SingleStackOutcome(false, reason);
+            return new SingleStackOutcome(false, reason, null);
         }
     }
 }

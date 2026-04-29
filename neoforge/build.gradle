@@ -60,6 +60,10 @@ dependencies {
     testImplementation platform("org.junit:junit-bom:${junit_version}")
     testImplementation "org.junit.jupiter:junit-jupiter-api"
     testImplementation "com.google.code.gson:gson:2.10.1"
+    // SLF4J on the test classpath — production code uses SLF4J via Mojang's
+    // logging at runtime, but unit tests don't bring those.
+    testImplementation "org.slf4j:slf4j-api:2.0.13"
+    testRuntimeOnly "org.slf4j:slf4j-simple:2.0.13"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"
     testRuntimeOnly "org.junit.platform:junit-platform-launcher"
 }

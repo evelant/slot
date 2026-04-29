@@ -14,7 +14,6 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * NBT transport for {@link SlotWorkspaceViewModel}. The view model and all its records are
@@ -65,17 +64,11 @@ public final class SlotWorkspaceViewModelCodec {
         }
         tag.put("triageItems", triageTags);
 
-        ListTag chestTileTags = new ListTag();
-        for (SlotWorkspaceViewModel.ClaimedChestTile tile : viewModel.claimedChestTiles()) {
-            chestTileTags.add(encodeClaimedChestTile(tile, provider));
+        ListTag chipTags = new ListTag();
+        for (SlotWorkspaceViewModel.ChestChip chip : viewModel.chestChips()) {
+            chipTags.add(encodeChestChip(chip));
         }
-        tag.put("claimedChestTiles", chestTileTags);
-
-        ListTag storageAreaTags = new ListTag();
-        for (SlotWorkspaceViewModel.StorageAreaSnapshot area : viewModel.storageAreas()) {
-            storageAreaTags.add(encodeStorageAreaSnapshot(area));
-        }
-        tag.put("storageAreas", storageAreaTags);
+        tag.put("chestChips", chipTags);
 
         ListTag hotbarTags = new ListTag();
         for (SlotWorkspaceViewModel.HotbarSlot slot : viewModel.hotbarSlots()) {
@@ -115,16 +108,10 @@ public final class SlotWorkspaceViewModelCodec {
             triageItems.add(decodeItem(provider, triageTags.getCompound(index)));
         }
 
-        ArrayList<SlotWorkspaceViewModel.ClaimedChestTile> claimedChestTiles = new ArrayList<>();
-        ListTag chestTileTags = compoundTag.getList("claimedChestTiles", Tag.TAG_COMPOUND);
-        for (int index = 0; index < chestTileTags.size(); index++) {
-            claimedChestTiles.add(decodeClaimedChestTile(provider, chestTileTags.getCompound(index)));
-        }
-
-        ArrayList<SlotWorkspaceViewModel.StorageAreaSnapshot> storageAreas = new ArrayList<>();
-        ListTag storageAreaTags = compoundTag.getList("storageAreas", Tag.TAG_COMPOUND);
-        for (int index = 0; index < storageAreaTags.size(); index++) {
-            storageAreas.add(decodeStorageAreaSnapshot(storageAreaTags.getCompound(index), claimedChestTiles));
+        ArrayList<SlotWorkspaceViewModel.ChestChip> chestChips = new ArrayList<>();
+        ListTag chipTags = compoundTag.getList("chestChips", Tag.TAG_COMPOUND);
+        for (int index = 0; index < chipTags.size(); index++) {
+            chestChips.add(decodeChestChip(chipTags.getCompound(index)));
         }
 
         ArrayList<SlotWorkspaceViewModel.HotbarSlot> hotbarSlots = new ArrayList<>();
@@ -154,63 +141,10 @@ public final class SlotWorkspaceViewModelCodec {
                         : islands,
                 atlasItems,
                 triageItems,
-                claimedChestTiles,
-                storageAreas,
+                chestChips,
                 hotbarSlots.isEmpty() ? SlotWorkspaceViewModel.emptyHotbar() : hotbarSlots,
                 decodeOffhand(provider, compoundTag.getCompound("offhand")),
                 kits
-        );
-    }
-
-    private static CompoundTag encodeStorageAreaSnapshot(SlotWorkspaceViewModel.StorageAreaSnapshot area) {
-        CompoundTag tag = new CompoundTag();
-        tag.putString("areaId", area.areaId());
-        tag.putString("label", area.label());
-        tag.putInt("color", area.color());
-        tag.putInt("atlasX", area.atlasX());
-        tag.putInt("atlasY", area.atlasY());
-        tag.putInt("displayOrder", area.displayOrder());
-        tag.putInt("chestCount", area.chestCount());
-        tag.putInt("totalSlotCount", area.totalSlotCount());
-        tag.putBoolean("proximate", area.proximate());
-        tag.putBoolean("expanded", area.expanded());
-        ListTag tileIdTags = new ListTag();
-        for (SlotWorkspaceViewModel.ClaimedChestTile tile : area.chestTiles()) {
-            CompoundTag entry = new CompoundTag();
-            entry.putString("storageId", tile.storageId());
-            tileIdTags.add(entry);
-        }
-        tag.put("tileIds", tileIdTags);
-        return tag;
-    }
-
-    private static SlotWorkspaceViewModel.StorageAreaSnapshot decodeStorageAreaSnapshot(
-            CompoundTag tag,
-            List<SlotWorkspaceViewModel.ClaimedChestTile> claimedChestTiles
-    ) {
-        ListTag tileIdTags = tag.getList("tileIds", Tag.TAG_COMPOUND);
-        ArrayList<SlotWorkspaceViewModel.ClaimedChestTile> resolved = new ArrayList<>();
-        for (int index = 0; index < tileIdTags.size(); index++) {
-            String storageId = tileIdTags.getCompound(index).getString("storageId");
-            for (SlotWorkspaceViewModel.ClaimedChestTile tile : claimedChestTiles) {
-                if (tile.storageId().equals(storageId)) {
-                    resolved.add(tile);
-                    break;
-                }
-            }
-        }
-        return new SlotWorkspaceViewModel.StorageAreaSnapshot(
-                tag.getString("areaId"),
-                tag.getString("label"),
-                tag.getInt("color"),
-                tag.getInt("atlasX"),
-                tag.getInt("atlasY"),
-                tag.getInt("displayOrder"),
-                tag.getInt("chestCount"),
-                tag.getInt("totalSlotCount"),
-                tag.getBoolean("proximate"),
-                tag.getBoolean("expanded"),
-                resolved
         );
     }
 
@@ -367,8 +301,8 @@ public final class SlotWorkspaceViewModelCodec {
         tag.putString("islandId", island.islandId());
         tag.putString("label", island.label());
         tag.putString("kind", island.kind().name());
-        tag.putInt("x", island.x());
-        tag.putInt("y", island.y());
+        tag.putDouble("x", island.x());
+        tag.putDouble("y", island.y());
         tag.putInt("color", island.color());
         tag.putInt("itemCount", island.itemCount());
         tag.putInt("carriedCount", island.carriedCount());
@@ -380,8 +314,8 @@ public final class SlotWorkspaceViewModelCodec {
                 tag.getString("islandId"),
                 tag.getString("label"),
                 decodeIslandKind(tag.getString("kind")),
-                tag.getInt("x"),
-                tag.getInt("y"),
+                tag.getDouble("x"),
+                tag.getDouble("y"),
                 tag.getInt("color"),
                 tag.getInt("itemCount"),
                 tag.getInt("carriedCount")
@@ -399,6 +333,8 @@ public final class SlotWorkspaceViewModelCodec {
         tag.putBoolean("recent", item.recent());
         tag.putBoolean("playerPlaced", item.playerPlaced());
         tag.putBoolean("carried", item.carried());
+        tag.putBoolean("ghost", item.ghost());
+        tag.putInt("proximateCount", item.proximateCount());
         tag.putBoolean("isCarriedContainer", item.isCarriedContainer());
         tag.putInt("containerFreeSlotCount", item.containerFreeSlotCount());
         tag.putInt("containerSlotCapacity", item.containerSlotCapacity());
@@ -420,8 +356,6 @@ public final class SlotWorkspaceViewModelCodec {
         tag.putString("storageId", entry.storageId());
         tag.putString("label", entry.label());
         tag.putInt("count", entry.count());
-        tag.putString("areaId", entry.areaId());
-        tag.putString("areaLabel", entry.areaLabel());
         return tag;
     }
 
@@ -429,9 +363,7 @@ public final class SlotWorkspaceViewModelCodec {
         return new SlotWorkspaceViewModel.ChestPresenceEntry(
                 tag.getString("storageId"),
                 tag.getString("label"),
-                tag.getInt("count"),
-                tag.contains("areaId") ? tag.getString("areaId") : "",
-                tag.contains("areaLabel") ? tag.getString("areaLabel") : ""
+                tag.getInt("count")
         );
     }
 
@@ -459,6 +391,8 @@ public final class SlotWorkspaceViewModelCodec {
                 tag.getBoolean("recent"),
                 tag.getBoolean("playerPlaced"),
                 tag.getBoolean("carried"),
+                tag.getBoolean("ghost"),
+                tag.getInt("proximateCount"),
                 chipSuggestions,
                 presence,
                 tag.getBoolean("isCarriedContainer"),
@@ -511,82 +445,35 @@ public final class SlotWorkspaceViewModelCodec {
         return new ChipSuggestion(kind, template, islandId, label, color, iconIdentity);
     }
 
-    private static CompoundTag encodeClaimedChestTile(
-            SlotWorkspaceViewModel.ClaimedChestTile tile,
-            HolderLookup.Provider provider
-    ) {
+    private static CompoundTag encodeChestChip(SlotWorkspaceViewModel.ChestChip chip) {
         CompoundTag tag = new CompoundTag();
-        tag.putString("storageId", tile.storageId());
-        tag.putString("dimensionId", tile.dimensionId());
-        tag.putInt("atlasX", tile.atlasX());
-        tag.putInt("atlasY", tile.atlasY());
-        tag.putInt("width", tile.width());
-        tag.putInt("height", tile.height());
-        tag.putString("label", tile.label());
-        tag.putInt("anchorCount", tile.anchorCount());
-        tag.putInt("slotCount", tile.slotCount());
-        tag.putBoolean("proximate", tile.proximate());
-        ListTag contentTags = new ListTag();
-        List<Integer> indices = tile.contentSlotIndices();
-        for (int i = 0; i < tile.contents().size(); i++) {
-            ItemStack stack = tile.contents().get(i);
-            CompoundTag entry = new CompoundTag();
-            entry.put("stack", stack == null ? new CompoundTag() : stack.saveOptional(provider));
-            int slotIndex = i < indices.size() ? indices.get(i) : i;
-            entry.putInt("slotIndex", slotIndex);
-            contentTags.add(entry);
-        }
-        tag.put("contents", contentTags);
-        ListTag linkedIslandTags = new ListTag();
-        for (String islandId : tile.linkedIslandIds()) {
-            CompoundTag entry = new CompoundTag();
-            entry.putString("islandId", islandId);
-            linkedIslandTags.add(entry);
-        }
-        tag.put("linkedIslandIds", linkedIslandTags);
-        tag.putString("areaId", tile.areaId());
-        tag.putInt("worldX", tile.worldX());
-        tag.putInt("worldY", tile.worldY());
-        tag.putInt("worldZ", tile.worldZ());
+        tag.putString("storageId", chip.storageId());
+        tag.putString("dimensionId", chip.dimensionId());
+        tag.putString("label", chip.label());
+        tag.putInt("anchorCount", chip.anchorCount());
+        tag.putInt("slotCapacity", chip.slotCapacity());
+        tag.putInt("filledSlots", chip.filledSlots());
+        tag.putBoolean("proximate", chip.proximate());
+        tag.putInt("affinityIdentities", chip.affinityIdentities());
+        tag.putInt("worldX", chip.worldX());
+        tag.putInt("worldY", chip.worldY());
+        tag.putInt("worldZ", chip.worldZ());
         return tag;
     }
 
-    private static SlotWorkspaceViewModel.ClaimedChestTile decodeClaimedChestTile(
-            HolderLookup.Provider provider,
-            CompoundTag tag
-    ) {
-        ArrayList<ItemStack> contents = new ArrayList<>();
-        ArrayList<Integer> contentSlotIndices = new ArrayList<>();
-        ListTag contentTags = tag.getList("contents", Tag.TAG_COMPOUND);
-        for (int index = 0; index < contentTags.size(); index++) {
-            CompoundTag entry = contentTags.getCompound(index);
-            ItemStack stack = ItemStack.parseOptional(provider, entry.getCompound("stack"));
-            contents.add(stack);
-            contentSlotIndices.add(entry.contains("slotIndex") ? entry.getInt("slotIndex") : index);
-        }
-        ArrayList<String> linkedIslandIds = new ArrayList<>();
-        ListTag linkedIslandTags = tag.getList("linkedIslandIds", Tag.TAG_COMPOUND);
-        for (int index = 0; index < linkedIslandTags.size(); index++) {
-            linkedIslandIds.add(linkedIslandTags.getCompound(index).getString("islandId"));
-        }
-        return new SlotWorkspaceViewModel.ClaimedChestTile(
+    private static SlotWorkspaceViewModel.ChestChip decodeChestChip(CompoundTag tag) {
+        return new SlotWorkspaceViewModel.ChestChip(
                 tag.getString("storageId"),
                 tag.getString("dimensionId"),
-                tag.getInt("atlasX"),
-                tag.getInt("atlasY"),
-                tag.getInt("width"),
-                tag.getInt("height"),
                 tag.getString("label"),
                 tag.getInt("anchorCount"),
-                tag.getInt("slotCount"),
-                contents,
-                contentSlotIndices,
+                tag.getInt("slotCapacity"),
+                tag.getInt("filledSlots"),
                 tag.getBoolean("proximate"),
-                linkedIslandIds,
-                tag.contains("areaId") ? tag.getString("areaId") : "",
-                tag.contains("worldX") ? tag.getInt("worldX") : 0,
-                tag.contains("worldY") ? tag.getInt("worldY") : 0,
-                tag.contains("worldZ") ? tag.getInt("worldZ") : 0
+                tag.getInt("affinityIdentities"),
+                tag.getInt("worldX"),
+                tag.getInt("worldY"),
+                tag.getInt("worldZ")
         );
     }
 

@@ -38,7 +38,7 @@ import dev.imagio.slot.neoforge.storage.DepositExecutor;
 import dev.imagio.slot.neoforge.storage.TakeAllExecutor;
 import dev.imagio.slot.neoforge.triage.IslandSignalExtractor;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
-import dev.imagio.slot.workflow.domain.ChestLinkMap;
+import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.ProtectionPolicy;
@@ -182,7 +182,7 @@ final class SlotWorkspaceUiSession {
         applyOutcome(serverPlayer, outcome);
     }
 
-    void moveIsland(String islandId, Integer worldX, Integer worldY) {
+    void moveIsland(String islandId, Double worldX, Double worldY) {
         dev.imagio.slot.SlotCommon.LOGGER.info(
                 "[SLOT] session.moveIsland received id={} requestedX={} requestedY={}",
                 islandId, worldX, worldY);
@@ -223,21 +223,19 @@ final class SlotWorkspaceUiSession {
         InventoryAuthoritySnapshot authority = host == null
                 ? InventoryAuthoritySnapshot.empty()
                 : InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
-        java.util.LinkedHashSet<java.util.UUID> proximateAreaIds = new java.util.LinkedHashSet<>();
-        for (dev.imagio.slot.workflow.domain.ClaimedChest chest : claimedChestMap.chests()) {
-            if (proximate.contains(chest.storageId().toString())) {
-                proximateAreaIds.add(chest.areaId());
-            }
-        }
+        ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap();
         DepositPlan plan = DepositPlanner.plan(
                 authority,
-                runtime.snapshot().visualHomeMap(),
-                runtime.snapshot().chestLinkMap(),
+                affinityMap,
                 claimedChestMap,
-                proximate,
-                proximateAreaIds
+                proximate
         );
         DepositExecutor.DepositOutcome outcome = DepositExecutor.execute(serverPlayer, plan, claimedChestMap);
+        long tick = serverPlayer.serverLevel().getGameTime();
+        for (DepositExecutor.DepositRecord record : outcome.records()) {
+            runtime.chestClaimWorkflow().recordDeposit(
+                    record.storageId(), record.identity(), record.count(), tick);
+        }
         if (outcome.deposited() == 0 && outcome.failed() == 0) {
             status = "nothing_to_deposit";
             diagnostics = "";
@@ -254,29 +252,28 @@ final class SlotWorkspaceUiSession {
         broadcast(serverPlayer);
     }
 
-    void linkIslandToChest(String islandId, String storageId) {
+    void forgetChest(String storageId) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
         refreshServerView(serverPlayer);
-        applyOutcome(serverPlayer, SlotWorkspaceCommandService.linkIslandToChest(
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.forgetChest(
                 workflowRuntime(serverPlayer),
-                viewModel,
-                islandId,
                 storageId
         ));
     }
 
-    void unlinkIslandFromChest(String islandId, String storageId) {
+    void forgetItemAffinity(String storageId, String itemId, String comparisonMode, String componentFingerprint) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
         refreshServerView(serverPlayer);
-        applyOutcome(serverPlayer, SlotWorkspaceCommandService.unlinkIslandFromChest(
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.forgetItemAffinity(
                 workflowRuntime(serverPlayer),
-                viewModel,
-                islandId,
-                storageId
+                storageId,
+                itemId,
+                comparisonMode,
+                componentFingerprint
         ));
     }
 
@@ -318,20 +315,15 @@ final class SlotWorkspaceUiSession {
             return;
         }
         TakeAllExecutor.TakeAllOutcome outcome = TakeAllExecutor.execute(serverPlayer, chest);
-        dev.imagio.slot.workflow.domain.StorageArea area =
-                runtime.storageAreaWorkflow().area(chest.areaId());
-        String areaTag = area == null
-                ? ""
-                : " area=" + area.label();
         if (outcome.movedStacks() == 0 && outcome.leftoverSlots() == 0) {
             status = "nothing_to_take";
             diagnostics = "";
         } else if (outcome.leftoverSlots() == 0) {
             status = "took_all";
-            diagnostics = "moved=" + outcome.movedStacks() + areaTag;
+            diagnostics = "moved=" + outcome.movedStacks();
         } else {
             status = "took_all_partial";
-            diagnostics = "moved=" + outcome.movedStacks() + " leftover_slots=" + outcome.leftoverSlots() + areaTag;
+            diagnostics = "moved=" + outcome.movedStacks() + " leftover_slots=" + outcome.leftoverSlots();
         }
         broadcast(serverPlayer);
     }
@@ -360,19 +352,6 @@ final class SlotWorkspaceUiSession {
                 storageId,
                 atlasX,
                 atlasY
-        ));
-    }
-
-    void moveChestToArea(String storageId, String areaId) {
-        if (!(player instanceof ServerPlayer serverPlayer)) {
-            return;
-        }
-        refreshServerView(serverPlayer);
-        applyOutcome(serverPlayer, SlotWorkspaceCommandService.moveChestToArea(
-                workflowRuntime(serverPlayer),
-                viewModel,
-                storageId,
-                areaId
         ));
     }
 
@@ -1012,6 +991,80 @@ final class SlotWorkspaceUiSession {
         }
     }
 
+    /**
+     * Take one item of {@code identity} from the highest-affinity proximate
+     * chest that contains it. Replaces slot-precise client-side take so
+     * the player can act on a ghost card without knowing which chest /
+     * slot the matching item happens to live in.
+     */
+    void takeOneByIdentity(String itemId, String comparisonMode, String componentFingerprint) {
+        takeByIdentity(itemId, comparisonMode, componentFingerprint, 1);
+    }
+
+    void takeStackByIdentity(String itemId, String comparisonMode, String componentFingerprint) {
+        takeByIdentity(itemId, comparisonMode, componentFingerprint, Integer.MAX_VALUE);
+    }
+
+    private void takeByIdentity(String itemId, String comparisonMode, String componentFingerprint, int maxCount) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            reject("invalid_identity");
+            return;
+        }
+        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
+        ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
+        Set<String> proximate = ChestProximityResolver.proximateStorageIds(serverPlayer, claimedChestMap);
+        if (proximate.isEmpty()) {
+            status = "rejected";
+            diagnostics = "no_proximate_chest";
+            broadcast(serverPlayer);
+            return;
+        }
+        // Walk proximate chests in affinity-score order; first one with a
+        // matching stack wins. If none have it, walk all proximate chests
+        // (a chest may carry the item without the player having deposited
+        // it yet — affinity is monotonically learned, not authoritative).
+        ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap();
+        java.util.ArrayList<ClaimedChest> ranked = new java.util.ArrayList<>();
+        for (ClaimedChest chest : claimedChestMap.chests()) {
+            if (proximate.contains(chest.storageId().toString())) {
+                ranked.add(chest);
+            }
+        }
+        ranked.sort((a, b) -> Integer.compare(
+                affinityMap.score(b.storageId(), identity),
+                affinityMap.score(a.storageId(), identity)
+        ));
+        boolean foundMatchButCouldNotInsert = false;
+        for (ClaimedChest chest : ranked) {
+            TakeAllExecutor.TakeSingleOutcome outcome = TakeAllExecutor.takeByIdentity(
+                    serverPlayer, chest, identity, maxCount,
+                    maxCount == 1 ? "take-one-by-identity" : "take-stack-by-identity");
+            if (outcome.tookAnything()) {
+                status = maxCount == 1 ? "took_one" : "took_stack";
+                diagnostics = "moved=" + outcome.moved();
+                broadcast(serverPlayer);
+                return;
+            }
+            if (outcome.partial()) {
+                // Chest had the matching item but inventory rejected the
+                // insert — almost always a full-carry problem.
+                foundMatchButCouldNotInsert = true;
+            }
+        }
+        if (foundMatchButCouldNotInsert) {
+            status = "rejected";
+            diagnostics = "carry_full";
+        } else {
+            status = "nothing_to_take";
+            diagnostics = "no_matching_proximate_chest";
+        }
+        broadcast(serverPlayer);
+    }
+
     void takeFromChest(String storageIdRaw, Integer chestSlotIndex) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
@@ -1145,6 +1198,12 @@ final class SlotWorkspaceUiSession {
         return "Chest #" + shortId;
     }
 
+    /**
+     * Pick a proximate claimed chest for {@code identity} based on stored
+     * affinity (highest score first; ties broken by chest order). Falls
+     * back to "any proximate chest with capacity for the stack" so the
+     * cold-start case still works before affinity has been observed.
+     */
     private ClaimedChest resolveProximateLinkedChestForIdentity(
             ServerPlayer serverPlayer,
             ItemIdentity identity,
@@ -1154,39 +1213,22 @@ final class SlotWorkspaceUiSession {
             return null;
         }
         WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
-        VisualHomeAssignment assignment = runtime.snapshot().visualHomeMap().assignment(identity);
-        if (assignment == null) {
-            return null;
-        }
-        String islandId = assignment.islandId();
-        if (islandId == null || islandId.isBlank()
-                || SlotWorkspaceAtlasLayout.ISLAND_TRIAGE.equals(islandId)) {
-            return null;
-        }
-        ChestLinkMap linkMap = runtime.snapshot().chestLinkMap();
-        java.util.Set<java.util.UUID> linkedStorageIds = linkMap.chestsLinkedFrom(islandId);
-        if (linkedStorageIds == null || linkedStorageIds.isEmpty()) {
-            return null;
-        }
         ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
         Set<String> proximate = ChestProximityResolver.proximateStorageIds(serverPlayer, claimedChestMap);
         if (proximate.isEmpty()) {
             return null;
         }
-        record Candidate(ClaimedChest chest, int freeSlots, int matchingCount, java.util.UUID storageId) {
-        }
         MinecraftServer server = serverPlayer.getServer();
         if (server == null || !StorageAccessRegistry.isInstalled()) {
             return null;
         }
+        ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap();
         WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
-        java.util.List<Candidate> candidates = new java.util.ArrayList<>();
-        for (java.util.UUID storageId : linkedStorageIds) {
-            if (!proximate.contains(storageId.toString())) {
-                continue;
-            }
-            ClaimedChest chest = claimedChestMap.chest(storageId);
-            if (chest == null) {
+        record Candidate(ClaimedChest chest, int score, int freeSlots) {
+        }
+        java.util.ArrayList<Candidate> candidates = new java.util.ArrayList<>();
+        for (ClaimedChest chest : claimedChestMap.chests()) {
+            if (!proximate.contains(chest.storageId().toString())) {
                 continue;
             }
             WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
@@ -1197,31 +1239,26 @@ final class SlotWorkspaceUiSession {
             if (!simulation.isEmpty()) {
                 continue;
             }
+            int score = affinityMap.score(chest.storageId(), identity);
             int totalSlots = world.slotCount(server, target);
-            int matchingCount = 0;
-            int occupiedSlots = 0;
+            int occupied = 0;
             for (WorldStorageAccess.SlotContent content : world.enumerate(server, target)) {
-                ItemStack here = content.stack();
-                if (here.isEmpty()) {
-                    continue;
-                }
-                occupiedSlots++;
-                if (ItemIdentityMatcher.create(here).equals(identity)) {
-                    matchingCount += here.getCount();
+                if (!content.stack().isEmpty()) {
+                    occupied++;
                 }
             }
-            int freeSlots = Math.max(0, totalSlots - occupiedSlots);
-            candidates.add(new Candidate(chest, freeSlots, matchingCount, storageId));
+            int free = Math.max(0, totalSlots - occupied);
+            candidates.add(new Candidate(chest, score, free));
         }
         if (candidates.isEmpty()) {
             return null;
         }
         candidates.sort((a, b) -> {
-            int cmp = Integer.compare(a.freeSlots(), b.freeSlots());
+            int cmp = Integer.compare(b.score(), a.score());
             if (cmp != 0) return cmp;
-            cmp = Integer.compare(b.matchingCount(), a.matchingCount());
+            cmp = Integer.compare(a.freeSlots(), b.freeSlots());
             if (cmp != 0) return cmp;
-            return a.storageId().compareTo(b.storageId());
+            return a.chest().storageId().compareTo(b.chest().storageId());
         });
         return candidates.get(0).chest();
     }

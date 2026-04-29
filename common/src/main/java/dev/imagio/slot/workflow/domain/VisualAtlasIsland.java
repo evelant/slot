@@ -4,18 +4,23 @@ import dev.imagio.slot.inventory.core.ItemIdentity;
 
 /**
  * Authored island chrome record. Position ({@code x}, {@code y}) is the
- * top-left of the island in atlas world coordinates and is player-driven
- * (drag-to-move). Size is no longer authored — the client-side
- * {@code AtlasLayout} packer computes per-island bounds from cell sizes
- * and the auto-square wrap target every refresh. See
- * {@code docs/decisions/0005-relevance-score-and-layout-locality.md}.
+ * top-left of the island in atlas world units and represents the
+ * player's intent (drag-to-move). Size is not authored — it is derived
+ * each render by the client-side packer
+ * ({@code AtlasLayout.packIsland}) from the cell sizes of the items
+ * homed to this island. The client then runs
+ * {@code AtlasNudgeLayout} to produce the rendered position; the
+ * authored {@code (x, y)} stored here is the player's home — the
+ * stable target, not the rendered output.
+ *
+ * <p>See {@code docs/plans/atlas-nudge-layout.md}.
  */
 public record VisualAtlasIsland(
         String id,
         String label,
         VisualAtlasIslandKind kind,
-        int x,
-        int y,
+        double x,
+        double y,
         int color,
         ItemIdentity iconIdentity
 ) {

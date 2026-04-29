@@ -29,13 +29,23 @@ final class TriagePanelBuilder {
         this.host = host;
     }
 
+    /**
+     * Top edge of the left-column overlays before the chip panel
+     * reserves space. The chip panel docks at this exact top; Triage
+     * shifts down by the panel's reserved height so they tile cleanly.
+     */
+    static int baseTop(SlotWorkspaceUiController host) {
+        return host.searchController.modalActive() ? 78 : 36;
+    }
+
     UIElement overlay() {
         // Clear whichever top-left overlay is showing: the compact "Press / to search"
         // hint (~20 px tall) or the full search modal (~60 px tall at top 10, left 10).
         // Kit rack, when open, docks above the belt and extends rightward from x=16;
         // triage at (x=8, width=152) horizontally overlaps it — lift the bottom above
         // the rack so the two don't visually stack.
-        int triageTop = host.searchController.modalActive() ? 78 : 36;
+        int chipReserve = host.storagePanel.reservedHeight();
+        int triageTop = baseTop(host) + (chipReserve > 0 ? chipReserve + 6 : 0);
         int baseBottom = BELT_HEIGHT + 12;
         int rackBottom = host.kitRackOpen ? baseBottom + host.kit.kitRackHeight() + 4 : baseBottom;
         UIElement overlay = panel(GLASS).layout(layout -> layout

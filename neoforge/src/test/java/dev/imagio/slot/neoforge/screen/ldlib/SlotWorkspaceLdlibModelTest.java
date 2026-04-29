@@ -547,27 +547,6 @@ class SlotWorkspaceLdlibModelTest {
     }
 
     @Test
-    void ghostItemAppearsForHomedIdentityNotInCarried() {
-        WorkflowDomainRuntime runtime = runtime();
-        ItemIdentity absent = ItemIdentity.of("minecraft:diamond");
-        VisualAtlasIsland gems = runtime.visualAtlasWorkflow().createIsland(
-                "Gems", 800, 200, 0xCC5A4A6E, absent);
-        runtime.visualAtlasWorkflow().assignHome(absent, gems.id(), 0);
-
-        InventoryAuthoritySnapshot authority = authority(host(), Map.of());
-
-        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
-                authority, runtime.snapshot(), "ready", "", 0, 0, 1);
-
-        SlotWorkspaceViewModel.AtlasItem ghostDiamond = viewModel.atlasItems().stream()
-                .filter(item -> item.identity().itemId().equals("minecraft:diamond"))
-                .findFirst()
-                .orElseThrow();
-        assertFalse(ghostDiamond.carried(), "homed identity not in any carried lane should be a ghost");
-        assertEquals(gems.id(), ghostDiamond.islandId());
-    }
-
-    @Test
     void carriedFreeSlotCountEmptyMainIsFullPlayerCapacity() {
         InventoryHostDescriptor host = host();
         InventoryAuthoritySnapshot authority = authority(host, Map.of());
@@ -648,19 +627,24 @@ class SlotWorkspaceLdlibModelTest {
     @Test
     void carriedContainerFlagSetByResolverAndHomedCarriersKeepIt() {
         InventoryHostDescriptor host = host();
+        ItemStack backpackStack = new ItemStack("sophisticatedbackpacks:backpack", 1, 1);
         InventoryAuthoritySnapshot authority = authority(host, Map.of(
                 BuiltinInventoryIds.PLAYER_MAIN,
                 List.of(
-                        new InventoryStackSnapshot(0, new ItemStack("sophisticatedbackpacks:backpack", 1, 1), 1),
+                        new InventoryStackSnapshot(0, backpackStack, 1),
                         new InventoryStackSnapshot(1, new ItemStack("minecraft:stone", 1, 64), 1)
                 )
         ));
         WorkflowDomainRuntime runtime = runtime();
+        // Use the matcher-derived identity so the assignment lines up with
+        // the identity the projection synthesises from the carried stack
+        // (backpack identities default to ITEM_ID_AND_COMPONENTS because
+        // their components are part of identity; ItemIdentity.of(...) bare
+        // would produce ITEM_ID and never match).
+        ItemIdentity backpackIdentity = dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(backpackStack);
         VisualAtlasIsland gear = runtime.visualAtlasWorkflow().createIsland(
-                "Gear", 500, 200, 0xCC6E5A3C,
-                ItemIdentity.of("sophisticatedbackpacks:backpack"));
-        runtime.visualAtlasWorkflow().assignHome(
-                ItemIdentity.of("sophisticatedbackpacks:backpack"), gear.id(), 0);
+                "Gear", 500, 200, 0xCC6E5A3C, backpackIdentity);
+        runtime.visualAtlasWorkflow().assignHome(backpackIdentity, gear.id(), 0);
 
         java.util.function.Function<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> containerResolver = identity ->
                 "sophisticatedbackpacks:backpack".equals(identity.itemId())

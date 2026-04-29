@@ -533,44 +533,10 @@ final class DragDropWiring {
     }
 
 
-    void installChestTileDragSource(
-            UIElement source,
-            SlotWorkspaceViewModel.ClaimedChestTile tile
-    ) {
-        int[] clickScreenX = {Integer.MIN_VALUE};
-        int[] clickScreenY = {Integer.MIN_VALUE};
-        source.addEventListener(UIEvents.MOUSE_DOWN, event -> {
-            if (event.button != 0) {
-                return;
-            }
-            clickScreenX[0] = (int) event.x;
-            clickScreenY[0] = (int) event.y;
-        }, true);
-        source.addEventListener(UIEvents.MOUSE_UP, event -> {
-            clickScreenX[0] = Integer.MIN_VALUE;
-            clickScreenY[0] = Integer.MIN_VALUE;
-        }, true);
-        source.addEventListener(UIEvents.MOUSE_MOVE, event -> {
-            if (clickScreenX[0] == Integer.MIN_VALUE) {
-                return;
-            }
-            if (!source.isMouseDown(0) || isDragging(source)) {
-                return;
-            }
-            float dx = event.x - clickScreenX[0];
-            float dy = event.y - clickScreenY[0];
-            if (dx * dx + dy * dy < DRAG_START_THRESHOLD_PX * DRAG_START_THRESHOLD_PX) {
-                return;
-            }
-            source.startDrag(
-                    new ChestTileDrag(tile.storageId(), 0, 0),
-                    rect((STORAGE_TILE_FILL & 0x00FFFFFF) | 0x70000000)
-            ).setDragTexture(-10, -8, 96, 18);
-            host.localStatus.set("dragging " + tile.label());
-        });
-        source.addEventListener(UIEvents.DRAG_END, event -> handleDragEnd(event));
-    }
+    // Chest-tile and chest-stack drag sources removed — chest tiles no
+    // longer render in the workspace, see docs/plans/learned-storage.md.
 
+    @SuppressWarnings("unused")
     void installChestStackDragSource(
             UIElement cell,
             String storageId,

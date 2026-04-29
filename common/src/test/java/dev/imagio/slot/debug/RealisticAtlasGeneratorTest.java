@@ -234,9 +234,9 @@ class RealisticAtlasGeneratorTest {
         // generator at least gives every island a distinct top-left so
         // the synthetic atlas reads as multiple islands when rendered.
         List<VisualAtlasIsland> islands = new ArrayList<>(plan.islands());
-        java.util.Set<Long> origins = new java.util.HashSet<>();
+        java.util.Set<String> origins = new java.util.HashSet<>();
         for (VisualAtlasIsland island : islands) {
-            long packed = ((long) island.x() << 32) | (island.y() & 0xFFFFFFFFL);
+            String packed = island.x() + "," + island.y();
             assertTrue(origins.add(packed),
                     "duplicate island origin (" + island.x() + "," + island.y() + ") for " + island.id());
         }

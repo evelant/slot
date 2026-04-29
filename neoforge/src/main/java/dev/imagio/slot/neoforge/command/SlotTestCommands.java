@@ -16,19 +16,16 @@ import dev.imagio.slot.debug.PopulateProfile;
 import dev.imagio.slot.debug.RealisticAtlasGenerator;
 import dev.imagio.slot.debug.RealisticAtlasPlan;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.neoforge.triage.IslandSignalExtractor;
-import dev.imagio.slot.neoforge.storage.ChestClaimServerService;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ChestClaimWorkflowDomainService;
-import dev.imagio.slot.workflow.domain.ChestLinkWorkflowDomainService;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.VisualAtlasWorkflowDomainService;
 import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
 import dev.imagio.slot.workflow.domain.VisualHomeMap;
-import dev.imagio.slot.workflow.domain.StorageArea;
-import dev.imagio.slot.workflow.domain.StorageAreaWorkflowDomainService;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
@@ -134,12 +131,12 @@ public final class SlotTestCommands {
 
         WorkflowDomainRuntime runtime = SlotPlayerWorkflowRuntimeService.runtime(player);
         VisualAtlasWorkflowDomainService workflow = runtime.visualAtlasWorkflow();
-        ChestLinkWorkflowDomainService linkWorkflow = runtime.chestLinkWorkflow();
+        ChestClaimWorkflowDomainService chestWorkflow = runtime.chestClaimWorkflow();
 
         int islandsCreated = applyIslands(workflow, plan);
         int assignmentsApplied = applyAssignments(workflow, plan);
         InventoryGiveResult giveResult = giveStacksToPlayer(player, plan);
-        ChestPlacementResult chestResult = placeChests(player, linkWorkflow, plan, random);
+        ChestPlacementResult chestResult = placeChests(player, chestWorkflow, plan, random);
 
         int finalIslands = islandsCreated;
         int finalAssignments = assignmentsApplied;
@@ -148,21 +145,20 @@ public final class SlotTestCommands {
         int finalDropped = giveResult.dropped;
         int finalPlaced = chestResult.placed;
         int finalClaimed = chestResult.claimed;
-        int finalLinked = chestResult.linked;
+        int finalAffinity = chestResult.affinityRecorded;
         int finalClaimFailed = chestResult.claimFailed;
-        int finalLinkFailed = chestResult.linkFailed;
 
         context.getSource().sendSuccess(() -> Component.literal(String.format(
-                "[SLOT] populate %s: islands=%d assignments=%d stacks main=%d backpack=%d dropped=%d chests placed=%d claimed=%d linked=%d claim_failed=%d link_failed=%d",
+                "[SLOT] populate %s: islands=%d assignments=%d stacks main=%d backpack=%d dropped=%d chests placed=%d claimed=%d affinity=%d claim_failed=%d",
                 profile.id(), finalIslands, finalAssignments,
                 finalMain, finalBackpack, finalDropped,
-                finalPlaced, finalClaimed, finalLinked, finalClaimFailed, finalLinkFailed
+                finalPlaced, finalClaimed, finalAffinity, finalClaimFailed
         )), false);
         SlotCommon.LOGGER.info(
-                "[SLOT] /slot test populate profile={} -> islands={} assignments={} stacks_main={} stacks_backpack={} stacks_dropped={} chests placed={} claimed={} linked={} claim_failed={} link_failed={}",
+                "[SLOT] /slot test populate profile={} -> islands={} assignments={} stacks_main={} stacks_backpack={} stacks_dropped={} chests placed={} claimed={} affinity={} claim_failed={}",
                 profile.id(), finalIslands, finalAssignments,
                 finalMain, finalBackpack, finalDropped,
-                finalPlaced, finalClaimed, finalLinked, finalClaimFailed, finalLinkFailed
+                finalPlaced, finalClaimed, finalAffinity, finalClaimFailed
         );
         return finalAssignments;
     }
@@ -273,43 +269,26 @@ public final class SlotTestCommands {
 
     private static ChestPlacementResult placeChests(
             ServerPlayer player,
-            ChestLinkWorkflowDomainService linkWorkflow,
+            ChestClaimWorkflowDomainService chestWorkflow,
             RealisticAtlasPlan plan,
             Random random
     ) {
         List<ChestSpec> chests = plan.chests();
         if (chests.isEmpty()) {
-            return new ChestPlacementResult(0, 0, 0, 0, 0);
+            return new ChestPlacementResult(0, 0, 0, 0);
         }
 
         ServerLevel level = player.serverLevel();
         int centerX = (int) Math.floor(player.getX());
         int centerY = (int) Math.floor(player.getY());
         int centerZ = (int) Math.floor(player.getZ());
-
-        // Create the named storage areas the generator referenced (if any)
-        // up-front so each claim lands in the right area instead of the
-        // default Main Base bucket. Areas seeded near the player at the
-        // first chest's offset so their UI chip starts in a sensible spot.
-        StorageAreaWorkflowDomainService areaWorkflow =
-                SlotPlayerWorkflowRuntimeService.runtime(player).storageAreaWorkflow();
-        Map<String, UUID> areaIdByLabel = new LinkedHashMap<>();
-        for (ChestSpec spec : chests) {
-            String label = spec.areaLabel();
-            if (label == null || label.isBlank()) {
-                continue;
-            }
-            areaIdByLabel.computeIfAbsent(label, l -> {
-                StorageArea created = areaWorkflow.createArea(l, centerX, centerZ);
-                return created == null ? null : created.areaId();
-            });
-        }
+        String dimensionId = level.dimension().location().toString();
+        long tick = level.getGameTime();
 
         int placed = 0;
         int claimed = 0;
-        int linked = 0;
+        int affinityRecorded = 0;
         int claimFailed = 0;
-        int linkFailed = 0;
 
         for (ChestSpec spec : chests) {
             BlockPos pos = new BlockPos(
@@ -317,8 +296,6 @@ public final class SlotTestCommands {
                     centerY,
                     centerZ + spec.deltaZ()
             );
-            // Force-replace: clear whatever is at the spot first (terrain would block
-            // canBeReplaced checks in populated biomes). Debug command, ops-gated.
             BlockState previous = level.getBlockState(pos);
             if (!previous.isAir() && !previous.canBeReplaced()) {
                 level.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
@@ -333,8 +310,9 @@ public final class SlotTestCommands {
             }
             placed++;
             fillChestFromSpec(level, pos, spec);
-            UUID requestedAreaId = areaIdByLabel.get(spec.areaLabel());
-            ClaimedChest claimedChest = ChestClaimServerService.claim(player, pos, requestedAreaId);
+            ChestAnchor anchor = new ChestAnchor(dimensionId, pos.getX(), pos.getY(), pos.getZ());
+            ClaimedChest claimedChest = chestWorkflow.autoClaimByAnchor(
+                    anchor, pos.getX() * 100, pos.getZ() * 100, null);
             if (claimedChest == null) {
                 claimFailed++;
                 SlotCommon.LOGGER.warn(
@@ -344,21 +322,20 @@ public final class SlotTestCommands {
                 continue;
             }
             claimed++;
-            if (spec.isLinked()) {
-                boolean ok = linkWorkflow.linkIslandToChest(spec.linkedIslandId(), claimedChest.storageId());
-                if (ok) {
-                    linked++;
-                } else {
-                    linkFailed++;
-                    SlotCommon.LOGGER.warn(
-                            "[SLOT] populate: link failed for chest {} -> island {}",
-                            claimedChest.storageId(), spec.linkedIslandId()
-                    );
+            // Seed affinity from the chest's contents so deposit routing
+            // works immediately without needing observed deposits.
+            for (ChestContentEntry entry : spec.contents()) {
+                ItemStack stack = entry.stack();
+                if (stack == null || stack.isEmpty()) {
+                    continue;
                 }
+                ItemIdentity identity = ItemIdentityMatcher.create(stack);
+                chestWorkflow.recordDeposit(claimedChest.storageId(), identity, stack.getCount(), tick);
+                affinityRecorded++;
             }
         }
 
-        return new ChestPlacementResult(placed, claimed, linked, claimFailed, linkFailed);
+        return new ChestPlacementResult(placed, claimed, affinityRecorded, claimFailed);
     }
 
     private static void fillChestFromSpec(ServerLevel level, BlockPos pos, ChestSpec spec) {
@@ -599,7 +576,7 @@ public final class SlotTestCommands {
         return stacks;
     }
 
-    private record ChestPlacementResult(int placed, int claimed, int linked, int claimFailed, int linkFailed) {
+    private record ChestPlacementResult(int placed, int claimed, int affinityRecorded, int claimFailed) {
     }
 
     private record InventoryGiveResult(int mainInserted, int backpackInserted, int dropped) {

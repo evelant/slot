@@ -24,7 +24,7 @@ final class AtlasPanelBuilder {
                 .flex(1)
                 .gapAll(0)
                 .flexDirection(FlexDirection.COLUMN));
-        body.addChildren(host.storagePanel.body(), atlasPanel());
+        body.addChild(atlasPanel());
         return body;
     }
 
@@ -108,6 +108,10 @@ final class AtlasPanelBuilder {
         buildAtlas(atlas);
 
         panel.addChildren(atlas, host.triagePanel.overlay(), host.belt.overlay());
+        UIElement chestChips = host.storagePanel.overlay();
+        if (chestChips != null) {
+            panel.addChild(chestChips);
+        }
         panel.addChild(host.hoverTrailOverlayElement);
         panel.addChild(host.carriedFreeSlotsChipElement);
         panel.addChild(host.topRightActionsElement);
@@ -130,10 +134,6 @@ final class AtlasPanelBuilder {
         UIElement createPopover = host.menu.createIslandPopover();
         if (createPopover != null) {
             panel.addChild(createPopover);
-        }
-        UIElement linkPopover = host.menu.chestLinkPopover();
-        if (linkPopover != null) {
-            panel.addChild(linkPopover);
         }
     }
 

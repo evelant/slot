@@ -1,11 +1,20 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-04-25
+Last updated: 2026-04-29
 
 This is the near-term engineering sequence from the current baseline. For the
 short operational handoff, read [../status.md](../status.md) first.
 
-**Active plan:** core-workflow UX pass landed (all six slices in
+**Active plan:** learned-storage swap landed
+([learned-storage.md](learned-storage.md)). The chest-link / storage-area /
+explicit-claim trio is gone; deposit routing reads `ChestAffinityMap`;
+proximate-chest contents project as ghost cards on homed islands;
+chest tiles → chest-chip stack docked above Triage; backpacks fill before
+main inventory; `AtlasNudgeLayout` first-open deadlock fixed; ghost cards
+size-match carried cards. Phases 5–8 of the plan are deferred — see the
+"Learned-storage follow-ups" track below.
+
+**Earlier landings (kept for context):** core-workflow UX pass landed (all six slices in
 [core-workflow-ux.md](core-workflow-ux.md), plus playtest follow-ups
 documented in [../status.md](../status.md)). Relevance-LOD prototype
 through Phase 2.2 has landed (with UI polish on top). The thin
@@ -61,9 +70,58 @@ suggestions (Phase 4a) followed:
   `SubBucket*`, `RoleSemanticBucketMap`, and `FacetIndexBucketClassifier`
   are deleted.
 
+**Recently landed (2026-04-28):** atlas island layout rewritten as
+`AtlasNudgeLayout` (push-on-grow / pull-home-on-shrink, no global
+force) + manual `Shift+left-click` tighten gesture with bounded
+follow-on-shrink. Both gravity-toward-origin and gravity-toward-
+centroid attempts were scrapped because centroid drift made the
+cluster re-shuffle on every size change. Tighten sets a sticky home
+one card-row past the snap point, only along the snap axis, so
+chained snaps compose per-axis. See
+[atlas-nudge-layout.md](atlas-nudge-layout.md).
+
 Next near-term tracks:
 
-1. **Facet-driven suggestions** — see
+1. **Learned-storage follow-ups** ([learned-storage.md](learned-storage.md)).
+   Phases 5–8 are deferred from the structural swap; pick up roughly in
+   this order:
+   - **Auto-claim on first deposit.** Chests currently only enter the
+     workspace via `/slot test populate`. Wire a server-side observer
+     on the vanilla chest GUI's slot mutations: when the player puts
+     items in, call `runtime.chestClaimWorkflow().autoClaimByAnchor(...)`
+     keyed on the chest BlockPos, then record affinity for each
+     deposited identity via `recordDeposit(...)`. Pair with a
+     **loot-chest Triage-style overlay** that surfaces the contents of
+     an opened-but-unclaimed chest while the GUI is up (transient,
+     dismissed on close).
+   - **Search-as-find non-proximate ghosts.** When the player types a
+     query that matches an item only present in a non-proximate chest,
+     project a temporary ghost on its homed island with an
+     "elsewhere" badge. Spacebar zoom reveals "Mountain Mine Chest #3,
+     in nether". Drives "find stuff" without changing the atlas
+     baseline.
+   - **Kit ghost markers.** Activating a kit surfaces non-carried
+     needed items as temporary ghosts on their homed islands; reach
+     status flips between "in proximate chest" and "elsewhere" as the
+     player walks. Reuses the existing ghost rendering pipeline with
+     a new driver.
+   - **Cluster derivation + rename.** Chest chips are flat right now
+     (sorted proximate-first, capped at 7). Add a pure-function spatial
+     clustering helper over chest world coords (~16 block threshold) so
+     chips group visually under a stable cluster header, with optional
+     player-authored rename. Chip panel scrolls when chips overflow.
+   - **Affinity decay + accidental-placement guard.** Affinity score is
+     monotonically non-decreasing. Add play-time-based decay (so an
+     unused chest's old affinity stops claiming items) and a 30 s
+     take-back guard (deposit + immediate take ⇒ no affinity bump).
+   - **Cross-surface highlight pulses.** Hovering an atlas card should
+     pulse the matching slots in proximate chests; hovering a chest
+     chip should pulse the atlas cards it overlaps with. Today only
+     the title-bar overlap-paint is wired. Plumbing fields
+     (`hoveredAtlasIdentity`, `hoveredChestCellIdentity`,
+     `hoveredIslandId`, `hoveredStorageId`) are already in
+     `SlotWorkspaceUiController`.
+2. **Facet-driven suggestions** — see
    [facet-driven-suggestions.md](facet-driven-suggestions.md). The
    suggestion engine and debug populate today read only `role` +
    `material_family` from the classified dataset; the rest
@@ -71,8 +129,8 @@ Next near-term tracks:
    `origin`, …) is on disk but unused. Five-phase plan to plumb the
    richer facets through, with subsystem-primary matching as the
    biggest UX win and trophy / frequency placement priority closing
-   the loop. **Start here in a fresh session.**
-2. **Modded classification layers — LANDED 2026-04-26.** Per-mod LLM
+   the loop.
+3. **Modded classification layers — LANDED 2026-04-26.** Per-mod LLM
    passes for the test modset (10 mods: create,
    createaddition, createoreexcavation, dndesires, create_new_age,
    sophisticatedbackpacks, sophisticatedcore, sophisticatedstorage,
@@ -86,7 +144,7 @@ Next near-term tracks:
    [`OpenRouterClient`](../../tools/classification/src/llm/openrouter-client.ts)
    handles upstream truncations + cache invalidation so future regens
    self-heal.
-3. **Runtime-crawl as deterministic fallback** — still open
+4. **Runtime-crawl as deterministic fallback** — still open
    ([item-classification.md § Runtime discovery](item-classification.md#runtime-discovery),
    milestone 8). Walks the live registry to derive deterministic
    facets for mods we don't have LLM data for. Lifts
@@ -94,7 +152,7 @@ Next near-term tracks:
    lifting role-driven chips. Defer until facet-driven-suggestions
    plays out — the next gap might already be covered by a richer
    prompt regen rather than crawling.
-4. **Playtest the FacetIndex-driven populate path and role-driven
+5. **Playtest the FacetIndex-driven populate path and role-driven
    Triage chips.** Run `/slot test populate organized` on a fresh
    world, sample chip suggestions on Triage rows, and decide whether
    the precomputed classification feels meaningfully better before

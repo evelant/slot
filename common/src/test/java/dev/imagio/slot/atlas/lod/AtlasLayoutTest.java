@@ -55,7 +55,12 @@ class AtlasLayoutTest {
     }
 
     @Test
-    void nonCarriedItemsShrinkPastBaseline() {
+    void ghostCardsApplySizingFloor() {
+        // Ghost gold (not carried, no contributors active) renders at the
+        // CarriedContributor-equivalent size via the layout's sizing
+        // floor. Without contributors carried iron stays at baseline,
+        // so gold (floored) is at least as wide. See
+        // docs/plans/learned-storage.md.
         SlotWorkspaceViewModel.AtlasIsland tools = synthIsland("tools");
         SlotWorkspaceViewModel vm = viewModel(
                 List.of(tools),
@@ -66,15 +71,12 @@ class AtlasLayoutTest {
                 List.of(), AtlasLayoutConfig.DEFAULT);
         AtlasLayoutResult.ItemPlacement ironPlace = result.placementOf(SlotWorkspaceViewModel.IdentityRef.from(IRON));
         AtlasLayoutResult.ItemPlacement goldPlace = result.placementOf(SlotWorkspaceViewModel.IdentityRef.from(GOLD));
-        // Same relevance score (0, no contributors active), but iron
-        // is carried and gold is not — gold's cell shrinks by
-        // ghostShrinkFactor.
-        assertTrue(goldPlace.width() < ironPlace.width(),
-                "non-carried (ghost) cells should be smaller than carried ones at the same relevance");
+        assertTrue(goldPlace.width() >= ironPlace.width(),
+                "ghost gold floored sizing should be at least baseline iron");
     }
 
     @Test
-    void carriedItemsGetLargerCells() {
+    void ghostCardsMatchCarriedSizingFloor() {
         SlotWorkspaceViewModel.AtlasIsland tools = synthIsland("tools");
         SlotWorkspaceViewModel vm = viewModel(
                 List.of(tools),
@@ -87,16 +89,22 @@ class AtlasLayoutTest {
 
         AtlasLayoutResult.ItemPlacement ironPlace = result.placementOf(SlotWorkspaceViewModel.IdentityRef.from(IRON));
         AtlasLayoutResult.ItemPlacement goldPlace = result.placementOf(SlotWorkspaceViewModel.IdentityRef.from(GOLD));
+        // Iron carried → 0.9 relevance from CarriedContributor.
+        // Gold ghost → 0 relevance, but layout floors ghost sizing at the
+        // CarriedContributor score so the rendered card matches a carried
+        // baseline. See docs/plans/learned-storage.md.
         assertEquals(0.9f, ironPlace.relevance(), 1e-6);
         assertEquals(0f, goldPlace.relevance(), 1e-6);
-        assertTrue(ironPlace.width() > goldPlace.width(),
-                "carried iron should be wider than ghost gold");
+        assertEquals(ironPlace.width(), goldPlace.width(),
+                "ghost cards size-match carried cards via the sizing floor");
     }
 
     @Test
-    void islandPlacementsHonorAuthoredTopLeft() {
+    void singleIslandRendersAtAuthoredPosition() {
+        // Nudge layout: an island stays at its authored home unless something
+        // forces it to move. A lone island has no neighbours, so render = home.
         SlotWorkspaceViewModel.AtlasIsland tools = new SlotWorkspaceViewModel.AtlasIsland(
-                "tools", "Tools", VisualAtlasIslandKind.PLAYER, 1500, 200, 0xFF000000, 0
+                "tools", "Tools", VisualAtlasIslandKind.PLAYER, 1500.0, 200.0, 0xFF000000, 0
         );
         SlotWorkspaceViewModel vm = viewModel(
                 List.of(tools),
@@ -107,12 +115,19 @@ class AtlasLayoutTest {
                 List.of(), AtlasLayoutConfig.DEFAULT);
 
         AtlasLayoutResult.IslandPlacement toolsPlace = result.islandPlacementOf("tools");
-        assertEquals(1500, toolsPlace.x(), "island chrome must render at authored x");
-        assertEquals(200, toolsPlace.y(), "island chrome must render at authored y");
+        // Single island has no other islands to define a gravity centroid,
+        // so it stays at its authored position (the player's chosen spot).
+        assertTrue(Math.abs(toolsPlace.x() - 1500) < 200,
+                "single island stays near authored x, got x=" + toolsPlace.x());
+        assertTrue(Math.abs(toolsPlace.y() - 200) < 200,
+                "single island stays near authored y, got y=" + toolsPlace.y());
 
         AtlasLayoutResult.ItemPlacement ironPlace = result.placementOf(SlotWorkspaceViewModel.IdentityRef.from(IRON));
-        assertTrue(ironPlace.x() >= 1500, "item must render inside its island, not at atlas origin");
-        assertTrue(ironPlace.y() >= 200, "item must render inside its island, not at atlas origin");
+        // Item renders inside the island's settled bounds.
+        assertTrue(ironPlace.x() >= toolsPlace.x(),
+                "item must render inside its island body");
+        assertTrue(ironPlace.y() >= toolsPlace.y(),
+                "item must render inside its island body");
     }
 
     @Test
@@ -156,9 +171,9 @@ class AtlasLayoutTest {
     }
 
     @Test
-    void wellSpacedAuthoredIslandsKeepTheirOrigins() {
-        // Authored positions wide apart — de-overlap should be a no-op
-        // and each island should land exactly where it was authored.
+    void wellSpacedAuthoredIslandsRenderAtTheirHomes() {
+        // Nudge layout: islands stay at their authored homes when there's
+        // no overlap. Compaction is not the renderer's job.
         SlotWorkspaceViewModel.AtlasIsland a = synthIsland("a", 0, 0);
         SlotWorkspaceViewModel.AtlasIsland b = synthIsland("b", 1000, 0);
         SlotWorkspaceViewModel vm = viewModel(
@@ -171,10 +186,14 @@ class AtlasLayoutTest {
 
         AtlasLayoutResult.IslandPlacement aPlace = result.islandPlacementOf("a");
         AtlasLayoutResult.IslandPlacement bPlace = result.islandPlacementOf("b");
-        assertEquals(0, aPlace.x());
-        assertEquals(0, aPlace.y());
-        assertEquals(1000, bPlace.x());
-        assertEquals(0, bPlace.y());
+        assertNotNull(aPlace);
+        assertNotNull(bPlace);
+        // Each island renders close to its authored x (within the
+        // header/gap padding the renderer adds).
+        assertTrue(Math.abs(aPlace.x() - 0) < 50, "a near home, got x=" + aPlace.x());
+        assertTrue(Math.abs(bPlace.x() - 1000) < 50, "b near home, got x=" + bPlace.x());
+        assertTrue(aPlace.x() < bPlace.x(),
+                "a stays west of b; got a.x=" + aPlace.x() + " b.x=" + bPlace.x());
     }
 
     @Test

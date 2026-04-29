@@ -9,8 +9,7 @@ public record ClaimedChest(
         Set<ChestAnchor> anchors,
         int atlasX,
         int atlasY,
-        String label,
-        UUID areaId
+        String label
 ) {
     public ClaimedChest {
         if (storageId == null) {
@@ -21,14 +20,13 @@ public record ClaimedChest(
             throw new IllegalArgumentException("anchors must not be empty");
         }
         label = label == null ? "" : label.trim();
-        areaId = areaId == null ? StorageAreaMap.DEFAULT_AREA_ID : areaId;
     }
 
     public ClaimedChest withAtlasPosition(int atlasX, int atlasY) {
         if (this.atlasX == atlasX && this.atlasY == atlasY) {
             return this;
         }
-        return new ClaimedChest(storageId, anchors, atlasX, atlasY, label, areaId);
+        return new ClaimedChest(storageId, anchors, atlasX, atlasY, label);
     }
 
     public ClaimedChest withAnchors(Set<ChestAnchor> nextAnchors) {
@@ -36,7 +34,7 @@ public record ClaimedChest(
         if (copied.equals(anchors)) {
             return this;
         }
-        return new ClaimedChest(storageId, copied, atlasX, atlasY, label, areaId);
+        return new ClaimedChest(storageId, copied, atlasX, atlasY, label);
     }
 
     public ClaimedChest withLabel(String nextLabel) {
@@ -44,15 +42,7 @@ public record ClaimedChest(
         if (normalized.equals(label)) {
             return this;
         }
-        return new ClaimedChest(storageId, anchors, atlasX, atlasY, normalized, areaId);
-    }
-
-    public ClaimedChest withAreaId(UUID nextAreaId) {
-        UUID resolved = nextAreaId == null ? StorageAreaMap.DEFAULT_AREA_ID : nextAreaId;
-        if (resolved.equals(areaId)) {
-            return this;
-        }
-        return new ClaimedChest(storageId, anchors, atlasX, atlasY, label, resolved);
+        return new ClaimedChest(storageId, anchors, atlasX, atlasY, normalized);
     }
 
     public boolean hasAnchor(ChestAnchor anchor) {

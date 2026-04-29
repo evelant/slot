@@ -42,14 +42,9 @@ public sealed interface WorkflowEvent permits
         WorkflowEvent.ClaimedChestAnchorsChanged,
         WorkflowEvent.ClaimedChestRelabeled,
         WorkflowEvent.ClaimedChestDeleted,
-        WorkflowEvent.ClaimedChestAreaChanged,
-        WorkflowEvent.StorageAreaCreated,
-        WorkflowEvent.StorageAreaRenamed,
-        WorkflowEvent.StorageAreaRecolored,
-        WorkflowEvent.StorageAreaMoved,
-        WorkflowEvent.StorageAreaDeleted,
-        WorkflowEvent.ChestLinkCreated,
-        WorkflowEvent.ChestLinkRemoved,
+        WorkflowEvent.ChestDepositObserved,
+        WorkflowEvent.ChestAffinityForgotten,
+        WorkflowEvent.ChestAffinityCleared,
         WorkflowEvent.KitCreated,
         WorkflowEvent.KitUpdated,
         WorkflowEvent.KitDeleted,
@@ -218,8 +213,8 @@ public sealed interface WorkflowEvent permits
 
     record VisualIslandMoved(
             String islandId,
-            int x,
-            int y
+            double x,
+            double y
     ) implements WorkflowEvent {
         public VisualIslandMoved {
             islandId = islandId == null ? "" : islandId;
@@ -315,60 +310,35 @@ public sealed interface WorkflowEvent permits
     ) implements WorkflowEvent {
     }
 
-    record ClaimedChestAreaChanged(
+    /**
+     * The player observably deposited {@code count} of {@code identity}
+     * into chest {@code storageId} at server tick {@code tick}. Bumps
+     * affinity[storageId, identity] by one increment (count is recorded
+     * for future weighting but doesn't currently scale the bump).
+     */
+    record ChestDepositObserved(
             UUID storageId,
-            UUID areaId
+            ItemIdentity identity,
+            int count,
+            long tick
     ) implements WorkflowEvent {
-    }
-
-    record StorageAreaCreated(
-            StorageArea area
-    ) implements WorkflowEvent {
-    }
-
-    record StorageAreaRenamed(
-            UUID areaId,
-            String label
-    ) implements WorkflowEvent {
-        public StorageAreaRenamed {
-            label = label == null ? "" : label.trim();
+        public ChestDepositObserved {
+            count = Math.max(1, count);
+            tick = Math.max(0L, tick);
         }
     }
 
-    record StorageAreaRecolored(
-            UUID areaId,
-            int color
+    /** Forget affinity[storageId, identity]. Targeted "this isn't iron's chest anymore" reset. */
+    record ChestAffinityForgotten(
+            UUID storageId,
+            ItemIdentity identity
     ) implements WorkflowEvent {
     }
 
-    record StorageAreaMoved(
-            UUID areaId,
-            int atlasX,
-            int atlasY
-    ) implements WorkflowEvent {
-    }
-
-    record StorageAreaDeleted(
-            UUID areaId
-    ) implements WorkflowEvent {
-    }
-
-    record ChestLinkCreated(
-            String islandId,
+    /** Forget all affinity for this chest. Used on chest delete and on player "Forget chest". */
+    record ChestAffinityCleared(
             UUID storageId
     ) implements WorkflowEvent {
-        public ChestLinkCreated {
-            islandId = islandId == null ? "" : islandId.trim();
-        }
-    }
-
-    record ChestLinkRemoved(
-            String islandId,
-            UUID storageId
-    ) implements WorkflowEvent {
-        public ChestLinkRemoved {
-            islandId = islandId == null ? "" : islandId.trim();
-        }
     }
 
     record KitCreated(KitDefinition kit) implements WorkflowEvent {

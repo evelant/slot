@@ -33,7 +33,7 @@ public final class VisualAtlasWorkflowDomainService {
         return visualHomeMap().assignment(identity);
     }
 
-    public VisualAtlasIsland moveIsland(String islandId, int x, int y) {
+    public VisualAtlasIsland moveIsland(String islandId, double x, double y) {
         return moveIsland(
                 islandId,
                 x,
@@ -44,8 +44,8 @@ public final class VisualAtlasWorkflowDomainService {
 
     public VisualAtlasIsland moveIsland(
             String islandId,
-            int x,
-            int y,
+            double x,
+            double y,
             DomainEventMetadata metadata
     ) {
         if (islandId == null || islandId.isBlank()) {
@@ -68,8 +68,8 @@ public final class VisualAtlasWorkflowDomainService {
 
     public VisualAtlasIsland createIsland(
             String label,
-            int x,
-            int y,
+            double x,
+            double y,
             int color,
             ItemIdentity iconIdentity
     ) {
@@ -85,8 +85,8 @@ public final class VisualAtlasWorkflowDomainService {
 
     public VisualAtlasIsland createIsland(
             String label,
-            int x,
-            int y,
+            double x,
+            double y,
             int color,
             ItemIdentity iconIdentity,
             DomainEventMetadata metadata
@@ -112,8 +112,8 @@ public final class VisualAtlasWorkflowDomainService {
     public VisualAtlasIsland createIslandWithId(
             String id,
             String label,
-            int x,
-            int y,
+            double x,
+            double y,
             int color,
             ItemIdentity iconIdentity
     ) {
@@ -131,8 +131,8 @@ public final class VisualAtlasWorkflowDomainService {
     public VisualAtlasIsland createIslandWithId(
             String id,
             String label,
-            int x,
-            int y,
+            double x,
+            double y,
             int color,
             ItemIdentity iconIdentity,
             DomainEventMetadata metadata

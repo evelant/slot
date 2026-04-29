@@ -35,12 +35,36 @@ public final class AtlasLayout {
 
     /**
      * Run the layout pass with the supplied context + contributors.
+     *
+     * <p>Convenience overload: passes a transient empty nudge state, so
+     * every island is treated as new (no carry-over from a previous frame).
+     * Production callers pass a persistent state map via the 5-arg overload
+     * so islands keep their pushed-aside positions across frames; tests
+     * use this no-state form.
      */
     public static AtlasLayoutResult layout(
             SlotWorkspaceViewModel viewModel,
             RelevanceContext context,
             List<RelevanceContributor> contributors,
             AtlasLayoutConfig config
+    ) {
+        return layout(viewModel, context, contributors, config, new java.util.HashMap<>());
+    }
+
+    /**
+     * As {@link #layout(SlotWorkspaceViewModel, RelevanceContext, List, AtlasLayoutConfig)}
+     * but with a persistent {@link AtlasNudgeLayout.PrevIslandState} map.
+     * The map is mutated in place — keys for deleted islands are removed,
+     * surviving keys get this frame's render position written back. Pass
+     * the same map in on each subsequent call so push-aside / pull-home
+     * carry over correctly.
+     */
+    public static AtlasLayoutResult layout(
+            SlotWorkspaceViewModel viewModel,
+            RelevanceContext context,
+            List<RelevanceContributor> contributors,
+            AtlasLayoutConfig config,
+            Map<String, AtlasNudgeLayout.PrevIslandState> nudgeState
     ) {
         if (viewModel == null) {
             return AtlasLayoutResult.EMPTY;
@@ -102,17 +126,20 @@ public final class AtlasLayout {
                 float relevance = identity == null
                         ? 0f
                         : RelevanceScore.compute(identity, ctx, chain).value();
-                int width = cfg.liftedWidth(relevance);
-                int height = cfg.liftedHeight(relevance);
-                if (!item.carried()) {
-                    boolean trailing = i > lastCarriedIndex;
-                    float shrink = trailing
-                            ? cfg.ghostShrinkFactor() * cfg.trailingGhostExtraShrink()
-                            : cfg.ghostShrinkFactor();
-                    int floor = trailing ? cfg.cardGap() + 1 : cfg.cardGap() + 1;
-                    width = Math.max(floor, Math.round(width * shrink));
-                    height = Math.max(floor, Math.round(height * shrink));
-                }
+                // Ghost cards (proximate-chest stock the player can grab)
+                // render at the same size as carried cards so they're
+                // easy to click on without zooming. We bump their sizing
+                // relevance to the CarriedContributor's score (0.9) so
+                // liftedWidth/Height match a carried card. We do NOT add
+                // ghost identities to the real carried set — kit-missing
+                // and other contributors still need to know the player
+                // isn't actually holding the item.
+                // See docs/plans/learned-storage.md.
+                float sizingRelevance = item.carried()
+                        ? relevance
+                        : Math.max(relevance, GHOST_SIZING_RELEVANCE);
+                int width = cfg.liftedWidth(sizingRelevance);
+                int height = cfg.liftedHeight(sizingRelevance);
                 rows.add(new ItemRow(item.identity(), relevance, width, height));
             }
             rowsByIsland.put(entry.getKey(), rows);
@@ -136,7 +163,7 @@ public final class AtlasLayout {
         // when their packed footprint would collide with an already-
         // placed neighbour. Walk in (authored y, x, id) order so the
         // visual reading order matches what the player put down.
-        LinkedHashMap<String, AtlasLayoutResult.IslandPlacement> islandResults = packAtlas(atlasIslandsById, packsById, cfg);
+        LinkedHashMap<String, AtlasLayoutResult.IslandPlacement> islandResults = packAtlas(atlasIslandsById, packsById, cfg, nudgeState);
 
         // Item placements are anchored to each island's final origin.
         LinkedHashMap<SlotWorkspaceViewModel.IdentityRef, AtlasLayoutResult.ItemPlacement> itemResults = new LinkedHashMap<>();
@@ -163,133 +190,73 @@ public final class AtlasLayout {
     }
 
     /**
-     * Place every island so it doesn't overlap any other. Islands keep
-     * their authored top-left as the preferred origin; when that would
-     * collide with an already-placed neighbour the placement slides
-     * right past the obstruction (with {@code atlasIslandGap}). If
-     * sliding right can't make progress (collider is to our left), the
-     * placement drops to a row underneath the obstructing rect and
-     * resumes from the authored x.
+     * Place every island via {@link AtlasNudgeLayout}: islands sit at their
+     * authored home unless a neighbour grew into them (push) or a former
+     * obstruction shrank/disappeared (pull-home recovery). See
+     * {@code docs/plans/atlas-nudge-layout.md} for design notes.
      *
-     * <p>The header strip sits ~16 px above the body so we reserve
-     * that band on each rect's claimed footprint; otherwise an island
-     * whose body just clears would still have its label crashing into
-     * the rect above it.
-     *
-     * <p>Walks islands in {@code (authored y, x, id)} order so the
-     * reading order matches what the player put down. Authored
-     * positions drive the *preference*; the de-overlap step only
-     * kicks in when needed.
+     * <p>Each island's effective layout footprint includes the header band
+     * above its body and the configured inter-island gap padded around its
+     * rect, so neighbours can sit flush without their labels crashing into
+     * the body above. The body top-left rendered downstream is recovered
+     * by stripping the padding back off the resolved padded rect.
      */
     private static LinkedHashMap<String, AtlasLayoutResult.IslandPlacement> packAtlas(
             LinkedHashMap<String, SlotWorkspaceViewModel.AtlasIsland> atlasIslandsById,
             LinkedHashMap<String, IslandPack> packsById,
-            AtlasLayoutConfig cfg
+            AtlasLayoutConfig cfg,
+            Map<String, AtlasNudgeLayout.PrevIslandState> nudgeState
     ) {
-        ArrayList<SlotWorkspaceViewModel.AtlasIsland> ordered = new ArrayList<>(atlasIslandsById.values());
-        ordered.sort(Comparator
-                .comparingInt(SlotWorkspaceViewModel.AtlasIsland::y)
-                .thenComparingInt(SlotWorkspaceViewModel.AtlasIsland::x)
-                .thenComparing(SlotWorkspaceViewModel.AtlasIsland::islandId));
-
         int gap = cfg.atlasIslandGap();
-        // Reserve the header strip + carried badge band above each
-        // body so neighbours don't overlap the label. Sourced from
-        // SlotWorkspaceAtlasLayout.ISLAND_HEADER_RESERVE — the same
-        // ceiling IslandChestBuilder.applyHeaderScale clamps the
-        // world header height to. As long as both sides consult the
-        // same constant, even at extreme zoom-out the header can't
-        // grow past the reserved band.
         int headerBand = SlotWorkspaceAtlasLayout.ISLAND_HEADER_RESERVE;
+        double leftPad = gap / 2.0;
+        double rightPad = gap - leftPad;
+        double bottomPad = gap;
 
-        // Placed rects carry their *claimed* footprint (y - headerBand,
-        // height + headerBand) so a plain AABB test catches header /
-        // body collisions symmetrically.
-        ArrayList<PlacedRect> placed = new ArrayList<>(ordered.size());
-        LinkedHashMap<String, AtlasLayoutResult.IslandPlacement> results = new LinkedHashMap<>();
-        for (SlotWorkspaceViewModel.AtlasIsland island : ordered) {
+        ArrayList<AtlasNudgeLayout.IslandSpec> specs = new ArrayList<>(atlasIslandsById.size());
+        for (SlotWorkspaceViewModel.AtlasIsland island : atlasIslandsById.values()) {
             IslandPack pack = packsById.get(island.islandId());
             int width = pack == null ? cfg.minIslandWidth() : pack.width();
             int height = pack == null ? cfg.minIslandHeight() : pack.height();
+            // Inflate: header band on top, gap on sides + bottom. Nudge
+            // operates on padded rects so labels don't crash into bodies
+            // above when two islands sit flush.
+            double padX = island.x() - leftPad;
+            double padY = island.y() - headerBand;
+            double padW = width + leftPad + rightPad;
+            double padH = height + headerBand + bottomPad;
+            specs.add(new AtlasNudgeLayout.IslandSpec(island.islandId(), padX, padY, padW, padH));
+        }
 
-            int targetX = island.x();
-            int targetY = island.y();
-            int placeX = targetX;
-            int placeY = targetY;
-            int safety = 0;
-            int safetyLimit = 4 * Math.max(1, ordered.size());
-            while (true) {
-                PlacedRect collider = firstOverlap(placed, placeX, placeY - headerBand,
-                        width, height + headerBand, gap);
-                if (collider == null) {
-                    break;
-                }
-                int slideTo = collider.x() + collider.width() + gap;
-                if (slideTo > placeX) {
-                    placeX = slideTo;
-                } else {
-                    // Collider sits to our left or behind us; sliding
-                    // right won't make progress. Drop below the rect we
-                    // can't slide past and reset to the authored x.
-                    placeY = collider.y() + collider.height() + gap;
-                    placeX = targetX;
-                }
-                if (++safety > safetyLimit) {
-                    // Pathological input only — bail out at the authored
-                    // origin so we still produce a deterministic result.
-                    placeX = targetX;
-                    placeY = targetY;
-                    break;
-                }
-            }
+        Map<String, AtlasNudgeLayout.PrevIslandState> state = nudgeState == null
+                ? new java.util.HashMap<>() : nudgeState;
+        List<AtlasNudgeLayout.IslandPlacement> placed = AtlasNudgeLayout.layout(specs, state);
 
-            placed.add(new PlacedRect(
-                    island.islandId(),
-                    placeX,
-                    placeY - headerBand,
-                    width,
-                    height + headerBand
-            ));
-            results.put(island.islandId(), new AtlasLayoutResult.IslandPlacement(
-                    island.islandId(),
-                    placeX,
-                    placeY,
+        LinkedHashMap<String, AtlasLayoutResult.IslandPlacement> results = new LinkedHashMap<>();
+        for (AtlasNudgeLayout.IslandPlacement r : placed) {
+            IslandPack pack = packsById.get(r.id());
+            int width = pack == null ? cfg.minIslandWidth() : pack.width();
+            int height = pack == null ? cfg.minIslandHeight() : pack.height();
+            int bodyX = (int) Math.round(r.renderX() + leftPad);
+            int bodyY = (int) Math.round(r.renderY() + headerBand);
+            results.put(r.id(), new AtlasLayoutResult.IslandPlacement(
+                    r.id(),
+                    bodyX,
+                    bodyY,
                     width,
                     height,
                     pack == null ? 0 : pack.itemCount()
             ));
         }
-        return results;
-    }
-
-    /**
-     * AABB overlap test with a uniform {@code gap} inflated on the
-     * candidate side. {@code (x, y, width, height)} is the candidate's
-     * full claimed footprint (header band already included by the
-     * caller); each entry in {@code placed} likewise carries its own
-     * inflated footprint, so the comparison is symmetric.
-     */
-    private static PlacedRect firstOverlap(
-            List<PlacedRect> placed,
-            int x, int y, int width, int height, int gap
-    ) {
-        int left = x - gap;
-        int top = y - gap;
-        int right = x + width + gap;
-        int bottom = y + height + gap;
-        for (PlacedRect rect : placed) {
-            if (right <= rect.x() || left >= rect.x() + rect.width()) {
-                continue;
+        // Preserve the original iteration order for downstream consumers.
+        LinkedHashMap<String, AtlasLayoutResult.IslandPlacement> ordered = new LinkedHashMap<>();
+        for (String id : atlasIslandsById.keySet()) {
+            AtlasLayoutResult.IslandPlacement placement = results.get(id);
+            if (placement != null) {
+                ordered.put(id, placement);
             }
-            if (bottom <= rect.y() || top >= rect.y() + rect.height()) {
-                continue;
-            }
-            return rect;
         }
-        return null;
-    }
-
-    private record PlacedRect(String islandId, int x, int y, int width, int height) {
+        return ordered;
     }
 
     /**
@@ -302,9 +269,33 @@ public final class AtlasLayout {
             List<RelevanceContributor> contributors,
             AtlasLayoutConfig config
     ) {
-        RelevanceContext ctx = AtlasRelevance.contextFrom(viewModel, activeSearchQuery);
-        return layout(viewModel, ctx, contributors, config);
+        return layout(viewModel, activeSearchQuery, contributors, config, new java.util.HashMap<>());
     }
+
+    /**
+     * Convenience overload: builds a context from the view model with the
+     * supplied search query and threads through a persistent
+     * {@link AtlasNudgeLayout.PrevIslandState} map.
+     */
+    public static AtlasLayoutResult layout(
+            SlotWorkspaceViewModel viewModel,
+            String activeSearchQuery,
+            List<RelevanceContributor> contributors,
+            AtlasLayoutConfig config,
+            Map<String, AtlasNudgeLayout.PrevIslandState> nudgeState
+    ) {
+        RelevanceContext ctx = AtlasRelevance.contextFrom(viewModel, activeSearchQuery);
+        return layout(viewModel, ctx, contributors, config, nudgeState);
+    }
+
+    /**
+     * Sizing-only relevance floor for ghost cards. Matches
+     * CarriedContributor.CARRIED_SCORE so a proximate-chest item
+     * renders at the same width/height as the same item carried.
+     * Used only for {@code liftedWidth/Height} — does not feed back
+     * into actual relevance contributors.
+     */
+    private static final float GHOST_SIZING_RELEVANCE = 0.9f;
 
     private static IslandPack packIsland(List<ItemRow> rows, AtlasLayoutConfig cfg, boolean ghostOnly) {
         ArrayList<WeightedGridPacker.Cell> cells = new ArrayList<>(rows.size());

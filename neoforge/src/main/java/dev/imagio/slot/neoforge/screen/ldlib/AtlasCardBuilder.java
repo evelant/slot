@@ -398,17 +398,8 @@ final class AtlasCardBuilder {
                 0x80121B1F,
                 Horizontal.LEFT
         );
-        band.setAllowHitTest(true);
-        String targetStorageId = item.presence().get(0).storageId();
-        band.addEventListener(UIEvents.CLICK, event -> {
-            SlotWorkspaceViewModel.ClaimedChestTile tile = host.viewModel.claimedChestTile(targetStorageId);
-            if (tile != null) {
-                event.stopPropagation();
-                host.camera.panToChestTile(atlas, tile);
-                host.localStatus.set("panned to " + tile.label());
-                host.rebuild();
-            }
-        });
+        // Chest tiles no longer render, so click-to-pan is gone.
+        band.setAllowHitTest(false);
         return band;
     }
 
@@ -484,22 +475,15 @@ final class AtlasCardBuilder {
     }
 
     /**
-     * Visual size multiplier for non-carried ("ghost") atlas cards. Carried
-     * items always render at full size. Ghosts shrink progressively as we
-     * zoom out, becoming a small dot at REGION/PIP and full-size at
-     * DETAIL/INSPECT — at high zoom you can already see every card.
+     * Render-layer size multiplier for non-carried ("ghost") atlas cards.
+     * Now always 1f — ghosts represent reachable proximate-chest stock the
+     * player can grab (shift+click → take), so they need to be the same
+     * size as carried cards at every zoom band. The legacy ramp shrunk
+     * memory-palace ghosts so they wouldn't dominate; that role is gone.
+     * See docs/plans/learned-storage.md.
      */
     static float ghostScaleFor(boolean carried, Band band) {
-        if (carried || band == null) {
-            return 1f;
-        }
-        return switch (band) {
-            case DETAIL -> 1f;
-            case INSPECT -> 0.95f;
-            case READ -> 0.7f;
-            case BROWSE -> 0.5f;
-            case REGION, PIP -> 0.4f;
-        };
+        return 1f;
     }
 
     UIElement slotPreview(SlotWorkspaceViewModel.AtlasItem item, int size, boolean showMarker) {
@@ -697,45 +681,29 @@ private void addCommonAtlasSignals(
         if (item == null || item.presence().isEmpty()) {
             return 0;
         }
+        // presence is already proximate-only (built from proximate-chest
+        // ghost projection in the view model).
         int total = 0;
         for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.presence()) {
-            SlotWorkspaceViewModel.ClaimedChestTile tile =
-                    host.viewModel.claimedChestTile(entry.storageId());
-            if (tile != null && tile.proximate()) {
-                total += entry.count();
-            }
+            total += entry.count();
         }
         return total;
     }
 
+    /** Reference to a proximate chest holding the identity. The server
+     *  resolves the actual slot index when servicing the take RPC. */
     record ChestSlotRef(String storageId, int chestSlotIndex) {
     }
 
     ChestSlotRef firstProximateChestSlotFor(SlotWorkspaceViewModel.AtlasItem item) {
-        if (item == null) {
+        if (item == null || item.presence().isEmpty()) {
             return null;
         }
-        SlotWorkspaceViewModel.IdentityRef identity = item.identity();
-        for (SlotWorkspaceViewModel.ClaimedChestTile tile : host.viewModel.claimedChestTiles()) {
-            if (!tile.proximate()) {
-                continue;
-            }
-            java.util.List<ItemStack> contents = tile.contents();
-            java.util.List<Integer> indices = tile.contentSlotIndices();
-            for (int i = 0; i < contents.size(); i++) {
-                ItemStack stack = contents.get(i);
-                if (stack == null || stack.isEmpty()) {
-                    continue;
-                }
-                SlotWorkspaceViewModel.IdentityRef cellIdentity = SlotWorkspaceViewModel.IdentityRef.from(
-                        dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(stack));
-                if (identity.equals(cellIdentity)) {
-                    int slotIdx = i < indices.size() ? indices.get(i) : i;
-                    return new ChestSlotRef(tile.storageId(), slotIdx);
-                }
-            }
-        }
-        return null;
+        // Slot-level info is no longer projected client-side. Take-from-chest
+        // RPCs accept slot index 0 here as a placeholder; the server-side
+        // executor walks the chest for a matching identity. (Full slot-
+        // precision requires a chest-content overlay surface, deferred.)
+        return new ChestSlotRef(item.presence().get(0).storageId(), 0);
     }
 
     UIElement anchorTextBand(
@@ -852,7 +820,19 @@ private void addCommonAtlasSignals(
         button.setOnClick(event -> {
             event.stopPropagation();
             if (Screen.hasShiftDown()) {
-                host.rpc.sendAssignHomeToFreeHotbar(item);
+                // Ghost cards (proximate-chest stock, not carried): shift+click
+                // pulls a stack from chest into carry. Carried cards keep the
+                // existing "send to hotbar" semantic.
+                if (item.ghost()) {
+                    if (host.viewModel.carriedFreeSlotCount() <= 0) {
+                        host.localStatus.set("carry full — drop something first");
+                        host.rebuild();
+                        return;
+                    }
+                    host.rpc.sendTakeStackByIdentity(item.identity());
+                } else {
+                    host.rpc.sendAssignHomeToFreeHotbar(item);
+                }
                 return;
             }
             host.selectedAtlasIdentity.set(item.identity());
@@ -891,18 +871,27 @@ private void addCommonAtlasSignals(
             }
             int magnitude = Math.abs(count);
             if (count > 0) {
-                AtlasCardBuilder.ChestSlotRef source = firstProximateChestSlotFor(fresh);
-                if (source == null) {
+                // Take: walk all proximate chests server-side and pull from
+                // the first slot matching this identity (highest-affinity
+                // chest first). Works for both ghost cards and carried
+                // cards — for carried ones it consolidates more from chests.
+                if (proximateChestCount(fresh) <= 0) {
                     host.localStatus.set("no nearby chest has " + fresh.name());
                     return;
                 }
+                if (host.viewModel.carriedFreeSlotCount() <= 0 && !fresh.carried()) {
+                    // Carry has zero free slots and the item isn't already
+                    // mergeable into a carried stack — server take will
+                    // silently fail. Short-circuit with a clear message.
+                    host.localStatus.set("carry full — drop something first");
+                    host.rebuild();
+                    return;
+                }
                 for (int i = 0; i < magnitude; i++) {
-                    host.rpc.sendTakeOneFromChest(source.storageId(), source.chestSlotIndex());
+                    host.rpc.sendTakeOneByIdentity(fresh.identity());
                 }
             } else {
-                boolean canPush = host.atlasItemHasDepositTarget(fresh)
-                        || firstProximateChestSlotFor(fresh) != null;
-                if (!canPush) {
+                if (!host.anyChestProximate()) {
                     host.localStatus.set("no nearby chest to push " + fresh.name());
                     return;
                 }

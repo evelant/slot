@@ -39,8 +39,7 @@ public final class WorkflowProjection {
         LinkedHashMap<ItemIdentity, VisualHomeAssignment> visualHomes = new LinkedHashMap<>(current.visualHomeMap().assignments());
         LinkedHashSet<String> dismissedTemplateIds = new LinkedHashSet<>(current.visualHomeMap().dismissedTemplateIds());
         LinkedHashMap<UUID, ClaimedChest> claimedChests = indexChests(current.claimedChestMap().chests());
-        LinkedHashMap<UUID, StorageArea> storageAreas = indexStorageAreas(current.storageAreaMap().areas());
-        LinkedHashSet<ChestLink> chestLinks = new LinkedHashSet<>(current.chestLinkMap().links());
+        LinkedHashMap<UUID, Map<ItemIdentity, ChestAffinity>> affinity = copyAffinity(current.chestAffinityMap().entries());
         KitMap kitMap = current.kitMap();
 
         switch (record.event()) {
@@ -271,12 +270,8 @@ public final class WorkflowProjection {
             case WorkflowEvent.VisualIslandDeleted event -> {
                 if (event.islandId() != null && !event.islandId().isBlank()) {
                     playerIslands.removeIf(island -> island.id().equals(event.islandId()));
-                    // Compact ordinals in any island that lost an assignment
-                    // — but here we just drop them all wholesale because the
-                    // island itself is gone.
                     visualHomes.entrySet().removeIf(entry ->
                             entry.getValue() != null && event.islandId().equals(entry.getValue().islandId()));
-                    chestLinks.removeIf(link -> event.islandId().equals(link.islandId()));
                 }
             }
             case WorkflowEvent.VisualHomeAssigned event -> {
@@ -317,6 +312,7 @@ public final class WorkflowProjection {
                     if (existing != null) {
                         if (event.anchors().isEmpty()) {
                             claimedChests.remove(event.storageId());
+                            affinity.remove(event.storageId());
                         } else {
                             claimedChests.put(event.storageId(), existing.withAnchors(event.anchors()));
                         }
@@ -334,65 +330,39 @@ public final class WorkflowProjection {
             case WorkflowEvent.ClaimedChestDeleted event -> {
                 if (event.storageId() != null) {
                     claimedChests.remove(event.storageId());
-                    chestLinks.removeIf(link -> event.storageId().equals(link.storageId()));
+                    affinity.remove(event.storageId());
                 }
             }
-            case WorkflowEvent.ClaimedChestAreaChanged event -> {
-                if (event.storageId() != null && event.areaId() != null) {
-                    ClaimedChest existing = claimedChests.get(event.storageId());
-                    if (existing != null && storageAreas.containsKey(event.areaId())) {
-                        claimedChests.put(event.storageId(), existing.withAreaId(event.areaId()));
+            case WorkflowEvent.ChestDepositObserved event -> {
+                if (event.storageId() != null && event.identity() != null
+                        && claimedChests.containsKey(event.storageId())) {
+                    LinkedHashMap<ItemIdentity, ChestAffinity> bonds =
+                            new LinkedHashMap<>(affinity.getOrDefault(event.storageId(), Map.of()));
+                    ChestAffinity existing = bonds.get(event.identity());
+                    ChestAffinity bumped = existing == null
+                            ? new ChestAffinity(event.identity(), 1, event.tick())
+                            : existing.bump(1, event.tick());
+                    bonds.put(event.identity(), bumped);
+                    affinity.put(event.storageId(), Map.copyOf(bonds));
+                }
+            }
+            case WorkflowEvent.ChestAffinityForgotten event -> {
+                if (event.storageId() != null && event.identity() != null) {
+                    Map<ItemIdentity, ChestAffinity> bonds = affinity.get(event.storageId());
+                    if (bonds != null && bonds.containsKey(event.identity())) {
+                        LinkedHashMap<ItemIdentity, ChestAffinity> next = new LinkedHashMap<>(bonds);
+                        next.remove(event.identity());
+                        if (next.isEmpty()) {
+                            affinity.remove(event.storageId());
+                        } else {
+                            affinity.put(event.storageId(), Map.copyOf(next));
+                        }
                     }
                 }
             }
-            case WorkflowEvent.StorageAreaCreated event -> {
-                if (event.area() != null) {
-                    storageAreas.put(event.area().areaId(), event.area());
-                }
-            }
-            case WorkflowEvent.StorageAreaRenamed event -> {
-                if (event.areaId() != null && !event.label().isBlank()) {
-                    StorageArea existing = storageAreas.get(event.areaId());
-                    if (existing != null) {
-                        storageAreas.put(event.areaId(), existing.withLabel(event.label()));
-                    }
-                }
-            }
-            case WorkflowEvent.StorageAreaRecolored event -> {
-                if (event.areaId() != null) {
-                    StorageArea existing = storageAreas.get(event.areaId());
-                    if (existing != null) {
-                        storageAreas.put(event.areaId(), existing.withColor(event.color()));
-                    }
-                }
-            }
-            case WorkflowEvent.StorageAreaMoved event -> {
-                if (event.areaId() != null) {
-                    StorageArea existing = storageAreas.get(event.areaId());
-                    if (existing != null) {
-                        storageAreas.put(event.areaId(), existing.withAtlasPosition(event.atlasX(), event.atlasY()));
-                    }
-                }
-            }
-            case WorkflowEvent.StorageAreaDeleted event -> {
-                // The default Main Base area is non-deletable; the projection
-                // ignores delete events for it so a buggy producer can't strand
-                // chests with a dangling areaId reference.
-                if (event.areaId() != null && !StorageAreaMap.DEFAULT_AREA_ID.equals(event.areaId())) {
-                    storageAreas.remove(event.areaId());
-                }
-            }
-            case WorkflowEvent.ChestLinkCreated event -> {
-                if (!event.islandId().isBlank() && event.storageId() != null
-                        && claimedChests.containsKey(event.storageId())
-                        && playerIslands.stream().anyMatch(island -> island.id().equals(event.islandId()))) {
-                    chestLinks.add(new ChestLink(event.islandId(), event.storageId()));
-                }
-            }
-            case WorkflowEvent.ChestLinkRemoved event -> {
-                if (!event.islandId().isBlank() && event.storageId() != null) {
-                    chestLinks.removeIf(link -> link.islandId().equals(event.islandId())
-                            && link.storageId().equals(event.storageId()));
+            case WorkflowEvent.ChestAffinityCleared event -> {
+                if (event.storageId() != null) {
+                    affinity.remove(event.storageId());
                 }
             }
             case WorkflowEvent.KitCreated event -> {
@@ -440,21 +410,11 @@ public final class WorkflowProjection {
                 recentDismissals,
                 new VisualHomeMap(playerIslands, visualHomes, dismissedTemplateIds),
                 new ClaimedChestMap(new ArrayList<>(claimedChests.values())),
-                new StorageAreaMap(new ArrayList<>(storageAreas.values())),
-                new ChestLinkMap(chestLinks),
+                new ChestAffinityMap(affinity),
                 kitMap
         );
     }
 
-    /**
-     * Apply a {@link WorkflowEvent.VisualHomeAssigned} to the live home map.
-     *
-     * <p>The event carries the user-perspective insert position
-     * ({@code requested.ordinal()}). This helper performs the
-     * remove-from-source / insert-with-shift bookkeeping so all the other
-     * assignments in the affected islands stay in sync. See Phase 2.2 of
-     * {@code docs/plans/relevance-lod-prototype.md}.
-     */
     static void applyVisualHomeAssignment(
             LinkedHashMap<ItemIdentity, VisualHomeAssignment> assignments,
             VisualHomeAssignment requested
@@ -470,9 +430,6 @@ public final class WorkflowProjection {
 
         int dstSize = islandSize(assignments, dstIslandId);
         int insertOrdinal = Math.min(dstOrdinal, dstSize);
-        // If src == dst and srcOrdinal < dstOrdinal, the user-perspective
-        // position already accounts for X being in the list; after the
-        // remove + compact step above, the insert target slid down by one.
         if (previous != null
                 && previous.islandId().equals(dstIslandId)
                 && previous.ordinal() < dstOrdinal) {
@@ -548,17 +505,19 @@ public final class WorkflowProjection {
         return indexed;
     }
 
-    private static LinkedHashMap<UUID, StorageArea> indexStorageAreas(List<StorageArea> source) {
-        LinkedHashMap<UUID, StorageArea> indexed = new LinkedHashMap<>();
+    private static LinkedHashMap<UUID, Map<ItemIdentity, ChestAffinity>> copyAffinity(
+            Map<UUID, Map<ItemIdentity, ChestAffinity>> source
+    ) {
+        LinkedHashMap<UUID, Map<ItemIdentity, ChestAffinity>> copy = new LinkedHashMap<>();
         if (source == null) {
-            return indexed;
+            return copy;
         }
-        for (StorageArea area : source) {
-            if (area != null) {
-                indexed.put(area.areaId(), area);
+        for (Map.Entry<UUID, Map<ItemIdentity, ChestAffinity>> entry : source.entrySet()) {
+            if (entry.getKey() != null && entry.getValue() != null && !entry.getValue().isEmpty()) {
+                copy.put(entry.getKey(), Map.copyOf(entry.getValue()));
             }
         }
-        return indexed;
+        return copy;
     }
 
     public static Snapshot replay(WorkflowEventStore.Snapshot storeSnapshot, Snapshot checkpoint) {
@@ -581,8 +540,7 @@ public final class WorkflowProjection {
             Map<ItemIdentity, Long> recentDismissedUpToByIdentity,
             VisualHomeMap visualHomeMap,
             ClaimedChestMap claimedChestMap,
-            StorageAreaMap storageAreaMap,
-            ChestLinkMap chestLinkMap,
+            ChestAffinityMap chestAffinityMap,
             KitMap kitMap
     ) {
         public Snapshot {
@@ -596,8 +554,7 @@ public final class WorkflowProjection {
             recentDismissedUpToByIdentity = copyRecentDismissals(recentDismissedUpToByIdentity);
             visualHomeMap = visualHomeMap == null ? VisualHomeMap.empty() : visualHomeMap;
             claimedChestMap = claimedChestMap == null ? ClaimedChestMap.empty() : claimedChestMap;
-            storageAreaMap = storageAreaMap == null ? StorageAreaMap.empty() : storageAreaMap;
-            chestLinkMap = chestLinkMap == null ? ChestLinkMap.empty() : chestLinkMap;
+            chestAffinityMap = chestAffinityMap == null ? ChestAffinityMap.empty() : chestAffinityMap;
             kitMap = kitMap == null ? KitMap.empty() : kitMap;
         }
 
@@ -613,8 +570,7 @@ public final class WorkflowProjection {
                     Map.of(),
                     VisualHomeMap.empty(),
                     ClaimedChestMap.empty(),
-                    StorageAreaMap.empty(),
-                    ChestLinkMap.empty(),
+                    ChestAffinityMap.empty(),
                     KitMap.empty()
             );
         }

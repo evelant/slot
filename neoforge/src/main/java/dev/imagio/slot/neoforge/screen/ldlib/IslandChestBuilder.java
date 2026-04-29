@@ -54,8 +54,17 @@ final class IslandChestBuilder {
 
         // Right-click opens the island edit popover anchored near the click,
         // matching how item cards and kit cards surface their context host.menu.
+        // Shift+left-click runs the manual tighten gesture (see
+        // SlotWorkspaceUiController.tightenIsland and
+        // docs/plans/atlas-nudge-layout.md). Capture-phase listener so we
+        // run before the viewport pan handler attached on this same panel.
         if (island.kind() == VisualAtlasIslandKind.PLAYER) {
             panel.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+                if (event.button == 0 && net.minecraft.client.gui.screens.Screen.hasShiftDown()) {
+                    event.stopPropagation();
+                    host.tightenIsland(island.islandId());
+                    return;
+                }
                 if (event.button != 1) {
                     return;
                 }
@@ -244,42 +253,32 @@ final class IslandChestBuilder {
     }
 
     /**
-     * Aggregate per-area item presence for an island. Sums atlas-item
-     * presence counts across every item homed to {@code island}, keyed
-     * by area label. Returns null/empty when the island has no presence.
+     * Aggregate proximate-chest counts for items homed to this island.
+     * Surfaced as a single line under the island, e.g. "12 in 2 chests".
+     * Returns null when the island has no proximate stock.
      */
     UIElement islandPresenceStrip(SlotWorkspaceViewModel.AtlasIsland island) {
-        java.util.LinkedHashMap<String, Integer> totalsByArea = new java.util.LinkedHashMap<>();
+        int totalCount = 0;
+        java.util.LinkedHashSet<String> chestIds = new java.util.LinkedHashSet<>();
         for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.atlasItems()) {
             if (!island.islandId().equals(item.islandId())) {
                 continue;
             }
             for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.presence()) {
-                if (entry.areaLabel() == null || entry.areaLabel().isBlank()) {
-                    continue;
+                totalCount += entry.count();
+                if (entry.storageId() != null && !entry.storageId().isBlank()) {
+                    chestIds.add(entry.storageId());
                 }
-                totalsByArea.merge(entry.areaLabel(), entry.count(), Integer::sum);
             }
         }
-        if (totalsByArea.isEmpty()) {
+        if (totalCount == 0) {
             return null;
         }
-        java.util.List<java.util.Map.Entry<String, Integer>> ordered = new java.util.ArrayList<>(totalsByArea.entrySet());
-        ordered.sort(java.util.Map.Entry.<String, Integer>comparingByValue().reversed());
-        StringBuilder sb = new StringBuilder();
-        int shown = 0;
-        for (java.util.Map.Entry<String, Integer> entry : ordered) {
-            if (shown > 0) {
-                sb.append("  ");
-            }
-            sb.append(entry.getValue()).append(" ").append(entry.getKey());
-            shown++;
-            if (shown >= 3) {
-                break;
-            }
-        }
+        String text = chestIds.size() <= 1
+                ? totalCount + " in chest"
+                : totalCount + " in " + chestIds.size() + " chests";
         dev.imagio.slot.atlas.lod.AtlasLayoutResult.IslandPlacement place = host.islandPlacementFor(island);
-        Label strip = label(sb.toString(), MUTED);
+        Label strip = label(text, MUTED);
         strip.layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
                 .left(place.x())
@@ -299,15 +298,14 @@ final class IslandChestBuilder {
 
     /**
      * Per-frame paint flip: when {@code host.hoveredStorageId} matches a
-     * chest linked to {@code islandId}, draw an accent overlay on
-     * {@code element}. Cheap enough to attach to every island title bar
-     * (it's a single equality check + a single overlay setter call when
-     * the state actually flips).
+     * chest whose contents include an item homed to {@code islandId}, draw
+     * an accent overlay. Replaces the link-era explicit chest-island
+     * link as a derived overlap query.
      */
     void installIslandHoverPaint(UIElement element, String islandId) {
         boolean[] lastLit = {false};
         element.addEventListener(UIEvents.TICK, event -> {
-            boolean lit = isStorageLinkedToIsland(host.hoveredStorageId, islandId);
+            boolean lit = isHoveredChestRelatedToIsland(host.hoveredStorageId, islandId);
             if (lit == lastLit[0]) {
                 return;
             }
@@ -316,214 +314,46 @@ final class IslandChestBuilder {
         });
     }
 
-    boolean isStorageLinkedToIsland(String storageId, String islandId) {
+    /** Hovered chest is "related" to an island when any item homed to that
+     *  island has presence in that chest. */
+    private boolean isHoveredChestRelatedToIsland(String storageId, String islandId) {
         if (storageId == null || islandId == null) {
             return false;
         }
-        SlotWorkspaceViewModel.ClaimedChestTile tile = host.viewModel.claimedChestTile(storageId);
-        return tile != null && tile.linkedIslandIds().contains(islandId);
-    }
-
-    /**
-     * Strip-flow chest card: header, item grid, link/take buttons, laid
-     * out as a flex child of the storage panel's card flow. Sized to the
-     * tile's authored width/height; inner elements are absolute-
-     * positioned relative to this panel.
-     */
-    UIElement chestTilePanelInFlow(SlotWorkspaceViewModel.ClaimedChestTile tile) {
-        int fill = chestTileFill(tile);
-        int textColor = tile.proximate() ? TEXT : MUTED;
-        int cellSize = SlotWorkspaceAtlasLayout.CHEST_TILE_CELL;
-        int cols = SlotWorkspaceAtlasLayout.CHEST_TILE_COLUMNS;
-        int padding = SlotWorkspaceAtlasLayout.CHEST_TILE_PADDING;
-        int headerHeight = SlotWorkspaceAtlasLayout.CHEST_TILE_HEADER_HEIGHT;
-
-        UIElement panel = panel(fill).layout(layout -> layout
-                .width(tile.width())
-                .height(tile.height())
-                .paddingAll(0));
-        panel.style(style -> style.zIndex(1));
-
-        Label header = label(tile.label(), textColor);
-        header.layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(padding)
-                .top(0)
-                .width(tile.width() - padding * 2)
-                .height(headerHeight));
-        header.textStyle(style -> style
-                .textColor(textColor)
-                .textShadow(false)
-                .fontSize(8)
-                .textAlignHorizontal(Horizontal.LEFT)
-                .textAlignVertical(Vertical.CENTER));
-        panel.addChild(header);
-
-        int cellsToRender = tile.contents().size();
-        java.util.List<Integer> contentIndices = tile.contentSlotIndices();
-        for (int index = 0; index < cellsToRender; index++) {
-            ItemStack stack = tile.contents().get(index);
-            int chestSlotIndex = index < contentIndices.size() ? contentIndices.get(index) : index;
-            int col = index % cols;
-            int row = index / cols;
-            int cellX = padding + col * cellSize;
-            int cellY = headerHeight + row * cellSize;
-            UIElement cell = chestTileCell(stack, tile.proximate(), cellSize);
-            cell.layout(layout -> layout
-                    .positionType(TaffyPosition.ABSOLUTE)
-                    .left(cellX)
-                    .top(cellY)
-                    .width(cellSize)
-                    .height(cellSize));
-            if (stack != null && !stack.isEmpty()) {
-                SlotWorkspaceViewModel.IdentityRef cellIdentity = SlotWorkspaceViewModel.IdentityRef.from(
-                        dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(stack));
-                String cellStorageId = tile.storageId();
-                cell.addEventListener(UIEvents.MOUSE_ENTER, event -> {
-                    host.hoveredChestCellIdentity = cellIdentity;
-                    host.hoveredChestCellStorageId = cellStorageId;
-                }, true);
-                cell.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
-                    if (cellIdentity.equals(host.hoveredChestCellIdentity)
-                            && cellStorageId.equals(host.hoveredChestCellStorageId)) {
-                        host.hoveredChestCellIdentity = null;
-                        host.hoveredChestCellStorageId = null;
-                    }
-                }, true);
+        for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.atlasItems()) {
+            if (!islandId.equals(item.islandId())) {
+                continue;
             }
-            if (tile.proximate() && stack != null && !stack.isEmpty()) {
-                String storageId = tile.storageId();
-                ItemStack cellStack = stack;
-                cell.addEventListener(UIEvents.CLICK, event -> {
-                    if (event.button != 0) {
-                        return;
-                    }
-                    event.stopPropagation();
-                    if (Screen.hasShiftDown()) {
-                        host.rpc.sendTakeFromChest(storageId, chestSlotIndex);
-                        return;
-                    }
-                    SlotWorkspaceViewModel.IdentityRef identityRef = SlotWorkspaceViewModel.IdentityRef.from(
-                            dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(cellStack));
-                    host.selectedAtlasIdentity.set(identityRef);
-                    host.selectedHotbarIndex.set(-1);
-                    host.localStatus.set("selected " + cellStack.getHoverName().getString());
-                });
-                host.drag.installChestStackDragSource(cell, storageId, chestSlotIndex, cellStack, tile.label());
+            for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.presence()) {
+                if (storageId.equals(entry.storageId())) {
+                    return true;
+                }
             }
-            panel.addChild(cell);
         }
+        return false;
+    }
 
-        Button linkButton = button("Link", true, tile.linkedIslandIds().isEmpty() ? PANEL_ALT : ACCENT);
-        linkButton.layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .right(padding)
-                .top(0)
-                .width(28)
-                .height(headerHeight));
-        linkButton.textStyle(style -> style
-                .textColor(TEXT)
-                .textShadow(false)
-                .fontSize(7)
-                .textAlignHorizontal(Horizontal.CENTER)
-                .textAlignVertical(Vertical.CENTER));
-        linkButton.style(style -> style.zIndex(3));
-        linkButton.setOnClick(event -> {
-            event.stopPropagation();
-            host.menu.beginChestLinkEdit(tile);
-        });
-        panel.addChild(linkButton);
+    // Chest tiles no longer render. See docs/plans/learned-storage.md —
+    // chests live as chips in the StoragePanelBuilder, and per-chest
+    // detail surfaces only on demand.
 
-        boolean canTake = tile.proximate() && !tile.contents().isEmpty();
-        Button takeAllButton = button("Take", canTake, canTake ? ROW : PANEL_ALT);
-        takeAllButton.layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .right(padding + 30)
-                .top(0)
-                .width(28)
-                .height(headerHeight));
-        takeAllButton.textStyle(style -> style
-                .textColor(canTake ? TEXT : MUTED)
-                .textShadow(false)
-                .fontSize(7)
-                .textAlignHorizontal(Horizontal.CENTER)
-                .textAlignVertical(Vertical.CENTER));
-        takeAllButton.style(style -> style.zIndex(3));
-        String takeStorageId = tile.storageId();
-        takeAllButton.setOnClick(event -> {
-            event.stopPropagation();
-            if (!canTake) {
-                host.localStatus.set(tile.proximate() ? "chest is empty" : "chest is too far");
-                host.rebuild();
-                return;
+    SlotWorkspaceViewModel.AtlasItem atlasItemInIslandLayer(SlotWorkspaceViewModel.IdentityRef identity) {
+        if (identity == null) {
+            return null;
+        }
+        for (SlotWorkspaceViewModel.AtlasItem candidate : host.viewModel.atlasItems()) {
+            if (candidate.identity().equals(identity)) {
+                return candidate;
             }
-            host.rpc.sendTakeAll(takeStorageId);
-        });
-        panel.addChild(takeAllButton);
-
-        host.drag.installChestTileDragSource(panel, tile);
-        installChestTileDropTarget(panel, tile);
-        installChestCardHover(panel, tile);
-        return panel;
+        }
+        return null;
     }
 
     /**
-     * Track {@code host.hoveredStorageId} on enter/leave + paint accent
-     * when this tile's linked-from island is hovered.
+     * Hover-trail line from a hovered hotbar slot to its homed atlas card.
+     * Surfaces "this hotbar slot belongs to that island". Trail collapses
+     * to nothing when no hover association is active.
      */
-    void installChestCardHover(UIElement panel, SlotWorkspaceViewModel.ClaimedChestTile tile) {
-        String storageId = tile.storageId();
-        panel.addEventListener(UIEvents.MOUSE_ENTER, event -> host.hoveredStorageId = storageId, true);
-        panel.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
-            if (storageId.equals(host.hoveredStorageId)) {
-                host.hoveredStorageId = null;
-            }
-        }, true);
-        boolean[] lastLit = {false};
-        panel.addEventListener(UIEvents.TICK, event -> {
-            boolean lit = host.hoveredIslandId != null
-                    && tile.linkedIslandIds().contains(host.hoveredIslandId);
-            if (lit == lastLit[0]) {
-                return;
-            }
-            lastLit[0] = lit;
-            panel.style(style -> style.overlayTexture(lit ? rect(HOVER_ACCENT_OVERLAY) : IGuiTexture.EMPTY));
-        });
-    }
-
-    void installChestTileDropTarget(UIElement target, SlotWorkspaceViewModel.ClaimedChestTile tile) {
-        String storageId = tile.storageId();
-        boolean proximate = tile.proximate();
-        target.addEventListener(UIEvents.DRAG_ENTER, event -> updateChestTileDropOverlay(target, proximate, event), true);
-        target.addEventListener(UIEvents.DRAG_UPDATE, event -> updateChestTileDropOverlay(target, proximate, event));
-        target.addEventListener(UIEvents.DRAG_LEAVE, event -> host.drag.clearDropOverlay(target), true);
-        target.addEventListener(UIEvents.DRAG_PERFORM, event -> {
-            host.drag.clearDropOverlay(target);
-            AtlasItemDrag atlasDrag = host.drag.atlasItemDrag(event);
-            HotbarSlotDrag hotbarDrag = host.drag.hotbarSlotDrag(event);
-            if (atlasDrag == null && hotbarDrag == null) {
-                return;
-            }
-            if (!proximate) {
-                host.localStatus.set("chest is too far");
-                host.rebuild();
-                event.stopPropagation();
-                return;
-            }
-            if (atlasDrag != null) {
-                host.rpc.sendDepositCarriedToChest(atlasDrag.identity(), storageId);
-            } else {
-                host.rpc.sendDepositHotbarToChest(hotbarDrag.hotbarIndex(), storageId);
-            }
-            event.stopPropagation();
-        });
-    }
-
-    void updateChestTileDropOverlay(UIElement target, boolean proximate, UIEvent event) {
-        boolean acceptable = host.drag.atlasItemDrag(event) != null || host.drag.hotbarSlotDrag(event) != null;
-        host.drag.updateGenericDropOverlay(target, acceptable, proximate ? ACCENT : WARNING);
-    }
-
     UIElement hoverTrailOverlay(SlotAtlasGraphView atlas) {
         UIElement trail = panel(HOVER_TRAIL_COLOR);
         trail.style(style -> style.zIndex(9));
@@ -611,44 +441,7 @@ final class IslandChestBuilder {
         return null;
     }
 
-    SlotWorkspaceViewModel.AtlasItem atlasItemInIslandLayer(SlotWorkspaceViewModel.IdentityRef identity) {
-        if (identity == null) {
-            return null;
-        }
-        for (SlotWorkspaceViewModel.AtlasItem candidate : host.viewModel.atlasItems()) {
-            if (candidate.identity().equals(identity)) {
-                return candidate;
-            }
-        }
-        return null;
-    }
-
-
     record HoverTrailEndpoints(int hotbarIndex, SlotWorkspaceViewModel.AtlasItem atlasItem) {
-    }
-
-    /**
-     * Resolves the fill color for a chest tile. Tiles inherit their
-     * area's color so the player can see at a glance which base a chest
-     * belongs to.
-     */
-    private int chestTileFill(SlotWorkspaceViewModel.ClaimedChestTile tile) {
-        SlotWorkspaceViewModel.StorageAreaSnapshot area = host.viewModel.storageArea(tile.areaId());
-        if (area == null) {
-            return tile.proximate() ? STORAGE_TILE_FILL : STORAGE_TILE_FILL_DIM;
-        }
-        int areaColor = area.color();
-        if (tile.proximate()) {
-            return areaColor;
-        }
-        // Match the legacy proximity-dim ratio: alpha drops from ~0xD0 to
-        // ~0x60 while RGB is preserved.
-        return (areaColor & 0x00FFFFFF) | 0x60000000;
-    }
-
-    UIElement chestTileCell(ItemStack stack, boolean proximate, int cellSize) {
-        int chromeColor = proximate ? STORAGE_TILE_CELL_FILL : STORAGE_TILE_CELL_FILL_DIM;
-        return itemSlotCard(stack, cellSize, chromeColor, proximate);
     }
 
 }

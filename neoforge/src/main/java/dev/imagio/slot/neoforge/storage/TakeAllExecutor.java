@@ -85,6 +85,41 @@ public final class TakeAllExecutor {
         return takeFromChestSlot(player, chest, chestSlotIndex, Integer.MAX_VALUE, "take-single");
     }
 
+    /**
+     * Walk a chest's contents and take {@code maxCount} of the first
+     * slot whose stack matches {@code identity}. Returns the moved/
+     * leftover counts. {@code maxCount = 1} for "take one"; pass
+     * {@link Integer#MAX_VALUE} for "take whole stack".
+     */
+    public static TakeSingleOutcome takeByIdentity(
+            ServerPlayer player,
+            ClaimedChest chest,
+            dev.imagio.slot.inventory.core.ItemIdentity identity,
+            int maxCount,
+            String logLabel
+    ) {
+        if (player == null || chest == null || identity == null || maxCount <= 0) {
+            return TakeSingleOutcome.empty();
+        }
+        MinecraftServer server = player.getServer();
+        if (server == null) {
+            return TakeSingleOutcome.empty();
+        }
+        WorldStorageAccess worldStorage = StorageAccessRegistry.worldStorageAccess();
+        WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
+        for (WorldStorageAccess.SlotContent entry : worldStorage.enumerate(server, target)) {
+            ItemStack stack = entry.stack();
+            if (stack.isEmpty()) {
+                continue;
+            }
+            if (!identity.equals(dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(stack))) {
+                continue;
+            }
+            return takeFromChestSlot(player, chest, entry.slotIndex(), maxCount, logLabel);
+        }
+        return TakeSingleOutcome.empty();
+    }
+
     private static TakeSingleOutcome takeFromChestSlot(
             ServerPlayer player,
             ClaimedChest chest,

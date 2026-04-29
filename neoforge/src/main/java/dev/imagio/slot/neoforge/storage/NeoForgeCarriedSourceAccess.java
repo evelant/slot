@@ -77,10 +77,31 @@ public final class NeoForgeCarriedSourceAccess implements CarriedSourceAccess {
             return simulateInsertBestFit(player, stack.copy());
         }
         ItemStack remaining = stack.copy();
-        // Inventory.add consults SB's pickup mixin, which routes into backpacks
-        // first before returning false. Any mod that mixes into vanilla pickup
-        // is automatically respected. Mods that DON'T mix into pickup need an
-        // explicit fall-through below (none yet).
+        // Backpack-first routing: try every registered carried provider
+        // (Sophisticated Backpacks etc.) before falling back to vanilla
+        // Inventory.add. Without this, takes from chests pile up in main
+        // inventory and fill it before backpacks get any of it — which
+        // breaks routing once main is full. We pay a small advancement-
+        // trigger cost for items that land directly in a backpack (the
+        // mixin's pickup hook never sees them), which the project accepts.
+        for (CarriedProvider provider : CarriedProviderRegistry.all()) {
+            if (remaining.isEmpty()) {
+                return ItemStack.EMPTY;
+            }
+            try {
+                ItemStack result = provider.insertBestFit(player, remaining, false);
+                if (result != null) {
+                    remaining = result;
+                }
+            } catch (RuntimeException | LinkageError ignored) {
+            }
+        }
+        if (remaining.isEmpty()) {
+            return ItemStack.EMPTY;
+        }
+        // Whatever didn't fit in a backpack falls through to vanilla
+        // Inventory.add — fires the advancement-trigger pickup hook so
+        // first-time pickup achievements still register for the leftover.
         boolean added = player.getInventory().add(remaining);
         if (added && remaining.isEmpty()) {
             return ItemStack.EMPTY;

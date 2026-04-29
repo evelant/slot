@@ -1,17 +1,27 @@
 package dev.imagio.slot.workflow.domain;
 
+import dev.imagio.slot.inventory.core.ItemIdentity;
+
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * Per-player workflow service for claimed chests + their learned affinity.
+ *
+ * <p>Replaces the old explicit-claim / chest-link / storage-area trio with
+ * a single surface: chests are auto-claimed on first deposit, and routing
+ * reads {@link ChestAffinityMap}. There is no longer an "area" concept.
+ *
+ * <p>See docs/plans/learned-storage.md.
+ */
 public final class ChestClaimWorkflowDomainService {
     private final WorkflowDomainStateRepository repository;
-    private final StorageAreaWorkflowDomainService storageAreaService;
     private final Runnable mutationObserver;
 
     public ChestClaimWorkflowDomainService(WorkflowDomainStateRepository repository) {
-        this(repository, new StorageAreaWorkflowDomainService(repository), () -> {
+        this(repository, () -> {
         });
     }
 
@@ -19,22 +29,17 @@ public final class ChestClaimWorkflowDomainService {
             WorkflowDomainStateRepository repository,
             Runnable mutationObserver
     ) {
-        this(repository, new StorageAreaWorkflowDomainService(repository, mutationObserver), mutationObserver);
-    }
-
-    public ChestClaimWorkflowDomainService(
-            WorkflowDomainStateRepository repository,
-            StorageAreaWorkflowDomainService storageAreaService,
-            Runnable mutationObserver
-    ) {
         this.repository = Objects.requireNonNull(repository, "repository");
-        this.storageAreaService = Objects.requireNonNull(storageAreaService, "storageAreaService");
         this.mutationObserver = mutationObserver == null ? () -> {
         } : mutationObserver;
     }
 
     public ClaimedChestMap claimedChestMap() {
         return repository.workflowProjection().claimedChestMap();
+    }
+
+    public ChestAffinityMap chestAffinityMap() {
+        return repository.workflowProjection().chestAffinityMap();
     }
 
     public ClaimedChest chest(UUID storageId) {
@@ -49,10 +54,9 @@ public final class ChestClaimWorkflowDomainService {
             Set<ChestAnchor> anchors,
             int atlasX,
             int atlasY,
-            String label,
-            UUID areaId
+            String label
     ) {
-        return claim(anchors, atlasX, atlasY, label, areaId, DomainEventMetadata.origin("workflow.storage.chest.claim"));
+        return claim(anchors, atlasX, atlasY, label, DomainEventMetadata.origin("workflow.storage.chest.claim"));
     }
 
     public ClaimedChest claim(
@@ -60,10 +64,20 @@ public final class ChestClaimWorkflowDomainService {
             int atlasX,
             int atlasY,
             String label,
-            UUID areaId,
             DomainEventMetadata metadata
     ) {
-        return claimWithId(UUID.randomUUID(), anchors, atlasX, atlasY, label, areaId, metadata);
+        return claimWithId(UUID.randomUUID(), anchors, atlasX, atlasY, label, metadata);
+    }
+
+    public ClaimedChest claimWithId(
+            UUID storageId,
+            Set<ChestAnchor> anchors,
+            int atlasX,
+            int atlasY,
+            String label
+    ) {
+        return claimWithId(storageId, anchors, atlasX, atlasY, label,
+                DomainEventMetadata.origin("workflow.storage.chest.claim"));
     }
 
     public ClaimedChest claimWithId(
@@ -72,29 +86,9 @@ public final class ChestClaimWorkflowDomainService {
             int atlasX,
             int atlasY,
             String label,
-            UUID areaId
-    ) {
-        return claimWithId(
-                storageId,
-                anchors,
-                atlasX,
-                atlasY,
-                label,
-                areaId,
-                DomainEventMetadata.origin("workflow.storage.chest.claim")
-        );
-    }
-
-    public ClaimedChest claimWithId(
-            UUID storageId,
-            Set<ChestAnchor> anchors,
-            int atlasX,
-            int atlasY,
-            String label,
-            UUID areaId,
             DomainEventMetadata metadata
     ) {
-        if (storageId == null || areaId == null) {
+        if (storageId == null) {
             return null;
         }
         Set<ChestAnchor> copied = ClaimedChest.copyAnchors(anchors);
@@ -110,20 +104,34 @@ public final class ChestClaimWorkflowDomainService {
                 return null;
             }
         }
-        if (!repository.workflowProjection().storageAreaMap().contains(areaId)) {
-            if (!StorageAreaMap.DEFAULT_AREA_ID.equals(areaId)) {
-                return null;
-            }
-            // Lazily materialise the default area on the first claim into it.
-            storageAreaService.ensureDefaultArea(atlasX, atlasY, metadata);
-        }
-        ClaimedChest chest = new ClaimedChest(storageId, copied, atlasX, atlasY, label, areaId);
+        ClaimedChest chest = new ClaimedChest(storageId, copied, atlasX, atlasY, label);
         repository.appendWorkflowEvent(
                 new WorkflowEvent.ClaimedChestCreated(chest),
                 resolveMetadata(metadata, "workflow.storage.chest.claim")
         );
         mutationObserver.run();
         return claimedChestMap().chest(storageId);
+    }
+
+    /**
+     * Auto-claim a chest if no claim exists for the supplied {@code anchor}.
+     * Returns the live claim record (existing or new).
+     */
+    public ClaimedChest autoClaimByAnchor(
+            ChestAnchor anchor,
+            int atlasX,
+            int atlasY,
+            DomainEventMetadata metadata
+    ) {
+        if (anchor == null) {
+            return null;
+        }
+        ClaimedChest existing = chestByAnchor(anchor);
+        if (existing != null) {
+            return existing;
+        }
+        return claim(Set.of(anchor), atlasX, atlasY, "",
+                resolveMetadata(metadata, "workflow.storage.chest.auto_claim"));
     }
 
     public ClaimedChest moveChest(UUID storageId, int atlasX, int atlasY) {
@@ -229,36 +237,6 @@ public final class ChestClaimWorkflowDomainService {
         return claimedChestMap().chest(storageId);
     }
 
-    public ClaimedChest moveChestToArea(UUID storageId, UUID areaId) {
-        return moveChestToArea(
-                storageId,
-                areaId,
-                DomainEventMetadata.origin("workflow.storage.chest.move_to_area")
-        );
-    }
-
-    public ClaimedChest moveChestToArea(UUID storageId, UUID areaId, DomainEventMetadata metadata) {
-        if (storageId == null || areaId == null) {
-            return null;
-        }
-        ClaimedChest existing = claimedChestMap().chest(storageId);
-        if (existing == null) {
-            return null;
-        }
-        if (areaId.equals(existing.areaId())) {
-            return existing;
-        }
-        if (!repository.workflowProjection().storageAreaMap().contains(areaId)) {
-            return null;
-        }
-        repository.appendWorkflowEvent(
-                new WorkflowEvent.ClaimedChestAreaChanged(storageId, areaId),
-                resolveMetadata(metadata, "workflow.storage.chest.move_to_area")
-        );
-        mutationObserver.run();
-        return claimedChestMap().chest(storageId);
-    }
-
     public boolean deleteChest(UUID storageId) {
         return deleteChest(storageId, DomainEventMetadata.origin("workflow.storage.chest.delete"));
     }
@@ -270,6 +248,64 @@ public final class ChestClaimWorkflowDomainService {
         repository.appendWorkflowEvent(
                 new WorkflowEvent.ClaimedChestDeleted(storageId),
                 resolveMetadata(metadata, "workflow.storage.chest.delete")
+        );
+        mutationObserver.run();
+        return true;
+    }
+
+    /**
+     * Record one observed deposit of {@code identity} into chest
+     * {@code storageId}. Bumps affinity[storageId, identity].
+     */
+    public void recordDeposit(UUID storageId, ItemIdentity identity, int count, long tick) {
+        recordDeposit(storageId, identity, count, tick,
+                DomainEventMetadata.origin("workflow.storage.chest.deposit_observed"));
+    }
+
+    public void recordDeposit(
+            UUID storageId,
+            ItemIdentity identity,
+            int count,
+            long tick,
+            DomainEventMetadata metadata
+    ) {
+        if (storageId == null || identity == null || claimedChestMap().chest(storageId) == null) {
+            return;
+        }
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.ChestDepositObserved(storageId, identity, count, tick),
+                resolveMetadata(metadata, "workflow.storage.chest.deposit_observed")
+        );
+        mutationObserver.run();
+    }
+
+    /** Forget affinity[storageId, identity]. */
+    public boolean forgetIdentity(UUID storageId, ItemIdentity identity) {
+        if (storageId == null || identity == null) {
+            return false;
+        }
+        if (chestAffinityMap().score(storageId, identity) <= 0) {
+            return false;
+        }
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.ChestAffinityForgotten(storageId, identity),
+                DomainEventMetadata.origin("workflow.storage.chest.forget_identity")
+        );
+        mutationObserver.run();
+        return true;
+    }
+
+    /** Forget all affinity for this chest. */
+    public boolean forgetChestAffinity(UUID storageId) {
+        if (storageId == null) {
+            return false;
+        }
+        if (chestAffinityMap().forChest(storageId).isEmpty()) {
+            return false;
+        }
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.ChestAffinityCleared(storageId),
+                DomainEventMetadata.origin("workflow.storage.chest.forget_chest_affinity")
         );
         mutationObserver.run();
         return true;

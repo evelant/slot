@@ -28,6 +28,13 @@ This is a fast-moving experimental repo. Docs describe intent as of their
   Prefer clean rewrites over compatibility facades.
 - Do not keep old interfaces or facades in place to avoid refactoring.
   Implement the current plan/direction cleanly.
+- There are no users, no published releases, no save files in the wild,
+  and no remote API consumers. When replacing a concept, **delete the
+  old events, projection paths, persistence fields, RPCs, and UI code in
+  the same change**. Do not propose migration plans, "leave it for one
+  release," soft-deprecation, dual-write windows, or save-format
+  upgraders. Save format may change shape freely; existing local saves
+  may break and that is acceptable.
 - Absolutely no quick fixes. Investigate root causes and wider impacts
   before changing code. Focused patches without understanding the
   surrounding system create more bugs.

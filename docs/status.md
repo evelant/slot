@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-04-26 (vanilla role-corrections sweep — 182 entries patched; doors / beds / rails / spawn_eggs / Block-of-X / mob-drops now route to the right templates; prompt tightened so future regenerations converge)
+Last updated: 2026-04-29 (learned-storage swap landed: ChestLink + StorageArea + explicit-claim deleted; `ChestAffinityMap` drives deposit routing; chest tiles → chest chips above Triage, proximate-only; proximate-chest contents project as full-size ghost cards on homed islands with shift+click / shift+scroll take-by-identity; backpacks fill before main inventory; `AtlasNudgeLayout` first-open deadlock fixed. See [plans/learned-storage.md](plans/learned-storage.md). Deferred: auto-claim hook on vanilla chest GUI, search-as-find ghosts, loot-chest panel, kit ghost markers, cluster derivation + rename, affinity decay)
 
 This is the operational handoff document for planning and implementation. Read
 this after [../README.md](../README.md), then follow the linked architecture
@@ -12,7 +12,85 @@ SLOT is an unreleased experimental NeoForge-first Minecraft `1.21.1` inventory
 overhaul. Backwards compatibility inside this repo is not a constraint; clean
 refactors are preferred over compatibility facades.
 
-Currently landed:
+### Learned storage (2026-04-29)
+
+The chest-link / storage-area / explicit-claim trio is gone, replaced by a
+single learned-affinity model. See [plans/learned-storage.md](plans/learned-storage.md).
+This obsoletes large parts of the per-slice notes below — those bullets
+are kept as historical context, not the live design.
+
+What landed:
+
+- **Domain swap.** `ChestLink`, `ChestLinkMap`, `ChestLinkWorkflowDomainService`,
+  `StorageArea`, `StorageAreaMap`, `StorageAreaWorkflowDomainService` deleted.
+  `ClaimedChest.areaId` removed. `WorkflowEvent` lost the 7 link/area events
+  and the `ClaimedChestAreaChanged` event; gained `ChestDepositObserved`,
+  `ChestAffinityForgotten`, and `ChestAffinityCleared`. New
+  `ChestAffinity(identity, score, lastTouchedTick)` and `ChestAffinityMap`
+  records live in `common/workflow/domain/`.
+- **Routing.** `DepositPlanner` now ranks proximate claimed chests by
+  `affinity[chest, identity]` and emits ranked candidates per stack. The
+  per-deposit `DepositExecutor` returns `DepositRecord`s the session loop
+  feeds back as `ChestDepositObserved` events to bump affinity. The
+  player→chest single-stack/identity pickers (drag-card-to-chip,
+  shift+click, shift+scroll) all route through the same affinity-ranked
+  resolver.
+- **View model + UI.** `SlotWorkspaceViewModel.ChestChip` replaces
+  `ClaimedChestTile` (no contents grid; just label, slot fullness,
+  proximate dot). The chip stack is a left-side overlay docked above
+  Triage (`StoragePanelBuilder.overlay`); only proximate chests are
+  rendered, capped at 7. Triage's top dynamically shifts down by the
+  chip panel's reserved height — no overlap. Drag-card-onto-chip
+  deposits to that specific chest, bypassing affinity routing.
+- **Proximate ghost atlas items.** Items present in any proximate chest
+  but not currently carried project as `AtlasItem` records with
+  `ghost = true`, full `presence` breakdown, and the same render size as
+  carried cards (sized via a 0.9 sizing-relevance floor in
+  `AtlasLayout`, with the legacy `ghostScaleFor` shrink ramp deleted).
+  The presence strip under each card reads "in: Chest #abcd · 12 · …".
+- **Take by identity.** `takeOneByIdentity` / `takeStackByIdentity` RPCs
+  walk all proximate claimed chests server-side, ranked by affinity, and
+  pull from the first slot whose stack matches. Replaces the old
+  slot-precise client-side calls — the client no longer has to know
+  which chest/slot holds the item.
+- **Carry-full guards.** Both shift+click and shift+scroll on ghost
+  cards short-circuit with "carry full — drop something first" when
+  `carriedFreeSlotCount() <= 0`. Server-side `takeByIdentity`
+  distinguishes `no_matching_proximate_chest` vs `carry_full` in its
+  diagnostic.
+- **Backpacks fill first.** `NeoForgeCarriedSourceAccess.insertBestFit`
+  now walks every registered `CarriedProvider` (Sophisticated Backpacks
+  + future curios) before falling back to `Inventory.add`. Main
+  inventory only takes overflow, so chest-take routing doesn't fill
+  main inventory and dead-end. Vanilla `Inventory.add` still fires for
+  the leftover, so first-time-pickup advancements still register.
+- **Forget gestures.** `forgetChest` and `forgetItemAffinity` RPCs
+  surface in `WorkspaceRpcDispatcher` + `SlotWorkspaceCommandService`.
+  The link popover from `ContextMenuBuilder` is deleted.
+- **Test populate.** `/slot test populate <profile>` no longer creates
+  storage areas or links; it claims chests via `autoClaimByAnchor` and
+  seeds affinity from each chest's contents. `/slot test clear`
+  dropped the area-deletion pass.
+- **First-open layout overlap fix.** `AtlasNudgeLayout`'s leftover-
+  overlap pass deadlocked when every island was NEW (all locked into
+  `pushedThisFrame` in phase 1). Now unlocks the non-anchor side of a
+  doubly-locked overlap pair so the anchor's BFS push can relocate it.
+  Anchor stays locked, so no oscillation.
+
+Deferred (called out in the plan doc):
+
+- auto-claim hook on vanilla chest GUI deposits — chests currently only
+  enter the workspace via `/slot test populate`
+- search-as-find non-proximate ghost overlay
+- loot-chest Triage-style overlay (transient, only while a loot chest
+  is open)
+- kit ghost markers
+- cluster derivation + rename (chips are flat, sorted proximate-first)
+- affinity decay + accidental-placement take-window guard
+- cross-surface highlight pulses (only the title-bar overlap-paint is
+  wired)
+
+Currently landed (historical, pre-learned-storage):
 
 - the common inventory kernel for authority snapshots, projections, browse
   documents, workflow/activity state, command preflight, intent routing, action
@@ -251,6 +329,27 @@ Current prototype validation point:
   learned from the player's own manual placements
 
 ## Current Focus
+
+**Recently landed (2026-04-28): atlas island layout — push-and-pull-home (`AtlasNudgeLayout`) + manual tighten gesture.**
+The gravity-toward-(0,0) and gravity-toward-centroid models were both
+scrapped after playtesting showed they re-shuffle the entire cluster
+whenever any single island's size changes (centroid drift), which is
+fundamentally incompatible with the bulk grow/shrink events triggered
+by `deposit-all`, kit grab, and triage chip-through. The replacement
+keeps islands exactly at their authored home unless a grower pushes
+them aside; on shrink/delete, displaced neighbours pull back home as
+far as the path allows. `Shift+left-click` on an island runs a manual
+tighten — slides it to its nearest axis-aligned neighbour and sets a
+sticky home one card-row past so subsequent shrinks of the snap target
+are absorbed automatically. Two consecutive tightens (one per axis)
+compose; the off-axis component of the home is preserved per-gesture.
+See [plans/atlas-nudge-layout.md](plans/atlas-nudge-layout.md).
+
+**Next session: storage-areas UI surfacing bug.** The realistic
+populate seeder generates storage areas in the domain state, but the
+storage panel UI reports "no storage areas yet". Investigation
+needed — the projection path / view-model emission for storage areas
+is the suspected gap.
 
 **Active focus: playtest the FacetIndex-driven populate path + the
 role-driven Triage chips.** [item-classification.md](plans/item-classification.md)

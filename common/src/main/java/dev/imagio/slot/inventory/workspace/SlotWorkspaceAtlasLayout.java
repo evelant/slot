@@ -87,8 +87,8 @@ public final class SlotWorkspaceAtlasLayout {
         if (visualHomeMap != null) {
             visualHomeMap.playerIslands().stream()
                     .sorted(Comparator
-                            .comparingInt(VisualAtlasIsland::y)
-                            .thenComparingInt(VisualAtlasIsland::x)
+                            .comparingDouble(VisualAtlasIsland::y)
+                            .thenComparingDouble(VisualAtlasIsland::x)
                             .thenComparing(VisualAtlasIsland::label, String.CASE_INSENSITIVE_ORDER))
                     .forEach(island -> islands.add(new SlotWorkspaceViewModel.AtlasIsland(
                             island.id(),

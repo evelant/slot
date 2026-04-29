@@ -41,16 +41,9 @@ final class CameraNavigator {
                     return camera;
                 }
             }
-            if (!host.viewModel.atlasItems().isEmpty()) {
-                SlotWorkspaceViewModel.AtlasItem atlasItem = host.viewModel.atlasItem(host.hoveredAtlasIdentity);
-                if (atlasItem != null && !atlasItem.presence().isEmpty()) {
-                    SlotWorkspaceViewModel.ClaimedChestTile tile = host.viewModel.claimedChestTile(
-                            atlasItem.presence().get(0).storageId());
-                    if (tile != null) {
-                        return computeChestTileCamera(atlas, tile);
-                    }
-                }
-            }
+            // Chest tiles no longer render in the atlas layer (chests live as
+            // chips per docs/plans/learned-storage.md). Per-chest drill-down
+            // surfaces via hover overlays on the atlas card itself.
         }
         if (host.hoveredChestCellIdentity != null) {
             SlotWorkspaceViewModel.AtlasItem item = host.islandChest.atlasItemInIslandLayer(host.hoveredChestCellIdentity);
@@ -58,13 +51,6 @@ final class CameraNavigator {
                 AtlasCamera camera = computeAtlasItemCamera(atlas, item);
                 if (camera != null) {
                     return camera;
-                }
-            }
-            if (host.hoveredChestCellStorageId != null) {
-                SlotWorkspaceViewModel.ClaimedChestTile tile =
-                        host.viewModel.claimedChestTile(host.hoveredChestCellStorageId);
-                if (tile != null) {
-                    return computeChestTileCamera(atlas, tile);
                 }
             }
         }
@@ -145,40 +131,6 @@ final class CameraNavigator {
         float offsetX = bbox.centerX() - centerScreenX / scale;
         float offsetY = bbox.centerY() - centerScreenY / scale;
         return new AtlasCamera(offsetX, offsetY, scale);
-    }
-
-    void panToChestTile(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.ClaimedChestTile tile) {
-        if (atlas == null || tile == null) {
-            return;
-        }
-        AtlasCamera target = computeChestTileCamera(atlas, tile);
-        if (target != null) {
-            host.cameraController.commit(
-                    target,
-                    AtlasCameraController.CommitSource.PAN_TO_CHEST,
-                    AtlasCameraController.CUBIC_IN_OUT,
-                    AtlasCameraController.COMMIT_DURATION_MS);
-        }
-    }
-
-    AtlasCamera computeChestTileCamera(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.ClaimedChestTile tile) {
-        if (atlas == null || tile == null) {
-            return null;
-        }
-        float viewportWidth = atlas.getContentWidth();
-        float viewportHeight = atlas.getContentHeight();
-        if (viewportWidth <= 0f || viewportHeight <= 0f) {
-            return null;
-        }
-        FitCarriedCamera.Camera camera = FitCarriedCamera.fit(
-                FitCarriedCamera.Rect.of(tile.atlasX(), tile.atlasY(), tile.width(), tile.height()),
-                viewportWidth,
-                viewportHeight,
-                CARRIED_FIT_MIN_SCALE,
-                CARRIED_FIT_MAX_SCALE,
-                CARRIED_FIT_PADDING_PX
-        );
-        return camera == null ? null : new AtlasCamera(camera.offsetX(), camera.offsetY(), camera.scale());
     }
 
     void panToIsland(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasIsland island) {

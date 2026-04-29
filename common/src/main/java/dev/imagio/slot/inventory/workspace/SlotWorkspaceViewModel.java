@@ -12,8 +12,8 @@ import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
 import dev.imagio.slot.inventory.triage.IslandSuggestionService;
 import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
 import dev.imagio.slot.inventory.triage.TriageIslandRef;
+import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
-import dev.imagio.slot.workflow.domain.ChestLinkMap;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.KitActivation;
@@ -36,8 +36,14 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 import java.util.function.Function;
 
+/**
+ * Server-projected workspace state. Replaces the old link/area projection
+ * with proximate-chest ghost atlas items and chest chips. See
+ * docs/plans/learned-storage.md.
+ */
 public record SlotWorkspaceViewModel(
         long revision,
         String status,
@@ -51,8 +57,7 @@ public record SlotWorkspaceViewModel(
         List<AtlasIsland> islands,
         List<AtlasItem> atlasItems,
         List<AtlasItem> triageItems,
-        List<ClaimedChestTile> claimedChestTiles,
-        List<StorageAreaSnapshot> storageAreas,
+        List<ChestChip> chestChips,
         List<HotbarSlot> hotbarSlots,
         OffhandSlot offhand,
         List<KitCard> kits
@@ -68,95 +73,10 @@ public record SlotWorkspaceViewModel(
         islands = islands == null ? List.of() : List.copyOf(islands);
         atlasItems = atlasItems == null ? List.of() : List.copyOf(atlasItems);
         triageItems = triageItems == null ? List.of() : List.copyOf(triageItems);
-        claimedChestTiles = claimedChestTiles == null ? List.of() : List.copyOf(claimedChestTiles);
-        storageAreas = storageAreas == null ? List.of() : List.copyOf(storageAreas);
+        chestChips = chestChips == null ? List.of() : List.copyOf(chestChips);
         hotbarSlots = hotbarSlots == null ? List.of() : List.copyOf(hotbarSlots);
         offhand = offhand == null ? OffhandSlot.empty() : offhand;
         kits = kits == null ? List.of() : List.copyOf(kits);
-    }
-
-    public SlotWorkspaceViewModel(
-            long revision,
-            String status,
-            String diagnostics,
-            int pendingCount,
-            int selectedQuickAccessSlot,
-            int canvasWidth,
-            int canvasHeight,
-            List<AtlasIsland> islands,
-            List<AtlasItem> atlasItems,
-            List<ClaimedChestTile> claimedChestTiles,
-            List<HotbarSlot> hotbarSlots,
-            OffhandSlot offhand
-    ) {
-        this(revision, status, diagnostics, pendingCount, selectedQuickAccessSlot,
-                canvasWidth, canvasHeight, 0, 0, islands, atlasItems, List.of(), claimedChestTiles,
-                List.of(), hotbarSlots, offhand, List.of());
-    }
-
-    public SlotWorkspaceViewModel(
-            long revision,
-            String status,
-            String diagnostics,
-            int pendingCount,
-            int selectedQuickAccessSlot,
-            int canvasWidth,
-            int canvasHeight,
-            List<AtlasIsland> islands,
-            List<AtlasItem> atlasItems,
-            List<ClaimedChestTile> claimedChestTiles,
-            List<HotbarSlot> hotbarSlots,
-            OffhandSlot offhand,
-            List<KitCard> kits
-    ) {
-        this(revision, status, diagnostics, pendingCount, selectedQuickAccessSlot,
-                canvasWidth, canvasHeight, 0, 0, islands, atlasItems, List.of(), claimedChestTiles,
-                List.of(), hotbarSlots, offhand, kits);
-    }
-
-    public SlotWorkspaceViewModel(
-            long revision,
-            String status,
-            String diagnostics,
-            int pendingCount,
-            int selectedQuickAccessSlot,
-            int canvasWidth,
-            int canvasHeight,
-            List<AtlasIsland> islands,
-            List<AtlasItem> atlasItems,
-            List<AtlasItem> triageItems,
-            List<ClaimedChestTile> claimedChestTiles,
-            List<HotbarSlot> hotbarSlots,
-            OffhandSlot offhand,
-            List<KitCard> kits
-    ) {
-        this(revision, status, diagnostics, pendingCount, selectedQuickAccessSlot,
-                canvasWidth, canvasHeight, 0, 0, islands, atlasItems, triageItems, claimedChestTiles,
-                List.of(), hotbarSlots, offhand, kits);
-    }
-
-    public SlotWorkspaceViewModel(
-            long revision,
-            String status,
-            String diagnostics,
-            int pendingCount,
-            int selectedQuickAccessSlot,
-            int canvasWidth,
-            int canvasHeight,
-            int carriedFreeSlotCount,
-            int carriedSlotCapacity,
-            List<AtlasIsland> islands,
-            List<AtlasItem> atlasItems,
-            List<AtlasItem> triageItems,
-            List<ClaimedChestTile> claimedChestTiles,
-            List<HotbarSlot> hotbarSlots,
-            OffhandSlot offhand,
-            List<KitCard> kits
-    ) {
-        this(revision, status, diagnostics, pendingCount, selectedQuickAccessSlot,
-                canvasWidth, canvasHeight, carriedFreeSlotCount, carriedSlotCapacity,
-                islands, atlasItems, triageItems, claimedChestTiles, List.of(),
-                hotbarSlots, offhand, kits);
     }
 
     public static SlotWorkspaceViewModel empty() {
@@ -171,7 +91,6 @@ public record SlotWorkspaceViewModel(
                 0,
                 0,
                 SlotWorkspaceAtlasLayout.baseIslands(VisualHomeMap.empty()),
-                List.of(),
                 List.of(),
                 List.of(),
                 List.of(),
@@ -219,7 +138,7 @@ public record SlotWorkspaceViewModel(
     ) {
         return project(authority, workflow, status, diagnostics, pendingCount,
                 selectedQuickAccessSlot, revision, learnedRules, signalExtractor,
-                null, null);
+                null, null, null);
     }
 
     public static SlotWorkspaceViewModel project(
@@ -258,6 +177,9 @@ public record SlotWorkspaceViewModel(
         WorkflowDomainSnapshot resolvedWorkflow = workflow == null ? WorkflowDomainSnapshot.empty() : workflow;
         RecentView recents = resolvedWorkflow.recents();
         VisualHomeMap visualHomeMap = resolvedWorkflow.visualHomeMap();
+        ClaimedChestMap claimedChestMap = resolvedWorkflow.claimedChestMap();
+        ChestAffinityMap affinityMap = resolvedWorkflow.chestAffinityMap();
+        Set<String> proximate = proximateStorageIds == null ? Set.of() : proximateStorageIds;
         int[] carriedCounts = countCarriedFreeSlotsAndCapacity(resolvedAuthority);
         int carriedFreeSlotCount = carriedCounts[0];
         int carriedSlotCapacity = carriedCounts[1];
@@ -265,11 +187,36 @@ public record SlotWorkspaceViewModel(
                 ? identity -> null
                 : carriedContainerInfoResolver;
 
-        List<AtlasItemAccumulator> accumulators = groupedAtlasEntries(resolvedAuthority, visualHomeMap);
+        List<AtlasItemAccumulator> accumulators = groupedAtlasEntries(resolvedAuthority);
         Map<ItemIdentity, Integer> recentRankByIdentity = recentRankByIdentity(recents);
-        // Canonical order for the atlas pack: per-island, by the assignment's
-        // explicit ordinal (Phase 2.2). Items without an assignment (Triage
-        // candidates) sort separately by recents → name.
+
+        // Build proximate-chest ghost projection: union all stacks across
+        // proximate chests, keyed by identity, with per-chest breakdown for
+        // hover/zoom drill-down. Items not currently carried but present in
+        // some proximate chest are surfaced as faded ghost cards on their
+        // homed island. See docs/plans/learned-storage.md.
+        ProximateGhostProjection ghosts = ProximateGhostProjection.build(
+                claimedChestMap, chestContentsResolver, proximate, visualHomeMap);
+
+        // Synthesize ghost accumulators for identities present only in
+        // proximate chests (homed-but-not-carried). Carried identities use
+        // their existing accumulator + presence pip.
+        Set<ItemIdentity> carriedIdentities = new LinkedHashSet<>();
+        for (AtlasItemAccumulator accumulator : accumulators) {
+            carriedIdentities.add(accumulator.identity());
+        }
+        for (Map.Entry<ItemIdentity, Integer> entry : ghosts.totalsByIdentity().entrySet()) {
+            ItemIdentity identity = entry.getKey();
+            if (carriedIdentities.contains(identity)) {
+                continue;
+            }
+            ItemStack ghostStack = ghosts.displayStackByIdentity().get(identity);
+            if (ghostStack == null || ghostStack.isEmpty()) {
+                continue;
+            }
+            accumulators.add(AtlasItemAccumulator.ghost(identity, ghostStack, entry.getValue()));
+        }
+
         accumulators.sort(Comparator
                 .comparing((AtlasItemAccumulator a) -> {
                     VisualHomeAssignment hm = visualHomeMap.assignment(a.identity());
@@ -294,6 +241,10 @@ public record SlotWorkspaceViewModel(
 
         for (AtlasItemAccumulator accumulator : accumulators) {
             VisualHomeAssignment assignment = visualHomeMap.assignment(accumulator.identity());
+            List<ChestPresenceEntry> presence = ghosts.presenceByIdentity().getOrDefault(accumulator.identity(), List.of());
+            boolean ghostOnly = !accumulator.carried();
+            int proximateCount = ghosts.totalsByIdentity().getOrDefault(accumulator.identity(), 0);
+
             if (assignment == null) {
                 List<ChipSuggestion> chipSuggestions = List.of();
                 if (accumulator.carried() && signalExtractor != null) {
@@ -311,6 +262,11 @@ public record SlotWorkspaceViewModel(
                 boolean isContainer = containerInfo != null;
                 int containerFree = isContainer ? containerInfo.freeSlots() : 0;
                 int containerCapacity = isContainer ? containerInfo.slotCapacity() : 0;
+                if (ghostOnly) {
+                    // Unhomed ghost item — not carried, not assigned. Don't
+                    // render: triage is for *carried* items needing a home.
+                    continue;
+                }
                 triageItems.add(new AtlasItem(
                         IdentityRef.from(accumulator.identity()),
                         accumulator.displayStack(),
@@ -321,8 +277,10 @@ public record SlotWorkspaceViewModel(
                         recentIdentities.contains(accumulator.identity()),
                         false,
                         accumulator.carried(),
+                        false,
+                        proximateCount,
                         chipSuggestions,
-                        List.of(),
+                        presence,
                         isContainer,
                         containerFree,
                         containerCapacity
@@ -331,12 +289,14 @@ public record SlotWorkspaceViewModel(
             }
             String islandId = assignment.islandId();
             boolean playerPlaced = assignment.origin() == dev.imagio.slot.workflow.domain.VisualHomeOrigin.PLAYER_PLACED;
-            // Orphaned assignment (target island deleted) — fall back to triage rather than render an unrooted card.
             CarriedContainerInfo containerInfo = containerResolver.apply(accumulator.identity());
             boolean isContainer = containerInfo != null;
             int containerFree = isContainer ? containerInfo.freeSlots() : 0;
             int containerCapacity = isContainer ? containerInfo.slotCapacity() : 0;
             if (SlotWorkspaceAtlasLayout.island(layoutIslands, islandId) == null) {
+                if (ghostOnly) {
+                    continue;
+                }
                 triageItems.add(new AtlasItem(
                         IdentityRef.from(accumulator.identity()),
                         accumulator.displayStack(),
@@ -347,8 +307,10 @@ public record SlotWorkspaceViewModel(
                         recentIdentities.contains(accumulator.identity()),
                         false,
                         accumulator.carried(),
+                        false,
+                        proximateCount,
                         List.of(),
-                        List.of(),
+                        presence,
                         isContainer,
                         containerFree,
                         containerCapacity
@@ -365,54 +327,25 @@ public record SlotWorkspaceViewModel(
                     recentIdentities.contains(accumulator.identity()),
                     playerPlaced,
                     accumulator.carried(),
+                    ghostOnly,
+                    proximateCount,
                     List.of(),
-                    List.of(),
+                    presence,
                     isContainer,
                     containerFree,
                     containerCapacity
             ));
         }
 
-        // Atlas items already arrive in canonical order from the accumulator
-        // pre-sort above. Triage gets its recents-driven sort applied here.
         triageItems.sort(Comparator
                 .comparingInt((AtlasItem item) -> recentRankByIdentity.getOrDefault(item.identity().toIdentity(), Integer.MAX_VALUE))
                 .thenComparing(item -> item.name().toLowerCase(Locale.ROOT))
                 .thenComparing(item -> item.identity().itemId()));
 
-        // Server-side island chrome ships authored bounds; the client packer
-        // computes the actual rendered size + position via AtlasLayout. The
-        // `carriedCount` count badge is still domain-relevant, so we keep
-        // the carried-counts pass.
         List<AtlasIsland> islandsWithCarriedCounts = withCarriedCounts(layoutIslands, atlasItems);
 
-        List<ClaimedChestTile> tiles = claimedChestTiles(
-                resolvedWorkflow.claimedChestMap(),
-                resolvedWorkflow.chestLinkMap(),
-                chestContentsResolver,
-                proximateStorageIds
-        );
-        List<StorageAreaSnapshot> storageAreas = storageAreaSnapshots(
-                resolvedWorkflow.storageAreaMap(),
-                tiles
-        );
-        Map<String, List<ChestPresenceEntry>> presenceByItemId = presenceByItemId(tiles, storageAreas);
-        if (!presenceByItemId.isEmpty()) {
-            for (int index = 0; index < atlasItems.size(); index++) {
-                AtlasItem item = atlasItems.get(index);
-                List<ChestPresenceEntry> entries = presenceByItemId.get(item.identity().itemId());
-                if (entries != null && !entries.isEmpty()) {
-                    atlasItems.set(index, item.withPresence(entries));
-                }
-            }
-            for (int index = 0; index < triageItems.size(); index++) {
-                AtlasItem item = triageItems.get(index);
-                List<ChestPresenceEntry> entries = presenceByItemId.get(item.identity().itemId());
-                if (entries != null && !entries.isEmpty()) {
-                    triageItems.set(index, item.withPresence(entries));
-                }
-            }
-        }
+        List<ChestChip> chestChips = chestChips(claimedChestMap, affinityMap, chestContentsResolver, proximate);
+
         List<KitCard> kitCards = kitCards(resolvedAuthority, resolvedWorkflow.kitMap());
         return new SlotWorkspaceViewModel(
                 revision,
@@ -427,8 +360,7 @@ public record SlotWorkspaceViewModel(
                 islandsWithCarriedCounts,
                 atlasItems,
                 triageItems,
-                tiles,
-                storageAreas,
+                chestChips,
                 hotbarSlots(resolvedAuthority, selectedQuickAccessSlot),
                 OffhandSlot.from(resolvedAuthority),
                 kitCards
@@ -554,9 +486,6 @@ public record SlotWorkspaceViewModel(
         if (authority == null) {
             return identities;
         }
-        // Iterate every source flagged as the CARRIED pane (player main,
-        // hotbar, offhand, armor, *and* carried backpacks). A hardcoded
-        // player-only lane list used to miss Sophisticated Backpack contents.
         for (InventorySourceDescriptor source : authority.carriedSources()) {
             for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
                 if (entry == null || !entry.present()) {
@@ -597,6 +526,53 @@ public record SlotWorkspaceViewModel(
         return List.copyOf(result);
     }
 
+    public SlotWorkspaceViewModel withIslandHome(String islandId, double homeX, double homeY) {
+        if (islandId == null) {
+            return this;
+        }
+        java.util.ArrayList<AtlasIsland> updated = new java.util.ArrayList<>(islands.size());
+        boolean changed = false;
+        for (AtlasIsland island : islands) {
+            if (island.islandId().equals(islandId)
+                    && (island.x() != homeX || island.y() != homeY)) {
+                updated.add(new AtlasIsland(
+                        island.islandId(),
+                        island.label(),
+                        island.kind(),
+                        homeX,
+                        homeY,
+                        island.color(),
+                        island.itemCount(),
+                        island.carriedCount()
+                ));
+                changed = true;
+            } else {
+                updated.add(island);
+            }
+        }
+        if (!changed) {
+            return this;
+        }
+        return new SlotWorkspaceViewModel(
+                revision,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                canvasWidth,
+                canvasHeight,
+                carriedFreeSlotCount,
+                carriedSlotCapacity,
+                List.copyOf(updated),
+                atlasItems,
+                triageItems,
+                chestChips,
+                hotbarSlots,
+                offhand,
+                kits
+        );
+    }
+
     public SlotWorkspaceViewModel withRevision(long nextRevision) {
         return new SlotWorkspaceViewModel(
                 nextRevision,
@@ -611,8 +587,7 @@ public record SlotWorkspaceViewModel(
                 islands,
                 atlasItems,
                 triageItems,
-                claimedChestTiles,
-                storageAreas,
+                chestChips,
                 hotbarSlots,
                 offhand,
                 kits
@@ -647,183 +622,74 @@ public record SlotWorkspaceViewModel(
         return null;
     }
 
-    public ClaimedChestTile claimedChestTile(String storageId) {
+    public ChestChip chestChip(String storageId) {
         if (storageId == null || storageId.isBlank()) {
             return null;
         }
-        for (ClaimedChestTile tile : claimedChestTiles) {
-            if (tile.storageId().equals(storageId)) {
-                return tile;
+        for (ChestChip chip : chestChips) {
+            if (chip.storageId().equals(storageId)) {
+                return chip;
             }
         }
         return null;
     }
 
-    public StorageAreaSnapshot storageArea(String areaId) {
-        if (areaId == null || areaId.isBlank()) {
-            return null;
-        }
-        for (StorageAreaSnapshot snapshot : storageAreas) {
-            if (snapshot.areaId().equals(areaId)) {
-                return snapshot;
-            }
-        }
-        return null;
-    }
-
-    private static List<ClaimedChestTile> claimedChestTiles(
+    private static List<ChestChip> chestChips(
             ClaimedChestMap map,
-            ChestLinkMap linkMap,
+            ChestAffinityMap affinityMap,
             Function<String, ChestContentsSnapshot> chestContentsResolver,
-            Set<String> proximateStorageIds
+            Set<String> proximate
     ) {
         if (map == null || map.chests().isEmpty()) {
             return List.of();
         }
-        ChestLinkMap resolvedLinkMap = linkMap == null ? ChestLinkMap.empty() : linkMap;
-        ArrayList<ClaimedChestTile> tiles = new ArrayList<>(map.chests().size());
+        ArrayList<ChestChip> chips = new ArrayList<>(map.chests().size());
         for (ClaimedChest chest : map.chests()) {
             if (chest == null) {
                 continue;
             }
             ChestAnchor primary = chest.anchors().iterator().next();
             String dimension = primary == null ? "" : primary.dimensionId();
-            int primaryWorldX = primary == null ? 0 : primary.x();
-            int primaryWorldY = primary == null ? 0 : primary.y();
-            int primaryWorldZ = primary == null ? 0 : primary.z();
+            int worldX = primary == null ? 0 : primary.x();
+            int worldY = primary == null ? 0 : primary.y();
+            int worldZ = primary == null ? 0 : primary.z();
+            String storageId = chest.storageId().toString();
             String label = chest.label() == null || chest.label().isBlank()
                     ? autoLabel(chest)
                     : chest.label();
-            String storageId = chest.storageId().toString();
             ChestContentsSnapshot snapshot = chestContentsResolver == null
                     ? ChestContentsSnapshot.empty()
                     : chestContentsResolver.apply(storageId);
             if (snapshot == null) {
                 snapshot = ChestContentsSnapshot.empty();
             }
-            boolean proximate = proximateStorageIds != null && proximateStorageIds.contains(storageId);
-            int width = SlotWorkspaceAtlasLayout.chestTileWidth();
-            int height = SlotWorkspaceAtlasLayout.chestTileHeight(snapshot.contents().size());
-            List<String> linkedIslandIds = List.copyOf(resolvedLinkMap.islandsLinkedTo(chest.storageId()));
-            tiles.add(new ClaimedChestTile(
+            int slotCapacity = snapshot.slotCount();
+            int filledSlots = 0;
+            for (ItemStack stack : snapshot.contents()) {
+                if (stack != null && !stack.isEmpty()) {
+                    filledSlots++;
+                }
+            }
+            boolean isProximate = proximate.contains(storageId);
+            int affinityCount = affinityMap == null ? 0 : affinityMap.forChest(chest.storageId()).size();
+            chips.add(new ChestChip(
                     storageId,
                     dimension,
-                    chest.atlasX(),
-                    chest.atlasY(),
-                    width,
-                    height,
                     label,
                     chest.anchors().size(),
-                    snapshot.slotCount(),
-                    snapshot.contents(),
-                    snapshot.slotIndices(),
-                    proximate,
-                    linkedIslandIds,
-                    chest.areaId().toString(),
-                    primaryWorldX,
-                    primaryWorldY,
-                    primaryWorldZ
+                    slotCapacity,
+                    filledSlots,
+                    isProximate,
+                    affinityCount,
+                    worldX,
+                    worldY,
+                    worldZ
             ));
         }
-        return List.copyOf(tiles);
-    }
-
-    private static List<StorageAreaSnapshot> storageAreaSnapshots(
-            dev.imagio.slot.workflow.domain.StorageAreaMap areaMap,
-            List<ClaimedChestTile> tiles
-    ) {
-        if (areaMap == null || areaMap.areas().isEmpty()) {
-            return List.of();
-        }
-        LinkedHashMap<String, ArrayList<ClaimedChestTile>> tilesByArea = new LinkedHashMap<>();
-        for (ClaimedChestTile tile : tiles) {
-            tilesByArea.computeIfAbsent(tile.areaId(), ignored -> new ArrayList<>()).add(tile);
-        }
-        ArrayList<StorageAreaSnapshot> result = new ArrayList<>(areaMap.areas().size());
-        for (dev.imagio.slot.workflow.domain.StorageArea area : areaMap.areas()) {
-            String idString = area.areaId().toString();
-            List<ClaimedChestTile> areaTiles = tilesByArea.getOrDefault(idString, new ArrayList<>());
-            int totalSlots = 0;
-            boolean proximate = false;
-            for (ClaimedChestTile tile : areaTiles) {
-                totalSlots += tile.slotCount();
-                proximate |= tile.proximate();
-            }
-            result.add(new StorageAreaSnapshot(
-                    idString,
-                    area.label(),
-                    area.color(),
-                    area.atlasX(),
-                    area.atlasY(),
-                    area.displayOrder(),
-                    areaTiles.size(),
-                    totalSlots,
-                    proximate,
-                    false,
-                    List.copyOf(areaTiles)
-            ));
-        }
-        result.sort(java.util.Comparator
-                .comparingInt(StorageAreaSnapshot::displayOrder)
-                .thenComparing(StorageAreaSnapshot::label));
-        return List.copyOf(result);
-    }
-
-    private static Map<String, List<ChestPresenceEntry>> presenceByItemId(
-            List<ClaimedChestTile> tiles,
-            List<StorageAreaSnapshot> storageAreas
-    ) {
-        if (tiles == null || tiles.isEmpty()) {
-            return Map.of();
-        }
-        LinkedHashMap<String, String> areaLabelById = new LinkedHashMap<>();
-        if (storageAreas != null) {
-            for (StorageAreaSnapshot area : storageAreas) {
-                areaLabelById.put(area.areaId(), area.label());
-            }
-        }
-        LinkedHashMap<String, LinkedHashMap<String, int[]>> counts = new LinkedHashMap<>();
-        LinkedHashMap<String, String> labelByStorageId = new LinkedHashMap<>();
-        LinkedHashMap<String, String> areaIdByStorageId = new LinkedHashMap<>();
-        for (ClaimedChestTile tile : tiles) {
-            if (tile == null || tile.contents().isEmpty()) {
-                continue;
-            }
-            labelByStorageId.put(tile.storageId(), tile.label());
-            areaIdByStorageId.put(tile.storageId(), tile.areaId());
-            for (ItemStack stack : tile.contents()) {
-                if (stack == null || stack.isEmpty()) {
-                    continue;
-                }
-                String itemId = ItemIdentityMatcher.create(stack).itemId();
-                counts.computeIfAbsent(itemId, ignored -> new LinkedHashMap<>())
-                        .computeIfAbsent(tile.storageId(), ignored -> new int[]{0})[0] += stack.getCount();
-            }
-        }
-        LinkedHashMap<String, List<ChestPresenceEntry>> result = new LinkedHashMap<>();
-        for (Map.Entry<String, LinkedHashMap<String, int[]>> entry : counts.entrySet()) {
-            ArrayList<ChestPresenceEntry> list = new ArrayList<>(entry.getValue().size());
-            for (Map.Entry<String, int[]> chestEntry : entry.getValue().entrySet()) {
-                String storageId = chestEntry.getKey();
-                int count = chestEntry.getValue()[0];
-                if (count <= 0) {
-                    continue;
-                }
-                String areaId = areaIdByStorageId.getOrDefault(storageId, "");
-                String areaLabel = areaLabelById.getOrDefault(areaId, "");
-                list.add(new ChestPresenceEntry(
-                        storageId,
-                        labelByStorageId.getOrDefault(storageId, storageId),
-                        count,
-                        areaId,
-                        areaLabel
-                ));
-            }
-            list.sort(Comparator.<ChestPresenceEntry>comparingInt(ChestPresenceEntry::count).reversed()
-                    .thenComparing(ChestPresenceEntry::label, String.CASE_INSENSITIVE_ORDER));
-            result.put(entry.getKey(), List.copyOf(list));
-        }
-        return Map.copyOf(result);
+        chips.sort(Comparator
+                .comparing((ChestChip chip) -> !chip.proximate())
+                .thenComparing(ChestChip::label, String.CASE_INSENSITIVE_ORDER));
+        return List.copyOf(chips);
     }
 
     private static String autoLabel(ClaimedChest chest) {
@@ -857,16 +723,8 @@ public record SlotWorkspaceViewModel(
         return SlotWorkspaceAtlasLayout.island(islands, islandId);
     }
 
-    private static List<AtlasItemAccumulator> groupedAtlasEntries(
-            InventoryAuthoritySnapshot authority,
-            VisualHomeMap visualHomeMap
-    ) {
+    private static List<AtlasItemAccumulator> groupedAtlasEntries(InventoryAuthoritySnapshot authority) {
         LinkedHashMap<ItemIdentity, AtlasItemAccumulator> byIdentity = new LinkedHashMap<>();
-        // Walk every CARRIED-pane source — includes carried backpacks that
-        // the Sophisticated Backpacks provider contributes via
-        // PlayerInventoryExtension.additionalSources(). Previously we only
-        // looped a hardcoded list of player lanes, which is why backpack
-        // contents never appeared in the atlas / triage.
         for (InventorySourceDescriptor source : authority.carriedSources()) {
             for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
                 if (entry == null || !entry.present()) {
@@ -876,17 +734,6 @@ public record SlotWorkspaceViewModel(
                 byIdentity.computeIfAbsent(identity, ignored -> new AtlasItemAccumulator(identity, entry)).add(entry);
             }
         }
-        if (visualHomeMap != null) {
-            for (ItemIdentity identity : visualHomeMap.assignments().keySet()) {
-                if (identity == null || byIdentity.containsKey(identity)) {
-                    continue;
-                }
-                AtlasItemAccumulator ghost = ghostAccumulator(identity);
-                if (ghost != null) {
-                    byIdentity.put(identity, ghost);
-                }
-            }
-        }
         return new ArrayList<>(byIdentity.values());
     }
 
@@ -894,20 +741,6 @@ public record SlotWorkspaceViewModel(
 
     public static void setGhostStackResolver(java.util.function.Function<String, ItemStack> resolver) {
         ghostStackResolver = resolver == null ? id -> ItemStack.EMPTY : resolver;
-    }
-
-    private static AtlasItemAccumulator ghostAccumulator(ItemIdentity identity) {
-        ItemStack stack = ItemStack.EMPTY;
-        String name = identity.itemId();
-        try {
-            ItemStack resolved = ghostStackResolver.apply(identity.itemId());
-            if (resolved != null && !resolved.isEmpty()) {
-                stack = resolved;
-                name = resolved.getHoverName().getString();
-            }
-        } catch (RuntimeException | LinkageError ignored) {
-        }
-        return new AtlasItemAccumulator(identity, stack, name);
     }
 
     private static Map<ItemIdentity, Integer> recentRankByIdentity(RecentView recentView) {
@@ -984,18 +817,12 @@ public record SlotWorkspaceViewModel(
         }
     }
 
-    /**
-     * Server-projected island chrome. Position is authored by the player
-     * and ships over the wire; size is computed client-side by
-     * {@code AtlasLayout} from the packer's auto-square wrap target. See
-     * {@code docs/decisions/0005-relevance-score-and-layout-locality.md}.
-     */
     public record AtlasIsland(
             String islandId,
             String label,
             VisualAtlasIslandKind kind,
-            int x,
-            int y,
+            double x,
+            double y,
             int color,
             int itemCount,
             int carriedCount
@@ -1012,8 +839,8 @@ public record SlotWorkspaceViewModel(
                 String islandId,
                 String label,
                 VisualAtlasIslandKind kind,
-                int x,
-                int y,
+                double x,
+                double y,
                 int color,
                 int itemCount
         ) {
@@ -1026,12 +853,12 @@ public record SlotWorkspaceViewModel(
     }
 
     /**
-     * Per-identity atlas projection. Position and cell size are
-     * computed client-side by
-     * {@code dev.imagio.slot.atlas.lod.AtlasLayout}; this record
-     * carries only the authoritative + presentation-input data the
-     * client needs to run scoring and layout. See
-     * {@code docs/decisions/0005-relevance-score-and-layout-locality.md}.
+     * Per-identity atlas projection.
+     *
+     * <p>{@code ghost} = the player isn't carrying this; the card represents
+     * stock present in some proximate chest. Renders faded with
+     * {@code proximateCount} as the count badge. Hover/zoom reveals
+     * per-chest breakdown via {@code presence}.
      */
     public record AtlasItem(
             IdentityRef identity,
@@ -1043,6 +870,8 @@ public record SlotWorkspaceViewModel(
             boolean recent,
             boolean playerPlaced,
             boolean carried,
+            boolean ghost,
+            int proximateCount,
             List<ChipSuggestion> chipSuggestions,
             List<ChestPresenceEntry> presence,
             boolean isCarriedContainer,
@@ -1056,12 +885,16 @@ public record SlotWorkspaceViewModel(
             totalCount = Math.max(0, totalCount);
             firstSlotIndex = Math.max(0, firstSlotIndex);
             islandId = islandId == null ? "" : islandId;
+            proximateCount = Math.max(0, proximateCount);
             chipSuggestions = chipSuggestions == null ? List.of() : List.copyOf(chipSuggestions);
             presence = presence == null ? List.of() : List.copyOf(presence);
             containerFreeSlotCount = isCarriedContainer ? Math.max(0, containerFreeSlotCount) : 0;
             containerSlotCapacity = isCarriedContainer ? Math.max(containerFreeSlotCount, containerSlotCapacity) : 0;
         }
 
+        /**
+         * Convenience for tests — minimal AtlasItem without ghost/presence/container info.
+         */
         public AtlasItem(
                 IdentityRef identity,
                 ItemStack displayStack,
@@ -1075,193 +908,50 @@ public record SlotWorkspaceViewModel(
                 List<ChipSuggestion> chipSuggestions
         ) {
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
-                    recent, playerPlaced, carried, chipSuggestions, List.of(), false, 0, 0);
-        }
-
-        public AtlasItem(
-                IdentityRef identity,
-                ItemStack displayStack,
-                String name,
-                int totalCount,
-                int firstSlotIndex,
-                String islandId,
-                boolean recent,
-                boolean playerPlaced,
-                boolean carried,
-                List<ChipSuggestion> chipSuggestions,
-                List<ChestPresenceEntry> presence
-        ) {
-            this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
-                    recent, playerPlaced, carried, chipSuggestions, presence, false, 0, 0);
-        }
-
-        public AtlasItem withPresence(List<ChestPresenceEntry> entries) {
-            return new AtlasItem(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
-                    recent, playerPlaced, carried, chipSuggestions, entries, isCarriedContainer,
-                    containerFreeSlotCount, containerSlotCapacity);
+                    recent, playerPlaced, carried, false, 0, chipSuggestions, List.of(),
+                    false, 0, 0);
         }
     }
 
+    /** Per-chest breakdown of where an identity lives. Hover/zoom drill-down. */
     public record ChestPresenceEntry(
             String storageId,
             String label,
-            int count,
-            String areaId,
-            String areaLabel
+            int count
     ) {
         public ChestPresenceEntry {
             storageId = storageId == null ? "" : storageId;
             label = label == null ? "" : label;
             count = Math.max(0, count);
-            areaId = areaId == null ? "" : areaId;
-            areaLabel = areaLabel == null ? "" : areaLabel;
-        }
-
-        public ChestPresenceEntry(String storageId, String label, int count) {
-            this(storageId, label, count, "", "");
         }
     }
 
-    public record ClaimedChestTile(
+    /**
+     * Sidebar chip per claimed chest. Replaces the old chest-tile-as-primary
+     * surface; the actual chest grid is a detail surface, not rendered in
+     * the workspace by default.
+     */
+    public record ChestChip(
             String storageId,
             String dimensionId,
-            int atlasX,
-            int atlasY,
-            int width,
-            int height,
             String label,
             int anchorCount,
-            int slotCount,
-            List<ItemStack> contents,
-            List<Integer> contentSlotIndices,
+            int slotCapacity,
+            int filledSlots,
             boolean proximate,
-            List<String> linkedIslandIds,
-            String areaId,
+            int affinityIdentities,
             int worldX,
             int worldY,
             int worldZ
     ) {
-        public ClaimedChestTile {
+        public ChestChip {
             storageId = storageId == null ? "" : storageId;
             dimensionId = dimensionId == null ? "" : dimensionId;
-            width = Math.max(1, width);
-            height = Math.max(1, height);
             label = label == null ? "" : label;
             anchorCount = Math.max(1, anchorCount);
-            slotCount = Math.max(0, slotCount);
-            areaId = areaId == null || areaId.isBlank()
-                    ? dev.imagio.slot.workflow.domain.StorageAreaMap.DEFAULT_AREA_ID.toString()
-                    : areaId;
-            List<ItemStack> sourceContents = contents == null ? List.of() : contents;
-            List<Integer> sourceIndices = contentSlotIndices == null ? List.of() : contentSlotIndices;
-            ArrayList<ItemStack> copiedContents = new ArrayList<>(sourceContents.size());
-            ArrayList<Integer> copiedIndices = new ArrayList<>(sourceContents.size());
-            for (int i = 0; i < sourceContents.size(); i++) {
-                ItemStack stack = sourceContents.get(i);
-                if (stack == null || stack.isEmpty()) {
-                    continue;
-                }
-                copiedContents.add(stack.copy());
-                int slotIdx = i < sourceIndices.size() && sourceIndices.get(i) != null ? sourceIndices.get(i) : i;
-                copiedIndices.add(Math.max(0, slotIdx));
-            }
-            contents = List.copyOf(copiedContents);
-            contentSlotIndices = List.copyOf(copiedIndices);
-            if (linkedIslandIds == null) {
-                linkedIslandIds = List.of();
-            } else {
-                LinkedHashSet<String> filtered = new LinkedHashSet<>();
-                for (String islandId : linkedIslandIds) {
-                    if (islandId != null && !islandId.isBlank()) {
-                        filtered.add(islandId);
-                    }
-                }
-                linkedIslandIds = List.copyOf(filtered);
-            }
-        }
-
-        public ClaimedChestTile(
-                String storageId,
-                String dimensionId,
-                int atlasX,
-                int atlasY,
-                int width,
-                int height,
-                String label,
-                int anchorCount,
-                int slotCount,
-                List<ItemStack> contents,
-                boolean proximate,
-                List<String> linkedIslandIds
-        ) {
-            this(storageId, dimensionId, atlasX, atlasY, width, height, label, anchorCount,
-                    slotCount, contents, List.of(), proximate, linkedIslandIds, null, 0, 0, 0);
-        }
-
-        public ClaimedChestTile(
-                String storageId,
-                String dimensionId,
-                int atlasX,
-                int atlasY,
-                int width,
-                int height,
-                String label,
-                int anchorCount,
-                int slotCount,
-                List<ItemStack> contents,
-                List<Integer> contentSlotIndices,
-                boolean proximate,
-                List<String> linkedIslandIds
-        ) {
-            this(storageId, dimensionId, atlasX, atlasY, width, height, label, anchorCount,
-                    slotCount, contents, contentSlotIndices, proximate, linkedIslandIds, null, 0, 0, 0);
-        }
-
-        public ClaimedChestTile(
-                String storageId,
-                String dimensionId,
-                int atlasX,
-                int atlasY,
-                int width,
-                int height,
-                String label,
-                int anchorCount,
-                int slotCount,
-                List<ItemStack> contents,
-                List<Integer> contentSlotIndices,
-                boolean proximate,
-                List<String> linkedIslandIds,
-                String areaId
-        ) {
-            this(storageId, dimensionId, atlasX, atlasY, width, height, label, anchorCount,
-                    slotCount, contents, contentSlotIndices, proximate, linkedIslandIds, areaId, 0, 0, 0);
-        }
-    }
-
-    public record StorageAreaSnapshot(
-            String areaId,
-            String label,
-            int color,
-            int atlasX,
-            int atlasY,
-            int displayOrder,
-            int chestCount,
-            int totalSlotCount,
-            boolean proximate,
-            boolean expanded,
-            List<ClaimedChestTile> chestTiles
-    ) {
-        public StorageAreaSnapshot {
-            areaId = areaId == null ? "" : areaId;
-            label = label == null ? "" : label;
-            displayOrder = Math.max(0, displayOrder);
-            chestCount = Math.max(0, chestCount);
-            totalSlotCount = Math.max(0, totalSlotCount);
-            chestTiles = chestTiles == null ? List.of() : List.copyOf(chestTiles);
-        }
-
-        public boolean shouldExpand() {
-            return proximate || expanded;
+            slotCapacity = Math.max(0, slotCapacity);
+            filledSlots = Math.max(0, Math.min(filledSlots, slotCapacity));
+            affinityIdentities = Math.max(0, affinityIdentities);
         }
     }
 
@@ -1434,13 +1124,17 @@ public record SlotWorkspaceViewModel(
             this.carried = true;
         }
 
-        private AtlasItemAccumulator(ItemIdentity identity, ItemStack ghostStack, String ghostName) {
+        private AtlasItemAccumulator(ItemIdentity identity, ItemStack displayStack, int totalCount) {
             this.identity = identity;
-            this.displayStack = ghostStack;
-            this.name = ghostName;
-            this.firstSlotIndex = Integer.MAX_VALUE;
-            this.totalCount = 0;
+            this.displayStack = displayStack.copy();
+            this.name = displayStack.getHoverName().getString();
+            this.firstSlotIndex = 0;
+            this.totalCount = Math.max(0, totalCount);
             this.carried = false;
+        }
+
+        private static AtlasItemAccumulator ghost(ItemIdentity identity, ItemStack displayStack, int totalCount) {
+            return new AtlasItemAccumulator(identity, displayStack, totalCount);
         }
 
         private void add(InventoryEntrySnapshot entry) {
@@ -1473,6 +1167,91 @@ public record SlotWorkspaceViewModel(
 
         private boolean carried() {
             return carried;
+        }
+    }
+
+    /**
+     * Walks proximate-chest contents once and builds (a) per-identity total
+     * counts, (b) per-identity presence breakdown by chest, (c) display
+     * stack per identity. Drives ghost-card rendering.
+     */
+    private record ProximateGhostProjection(
+            Map<ItemIdentity, Integer> totalsByIdentity,
+            Map<ItemIdentity, List<ChestPresenceEntry>> presenceByIdentity,
+            Map<ItemIdentity, ItemStack> displayStackByIdentity
+    ) {
+        static ProximateGhostProjection build(
+                ClaimedChestMap map,
+                Function<String, ChestContentsSnapshot> chestContentsResolver,
+                Set<String> proximate,
+                VisualHomeMap visualHomeMap
+        ) {
+            if (map == null || map.chests().isEmpty() || chestContentsResolver == null
+                    || proximate == null || proximate.isEmpty()) {
+                return new ProximateGhostProjection(Map.of(), Map.of(), Map.of());
+            }
+            LinkedHashMap<ItemIdentity, Integer> totals = new LinkedHashMap<>();
+            LinkedHashMap<ItemIdentity, LinkedHashMap<UUID, int[]>> perChest = new LinkedHashMap<>();
+            LinkedHashMap<ItemIdentity, ItemStack> displayByIdentity = new LinkedHashMap<>();
+            LinkedHashMap<UUID, String> labelByStorage = new LinkedHashMap<>();
+            for (ClaimedChest chest : map.chests()) {
+                if (chest == null) {
+                    continue;
+                }
+                String storageId = chest.storageId().toString();
+                if (!proximate.contains(storageId)) {
+                    continue;
+                }
+                String label = chest.label() == null || chest.label().isBlank()
+                        ? autoLabelFor(chest)
+                        : chest.label();
+                labelByStorage.put(chest.storageId(), label);
+                ChestContentsSnapshot snapshot = chestContentsResolver.apply(storageId);
+                if (snapshot == null) {
+                    continue;
+                }
+                for (ItemStack stack : snapshot.contents()) {
+                    if (stack == null || stack.isEmpty()) {
+                        continue;
+                    }
+                    ItemIdentity identity = ItemIdentityMatcher.create(stack);
+                    totals.merge(identity, stack.getCount(), Integer::sum);
+                    perChest
+                            .computeIfAbsent(identity, ignored -> new LinkedHashMap<>())
+                            .computeIfAbsent(chest.storageId(), ignored -> new int[]{0})[0] += stack.getCount();
+                    displayByIdentity.putIfAbsent(identity, stack.copy());
+                }
+            }
+            LinkedHashMap<ItemIdentity, List<ChestPresenceEntry>> presence = new LinkedHashMap<>();
+            for (Map.Entry<ItemIdentity, LinkedHashMap<UUID, int[]>> entry : perChest.entrySet()) {
+                ArrayList<ChestPresenceEntry> entries = new ArrayList<>(entry.getValue().size());
+                for (Map.Entry<UUID, int[]> chestEntry : entry.getValue().entrySet()) {
+                    int count = chestEntry.getValue()[0];
+                    if (count <= 0) {
+                        continue;
+                    }
+                    String label = labelByStorage.getOrDefault(chestEntry.getKey(), chestEntry.getKey().toString());
+                    entries.add(new ChestPresenceEntry(chestEntry.getKey().toString(), label, count));
+                }
+                entries.sort(Comparator.<ChestPresenceEntry>comparingInt(ChestPresenceEntry::count).reversed()
+                        .thenComparing(ChestPresenceEntry::label, String.CASE_INSENSITIVE_ORDER));
+                presence.put(entry.getKey(), List.copyOf(entries));
+            }
+            return new ProximateGhostProjection(
+                    Map.copyOf(totals),
+                    Map.copyOf(presence),
+                    Map.copyOf(displayByIdentity)
+            );
+        }
+
+        private static String autoLabelFor(ClaimedChest chest) {
+            String hex = chest.storageId().toString();
+            int dash = hex.indexOf('-');
+            String shortId = dash < 0 ? hex : hex.substring(0, dash);
+            if (shortId.length() > 4) {
+                shortId = shortId.substring(shortId.length() - 4);
+            }
+            return "Chest #" + shortId;
         }
     }
 }

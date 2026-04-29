@@ -14,10 +14,9 @@ final class WorkspaceRpcDispatcher {
     RPCEmitter hotbarToAtlasEmitter;
     RPCEmitter moveIslandEmitter;
     RPCEmitter moveChestEmitter;
-    RPCEmitter moveChestToAreaEmitter;
     RPCEmitter relabelChestEmitter;
-    RPCEmitter linkChestEmitter;
-    RPCEmitter unlinkChestEmitter;
+    RPCEmitter forgetChestEmitter;
+    RPCEmitter forgetItemAffinityEmitter;
     RPCEmitter depositEmitter;
     RPCEmitter takeAllEmitter;
     RPCEmitter renameIslandEmitter;
@@ -46,6 +45,8 @@ final class WorkspaceRpcDispatcher {
     RPCEmitter depositHotbarToChestEmitter;
     RPCEmitter takeFromChestEmitter;
     RPCEmitter takeOneFromChestEmitter;
+    RPCEmitter takeOneByIdentityEmitter;
+    RPCEmitter takeStackByIdentityEmitter;
     RPCEmitter assignHomeToHotbarOnlyEmitter;
     RPCEmitter assignIdentityToHotbarSlotEmitter;
     RPCEmitter depositHomeToLinkedChestEmitter;
@@ -90,8 +91,8 @@ final class WorkspaceRpcDispatcher {
         ));
         moveIslandEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
                 String.class,
-                Integer.class,
-                Integer.class,
+                Double.class,
+                Double.class,
                 host.session::moveIsland
         ));
         moveChestEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
@@ -100,25 +101,21 @@ final class WorkspaceRpcDispatcher {
                 Integer.class,
                 host.session::moveChest
         ));
-        moveChestToAreaEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
-                String.class,
-                String.class,
-                host.session::moveChestToArea
-        ));
         relabelChestEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
                 String.class,
                 String.class,
                 host.session::relabelChest
         ));
-        linkChestEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        forgetChestEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
                 String.class,
-                String.class,
-                host.session::linkIslandToChest
+                host.session::forgetChest
         ));
-        unlinkChestEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        forgetItemAffinityEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
                 String.class,
                 String.class,
-                host.session::unlinkIslandFromChest
+                String.class,
+                String.class,
+                host.session::forgetItemAffinity
         ));
         depositEmitter = host.root.addRPCEvent(RPCEventBuilder.simple((Runnable) host.session::deposit));
         takeAllEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
@@ -258,6 +255,18 @@ final class WorkspaceRpcDispatcher {
                 String.class,
                 Integer.class,
                 host.session::takeOneFromChest
+        ));
+        takeOneByIdentityEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                String.class,
+                String.class,
+                String.class,
+                host.session::takeOneByIdentity
+        ));
+        takeStackByIdentityEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                String.class,
+                String.class,
+                String.class,
+                host.session::takeStackByIdentity
         ));
         assignHomeToHotbarOnlyEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
                 String.class,
@@ -608,6 +617,30 @@ final class WorkspaceRpcDispatcher {
         }
     }
 
+    void sendTakeOneByIdentity(SlotWorkspaceViewModel.IdentityRef identity) {
+        if (takeOneByIdentityEmitter == null || identity == null) {
+            return;
+        }
+        boolean sent = takeOneByIdentityEmitter.send(
+                identity.itemId(), identity.comparisonMode(), identity.componentFingerprint());
+        if (!sent) {
+            host.localStatus.set("take unavailable");
+            host.rebuild();
+        }
+    }
+
+    void sendTakeStackByIdentity(SlotWorkspaceViewModel.IdentityRef identity) {
+        if (takeStackByIdentityEmitter == null || identity == null) {
+            return;
+        }
+        boolean sent = takeStackByIdentityEmitter.send(
+                identity.itemId(), identity.comparisonMode(), identity.componentFingerprint());
+        if (!sent) {
+            host.localStatus.set("take unavailable");
+            host.rebuild();
+        }
+    }
+
     void sendMoveHotbarToAtlas(int hotbarIndex, String islandId, Integer ordinal) {
         boolean sent = hotbarToAtlasEmitter != null && hotbarToAtlasEmitter.send(
                 hotbarIndex,
@@ -620,7 +653,7 @@ final class WorkspaceRpcDispatcher {
         host.rebuild();
     }
 
-    void sendMoveIsland(String islandId, int worldX, int worldY) {
+    void sendMoveIsland(String islandId, double worldX, double worldY) {
         if (islandId == null || islandId.isBlank()) {
             host.localStatus.set("invalid island move");
             host.rebuild();
@@ -650,34 +683,26 @@ final class WorkspaceRpcDispatcher {
         host.rebuild();
     }
 
-    void sendLinkChest(String islandId, String storageId) {
-        if (islandId == null || islandId.isBlank() || storageId == null || storageId.isBlank()) {
-            host.localStatus.set("invalid chest link");
-            host.rebuild();
+    void sendForgetChest(String storageId) {
+        if (storageId == null || storageId.isBlank()) {
             return;
         }
-        boolean sent = linkChestEmitter != null && linkChestEmitter.send(islandId, storageId);
-        host.localStatus.set(sent ? "chest link requested" : "chest link unavailable");
+        boolean sent = forgetChestEmitter != null && forgetChestEmitter.send(storageId);
+        host.localStatus.set(sent ? "chest forgotten" : "forget unavailable");
         host.rebuild();
     }
 
-    void sendUnlinkChest(String islandId, String storageId) {
-        if (islandId == null || islandId.isBlank() || storageId == null || storageId.isBlank()) {
-            host.localStatus.set("invalid chest unlink");
-            host.rebuild();
+    void sendForgetItemAffinity(String storageId, SlotWorkspaceViewModel.IdentityRef identity) {
+        if (storageId == null || storageId.isBlank() || identity == null) {
             return;
         }
-        boolean sent = unlinkChestEmitter != null && unlinkChestEmitter.send(islandId, storageId);
-        host.localStatus.set(sent ? "chest unlink requested" : "chest unlink unavailable");
-        host.rebuild();
-    }
-
-    void sendMoveChestToArea(String storageId, String areaId) {
-        if (storageId == null || storageId.isBlank() || areaId == null || areaId.isBlank()) {
-            return;
-        }
-        boolean sent = moveChestToAreaEmitter != null && moveChestToAreaEmitter.send(storageId, areaId);
-        host.localStatus.set(sent ? "chest reassigned" : "reassign unavailable");
+        boolean sent = forgetItemAffinityEmitter != null && forgetItemAffinityEmitter.send(
+                storageId,
+                identity.itemId(),
+                identity.comparisonMode(),
+                identity.componentFingerprint()
+        );
+        host.localStatus.set(sent ? "affinity forgotten" : "forget unavailable");
         host.rebuild();
     }
 
