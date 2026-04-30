@@ -11,7 +11,7 @@ places them into existing islands or creates new ones. Placed homes become
 authoritative visual placement and are not silently moved.
 
 This is the living concept document. For the engineering slices, see
-[../plans/atlas-prototype.md](../plans/atlas-prototype.md). For how the
+[../plans/done/atlas-prototype.md](../plans/done/atlas-prototype.md). For how the
 atlas manages density at modded scale via per-item relevance scoring, see
 [relevance-lod.md](relevance-lod.md). For how atlas homes interact with
 task-oriented groupings (Kits), see [kits.md](kits.md). For how external
@@ -95,7 +95,7 @@ icons:
 
 Unhomed items do not live on the atlas — they live in the docked
 **Triage panel** (see
-[../plans/core-workflow-ux.md § Slice 1](../plans/core-workflow-ux.md)).
+[../plans/done/core-workflow-ux.md § Slice 1](../plans/done/core-workflow-ux.md)).
 The panel is a fixed-edge overlay optimized for sequential processing of
 arrivals, not an atlas region. Earlier drafts of this doc placed Triage as
 an "intake shore" island; that approach lost to a list-shaped panel
@@ -294,7 +294,7 @@ Lenses change emphasis, not the map.
 
 New unhomed items appear in the docked **Triage panel** (a fixed-edge
 overlay, see
-[../plans/core-workflow-ux.md § Slice 1](../plans/core-workflow-ux.md)).
+[../plans/done/core-workflow-ux.md § Slice 1](../plans/done/core-workflow-ux.md)).
 This is not a failure state — it's the normal place where SLOT asks the
 player what an item means in their organization. The panel is shaped as
 a list, not a grid, because triage is one-item-at-a-time processing and
@@ -488,11 +488,17 @@ SLOT supports several map kinds, all built from the same home concept:
 
 ## External Storage Memory
 
-For the current island-to-chest linking model, proximity-gated deposit and
-withdraw flows, and world-side wayfinding, see [storage.md](storage.md). The
-direction below is the earlier "physical source memory" framing; the storage
-design has since concretized around claimed chests, links, and Kit holdouts.
-This section remains for background on the underlying principles.
+The shipped storage model is **learned-storage** — chest chips in the
+left-column flex panel, auto-claim on first deposit, affinity-based
+deposit routing, derived clusters via `ChestClusterMap`, ghost atlas
+cards for proximate chest contents, and chest-locator + `+N stored`
+badge for non-proximate stocks under search. Canonical design doc:
+[../plans/learned-storage.md](../plans/learned-storage.md).
+
+Earlier exploratory directions in this section (physical-source
+memory, find-and-restock trails, link-based storage in
+[storage.md](storage.md)) are preserved as historical context — they
+informed the principles but are not the implemented design.
 
 The goal is not "every remembered chest is always drawn on the atlas."
 That implies terminal-like remote access and misleads players.
@@ -542,7 +548,7 @@ autocrafting.
 ## Data Model (Conceptual)
 
 Not an implementation commitment — see
-[../plans/atlas-prototype.md](../plans/atlas-prototype.md) for concrete
+[../plans/done/atlas-prototype.md](../plans/done/atlas-prototype.md) for concrete
 types.
 
 - **VisualHomeMap** — named map: id, kind (global/category/task/

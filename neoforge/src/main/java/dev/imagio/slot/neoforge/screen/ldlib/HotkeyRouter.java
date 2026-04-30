@@ -26,6 +26,7 @@ final class HotkeyRouter {
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCameraHistoryKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCycleKitPageKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleUndoRedoKey, true);
+        host.root.addEventListener(UIEvents.KEY_DOWN, this::handleOpenVanillaKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleRelevanceDebugOverlayKey, true);
         host.root.addEventListener(UIEvents.MOUSE_DOWN, this::handleCameraHistoryMouse, true);
         host.root.addEventListener(UIEvents.CHAR_TYPED, event -> {
@@ -174,6 +175,38 @@ final class HotkeyRouter {
             event.stopPropagation();
             host.rpc.sendRedo();
         }
+    }
+
+    /**
+     * In-screen handler for the "open vanilla inventory" binding. The
+     * {@code consumeClick} loop in {@code SlotNeoForgeClient.onClientTick}
+     * only fires when no screen is open; while the SLOT atlas is up,
+     * keyboard events are routed to the screen first, so we re-check the
+     * binding here and bail out to vanilla on match.
+     *
+     * <p>Context-sensitive: when a loot chest panel is showing (i.e.
+     * the player walked up to / right-clicked an unclaimed chest and
+     * landed in the SLOT workspace), the binding opens the vanilla
+     * chest GUI for that chest instead of the player inventory. That's
+     * the only path that lets the player deposit into and claim a
+     * fresh chest. Falls back to the player inventory otherwise.
+     */
+    void handleOpenVanillaKey(UIEvent event) {
+        if (isTextInputFocused() || host.searchController.modalActive()) {
+            return;
+        }
+        if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings
+                .matchesOpenVanilla(event.keyCode, event.scanCode)) {
+            return;
+        }
+        event.stopPropagation();
+        dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel.LootChestPanel lootPanel
+                = host.viewModel.lootChestPanel();
+        if (lootPanel.isPresent()) {
+            host.rpc.sendLootChestOpenVanilla(lootPanel);
+            return;
+        }
+        dev.imagio.slot.neoforge.client.screen.SlotWorkspaceMountController.openVanillaInventory();
     }
 
     void handleRelevanceDebugOverlayKey(UIEvent event) {

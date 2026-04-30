@@ -15,7 +15,7 @@ This plan extends the atlas UI that landed under
 [atlas-prototype.md](atlas-prototype.md) and the hover-trail vocabulary
 from core-workflow-ux Slice 3 (rotated `Transform2D` panels).
 The storage prototype and core-workflow UX pass are complete
-(see [storage-prototype.md](storage-prototype.md) and
+(see [storage-prototype.md](../retired/storage-prototype.md) and
 [core-workflow-ux.md](core-workflow-ux.md)); nothing in this plan
 touches RPCs, the intent router, or domain state.
 
@@ -46,7 +46,7 @@ Goals:
 Non-goals:
 
 - a general action/domain undo stack (out of scope — see
-  [current.md](current.md) "Later Feature Tracks"; camera history is
+  [current.md](../current.md) "Later Feature Tracks"; camera history is
   strictly screen posture per the `MapViewportState` rule in atlas.md)
 - moving any fixed overlay (Belt, Triage panel, Kit Rack, context menu,
   link popover) — the camera moves, the chrome does not

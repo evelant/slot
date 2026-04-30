@@ -1,6 +1,18 @@
 # Facet-Driven Suggestions — Implementation Plan
 
-Last updated: 2026-04-26
+Last updated: 2026-04-30 (active track for next session, prereqs cleared)
+
+> **Pre-flight (2026-04-30):** the learned-storage bug pass closed
+> 2026-04-30 (every claim-flow / chip / panel / kit bug shipped — see
+> [current.md](current.md) recap). The FacetIndex-driven populate path
+> playtested cleanly on the same day, so the data on disk is producing
+> usable triage chips today and we're ready to enrich them. **Start
+> here:** Phase 1 of this doc — extend `FacetIndex.ItemFacets` + the
+> load parser. Code is concentrated in `FacetIndex.java` and
+> `FacetIndexTest.java`; nothing else needs to change to validate the
+> shape. Once Phase 1 lands, run a quick subsystem histogram across
+> the bundled per-mod files (described in *Notes for the next session*
+> below) before deciding the Phase 2 threshold.
 
 ## Why
 

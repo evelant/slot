@@ -76,13 +76,31 @@ final class ContextMenuBuilder {
         host.rebuild();
     }
 
+    void openContextMenuForChest(String storageId, float screenX, float screenY) {
+        if (storageId == null || storageId.isBlank()) {
+            return;
+        }
+        host.contextMenuChestStorageId = storageId;
+        host.contextMenuAtlasIdentity = null;
+        host.contextMenuHotbarIndex = -1;
+        host.contextMenuKitId = null;
+        host.renamingChestStorageId = null;
+        host.renameChestDraft = "";
+        host.contextMenuScreenX = screenX;
+        host.contextMenuScreenY = screenY;
+        host.rebuild();
+    }
+
     void closeContextMenu() {
         host.contextMenuAtlasIdentity = null;
         host.contextMenuHotbarIndex = -1;
         host.contextMenuKitId = null;
+        host.contextMenuChestStorageId = null;
         host.renamingKitId = null;
         host.renameKitDraft = "";
         host.confirmDeleteKitId = null;
+        host.renamingChestStorageId = null;
+        host.renameChestDraft = "";
         host.rebuild();
     }
 
@@ -110,6 +128,26 @@ final class ContextMenuBuilder {
                 return null;
             }
             return buildKitContextMenu(card);
+        }
+        if (host.contextMenuChestStorageId != null) {
+            SlotWorkspaceViewModel.ChestChip chip = chestChipById(host.contextMenuChestStorageId);
+            if (chip == null) {
+                closeContextMenu();
+                return null;
+            }
+            return buildChestContextMenu(chip);
+        }
+        return null;
+    }
+
+    private SlotWorkspaceViewModel.ChestChip chestChipById(String storageId) {
+        if (storageId == null || storageId.isBlank()) {
+            return null;
+        }
+        for (SlotWorkspaceViewModel.ChestChip chip : host.viewModel.chestChips()) {
+            if (storageId.equals(chip.storageId())) {
+                return chip;
+            }
         }
         return null;
     }
@@ -273,6 +311,105 @@ final class ContextMenuBuilder {
                 .left(0).right(0).top(0).bottom(0));
         wrapper.addChildren(catcher, menu);
         return wrapper;
+    }
+
+    UIElement buildChestContextMenu(SlotWorkspaceViewModel.ChestChip chip) {
+        UIElement catcher = contextMenuCatcher(this::closeContextMenu);
+        UIElement menu = panel(GLASS).layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .width(180)
+                .paddingAll(6)
+                .gapAll(4)
+                .flexDirection(FlexDirection.COLUMN));
+        int approxHeight = chip.storageId().equals(host.renamingChestStorageId) ? 70 : 64;
+        anchorPopover(menu, host.contextMenuScreenX, host.contextMenuScreenY, 180, approxHeight);
+        menu.style(style -> style.zIndex(22));
+        menu.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
+
+        String headerText = chip.label().isBlank() ? "Chest" : chip.label();
+        menu.addChild(label(shorten(headerText, 22), ACCENT)
+                .layout(layout -> layout.widthPercent(100).height(12)));
+
+        if (chip.storageId().equals(host.renamingChestStorageId)) {
+            appendChestRenameBody(menu, chip);
+        } else {
+            menu.addChild(menuButton("Rename…", true, null, () -> {
+                host.renamingChestStorageId = chip.storageId();
+                host.renameChestDraft = chip.label();
+                host.rebuild();
+            }));
+            menu.addChild(menuButton("Forget chest", true, null, () -> {
+                host.rpc.sendForgetChest(chip.storageId());
+                host.localStatus.set("forgot " + (chip.label().isBlank() ? "chest" : chip.label()));
+                closeContextMenu();
+            }));
+        }
+
+        UIElement wrapper = new UIElement().layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .left(0).right(0).top(0).bottom(0));
+        wrapper.addChildren(catcher, menu);
+        return wrapper;
+    }
+
+    void appendChestRenameBody(UIElement menu, SlotWorkspaceViewModel.ChestChip chip) {
+        TextField nameInput = new TextField();
+        nameInput.setAnyString();
+        nameInput.setText(host.renameChestDraft, false);
+        nameInput.layout(layout -> layout.widthPercent(100).height(18));
+        nameInput.style(style -> style.backgroundTexture(rect(0xC60D1318)));
+        nameInput.textFieldStyle(style -> style
+                .font(FONT_UI)
+                .placeholder(Component.literal("Chest name"))
+                .textColor(TEXT)
+                .cursorColor(ACCENT)
+                .textShadow(false)
+                .fontSize(9));
+        nameInput.setTextResponder(value -> host.renameChestDraft = value == null ? "" : value);
+        Runnable commit = () -> {
+            String trimmed = host.renameChestDraft == null ? "" : host.renameChestDraft.trim();
+            if (trimmed.isBlank() || trimmed.equals(chip.label())) {
+                closeContextMenu();
+                return;
+            }
+            if (host.rpc.relabelChestEmitter != null) {
+                host.rpc.relabelChestEmitter.send(chip.storageId(), trimmed);
+            }
+            closeContextMenu();
+        };
+        nameInput.addEventListener(UIEvents.KEY_DOWN, event -> {
+            if (event.keyCode == GLFW.GLFW_KEY_ENTER || event.keyCode == GLFW.GLFW_KEY_KP_ENTER) {
+                commit.run();
+                event.stopPropagation();
+            } else if (event.keyCode == GLFW.GLFW_KEY_ESCAPE) {
+                closeContextMenu();
+                event.stopPropagation();
+            }
+        });
+        menu.addChild(nameInput);
+        UIElement row = new UIElement().layout(layout -> layout
+                .widthPercent(100)
+                .height(14)
+                .gapAll(4)
+                .flexDirection(FlexDirection.ROW));
+        Button save = button("Save", true, ACCENT);
+        save.layout(layout -> layout.flex(1).height(14));
+        save.textStyle(style -> style.textColor(TEXT).textShadow(false).fontSize(8)
+                .textAlignHorizontal(Horizontal.CENTER).textAlignVertical(Vertical.CENTER));
+        save.setOnClick(event -> {
+            event.stopPropagation();
+            commit.run();
+        });
+        Button cancel = button("Cancel", true, PANEL_ALT);
+        cancel.layout(layout -> layout.flex(1).height(14));
+        cancel.textStyle(style -> style.textColor(MUTED).textShadow(false).fontSize(8)
+                .textAlignHorizontal(Horizontal.CENTER).textAlignVertical(Vertical.CENTER));
+        cancel.setOnClick(event -> {
+            event.stopPropagation();
+            closeContextMenu();
+        });
+        row.addChildren(save, cancel);
+        menu.addChild(row);
     }
 
     void appendKitRenameBody(UIElement menu, SlotWorkspaceViewModel.KitCard card) {

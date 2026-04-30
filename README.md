@@ -59,15 +59,27 @@ Design:
 
 Plans:
 
-- [docs/plans/current.md](docs/plans/current.md) — current near-term
-  engineering sequence.
-- [docs/plans/atlas-prototype.md](docs/plans/atlas-prototype.md) — atlas
-  prototype slices and blocking decisions.
-- [docs/plans/kit-prototype.md](docs/plans/kit-prototype.md) — Kit prototype
-  slices.
-- [docs/plans/item-classification.md](docs/plans/item-classification.md) —
-  classification pipeline + runtime planning doc (long-form). Read
+- [docs/plans/current.md](docs/plans/current.md) — single-page entry:
+  active plan + queue + pointers.
+- [docs/plans/learned-storage.md](docs/plans/learned-storage.md) —
+  canonical design ref for the chest-affinity / chip-stack /
+  proximate-ghost storage system (shipped 2026-04-30; residual polish
+  items listed in `current.md`).
+- [docs/plans/facet-driven-suggestions.md](docs/plans/facet-driven-suggestions.md)
+  — active track: enriching the suggestion engine with the unused per-
+  mod facets (`mod_subsystem`, `activity`, `flavor`, `frequency`, …).
+- [docs/plans/kit-prototype.md](docs/plans/kit-prototype.md) — Kit
+  prototype slices.
+- [docs/plans/item-classification.md](docs/plans/item-classification.md)
+  — classification pipeline + runtime planning doc (long-form). Read
   [the design overview](docs/design/classification/README.md) first.
+- [docs/plans/done/](docs/plans/done/) — shipped plans preserved as
+  design refs (atlas, atlas-navigation, atlas-nudge-layout,
+  core-workflow-ux, storage-panel).
+- [docs/plans/retired/](docs/plans/retired/) — superseded directions
+  (storage-areas: the explicit-named-areas direction; storage-prototype:
+  the chest-link / chest-tile / storage-zone prototype that was
+  wholesale replaced by learned-storage).
 
 Decisions (ADR-style):
 

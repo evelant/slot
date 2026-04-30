@@ -1,24 +1,105 @@
 # Learned Storage — Design Sketch
 
-Last updated: 2026-04-29
+Last updated: 2026-04-30
 
-> **Status:** Phases 1–4 landed in one structural swap (chest tiles → chips,
-> ChestLink/StorageArea deleted, deposit routing reads ChestAffinityMap, and
-> proximate-chest contents project as faded ghost cards on homed islands).
-> Phases 5–8 deferred:
+> **Bug track LANDED 2026-04-30.** All 14 original UX bugs that
+> playtesting surfaced shipped, plus a follow-on batch of 9 bugs from
+> real-instance testing. The recap lives in
+> [current.md](current.md); the active-bug-track section in
+> [../status.md](../status.md) is closed. Highlights from the resolution:
 >
-> - **Auto-claim hook** — explicit claim flow is gone; chests currently
->   only enter the workspace via `/slot test populate`. The vanilla-chest-
->   GUI deposit observer hasn't been wired yet.
-> - **Search-as-find / loot-chest panel / kit ghost markers** — additive
->   layers on top of the new model; not yet built.
-> - **Cluster derivation** — clusters/areas are gone entirely; chest chips
->   are flat (sorted proximate-first). Cluster grouping + rename can be
->   added on top later.
-> - **Affinity decay + accidental-placement guard** — affinity score is
->   monotonically non-decreasing for now; tune from playtest.
-> - **Cross-surface highlight pulses** — only the title-bar overlap-paint
->   is wired (replaces explicit chest-island link).
+> - **Claim flow.** Right-click intercept now matches anything
+>   `ChestStorageAnchors.isClaimable` accepts; V hotkey is
+>   context-sensitive (opens the chest's vanilla GUI when a loot panel
+>   is showing); drag carried items onto the loot panel auto-claims and
+>   deposits in one gesture; forget clears the BE storage-id attachment
+>   so re-claim works.
+> - **Forget gesture.** Replaced with a right-click context menu
+>   carrying `Rename…` and `Forget chest`; forget pushes a reversible
+>   record onto the existing undo stack.
+> - **Layout.** Triage carries a 120 px soft floor; the chest locator
+>   (renamed from "Search matches") docks top-left under the search
+>   input; all four left-column panels now compose into a single
+>   `LeftColumnBuilder` flex column.
+> - **Carried-also-stored indicator.** Bottom-left `+N` badge on
+>   carried + ghost cards under search, summing proximate + elsewhere
+>   stock. The illegible `presence` strip retired.
+> - **Cross-surface hover.** Wired both directions through
+>   `hoveredStorageId` / `hoveredAtlasIdentity`; lookups now consult
+>   both `presence` and `elsewhere` so non-proximate chests visible
+>   under search participate in the highlight pulse.
+>
+> **Status:** All phases landed; all bugs landed. Diagnostic logging
+> in `AtlasNudgeLayout` / `AtlasLayout` is still on for the
+> initial-open overlap fix; remove once a playtest confirms the layout
+> converges cleanly across resolutions / GUI scales.
+>
+> - **Phases 1–4 (structural swap):** chest tiles → chips, ChestLink /
+>   StorageArea deleted, deposit routing reads ChestAffinityMap, and
+>   proximate-chest contents project as faded ghost cards on homed
+>   islands.
+> - **Auto-claim on first deposit:** `ChestDepositObserver` wires
+>   `PlayerInteractEvent.RightClickBlock` + `PlayerContainerEvent.Open/
+>   Close` for vanilla `ChestMenu`. On close with net-positive deltas,
+>   the chest auto-claims (single + double chests, with the storage-id
+>   attachment stamped on both halves) and `recordDeposit` is called per
+>   identity. Net-zero or negative sessions skip — that collapses the
+>   30 s "take-back guard" to "same-session take-back" for the most
+>   common case.
+> - **Loot-chest panel (atlas-side):** when an unclaimed chest is
+>   within proximity (8 blocks), the workspace projects its contents
+>   into `viewModel.lootChestPanel` — one Triage-style row per unique
+>   item identity, with chip suggestions from the same signal-extractor
+>   pipeline as Triage (so unhomed identities get FOOD / TOOLS / etc.
+>   chips). `LootChestPanelBuilder` docks the panel immediately right
+>   of Triage on the atlas. Interactions:
+>   - click chip → home the identity (existing chip-accept flow)
+>   - click row → take that identity into carry (`sendLootChestTakeIdentity`)
+>   - shift+click row → accept the top chip then take, so the item
+>     lands homed instead of in Triage
+>   - "Take all" → for each unhomed identity in the chest, accept
+>     the top chip suggestion server-side first (so the item lands
+>     at its suggested home rather than Triage), then take everything
+>     into carry. Already-homed identities skip the accept step and
+>     route to their existing home through normal deposit flow.
+>
+>   The panel is purely derived from proximity — no payload, no
+>   client-side state holder. `LootChestProximityResolver` walks the
+>   player's loaded chunks, filters for `ChestBlockEntity` lacking a
+>   SLOT storage-id (and no anchor-matched workflow claim), and
+>   returns the closest. The chat-line summary on close stays as a
+>   complementary post-interaction confirmation. The chest still
+>   doesn't auto-claim until the player actually deposits.
+> - **Affinity decay (lazy):** `ChestAffinity#effectiveScore(tick)` and
+>   `ChestAffinityMap#decayed(tick)` apply 1-point-per-in-game-day decay
+>   on read. `bump` decays first then adds, so a long gap correctly
+>   resets old affinity before a new deposit accrues. Routing
+>   (`SlotWorkspaceUiSession.deposit`) consumes the decayed map.
+> - **Cluster derivation:** `ChestClusterMap.derive(chests)` runs
+>   union-find with a 16-block threshold (same dimension only). Chest
+>   chips carry a `clusterId`; the panel renders a cluster header above
+>   each multi-chip cluster. Default labels are stable ordinals
+>   ("Storage Area 1"). Sticky-on-split rename is deferred — cluster ids
+>   are derived from the smallest-uuid chest, so single-chest churn
+>   keeps existing chips stable but cluster-spanning topology changes
+>   may renumber.
+> - **Cross-surface highlight pulses:** chip title bars light when the
+>   player hovers an atlas card / island whose contents overlap the
+>   chest, and atlas item cards light when a chest chip is hovered.
+>   Reuses the existing `hoveredAtlasIdentity` / `hoveredIslandId` /
+>   `hoveredStorageId` plumbing.
+> - **Search-as-find:** `ElsewhereGhostProjection` walks non-proximate
+>   chests and threads `elsewhere: List<ChestPresenceEntry>` onto each
+>   `AtlasItem`, with the chest label suffixed by dimension
+>   ("Storage Area 2 — nether"). Atlas cards render an "elsewhere: …"
+>   strip when a search query is active. Non-proximate-only items
+>   aren't synthesized as new cards yet; they're only surfaced if the
+>   player has carried or homed the identity already (gap noted).
+> - **Kit ghost markers:** when a kit is active, every needed-but-not-
+>   carried identity (page slots + bring list) flags `kitNeeded` on
+>   matching `AtlasItem`s; identities with no existing accumulator get
+>   synthesized ghosts so they show up on their visual home. The atlas
+>   card paints a "★" badge top-left.
 >
 > Two intertwined moves:
 >

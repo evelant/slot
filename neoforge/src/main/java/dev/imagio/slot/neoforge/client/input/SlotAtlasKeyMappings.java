@@ -42,13 +42,14 @@ public final class SlotAtlasKeyMappings {
     );
 
     // Escape hatch to the vanilla inventory screen — works both in a GUI and
-    // in-world. Unbound by default so it doesn't collide with anyone's setup;
-    // discoverable via the "Vanilla" pill in the atlas top-right action cluster.
+    // in-world. V is rare enough in vanilla to be a safe default; rebindable
+    // through the Controls menu, and discoverable via the "Vanilla" pill in
+    // the atlas top-right action cluster.
     private static final KeyMapping OPEN_VANILLA_INVENTORY = new KeyMapping(
             "key.slot.open_vanilla_inventory",
             KeyConflictContext.UNIVERSAL,
             InputConstants.Type.KEYSYM,
-            InputConstants.UNKNOWN.getValue(),
+            GLFW.GLFW_KEY_V,
             CATEGORY
     );
 
@@ -145,6 +146,16 @@ public final class SlotAtlasKeyMappings {
 
     public static boolean matchesRelevanceDebugOverlay(int keyCode, int scanCode) {
         return keyMatches(RELEVANCE_DEBUG_OVERLAY, keyCode, scanCode);
+    }
+
+    /**
+     * Returns true if the given keyCode matches the open-vanilla binding.
+     * Used by in-screen handlers (e.g. the SLOT atlas) so the binding fires
+     * even when {@code KeyMapping#consumeClick} is suppressed by the active
+     * screen.
+     */
+    public static boolean matchesOpenVanilla(int keyCode, int scanCode) {
+        return keyMatches(OPEN_VANILLA_INVENTORY, keyCode, scanCode);
     }
 
     /** Returns the user's current display label for the undo binding (e.g. "Z", "Ctrl+Z"). */

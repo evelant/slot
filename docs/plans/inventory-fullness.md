@@ -239,8 +239,8 @@ with a branch that, when the item is a carried container, appends an
 sizing rules as the secondary label (`budget.secondaryFontPx()` etc.).
 
 BROWSE / READ / INSPECT cards are unchanged — the stat only appears
-at DETAIL, matching the "chest tile vision" LOD gating precedent for
-richer per-item overlays.
+at DETAIL, where there's room for richer per-item overlays without
+crowding the icon at lower LOD bands.
 
 ## Prerequisites (landed)
 

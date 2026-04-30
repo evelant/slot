@@ -126,6 +126,38 @@ public final class SophisticatedBackpackSupport {
         REFLECTION.refreshClientBackpackContents(player, backpackUuid);
     }
 
+    /**
+     * Locate the carrier {@link ItemStack} for a given stable container id.
+     * Iterates the same SB-provided handler list that
+     * {@link #readPlayerBackpacks} walks, so it finds backpacks regardless
+     * of which slot category (main, hotbar, chestslot, curios) they live in
+     * — main-inventory-only lookups via {@code inv.items[carrierSlotIndex]}
+     * silently miss worn or curios-equipped backpacks, leaving extract /
+     * insert paths broken for them.
+     */
+    public static ItemStack findCarrierByStableId(Player player, String stableContainerId) {
+        if (player == null || stableContainerId == null || stableContainerId.isBlank()
+                || !REFLECTION.available()) {
+            return ItemStack.EMPTY;
+        }
+        ItemStack[] match = {ItemStack.EMPTY};
+        REFLECTION.runOnBackpacks(player, (carrierStack, handlerName, identifier, backpackSlotIndex) -> {
+            if (carrierStack == null || carrierStack.isEmpty()) {
+                return false;
+            }
+            BackpackCarrierRef ref = new BackpackCarrierRef(handlerName, identifier, backpackSlotIndex);
+            String stable = REFLECTION.contentsUuid(REFLECTION.fromStack(carrierStack))
+                    .map(UUID::toString)
+                    .orElseGet(ref::stableFallbackId);
+            if (stableContainerId.equals(stable)) {
+                match[0] = carrierStack;
+                return true;
+            }
+            return false;
+        });
+        return match[0];
+    }
+
     private static int backpackSlotCount(ItemStack carrierStack) {
         if (carrierStack == null || carrierStack.isEmpty() || !REFLECTION.isBackpackItem(carrierStack)) {
             return 0;

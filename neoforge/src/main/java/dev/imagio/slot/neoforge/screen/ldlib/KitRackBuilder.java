@@ -478,23 +478,30 @@ final class KitRackBuilder {
             host.rebuild();
             return;
         }
-        if (!card.kitId().equals(host.gatherKitId)) {
-            host.gatherKitId = card.kitId();
-            host.gatherStep = 0;
-        }
-        int step = Math.floorMod(host.gatherStep, missing.size());
-        SlotWorkspaceViewModel.IdentityRef identity = missing.get(step);
-        SlotWorkspaceViewModel.AtlasItem atlasItem = host.viewModel.atlasItem(identity);
-        if (atlasItem != null) {
-            SlotWorkspaceViewModel.AtlasIsland island = host.viewModel.island(atlasItem.islandId());
-            if (island != null && host.atlasView != null) {
-                host.camera.panToIsland(host.atlasView, island);
+        // Pull every missing identity that lives in a proximate chest.
+        // Each successful take re-applies the kit plan server-side (see
+        // {@code reapplyActiveKitFromCarry}), so the items snap into
+        // their declared hotbar slots and clear from the missing set
+        // on the next view-model refresh. Items that aren't in any
+        // proximate chest are listed as still-needed so the player
+        // knows what's left to fetch from remote storage.
+        int chestPullsRequested = 0;
+        int unreachable = 0;
+        for (SlotWorkspaceViewModel.IdentityRef identity : missing) {
+            SlotWorkspaceViewModel.AtlasItem atlasItem = host.viewModel.atlasItem(identity);
+            if (atlasItem != null && atlasItem.proximateCount() > 0) {
+                host.rpc.sendTakeStackByIdentity(identity);
+                chestPullsRequested++;
+            } else {
+                unreachable++;
             }
-            host.localStatus.set("gather " + (step + 1) + "/" + missing.size() + ": " + atlasItem.name());
-        } else {
-            host.localStatus.set("gather " + (step + 1) + "/" + missing.size() + ": " + identity.itemId() + " (no home)");
         }
-        host.gatherStep = (step + 1) % missing.size();
+        if (chestPullsRequested > 0) {
+            String suffix = unreachable > 0 ? " (" + unreachable + " not in nearby chests)" : "";
+            host.localStatus.set("gathering " + chestPullsRequested + " from nearby chests" + suffix);
+        } else {
+            host.localStatus.set("nothing to gather from nearby chests (" + unreachable + " still needed)");
+        }
         host.rebuild();
     }
 

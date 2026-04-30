@@ -3,6 +3,7 @@ package dev.imagio.slot.neoforge.screen.ldlib;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.*;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceUi.*;
 
+import com.lowdragmc.lowdraglib2.gui.texture.IGuiTexture;
 import com.lowdragmc.lowdraglib2.gui.ui.UIElement;
 import com.lowdragmc.lowdraglib2.gui.ui.data.Horizontal;
 import com.lowdragmc.lowdraglib2.gui.ui.data.Vertical;
@@ -14,7 +15,6 @@ import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.AtlasItemDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.HotbarSlotDrag;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
-import dev.vfyjxf.taffy.style.TaffyPosition;
 
 /**
  * Compact chest chip stack — replaces the link-era storage strip.
@@ -37,59 +37,82 @@ final class StoragePanelBuilder {
         this.host = host;
     }
 
-    /**
-     * Vertical space the chip panel reserves at the top of the left
-     * column. Triage uses this to shift its own top down so the two
-     * don't overlap. Returns 0 when no proximate chests are visible
-     * (panel disappears entirely).
-     */
-    int reservedHeight() {
-        int proximateCount = countProximate();
-        if (proximateCount == 0) {
-            return 0;
-        }
-        int chipsCount = Math.min(proximateCount, MAX_CHIPS);
-        return HEADER_HEIGHT + PANEL_PADDING * 2
-                + chipsCount * CHIP_HEIGHT + Math.max(0, chipsCount - 1) * PANEL_GAP;
-    }
-
-    private int countProximate() {
-        int proximateCount = 0;
+    private int countVisible() {
+        int count = 0;
         for (SlotWorkspaceViewModel.ChestChip chip : host.viewModel.chestChips()) {
-            if (chip.proximate()) {
-                proximateCount++;
+            if (isChipVisible(chip)) {
+                count++;
             }
         }
-        return proximateCount;
+        return count;
     }
 
     /**
-     * Returns null when there are no proximate chests so the overlay
-     * disappears entirely (rather than docking an empty capsule above
-     * Triage).
+     * A chest chip is visible when it is in proximity OR when an active
+     * search query has at least one match that lives in this chest. The
+     * search-driven case lets the player see remote chests holding the
+     * search target without walking to them.
+     */
+    private boolean isChipVisible(SlotWorkspaceViewModel.ChestChip chip) {
+        if (chip.proximate()) {
+            return true;
+        }
+        String query = host.searchController.normalizedQuery();
+        if (query.isBlank()) {
+            return false;
+        }
+        return chestHasSearchMatch(chip.storageId());
+    }
+
+    private boolean chestHasSearchMatch(String storageId) {
+        for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.atlasItems()) {
+            if (!host.searchController.matchesItem(item)) {
+                continue;
+            }
+            for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.presence()) {
+                if (storageId.equals(entry.storageId())) {
+                    return true;
+                }
+            }
+            for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.elsewhere()) {
+                if (storageId.equals(entry.storageId())) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private SlotWorkspaceViewModel.ChestClusterDescriptor cluster(String clusterId) {
+        if (clusterId == null || clusterId.isEmpty()) {
+            return null;
+        }
+        for (SlotWorkspaceViewModel.ChestClusterDescriptor cluster : host.viewModel.chestClusters()) {
+            if (clusterId.equals(cluster.clusterId())) {
+                return cluster;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Returns null when there are no proximate chests so the panel
+     * disappears entirely. Otherwise returns a flex item to be added
+     * to {@link LeftColumnBuilder}'s flex column — content-fit height
+     * (the column's flex(1) children are loot + Triage, not this).
      */
     UIElement overlay() {
-        int proximateCount = countProximate();
-        if (proximateCount == 0) {
+        int visibleCount = countVisible();
+        if (visibleCount == 0) {
             host.storagePanelElement = null;
             return null;
         }
 
-        int top = TriagePanelBuilder.baseTop(host);
-        int panelHeight = reservedHeight();
-        int finalPanelTop = top;
-        int finalPanelHeight = panelHeight;
-
         UIElement overlay = panel(GLASS).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(8)
-                .top(finalPanelTop)
-                .width(TRIAGE_PANEL_WIDTH)
-                .height(finalPanelHeight)
+                .widthPercent(100)
                 .paddingAll(PANEL_PADDING)
                 .gapAll(PANEL_GAP)
                 .flexDirection(FlexDirection.COLUMN));
-        overlay.style(style -> style.zIndex(7));
         overlay.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
 
         Label header = label("Nearby chests", ACCENT);
@@ -103,10 +126,32 @@ final class StoragePanelBuilder {
         header.setAllowHitTest(false);
         overlay.addChild(header);
 
-        int rendered = 0;
+        // Tally visible chips per cluster up to MAX_CHIPS so we can skip
+        // a header for single-chip clusters (visual noise otherwise).
+        java.util.Map<String, Integer> chipsPerCluster = new java.util.LinkedHashMap<>();
+        int previewed = 0;
         for (SlotWorkspaceViewModel.ChestChip chip : host.viewModel.chestChips()) {
-            if (!chip.proximate()) {
+            if (!isChipVisible(chip)) {
                 continue;
+            }
+            chipsPerCluster.merge(chip.clusterId(), 1, Integer::sum);
+            if (++previewed >= MAX_CHIPS) {
+                break;
+            }
+        }
+
+        int rendered = 0;
+        String currentClusterId = null;
+        for (SlotWorkspaceViewModel.ChestChip chip : host.viewModel.chestChips()) {
+            if (!isChipVisible(chip)) {
+                continue;
+            }
+            if (!chip.clusterId().equals(currentClusterId)) {
+                currentClusterId = chip.clusterId();
+                if (chipsPerCluster.getOrDefault(currentClusterId, 0) > 1) {
+                    SlotWorkspaceViewModel.ChestClusterDescriptor descriptor = cluster(currentClusterId);
+                    overlay.addChild(clusterHeader(descriptor));
+                }
             }
             overlay.addChild(chestChip(chip));
             if (++rendered >= MAX_CHIPS) {
@@ -130,6 +175,87 @@ final class StoragePanelBuilder {
     void repopulate() {
         // Overlay is rebuilt each frame from {@link #overlay()}; nothing
         // to do here. Kept for API parity with the old strip.
+    }
+
+    private UIElement clusterHeader(SlotWorkspaceViewModel.ChestClusterDescriptor descriptor) {
+        String clusterId = descriptor == null ? "" : descriptor.clusterId();
+        boolean editing = !clusterId.isBlank() && clusterId.equals(host.editingClusterId);
+        if (editing) {
+            return clusterRenameField(descriptor);
+        }
+        String text = descriptor == null || descriptor.label().isBlank()
+                ? "Storage Area"
+                : descriptor.label();
+        com.lowdragmc.lowdraglib2.gui.ui.elements.Button header =
+                button("", true, 0).noText();
+        header.layout(layout -> layout.widthPercent(100).height(HEADER_HEIGHT));
+        Label headerLabel = label(text, MUTED);
+        headerLabel.layout(layout -> layout.widthPercent(100).heightPercent(100));
+        headerLabel.textStyle(style -> style
+                .textColor(MUTED)
+                .textShadow(false)
+                .fontSize(7)
+                .textAlignHorizontal(Horizontal.LEFT)
+                .textAlignVertical(Vertical.CENTER));
+        headerLabel.setAllowHitTest(false);
+        header.addChild(headerLabel);
+        // Right-click cluster header → enter rename mode. Mirrors the
+        // chip's right-click-forget pattern and the kit context menu's
+        // rename flow.
+        header.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+            if (event.button != 1) {
+                return;
+            }
+            event.stopPropagation();
+            host.editingClusterId = clusterId;
+            host.clusterLabelDraft = descriptor.label();
+            host.rebuild();
+        }, true);
+        host.installTextTooltip(header, net.minecraft.network.chat.Component.literal(
+                "Right-click to rename"));
+        return header;
+    }
+
+    private UIElement clusterRenameField(SlotWorkspaceViewModel.ChestClusterDescriptor descriptor) {
+        String clusterId = descriptor.clusterId();
+        com.lowdragmc.lowdraglib2.gui.ui.elements.TextField input =
+                new com.lowdragmc.lowdraglib2.gui.ui.elements.TextField();
+        input.setAnyString();
+        input.setText(host.clusterLabelDraft == null ? "" : host.clusterLabelDraft, false);
+        input.layout(layout -> layout.widthPercent(100).height(HEADER_HEIGHT));
+        input.style(style -> style.backgroundTexture(rect(0xC60D1318)));
+        input.textFieldStyle(style -> style
+                .font(FONT_UI)
+                .placeholder(net.minecraft.network.chat.Component.literal(descriptor.label()))
+                .textColor(TEXT)
+                .cursorColor(ACCENT)
+                .textShadow(false)
+                .fontSize(7));
+        input.setTextResponder(value -> host.clusterLabelDraft = value == null ? "" : value);
+        Runnable commit = () -> {
+            String trimmed = host.clusterLabelDraft == null ? "" : host.clusterLabelDraft.trim();
+            host.editingClusterId = null;
+            host.clusterLabelDraft = "";
+            // Empty trimmed input → reset to default (server interprets blank as remove).
+            host.rpc.sendRenameCluster(clusterId, trimmed);
+            host.rebuild();
+        };
+        Runnable cancel = () -> {
+            host.editingClusterId = null;
+            host.clusterLabelDraft = "";
+            host.rebuild();
+        };
+        input.addEventListener(UIEvents.KEY_DOWN, event -> {
+            if (event.keyCode == org.lwjgl.glfw.GLFW.GLFW_KEY_ENTER
+                    || event.keyCode == org.lwjgl.glfw.GLFW.GLFW_KEY_KP_ENTER) {
+                event.stopPropagation();
+                commit.run();
+            } else if (event.keyCode == org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE) {
+                event.stopPropagation();
+                cancel.run();
+            }
+        });
+        return input;
     }
 
     private UIElement chestChip(SlotWorkspaceViewModel.ChestChip chip) {
@@ -179,13 +305,121 @@ final class StoragePanelBuilder {
         element.addChild(dot);
 
         installChipDropTarget(element, chip);
+        installChipHover(element, chip);
+        installChipContextMenu(element, chip);
+        host.installTextTooltip(element, net.minecraft.network.chat.Component.literal("Right-click for options"));
         return element;
+    }
+
+    /**
+     * Right-click on a chest chip → open the chest context menu (Rename
+     * + Forget). Replaces the prior "right-click instantly forgets"
+     * gesture, which was a one-click destructive action with no
+     * confirmation, no rename surface, and no tooltip. The context menu
+     * pattern matches the kit chip's right-click flow.
+     */
+    private void installChipContextMenu(UIElement chip, SlotWorkspaceViewModel.ChestChip target) {
+        String storageId = target.storageId();
+        chip.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+            if (event.button != 1) {
+                return;
+            }
+            event.stopPropagation();
+            host.menu.openContextMenuForChest(storageId, event.x, event.y);
+        }, true);
+    }
+
+    /**
+     * Wire the chip's title bar into the cross-surface highlight pulse.
+     * Hovering this chip sets {@code hoveredStorageId} (so atlas islands
+     * and cards can light themselves); a per-frame TICK paint flip lights
+     * the chip back when the player is hovering an atlas item or island
+     * whose contents overlap this chest.
+     */
+    private void installChipHover(UIElement element, SlotWorkspaceViewModel.ChestChip chip) {
+        String storageId = chip.storageId();
+        element.addEventListener(UIEvents.MOUSE_ENTER, event -> host.hoveredStorageId = storageId, true);
+        element.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
+            if (storageId.equals(host.hoveredStorageId)) {
+                host.hoveredStorageId = null;
+            }
+        }, true);
+
+        boolean[] lastLit = {false};
+        element.addEventListener(UIEvents.TICK, event -> {
+            boolean lit = isHoveredItemPresentInChest(storageId)
+                    || isHoveredIslandRelatedToChest(storageId);
+            if (lit == lastLit[0]) {
+                return;
+            }
+            lastLit[0] = lit;
+            element.style(style -> style.overlayTexture(lit ? rect(HOVER_ACCENT_OVERLAY) : IGuiTexture.EMPTY));
+        });
+    }
+
+    /**
+     * True iff the currently-hovered atlas identity has presence (in a
+     * proximate chest) OR elsewhere (in a non-proximate chest visible
+     * via search) for {@code storageId}. Without the elsewhere branch,
+     * hovering a card whose only stock is in a non-proximate chest
+     * wouldn't light the matching chip in the search-driven chip view.
+     */
+    private boolean isHoveredItemPresentInChest(String storageId) {
+        SlotWorkspaceViewModel.IdentityRef hovered = host.hoveredAtlasIdentity;
+        if (hovered == null) {
+            return false;
+        }
+        SlotWorkspaceViewModel.AtlasItem item = host.viewModel.atlasItem(hovered);
+        if (item == null) {
+            return false;
+        }
+        for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.presence()) {
+            if (storageId.equals(entry.storageId())) {
+                return true;
+            }
+        }
+        for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.elsewhere()) {
+            if (storageId.equals(entry.storageId())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /** True iff the currently-hovered island shares any item with {@code storageId}. */
+    private boolean isHoveredIslandRelatedToChest(String storageId) {
+        String islandId = host.hoveredIslandId;
+        if (islandId == null) {
+            return false;
+        }
+        for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.atlasItems()) {
+            if (!islandId.equals(item.islandId())) {
+                continue;
+            }
+            for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.elsewhere()) {
+                if (storageId.equals(entry.storageId())) {
+                    return true;
+                }
+            }
+            for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.presence()) {
+                if (storageId.equals(entry.storageId())) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
      * Drop an atlas-item or hotbar-slot drag onto a chip → deposit the
      * stack into that specific chest. Bypasses affinity routing so the
      * player can override where an item goes.
+     *
+     * <p>{@code DRAG_PERFORM} is registered in the capture phase so the
+     * chip wins ordering against the atlas's catch-all drop handler — the
+     * leftColumn flex refactor moved chips off direct hit-test targets
+     * for atlas drops, and bubbling-phase handlers were running after the
+     * atlas handler had already early-returned.
      */
     private void installChipDropTarget(UIElement chip, SlotWorkspaceViewModel.ChestChip target) {
         String storageId = target.storageId();
@@ -198,7 +432,7 @@ final class StoragePanelBuilder {
             boolean acceptable = host.drag.atlasItemDrag(event) != null
                     || host.drag.hotbarSlotDrag(event) != null;
             host.drag.updateGenericDropOverlay(chip, acceptable, ACCENT);
-        });
+        }, true);
         chip.addEventListener(UIEvents.DRAG_LEAVE, event -> host.drag.clearDropOverlay(chip), true);
         chip.addEventListener(UIEvents.DRAG_PERFORM, event -> {
             host.drag.clearDropOverlay(chip);
@@ -213,6 +447,6 @@ final class StoragePanelBuilder {
                 host.rpc.sendDepositHotbarToChest(hotbarDrag.hotbarIndex(), storageId);
             }
             event.stopPropagation();
-        });
+        }, true);
     }
 }

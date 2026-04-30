@@ -7,7 +7,7 @@ Status: implementation-facing plan for the triage-first carried atlas.
 This plan turns the atlas concept in [../design/atlas.md](../design/atlas.md)
 into buildable slices. It states what to build now, what to defer, and which
 decisions still block a robust design. For the near-term engineering sequence
-across the whole project, see [current.md](current.md).
+across the whole project, see [current.md](../current.md).
 
 ## Decision: Triage-First Carried Atlas With Player-Authored Homes
 

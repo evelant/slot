@@ -61,6 +61,10 @@ public record WorkflowDomainSnapshot(
         return workflowProjection.chestAffinityMap();
     }
 
+    public java.util.Map<String, String> clusterLabels() {
+        return workflowProjection.clusterLabels();
+    }
+
     public KitMap kitMap() {
         return workflowProjection.kitMap();
     }

@@ -9,7 +9,7 @@ atlas the primary player-inventory surface, and to abandon the earlier
 list-first workspace prototype.
 
 For the concept, see [../design/atlas.md](../design/atlas.md).
-For the engineering slices, see [../plans/atlas-prototype.md](../plans/atlas-prototype.md).
+For the engineering slices, see [../plans/done/atlas-prototype.md](../plans/done/atlas-prototype.md).
 For the UI transport boundary this still runs over, see
 [0002-ldlib2-workspace.md](0002-ldlib2-workspace.md).
 

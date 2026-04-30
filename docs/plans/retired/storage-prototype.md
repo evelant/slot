@@ -1,24 +1,36 @@
-# Storage Prototype Plan
+# Storage Prototype Plan (RETIRED 2026-04-30)
 
-Last updated: 2026-04-26
+Last updated: 2026-04-30
 
-Status: near-term engineering plan for the first end-to-end prototype of the
-atlas scale features and island-to-chest storage integration. Slices 0–3,
-4a, 5 Take-All, 6, and 7 landed. The storage prototype's Kit-free
-surface is complete. **Kit prototype slice 5 has since landed**, so
-Slice 4b (Kit-holdout deposit) and the withdraw half of Slice 5 are now
-unblocked. See per-slice status headers below.
+> **Retired** — the chest-link / chest-tile / storage-zone /
+> island-to-chest-link model that this prototype was built on was
+> wholesale replaced by the **learned-storage** swap on 2026-04-30:
+>
+> - **Auto-claim on first deposit** replaced the `Claim button`.
+> - **Chest chips in a left-column flex panel** replaced the
+>   "storage zone" + chest-tile-with-content-grid surface.
+> - **`ChestClusterMap`** (16-block spatial union-find) replaced
+>   `StorageArea` and the link-based grouping.
+> - **Affinity-based deposit routing** (`ChestAffinityMap`) replaced
+>   `ChestLink` / island-to-chest-link entirely.
+> - **Ghost atlas cards on homed islands** for proximate chest
+>   contents, plus a **chest locator panel** + **`+N stored` corner
+>   badge under search** for remote stocks, replaced the per-chest
+>   live-content grid + per-item presence strip.
+> - **Affinity decay** (~1 point per in-game day) + an **explicit
+>   `Forget chest`** gesture replaced the "release link" gesture.
+>
+> The remaining open work this prototype's Slices 4b / 5 covered
+> conceptually — Kit-holdout deposit (don't deposit Kit-bring items
+> while a Kit is active) and an explicit withdraw verb — needs
+> re-planning against the new chip / affinity model. Filed as
+> residual polish in [../current.md](../current.md).
+>
+> Canonical design: [../learned-storage.md](../learned-storage.md).
+> Text below preserved as the historical engineering record — **do
+> not implement.**
 
-For the storage-zone topology rework into player-named areas (Main
-Base, Mountain Mine, Oil Derrick, …) — a peer plan that layers a
-containment level above this prototype's claim/link/deposit shape —
-see [storage-areas.md](storage-areas.md). The two plans are
-independent; areas can land before or after Slice 4b/5-withdraw.
-
-For the storage concept and interaction model, see
-[../design/storage.md](../design/storage.md). For the atlas concept that this
-builds on, see [../design/atlas.md](../design/atlas.md). For the broader
-near-term engineering sequence, see [current.md](current.md). For the
+For the broader near-term engineering sequence, see [../current.md](../current.md). For the
 operational baseline, see [../status.md](../status.md).
 
 ## Goals And Non-Goals

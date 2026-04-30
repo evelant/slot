@@ -3,6 +3,7 @@ package dev.imagio.slot.neoforge.client;
 import dev.imagio.slot.SlotDebugLog;
 import dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings;
 import dev.imagio.slot.neoforge.config.SlotClientConfig;
+import dev.imagio.slot.neoforge.client.screen.SlotReenableButton;
 import dev.imagio.slot.neoforge.client.screen.SlotWorkspaceMountController;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
@@ -31,6 +32,7 @@ public final class SlotNeoForgeClient {
         }
         SlotDebugLog.setEnabledSupplier(() -> SlotClientConfig.CLIENT.debugLogging.get());
         SlotWorkspaceMountController.init();
+        SlotReenableButton.init();
         NeoForge.EVENT_BUS.addListener(SlotNeoForgeClient::onClientTick);
         runtimeInitialized = true;
     }

@@ -1,8 +1,40 @@
-# Storage Areas — Implementation Plan
+# Storage Areas — Implementation Plan (SUPERSEDED 2026-04-30)
 
-Last updated: 2026-04-26
+Last updated: 2026-04-30
 
-## Why
+> **Superseded by the learned-storage swap.** See
+> [learned-storage.md](learned-storage.md) and the recap in
+> [current.md](current.md). The design below — explicit player-named
+> storage areas with chip-collapse-by-default and expand-on-proximity
+> — is **not the plan**. What actually shipped:
+>
+> - **Implicit chest claiming.** First deposit auto-claims; no
+>   explicit area assignment, no claim button.
+> - **Storage areas as derived clusters.** `ChestClusterMap` groups
+>   chests by 16-block spatial proximity (union-find); cluster
+>   ordinals are stable, default labels read "Storage Area N", and
+>   right-click → context menu on a chip cluster header surfaces
+>   rename.
+> - **Chest contents on the atlas as ghost cards.** Items in proximate
+>   chests render as faded ghost atlas cards on their homed island.
+>   Non-proximate stocks surface via the chest-locator panel (search)
+>   and the `+N stored` corner badge that paints on carried + ghost
+>   cards under search.
+> - **Time-based + explicit forgetting.** Affinity decays
+>   ~1 point per in-game day; right-click chip → `Forget chest`
+>   (undoable through the existing undo stack). No separate
+>   "demote area" gesture needed.
+> - **No proximity-based expand/collapse of areas.** Cluster headers
+>   render in the chip stack only when a cluster has > 1 chip; chest
+>   tile rendering retired entirely (chips replaced tiles).
+>
+> The text below is preserved as historical context for the design
+> exploration. **Don't implement it.** If you want chest-content
+> detail or remote-chest visibility, see the loot-chest panel + the
+> search-time `+N` badge wiring in
+> [learned-storage.md](learned-storage.md).
+
+## Why (historical context only — do not implement)
 
 The current storage prototype renders every claimed chest as a tile in
 one shared storage zone. Bases form *visually* (chests dragged near

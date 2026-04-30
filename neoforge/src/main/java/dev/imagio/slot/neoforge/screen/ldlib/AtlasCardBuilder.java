@@ -48,6 +48,48 @@ final class AtlasCardBuilder {
         }
     }
 
+    /**
+     * Per-frame paint flip: when {@code host.hoveredStorageId} matches a
+     * chest with presence for this item's identity, paint an accent overlay.
+     * Symmetric with the chip-side flip in {@link StoragePanelBuilder}; the
+     * pair forms the cross-surface highlight pulse described in
+     * {@code docs/plans/learned-storage.md}.
+     */
+    private void installChestHoverPaint(UIElement button, SlotWorkspaceViewModel.AtlasItem item) {
+        boolean[] lastLit = {false};
+        button.addEventListener(UIEvents.TICK, event -> {
+            boolean lit = isItemPresentInHoveredChest(item);
+            if (lit == lastLit[0]) {
+                return;
+            }
+            lastLit[0] = lit;
+            button.style(style -> style.overlayTexture(lit ? rect(HOVER_ACCENT_OVERLAY) : com.lowdragmc.lowdraglib2.gui.texture.IGuiTexture.EMPTY));
+        });
+    }
+
+    private boolean isItemPresentInHoveredChest(SlotWorkspaceViewModel.AtlasItem item) {
+        String storageId = host.hoveredStorageId;
+        if (storageId == null || item == null) {
+            return false;
+        }
+        for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.presence()) {
+            if (storageId.equals(entry.storageId())) {
+                return true;
+            }
+        }
+        // Also flip on hover of a non-proximate chest (e.g. a row in the
+        // search-results panel): the chest's storageId only appears in the
+        // {@code elsewhere} list for that case, not {@code presence}.
+        // Without this branch, hovering the search-results panel would
+        // never light up an atlas card.
+        for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.elsewhere()) {
+            if (storageId.equals(entry.storageId())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     UIElement buildAtlasBody(
             SlotAtlasGraphView atlas,
             SlotWorkspaceViewModel.AtlasItem item,
@@ -361,6 +403,24 @@ final class AtlasCardBuilder {
                         .top(presenceTop)
                         .width(place.width() - sidePad * 2f)
                         .height(auxLineHeight)));
+                cursorTop += auxLineHeight;
+            }
+        }
+        // Search-as-find: show "elsewhere" presence (non-proximate chests)
+        // only when a search query is active. Otherwise it's information
+        // overload — players don't need to see "this lives at Storage Area 2"
+        // until they're actively looking for it.
+        if (!item.elsewhere().isEmpty() && !host.searchController.normalizedQuery().isBlank()) {
+            cursorTop += gap;
+            UIElement strip = elsewhereStrip(atlas, item, budget);
+            if (strip != null) {
+                float elsewhereTop = cursorTop;
+                body.addChild(strip.layout(layout -> layout
+                        .positionType(TaffyPosition.ABSOLUTE)
+                        .left(sidePad)
+                        .top(elsewhereTop)
+                        .width(place.width() - sidePad * 2f)
+                        .height(auxLineHeight)));
             }
         }
         addOverlaySignals(body, atlas, item, budget);
@@ -399,6 +459,46 @@ final class AtlasCardBuilder {
                 Horizontal.LEFT
         );
         // Chest tiles no longer render, so click-to-pan is gone.
+        band.setAllowHitTest(false);
+        return band;
+    }
+
+    /**
+     * Render an "elsewhere: …" strip when the player has searched and the
+     * matched item lives in non-proximate chests. Spacebar zoom on the card
+     * surfaces the per-chest detail via the existing LOD path.
+     */
+    UIElement elsewhereStrip(
+            SlotAtlasGraphView atlas,
+            SlotWorkspaceViewModel.AtlasItem item,
+            AtlasRenderBudget budget
+    ) {
+        if (item.elsewhere().isEmpty()) {
+            return null;
+        }
+        StringBuilder text = new StringBuilder("elsewhere: ");
+        int maxEntries = Math.min(item.elsewhere().size(), 2);
+        for (int index = 0; index < maxEntries; index++) {
+            SlotWorkspaceViewModel.ChestPresenceEntry entry = item.elsewhere().get(index);
+            if (index > 0) {
+                text.append(" · ");
+            }
+            text.append(entry.label()).append(" · ").append(entry.count());
+        }
+        if (item.elsewhere().size() > maxEntries) {
+            text.append(" · +").append(item.elsewhere().size() - maxEntries);
+        }
+        int maxChars = Math.max(8, budget.secondaryMaxChars() + 12);
+        UIElement band = anchorTextBand(
+                atlas,
+                text.toString(),
+                MUTED,
+                budget.secondaryFontPx() - 0.5f,
+                maxChars,
+                1,
+                0x80121B1F,
+                Horizontal.LEFT
+        );
         band.setAllowHitTest(false);
         return band;
     }
@@ -528,18 +628,51 @@ private void addCommonAtlasSignals(
         // paint order within a parent), so addOverlaySignals must be
         // called AFTER the slotPreview is added to keep overlays on top.
         if (searchMatch) {
-            AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
-            float sideInset = Math.min(place.width() * 0.04f, atlas.worldUnitsForPixels(2f));
-            float bottomInset = Math.min(place.height() * 0.04f, atlas.worldUnitsForPixels(1f));
-            float barHeight = Math.min(place.height() * 0.08f, atlas.worldUnitsForPixels(2f));
-            float barWidth = Math.max(place.width() * 0.4f, place.width() - sideInset * 2f);
-            body.addChild(panel(ACCENT).layout(layout -> layout
-                    .positionType(TaffyPosition.ABSOLUTE)
-                    .left(sideInset)
-                    .bottom(bottomInset)
-                    .width(barWidth)
-                    .height(barHeight)));
+            addSearchMatchOutline(body, atlas, item);
         }
+    }
+
+    /**
+     * Bright outline framing the whole atlas card when it matches the
+     * active search query. Replaces the prior tiny bottom-edge accent
+     * which was invisible at low zoom and barely visible on faded ghost
+     * cards. Each edge is its own rect so the outline is hollow (the
+     * card icon stays readable inside). Thickness floors at 2 screen
+     * pixels so it's always visible regardless of zoom; scales up with
+     * the card so close-up cards still get a proportional border.
+     */
+    private void addSearchMatchOutline(UIElement body, SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasItem item) {
+        AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
+        float thickness = Math.max(atlas.worldUnitsForPixels(2f), place.width() * 0.04f);
+        // High z so the outline survives the +232 pose Z bump from
+        // drawItemStack and lands on top of the icon. WARNING is the
+        // brightest theme constant we have; works on both vibrant and
+        // faded (ghost) cards.
+        int color = WARNING;
+        UIElement top = panel(color).layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .left(0).top(0).widthPercent(100).height(thickness));
+        top.style(style -> style.zIndex(263));
+        top.setAllowHitTest(false);
+        body.addChild(top);
+        UIElement bottom = panel(color).layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .left(0).bottom(0).widthPercent(100).height(thickness));
+        bottom.style(style -> style.zIndex(263));
+        bottom.setAllowHitTest(false);
+        body.addChild(bottom);
+        UIElement left = panel(color).layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .left(0).top(0).width(thickness).heightPercent(100));
+        left.style(style -> style.zIndex(263));
+        left.setAllowHitTest(false);
+        body.addChild(left);
+        UIElement right = panel(color).layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .right(0).top(0).width(thickness).heightPercent(100));
+        right.style(style -> style.zIndex(263));
+        right.setAllowHitTest(false);
+        body.addChild(right);
     }
 
     void addOverlaySignals(
@@ -556,6 +689,8 @@ private void addCommonAtlasSignals(
         if (item.isCarriedContainer()) {
             addContainerFullnessBar(body, atlas, item);
         }
+        // Top-right "stored" pip: nearby (proximate) chest contents
+        // always count toward this number (existing behaviour).
         int proximateCount = proximateChestCount(item);
         if (proximateCount > 0) {
             AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
@@ -590,9 +725,107 @@ private void addCommonAtlasSignals(
             }
             body.addChild(pip);
         }
+        if (item.kitNeeded()) {
+            addKitNeedsBadge(body, atlas, item);
+        }
+        // Search-time "also stored" badge for items that have copies
+        // in any chest (proximate or remote). The proximate-only top-
+        // right pip already counts nearby copies, but when search is
+        // active the player is looking across the whole base — they
+        // need a clear signal that a *carried* match also lives in
+        // storage. Bottom-left, distinct color, only visible under
+        // search so the atlas stays clean during normal play.
+        if (!host.searchController.normalizedQuery().isBlank()) {
+            int storedCount = proximateChestCount(item);
+            for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.elsewhere()) {
+                storedCount += entry.count();
+            }
+            if (storedCount > 0) {
+                addAlsoStoredBadge(body, atlas, item, storedCount);
+            }
+        }
         if (RelevanceDebugOverlay.enabled()) {
             addRelevanceDebugBadge(body, atlas, item);
         }
+    }
+
+    /**
+     * Bottom-left "+N" badge marking a carried/ghost atlas card whose
+     * identity also has copies in chests. Painted only while a search
+     * query is active — outside of search the proximate-only top-right
+     * pip carries the load, and remote stock is read off the search-
+     * results panel. Sized like the kit-needs star so the visual
+     * vocabulary stays consistent.
+     */
+    private void addAlsoStoredBadge(
+            UIElement body,
+            SlotAtlasGraphView atlas,
+            SlotWorkspaceViewModel.AtlasItem item,
+            int storedCount
+    ) {
+        AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
+        float inset = Math.min(place.width() * 0.04f, atlas.worldUnitsForPixels(2f));
+        float pipSizeRaw = Math.min(place.width() * 0.28f, atlas.worldUnitsForPixels(12f));
+        float pipSize = Math.max(pipSizeRaw, place.width() * 0.10f);
+        UIElement pip = panel(LINK_THREAD_COLOR).layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .left(inset)
+                .bottom(inset)
+                .width(pipSize)
+                .height(pipSize));
+        pip.style(style -> style.zIndex(260));
+        pip.setAllowHitTest(false);
+        Label count = label("+" + Math.min(storedCount, 999), TEXT);
+        count.layout(layout -> layout.widthPercent(100).heightPercent(100));
+        count.setAllowHitTest(false);
+        float requestedFontPx = pipSize * 0.55f * atlas.getScale();
+        float fontWorld = clampScreenFontPx(requestedFontPx) / Math.max(0.0001f, atlas.getScale());
+        count.textStyle(style -> style
+                .textColor(TEXT)
+                .textShadow(false)
+                .fontSize(fontWorld)
+                .textAlignHorizontal(Horizontal.CENTER)
+                .textAlignVertical(Vertical.CENTER));
+        pip.addChild(count);
+        body.addChild(pip);
+    }
+
+    /**
+     * Top-left "★" badge marking an item the active kit needs but the
+     * player isn't carrying. Sized like the proximate-count pip but
+     * positioned on the opposite corner so the two compose without
+     * stacking.
+     */
+    private void addKitNeedsBadge(
+            UIElement body,
+            SlotAtlasGraphView atlas,
+            SlotWorkspaceViewModel.AtlasItem item
+    ) {
+        AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
+        float inset = Math.min(place.width() * 0.04f, atlas.worldUnitsForPixels(2f));
+        float pipSizeRaw = Math.min(place.width() * 0.22f, atlas.worldUnitsForPixels(10f));
+        float pipSize = Math.max(pipSizeRaw, place.width() * 0.08f);
+        UIElement pip = panel(0xCCFFC66D).layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .left(inset)
+                .top(inset)
+                .width(pipSize)
+                .height(pipSize));
+        pip.style(style -> style.zIndex(260));
+        pip.setAllowHitTest(false);
+        Label star = label("★", 0xFF1A1A1A);
+        star.layout(layout -> layout.widthPercent(100).heightPercent(100));
+        star.setAllowHitTest(false);
+        float requestedPipFontPx = pipSize * 0.7f * atlas.getScale();
+        float pipFontWorld = clampScreenFontPx(requestedPipFontPx) / Math.max(0.0001f, atlas.getScale());
+        star.textStyle(style -> style
+                .textColor(0xFF1A1A1A)
+                .textShadow(false)
+                .fontSize(pipFontWorld)
+                .textAlignHorizontal(Horizontal.CENTER)
+                .textAlignVertical(Vertical.CENTER));
+        pip.addChild(star);
+        body.addChild(pip);
     }
 
     void addRelevanceDebugBadge(
@@ -912,6 +1145,7 @@ private void addCommonAtlasSignals(
         }, true);
         host.drag.installAtlasHoverTooltip(button, item);
         host.drag.installAtlasItemDragSource(button, item);
+        installChestHoverPaint(button, item);
 
         UIElement body = new UIElement().layout(layout -> layout.widthPercent(100).heightPercent(100));
         body.setAllowHitTest(false);

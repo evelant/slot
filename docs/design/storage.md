@@ -1,9 +1,43 @@
 # Storage And Atlas Scale Design
 
-Last updated: 2026-04-25
+Last updated: 2026-04-30 (largely SUPERSEDED — see banner below)
 
-Status: current design direction for scaling the atlas to thousands of items
-and integrating external storage via island-to-chest linking.
+> **The chest-side design in this document is retired.** Almost
+> everything below — the **Claim button** in the vanilla chest UI,
+> **chest tiles in a storage zone**, **island-to-chest links**,
+> **chest-glow / link threads on proximity**, **per-item presence
+> strip**, **deposit / withdraw verbs against linked chests**,
+> **kit-driven shopping-trip wayfinding** — was replaced by the
+> learned-storage swap that shipped 2026-04-30. The current model:
+>
+> - **Auto-claim on first deposit.** No Claim button.
+> - **Chest chips in the left column**, not chest tiles in a storage
+>   zone. Cluster grouping derived from spatial proximity
+>   (`ChestClusterMap`), no explicit named areas.
+> - **Affinity-based deposit routing**, no chest links. Affinity
+>   decays over time + an explicit Forget gesture.
+> - **Ghost atlas cards** for items in proximate chests render on
+>   their visual home; **chest locator panel + `+N stored` corner
+>   badge under search** surface non-proximate stocks. The old
+>   "chest tile body is the chest's contents" grid retired.
+> - **Take All / Take by identity** verbs survive on the chip /
+>   loot-chest panel, but the deposit / withdraw model is replaced
+>   wholesale by affinity routing.
+>
+> See [../plans/learned-storage.md](../plans/learned-storage.md) for
+> the canonical design and [../plans/current.md](../plans/current.md)
+> for the full recap. **Do not implement the link / area / chest-tile
+> design below.** It's preserved as historical context — the
+> motivation, edge-case enumerations, and the "What This Model
+> Deliberately Does Not Do" list are still relevant context for what
+> the project chose NOT to build (no remote storage, no logistics
+> network, no per-identity chest claims, etc.).
+>
+> **The atlas-scale half** (`Asymmetric LOD`, `Fit-Carried Default
+> Camera`, `Per-Region Carried Badges`, `Pocket Lens`) was
+> generalized into [relevance-lod.md](relevance-lod.md) and remains
+> accurate as the single-contributor v1 model; that part is the
+> still-relevant content of this doc.
 
 SLOT's atlas proves that stable visual homes work for carried inventory. This
 document extends that model in two connected directions:
@@ -14,13 +48,13 @@ document extends that model in two connected directions:
 - integrating external storage (base chests) as a lightweight companion to the
   island/home system, not as a second organization axis
 
-The atlas-scale half of this doc has since been generalized into
+The atlas-scale half of this doc was generalized into
 [relevance-lod.md](relevance-lod.md), which replaces "carried high, ghost
 low" with a per-item relevance score that combines carried, kit-relevant,
 shopping-list, search, and proximity contributions. The "Asymmetric LOD"
 section below is the seed of that model and remains accurate as the
-single-contributor v1 implementation; the storage-areas direction in the
-new doc is the planned extension to external storage.
+single-contributor v1 implementation. **The storage-side text below is
+retired** — see banner above and [../plans/learned-storage.md](../plans/learned-storage.md).
 
 For the atlas concept, item homes, and the triage/home loop, see
 [atlas.md](atlas.md). For the unified relevance-driven LOD model that
@@ -110,17 +144,27 @@ mechanism, no new primitives. See
 
 ## Atlas Topology For Storage
 
-> **Direction:** the storage-zone topology described below is being
-> reshaped into player-named **storage areas** (Main Base, Mountain Mine,
-> Oil Derrick, Warehouse). Areas join the relevance/LOD model: they
-> default to chip size and expand on proximity, search, or kit-driven
-> intent. Inside an expanded area, individual chest tiles also follow the
-> relevance model — chests in proximity render full live contents, others
-> stay compact unless they hold high-scoring items. See
-> [relevance-lod.md § Storage areas](relevance-lod.md). The text below
-> describes the current implementation (single storage zone, emergent
-> base clusters); migration drops existing claimed chests into a default
-> "Main Base" area.
+> **Direction (SUPERSEDED 2026-04-30):** both the original
+> single-storage-zone design *and* the player-named storage areas
+> direction described below are now retired. What shipped is the
+> learned-storage swap:
+>
+> - Chests show as **chips** in a left-column panel above Triage, not
+>   tiles in a storage zone.
+> - **Auto-claim** on first deposit; no explicit claim or area
+>   assignment.
+> - **Derived clusters** via `ChestClusterMap` (16-block union-find)
+>   provide the "area" grouping, with player rename via the chip's
+>   context menu.
+> - **Ghost atlas cards** for items in proximate chests render on
+>   their homed island; **chest locator** + **`+N stored` badge**
+>   surface non-proximate contents under search.
+> - **Affinity decay + explicit forget** replace any per-area
+>   demote / collapse gesture.
+>
+> See [plans/learned-storage.md](../plans/learned-storage.md) and
+> [plans/current.md](../plans/current.md). The remaining text in this
+> section is preserved for historical context only — do not implement.
 
 Chests participate in the same pan-navigable atlas canvas, not a separate
 continent. Two spatial zones share the atlas:

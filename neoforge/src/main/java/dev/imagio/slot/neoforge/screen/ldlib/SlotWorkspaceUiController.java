@@ -97,9 +97,12 @@ final class SlotWorkspaceUiController {
     SlotWorkspaceViewModel.IdentityRef contextMenuAtlasIdentity;
     int contextMenuHotbarIndex = -1;
     String contextMenuKitId;
+    String contextMenuChestStorageId;
     String renamingKitId;
     String renameKitDraft = "";
     String confirmDeleteKitId;
+    String renamingChestStorageId;
+    String renameChestDraft = "";
     float contextMenuScreenX;
     float contextMenuScreenY;
     final java.util.ArrayDeque<String> recentRehomeIslandIds = new java.util.ArrayDeque<>();
@@ -107,6 +110,8 @@ final class SlotWorkspaceUiController {
     static final int RECENT_REHOME_CAPACITY = 6;
     String editingIslandId = null;
     String islandLabelDraft = "";
+    String editingClusterId = null;
+    String clusterLabelDraft = "";
     float islandEditScreenX = Float.NaN;
     float islandEditScreenY = Float.NaN;
     SlotWorkspaceViewModel.IdentityRef pendingCreateIdentity;
@@ -133,9 +138,13 @@ final class SlotWorkspaceUiController {
     final IslandChestBuilder islandChest = new IslandChestBuilder(this);
     final AtlasCardBuilder atlasCard = new AtlasCardBuilder(this);
     final StoragePanelBuilder storagePanel = new StoragePanelBuilder(this);
+    final LootChestPanelBuilder lootChestPanel = new LootChestPanelBuilder(this);
+    final SearchResultsPanelBuilder searchResultsPanel = new SearchResultsPanelBuilder(this);
+    final LeftColumnBuilder leftColumn = new LeftColumnBuilder(this);
     SlotAtlasGraphView atlasView;
     UIElement atlasPanelElement;
     UIElement storagePanelElement;
+    UIElement lootChestPanelElement;
     UIElement hoverTrailOverlayElement;
     UIElement carriedFreeSlotsChipElement;
     UIElement topRightActionsElement;
@@ -171,8 +180,6 @@ final class SlotWorkspaceUiController {
     boolean peekActive;
     long peekPressTimeMs;
     AtlasCamera peekTarget;
-    String gatherKitId = "";
-    int gatherStep = 0;
 
     SlotWorkspaceUiController(SlotWorkspaceUiSession session, Player player) {
         this.session = session;
@@ -425,6 +432,30 @@ final class SlotWorkspaceUiController {
                     : action + " (" + binding + ")";
             event.hoverTooltips = new HoverTooltips(
                     List.of(Component.literal(tooltipText)),
+                    null,
+                    null,
+                    null
+            );
+        });
+    }
+
+    /** Install a static text tooltip on hover. Mirrors {@link #installKeybindTooltip} for non-keymap buttons. */
+    void installTextTooltip(Button button, Component text) {
+        button.addEventListener(UIEvents.HOVER_TOOLTIPS, event -> {
+            event.hoverTooltips = new HoverTooltips(
+                    List.of(text),
+                    null,
+                    null,
+                    null
+            );
+        });
+    }
+
+    /** UIElement overload: same hover-tooltip wiring for non-Button surfaces (chest chips, etc.). */
+    void installTextTooltip(com.lowdragmc.lowdraglib2.gui.ui.UIElement element, Component text) {
+        element.addEventListener(UIEvents.HOVER_TOOLTIPS, event -> {
+            event.hoverTooltips = new HoverTooltips(
+                    List.of(text),
                     null,
                     null,
                     null

@@ -18,6 +18,7 @@ public final class SlotClientConfig {
 
     public static final class Client {
         public final ModConfigSpec.BooleanValue debugLogging;
+        public final ModConfigSpec.BooleanValue slotEnabled;
 
         private Client(ModConfigSpec.Builder builder) {
             builder.comment("Client-side SLOT settings").push("client");
@@ -26,6 +27,16 @@ public final class SlotClientConfig {
                     .translation("slot.config.debug_logging")
                     .comment("Logs screen-observation events during early development.")
                     .define("debugLogging", false);
+
+            slotEnabled = builder
+                    .translation("slot.config.slot_enabled")
+                    .comment(
+                            "When false, SLOT does not intercept the inventory key — the vanilla",
+                            "inventory screen opens instead. Toggle in-game via the Disable SLOT",
+                            "icon in the atlas top-right, or the Re-enable SLOT pill on the",
+                            "vanilla inventory screen."
+                    )
+                    .define("slotEnabled", true);
 
             builder.pop();
         }

@@ -9,7 +9,6 @@ import com.lowdragmc.lowdraglib2.gui.ui.data.Horizontal;
 import com.lowdragmc.lowdraglib2.gui.ui.data.Vertical;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
-import dev.vfyjxf.taffy.style.TaffyPosition;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.ScrollerView;
@@ -29,38 +28,32 @@ final class TriagePanelBuilder {
         this.host = host;
     }
 
-    /**
-     * Top edge of the left-column overlays before the chip panel
-     * reserves space. The chip panel docks at this exact top; Triage
-     * shifts down by the panel's reserved height so they tile cleanly.
-     */
-    static int baseTop(SlotWorkspaceUiController host) {
-        return host.searchController.modalActive() ? 78 : 36;
-    }
+    /** Soft floor for a populated Triage; 1–2 row inboxes still feel readable. */
+    static final int MIN_TRIAGE_HEIGHT = 120;
 
+    /**
+     * Returns null when the inbox is empty so the panel disappears
+     * entirely (letting the atlas underneath breathe). Otherwise builds
+     * a flex item for {@link LeftColumnBuilder}'s column —
+     * {@code flex(1)} so it shares remaining vertical space with the
+     * loot panel 50/50 (or claims it all when the loot panel is absent),
+     * with a min-height floor so a small inbox never compresses below
+     * a comfortable readable size.
+     */
     UIElement overlay() {
-        // Clear whichever top-left overlay is showing: the compact "Press / to search"
-        // hint (~20 px tall) or the full search modal (~60 px tall at top 10, left 10).
-        // Kit rack, when open, docks above the belt and extends rightward from x=16;
-        // triage at (x=8, width=152) horizontally overlaps it — lift the bottom above
-        // the rack so the two don't visually stack.
-        int chipReserve = host.storagePanel.reservedHeight();
-        int triageTop = baseTop(host) + (chipReserve > 0 ? chipReserve + 6 : 0);
-        int baseBottom = BELT_HEIGHT + 12;
-        int rackBottom = host.kitRackOpen ? baseBottom + host.kit.kitRackHeight() + 4 : baseBottom;
+        final int triageCount = host.viewModel.triageItems().size();
+        if (triageCount == 0) {
+            return null;
+        }
         UIElement overlay = panel(GLASS).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(8)
-                .top(triageTop)
-                .bottom(rackBottom)
-                .width(TRIAGE_PANEL_WIDTH)
+                .flex(1)
+                .widthPercent(100)
+                .minHeight(MIN_TRIAGE_HEIGHT)
                 .paddingAll(6)
                 .gapAll(4)
                 .flexDirection(FlexDirection.COLUMN));
-        overlay.style(style -> style.zIndex(7));
         overlay.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
 
-        int triageCount = host.viewModel.triageItems().size();
         UIElement headerRow = new UIElement().layout(layout -> layout
                 .widthPercent(100)
                 .height(14)
@@ -89,34 +82,21 @@ final class TriagePanelBuilder {
         divider.setAllowHitTest(false);
         overlay.addChild(divider);
 
-        if (triageCount == 0) {
-            Label empty = label("Inbox is empty.", MUTED);
-            empty.layout(layout -> layout.widthPercent(100).height(24));
-            empty.textStyle(style -> style
-                    .textColor(MUTED)
-                    .fontSize(7)
-                    .textShadow(false)
-                    .textAlignHorizontal(Horizontal.LEFT)
-                    .textAlignVertical(Vertical.CENTER));
-            empty.setAllowHitTest(false);
-            overlay.addChild(empty);
-        } else {
-            ScrollerView scroller = new ScrollerView();
-            scroller.layout(layout -> layout.flex(1).widthPercent(100).gapAll(2));
-            // LDLib's default per-tick wheel cap is 7px; at our 20px row height that
-            // feels glacial. Bump both min + max so each wheel tick scrolls roughly
-            // 3 rows.
-            scroller.scrollerStyle(style -> style
-                    .minScrollPixel(30f)
-                    .maxScrollPixel(80f));
-            for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.triageItems()) {
-                scroller.addScrollViewChild(row(item));
-                for (ChipSuggestion chip : item.chipSuggestions()) {
-                    scroller.addScrollViewChild(chip(item, chip));
-                }
+        ScrollerView scroller = new ScrollerView();
+        scroller.layout(layout -> layout.flex(1).widthPercent(100).gapAll(2));
+        // LDLib's default per-tick wheel cap is 7px; at our 20px row height that
+        // feels glacial. Bump both min + max so each wheel tick scrolls roughly
+        // 3 rows.
+        scroller.scrollerStyle(style -> style
+                .minScrollPixel(30f)
+                .maxScrollPixel(80f));
+        for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.triageItems()) {
+            scroller.addScrollViewChild(row(item));
+            for (ChipSuggestion chip : item.chipSuggestions()) {
+                scroller.addScrollViewChild(chip(item, chip));
             }
-            overlay.addChild(scroller);
         }
+        overlay.addChild(scroller);
 
         installDropTarget(overlay);
         return overlay;

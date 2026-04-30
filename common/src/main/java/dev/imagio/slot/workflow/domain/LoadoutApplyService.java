@@ -139,6 +139,40 @@ public final class LoadoutApplyService {
                 );
             }
             if (candidate == null) {
+                // No carried source has the requested identity, so the
+                // target slot can't be filled with the right item this
+                // pass. Critically: if the slot is still holding the
+                // PREVIOUS kit's item (or whatever was there before
+                // activation), leaving it in place produces the
+                // "kit activated → wrong item in slot" failure mode.
+                // Stage the occupant out the same way a successful
+                // candidate would, so the slot ends up empty and the
+                // atlas can paint a kit-needed ghost on its visual home.
+                if (currentOccupant != null && currentOccupant.present()) {
+                    InventoryActionRequest clearRequest = clearOccupantToStaging(
+                            authority,
+                            host,
+                            resolvedProtection,
+                            resolvedMode,
+                            reservedSourceSlots,
+                            stagedCandidates,
+                            entry.target(),
+                            target,
+                            targetKind,
+                            targetKey,
+                            currentOccupant,
+                            missingTargets,
+                            diagnostics
+                    );
+                    if (clearRequest != null) {
+                        currentTargets.remove(targetKey);
+                        operations.add(new PlannedTargetOperation(
+                                entry.target(),
+                                List.of(clearRequest),
+                                null
+                        ));
+                    }
+                }
                 missingTargets.add(entry.target());
                 diagnostics.add("no_candidate_source_for_target:" + targetKey);
                 continue;
@@ -553,6 +587,80 @@ public final class LoadoutApplyService {
             }
         }
         return null;
+    }
+
+    /**
+     * Stage the current occupant of a target slot out to a free carried
+     * slot, returning the transfer request (or null when staging fails).
+     * Used by the missing-candidate branch to ensure a kit slot whose
+     * needed item isn't carried still ends up empty rather than holding
+     * a stale leftover. Mirrors the staging pass that a successful
+     * candidate match performs in the main entry loop, factored out
+     * here so the failure path can reuse it without duplicating the
+     * protection / staging-target / reservation bookkeeping.
+     */
+    private static InventoryActionRequest clearOccupantToStaging(
+            InventoryAuthoritySnapshot authority,
+            InventoryHostDescriptor host,
+            ProtectionPolicy resolvedProtection,
+            InventoryActionMode resolvedMode,
+            Set<String> reservedSourceSlots,
+            List<CandidateSource> stagedCandidates,
+            LoadoutTarget loadoutTarget,
+            InventoryActionTarget target,
+            InventoryActionKind targetKind,
+            String targetKey,
+            TargetOccupant currentOccupant,
+            List<LoadoutTarget> missingTargets,
+            List<String> diagnostics
+    ) {
+        if (InventoryActionPolicy.blockedByProtection(
+                targetKind,
+                currentOccupant.identity(),
+                currentOccupant.stack(),
+                resolvedProtection
+        )) {
+            diagnostics.add("clear_blocked_by_protection:" + targetKey);
+            return null;
+        }
+        StagingTarget stagingTarget = findStagingTarget(
+                authority,
+                resolvedProtection,
+                reservedSourceSlots
+        );
+        if (stagingTarget == null) {
+            diagnostics.add("no_staging_slot_for_clear_on_missing:" + targetKey);
+            return null;
+        }
+        InventoryActionRequest clearRequest = new InventoryActionRequest(
+                host.hostId(),
+                host.serverMenuRef(),
+                UUID.randomUUID().toString(),
+                InventoryActionKind.TRANSFER,
+                resolvedMode,
+                InventoryActionQuantity.STACK,
+                InventoryActionScope.SINGLE_TARGET,
+                InventoryActionConflictPolicy.INSERT_ONLY,
+                "workflow:loadout_clear_missing",
+                target,
+                new InventoryActionTarget.SourceSlotTarget(stagingTarget.sourceId(), stagingTarget.slotIndex()),
+                0,
+                currentOccupant.identity(),
+                currentOccupant.stack(),
+                InventoryToolActionId.PROVIDER_DEFINED,
+                InventoryToolToggleId.PROVIDER_DEFINED,
+                false,
+                ""
+        );
+        reservedSourceSlots.add(stagingTarget.stableKey());
+        stagedCandidates.add(new CandidateSource(
+                stagingTarget.sourceId(),
+                stagingTarget.slotIndex(),
+                "",
+                currentOccupant.stack(),
+                currentOccupant.identity()
+        ));
+        return clearRequest;
     }
 
     private static StagingTarget findStagingTarget(

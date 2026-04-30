@@ -76,6 +76,20 @@ final class SearchController {
         return searchable.toString().contains(query);
     }
 
+    /**
+     * True when {@code summary} matches the active search query. Used by
+     * the search-results panel to filter per-chest content listings.
+     */
+    boolean matchesContentSummary(SlotWorkspaceViewModel.ChestContentSummary summary) {
+        String query = normalizedQuery();
+        if (query.isBlank() || summary == null) {
+            return false;
+        }
+        return (summary.name().toLowerCase(Locale.ROOT) + ' '
+                + summary.itemId().toLowerCase(Locale.ROOT))
+                .contains(query);
+    }
+
     void handleCharTyped(UIEvent event) {
         char codePoint = event.codePoint;
         if (codePoint == '/' && !searchModalActive && !host.peekActive && !host.hotkeys.isTextInputFocused()) {
@@ -153,7 +167,7 @@ final class SearchController {
         searchCommitted = false;
         searchMatches = List.of();
         searchMatchIndex = 0;
-        searchQuery = "";
+        setSearchQuery("");
         setScreenClosesOnEsc(false);
         host.rebuild();
     }
@@ -187,7 +201,7 @@ final class SearchController {
         searchPreviewPanned = true;
         searchLastKeystrokeMs = System.currentTimeMillis();
         searchInteractionDisablesAutoDismiss = true;
-        easeToCurrentMatch();
+        easeToFitAllMatches();
         host.rebuild();
     }
 
@@ -198,8 +212,12 @@ final class SearchController {
             }
             return;
         }
+        // Search is a find-where tool: commit just freezes the current
+        // fit-all view, leaves the active query in place so cards stay
+        // highlighted, and closes the modal. No pan-to-current-match
+        // zoom — players step through matches via Tab + visual scan.
         AtlasCamera origin = searchCommitted ? host.cameraController.currentCamera() : searchOrigin;
-        AtlasCamera target = cameraForMatch(searchMatches.get(searchMatchIndex));
+        AtlasCamera target = cameraForAllMatches();
         if (target != null) {
             host.cameraController.commitFrom(
                     origin,
@@ -212,7 +230,9 @@ final class SearchController {
         searchLastKeystrokeMs = System.currentTimeMillis();
         if (closeAfter) {
             closeModal();
-            searchQuery = "";
+            // Keep searchQuery set so cards stay highlighted; the player
+            // dismisses the highlight by typing "/" again or Esc-ing
+            // back from a fresh modal.
         }
         host.rebuild();
     }
@@ -224,7 +244,7 @@ final class SearchController {
         if (!wasCommitted && origin != null) {
             host.cameraController.snap(origin);
         }
-        searchQuery = "";
+        setSearchQuery("");
         host.rebuild();
     }
 
@@ -287,17 +307,64 @@ final class SearchController {
         return rows;
     }
 
-    private void easeToCurrentMatch() {
+    /**
+     * Zoom the camera out to a single frame that fits every match's
+     * placement rect. Replaces the old "pan to current match" behaviour:
+     * search is now a "find-where" tool that reveals all matches at once
+     * (highlighted via the existing per-card searchMatch overlay).
+     */
+    private void easeToFitAllMatches() {
         if (searchMatches.isEmpty()) {
             return;
         }
-        AtlasCamera target = cameraForMatch(searchMatches.get(searchMatchIndex));
+        AtlasCamera target = cameraForAllMatches();
         if (target != null) {
             host.cameraController.ease(
                     target,
                     AtlasCameraController.CUBIC_IN_OUT,
                     AtlasCameraController.SEARCH_PREVIEW_DURATION_MS);
         }
+    }
+
+    private AtlasCamera cameraForAllMatches() {
+        SlotAtlasGraphView atlas = host.cameraController.graphView();
+        if (atlas == null || searchMatches.isEmpty()) {
+            return null;
+        }
+        float viewportWidth = atlas.getContentWidth();
+        float viewportHeight = atlas.getContentHeight();
+        if (viewportWidth <= 0f || viewportHeight <= 0f) {
+            return null;
+        }
+        float minX = Float.POSITIVE_INFINITY;
+        float minY = Float.POSITIVE_INFINITY;
+        float maxX = Float.NEGATIVE_INFINITY;
+        float maxY = Float.NEGATIVE_INFINITY;
+        for (AtlasSearchIndex.SearchRow row : searchMatches) {
+            float x = row.targetX();
+            float y = row.targetY();
+            float w = row.targetWidth();
+            float h = row.targetHeight();
+            if (w <= 0f || h <= 0f) {
+                continue;
+            }
+            if (x < minX) minX = x;
+            if (y < minY) minY = y;
+            if (x + w > maxX) maxX = x + w;
+            if (y + h > maxY) maxY = y + h;
+        }
+        if (!Float.isFinite(minX) || !Float.isFinite(maxX) || maxX <= minX || maxY <= minY) {
+            return null;
+        }
+        FitCarriedCamera.Camera camera = FitCarriedCamera.fit(
+                FitCarriedCamera.Rect.of(minX, minY, maxX - minX, maxY - minY),
+                viewportWidth,
+                viewportHeight,
+                CARRIED_FIT_MIN_SCALE,
+                CARRIED_FIT_MAX_SCALE,
+                CARRIED_FIT_PADDING_PX
+        );
+        return camera == null ? null : new AtlasCamera(camera.offsetX(), camera.offsetY(), camera.scale());
     }
 
     private AtlasCamera cameraForMatch(AtlasSearchIndex.SearchRow row) {
@@ -322,7 +389,22 @@ final class SearchController {
     }
 
     private void syncQuery() {
-        searchQuery = searchBuffer;
+        setSearchQuery(searchBuffer);
+    }
+
+    /**
+     * Mirror the local query into the server session so its next view
+     * projection can synthesize remote-only ghosts for the matching
+     * identities. The dispatcher short-circuits when the value is
+     * unchanged, so calling this on every keystroke is cheap.
+     */
+    private void setSearchQuery(String value) {
+        String next = value == null ? "" : value;
+        if (next.equals(searchQuery)) {
+            return;
+        }
+        searchQuery = next;
+        host.rpc.sendSearchQuery(searchQuery);
     }
 
     void tickIdleTimer() {
@@ -332,7 +414,7 @@ final class SearchController {
         long idleMs = System.currentTimeMillis() - searchLastKeystrokeMs;
         if (!searchPreviewPanned && idleMs >= SEARCH_PREVIEW_DELAY_MS) {
             searchPreviewPanned = true;
-            easeToCurrentMatch();
+            easeToFitAllMatches();
         }
         if (!searchInteractionDisablesAutoDismiss && idleMs >= SEARCH_COMMIT_DELAY_MS) {
             commit(AtlasCameraController.CommitSource.SEARCH_COMMIT, true);

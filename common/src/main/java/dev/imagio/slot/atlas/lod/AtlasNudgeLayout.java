@@ -113,6 +113,27 @@ public final class AtlasNudgeLayout {
         Objects.requireNonNull(input, "input");
         Objects.requireNonNull(prevState, "prevState");
 
+        // Diagnostic: log entry conditions so the initial-open overlap
+        // bug can be traced. Includes input island count, prev-state
+        // size (0 = first call), and the home coords each island
+        // arrives with so we can tell whether the issue is upstream
+        // (overlapping homes) or in the layout passes themselves.
+        if (LOG.isInfoEnabled()) {
+            StringBuilder sb = new StringBuilder("[SLOT][nudge] layout entry input.size=");
+            sb.append(input.size()).append(" prevState.size=").append(prevState.size());
+            for (IslandSpec spec : input) {
+                sb.append(" {").append(spec.id).append(" home=(").append(spec.homeX)
+                        .append(",").append(spec.homeY).append(") size=(").append(spec.w)
+                        .append("x").append(spec.h).append(")");
+                PrevIslandState prev = prevState.get(spec.id);
+                if (prev != null) {
+                    sb.append(" prev=(").append(prev.renderX).append(",").append(prev.renderY).append(")");
+                }
+                sb.append("}");
+            }
+            LOG.info(sb.toString());
+        }
+
         // Drop deleted islands' state. Any displacement they were holding
         // open is now slack that pull-home can recover.
         Set<String> liveIds = new HashSet<>();
@@ -194,6 +215,71 @@ public final class AtlasNudgeLayout {
 
         // Phase 2: pull every displaced island toward home along a straight sweep.
         pullHome(byId);
+
+        // Phase 3 — final separation safety net. If any overlap still
+        // remains (rare; can happen when many islands grow simultaneously
+        // from ghost projections arriving in a later projection pass and
+        // the leftover-resolution loop terminates with edge-case
+        // configurations), brute-force separate by pushing the lex-larger
+        // rect out of the lex-smaller. This bypasses {@code
+        // pushedThisFrame}, so it always converges — at the cost of
+        // potentially moving an island further from its home than the
+        // earlier passes would. Acceptable: pull-home will recover ground
+        // on the next layout call.
+        //
+        // After each pushAway, sweep the mover past every OTHER island
+        // it now overlaps in a tight inner loop. Without this chain
+        // resolve, N islands sharing a starting position need O(N²)
+        // outer-loop iterations to fan out — and on a first-open with
+        // many fresh islands at home (0, 0) we'd blow the outer budget
+        // before convergence, leaving visible overlap until the next
+        // layout pass picked up after a player action. Chain-resolving
+        // per pushAway makes Phase 3 settle in a single sweep regardless
+        // of starting cluster size.
+        ArrayList<Mutable> phase3Sorted = new ArrayList<>(byId.values());
+        phase3Sorted.sort(Comparator.comparing(m -> m.id));
+        for (int pass = 0; pass < MAX_LEFTOVER_PASSES; pass++) {
+            String[] pair = anyOverlap(byId);
+            if (pair == null) {
+                break;
+            }
+            String anchorId = pair[0].compareTo(pair[1]) <= 0 ? pair[0] : pair[1];
+            String moverId = pair[0].equals(anchorId) ? pair[1] : pair[0];
+            Mutable mover = byId.get(moverId);
+            pushAway(mover, byId.get(anchorId));
+            chainResolve(mover, phase3Sorted);
+        }
+
+        // Diagnostic: post-phase overlap audit. Walks every pair after
+        // all 3 phases run and logs any remaining overlap with
+        // positions. Tells us whether the layout output is clean (and
+        // the bug lives downstream in the renderer / pack post-process)
+        // or whether some overlap path is escaping our resolution
+        // passes despite the chain-resolve.
+        if (LOG.isInfoEnabled()) {
+            ArrayList<Mutable> finalList = new ArrayList<>(byId.values());
+            finalList.sort(Comparator.comparing(m -> m.id));
+            int overlaps = 0;
+            StringBuilder overlapDetail = new StringBuilder();
+            for (int i = 0; i < finalList.size(); i++) {
+                Mutable a = finalList.get(i);
+                for (int j = i + 1; j < finalList.size(); j++) {
+                    Mutable b = finalList.get(j);
+                    if (overlaps(a, b)) {
+                        overlaps++;
+                        overlapDetail.append(" {").append(a.id).append("@(").append(a.x).append(",").append(a.y)
+                                .append(",").append(a.w).append("x").append(a.h)
+                                .append(") <-> ").append(b.id).append("@(").append(b.x).append(",").append(b.y)
+                                .append(",").append(b.w).append("x").append(b.h).append(")}");
+                    }
+                }
+            }
+            if (overlaps > 0) {
+                LOG.warn("[SLOT][nudge] EXIT WITH {} OVERLAPS:{}", overlaps, overlapDetail.toString());
+            } else {
+                LOG.info("[SLOT][nudge] layout clean exit (no overlaps), island.count={}", byId.size());
+            }
+        }
 
         // Build output and update prevState.
         ArrayList<IslandPlacement> out = new ArrayList<>(byId.size());
@@ -421,6 +507,49 @@ public final class AtlasNudgeLayout {
                     LOG.debug("[SLOT][nudge] push id={} away from={} to=({},{})",
                             other.id, pusher.id, other.x, other.y);
                 }
+            }
+        }
+    }
+
+    /**
+     * Phase-3 helper: shove {@code mover} past every island it still
+     * overlaps. Uses a monotonic push strategy — always increase
+     * {@code mover.x} (and fall back to increasing {@code mover.y} when
+     * x has nothing left to push past). The smaller-axis policy used
+     * by {@link #pushAway} alone cycles when {@code mover} is sandwiched
+     * between obstacles on opposite sides: pushing right onto obstacle
+     * A flips the smaller axis to "left" against obstacle B, which
+     * sends {@code mover} back into A. Forcing strictly-rightward
+     * progress (or downward as a tiebreaker when no rightward push is
+     * available) guarantees termination — the mover walks past every
+     * obstacle once and ends past their collective right edge.
+     */
+    private static void chainResolve(
+            Mutable mover,
+            ArrayList<Mutable> sorted
+    ) {
+        int budget = sorted.size() * 4;
+        while (budget-- > 0) {
+            Mutable conflict = null;
+            for (Mutable other : sorted) {
+                if (other == mover) continue;
+                if (overlaps(mover, other)) {
+                    conflict = other;
+                    break;
+                }
+            }
+            if (conflict == null) return;
+            // Monotonic push: snap mover's left edge to conflict's
+            // right edge. Always moves forward so prior obstacles can't
+            // re-conflict — even when {@link #pushAway}'s smaller-axis
+            // pick would have bounced mover backwards.
+            double moveTo = conflict.x + conflict.w;
+            if (moveTo > mover.x) {
+                mover.x = moveTo;
+            } else {
+                // Already past on x but still overlapping (rare: same
+                // x range, different y). Step down past conflict.
+                mover.y = conflict.y + conflict.h;
             }
         }
     }

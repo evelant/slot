@@ -64,14 +64,15 @@ client-owned layout), see
 7. **Phase 4b/c** — confidence bands + acceptance-rate logging.
    Deferred until playtest decides whether the role-only matching at
    Phase 4a is sharp enough.
-6. **Released as a peer plan** — `StorageArea` domain +
-   `area_proximity` / `chest_holds_relevant` contributors. See
-   [storage-areas.md](storage-areas.md). Still deferred from this
-   doc: `shopping_list`; per-player weights; anti-relevance;
-   max-relevance hold-toggle.
-
-The flat `ClaimedChest` model gives us enough storage signal to test
-the Phase-1+2 core. Re-evaluate StorageArea after Phase 2 playtest.
+6. **Storage areas** — RETIRED. The `StorageArea` domain +
+   `area_proximity` / `chest_holds_relevant` contributors direction
+   was wholesale superseded by the learned-storage swap; today's
+   "areas" are derived clusters via `ChestClusterMap` and
+   chest-content rendering goes through ghost atlas cards on homed
+   islands. Historical context:
+   [storage-areas.md — retired](retired/storage-areas.md). Still
+   deferred from this doc as future contributors: `shopping_list`,
+   per-player weights, anti-relevance, max-relevance hold-toggle.
 
 ## Architecture: where things run
 
@@ -347,9 +348,13 @@ Tests added (or revised):
 
 ### Out of scope this phase (still)
 
-- `area_proximity` — depends on `StorageArea`. See
-  [storage-areas.md § Phase 4](storage-areas.md).
-- `chest_holds_relevant` — same.
+- `area_proximity` / `chest_holds_relevant` — these contributors
+  depended on the retired `StorageArea` domain. Today's storage
+  signal is `ChestClusterMap` + ghost atlas cards on homed islands,
+  which produces a different shape; if a chest-locality contributor
+  is wanted in the relevance score, it'd need re-spec'ing against the
+  new model. Historical context:
+  [storage-areas.md — retired](retired/storage-areas.md).
 - `shopping_list` — feature doesn't exist.
 
 ## Phase 3 — `FacetIndex` runtime (LANDED, V1 surface)
@@ -492,9 +497,12 @@ classification facets + carried + active kit) and call
 ## Deferred (write down so we don't forget)
 
 - `StorageArea` domain type + claim-flow change + `area_proximity` /
-  `chest_holds_relevant` contributors. **Plan released as a peer doc:
-  see [storage-areas.md](storage-areas.md).** Phase 2 playtest is in;
-  the area model is the chosen direction.
+  `chest_holds_relevant` contributors — RETIRED. Replaced by the
+  learned-storage swap (auto-claim, derived `ChestClusterMap`, ghost
+  atlas cards on homed islands). Historical context:
+  [storage-areas.md — retired](retired/storage-areas.md). If a
+  chest-locality relevance contributor is still wanted, it needs
+  re-spec'ing against the chip / cluster / ghost-card model.
 - `shopping_list` contributor — depends on a craft-planner that
   doesn't exist.
 - "Max relevance everywhere" hold-modifier — implement only if

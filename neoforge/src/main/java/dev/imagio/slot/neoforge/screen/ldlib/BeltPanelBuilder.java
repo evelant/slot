@@ -133,7 +133,19 @@ final class BeltPanelBuilder {
         if (selected) {
             return SELECTED;
         }
-        return slot.selected() ? ACTIVE_HOTBAR : ROW;
+        // Only paint the vanilla "currently-held" amber on slots that
+        // actually carry an item. Without this, an empty slot whose
+        // index happens to match the held-hotbar-index gets the same
+        // amber chrome as a fully-loaded held slot — and when a kit
+        // activation leaves several slots empty for the player to fetch,
+        // exactly one of them looked highlighted while the rest didn't,
+        // suggesting kit-state semantics that aren't there. The amber
+        // is a "use this with left-click" indicator; nothing's usable
+        // in an empty slot, so plain ROW reads correctly.
+        if (slot.selected() && slot.occupied()) {
+            return ACTIVE_HOTBAR;
+        }
+        return ROW;
     }
 
     Button slotButton(SlotWorkspaceViewModel.HotbarSlot slot) {
@@ -200,9 +212,21 @@ final class BeltPanelBuilder {
             });
         }
 
-        UIElement iconSlot = slot.occupied()
-                ? itemSlotCard(slot.displayStack(), 16, 0x00000000, true, slot.count())
-                : emptyIcon();
+        UIElement iconSlot;
+        if (slot.occupied()) {
+            iconSlot = itemSlotCard(slot.displayStack(), 16, 0x00000000, true, slot.count());
+        } else {
+            // Kit-needed ghost: when an active kit declares an item for
+            // this hotbar position but the slot is currently empty, paint
+            // a faded preview of the needed item so the player sees what
+            // the slot is for. Without this, an empty slot looks
+            // identical whether the kit needs nothing or needs an item
+            // the player still has to fetch from a chest.
+            ItemStack kitNeeded = kitNeededDisplayStackFor(slot.hotbarIndex());
+            iconSlot = kitNeeded.isEmpty()
+                    ? emptyIcon()
+                    : itemSlotCard(kitNeeded, 16, 0x00000000, false, 0);
+        }
         iconSlot.layout(layout -> layout.width(16).height(16));
         button.addChild(iconSlot);
         Label indexBadge = label(Integer.toString(slot.hotbarIndex() + 1), slot.selected() ? WARNING : MUTED);
@@ -220,6 +244,28 @@ final class BeltPanelBuilder {
         indexBadge.setAllowHitTest(false);
         button.addChild(indexBadge);
         return button;
+    }
+
+    /**
+     * Display stack the active kit's current page declares for a given
+     * hotbar index, or {@link ItemStack#EMPTY} when no kit is active or
+     * the kit doesn't bind that slot. Drives the ghost-on-empty-slot
+     * preview in {@link #slotButton} so the belt visibly anticipates
+     * what's still missing right after activation.
+     */
+    private ItemStack kitNeededDisplayStackFor(int hotbarIndex) {
+        SlotWorkspaceViewModel.KitCard active = host.viewModel.activeKit();
+        if (active == null) {
+            return ItemStack.EMPTY;
+        }
+        for (SlotWorkspaceViewModel.KitSlotState slotState : active.slots()) {
+            if (slotState.slotIndex() != hotbarIndex) {
+                continue;
+            }
+            ItemStack stack = slotState.displayStack();
+            return stack == null ? ItemStack.EMPTY : stack;
+        }
+        return ItemStack.EMPTY;
     }
 
     UIElement offhandButton(SlotWorkspaceViewModel.OffhandSlot offhand) {

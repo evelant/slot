@@ -16,7 +16,7 @@ slice 4.
 For the atlas concept, see [../design/atlas.md](../design/atlas.md). For the
 storage concept this builds on, see [../design/storage.md](../design/storage.md).
 For the broader near-term sequence and the Kit work this temporarily
-supersedes, see [current.md](current.md). For the operational baseline, see
+supersedes, see [current.md](../current.md). For the operational baseline, see
 [../status.md](../status.md).
 
 ## Goals And Non-Goals
@@ -46,9 +46,9 @@ Non-goals:
   [../decisions](../decisions/) for the broader rule)
 - Triage entry pulse / new-item indicator (deferred to the future
   `+N since last open` system tracked in
-  [current.md](current.md))
+  [current.md](../current.md))
 - drag-to-trash surface (deferred — needs its own design pass; see
-  [current.md](current.md) "Later Feature Tracks")
+  [current.md](../current.md) "Later Feature Tracks")
 - bulk multi-select on homes, hotbar, or chest contents
 - per-island desired-carry, slot pins, or per-chest layout memory
 - non-proximate chest interaction (still fail-closed)
@@ -63,7 +63,7 @@ What must already be landed before each slice can start:
 - **all slices** depend on the current carried-atlas, home assignment,
   and chest-claim/link/deposit/take-all paths landed under
   [atlas-prototype.md](atlas-prototype.md) and
-  [storage-prototype.md](storage-prototype.md). All present as of
+  [storage-prototype.md](../retired/storage-prototype.md). All present as of
   2026-04-19.
 - **slice 1 (Triage panel)** depends on nothing else in this plan. It
   reshapes a chunk of `SlotWorkspaceUiFactory` and the view model, so it
@@ -76,7 +76,7 @@ What must already be landed before each slice can start:
   menu's first three commands actually exist as RPCs.
 
 The partial Kit prototype (slices 4–9 in
-[kit-prototype.md](kit-prototype.md)) pauses for the duration of this plan.
+[kit-prototype.md](../kit-prototype.md)) pauses for the duration of this plan.
 Nothing in this plan touches Kit domain state; resuming after slice 6 lands
 should be a clean continuation.
 
@@ -158,7 +158,7 @@ Mitigation:
 Drawing a thread from a hotbar slot to its home is cheap when there's one;
 a careless implementation that recomputes per-frame for every visible card
 becomes a problem at the carried-readability scale targets in
-[storage-prototype.md](storage-prototype.md).
+[storage-prototype.md](../retired/storage-prototype.md).
 
 Mitigation:
 

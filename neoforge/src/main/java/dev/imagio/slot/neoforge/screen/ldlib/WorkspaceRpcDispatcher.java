@@ -19,6 +19,12 @@ final class WorkspaceRpcDispatcher {
     RPCEmitter forgetItemAffinityEmitter;
     RPCEmitter depositEmitter;
     RPCEmitter takeAllEmitter;
+    RPCEmitter lootChestTakeAllEmitter;
+    RPCEmitter lootChestTakeIdentityEmitter;
+    RPCEmitter lootChestOpenVanillaEmitter;
+    RPCEmitter lootChestClaimAndDepositEmitter;
+    RPCEmitter setSearchQueryEmitter;
+    RPCEmitter renameClusterEmitter;
     RPCEmitter renameIslandEmitter;
     RPCEmitter recolorIslandEmitter;
     RPCEmitter setIslandIconEmitter;
@@ -121,6 +127,49 @@ final class WorkspaceRpcDispatcher {
         takeAllEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
                 String.class,
                 host.session::takeAllFromChest
+        ));
+        lootChestTakeAllEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                String.class,
+                Integer.class,
+                Integer.class,
+                Integer.class,
+                host.session::takeAllFromLootChest
+        ));
+        lootChestTakeIdentityEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                String.class,
+                Integer.class,
+                Integer.class,
+                Integer.class,
+                String.class,
+                String.class,
+                String.class,
+                host.session::takeIdentityFromLootChest
+        ));
+        lootChestOpenVanillaEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                String.class,
+                Integer.class,
+                Integer.class,
+                Integer.class,
+                host.session::openVanillaForLootChest
+        ));
+        lootChestClaimAndDepositEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                String.class,
+                Integer.class,
+                Integer.class,
+                Integer.class,
+                String.class,
+                String.class,
+                String.class,
+                host.session::claimAndDepositCarriedToLootChest
+        ));
+        setSearchQueryEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                String.class,
+                host.session::setSearchQuery
+        ));
+        renameClusterEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                String.class,
+                String.class,
+                host.session::renameCluster
         ));
         renameIslandEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
                 String.class,
@@ -344,6 +393,113 @@ final class WorkspaceRpcDispatcher {
         if (!sent) {
             host.localStatus.set("take unavailable");
             host.rebuild();
+        }
+    }
+
+    void sendLootChestTakeAll(SlotWorkspaceViewModel.LootChestPanel panel) {
+        if (lootChestTakeAllEmitter == null || panel == null || !panel.isPresent()) {
+            return;
+        }
+        boolean sent = lootChestTakeAllEmitter.send(
+                panel.dimensionId(),
+                panel.chestX(),
+                panel.chestY(),
+                panel.chestZ()
+        );
+        if (!sent) {
+            host.localStatus.set("loot take-all unavailable");
+            host.rebuild();
+        } else {
+            host.localStatus.set("loot take-all…");
+        }
+    }
+
+    void sendRenameCluster(String clusterId, String label) {
+        if (renameClusterEmitter == null || clusterId == null || clusterId.isBlank()) {
+            return;
+        }
+        boolean sent = renameClusterEmitter.send(clusterId, label == null ? "" : label);
+        if (!sent) {
+            host.localStatus.set("rename cluster unavailable");
+            host.rebuild();
+        }
+    }
+
+    void sendLootChestTakeIdentity(
+            SlotWorkspaceViewModel.LootChestPanel panel,
+            SlotWorkspaceViewModel.AtlasItem item
+    ) {
+        if (lootChestTakeIdentityEmitter == null || panel == null || !panel.isPresent() || item == null) {
+            return;
+        }
+        boolean sent = lootChestTakeIdentityEmitter.send(
+                panel.dimensionId(),
+                panel.chestX(),
+                panel.chestY(),
+                panel.chestZ(),
+                item.identity().itemId(),
+                item.identity().comparisonMode(),
+                item.identity().componentFingerprint()
+        );
+        if (!sent) {
+            host.localStatus.set("loot take unavailable");
+            host.rebuild();
+        }
+    }
+
+    /**
+     * Mirror the local search query into the server's session so the
+     * next view-model projection can synthesize remote-only ghosts only
+     * for matching identities. Server stores the value and short-circuits
+     * the broadcast when it hasn't changed, so spamming this on every
+     * keystroke is fine.
+     */
+    void sendSearchQuery(String query) {
+        if (setSearchQueryEmitter == null) {
+            return;
+        }
+        setSearchQueryEmitter.send(query == null ? "" : query);
+    }
+
+    void sendLootChestClaimAndDeposit(
+            SlotWorkspaceViewModel.LootChestPanel panel,
+            SlotWorkspaceViewModel.IdentityRef identity
+    ) {
+        if (lootChestClaimAndDepositEmitter == null || panel == null || !panel.isPresent() || identity == null) {
+            return;
+        }
+        boolean sent = lootChestClaimAndDepositEmitter.send(
+                panel.dimensionId(),
+                panel.chestX(),
+                panel.chestY(),
+                panel.chestZ(),
+                identity.itemId(),
+                identity.comparisonMode(),
+                identity.componentFingerprint()
+        );
+        if (!sent) {
+            host.localStatus.set("claim & deposit unavailable");
+            host.rebuild();
+        } else {
+            host.localStatus.set("claiming chest…");
+        }
+    }
+
+    void sendLootChestOpenVanilla(SlotWorkspaceViewModel.LootChestPanel panel) {
+        if (lootChestOpenVanillaEmitter == null || panel == null || !panel.isPresent()) {
+            return;
+        }
+        boolean sent = lootChestOpenVanillaEmitter.send(
+                panel.dimensionId(),
+                panel.chestX(),
+                panel.chestY(),
+                panel.chestZ()
+        );
+        if (!sent) {
+            host.localStatus.set("open vanilla unavailable");
+            host.rebuild();
+        } else {
+            host.localStatus.set("opening vanilla chest…");
         }
     }
 

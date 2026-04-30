@@ -9,6 +9,10 @@ import java.util.UUID;
 /**
  * Per-(chest, identity) learned affinity. Replaces the explicit
  * ChestLinkMap from the link era — routing reads from here.
+ *
+ * <p>{@link #score(UUID, ItemIdentity)} returns the raw persisted score.
+ * For routing/UI, callers normally want {@link #scoreAt(UUID, ItemIdentity, long)}
+ * or {@link #decayed(long)} to apply the per-bond decay rule.
  */
 public record ChestAffinityMap(Map<UUID, Map<ItemIdentity, ChestAffinity>> entries) {
     public ChestAffinityMap {
@@ -41,6 +45,48 @@ public record ChestAffinityMap(Map<UUID, Map<ItemIdentity, ChestAffinity>> entri
     public int score(UUID storageId, ItemIdentity identity) {
         ChestAffinity bond = affinity(storageId, identity);
         return bond == null ? 0 : bond.score();
+    }
+
+    /** Decayed score at {@code currentTick}; never below zero. */
+    public int scoreAt(UUID storageId, ItemIdentity identity, long currentTick) {
+        ChestAffinity bond = affinity(storageId, identity);
+        return bond == null ? 0 : bond.effectiveScore(currentTick);
+    }
+
+    /**
+     * Return a copy of this map with every bond's score replaced by its
+     * decayed value at {@code currentTick}. Bonds that decay to zero are
+     * dropped entirely; chests that lose every bond are also dropped. Use
+     * this once at the top of routing/UI projections so downstream code can
+     * keep using {@link #score(UUID, ItemIdentity)} unchanged.
+     */
+    public ChestAffinityMap decayed(long currentTick) {
+        if (entries.isEmpty()) {
+            return this;
+        }
+        LinkedHashMap<UUID, Map<ItemIdentity, ChestAffinity>> result = new LinkedHashMap<>();
+        for (Map.Entry<UUID, Map<ItemIdentity, ChestAffinity>> entry : entries.entrySet()) {
+            LinkedHashMap<ItemIdentity, ChestAffinity> bonds = new LinkedHashMap<>();
+            for (Map.Entry<ItemIdentity, ChestAffinity> bond : entry.getValue().entrySet()) {
+                int effective = bond.getValue().effectiveScore(currentTick);
+                if (effective <= 0) {
+                    continue;
+                }
+                if (effective == bond.getValue().score()) {
+                    bonds.put(bond.getKey(), bond.getValue());
+                } else {
+                    bonds.put(bond.getKey(), new ChestAffinity(
+                            bond.getValue().identity(),
+                            effective,
+                            bond.getValue().lastTouchedTick()
+                    ));
+                }
+            }
+            if (!bonds.isEmpty()) {
+                result.put(entry.getKey(), Map.copyOf(bonds));
+            }
+        }
+        return new ChestAffinityMap(result);
     }
 
     private static Map<UUID, Map<ItemIdentity, ChestAffinity>> copy(Map<UUID, Map<ItemIdentity, ChestAffinity>> source) {

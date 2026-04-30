@@ -7,7 +7,7 @@ problem-space analysis that informed later direction. Concrete layout
 proposals and near-term-experiment suggestions from earlier drafts have
 been removed; the current chosen direction is the triage-first visual
 atlas documented in [../design/atlas.md](../design/atlas.md), with buildable
-slices in [../plans/atlas-prototype.md](../plans/atlas-prototype.md).
+slices in [../plans/done/atlas-prototype.md](../plans/done/atlas-prototype.md).
 
 This document expands the UI/UX problem space for heavily modded Minecraft
 inventory management and collects possible design directions for SLOT. It is
@@ -1215,7 +1215,7 @@ Questions:
 ## Where Experiments Live Now
 
 Near-term engineering experiments have moved to
-[../plans/atlas-prototype.md](../plans/atlas-prototype.md) and
+[../plans/done/atlas-prototype.md](../plans/done/atlas-prototype.md) and
 [../plans/current.md](../plans/current.md). The list-first experiment set
 that appeared here previously (item-row hardening, recent-inbox surface,
 source drawer, hover shortcuts, task/loadout panel) is superseded by the

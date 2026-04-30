@@ -45,6 +45,7 @@ public sealed interface WorkflowEvent permits
         WorkflowEvent.ChestDepositObserved,
         WorkflowEvent.ChestAffinityForgotten,
         WorkflowEvent.ChestAffinityCleared,
+        WorkflowEvent.ChestClusterRelabeled,
         WorkflowEvent.KitCreated,
         WorkflowEvent.KitUpdated,
         WorkflowEvent.KitDeleted,
@@ -339,6 +340,22 @@ public sealed interface WorkflowEvent permits
     record ChestAffinityCleared(
             UUID storageId
     ) implements WorkflowEvent {
+    }
+
+    /**
+     * Player-authored label for a derived chest cluster. {@code clusterId}
+     * is the same key {@code ChestClusterMap} hands out (derived from the
+     * smallest-uuid chest in the cluster); the projection layers this on
+     * top of the default "Storage Area N" labels.
+     */
+    record ChestClusterRelabeled(
+            String clusterId,
+            String label
+    ) implements WorkflowEvent {
+        public ChestClusterRelabeled {
+            clusterId = clusterId == null ? "" : clusterId;
+            label = label == null ? "" : label;
+        }
     }
 
     record KitCreated(KitDefinition kit) implements WorkflowEvent {

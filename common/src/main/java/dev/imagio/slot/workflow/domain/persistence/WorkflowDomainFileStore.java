@@ -928,6 +928,11 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 data.kind = "ChestAffinityCleared";
                 data.storageId = event.storageId() == null ? "" : event.storageId().toString();
             }
+            case WorkflowEvent.ChestClusterRelabeled event -> {
+                data.kind = "ChestClusterRelabeled";
+                data.collectionId = event.clusterId();
+                data.name = event.label();
+            }
             case WorkflowEvent.KitCreated event -> {
                 data.kind = "KitCreated";
                 data.kit = kitDefinition(event.kit());
@@ -1041,6 +1046,11 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             case "ChestAffinityCleared" -> {
                 UUID storageId = parseUuid(data.storageId);
                 yield storageId == null ? null : new WorkflowEvent.ChestAffinityCleared(storageId);
+            }
+            case "ChestClusterRelabeled" -> {
+                String clusterId = data.collectionId == null ? "" : data.collectionId;
+                String label = data.name == null ? "" : data.name;
+                yield clusterId.isBlank() ? null : new WorkflowEvent.ChestClusterRelabeled(clusterId, label);
             }
             case "KitCreated" -> {
                 KitDefinition kit = decodeKitDefinition(data.kit);

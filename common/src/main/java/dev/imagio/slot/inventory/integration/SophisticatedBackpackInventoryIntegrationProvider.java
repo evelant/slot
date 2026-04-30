@@ -277,11 +277,15 @@ public final class SophisticatedBackpackInventoryIntegrationProvider implements 
             Player player,
             SophisticatedBackpackSupport.BackpackInventorySnapshot snapshot
     ) {
-        int rawSlot = snapshot.carrier().carrierSlotIndex();
-        if (rawSlot < 0 || rawSlot >= player.getInventory().items.size()) {
+        // Look up the carrier through SB's own provider so we cover all
+        // slot categories (main, hotbar, chest-slot, curios). The
+        // previous {@code inv.items[carrierSlotIndex]} lookup silently
+        // returned the wrong stack for worn backpacks, leaving every
+        // mutation path on those backpacks broken.
+        if (player == null || snapshot == null) {
             return ItemStack.EMPTY;
         }
-        ItemStack stack = player.getInventory().getItem(rawSlot);
+        ItemStack stack = SophisticatedBackpackSupport.findCarrierByStableId(player, snapshot.stableContainerId());
         return SophisticatedBackpackSupport.isBackpackItem(stack) ? stack : ItemStack.EMPTY;
     }
 

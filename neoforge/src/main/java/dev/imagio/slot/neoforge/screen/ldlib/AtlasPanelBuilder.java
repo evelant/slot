@@ -107,11 +107,16 @@ final class AtlasPanelBuilder {
         atlas.clearAllContentChildren();
         buildAtlas(atlas);
 
-        panel.addChildren(atlas, host.triagePanel.overlay(), host.belt.overlay());
-        UIElement chestChips = host.storagePanel.overlay();
-        if (chestChips != null) {
-            panel.addChild(chestChips);
+        panel.addChild(atlas);
+        // The four left-column panels (search results, chest chips,
+        // loot, Triage) compose into a single absolute-positioned flex
+        // column so the layout engine — not a manual reservedHeight()
+        // chain across four files — handles tiling and wrap.
+        UIElement leftColumn = host.leftColumn.overlay();
+        if (leftColumn != null) {
+            panel.addChild(leftColumn);
         }
+        panel.addChild(host.belt.overlay());
         panel.addChild(host.hoverTrailOverlayElement);
         panel.addChild(host.carriedFreeSlotsChipElement);
         panel.addChild(host.topRightActionsElement);

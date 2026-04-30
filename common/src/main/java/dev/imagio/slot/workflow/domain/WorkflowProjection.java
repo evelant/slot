@@ -40,6 +40,7 @@ public final class WorkflowProjection {
         LinkedHashSet<String> dismissedTemplateIds = new LinkedHashSet<>(current.visualHomeMap().dismissedTemplateIds());
         LinkedHashMap<UUID, ClaimedChest> claimedChests = indexChests(current.claimedChestMap().chests());
         LinkedHashMap<UUID, Map<ItemIdentity, ChestAffinity>> affinity = copyAffinity(current.chestAffinityMap().entries());
+        LinkedHashMap<String, String> clusterLabels = new LinkedHashMap<>(current.clusterLabels());
         KitMap kitMap = current.kitMap();
 
         switch (record.event()) {
@@ -365,6 +366,18 @@ public final class WorkflowProjection {
                     affinity.remove(event.storageId());
                 }
             }
+            case WorkflowEvent.ChestClusterRelabeled event -> {
+                String clusterId = event.clusterId();
+                if (clusterId == null || clusterId.isBlank()) {
+                    break;
+                }
+                String label = event.label() == null ? "" : event.label().trim();
+                if (label.isBlank()) {
+                    clusterLabels.remove(clusterId);
+                } else {
+                    clusterLabels.put(clusterId, label);
+                }
+            }
             case WorkflowEvent.KitCreated event -> {
                 if (event.kit() != null && !event.kit().id().isBlank()) {
                     kitMap = kitMap.withKit(event.kit());
@@ -411,6 +424,7 @@ public final class WorkflowProjection {
                 new VisualHomeMap(playerIslands, visualHomes, dismissedTemplateIds),
                 new ClaimedChestMap(new ArrayList<>(claimedChests.values())),
                 new ChestAffinityMap(affinity),
+                Map.copyOf(clusterLabels),
                 kitMap
         );
     }
@@ -541,6 +555,7 @@ public final class WorkflowProjection {
             VisualHomeMap visualHomeMap,
             ClaimedChestMap claimedChestMap,
             ChestAffinityMap chestAffinityMap,
+            Map<String, String> clusterLabels,
             KitMap kitMap
     ) {
         public Snapshot {
@@ -555,7 +570,28 @@ public final class WorkflowProjection {
             visualHomeMap = visualHomeMap == null ? VisualHomeMap.empty() : visualHomeMap;
             claimedChestMap = claimedChestMap == null ? ClaimedChestMap.empty() : claimedChestMap;
             chestAffinityMap = chestAffinityMap == null ? ChestAffinityMap.empty() : chestAffinityMap;
+            clusterLabels = clusterLabels == null ? Map.of() : Map.copyOf(clusterLabels);
             kitMap = kitMap == null ? KitMap.empty() : kitMap;
+        }
+
+        /** Backwards-compat constructor: defaults clusterLabels to empty. */
+        public Snapshot(
+                List<CollectionDefinition> userCollections,
+                Map<ItemIdentity, Set<String>> memberships,
+                Map<String, Map<ItemIdentity, Integer>> desiredCountsByCollection,
+                Map<String, List<QuickAccessLoadoutDefinition>> loadoutsByCollection,
+                Set<ItemIdentity> favoriteTags,
+                Set<ItemIdentity> junkTags,
+                ProtectionSnapshotPolicy protection,
+                Map<ItemIdentity, Long> recentDismissedUpToByIdentity,
+                VisualHomeMap visualHomeMap,
+                ClaimedChestMap claimedChestMap,
+                ChestAffinityMap chestAffinityMap,
+                KitMap kitMap
+        ) {
+            this(userCollections, memberships, desiredCountsByCollection, loadoutsByCollection,
+                    favoriteTags, junkTags, protection, recentDismissedUpToByIdentity,
+                    visualHomeMap, claimedChestMap, chestAffinityMap, Map.of(), kitMap);
         }
 
         public static Snapshot empty() {
@@ -571,6 +607,7 @@ public final class WorkflowProjection {
                     VisualHomeMap.empty(),
                     ClaimedChestMap.empty(),
                     ChestAffinityMap.empty(),
+                    Map.of(),
                     KitMap.empty()
             );
         }

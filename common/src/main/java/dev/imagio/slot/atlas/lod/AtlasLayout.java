@@ -4,6 +4,8 @@ import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -30,6 +32,7 @@ import java.util.Map;
  * aspect bias.
  */
 public final class AtlasLayout {
+    private static final Logger LOG = LoggerFactory.getLogger("dev.imagio.slot.atlas.layout");
     private AtlasLayout() {
     }
 
@@ -247,6 +250,35 @@ public final class AtlasLayout {
                     height,
                     pack == null ? 0 : pack.itemCount()
             ));
+        }
+        // Diagnostic: post-pack overlap audit on the BODY rects the
+        // renderer actually consumes (un-padded, post-rounding). If
+        // AtlasNudgeLayout reports clean but this audit reports
+        // overlaps, the bug is in the pack post-processing (padding /
+        // rounding / size mismatch with the nudge specs). If both
+        // report clean, the layout result is correct and the bug is
+        // downstream in the renderer.
+        if (LOG.isInfoEnabled()) {
+            ArrayList<AtlasLayoutResult.IslandPlacement> bodies = new ArrayList<>(results.values());
+            int overlaps = 0;
+            StringBuilder detail = new StringBuilder();
+            for (int i = 0; i < bodies.size(); i++) {
+                AtlasLayoutResult.IslandPlacement a = bodies.get(i);
+                for (int j = i + 1; j < bodies.size(); j++) {
+                    AtlasLayoutResult.IslandPlacement b = bodies.get(j);
+                    if (a.x() < b.x() + b.width() && b.x() < a.x() + a.width()
+                            && a.y() < b.y() + b.height() && b.y() < a.y() + a.height()) {
+                        overlaps++;
+                        detail.append(" {").append(a.islandId()).append("@(").append(a.x()).append(",").append(a.y())
+                                .append(",").append(a.width()).append("x").append(a.height())
+                                .append(") <-> ").append(b.islandId()).append("@(").append(b.x()).append(",").append(b.y())
+                                .append(",").append(b.width()).append("x").append(b.height()).append(")}");
+                    }
+                }
+            }
+            if (overlaps > 0) {
+                LOG.warn("[SLOT][layout] BODY OVERLAPS after pack: count={}{}", overlaps, detail.toString());
+            }
         }
         // Preserve the original iteration order for downstream consumers.
         LinkedHashMap<String, AtlasLayoutResult.IslandPlacement> ordered = new LinkedHashMap<>();

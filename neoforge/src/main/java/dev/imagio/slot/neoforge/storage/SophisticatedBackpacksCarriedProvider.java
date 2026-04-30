@@ -3,7 +3,6 @@ package dev.imagio.slot.neoforge.storage;
 import dev.imagio.slot.compat.sophisticated.SophisticatedBackpackSupport;
 import dev.imagio.slot.inventory.storage.CarriedProvider;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.capabilities.Capabilities;
@@ -137,32 +136,19 @@ public final class SophisticatedBackpacksCarriedProvider implements CarriedProvi
         if (suffix.isEmpty()) {
             return null;
         }
+        // Resolve the carrier through SB's own provider, which walks every
+        // slot category (main, hotbar, chest-slot, curios). The previous
+        // code looked up {@code inv.items[carrierSlotIndex]} which only
+        // works for main-inventory backpacks: a worn (chest-slot) backpack
+        // returned the wrong stack and {@code getCapability} was null,
+        // leaving the items visible-but-immovable.
         try {
-            for (var snapshot : SophisticatedBackpackSupport.readPlayerBackpacks(player, null)) {
-                if (snapshot == null) {
-                    continue;
-                }
-                String stable = snapshot.stableContainerId();
-                if (stable == null || !suffix.equals(stable)) {
-                    continue;
-                }
-                int rawSlot = snapshot.carrier().carrierSlotIndex();
-                Inventory inv = player.getInventory();
-                if (rawSlot < 0 || rawSlot >= inv.items.size()) {
-                    continue;
-                }
-                ItemStack carrier = inv.items.get(rawSlot);
-                if (carrier == null || carrier.isEmpty()) {
-                    continue;
-                }
-                try {
-                    IItemHandler handler = carrier.getCapability(Capabilities.ItemHandler.ITEM);
-                    if (handler != null) {
-                        return handler;
-                    }
-                } catch (RuntimeException | LinkageError ignored) {
-                }
+            ItemStack carrier = SophisticatedBackpackSupport.findCarrierByStableId(player, suffix);
+            if (carrier == null || carrier.isEmpty()) {
+                return null;
             }
+            IItemHandler handler = carrier.getCapability(Capabilities.ItemHandler.ITEM);
+            return handler;
         } catch (RuntimeException | LinkageError ignored) {
         }
         return null;

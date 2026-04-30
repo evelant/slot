@@ -102,8 +102,19 @@ public final class SlotWorkspaceCommandService {
         if (identity == null || chipIslandId == null || chipIslandId.isBlank()) {
             return WorkspaceCommandOutcome.rejected("invalid_chip_accept");
         }
-        SlotWorkspaceViewModel.AtlasItem item = viewModel == null ? null
-                : viewModel.atlasItem(SlotWorkspaceViewModel.IdentityRef.from(identity));
+        SlotWorkspaceViewModel.IdentityRef ref = SlotWorkspaceViewModel.IdentityRef.from(identity);
+        SlotWorkspaceViewModel.AtlasItem item = viewModel == null ? null : viewModel.atlasItem(ref);
+        if (item == null && viewModel != null) {
+            // Allow loot-chest-panel identities — they're Triage-equivalent
+            // for chip acceptance even though they aren't yet in the carry
+            // pane's atlasItems.
+            for (SlotWorkspaceViewModel.AtlasItem candidate : viewModel.lootChestPanel().items()) {
+                if (ref.equals(candidate.identity())) {
+                    item = candidate;
+                    break;
+                }
+            }
+        }
         if (item == null) {
             return WorkspaceCommandOutcome.rejected("selected_item_not_visible");
         }
@@ -314,6 +325,23 @@ public final class SlotWorkspaceCommandService {
         return WorkspaceCommandOutcome.accepted("chest moved", storageId);
     }
 
+    public static WorkspaceCommandOutcome relabelCluster(
+            WorkflowDomainRuntime runtime,
+            String clusterId,
+            String label
+    ) {
+        if (runtime == null || clusterId == null || clusterId.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("invalid_cluster_relabel");
+        }
+        boolean ok = runtime.chestClaimWorkflow().relabelCluster(clusterId, label);
+        if (!ok) {
+            return WorkspaceCommandOutcome.rejected("cluster_relabel_rejected");
+        }
+        String normalized = label == null ? "" : label.trim();
+        SlotDebugLog.log("LDLib cluster relabeled {} -> '{}'", clusterId, normalized);
+        return WorkspaceCommandOutcome.accepted("cluster renamed", normalized.isBlank() ? clusterId : normalized);
+    }
+
     public static WorkspaceCommandOutcome relabelChest(
             WorkflowDomainRuntime runtime,
             SlotWorkspaceViewModel viewModel,
@@ -360,13 +388,62 @@ public final class SlotWorkspaceCommandService {
         } catch (IllegalArgumentException exception) {
             return WorkspaceCommandOutcome.rejected("invalid_chest_storage_id");
         }
+        // Snapshot the chest record + every affinity bond BEFORE we delete
+        // them, so the undo lambda can rebuild both. Without this the
+        // forget gesture is a one-way trapdoor — discoverable accidents
+        // (right-click a chip) would lose the player's accumulated
+        // affinity history with no recovery short of redepositing every
+        // identity.
+        dev.imagio.slot.workflow.domain.ClaimedChest claimBefore =
+                runtime.chestClaimWorkflow().claimedChestMap().chest(uuid);
+        java.util.Map<dev.imagio.slot.inventory.core.ItemIdentity,
+                dev.imagio.slot.workflow.domain.ChestAffinity> affinityBefore = new java.util.LinkedHashMap<>(
+                runtime.chestClaimWorkflow().chestAffinityMap().forChest(uuid));
         boolean cleared = runtime.chestClaimWorkflow().forgetChestAffinity(uuid);
         boolean deleted = runtime.chestClaimWorkflow().deleteChest(uuid);
         if (!cleared && !deleted) {
             return WorkspaceCommandOutcome.rejected("chest_forget_rejected");
         }
+        runtime.undoStack().record(
+                "forget chest",
+                ctx -> reapplyForgetChest(ctx.runtime(), uuid),
+                ctx -> reinstateChest(ctx.runtime(), claimBefore, affinityBefore)
+        );
         SlotDebugLog.log("LDLib chest forgotten {}", storageId);
         return WorkspaceCommandOutcome.accepted("chest forgotten", storageId);
+    }
+
+    private static void reapplyForgetChest(WorkflowDomainRuntime runtime, UUID storageId) {
+        runtime.chestClaimWorkflow().forgetChestAffinity(storageId);
+        runtime.chestClaimWorkflow().deleteChest(storageId);
+    }
+
+    private static void reinstateChest(
+            WorkflowDomainRuntime runtime,
+            dev.imagio.slot.workflow.domain.ClaimedChest claim,
+            java.util.Map<dev.imagio.slot.inventory.core.ItemIdentity,
+                    dev.imagio.slot.workflow.domain.ChestAffinity> affinity
+    ) {
+        if (claim == null) {
+            return;
+        }
+        runtime.chestClaimWorkflow().claimWithId(
+                claim.storageId(),
+                claim.anchors(),
+                claim.atlasX(),
+                claim.atlasY(),
+                claim.label()
+        );
+        for (java.util.Map.Entry<dev.imagio.slot.inventory.core.ItemIdentity,
+                dev.imagio.slot.workflow.domain.ChestAffinity> entry : affinity.entrySet()) {
+            dev.imagio.slot.workflow.domain.ChestAffinity bond = entry.getValue();
+            runtime.chestClaimWorkflow().recordDeposit(
+                    claim.storageId(),
+                    entry.getKey(),
+                    bond.score(),
+                    bond.lastTouchedTick()
+            );
+        }
     }
 
     /** Forget affinity[storageId, identity]. Targeted "this chest doesn't hold X anymore". */
@@ -629,6 +706,49 @@ public final class SlotWorkspaceCommandService {
         }
         String status = missing == 0 ? "kit activated" : "kit activated (missing " + missing + ")";
         return WorkspaceCommandOutcome.accepted(status, diagnostics.toString());
+    }
+
+    /**
+     * Re-run the active kit's loadout plan against the current authority
+     * snapshot WITHOUT recording a new activation. Drives the
+     * "shift+click pickup fills the kit-needed slot" experience: when
+     * the player pulls the missing item out of a chest while a kit is
+     * active, this routes it from main / backpack into the empty
+     * hotbar slot the kit declared, instead of leaving the slot a
+     * ghost until the next deactivate / reactivate.
+     *
+     * <p>No-op when no kit is active or when the loadout plan has no
+     * pending operations (kit already fully satisfied).
+     */
+    public static void reapplyActiveKit(
+            WorkflowDomainRuntime runtime,
+            InventoryAuthoritySnapshot authority,
+            ProtectionPolicy protectionPolicy,
+            Function<InventoryEntrySnapshot, ItemIdentity> identityResolver,
+            Function<InventoryActionRequest, InventoryActionOutcome> actionExecutor
+    ) {
+        if (runtime == null || actionExecutor == null) {
+            return;
+        }
+        var activation = runtime.kitWorkflow().activation();
+        if (!activation.isActive()) {
+            return;
+        }
+        KitDefinition kit = runtime.kitWorkflow().kit(activation.kitId());
+        if (kit == null) {
+            return;
+        }
+        LoadoutApplyService.LoadoutApplyPlan plan = runtime.kitWorkflow().planActivate(
+                kit.id(),
+                activation.pageIndex(),
+                authority == null ? InventoryAuthoritySnapshot.empty() : authority,
+                protectionPolicy == null ? ProtectionPolicy.allowAll() : protectionPolicy,
+                identityResolver
+        );
+        if (plan.operations().isEmpty()) {
+            return;
+        }
+        new LoadoutApplyExecutor(actionExecutor).execute(plan);
     }
 
     public static WorkspaceCommandOutcome switchKitPage(
@@ -1230,7 +1350,19 @@ public final class SlotWorkspaceCommandService {
         if (identity == null || viewModel == null) {
             return false;
         }
-        return viewModel.atlasItem(SlotWorkspaceViewModel.IdentityRef.from(identity)) != null;
+        SlotWorkspaceViewModel.IdentityRef ref = SlotWorkspaceViewModel.IdentityRef.from(identity);
+        if (viewModel.atlasItem(ref) != null) {
+            return true;
+        }
+        // The loot-chest panel is a Triage-equivalent surface; identities
+        // visible there should also be acceptable for chip-accept (used by
+        // shift+click and "Take all → auto-accept top chip").
+        for (SlotWorkspaceViewModel.AtlasItem item : viewModel.lootChestPanel().items()) {
+            if (ref.equals(item.identity())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static String namespaceOf(String itemId) {

@@ -362,6 +362,53 @@ class AtlasNudgeLayoutTest {
     }
 
     @Test
+    void variedIslandsAllGrowFromGhostsResolveWithoutOverlap() {
+        // Realistic loot/ghost scenario: islands placed at varied authored
+        // homes (not a clean grid), then proximate-chest ghosts arrive in
+        // a later projection pass and every island gains several cells.
+        // Sizes after growth differ per-island to mirror real chest stocks.
+        Map<String, PrevIslandState> state = new HashMap<>();
+        AtlasNudgeLayout.layout(List.of(
+                spec("food", 12, 4, 5, 5),
+                spec("tools", 60, 0, 5, 5),
+                spec("materials", 18, 32, 6, 5),
+                spec("weapons", 110, 8, 4, 5),
+                spec("storage", 80, 50, 5, 5),
+                spec("decor", 30, 70, 5, 4),
+                spec("redstone", 96, 70, 5, 5),
+                spec("misc", 50, 28, 4, 4)
+        ), state);
+        List<IslandPlacement> out = AtlasNudgeLayout.layout(List.of(
+                spec("food", 12, 4, 14, 13),
+                spec("tools", 60, 0, 18, 14),
+                spec("materials", 18, 32, 22, 18),
+                spec("weapons", 110, 8, 11, 9),
+                spec("storage", 80, 50, 16, 14),
+                spec("decor", 30, 70, 12, 10),
+                spec("redstone", 96, 70, 14, 12),
+                spec("misc", 50, 28, 9, 8)
+        ), state);
+        assertNoOverlap(out);
+    }
+
+    @Test
+    void simultaneousGrowthFromEmptyStateResolvesWithoutOverlap() {
+        // First-open hazard: prevState empty, every island NEW. Each
+        // already sized for ghosts on the very first projection (no
+        // pre-ghost frame exists), so all islands need to push from a
+        // single layout pass.
+        Map<String, PrevIslandState> state = new HashMap<>();
+        List<IslandPlacement> out = AtlasNudgeLayout.layout(List.of(
+                spec("a", 0, 0, 18, 14),
+                spec("b", 12, 6, 16, 12),
+                spec("c", 24, 0, 14, 14),
+                spec("d", 6, 14, 20, 10),
+                spec("e", 30, 12, 12, 10)
+        ), state);
+        assertNoOverlap(out);
+    }
+
+    @Test
     void tightenReturnsNullForUnknownId() {
         Map<String, PrevIslandState> state = new HashMap<>();
         AtlasNudgeLayout.layout(List.of(spec("a", 0, 0, 4, 4)), state);

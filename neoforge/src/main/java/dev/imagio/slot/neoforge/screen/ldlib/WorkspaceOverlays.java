@@ -115,7 +115,25 @@ final class WorkspaceOverlays {
             dev.imagio.slot.neoforge.client.screen.SlotWorkspaceMountController.openVanillaInventory();
         });
 
-        overlay.addChildren(depositButton, undoButton, redoButton, vanillaButton);
+        // Persistent disable: flips the config flag and drops to vanilla
+        // for the rest of the session (and beyond — config persists). The
+        // vanilla inventory screen carries a "Re-enable SLOT" pill so the
+        // route back is one click.
+        Button disableButton = button("", true, GLASS).noText();
+        disableButton.addPreIcon(Icons.EYE_OFF);
+        disableButton.layout(layout -> layout.width(16).height(16));
+        disableButton.setOnClick(event -> {
+            event.stopPropagation();
+            dev.imagio.slot.neoforge.config.SlotClientConfig.CLIENT.slotEnabled.set(false);
+            dev.imagio.slot.neoforge.config.SlotClientConfig.CLIENT.slotEnabled.save();
+            dev.imagio.slot.neoforge.client.screen.SlotWorkspaceMountController.openVanillaInventory();
+        });
+        host.installTextTooltip(
+                disableButton,
+                Component.literal(
+                        "Disable SLOT — vanilla inventory opens until re-enabled from the vanilla screen."));
+
+        overlay.addChildren(depositButton, undoButton, redoButton, vanillaButton, disableButton);
         return overlay;
     }
 
@@ -150,8 +168,13 @@ final class WorkspaceOverlays {
             summary = (host.searchController.matchIndex() + 1) + " of " + host.searchController.matches().size()
                     + " matches  ·  Tab cycle  ·  Enter commit  ·  " + commitHint;
         }
+        // Content-fit the summary line: the previous flex(1) caused the
+        // chip to claim extra vertical space below the buffer line, so
+        // the search modal grew a strip of empty space when active.
+        // Wrapping is still allowed via wrappedLabel's textWrap, so a
+        // long summary line still spills onto a second row when needed.
         Label summaryLabel = wrappedLabel(summary, MUTED);
-        summaryLabel.layout(layout -> layout.widthPercent(100).flex(1));
+        summaryLabel.layout(layout -> layout.widthPercent(100));
         chip.addChild(summaryLabel);
         return chip;
     }

@@ -7,6 +7,7 @@ import dev.imagio.slot.inventory.workspace.InventoryWorkspaceComposer;
 import dev.imagio.slot.inventory.workspace.InventoryWorkspaceProfileId;
 import dev.imagio.slot.neoforge.client.host.ObservedScreenContext;
 import dev.imagio.slot.neoforge.client.host.ObservedScreenContexts;
+import dev.imagio.slot.neoforge.config.SlotClientConfig;
 import dev.imagio.slot.neoforge.network.SlotWorkspaceOpenPayload;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
@@ -72,6 +73,14 @@ public final class SlotWorkspaceMountController {
         if (bypassNextMount) {
             bypassNextMount = false;
             SlotDebugLog.log("Vanilla inventory bypass requested; skipping SLOT mount for {}", candidate.getClass().getName());
+            return;
+        }
+        // Persistent escape hatch: when SLOT is disabled the player gets
+        // the vanilla inventory screen on every E-press until they
+        // explicitly re-enable from the vanilla inventory's "Re-enable
+        // SLOT" pill.
+        if (!SlotClientConfig.CLIENT.slotEnabled.get()) {
+            SlotDebugLog.log("SLOT disabled in client config; passing through to {}", candidate.getClass().getName());
             return;
         }
 

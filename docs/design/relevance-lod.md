@@ -49,8 +49,11 @@ at — full readable card at one end, single-pixel pip at the other. High
 scores get visual budget; low scores fade toward the underlying lattice.
 Layout packs items in their canonical order with cell sizes derived from
 their bands, so islands compact around relevant items without rearranging.
-The same machinery applies recursively to chest tiles inside areas inside
-the atlas.
+(Earlier drafts of this doc described recursive application to chest
+tiles inside named storage areas; that surface retired with the
+learned-storage swap — chests are now chips in a left-column flex
+panel and chest contents render as ghost atlas cards on their homed
+island.)
 
 ## Relevance contributors
 
@@ -175,7 +178,26 @@ the server use the same scoring code for its own decisions
 client-side split-brain that "ship layout from server but adjust on
 client" would create.
 
-## Storage areas
+## Storage areas (SUPERSEDED 2026-04-30)
+
+> **Replaced by the learned-storage swap.** The "explicit named area
+> with chip-collapse + expand-on-proximity" design below is no longer
+> the plan. What shipped:
+>
+> - Implicit auto-claim on first deposit.
+> - Derived clusters via `ChestClusterMap` (16-block spatial union-
+>   find), default labels "Storage Area N", player rename via
+>   right-click chip context menu.
+> - Chest contents render as ghost atlas cards on their homed island
+>   when the chest is proximate; non-proximate stocks surface via the
+>   chest locator panel and the search-time `+N stored` badge.
+> - Affinity decay + explicit forget (undoable). No demote / collapse
+>   gesture needed; chips are already chip-sized by default.
+>
+> See [plans/learned-storage.md](../plans/learned-storage.md) and
+> [plans/current.md](../plans/current.md) for the implementation
+> recap. Text below is preserved as historical context for the
+> relevance / LOD design exploration only.
 
 External storage joins the relevance model with one small structural
 addition: storage **areas**.
@@ -286,7 +308,7 @@ landed.
   same machinery.
 - The "Triage island" landmark in earlier docs is *not* in this model.
   Triage is a docked list panel (see
-  [../plans/core-workflow-ux.md § Slice 1](../plans/core-workflow-ux.md))
+  [../plans/done/core-workflow-ux.md § Slice 1](../plans/done/core-workflow-ux.md))
   and is not subject to atlas LOD. The relevance model applies to atlas
   content; the docked panel is its own surface, in one fixed place,
   optimized for sequential processing.
@@ -373,7 +395,19 @@ This is the phase that actually tests the idea. Land together:
 Phase 2 + Phase 3 together are the prototype's evaluation point.
 Splitting them leaves a half-tested model.
 
-### Phase 3 — Storage areas
+### Phase 3 — Storage areas (RETIRED — superseded by learned-storage)
+
+> The `StorageArea` domain type, claim-flow area picker, and
+> recursive chest-tile-inside-expanded-area LOD described below
+> never shipped. The learned-storage swap (2026-04-30) replaced the
+> direction with implicit auto-claim, derived clusters via
+> `ChestClusterMap`, and chest chips rendered in a flex left-column
+> panel. Chest contents surface as ghost atlas cards on their homed
+> island when proximate; non-proximate stocks render via the
+> chest-locator panel + the search-time `+N stored` corner badge.
+> See [../plans/learned-storage.md](../plans/learned-storage.md).
+>
+> The text below is preserved for context only.
 
 Player-facing change.
 
@@ -417,8 +451,11 @@ The prototype is judged on whether these hold:
   is active.
 - Submitting a search visibly raises matches out of the local
   constellation; clearing returns to baseline cleanly.
-- Walking up to a storage area expands it smoothly into chest tiles;
-  walking away collapses it without a perceived framerate hit.
+- Walking up to a chest cluster lights its chip in the left panel and
+  surfaces its contents as ghost cards on the homed islands; walking
+  away dims back without a perceived framerate hit. (Earlier drafts
+  expected a "storage area expand into chest tiles" sequence — that
+  surface retired with the learned-storage swap.)
 - Pickups during a session animate in locally without the whole atlas
   reflowing or "convulsing."
 - The relevance debug overlay, when enabled, makes "why did this item

@@ -66,9 +66,19 @@ public final class SlotWorkspaceViewModelCodec {
 
         ListTag chipTags = new ListTag();
         for (SlotWorkspaceViewModel.ChestChip chip : viewModel.chestChips()) {
-            chipTags.add(encodeChestChip(chip));
+            CompoundTag chipTag = encodeChestChip(chip);
+            writeChestChipContents(chipTag, chip, provider);
+            chipTags.add(chipTag);
         }
         tag.put("chestChips", chipTags);
+
+        ListTag clusterTags = new ListTag();
+        for (SlotWorkspaceViewModel.ChestClusterDescriptor cluster : viewModel.chestClusters()) {
+            clusterTags.add(encodeChestCluster(cluster));
+        }
+        tag.put("chestClusters", clusterTags);
+
+        tag.put("lootChestPanel", encodeLootChestPanel(viewModel.lootChestPanel(), provider));
 
         ListTag hotbarTags = new ListTag();
         for (SlotWorkspaceViewModel.HotbarSlot slot : viewModel.hotbarSlots()) {
@@ -111,8 +121,35 @@ public final class SlotWorkspaceViewModelCodec {
         ArrayList<SlotWorkspaceViewModel.ChestChip> chestChips = new ArrayList<>();
         ListTag chipTags = compoundTag.getList("chestChips", Tag.TAG_COMPOUND);
         for (int index = 0; index < chipTags.size(); index++) {
-            chestChips.add(decodeChestChip(chipTags.getCompound(index)));
+            CompoundTag chipTag = chipTags.getCompound(index);
+            SlotWorkspaceViewModel.ChestChip baseChip = decodeChestChip(chipTag);
+            java.util.List<SlotWorkspaceViewModel.ChestContentSummary> contents =
+                    readChestChipContents(chipTag, provider);
+            chestChips.add(new SlotWorkspaceViewModel.ChestChip(
+                    baseChip.storageId(),
+                    baseChip.dimensionId(),
+                    baseChip.label(),
+                    baseChip.anchorCount(),
+                    baseChip.slotCapacity(),
+                    baseChip.filledSlots(),
+                    baseChip.proximate(),
+                    baseChip.affinityIdentities(),
+                    baseChip.worldX(),
+                    baseChip.worldY(),
+                    baseChip.worldZ(),
+                    baseChip.clusterId(),
+                    contents
+            ));
         }
+
+        ArrayList<SlotWorkspaceViewModel.ChestClusterDescriptor> chestClusters = new ArrayList<>();
+        ListTag clusterTags = compoundTag.getList("chestClusters", Tag.TAG_COMPOUND);
+        for (int index = 0; index < clusterTags.size(); index++) {
+            chestClusters.add(decodeChestCluster(clusterTags.getCompound(index)));
+        }
+
+        SlotWorkspaceViewModel.LootChestPanel lootChestPanel =
+                decodeLootChestPanel(provider, compoundTag.getCompound("lootChestPanel"));
 
         ArrayList<SlotWorkspaceViewModel.HotbarSlot> hotbarSlots = new ArrayList<>();
         ListTag hotbarTags = compoundTag.getList("hotbarSlots", Tag.TAG_COMPOUND);
@@ -142,9 +179,11 @@ public final class SlotWorkspaceViewModelCodec {
                 atlasItems,
                 triageItems,
                 chestChips,
+                chestClusters,
                 hotbarSlots.isEmpty() ? SlotWorkspaceViewModel.emptyHotbar() : hotbarSlots,
                 decodeOffhand(provider, compoundTag.getCompound("offhand")),
-                kits
+                kits,
+                lootChestPanel
         );
     }
 
@@ -348,6 +387,12 @@ public final class SlotWorkspaceViewModelCodec {
             presenceTags.add(encodeChestPresence(entry));
         }
         tag.put("presence", presenceTags);
+        ListTag elsewhereTags = new ListTag();
+        for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.elsewhere()) {
+            elsewhereTags.add(encodeChestPresence(entry));
+        }
+        tag.put("elsewhere", elsewhereTags);
+        tag.putBoolean("kitNeeded", item.kitNeeded());
         return tag;
     }
 
@@ -381,6 +426,11 @@ public final class SlotWorkspaceViewModelCodec {
         for (int index = 0; index < presenceTags.size(); index++) {
             presence.add(decodeChestPresence(presenceTags.getCompound(index)));
         }
+        ArrayList<SlotWorkspaceViewModel.ChestPresenceEntry> elsewhere = new ArrayList<>();
+        ListTag elsewhereTags = tag.getList("elsewhere", Tag.TAG_COMPOUND);
+        for (int index = 0; index < elsewhereTags.size(); index++) {
+            elsewhere.add(decodeChestPresence(elsewhereTags.getCompound(index)));
+        }
         return new SlotWorkspaceViewModel.AtlasItem(
                 decodeIdentity(tag.getCompound("identity")),
                 ItemStack.parseOptional(provider, tag.getCompound("displayStack")),
@@ -395,9 +445,11 @@ public final class SlotWorkspaceViewModelCodec {
                 tag.getInt("proximateCount"),
                 chipSuggestions,
                 presence,
+                elsewhere,
                 tag.getBoolean("isCarriedContainer"),
                 tag.getInt("containerFreeSlotCount"),
-                tag.getInt("containerSlotCapacity")
+                tag.getInt("containerSlotCapacity"),
+                tag.getBoolean("kitNeeded")
         );
     }
 
@@ -458,6 +510,7 @@ public final class SlotWorkspaceViewModelCodec {
         tag.putInt("worldX", chip.worldX());
         tag.putInt("worldY", chip.worldY());
         tag.putInt("worldZ", chip.worldZ());
+        tag.putString("clusterId", chip.clusterId());
         return tag;
     }
 
@@ -473,7 +526,129 @@ public final class SlotWorkspaceViewModelCodec {
                 tag.getInt("affinityIdentities"),
                 tag.getInt("worldX"),
                 tag.getInt("worldY"),
-                tag.getInt("worldZ")
+                tag.getInt("worldZ"),
+                tag.getString("clusterId")
+        );
+    }
+
+    /**
+     * The chip's per-identity {@link SlotWorkspaceViewModel.ChestContentSummary
+     * contents} list intentionally goes through a sibling sub-list on the
+     * chip CompoundTag because the {@code chestChips} list itself is
+     * stored as a flat list of {@code CompoundTag} entries. We attach
+     * a {@code "contents"} {@link ListTag} so the encode/decode pair
+     * round-trips cleanly without reshaping the outer envelope.
+     */
+    private static void writeChestChipContents(
+            CompoundTag tag,
+            SlotWorkspaceViewModel.ChestChip chip,
+            HolderLookup.Provider provider
+    ) {
+        ListTag contentsTag = new ListTag();
+        for (SlotWorkspaceViewModel.ChestContentSummary summary : chip.contents()) {
+            contentsTag.add(encodeChestContentSummary(summary, provider));
+        }
+        tag.put("contents", contentsTag);
+    }
+
+    private static java.util.List<SlotWorkspaceViewModel.ChestContentSummary> readChestChipContents(
+            CompoundTag tag,
+            HolderLookup.Provider provider
+    ) {
+        ListTag contentsTag = tag.getList("contents", Tag.TAG_COMPOUND);
+        if (contentsTag.size() == 0) {
+            return java.util.List.of();
+        }
+        ArrayList<SlotWorkspaceViewModel.ChestContentSummary> out = new ArrayList<>(contentsTag.size());
+        for (int i = 0; i < contentsTag.size(); i++) {
+            out.add(decodeChestContentSummary(provider, contentsTag.getCompound(i)));
+        }
+        return java.util.List.copyOf(out);
+    }
+
+    private static CompoundTag encodeChestContentSummary(
+            SlotWorkspaceViewModel.ChestContentSummary summary, HolderLookup.Provider provider
+    ) {
+        CompoundTag tag = new CompoundTag();
+        tag.putString("itemId", summary.itemId());
+        tag.putString("componentFingerprint", summary.componentFingerprint());
+        tag.putString("name", summary.name());
+        tag.put("displayStack", summary.displayStack().saveOptional(provider));
+        tag.putInt("count", summary.count());
+        return tag;
+    }
+
+    private static SlotWorkspaceViewModel.ChestContentSummary decodeChestContentSummary(
+            HolderLookup.Provider provider, CompoundTag tag
+    ) {
+        return new SlotWorkspaceViewModel.ChestContentSummary(
+                tag.getString("itemId"),
+                tag.getString("componentFingerprint"),
+                tag.getString("name"),
+                ItemStack.parseOptional(provider, tag.getCompound("displayStack")),
+                tag.getInt("count")
+        );
+    }
+
+    private static CompoundTag encodeChestCluster(SlotWorkspaceViewModel.ChestClusterDescriptor cluster) {
+        CompoundTag tag = new CompoundTag();
+        tag.putString("clusterId", cluster.clusterId());
+        tag.putString("label", cluster.label());
+        tag.putInt("ordinal", cluster.ordinal());
+        return tag;
+    }
+
+    private static SlotWorkspaceViewModel.ChestClusterDescriptor decodeChestCluster(CompoundTag tag) {
+        return new SlotWorkspaceViewModel.ChestClusterDescriptor(
+                tag.getString("clusterId"),
+                tag.getString("label"),
+                tag.getInt("ordinal")
+        );
+    }
+
+    private static CompoundTag encodeLootChestPanel(
+            SlotWorkspaceViewModel.LootChestPanel panel, HolderLookup.Provider provider
+    ) {
+        CompoundTag tag = new CompoundTag();
+        tag.putInt("chestX", panel.chestX());
+        tag.putInt("chestY", panel.chestY());
+        tag.putInt("chestZ", panel.chestZ());
+        tag.putString("dimensionId", panel.dimensionId());
+        tag.putString("label", panel.label());
+        ListTag itemTags = new ListTag();
+        for (SlotWorkspaceViewModel.AtlasItem item : panel.items()) {
+            itemTags.add(encodeItem(item, provider));
+        }
+        tag.put("items", itemTags);
+        return tag;
+    }
+
+    private static SlotWorkspaceViewModel.LootChestPanel decodeLootChestPanel(
+            HolderLookup.Provider provider, CompoundTag tag
+    ) {
+        if (tag == null) {
+            return SlotWorkspaceViewModel.LootChestPanel.empty();
+        }
+        // Empty (unset) dimensionId is the sentinel for "no panel" — the
+        // server only writes a non-blank dimension when a loot chest is
+        // active. Avoids relying on CompoundTag#contains, which isn't on
+        // the test-classpath stub.
+        String dimensionId = tag.getString("dimensionId");
+        if (dimensionId == null || dimensionId.isBlank()) {
+            return SlotWorkspaceViewModel.LootChestPanel.empty();
+        }
+        ArrayList<SlotWorkspaceViewModel.AtlasItem> items = new ArrayList<>();
+        ListTag itemTags = tag.getList("items", Tag.TAG_COMPOUND);
+        for (int index = 0; index < itemTags.size(); index++) {
+            items.add(decodeItem(provider, itemTags.getCompound(index)));
+        }
+        return new SlotWorkspaceViewModel.LootChestPanel(
+                tag.getInt("chestX"),
+                tag.getInt("chestY"),
+                tag.getInt("chestZ"),
+                dimensionId,
+                tag.getString("label"),
+                items
         );
     }
 

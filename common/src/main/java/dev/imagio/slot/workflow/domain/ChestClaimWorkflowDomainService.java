@@ -295,6 +295,25 @@ public final class ChestClaimWorkflowDomainService {
         return true;
     }
 
+    /**
+     * Player-authored label for a derived chest cluster. {@code clusterId}
+     * matches the keys produced by
+     * {@link ChestClusterMap#derive(ClaimedChestMap)}; an empty {@code label}
+     * clears the rename and falls back to the default ordinal label.
+     */
+    public boolean relabelCluster(String clusterId, String label) {
+        if (clusterId == null || clusterId.isBlank()) {
+            return false;
+        }
+        String normalized = label == null ? "" : label.trim();
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.ChestClusterRelabeled(clusterId, normalized),
+                DomainEventMetadata.origin("workflow.storage.cluster.relabel")
+        );
+        mutationObserver.run();
+        return true;
+    }
+
     /** Forget all affinity for this chest. */
     public boolean forgetChestAffinity(UUID storageId) {
         if (storageId == null) {
