@@ -17,6 +17,7 @@ import dev.imagio.slot.debug.RealisticAtlasGenerator;
 import dev.imagio.slot.debug.RealisticAtlasPlan;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.neoforge.storage.ChestStorageIds;
 import dev.imagio.slot.neoforge.triage.IslandSignalExtractor;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
@@ -342,6 +343,14 @@ public final class SlotTestCommands {
                 );
                 continue;
             }
+            // Stamp the BE with the canonical slot:storage_id so
+            // ChestPersistenceReconciliation doesn't prune the claim on
+            // next login (it walks claimed chests, reads each anchor's
+            // BE attachment, and deletes claims whose anchors are
+            // attachment-less). The pre-refactor `ChestClaimServerService.claim`
+            // path wrote this implicitly; the autoClaimByAnchor path
+            // doesn't, so populate has to do it explicitly.
+            ChestStorageIds.write(level, pos, claimedChest.storageId());
             claimed++;
             // Seed affinity from the chest's contents so deposit routing
             // works immediately without needing observed deposits.
