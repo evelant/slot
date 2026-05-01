@@ -39,7 +39,12 @@ class IslandSuggestionServiceTest {
     }
 
     @Test
-    void learnedRuleShowsLearnedChipAlongsideTemplateWhenBothFire() {
+    void specificTemplateLeadsLearnedChipWhenBothFire() {
+        // INGOTS is a high-specificity template (specific c:ingots
+        // tag trigger), so it leads when it fires — the learned chip
+        // for "Mining" follows. Players grabbing a copper_ingot are
+        // typically looking for the INGOTS pile first, with their
+        // historical Mining drop as a second option.
         LearnedIslandRuleStore rules = new LearnedIslandRuleStore();
         rules.recordAssignment(descriptor("minecraft:iron_ingot", Set.of(), Set.of("c:ingots")), "island.mining", 1L);
         rules.recordAssignment(descriptor("minecraft:gold_ingot", Set.of(), Set.of("c:ingots")), "island.mining", 2L);
@@ -52,16 +57,18 @@ class IslandSuggestionServiceTest {
         );
 
         assertEquals(2, chips.size());
-        assertEquals(ChipSuggestion.ChipKind.LEARNED, chips.get(0).kind());
-        assertEquals("island.mining", chips.get(0).islandId());
-        assertEquals(ChipSuggestion.ChipKind.TEMPLATE, chips.get(1).kind());
-        // c:ingots tag now routes to the dedicated INGOTS template
-        // (split out of the broader MATERIALS catch-all).
-        assertEquals(IslandSuggestionTemplate.INGOTS, chips.get(1).template());
+        assertEquals(ChipSuggestion.ChipKind.TEMPLATE, chips.get(0).kind());
+        assertEquals(IslandSuggestionTemplate.INGOTS, chips.get(0).template());
+        assertEquals(ChipSuggestion.ChipKind.LEARNED, chips.get(1).kind());
+        assertEquals("island.mining", chips.get(1).islandId());
     }
 
     @Test
-    void twoLearnedRulesSuppressTemplate() {
+    void specificTemplateAndTwoLearnedRulesAllSurface() {
+        // Three chips total now (raised cap). Specific template
+        // (INGOTS) leads, then both learned rules. Old behavior
+        // suppressed the template entirely under the 2-chip cap; the
+        // new ordering keeps the most-confident signal visible.
         LearnedIslandRuleStore rules = new LearnedIslandRuleStore();
         rules.recordAssignment(descriptor("minecraft:iron_ingot", Set.of(), Set.of("c:ingots")), "island.mining", 1L);
         rules.recordAssignment(descriptor("minecraft:gold_ingot", Set.of(), Set.of("c:ingots")), "island.mining", 2L);
@@ -77,10 +84,11 @@ class IslandSuggestionServiceTest {
                 )
         );
 
-        assertEquals(2, chips.size());
-        for (ChipSuggestion chip : chips) {
-            assertEquals(ChipSuggestion.ChipKind.LEARNED, chip.kind());
-        }
+        assertEquals(3, chips.size());
+        assertEquals(ChipSuggestion.ChipKind.TEMPLATE, chips.get(0).kind());
+        assertEquals(IslandSuggestionTemplate.INGOTS, chips.get(0).template());
+        assertEquals(ChipSuggestion.ChipKind.LEARNED, chips.get(1).kind());
+        assertEquals(ChipSuggestion.ChipKind.LEARNED, chips.get(2).kind());
     }
 
     @Test
@@ -106,7 +114,12 @@ class IslandSuggestionServiceTest {
     }
 
     @Test
-    void tagAdjacencyOutranksNamespaceWhenPickingSingleLearnedChip() {
+    void tagAdjacencyOutranksNamespaceWithinLearnedChips() {
+        // Among the LEARNED chips (which now sort behind a specific
+        // template chip when one fires), TAG-priority rules still beat
+        // NAMESPACE-priority. INGOTS template leads via the c:ingots
+        // tag; "Metals" (TAG-driven) is the next chip; "Dump"
+        // (NAMESPACE-driven) trails.
         LearnedIslandRuleStore rules = new LearnedIslandRuleStore();
         rules.recordAssignment(descriptor("modded:iron_ingot", Set.of(), Set.of("c:ingots")), "island.metals", 1L);
         rules.recordAssignment(descriptor("modded:gold_ingot", Set.of(), Set.of("c:ingots")), "island.metals", 2L);
@@ -122,12 +135,21 @@ class IslandSuggestionServiceTest {
                 )
         );
 
-        assertEquals(ChipSuggestion.ChipKind.LEARNED, chips.get(0).kind());
-        assertEquals("island.metals", chips.get(0).islandId());
+        // chips[0] = INGOTS template (high-specificity leader)
+        assertEquals(ChipSuggestion.ChipKind.TEMPLATE, chips.get(0).kind());
+        assertEquals(IslandSuggestionTemplate.INGOTS, chips.get(0).template());
+        // chips[1] = TAG-driven Metals beats NAMESPACE-driven Dump
+        assertEquals(ChipSuggestion.ChipKind.LEARNED, chips.get(1).kind());
+        assertEquals("island.metals", chips.get(1).islandId());
     }
 
     @Test
-    void learnedChipPointingAtMaterializedTemplateIslandSuppressesTemplateChip() {
+    void learnedChipPointingAtMaterializedTemplateIslandDedupesToOneChip() {
+        // When a learned rule and the matching template both point at
+        // the same island id (the player materialized the template's
+        // default island), only one chip surfaces — the specific
+        // template chip leads, the learned rule for the same island
+        // is deduped.
         LearnedIslandRuleStore rules = new LearnedIslandRuleStore();
         rules.recordAssignment(descriptor("modded:iron_pickaxe", Set.of(IslandSignal.DIGGER_TOOL), Set.of()), "template.tools", 1L);
         rules.recordAssignment(descriptor("modded:iron_axe", Set.of(IslandSignal.DIGGER_TOOL), Set.of()), "template.tools", 2L);
@@ -140,7 +162,7 @@ class IslandSuggestionServiceTest {
         );
 
         assertEquals(1, chips.size());
-        assertEquals(ChipSuggestion.ChipKind.LEARNED, chips.get(0).kind());
+        assertEquals(ChipSuggestion.ChipKind.TEMPLATE, chips.get(0).kind());
         assertEquals("template.tools", chips.get(0).islandId());
     }
 
@@ -199,6 +221,53 @@ class IslandSuggestionServiceTest {
     }
 
     @Test
+    void subsystemAdjacencyDrivesLearnedChipEndToEnd() {
+        // Two Create-mechanical-power items confirm "Workshop"; the
+        // service should surface a LEARNED chip for the matching island
+        // when a third subsystem-tagged identity arrives, even when its
+        // tags / namespace alone wouldn't reach minimum confirmations.
+        LearnedIslandRuleStore rules = new LearnedIslandRuleStore();
+        rules.recordAssignment(subsystemDescriptor("create:cogwheel",
+                "create:mechanical_power"), "island.workshop", 1L);
+        rules.recordAssignment(subsystemDescriptor("create:large_cogwheel",
+                "create:mechanical_power"), "island.workshop", 2L);
+
+        TriageIslandRef workshop = new TriageIslandRef(
+                "island.workshop", "Workshop", 0xCC8A5E24, null);
+        List<ChipSuggestion> chips = IslandSuggestionService.suggest(
+                subsystemDescriptor("create:gear", "create:mechanical_power"),
+                rules,
+                List.of(workshop)
+        );
+
+        assertNotNull(chips);
+        assertTrue(chips.stream().anyMatch(c -> c.kind() == ChipSuggestion.ChipKind.LEARNED
+                        && "island.workshop".equals(c.islandId())),
+                "Workshop should surface as a LEARNED chip via SUBSYSTEM adjacency");
+    }
+
+    @Test
+    void dyeColorAdjacencyDrivesLearnedChipEndToEnd() {
+        LearnedIslandRuleStore rules = new LearnedIslandRuleStore();
+        rules.recordAssignment(dyedDescriptor("modded:white_wool", "white"),
+                "island.white-decor", 1L);
+        rules.recordAssignment(dyedDescriptor("modded:white_carpet", "white"),
+                "island.white-decor", 2L);
+
+        TriageIslandRef whiteDecor = new TriageIslandRef(
+                "island.white-decor", "White Decoration", 0xCCAAAAAA, null);
+        List<ChipSuggestion> chips = IslandSuggestionService.suggest(
+                dyedDescriptor("modded:white_concrete", "white"),
+                rules,
+                List.of(whiteDecor)
+        );
+
+        assertTrue(chips.stream().anyMatch(c -> c.kind() == ChipSuggestion.ChipKind.LEARNED
+                        && "island.white-decor".equals(c.islandId())),
+                "White Decoration should surface as a LEARNED chip via DYE_COLOR adjacency");
+    }
+
+    @Test
     void nullStoreIsHandledAsEmpty() {
         List<ChipSuggestion> chips = IslandSuggestionService.suggest(
                 descriptor("minecraft:apple", Set.of(IslandSignal.FOOD), Set.of()),
@@ -226,6 +295,52 @@ class IslandSuggestionServiceTest {
                 tags,
                 itemId.contains(":") ? itemId.substring(0, itemId.indexOf(':')) : "",
                 ""
+        );
+    }
+
+    private static IslandSignalDescriptor subsystemDescriptor(String itemId, String subsystemId) {
+        return new IslandSignalDescriptor(
+                ItemIdentity.of(itemId),
+                Set.of(),
+                Set.of(),
+                itemId.contains(":") ? itemId.substring(0, itemId.indexOf(':')) : "",
+                "",
+                "mechanism",
+                null,
+                null,
+                subsystemId == null ? List.of() : List.of(subsystemId),
+                List.of(),
+                null,
+                null,
+                null,
+                null,
+                null,
+                List.of(),
+                null,
+                false
+        );
+    }
+
+    private static IslandSignalDescriptor dyedDescriptor(String itemId, String dyeColor) {
+        return new IslandSignalDescriptor(
+                ItemIdentity.of(itemId),
+                Set.of(),
+                Set.of(),
+                itemId.contains(":") ? itemId.substring(0, itemId.indexOf(':')) : "",
+                "",
+                "decorative_block",
+                null,
+                null,
+                List.of(),
+                List.of(),
+                null,
+                null,
+                null,
+                null,
+                dyeColor,
+                List.of(),
+                null,
+                false
         );
     }
 }

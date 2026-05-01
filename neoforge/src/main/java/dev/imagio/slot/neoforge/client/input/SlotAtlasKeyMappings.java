@@ -53,11 +53,14 @@ public final class SlotAtlasKeyMappings {
             CATEGORY
     );
 
-    // Unbound by default. Cycles the active Kit's pages while the atlas is open.
-    // Shift+key cycles backward. Only fires when a Kit is active and has >1 page.
+    // Unbound by default. Cycles the active Kit's pages from anywhere
+    // (in-world OR inside the SLOT atlas). Shift+key cycles backward.
+    // Only fires when a Kit is active and has >1 page. UNIVERSAL
+    // context so the in-world client-tick handler in SlotNeoForgeClient
+    // can fire it without the atlas being open.
     private static final KeyMapping CYCLE_KIT_PAGE = new KeyMapping(
             "key.slot.cycle_kit_page",
-            KeyConflictContext.GUI,
+            KeyConflictContext.UNIVERSAL,
             InputConstants.Type.KEYSYM,
             InputConstants.UNKNOWN.getValue(),
             CATEGORY
@@ -114,6 +117,10 @@ public final class SlotAtlasKeyMappings {
 
     public static KeyMapping openVanillaInventoryMapping() {
         return OPEN_VANILLA_INVENTORY;
+    }
+
+    public static KeyMapping cycleKitPageMapping() {
+        return CYCLE_KIT_PAGE;
     }
 
     public static boolean matchesBackKey(int keyCode, int scanCode) {

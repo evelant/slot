@@ -201,6 +201,27 @@ public final class SlotTestCommands {
         allStacks.addAll(plan.homedStacks());
         allStacks.addAll(plan.triageStacks());
 
+        // Backpacks first: insertIntoBackpacks (called per-stack below)
+        // can only spill items into a carrier that's already in the
+        // player's inventory. Reorder allStacks so any backpack-like
+        // container lands first — subsequent stacks then get a chance
+        // to flow into it instead of filling the main inventory and
+        // dropping. Stable partition preserves the relative order of
+        // non-backpack items so the rest of the populate sequence is
+        // unchanged.
+        ArrayList<ItemStack> reordered = new ArrayList<>(allStacks.size());
+        for (ItemStack stack : allStacks) {
+            if (stack != null && !stack.isEmpty() && isBackpackStack(stack)) {
+                reordered.add(stack);
+            }
+        }
+        for (ItemStack stack : allStacks) {
+            if (stack == null || stack.isEmpty() || !isBackpackStack(stack)) {
+                reordered.add(stack);
+            }
+        }
+        allStacks = reordered;
+
         int mainInserted = 0;
         int backpackInserted = 0;
         int dropped = 0;

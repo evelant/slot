@@ -8,9 +8,9 @@ import java.util.Map;
 import java.util.Set;
 
 public final class IslandSuggestionService {
-    public static final int MAX_TOTAL_CHIPS = 2;
+    public static final int MAX_TOTAL_CHIPS = 3;
     public static final int MAX_TEMPLATE_CHIPS = 1;
-    public static final int MAX_LEARNED_CHIPS = 2;
+    public static final int MAX_LEARNED_CHIPS = 3;
 
     private IslandSuggestionService() {
     }
@@ -36,22 +36,102 @@ public final class IslandSuggestionService {
         Map<String, TriageIslandRef> islandsById = indexIslands(existingIslands);
         Set<String> dismissed = dismissedTemplateIds == null ? Set.of() : dismissedTemplateIds;
 
+        List<ChipSuggestion> result = new ArrayList<>(MAX_TOTAL_CHIPS);
+
+        // Phase 1: a *high-specificity* template chip leads when one
+        // fires (STAIRS / SLABS / WALLS / DOORS / FENCES / WINDOWS /
+        // LIGHTING / INGOTS / GEMS / RAW_MATERIALS / STORAGE / TOOLS /
+        // WEAPONS / ARMOR / FOOD, plus the trophy shunt). These keys
+        // are narrower signals than NAMESPACE / CREATIVE_TAB learned
+        // rules, so a "_wall" form facet should beat "you also homed
+        // some other Create item recently" when ranking suggestions.
+        ChipSuggestion specificTemplateChip = buildSpecificTemplateChip(
+                descriptor, islandsById, dismissed);
+        if (specificTemplateChip != null) {
+            result.add(specificTemplateChip);
+        }
+
+        // Phase 2: learned chips fill remaining slots, deduped against
+        // the specific template chip's island so the leader doesn't
+        // get echoed by a learned rule on the same id.
         List<ChipSuggestion> learnedChips = buildLearnedChips(descriptor, rules, islandsById);
-        List<ChipSuggestion> result = new ArrayList<>(Math.min(MAX_TOTAL_CHIPS, learnedChips.size()));
         for (ChipSuggestion chip : learnedChips) {
-            if (result.size() >= MAX_LEARNED_CHIPS || result.size() >= MAX_TOTAL_CHIPS) {
+            if (result.size() >= MAX_TOTAL_CHIPS || result.size() >= MAX_LEARNED_CHIPS + (specificTemplateChip == null ? 0 : 1)) {
                 break;
+            }
+            if (containsIsland(result, chip.islandId())) {
+                continue;
             }
             result.add(chip);
         }
 
-        if (result.size() < MAX_TOTAL_CHIPS) {
+        // Phase 3: a *generic* template chip (BUILDING / DECORATION /
+        // NATURAL / MECHANISMS / REDSTONE / UPGRADES / TRANSPORT /
+        // UTILITY / CURIOSITY / WORKBENCHES / MISC) fills the tail
+        // when there's room and no specific template already led.
+        // These templates have wide roleTriggers, so a player-confirmed
+        // learned chip is usually the better signal — that's why they
+        // sort *behind* learned rather than in front like the
+        // high-specificity set.
+        if (specificTemplateChip == null && result.size() < MAX_TOTAL_CHIPS) {
             ChipSuggestion templateChip = buildTemplateChip(descriptor, result, islandsById, dismissed);
-            if (templateChip != null) {
+            if (templateChip != null && !containsIsland(result, templateChip.islandId())) {
                 result.add(templateChip);
             }
         }
         return List.copyOf(result);
+    }
+
+    private static boolean containsIsland(List<ChipSuggestion> chips, String islandId) {
+        if (islandId == null || islandId.isBlank()) {
+            return false;
+        }
+        for (ChipSuggestion chip : chips) {
+            if (islandId.equals(chip.islandId())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Build a chip from the highest-priority template that both
+     * matches {@code descriptor} AND
+     * {@link IslandSuggestionTemplate#isHighSpecificity}. Returns
+     * {@code null} when no specific template fires; the caller falls
+     * through to the learned-rule chips, then the generic-template
+     * fallback.
+     */
+    private static ChipSuggestion buildSpecificTemplateChip(
+            IslandSignalDescriptor descriptor,
+            Map<String, TriageIslandRef> islandsById,
+            Set<String> dismissedTemplateIds
+    ) {
+        // Trophies are unconditionally specific — they belong in
+        // CURIOSITY regardless of role / namespace / learned rules.
+        if (IslandSuggestionTemplate.isTrophy(descriptor)
+                && !dismissedTemplateIds.contains(IslandSuggestionTemplate.CURIOSITY.defaultIslandId())) {
+            return ChipSuggestion.template(IslandSuggestionTemplate.CURIOSITY, descriptor.identity());
+        }
+        for (IslandSuggestionTemplate template : IslandSuggestionTemplate.values()) {
+            if (!template.matches(descriptor)) {
+                continue;
+            }
+            if (!template.isHighSpecificity()) {
+                continue;
+            }
+            if (dismissedTemplateIds.contains(template.defaultIslandId())) {
+                continue;
+            }
+            if (template.allowsSubsystemGrouping()) {
+                ChipSuggestion subsystemChip = subsystemChipIfExists(descriptor, islandsById);
+                if (subsystemChip != null) {
+                    return subsystemChip;
+                }
+            }
+            return ChipSuggestion.template(template, descriptor.identity());
+        }
+        return null;
     }
 
     private static Map<String, TriageIslandRef> indexIslands(Collection<TriageIslandRef> islands) {

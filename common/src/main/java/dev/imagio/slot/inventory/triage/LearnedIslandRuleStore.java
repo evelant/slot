@@ -8,21 +8,9 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 
 public final class LearnedIslandRuleStore {
     public static final int DEFAULT_MIN_CONFIRMATIONS = 2;
-
-    // Umbrella/meta namespaces shared across mods or the vanilla game. They are too broad
-    // to be a useful "this item is like that item" signal: every vanilla item shares
-    // "minecraft", every common tag uses "c", etc. Tag and creative-tab adjacency remain
-    // strong enough signals on their own.
-    private static final Set<String> OVERLY_BROAD_NAMESPACES = Set.of(
-            "minecraft",
-            "c",
-            "forge",
-            "neoforge"
-    );
 
     private final int minConfirmations;
     private final Map<LearnedAdjacencyKey, Map<String, Entry>> byAdjacency = new LinkedHashMap<>();
@@ -106,27 +94,7 @@ public final class LearnedIslandRuleStore {
     }
 
     static List<LearnedAdjacencyKey> adjacencyKeys(IslandSignalDescriptor descriptor) {
-        ArrayList<LearnedAdjacencyKey> keys = new ArrayList<>();
-        for (String tag : descriptor.itemTags()) {
-            keys.add(LearnedAdjacencyKey.tag(tag));
-        }
-        // FacetIndex material_family adjacency lets the rule fire across
-        // shape variants of the same material — e.g. homing oak_planks +
-        // oak_log + oak_stairs to "Wood" suggests the same island for
-        // oak_wood, even though their item-tag sets differ. Tag-only
-        // adjacency couldn't span that gap.
-        String materialFamily = descriptor.materialFamily();
-        if (materialFamily != null && !materialFamily.isBlank()) {
-            keys.add(LearnedAdjacencyKey.materialFamily(materialFamily));
-        }
-        String namespace = descriptor.namespace();
-        if (!namespace.isBlank() && !OVERLY_BROAD_NAMESPACES.contains(namespace)) {
-            keys.add(LearnedAdjacencyKey.namespace(namespace));
-        }
-        if (!descriptor.creativeTabId().isBlank()) {
-            keys.add(LearnedAdjacencyKey.creativeTab(descriptor.creativeTabId()));
-        }
-        return List.copyOf(keys);
+        return LearnedAdjacencyKey.keysFor(descriptor);
     }
 
     private static boolean betterRule(LearnedIslandRule candidate, LearnedIslandRule current) {

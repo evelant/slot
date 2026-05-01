@@ -5,10 +5,14 @@ import dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings;
 import dev.imagio.slot.neoforge.config.SlotClientConfig;
 import dev.imagio.slot.neoforge.client.screen.SlotReenableButton;
 import dev.imagio.slot.neoforge.client.screen.SlotWorkspaceMountController;
+import dev.imagio.slot.neoforge.network.SlotKitPageCyclePayload;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.screens.Screen;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 public final class SlotNeoForgeClient {
     private static boolean setupListenerRegistered;
@@ -43,6 +47,21 @@ public final class SlotNeoForgeClient {
     private static void onClientTick(ClientTickEvent.Post event) {
         while (SlotAtlasKeyMappings.openVanillaInventoryMapping().consumeClick()) {
             SlotWorkspaceMountController.openVanillaInventory();
+        }
+        // In-world kit-page cycle. The SLOT atlas's HotkeyRouter handles
+        // the same key when the workspace screen is mounted; this loop
+        // covers the in-world case so the player can swap kit pages
+        // without first opening the inventory. Skip while any GUI screen
+        // is open — consumeClick fires for both, but we only want this
+        // path for the no-screen case (the screen path drives RPC).
+        Minecraft client = Minecraft.getInstance();
+        Screen current = client == null ? null : client.screen;
+        while (SlotAtlasKeyMappings.cycleKitPageMapping().consumeClick()) {
+            if (current != null) {
+                continue;
+            }
+            int direction = Screen.hasShiftDown() ? -1 : 1;
+            PacketDistributor.sendToServer(new SlotKitPageCyclePayload(direction));
         }
     }
 }

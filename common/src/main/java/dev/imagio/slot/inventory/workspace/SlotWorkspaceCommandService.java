@@ -10,6 +10,7 @@ import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
 import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
 import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
+import dev.imagio.slot.inventory.triage.WithinIslandOrdering;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.CollectionDefinition;
 import dev.imagio.slot.workflow.domain.DomainEventMetadata;
@@ -29,6 +30,9 @@ import dev.imagio.slot.workflow.domain.undo.UndoContext;
 import dev.imagio.slot.workflow.domain.undo.UndoRecord;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -1198,7 +1202,8 @@ public final class SlotWorkspaceCommandService {
             return WorkspaceCommandOutcome.rejected("unknown_island");
         }
 
-        int resolvedOrdinal = resolveOrdinal(runtime, islandId, ordinal);
+        int resolvedOrdinal = resolveOrdinal(
+                runtime, viewModel, signalExtractor, identity, islandId, ordinal);
         runtime.visualAtlasWorkflow().assignHome(
                 identity,
                 islandId,
@@ -1218,27 +1223,98 @@ public final class SlotWorkspaceCommandService {
     }
 
     /**
-     * Resolve the ordinal a drop targets in {@code islandId}. A null
-     * ordinal means "append" — count the current assignments in the
-     * destination island so the new entry lands at the end. The
-     * projection still bounds-clamps if our snapshot is stale.
+     * Resolve the ordinal a drop targets in {@code islandId}. A non-null
+     * ordinal is taken as-is (drag-drop with explicit position); a null
+     * ordinal kicks in cluster-aware insertion via
+     * {@link WithinIslandOrdering#WITHIN_ISLAND_COMPARATOR} — the new
+     * identity slots in next to its same-cluster neighbors instead of
+     * blindly appending. Falls back to plain append when descriptors
+     * aren't available (no signalExtractor, no view-model entry, etc.)
+     * so the projection's bounds-clamp still does the right thing on
+     * a cold start.
      */
     private static int resolveOrdinal(
             WorkflowDomainRuntime runtime,
+            SlotWorkspaceViewModel viewModel,
+            Function<ItemStack, IslandSignalDescriptor> signalExtractor,
+            ItemIdentity identity,
             String islandId,
             Integer ordinal
     ) {
         if (ordinal != null && ordinal >= 0) {
             return ordinal;
         }
-        var assignments = runtime.visualAtlasWorkflow().visualHomeMap().assignments().values();
-        int count = 0;
-        for (VisualHomeAssignment assignment : assignments) {
+        List<VisualHomeAssignment> sameIsland = new ArrayList<>();
+        for (VisualHomeAssignment assignment :
+                runtime.visualAtlasWorkflow().visualHomeMap().assignments().values()) {
             if (assignment != null && islandId.equals(assignment.islandId())) {
-                count++;
+                sameIsland.add(assignment);
             }
         }
-        return count;
+        int currentSize = sameIsland.size();
+        if (signalExtractor == null || viewModel == null || currentSize == 0) {
+            return currentSize;
+        }
+
+        WithinIslandOrdering.DescribedStack newStack =
+                describedStackFor(viewModel, signalExtractor, identity);
+        if (newStack == null) {
+            return currentSize;
+        }
+        sameIsland.sort(Comparator.comparingInt(VisualHomeAssignment::ordinal));
+        for (VisualHomeAssignment existing : sameIsland) {
+            if (identity.equals(existing.identity())) {
+                // The same identity is being re-homed to the island it
+                // already lives in. Skip — projection clears the old
+                // slot first via compactOrdinalsAfterRemove.
+                continue;
+            }
+            WithinIslandOrdering.DescribedStack existingStack =
+                    describedStackFor(viewModel, signalExtractor, existing.identity());
+            if (existingStack == null) {
+                continue;
+            }
+            if (WithinIslandOrdering.WITHIN_ISLAND_COMPARATOR
+                    .compare(newStack, existingStack) < 0) {
+                return existing.ordinal();
+            }
+        }
+        return currentSize;
+    }
+
+    /**
+     * Build a {@link WithinIslandOrdering.DescribedStack} for an
+     * identity by looking its display stack up in the view-model's
+     * atlas item map and running it through {@code signalExtractor}.
+     * Returns {@code null} when any required piece is missing — the
+     * caller treats null as "fall through to append behavior".
+     */
+    private static WithinIslandOrdering.DescribedStack describedStackFor(
+            SlotWorkspaceViewModel viewModel,
+            Function<ItemStack, IslandSignalDescriptor> signalExtractor,
+            ItemIdentity identity
+    ) {
+        if (viewModel == null || signalExtractor == null || identity == null) {
+            return null;
+        }
+        SlotWorkspaceViewModel.AtlasItem item =
+                viewModel.atlasItem(SlotWorkspaceViewModel.IdentityRef.from(identity));
+        if (item == null) {
+            // Identity isn't in the atlas item map (could be a loot-chest
+            // panel item that hasn't shown up in carry yet). Fall back
+            // to a synthetic descriptor so it still gets ordered.
+            IslandSignalDescriptor descriptor = IslandSignalDescriptor.empty(identity);
+            return new WithinIslandOrdering.DescribedStack(null, descriptor);
+        }
+        ItemStack stack = item.displayStack();
+        if (stack == null || stack.isEmpty()) {
+            return null;
+        }
+        IslandSignalDescriptor descriptor = signalExtractor.apply(stack);
+        if (descriptor == null) {
+            return null;
+        }
+        return new WithinIslandOrdering.DescribedStack(stack, descriptor);
     }
 
     static ItemIdentity resolveIdentity(String itemId, String comparisonMode, String componentFingerprint) {

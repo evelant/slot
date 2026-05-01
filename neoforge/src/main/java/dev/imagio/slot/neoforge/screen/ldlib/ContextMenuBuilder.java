@@ -366,6 +366,23 @@ final class ContextMenuBuilder {
                 .textShadow(false)
                 .fontSize(9));
         nameInput.setTextResponder(value -> host.renameChestDraft = value == null ? "" : value);
+        // Focus + select-all on first layout so typing replaces the
+        // existing label instead of forcing the user to manually clear
+        // it. One-shot via the boolean — LAYOUT_CHANGED fires every
+        // text mutation otherwise, which would re-select on each
+        // keystroke and clobber the user's edit.
+        boolean[] renameFocusFired = {false};
+        nameInput.addEventListener(UIEvents.LAYOUT_CHANGED, event -> {
+            if (renameFocusFired[0]) {
+                return;
+            }
+            renameFocusFired[0] = true;
+            nameInput.focus();
+            String current = nameInput.getValue();
+            int length = current == null ? 0 : current.length();
+            nameInput.setCursor(length);
+            nameInput.setSelection(0, length);
+        }, true);
         Runnable commit = () -> {
             String trimmed = host.renameChestDraft == null ? "" : host.renameChestDraft.trim();
             if (trimmed.isBlank() || trimmed.equals(chip.label())) {
@@ -426,6 +443,21 @@ final class ContextMenuBuilder {
                 .textShadow(false)
                 .fontSize(9));
         nameInput.setTextResponder(value -> host.renameKitDraft = value == null ? "" : value);
+        // Focus + select-all on first layout so typing replaces the
+        // existing kit name. One-shot — see appendChestRenameBody for
+        // the rationale on the boolean gate.
+        boolean[] renameFocusFired = {false};
+        nameInput.addEventListener(UIEvents.LAYOUT_CHANGED, event -> {
+            if (renameFocusFired[0]) {
+                return;
+            }
+            renameFocusFired[0] = true;
+            nameInput.focus();
+            String current = nameInput.getValue();
+            int length = current == null ? 0 : current.length();
+            nameInput.setCursor(length);
+            nameInput.setSelection(0, length);
+        }, true);
         Runnable commit = () -> {
             String trimmed = host.renameKitDraft == null ? "" : host.renameKitDraft.trim();
             if (trimmed.isBlank() || trimmed.equals(card.name())) {
@@ -604,6 +636,21 @@ final class ContextMenuBuilder {
                 .textShadow(false)
                 .fontSize(10));
         nameInput.setTextResponder(value -> host.islandLabelDraft = value == null ? "" : value);
+        // Focus + select-all on first layout so the existing label is
+        // ready to be replaced by typing — same pattern as chest/kit
+        // rename inputs. One-shot via the boolean.
+        boolean[] islandRenameFocusFired = {false};
+        nameInput.addEventListener(UIEvents.LAYOUT_CHANGED, event -> {
+            if (islandRenameFocusFired[0]) {
+                return;
+            }
+            islandRenameFocusFired[0] = true;
+            nameInput.focus();
+            String current = nameInput.getValue();
+            int length = current == null ? 0 : current.length();
+            nameInput.setCursor(length);
+            nameInput.setSelection(0, length);
+        }, true);
         Runnable commitRename = () -> {
             if (host.editingIslandId == null) {
                 return;

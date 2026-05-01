@@ -150,6 +150,7 @@ class IslandSuggestionTemplateSubsystemTest {
                 "unique",
                 null,
                 null,
+                List.of(),
                 null,
                 false
         );
@@ -241,6 +242,7 @@ class IslandSuggestionTemplateSubsystemTest {
                 null,
                 null,
                 null,
+                List.of(),
                 null,
                 false
         );
@@ -267,6 +269,7 @@ class IslandSuggestionTemplateSubsystemTest {
                 null,
                 null,
                 null,
+                List.of(),
                 null,
                 false
         );

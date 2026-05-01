@@ -7,6 +7,7 @@ import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntryKey;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.query.InventorySourceSnapshot;
+import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
 import dev.imagio.slot.workflow.domain.ChestAffinity;
 import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
@@ -20,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
+import java.util.function.Function;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -86,6 +88,128 @@ class DepositPlannerTest {
         DepositPlan.Assignment assignment = plan.assignments().get(0);
         // Highest-score chest first; spill on full goes to next.
         assertEquals(List.of(CHEST_B.toString(), CHEST_A.toString()), assignment.candidateStorageIds());
+    }
+
+    @Test
+    void facetSimilarBondsRouteWhenNoDirectAffinity() {
+        // CHEST_A holds iron_ingot (affinity=3) and gold_ingot (affinity=3).
+        // The carried identity is netherite_ingot — never deposited there
+        // before, so direct affinity is 0. With the descriptorLookup
+        // wired, the planner falls back to facet-similar bonds: all
+        // three ingots share material_family=ingot and the c:ingots
+        // tag, so CHEST_A becomes a candidate via facet affinity.
+        ItemIdentity ironIngot = ItemIdentity.of("minecraft:iron_ingot");
+        ItemIdentity goldIngot = ItemIdentity.of("minecraft:gold_ingot");
+        LinkedHashMap<UUID, Map<ItemIdentity, ChestAffinity>> bonds = new LinkedHashMap<>();
+        bonds.put(CHEST_A, Map.of(
+                ironIngot, new ChestAffinity(ironIngot, 3, 0L),
+                goldIngot, new ChestAffinity(goldIngot, 3, 0L)
+        ));
+
+        Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup = identity -> {
+            String id = identity.itemId();
+            return switch (id) {
+                case "minecraft:iron_ingot" -> ingotDescriptor(id, "iron");
+                case "minecraft:gold_ingot" -> ingotDescriptor(id, "gold");
+                case "minecraft:netherite_ingot" -> ingotDescriptor(id, "netherite");
+                default -> null;
+            };
+        };
+
+        DepositPlan plan = DepositPlanner.plan(
+                authority(BuiltinInventoryIds.PLAYER_MAIN, 0, "minecraft:netherite_ingot", 1),
+                new ChestAffinityMap(bonds),
+                claimedMap(CHEST_A),
+                Set.of(CHEST_A.toString()),
+                descriptorLookup
+        );
+
+        assertEquals(1, plan.assignments().size());
+        DepositPlan.Assignment assignment = plan.assignments().get(0);
+        assertEquals("minecraft:netherite_ingot", assignment.itemId());
+        assertEquals(List.of(CHEST_A.toString()), assignment.candidateStorageIds());
+    }
+
+    @Test
+    void directAffinityOutranksFacetAffinity() {
+        // CHEST_A has direct redstone affinity (score 1). CHEST_B has no
+        // direct redstone but its other bonds (iron_ingot) share the
+        // c:ingots tag with redstone — wait, actually redstone doesn't
+        // share that tag. Use a more controlled scenario: target identity
+        // shares material_family=iron with CHEST_B's existing bonds, and
+        // CHEST_A has a low direct affinity for the target. Direct must
+        // still win even if facet aggregate is higher.
+        ItemIdentity rawIron = ItemIdentity.of("minecraft:raw_iron");
+        ItemIdentity ironIngot = ItemIdentity.of("minecraft:iron_ingot");
+        ItemIdentity ironBlock = ItemIdentity.of("minecraft:iron_block");
+        LinkedHashMap<UUID, Map<ItemIdentity, ChestAffinity>> bonds = new LinkedHashMap<>();
+        bonds.put(CHEST_A, Map.of(rawIron, new ChestAffinity(rawIron, 1, 0L)));
+        bonds.put(CHEST_B, Map.of(
+                ironIngot, new ChestAffinity(ironIngot, 5, 0L),
+                ironBlock, new ChestAffinity(ironBlock, 5, 0L)
+        ));
+
+        Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup = identity -> {
+            String id = identity.itemId();
+            return switch (id) {
+                case "minecraft:raw_iron" -> ingotDescriptor(id, "iron");
+                case "minecraft:iron_ingot" -> ingotDescriptor(id, "iron");
+                case "minecraft:iron_block" -> ingotDescriptor(id, "iron");
+                default -> null;
+            };
+        };
+
+        DepositPlan plan = DepositPlanner.plan(
+                authority(BuiltinInventoryIds.PLAYER_MAIN, 0, "minecraft:raw_iron", 4),
+                new ChestAffinityMap(bonds),
+                claimedMap(CHEST_A, CHEST_B),
+                Set.of(CHEST_A.toString(), CHEST_B.toString()),
+                descriptorLookup
+        );
+
+        assertEquals(1, plan.assignments().size());
+        DepositPlan.Assignment assignment = plan.assignments().get(0);
+        // CHEST_A has direct affinity=1, CHEST_B has facet-aggregate
+        // affinity=10. Direct still wins → CHEST_A first, CHEST_B second.
+        assertEquals(List.of(CHEST_A.toString(), CHEST_B.toString()), assignment.candidateStorageIds());
+    }
+
+    @Test
+    void facetFallbackSkippedWhenLookupReturnsNull() {
+        // No descriptorLookup → exact-match identity affinity only.
+        // (This is the legacy 4-arg overload.)
+        ItemIdentity ironIngot = ItemIdentity.of("minecraft:iron_ingot");
+        DepositPlan plan = DepositPlanner.plan(
+                authority(BuiltinInventoryIds.PLAYER_MAIN, 0, "minecraft:netherite_ingot", 1),
+                new ChestAffinityMap(Map.of(CHEST_A,
+                        Map.of(ironIngot, new ChestAffinity(ironIngot, 5, 0L)))),
+                claimedMap(CHEST_A),
+                Set.of(CHEST_A.toString())
+        );
+        assertTrue(plan.isEmpty());
+    }
+
+    private static IslandSignalDescriptor ingotDescriptor(String itemId, String materialFamily) {
+        return new IslandSignalDescriptor(
+                ItemIdentity.of(itemId),
+                Set.of(),
+                Set.of("c:ingots"),
+                "minecraft",
+                "",
+                "material",
+                null,
+                materialFamily,
+                List.of(),
+                List.of(),
+                null,
+                null,
+                null,
+                null,
+                null,
+                List.of(),
+                null,
+                false
+        );
     }
 
     @Test

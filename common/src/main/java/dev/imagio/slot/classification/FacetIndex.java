@@ -88,6 +88,7 @@ public final class FacetIndex {
             String rarity = readSingleStringFacet(facetsObj, "rarity");
             String origin = readSingleStringFacet(facetsObj, "origin");
             String dyeColor = readSingleStringFacet(facetsObj, "dye_color");
+            List<String> palette = readMultiStringFacet(facetsObj, "palette");
             String form = readSingleStringFacet(facetsObj, "form");
             boolean emitsLight = readBooleanFacet(facetsObj, "emits_light");
 
@@ -100,6 +101,7 @@ public final class FacetIndex {
                     || rarity != null
                     || origin != null
                     || dyeColor != null
+                    || !palette.isEmpty()
                     || form != null
                     || emitsLight;
             if (hasAnyFacet) {
@@ -114,6 +116,7 @@ public final class FacetIndex {
                         rarity,
                         origin,
                         dyeColor,
+                        palette,
                         form,
                         emitsLight
                 ));
@@ -210,6 +213,20 @@ public final class FacetIndex {
     }
 
     /**
+     * Color/tone bucket(s) for items the LLM tagged with a {@code palette}
+     * facet — {@code wood_red}, {@code wood_medium}, {@code copper_bright},
+     * {@code earthy}, {@code warm}, etc. Multi-value because some items
+     * share more than one bucket (e.g. {@code [wood_red, glossy]}).
+     * Drives the within-island sub-cluster when {@link #dyeColor} isn't
+     * set, so non-dyed BUILDING / DECORATION items still group by visual
+     * tone instead of pure id-alphabetical.
+     */
+    public List<String> palette(String itemId) {
+        ItemFacets f = lookup(itemId);
+        return f == null ? List.of() : f.palette();
+    }
+
+    /**
      * True when this item emits light when placed (or in some hand-held
      * cases). Drives the dedicated Lighting island so torches /
      * lanterns / glowstone / shroomlight cluster together regardless
@@ -259,6 +276,7 @@ public final class FacetIndex {
             String rarity,
             String origin,
             String dyeColor,
+            List<String> palette,
             String form,
             boolean emitsLight
     ) {
@@ -266,6 +284,7 @@ public final class FacetIndex {
             roleAlternatives = roleAlternatives == null ? List.of() : List.copyOf(roleAlternatives);
             subsystems = subsystems == null ? List.of() : List.copyOf(subsystems);
             activities = activities == null ? List.of() : List.copyOf(activities);
+            palette = palette == null ? List.of() : List.copyOf(palette);
         }
     }
 

@@ -5,6 +5,8 @@ import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
 import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
 import dev.imagio.slot.inventory.triage.IslandTemplateMatch;
+import dev.imagio.slot.inventory.triage.LearnedAdjacencyKey;
+import dev.imagio.slot.inventory.triage.WithinIslandOrdering;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
@@ -22,6 +24,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Random;
+import java.util.Set;
 import java.util.function.Function;
 
 public final class RealisticAtlasGenerator {
@@ -253,7 +256,8 @@ public final class RealisticAtlasGenerator {
         ArrayList<Double> carryWeights = new ArrayList<>();
         for (IslandBuild build : builds) {
             for (DescribedStack ds : build.stacks()) {
-                carriedPool.add(new TemplatedStack(build.match().parentTemplate(), ds.stack));
+                carriedPool.add(new TemplatedStack(
+                        build.match().parentTemplate(), ds.stack, ds.descriptor));
                 carryWeights.add(carryFrequencyWeight(ds.descriptor.carryFrequency()));
             }
         }
@@ -263,7 +267,7 @@ public final class RealisticAtlasGenerator {
         ArrayList<ItemStack> homedStacks = new ArrayList<>(picked.size());
         for (TemplatedStack ts : picked) {
             ItemStack copy = ts.stack().copy();
-            copy.setCount(Math.max(1, rollStackCount(copy, ts.template(), random)));
+            copy.setCount(Math.max(1, rollStackCount(copy, ts.template(), ts.descriptor(), random)));
             homedStacks.add(copy);
         }
 
@@ -296,6 +300,7 @@ public final class RealisticAtlasGenerator {
                 java.util.List.of(),
                 java.util.List.of(),
                 null, null, null, null, null,
+                java.util.List.of(),
                 form,
                 template == IslandSuggestionTemplate.LIGHTING
         );
@@ -375,7 +380,7 @@ public final class RealisticAtlasGenerator {
             }
             IslandTemplateMatch match = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
                     descriptor, subsystemQualifier);
-            copy.setCount(Math.max(1, rollStackCount(copy, match.parentTemplate(), random)));
+            copy.setCount(Math.max(1, rollStackCount(copy, match.parentTemplate(), descriptor, random)));
             out.add(copy);
         }
         return out;
@@ -562,7 +567,8 @@ public final class RealisticAtlasGenerator {
         ArrayList<TemplatedStack> allHomedStacks = new ArrayList<>();
         for (IslandBuild build : builds) {
             for (DescribedStack ds : build.stacks()) {
-                allHomedStacks.add(new TemplatedStack(build.match().parentTemplate(), ds.stack()));
+                allHomedStacks.add(new TemplatedStack(
+                        build.match().parentTemplate(), ds.stack(), ds.descriptor()));
             }
         }
         if (allHomedStacks.isEmpty()) {
@@ -599,6 +605,16 @@ public final class RealisticAtlasGenerator {
             cardinalDepth.put(c, 0);
         }
 
+        // Per-island "already-seeded keys" so multiple chests in the
+        // same island span different facet themes. With 3 chests on a
+        // 24-item iron+gold+copper MATERIALS island, the second chest
+        // skips iron-keyed seeds (claimed by chest 1), the third skips
+        // both iron and gold. Without this, three independent uniform
+        // seed picks could all land on iron and the populated atlas
+        // would read as "three iron chests" instead of
+        // "iron / gold / copper".
+        HashMap<String, Set<LearnedAdjacencyKey>> claimedSeedKeysByIsland = new HashMap<>();
+
         for (Map.Entry<Integer, List<IslandAllocation>> entry : byColumn.entrySet()) {
             int column = entry.getKey();
             Cardinal cardinal = CARDINAL_BY_COLUMN[Math.floorMod(column, CARDINAL_BY_COLUMN.length)];
@@ -607,6 +623,9 @@ public final class RealisticAtlasGenerator {
             int perColumnLocal = 0;
             for (IslandAllocation allocation : entry.getValue()) {
                 int startingDepth = cardinalDepth.get(cardinal);
+                Set<LearnedAdjacencyKey> claimedForIsland = claimedSeedKeysByIsland
+                        .computeIfAbsent(allocation.build().island().id(),
+                                ignored -> new java.util.LinkedHashSet<>());
                 for (int n = 0; n < allocation.count(); n++) {
                     int localSlot = perColumnLocal + n;
                     int[] offset = cardinalOffset(cardinal, startingDepth, localSlot);
@@ -615,7 +634,8 @@ public final class RealisticAtlasGenerator {
                             allocation.build(),
                             offset[0], offset[1],
                             allHomedStacks, random,
-                            areaLabel
+                            areaLabel,
+                            claimedForIsland
                     ));
                 }
                 perColumnLocal += allocation.count();
@@ -635,7 +655,8 @@ public final class RealisticAtlasGenerator {
                     null,
                     offset[0], offset[1],
                     allHomedStacks, random,
-                    unlinkedAreaLabel
+                    unlinkedAreaLabel,
+                    new java.util.LinkedHashSet<>()
             ));
         }
 
@@ -740,6 +761,17 @@ public final class RealisticAtlasGenerator {
         return new int[]{dx, dz};
     }
 
+    /**
+     * Probability that a "linked" fill picks a facet-similar item over a
+     * uniform-random pick from the linked island's pool. Higher values
+     * make each chest more strongly themed (one chest = iron-family,
+     * another = gold-family). 0.7 is enough to read as "the iron chest"
+     * vs "the gold chest" while still letting siblings spill over so a
+     * single chest doesn't capture every iron-tagged item in the
+     * island.
+     */
+    private static final double CHEST_FACET_SIMILARITY_BIAS = 0.7;
+
     private static ChestSpec buildChestSpec(
             int index,
             IslandBuild linked,
@@ -747,10 +779,34 @@ public final class RealisticAtlasGenerator {
             int deltaZ,
             List<TemplatedStack> allHomedStacks,
             Random random,
-            String areaLabel
+            String areaLabel,
+            Set<LearnedAdjacencyKey> claimedSeedKeysForIsland
     ) {
         IslandSuggestionTemplate linkedTemplate = linked != null ? linked.match().parentTemplate() : null;
-        List<ItemStack> linkedPool = linked != null ? linked.stacksOnly() : List.of();
+        List<DescribedStack> linkedDescribed = linked != null ? linked.stacks() : List.of();
+
+        // Each chest picks a "seed" from the linked island; subsequent
+        // linked-pool fills prefer items that share a *specific*
+        // adjacency key with the seed (tag, material_family, subsystem,
+        // dye_color — the priority-rank-0 kinds). NAMESPACE and
+        // CREATIVE_TAB are deliberately excluded from this clustering
+        // signal: every modpack item shares "minecraft" or "create"
+        // namespace, so namespace matches collapse the cluster back to
+        // "everything in the linked island". Specific keys are what
+        // make one MATERIALS chest read as "iron stuff" and another as
+        // "gold stuff".
+        //
+        // Across multiple chests in the same island, prefer seed items
+        // whose specific keys haven't been claimed yet so chests span
+        // different facet themes (one iron chest, one gold chest, …)
+        // rather than re-rolling the same theme.
+        DescribedStack seed = pickDiverseSeed(linkedDescribed, claimedSeedKeysForIsland, random);
+        Set<LearnedAdjacencyKey> seedKeys = seed == null
+                ? Set.of()
+                : specificKeysFor(seed.descriptor());
+        if (claimedSeedKeysForIsland != null) {
+            claimedSeedKeysForIsland.addAll(seedKeys);
+        }
 
         int slotCount = CHEST_FILL_MIN_SLOTS
                 + random.nextInt(CHEST_FILL_MAX_SLOTS - CHEST_FILL_MIN_SLOTS + 1);
@@ -764,17 +820,21 @@ public final class RealisticAtlasGenerator {
 
         ArrayList<ChestContentEntry> contents = new ArrayList<>(slotCount);
         for (int fillIndex = 0; fillIndex < slotCount; fillIndex++) {
-            boolean useLinked = !linkedPool.isEmpty()
+            boolean useLinked = !linkedDescribed.isEmpty()
                     && random.nextDouble() < CHEST_BUCKET_BIAS;
             ItemStack template;
             IslandSuggestionTemplate stackTemplate;
+            IslandSignalDescriptor stackDescriptor;
             if (useLinked) {
-                template = linkedPool.get(random.nextInt(linkedPool.size()));
+                DescribedStack picked = pickLinkedItem(linkedDescribed, seedKeys, random);
+                template = picked.stack();
                 stackTemplate = linkedTemplate;
+                stackDescriptor = picked.descriptor();
             } else if (!allHomedStacks.isEmpty()) {
                 TemplatedStack picked = allHomedStacks.get(random.nextInt(allHomedStacks.size()));
                 template = picked.stack();
                 stackTemplate = picked.template();
+                stackDescriptor = picked.descriptor();
             } else {
                 continue;
             }
@@ -782,7 +842,7 @@ public final class RealisticAtlasGenerator {
                 continue;
             }
             ItemStack stack = template.copy();
-            int count = rollStackCount(stack, stackTemplate, random);
+            int count = rollStackCount(stack, stackTemplate, stackDescriptor, random);
             stack.setCount(Math.max(1, count));
             contents.add(new ChestContentEntry(slotIndices.get(fillIndex), stack));
         }
@@ -791,10 +851,130 @@ public final class RealisticAtlasGenerator {
         return new ChestSpec(index, linkedIslandId, contents, deltaX, deltaZ, areaLabel);
     }
 
+    /**
+     * Pick an item from {@code linkedDescribed}, biased toward items
+     * sharing at least one adjacency key with the chest's seed. With
+     * probability {@link #CHEST_FACET_SIMILARITY_BIAS} the pick is
+     * restricted to facet-similar items; otherwise it's uniform random
+     * across the linked pool. When the seed has no usable facet keys
+     * (or no items match), falls through to a uniform pick so the chest
+     * still gets filled.
+     */
+    private static DescribedStack pickLinkedItem(
+            List<DescribedStack> linkedDescribed,
+            Set<LearnedAdjacencyKey> seedKeys,
+            Random random
+    ) {
+        if (seedKeys.isEmpty()
+                || random.nextDouble() >= CHEST_FACET_SIMILARITY_BIAS) {
+            return linkedDescribed.get(random.nextInt(linkedDescribed.size()));
+        }
+        ArrayList<DescribedStack> matching = new ArrayList<>();
+        for (DescribedStack candidate : linkedDescribed) {
+            IslandSignalDescriptor descriptor = candidate.descriptor();
+            if (descriptor == null) {
+                continue;
+            }
+            Set<LearnedAdjacencyKey> candidateKeys = specificKeysFor(descriptor);
+            for (LearnedAdjacencyKey key : candidateKeys) {
+                if (seedKeys.contains(key)) {
+                    matching.add(candidate);
+                    break;
+                }
+            }
+        }
+        if (matching.isEmpty()) {
+            return linkedDescribed.get(random.nextInt(linkedDescribed.size()));
+        }
+        return matching.get(random.nextInt(matching.size()));
+    }
+
+    /**
+     * Pick a chest seed from the linked island, preferring items whose
+     * specific adjacency keys are disjoint from
+     * {@code claimedSeedKeysForIsland}. When every candidate's keys
+     * overlap (or there's no claim set), falls back to uniform random
+     * so the chest still gets seeded.
+     */
+    private static DescribedStack pickDiverseSeed(
+            List<DescribedStack> linkedDescribed,
+            Set<LearnedAdjacencyKey> claimedSeedKeysForIsland,
+            Random random
+    ) {
+        if (linkedDescribed.isEmpty()) {
+            return null;
+        }
+        if (claimedSeedKeysForIsland == null || claimedSeedKeysForIsland.isEmpty()) {
+            return linkedDescribed.get(random.nextInt(linkedDescribed.size()));
+        }
+        ArrayList<DescribedStack> diverse = new ArrayList<>();
+        for (DescribedStack candidate : linkedDescribed) {
+            Set<LearnedAdjacencyKey> candidateKeys = specificKeysFor(candidate.descriptor());
+            if (candidateKeys.isEmpty()) {
+                // Item has no specific keys — fine to pick, doesn't
+                // claim anything new.
+                diverse.add(candidate);
+                continue;
+            }
+            boolean disjoint = true;
+            for (LearnedAdjacencyKey key : candidateKeys) {
+                if (claimedSeedKeysForIsland.contains(key)) {
+                    disjoint = false;
+                    break;
+                }
+            }
+            if (disjoint) {
+                diverse.add(candidate);
+            }
+        }
+        if (diverse.isEmpty()) {
+            // Every facet theme has been claimed by previous chests;
+            // accept duplication and pick uniformly.
+            return linkedDescribed.get(random.nextInt(linkedDescribed.size()));
+        }
+        return diverse.get(random.nextInt(diverse.size()));
+    }
+
+    /**
+     * Subset of {@link LearnedAdjacencyKey#keysFor} keeping only the
+     * "specific" priority-rank-0 kinds (TAG, MATERIAL_FAMILY,
+     * SUBSYSTEM, DYE_COLOR). The chest-clustering pass uses this
+     * tighter set so namespace matches don't bleed every modpack item
+     * into a single cluster.
+     */
+    private static Set<LearnedAdjacencyKey> specificKeysFor(IslandSignalDescriptor descriptor) {
+        if (descriptor == null) {
+            return Set.of();
+        }
+        java.util.LinkedHashSet<LearnedAdjacencyKey> filtered = new java.util.LinkedHashSet<>();
+        for (LearnedAdjacencyKey key : LearnedAdjacencyKey.keysFor(descriptor)) {
+            if (key.priorityRank() == 0) {
+                filtered.add(key);
+            }
+        }
+        return Set.copyOf(filtered);
+    }
+
     private record IslandAllocation(IslandBuild build, int count) {
     }
 
     private static int rollStackCount(ItemStack stack, IslandSuggestionTemplate template, Random random) {
+        return rollStackCount(stack, template, null, random);
+    }
+
+    /**
+     * Descriptor-aware variant. Trophy-tier ({@code rarity=unique}) and
+     * display-only ({@code carry_frequency in {display_only, never}})
+     * items always roll as a single item — a {@code nether_star} or
+     * {@code dragon_egg} shouldn't appear as a stack of 8 in a chest.
+     * Otherwise falls through to the template-keyed roll.
+     */
+    private static int rollStackCount(
+            ItemStack stack,
+            IslandSuggestionTemplate template,
+            IslandSignalDescriptor descriptor,
+            Random random
+    ) {
         int max;
         try {
             max = Math.max(1, stack.getMaxStackSize());
@@ -803,6 +983,20 @@ public final class RealisticAtlasGenerator {
         }
         if (max <= 1) {
             return 1;
+        }
+        if (descriptor != null) {
+            // Trophies (role=trophy or rarity=unique) and display-only
+            // items always roll as a single item — a nether_star /
+            // dragon_egg shouldn't land in a chest as a stack of 8, and
+            // creative-only / dev items shouldn't appear as bulk
+            // either.
+            if (IslandSuggestionTemplate.isTrophy(descriptor)) {
+                return 1;
+            }
+            String frequency = descriptor.carryFrequency();
+            if ("display_only".equals(frequency) || "never".equals(frequency)) {
+                return 1;
+            }
         }
         IslandSuggestionTemplate t = template == null ? IslandSuggestionTemplate.MISC : template;
         return switch (t) {
@@ -838,86 +1032,23 @@ public final class RealisticAtlasGenerator {
         };
     }
 
-    private record TemplatedStack(IslandSuggestionTemplate template, ItemStack stack) {
+    private record TemplatedStack(
+            IslandSuggestionTemplate template,
+            ItemStack stack,
+            IslandSignalDescriptor descriptor
+    ) {
     }
 
     /**
-     * Stable comparator used for the within-island sort. Items with the
-     * highest "carry score" — combined frequency + rarity signal —
-     * appear first regardless of material family or flavor, so the top
-     * rows of every island are the things players actually grab
-     * (cobblestone, sticks, iron_ingot, oak_planks) rather than the
-     * alphabetically-first variant of whatever family happens to start
-     * with "a" (asphalt, andesite_polished_brick, azurine).
-     *
-     * <p>Within a single carry-score band, items still cluster by
-     * material_family and flavor for residual visual order — so oak
-     * stairs sit next to oak planks within the same tier — but
-     * material_family is no longer the dominant key. The earlier sort
-     * (tier → material_family → flavor → id) was producing
-     * "random-looking" output because alphabetical family ordering
-     * doesn't track player perception of importance: a stone-family
-     * block sorted after asphalt-family because "asphalt" precedes
-     * "stone" alphabetically.
-     *
-     * <p>Null-safe: unknown frequency / rarity contribute mid-tier
-     * weight; nulls in material_family / flavor sort last within their
-     * carry-score band.
+     * Re-export of {@link WithinIslandOrdering#WITHIN_ISLAND_COMPARATOR}
+     * so existing callers and tests don't need to import the triage
+     * package directly. Definitive logic lives in
+     * {@link WithinIslandOrdering}.
      */
-    public static final Comparator<DescribedStack> WITHIN_ISLAND_COMPARATOR = (a, b) -> {
-        int carryCompare = Integer.compare(
-                carryRank(a.descriptor),
-                carryRank(b.descriptor));
-        if (carryCompare != 0) {
-            return carryCompare;
-        }
-        // Within a carry-score band, fall back to alphabetical id. We
-        // tried material_family + flavor as secondary keys but those
-        // produced visible alphabetical-family-name noise (asphalt
-        // ahead of brick ahead of stone) that read as "random." Item id
-        // alphabetical naturally clusters siblings (oak_planks /
-        // oak_log / oak_stairs share the "oak_" prefix) without
-        // dragging unrelated families to the top by name.
-        String aId = a.stack == null ? "" : ItemIdentityMatcher.create(a.stack).itemId();
-        String bId = b.stack == null ? "" : ItemIdentityMatcher.create(b.stack).itemId();
-        return aId.compareTo(bId);
-    };
-
-    /**
-     * Combined "how much would the player carry / grab this?" score.
-     * Lower is more-carried; sorted ascending so high-score items land
-     * at the top of an island. Frequency dominates (×10) with rarity
-     * as a fine-grained tiebreaker. Items with neither classified
-     * land in the middle, ahead of explicitly-rare items but behind
-     * classified-frequent ones.
-     */
-    private static int carryRank(IslandSignalDescriptor descriptor) {
-        int frequency = frequencyRank(descriptor.carryFrequency());
-        int rarity = rarityRank(descriptor.rarity());
-        return frequency * 10 + rarity;
-    }
-
-    private static int rarityRank(String rarity) {
-        // Collapse abundant / common / null to the same rank so a single
-        // outlier classification (e.g., granite happens to be flagged
-        // "abundant" while oak_planks has no rarity) doesn't reorder the
-        // island. Only uncommon+ tiers contribute a meaningful penalty.
-        // The dataset shows this is the right shape — across all 2700+
-        // entries only 21 are "abundant" and ~1300 are null, so treating
-        // them together prevents abundance-as-noise from dominating the
-        // sort while still letting "uncommon" / "rare" / "unique" push
-        // niche items down.
-        if (rarity == null) {
-            return 0;
-        }
-        return switch (rarity) {
-            case "abundant", "common" -> 0;
-            case "uncommon" -> 2;
-            case "rare" -> 4;
-            case "unique" -> 6;
-            default -> 0;
-        };
-    }
+    public static final Comparator<DescribedStack> WITHIN_ISLAND_COMPARATOR = (a, b) ->
+            WithinIslandOrdering.WITHIN_ISLAND_COMPARATOR.compare(
+                    new WithinIslandOrdering.DescribedStack(a.stack(), a.descriptor()),
+                    new WithinIslandOrdering.DescribedStack(b.stack(), b.descriptor()));
 
     /**
      * Weight for the carried-sample selection. Items the player uses
@@ -1016,43 +1147,11 @@ public final class RealisticAtlasGenerator {
         return picked;
     }
 
-    private static int nullsLast(String a, String b) {
-        if (a == null && b == null) {
-            return 0;
-        }
-        if (a == null) {
-            return 1;
-        }
-        if (b == null) {
-            return -1;
-        }
-        return a.compareTo(b);
-    }
-
-    /**
-     * Frequency ordering: items players touch every game-day get the
-     * top-left of an island, items seen rarely get pushed to the bottom.
-     * Unknown frequency sorts in the middle. {@code display_only} (creative-
-     * only / dev / deprecated) goes last — these populate the MISC.deep
-     * pseudo-section without producing a separate island.
-     */
-    private static int frequencyRank(String frequency) {
-        if (frequency == null) {
-            return 3;
-        }
-        return switch (frequency) {
-            case "everyday" -> 0;
-            case "frequent" -> 1;
-            case "occasional" -> 2;
-            case "rare" -> 4;
-            case "display_only", "never" -> 5;
-            default -> 3;
-        };
-    }
-
     /**
      * Stack + descriptor pair carried through the populate pipeline.
      * Public so the within-island comparator can be used in tests.
+     * Mirrors {@link WithinIslandOrdering.DescribedStack} so existing
+     * test code keeps compiling.
      */
     public record DescribedStack(ItemStack stack, IslandSignalDescriptor descriptor) {
     }

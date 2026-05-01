@@ -23,6 +23,7 @@ public record IslandSignalDescriptor(
         String rarity,
         String origin,
         String dyeColor,
+        List<String> palette,
         String form,
         boolean emitsLight
 ) {
@@ -49,6 +50,7 @@ public record IslandSignalDescriptor(
         rarity = rarity == null || rarity.isBlank() ? null : rarity;
         origin = origin == null || origin.isBlank() ? null : origin;
         dyeColor = dyeColor == null || dyeColor.isBlank() ? null : dyeColor;
+        palette = palette == null ? List.of() : List.copyOf(palette);
         form = form == null || form.isBlank() ? null : form;
     }
 
@@ -60,7 +62,7 @@ public record IslandSignalDescriptor(
             String creativeTabId
     ) {
         this(identity, classSignals, itemTags, namespace, creativeTabId, null, null, null,
-                List.of(), List.of(), null, null, null, null, null, null, false);
+                List.of(), List.of(), null, null, null, null, null, List.of(), null, false);
     }
 
     public IslandSignalDescriptor(
@@ -72,7 +74,7 @@ public record IslandSignalDescriptor(
             String role
     ) {
         this(identity, classSignals, itemTags, namespace, creativeTabId, role, null, null,
-                List.of(), List.of(), null, null, null, null, null, null, false);
+                List.of(), List.of(), null, null, null, null, null, List.of(), null, false);
     }
 
     public IslandSignalDescriptor(
@@ -85,7 +87,7 @@ public record IslandSignalDescriptor(
             String materialFamily
     ) {
         this(identity, classSignals, itemTags, namespace, creativeTabId, role, null, materialFamily,
-                List.of(), List.of(), null, null, null, null, null, null, false);
+                List.of(), List.of(), null, null, null, null, null, List.of(), null, false);
     }
 
     public static IslandSignalDescriptor empty(ItemIdentity identity) {

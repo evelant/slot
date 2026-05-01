@@ -59,6 +59,7 @@ public final class IslandSignalExtractor {
                 facets.rarity,
                 facets.origin,
                 facets.dyeColor,
+                facets.palette,
                 facets.form,
                 facets.emitsLight
         );
@@ -75,11 +76,12 @@ public final class IslandSignalExtractor {
             String rarity,
             String origin,
             String dyeColor,
+            List<String> palette,
             String form,
             boolean emitsLight
     ) {
         static Facets empty() {
-            return new Facets(null, List.of(), null, List.of(), List.of(), null, null, null, null, null, null, false);
+            return new Facets(null, List.of(), null, List.of(), List.of(), null, null, null, null, null, List.of(), null, false);
         }
     }
 
@@ -101,6 +103,7 @@ public final class IslandSignalExtractor {
                     index.rarity(itemId).orElse(null),
                     index.origin(itemId).orElse(null),
                     index.dyeColor(itemId).orElse(null),
+                    index.palette(itemId),
                     index.form(itemId).orElse(null),
                     index.emitsLight(itemId)
             );

@@ -51,6 +51,11 @@ final class IslandChestBuilder {
 
         host.drag.installViewportPanSurface(panel, atlas);
         host.drag.installIslandDropTarget(panel, panel, atlas, island);
+        // Body acts as a fallback drag handle when zoomed out far
+        // enough that the header strip becomes a few-pixel target on
+        // screen. Above the gate scale, item cards take over and the
+        // body-drag is suppressed so card interactions stay clean.
+        host.drag.installIslandDragSource(panel, atlas, island, 0.6f);
 
         // Right-click opens the island edit popover anchored near the click,
         // matching how item cards and kit cards surface their context host.menu.

@@ -296,6 +296,56 @@ class FacetIndexTest {
     }
 
     @Test
+    void parsesPaletteAsMultiValueListWithFirstAsPrimary() {
+        // palette is multi-valued in the canonical schema (an item can
+        // share more than one tone bucket — e.g. acacia is both
+        // wood_red and warm). Loader must preserve order so callers
+        // that key on the primary value (within-island palette cluster)
+        // get a stable choice.
+        String json = """
+                {
+                  "schema_version": 1,
+                  "layer": "vanilla-base",
+                  "entries": {
+                    "minecraft:acacia_planks": {
+                      "facets": {
+                        "role": {"value": "building_block"},
+                        "palette": {
+                          "values": ["wood_red", "warm"],
+                          "mode": "add"
+                        }
+                      }
+                    }
+                  }
+                }
+                """;
+        FacetIndex index = FacetIndex.load(new StringReader(json));
+        assertEquals(List.of("wood_red", "warm"), index.palette("minecraft:acacia_planks"));
+    }
+
+    @Test
+    void itemWithOnlyPaletteFacetIsStillIndexed() {
+        // Palette-only items still appear in the index so the
+        // within-island palette cluster fires on them.
+        String json = """
+                {
+                  "schema_version": 1,
+                  "layer": "vanilla-base",
+                  "entries": {
+                    "modded:exotic_block": {
+                      "facets": {
+                        "palette": {"values": ["copper_oxidized"]}
+                      }
+                    }
+                  }
+                }
+                """;
+        FacetIndex index = FacetIndex.load(new StringReader(json));
+        assertEquals(List.of("copper_oxidized"), index.palette("modded:exotic_block"));
+        assertEquals(Optional.empty(), index.role("modded:exotic_block"));
+    }
+
+    @Test
     void missingFacetAccessorsReturnEmpty() {
         String json = """
                 {
@@ -318,9 +368,11 @@ class FacetIndexTest {
         assertEquals(Optional.empty(), index.rarity("minecraft:apple"));
         assertEquals(Optional.empty(), index.origin("minecraft:apple"));
         assertEquals(Optional.empty(), index.dyeColor("minecraft:apple"));
+        assertTrue(index.palette("minecraft:apple").isEmpty());
         // Unknown items return empty as well.
         assertTrue(index.subsystems("minecraft:unknown").isEmpty());
         assertTrue(index.activities("minecraft:unknown").isEmpty());
+        assertTrue(index.palette("minecraft:unknown").isEmpty());
     }
 
     @Test

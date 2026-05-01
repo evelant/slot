@@ -201,6 +201,7 @@ class IslandSuggestionTemplateTest {
                 java.util.List.of(),
                 java.util.List.of(),
                 null, null, null, null, null,
+                java.util.List.of(),
                 form,
                 false
         );

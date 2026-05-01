@@ -47,10 +47,36 @@ final class DragDropWiring {
         source.addEventListener(UIEvents.DRAG_END, event -> handleDragEnd(event));
     }
 
+    /**
+     * Below this atlas scale, the island body acts as a fallback drag
+     * source: the visible header strip becomes hard to hit (only a few
+     * screen pixels tall), so a click anywhere on the body grabs the
+     * island instead. Above the threshold the body-drag is suppressed
+     * so item-card interactions stay clean.
+     */
+    private static final float BODY_AS_DRAG_HANDLE_MAX_SCALE = 0.6f;
+
     void installIslandDragSource(
             UIElement source,
             SlotAtlasGraphView atlas,
             SlotWorkspaceViewModel.AtlasIsland island
+    ) {
+        installIslandDragSource(source, atlas, island, null);
+    }
+
+    /**
+     * {@link #installIslandDragSource} variant gated on a scale
+     * threshold. When {@code engageWhenScaleBelow} is non-null, drag
+     * recording only kicks in if {@code atlas.getScale()} is below the
+     * supplied value at MOUSE_DOWN time. Used by the island body so it
+     * acts as a drag handle only when zoomed out far enough that the
+     * header strip is hard to grab.
+     */
+    void installIslandDragSource(
+            UIElement source,
+            SlotAtlasGraphView atlas,
+            SlotWorkspaceViewModel.AtlasIsland island,
+            Float engageWhenScaleBelow
     ) {
         if (island.kind() != VisualAtlasIslandKind.PLAYER) {
             return;
@@ -59,6 +85,10 @@ final class DragDropWiring {
         int[] clickWorldY = {Integer.MIN_VALUE};
         source.addEventListener(UIEvents.MOUSE_DOWN, event -> {
             if (event.button != 0) {
+                return;
+            }
+            if (engageWhenScaleBelow != null
+                    && atlas.getScale() >= engageWhenScaleBelow) {
                 return;
             }
             clickWorldX[0] = atlas.worldX(event.x);

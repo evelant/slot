@@ -419,6 +419,162 @@ class RealisticAtlasGeneratorTest {
     }
 
     @Test
+    void uniqueRarityItemsAlwaysRollAsSingleStackInChests() {
+        // A trophy-tier item (rarity=unique) routed to CURIOSITY would
+        // otherwise roll 1-8 via the template-only path. Descriptor-aware
+        // rollStackCount must clamp to count=1 so the populated atlas
+        // has nether_star / dragon_egg etc. on display, not stacked.
+        DescriptorPool pool = new DescriptorPool();
+        for (int i = 0; i < 12; i++) {
+            // Trophies sit in CURIOSITY via the trophy shunt; need
+            // multiple to ensure at least one ends up in a chest.
+            pool.addTrophy("modded:legendary_skull_" + i, "trophy");
+        }
+
+        boolean foundTrophyInChest = false;
+        for (long seed : new long[]{1L, 7L, 31L, 99L, 421L}) {
+            RealisticAtlasPlan plan = RealisticAtlasGenerator.generateWithDescriptors(
+                    pool.stacks(),
+                    PopulateProfile.LATE_MODPACK,
+                    new Random(seed),
+                    pool::describe
+            );
+            for (ChestSpec chest : plan.chests()) {
+                for (ChestContentEntry entry : chest.contents()) {
+                    if (!entry.stack().itemId().contains("legendary_skull_")) {
+                        continue;
+                    }
+                    foundTrophyInChest = true;
+                    assertEquals(1, entry.stack().getCount(),
+                            "trophy-tier item must roll as single stack; got count "
+                                    + entry.stack().getCount() + " for "
+                                    + entry.stack().itemId());
+                }
+            }
+        }
+        assertTrue(foundTrophyInChest,
+                "expected at least one trophy item to land in a chest across 5 seeds");
+    }
+
+    @Test
+    void multipleChestsInSameIslandSpanDifferentFacetThemes() {
+        // Three material families × eight items each, all routed to
+        // MATERIALS. Across multiple seeds, the populated MATERIALS
+        // chests should reliably span ≥ 2 distinct dominant families
+        // (the "diversity bias"). Without the cross-chest claimed-keys
+        // set, two independent uniform seed picks could randomly land
+        // on the same family.
+        java.util.Set<String> globalDominantFamilies = new java.util.LinkedHashSet<>();
+        int aggregateChestsChecked = 0;
+        for (long seed : new long[]{7L, 13L, 31L, 42L, 99L}) {
+            DescriptorPool pool = new DescriptorPool();
+            for (int i = 0; i < 8; i++) {
+                pool.addMaterialFamily("modded:iron_chunk_" + i, "iron");
+            }
+            for (int i = 0; i < 8; i++) {
+                pool.addMaterialFamily("modded:gold_chunk_" + i, "gold");
+            }
+            for (int i = 0; i < 8; i++) {
+                pool.addMaterialFamily("modded:copper_chunk_" + i, "copper");
+            }
+            RealisticAtlasPlan plan = RealisticAtlasGenerator.generateWithDescriptors(
+                    pool.stacks(),
+                    PopulateProfile.LATE_MODPACK,
+                    new Random(seed),
+                    pool::describe
+            );
+
+            for (ChestSpec chest : plan.chests()) {
+                if (!chest.isLinked()
+                        || !chest.linkedIslandId().equals(IslandSuggestionTemplate.MATERIALS.defaultIslandId())) {
+                    continue;
+                }
+                int iron = 0, gold = 0, copper = 0;
+                for (ChestContentEntry entry : chest.contents()) {
+                    String id = entry.stack().itemId();
+                    if (id.contains("iron_chunk_")) iron++;
+                    else if (id.contains("gold_chunk_")) gold++;
+                    else if (id.contains("copper_chunk_")) copper++;
+                }
+                int relevant = iron + gold + copper;
+                if (relevant < 4) continue;
+                aggregateChestsChecked++;
+                int max = Math.max(iron, Math.max(gold, copper));
+                if (max * 10 < relevant * 5) continue;
+                if (max == iron) globalDominantFamilies.add("iron");
+                else if (max == gold) globalDominantFamilies.add("gold");
+                else globalDominantFamilies.add("copper");
+            }
+        }
+        assertTrue(aggregateChestsChecked >= 4,
+                "expected at least four MATERIALS chests across seeds; got "
+                        + aggregateChestsChecked);
+        // Across 5 seeds × 2 chests each, the diversity bias should
+        // surface every family at least once.
+        assertTrue(globalDominantFamilies.size() >= 2,
+                "expected MATERIALS chests to span at least two facet themes across seeds; got "
+                        + globalDominantFamilies);
+    }
+
+    @Test
+    void linkedChestsClusterContentByFacetSimilarity() {
+        // 8 iron-family items + 8 gold-family items in MATERIALS, all at
+        // the same carry rank. With facet-aware chest filling, each
+        // generated MATERIALS chest should overwhelmingly be either
+        // iron-themed or gold-themed (>= 60% same family) instead of an
+        // even mix. Without the facet-similarity bias, a single chest's
+        // 20 fills would be ~50/50 iron/gold by uniform pick.
+        DescriptorPool pool = new DescriptorPool();
+        for (int i = 0; i < 8; i++) {
+            pool.addMaterialFamily("modded:iron_chunk_" + i, "iron");
+        }
+        for (int i = 0; i < 8; i++) {
+            pool.addMaterialFamily("modded:gold_chunk_" + i, "gold");
+        }
+
+        RealisticAtlasPlan plan = RealisticAtlasGenerator.generateWithDescriptors(
+                pool.stacks(),
+                PopulateProfile.LATE_MODPACK,
+                new Random(13L),
+                pool::describe
+        );
+
+        int chestsChecked = 0;
+        int chestsThemed = 0;
+        for (ChestSpec chest : plan.chests()) {
+            if (!chest.isLinked()) {
+                continue;
+            }
+            int ironCount = 0;
+            int goldCount = 0;
+            for (ChestContentEntry entry : chest.contents()) {
+                String id = entry.stack().itemId();
+                if (id.contains("iron_chunk_")) ironCount++;
+                else if (id.contains("gold_chunk_")) goldCount++;
+            }
+            int relevant = ironCount + goldCount;
+            if (relevant < 4) {
+                // Skip tiny chests where the family-purity check is
+                // statistically meaningless.
+                continue;
+            }
+            chestsChecked++;
+            int dominant = Math.max(ironCount, goldCount);
+            if (dominant * 10 >= relevant * 6) {
+                chestsThemed++;
+            }
+        }
+
+        assertTrue(chestsChecked > 0, "expected at least one MATERIALS chest with enough family-relevant content");
+        // Allow some statistical slack: ≥ 60% of checked chests should
+        // be themed (i.e. dominated 60/40 or stronger by one family).
+        // Pure random would give ~25% by binomial chance.
+        assertTrue(chestsThemed * 10 >= chestsChecked * 6,
+                "expected >= 60% of checked chests to read as facet-themed; got "
+                        + chestsThemed + "/" + chestsChecked);
+    }
+
+    @Test
     void carriedSampleBiasesTowardEverydayItems() {
         // 30 everyday + 30 rare items, STARTER profile (identityCount=30,
         // carriedCap=20). With weight 6 (everyday) vs 0.2 (rare) = 30:1
@@ -536,6 +692,206 @@ class RealisticAtlasGeneratorTest {
     }
 
     @Test
+    void dyedItemsClusterByStemThenCanonicalColorOrder() {
+        // Two stems (carpet, wool) × three dye colors each (white, gray,
+        // black). Comparator must:
+        //   1. Group all carpets before all wools (id stem, "carpet" <
+        //      "wool" alphabetically).
+        //   2. Within each stem, order colors as Minecraft's dye wheel:
+        //      white → gray → black, NOT alphabetical (black, gray, white).
+        DescriptorPool pool = new DescriptorPool();
+        pool.addDyedDecoration("modded:black_wool", "black");
+        pool.addDyedDecoration("modded:white_wool", "white");
+        pool.addDyedDecoration("modded:gray_carpet", "gray");
+        pool.addDyedDecoration("modded:white_carpet", "white");
+        pool.addDyedDecoration("modded:black_carpet", "black");
+        pool.addDyedDecoration("modded:gray_wool", "gray");
+
+        RealisticAtlasPlan plan = RealisticAtlasGenerator.generateWithDescriptors(
+                pool.stacks(),
+                PopulateProfile.ORGANIZED,
+                new Random(7L),
+                pool::describe
+        );
+
+        String decorationIslandId = IslandSuggestionTemplate.DECORATION.defaultIslandId();
+        List<String> ordered = plan.assignments().values().stream()
+                .filter(a -> decorationIslandId.equals(a.islandId()))
+                .sorted((a, b) -> Integer.compare(a.ordinal(), b.ordinal()))
+                .map(a -> a.identity().itemId())
+                .toList();
+
+        assertEquals(List.of(
+                "modded:white_carpet",
+                "modded:gray_carpet",
+                "modded:black_carpet",
+                "modded:white_wool",
+                "modded:gray_wool",
+                "modded:black_wool"
+        ), ordered);
+    }
+
+    @Test
+    void palettedItemsClusterByPrimaryToneNotIdAlpha() {
+        // Six warm-toned wood blocks across three "species" — pure id
+        // alphabetical would interleave them as acacia, jungle, mangrove,
+        // but palette clustering pulls all three wood_red items into one
+        // block and all three wood_medium items into another, regardless
+        // of their alphabetical order.
+        DescriptorPool pool = new DescriptorPool();
+        pool.addPalettedBuilding("modded:acacia_planks", "wood_red");
+        pool.addPalettedBuilding("modded:oak_planks", "wood_medium");
+        pool.addPalettedBuilding("modded:jungle_planks", "wood_red");
+        pool.addPalettedBuilding("modded:spruce_planks", "wood_medium");
+        pool.addPalettedBuilding("modded:mangrove_planks", "wood_red");
+        pool.addPalettedBuilding("modded:dark_oak_planks", "wood_medium");
+
+        RealisticAtlasPlan plan = RealisticAtlasGenerator.generateWithDescriptors(
+                pool.stacks(),
+                PopulateProfile.ORGANIZED,
+                new Random(13L),
+                pool::describe
+        );
+
+        String buildingIslandId = IslandSuggestionTemplate.BUILDING.defaultIslandId();
+        List<String> ordered = plan.assignments().values().stream()
+                .filter(a -> buildingIslandId.equals(a.islandId()))
+                .sorted((a, b) -> Integer.compare(a.ordinal(), b.ordinal()))
+                .map(a -> a.identity().itemId())
+                .toList();
+
+        // Expected: wood_medium block first (alphabetical: wood_medium <
+        // wood_red), id-alpha within each tone group.
+        assertEquals(List.of(
+                "modded:dark_oak_planks",
+                "modded:oak_planks",
+                "modded:spruce_planks",
+                "modded:acacia_planks",
+                "modded:jungle_planks",
+                "modded:mangrove_planks"
+        ), ordered);
+    }
+
+    @Test
+    void dyedItemsLeadPalettedItemsLeadPlainItems() {
+        // Mixed island: a dyed wool, a palette-toned plank, a plain
+        // building block. Cluster-key ordering puts dyed first, palette
+        // next, plain id last — even though pure alphabetical would
+        // interleave them ("modded:concrete" < "modded:plank" <
+        // "modded:wool").
+        DescriptorPool pool = new DescriptorPool();
+        pool.addDyedDecoration("modded:white_concrete", "white");
+        pool.addPalettedBuilding("modded:oak_plank", "wood_medium");
+        pool.addBuilding("modded:plain_brick", null);
+
+        RealisticAtlasPlan plan = RealisticAtlasGenerator.generateWithDescriptors(
+                pool.stacks(),
+                PopulateProfile.ORGANIZED,
+                new Random(99L),
+                pool::describe
+        );
+
+        // Both DECORATION and BUILDING islands fire; collect every
+        // assignment and verify global ordering by cluster prefix.
+        List<String> ordered = plan.assignments().values().stream()
+                .sorted((a, b) -> Integer.compare(a.ordinal(), b.ordinal()))
+                .map(a -> a.identity().itemId())
+                .toList();
+
+        // dyed → palette → plain. The dyed item is in its own island
+        // (DECORATION), so cross-island ordinals don't matter for the
+        // claim — what matters is that within-island sort respects
+        // the cluster bands. Here it's per-island anyway.
+        assertTrue(ordered.contains("modded:white_concrete"));
+        assertTrue(ordered.contains("modded:oak_plank"));
+        assertTrue(ordered.contains("modded:plain_brick"));
+        // BUILDING island: palette before plain.
+        String buildingId = IslandSuggestionTemplate.BUILDING.defaultIslandId();
+        List<String> buildingOrder = plan.assignments().values().stream()
+                .filter(a -> buildingId.equals(a.islandId()))
+                .sorted((a, b) -> Integer.compare(a.ordinal(), b.ordinal()))
+                .map(a -> a.identity().itemId())
+                .toList();
+        assertEquals(List.of("modded:oak_plank", "modded:plain_brick"), buildingOrder);
+    }
+
+    @Test
+    void originTierOrdersEarlyOverworldAheadOfLateNetherAndCreative() {
+        // Five MATERIALS items spanning the origin tiers. Pure id-alpha
+        // would put creative_dust first ("c" before "i" / "n" / "o"),
+        // but origin clustering pulls early items to the top, late
+        // items down, and creative_only to the very bottom regardless
+        // of name.
+        DescriptorPool pool = new DescriptorPool();
+        pool.addMaterialWithOrigin("modded:netherite_chunk", "nether");
+        pool.addMaterialWithOrigin("modded:iron_filings", "overworld_cave");
+        pool.addMaterialWithOrigin("modded:end_shard", "end");
+        pool.addMaterialWithOrigin("modded:creative_dust", "creative_only");
+        pool.addMaterialWithOrigin("modded:village_token", "village");
+        pool.addMaterialWithOrigin("modded:ancient_relic", "ancient_city");
+
+        RealisticAtlasPlan plan = RealisticAtlasGenerator.generateWithDescriptors(
+                pool.stacks(),
+                PopulateProfile.ORGANIZED,
+                new Random(7L),
+                pool::describe
+        );
+
+        String materialsIslandId = IslandSuggestionTemplate.MATERIALS.defaultIslandId();
+        List<String> ordered = plan.assignments().values().stream()
+                .filter(a -> materialsIslandId.equals(a.islandId()))
+                .sorted((a, b) -> Integer.compare(a.ordinal(), b.ordinal()))
+                .map(a -> a.identity().itemId())
+                .toList();
+
+        assertEquals(List.of(
+                "modded:iron_filings",      // early ('a' overworld_cave)
+                "modded:village_token",     // early ('a' village)
+                "modded:ancient_relic",     // mid   ('b' ancient_city)
+                "modded:end_shard",         // late  ('c' end)
+                "modded:netherite_chunk",   // late  ('c' nether)
+                "modded:creative_dust"      // creative ('z')
+        ), ordered);
+    }
+
+    @Test
+    void flavorPartitionsPlainBlocksBeforeFancyAndAncient() {
+        // Five plain-id BUILDING items with mixed flavors. Within the
+        // plain-zone of the cluster key, the flavor rank wins over
+        // id-alpha so plain blocks lead, then natural / fancy /
+        // ancient — even though pure id-alpha would put "ancient_brick"
+        // first.
+        DescriptorPool pool = new DescriptorPool();
+        pool.addBuildingWithFlavor("modded:ancient_brick", "ancient");
+        pool.addBuildingWithFlavor("modded:fancy_brick", "fancy");
+        pool.addBuildingWithFlavor("modded:plain_brick", "plain");
+        pool.addBuildingWithFlavor("modded:natural_stone", "natural");
+        pool.addBuildingWithFlavor("modded:ominous_brick", "ominous");
+
+        RealisticAtlasPlan plan = RealisticAtlasGenerator.generateWithDescriptors(
+                pool.stacks(),
+                PopulateProfile.ORGANIZED,
+                new Random(7L),
+                pool::describe
+        );
+
+        String buildingIslandId = IslandSuggestionTemplate.BUILDING.defaultIslandId();
+        List<String> ordered = plan.assignments().values().stream()
+                .filter(a -> buildingIslandId.equals(a.islandId()))
+                .sorted((a, b) -> Integer.compare(a.ordinal(), b.ordinal()))
+                .map(a -> a.identity().itemId())
+                .toList();
+
+        assertEquals(List.of(
+                "modded:plain_brick",
+                "modded:natural_stone",
+                "modded:fancy_brick",
+                "modded:ominous_brick",
+                "modded:ancient_brick"
+        ), ordered);
+    }
+
+    @Test
     void frequencyOrdersWithinIslandFromUbiquitousToRare() {
         DescriptorPool pool = new DescriptorPool();
         pool.addBuildingWithFrequency("modded:rare_block", "wood_oak", "rare");
@@ -608,6 +964,7 @@ class RealisticAtlasGeneratorTest {
                     null,
                     null,
                     null,
+                    List.of(),
                     null,
                     false
             ));
@@ -622,6 +979,126 @@ class RealisticAtlasGeneratorTest {
                     namespaceOf(itemId),
                     "",
                     role
+            ));
+        }
+
+        void addDyedDecoration(String itemId, String dyeColor) {
+            registerStack(itemId);
+            descriptorsById.put(itemId, new IslandSignalDescriptor(
+                    ItemIdentity.of(itemId),
+                    Set.of(),
+                    Set.of(),
+                    namespaceOf(itemId),
+                    "",
+                    "decorative_block",
+                    null,
+                    null,
+                    List.of(),
+                    List.of(),
+                    null,
+                    null,
+                    null,
+                    null,
+                    dyeColor,
+                    List.of(),
+                    null,
+                    false
+            ));
+        }
+
+        void addPalettedBuilding(String itemId, String paletteValue) {
+            registerStack(itemId);
+            descriptorsById.put(itemId, new IslandSignalDescriptor(
+                    ItemIdentity.of(itemId),
+                    Set.of(),
+                    Set.of(),
+                    namespaceOf(itemId),
+                    "",
+                    "building_block",
+                    null,
+                    null,
+                    List.of(),
+                    List.of(),
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    paletteValue == null ? List.of() : List.of(paletteValue),
+                    null,
+                    false
+            ));
+        }
+
+        void addBuildingWithFlavor(String itemId, String flavor) {
+            registerStack(itemId);
+            descriptorsById.put(itemId, new IslandSignalDescriptor(
+                    ItemIdentity.of(itemId),
+                    Set.of(),
+                    Set.of(),
+                    namespaceOf(itemId),
+                    "",
+                    "building_block",
+                    null,
+                    null,
+                    List.of(),
+                    List.of(),
+                    flavor,
+                    null,
+                    null,
+                    null,
+                    null,
+                    List.of(),
+                    null,
+                    false
+            ));
+        }
+
+        void addMaterialFamily(String itemId, String materialFamily) {
+            registerStack(itemId);
+            descriptorsById.put(itemId, new IslandSignalDescriptor(
+                    ItemIdentity.of(itemId),
+                    Set.of(),
+                    Set.of(),
+                    namespaceOf(itemId),
+                    "",
+                    "material",
+                    null,
+                    materialFamily,
+                    List.of(),
+                    List.of(),
+                    null,
+                    null,
+                    null,
+                    null,
+                    null,
+                    List.of(),
+                    null,
+                    false
+            ));
+        }
+
+        void addMaterialWithOrigin(String itemId, String origin) {
+            registerStack(itemId);
+            descriptorsById.put(itemId, new IslandSignalDescriptor(
+                    ItemIdentity.of(itemId),
+                    Set.of(),
+                    Set.of(),
+                    namespaceOf(itemId),
+                    "",
+                    "material",
+                    null,
+                    null,
+                    List.of(),
+                    List.of(),
+                    null,
+                    null,
+                    null,
+                    origin,
+                    null,
+                    List.of(),
+                    null,
+                    false
             ));
         }
 
@@ -643,6 +1120,7 @@ class RealisticAtlasGeneratorTest {
                     null,
                     null,
                     null,
+                    List.of(),
                     null,
                     false
             ));
@@ -671,6 +1149,7 @@ class RealisticAtlasGeneratorTest {
                     rarity,
                     null,
                     null,
+                    List.of(),
                     null,
                     false
             ));

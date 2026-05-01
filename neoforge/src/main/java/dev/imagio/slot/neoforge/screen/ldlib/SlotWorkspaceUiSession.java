@@ -251,7 +251,8 @@ final class SlotWorkspaceUiSession {
                 authority,
                 affinityMap,
                 claimedChestMap,
-                proximate
+                proximate,
+                this::descriptorForIdentity
         );
         DepositExecutor.DepositOutcome outcome = DepositExecutor.execute(serverPlayer, plan, claimedChestMap);
         for (DepositExecutor.DepositRecord record : outcome.records()) {
@@ -272,6 +273,33 @@ final class SlotWorkspaceUiSession {
             diagnostics = "deposited=" + outcome.deposited() + " failed=" + outcome.failed();
         }
         broadcast(serverPlayer);
+    }
+
+    /**
+     * Resolve an {@link ItemIdentity} back to an
+     * {@link dev.imagio.slot.inventory.triage.IslandSignalDescriptor}
+     * for the deposit-planner facet-affinity fallback. Builds a
+     * synthetic default {@link ItemStack} via the registry, which is
+     * enough to recover tags, role, material_family, etc. — chest
+     * affinity bonds don't carry component fingerprints, so the
+     * default stack is good enough for the adjacency-key lookup.
+     * Returns {@code null} when the registry doesn't have the item
+     * (datapack-only or removed mods); the caller treats null as "no
+     * facet match" and falls through to direct affinity only.
+     */
+    private dev.imagio.slot.inventory.triage.IslandSignalDescriptor descriptorForIdentity(ItemIdentity identity) {
+        if (identity == null || identity.itemId() == null || identity.itemId().isBlank()) {
+            return null;
+        }
+        ItemStack stack = GhostAtlasStackFactory.resolve(identity.itemId());
+        if (stack == null || stack.isEmpty()) {
+            return null;
+        }
+        try {
+            return IslandSignalExtractor.extract(stack);
+        } catch (RuntimeException | LinkageError ignored) {
+            return null;
+        }
     }
 
     /**

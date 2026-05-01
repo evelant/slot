@@ -7,18 +7,51 @@ Last updated: 2026-04-30. Operational handoff. Read after
 
 ## Active
 
-**Track:** facet-driven suggestions Phase 1
-([plans/facet-driven-suggestions.md](plans/facet-driven-suggestions.md)).
-Plumb the ~28 unused facets the LLM has classified
-(`mod_subsystem`, `activity`, `flavor`, `frequency`, `rarity`,
-`origin`, `dye_color`, …) through `FacetIndex` so the suggestion
-engine + `RealisticAtlasGenerator` can read them. Phase 1 is the
-parser + accessor extension; Phases 2–5 build on it (subsystem-primary
-matching, activity tie-break, within-island sort, trophy / frequency
-priority).
+**Open** — pull the next item from
+[plans/current.md § Queue](plans/current.md#queue) when picking up.
+Facet-driven suggestions Phases 1–6 shipped 2026-04-30, including a
+color-clustering pass that turns `dye_color` and `palette` into a
+within-island layered cluster key.
 
 **Recent landings (2026-04-30):**
 
+- Facet-driven suggestions Phases 1–6.6 shipped. Phase 6 gives the
+  within-island comparator a layered cluster key — dyed items sort
+  as a canonical Minecraft dye-wheel inside their stem,
+  palette-toned items cluster by tone (split by flavor → origin
+  within tone), plain-id items partition by flavor (plain → natural →
+  variant → colored → fancy → mechanical → mystical → ominous →
+  ancient → unflavored) then by origin tier before id-alpha. Phase
+  6.1 extracted the comparator into `WithinIslandOrdering` and wired
+  the live chip-accept placement path to use it — chip-accepted
+  homes slot in next to their cluster peers instead of being
+  appended at the end. Phase 6.3 wired the shared
+  `LearnedAdjacencyKey.keysFor` into `DepositPlanner` as a
+  facet-affinity fallback — chests with no direct identity bond but
+  with bonds to facet-similar identities now become deposit
+  candidates (ranked below direct-affinity chests). Phase 6.4 made
+  the debug populate generator's chest contents facet-themed: each
+  generated chest seeds on a random linked-island item and biases
+  fills toward seed-similar items via the priority-rank-0 keys
+  (TAG / MATERIAL_FAMILY / SUBSYSTEM / DYE_COLOR), so a populated
+  MATERIALS section reads as "iron chest / gold chest / copper
+  chest" rather than uniform scoops. Phase 6.5 layered cross-chest
+  seed diversity on top: a per-island claimed-seed-keys set
+  threaded through `planChests` makes subsequent chests in the same
+  island prefer seeds with disjoint keys, so the three families
+  span across the chests instead of re-rolling onto the same one.
+  Phase 6.6 wired rarity into `rollStackCount`: trophies
+  (`role=trophy` / `rarity=unique`) and display-only items always
+  roll as count=1, so a `nether_star` no longer appears as a stack
+  of 5 in a populated chest. Phase 6.2 added
+  `SUBSYSTEM` and `DYE_COLOR`
+  to the learned-rule adjacency kinds so manual placement overrides
+  of the subsystem-primary default (and color-themed islands) become
+  sticky after two confirmations. Every facet `FacetIndex` exposes
+  is now consumed downstream by routing, ordering, learning,
+  deposit fallback, or generator content clustering.
+  Plan archived in
+  [plans/done/facet-driven-suggestions.md](plans/done/facet-driven-suggestions.md).
 - Learned-storage UX-bug pass closed: 14 original bugs + 9 follow-on
   bugs from real-instance testing all shipped. Recap lives in
   [plans/current.md](plans/current.md); the canonical design ref is

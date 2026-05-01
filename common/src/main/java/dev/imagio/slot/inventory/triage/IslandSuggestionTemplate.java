@@ -412,6 +412,38 @@ public enum IslandSuggestionTemplate {
         };
     }
 
+    /**
+     * Whether a match for this template is a strong, narrow signal —
+     * strong enough that it should outrank broad learned chips
+     * (especially NAMESPACE / CREATIVE_TAB) when surfacing
+     * suggestions. The form-keyed templates (STAIRS / SLABS / WALLS /
+     * DOORS / FENCES / WINDOWS) are the obvious case: a "_wall" form
+     * facet is a much more confident signal than "the player just
+     * homed two other Create blocks somewhere". LIGHTING fires on the
+     * narrow {@code emits_light} facet, also strong. Specific
+     * commodity templates (INGOTS / GEMS / RAW_MATERIALS / STORAGE)
+     * key on {@code c:*} tags that map cleanly to a player's mental
+     * model. Class-signal templates (TOOLS / WEAPONS / ARMOR / FOOD)
+     * key on Minecraft subclasses, which the player thinks of as
+     * "this IS a sword / armor piece / food", not "this is a thing in
+     * the same mod as".
+     *
+     * <p>Generic role templates (BUILDING / DECORATION / NATURAL /
+     * MECHANISMS / REDSTONE / UPGRADES / TRANSPORT / UTILITY /
+     * CURIOSITY / WORKBENCHES / MISC) are deliberately excluded —
+     * their roleTriggers are wide enough that a learned-rule chip
+     * with player-confirmed adjacency is usually the better signal.
+     */
+    public boolean isHighSpecificity() {
+        return switch (this) {
+            case STAIRS, SLABS, WALLS, DOORS, FENCES, WINDOWS,
+                    LIGHTING,
+                    INGOTS, GEMS, RAW_MATERIALS, STORAGE,
+                    TOOLS, WEAPONS, ARMOR, FOOD -> true;
+            default -> false;
+        };
+    }
+
     public boolean matches(IslandSignalDescriptor descriptor) {
         if (descriptor == null) {
             return false;

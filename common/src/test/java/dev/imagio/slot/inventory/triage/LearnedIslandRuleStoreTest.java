@@ -162,6 +162,74 @@ class LearnedIslandRuleStoreTest {
     }
 
     @Test
+    void subsystemAdjacencyFiresOnceTwoCreateItemsLandOnSameIsland() {
+        // Two Create-mechanical-power items confirm "Workshop"; a third
+        // create:mechanical_power item should pull a learned rule via
+        // SUBSYSTEM adjacency even when its item-tag set is different.
+        LearnedIslandRuleStore store = new LearnedIslandRuleStore();
+        store.recordAssignment(
+                subsystemDescriptor("create:cogwheel", "create:mechanical_power"),
+                "island.workshop", 10L);
+        store.recordAssignment(
+                subsystemDescriptor("create:large_cogwheel", "create:mechanical_power"),
+                "island.workshop", 20L);
+
+        List<LearnedIslandRule> firing = store.firingRulesFor(
+                subsystemDescriptor("create:gear", "create:mechanical_power"));
+
+        assertEquals(1, firing.size());
+        assertEquals("island.workshop", firing.get(0).islandId());
+        assertEquals(LearnedAdjacencyKey.Kind.SUBSYSTEM,
+                firing.get(0).adjacency().kind());
+        assertEquals("create:mechanical_power",
+                firing.get(0).adjacency().value());
+    }
+
+    @Test
+    void dyeColorAdjacencyFiresAcrossDyedSiblings() {
+        // Two white-dyed items confirm "White Decoration"; a third
+        // white-dyed item should pull the learned rule via DYE_COLOR
+        // adjacency even though it has no shared tag with the others.
+        LearnedIslandRuleStore store = new LearnedIslandRuleStore();
+        store.recordAssignment(dyedDescriptor("modded:white_wool", "white"),
+                "island.white-decor", 10L);
+        store.recordAssignment(dyedDescriptor("modded:white_carpet", "white"),
+                "island.white-decor", 20L);
+
+        List<LearnedIslandRule> firing = store.firingRulesFor(
+                dyedDescriptor("modded:white_concrete", "white"));
+
+        assertEquals(1, firing.size());
+        assertEquals("island.white-decor", firing.get(0).islandId());
+        assertEquals(LearnedAdjacencyKey.Kind.DYE_COLOR,
+                firing.get(0).adjacency().kind());
+        assertEquals("white", firing.get(0).adjacency().value());
+    }
+
+    @Test
+    void differentSubsystemsAreIndependentLearningChannels() {
+        // create:mechanical_power confirmations don't cross over via the
+        // SUBSYSTEM channel to create:logistics — each subsystem learns
+        // its own island. (The NAMESPACE channel still fires because all
+        // three items share the "create" namespace; that's expected and
+        // not what this test is gating.)
+        LearnedIslandRuleStore store = new LearnedIslandRuleStore();
+        store.recordAssignment(
+                subsystemDescriptor("create:cogwheel", "create:mechanical_power"),
+                "island.workshop", 10L);
+        store.recordAssignment(
+                subsystemDescriptor("create:large_cogwheel", "create:mechanical_power"),
+                "island.workshop", 20L);
+
+        List<LearnedIslandRule> firing = store.firingRulesFor(
+                subsystemDescriptor("create:funnel", "create:logistics"));
+        assertTrue(
+                firing.stream().noneMatch(
+                        r -> r.adjacency().kind() == LearnedAdjacencyKey.Kind.SUBSYSTEM),
+                "create:logistics chip should not fire SUBSYSTEM learnings recorded under create:mechanical_power");
+    }
+
+    @Test
     void materialFamilyKeyIsDistinctFromTagOfTheSameValue() {
         // Defensive: if a tag id ever literally equals a material_family
         // value (e.g. "iron"), the two should still partition cleanly.
@@ -212,6 +280,52 @@ class LearnedIslandRuleStoreTest {
                 "",
                 "building_block",
                 materialFamily
+        );
+    }
+
+    private static IslandSignalDescriptor subsystemDescriptor(String itemId, String subsystemId) {
+        return new IslandSignalDescriptor(
+                ItemIdentity.of(itemId),
+                Set.of(),
+                Set.of(),
+                itemId.contains(":") ? itemId.substring(0, itemId.indexOf(':')) : "",
+                "",
+                "mechanism",
+                null,
+                null,
+                subsystemId == null ? List.of() : List.of(subsystemId),
+                List.of(),
+                null,
+                null,
+                null,
+                null,
+                null,
+                List.of(),
+                null,
+                false
+        );
+    }
+
+    private static IslandSignalDescriptor dyedDescriptor(String itemId, String dyeColor) {
+        return new IslandSignalDescriptor(
+                ItemIdentity.of(itemId),
+                Set.of(),
+                Set.of(),
+                itemId.contains(":") ? itemId.substring(0, itemId.indexOf(':')) : "",
+                "",
+                "decorative_block",
+                null,
+                null,
+                List.of(),
+                List.of(),
+                null,
+                null,
+                null,
+                null,
+                dyeColor,
+                List.of(),
+                null,
+                false
         );
     }
 }
