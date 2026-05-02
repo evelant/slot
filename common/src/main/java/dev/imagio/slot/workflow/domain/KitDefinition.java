@@ -5,11 +5,18 @@ import dev.imagio.slot.inventory.core.ItemIdentity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A kit's authored shape: name, hotbar pages, and optional offhand pin.
+ * The "bring" list (non-hotbar identities the kit wanted in carry) was
+ * folded into kit-scoped desired counts — see
+ * {@link DesiredCountWorkflowDomainService#forKit(String)}. Kit
+ * activation auto-fetches toward those counts in lieu of the old bring
+ * fetch path.
+ */
 public record KitDefinition(
         String id,
         String name,
         List<KitPage> pages,
-        List<ItemIdentity> bring,
         ItemIdentity offhand
 ) {
     public static final int MAX_CARRIED_CAPACITY = 36;
@@ -20,7 +27,6 @@ public record KitDefinition(
         pages = pages == null || pages.isEmpty()
                 ? List.of(KitPage.empty())
                 : List.copyOf(pages);
-        bring = bring == null ? List.of() : List.copyOf(bring);
     }
 
     public int pageCount() {
@@ -34,8 +40,13 @@ public record KitDefinition(
         return pages.get(index);
     }
 
+    /**
+     * Hotbar slots claimed by the kit. Kit-scoped desired counts can add
+     * non-hotbar identities the player wants alongside, but those don't
+     * consume a kit slot — they live in carry wherever there's room.
+     */
     public int carriedSlotCount() {
-        return pages.size() * KitPage.HOTBAR_SLOT_COUNT + bring.size();
+        return pages.size() * KitPage.HOTBAR_SLOT_COUNT;
     }
 
     public boolean fitsCarriedCapacity() {
@@ -43,19 +54,15 @@ public record KitDefinition(
     }
 
     public KitDefinition withName(String nextName) {
-        return new KitDefinition(id, nextName, pages, bring, offhand);
+        return new KitDefinition(id, nextName, pages, offhand);
     }
 
     public KitDefinition withPages(List<KitPage> nextPages) {
-        return new KitDefinition(id, name, nextPages, bring, offhand);
-    }
-
-    public KitDefinition withBring(List<ItemIdentity> nextBring) {
-        return new KitDefinition(id, name, pages, nextBring, offhand);
+        return new KitDefinition(id, name, nextPages, offhand);
     }
 
     public KitDefinition withOffhand(ItemIdentity nextOffhand) {
-        return new KitDefinition(id, name, pages, bring, nextOffhand);
+        return new KitDefinition(id, name, pages, nextOffhand);
     }
 
     public KitDefinition withPageReplaced(int index, KitPage page) {

@@ -27,7 +27,6 @@ public final class WorkflowProjection {
 
         ArrayList<CollectionDefinition> userCollections = new ArrayList<>(current.userCollections());
         LinkedHashMap<ItemIdentity, Set<String>> memberships = new LinkedHashMap<>(current.memberships());
-        LinkedHashMap<String, Map<ItemIdentity, Integer>> desiredCountsByCollection = new LinkedHashMap<>(current.desiredCountsByCollection());
         LinkedHashMap<String, List<QuickAccessLoadoutDefinition>> loadoutsByCollection = new LinkedHashMap<>(current.loadoutsByCollection());
         LinkedHashSet<ItemIdentity> favorites = new LinkedHashSet<>(current.favoriteTags());
         LinkedHashSet<ItemIdentity> junk = new LinkedHashSet<>(current.junkTags());
@@ -42,12 +41,16 @@ public final class WorkflowProjection {
         LinkedHashMap<UUID, Map<ItemIdentity, ChestAffinity>> affinity = copyAffinity(current.chestAffinityMap().entries());
         LinkedHashMap<String, String> clusterLabels = new LinkedHashMap<>(current.clusterLabels());
         KitMap kitMap = current.kitMap();
+        LinkedHashMap<ItemIdentity, Integer> playerDesiredCounts = new LinkedHashMap<>(current.playerDesiredCounts());
+        LinkedHashMap<String, Map<ItemIdentity, Integer>> kitDesiredCounts = new LinkedHashMap<>();
+        for (Map.Entry<String, Map<ItemIdentity, Integer>> entry : current.kitDesiredCounts().entrySet()) {
+            kitDesiredCounts.put(entry.getKey(), new LinkedHashMap<>(entry.getValue()));
+        }
 
         switch (record.event()) {
             case WorkflowEvent.CollectionCreated event -> {
                 if (!event.collectionId().isBlank() && !event.name().isBlank() && userCollections.stream().noneMatch(def -> def.id().equals(event.collectionId()))) {
                     userCollections.add(new CollectionDefinition(event.collectionId(), event.name(), false));
-                    desiredCountsByCollection.putIfAbsent(event.collectionId(), Map.of());
                     loadoutsByCollection.putIfAbsent(event.collectionId(), List.of());
                 }
             }
@@ -62,7 +65,6 @@ public final class WorkflowProjection {
             }
             case WorkflowEvent.CollectionDeleted event -> {
                 userCollections.removeIf(definition -> definition.id().equals(event.collectionId()));
-                desiredCountsByCollection.remove(event.collectionId());
                 loadoutsByCollection.remove(event.collectionId());
                 memberships.replaceAll((identity, collectionIds) -> {
                     LinkedHashSet<String> updated = new LinkedHashSet<>(collectionIds);
@@ -76,9 +78,6 @@ public final class WorkflowProjection {
                     LinkedHashSet<String> updated = new LinkedHashSet<>(memberships.getOrDefault(event.identity(), Set.of()));
                     updated.add(event.collectionId());
                     memberships.put(event.identity(), Set.copyOf(updated));
-                    LinkedHashMap<ItemIdentity, Integer> counts = new LinkedHashMap<>(desiredCountsByCollection.getOrDefault(event.collectionId(), Map.of()));
-                    counts.putIfAbsent(event.identity(), 1);
-                    desiredCountsByCollection.put(event.collectionId(), Map.copyOf(counts));
                 }
             }
             case WorkflowEvent.CollectionItemRemoved event -> {
@@ -90,16 +89,6 @@ public final class WorkflowProjection {
                     } else {
                         memberships.put(event.identity(), Set.copyOf(updated));
                     }
-                    LinkedHashMap<ItemIdentity, Integer> counts = new LinkedHashMap<>(desiredCountsByCollection.getOrDefault(event.collectionId(), Map.of()));
-                    counts.remove(event.identity());
-                    desiredCountsByCollection.put(event.collectionId(), Map.copyOf(counts));
-                }
-            }
-            case WorkflowEvent.DesiredCountSet event -> {
-                if (event.identity() != null && memberships.getOrDefault(event.identity(), Set.of()).contains(event.collectionId())) {
-                    LinkedHashMap<ItemIdentity, Integer> counts = new LinkedHashMap<>(desiredCountsByCollection.getOrDefault(event.collectionId(), Map.of()));
-                    counts.put(event.identity(), Math.max(1, event.desiredCount()));
-                    desiredCountsByCollection.put(event.collectionId(), Map.copyOf(counts));
                 }
             }
             case WorkflowEvent.LoadoutCreated event -> {
@@ -391,6 +380,11 @@ public final class WorkflowProjection {
             case WorkflowEvent.KitDeleted event -> {
                 if (!event.kitId().isBlank()) {
                     kitMap = kitMap.withoutKit(event.kitId());
+                    // Drop any kit-scoped desired counts that referenced
+                    // this kit. Without the cascade, a re-created kit with
+                    // the same id would inherit stale counts from the
+                    // deleted one.
+                    kitDesiredCounts.remove(event.kitId());
                 }
             }
             case WorkflowEvent.KitActivated event -> {
@@ -410,12 +404,40 @@ public final class WorkflowProjection {
                     }
                 }
             }
+            case WorkflowEvent.PlayerDesiredCountSet event -> {
+                if (event.identity() != null) {
+                    if (event.count() <= 0) {
+                        playerDesiredCounts.remove(event.identity());
+                    } else {
+                        playerDesiredCounts.put(event.identity(), event.count());
+                    }
+                }
+            }
+            case WorkflowEvent.KitDesiredCountSet event -> {
+                if (event.identity() != null && !event.kitId().isBlank()) {
+                    Map<ItemIdentity, Integer> existing = kitDesiredCounts.getOrDefault(event.kitId(), Map.of());
+                    LinkedHashMap<ItemIdentity, Integer> updated = new LinkedHashMap<>(existing);
+                    if (event.count() <= 0) {
+                        updated.remove(event.identity());
+                    } else {
+                        updated.put(event.identity(), event.count());
+                    }
+                    if (updated.isEmpty()) {
+                        kitDesiredCounts.remove(event.kitId());
+                    } else {
+                        kitDesiredCounts.put(event.kitId(), Map.copyOf(updated));
+                    }
+                }
+            }
         }
 
+        LinkedHashMap<String, Map<ItemIdentity, Integer>> kitDesiredCountsCopy = new LinkedHashMap<>();
+        for (Map.Entry<String, Map<ItemIdentity, Integer>> entry : kitDesiredCounts.entrySet()) {
+            kitDesiredCountsCopy.put(entry.getKey(), Map.copyOf(entry.getValue()));
+        }
         return new Snapshot(
                 userCollections,
                 memberships,
-                desiredCountsByCollection,
                 loadoutsByCollection,
                 favorites,
                 junk,
@@ -425,7 +447,9 @@ public final class WorkflowProjection {
                 new ClaimedChestMap(new ArrayList<>(claimedChests.values())),
                 new ChestAffinityMap(affinity),
                 Map.copyOf(clusterLabels),
-                kitMap
+                kitMap,
+                Map.copyOf(playerDesiredCounts),
+                Map.copyOf(kitDesiredCountsCopy)
         );
     }
 
@@ -546,7 +570,6 @@ public final class WorkflowProjection {
     public record Snapshot(
             List<CollectionDefinition> userCollections,
             Map<ItemIdentity, Set<String>> memberships,
-            Map<String, Map<ItemIdentity, Integer>> desiredCountsByCollection,
             Map<String, List<QuickAccessLoadoutDefinition>> loadoutsByCollection,
             Set<ItemIdentity> favoriteTags,
             Set<ItemIdentity> junkTags,
@@ -556,12 +579,13 @@ public final class WorkflowProjection {
             ClaimedChestMap claimedChestMap,
             ChestAffinityMap chestAffinityMap,
             Map<String, String> clusterLabels,
-            KitMap kitMap
+            KitMap kitMap,
+            Map<ItemIdentity, Integer> playerDesiredCounts,
+            Map<String, Map<ItemIdentity, Integer>> kitDesiredCounts
     ) {
         public Snapshot {
             userCollections = userCollections == null ? List.of() : List.copyOf(userCollections);
             memberships = CollectionProjection.copyMemberships(memberships);
-            desiredCountsByCollection = CollectionProjection.copyDesiredCounts(desiredCountsByCollection);
             loadoutsByCollection = CollectionProjection.copyLoadouts(loadoutsByCollection);
             favoriteTags = favoriteTags == null ? Set.of() : Set.copyOf(new LinkedHashSet<>(favoriteTags));
             junkTags = junkTags == null ? Set.of() : Set.copyOf(new LinkedHashSet<>(junkTags));
@@ -572,32 +596,13 @@ public final class WorkflowProjection {
             chestAffinityMap = chestAffinityMap == null ? ChestAffinityMap.empty() : chestAffinityMap;
             clusterLabels = clusterLabels == null ? Map.of() : Map.copyOf(clusterLabels);
             kitMap = kitMap == null ? KitMap.empty() : kitMap;
-        }
-
-        /** Backwards-compat constructor: defaults clusterLabels to empty. */
-        public Snapshot(
-                List<CollectionDefinition> userCollections,
-                Map<ItemIdentity, Set<String>> memberships,
-                Map<String, Map<ItemIdentity, Integer>> desiredCountsByCollection,
-                Map<String, List<QuickAccessLoadoutDefinition>> loadoutsByCollection,
-                Set<ItemIdentity> favoriteTags,
-                Set<ItemIdentity> junkTags,
-                ProtectionSnapshotPolicy protection,
-                Map<ItemIdentity, Long> recentDismissedUpToByIdentity,
-                VisualHomeMap visualHomeMap,
-                ClaimedChestMap claimedChestMap,
-                ChestAffinityMap chestAffinityMap,
-                KitMap kitMap
-        ) {
-            this(userCollections, memberships, desiredCountsByCollection, loadoutsByCollection,
-                    favoriteTags, junkTags, protection, recentDismissedUpToByIdentity,
-                    visualHomeMap, claimedChestMap, chestAffinityMap, Map.of(), kitMap);
+            playerDesiredCounts = playerDesiredCounts == null ? Map.of() : Map.copyOf(playerDesiredCounts);
+            kitDesiredCounts = kitDesiredCounts == null ? Map.of() : Map.copyOf(kitDesiredCounts);
         }
 
         public static Snapshot empty() {
             return new Snapshot(
                     List.of(),
-                    Map.of(),
                     Map.of(),
                     Map.of(),
                     Set.of(),
@@ -608,7 +613,9 @@ public final class WorkflowProjection {
                     ClaimedChestMap.empty(),
                     ChestAffinityMap.empty(),
                     Map.of(),
-                    KitMap.empty()
+                    KitMap.empty(),
+                    Map.of(),
+                    Map.of()
             );
         }
 
@@ -626,7 +633,6 @@ public final class WorkflowProjection {
             return new CollectionProjection(
                     userCollections,
                     memberships,
-                    desiredCountsByCollection,
                     loadoutsByCollection,
                     favoriteTags,
                     junkTags

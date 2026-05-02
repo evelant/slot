@@ -31,6 +31,16 @@ final class WorkspaceTheme {
     static final int CARRIED_CHIP_WARN = 0xCCB48A3A;
     static final int CARRIED_CHIP_DANGER = 0xCCB44A3A;
     static final int CARRIED_CONTAINER_PIP = 0xCC5A7DB4;
+    /** Desired-count pip background — global standing-order. Desaturated
+     * blue, distinct from the proximate-stock pip (ACCENT green) and the
+     * kit-needed star (WARNING orange) so the player can tell badges
+     * apart at a glance. */
+    static final int DESIRED_COUNT_PIP_GLOBAL = 0xCC4A6BB4;
+    /** Desired-count pip background — kit-scoped override. Uses the same
+     * palette family as ACCENT_HOTBAR / kit chrome so the player reads
+     * "this is a kit thing" without text. Distinct from the global
+     * blue, distinct from ACCENT green, distinct from WARNING orange. */
+    static final int DESIRED_COUNT_PIP_KIT = 0xCCB07A2E;
     static final int COLLECTION = 0xFFBE8CFF;
     static final int ISLAND_BORDER = 0xA04F6578;
     static final int STORAGE_ZONE_FILL = 0x501A2430;
@@ -69,14 +79,28 @@ final class WorkspaceTheme {
     static final float NAV_CAPSULE_INSET_PX = 96f;
     static final float BELT_CAMERA_INSET_PX = 44f;
     static final float SIDE_CAMERA_INSET_PX = 48f;
-    // Ghost (non-carried homed) cards push hard into the background so
-    // a player scanning the atlas sees their actual carry first. Dropped
-    // from 0.18 → 0.10 and the icon dim overlay strengthened so ghost
-    // chrome + icon both clearly recede behind carried cards. Combined
-    // with AtlasLayoutConfig.ghostShrinkFactor = 0.65, ghosts also
-    // physically occupy less world space than the relevance baseline.
-    static final float GHOST_CARD_ALPHA = 0.10f;
-    static final int GHOST_ICON_OVERLAY_COLOR = 0xE0060A0E;
+    // Ghost (non-carried homed) cards still recede behind carried cards
+    // but stay readable: the previous 0.10f alpha + 0xE0 dark overlay
+    // turned ghost icons into invisible silhouettes against the dark
+    // navy chrome. Item icons are designed for vanilla's mid-grey slot
+    // background, so we use a lighter ghost shell color (CARD_GHOST_*)
+    // and only a faint darken on the icon — enough to communicate
+    // "ghost" without crushing contrast.
+    static final float GHOST_CARD_ALPHA = 0.55f;
+    // Ghost item icons render with this ARGB tint multiplied into their
+    // shader color (see ItemStackTexture). Alpha 0x33 ≈ 20% opacity —
+    // playtest feedback was that the previous overlay-darken approach
+    // read too similarly to a real item; straight transparency reads
+    // unmistakably as "preview, not actually here."
+    static final int GHOST_ICON_ALPHA_TINT = 0x33FFFFFF;
+    // Vanilla-grey card surfaces. Item textures were drawn against this
+    // tone (~#8B8B8B with the SLOT theme's alpha shift), so swapping in
+    // a grey inner panel restores the contrast item art assumes. The
+    // outer shell stays dark for the same visual hierarchy as before.
+    static final int CARD_SHELL = 0xC02A323D;
+    static final int CARD_INNER = 0xCC6E7682;
+    static final int CARD_SHELL_GHOST = 0x802A323D;
+    static final int CARD_INNER_GHOST = 0x956E7682;
     static final int DRAG_START_THRESHOLD_PX = 4;
 
     static final int[] ISLAND_PALETTE = {

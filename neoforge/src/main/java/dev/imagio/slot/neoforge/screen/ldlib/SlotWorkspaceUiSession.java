@@ -49,6 +49,7 @@ import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.ProtectionPolicy;
 import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
+import dev.imagio.slot.workflow.domain.DesiredCountWorkflowDomainService;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.ItemStack;
@@ -864,6 +865,100 @@ final class SlotWorkspaceUiSession {
                 actionExecutor,
                 kitId
         ));
+        // Auto-fetch toward kit-scoped desired counts. Runs after the kit
+        // is recorded as active so the carried snapshot reads the
+        // post-apply state. Each identity gets pulled from proximate
+        // chests up to (desired - currently_carried). Best-effort: if no
+        // chest has the item or carry is full the gap stays.
+        autoFetchKitDesiredCounts(serverPlayer, kitId);
+    }
+
+    /**
+     * Pull items from proximate chests toward the kit-scoped desired
+     * counts. Replaces the legacy bring-list fetch path (the bring list
+     * itself is now folded into kit-scoped desired counts). Mirrors the
+     * chest-walk in {@link #takeByIdentity}: highest-affinity proximate
+     * chest first, falls through to the rest. Multi-pass per identity
+     * because a chest may only have part of the gap; subsequent chests
+     * fill the rest.
+     */
+    private void autoFetchKitDesiredCounts(ServerPlayer serverPlayer, String kitId) {
+        if (kitId == null || kitId.isBlank()) {
+            return;
+        }
+        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
+        java.util.Map<ItemIdentity, Integer> wants = runtime.desiredCountWorkflow().forKit(kitId);
+        if (wants.isEmpty()) {
+            return;
+        }
+        ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
+        Set<String> proximate = ChestProximityResolver.proximateStorageIds(serverPlayer, claimedChestMap);
+        if (proximate.isEmpty()) {
+            return;
+        }
+        ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap();
+        // Refresh authority snapshot once before the pull loop so the
+        // carried-count check sees the post-apply state.
+        InventoryHostDescriptor host = resolveHost(serverPlayer);
+        if (host == null) {
+            return;
+        }
+        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
+        for (java.util.Map.Entry<ItemIdentity, Integer> want : wants.entrySet()) {
+            ItemIdentity identity = want.getKey();
+            int desired = want.getValue() == null ? 0 : want.getValue();
+            if (identity == null || desired <= 0) {
+                continue;
+            }
+            int carried = countCarried(authority, identity);
+            int gap = desired - carried;
+            if (gap <= 0) {
+                continue;
+            }
+            // Sort chests for THIS identity by affinity score so the most
+            // likely home gets walked first.
+            java.util.ArrayList<ClaimedChest> ranked = new java.util.ArrayList<>();
+            for (ClaimedChest chest : claimedChestMap.chests()) {
+                if (proximate.contains(chest.storageId().toString())) {
+                    ranked.add(chest);
+                }
+            }
+            ranked.sort((a, b) -> Integer.compare(
+                    affinityMap.score(b.storageId(), identity),
+                    affinityMap.score(a.storageId(), identity)
+            ));
+            int remaining = gap;
+            for (ClaimedChest chest : ranked) {
+                if (remaining <= 0) {
+                    break;
+                }
+                TakeAllExecutor.TakeSingleOutcome outcome = TakeAllExecutor.takeByIdentity(
+                        serverPlayer, chest, identity, remaining, "kit-auto-fetch");
+                if (outcome.tookAnything()) {
+                    remaining -= outcome.moved();
+                }
+            }
+        }
+        // Re-apply the kit so the new carry surfaces in any kit-needed slot.
+        reapplyActiveKitFromCarry(serverPlayer);
+    }
+
+    private static int countCarried(InventoryAuthoritySnapshot authority, ItemIdentity identity) {
+        if (authority == null || identity == null) {
+            return 0;
+        }
+        int total = 0;
+        for (var source : authority.carriedSources()) {
+            for (InventoryEntrySnapshot entry : authority.entries(source.id())) {
+                if (entry == null || !entry.present()) {
+                    continue;
+                }
+                if (ItemIdentityMatcher.matchesMovable(entry.stack(), identity)) {
+                    total += entry.count();
+                }
+            }
+        }
+        return total;
     }
 
     /**
@@ -1031,32 +1126,46 @@ final class SlotWorkspaceUiSession {
         ));
     }
 
-    void addKitBring(String kitId, String itemId, String comparisonMode, String componentFingerprint) {
+    /**
+     * Set or clear a kit-scoped desired count for an explicit kitId
+     * (which may not be the active kit). Replaces the legacy
+     * addKitBring/removeKitBring pair — count=1 seeds the standing
+     * order, count=0 clears it.
+     */
+    void setKitScopedDesiredCount(
+            String kitId,
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            Integer countBoxed
+    ) {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        refreshServerView(serverPlayer);
-        applyOutcome(serverPlayer, SlotWorkspaceCommandService.addKitBring(
-                workflowRuntime(serverPlayer),
-                kitId,
-                itemId,
-                comparisonMode,
-                componentFingerprint
-        ));
-    }
-
-    void removeKitBring(String kitId, String itemId, String comparisonMode, String componentFingerprint) {
-        if (!(player instanceof ServerPlayer serverPlayer)) {
+        if (kitId == null || kitId.isBlank()) {
+            reject("invalid_kit_id");
             return;
         }
-        refreshServerView(serverPlayer);
-        applyOutcome(serverPlayer, SlotWorkspaceCommandService.removeKitBring(
-                workflowRuntime(serverPlayer),
-                kitId,
-                itemId,
-                comparisonMode,
-                componentFingerprint
-        ));
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            reject("invalid_identity");
+            return;
+        }
+        int count = countBoxed == null ? 0 : countBoxed;
+        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
+        if (runtime.kitWorkflow().kit(kitId) == null) {
+            reject("unknown_kit");
+            return;
+        }
+        boolean changed = runtime.desiredCountWorkflow().setForKit(kitId, identity, count);
+        if (changed) {
+            status = count > 0 ? "kit_desired_set_" + count : "kit_desired_cleared";
+            diagnostics = "";
+        } else {
+            status = "noop";
+            diagnostics = "";
+        }
+        broadcast(serverPlayer);
     }
 
     void swapKitSlots(String kitId, Integer pageIndex, Integer fromIndex, Integer toIndex) {
@@ -1191,14 +1300,40 @@ final class SlotWorkspaceUiSession {
                         == DepositAttempt.DISPATCHED) {
             return;
         }
-        int freeHotbarIndex = -1;
+        // Prefer a partial-stack hotbar slot of the same identity over a free
+        // slot. Without this, "shift+click steak with 1 already on the belt"
+        // would land the rest in a new free slot instead of filling the
+        // existing stack — visibly the same item appears in two places.
+        // The downstream LoadoutApplyService Pass 3 fill consolidates
+        // remaining carried stocks into whichever slot we pick, so picking
+        // the partial slot keeps the steak in the player's chosen position.
+        int targetHotbarIndex = -1;
         for (SlotWorkspaceViewModel.HotbarSlot slot : viewModel.hotbarSlots()) {
             if (!slot.occupied()) {
-                freeHotbarIndex = slot.hotbarIndex();
+                continue;
+            }
+            ItemStack hot = slot.displayStack();
+            if (hot == null || hot.isEmpty()) {
+                continue;
+            }
+            int max = hot.getMaxStackSize();
+            if (max <= 1 || slot.count() >= max) {
+                continue;
+            }
+            if (ItemIdentityMatcher.matchesMovable(hot, identity)) {
+                targetHotbarIndex = slot.hotbarIndex();
                 break;
             }
         }
-        if (freeHotbarIndex < 0) {
+        if (targetHotbarIndex < 0) {
+            for (SlotWorkspaceViewModel.HotbarSlot slot : viewModel.hotbarSlots()) {
+                if (!slot.occupied()) {
+                    targetHotbarIndex = slot.hotbarIndex();
+                    break;
+                }
+            }
+        }
+        if (targetHotbarIndex < 0) {
             status = "no_free_hotbar_slot";
             diagnostics = "all hotbar slots are occupied";
             broadcast(serverPlayer);
@@ -1208,7 +1343,7 @@ final class SlotWorkspaceUiSession {
         // uses so items living in backpacks / other non-player carried sources can
         // reach the hotbar — CarriedSourceAccess.findIdentity walks every carried
         // source so the target doesn't need to live in PLAYER_MAIN.
-        assignIdentityToHotbarIndex(serverPlayer, identity, freeHotbarIndex);
+        assignIdentityToHotbarIndex(serverPlayer, identity, targetHotbarIndex);
     }
 
     private void assignIdentityToHotbarIndex(ServerPlayer serverPlayer, ItemIdentity identity, int hotbarIndex) {
@@ -1476,6 +1611,240 @@ final class SlotWorkspaceUiSession {
                 broadcast(serverPlayer);
             }
         }
+    }
+
+    /**
+     * Set the active-scope desired count "I want N of this carried at all
+     * times." Resolves scope server-side: kit-scoped if a kit is active,
+     * else player-global. The client doesn't pick the scope so right-click
+     * "Set desired count…" always edits whatever scope the pip is showing.
+     * Count {@code 0} clears the entry.
+     */
+    void setPlayerDesiredCount(String itemId, String comparisonMode, String componentFingerprint, Integer countBoxed) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            reject("invalid_identity");
+            return;
+        }
+        int count = countBoxed == null ? 0 : countBoxed;
+        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
+        DesiredCountWorkflowDomainService desired = runtime.desiredCountWorkflow();
+        String activeKit = desired.activeScope(runtime.snapshot().kitMap());
+        boolean changed = activeKit != null
+                ? desired.setForKit(activeKit, identity, count)
+                : desired.setPlayer(identity, count);
+        if (changed) {
+            String scopeTag = activeKit != null ? "kit" : "global";
+            status = count > 0 ? "desired_count_" + scopeTag + "_" + count : "desired_count_cleared";
+            diagnostics = "";
+        } else {
+            status = "noop";
+            diagnostics = "";
+        }
+        broadcast(serverPlayer);
+    }
+
+    /**
+     * Bump the active-scope desired count by {@code delta}. Wired to
+     * ctrl+scrollwheel on atlas cards. Routes to kit-scope when a kit is
+     * active so the same gesture edits whatever the player sees on the
+     * card. Negative deltas decrement; clamps to zero.
+     */
+    void adjustPlayerDesiredCount(String itemId, String comparisonMode, String componentFingerprint, Integer deltaBoxed) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            reject("invalid_identity");
+            return;
+        }
+        int delta = deltaBoxed == null ? 0 : deltaBoxed;
+        if (delta == 0) {
+            return;
+        }
+        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
+        DesiredCountWorkflowDomainService desired = runtime.desiredCountWorkflow();
+        String activeKit = desired.activeScope(runtime.snapshot().kitMap());
+        boolean changed = activeKit != null
+                ? desired.adjustForKit(activeKit, identity, delta)
+                : desired.adjustPlayer(identity, delta);
+        if (changed) {
+            int now = activeKit != null
+                    ? desired.getForKit(activeKit, identity)
+                    : desired.getPlayer(identity);
+            String scopeTag = activeKit != null ? "kit" : "global";
+            status = "desired_count_" + scopeTag + "_" + now;
+            diagnostics = "";
+        }
+        broadcast(serverPlayer);
+    }
+
+    /**
+     * Cursor-drop: move {@code count} items from the cursor's recorded
+     * origin slot to the target hotbar slot. Uses TRANSFER + INSERT_ONLY
+     * + EXACT_COUNT with a count-clamped stack so the executor honors the
+     * cursor's chosen amount instead of dumping the source's whole stack.
+     * Failure to insert (target occupied with a different item, etc.) is
+     * surfaced as a status — drag remains the swap path; the cursor only
+     * moves into compatible slots.
+     */
+    void cursorDropToHotbar(
+            String originSourceId,
+            Integer originSlotIndexBoxed,
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            Integer countBoxed,
+            Integer hotbarIndexBoxed
+    ) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        int count = countBoxed == null ? 0 : countBoxed;
+        int originSlotIndex = originSlotIndexBoxed == null ? -1 : originSlotIndexBoxed;
+        int hotbarIndex = hotbarIndexBoxed == null ? -1 : hotbarIndexBoxed;
+        if (count <= 0 || originSlotIndex < 0
+                || originSourceId == null || originSourceId.isBlank()
+                || hotbarIndex < 0 || hotbarIndex >= 9) {
+            reject("invalid_cursor_drop");
+            return;
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            reject("invalid_identity");
+            return;
+        }
+        executeCursorDrop(
+                serverPlayer,
+                originSourceId,
+                originSlotIndex,
+                identity,
+                count,
+                new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, hotbarIndex),
+                "slot_workspace.ldlib.cursor_drop_hotbar"
+        );
+    }
+
+    /**
+     * Cursor-drop variant that goes to a chest. Skips the
+     * action-executor path because chest deposits route through
+     * {@link DepositExecutor}, not {@code InventoryActionExecutor};
+     * instead invokes {@code depositPartialStack} which extracts
+     * {@code count} from the origin slot and inserts into the chest.
+     */
+    void cursorDropToChest(
+            String originSourceId,
+            Integer originSlotIndexBoxed,
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            Integer countBoxed,
+            String storageIdRaw
+    ) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        int count = countBoxed == null ? 0 : countBoxed;
+        int originSlotIndex = originSlotIndexBoxed == null ? -1 : originSlotIndexBoxed;
+        if (count <= 0 || originSlotIndex < 0
+                || originSourceId == null || originSourceId.isBlank()) {
+            reject("invalid_cursor_drop");
+            return;
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            reject("invalid_identity");
+            return;
+        }
+        ChestProximityResult resolved = resolveProximateChest(serverPlayer, storageIdRaw);
+        if (resolved.outcome != null) {
+            applyChestDepositRejection(serverPlayer, resolved.outcome);
+            return;
+        }
+        DepositExecutor.SingleStackOutcome outcome = DepositExecutor.depositPartialStack(
+                serverPlayer,
+                originSourceId,
+                originSlotIndex,
+                count,
+                resolved.chest
+        );
+        if (outcome.success() && outcome.record() != null) {
+            workflowRuntime(serverPlayer).chestClaimWorkflow().recordDeposit(
+                    outcome.record().storageId(),
+                    outcome.record().identity(),
+                    outcome.record().count(),
+                    serverPlayer.serverLevel().getGameTime());
+        }
+        applyChestDepositOutcome(serverPlayer, outcome, resolved.chest);
+    }
+
+    private void executeCursorDrop(
+            ServerPlayer serverPlayer,
+            String originSourceId,
+            int originSlotIndex,
+            ItemIdentity identity,
+            int count,
+            InventoryActionTarget destination,
+            String origin
+    ) {
+        refreshServerView(serverPlayer);
+        InventoryHostDescriptor host = resolveHost(serverPlayer);
+        if (host == null) {
+            reject("host_resolution_failed");
+            return;
+        }
+        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
+        InventoryActionTarget source = new InventoryActionTarget.SourceSlotTarget(originSourceId, originSlotIndex);
+        InventoryEntrySnapshot sourceEntry = InventoryAuthorityReadService.entrySnapshot(authority, source);
+        if (sourceEntry == null || !sourceEntry.present()) {
+            status = "rejected";
+            diagnostics = "cursor_origin_empty";
+            broadcast(serverPlayer);
+            return;
+        }
+        // Re-clamp on the server: the source may have changed since pickup
+        // (another mod's tick, an auto-refill upgrade, etc.). The cursor
+        // count is a client intent — server enforces what's actually there.
+        int actualCount = Math.min(count, sourceEntry.count());
+        if (actualCount <= 0) {
+            status = "rejected";
+            diagnostics = "cursor_origin_empty";
+            broadcast(serverPlayer);
+            return;
+        }
+        ItemStack stack = sourceEntry.stack().copy();
+        stack.setCount(actualCount);
+        InventoryActionRequest request = new InventoryActionRequest(
+                host.hostId(),
+                host.serverMenuRef(),
+                UUID.randomUUID().toString(),
+                dev.imagio.slot.inventory.action.InventoryActionKind.TRANSFER,
+                dev.imagio.slot.inventory.action.InventoryActionMode.EXECUTE,
+                dev.imagio.slot.inventory.action.InventoryActionQuantity.EXACT_COUNT,
+                dev.imagio.slot.inventory.action.InventoryActionScope.SINGLE_TARGET,
+                dev.imagio.slot.inventory.action.InventoryActionConflictPolicy.INSERT_ONLY,
+                origin,
+                source,
+                destination,
+                actualCount,
+                identity,
+                stack,
+                null,
+                null,
+                false,
+                ""
+        );
+        InventoryActionOutcome outcome = InventoryActionExecutor.execute(
+                host, serverPlayer, request, ProtectionPolicy.allowAll());
+        workflowRuntime(serverPlayer).recordOutcome(outcome);
+        WorkspaceTransferFeedback feedback = WorkspaceTransferFeedback.interpret(request, outcome);
+        status = feedback.status();
+        diagnostics = feedback.diagnostics();
+        broadcast(serverPlayer);
     }
 
     /**

@@ -433,31 +433,6 @@ public final class CollectionWorkflowDomainService {
         return true;
     }
 
-    public boolean setDesiredCount(String collectionId, ItemIdentity identity, int desiredCount) {
-        return setDesiredCount(collectionId, identity, desiredCount, DomainEventMetadata.origin("workflow.collection.desired_count"));
-    }
-
-    public boolean setDesiredCount(
-            String collectionId,
-            ItemIdentity identity,
-            int desiredCount,
-            DomainEventMetadata metadata
-    ) {
-        if (collectionId == null || identity == null) {
-            return false;
-        }
-        int normalized = Math.max(1, desiredCount);
-        if (collections().desiredCountsByCollection().getOrDefault(collectionId, java.util.Map.of()).getOrDefault(identity, 0) == normalized) {
-            return false;
-        }
-        repository.appendWorkflowEvent(
-                new WorkflowEvent.DesiredCountSet(collectionId, identity, normalized),
-                (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("workflow.collection.desired_count")
-        );
-        notifyMutated();
-        return true;
-    }
-
     private void notifyMutated() {
         mutationObserver.run();
     }

@@ -47,13 +47,12 @@ public final class KitWorkflowDomainService {
     }
 
     public KitDefinition create(String name) {
-        return create(name, KitPage.empty(), List.of(), null, DomainEventMetadata.origin("workflow.kit.create"));
+        return create(name, KitPage.empty(), null, DomainEventMetadata.origin("workflow.kit.create"));
     }
 
     public KitDefinition create(
             String name,
             KitPage firstPage,
-            List<ItemIdentity> bring,
             ItemIdentity offhand,
             DomainEventMetadata metadata
     ) {
@@ -63,7 +62,6 @@ public final class KitWorkflowDomainService {
                 id,
                 normalizedName,
                 List.of(firstPage == null ? KitPage.empty() : firstPage),
-                bring,
                 offhand
         );
         repository.appendWorkflowEvent(
@@ -139,56 +137,6 @@ public final class KitWorkflowDomainService {
 
     public boolean removePage(String kitId, int pageIndex) {
         return removePage(kitId, pageIndex, DomainEventMetadata.origin("workflow.kit.remove_page"));
-    }
-
-    public boolean addBring(String kitId, ItemIdentity identity) {
-        return addBring(kitId, identity, DomainEventMetadata.origin("workflow.kit.add_bring"));
-    }
-
-    public boolean addBring(String kitId, ItemIdentity identity, DomainEventMetadata metadata) {
-        if (identity == null) {
-            return false;
-        }
-        KitDefinition existing = requireKit(kitId);
-        if (existing.bring().contains(identity)) {
-            return false;
-        }
-        ArrayList<ItemIdentity> nextBring = new ArrayList<>(existing.bring());
-        nextBring.add(identity);
-        KitDefinition next = existing.withBring(nextBring);
-        if (!next.fitsCarriedCapacity()) {
-            throw new IllegalArgumentException(
-                    "Adding bring item would exceed carried capacity: " + next.carriedSlotCount()
-                            + " > " + KitDefinition.MAX_CARRIED_CAPACITY);
-        }
-        repository.appendWorkflowEvent(
-                new WorkflowEvent.KitUpdated(next),
-                resolveMetadata(metadata, "workflow.kit.add_bring")
-        );
-        notifyMutated();
-        return true;
-    }
-
-    public boolean removeBring(String kitId, ItemIdentity identity) {
-        return removeBring(kitId, identity, DomainEventMetadata.origin("workflow.kit.remove_bring"));
-    }
-
-    public boolean removeBring(String kitId, ItemIdentity identity, DomainEventMetadata metadata) {
-        if (identity == null) {
-            return false;
-        }
-        KitDefinition existing = requireKit(kitId);
-        if (!existing.bring().contains(identity)) {
-            return false;
-        }
-        ArrayList<ItemIdentity> nextBring = new ArrayList<>(existing.bring());
-        nextBring.remove(identity);
-        repository.appendWorkflowEvent(
-                new WorkflowEvent.KitUpdated(existing.withBring(nextBring)),
-                resolveMetadata(metadata, "workflow.kit.remove_bring")
-        );
-        notifyMutated();
-        return true;
     }
 
     public boolean setSlotIdentity(String kitId, int pageIndex, int slotIndex, ItemIdentity identity) {
@@ -291,7 +239,6 @@ public final class KitWorkflowDomainService {
                 newId,
                 baseName,
                 source.pages(),
-                source.bring(),
                 source.offhand()
         );
         repository.appendWorkflowEvent(
@@ -339,7 +286,7 @@ public final class KitWorkflowDomainService {
         String id = uniqueSlug(normalizedName, existingIds());
         KitPage page = KitSnapshotSupport.capturePageFromAuthority(authority, identityResolver);
         ItemIdentity offhand = KitSnapshotSupport.captureOffhandIdentity(authority, identityResolver);
-        KitDefinition kit = new KitDefinition(id, normalizedName, List.of(page), List.of(), offhand);
+        KitDefinition kit = new KitDefinition(id, normalizedName, List.of(page), offhand);
         repository.appendWorkflowEvent(
                 new WorkflowEvent.KitCreated(kit),
                 resolveMetadata(metadata, "workflow.kit.snapshot")

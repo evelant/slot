@@ -9,6 +9,7 @@ import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
 import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
+import dev.imagio.slot.inventory.triage.IslandTemplateMatch;
 import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
 import dev.imagio.slot.inventory.triage.WithinIslandOrdering;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
@@ -834,74 +835,6 @@ public final class SlotWorkspaceCommandService {
         return WorkspaceCommandOutcome.accepted("kit page added", existing.name());
     }
 
-    public static WorkspaceCommandOutcome addKitBring(
-            WorkflowDomainRuntime runtime,
-            String kitId,
-            String itemId,
-            String comparisonMode,
-            String componentFingerprint
-    ) {
-        if (runtime == null) {
-            return WorkspaceCommandOutcome.rejected("invalid_kit_runtime");
-        }
-        if (kitId == null || kitId.isBlank()) {
-            return WorkspaceCommandOutcome.rejected("invalid_kit_id");
-        }
-        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
-        if (identity == null) {
-            return WorkspaceCommandOutcome.rejected("invalid_identity");
-        }
-        if (runtime.kitWorkflow().kit(kitId) == null) {
-            return WorkspaceCommandOutcome.rejected("unknown_kit");
-        }
-        try {
-            boolean added = runtime.kitWorkflow().addBring(
-                    kitId,
-                    identity,
-                    DomainEventMetadata.origin("slot_workspace.ldlib.kit_add_bring")
-            );
-            if (!added) {
-                return WorkspaceCommandOutcome.rejected("bring_already_present");
-            }
-        } catch (IllegalArgumentException exception) {
-            return WorkspaceCommandOutcome.rejected("kit_capacity_exceeded");
-        }
-        SlotDebugLog.log("LDLib kit bring added {} identity={}", kitId, identity.itemId());
-        return WorkspaceCommandOutcome.accepted("bring added", identity.itemId());
-    }
-
-    public static WorkspaceCommandOutcome removeKitBring(
-            WorkflowDomainRuntime runtime,
-            String kitId,
-            String itemId,
-            String comparisonMode,
-            String componentFingerprint
-    ) {
-        if (runtime == null) {
-            return WorkspaceCommandOutcome.rejected("invalid_kit_runtime");
-        }
-        if (kitId == null || kitId.isBlank()) {
-            return WorkspaceCommandOutcome.rejected("invalid_kit_id");
-        }
-        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
-        if (identity == null) {
-            return WorkspaceCommandOutcome.rejected("invalid_identity");
-        }
-        if (runtime.kitWorkflow().kit(kitId) == null) {
-            return WorkspaceCommandOutcome.rejected("unknown_kit");
-        }
-        boolean removed = runtime.kitWorkflow().removeBring(
-                kitId,
-                identity,
-                DomainEventMetadata.origin("slot_workspace.ldlib.kit_remove_bring")
-        );
-        if (!removed) {
-            return WorkspaceCommandOutcome.rejected("bring_not_present");
-        }
-        SlotDebugLog.log("LDLib kit bring removed {} identity={}", kitId, identity.itemId());
-        return WorkspaceCommandOutcome.accepted("bring removed", identity.itemId());
-    }
-
     public static WorkspaceCommandOutcome setKitSlotIdentity(
             WorkflowDomainRuntime runtime,
             InventoryAuthoritySnapshot authority,
@@ -1419,7 +1352,44 @@ public final class SlotWorkspaceCommandService {
                     ""
             );
         }
+        // Don't record when the assigned island is what the template /
+        // subsystem chip already would have suggested for this descriptor —
+        // that's a confirmation, not a learned divergence. Recording it
+        // still captures the descriptor's broad adjacency keys (TAG /
+        // MATERIAL_FAMILY / NAMESPACE / CREATIVE_TAB) against the
+        // template island, then those keys spuriously fire for unrelated
+        // items that happen to share one. Concrete repro: 3 backpacks
+        // accepted into the STORAGE template chip recorded
+        // {tag, material_family, namespace} → template.storage rules; the
+        // next triage item (oak sapling) shared one of those keys and
+        // surfaced "Storage" as a top suggestion.
+        if (isTemplateDefaultAssignment(descriptor, islandId)) {
+            return;
+        }
         learnedRules.recordAssignment(descriptor, islandId, System.currentTimeMillis());
+    }
+
+    private static boolean isTemplateDefaultAssignment(IslandSignalDescriptor descriptor, String islandId) {
+        if (islandId == null || islandId.isBlank()) {
+            return false;
+        }
+        IslandTemplateMatch templateMatch = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
+                descriptor, null);
+        if (templateMatch != null && islandId.equals(templateMatch.islandId())) {
+            return true;
+        }
+        // Subsystem-id islands are the chip the suggestion service offers
+        // when descriptor.subsystems() contains a matching key — accepting
+        // that chip is also a confirmation, not a learned override.
+        if (islandId.startsWith(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX)) {
+            String subsystem = islandId.substring(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX.length());
+            for (String descriptorSubsystem : descriptor.subsystems()) {
+                if (subsystem.equals(descriptorSubsystem)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     private static boolean visibleInAtlas(SlotWorkspaceViewModel viewModel, ItemIdentity identity) {

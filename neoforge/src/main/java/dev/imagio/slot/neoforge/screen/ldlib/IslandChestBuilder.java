@@ -78,32 +78,7 @@ final class IslandChestBuilder {
             }, true);
         }
 
-        attachIslandHoverListeners(panel, island);
-
         return panel;
-    }
-
-    /**
-     * Track {@code host.hoveredIslandId} on enter/leave so chest cards in
-     * the storage strip can highlight themselves when their linked island
-     * is hovered. No-op for non-player islands.
-     */
-    void attachIslandHoverListeners(UIElement element, SlotWorkspaceViewModel.AtlasIsland island) {
-        if (element == null || island == null) {
-            return;
-        }
-        if (island.kind() != VisualAtlasIslandKind.PLAYER) {
-            return;
-        }
-        String islandId = island.islandId();
-        element.addEventListener(UIEvents.MOUSE_ENTER, event -> {
-            host.hoveredIslandId = islandId;
-        }, true);
-        element.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
-            if (islandId.equals(host.hoveredIslandId)) {
-                host.hoveredIslandId = null;
-            }
-        }, true);
     }
 
     UIElement islandCarriedBadge(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasIsland island) {
@@ -175,7 +150,6 @@ final class IslandChestBuilder {
         }
         host.drag.installIslandDragSource(header, atlas, island);
         host.drag.installIslandDropTarget(header, islandPanelEl, atlas, island);
-        attachIslandHoverListeners(header, island);
         installIslandHoverPaint(header, island.islandId());
 
         float[] lastScale = {Float.NaN};

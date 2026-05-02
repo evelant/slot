@@ -258,6 +258,8 @@ public final class SlotWorkspaceViewModelCodec {
         tag.put("identity", encodeIdentity(item.identity()));
         tag.put("displayStack", item.displayStack().saveOptional(provider));
         tag.putString("name", item.name());
+        tag.putInt("presentCount", item.presentCount());
+        tag.putInt("targetCount", item.targetCount());
         return tag;
     }
 
@@ -266,7 +268,9 @@ public final class SlotWorkspaceViewModelCodec {
                 decodeIdentity(tag.getCompound("identity")),
                 tag.getBoolean("ready"),
                 ItemStack.parseOptional(provider, tag.getCompound("displayStack")),
-                tag.getString("name")
+                tag.getString("name"),
+                tag.getInt("presentCount"),
+                tag.getInt("targetCount")
         );
     }
 
@@ -393,6 +397,11 @@ public final class SlotWorkspaceViewModelCodec {
         }
         tag.put("elsewhere", elsewhereTags);
         tag.putBoolean("kitNeeded", item.kitNeeded());
+        tag.putInt("desiredCount", item.desiredCount());
+        tag.putBoolean("desiredCountFromKit", item.desiredCountFromKit());
+        tag.putString("largestCarriedSourceId", item.largestCarriedSourceId());
+        tag.putInt("largestCarriedSlotIndex", item.largestCarriedSlotIndex());
+        tag.putInt("largestCarriedSlotCount", item.largestCarriedSlotCount());
         return tag;
     }
 
@@ -431,6 +440,11 @@ public final class SlotWorkspaceViewModelCodec {
         for (int index = 0; index < elsewhereTags.size(); index++) {
             elsewhere.add(decodeChestPresence(elsewhereTags.getCompound(index)));
         }
+        // Older payloads (pre largest-carried-slot field) just return 0 for
+        // the missing slot index, which is harmless: hasLargestCarriedSlot()
+        // also requires count > 0, so the cursor pickup path correctly
+        // reads "no info" and falls back to the not-on-hotbar status.
+        int decodedSlotIndex = tag.getInt("largestCarriedSlotIndex");
         return new SlotWorkspaceViewModel.AtlasItem(
                 decodeIdentity(tag.getCompound("identity")),
                 ItemStack.parseOptional(provider, tag.getCompound("displayStack")),
@@ -449,7 +463,12 @@ public final class SlotWorkspaceViewModelCodec {
                 tag.getBoolean("isCarriedContainer"),
                 tag.getInt("containerFreeSlotCount"),
                 tag.getInt("containerSlotCapacity"),
-                tag.getBoolean("kitNeeded")
+                tag.getBoolean("kitNeeded"),
+                tag.getInt("desiredCount"),
+                tag.getBoolean("desiredCountFromKit"),
+                tag.getString("largestCarriedSourceId"),
+                decodedSlotIndex,
+                tag.getInt("largestCarriedSlotCount")
         );
     }
 

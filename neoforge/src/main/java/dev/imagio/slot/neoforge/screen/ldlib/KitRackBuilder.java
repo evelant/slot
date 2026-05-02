@@ -416,42 +416,59 @@ final class KitRackBuilder {
             add.setOnClick(event -> event.stopPropagation());
         }
         row.addChild(add);
-        int missing = kitMissingIdentityCount(card);
-        if (missing > 0) {
-            // Dark background + amber text keeps the button readable against
-            // both the card's active-kit olive tint and the inactive ROW bg.
-            Button gather = button("gather " + missing, true, PANEL_ALT);
+        List<SlotWorkspaceViewModel.IdentityRef> missing = kitMissingIdentities(card);
+        if (!missing.isEmpty()) {
+            int pullable = countPullableFromNearby(missing);
+            int unreachable = missing.size() - pullable;
+            // Active button only when at least one missing item is in a
+            // nearby chest — otherwise "gather N" looks clickable but the
+            // click is a no-op and the player gets no feedback. The muted
+            // non-active variant reads as a status badge instead.
+            boolean canGather = pullable > 0;
+            String label = canGather
+                    ? "gather " + pullable
+                    : "need " + missing.size();
+            Button gather = button(label, canGather, PANEL_ALT);
             gather.layout(layout -> layout.flex(1).height(12));
             gather.textStyle(style -> style
-                    .textColor(WARNING)
+                    .textColor(canGather ? WARNING : MUTED)
                     .textShadow(false)
                     .fontSize(8)
                     .textAlignHorizontal(Horizontal.CENTER)
                     .textAlignVertical(Vertical.CENTER));
-            gather.setOnClick(event -> {
-                event.stopPropagation();
-                advanceGather(card);
-            });
+            String tooltip = canGather
+                    ? (unreachable > 0
+                        ? "Pull " + pullable + " from nearby chests (" + unreachable + " still need fetching)"
+                        : "Pull " + pullable + " from nearby chests")
+                    : missing.size() + " missing — none in nearby chests";
+            gather.addEventListener(UIEvents.HOVER_TOOLTIPS, event -> event.hoverTooltips = new HoverTooltips(
+                    List.of(Component.literal(tooltip)),
+                    null,
+                    null,
+                    ItemStack.EMPTY
+            ));
+            if (canGather) {
+                gather.setOnClick(event -> {
+                    event.stopPropagation();
+                    advanceGather(card);
+                });
+            } else {
+                gather.setOnClick(event -> event.stopPropagation());
+            }
             row.addChild(gather);
         }
         return row;
     }
 
-    int kitMissingIdentityCount(SlotWorkspaceViewModel.KitCard card) {
-        int count = 0;
-        for (SlotWorkspaceViewModel.KitPageView page : card.pages()) {
-            for (SlotWorkspaceViewModel.KitSlotState slot : page.slots()) {
-                if (slot.filled() && !slot.ready()) {
-                    count++;
-                }
+    private int countPullableFromNearby(List<SlotWorkspaceViewModel.IdentityRef> missing) {
+        int pullable = 0;
+        for (SlotWorkspaceViewModel.IdentityRef identity : missing) {
+            SlotWorkspaceViewModel.AtlasItem atlasItem = host.viewModel.atlasItem(identity);
+            if (atlasItem != null && atlasItem.proximateCount() > 0) {
+                pullable++;
             }
         }
-        for (SlotWorkspaceViewModel.KitBringItem item : card.bring()) {
-            if (!item.ready()) {
-                count++;
-            }
-        }
-        return count;
+        return pullable;
     }
 
     List<SlotWorkspaceViewModel.IdentityRef> kitMissingIdentities(SlotWorkspaceViewModel.KitCard card) {
@@ -540,7 +557,7 @@ final class KitRackBuilder {
     }
 
     UIElement kitCardBringCell(SlotWorkspaceViewModel.KitCard card, SlotWorkspaceViewModel.KitBringItem item) {
-        int fill = item.ready() ? ROW : ROW_DIM;
+        int fill = item.ready() ? ROW : CARD_INNER_GHOST;
         UIElement cell = panel(fill).layout(layout -> layout
                 .width(KIT_CELL_SIZE)
                 .height(KIT_CELL_SIZE)
@@ -554,7 +571,7 @@ final class KitRackBuilder {
             }
             if (event.button == 1) {
                 event.stopPropagation();
-                host.rpc.sendRemoveKitBring(card.kitId(), item.identity());
+                host.rpc.sendSetKitScopedDesiredCount(card.kitId(), item.identity(), 0);
             }
         });
         cell.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
@@ -573,6 +590,26 @@ final class KitRackBuilder {
             icon.setAllowHitTest(false);
             cell.addChild(icon);
         }
+        // Want-vs-have indicator: surface "presentCount/targetCount" inside
+        // the cell when the kit wants more than one. For target=1 the
+        // ready/faded fill already conveys it. Color tracks readiness:
+        // ACCENT when fully met, WARNING otherwise.
+        if (item.targetCount() > 1) {
+            int color = item.presentCount() >= item.targetCount() ? ACCENT : WARNING;
+            Label countLabel = label(item.presentCount() + "/" + item.targetCount(), color);
+            countLabel.layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .right(0).bottom(0)
+                    .width(KIT_CELL_SIZE).height(6));
+            countLabel.textStyle(style -> style
+                    .textColor(color)
+                    .textShadow(true)
+                    .fontSize(5)
+                    .textAlignHorizontal(Horizontal.RIGHT)
+                    .textAlignVertical(Vertical.BOTTOM));
+            countLabel.setAllowHitTest(false);
+            cell.addChild(countLabel);
+        }
         return cell;
     }
 
@@ -586,7 +623,9 @@ final class KitRackBuilder {
             if (identity == null) {
                 return;
             }
-            host.rpc.sendAddKitBring(card.kitId(), identity);
+            // Default kit-scoped desired count for newly-added bring items.
+            // Players can adjust with ctrl+scrollwheel or right-click menu.
+            host.rpc.sendSetKitScopedDesiredCount(card.kitId(), identity, 1);
             event.stopPropagation();
         });
     }
@@ -632,7 +671,7 @@ final class KitRackBuilder {
             SlotWorkspaceViewModel.KitPageView page,
             SlotWorkspaceViewModel.KitSlotState slot
     ) {
-        int fill = !slot.filled() ? 0x60141B22 : slot.ready() ? ROW : ROW_DIM;
+        int fill = !slot.filled() ? 0x60141B22 : slot.ready() ? ROW : CARD_INNER_GHOST;
         UIElement cell = panel(fill).layout(layout -> layout
                 .width(KIT_CELL_SIZE)
                 .height(KIT_CELL_SIZE)

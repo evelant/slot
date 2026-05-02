@@ -2,6 +2,7 @@ package dev.imagio.slot.debug;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.triage.IslandSignal;
 import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
 import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
 import dev.imagio.slot.inventory.triage.IslandTemplateMatch;
@@ -50,8 +51,35 @@ public final class RealisticAtlasGenerator {
     private static final int ISLAND_PADDING_X = SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_X;
     private static final int ISLAND_PADDING_Y = SlotWorkspaceAtlasLayout.ISLAND_CONTENT_PADDING_Y;
     private static final int ISLAND_CONTENT_TOP = SlotWorkspaceAtlasLayout.ISLAND_CONTENT_TOP;
-    private static final int ISLAND_GAP = 120;
-    private static final int ISLAND_PARENT_GROUP_GAP = 220;
+    // Tight by design: populate-generated atlases were tedious to use because
+    // every island landed a screen apart and required manual drag-and-snap
+    // before the layout was usable for testing. Without ghost rendering most
+    // islands hold only a handful of carried items, so a card-sized gap
+    // already reads as a comfortable break. The nudge layout will push any
+    // accidental overlap apart on first display, so we err small.
+    //
+    // Inter-row gap must clear the renderer's per-island chrome: 24px header
+    // band reserved above each island + 16px atlas pad below each island
+    // (see AtlasLayout.packAtlas) = 40px minimum body-to-body. We add a few
+    // pixels of breathing room so labels don't crowd.
+    private static final int ISLAND_GAP = 16;
+    private static final int ISLAND_PARENT_GROUP_GAP = 32;
+    private static final int ISLAND_CLUSTER_ROW_GAP = 48;
+
+    /**
+     * Cluster colors override the per-template color for populate-generated
+     * islands so the atlas reads as a few large color bands (gear / build /
+     * materials / machinery / decoration) instead of a confetti of unrelated
+     * tints. Indexed by {@code clusterRow}; {@code MISC}'s row 4 lands here
+     * too.
+     */
+    private static final int[] CLUSTER_ROW_COLORS = new int[]{
+            0xCC6E3D3D, // 0 — player gear (warm red)
+            0xCC5A4A38, // 1 — building (wood/stone brown)
+            0xCC3D6E5A, // 2 — materials & natural (green)
+            0xCC8A5E24, // 3 — machinery (industrial amber)
+            0xCC4F3D6E  // 4 — decoration / curio / misc (purple)
+    };
     private static final int ATLAS_ORIGIN_X = 64;
     private static final int ATLAS_ORIGIN_Y = 64;
 
@@ -246,24 +274,22 @@ public final class RealisticAtlasGenerator {
             }
         }
 
-        // Homed stacks cap: a real player carries a subset of homed
-        // identities, not every one. Bias the pick toward high-frequency
-        // identities so the synthesized inventory looks like what a
-        // player would actually carry — not a uniform-random sample of
-        // every homed thing including chiseled niche stairs and
-        // single-use display blocks.
+        // Realistic carry: a real player has a loadout (one pickaxe, one
+        // axe, one sword, armor set, food, torches, basic blocks) plus a
+        // pile of loot from recent mining/fighting (raw ores, ingots,
+        // mob drops, gathered naturals). Build the loadout first so we
+        // always get tier-appropriate gear, then top up with loot-biased
+        // sampling so it looks like an active session, not a uniform
+        // weighted dump of every homed identity.
         ArrayList<TemplatedStack> carriedPool = new ArrayList<>();
-        ArrayList<Double> carryWeights = new ArrayList<>();
         for (IslandBuild build : builds) {
             for (DescribedStack ds : build.stacks()) {
                 carriedPool.add(new TemplatedStack(
                         build.match().parentTemplate(), ds.stack, ds.descriptor));
-                carryWeights.add(carryFrequencyWeight(ds.descriptor.carryFrequency()));
             }
         }
         int carriedCap = Math.min(carriedPool.size(), profile.carriedIdentityCap());
-        List<TemplatedStack> picked = weightedSampleWithoutReplacement(
-                carriedPool, carryWeights, carriedCap, random);
+        List<TemplatedStack> picked = pickRealisticCarriedSet(carriedPool, carriedCap, random);
         ArrayList<ItemStack> homedStacks = new ArrayList<>(picked.size());
         for (TemplatedStack ts : picked) {
             ItemStack copy = ts.stack().copy();
@@ -416,13 +442,21 @@ public final class RealisticAtlasGenerator {
             int itemCount = stacks.size();
             int cardsPerRow = dynamicCardsPerRow(itemCount);
             int rows = Math.max(1, (itemCount + cardsPerRow - 1) / cardsPerRow);
-            int width = ISLAND_PADDING_X * 2
-                    + cardsPerRow * CARD_WIDTH
-                    + Math.max(0, cardsPerRow - 1) * CARD_GAP;
-            int height = ISLAND_CONTENT_TOP
-                    + rows * CARD_HEIGHT
-                    + Math.max(0, rows - 1) * CARD_GAP
-                    + ISLAND_PADDING_Y;
+            // Floor predicted size at the renderer's PLAYER_ISLAND_MIN_*
+            // so a 1-item island doesn't reserve 4-card-wide space the
+            // renderer never uses, leaving a fat empty band between
+            // neighbours. Without the floor the layout matched, the
+            // generator produced wide gaps that made the populate atlas
+            // need manual cleanup.
+            int width = Math.max(SlotWorkspaceAtlasLayout.PLAYER_ISLAND_MIN_WIDTH,
+                    ISLAND_PADDING_X * 2
+                            + cardsPerRow * CARD_WIDTH
+                            + Math.max(0, cardsPerRow - 1) * CARD_GAP);
+            int height = Math.max(SlotWorkspaceAtlasLayout.PLAYER_ISLAND_MIN_HEIGHT,
+                    ISLAND_CONTENT_TOP
+                            + rows * CARD_HEIGHT
+                            + Math.max(0, rows - 1) * CARD_GAP
+                            + ISLAND_PADDING_Y);
 
             String islandId = group.match().islandId();
             ItemIdentity iconIdentity = ItemIdentityMatcher.create(stacks.get(0).stack());
@@ -448,7 +482,7 @@ public final class RealisticAtlasGenerator {
                     VisualAtlasIslandKind.PLAYER,
                     0,
                     0,
-                    group.match().color(),
+                    clusterColor(group.match().clusterRow()),
                     iconIdentity
             );
             builds.add(new IslandBuild(
@@ -464,8 +498,22 @@ public final class RealisticAtlasGenerator {
     }
 
     private static int dynamicCardsPerRow(int itemCount) {
+        if (itemCount <= 1) {
+            return 1;
+        }
         int estimate = (int) Math.round(Math.sqrt(itemCount * 1.5));
-        return Math.min(MAX_CARDS_PER_ROW, Math.max(MIN_CARDS_PER_ROW, estimate));
+        // Don't force MIN_CARDS_PER_ROW for tiny islands: the renderer
+        // packs a 1-item island into PLAYER_ISLAND_MIN_WIDTH (~1 card +
+        // padding), so over-predicting the column count just leaves
+        // dead space between neighbours.
+        return Math.min(MAX_CARDS_PER_ROW, Math.max(1, Math.min(itemCount, estimate)));
+    }
+
+    private static int clusterColor(int clusterRow) {
+        if (clusterRow < 0 || clusterRow >= CLUSTER_ROW_COLORS.length) {
+            return CLUSTER_ROW_COLORS[CLUSTER_ROW_COLORS.length - 1];
+        }
+        return CLUSTER_ROW_COLORS[clusterRow];
     }
 
     private static void layoutIslands(List<IslandBuild> builds) {
@@ -482,18 +530,18 @@ public final class RealisticAtlasGenerator {
                 .thenComparingInt(b -> b.match().isSubsystem() ? 1 : 0)
                 .thenComparing(b -> b.island().id()));
 
-        // Square-ish wrap target: islands flow horizontally inside a band
-        // sized to roughly sqrt(total area) so a populate run with many
-        // mechanism subsystems doesn't strew them in a single 3000-wide
-        // strip. Sub-rows within a cluster row stack tightly; different
-        // cluster rows still get the full ISLAND_GAP between them so the
-        // semantic grouping reads.
+        // Wide target: monitors are ~16:10, so prefer a long horizontal
+        // band over a square. The five cluster rows stack vertically
+        // anyway, so the height floor is fixed; widening the wrap target
+        // mostly lets each cluster row keep its islands on a single line
+        // instead of folding into sub-rows the player has to scan
+        // top-down. The atlas zooms / pans freely, so we err generous.
         long totalArea = 0L;
         for (IslandBuild b : builds) {
             totalArea += (long) b.predictedWidth() * (long) b.predictedHeight();
         }
-        int targetWidth = Math.max(800,
-                (int) Math.round(Math.sqrt(Math.max(1L, totalArea)) * 1.4));
+        int targetWidth = Math.max(1600,
+                (int) Math.round(Math.sqrt(Math.max(1L, totalArea)) * 2.0));
 
         int currentY = ATLAS_ORIGIN_Y;
         int currentRow = -1;
@@ -509,7 +557,7 @@ public final class RealisticAtlasGenerator {
             boolean newClusterRow = row != currentRow;
             if (newClusterRow) {
                 if (currentRow != -1) {
-                    currentY += rowMaxHeight + ISLAND_GAP;
+                    currentY += rowMaxHeight + ISLAND_CLUSTER_ROW_GAP;
                 }
                 currentRow = row;
                 currentX = ATLAS_ORIGIN_X;
@@ -1154,6 +1202,154 @@ public final class RealisticAtlasGenerator {
      * test code keeps compiling.
      */
     public record DescribedStack(ItemStack stack, IslandSignalDescriptor descriptor) {
+    }
+
+    /**
+     * Compose the player's carried set as a realistic loadout (one of
+     * each core gear slot at the best available tier) plus a loot-biased
+     * fill (raw materials, ingots, mob drops, etc.) up to {@code cap}.
+     * Returns at most {@code cap} stacks; preserves loadout-first
+     * ordering so the inventory layout is predictable.
+     */
+    private static List<TemplatedStack> pickRealisticCarriedSet(
+            List<TemplatedStack> pool,
+            int cap,
+            Random random
+    ) {
+        if (pool.isEmpty() || cap <= 0) {
+            return List.of();
+        }
+        ArrayList<TemplatedStack> result = new ArrayList<>(cap);
+        java.util.LinkedHashSet<ItemIdentity> taken = new java.util.LinkedHashSet<>();
+        // Core loadout: best-tier representative of each gear slot the
+        // player almost certainly has on them. Skipping a slot when no
+        // candidate exists is fine — modpacks vary in coverage.
+        addBestTier(result, taken, pool, t -> t.template() == IslandSuggestionTemplate.TOOLS
+                && idEndsWith(t, "_pickaxe"), cap);
+        addBestTier(result, taken, pool, t -> t.template() == IslandSuggestionTemplate.TOOLS
+                && idEndsWith(t, "_axe") && !idEndsWith(t, "_pickaxe"), cap);
+        addBestTier(result, taken, pool, t -> t.template() == IslandSuggestionTemplate.TOOLS
+                && idEndsWith(t, "_shovel"), cap);
+        addBestTier(result, taken, pool, t -> t.template() == IslandSuggestionTemplate.TOOLS
+                && idEndsWith(t, "_hoe"), cap);
+        addBestTier(result, taken, pool, t -> t.template() == IslandSuggestionTemplate.WEAPONS
+                && idEndsWith(t, "_sword"), cap);
+        addBestTier(result, taken, pool, t -> t.template() == IslandSuggestionTemplate.WEAPONS
+                && hasClassSignal(t, IslandSignal.BOW), cap);
+        addBestTier(result, taken, pool, t -> hasClassSignal(t, IslandSignal.ARMOR_HEAD), cap);
+        addBestTier(result, taken, pool, t -> hasClassSignal(t, IslandSignal.ARMOR_CHEST), cap);
+        addBestTier(result, taken, pool, t -> hasClassSignal(t, IslandSignal.ARMOR_LEGS), cap);
+        addBestTier(result, taken, pool, t -> hasClassSignal(t, IslandSignal.ARMOR_FEET), cap);
+        addBestTier(result, taken, pool, t -> t.template() == IslandSuggestionTemplate.FOOD, cap);
+        addBestTier(result, taken, pool, t -> t.template() == IslandSuggestionTemplate.LIGHTING, cap);
+        addBestTier(result, taken, pool, t -> t.template() == IslandSuggestionTemplate.STORAGE, cap);
+
+        // Loot fill: weight loot-typical templates higher (raw materials,
+        // ingots, gems, naturals, mob-drop misc) so the leftover budget
+        // captures the "I just got back from a mining/fighting session"
+        // feel rather than another stack of stairs.
+        if (result.size() >= cap) {
+            return result;
+        }
+        ArrayList<TemplatedStack> remaining = new ArrayList<>();
+        ArrayList<Double> lootWeights = new ArrayList<>();
+        for (TemplatedStack t : pool) {
+            ItemIdentity id = ItemIdentityMatcher.create(t.stack());
+            if (taken.contains(id)) {
+                continue;
+            }
+            remaining.add(t);
+            lootWeights.add(lootWeight(t));
+        }
+        int slotsLeft = cap - result.size();
+        List<TemplatedStack> loot = weightedSampleWithoutReplacement(
+                remaining, lootWeights, slotsLeft, random);
+        for (TemplatedStack t : loot) {
+            result.add(t);
+            taken.add(ItemIdentityMatcher.create(t.stack()));
+        }
+        return result;
+    }
+
+    private static void addBestTier(
+            List<TemplatedStack> result,
+            java.util.LinkedHashSet<ItemIdentity> taken,
+            List<TemplatedStack> pool,
+            java.util.function.Predicate<TemplatedStack> filter,
+            int cap
+    ) {
+        if (result.size() >= cap) {
+            return;
+        }
+        TemplatedStack best = null;
+        int bestRank = Integer.MIN_VALUE;
+        for (TemplatedStack t : pool) {
+            ItemIdentity id = ItemIdentityMatcher.create(t.stack());
+            if (taken.contains(id) || !filter.test(t)) {
+                continue;
+            }
+            int rank = tierRank(t.descriptor().materialFamily());
+            if (best == null || rank > bestRank) {
+                best = t;
+                bestRank = rank;
+            }
+        }
+        if (best != null) {
+            result.add(best);
+            taken.add(ItemIdentityMatcher.create(best.stack()));
+        }
+    }
+
+    private static int tierRank(String materialFamily) {
+        if (materialFamily == null) {
+            return 0;
+        }
+        return switch (materialFamily) {
+            case "netherite" -> 6;
+            case "diamond" -> 5;
+            case "iron" -> 4;
+            case "gold", "golden" -> 3;
+            case "stone" -> 2;
+            case "wood", "wooden", "wood_oak", "wood_birch", "wood_spruce",
+                    "wood_jungle", "wood_acacia", "wood_dark_oak",
+                    "wood_mangrove", "wood_cherry" -> 1;
+            default -> 0;
+        };
+    }
+
+    private static double lootWeight(TemplatedStack t) {
+        // Loot bias mirrors what mining/fighting sessions actually drop:
+        // raw ores, ingots from smelting, gems, natural resources, and
+        // misc mob drops (gunpowder/string/bones land in MISC or NATURAL
+        // depending on classification). Trophies and curiosities are
+        // rare loot; staircases and decorative blocks aren't.
+        double bias = switch (t.template()) {
+            case RAW_MATERIALS, INGOTS, GEMS -> 6.0;
+            case NATURAL -> 4.0;
+            case MISC -> 2.5;
+            case FOOD -> 2.0;
+            case BUILDING -> 1.5;
+            case MATERIALS, LIGHTING -> 1.2;
+            case STAIRS, SLABS, WALLS, DOORS, FENCES, WINDOWS -> 0.6;
+            case DECORATION, UTILITY, REDSTONE -> 0.5;
+            case STORAGE, TRANSPORT, UPGRADES, MECHANISMS, WORKBENCHES -> 0.4;
+            case CURIOSITY -> 0.05;
+            default -> 1.0;
+        };
+        return bias * Math.sqrt(Math.max(0.05, carryFrequencyWeight(t.descriptor().carryFrequency())));
+    }
+
+    private static boolean idEndsWith(TemplatedStack t, String suffix) {
+        ItemIdentity id = t.descriptor().identity();
+        if (id == null || id.itemId() == null) {
+            return false;
+        }
+        return id.itemId().endsWith(suffix);
+    }
+
+    private static boolean hasClassSignal(TemplatedStack t, IslandSignal signal) {
+        return t.descriptor().classSignals() != null
+                && t.descriptor().classSignals().contains(signal);
     }
 
     private static final class CategoryGroup {

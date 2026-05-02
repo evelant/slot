@@ -69,8 +69,9 @@ class InventoryBrowseServiceTest {
         CollectionDefinition mining = runtime.collectionWorkflow().createCollection("Mining");
         runtime.collectionWorkflow().toggleCollectionMembership(ItemIdentity.of("minecraft:torch"), mining.id());
         runtime.collectionWorkflow().toggleCollectionMembership(ItemIdentity.of("minecraft:pickaxe"), mining.id());
-        runtime.collectionWorkflow().setDesiredCount(mining.id(), ItemIdentity.of("minecraft:torch"), 16);
-        runtime.collectionWorkflow().setDesiredCount(mining.id(), ItemIdentity.of("minecraft:pickaxe"), 1);
+        // Collection-scoped desired counts retired with the kits replacement
+        // of collections; this test predates the migration and the
+        // annotations now always read 0 for the desiredCount field.
         runtime.collectionWorkflow().toggleFavorite(ItemIdentity.of("minecraft:torch"));
         QuickAccessLoadoutDefinition miningKit = runtime.collectionWorkflow().createLoadout(
                 mining.id(),
@@ -127,7 +128,9 @@ class InventoryBrowseServiceTest {
         assertEquals(3, torchEntry.row().backingEntries().size());
         assertTrue(torchEntry.annotations().favorite());
         assertTrue(torchEntry.annotations().recent());
-        assertEquals(16, torchEntry.annotations().desiredCount());
+        // Collection-scoped desired count retired; the annotation now reads 0
+        // unconditionally for the legacy collection browse pane.
+        assertEquals(0, torchEntry.annotations().desiredCount());
         assertTrue(torchEntry.commands().get(InventoryCommandId.TRANSFER_ALL_EXACT).available());
         assertTrue(torchEntry.commands().get(InventoryCommandId.DISMISS_RECENT).available());
 

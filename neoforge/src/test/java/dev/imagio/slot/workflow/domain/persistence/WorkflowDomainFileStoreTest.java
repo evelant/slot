@@ -54,7 +54,9 @@ class WorkflowDomainFileStoreTest {
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(source, null);
         CollectionDefinition exploration = runtime.collectionWorkflow().createCollection("Exploration");
         runtime.collectionWorkflow().toggleCollectionMembership(ItemIdentity.of("minecraft:torch"), exploration.id());
-        runtime.collectionWorkflow().setDesiredCount(exploration.id(), ItemIdentity.of("minecraft:torch"), 48);
+        // Player-scoped desired count (collection-scoped variant retired
+        // alongside the kits replacement of collections).
+        runtime.desiredCountWorkflow().setPlayer(ItemIdentity.of("minecraft:torch"), 48);
         QuickAccessLoadoutDefinition loadout = runtime.collectionWorkflow().createLoadout(
                 exploration.id(),
                 "Caving",
@@ -237,12 +239,12 @@ class WorkflowDomainFileStoreTest {
                 .withSlot(1, ItemIdentity.of("minecraft:torch"));
         KitPage page1 = KitPage.empty().withSlot(0, ItemIdentity.of("minecraft:iron_shovel"));
         runtime.kitWorkflow().update(mining.withPages(java.util.List.of(page0, page1))
-                .withBring(java.util.List.of(
-                        ItemIdentity.of("minecraft:cobblestone"),
-                        ItemIdentity.of("minecraft:bread")
-                ))
                 .withOffhand(ItemIdentity.of("minecraft:shield"))
         );
+        // Bring list folded into kit-scoped desired counts. Seed two
+        // identities so the round-trip exercises the kit-scoped persistence.
+        runtime.desiredCountWorkflow().setForKit(mining.id(), ItemIdentity.of("minecraft:cobblestone"), 1);
+        runtime.desiredCountWorkflow().setForKit(mining.id(), ItemIdentity.of("minecraft:bread"), 1);
         KitDefinition combat = runtime.kitWorkflow().create("Combat");
         runtime.kitWorkflow().update(combat.withPages(java.util.List.of(
                 KitPage.empty().withSlot(0, ItemIdentity.of("minecraft:iron_sword"))
@@ -264,10 +266,11 @@ class WorkflowDomainFileStoreTest {
         assertEquals(ItemIdentity.of("minecraft:iron_pickaxe"), restoredMining.page(0).slot(0));
         assertEquals(ItemIdentity.of("minecraft:iron_shovel"), restoredMining.page(1).slot(0));
         assertEquals(ItemIdentity.of("minecraft:shield"), restoredMining.offhand());
-        assertEquals(java.util.List.of(
-                ItemIdentity.of("minecraft:cobblestone"),
-                ItemIdentity.of("minecraft:bread")
-        ), restoredMining.bring());
+        // Bring list lives on as kit-scoped desired counts.
+        java.util.Map<ItemIdentity, Integer> restoredKitWants = restored.workflowProjection()
+                .kitDesiredCounts().getOrDefault(mining.id(), java.util.Map.of());
+        assertEquals(1, restoredKitWants.getOrDefault(ItemIdentity.of("minecraft:cobblestone"), 0));
+        assertEquals(1, restoredKitWants.getOrDefault(ItemIdentity.of("minecraft:bread"), 0));
         assertEquals(mining.id(), restored.workflowProjection().kitMap().activation().kitId());
         assertEquals(1, restored.workflowProjection().kitMap().activation().pageIndex());
     }

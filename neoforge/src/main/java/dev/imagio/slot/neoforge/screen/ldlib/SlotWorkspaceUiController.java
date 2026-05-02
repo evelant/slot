@@ -80,14 +80,13 @@ final class SlotWorkspaceUiController {
      */
     AtlasLayoutResult currentLayout = AtlasLayoutResult.EMPTY;
     final Observable<String> localStatus = new Observable<>("");
+    final WorkspaceCursorCarry cursor = new WorkspaceCursorCarry();
     final Observable<SlotWorkspaceViewModel.IdentityRef> selectedAtlasIdentity = new Observable<>(null);
     SlotWorkspaceViewModel.IdentityRef hoveredAtlasIdentity;
-    String hoveredIslandId;
     /**
-     * Cross-surface hover cursor for storage chest cards. Mirrors
-     * {@link #hoveredIslandId} in pattern: hovering a chest card sets
-     * this; island elements observe it to highlight their linked-from
-     * counterparts.
+     * Cross-surface hover cursor for storage chest cards: hovering a
+     * chest card sets this; island elements observe it to highlight
+     * their linked-from counterparts.
      */
     String hoveredStorageId;
     final Observable<Integer> selectedHotbarIndex = new Observable<>(-1);
@@ -98,6 +97,11 @@ final class SlotWorkspaceUiController {
     int contextMenuHotbarIndex = -1;
     String contextMenuKitId;
     String contextMenuChestStorageId;
+    /** Identity currently being edited via "Set desired count..." in the
+     * atlas context menu. Non-null swaps the menu body to a numeric
+     * TextField + Set/Clear actions for that identity. */
+    SlotWorkspaceViewModel.IdentityRef editingDesiredCountIdentity;
+    String desiredCountDraft = "";
     String renamingKitId;
     String renameKitDraft = "";
     String confirmDeleteKitId;
@@ -202,7 +206,25 @@ final class SlotWorkspaceUiController {
     ModularUI create() {
         rpc.register();
         hotkeys.installBeltHotkeys();
-        root.addChildren(syncBinding(), content);
+        // Cursor overlay sits at root, above content + every panel — its
+        // ghost item must always render on top regardless of whichever
+        // chrome the mouse is over. Added once during create() because
+        // its TICK + MOUSE_MOVE listeners on root persist across rebuilds;
+        // recreating it on every rebuildNow() would leak handlers.
+        root.addChildren(syncBinding(), content, overlays.cursorOverlay());
+        // Bubble-phase cancel for the cursor: any MOUSE_DOWN that reaches
+        // root means no drop target intercepted (drop targets call
+        // stopPropagation when they handle a cursor click). Treat as "click
+        // outside a valid drop location" and cancel. Drop targets MUST stop
+        // propagation when handling a cursor click or this will cancel
+        // immediately after their drop fires.
+        root.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+            if (cursor.isCarrying()) {
+                cursor.clear();
+                localStatus.set("cursor cancelled");
+                rebuild();
+            }
+        });
         rebuildNow();
         return ModularUI.of(UI.of(root), player);
     }
@@ -757,7 +779,22 @@ final class SlotWorkspaceUiController {
 
     void clearSelectionOnDirectClick(UIElement element) {
         element.addEventListener(UIEvents.MOUSE_DOWN, event -> {
-            if (event.target == element && (selectedAtlasIdentity.get() != null || selectedHotbarIndex.get() >= 0)) {
+            // Click hit the bare root chrome (no widget consumed it) — treated
+            // as "click on nothing." If the cursor is carrying virtual items,
+            // a click outside any valid drop target cancels the cursor; we
+            // intentionally cancel BEFORE clearing selection so the player
+            // gets the more important feedback first ("cursor cancelled" vs
+            // "selection cleared").
+            if (event.target != element) {
+                return;
+            }
+            if (cursor.isCarrying()) {
+                cursor.clear();
+                localStatus.set("cursor cancelled");
+                rebuild();
+                return;
+            }
+            if (selectedAtlasIdentity.get() != null || selectedHotbarIndex.get() >= 0) {
                 selectedAtlasIdentity.set(null);
                 selectedHotbarIndex.set(-1);
                 localStatus.set("selection cleared");

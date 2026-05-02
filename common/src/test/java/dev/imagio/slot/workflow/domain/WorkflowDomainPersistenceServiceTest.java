@@ -27,7 +27,8 @@ class WorkflowDomainPersistenceServiceTest {
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(source, null);
         CollectionDefinition exploration = runtime.collectionWorkflow().createCollection("Exploration");
         runtime.collectionWorkflow().toggleCollectionMembership(ItemIdentity.of("minecraft:torch"), exploration.id());
-        runtime.collectionWorkflow().setDesiredCount(exploration.id(), ItemIdentity.of("minecraft:torch"), 32);
+        // Player-scoped desired counts (collection-scoped variant retired).
+        runtime.desiredCountWorkflow().setPlayer(ItemIdentity.of("minecraft:torch"), 32);
         QuickAccessLoadoutDefinition loadout = runtime.collectionWorkflow().createLoadout(
                 exploration.id(),
                 "Mining",

@@ -101,6 +101,8 @@ final class ContextMenuBuilder {
         host.confirmDeleteKitId = null;
         host.renamingChestStorageId = null;
         host.renameChestDraft = "";
+        host.editingDesiredCountIdentity = null;
+        host.desiredCountDraft = "";
         host.rebuild();
     }
 
@@ -214,6 +216,26 @@ final class ContextMenuBuilder {
                     () -> {
                         host.rpc.sendAssignHome(item.identity(), targetIslandId, null);
                         closeContextMenu();
+                    }
+            ));
+        }
+
+        if (item.identity().equals(host.editingDesiredCountIdentity)) {
+            appendDesiredCountEditor(menu, item);
+        } else {
+            String label = item.desiredCount() > 0
+                    ? "Desired count: " + item.desiredCount() + "…"
+                    : "Set desired count…";
+            menu.addChild(menuButton(
+                    label,
+                    true,
+                    null,
+                    () -> {
+                        host.editingDesiredCountIdentity = item.identity();
+                        host.desiredCountDraft = item.desiredCount() > 0
+                                ? Integer.toString(item.desiredCount())
+                                : "";
+                        host.rebuild();
                     }
             ));
         }
@@ -426,6 +448,93 @@ final class ContextMenuBuilder {
             closeContextMenu();
         });
         row.addChildren(save, cancel);
+        menu.addChild(row);
+    }
+
+    /**
+     * Inline numeric entry for setting the player-scoped desired count of
+     * {@code item}. Submit on Enter or "Set"; Clear zeros it out; ESC
+     * dismisses without writing. Restricted to digits via the responder
+     * filter — players can also use ctrl+scrollwheel for quick ±1 nudges,
+     * so this is the precise alternative for "I want exactly 64."
+     */
+    void appendDesiredCountEditor(UIElement menu, SlotWorkspaceViewModel.AtlasItem item) {
+        TextField input = new TextField();
+        input.setAnyString();
+        input.setText(host.desiredCountDraft, false);
+        input.layout(layout -> layout.widthPercent(100).height(18));
+        input.style(style -> style.backgroundTexture(rect(0xC60D1318)));
+        input.textFieldStyle(style -> style
+                .font(FONT_UI)
+                .placeholder(Component.literal("count (0 = clear)"))
+                .textColor(TEXT)
+                .cursorColor(ACCENT)
+                .textShadow(false)
+                .fontSize(9));
+        input.setTextResponder(value -> {
+            if (value == null) {
+                host.desiredCountDraft = "";
+                return;
+            }
+            // Strip non-digits so the responder enforces numeric input
+            // without us needing a separate validator on commit.
+            StringBuilder digits = new StringBuilder();
+            for (int i = 0; i < value.length(); i++) {
+                char c = value.charAt(i);
+                if (c >= '0' && c <= '9') {
+                    digits.append(c);
+                }
+            }
+            host.desiredCountDraft = digits.toString();
+        });
+        boolean[] focusFired = {false};
+        input.addEventListener(UIEvents.LAYOUT_CHANGED, event -> {
+            if (focusFired[0]) {
+                return;
+            }
+            focusFired[0] = true;
+            input.focus();
+            String current = input.getValue();
+            int length = current == null ? 0 : current.length();
+            input.setCursor(length);
+            input.setSelection(0, length);
+        }, true);
+        Runnable commit = () -> {
+            String trimmed = host.desiredCountDraft == null ? "" : host.desiredCountDraft.trim();
+            int value = 0;
+            if (!trimmed.isBlank()) {
+                try {
+                    value = Math.max(0, Integer.parseInt(trimmed));
+                } catch (NumberFormatException ignored) {
+                    value = 0;
+                }
+            }
+            host.rpc.sendSetPlayerDesiredCount(item.identity(), value);
+            closeContextMenu();
+        };
+        input.addEventListener(UIEvents.KEY_DOWN, event -> {
+            if (event.keyCode == GLFW.GLFW_KEY_ENTER || event.keyCode == GLFW.GLFW_KEY_KP_ENTER) {
+                commit.run();
+                event.stopPropagation();
+            } else if (event.keyCode == GLFW.GLFW_KEY_ESCAPE) {
+                closeContextMenu();
+                event.stopPropagation();
+            }
+        });
+        menu.addChild(input);
+        UIElement row = new UIElement().layout(layout -> layout
+                .widthPercent(100)
+                .height(14)
+                .gapAll(2)
+                .flexDirection(FlexDirection.ROW));
+        Button set = menuButton("Set", true, null, commit);
+        Button clear = menuButton("Clear", true, null, () -> {
+            host.rpc.sendSetPlayerDesiredCount(item.identity(), 0);
+            closeContextMenu();
+        });
+        set.layout(layout -> layout.flex(1).height(14));
+        clear.layout(layout -> layout.flex(1).height(14));
+        row.addChildren(set, clear);
         menu.addChild(row);
     }
 

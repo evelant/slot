@@ -540,8 +540,8 @@ final class AtlasCardBuilder {
         float inset = Math.min(shell * 0.5f, atlas.worldUnitsForPixels(1f) * ghostScale);
         icon = Math.max(0f, Math.min(shell - inset * 2f, icon));
 
-        int shellColor = carried ? 0xB0141B23 : dimAlpha(0xB0141B23, GHOST_CARD_ALPHA);
-        int innerColor = carried ? 0xD90A1218 : dimAlpha(0xD90A1218, GHOST_CARD_ALPHA);
+        int shellColor = carried ? CARD_SHELL : CARD_SHELL_GHOST;
+        int innerColor = carried ? CARD_INNER : CARD_INNER_GHOST;
 
         // Wrapper occupies the full-size cell so the call site's centering
         // math (which still uses the un-scaled shell) keeps the ghost
@@ -591,8 +591,8 @@ final class AtlasCardBuilder {
         float inset = 1f;
         float icon = Math.max(10f, size - 4f);
         boolean carried = item.carried();
-        int shellColor = carried ? 0xB0141B23 : dimAlpha(0xB0141B23, GHOST_CARD_ALPHA);
-        int innerColor = carried ? 0xD90A1218 : dimAlpha(0xD90A1218, GHOST_CARD_ALPHA);
+        int shellColor = carried ? CARD_SHELL : CARD_SHELL_GHOST;
+        int innerColor = carried ? CARD_INNER : CARD_INNER_GHOST;
         UIElement shellElement = panel(shellColor).layout(layout -> layout.width(shell).height(shell));
         shellElement.setAllowHitTest(false);
         shellElement.addChild(panel(innerColor).layout(layout -> layout
@@ -728,6 +728,9 @@ private void addCommonAtlasSignals(
         if (item.kitNeeded()) {
             addKitNeedsBadge(body, atlas, item);
         }
+        if (item.desiredCount() > 0) {
+            addDesiredCountPip(body, atlas, item, budget);
+        }
         // Search-time "also stored" badge for items that have copies
         // in any chest (proximate or remote). The proximate-only top-
         // right pip already counts nearby copies, but when search is
@@ -825,6 +828,53 @@ private void addCommonAtlasSignals(
                 .textAlignHorizontal(Horizontal.CENTER)
                 .textAlignVertical(Vertical.CENTER));
         pip.addChild(star);
+        body.addChild(pip);
+    }
+
+    /**
+     * Bottom-right pip showing the resolved desired count for this
+     * identity. The kit-needed star sits top-left and the proximate-stock
+     * pip sits top-right; bottom-right is the only free corner that
+     * doesn't collide with the search-mode "also stored" badge
+     * (bottom-left). Background colour reflects scope:
+     * {@link WorkspaceTheme#DESIRED_COUNT_PIP_KIT} when the active kit's
+     * value is in effect, {@link WorkspaceTheme#DESIRED_COUNT_PIP_GLOBAL}
+     * otherwise — so the player can tell at a glance whether the count
+     * applies forever or just while this kit is up.
+     */
+    private void addDesiredCountPip(
+            UIElement body,
+            SlotAtlasGraphView atlas,
+            SlotWorkspaceViewModel.AtlasItem item,
+            AtlasRenderBudget budget
+    ) {
+        AtlasLayoutResult.ItemPlacement place = host.placementFor(item);
+        float inset = Math.min(place.width() * 0.04f, atlas.worldUnitsForPixels(2f));
+        float pipSizeRaw = Math.min(place.width() * 0.22f, atlas.worldUnitsForPixels(10f));
+        float pipSize = Math.max(pipSizeRaw, place.width() * 0.08f);
+        int pipColor = item.desiredCountFromKit() ? DESIRED_COUNT_PIP_KIT : DESIRED_COUNT_PIP_GLOBAL;
+        UIElement pip = panel(pipColor).layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .right(inset)
+                .bottom(inset)
+                .width(pipSize)
+                .height(pipSize));
+        pip.style(style -> style.zIndex(260));
+        pip.setAllowHitTest(false);
+        if (budget.level() != Band.REGION) {
+            Label count = label(String.valueOf(Math.min(item.desiredCount(), 999)), TEXT);
+            count.layout(layout -> layout.widthPercent(100).heightPercent(100));
+            count.setAllowHitTest(false);
+            float requestedPipFontPx = pipSize * 0.7f * atlas.getScale();
+            float pipFontWorld = clampScreenFontPx(requestedPipFontPx) / Math.max(0.0001f, atlas.getScale());
+            count.textStyle(style -> style
+                    .textColor(TEXT)
+                    .textShadow(false)
+                    .fontSize(pipFontWorld)
+                    .textAlignHorizontal(Horizontal.CENTER)
+                    .textAlignVertical(Vertical.CENTER));
+            pip.addChild(count);
+        }
         body.addChild(pip);
     }
 
@@ -1050,21 +1100,41 @@ private void addCommonAtlasSignals(
         applyAtlasCardLayout(button, item);
         button.noText();
         button.style(style -> style.zIndex(2));
+        // Cursor handling on atlas cards. Pickup is wired via a hotbar
+        // fallback: the AtlasItem doesn't project per-slot source info for
+        // non-hotbar carried slots (e.g. main inventory, backpack), so
+        // ctrl+right pickup looks up the identity on the hotbar and picks
+        // from there if found, otherwise refuses with a helpful status.
+        // Drops are not implemented for atlas cards (requires "send home"
+        // semantics with a count override). Any other click while carrying
+        // cancels — atlas cards stopPropagation, so the bubble-cancel
+        // handler on root never fires for them.
+        button.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+            if (handleCursorAtlasGesture(event, item)) {
+                event.stopPropagation();
+            }
+        }, true);
         button.setOnClick(event -> {
             event.stopPropagation();
             if (Screen.hasShiftDown()) {
-                // Ghost cards (proximate-chest stock, not carried): shift+click
-                // pulls a stack from chest into carry. Carried cards keep the
-                // existing "send to hotbar" semantic.
-                if (item.ghost()) {
-                    if (host.viewModel.carriedFreeSlotCount() <= 0) {
+                // Pull from chests whenever proximate stock exists, even
+                // for already-carried items. Without this, the moment the
+                // first chest yields a stack the card flips to carried and
+                // subsequent shift+clicks fall to the "send to hotbar"
+                // branch — leaving the rest of the item unreachable in the
+                // remaining proximate chests. Carried items with no chest
+                // stock still get the original "send to hotbar" semantic.
+                SlotWorkspaceViewModel.AtlasItem fresh = host.viewModel.atlasItem(item.identity());
+                SlotWorkspaceViewModel.AtlasItem target = fresh != null ? fresh : item;
+                if (proximateChestCount(target) > 0) {
+                    if (host.viewModel.carriedFreeSlotCount() <= 0 && !target.carried()) {
                         host.localStatus.set("carry full — drop something first");
                         host.rebuild();
                         return;
                     }
-                    host.rpc.sendTakeStackByIdentity(item.identity());
+                    host.rpc.sendTakeStackByIdentity(target.identity());
                 } else {
-                    host.rpc.sendAssignHomeToFreeHotbar(item);
+                    host.rpc.sendAssignHomeToFreeHotbar(target);
                 }
                 return;
             }
@@ -1081,8 +1151,39 @@ private void addCommonAtlasSignals(
             }
         });
         float[] scrollAccumulator = {0f};
+        float[] desiredScrollAccumulator = {0f};
         button.addEventListener(UIEvents.MOUSE_WHEEL, event -> {
+            // ctrl+scroll: adjust player-scoped desired count (±1 per tick).
+            // Mirrors the shift+scroll cadence so the gesture vocabulary stays
+            // parallel — shift = "move N items", ctrl = "want N items." The
+            // dispatcher accumulator deduplicates the exact ±1 increments on
+            // touchpads where one notch may produce multiple sub-1 deltas.
+            if (Screen.hasControlDown()) {
+                if (host.cursor.isCarrying()) {
+                    return;
+                }
+                float dDelta = event.deltaY != 0f ? event.deltaY : event.deltaX;
+                if (dDelta == 0f) {
+                    return;
+                }
+                event.stopPropagation();
+                desiredScrollAccumulator[0] += dDelta;
+                int desiredDelta = (int) desiredScrollAccumulator[0];
+                if (desiredDelta == 0) {
+                    return;
+                }
+                desiredScrollAccumulator[0] -= desiredDelta;
+                host.rpc.sendAdjustPlayerDesiredCount(item.identity(), desiredDelta);
+                return;
+            }
             if (!Screen.hasShiftDown()) {
+                return;
+            }
+            // shift+scroll moves items between carry and chests, which would
+            // mutate the cursor's recorded source mid-flight. Suppress while
+            // the cursor is non-empty so the player can't accidentally
+            // desync the cursor from its origin.
+            if (host.cursor.isCarrying()) {
                 return;
             }
             // Minecraft swaps scrollX ↔ scrollY when shift is held, so the
@@ -1175,14 +1276,56 @@ private void addCommonAtlasSignals(
             button.style(style -> style.zIndex(focused ? 10 : currentSelected ? 7 : 2));
             applyButtonColors(button, true, cardChromeColor(budget.level(), currentSelected, searchMatch, item.recent(), item.carried(), !host.searchController.normalizedQuery().isBlank()));
         });
-        // Items sit on top of their island panel (z=2 vs z=1) and receive
-        // their own mouse enter/leave, so hovering an item inside an
-        // island must also flip host.hoveredIslandId — otherwise the
-        // cross-surface highlight on linked chest cards only fires when
-        // the cursor happens to hit empty island background between cards.
-        SlotWorkspaceViewModel.AtlasIsland hoverIsland = host.viewModel.island(item.islandId());
-        host.islandChest.attachIslandHoverListeners(button, hoverIsland);
         return button;
+    }
+
+    /**
+     * Atlas-card MOUSE_DOWN classifier. Returns true when the click was
+     * consumed by cursor logic (caller should stopPropagation). Pickup
+     * uses the AtlasItem's largest-carried-slot info (set server-side
+     * during view model build) so the cursor sources from a real slot
+     * regardless of where the items live — main, hotbar, backpack, or
+     * offhand. Falls back to the item's own displayStack if the
+     * largest-slot info isn't populated (legacy / chest-only items).
+     * Drops on atlas cards aren't wired (route via "send home" with
+     * count override is a follow-up); a non-pickup click while carrying
+     * cancels.
+     */
+    private boolean handleCursorAtlasGesture(
+            com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent event,
+            SlotWorkspaceViewModel.AtlasItem item
+    ) {
+        boolean carrying = host.cursor.isCarrying();
+        WorkspaceCursorGestures.Result mode = WorkspaceCursorGestures.classify(event, carrying);
+        if (mode == WorkspaceCursorGestures.Result.PICKUP_HALF) {
+            if (!item.hasLargestCarriedSlot()) {
+                host.localStatus.set(item.name() + " has no carried slot — pick up only works on items you carry");
+                host.rebuild();
+                return true;
+            }
+            boolean picked = host.cursor.pickupHalf(
+                    item.largestCarriedSourceId(),
+                    item.largestCarriedSlotIndex(),
+                    item.identity(),
+                    item.displayStack(),
+                    item.largestCarriedSlotCount());
+            if (picked) {
+                host.localStatus.set("cursor: " + host.cursor.current().count() + " " + item.name());
+            } else if (carrying) {
+                host.localStatus.set("cursor already holds another item — drop or ESC first");
+            }
+            host.rebuild();
+            return true;
+        }
+        if (carrying) {
+            // Any non-pickup click while carrying cancels (atlas cards
+            // aren't drop targets in the initial cut).
+            host.cursor.clear();
+            host.localStatus.set("cursor cancelled");
+            host.rebuild();
+            return true;
+        }
+        return false;
     }
 
     void addAtlasItemChips(SlotAtlasGraphView atlas, SlotWorkspaceViewModel.AtlasItem item) {

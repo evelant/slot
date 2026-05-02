@@ -65,8 +65,9 @@ class CollectionWorkflowDomainServiceTest {
         assertTrue(repository.workflowProjection().collections().memberships().get(identity).contains(tools.id()));
         assertTrue(workflow.toggleFavorite(identity));
         assertTrue(repository.workflowProjection().favoriteTags().contains(identity));
-        assertTrue(workflow.setDesiredCount(tools.id(), identity, 8));
-        assertEquals(8, repository.workflowProjection().desiredCountsByCollection().get(tools.id()).get(identity));
+        // Collection-scoped desired counts retired with the kits
+        // replacement of collections; player-global / kit-scoped counts
+        // live on DesiredCountWorkflowDomainService now.
     }
 
     @Test

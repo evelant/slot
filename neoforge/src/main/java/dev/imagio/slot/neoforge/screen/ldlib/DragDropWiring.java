@@ -38,6 +38,13 @@ final class DragDropWiring {
             if (!source.isMouseDown(0) || isDragging(source)) {
                 return;
             }
+            // Drag = "move whole stack." It's the spec'd alternative to the
+            // split cursor (which handles partial moves), and the two
+            // shouldn't run concurrently — a drag mid-cursor would create
+            // two simultaneous "I want to move this item" intents that race.
+            if (host.cursor.isCarrying()) {
+                return;
+            }
             source.startDrag(
                     new AtlasItemDrag(item.identity(), item.displayStack().copy(), item.islandId()),
                     dragTexture(item.displayStack())
@@ -177,6 +184,11 @@ final class DragDropWiring {
         }
         source.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
             if (!source.isMouseDown(0) || isDragging(source)) {
+                return;
+            }
+            // See installAtlasItemDragSource — drag is the whole-stack move
+            // and is mutually exclusive with the partial-stack cursor.
+            if (host.cursor.isCarrying()) {
                 return;
             }
             source.startDrag(
@@ -330,7 +342,7 @@ final class DragDropWiring {
             }
             KitBringDrag kitBring = host.kit.kitBringDrag(event);
             if (kitBring != null) {
-                host.rpc.sendRemoveKitBring(kitBring.kitId(), kitBring.identity());
+                host.rpc.sendSetKitScopedDesiredCount(kitBring.kitId(), kitBring.identity(), 0);
                 event.stopPropagation();
             }
         });

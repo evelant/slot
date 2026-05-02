@@ -18,6 +18,7 @@ import dev.vfyjxf.taffy.style.FlexDirection;
 import dev.vfyjxf.taffy.style.TaffyPosition;
 import com.lowdragmc.lowdraglib2.gui.texture.Icons;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
 
 final class WorkspaceOverlays {
     private static final int CARRIED_CHIP_WIDTH = 96;
@@ -303,4 +304,70 @@ final class WorkspaceOverlays {
                         + (host.viewModel.diagnostics().isBlank() ? "" : "  " + host.viewModel.diagnostics())));
     }
 
+    /**
+     * Floating cursor-carry ghost — a virtual item icon + count that
+     * follows the mouse while {@link WorkspaceCursorCarry} is non-empty.
+     * The cursor itself is purely client-side state (no server
+     * representation), so this overlay is the only on-screen evidence
+     * the player is mid-pickup. Hit-testing is disabled so clicks pass
+     * through to whatever drop target sits beneath the cursor.
+     *
+     * <p>Lives at root so it draws above every panel; positioning is a
+     * MOUSE_MOVE-driven absolute offset on the root tracked-mouse
+     * coordinate. Re-renders the inner card from the cursor state on
+     * every TICK so count updates immediately after a drop or a
+     * cumulative half-pickup.
+     */
+    UIElement cursorOverlay() {
+        UIElement overlay = new UIElement().layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .top(0)
+                .left(0)
+                .width(CURSOR_OVERLAY_SIZE)
+                .height(CURSOR_OVERLAY_SIZE));
+        overlay.style(style -> style.zIndex(99));
+        overlay.setAllowHitTest(false);
+        // Last-rendered identity + count so we only rebuild the inner card
+        // when something actually changed — TICK fires every frame and
+        // teardown/rebuild of the icon child every frame is wasted work.
+        final String[] lastIdentityKey = {""};
+        final int[] lastCount = {-1};
+        host.root.addEventListener(UIEvents.MOUSE_MOVE, event -> {
+            if (!host.cursor.isCarrying()) {
+                return;
+            }
+            // Offset the ghost so the cursor tip lands roughly at the
+            // ghost's top-left corner (vanilla cursor-carry visual).
+            float left = event.x - CURSOR_OVERLAY_SIZE / 2f;
+            float top = event.y - CURSOR_OVERLAY_SIZE / 2f;
+            overlay.layout(layout -> layout.left(left).top(top));
+        }, true);
+        overlay.addEventListener(UIEvents.TICK, event -> {
+            WorkspaceCursorCarry.State state = host.cursor.current();
+            if (state == null) {
+                if (!lastIdentityKey[0].isEmpty()) {
+                    overlay.clearAllChildren();
+                    lastIdentityKey[0] = "";
+                    lastCount[0] = -1;
+                }
+                return;
+            }
+            String key = state.identity().itemId() + "|" + state.identity().componentFingerprint();
+            if (key.equals(lastIdentityKey[0]) && state.count() == lastCount[0]) {
+                return;
+            }
+            overlay.clearAllChildren();
+            ItemStack stack = state.displayStack();
+            if (stack == null) {
+                stack = ItemStack.EMPTY;
+            }
+            UIElement card = itemSlotCard(stack, CURSOR_OVERLAY_SIZE, 0x00000000, true, state.count());
+            overlay.addChild(card);
+            lastIdentityKey[0] = key;
+            lastCount[0] = state.count();
+        });
+        return overlay;
+    }
+
+    private static final float CURSOR_OVERLAY_SIZE = 16f;
 }

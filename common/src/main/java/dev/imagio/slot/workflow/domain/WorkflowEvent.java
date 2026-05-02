@@ -13,7 +13,6 @@ public sealed interface WorkflowEvent permits
         WorkflowEvent.CollectionDeleted,
         WorkflowEvent.CollectionItemAdded,
         WorkflowEvent.CollectionItemRemoved,
-        WorkflowEvent.DesiredCountSet,
         WorkflowEvent.LoadoutCreated,
         WorkflowEvent.LoadoutRenamed,
         WorkflowEvent.LoadoutUpdated,
@@ -51,7 +50,9 @@ public sealed interface WorkflowEvent permits
         WorkflowEvent.KitDeleted,
         WorkflowEvent.KitActivated,
         WorkflowEvent.KitDeactivated,
-        WorkflowEvent.KitPageSwitched {
+        WorkflowEvent.KitPageSwitched,
+        WorkflowEvent.PlayerDesiredCountSet,
+        WorkflowEvent.KitDesiredCountSet {
 
     record CollectionCreated(
             String collectionId,
@@ -96,17 +97,6 @@ public sealed interface WorkflowEvent permits
     ) implements WorkflowEvent {
         public CollectionItemRemoved {
             collectionId = collectionId == null ? "" : collectionId;
-        }
-    }
-
-    record DesiredCountSet(
-            String collectionId,
-            ItemIdentity identity,
-            int desiredCount
-    ) implements WorkflowEvent {
-        public DesiredCountSet {
-            collectionId = collectionId == null ? "" : collectionId;
-            desiredCount = Math.max(1, desiredCount);
         }
     }
 
@@ -383,6 +373,35 @@ public sealed interface WorkflowEvent permits
     record KitPageSwitched(int pageIndex) implements WorkflowEvent {
         public KitPageSwitched {
             pageIndex = Math.max(0, pageIndex);
+        }
+    }
+
+    /**
+     * Player-scoped "I want to keep N of this carried at all times" intent.
+     * {@code count == 0} clears the desired count for the identity. Distinct
+     * from the legacy collection-scoped {@link DesiredCountSet} because it
+     * isn't gated on collection membership and reflects a bare player
+     * standing order — the foundation for the desired-counts feature in
+     * docs/design/gestures.md. Kit-scoped desired counts will follow a
+     * separate event when implemented.
+     */
+    record PlayerDesiredCountSet(ItemIdentity identity, int count) implements WorkflowEvent {
+        public PlayerDesiredCountSet {
+            count = Math.max(0, count);
+        }
+    }
+
+    /**
+     * Kit-scoped desired count: an override that takes precedence over the
+     * player-global value while the kit is active. {@code count == 0}
+     * clears the entry. Resolution rule (applied at view-model build):
+     * if a kit is active and has a non-zero entry for the identity, use
+     * it; else fall back to {@link PlayerDesiredCountSet}'s value.
+     */
+    record KitDesiredCountSet(String kitId, ItemIdentity identity, int count) implements WorkflowEvent {
+        public KitDesiredCountSet {
+            kitId = kitId == null ? "" : kitId;
+            count = Math.max(0, count);
         }
     }
 }

@@ -5,13 +5,15 @@ import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
 /**
- * Protection overlay that guards the active Kit's belt + offhand + bring identities
- * from trash/void/cleanup flows. Composes with the base workflow protection; does not
- * replace it. When no Kit is active the overlay is a no-op.
+ * Protection overlay that guards the active Kit's belt + offhand + every
+ * identity with a non-zero kit-scoped desired count from trash/void/cleanup
+ * flows. Composes with the base workflow protection; does not replace it.
+ * When no Kit is active the overlay is a no-op.
  */
 public final class KitActiveProtection implements ProtectionPolicy {
     private final ProtectionPolicy base;
@@ -25,6 +27,19 @@ public final class KitActiveProtection implements ProtectionPolicy {
     }
 
     public static Set<ItemIdentity> identitiesFor(KitMap kitMap) {
+        return identitiesFor(kitMap, Map.of());
+    }
+
+    /**
+     * Collect the identities the active kit considers protected. Includes
+     * every belt/page slot, the offhand pin, and every identity with a
+     * non-zero kit-scoped desired count for the active kit. The
+     * desired-count side of the set replaces the legacy "bring" field.
+     */
+    public static Set<ItemIdentity> identitiesFor(
+            KitMap kitMap,
+            Map<String, Map<ItemIdentity, Integer>> kitDesiredCounts
+    ) {
         if (kitMap == null) {
             return Set.of();
         }
@@ -48,19 +63,30 @@ public final class KitActiveProtection implements ProtectionPolicy {
                 }
             }
         }
-        for (ItemIdentity identity : kit.bring()) {
-            if (identity != null) {
-                identities.add(identity);
-            }
-        }
         if (kit.offhand() != null) {
             identities.add(kit.offhand());
+        }
+        if (kitDesiredCounts != null) {
+            Map<ItemIdentity, Integer> kitDesired = kitDesiredCounts.getOrDefault(activation.kitId(), Map.of());
+            for (Map.Entry<ItemIdentity, Integer> entry : kitDesired.entrySet()) {
+                if (entry.getKey() != null && entry.getValue() != null && entry.getValue() > 0) {
+                    identities.add(entry.getKey());
+                }
+            }
         }
         return Set.copyOf(identities);
     }
 
     public static ProtectionPolicy compose(ProtectionPolicy base, KitMap kitMap) {
-        Set<ItemIdentity> activeIdentities = identitiesFor(kitMap);
+        return compose(base, kitMap, Map.of());
+    }
+
+    public static ProtectionPolicy compose(
+            ProtectionPolicy base,
+            KitMap kitMap,
+            Map<String, Map<ItemIdentity, Integer>> kitDesiredCounts
+    ) {
+        Set<ItemIdentity> activeIdentities = identitiesFor(kitMap, kitDesiredCounts);
         if (activeIdentities.isEmpty()) {
             return base == null ? ProtectionPolicy.allowAll() : base;
         }

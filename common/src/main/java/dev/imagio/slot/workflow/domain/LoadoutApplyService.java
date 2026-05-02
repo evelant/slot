@@ -9,10 +9,12 @@ import dev.imagio.slot.inventory.action.InventoryActionRequest;
 import dev.imagio.slot.inventory.action.InventoryActionScope;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.action.InventoryTargetCanonicalizer;
+import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.InventoryActionPolicy;
 import dev.imagio.slot.inventory.core.InventoryCapability;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
+import dev.imagio.slot.inventory.core.InventorySourceRole;
 import dev.imagio.slot.inventory.core.InventoryToolActionId;
 import dev.imagio.slot.inventory.core.InventoryToolToggleId;
 import dev.imagio.slot.inventory.core.ItemIdentity;
@@ -196,7 +198,8 @@ public final class LoadoutApplyService {
                 StagingTarget stagingTarget = findStagingTarget(
                         authority,
                         resolvedProtection,
-                        reservedSourceSlots
+                        reservedSourceSlots,
+                        currentOccupant.identity()
                 );
                 if (stagingTarget == null) {
                     missingTargets.add(entry.target());
@@ -359,7 +362,8 @@ public final class LoadoutApplyService {
                 StagingTarget stagingTarget = findStagingTarget(
                         authority,
                         resolvedProtection,
-                        reservedSourceSlots
+                        reservedSourceSlots,
+                        occupant.identity()
                 );
                 if (stagingTarget == null) {
                     missingTargets.add(clearTarget);
@@ -404,6 +408,90 @@ public final class LoadoutApplyService {
             }
         }
 
+        // Pass 3: fill stackable kit-belt slots from remaining carried inventory.
+        // The primary placement only moves the first matching source slot's stack —
+        // if the player has the same stackable spread across multiple slots, the
+        // belt slot ends up holding only what was in that one source. Walk again,
+        // and for each placed stackable target with room left under maxStackSize,
+        // emit TRANSFER + INSERT_ONLY actions consolidating the rest.
+        // Failures here are non-fatal (no rollback): the primary placement
+        // already happened, and a partial fill is still strictly an improvement.
+        for (QuickAccessLoadoutEntry entry : orderedEntries) {
+            if (entry.identity() == null || entry.target() == null) {
+                continue;
+            }
+            String fillKey = InventoryTargetCanonicalizer.canonicalKey(entry.target());
+            TargetOccupant placed = currentTargets.get(fillKey);
+            if (placed == null
+                    || placed.stack() == null
+                    || placed.stack().isEmpty()
+                    || !ItemIdentityMatcher.matchesMovable(placed.identity(), entry.identity())) {
+                continue;
+            }
+            int max = placed.stack().getMaxStackSize();
+            // Clamp by slot capacity: the source stack may exceed maxStackSize
+            // (e.g. a backpack holding 100 of an item) but the target slot can
+            // only hold up to max. Use the effective count, not the raw count.
+            int placedCount = Math.min(placed.stack().getCount(), max);
+            if (max <= 1 || placedCount >= max) {
+                continue;
+            }
+            InventoryActionTarget fillTarget = toActionTarget(entry.target());
+            InventoryActionKind fillKind = actionKindFor(entry.target());
+            // The target slot is itself a carried source, so reserve it before
+            // searching for fill candidates. Otherwise findCandidateSource can
+            // pick the target slot as its own source (when the primary placement
+            // was a no-op match), planning a self-transfer that does nothing.
+            String fillTargetSourceKey = sourceKeyForTarget(host, fillTarget);
+            if (fillTargetSourceKey != null) {
+                reservedSourceSlots.add(fillTargetSourceKey);
+            }
+            int remaining = max - placedCount;
+            while (remaining > 0) {
+                CandidateSource fillSource = findCandidateSource(
+                        authority,
+                        identityResolver,
+                        entry.identity(),
+                        fillKind,
+                        resolvedProtection,
+                        reservedSourceSlots
+                );
+                if (fillSource == null) {
+                    break;
+                }
+                reservedSourceSlots.add(fillSource.stableKey());
+                int sourceCount = fillSource.stack() == null ? 0 : fillSource.stack().getCount();
+                if (sourceCount <= 0) {
+                    continue;
+                }
+                int moveCount = Math.min(remaining, sourceCount);
+                ItemStack fillStack = fillSource.stack().copy();
+                fillStack.setCount(moveCount);
+                InventoryActionRequest fillRequest = new InventoryActionRequest(
+                        host.hostId(),
+                        host.serverMenuRef(),
+                        UUID.randomUUID().toString(),
+                        InventoryActionKind.TRANSFER,
+                        resolvedMode,
+                        InventoryActionQuantity.STACK,
+                        InventoryActionScope.SINGLE_TARGET,
+                        InventoryActionConflictPolicy.INSERT_ONLY,
+                        "workflow:loadout_fill",
+                        fillSource.actionTarget(),
+                        fillTarget,
+                        moveCount,
+                        entry.identity(),
+                        fillStack,
+                        InventoryToolActionId.PROVIDER_DEFINED,
+                        InventoryToolToggleId.PROVIDER_DEFINED,
+                        false,
+                        ""
+                );
+                operations.add(new PlannedTargetOperation(entry.target(), List.of(fillRequest), null));
+                remaining -= moveCount;
+            }
+        }
+
         return new LoadoutApplyPlan(
                 loadout.id(),
                 List.copyOf(operations),
@@ -441,6 +529,11 @@ public final class LoadoutApplyService {
             if (operation == null || operation.target() == null || operation.requests().isEmpty()) {
                 continue;
             }
+            // Fill operations are best-effort top-ups added by Pass 3. Their failure
+            // doesn't mean the target failed to apply (the primary placement already
+            // ran in an earlier operation), so don't overwrite that target's outcome
+            // or re-mark satisfied/missing on their behalf.
+            boolean fillOnly = isFillOperation(operation);
 
             boolean stageCompleted = false;
             InventoryActionOutcome terminalOutcome = null;
@@ -471,7 +564,7 @@ public final class LoadoutApplyService {
                 stageCompleted = operation.requests().size() > 1 && index < operation.requests().size() - 1;
             }
 
-            if (terminalOutcome != null) {
+            if (!fillOnly && terminalOutcome != null) {
                 outcomesByTarget.put(operation.target(), terminalOutcome);
                 if (terminalOutcome.successful()) {
                     satisfiedTargets.add(operation.target());
@@ -626,7 +719,8 @@ public final class LoadoutApplyService {
         StagingTarget stagingTarget = findStagingTarget(
                 authority,
                 resolvedProtection,
-                reservedSourceSlots
+                reservedSourceSlots,
+                currentOccupant.identity()
         );
         if (stagingTarget == null) {
             diagnostics.add("no_staging_slot_for_clear_on_missing:" + targetKey);
@@ -668,14 +762,36 @@ public final class LoadoutApplyService {
             ProtectionPolicy protectionPolicy,
             Set<String> reservedSourceSlots
     ) {
-        // Staging = "park displaced target occupant somewhere carried." We exclude
-        // quick-access + equipment sources because they are the loadout's own target
-        // surfaces (parking into one would collide with a later entry and produce a
-        // self-transfer). Otherwise we follow the general carried stableOrder — which
-        // per BuiltinInventoryDescriptors is backpack → main → hotbar. The "backpack
-        // first" order matches the design rule that overflow lands in backpacks so
-        // the main inventory's layout stays intact across kit switches.
+        return findStagingTarget(authority, protectionPolicy, reservedSourceSlots, null);
+    }
+
+    /**
+     * Staging = "park displaced target occupant somewhere carried." We exclude
+     * quick-access + equipment sources because they are the loadout's own target
+     * surfaces (parking into one would collide with a later entry and produce a
+     * self-transfer). Otherwise we follow the general carried stableOrder — which
+     * per BuiltinInventoryDescriptors is backpack → main → hotbar. The "backpack
+     * first" order matches the design rule that overflow lands in backpacks so
+     * the main inventory's layout stays intact across kit switches.
+     *
+     * <p>Container-aware override: when {@code displacedItem} looks like a
+     * container item (Sophisticated Backpack, vanilla shulker box, etc.),
+     * skip {@link InventorySourceRole#PROVIDER_DEFINED} sources entirely.
+     * Most container mods refuse to nest a container inside another container
+     * of the same kind; without the skip, the planner happily stages the
+     * displaced backpack into a sibling backpack, the execution-time INSERT
+     * fails, and the hotbar slot stays occupied — kit activation silently
+     * leaves the wrong item in that slot. Falling back to MAIN / OFFHAND /
+     * any non-PROVIDER source dodges the refusal.
+     */
+    private static StagingTarget findStagingTarget(
+            InventoryAuthoritySnapshot authority,
+            ProtectionPolicy protectionPolicy,
+            Set<String> reservedSourceSlots,
+            ItemIdentity displacedItem
+    ) {
         InventoryHostDescriptor host = authority.host();
+        boolean avoidProviderSources = isContainerLikeIdentity(displacedItem);
         return findStagingTarget(
                 authority,
                 reservedSourceSlots,
@@ -683,7 +799,26 @@ public final class LoadoutApplyService {
                 source -> source != null
                         && source.supports(InventoryCapability.INSERT)
                         && !isQuickAccessOrEquipmentSource(host, source.id())
+                        && !(avoidProviderSources && source.role() == InventorySourceRole.PROVIDER_DEFINED)
         );
+    }
+
+    /**
+     * Heuristic: items whose path contains {@code backpack} or
+     * {@code shulker_box} are containers most mods refuse to nest. Pure
+     * domain check via the item id (no NeoForge cap import) so it works
+     * across platforms. New container mods can be added here as we hit
+     * them; the cost of mis-classifying a non-container is just losing
+     * the backpack-first staging preference for that item.
+     */
+    private static boolean isContainerLikeIdentity(ItemIdentity identity) {
+        if (identity == null || identity.itemId() == null) {
+            return false;
+        }
+        String itemId = identity.itemId().toLowerCase(java.util.Locale.ROOT);
+        int colon = itemId.indexOf(':');
+        String path = colon >= 0 ? itemId.substring(colon + 1) : itemId;
+        return path.contains("backpack") || path.contains("shulker_box");
     }
 
     private static StagingTarget findStagingTarget(
@@ -779,9 +914,18 @@ public final class LoadoutApplyService {
             }
         }
         for (var group : host.equipmentGroups()) {
-            if (group != null && sourceId.equals(group.sourceId())) {
-                return true;
+            if (group == null || !sourceId.equals(group.sourceId())) {
+                continue;
             }
+            // Offhand is allowed as a staging fallback. Current kits never target
+            // the offhand slot (kit pages are hotbar-only), so it's safe to park
+            // a displaced item there when MAIN is full — common when the player
+            // has multiple backpacks on the belt being kicked off by a kit
+            // activation. Armor and other equipment groups stay excluded.
+            if (BuiltinInventoryIds.PLAYER_OFFHAND.equals(group.sourceId())) {
+                continue;
+            }
+            return true;
         }
         return false;
     }
@@ -882,6 +1026,22 @@ public final class LoadoutApplyService {
             case LoadoutTarget.QuickAccessLaneTarget ignored -> InventoryActionKind.ASSIGN;
             case LoadoutTarget.EquipmentSlotTarget ignored -> InventoryActionKind.ASSIGN;
         };
+    }
+
+    private static boolean isFillOperation(PlannedTargetOperation operation) {
+        if (operation == null) {
+            return false;
+        }
+        for (InventoryActionRequest request : operation.requests()) {
+            if (request == null) {
+                continue;
+            }
+            String origin = request.origin();
+            if (origin != null && origin.startsWith("workflow:loadout_fill")) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private static InventoryActionQuantity quantityFor(InventoryActionKind kind) {

@@ -119,24 +119,41 @@ final class SearchResultsPanelBuilder {
         boolean searchActive = !host.searchController.normalizedQuery().isBlank();
         java.util.Set<KitIdentity> kitNeeded = kitNeededIdentities();
         ArrayList<Match> out = new ArrayList<>();
+        int proximateSkipped = 0;
         for (SlotWorkspaceViewModel.ChestChip chip : host.viewModel.chestChips()) {
             if (chip.contents().isEmpty()) {
                 continue;
             }
-            int matchCount = 0;
+            int searchMatchCount = 0;
+            int kitMatchCount = 0;
             int matchIdentities = 0;
             for (SlotWorkspaceViewModel.ChestContentSummary summary : chip.contents()) {
-                boolean matches = (searchActive && host.searchController.matchesContentSummary(summary))
-                        || matchesKitNeed(summary, kitNeeded);
-                if (matches) {
-                    matchCount += summary.count();
+                boolean searchHit = searchActive && host.searchController.matchesContentSummary(summary);
+                boolean kitHit = matchesKitNeed(summary, kitNeeded);
+                if (searchHit || kitHit) {
                     matchIdentities++;
+                    if (searchHit) {
+                        searchMatchCount += summary.count();
+                    }
+                    if (kitHit) {
+                        kitMatchCount += summary.count();
+                    }
                 }
             }
             if (matchIdentities <= 0) {
                 continue;
             }
-            out.add(new Match(chip, matchCount, matchIdentities));
+            // A chest matched only because of an active kit need (no
+            // search hits in it) and it's already in the proximity
+            // panel on the same column — listing it twice reads as
+            // redundant. Search hits always include their chest
+            // regardless of proximity, since search is the only place
+            // to find query matches across non-proximate storage.
+            if (searchMatchCount == 0 && chip.proximate()) {
+                proximateSkipped++;
+                continue;
+            }
+            out.add(new Match(chip, searchMatchCount + kitMatchCount, matchIdentities));
         }
         // Proximate chests first (closer = more actionable), then by match
         // count descending so the chest with the most hits sits on top.
@@ -144,6 +161,17 @@ final class SearchResultsPanelBuilder {
                 .comparing((Match m) -> !m.chip.proximate())
                 .thenComparingInt((Match m) -> -m.matchCount)
                 .thenComparing(m -> m.chip.label(), String.CASE_INSENSITIVE_ORDER));
+        if (dev.imagio.slot.SlotDebugLog.enabled()) {
+            dev.imagio.slot.SlotCommon.LOGGER.info(
+                    "[SLOT] Chest locator query searchActive={} query='{}' kitNeededCount={} chipsWalked={} matches={} proximateSkippedDueToProximityPanel={}",
+                    searchActive,
+                    host.searchController.normalizedQuery(),
+                    kitNeeded.size(),
+                    host.viewModel.chestChips().size(),
+                    out.size(),
+                    proximateSkipped
+            );
+        }
         return out;
     }
 

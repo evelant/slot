@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-04-30
+Last updated: 2026-05-01
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -9,13 +9,62 @@ see [../status.md](../status.md). For shipped plans, see
 
 ## Active
 
-**Open.** Pull the next item from the queue when picking up.
-Facet-driven suggestions Phases 1–6 shipped 2026-04-30 (color
-clustering via `dye_color` canonical wheel + `palette` tone fallback
-landed alongside; full plan moved to
-[`done/facet-driven-suggestions.md`](done/facet-driven-suggestions.md)).
+**Open.** Pull the next item from the queue when picking up. Split-cursor
+mode and full-scope desired counts shipped 2026-05-01; six new playtest
+bugs from that work sit at the top of the queue.
 
 ## Recent landings
+
+**2026-05-01 — split-cursor mode and full-scope desired counts.**
+
+Two related additions to the input vocabulary, both shipped end to end.
+Design ref: [`../design/gestures.md`](../design/gestures.md).
+
+- **Split cursor.** Virtual cursor for partial-stack moves. ctrl+right
+  picks up half (cumulative on repeats); left/right/shift+right drop
+  all/one/half. Pickup wired on hotbar slots and atlas cards (atlas
+  card uses a server-projected `largestCarriedSlot{SourceId,Index,Count}`
+  on each `AtlasItem` so it works for items in main / hotbar / offhand
+  / backpack — codec round-tripped). Drop targets: hotbar slot
+  (client-clamped against capacity + identity) and chest chip. ESC and
+  click-on-non-target cancel via a bubble-phase root handler. Drag is
+  suppressed while carrying. New RPCs: `cursorDropToHotbar`,
+  `cursorDropToChest`. New helper: `DepositExecutor.depositPartialStack`.
+- **Desired counts, both scopes.** New domain:
+  `DesiredCountWorkflowDomainService` with `setPlayer/adjustPlayer/
+  setForKit/adjustForKit/resolved/activeScope`; events
+  `WorkflowEvent.{PlayerDesiredCountSet, KitDesiredCountSet}`;
+  projection fields `playerDesiredCounts` and `kitDesiredCounts`;
+  checkpoint persistence; kit-deletion cascade clears orphan kit-scoped
+  entries. View-model surfaces resolved value + `desiredCountFromKit`
+  flag on each `AtlasItem` for scope-coloured pip rendering
+  (`DESIRED_COUNT_PIP_KIT` amber vs `DESIRED_COUNT_PIP_GLOBAL` blue).
+  ctrl+scroll on atlas cards adjusts ±1 in the active scope; right-
+  click "Set desired count…" opens a numeric entry. Drag-onto-kit-
+  bring-panel writes kit-scoped count=1 (the kit "bring" list is now
+  derived from kit-scoped counts > 0; legacy
+  `KitDefinition.bring` field deleted along with its events / RPCs /
+  command handlers / persistence). Auto-fetch on kit activation pulls
+  toward kit-scoped counts from proximate chests (highest-affinity
+  first). Cleanup protection extends both `KitActiveProtection`
+  (kit-scoped) and a new `DesiredCountProtection` wrapper
+  (player-global). Legacy collection-scoped `DesiredCountSet` /
+  `setDesiredCount` / `desiredCountsByCollection` /
+  `DesiredCount.java` deleted in the same change; old event tags
+  decode to `null` so existing event logs replay clean.
+- **Playtest bug pass landed alongside.** Right-click intercept fires
+  on tracked + untracked chests (renamed
+  `LootChestRightClickInterceptor` → `ChestRightClickInterceptor`).
+  Kit apply fills stackables to max from carry instead of using the
+  literal kit-page count (Pass 3 fill in `LoadoutApplyService`). Kit
+  progress + atlas star now use `ItemIdentityMatcher.matchesMovable`
+  so a damaged bow satisfies a kit slot captured with a pristine one.
+  Hotbar stack-fill prefers the existing partial slot over a free
+  slot (`SlotWorkspaceUiSession.assignHomeToFreeHotbar`). OFFHAND added
+  as a kit-displacement fallback target so multi-backpack belts have a
+  better chance of clearing.
+
+`:common:test :neoforge:test` green.
 
 **2026-04-30 — facet-driven suggestions Phases 1–6.** All six phases
 of the facet-driven suggestion plan are in. The new pass on top of
@@ -103,26 +152,91 @@ Compile clean, `:common:test :neoforge:test` green.
 Roughly ordered by playtest signal. Pull from the top when the active
 track lands.
 
-1. **Learned-storage residual polish**
+1. **Cursor + desired-counts playtest bug pass (2026-05-01).** Six
+   items reported after the split-cursor and desired-counts work
+   landed. Likely best taken as one batch since several share root
+   causes (#1 + #5 in particular) and #6 unblocks the rest.
+
+   1. **Duplicate chest in proximate panel + chest-locator panel.**
+      A nearby chest holding a kit-needed item appears in both
+      sections. Decide which surface owns "proximate + kit-needed"
+      (chest locator already shows kit-needed identities under
+      search; proximate panel shouldn't double up) or render a single
+      visual hint that the chest covers both intents.
+   2. **Kit "carry" section gives no want-vs-have indication.**
+      Currently the section shows what the kit wants but doesn't
+      surface the gap. Probably the same data path that drives the
+      atlas-card pip — `KitBringItem` already has `present`, and
+      `kitDesiredCounts` has the target. Need to plumb both into the
+      kit-rack carry row and render `M / N`.
+   3. **Navigation to chests with kit-needed items.** No in-world or
+      in-atlas wayfinder. Brainstorm needed: particle trails in-world
+      were one idea but not obviously best — also consider in-atlas
+      "this chest →" arrow when hovering a kit-needed card, a
+      breadcrumb on the chest locator entry, or compass-style HUD
+      hint. Atlas UI may need refinement here too.
+   4. **Ghost vs carried not differentiated enough on the hotbar.**
+      The faded kit-needed ghost preview reads too similar to a real
+      hotbar item; players miss "this slot is empty / waiting." Try
+      stronger transparency, a dashed outline, or an inset corner
+      glyph. Trivial to iterate; pick a treatment after #6 lands so
+      we have screenshots / logs to reason from.
+   5. **Multi-chest / non-stackable identity bug.** Specific repro:
+      kit needs `bucket_of_water`, a proximate chest contains one,
+      and the atlas ends up with **two** `bucket_of_water` cards —
+      one with the desired-count star but no chest-stock pip, one
+      with the chest-stock pip but no desired star. Chest locator
+      lists two chests for the identity (one proximate, one not).
+      Kit progress still says "need 1." Strongly suggests the
+      proximate-chest ghost projection produces a parallel identity
+      key for non-stackables that doesn't `equals()` the kit-page
+      identity. Likely culprits: `ElsewhereGhostProjection`,
+      ghost-accumulator merge logic in
+      `SlotWorkspaceViewModel.build`, or the chest-locator query.
+      Use `ItemIdentityMatcher.matchesMovable` semantics consistently
+      end-to-end (kits already do; chest projections may not).
+   6. **More debug logging.** The kit-need / chest-presence /
+      identity-resolution paths are sparse on diagnostics, making
+      bugs like #5 hard to triage from screenshots alone. Add
+      structured INFO/DEBUG at: identity creation per chest
+      enumeration, chest-locator query (which identities matched and
+      via which equality path), kit-needed projection (input
+      identities + carried set + final needed set), proximate
+      vs elsewhere classification. Prefer `SlotDiagnostics` /
+      `SlotDebugLog` over raw `LOGGER.info` so the pattern stays
+      consistent with the chest deposit / mutation logging that
+      already exists.
+
+   Cursor / desired-counts polish that was deferred from the
+   2026-05-01 ship and could be folded into this pass if convenient
+   (each documented in [`../design/gestures.md`](../design/gestures.md)):
+
+   - Atlas card *drop* (cursor → "send to home").
+   - Chest-drop overflow tracking (return-count from RPC).
+   - Origin-slot highlight while cursor is non-empty.
+   - "Need N more" status text on the desired-count pip.
+   - Right-click "Set desired count…" kit-vs-global toggle.
+
+2. **Learned-storage residual polish**
    ([learned-storage.md](learned-storage.md)). Sticky cluster
    ordinals across split / merge (today, single-chest churn keeps
    chips stable but multi-chest topology changes can renumber
    labels); per-row "→ suggested home" preview on the loot-chest
    panel; atlas-deposit take-back guard (only revisit if playtest
    shows stuck affinity).
-2. **Runtime-crawl deterministic fallback**
+3. **Runtime-crawl deterministic fallback**
    ([item-classification.md § Runtime discovery](item-classification.md#runtime-discovery)).
    Walks the live registry to derive deterministic facets
    (`material_family`, `form`, `processing_in`) for mods we don't
    have LLM data for. Defer until facet-driven-suggestions plays out
    — the next gap might already close from a richer prompt regen.
-3. **Item-classification stage-4 NN priming + confidence-band
+4. **Item-classification stage-4 NN priming + confidence-band
    ranking + acceptance-rate logging**
    ([item-classification.md § Integration sequence](item-classification.md#integration-sequence-next-concrete-work)
    step 6). Now that the FacetIndex-driven populate path playtests
    clean, this is the next layer of suggestion-quality work that
    sits above facet-driven-suggestions.
-4. **Kit-holdout deposit + explicit withdraw verb.** Two pieces of
+5. **Kit-holdout deposit + explicit withdraw verb.** Two pieces of
    open work that the retired storage-prototype plan tracked under
    Slices 4b / 5; they need re-planning against the current chip /
    affinity model.
@@ -135,12 +249,12 @@ track lands.
      reachable Kit-needed identities from proximate chests in one
      click. A general-purpose withdraw verb (independent of an active
      Kit) hasn't been planned. Defer until playtest signals demand.
-5. **Relevance-LOD UI refinement**
+6. **Relevance-LOD UI refinement**
    ([relevance-lod-prototype.md](relevance-lod-prototype.md)).
    Playtest-driven polish — pip readability at modded scale, atlas
    convulse on pickup, drag-drop ordinal feel.
-6. **Kit prototype slice 4** ([kit-prototype.md](kit-prototype.md)).
-7. **Cleanup.** Remove (or downgrade to DEBUG) the
+7. **Kit prototype slice 4** ([kit-prototype.md](kit-prototype.md)).
+8. **Cleanup.** Remove (or downgrade to DEBUG) the
    `[SLOT][nudge]` / `[SLOT][layout]` diagnostic INFO logging once
    one or two fresh-world opens confirm the layout converges across
    resolutions / GUI scales.

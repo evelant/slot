@@ -39,8 +39,7 @@ final class WorkspaceRpcDispatcher {
     RPCEmitter switchKitPageEmitter;
     RPCEmitter addKitPageEmitter;
     RPCEmitter removeKitPageEmitter;
-    RPCEmitter addKitBringEmitter;
-    RPCEmitter removeKitBringEmitter;
+    RPCEmitter setKitScopedDesiredCountEmitter;
     RPCEmitter setKitSlotIdentityEmitter;
     RPCEmitter renameKitEmitter;
     RPCEmitter duplicateKitEmitter;
@@ -57,6 +56,10 @@ final class WorkspaceRpcDispatcher {
     RPCEmitter assignIdentityToHotbarSlotEmitter;
     RPCEmitter depositHomeToLinkedChestEmitter;
     RPCEmitter depositOneHomeToLinkedChestEmitter;
+    RPCEmitter cursorDropToHotbarEmitter;
+    RPCEmitter cursorDropToChestEmitter;
+    RPCEmitter setPlayerDesiredCountEmitter;
+    RPCEmitter adjustPlayerDesiredCountEmitter;
 
     WorkspaceRpcDispatcher(SlotWorkspaceUiController host) {
         this.host = host;
@@ -234,19 +237,17 @@ final class WorkspaceRpcDispatcher {
                 Integer.class,
                 host.session::removeKitPage
         ));
-        addKitBringEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
-                String.class,
-                String.class,
-                String.class,
-                String.class,
-                host.session::addKitBring
-        ));
-        removeKitBringEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
-                String.class,
-                String.class,
-                String.class,
-                String.class,
-                host.session::removeKitBring
+        // Replaces the legacy addKitBring/removeKitBring pair: writes the
+        // kit-scoped desired count for an explicit kitId, even when that
+        // kit isn't the active one. The kit-rack UI uses count=1 for "add"
+        // and count=0 for "remove."
+        setKitScopedDesiredCountEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                String.class,    // kitId
+                String.class,    // itemId
+                String.class,    // comparisonMode
+                String.class,    // componentFingerprint
+                Integer.class,   // count (0 = clear)
+                host.session::setKitScopedDesiredCount
         ));
         setKitSlotIdentityEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
                 String.class,
@@ -341,6 +342,45 @@ final class WorkspaceRpcDispatcher {
                 String.class,
                 String.class,
                 host.session::depositOneHomeToLinkedChest
+        ));
+        // Split-cursor drops carry an explicit (originSourceId, originSlotIndex)
+        // tuple. The server extracts exactly count items from THAT slot — the
+        // identity-based "find anywhere" route is wrong for cursor drops because
+        // a player who picked up half of slot A would otherwise see a drop pull
+        // from a different slot B that happens to share the identity.
+        cursorDropToHotbarEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                String.class,    // originSourceId
+                Integer.class,   // originSlotIndex
+                String.class,    // itemId
+                String.class,    // comparisonMode
+                String.class,    // componentFingerprint
+                Integer.class,   // count
+                Integer.class,   // hotbarIndex
+                host.session::cursorDropToHotbar
+        ));
+        cursorDropToChestEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                String.class,    // originSourceId
+                Integer.class,   // originSlotIndex
+                String.class,    // itemId
+                String.class,    // comparisonMode
+                String.class,    // componentFingerprint
+                Integer.class,   // count
+                String.class,    // storageId
+                host.session::cursorDropToChest
+        ));
+        setPlayerDesiredCountEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                String.class,    // itemId
+                String.class,    // comparisonMode
+                String.class,    // componentFingerprint
+                Integer.class,   // count (0 = clear)
+                host.session::setPlayerDesiredCount
+        ));
+        adjustPlayerDesiredCountEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                String.class,    // itemId
+                String.class,    // comparisonMode
+                String.class,    // componentFingerprint
+                Integer.class,   // delta (signed, often ±1 from ctrl+scroll)
+                host.session::adjustPlayerDesiredCount
         ));
     }
 
@@ -573,23 +613,27 @@ final class WorkspaceRpcDispatcher {
         host.rebuild();
     }
 
-    void sendAddKitBring(String kitId, SlotWorkspaceViewModel.IdentityRef identity) {
-        if (identity == null) {
+    /**
+     * Set or clear a kit-scoped desired count. Used by the kit-rack bring
+     * panel: dragging an item in calls this with count=1 to seed the
+     * standing order; dragging out calls with count=0 to clear it. The
+     * legacy add/remove-bring RPC pair was retired in favour of this
+     * count-aware setter so the bring concept lives entirely on top of
+     * the desired-counts machinery.
+     */
+    void sendSetKitScopedDesiredCount(String kitId, SlotWorkspaceViewModel.IdentityRef identity, int count) {
+        if (kitId == null || kitId.isBlank() || identity == null) {
             return;
         }
-        boolean sent = addKitBringEmitter != null && addKitBringEmitter.send(
-                kitId, identity.itemId(), identity.comparisonMode(), identity.componentFingerprint());
-        host.localStatus.set(sent ? "adding to bring..." : "add bring unavailable");
-        host.rebuild();
-    }
-
-    void sendRemoveKitBring(String kitId, SlotWorkspaceViewModel.IdentityRef identity) {
-        if (identity == null) {
-            return;
-        }
-        boolean sent = removeKitBringEmitter != null && removeKitBringEmitter.send(
-                kitId, identity.itemId(), identity.comparisonMode(), identity.componentFingerprint());
-        host.localStatus.set(sent ? "removing from bring..." : "remove bring unavailable");
+        boolean sent = setKitScopedDesiredCountEmitter != null && setKitScopedDesiredCountEmitter.send(
+                kitId,
+                identity.itemId(),
+                identity.comparisonMode(),
+                identity.componentFingerprint(),
+                count);
+        host.localStatus.set(sent
+                ? (count > 0 ? "kit desired count updated" : "kit desired count cleared")
+                : "kit desired count unavailable");
         host.rebuild();
     }
 
@@ -875,6 +919,77 @@ final class WorkspaceRpcDispatcher {
         );
         host.localStatus.set(sent ? "chest move requested" : "chest move unavailable");
         host.rebuild();
+    }
+
+    void sendCursorDropToHotbar(WorkspaceCursorCarry.State state, int hotbarIndex, int count) {
+        if (cursorDropToHotbarEmitter == null || state == null || count <= 0) {
+            return;
+        }
+        boolean sent = cursorDropToHotbarEmitter.send(
+                state.sourceId(),
+                state.slotIndex(),
+                state.identity().itemId(),
+                state.identity().comparisonMode(),
+                state.identity().componentFingerprint(),
+                count,
+                hotbarIndex
+        );
+        if (!sent) {
+            host.localStatus.set("cursor drop unavailable");
+            host.rebuild();
+        }
+    }
+
+    void sendSetPlayerDesiredCount(SlotWorkspaceViewModel.IdentityRef identity, int count) {
+        if (setPlayerDesiredCountEmitter == null || identity == null) {
+            return;
+        }
+        boolean sent = setPlayerDesiredCountEmitter.send(
+                identity.itemId(),
+                identity.comparisonMode(),
+                identity.componentFingerprint(),
+                count
+        );
+        if (!sent) {
+            host.localStatus.set("desired count update unavailable");
+            host.rebuild();
+        }
+    }
+
+    void sendAdjustPlayerDesiredCount(SlotWorkspaceViewModel.IdentityRef identity, int delta) {
+        if (adjustPlayerDesiredCountEmitter == null || identity == null || delta == 0) {
+            return;
+        }
+        boolean sent = adjustPlayerDesiredCountEmitter.send(
+                identity.itemId(),
+                identity.comparisonMode(),
+                identity.componentFingerprint(),
+                delta
+        );
+        if (!sent) {
+            host.localStatus.set("desired count update unavailable");
+            host.rebuild();
+        }
+    }
+
+    void sendCursorDropToChest(WorkspaceCursorCarry.State state, String storageId, int count) {
+        if (cursorDropToChestEmitter == null || state == null || count <= 0
+                || storageId == null || storageId.isBlank()) {
+            return;
+        }
+        boolean sent = cursorDropToChestEmitter.send(
+                state.sourceId(),
+                state.slotIndex(),
+                state.identity().itemId(),
+                state.identity().comparisonMode(),
+                state.identity().componentFingerprint(),
+                count,
+                storageId
+        );
+        if (!sent) {
+            host.localStatus.set("cursor drop unavailable");
+            host.rebuild();
+        }
     }
 
 }

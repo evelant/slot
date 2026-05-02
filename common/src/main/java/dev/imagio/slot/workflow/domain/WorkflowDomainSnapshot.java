@@ -68,4 +68,12 @@ public record WorkflowDomainSnapshot(
     public KitMap kitMap() {
         return workflowProjection.kitMap();
     }
+
+    public java.util.Map<dev.imagio.slot.inventory.core.ItemIdentity, Integer> playerDesiredCounts() {
+        return workflowProjection.playerDesiredCounts();
+    }
+
+    public java.util.Map<String, java.util.Map<dev.imagio.slot.inventory.core.ItemIdentity, Integer>> kitDesiredCounts() {
+        return workflowProjection.kitDesiredCounts();
+    }
 }

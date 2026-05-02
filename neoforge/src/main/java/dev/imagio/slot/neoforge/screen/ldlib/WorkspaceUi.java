@@ -3,7 +3,7 @@ package dev.imagio.slot.neoforge.screen.ldlib;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceFormat.compactCount;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.ACCENT;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.FONT_UI;
-import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.GHOST_ICON_OVERLAY_COLOR;
+import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.GHOST_ICON_ALPHA_TINT;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.MUTED;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.PANEL_ALT;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.ROW;
@@ -114,13 +114,17 @@ final class WorkspaceUi {
     static UIElement itemIcon(ItemStack stack, float size, boolean carried) {
         ItemStack iconStack = stack == null ? ItemStack.EMPTY : stack.copy();
         ItemStackTexture texture = new ItemStackTexture(iconStack);
+        if (!carried) {
+            // Ghost icons render at reduced alpha rather than under a
+            // darkening overlay — a ghost-only kit-needed slot was
+            // reading too similarly to a real hotbar item with the
+            // overlay treatment. ItemStackTexture multiplies this color
+            // into DrawerHelper.drawItemStack's shader-color, so a
+            // low-alpha white shows the icon as straight transparency.
+            texture.setColor(GHOST_ICON_ALPHA_TINT);
+        }
         UIElement icon = new UIElement().layout(layout -> layout.width(size).height(size))
-                .style(style -> {
-                    style.backgroundTexture(texture);
-                    if (!carried) {
-                        style.overlayTexture(rect(GHOST_ICON_OVERLAY_COLOR));
-                    }
-                });
+                .style(style -> style.backgroundTexture(texture));
         icon.setAllowHitTest(false);
         return icon;
     }

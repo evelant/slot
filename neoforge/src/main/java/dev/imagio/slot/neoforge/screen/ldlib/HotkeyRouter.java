@@ -19,6 +19,11 @@ final class HotkeyRouter {
         host.root.setEnforceFocus(event -> {
         });
         host.root.addEventListener(UIEvents.MUI_CHANGED, event -> host.root.focus());
+        // Cursor-cancel on ESC must run before searchController's ESC handler
+        // and before vanilla's "close screen" — without it, ESC would close
+        // the workspace entirely while the cursor is carrying, which feels
+        // like data loss even though the cursor is virtual.
+        host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCursorCancelKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleBeltHotkey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, host.searchController::handleKeyDown, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handlePeekKeyDown, true);
@@ -47,6 +52,19 @@ final class HotkeyRouter {
         host.root.addEventListener(UIEvents.TICK, event -> host.flushRebuildIfPending());
         host.root.addEventListener(UIEvents.TICK, event -> host.cameraController.tick());
         host.root.addEventListener(UIEvents.TICK, event -> host.searchController.tickIdleTimer());
+    }
+
+    void handleCursorCancelKey(UIEvent event) {
+        if (event.keyCode != GLFW.GLFW_KEY_ESCAPE) {
+            return;
+        }
+        if (!host.cursor.isCarrying()) {
+            return;
+        }
+        event.stopPropagation();
+        host.cursor.clear();
+        host.localStatus.set("cursor cancelled");
+        host.rebuild();
     }
 
     void handleBeltHotkey(UIEvent event) {

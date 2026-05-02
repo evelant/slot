@@ -6,11 +6,10 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Predicate;
 
 public final class IslandSuggestionService {
     public static final int MAX_TOTAL_CHIPS = 3;
-    public static final int MAX_TEMPLATE_CHIPS = 1;
-    public static final int MAX_LEARNED_CHIPS = 3;
 
     private IslandSuggestionService() {
     }
@@ -35,6 +34,7 @@ public final class IslandSuggestionService {
         LearnedIslandRuleStore rules = learnedRules == null ? new LearnedIslandRuleStore() : learnedRules;
         Map<String, TriageIslandRef> islandsById = indexIslands(existingIslands);
         Set<String> dismissed = dismissedTemplateIds == null ? Set.of() : dismissedTemplateIds;
+        List<LearnedIslandRule> sortedLearned = sortedLearnedRules(rules.firingRulesFor(descriptor));
 
         List<ChipSuggestion> result = new ArrayList<>(MAX_TOTAL_CHIPS);
 
@@ -51,35 +51,82 @@ public final class IslandSuggestionService {
             result.add(specificTemplateChip);
         }
 
-        // Phase 2: learned chips fill remaining slots, deduped against
-        // the specific template chip's island so the leader doesn't
-        // get echoed by a learned rule on the same id.
-        List<ChipSuggestion> learnedChips = buildLearnedChips(descriptor, rules, islandsById);
-        for (ChipSuggestion chip : learnedChips) {
-            if (result.size() >= MAX_TOTAL_CHIPS || result.size() >= MAX_LEARNED_CHIPS + (specificTemplateChip == null ? 0 : 1)) {
-                break;
-            }
-            if (containsIsland(result, chip.islandId())) {
-                continue;
-            }
-            result.add(chip);
-        }
+        // Phase 2: *strong* learned chips (TAG / MATERIAL_FAMILY /
+        // SUBSYSTEM / DYE_COLOR — adjacency priority 0). A player who
+        // has homed two andesite-family items together, or two of the
+        // same dye color, is making a clear placement statement; that
+        // beats a generic template.
+        addLearnedChips(result, sortedLearned, islandsById, key -> key.priorityRank() == 0);
 
         // Phase 3: a *generic* template chip (BUILDING / DECORATION /
         // NATURAL / MECHANISMS / REDSTONE / UPGRADES / TRANSPORT /
         // UTILITY / CURIOSITY / WORKBENCHES / MISC) fills the tail
         // when there's room and no specific template already led.
-        // These templates have wide roleTriggers, so a player-confirmed
-        // learned chip is usually the better signal — that's why they
-        // sort *behind* learned rather than in front like the
-        // high-specificity set.
         if (specificTemplateChip == null && result.size() < MAX_TOTAL_CHIPS) {
             ChipSuggestion templateChip = buildTemplateChip(descriptor, result, islandsById, dismissed);
             if (templateChip != null && !containsIsland(result, templateChip.islandId())) {
                 result.add(templateChip);
             }
         }
+
+        // Phase 4: *weak* learned chips (NAMESPACE / CREATIVE_TAB —
+        // adjacency priority ≥ 1). These fire on broad signals like
+        // "the player homed two other Create items somewhere" — too
+        // coarse to outrank a clear template match. They still surface
+        // when no template fires at all (modded items without facet
+        // data), which is the original justification for the learned
+        // layer.
+        addLearnedChips(result, sortedLearned, islandsById, key -> key.priorityRank() > 0);
+
         return List.copyOf(result);
+    }
+
+    private static List<LearnedIslandRule> sortedLearnedRules(List<LearnedIslandRule> firing) {
+        if (firing.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<LearnedIslandRule> sorted = new ArrayList<>(firing);
+        sorted.sort((a, b) -> {
+            int priorityCompare = Integer.compare(a.adjacency().priorityRank(), b.adjacency().priorityRank());
+            if (priorityCompare != 0) {
+                return priorityCompare;
+            }
+            int confirmationCompare = Integer.compare(b.confirmations(), a.confirmations());
+            if (confirmationCompare != 0) {
+                return confirmationCompare;
+            }
+            return Long.compare(b.lastConfirmedAtEpochMillis(), a.lastConfirmedAtEpochMillis());
+        });
+        return sorted;
+    }
+
+    private static void addLearnedChips(
+            List<ChipSuggestion> result,
+            List<LearnedIslandRule> sortedLearned,
+            Map<String, TriageIslandRef> islandsById,
+            Predicate<LearnedAdjacencyKey> keyFilter
+    ) {
+        for (LearnedIslandRule rule : sortedLearned) {
+            if (result.size() >= MAX_TOTAL_CHIPS) {
+                return;
+            }
+            if (!keyFilter.test(rule.adjacency())) {
+                continue;
+            }
+            if (containsIsland(result, rule.islandId())) {
+                continue;
+            }
+            TriageIslandRef island = islandsById.get(rule.islandId());
+            if (island == null) {
+                continue;
+            }
+            result.add(ChipSuggestion.learned(
+                    island.islandId(),
+                    island.label(),
+                    island.color(),
+                    island.iconIdentity()
+            ));
+        }
     }
 
     private static boolean containsIsland(List<ChipSuggestion> chips, String islandId) {
@@ -145,47 +192,6 @@ public final class IslandSuggestionService {
             }
         }
         return byId;
-    }
-
-    private static List<ChipSuggestion> buildLearnedChips(
-            IslandSignalDescriptor descriptor,
-            LearnedIslandRuleStore rules,
-            Map<String, TriageIslandRef> islandsById
-    ) {
-        List<LearnedIslandRule> firing = rules.firingRulesFor(descriptor);
-        if (firing.isEmpty()) {
-            return List.of();
-        }
-        ArrayList<LearnedIslandRule> sorted = new ArrayList<>(firing);
-        sorted.sort((a, b) -> {
-            int priorityCompare = Integer.compare(a.adjacency().priorityRank(), b.adjacency().priorityRank());
-            if (priorityCompare != 0) {
-                return priorityCompare;
-            }
-            int confirmationCompare = Integer.compare(b.confirmations(), a.confirmations());
-            if (confirmationCompare != 0) {
-                return confirmationCompare;
-            }
-            return Long.compare(b.lastConfirmedAtEpochMillis(), a.lastConfirmedAtEpochMillis());
-        });
-
-        ArrayList<ChipSuggestion> chips = new ArrayList<>();
-        for (LearnedIslandRule rule : sorted) {
-            TriageIslandRef island = islandsById.get(rule.islandId());
-            if (island == null) {
-                continue;
-            }
-            chips.add(ChipSuggestion.learned(
-                    island.islandId(),
-                    island.label(),
-                    island.color(),
-                    island.iconIdentity()
-            ));
-            if (chips.size() >= MAX_LEARNED_CHIPS) {
-                break;
-            }
-        }
-        return List.copyOf(chips);
     }
 
     private static ChipSuggestion buildTemplateChip(

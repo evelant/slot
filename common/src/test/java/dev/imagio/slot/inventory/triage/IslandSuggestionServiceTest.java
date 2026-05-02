@@ -268,6 +268,59 @@ class IslandSuggestionServiceTest {
     }
 
     @Test
+    void namespaceLearnedChipDoesNotOutrankGenericTemplate() {
+        // Regression: a NAMESPACE-priority learned rule (e.g. "two
+        // other create items got homed to MATERIALS") was overruling
+        // the generic BUILDING template chip for items like
+        // create:polished_cut_andesite. The descriptor cleanly matches
+        // BUILDING via role=building_block, so the template should
+        // lead and the broad-namespace learned chip should trail.
+        LearnedIslandRuleStore rules = new LearnedIslandRuleStore();
+        rules.recordAssignment(buildingBlockDescriptor("create:limestone"), "template.materials", 1L);
+        rules.recordAssignment(buildingBlockDescriptor("create:scoria"), "template.materials", 2L);
+
+        TriageIslandRef materials = new TriageIslandRef(
+                "template.materials", "Materials",
+                IslandSuggestionTemplate.MATERIALS.defaultColor(), null);
+        TriageIslandRef building = new TriageIslandRef(
+                "template.building", "Building Blocks",
+                IslandSuggestionTemplate.BUILDING.defaultColor(), null);
+        List<ChipSuggestion> chips = IslandSuggestionService.suggest(
+                buildingBlockDescriptor("create:polished_cut_andesite"),
+                rules,
+                List.of(materials, building)
+        );
+
+        assertEquals(2, chips.size());
+        assertEquals(ChipSuggestion.ChipKind.TEMPLATE, chips.get(0).kind());
+        assertEquals(IslandSuggestionTemplate.BUILDING, chips.get(0).template());
+        assertEquals(ChipSuggestion.ChipKind.LEARNED, chips.get(1).kind());
+        assertEquals("template.materials", chips.get(1).islandId());
+    }
+
+    @Test
+    void namespaceLearnedChipStillSurfacesWhenNoTemplateFires() {
+        // Modpack item with no template match (no role / tags / class
+        // signal) — the namespace-only learned chip is the only
+        // suggestion we have, so it must still appear.
+        LearnedIslandRuleStore rules = new LearnedIslandRuleStore();
+        rules.recordAssignment(descriptor("oddmod:gizmo_a", Set.of()), "island.scratchpad", 1L);
+        rules.recordAssignment(descriptor("oddmod:gizmo_b", Set.of()), "island.scratchpad", 2L);
+
+        TriageIslandRef scratchpad = new TriageIslandRef(
+                "island.scratchpad", "Scratchpad", 0xCC777777, null);
+        List<ChipSuggestion> chips = IslandSuggestionService.suggest(
+                descriptor("oddmod:gizmo_c", Set.of()),
+                rules,
+                List.of(scratchpad)
+        );
+
+        assertEquals(1, chips.size());
+        assertEquals(ChipSuggestion.ChipKind.LEARNED, chips.get(0).kind());
+        assertEquals("island.scratchpad", chips.get(0).islandId());
+    }
+
+    @Test
     void nullStoreIsHandledAsEmpty() {
         List<ChipSuggestion> chips = IslandSuggestionService.suggest(
                 descriptor("minecraft:apple", Set.of(IslandSignal.FOOD), Set.of()),
@@ -310,6 +363,29 @@ class IslandSuggestionServiceTest {
                 null,
                 subsystemId == null ? List.of() : List.of(subsystemId),
                 List.of(),
+                null,
+                null,
+                null,
+                null,
+                null,
+                List.of(),
+                null,
+                false
+        );
+    }
+
+    private static IslandSignalDescriptor buildingBlockDescriptor(String itemId) {
+        return new IslandSignalDescriptor(
+                ItemIdentity.of(itemId),
+                Set.of(),
+                Set.of(),
+                itemId.contains(":") ? itemId.substring(0, itemId.indexOf(':')) : "",
+                "",
+                "building_block",
+                null,
+                null,
+                List.of(),
+                List.of("building"),
                 null,
                 null,
                 null,

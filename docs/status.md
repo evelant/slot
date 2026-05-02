@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-04-30. Operational handoff. Read after
+Last updated: 2026-05-01. Operational handoff. Read after
 [../README.md](../README.md). For active work + queue see
 [plans/current.md](plans/current.md); for architecture see
 [architecture/overview.md](architecture/overview.md).
@@ -9,9 +9,50 @@ Last updated: 2026-04-30. Operational handoff. Read after
 
 **Open** — pull the next item from
 [plans/current.md § Queue](plans/current.md#queue) when picking up.
-Facet-driven suggestions Phases 1–6 shipped 2026-04-30, including a
-color-clustering pass that turns `dye_color` and `palette` into a
-within-island layered cluster key.
+Split-cursor mode and desired counts (player-global + kit-scoped, with
+auto-fetch on kit activation and cleanup protection) shipped 2026-05-01.
+
+**Recent landings (2026-05-01):**
+
+- **Split-cursor (#5 from playtest list).** Virtual cursor for
+  partial-stack moves: ctrl+right-click picks up half (cumulative on
+  repeats), left/right/shift+right drops all/one/half on hotbar slots
+  and chest chips. Atlas card pickup uses a server-projected
+  `largestCarriedSlotIndex` so it works for items in main / hotbar /
+  offhand / backpack. ESC and click-on-non-target cancel. Hotbar drops
+  client-clamped against capacity + identity so the cursor stays in
+  sync. Drag suppressed while carrying. Design ref:
+  [design/gestures.md § 1](design/gestures.md).
+- **Desired counts (#6 from playtest list), full scope.** Player-global
+  + kit-scoped standing-order intents. Resolution rule: kit-scoped wins
+  while a kit is active and has a non-zero entry, else fall back to
+  player-global. ctrl+scroll on atlas card adjusts active scope ±1.
+  Right-click "Set desired count…" opens a numeric entry. Pip in the
+  bottom-right of the atlas card; colour reflects scope (kit-scoped
+  amber vs player-global blue). Persistence via
+  `WorkflowEvent.{PlayerDesiredCountSet, KitDesiredCountSet}` and
+  `WorkflowCheckpointData.{playerDesiredCounts, kitDesiredCounts}`.
+  Auto-fetch: kit activation pulls toward kit-scoped counts from
+  proximate chests (highest-affinity first). Cleanup protection:
+  identities with desired count > 0 are protected from
+  TRASH/VOID/DROP_TO_WORLD via `DesiredCountProtection` (player-global)
+  and the extended `KitActiveProtection` (kit-scoped). Legacy kit
+  "bring" list merged into kit-scoped desired counts (drag-onto-bring
+  writes count=1; the view-model still surfaces a `bring` list on each
+  KitCard, populated from kit-scoped counts > 0). Legacy
+  collection-scoped `WorkflowEvent.DesiredCountSet`,
+  `CollectionWorkflowDomainService.setDesiredCount`,
+  `CollectionProjection.desiredCountsByCollection`, and the orphaned
+  `DesiredCount.java` record were deleted in the same change. Design
+  ref: [design/gestures.md § 2](design/gestures.md).
+- **Playtest bug pass.** Right-click intercept now fires on tracked +
+  untracked chests (was unclaimed-only). Kit apply fills stackables to
+  max from carry instead of literal kit count. Kit progress / atlas
+  star use movable-aware identity matching so a damaged bow satisfies a
+  pristine kit slot. Hotbar stack-fill prefers the existing partial
+  stack over a new free slot. OFFHAND added as a kit-displacement
+  fallback target. Renamed `LootChestRightClickInterceptor` to
+  `ChestRightClickInterceptor`.
 
 **Recent landings (2026-04-30):**
 
@@ -61,6 +102,35 @@ within-island layered cluster key.
 
 ## Small known bugs
 
+Six items reported 2026-05-01 from playtesting the cursor + desired
+counts work. Detailed reproductions and proposed scopes live in
+[plans/current.md § Queue](plans/current.md#queue) at the top of the
+list. Headlines:
+
+- **Duplicate chest in proximate + chest-locator panels.** A nearby
+  chest containing a kit-needed item shows up in both sections.
+- **Kit "carry" section has no want-vs-have indicator.** Player can
+  see *what* the kit wants but not *how many vs how many they carry*.
+- **Navigation to chests with kit-needed items.** No in-world or
+  in-atlas wayfinder for "the bucket of water you're missing is over
+  there." Open brainstorm — particle trails were one idea but not
+  obviously the right one.
+- **Ghost vs carried not differentiated enough on the hotbar.** When
+  a kit slot is empty the ghost preview reads too similar to a real
+  item.
+- **Multi-chest / non-stackable identity mismatch.** Specific repro:
+  active kit needs `bucket_of_water`; a proximate chest contains one
+  but a *second* `bucket_of_water` shows up on the atlas without the
+  desired-count star (and with a stored-pip the original card lacks).
+  Chest locator lists two chests for the identity. Kit progress still
+  reads "need 1." Smells like the proximate-chest projection is
+  creating a parallel identity for non-stackables.
+- **More debug logging needed.** Diagnostics are sparse around the
+  kit-need / chest-presence / identity-resolution paths, making
+  bug-by-screenshot triage hard.
+
+Older standing items:
+
 - **Kit drag-edit doesn't auto-apply to the active belt.** Dragging a
   home onto an *active* kit's slot updates the kit definition but the
   belt isn't re-applied. Per [design/kits.md § Edit a Kit](design/kits.md)
@@ -71,6 +141,19 @@ within-island layered cluster key.
   Added during the initial-open overlap chase. Remove (or downgrade to
   DEBUG) once a couple of fresh-world opens confirm the layout
   converges cleanly across resolutions / GUI scales.
+
+Cursor / desired-counts polish that was deferred (also in the queue):
+
+- Atlas card *drop* (cursor → "send to home") not wired; clicking an
+  atlas card while carrying just cancels the cursor.
+- Chest-drop overflow tracking — hotbar drops are clamped client-side,
+  chest drops aren't (server clamps but doesn't return moved count).
+- Origin slot doesn't visually highlight while the cursor is non-empty.
+- "Need N more" status text on the desired-count pip — pip shows the
+  target only, not the gap.
+- Right-click "Set desired count…" only edits the active scope; an
+  explicit kit-vs-global toggle in the menu would help when both
+  scopes are in play.
 
 ## Project structure
 

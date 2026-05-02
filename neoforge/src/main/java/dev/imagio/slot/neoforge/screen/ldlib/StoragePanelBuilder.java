@@ -306,9 +306,42 @@ final class StoragePanelBuilder {
 
         installChipDropTarget(element, chip);
         installChipHover(element, chip);
+        installChipCursorDropTarget(element, chip);
         installChipContextMenu(element, chip);
         host.installTextTooltip(element, net.minecraft.network.chat.Component.literal("Right-click for options"));
         return element;
+    }
+
+    /**
+     * While the split cursor is non-empty, intercept clicks on the chip
+     * and route them to a count-aware deposit. Capture-phase + early
+     * stopPropagation ensures this fires before the chip's context-menu
+     * handler (right-click) and before the bubble-phase root cancel
+     * handler. Pickup intentionally not wired on chips: chips are
+     * identity / chest handles, not slot handles, so there's no concrete
+     * source slot to halve.
+     */
+    private void installChipCursorDropTarget(UIElement chip, SlotWorkspaceViewModel.ChestChip target) {
+        String storageId = target.storageId();
+        chip.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+            if (!host.cursor.isCarrying()) {
+                return;
+            }
+            WorkspaceCursorGestures.Result mode = WorkspaceCursorGestures.classify(event, true);
+            int count = switch (mode) {
+                case DROP_ALL -> host.cursor.dropCount(WorkspaceCursorCarry.DropMode.ALL);
+                case DROP_ONE -> host.cursor.dropCount(WorkspaceCursorCarry.DropMode.ONE);
+                case DROP_HALF -> host.cursor.dropCount(WorkspaceCursorCarry.DropMode.HALF);
+                default -> 0;
+            };
+            if (count <= 0) {
+                return;
+            }
+            event.stopPropagation();
+            WorkspaceCursorCarry.State state = host.cursor.current();
+            host.rpc.sendCursorDropToChest(state, storageId, count);
+            host.cursor.consume(count);
+        }, true);
     }
 
     /**
@@ -347,8 +380,11 @@ final class StoragePanelBuilder {
 
         boolean[] lastLit = {false};
         element.addEventListener(UIEvents.TICK, event -> {
-            boolean lit = isHoveredItemPresentInChest(storageId)
-                    || isHoveredIslandRelatedToChest(storageId);
+            // Only the specific hovered card lights chests — the chest
+            // highlight is for "which chest holds this item", not "which
+            // chests hold anything from this island". Island-level
+            // highlighting drowned the per-item signal.
+            boolean lit = isHoveredItemPresentInChest(storageId);
             if (lit == lastLit[0]) {
                 return;
             }
@@ -381,30 +417,6 @@ final class StoragePanelBuilder {
         for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.elsewhere()) {
             if (storageId.equals(entry.storageId())) {
                 return true;
-            }
-        }
-        return false;
-    }
-
-    /** True iff the currently-hovered island shares any item with {@code storageId}. */
-    private boolean isHoveredIslandRelatedToChest(String storageId) {
-        String islandId = host.hoveredIslandId;
-        if (islandId == null) {
-            return false;
-        }
-        for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.atlasItems()) {
-            if (!islandId.equals(item.islandId())) {
-                continue;
-            }
-            for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.elsewhere()) {
-                if (storageId.equals(entry.storageId())) {
-                    return true;
-                }
-            }
-            for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.presence()) {
-                if (storageId.equals(entry.storageId())) {
-                    return true;
-                }
             }
         }
         return false;

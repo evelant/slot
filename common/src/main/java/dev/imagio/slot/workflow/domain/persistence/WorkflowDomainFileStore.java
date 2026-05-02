@@ -234,17 +234,10 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             }
         }
 
-        LinkedHashMap<String, Map<ItemIdentity, Integer>> desiredCounts = new LinkedHashMap<>();
-        if (state.desiredCounts != null) {
-            for (DesiredCountData desiredCount : state.desiredCounts) {
-                ItemIdentity identity = decodeIdentity(desiredCount == null ? null : desiredCount.identity);
-                if (desiredCount == null || blank(desiredCount.collectionId) || identity == null) {
-                    continue;
-                }
-                desiredCounts.computeIfAbsent(desiredCount.collectionId, ignored -> new LinkedHashMap<>())
-                        .put(identity, Math.max(1, desiredCount.desiredCount));
-            }
-        }
+        // Legacy v2 desiredCounts (collection-scoped) intentionally dropped on
+        // load. The desired-counts concept moved to player-global / kit-scoped
+        // domain entries; per project-memory "no migration / delete old code"
+        // we silently let those legacy entries fall through.
 
         LinkedHashMap<String, List<QuickAccessLoadoutDefinition>> loadouts = new LinkedHashMap<>();
         if (state.loadouts != null) {
@@ -305,7 +298,6 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         WorkflowProjection.Snapshot workflowProjection = new WorkflowProjection.Snapshot(
                 collections,
                 memberships,
-                desiredCounts,
                 loadouts,
                 Set.of(),
                 Set.of(),
@@ -314,7 +306,10 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 VisualHomeMap.empty(),
                 ClaimedChestMap.empty(),
                 ChestAffinityMap.empty(),
-                KitMap.empty()
+                Map.of(),
+                KitMap.empty(),
+                Map.of(),
+                Map.of()
         );
 
         ActivityProjection.Snapshot activityProjection = new ActivityProjection.Snapshot(
@@ -344,13 +339,6 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         ArrayList<MembershipData> memberships = new ArrayList<>();
         resolved.memberships().forEach((identity, collectionIds) ->
                 memberships.add(new MembershipData(identity(identity), List.copyOf(collectionIds)))
-        );
-
-        ArrayList<DesiredCountData> desiredCounts = new ArrayList<>();
-        resolved.desiredCountsByCollection().forEach((collectionId, counts) ->
-                counts.forEach((identity, desiredCount) ->
-                        desiredCounts.add(new DesiredCountData(collectionId, identity(identity), desiredCount))
-                )
         );
 
         ArrayList<LoadoutData> loadouts = new ArrayList<>();
@@ -388,10 +376,19 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         KitActivationData activationData = activation.isActive()
                 ? new KitActivationData(activation.kitId(), activation.pageIndex())
                 : null;
+        ArrayList<PlayerDesiredCountData> playerDesiredCounts = new ArrayList<>();
+        resolved.playerDesiredCounts().forEach((identity, count) ->
+                playerDesiredCounts.add(new PlayerDesiredCountData(identity(identity), count))
+        );
+        ArrayList<KitDesiredCountData> kitDesiredCounts = new ArrayList<>();
+        resolved.kitDesiredCounts().forEach((kitId, counts) ->
+                counts.forEach((identity, count) ->
+                        kitDesiredCounts.add(new KitDesiredCountData(kitId, identity(identity), count))
+                )
+        );
         return new WorkflowCheckpointData(
                 collections,
                 memberships,
-                desiredCounts,
                 loadouts,
                 resolved.favoriteTags().stream().map(WorkflowDomainFileStore::identity).toList(),
                 resolved.junkTags().stream().map(WorkflowDomainFileStore::identity).toList(),
@@ -413,7 +410,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 claimedChests,
                 chestAffinity,
                 kitDefinitions,
-                activationData
+                activationData,
+                playerDesiredCounts,
+                kitDesiredCounts
         );
     }
 
@@ -442,16 +441,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             }
         }
 
-        LinkedHashMap<String, Map<ItemIdentity, Integer>> desiredCounts = new LinkedHashMap<>();
-        if (data.desiredCounts != null) {
-            for (DesiredCountData desiredCount : data.desiredCounts) {
-                ItemIdentity identity = decodeIdentity(desiredCount == null ? null : desiredCount.identity);
-                if (desiredCount != null && identity != null && !blank(desiredCount.collectionId)) {
-                    desiredCounts.computeIfAbsent(desiredCount.collectionId, ignored -> new LinkedHashMap<>())
-                            .put(identity, Math.max(1, desiredCount.desiredCount));
-                }
-            }
-        }
+        // Legacy v2 desiredCounts (collection-scoped) silently dropped on load.
 
         LinkedHashMap<String, List<QuickAccessLoadoutDefinition>> loadouts = new LinkedHashMap<>();
         if (data.loadouts != null) {
@@ -613,10 +603,42 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         }
         KitMap kitMap = new KitMap(kits, kitActivation);
 
+        LinkedHashMap<ItemIdentity, Integer> playerDesiredCounts = new LinkedHashMap<>();
+        if (data.playerDesiredCounts != null) {
+            for (PlayerDesiredCountData counted : data.playerDesiredCounts) {
+                if (counted == null) {
+                    continue;
+                }
+                ItemIdentity identity = decodeIdentity(counted.identity);
+                if (identity != null && counted.count > 0) {
+                    playerDesiredCounts.put(identity, counted.count);
+                }
+            }
+        }
+
+        LinkedHashMap<String, Map<ItemIdentity, Integer>> kitDesiredCounts = new LinkedHashMap<>();
+        if (data.kitDesiredCounts != null) {
+            for (KitDesiredCountData counted : data.kitDesiredCounts) {
+                if (counted == null || blank(counted.kitId)) {
+                    continue;
+                }
+                ItemIdentity identity = decodeIdentity(counted.identity);
+                if (identity != null && counted.count > 0) {
+                    kitDesiredCounts.computeIfAbsent(counted.kitId, ignored -> new LinkedHashMap<>())
+                            .put(identity, counted.count);
+                }
+            }
+        }
+        // Freeze the inner maps so the Snapshot canonical form (Map.copyOf
+        // of immutable inner maps) sees the same shape it gets from event
+        // application — otherwise unit tests that compare snapshot equality
+        // across save/replay round-trips diverge on map identity.
+        LinkedHashMap<String, Map<ItemIdentity, Integer>> kitDesiredCountsFrozen = new LinkedHashMap<>();
+        kitDesiredCounts.forEach((kitId, counts) -> kitDesiredCountsFrozen.put(kitId, Map.copyOf(counts)));
+
         return new WorkflowProjection.Snapshot(
                 collections,
                 memberships,
-                desiredCounts,
                 loadouts,
                 favoriteTags,
                 junkTags,
@@ -625,7 +647,10 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 new VisualHomeMap(playerIslands, visualHomes, dismissedTemplateIds),
                 new ClaimedChestMap(claimedChests),
                 new ChestAffinityMap(affinity),
-                kitMap
+                Map.of(),
+                kitMap,
+                playerDesiredCounts,
+                kitDesiredCountsFrozen
         );
     }
 
@@ -637,12 +662,11 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         for (KitPage page : kit.pages()) {
             pages.add(kitPage(page));
         }
-        ArrayList<IdentityData> bring = new ArrayList<>();
-        for (ItemIdentity identity : kit.bring()) {
-            bring.add(identity(identity));
-        }
         IdentityData offhand = kit.offhand() == null ? null : identity(kit.offhand());
-        return new KitDefinitionData(kit.id(), kit.name(), pages, bring, offhand);
+        // bring list retired (folded into kit-scoped desired counts);
+        // serialize as empty so older builds parsing this checkpoint fall
+        // back to "no bring" cleanly.
+        return new KitDefinitionData(kit.id(), kit.name(), pages, List.of(), offhand);
     }
 
     private static KitPageData kitPage(KitPage page) {
@@ -670,17 +694,12 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         if (pages.isEmpty()) {
             pages.add(KitPage.empty());
         }
-        ArrayList<ItemIdentity> bring = new ArrayList<>();
-        if (data.bring != null) {
-            for (IdentityData identityData : data.bring) {
-                ItemIdentity identity = decodeIdentity(identityData);
-                if (identity != null) {
-                    bring.add(identity);
-                }
-            }
-        }
         ItemIdentity offhand = decodeIdentity(data.offhand);
-        return new KitDefinition(data.id, data.name, pages, bring, offhand);
+        // Legacy data.bring is silently dropped — the bring concept moved
+        // to kit-scoped desired counts (no migration / no compat per
+        // project memory). Per-prototype users who had bring entries will
+        // need to re-enter them as desired counts.
+        return new KitDefinition(data.id, data.name, pages, offhand);
     }
 
     private static KitPage decodeKitPage(KitPageData data) {
@@ -768,12 +787,6 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 data.kind = "CollectionItemRemoved";
                 data.collectionId = event.collectionId();
                 data.identity = identity(event.identity());
-            }
-            case WorkflowEvent.DesiredCountSet event -> {
-                data.kind = "DesiredCountSet";
-                data.collectionId = event.collectionId();
-                data.identity = identity(event.identity());
-                data.desiredCount = event.desiredCount();
             }
             case WorkflowEvent.LoadoutCreated event -> {
                 data.kind = "LoadoutCreated";
@@ -959,6 +972,17 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 data.kind = "KitPageSwitched";
                 data.pageIndex = event.pageIndex();
             }
+            case WorkflowEvent.PlayerDesiredCountSet event -> {
+                data.kind = "PlayerDesiredCountSet";
+                data.identity = identity(event.identity());
+                data.desiredCount = event.count();
+            }
+            case WorkflowEvent.KitDesiredCountSet event -> {
+                data.kind = "KitDesiredCountSet";
+                data.kitId = event.kitId();
+                data.identity = identity(event.identity());
+                data.desiredCount = event.count();
+            }
         }
         return data;
     }
@@ -974,7 +998,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             case "CollectionDeleted" -> new WorkflowEvent.CollectionDeleted(nonNull(data.collectionId));
             case "CollectionItemAdded" -> new WorkflowEvent.CollectionItemAdded(nonNull(data.collectionId), decodeIdentity(data.identity));
             case "CollectionItemRemoved" -> new WorkflowEvent.CollectionItemRemoved(nonNull(data.collectionId), decodeIdentity(data.identity));
-            case "DesiredCountSet" -> new WorkflowEvent.DesiredCountSet(nonNull(data.collectionId), decodeIdentity(data.identity), data.desiredCount);
+            case "DesiredCountSet" -> null; // Legacy collection-scoped desired count event — silently dropped on replay.
             case "LoadoutCreated" -> new WorkflowEvent.LoadoutCreated(nonNull(data.collectionId), decodeLoadout(data.loadout));
             case "LoadoutRenamed" -> new WorkflowEvent.LoadoutRenamed(nonNull(data.collectionId), nonNull(data.loadoutId), nonNull(data.name));
             case "LoadoutUpdated" -> new WorkflowEvent.LoadoutUpdated(nonNull(data.collectionId), nonNull(data.loadoutId), decodeLoadoutEntries(data.loadoutEntries));
@@ -1065,6 +1089,10 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                     : new WorkflowEvent.KitActivated(data.kitId, Math.max(0, data.pageIndex));
             case "KitDeactivated" -> new WorkflowEvent.KitDeactivated();
             case "KitPageSwitched" -> new WorkflowEvent.KitPageSwitched(Math.max(0, data.pageIndex));
+            case "PlayerDesiredCountSet" -> new WorkflowEvent.PlayerDesiredCountSet(
+                    decodeIdentity(data.identity), Math.max(0, data.desiredCount));
+            case "KitDesiredCountSet" -> blank(data.kitId) ? null : new WorkflowEvent.KitDesiredCountSet(
+                    data.kitId, decodeIdentity(data.identity), Math.max(0, data.desiredCount));
             default -> null;
         };
         return event == null ? null : new WorkflowEventRecord(envelope, event);
@@ -1585,7 +1613,6 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
     private record WorkflowCheckpointData(
             List<CollectionData> collections,
             List<MembershipData> memberships,
-            List<DesiredCountData> desiredCounts,
             List<LoadoutData> loadouts,
             List<IdentityData> favoriteTags,
             List<IdentityData> junkTags,
@@ -1597,8 +1624,16 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             List<ClaimedChestData> claimedChests,
             List<ChestAffinityData> chestAffinity,
             List<KitDefinitionData> kits,
-            KitActivationData kitActivation
+            KitActivationData kitActivation,
+            List<PlayerDesiredCountData> playerDesiredCounts,
+            List<KitDesiredCountData> kitDesiredCounts
     ) {
+    }
+
+    private record PlayerDesiredCountData(IdentityData identity, int count) {
+    }
+
+    private record KitDesiredCountData(String kitId, IdentityData identity, int count) {
     }
 
     private record KitDefinitionData(

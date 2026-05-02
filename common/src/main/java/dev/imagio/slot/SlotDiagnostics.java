@@ -6,6 +6,8 @@ import dev.imagio.slot.inventory.action.InventoryActionTarget;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
+import dev.imagio.slot.inventory.core.ItemComparisonMode;
+import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.integration.InventoryMutationMode;
 import dev.imagio.slot.inventory.integration.InventoryMutationRequest;
@@ -13,6 +15,9 @@ import dev.imagio.slot.inventory.integration.MutationResult;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
+
+import java.util.Map;
+import java.util.Set;
 
 public final class SlotDiagnostics {
     private SlotDiagnostics() {
@@ -253,6 +258,69 @@ public final class SlotDiagnostics {
                 result == null ? "missing" : stackSummary(result.stackRemainder()),
                 hostId(host)
         );
+    }
+
+    /**
+     * One-shot per-build trace of identity resolution: which identities
+     * are carried, which surface in proximate vs elsewhere chests, and
+     * which the active kit still needs. Each identity is emitted with
+     * its comparison-mode tag ("id" vs "id+c") so a future divergence
+     * between the two construction paths is visible at a glance.
+     */
+    public static void identityResolution(
+            Set<ItemIdentity> carriedIdentities,
+            Map<ItemIdentity, Integer> proximateTotals,
+            Map<ItemIdentity, Integer> elsewhereTotals,
+            Set<ItemIdentity> kitNeededIdentities,
+            String activeKitId
+    ) {
+        if (!SlotDebugLog.enabled()) {
+            return;
+        }
+        SlotCommon.LOGGER.info(
+                "[SLOT] Identity resolution activeKit={} carriedCount={} proximateIdentities={} elsewhereIdentities={} kitNeededCount={} carried={} proximate={} elsewhere={} kitNeeded={}",
+                clean(activeKitId),
+                carriedIdentities == null ? 0 : carriedIdentities.size(),
+                proximateTotals == null ? 0 : proximateTotals.size(),
+                elsewhereTotals == null ? 0 : elsewhereTotals.size(),
+                kitNeededIdentities == null ? 0 : kitNeededIdentities.size(),
+                identitySetSummary(carriedIdentities),
+                identityCountSummary(proximateTotals),
+                identityCountSummary(elsewhereTotals),
+                identitySetSummary(kitNeededIdentities)
+        );
+    }
+
+    public static String identitySetSummary(Set<ItemIdentity> identities) {
+        if (identities == null || identities.isEmpty()) {
+            return "[]";
+        }
+        return identities.stream()
+                .limit(32)
+                .map(SlotDiagnostics::identityToken)
+                .toList()
+                .toString();
+    }
+
+    public static String identityCountSummary(Map<ItemIdentity, Integer> totals) {
+        if (totals == null || totals.isEmpty()) {
+            return "[]";
+        }
+        return totals.entrySet().stream()
+                .limit(32)
+                .map(e -> identityToken(e.getKey()) + "x" + e.getValue())
+                .toList()
+                .toString();
+    }
+
+    public static String identityToken(ItemIdentity id) {
+        if (id == null) {
+            return "null";
+        }
+        if (id.comparisonMode() == ItemComparisonMode.ITEM_ID) {
+            return id.itemId();
+        }
+        return id.itemId() + "{" + id.componentFingerprint() + "}";
     }
 
     public static String menuSummary(AbstractContainerMenu menu) {

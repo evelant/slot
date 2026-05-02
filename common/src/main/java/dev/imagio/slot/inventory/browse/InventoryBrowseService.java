@@ -306,17 +306,16 @@ public final class InventoryBrowseService {
             String selectedCollectionId
     ) {
         Set<String> collectionIds = collections.memberships().getOrDefault(identity, Set.of());
-        int desiredCount = selectedCollectionId == null || selectedCollectionId.isBlank()
-                ? 0
-                : collections.desiredCountsByCollection()
-                .getOrDefault(selectedCollectionId, Map.of())
-                .getOrDefault(identity, 0);
+        // Collection-scoped desired counts retired with the kits replacement
+        // of collections; this annotation is now always 0 for the
+        // collection pane. Player-global / kit-scoped counts surface on the
+        // atlas card, not in the collection browse rows.
         return new InventoryBrowseAnnotations(
                 collections.favoriteTags().contains(identity),
                 collections.junkTags().contains(identity),
                 recents.countsByIdentity().containsKey(identity),
                 collectionIds,
-                desiredCount
+                0
         );
     }
 
@@ -477,12 +476,8 @@ public final class InventoryBrowseService {
                 identities.add(identity);
             }
         });
-        workflow.collections().desiredCountsByCollection()
-                .getOrDefault(collectionId, Map.of())
-                .keySet()
-                .stream()
-                .filter(Objects::nonNull)
-                .forEach(identities::add);
+        // Legacy desired-count membership join retired alongside the
+        // collection-scoped DesiredCount domain.
         return identities;
     }
 

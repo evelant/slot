@@ -17,6 +17,7 @@ public final class WorkflowDomainRuntime {
     private final VisualAtlasWorkflowDomainService visualAtlasWorkflow;
     private final ChestClaimWorkflowDomainService chestClaimWorkflow;
     private final KitWorkflowDomainService kitWorkflow;
+    private final DesiredCountWorkflowDomainService desiredCountWorkflow;
     private final InventoryBrowsePreferencesStore browsePreferences;
     private final InventoryBrowseSessionStateStore browseSessionState;
     private final UndoStack undoStack;
@@ -33,6 +34,7 @@ public final class WorkflowDomainRuntime {
         this.visualAtlasWorkflow = new VisualAtlasWorkflowDomainService(repository, this::saveNow);
         this.chestClaimWorkflow = new ChestClaimWorkflowDomainService(repository, this::saveNow);
         this.kitWorkflow = new KitWorkflowDomainService(repository, this::saveNow);
+        this.desiredCountWorkflow = new DesiredCountWorkflowDomainService(repository, this::saveNow);
         this.undoStack = new UndoStack();
     }
 
@@ -56,6 +58,10 @@ public final class WorkflowDomainRuntime {
         return kitWorkflow;
     }
 
+    public DesiredCountWorkflowDomainService desiredCountWorkflow() {
+        return desiredCountWorkflow;
+    }
+
     public WorkflowProjection.Snapshot workflowProjection() {
         return repository.workflowProjection();
     }
@@ -66,7 +72,18 @@ public final class WorkflowDomainRuntime {
 
     public ProtectionPolicy protection() {
         WorkflowProjection.Snapshot projection = repository.workflowProjection();
-        return KitActiveProtection.compose(projection.protection(), projection.kitMap());
+        // Stack: base → player-global desired counts → kit-active.
+        // Each layer adds cleanup protection; lookups OR through the
+        // chain so any layer that protects an identity wins.
+        ProtectionPolicy withGlobalDesired = DesiredCountProtection.compose(
+                projection.protection(),
+                projection.playerDesiredCounts()
+        );
+        return KitActiveProtection.compose(
+                withGlobalDesired,
+                projection.kitMap(),
+                projection.kitDesiredCounts()
+        );
     }
 
     public ProtectionSnapshotPolicy baseProtection() {

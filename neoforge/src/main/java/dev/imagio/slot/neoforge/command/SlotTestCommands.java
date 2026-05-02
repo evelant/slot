@@ -17,12 +17,22 @@ import dev.imagio.slot.debug.RealisticAtlasGenerator;
 import dev.imagio.slot.debug.RealisticAtlasPlan;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
+import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
+import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
+import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
+import dev.imagio.slot.inventory.triage.IslandTemplateMatch;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.neoforge.storage.ChestStorageIds;
 import dev.imagio.slot.neoforge.triage.IslandSignalExtractor;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ChestClaimWorkflowDomainService;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
+import dev.imagio.slot.workflow.domain.DomainEventMetadata;
+import dev.imagio.slot.workflow.domain.KitDefinition;
+import dev.imagio.slot.workflow.domain.KitPage;
+import dev.imagio.slot.workflow.domain.KitWorkflowDomainService;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.VisualAtlasWorkflowDomainService;
 import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
@@ -51,7 +61,6 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.items.IItemHandler;
 import net.neoforged.neoforge.items.IItemHandlerModifiable;
-import net.neoforged.neoforge.items.ItemHandlerHelper;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -66,6 +75,31 @@ public final class SlotTestCommands {
     private static boolean registered;
 
     private static final SuggestionProvider<CommandSourceStack> PROFILE_SUGGESTIONS = SlotTestCommands::suggestProfiles;
+
+    /**
+     * Number of top-tier Sophisticated Backpacks the populate command
+     * guarantees before giving items. A single base-tier backpack
+     * (which the natural item-pool draw might place) lacks the
+     * capacity for any meaningful profile, so item stacks spilled into
+     * the main inventory and then to the floor — making populate
+     * unusable for testing without a manual top-up.
+     */
+    private static final int TOP_TIER_BACKPACK_TARGET = 3;
+
+    /**
+     * Tiered fallback when picking which Sophisticated Backpack item
+     * to grant. Netherite is the largest container the mod ships;
+     * lower tiers are the graceful-degradation order so a modpack
+     * without the netherite tier still gets the next-best capacity.
+     * Empty when Sophisticated Backpacks isn't installed.
+     */
+    private static final List<String> BACKPACK_TIER_FALLBACK = List.of(
+            "sophisticatedbackpacks:netherite_backpack",
+            "sophisticatedbackpacks:diamond_backpack",
+            "sophisticatedbackpacks:gold_backpack",
+            "sophisticatedbackpacks:iron_backpack",
+            "sophisticatedbackpacks:backpack"
+    );
 
     private SlotTestCommands() {
     }
@@ -90,6 +124,8 @@ public final class SlotTestCommands {
                                 .then(Commands.argument("profile", StringArgumentType.word())
                                         .suggests(PROFILE_SUGGESTIONS)
                                         .executes(SlotTestCommands::runPopulate)))
+                        .then(Commands.literal("kits")
+                                .executes(SlotTestCommands::runKits))
                         .then(Commands.literal("clear")
                                 .executes(SlotTestCommands::runClear)));
         dispatcher.register(root);
@@ -136,6 +172,7 @@ public final class SlotTestCommands {
 
         int islandsCreated = applyIslands(workflow, plan);
         int assignmentsApplied = applyAssignments(workflow, plan);
+        int backpacksGranted = ensureTopTierBackpacks(player);
         InventoryGiveResult giveResult = giveStacksToPlayer(player, plan);
         ChestPlacementResult chestResult = placeChests(player, chestWorkflow, plan, random);
 
@@ -148,20 +185,530 @@ public final class SlotTestCommands {
         int finalClaimed = chestResult.claimed;
         int finalAffinity = chestResult.affinityRecorded;
         int finalClaimFailed = chestResult.claimFailed;
+        int finalBackpacksGranted = backpacksGranted;
 
         context.getSource().sendSuccess(() -> Component.literal(String.format(
-                "[SLOT] populate %s: islands=%d assignments=%d stacks main=%d backpack=%d dropped=%d chests placed=%d claimed=%d affinity=%d claim_failed=%d",
+                "[SLOT] populate %s: islands=%d assignments=%d stacks main=%d backpack=%d dropped=%d chests placed=%d claimed=%d affinity=%d claim_failed=%d backpacks_granted=%d",
                 profile.id(), finalIslands, finalAssignments,
                 finalMain, finalBackpack, finalDropped,
-                finalPlaced, finalClaimed, finalAffinity, finalClaimFailed
+                finalPlaced, finalClaimed, finalAffinity, finalClaimFailed,
+                finalBackpacksGranted
         )), false);
         SlotCommon.LOGGER.info(
-                "[SLOT] /slot test populate profile={} -> islands={} assignments={} stacks_main={} stacks_backpack={} stacks_dropped={} chests placed={} claimed={} affinity={} claim_failed={}",
+                "[SLOT] /slot test populate profile={} -> islands={} assignments={} stacks_main={} stacks_backpack={} stacks_dropped={} chests placed={} claimed={} affinity={} claim_failed={} backpacks_granted={}",
                 profile.id(), finalIslands, finalAssignments,
                 finalMain, finalBackpack, finalDropped,
-                finalPlaced, finalClaimed, finalAffinity, finalClaimFailed
+                finalPlaced, finalClaimed, finalAffinity, finalClaimFailed,
+                finalBackpacksGranted
         );
         return finalAssignments;
+    }
+
+    /**
+     * Top up the player's inventory to {@link #TOP_TIER_BACKPACK_TARGET}
+     * netherite-tier Sophisticated Backpacks (or the highest tier that
+     * the active modpack actually ships). Returns the number granted —
+     * zero when the inventory already has enough or when Sophisticated
+     * Backpacks isn't installed at all.
+     *
+     * <p>Only the chosen target tier counts toward the cap, so a base
+     * backpack the player picked up elsewhere doesn't suppress the
+     * netherite top-up. Lower-tier backpacks are left untouched.
+     */
+    private static int ensureTopTierBackpacks(ServerPlayer player) {
+        Item backpackItem = resolveTopTierBackpackItem();
+        if (backpackItem == null) {
+            return 0;
+        }
+        NonNullList<ItemStack> items = player.getInventory().items;
+        int existing = 0;
+        for (ItemStack stack : items) {
+            if (stack != null && !stack.isEmpty() && stack.getItem() == backpackItem) {
+                existing++;
+            }
+        }
+        int needed = TOP_TIER_BACKPACK_TARGET - existing;
+        int granted = 0;
+        for (int i = 0; i < needed; i++) {
+            if (player.getInventory().add(new ItemStack(backpackItem, 1))) {
+                granted++;
+            }
+        }
+        return granted;
+    }
+
+    private static Item resolveTopTierBackpackItem() {
+        for (String id : BACKPACK_TIER_FALLBACK) {
+            ResourceLocation key = ResourceLocation.tryParse(id);
+            if (key == null || !BuiltInRegistries.ITEM.containsKey(key)) {
+                continue;
+            }
+            Item item = BuiltInRegistries.ITEM.get(key);
+            if (item != null && !new ItemStack(item).isEmpty()) {
+                return item;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Hand-authored plausible kit templates — the loadouts a player
+     * would build by hand on day 50 of a modded world. Each entry
+     * names the hotbar slot-by-slot (nulls allowed for empty slots),
+     * the bring list (extra inventory items the kit guarantees), and
+     * the offhand. Modded ids degrade gracefully: any entry whose
+     * item is missing from the registry is silently dropped, so a
+     * vanilla-only world still gets the four vanilla kits and skips
+     * the Create one.
+     */
+    private static final List<KitTemplate> KIT_TEMPLATES = List.of(
+            new KitTemplate(
+                    "Explore",
+                    List.of(
+                            "minecraft:netherite_pickaxe",
+                            "minecraft:netherite_axe",
+                            "minecraft:netherite_shovel",
+                            "minecraft:netherite_sword",
+                            "minecraft:bow",
+                            "minecraft:torch",
+                            "minecraft:cooked_beef",
+                            "minecraft:ender_pearl",
+                            "minecraft:water_bucket"
+                    ),
+                    List.of(
+                            "minecraft:arrow",
+                            "minecraft:flint_and_steel",
+                            "minecraft:cobblestone",
+                            "minecraft:golden_apple"
+                    ),
+                    "minecraft:shield"
+            ),
+            new KitTemplate(
+                    "Base Building",
+                    List.of(
+                            "minecraft:netherite_pickaxe",
+                            "minecraft:netherite_axe",
+                            "minecraft:cobblestone",
+                            "minecraft:oak_planks",
+                            "minecraft:oak_stairs",
+                            "minecraft:oak_slab",
+                            "minecraft:oak_door",
+                            "minecraft:glass_pane",
+                            "minecraft:torch"
+                    ),
+                    List.of(
+                            "minecraft:dirt",
+                            "minecraft:stone",
+                            "minecraft:glass",
+                            "minecraft:oak_log",
+                            "minecraft:white_wool"
+                    ),
+                    "minecraft:shield"
+            ),
+            new KitTemplate(
+                    "Boss Fight",
+                    List.of(
+                            "minecraft:netherite_sword",
+                            "minecraft:bow",
+                            "minecraft:totem_of_undying",
+                            "minecraft:ender_pearl",
+                            "minecraft:enchanted_golden_apple",
+                            "minecraft:cooked_beef",
+                            "minecraft:splash_potion",
+                            "minecraft:potion",
+                            "minecraft:milk_bucket"
+                    ),
+                    List.of(
+                            "minecraft:arrow",
+                            "minecraft:tipped_arrow",
+                            "minecraft:golden_apple",
+                            "minecraft:water_bucket"
+                    ),
+                    "minecraft:shield"
+            ),
+            new KitTemplate(
+                    "Create Machines",
+                    List.of(
+                            "create:wrench",
+                            "create:cogwheel",
+                            "create:large_cogwheel",
+                            "create:shaft",
+                            "create:gearbox",
+                            "create:mechanical_press",
+                            "create:water_wheel",
+                            "create:andesite_alloy",
+                            "create:brass_ingot"
+                    ),
+                    List.of(
+                            "minecraft:copper_ingot",
+                            "create:zinc_ingot",
+                            "create:brass_ingot",
+                            "minecraft:redstone"
+                    ),
+                    null
+            ),
+            new KitTemplate(
+                    "Farming",
+                    List.of(
+                            "minecraft:netherite_hoe",
+                            "minecraft:water_bucket",
+                            "minecraft:wheat_seeds",
+                            "minecraft:carrot",
+                            "minecraft:potato",
+                            "minecraft:beetroot_seeds",
+                            "minecraft:bone_meal",
+                            "minecraft:oak_fence",
+                            "minecraft:torch"
+                    ),
+                    List.of(
+                            "minecraft:dirt",
+                            "minecraft:hay_block",
+                            "minecraft:bread",
+                            "minecraft:composter"
+                    ),
+                    "minecraft:shield"
+            )
+    );
+
+    private static int runKits(CommandContext<CommandSourceStack> context) throws CommandSyntaxException {
+        ServerPlayer player = context.getSource().getPlayerOrException();
+        WorkflowDomainRuntime runtime = SlotPlayerWorkflowRuntimeService.runtime(player);
+        KitWorkflowDomainService kitWorkflow = runtime.kitWorkflow();
+
+        int created = 0;
+        int skipped = 0;
+        ArrayList<String> createdNames = new ArrayList<>();
+        ArrayList<String> skippedNames = new ArrayList<>();
+        java.util.LinkedHashSet<ItemIdentity> kitItems = new java.util.LinkedHashSet<>();
+        for (KitTemplate template : KIT_TEMPLATES) {
+            ResolvedKit resolved = template.resolve();
+            if (resolved == null) {
+                skipped++;
+                skippedNames.add(template.name());
+                continue;
+            }
+            try {
+                dev.imagio.slot.workflow.domain.KitDefinition createdKit = kitWorkflow.create(
+                        resolved.name(),
+                        resolved.firstPage(),
+                        resolved.offhand(),
+                        DomainEventMetadata.origin("slot.test.kits")
+                );
+                // Bring list is now a kit-scoped desired count map. Seed
+                // each "bring" identity with count=1 so the new kit reads
+                // identically to the legacy bring-list shape.
+                if (createdKit != null) {
+                    for (ItemIdentity bringIdentity : resolved.bring()) {
+                        if (bringIdentity == null) continue;
+                        runtime.desiredCountWorkflow().setForKit(
+                                createdKit.id(),
+                                bringIdentity,
+                                1,
+                                DomainEventMetadata.origin("slot.test.kits.bring"));
+                    }
+                }
+                created++;
+                createdNames.add(resolved.name());
+                resolved.collectIdentities(kitItems);
+            } catch (RuntimeException e) {
+                skipped++;
+                skippedNames.add(template.name() + "(error)");
+                SlotCommon.LOGGER.warn(
+                        "[SLOT] /slot test kits: failed to create '{}': {}",
+                        template.name(), e.getMessage());
+            }
+        }
+
+        // Stock the kit items into nearby chests so the "Gather" flow on
+        // each kit has somewhere to fetch from. Without this the kits
+        // generator was useless for testing fetch — every kit slot read
+        // as missing-and-unfetchable. We don't grant anything to the
+        // player so every slot starts as needs-fetch.
+        List<ItemIdentity> kitItemList = List.copyOf(kitItems);
+        KitChestStockResult stocked = stockKitItemsIntoNearbyChests(
+                player, runtime.chestClaimWorkflow(), kitItemList);
+
+        // Assign each kit item to its template-default home island. Without
+        // this the atlas never "sees" identities that only exist in inactive
+        // kits + fresh chests — proximate-chest ghosts skip rendering when
+        // the identity has no home assignment ("ghost-only-unhomed → skip"
+        // in SlotWorkspaceViewModel.project), so kit ghosts and search
+        // indicators come up empty. Materializing template islands and
+        // homing each kit identity gives the projection something to anchor
+        // the ghost cards to.
+        int homedAssigned = autoHomeKitItems(runtime.visualAtlasWorkflow(), kitItemList);
+
+        int finalCreated = created;
+        int finalSkipped = skipped;
+        int finalChestsPlaced = stocked.chestsPlaced;
+        int finalItemsStocked = stocked.itemsStocked;
+        int finalItemsLeftover = stocked.itemsLeftover;
+        int finalHomedAssigned = homedAssigned;
+        String createdStr = String.join(", ", createdNames);
+        String skippedStr = skippedNames.isEmpty() ? "" : " (skipped: " + String.join(", ", skippedNames) + ")";
+        context.getSource().sendSuccess(() -> Component.literal(String.format(
+                "[SLOT] kits: created=%d skipped=%d chests=%d stocked=%d leftover=%d homed=%d %s%s",
+                finalCreated, finalSkipped,
+                finalChestsPlaced, finalItemsStocked, finalItemsLeftover, finalHomedAssigned,
+                createdStr, skippedStr
+        )), false);
+        SlotCommon.LOGGER.info(
+                "[SLOT] /slot test kits -> created={} skipped={} chests={} stocked={} leftover={} homed={} names={}",
+                finalCreated, finalSkipped,
+                finalChestsPlaced, finalItemsStocked, finalItemsLeftover, finalHomedAssigned,
+                createdNames);
+        return created;
+    }
+
+    /**
+     * Classify each kit identity via the same template logic populate uses
+     * and assign it to the matching template-default island, materializing
+     * the island if it doesn't exist yet. The atlas projection skips
+     * unhomed ghost-only items, so kit identities living only in chests
+     * stay invisible until they have a home — even with the kit-needed
+     * synthesis, only the *active* kit's items survive that path. Homing
+     * everything makes inactive kits, search, and gather all work.
+     */
+    private static int autoHomeKitItems(
+            VisualAtlasWorkflowDomainService visualWorkflow,
+            List<ItemIdentity> kitItems
+    ) {
+        if (kitItems.isEmpty()) {
+            return 0;
+        }
+        FacetIndexTemplateClassifier classifier =
+                new FacetIndexTemplateClassifier(IslandSignalExtractor::extract);
+        int assigned = 0;
+        for (ItemIdentity identity : kitItems) {
+            ItemStack stack = createDefaultStack(identity);
+            if (stack.isEmpty()) {
+                continue;
+            }
+            IslandSignalDescriptor descriptor = classifier.describe(stack);
+            if (descriptor == null) {
+                continue;
+            }
+            IslandTemplateMatch match = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
+                    descriptor, null);
+            if (match == null) {
+                continue;
+            }
+            String islandId = resolveOrMaterializeKitIsland(
+                    visualWorkflow, match.parentTemplate(), identity);
+            if (islandId == null) {
+                continue;
+            }
+            VisualHomeAssignment result = visualWorkflow.assignHome(identity, islandId, 0);
+            if (result != null) {
+                assigned++;
+            }
+        }
+        return assigned;
+    }
+
+    private static String resolveOrMaterializeKitIsland(
+            VisualAtlasWorkflowDomainService visualWorkflow,
+            IslandSuggestionTemplate template,
+            ItemIdentity seedIdentity
+    ) {
+        VisualAtlasIsland existing = visualWorkflow.visualHomeMap().playerIslands().stream()
+                .filter(island -> island != null
+                        && template.defaultLabel().equalsIgnoreCase(island.label()))
+                .findFirst()
+                .orElse(null);
+        if (existing != null) {
+            return existing.id();
+        }
+        SlotWorkspaceAtlasLayout.PlayerIslandDraft draft =
+                SlotWorkspaceAtlasLayout.createNextPlayerIslandDraft(
+                        template.defaultLabel(),
+                        seedIdentity,
+                        visualWorkflow.visualHomeMap()
+                );
+        VisualAtlasIsland created = visualWorkflow.createIsland(
+                draft.label(),
+                draft.x(),
+                draft.y(),
+                template.defaultColor(),
+                seedIdentity,
+                DomainEventMetadata.origin("slot.test.kits.island_create")
+        );
+        return created == null ? null : created.id();
+    }
+
+    /**
+     * Place a small cluster of claimed chests adjacent to the player and
+     * fill them with one of every kit-needed item (1 stack each). The
+     * chests are claimed via the same workflow path populate uses, so
+     * proximity detection and Gather routing pick them up immediately.
+     * Returns telemetry for the command status line.
+     */
+    private static KitChestStockResult stockKitItemsIntoNearbyChests(
+            ServerPlayer player,
+            ChestClaimWorkflowDomainService chestWorkflow,
+            List<ItemIdentity> kitItems
+    ) {
+        if (kitItems.isEmpty()) {
+            return new KitChestStockResult(0, 0, 0);
+        }
+        ServerLevel level = player.serverLevel();
+        int centerX = (int) Math.floor(player.getX());
+        int centerY = (int) Math.floor(player.getY());
+        int centerZ = (int) Math.floor(player.getZ());
+        String dimensionId = level.dimension().location().toString();
+        long tick = level.getGameTime();
+
+        // Place the chests close enough to be in proximity range but not
+        // on top of the player; keep them in a row so they're easy to spot.
+        BlockPos[] positions = {
+                new BlockPos(centerX + 2, centerY, centerZ),
+                new BlockPos(centerX + 2, centerY, centerZ + 1),
+                new BlockPos(centerX + 2, centerY, centerZ + 2)
+        };
+
+        int chestsPlaced = 0;
+        int itemsStocked = 0;
+        int itemIndex = 0;
+
+        for (BlockPos pos : positions) {
+            if (itemIndex >= kitItems.size()) {
+                break;
+            }
+            BlockState previous = level.getBlockState(pos);
+            if (!previous.isAir() && !previous.canBeReplaced()) {
+                level.setBlock(pos, Blocks.AIR.defaultBlockState(), Block.UPDATE_ALL);
+            }
+            if (!level.setBlock(pos, Blocks.CHEST.defaultBlockState(), Block.UPDATE_ALL)) {
+                SlotCommon.LOGGER.warn("[SLOT] kits: setBlock failed for chest at {}", pos);
+                continue;
+            }
+            chestsPlaced++;
+
+            ChestAnchor anchor = new ChestAnchor(dimensionId, pos.getX(), pos.getY(), pos.getZ());
+            ClaimedChest claimed = chestWorkflow.autoClaimByAnchor(
+                    anchor, pos.getX() * 100, pos.getZ() * 100, null);
+            if (claimed == null) {
+                SlotCommon.LOGGER.warn("[SLOT] kits: claim returned null for chest at {}", pos);
+                continue;
+            }
+            ChestStorageIds.write(level, pos, claimed.storageId());
+
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (!(blockEntity instanceof ChestBlockEntity chest)) {
+                continue;
+            }
+            int containerSize = chest.getContainerSize();
+            int slot = 0;
+            while (slot < containerSize && itemIndex < kitItems.size()) {
+                ItemIdentity identity = kitItems.get(itemIndex++);
+                ItemStack stack = createDefaultStack(identity);
+                if (stack.isEmpty()) {
+                    continue;
+                }
+                stack.setCount(Math.min(stack.getMaxStackSize(), 4));
+                chest.setItem(slot, stack);
+                chestWorkflow.recordDeposit(claimed.storageId(), identity, stack.getCount(), tick);
+                slot++;
+                itemsStocked++;
+            }
+            chest.setChanged();
+        }
+
+        int leftover = Math.max(0, kitItems.size() - itemIndex);
+        return new KitChestStockResult(chestsPlaced, itemsStocked, leftover);
+    }
+
+    private static ItemStack createDefaultStack(ItemIdentity identity) {
+        if (identity == null || identity.itemId() == null) {
+            return ItemStack.EMPTY;
+        }
+        ResourceLocation key = ResourceLocation.tryParse(identity.itemId());
+        if (key == null || !BuiltInRegistries.ITEM.containsKey(key)) {
+            return ItemStack.EMPTY;
+        }
+        Item item = BuiltInRegistries.ITEM.get(key);
+        if (item == null) {
+            return ItemStack.EMPTY;
+        }
+        ItemStack stack = new ItemStack(item, 1);
+        return stack.isEmpty() ? ItemStack.EMPTY : stack;
+    }
+
+    private record KitChestStockResult(int chestsPlaced, int itemsStocked, int itemsLeftover) {
+    }
+
+    private static ItemIdentity tryResolveItemIdentity(String itemId) {
+        if (itemId == null || itemId.isBlank()) {
+            return null;
+        }
+        ResourceLocation key = ResourceLocation.tryParse(itemId);
+        if (key == null || !BuiltInRegistries.ITEM.containsKey(key)) {
+            return null;
+        }
+        return ItemIdentity.of(itemId);
+    }
+
+    private record KitTemplate(
+            String name,
+            List<String> hotbar,
+            List<String> bring,
+            String offhand
+    ) {
+        /**
+         * Resolve the template against the active item registry.
+         * Returns {@code null} when no hotbar slot can be filled
+         * (e.g., a Create-only kit on a vanilla server). Empty
+         * hotbar slots and missing bring entries are silently
+         * dropped so a partial mod overlap still yields a usable
+         * kit.
+         */
+        ResolvedKit resolve() {
+            ArrayList<ItemIdentity> hotbarIds = new ArrayList<>(KitPage.HOTBAR_SLOT_COUNT);
+            int filled = 0;
+            for (int i = 0; i < KitPage.HOTBAR_SLOT_COUNT; i++) {
+                String id = i < hotbar.size() ? hotbar.get(i) : null;
+                ItemIdentity resolved = tryResolveItemIdentity(id);
+                hotbarIds.add(resolved);
+                if (resolved != null) {
+                    filled++;
+                }
+            }
+            if (filled == 0) {
+                return null;
+            }
+            ArrayList<ItemIdentity> bringIds = new ArrayList<>();
+            for (String id : bring) {
+                ItemIdentity resolved = tryResolveItemIdentity(id);
+                if (resolved != null) {
+                    bringIds.add(resolved);
+                }
+            }
+            ItemIdentity offhandId = tryResolveItemIdentity(offhand);
+            return new ResolvedKit(name, new KitPage(hotbarIds), bringIds, offhandId);
+        }
+    }
+
+    private record ResolvedKit(
+            String name,
+            KitPage firstPage,
+            List<ItemIdentity> bring,
+            ItemIdentity offhand
+    ) {
+        void collectIdentities(java.util.Collection<ItemIdentity> sink) {
+            for (ItemIdentity slot : firstPage.hotbarIdentities()) {
+                if (slot != null) {
+                    sink.add(slot);
+                }
+            }
+            for (ItemIdentity id : bring) {
+                if (id != null) {
+                    sink.add(id);
+                }
+            }
+            if (offhand != null) {
+                sink.add(offhand);
+            }
+        }
     }
 
     private static int applyIslands(VisualAtlasWorkflowDomainService workflow, RealisticAtlasPlan plan) {
@@ -202,14 +749,9 @@ public final class SlotTestCommands {
         allStacks.addAll(plan.homedStacks());
         allStacks.addAll(plan.triageStacks());
 
-        // Backpacks first: insertIntoBackpacks (called per-stack below)
-        // can only spill items into a carrier that's already in the
-        // player's inventory. Reorder allStacks so any backpack-like
-        // container lands first — subsequent stacks then get a chance
-        // to flow into it instead of filling the main inventory and
-        // dropping. Stable partition preserves the relative order of
-        // non-backpack items so the rest of the populate sequence is
-        // unchanged.
+        // Backpack carriers first so they're seated in the inventory
+        // before non-backpack items try to route into them. Stable
+        // partition keeps the relative order of non-carrier stacks.
         ArrayList<ItemStack> reordered = new ArrayList<>(allStacks.size());
         for (ItemStack stack : allStacks) {
             if (stack != null && !stack.isEmpty() && isBackpackStack(stack)) {
@@ -223,6 +765,18 @@ public final class SlotTestCommands {
         }
         allStacks = reordered;
 
+        // Route through SLOT's normal carried-source pipeline (backpack-first
+        // via Sophisticated Backpacks' own enumeration, then vanilla add).
+        // The hand-rolled insertIntoBackpacks we used to call here walked
+        // inventory.items and queried Capabilities.ItemHandler.ITEM directly
+        // — that path missed curios-slot backpacks and (more importantly)
+        // returned null for freshly-spawned backpacks whose contents UUID
+        // hadn't been initialised yet, so items spilled to main and then
+        // to the floor once main filled.
+        CarriedSourceAccess carried = StorageAccessRegistry.isInstalled()
+                ? StorageAccessRegistry.carriedSourceAccess()
+                : null;
+
         int mainInserted = 0;
         int backpackInserted = 0;
         int dropped = 0;
@@ -235,58 +789,52 @@ public final class SlotTestCommands {
             if (stack.getCount() <= 0) {
                 stack.setCount(1);
             }
-            int beforeBackpack = stack.getCount();
-            stack = insertIntoBackpacks(player, stack);
-            int afterBackpack = stack == null || stack.isEmpty() ? 0 : stack.getCount();
-            int movedToBackpack = beforeBackpack - afterBackpack;
-            if (movedToBackpack > 0) {
-                backpackInserted += movedToBackpack;
+            int initial = stack.getCount();
+            ItemStack remaining;
+            int vanillaDelta;
+
+            if (isBackpackStack(stack) || carried == null) {
+                // Backpacks themselves get added directly so they become
+                // carriers, not contents (most backpack mods refuse to
+                // nest backpacks inside backpacks anyway).
+                int before = countVanillaInventory(player);
+                player.getInventory().add(stack);
+                int after = countVanillaInventory(player);
+                vanillaDelta = Math.max(0, after - before);
+                remaining = stack;
+            } else {
+                int before = countVanillaInventory(player);
+                remaining = carried.insertBestFit(player, stack, false);
+                int after = countVanillaInventory(player);
+                vanillaDelta = Math.max(0, after - before);
             }
-            if (stack == null || stack.isEmpty()) {
-                continue;
-            }
-            int beforeMain = stack.getCount();
-            player.getInventory().add(stack);
-            int afterMain = stack.getCount();
-            int movedToMain = beforeMain - afterMain;
-            if (movedToMain > 0) {
-                mainInserted += movedToMain;
-            }
-            if (!stack.isEmpty()) {
-                dropped += stack.getCount();
-                player.drop(stack, false);
+
+            int leftover = remaining == null || remaining.isEmpty() ? 0 : remaining.getCount();
+            int placed = initial - leftover;
+            mainInserted += vanillaDelta;
+            backpackInserted += Math.max(0, placed - vanillaDelta);
+
+            if (leftover > 0) {
+                dropped += leftover;
+                player.drop(remaining, false);
             }
         }
         return new InventoryGiveResult(mainInserted, backpackInserted, dropped);
     }
 
-    private static ItemStack insertIntoBackpacks(ServerPlayer player, ItemStack stack) {
-        ItemStack remaining = stack;
-        NonNullList<ItemStack> items = player.getInventory().items;
-        for (int index = 0; index < items.size(); index++) {
-            if (remaining == null || remaining.isEmpty()) {
-                break;
-            }
-            ItemStack carrier = items.get(index);
-            if (carrier == null || carrier.isEmpty() || !isBackpackStack(carrier)) {
-                continue;
-            }
-            IItemHandler handler;
-            try {
-                handler = carrier.getCapability(Capabilities.ItemHandler.ITEM);
-            } catch (RuntimeException | LinkageError ignored) {
-                handler = null;
-            }
-            if (handler == null) {
-                continue;
-            }
-            try {
-                remaining = ItemHandlerHelper.insertItemStacked(handler, remaining, false);
-            } catch (RuntimeException | LinkageError ignored) {
-                // ignore and try next backpack
+    private static int countVanillaInventory(ServerPlayer player) {
+        int total = 0;
+        for (ItemStack stack : player.getInventory().items) {
+            if (stack != null && !stack.isEmpty()) {
+                total += stack.getCount();
             }
         }
-        return remaining;
+        for (ItemStack stack : player.getInventory().offhand) {
+            if (stack != null && !stack.isEmpty()) {
+                total += stack.getCount();
+            }
+        }
+        return total;
     }
 
     private static ChestPlacementResult placeChests(

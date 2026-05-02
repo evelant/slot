@@ -61,18 +61,17 @@ class KitWorkflowDomainServiceTest {
     }
 
     @Test
-    void updateReplacesPagesAndBring() {
+    void updateReplacesPages() {
         KitWorkflowDomainService kits = kits();
         KitDefinition kit = kits.create("Combat");
         ItemIdentity sword = ItemIdentity.of("minecraft:iron_sword");
 
         KitPage page = KitPage.empty().withSlot(0, sword);
-        KitDefinition next = kit.withPages(List.of(page)).withBring(List.of(ItemIdentity.of("minecraft:apple")));
+        KitDefinition next = kit.withPages(List.of(page));
 
         assertTrue(kits.update(next));
         KitDefinition stored = kits.kit(kit.id());
         assertEquals(sword, stored.page(0).slot(0));
-        assertEquals(List.of(ItemIdentity.of("minecraft:apple")), stored.bring());
     }
 
     @Test
@@ -148,14 +147,12 @@ class KitWorkflowDomainServiceTest {
     }
 
     @Test
-    void duplicateClonesPagesAndBringWithUniqueId() {
+    void duplicateClonesPagesAndOffhandWithUniqueId() {
         KitWorkflowDomainService kits = kits();
         ItemIdentity pick = ItemIdentity.of("minecraft:iron_pickaxe");
-        ItemIdentity torch = ItemIdentity.of("minecraft:torch");
         KitPage page = KitPage.empty().withSlot(0, pick);
         KitDefinition original = kits.create("Mining")
                 .withPages(List.of(page))
-                .withBring(List.of(torch))
                 .withOffhand(ItemIdentity.of("minecraft:shield"));
         kits.update(original);
 
@@ -165,7 +162,6 @@ class KitWorkflowDomainServiceTest {
         assertEquals("mining-copy", copy.id());
         assertEquals("Mining (copy)", copy.name());
         assertEquals(pick, copy.page(0).slot(0));
-        assertEquals(List.of(torch), copy.bring());
         assertEquals(ItemIdentity.of("minecraft:shield"), copy.offhand());
         assertEquals(2, kits.kits().size());
     }
@@ -222,36 +218,6 @@ class KitWorkflowDomainServiceTest {
     }
 
     @Test
-    void addBringAppendsIdentity() {
-        KitWorkflowDomainService kits = kits();
-        KitDefinition kit = kits.create("Mining");
-        ItemIdentity torch = ItemIdentity.of("minecraft:torch");
-
-        assertTrue(kits.addBring(kit.id(), torch));
-        assertEquals(List.of(torch), kits.kit(kit.id()).bring());
-    }
-
-    @Test
-    void addBringSkipsDuplicates() {
-        KitWorkflowDomainService kits = kits();
-        KitDefinition kit = kits.create("Mining");
-        ItemIdentity torch = ItemIdentity.of("minecraft:torch");
-        kits.addBring(kit.id(), torch);
-        assertFalse(kits.addBring(kit.id(), torch));
-    }
-
-    @Test
-    void removeBringDropsIdentity() {
-        KitWorkflowDomainService kits = kits();
-        KitDefinition kit = kits.create("Mining");
-        ItemIdentity torch = ItemIdentity.of("minecraft:torch");
-        kits.addBring(kit.id(), torch);
-
-        assertTrue(kits.removeBring(kit.id(), torch));
-        assertTrue(kits.kit(kit.id()).bring().isEmpty());
-    }
-
-    @Test
     void swapSlotsExchangesTwoIdentitiesOnAPage() {
         KitWorkflowDomainService kits = kits();
         ItemIdentity pick = ItemIdentity.of("minecraft:iron_pickaxe");
@@ -285,19 +251,23 @@ class KitWorkflowDomainServiceTest {
     }
 
     @Test
-    void kitActiveProtectionProtectsBeltAndBringIdentitiesFromTrash() {
-        KitWorkflowDomainService kits = kits();
+    void kitActiveProtectionProtectsBeltAndKitDesiredCountIdentitiesFromTrash() {
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        KitWorkflowDomainService kits = new KitWorkflowDomainService(repository);
+        DesiredCountWorkflowDomainService desired = new DesiredCountWorkflowDomainService(repository, () -> {});
         ItemIdentity pick = ItemIdentity.of("minecraft:iron_pickaxe");
         ItemIdentity torch = ItemIdentity.of("minecraft:torch");
         KitPage page = KitPage.empty().withSlot(0, pick);
-        KitDefinition kit = kits.create("Mining").withPages(List.of(page)).withBring(List.of(torch));
+        KitDefinition kit = kits.create("Mining").withPages(List.of(page));
         kits.update(kit);
         kits.activate(kit.id());
+        desired.setForKit(kit.id(), torch, 4);
 
         dev.imagio.slot.workflow.domain.KitActiveProtection protection =
                 new dev.imagio.slot.workflow.domain.KitActiveProtection(
                         ProtectionPolicy.allowAll(),
-                        dev.imagio.slot.workflow.domain.KitActiveProtection.identitiesFor(kits.kitMap())
+                        dev.imagio.slot.workflow.domain.KitActiveProtection.identitiesFor(
+                                kits.kitMap(), repository.workflowProjection().kitDesiredCounts())
                 );
 
         assertTrue(protection.protects(pick, dev.imagio.slot.inventory.action.InventoryActionKind.TRASH));
