@@ -669,8 +669,8 @@ final class ContextMenuBuilder {
     }
 
     void anchorPopover(UIElement menu, float screenX, float screenY, int width, int approxHeight) {
-        float originX = host.atlasPanelElement != null ? host.atlasPanelElement.getPositionX() : 0f;
-        float originY = host.atlasPanelElement != null ? host.atlasPanelElement.getPositionY() : 0f;
+        float originX = host.wallPanelElement != null ? host.wallPanelElement.getPositionX() : 0f;
+        float originY = host.wallPanelElement != null ? host.wallPanelElement.getPositionY() : 0f;
         int left = Math.max(4, Math.round(screenX - originX) + 4);
         int top = Math.max(4, Math.round(screenY - originY) + 4);
         menu.layout(layout -> layout

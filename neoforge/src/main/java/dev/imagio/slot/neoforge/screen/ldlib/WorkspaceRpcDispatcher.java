@@ -879,7 +879,10 @@ final class WorkspaceRpcDispatcher {
 
     void sendDeposit() {
         boolean sent = depositEmitter != null && depositEmitter.send();
-        host.localStatus.set(sent ? "deposit requested" : "deposit unavailable");
+        dev.imagio.slot.SlotCommon.LOGGER.info(
+                "[SLOT] deposit RPC send: emitterPresent={} sent={}",
+                depositEmitter != null, sent);
+        host.localStatus.set(sent ? "deposit requested" : "deposit unavailable (no RPC emitter)");
         host.rebuild();
     }
 

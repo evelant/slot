@@ -259,50 +259,15 @@ final class StoragePanelBuilder {
     }
 
     private UIElement chestChip(SlotWorkspaceViewModel.ChestChip chip) {
-        int fill = (PANEL_ALT & 0x00FFFFFF) | 0xC0000000;
-
-        UIElement element = panel(fill).layout(layout -> layout
-                .widthPercent(100)
-                .height(CHIP_HEIGHT)
-                .paddingHorizontal(6)
-                .gapAll(4)
-                .alignItems(AlignItems.CENTER)
-                .flexDirection(FlexDirection.ROW));
-
-        Label labelEl = label(chip.label(), TEXT);
-        labelEl.layout(layout -> layout.flex(1).height(CHIP_HEIGHT));
-        labelEl.textStyle(style -> style
-                .textColor(TEXT)
-                .textShadow(false)
-                .fontSize(8)
-                .textAlignHorizontal(Horizontal.LEFT)
-                .textAlignVertical(Vertical.CENTER));
-        labelEl.setAllowHitTest(false);
-        element.addChild(labelEl);
-
-        if (chip.slotCapacity() > 0) {
-            Label countEl = label(chip.filledSlots() + "/" + chip.slotCapacity(), MUTED);
-            countEl.layout(layout -> layout.width(36).height(CHIP_HEIGHT));
-            countEl.textStyle(style -> style
-                    .textColor(MUTED)
-                    .textShadow(false)
-                    .fontSize(7)
-                    .textAlignHorizontal(Horizontal.RIGHT)
-                    .textAlignVertical(Vertical.CENTER));
-            countEl.setAllowHitTest(false);
-            element.addChild(countEl);
-        }
-
-        Label dot = label("●", ACCENT);
-        dot.layout(layout -> layout.width(8).height(CHIP_HEIGHT));
-        dot.textStyle(style -> style
-                .textColor(ACCENT)
-                .textShadow(false)
-                .fontSize(7)
-                .textAlignHorizontal(Horizontal.CENTER)
-                .textAlignVertical(Vertical.CENTER));
-        dot.setAllowHitTest(false);
-        element.addChild(dot);
+        // Wayfinding-aware chip: name + cluster + (if needed) missing-icons
+        // + compass + distance. Non-wayfinding chests render the same chip
+        // shape minus the icon strip — see WayfindingChip.build for the
+        // null-target fallback.
+        dev.imagio.slot.inventory.workspace.WayfindingTarget target =
+                dev.imagio.slot.neoforge.client.wayfinding.WayfindingTargetCache.targetFor(chip.storageId());
+        SlotWorkspaceViewModel.ChestClusterDescriptor clusterDescriptor = cluster(chip.clusterId());
+        String clusterLabel = clusterDescriptor == null ? null : clusterDescriptor.label();
+        UIElement element = WayfindingChip.build(chip, target, clusterLabel, WayfindingChip.Mode.ATLAS);
 
         installChipDropTarget(element, chip);
         installChipHover(element, chip);

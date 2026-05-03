@@ -10,22 +10,39 @@ import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
 import com.lowdragmc.lowdraglib2.gui.ui.event.HoverTooltips;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
-import dev.imagio.slot.atlas.lod.AtlasDropResolver;
+import dev.imagio.slot.atlas.lod.SectionOrdinal;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
-import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.KitBringDrag;
-import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.KitSlotDrag;
-import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.AtlasItemDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.ChestStackDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.ChestTileDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.HotbarSlotDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.IslandDrag;
-import net.minecraft.network.chat.Component;
+import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.KitBringDrag;
+import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.KitSlotDrag;
+import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.List;
-
+/**
+ * Drag-drop wiring for the sectioned list-view wall. Replaces the prior
+ * world-coord canvas drop targets with section-aware grid drops:
+ *
+ * <ul>
+ *   <li>Card drag source — pulls an atlas item from anywhere on the
+ *       wall (or hotbar) and drops it on another section to re-home,
+ *       or on a card within the same section to reorder.</li>
+ *   <li>Section drop target — installed on the section's flow grid;
+ *       resolves the drop to an insert ordinal by walking grid
+ *       children whose center sits below-or-right of the drop coord
+ *       in flow order.</li>
+ *   <li>Section header drop target — header drops fall through to
+ *       "append to end of section".</li>
+ * </ul>
+ *
+ * <p>Pan/zoom drag (drag-island, drag-viewport-pan) is gone. Section
+ * reorder happens via the TOC tab in Phase 2 (or via section-header
+ * drag if implemented later).
+ */
 final class DragDropWiring {
     private final SlotWorkspaceUiController host;
 
@@ -38,10 +55,8 @@ final class DragDropWiring {
             if (!source.isMouseDown(0) || isDragging(source)) {
                 return;
             }
-            // Drag = "move whole stack." It's the spec'd alternative to the
-            // split cursor (which handles partial moves), and the two
-            // shouldn't run concurrently — a drag mid-cursor would create
-            // two simultaneous "I want to move this item" intents that race.
+            // Drag = "move whole stack." Mutually exclusive with the
+            // partial-stack cursor.
             if (host.cursor.isCarrying()) {
                 return;
             }
@@ -50,100 +65,6 @@ final class DragDropWiring {
                     dragTexture(item.displayStack())
             ).setDragTexture(-10, -10, 20, 20);
             host.localStatus.set("dragging " + item.name());
-        }, true);
-        source.addEventListener(UIEvents.DRAG_END, event -> handleDragEnd(event));
-    }
-
-    /**
-     * Below this atlas scale, the island body acts as a fallback drag
-     * source: the visible header strip becomes hard to hit (only a few
-     * screen pixels tall), so a click anywhere on the body grabs the
-     * island instead. Above the threshold the body-drag is suppressed
-     * so item-card interactions stay clean.
-     */
-    private static final float BODY_AS_DRAG_HANDLE_MAX_SCALE = 0.6f;
-
-    void installIslandDragSource(
-            UIElement source,
-            SlotAtlasGraphView atlas,
-            SlotWorkspaceViewModel.AtlasIsland island
-    ) {
-        installIslandDragSource(source, atlas, island, null);
-    }
-
-    /**
-     * {@link #installIslandDragSource} variant gated on a scale
-     * threshold. When {@code engageWhenScaleBelow} is non-null, drag
-     * recording only kicks in if {@code atlas.getScale()} is below the
-     * supplied value at MOUSE_DOWN time. Used by the island body so it
-     * acts as a drag handle only when zoomed out far enough that the
-     * header strip is hard to grab.
-     */
-    void installIslandDragSource(
-            UIElement source,
-            SlotAtlasGraphView atlas,
-            SlotWorkspaceViewModel.AtlasIsland island,
-            Float engageWhenScaleBelow
-    ) {
-        if (island.kind() != VisualAtlasIslandKind.PLAYER) {
-            return;
-        }
-        int[] clickWorldX = {Integer.MIN_VALUE};
-        int[] clickWorldY = {Integer.MIN_VALUE};
-        source.addEventListener(UIEvents.MOUSE_DOWN, event -> {
-            if (event.button != 0) {
-                return;
-            }
-            if (engageWhenScaleBelow != null
-                    && atlas.getScale() >= engageWhenScaleBelow) {
-                return;
-            }
-            clickWorldX[0] = atlas.worldX(event.x);
-            clickWorldY[0] = atlas.worldY(event.y);
-        }, true);
-        source.addEventListener(UIEvents.MOUSE_UP, event -> {
-            clickWorldX[0] = Integer.MIN_VALUE;
-            clickWorldY[0] = Integer.MIN_VALUE;
-        }, true);
-        source.addEventListener(UIEvents.MOUSE_MOVE, event -> {
-            if (clickWorldX[0] == Integer.MIN_VALUE) {
-                return;
-            }
-            if (!source.isMouseDown(0) || isDragging(source)) {
-                return;
-            }
-            float scale = atlas.getScale();
-            float screenDx = (atlas.worldX(event.x) - clickWorldX[0]) * scale;
-            float screenDy = (atlas.worldY(event.y) - clickWorldY[0]) * scale;
-            if (screenDx * screenDx + screenDy * screenDy < DRAG_START_THRESHOLD_PX * DRAG_START_THRESHOLD_PX) {
-                return;
-            }
-            dev.imagio.slot.atlas.lod.AtlasLayoutResult.IslandPlacement islandPlace = host.islandPlacementFor(island);
-            int grabOffsetX = Math.max(0, Math.min(islandPlace.width(), clickWorldX[0] - islandPlace.x()));
-            int grabOffsetY = Math.max(0, Math.min(islandPlace.height(), clickWorldY[0] - islandPlace.y()));
-            // Render the ghost at the actual island screen size (no minimum
-            // clamp — small islands got spuriously wide ghosts). Cap at a
-            // reasonable maximum so huge islands don't occlude the viewport.
-            int actualWidthPx = atlas.screenPixelsForWorldUnits(islandPlace.width());
-            int actualHeightPx = atlas.screenPixelsForWorldUnits(islandPlace.height());
-            float dragScale = Math.min(1f, Math.min(260f / Math.max(1, actualWidthPx), 180f / Math.max(1, actualHeightPx)));
-            int dragWidthPx = Math.max(1, Math.round(actualWidthPx * dragScale));
-            int dragHeightPx = Math.max(1, Math.round(actualHeightPx * dragScale));
-            // The island title bar lives above the island rect; include a
-            // proportional strip in the ghost so it represents the whole
-            // island shape the host.player sees.
-            int headerHeightPx = Math.max(6, Math.round(14f * dragScale));
-            int dragOffsetX = Math.round(grabOffsetX * scale * dragScale);
-            int dragOffsetY = Math.round(grabOffsetY * scale * dragScale);
-            source.startDrag(
-                    new IslandDrag(island.islandId(), grabOffsetX, grabOffsetY),
-                    rect((island.color() & 0x00FFFFFF) | 0x5A000000)
-            ).setDragTexture(
-                    -dragOffsetX,
-                    -(dragOffsetY + headerHeightPx),
-                    dragWidthPx,
-                    dragHeightPx + headerHeightPx);
-            host.localStatus.set("dragging island " + island.label());
         }, true);
         source.addEventListener(UIEvents.DRAG_END, event -> handleDragEnd(event));
     }
@@ -168,7 +89,7 @@ final class DragDropWiring {
         }
         SlotWorkspaceViewModel.IdentityRef identity = SlotWorkspaceViewModel.IdentityRef.from(
                 dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(drag.displayStack()));
-        SlotWorkspaceViewModel.AtlasItem atlasItem = host.islandChest.atlasItemInIslandLayer(identity);
+        SlotWorkspaceViewModel.AtlasItem atlasItem = atlasItemFor(identity);
         if (atlasItem == null) {
             return false;
         }
@@ -176,6 +97,19 @@ final class DragDropWiring {
         return islandId != null
                 && !islandId.isBlank()
                 && !SlotWorkspaceAtlasLayout.ISLAND_TRIAGE.equals(islandId);
+    }
+
+    /** Lookup helper for hotbar→home checks: finds the atlas item with this identity. */
+    private SlotWorkspaceViewModel.AtlasItem atlasItemFor(SlotWorkspaceViewModel.IdentityRef identity) {
+        if (identity == null) {
+            return null;
+        }
+        for (SlotWorkspaceViewModel.AtlasItem candidate : host.viewModel.atlasItems()) {
+            if (candidate.identity().equals(identity)) {
+                return candidate;
+            }
+        }
+        return null;
     }
 
     void installHotbarDragSource(UIElement source, SlotWorkspaceViewModel.HotbarSlot slot) {
@@ -186,8 +120,6 @@ final class DragDropWiring {
             if (!source.isMouseDown(0) || isDragging(source)) {
                 return;
             }
-            // See installAtlasItemDragSource — drag is the whole-stack move
-            // and is mutually exclusive with the partial-stack cursor.
             if (host.cursor.isCarrying()) {
                 return;
             }
@@ -208,8 +140,6 @@ final class DragDropWiring {
             clearDropOverlay(target);
             HotbarSlotDrag hotbarDrag = hotbarSlotDrag(event);
             if (hotbarDrag != null) {
-                // Drag between two hotbar slots = swap. ASSIGN against two host.player-bound
-                // quick-access slots swaps their contents atomically.
                 if (hotbarDrag.hotbarIndex() != slot.hotbarIndex()) {
                     host.rpc.sendTransfer(
                             SlotWorkspaceUiSession.TARGET_HOTBAR_SLOT, hotbarDrag.hotbarIndex(),
@@ -220,8 +150,6 @@ final class DragDropWiring {
             }
             AtlasItemDrag drag = atlasItemDrag(event);
             if (drag == null) {
-                // No recognized drag type: still stop propagation so the drop doesn't
-                // fall through to an atlas card positioned behind the belt.
                 event.stopPropagation();
                 return;
             }
@@ -243,80 +171,26 @@ final class DragDropWiring {
         });
     }
 
-    void installAtlasBackgroundDropTarget(SlotAtlasGraphView atlas) {
-        atlas.addEventListener(UIEvents.DRAG_ENTER, event -> updateAtlasBackgroundDropOverlay(atlas, event), true);
-        atlas.addEventListener(UIEvents.DRAG_UPDATE, event -> updateAtlasBackgroundDropOverlay(atlas, event));
-        atlas.addEventListener(UIEvents.DRAG_LEAVE, event -> clearDropOverlay(atlas), true);
-        atlas.addEventListener(UIEvents.DRAG_PERFORM, event -> {
-            // Atlas cards live as direct children of the SlotAtlasGraphView
-            // (not as children of their owning island panels), so a drop on
-            // a card bubbles to the atlas — not to the panel that owns the
-            // card's island. We intentionally do NOT early-return on
-            // !isDirectDragTarget for atlas-item drags: instead, resolve the
-            // world coord against the layout to find the target
-            // island+ordinal. Drops on cards thus route to ordinal placement
-            // inside the card's island; drops on bare atlas (no resolution)
-            // still take the create-island / return-to-inbox fallback.
-            //
-            // Other drag types still gate on isDirectDragTarget so their
-            // existing semantics (move-island, move-chest-tile, etc.)
-            // don't accidentally fire when the user drops on a card or
-            // panel that should own the event.
-            clearDropOverlay(atlas);
+    /**
+     * Section grid drop target. The grid's children are atlas cards
+     * laid out in flow order; a drop's screen coordinate maps back to
+     * an insertion ordinal by walking children left-to-right,
+     * top-to-bottom and stopping at the first card whose center sits
+     * below-or-right of the drop coord.
+     */
+    void installSectionDropTarget(UIElement grid, SlotWorkspaceViewModel.AtlasIsland island) {
+        if (island.kind() == VisualAtlasIslandKind.TRIAGE) {
+            return;
+        }
+        grid.addEventListener(UIEvents.DRAG_ENTER, event -> updateSectionDropOverlay(grid, island, event), true);
+        grid.addEventListener(UIEvents.DRAG_UPDATE, event -> updateSectionDropOverlay(grid, island, event));
+        grid.addEventListener(UIEvents.DRAG_LEAVE, event -> clearDropOverlay(grid), true);
+        grid.addEventListener(UIEvents.DRAG_PERFORM, event -> {
+            clearDropOverlay(grid);
             AtlasItemDrag atlasItem = atlasItemDrag(event);
             if (atlasItem != null) {
-                int worldX = atlas.worldX(event.x);
-                int worldY = atlas.worldY(event.y);
-                AtlasDropResolver.Resolution resolution = AtlasDropResolver.resolve(
-                        host.viewModel, host.currentLayout, worldX, worldY);
-                if (resolution != null && !resolution.islandId().isBlank()
-                        && !SlotWorkspaceAtlasLayout.ISLAND_TRIAGE.equals(resolution.islandId())) {
-                    host.rpc.sendAssignHome(
-                            atlasItem.identity(),
-                            resolution.islandId(),
-                            resolution.ordinal()
-                    );
-                    event.stopPropagation();
-                    return;
-                }
-                if (!isDirectDragTarget(event, atlas)) {
-                    // No resolution AND target isn't atlas itself — let the
-                    // panel/island handler take it (this branch is reached
-                    // when the panel handler hasn't yet stopped propagation,
-                    // e.g., a future event-order change).
-                    return;
-                }
-                if (wasDraggedFromTriage(atlasItem)) {
-                    SlotWorkspaceViewModel.AtlasItem item = host.viewModel.atlasItem(atlasItem.identity());
-                    if (item == null) {
-                        host.localStatus.set("dragged item is no longer visible");
-                        host.rebuild();
-                        event.stopPropagation();
-                        return;
-                    }
-                    host.menu.beginCreateIsland(item, worldX, worldY);
-                } else {
-                    // Drop on background = "return to inbox" (triage clear).
-                    // Triage is ordinal-less; null is fine.
-                    host.rpc.sendAssignHome(
-                            atlasItem.identity(),
-                            SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
-                            null
-                    );
-                }
-                event.stopPropagation();
-                return;
-            }
-            if (!isDirectDragTarget(event, atlas)) {
-                return;
-            }
-            IslandDrag islandDrag = islandDrag(event);
-            if (islandDrag != null) {
-                host.rpc.sendMoveIsland(
-                        islandDrag.islandId(),
-                        atlas.worldX(event.x) - islandDrag.grabOffsetX(),
-                        atlas.worldY(event.y) - islandDrag.grabOffsetY()
-                );
+                Integer ordinal = resolveSectionDropOrdinal(grid, event);
+                host.rpc.sendAssignHome(atlasItem.identity(), island.islandId(), ordinal);
                 event.stopPropagation();
                 return;
             }
@@ -325,120 +199,18 @@ final class DragDropWiring {
                 if (hotbarDragHasHome(hotbarItem)) {
                     host.rpc.sendReturnHotbarToHome(hotbarItem.hotbarIndex());
                 } else {
-                    host.rpc.sendMoveHotbarToAtlas(
-                            hotbarItem.hotbarIndex(),
-                            SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
-                            null
-                    );
-                }
-                event.stopPropagation();
-                return;
-            }
-            KitSlotDrag kitSlot = host.kit.kitSlotDrag(event);
-            if (kitSlot != null) {
-                host.rpc.sendSetKitSlotIdentity(kitSlot.kitId(), kitSlot.pageIndex(), kitSlot.slotIndex(), null);
-                event.stopPropagation();
-                return;
-            }
-            KitBringDrag kitBring = host.kit.kitBringDrag(event);
-            if (kitBring != null) {
-                host.rpc.sendSetKitScopedDesiredCount(kitBring.kitId(), kitBring.identity(), 0);
-                event.stopPropagation();
-            }
-        });
-    }
-
-    boolean wasDraggedFromTriage(AtlasItemDrag drag) {
-        if (drag == null) {
-            return false;
-        }
-        String originIslandId = drag.originIslandId();
-        if (SlotWorkspaceAtlasLayout.ISLAND_TRIAGE.equals(originIslandId)) {
-            return true;
-        }
-        SlotWorkspaceViewModel.AtlasIsland origin = host.viewModel.island(originIslandId);
-        return origin != null && origin.kind() == VisualAtlasIslandKind.TRIAGE;
-    }
-
-    void installAtlasCanvasDropTarget(UIElement target, SlotAtlasGraphView atlas) {
-        target.addEventListener(UIEvents.DRAG_PERFORM, event -> {
-            IslandDrag islandDrag = islandDrag(event);
-            if (islandDrag != null) {
-                if (event.target == atlas) {
-                    return;
-                }
-                host.rpc.sendMoveIsland(
-                        islandDrag.islandId(),
-                        atlas.worldX(event.x) - islandDrag.grabOffsetX(),
-                        atlas.worldY(event.y) - islandDrag.grabOffsetY()
-                );
-                event.stopPropagation();
-                return;
-            }
-        });
-    }
-
-    void installIslandDropTarget(
-            UIElement target,
-            UIElement highlightTarget,
-            SlotAtlasGraphView atlas,
-            SlotWorkspaceViewModel.AtlasIsland island
-    ) {
-        target.addEventListener(UIEvents.DRAG_ENTER, event -> updateIslandDropOverlay(highlightTarget, island, event), true);
-        target.addEventListener(UIEvents.DRAG_UPDATE, event -> updateIslandDropOverlay(highlightTarget, island, event));
-        target.addEventListener(UIEvents.DRAG_LEAVE, event -> clearDropOverlay(highlightTarget), true);
-        target.addEventListener(UIEvents.DRAG_PERFORM, event -> {
-            clearDropOverlay(highlightTarget);
-            IslandDrag islandDrag = islandDrag(event);
-            if (islandDrag != null) {
-                host.rpc.sendMoveIsland(
-                        islandDrag.islandId(),
-                        atlas.worldX(event.x) - islandDrag.grabOffsetX(),
-                        atlas.worldY(event.y) - islandDrag.grabOffsetY()
-                );
-                event.stopPropagation();
-                return;
-            }
-            AtlasItemDrag atlasItem = atlasItemDrag(event);
-            if (atlasItem != null) {
-                Integer ordinal = resolveDropOrdinal(atlas, island.islandId(), event);
-                host.rpc.sendAssignHome(
-                        atlasItem.identity(),
-                        island.islandId(),
-                        ordinal
-                );
-                event.stopPropagation();
-                return;
-            }
-            HotbarSlotDrag hotbarItem = hotbarSlotDrag(event);
-            if (hotbarItem != null) {
-                if (hotbarDragHasHome(hotbarItem)) {
-                    host.rpc.sendReturnHotbarToHome(hotbarItem.hotbarIndex());
-                } else {
-                    Integer ordinal = resolveDropOrdinal(atlas, island.islandId(), event);
-                    host.rpc.sendMoveHotbarToAtlas(
-                            hotbarItem.hotbarIndex(),
-                            island.islandId(),
-                            ordinal
-                    );
+                    Integer ordinal = resolveSectionDropOrdinal(grid, event);
+                    host.rpc.sendMoveHotbarToAtlas(hotbarItem.hotbarIndex(), island.islandId(), ordinal);
                 }
                 event.stopPropagation();
                 return;
             }
             ChestStackDrag chestDrag = chestStackDrag(event);
             if (chestDrag != null) {
-                // Pure metadata assign — the item stays in the chest, we
-                // only record the island as the visual home for this
-                // identity. Mark the drag as consumed so the chest cell's
-                // DRAG_END skips its default take-into-inventory path.
                 SlotWorkspaceViewModel.IdentityRef identity = SlotWorkspaceViewModel.IdentityRef.from(
                         dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(chestDrag.displayStack()));
-                Integer ordinal = resolveDropOrdinal(atlas, island.islandId(), event);
-                host.rpc.sendAssignHome(
-                        identity,
-                        island.islandId(),
-                        ordinal
-                );
+                Integer ordinal = resolveSectionDropOrdinal(grid, event);
+                host.rpc.sendAssignHome(identity, island.islandId(), ordinal);
                 host.chestDragDropConsumed = true;
                 event.stopPropagation();
             }
@@ -446,33 +218,72 @@ final class DragDropWiring {
     }
 
     /**
-     * Resolve the drop coordinate to an insert ordinal inside the
-     * destination island. Returns null when the drop missed every item
-     * in the island — caller treats that as "append to island".
+     * Section header drop target — accepts the same drag types as the
+     * grid below it, but always appends (no ordinal resolution).
      */
-    Integer resolveDropOrdinal(SlotAtlasGraphView atlas, String islandId, UIEvent event) {
-        if (atlas == null || islandId == null || islandId.isBlank() || event == null) {
-            return null;
+    void installSectionHeaderDropTarget(Button header, SlotWorkspaceViewModel.AtlasIsland island) {
+        if (island.kind() == VisualAtlasIslandKind.TRIAGE) {
+            return;
         }
-        int worldX = atlas.worldX(event.x);
-        int worldY = atlas.worldY(event.y);
-        AtlasDropResolver.Resolution resolution =
-                AtlasDropResolver.resolve(host.viewModel, host.currentLayout, worldX, worldY);
-        if (resolution == null || !islandId.equals(resolution.islandId())) {
-            return null;
-        }
-        return resolution.ordinal();
-    }
-
-    void installViewportPanSurface(UIElement target, SlotAtlasGraphView atlas) {
-        target.addEventListener(UIEvents.MOUSE_DOWN, event -> {
-            if (event.target != target) {
+        header.addEventListener(UIEvents.DRAG_ENTER, event -> updateSectionDropOverlay(header, island, event), true);
+        header.addEventListener(UIEvents.DRAG_UPDATE, event -> updateSectionDropOverlay(header, island, event));
+        header.addEventListener(UIEvents.DRAG_LEAVE, event -> clearDropOverlay(header), true);
+        header.addEventListener(UIEvents.DRAG_PERFORM, event -> {
+            clearDropOverlay(header);
+            AtlasItemDrag atlasItem = atlasItemDrag(event);
+            if (atlasItem != null) {
+                host.rpc.sendAssignHome(atlasItem.identity(), island.islandId(), null);
+                event.stopPropagation();
                 return;
             }
-            if (atlas.beginViewportPan(event)) {
+            HotbarSlotDrag hotbarItem = hotbarSlotDrag(event);
+            if (hotbarItem != null) {
+                if (hotbarDragHasHome(hotbarItem)) {
+                    host.rpc.sendReturnHotbarToHome(hotbarItem.hotbarIndex());
+                } else {
+                    host.rpc.sendMoveHotbarToAtlas(hotbarItem.hotbarIndex(), island.islandId(), null);
+                }
                 event.stopPropagation();
             }
         });
+    }
+
+    /**
+     * Resolve the drop coord against the section's flex children. Walks
+     * them in flow order; returns the index of the first child whose
+     * center sits below-or-right of the drop. If no child matches the
+     * drop is past every existing card and the result is "append" (the
+     * children count). Strict row-major: above-the-row beats left-of-card.
+     */
+    private Integer resolveSectionDropOrdinal(UIElement grid, UIEvent event) {
+        if (event == null) {
+            return null;
+        }
+        float dropX = event.x;
+        float dropY = event.y;
+        int ordinal = 0;
+        int childCount = grid.getChildren().size();
+        for (int i = 0; i < childCount; i++) {
+            UIElement child = grid.getChildren().get(i);
+            float left = child.getPositionX();
+            float top = child.getPositionY();
+            float w = child.getSizeWidth();
+            float h = child.getSizeHeight();
+            if (w <= 0f || h <= 0f) {
+                ordinal++;
+                continue;
+            }
+            float centerX = left + w / 2f;
+            float centerY = top + h / 2f;
+            if (dropY < centerY - h / 2f) {
+                return ordinal;
+            }
+            if (dropY < centerY + h / 2f && dropX < centerX) {
+                return ordinal;
+            }
+            ordinal++;
+        }
+        return ordinal;
     }
 
     void updateHotbarDropOverlay(Button target, SlotWorkspaceViewModel.HotbarSlot slot, UIEvent event) {
@@ -495,28 +306,11 @@ final class DragDropWiring {
         updateGenericDropOverlay(target, carried, carried ? (slot.occupied() ? ACTIVE_HOTBAR : ACCENT) : WARNING);
     }
 
-    void updateIslandDropOverlay(UIElement highlightTarget, SlotWorkspaceViewModel.AtlasIsland island, UIEvent event) {
-        boolean acceptable = atlasItemDrag(event) != null || hotbarSlotDrag(event) != null || islandDrag(event) != null;
-        updateGenericDropOverlay(
-                highlightTarget,
-                acceptable,
-                islandDrag(event) != null
-                        ? SELECTED
-                        : island.kind() == VisualAtlasIslandKind.TRIAGE ? WARNING : ACCENT
-        );
-    }
-
-    void updateAtlasBackgroundDropOverlay(SlotAtlasGraphView atlas, UIEvent event) {
-        if (!isDirectDragTarget(event, atlas)) {
-            clearDropOverlay(atlas);
-            return;
-        }
-        IslandDrag islandDrag = islandDrag(event);
+    void updateSectionDropOverlay(UIElement target, SlotWorkspaceViewModel.AtlasIsland island, UIEvent event) {
         boolean acceptable = atlasItemDrag(event) != null
                 || hotbarSlotDrag(event) != null
-                || islandDrag != null;
-        int color = islandDrag != null ? SELECTED : WARNING;
-        updateGenericDropOverlay(atlas, acceptable, color);
+                || chestStackDrag(event) != null;
+        updateGenericDropOverlay(target, acceptable, ACCENT);
     }
 
     void updateGenericDropOverlay(UIElement target, boolean active) {
@@ -566,17 +360,9 @@ final class DragDropWiring {
         return payload instanceof ChestStackDrag chestStackDrag ? chestStackDrag : null;
     }
 
-    boolean isDirectDragTarget(UIEvent event, UIElement element) {
-        return event != null && event.target == element;
-    }
-
     IGuiTexture dragTexture(ItemStack stack) {
         return new ItemStackTexture(stack == null ? ItemStack.EMPTY : stack.copy());
     }
-
-
-    // Chest-tile and chest-stack drag sources removed — chest tiles no
-    // longer render in the workspace, see docs/plans/learned-storage.md.
 
     @SuppressWarnings("unused")
     void installChestStackDragSource(
@@ -630,5 +416,4 @@ final class DragDropWiring {
             handleDragEnd(event);
         });
     }
-
 }

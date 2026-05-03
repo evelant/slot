@@ -230,12 +230,19 @@ final class SlotWorkspaceUiSession {
 
     void deposit() {
         if (!(player instanceof ServerPlayer serverPlayer)) {
+            dev.imagio.slot.SlotCommon.LOGGER.warn(
+                    "[SLOT] deposit RPC received but player is not a ServerPlayer (player={})", player);
             return;
         }
         refreshServerView(serverPlayer);
         WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
         ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
         Set<String> proximate = ChestProximityResolver.proximateStorageIds(serverPlayer, claimedChestMap);
+        dev.imagio.slot.SlotCommon.LOGGER.info(
+                "[SLOT] deposit RPC received: player={} claimedChests={} proximate={}",
+                serverPlayer.getName().getString(),
+                claimedChestMap.chests().size(),
+                proximate.size());
         if (proximate.isEmpty()) {
             status = "rejected";
             diagnostics = "no_proximate_chest";
@@ -255,14 +262,23 @@ final class SlotWorkspaceUiSession {
                 proximate,
                 this::descriptorForIdentity
         );
+        dev.imagio.slot.SlotCommon.LOGGER.info(
+                "[SLOT] deposit plan: assignments={} (one per stack with positive affinity)",
+                plan.assignments().size());
         DepositExecutor.DepositOutcome outcome = DepositExecutor.execute(serverPlayer, plan, claimedChestMap);
         for (DepositExecutor.DepositRecord record : outcome.records()) {
             runtime.chestClaimWorkflow().recordDeposit(
                     record.storageId(), record.identity(), record.count(), tick);
         }
         if (outcome.deposited() == 0 && outcome.failed() == 0) {
+            // Empty plan + empty outcome means no carried stack had a
+            // direct or facet affinity bond with any proximate claimed
+            // chest. Surface this clearly so the player understands the
+            // affinity-driven nature of deposit (vs "deposit anything").
             status = "nothing_to_deposit";
-            diagnostics = "";
+            diagnostics = plan.assignments().isEmpty()
+                    ? "no carried stack matches a chest's affinity (deposit something there manually first)"
+                    : "all candidate chests rejected the items";
         } else if (outcome.deposited() > 0 && outcome.failed() == 0) {
             status = "deposited";
             diagnostics = "deposited=" + outcome.deposited();
@@ -273,6 +289,8 @@ final class SlotWorkspaceUiSession {
             status = "deposited_partial";
             diagnostics = "deposited=" + outcome.deposited() + " failed=" + outcome.failed();
         }
+        dev.imagio.slot.SlotCommon.LOGGER.info(
+                "[SLOT] deposit complete: status={} diagnostics={}", status, diagnostics);
         broadcast(serverPlayer);
     }
 
@@ -2253,7 +2271,8 @@ final class SlotWorkspaceUiSession {
                 proximateIds,
                 containerResolver,
                 lootChestSource,
-                searchQuery
+                searchQuery,
+                serverPlayer.serverLevel().getGameTime()
         );
         CompoundTag nextContent = SlotWorkspaceViewModelCodec.encode(projected, serverPlayer.registryAccess(), false);
         if (!nextContent.equals(lastContentTag)) {

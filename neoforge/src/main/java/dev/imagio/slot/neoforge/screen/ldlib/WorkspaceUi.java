@@ -57,6 +57,12 @@ final class WorkspaceUi {
         button.setText(Component.literal(text));
         button.setActive(active);
         applyButtonColors(button, active, color);
+        // Keep the button's text from absorbing hover hit-tests. Without
+        // this the cursor crossing onto the inner text element fires
+        // MOUSE_LEAVE on the button, which breaks hover-driven previews
+        // (e.g., the deposit-preview outline that lights up depositable
+        // identities while hovering the Deposit button).
+        button.text.setAllowHitTest(false);
         return button;
     }
 
@@ -112,7 +118,23 @@ final class WorkspaceUi {
     }
 
     static UIElement itemIcon(ItemStack stack, float size, boolean carried) {
+        return itemIcon(stack, size, carried, true);
+    }
+
+    /**
+     * @param renderVanillaCount when {@code false} the stack's count is
+     *     coerced to 1 before the icon is built so vanilla's
+     *     {@code renderItemDecorations} skips drawing the count badge.
+     *     Atlas cards opt out so they can render their own status-aware
+     *     "M / N" badge — the vanilla badge would show the first stack's
+     *     count rather than the per-identity aggregate, which is wrong
+     *     for an aggregated atlas item.
+     */
+    static UIElement itemIcon(ItemStack stack, float size, boolean carried, boolean renderVanillaCount) {
         ItemStack iconStack = stack == null ? ItemStack.EMPTY : stack.copy();
+        if (!renderVanillaCount && !iconStack.isEmpty()) {
+            iconStack.setCount(1);
+        }
         ItemStackTexture texture = new ItemStackTexture(iconStack);
         if (!carried) {
             // Ghost icons render at reduced alpha rather than under a

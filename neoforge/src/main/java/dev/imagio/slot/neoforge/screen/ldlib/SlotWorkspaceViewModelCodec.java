@@ -5,6 +5,7 @@ import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.inventory.workspace.WayfindingTarget;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.imagio.slot.workflow.domain.VisualHomeMap;
 import net.minecraft.core.HolderLookup;
@@ -92,6 +93,18 @@ public final class SlotWorkspaceViewModelCodec {
             kitTags.add(encodeKitCard(card, provider));
         }
         tag.put("kits", kitTags);
+
+        ListTag wayfindingTags = new ListTag();
+        for (WayfindingTarget target : viewModel.wayfindingTargets()) {
+            wayfindingTags.add(encodeWayfindingTarget(target));
+        }
+        tag.put("wayfindingTargets", wayfindingTags);
+
+        ListTag depositableTags = new ListTag();
+        for (SlotWorkspaceViewModel.IdentityRef ref : viewModel.depositableIdentities()) {
+            depositableTags.add(encodeIdentity(ref));
+        }
+        tag.put("depositableIdentities", depositableTags);
         return tag;
     }
 
@@ -163,6 +176,19 @@ public final class SlotWorkspaceViewModelCodec {
             kits.add(decodeKitCard(provider, kitTags.getCompound(index)));
         }
 
+        ArrayList<WayfindingTarget> wayfindingTargets = new ArrayList<>();
+        ListTag wayfindingTags = compoundTag.getList("wayfindingTargets", Tag.TAG_COMPOUND);
+        for (int index = 0; index < wayfindingTags.size(); index++) {
+            wayfindingTargets.add(decodeWayfindingTarget(wayfindingTags.getCompound(index)));
+        }
+
+        java.util.LinkedHashSet<SlotWorkspaceViewModel.IdentityRef> depositableIdentities =
+                new java.util.LinkedHashSet<>();
+        ListTag depositableTags = compoundTag.getList("depositableIdentities", Tag.TAG_COMPOUND);
+        for (int index = 0; index < depositableTags.size(); index++) {
+            depositableIdentities.add(decodeIdentity(depositableTags.getCompound(index)));
+        }
+
         return new SlotWorkspaceViewModel(
                 compoundTag.getLong("revision"),
                 compoundTag.getString("status"),
@@ -183,7 +209,56 @@ public final class SlotWorkspaceViewModelCodec {
                 hotbarSlots.isEmpty() ? SlotWorkspaceViewModel.emptyHotbar() : hotbarSlots,
                 decodeOffhand(provider, compoundTag.getCompound("offhand")),
                 kits,
-                lootChestPanel
+                lootChestPanel,
+                wayfindingTargets,
+                depositableIdentities
+        );
+    }
+
+    private static CompoundTag encodeWayfindingTarget(WayfindingTarget target) {
+        CompoundTag tag = new CompoundTag();
+        tag.putString("storageId", target.storageId());
+        tag.putString("dimensionId", target.dimensionId());
+        tag.putInt("worldX", target.worldX());
+        tag.putInt("worldY", target.worldY());
+        tag.putInt("worldZ", target.worldZ());
+        tag.putInt("totalMissingCount", target.totalMissingCount());
+        tag.putString("scope", target.scope().name());
+        ListTag identityTags = new ListTag();
+        for (ItemIdentity identity : target.missingIdentities()) {
+            identityTags.add(encodeIdentity(SlotWorkspaceViewModel.IdentityRef.from(identity)));
+        }
+        tag.put("missingIdentities", identityTags);
+        return tag;
+    }
+
+    private static WayfindingTarget decodeWayfindingTarget(CompoundTag tag) {
+        java.util.LinkedHashSet<ItemIdentity> identities = new java.util.LinkedHashSet<>();
+        ListTag identityTags = tag.getList("missingIdentities", Tag.TAG_COMPOUND);
+        for (int i = 0; i < identityTags.size(); i++) {
+            ItemIdentity identity = decodeIdentity(identityTags.getCompound(i)).toIdentity();
+            if (identity != null) {
+                identities.add(identity);
+            }
+        }
+        WayfindingTarget.Scope scope;
+        try {
+            String raw = tag.getString("scope");
+            scope = raw == null || raw.isBlank()
+                    ? WayfindingTarget.Scope.PLAYER
+                    : WayfindingTarget.Scope.valueOf(raw);
+        } catch (IllegalArgumentException ignored) {
+            scope = WayfindingTarget.Scope.PLAYER;
+        }
+        return new WayfindingTarget(
+                tag.getString("storageId"),
+                tag.getString("dimensionId"),
+                tag.getInt("worldX"),
+                tag.getInt("worldY"),
+                tag.getInt("worldZ"),
+                identities,
+                tag.getInt("totalMissingCount"),
+                scope
         );
     }
 

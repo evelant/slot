@@ -2,6 +2,15 @@
 
 Last updated: 2026-04-25
 
+> **Retired (2026-05-03).** Superseded by
+> [list-view.md](list-view.md). LOD bands aren't shipping; the list view
+> uses a single LOD. Phase 1 (the invisible refactor — relevance score
+> machinery + contributors) survives because the scoring is still useful
+> for ordering, search, and TOC status dots; subsequent phases (band
+> selection, band-driven cell sizing, multi-band card chrome) are
+> abandoned. Do not pull from this plan; queue work against the list-view
+> plan instead.
+
 Engineering task breakdown for the design at
 [../design/relevance-lod.md](../design/relevance-lod.md). Read that doc
 first for the model, contributors, and rationale.

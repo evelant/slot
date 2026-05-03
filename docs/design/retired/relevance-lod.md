@@ -2,6 +2,15 @@
 
 Last updated: 2026-04-25
 
+> **Retired (2026-05-03).** Superseded by
+> [../plans/list-view.md](../plans/list-view.md). The list-view direction
+> uses a single LOD — no zoom, no band selection — so the LOD-band part
+> of this design isn't shipping. The **relevance scoring** machinery
+> survives in reduced form: scoring still drives ordering hints inside
+> sections, search filtering, and TOC status dots in the new model. The
+> band-picker, multi-band card chrome, and density-via-LOD framing are
+> stale. Do not author new work against this doc; see the plan.
+
 Status: current direction for managing atlas density at modded scale.
 Generalizes the existing carried-vs-ghost asymmetric LOD into a per-item
 **relevance score** that picks each item's render band, so the atlas

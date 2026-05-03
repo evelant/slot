@@ -1,16 +1,101 @@
 # SLOT Project Status
 
-Last updated: 2026-05-01. Operational handoff. Read after
+Last updated: 2026-05-03. Operational handoff. Read after
 [../README.md](../README.md). For active work + queue see
 [plans/current.md](plans/current.md); for architecture see
 [architecture/overview.md](architecture/overview.md).
 
 ## Active
 
-**Open** — pull the next item from
-[plans/current.md § Queue](plans/current.md#queue) when picking up.
-Split-cursor mode and desired counts (player-global + kit-scoped, with
-auto-fetch on kit activation and cleanup protection) shipped 2026-05-01.
+**[plans/list-view.md](plans/list-view.md) drafted 2026-05-03** —
+replace the 2D pan/zoom atlas with a single-LOD sectioned vertical
+scroll list. Same projection, same item cards, same gestures (outside
+section reorder). Same widget renders standalone on the inventory key
+and as a left ~1/3 sidebar on container/machine screens, giving SLOT
+a story for crafting and EMI/JEI without losing carried-inventory
+unification. Pull Phase 1 (standalone list view) from the queue when
+picking up.
+
+Wayfinding (full plan), atlas-card status redesign, deposit-preview
+highlighting, and a top-level Gather button shipped 2026-05-02.
+
+**Recent landings (2026-05-02):**
+
+- **Wayfinding (Phases 1–4) shipped end to end.** Plan archived in
+  [plans/done/wayfinding.md](plans/done/wayfinding.md).
+  - Phase 1: server projects `WayfindingTarget` per claimed chest
+    holding a kit-needed or unmet desired-count identity, with KIT vs
+    PLAYER scope, codec round-tripped, tests green.
+  - Phase 2: `WayfindingChestGlowRenderer` paints a wireframe AABB on
+    each in-current-dimension target on
+    `RenderLevelStageEvent.AFTER_TRANSLUCENT_BLOCKS`. Color tracks scope
+    (amber kit / blue player), alpha pulses + falls off with distance +
+    line-of-sight (capped 64-block radius / 32-block trace).
+  - Phase 3: shared `WayfindingChip` UIElement component drives the
+    proximity panel + chest locator inside the atlas — name + cluster +
+    missing-icon strip + 8-way compass arrow + distance, with
+    cross-dimension swap to dim-shorthand + coords.
+  - Phase 4: `WayfindingHudRenderer` renders the chip stack along the
+    HUD right edge while no GUI is open. Top-5 sorted by distance plus a
+    cross-dimension list. New `key.slot.toggle_wayfinding_hud` keymap.
+    Polish: cardinal arrows now stroke glyphs (↑↓←→) instead of fat
+    triangles; HUD chip widened to 132px and text rendered at 0.75×
+    pose-scale to fit comfortably; missing-item icons render at 0.625×
+    so they fit inside the chip; no distance fade — chips stay visible
+    at any range.
+- **Atlas-card status redesign** (expanded scope from the wayfinding
+  pass — surfaced naturally once the pip-recolor brainstorm collided
+  with the existing kit-star + desired-count pip duplication). New
+  `AtlasCardStatus` model — NEUTRAL / FULFILLED / STORED / MIXED /
+  CRAFT — drives a single status colour shared by border, count text,
+  and progress bar so the player learns one vocabulary.
+  - Removed kit-needed star + standalone desired-count pip; both fold
+    into a unified bottom-right `M/N` badge with status-coloured digits.
+  - Card border lights when carried < desired; thickness pinned to 1
+    logical pixel (was MAX of 2px-screen / 4%-card, which scaled too
+    aggressively at zoom-in and overlapped the badge).
+  - Progress bar across the bottom of the card: green carried fill +
+    status-coloured tail, with a translucent stored-coverage band
+    overlaying the gap when MIXED — bar shape + palette together answer
+    "how close + how easy to fix" at any zoom.
+  - 1px gap between bottom border and bar so they don't merge into one
+    fat band when the colour matches.
+  - All chrome thicknesses + insets now use fixed screen pixels via
+    `worldUnitsForPixels()`; pip footprints stay card-relative. Fixed a
+    long-standing inconsistency where decoration sizes diverged across
+    zoom because `MAX(screen-floor, card-fraction)` for thicknesses
+    fought `MIN(card-fraction, screen-cap)` for insets.
+  - Kit relevance modulates colour saturation rather than introducing a
+    separate axis (kit-relevant CRAFT = vivid red; player-only CRAFT =
+    muted red).
+- **Deposit affordances.** The deposit button now shows count + previews
+  what would happen.
+  - Server projects `Set<IdentityRef> depositableIdentities` onto the
+    view model — carried identities with positive direct affinity to a
+    proximate chest. Codec round-tripped.
+  - Button label is `Deposit (N)` when N > 0, plain `Deposit` otherwise;
+    visibility now requires both a proximate chest *and* `N > 0`, so the
+    button hides instead of teasing a no-op click.
+  - Hovering the deposit button paints an ACCENT-colour outline on every
+    matching atlas card via `host.depositPreviewActive` + a per-card
+    TICK listener — player sees which stacks would route before
+    clicking. Cards that aren't depositable skip the listener.
+  - Added structured logging at every step of the deposit flow: client
+    click, RPC send, server receive, plan size, executor outcome, final
+    status. `nothing_to_deposit` diagnostic is now a sentence ("no
+    carried stack matches a chest's affinity — drop one in manually
+    first") and tooltip on the button explains the affinity-driven rule.
+- **Top-level Gather button + universal hotkey.** Replaces "open kits
+  panel → click gather inside the active card" with a one-click action
+  in the top-right overlay (visible when a chest is proximate and a kit
+  is active). New `key.slot.gather_active_kit` keymap (UNIVERSAL,
+  unbound default) covers in-world too; both paths route through one
+  packet → `KitGatherService.gatherActiveKit(player)` which unions kit
+  page slots + kit-scoped desired counts, ranks proximate chests by
+  affinity, and pulls until each gap closes.
+- **Kits panel scrolls horizontally.** `ScrollerView` wrap with
+  `viewContainer` set to `FlexDirection.ROW` so a base with many kits no
+  longer overflows the right edge.
 
 **Recent landings (2026-05-01):**
 
@@ -102,32 +187,39 @@ auto-fetch on kit activation and cleanup protection) shipped 2026-05-01.
 
 ## Small known bugs
 
-Six items reported 2026-05-01 from playtesting the cursor + desired
-counts work. Detailed reproductions and proposed scopes live in
-[plans/current.md § Queue](plans/current.md#queue) at the top of the
-list. Headlines:
+Carry-over from the 2026-05-01 cursor + desired-counts pass; some
+were addressed by the 2026-05-02 wayfinding + status-redesign work,
+remainders sit at the top of
+[plans/current.md § Queue](plans/current.md#queue). Headlines:
 
 - **Duplicate chest in proximate + chest-locator panels.** A nearby
-  chest containing a kit-needed item shows up in both sections.
-- **Kit "carry" section has no want-vs-have indicator.** Player can
-  see *what* the kit wants but not *how many vs how many they carry*.
-- **Navigation to chests with kit-needed items.** No in-world or
-  in-atlas wayfinder for "the bucket of water you're missing is over
-  there." Open brainstorm — particle trails were one idea but not
-  obviously the right one.
+  chest containing a kit-needed item shows up in both sections. Still
+  open — wayfinding chip unification didn't change which surface owns
+  the entry.
 - **Ghost vs carried not differentiated enough on the hotbar.** When
   a kit slot is empty the ghost preview reads too similar to a real
-  item.
-- **Multi-chest / non-stackable identity mismatch.** Specific repro:
-  active kit needs `bucket_of_water`; a proximate chest contains one
-  but a *second* `bucket_of_water` shows up on the atlas without the
-  desired-count star (and with a stored-pip the original card lacks).
-  Chest locator lists two chests for the identity. Kit progress still
-  reads "need 1." Smells like the proximate-chest projection is
-  creating a parallel identity for non-stackables.
-- **More debug logging needed.** Diagnostics are sparse around the
-  kit-need / chest-presence / identity-resolution paths, making
-  bug-by-screenshot triage hard.
+  item. Atlas-card status redesign covered the *atlas* read; the
+  hotbar treatment is still pending.
+- **Multi-chest / non-stackable identity mismatch.** Active kit needs
+  `bucket_of_water`; a proximate chest contains one but a *second*
+  `bucket_of_water` shows up on the atlas without the desired-count
+  star (and with a stored-pip the original card lacks). Wayfinding's
+  movable-aware match handles its own intersection but the underlying
+  AtlasItem accumulator path is unchanged. Likely the
+  proximate-chest ghost projection still creates a parallel identity
+  for non-stackables.
+- **Debug logging coverage is uneven.** Deposit pipeline now has end-
+  to-end structured logging. The kit-need / chest-presence /
+  identity-resolution paths are still sparse, making bugs like the
+  bucket-of-water repro hard to triage from screenshots alone.
+
+Resolved by the 2026-05-02 work (no longer a known bug):
+
+- ~~Navigation to chests with kit-needed items~~ — wayfinding glow +
+  HUD chip + atlas chip cover the read.
+- ~~Kit "carry" section has no want-vs-have indicator~~ — unified
+  `M/N` badge on every desired-count atlas card; kit-rack carry rows
+  read off the same projection.
 
 Older standing items:
 

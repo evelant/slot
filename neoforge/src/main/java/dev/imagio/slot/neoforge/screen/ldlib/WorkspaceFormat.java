@@ -13,7 +13,6 @@ import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.WARNING;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceUi.shorten;
 
 import com.lowdragmc.lowdraglib2.gui.util.DrawerHelper;
-import dev.imagio.slot.atlas.lod.Band;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import net.minecraft.network.chat.Component;
@@ -77,45 +76,6 @@ final class WorkspaceFormat {
         if (screenPx < 10f) return 9f;
         if (screenPx < 12f) return 11f;
         return 12f;
-    }
-
-    static float worldFontSizeFor(SlotAtlasGraphView atlas, float screenPx) {
-        // Use scaleForContent so that rebuilds done with a pinned scale
-        // (setPinnedContentScale) bake labels at the same scale everything
-        // else in the body uses via worldUnitsForPixels. getScale() is the
-        // raw interpolated scale during animations and leaves labels
-        // inconsistent with shell/icon sizing when the pin is active.
-        float scale = atlas == null ? 1f : Math.max(0.0001f, atlas.scaleForContent());
-        return clampScreenFontPx(screenPx) / scale;
-    }
-
-    static String preferredPrimaryLabel(SlotWorkspaceViewModel.AtlasItem item, AtlasRenderBudget budget) {
-        return compactAnchorText(item == null ? "" : item.name(), budget.primaryMaxChars());
-    }
-
-    static String preferredSecondaryLabel(SlotWorkspaceViewModel.AtlasItem item, AtlasRenderBudget budget) {
-        String variant = tooltipVariantToken(item, budget.secondaryMaxChars());
-        String mod = modToken(item, budget.secondaryMaxChars());
-        String primary = preferredPrimaryLabel(item, budget);
-        if (!variant.isBlank() && !normalizeTooltipText(variant).equals(normalizeTooltipText(primary))) {
-            return variant;
-        }
-        if (item.recent()) {
-            return "new";
-        }
-        if (!mod.isBlank()) {
-            return mod;
-        }
-        return "";
-    }
-
-    static String preferredAuxiliaryLabel(SlotWorkspaceViewModel.AtlasItem item, AtlasRenderBudget budget) {
-        String secondary = preferredSecondaryLabel(item, budget);
-        String mod = modToken(item, budget.secondaryMaxChars());
-        if (!mod.isBlank() && !normalizeTooltipText(mod).equals(normalizeTooltipText(secondary))) {
-            return mod;
-        }
-        return "";
     }
 
     static String modToken(SlotWorkspaceViewModel.AtlasItem item, int maxLength) {
@@ -281,14 +241,13 @@ final class WorkspaceFormat {
 
 
     static int cardChromeColor(
-            Band level,
             boolean selected,
             boolean searchMatch,
             boolean recent,
             boolean carried,
             boolean searchActive
     ) {
-        int base = cardChromeBaseColor(level, selected, searchMatch, recent, searchActive);
+        int base = cardChromeBaseColor(selected, searchMatch, recent, searchActive);
         if (!carried && !selected) {
             base = dimAlpha(base, GHOST_CARD_ALPHA);
         }
@@ -296,21 +255,11 @@ final class WorkspaceFormat {
     }
 
     private static int cardChromeBaseColor(
-            Band level,
             boolean selected,
             boolean searchMatch,
             boolean recent,
             boolean searchActive
     ) {
-        if (level == Band.REGION) {
-            if (selected) {
-                return 0x68435F55;
-            }
-            if (!searchActive) {
-                return recent ? 0x242B433A : 0x1410161B;
-            }
-            return searchMatch ? (recent ? 0x342B433A : 0x241A242C) : 0x05000000;
-        }
         if (selected) {
             return SELECTED;
         }

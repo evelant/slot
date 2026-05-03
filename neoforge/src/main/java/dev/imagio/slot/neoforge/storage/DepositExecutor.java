@@ -28,7 +28,15 @@ public final class DepositExecutor {
             DepositPlan plan,
             ClaimedChestMap claimedChestMap
     ) {
-        if (player == null || plan == null || plan.isEmpty() || claimedChestMap == null) {
+        if (player == null || plan == null || claimedChestMap == null) {
+            SlotCommon.LOGGER.warn(
+                    "[SLOT] deposit execute aborted: player={} plan={} claimedChestMap={}",
+                    player, plan, claimedChestMap);
+            return DepositOutcome.empty();
+        }
+        if (plan.isEmpty()) {
+            SlotCommon.LOGGER.info(
+                    "[SLOT] deposit execute: plan is empty (no carried stack had positive affinity)");
             return DepositOutcome.empty();
         }
         MinecraftServer server = player.getServer();
@@ -93,12 +101,9 @@ public final class DepositExecutor {
             records.add(new DepositRecord(chosen, identity, depositedCount));
         }
 
-        if (deposited > 0 || failed > 0) {
-            SlotCommon.LOGGER.info(
-                    "[SLOT] deposit deposited={} failed={} destinations={}",
-                    deposited, failed, destinations
-            );
-        }
+        SlotCommon.LOGGER.info(
+                "[SLOT] deposit deposited={} failed={} destinations={}",
+                deposited, failed, destinations);
         return new DepositOutcome(deposited, failed, destinations, records);
     }
 

@@ -112,7 +112,7 @@ final class TriagePanelBuilder {
     UIElement row(SlotWorkspaceViewModel.AtlasItem item) {
         Button row = button("", true, rowChromeColor(item, item.identity().equals(host.selectedAtlasIdentity.get())));
         row.noText();
-        host.atlasContentSubscriptions.add(host.selectedAtlasIdentity.subscribeLater(sel -> {
+        host.wallContentSubscriptions.add(host.selectedAtlasIdentity.subscribeLater(sel -> {
             applyButtonColors(row, true, rowChromeColor(item, item.identity().equals(sel)));
         }));
         boolean[] lastAccent = {false};

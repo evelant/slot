@@ -2,6 +2,16 @@
 
 Last updated: 2026-04-25
 
+> **Superseded by [../plans/list-view.md](../plans/list-view.md) (2026-05-03).**
+> The pan/zoom atlas is being replaced by a single-LOD sectioned vertical
+> scroll list. Most of this document still describes the parts that survive
+> (item homes, ghost vs carried, Triage docked panel, single-island-only
+> drag, kit / desired-count / wayfinding integration). The sections about
+> the 2D canvas, pan/zoom gestures, camera, LOD bands, nudge layout, and
+> 2D positioning are stale — the list view replaces them with vertical
+> scroll, ordinal-by-section addressing, and a single LOD. Do not author
+> new work against the canvas concepts; see the plan for the new model.
+
 Status: current design direction for SLOT's primary player-inventory surface.
 
 SLOT's primary inventory UI is a pan/zoom **atlas**: item identities get

@@ -204,55 +204,28 @@ final class SearchResultsPanelBuilder {
     }
 
     private UIElement matchChip(Match match) {
-        int fill = (PANEL_ALT & 0x00FFFFFF) | 0xC0000000;
-        UIElement chip = panel(fill).layout(layout -> layout
-                .widthPercent(100)
-                .height(CHIP_HEIGHT)
-                .paddingHorizontal(6)
-                .gapAll(4)
-                .alignItems(AlignItems.CENTER)
-                .flexDirection(FlexDirection.ROW));
-
-        Label labelEl = label(match.chip.label(), TEXT);
-        labelEl.layout(layout -> layout.flex(1).height(CHIP_HEIGHT));
-        labelEl.textStyle(style -> style
-                .textColor(TEXT)
-                .textShadow(false)
-                .fontSize(8)
-                .textAlignHorizontal(Horizontal.LEFT)
-                .textAlignVertical(Vertical.CENTER));
-        labelEl.setAllowHitTest(false);
-        chip.addChild(labelEl);
-
-        // Dimension hint for non-proximate chests so the player knows
-        // where to walk. Proximate chests get a bullet instead — the
-        // dimension is the player's current dimension by definition.
-        String dim = shortDimension(match.chip.dimensionId());
-        if (!match.chip.proximate() && !dim.isBlank()) {
-            Label dimLabel = label(dim, MUTED);
-            dimLabel.layout(layout -> layout.width(36).height(CHIP_HEIGHT));
-            dimLabel.textStyle(style -> style
-                    .textColor(MUTED)
-                    .textShadow(false)
-                    .fontSize(6)
-                    .textAlignHorizontal(Horizontal.RIGHT)
-                    .textAlignVertical(Vertical.CENTER));
-            dimLabel.setAllowHitTest(false);
-            chip.addChild(dimLabel);
-        }
-
-        Label count = label("×" + match.matchCount, ACCENT);
-        count.layout(layout -> layout.width(32).height(CHIP_HEIGHT));
-        count.textStyle(style -> style
-                .textColor(ACCENT)
-                .textShadow(false)
-                .fontSize(7)
-                .textAlignHorizontal(Horizontal.RIGHT)
-                .textAlignVertical(Vertical.CENTER));
-        count.setAllowHitTest(false);
-        chip.addChild(count);
+        // Same wayfinding chip as the proximity panel — name + cluster +
+        // missing-icons + compass + distance — so the player sees the
+        // same shape regardless of which atlas panel they're scanning.
+        dev.imagio.slot.inventory.workspace.WayfindingTarget target =
+                dev.imagio.slot.neoforge.client.wayfinding.WayfindingTargetCache.targetFor(match.chip.storageId());
+        SlotWorkspaceViewModel.ChestClusterDescriptor clusterDescriptor = cluster(match.chip.clusterId());
+        String clusterLabel = clusterDescriptor == null ? null : clusterDescriptor.label();
+        UIElement chip = WayfindingChip.build(match.chip, target, clusterLabel, WayfindingChip.Mode.ATLAS);
         installSearchChipHover(chip, match);
         return chip;
+    }
+
+    private SlotWorkspaceViewModel.ChestClusterDescriptor cluster(String clusterId) {
+        if (clusterId == null || clusterId.isEmpty()) {
+            return null;
+        }
+        for (SlotWorkspaceViewModel.ChestClusterDescriptor cluster : host.viewModel.chestClusters()) {
+            if (clusterId.equals(cluster.clusterId())) {
+                return cluster;
+            }
+        }
+        return null;
     }
 
     /**

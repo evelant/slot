@@ -29,7 +29,14 @@ import dev.vfyjxf.taffy.style.TaffyPosition;
 final class LeftColumnBuilder {
     static final int LEFT = 8;
     static final int WIDTH = TRIAGE_PANEL_WIDTH;
-    private static final int GAP = 6;
+    static final int GAP = 6;
+    /**
+     * Total horizontal space the docked left column reserves on the wall
+     * (its left margin + width + the gap before the wall scroller picks
+     * up). Owned here so the wall layout reads it from a single source
+     * instead of recomputing the same sum.
+     */
+    static final int RESERVED_WIDTH = LEFT + WIDTH + GAP;
 
     private final SlotWorkspaceUiController host;
 
@@ -42,12 +49,13 @@ final class LeftColumnBuilder {
         int baseBottom = BELT_HEIGHT + 12;
         int bottom = host.kitRackOpen ? baseBottom + host.kit.kitRackHeight() + 4 : baseBottom;
 
+        UIElement toc = host.tocPanel.overlay();
         UIElement searchResults = host.searchResultsPanel.overlay();
         UIElement chips = host.storagePanel.overlay();
         UIElement loot = host.lootChestPanel.overlay();
         UIElement triage = host.triagePanel.overlay();
 
-        if (searchResults == null && chips == null && loot == null && triage == null) {
+        if (toc == null && searchResults == null && chips == null && loot == null && triage == null) {
             return null;
         }
 
@@ -64,6 +72,9 @@ final class LeftColumnBuilder {
         // clicks inside the column from punching through to the atlas.
         column.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
 
+        if (toc != null) {
+            column.addChild(toc);
+        }
         if (searchResults != null) {
             column.addChild(searchResults);
         }

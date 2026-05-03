@@ -47,9 +47,10 @@ final class WorkspaceOverlays {
                 .flexDirection(FlexDirection.ROW));
         overlay.style(style -> style.zIndex(11));
 
-        boolean initialDepositEnabled = host.anyChestProximate();
-        Button depositButton = button("Deposit", true, ACCENT);
-        depositButton.layout(layout -> layout.width(60).height(16));
+        int initialDepositCount = countDepositable();
+        boolean initialDepositEnabled = host.anyChestProximate() && initialDepositCount > 0;
+        Button depositButton = button(depositLabel(initialDepositCount), true, ACCENT);
+        depositButton.layout(layout -> layout.width(72).height(16));
         depositButton.textStyle(style -> style
                 .textColor(TEXT)
                 .textShadow(false)
@@ -58,21 +59,112 @@ final class WorkspaceOverlays {
                 .textAlignVertical(Vertical.CENTER));
         depositButton.setVisible(initialDepositEnabled);
         boolean[] lastDepositVisible = {initialDepositEnabled};
+        int[] lastDepositCount = {initialDepositCount};
         depositButton.addEventListener(UIEvents.TICK, event -> {
-            boolean proximate = host.anyChestProximate();
-            if (proximate == lastDepositVisible[0]) {
-                return;
+            int count = countDepositable();
+            boolean enabled = host.anyChestProximate() && count > 0;
+            if (enabled != lastDepositVisible[0]) {
+                lastDepositVisible[0] = enabled;
+                depositButton.setVisible(enabled);
             }
-            lastDepositVisible[0] = proximate;
-            depositButton.setVisible(proximate);
+            if (count != lastDepositCount[0]) {
+                lastDepositCount[0] = count;
+                depositButton.setText(Component.literal(depositLabel(count)));
+            }
+        });
+        depositButton.addEventListener(UIEvents.MOUSE_ENTER, event -> {
+            // Light up matching atlas cards while the player considers
+            // the click. Cards read host.depositPreviewActive on TICK
+            // and paint an outline when their identity is in
+            // viewModel.depositableIdentities().
+            host.depositPreviewActive = true;
+        });
+        depositButton.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
+            host.depositPreviewActive = false;
         });
         depositButton.setOnClick(event -> {
             event.stopPropagation();
-            if (!host.anyChestProximate()) {
+            boolean proximate = host.anyChestProximate();
+            int chipCount = host.viewModel.chestChips().size();
+            int proximateCount = 0;
+            for (SlotWorkspaceViewModel.ChestChip chip : host.viewModel.chestChips()) {
+                if (chip.proximate()) {
+                    proximateCount++;
+                }
+            }
+            dev.imagio.slot.SlotCommon.LOGGER.info(
+                    "[SLOT] deposit button clicked: proximate={} chestChips={} proximateChips={}",
+                    proximate, chipCount, proximateCount);
+            if (!proximate) {
+                host.localStatus.set("no proximate chest — walk closer to a claimed chest");
                 return;
             }
             host.rpc.sendDeposit();
         });
+        // Deposit is *affinity-driven* — only stacks the player has
+        // already deposited into a proximate chest at least once go
+        // automatically. Items with no learned bond stay in carry. The
+        // tooltip surfaces this so the player understands "nothing to
+        // deposit" instead of assuming the button is broken.
+        host.installTextTooltip(
+                depositButton,
+                Component.literal(
+                        "Deposit carried items into proximate chests by learned affinity. "
+                                + "Items without an existing bond stay in carry — drop one in manually first to teach the chest."));
+
+        // Top-level Gather button. Mirrors the per-kit "gather N" inside
+        // the kit rack but pulls for whichever kit is currently active.
+        // Only shows when at least one kit is active AND a chest is
+        // proximate — without those preconditions the action is a no-op.
+        boolean initialGatherEnabled = host.anyChestProximate() && host.viewModel.activeKit() != null;
+        Button gatherButton = button("Gather", true, ACTIVE_HOTBAR);
+        gatherButton.layout(layout -> layout.width(54).height(16));
+        gatherButton.textStyle(style -> style
+                .textColor(TEXT)
+                .textShadow(false)
+                .fontSize(7)
+                .textAlignHorizontal(Horizontal.CENTER)
+                .textAlignVertical(Vertical.CENTER));
+        gatherButton.setVisible(initialGatherEnabled);
+        boolean[] lastGatherVisible = {initialGatherEnabled};
+        gatherButton.addEventListener(UIEvents.TICK, event -> {
+            boolean enabled = host.anyChestProximate() && host.viewModel.activeKit() != null;
+            if (enabled == lastGatherVisible[0]) {
+                return;
+            }
+            lastGatherVisible[0] = enabled;
+            gatherButton.setVisible(enabled);
+        });
+        gatherButton.addEventListener(UIEvents.MOUSE_ENTER, event -> {
+            // Mirrors the deposit-preview hover: cards + TOC rows for
+            // identities that would actually be pulled in a single click
+            // light up while the cursor is over Gather.
+            host.gatherPreviewActive = true;
+        });
+        gatherButton.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
+            host.gatherPreviewActive = false;
+        });
+        gatherButton.setOnClick(event -> {
+            event.stopPropagation();
+            if (host.viewModel.activeKit() == null) {
+                host.localStatus.set("activate a kit first");
+                host.rebuild();
+                return;
+            }
+            dev.imagio.slot.SlotCommon.LOGGER.info(
+                    "[SLOT] gather button clicked: activeKit={}",
+                    host.viewModel.activeKit().kitId());
+            net.neoforged.neoforge.network.PacketDistributor.sendToServer(
+                    new dev.imagio.slot.neoforge.network.SlotGatherActiveKitPayload());
+            host.localStatus.set("gathering active kit from nearby chests");
+            host.rebuild();
+        });
+        host.installKeybindTooltip(
+                gatherButton,
+                "Pull every item the active kit needs from nearby chests",
+                () -> dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings
+                        .gatherActiveKitMapping().getTranslatedKeyMessage().getString()
+        );
 
         // HISTORY is a counter-clockwise curved arrow (classic undo);
         // ROTATION is a clockwise curved arrow (matches redo convention).
@@ -134,8 +226,23 @@ final class WorkspaceOverlays {
                 Component.literal(
                         "Disable SLOT — vanilla inventory opens until re-enabled from the vanilla screen."));
 
-        overlay.addChildren(depositButton, undoButton, redoButton, vanillaButton, disableButton);
+        overlay.addChildren(gatherButton, depositButton, undoButton, redoButton, vanillaButton, disableButton);
         return overlay;
+    }
+
+    /**
+     * Number of distinct carried identities the planner would route into
+     * a proximate chest right now. Read off
+     * {@link SlotWorkspaceViewModel#depositableIdentities()} which the
+     * server projects from the affinity map. Drives the deposit
+     * button's "Deposit (N)" label and visibility.
+     */
+    private int countDepositable() {
+        return host.viewModel.depositableIdentities().size();
+    }
+
+    private String depositLabel(int count) {
+        return count > 0 ? "Deposit (" + count + ")" : "Deposit";
     }
 
     UIElement searchChipOverlay() {
@@ -252,7 +359,7 @@ final class WorkspaceOverlays {
                 lastBarWidth[0] = barWidth;
                 bar.layout(layout -> layout.width(barWidth));
             }
-            float panelWidth = host.atlasPanelElement == null ? 0f : host.atlasPanelElement.getContentWidth();
+            float panelWidth = host.wallPanelElement == null ? 0f : host.wallPanelElement.getContentWidth();
             if (panelWidth <= 0f) {
                 return;
             }

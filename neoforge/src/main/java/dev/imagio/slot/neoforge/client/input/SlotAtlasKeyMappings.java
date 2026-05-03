@@ -100,6 +100,34 @@ public final class SlotAtlasKeyMappings {
             CATEGORY
     );
 
+    // Toggles the wayfinding HUD chip stack. Default-on (the HUD respects
+    // {@link #wayfindingHudEnabled()}, which starts true); a press flips
+    // the flag. Unbound by default so the player can opt-in to a hotkey
+    // through the Controls menu — most players will never need to toggle.
+    private static final KeyMapping TOGGLE_WAYFINDING_HUD = new KeyMapping(
+            "key.slot.toggle_wayfinding_hud",
+            KeyConflictContext.UNIVERSAL,
+            InputConstants.Type.KEYSYM,
+            InputConstants.UNKNOWN.getValue(),
+            CATEGORY
+    );
+
+    // One-press "gather everything the active kit needs from nearby
+    // chests". Works from inside the SLOT atlas AND in-world so the
+    // player can fetch a kit without first opening the inventory.
+    // Unbound by default — the action is a small button-click away
+    // inside the atlas, and the in-world hotkey is opt-in for power
+    // users who refresh kits often.
+    private static final KeyMapping GATHER_ACTIVE_KIT = new KeyMapping(
+            "key.slot.gather_active_kit",
+            KeyConflictContext.UNIVERSAL,
+            InputConstants.Type.KEYSYM,
+            InputConstants.UNKNOWN.getValue(),
+            CATEGORY
+    );
+
+    private static boolean wayfindingHudEnabled = true;
+
     private SlotAtlasKeyMappings() {
     }
 
@@ -113,6 +141,28 @@ public final class SlotAtlasKeyMappings {
         event.register(UNDO);
         event.register(REDO);
         event.register(RELEVANCE_DEBUG_OVERLAY);
+        event.register(TOGGLE_WAYFINDING_HUD);
+        event.register(GATHER_ACTIVE_KIT);
+    }
+
+    public static KeyMapping gatherActiveKitMapping() {
+        return GATHER_ACTIVE_KIT;
+    }
+
+    public static boolean matchesGatherActiveKit(int keyCode, int scanCode) {
+        return keyMatches(GATHER_ACTIVE_KIT, keyCode, scanCode);
+    }
+
+    public static KeyMapping toggleWayfindingHudMapping() {
+        return TOGGLE_WAYFINDING_HUD;
+    }
+
+    public static boolean wayfindingHudEnabled() {
+        return wayfindingHudEnabled;
+    }
+
+    public static void setWayfindingHudEnabled(boolean enabled) {
+        wayfindingHudEnabled = enabled;
     }
 
     public static KeyMapping openVanillaInventoryMapping() {

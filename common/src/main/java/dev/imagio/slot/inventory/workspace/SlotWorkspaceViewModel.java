@@ -63,7 +63,9 @@ public record SlotWorkspaceViewModel(
         List<HotbarSlot> hotbarSlots,
         OffhandSlot offhand,
         List<KitCard> kits,
-        LootChestPanel lootChestPanel
+        LootChestPanel lootChestPanel,
+        List<WayfindingTarget> wayfindingTargets,
+        Set<IdentityRef> depositableIdentities
 ) {
     public SlotWorkspaceViewModel {
         status = status == null || status.isBlank() ? "ready" : status;
@@ -82,6 +84,10 @@ public record SlotWorkspaceViewModel(
         offhand = offhand == null ? OffhandSlot.empty() : offhand;
         kits = kits == null ? List.of() : List.copyOf(kits);
         lootChestPanel = lootChestPanel == null ? LootChestPanel.empty() : lootChestPanel;
+        wayfindingTargets = wayfindingTargets == null ? List.of() : List.copyOf(wayfindingTargets);
+        depositableIdentities = depositableIdentities == null
+                ? Set.of()
+                : Set.copyOf(new LinkedHashSet<>(depositableIdentities));
     }
 
     /** Backwards-compatible constructor: defaults chestClusters + lootChestPanel. */
@@ -106,7 +112,7 @@ public record SlotWorkspaceViewModel(
         this(revision, status, diagnostics, pendingCount, selectedQuickAccessSlot,
                 canvasWidth, canvasHeight, carriedFreeSlotCount, carriedSlotCapacity,
                 islands, atlasItems, triageItems, chestChips, List.of(),
-                hotbarSlots, offhand, kits, LootChestPanel.empty());
+                hotbarSlots, offhand, kits, LootChestPanel.empty(), List.of(), Set.of());
     }
 
     /** Backwards-compatible constructor: defaults lootChestPanel. */
@@ -132,7 +138,62 @@ public record SlotWorkspaceViewModel(
         this(revision, status, diagnostics, pendingCount, selectedQuickAccessSlot,
                 canvasWidth, canvasHeight, carriedFreeSlotCount, carriedSlotCapacity,
                 islands, atlasItems, triageItems, chestChips, chestClusters,
-                hotbarSlots, offhand, kits, LootChestPanel.empty());
+                hotbarSlots, offhand, kits, LootChestPanel.empty(), List.of(), Set.of());
+    }
+
+    /** Backwards-compatible constructor: defaults wayfindingTargets. */
+    public SlotWorkspaceViewModel(
+            long revision,
+            String status,
+            String diagnostics,
+            int pendingCount,
+            int selectedQuickAccessSlot,
+            int canvasWidth,
+            int canvasHeight,
+            int carriedFreeSlotCount,
+            int carriedSlotCapacity,
+            List<AtlasIsland> islands,
+            List<AtlasItem> atlasItems,
+            List<AtlasItem> triageItems,
+            List<ChestChip> chestChips,
+            List<ChestClusterDescriptor> chestClusters,
+            List<HotbarSlot> hotbarSlots,
+            OffhandSlot offhand,
+            List<KitCard> kits,
+            LootChestPanel lootChestPanel
+    ) {
+        this(revision, status, diagnostics, pendingCount, selectedQuickAccessSlot,
+                canvasWidth, canvasHeight, carriedFreeSlotCount, carriedSlotCapacity,
+                islands, atlasItems, triageItems, chestChips, chestClusters,
+                hotbarSlots, offhand, kits, lootChestPanel, List.of(), Set.of());
+    }
+
+    /** Backwards-compatible constructor: defaults depositableIdentities. */
+    public SlotWorkspaceViewModel(
+            long revision,
+            String status,
+            String diagnostics,
+            int pendingCount,
+            int selectedQuickAccessSlot,
+            int canvasWidth,
+            int canvasHeight,
+            int carriedFreeSlotCount,
+            int carriedSlotCapacity,
+            List<AtlasIsland> islands,
+            List<AtlasItem> atlasItems,
+            List<AtlasItem> triageItems,
+            List<ChestChip> chestChips,
+            List<ChestClusterDescriptor> chestClusters,
+            List<HotbarSlot> hotbarSlots,
+            OffhandSlot offhand,
+            List<KitCard> kits,
+            LootChestPanel lootChestPanel,
+            List<WayfindingTarget> wayfindingTargets
+    ) {
+        this(revision, status, diagnostics, pendingCount, selectedQuickAccessSlot,
+                canvasWidth, canvasHeight, carriedFreeSlotCount, carriedSlotCapacity,
+                islands, atlasItems, triageItems, chestChips, chestClusters,
+                hotbarSlots, offhand, kits, lootChestPanel, wayfindingTargets, Set.of());
     }
 
     public static SlotWorkspaceViewModel empty() {
@@ -254,9 +315,15 @@ public record SlotWorkspaceViewModel(
         return project(authority, workflow, status, diagnostics, pendingCount,
                 selectedQuickAccessSlot, revision, learnedRules, signalExtractor,
                 chestContentsResolver, proximateStorageIds, carriedContainerInfoResolver,
-                lootChestSource, "");
+                lootChestSource, "", 0L);
     }
 
+    /**
+     * Legacy overload without {@code currentTick}; used by tests and any
+     * caller that doesn't have a clock. Affinity decay is computed
+     * against tick 0, which is "no decay applied" for typical bonds
+     * created at tick &gt; 0.
+     */
     public static SlotWorkspaceViewModel project(
             InventoryAuthoritySnapshot authority,
             WorkflowDomainSnapshot workflow,
@@ -273,12 +340,41 @@ public record SlotWorkspaceViewModel(
             LootChestSource lootChestSource,
             String searchQuery
     ) {
+        return project(authority, workflow, status, diagnostics, pendingCount,
+                selectedQuickAccessSlot, revision, learnedRules, signalExtractor,
+                chestContentsResolver, proximateStorageIds, carriedContainerInfoResolver,
+                lootChestSource, searchQuery, 0L);
+    }
+
+    public static SlotWorkspaceViewModel project(
+            InventoryAuthoritySnapshot authority,
+            WorkflowDomainSnapshot workflow,
+            String status,
+            String diagnostics,
+            int pendingCount,
+            int selectedQuickAccessSlot,
+            long revision,
+            LearnedIslandRuleStore learnedRules,
+            Function<ItemStack, IslandSignalDescriptor> signalExtractor,
+            Function<String, ChestContentsSnapshot> chestContentsResolver,
+            Set<String> proximateStorageIds,
+            Function<ItemIdentity, CarriedContainerInfo> carriedContainerInfoResolver,
+            LootChestSource lootChestSource,
+            String searchQuery,
+            long currentTick
+    ) {
         InventoryAuthoritySnapshot resolvedAuthority = authority == null ? InventoryAuthoritySnapshot.empty() : authority;
         WorkflowDomainSnapshot resolvedWorkflow = workflow == null ? WorkflowDomainSnapshot.empty() : workflow;
         RecentView recents = resolvedWorkflow.recents();
         VisualHomeMap visualHomeMap = resolvedWorkflow.visualHomeMap();
         ClaimedChestMap claimedChestMap = resolvedWorkflow.claimedChestMap();
-        ChestAffinityMap affinityMap = resolvedWorkflow.chestAffinityMap();
+        // Decay the affinity map at projection time so downstream
+        // consumers (deposit-preview, depositableIdentities, chest
+        // chip ranking) see the same scores the deposit-RPC planner
+        // does — both apply the same per-bond time decay. Without
+        // this, a stale bond can light up the deposit-preview while
+        // the planner refuses to deposit (its decayed score is 0).
+        ChestAffinityMap affinityMap = resolvedWorkflow.chestAffinityMap().decayed(currentTick);
         Set<String> proximate = proximateStorageIds == null ? Set.of() : proximateStorageIds;
         int[] carriedCounts = countCarriedFreeSlotsAndCapacity(resolvedAuthority);
         int carriedFreeSlotCount = carriedCounts[0];
@@ -565,6 +661,18 @@ public record SlotWorkspaceViewModel(
                 resolvedAuthority, resolvedWorkflow.kitMap(), resolvedWorkflow.kitDesiredCounts());
         LootChestPanel lootPanel = lootChestPanel(
                 lootChestSource, visualHomeMap, signalExtractor, resolvedLearnedRules, triageIslandRefs);
+        List<WayfindingTarget> wayfindingTargets = wayfindingTargets(
+                resolvedAuthority,
+                claimedChestMap,
+                chestContentsResolver,
+                kitNeededIdentities,
+                activeKitDesiredCounts,
+                playerDesiredCounts);
+        Set<IdentityRef> depositableIdentities = depositableIdentities(
+                atlasItems,
+                claimedChestMap,
+                affinityMap,
+                proximate);
         return new SlotWorkspaceViewModel(
                 revision,
                 status,
@@ -583,8 +691,64 @@ public record SlotWorkspaceViewModel(
                 hotbarSlots(resolvedAuthority, selectedQuickAccessSlot),
                 OffhandSlot.from(resolvedAuthority),
                 kitCards,
-                lootPanel
+                lootPanel,
+                wayfindingTargets,
+                depositableIdentities
         );
+    }
+
+    /**
+     * Carried atlas-item identities that have a positive direct
+     * affinity score against at least one proximate claimed chest.
+     * Drives the "Deposit (N)" button label and the deposit-preview
+     * highlight on atlas cards: hovering the deposit button paints
+     * these cards with an accent outline so the player can see exactly
+     * which stacks would route into chests before clicking.
+     *
+     * <p>Only direct affinity is checked (not the facet-affinity
+     * fallback that {@link DepositPlanner} applies) — keeping the
+     * preview tight to "I have already deposited this here" matches
+     * the player's mental model. Items that the planner would route
+     * via facet similarity won't show up in the preview but will still
+     * deposit when clicked; that's a worse-truth-than-needed but
+     * safer than an over-bright preview that promises items the
+     * planner won't actually move.
+     */
+    private static Set<IdentityRef> depositableIdentities(
+            List<AtlasItem> atlasItems,
+            ClaimedChestMap claimedChestMap,
+            ChestAffinityMap affinityMap,
+            Set<String> proximateStorageIds
+    ) {
+        if (atlasItems == null || atlasItems.isEmpty()
+                || claimedChestMap == null || claimedChestMap.chests().isEmpty()
+                || affinityMap == null
+                || proximateStorageIds == null || proximateStorageIds.isEmpty()) {
+            return Set.of();
+        }
+        LinkedHashSet<IdentityRef> result = new LinkedHashSet<>();
+        for (AtlasItem item : atlasItems) {
+            if (!item.carried()) {
+                continue;
+            }
+            ItemIdentity identity = item.identity().toIdentity();
+            if (identity == null) {
+                continue;
+            }
+            for (ClaimedChest chest : claimedChestMap.chests()) {
+                if (chest == null) {
+                    continue;
+                }
+                if (!proximateStorageIds.contains(chest.storageId().toString())) {
+                    continue;
+                }
+                if (affinityMap.score(chest.storageId(), identity) > 0) {
+                    result.add(item.identity());
+                    break;
+                }
+            }
+        }
+        return Set.copyOf(result);
     }
 
     /**
@@ -876,6 +1040,121 @@ public record SlotWorkspaceViewModel(
     }
 
     /**
+     * Build per-chest wayfinding targets: chests holding at least one
+     * identity the player still needs (active kit page slot, kit-scoped
+     * desired-count gap, or player-global desired-count gap). Drives the
+     * client-side wayfinding HUD + atlas chip + in-world chest glow.
+     *
+     * <p>The "missing identity" set unions kit-needed (already
+     * carry-aware) with player-global gaps where {@code carriedCount <
+     * playerDesired}. KIT scope wins over PLAYER when both apply to the
+     * same chest, so the chip palette stays unambiguous.
+     */
+    private static List<WayfindingTarget> wayfindingTargets(
+            InventoryAuthoritySnapshot authority,
+            ClaimedChestMap claimedChestMap,
+            Function<String, ChestContentsSnapshot> chestContentsResolver,
+            Set<ItemIdentity> kitNeededIdentities,
+            Map<ItemIdentity, Integer> activeKitDesiredCounts,
+            Map<ItemIdentity, Integer> playerDesiredCounts
+    ) {
+        if (claimedChestMap == null || claimedChestMap.chests().isEmpty() || chestContentsResolver == null) {
+            return List.of();
+        }
+        // Build the missing-identity scope map in one pass. Kit page slots
+        // (kitNeededIdentities) and active-kit desired counts mark KIT;
+        // player-global gaps mark PLAYER. Kit wins on collision so the
+        // chip color never flickers between scopes for the same identity.
+        LinkedHashMap<ItemIdentity, WayfindingTarget.Scope> missingScope = new LinkedHashMap<>();
+        for (ItemIdentity identity : kitNeededIdentities) {
+            if (identity != null) {
+                missingScope.put(identity, WayfindingTarget.Scope.KIT);
+            }
+        }
+        if (activeKitDesiredCounts != null) {
+            for (Map.Entry<ItemIdentity, Integer> entry : activeKitDesiredCounts.entrySet()) {
+                ItemIdentity identity = entry.getKey();
+                Integer target = entry.getValue();
+                if (identity == null || target == null || target <= 0) {
+                    continue;
+                }
+                if (carriedMovableCount(authority, identity) < target) {
+                    missingScope.put(identity, WayfindingTarget.Scope.KIT);
+                }
+            }
+        }
+        if (playerDesiredCounts != null) {
+            for (Map.Entry<ItemIdentity, Integer> entry : playerDesiredCounts.entrySet()) {
+                ItemIdentity identity = entry.getKey();
+                Integer target = entry.getValue();
+                if (identity == null || target == null || target <= 0) {
+                    continue;
+                }
+                // Kit-scoped desired count overrides player-global at the
+                // same identity (mirrors the AtlasItem desiredCount kit-wins
+                // resolution); skip the player check when the active kit
+                // already has a non-zero target for this identity.
+                if (activeKitDesiredCounts != null
+                        && activeKitDesiredCounts.getOrDefault(identity, 0) > 0) {
+                    continue;
+                }
+                if (carriedMovableCount(authority, identity) < target) {
+                    missingScope.putIfAbsent(identity, WayfindingTarget.Scope.PLAYER);
+                }
+            }
+        }
+        if (missingScope.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<WayfindingTarget> targets = new ArrayList<>();
+        for (ClaimedChest chest : claimedChestMap.chests()) {
+            if (chest == null || chest.anchors().isEmpty()) {
+                continue;
+            }
+            String storageId = chest.storageId().toString();
+            ChestContentsSnapshot snapshot = chestContentsResolver.apply(storageId);
+            if (snapshot == null || snapshot.contents().isEmpty()) {
+                continue;
+            }
+            LinkedHashSet<ItemIdentity> matched = new LinkedHashSet<>();
+            int totalMissingCount = 0;
+            boolean kitWins = false;
+            for (ItemStack stack : snapshot.contents()) {
+                if (stack == null || stack.isEmpty()) {
+                    continue;
+                }
+                for (Map.Entry<ItemIdentity, WayfindingTarget.Scope> entry : missingScope.entrySet()) {
+                    ItemIdentity needed = entry.getKey();
+                    if (!ItemIdentityMatcher.matchesMovable(stack, needed)) {
+                        continue;
+                    }
+                    matched.add(needed);
+                    totalMissingCount += stack.getCount();
+                    if (entry.getValue() == WayfindingTarget.Scope.KIT) {
+                        kitWins = true;
+                    }
+                    break;
+                }
+            }
+            if (matched.isEmpty()) {
+                continue;
+            }
+            ChestAnchor primary = chest.anchors().iterator().next();
+            targets.add(new WayfindingTarget(
+                    storageId,
+                    primary.dimensionId(),
+                    primary.x(),
+                    primary.y(),
+                    primary.z(),
+                    matched,
+                    totalMissingCount,
+                    kitWins ? WayfindingTarget.Scope.KIT : WayfindingTarget.Scope.PLAYER
+            ));
+        }
+        return List.copyOf(targets);
+    }
+
+    /**
      * Movable-aware membership check for the carried set. Tools (bow, sword,
      * pickaxe, …) get strict identities at capture time because their
      * components include durability and enchantments, while the kit page
@@ -1032,7 +1311,9 @@ public record SlotWorkspaceViewModel(
                 hotbarSlots,
                 offhand,
                 kits,
-                lootChestPanel
+                lootChestPanel,
+                wayfindingTargets,
+                depositableIdentities
         );
     }
 
@@ -1055,7 +1336,9 @@ public record SlotWorkspaceViewModel(
                 hotbarSlots,
                 offhand,
                 kits,
-                lootChestPanel
+                lootChestPanel,
+                wayfindingTargets,
+                depositableIdentities
         );
     }
 

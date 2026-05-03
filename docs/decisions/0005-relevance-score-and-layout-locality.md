@@ -1,17 +1,25 @@
 # 0005: Relevance Score Is A Derivation; Layout Is Client-Owned
 
-Status: accepted
+Status: accepted (relevance-score derivation rule); LOD-band /
+canvas-layout context retired 2026-05-03 — see
+[../plans/list-view.md](../plans/list-view.md). The score-as-derivation
+and client-owned-layout boundary rules still apply; what's changed is
+that "layout" now means section flow + ordinal positions rather than
+2D nudge layout + LOD bands.
 
 Created: 2026-04-25
 
-This record captures where relevance scoring and atlas layout run in the
-SLOT process boundary, and why position/size data stops crossing the
-RPC wire as authority-shaped state.
+This record captures where relevance scoring and (then-atlas, now
+list-view) layout run in the SLOT process boundary, and why
+position/size data stops crossing the RPC wire as authority-shaped
+state.
 
-For the relevance model, see
-[../design/relevance-lod.md](../design/relevance-lod.md).
-For the engineering plan, see
-[../plans/relevance-lod-prototype.md](../plans/relevance-lod-prototype.md).
+For the relevance model (LOD-band parts retired; scoring survives),
+see [../design/relevance-lod.md](../design/relevance-lod.md).
+For the retired engineering plan, see
+[../plans/retired/relevance-lod-prototype.md](../plans/retired/relevance-lod-prototype.md).
+For the current direction, see
+[../plans/list-view.md](../plans/list-view.md).
 For the LDLib2 transport boundary this still runs over, see
 [0002-ldlib2-workspace.md](0002-ldlib2-workspace.md).
 

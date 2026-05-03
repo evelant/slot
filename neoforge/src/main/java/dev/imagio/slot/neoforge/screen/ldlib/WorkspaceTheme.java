@@ -41,6 +41,23 @@ final class WorkspaceTheme {
      * "this is a kit thing" without text. Distinct from the global
      * blue, distinct from ACCENT green, distinct from WARNING orange. */
     static final int DESIRED_COUNT_PIP_KIT = 0xCCB07A2E;
+    // Card-status palette. Two intensity levels — muted (player-global
+    // desired) and vivid (active kit wants this). Status reads:
+    //   STORED — gap fully sourceable from claimed chests
+    //   MIXED  — gap partially sourceable, rest must be crafted
+    //   CRAFT  — gap not sourceable, needs crafting / scavenging
+    //   FULFILLED — carried >= desired (no signal needed)
+    // Colour parity is intentional: count text and card border share the
+    // same colour so the player learns one vocabulary. Saturation
+    // upticks for kit-relevant items so the active kit's gaps pop.
+    static final int STATUS_FULFILLED_PLAYER = 0xFF7AC7A7;
+    static final int STATUS_FULFILLED_KIT = 0xFFA8E5C2;
+    static final int STATUS_STORED_PLAYER = 0xFFB48A3A;
+    static final int STATUS_STORED_KIT = 0xFFFFC66D;
+    static final int STATUS_MIXED_PLAYER = 0xFFAB6F33;
+    static final int STATUS_MIXED_KIT = 0xFFFF9C57;
+    static final int STATUS_CRAFT_PLAYER = 0xFFB44A3A;
+    static final int STATUS_CRAFT_KIT = 0xFFFF6A55;
     static final int COLLECTION = 0xFFBE8CFF;
     static final int ISLAND_BORDER = 0xA04F6578;
     static final int STORAGE_ZONE_FILL = 0x501A2430;
@@ -75,7 +92,7 @@ final class WorkspaceTheme {
     // shoving the hotbar.
     static final int KIT_CLUSTER_WIDTH = 130;
     static final int BELT_DIVIDER_HEIGHT = 16;
-    static final int TRIAGE_PANEL_WIDTH = 152;
+    static final int TRIAGE_PANEL_WIDTH = 100;
     static final float NAV_CAPSULE_INSET_PX = 96f;
     static final float BELT_CAMERA_INSET_PX = 44f;
     static final float SIDE_CAMERA_INSET_PX = 48f;

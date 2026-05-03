@@ -1,10 +1,12 @@
 # SLOT Wayfinding — Kit + Desired-Count Chest Locator
 
-Last updated: 2026-05-02
+Status: **shipped 2026-05-02** (all four phases). Original plan below
+preserved for reference. Recap in
+[../current.md § 2026-05-02](../current.md#recent-landings).
 
-Plan for [current.md § Queue](current.md#queue) item 1.3 ("Navigation
-to chests with kit-needed items"). Covers desired-count gaps in the
-same machinery — same projection shape, same surfaces.
+Plan for the original [current.md § Queue](../current.md#queue) item
+1.3 ("Navigation to chests with kit-needed items"). Covers desired-count
+gaps in the same machinery — same projection shape, same surfaces.
 
 ## Goal
 

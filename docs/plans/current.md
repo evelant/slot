@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-05-01
+Last updated: 2026-05-03
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -9,11 +9,118 @@ see [../status.md](../status.md). For shipped plans, see
 
 ## Active
 
-**Open.** Pull the next item from the queue when picking up. Split-cursor
-mode and full-scope desired counts shipped 2026-05-01; six new playtest
-bugs from that work sit at the top of the queue.
+**[list-view.md](list-view.md) — replace 2D atlas with sectioned
+vertical list.** Drafted 2026-05-03; Phases 1 + 2 landed 2026-05-03.
+
+- **Phase 1 (standalone list view).** SHIPPED. The atlas surface is
+  now a vertical `ScrollerView` of section blocks (one per non-Triage
+  island), each section a flex-row-wrap grid of cards at a single
+  fixed cell size. New `ListWallPanelBuilder` drives population;
+  `AtlasCardBuilder` was rewritten as a single-LOD pixel-space
+  renderer (~1670 lines → ~500). Pan/zoom + camera + LOD bands are
+  gone (`AtlasCamera*`, `CameraNavigator`, `FitCarriedCamera`,
+  `CameraHistory`, `BandPicker*`, `AtlasLayout`, `AtlasNudgeLayout`,
+  `AtlasLayoutResult`, `WeightedGridPacker`, `Band`,
+  `AtlasRenderBudget`, `SlotAtlasGraphView`, `IslandChestBuilder`,
+  `AtlasPanelBuilder`, `AtlasDropResolver` all deleted). New
+  `SectionOrdinal` helper provides ordinal lookups for drag-drop.
+  `DragDropWiring.installSectionDropTarget` resolves drop coords to
+  insert ordinals by walking the flex children in flow order. Search
+  is now a filter — non-matching cards disappear and the section
+  header shows `visible / total`. `WorkspaceFormat.cardChromeColor`
+  dropped its `Band` parameter. Memory entries already current.
+  `:common:test :neoforge:test` green; full `./gradlew build` green.
+- **Phase 2 (TOC tab strip).** SHIPPED partially. New
+  `TocPanelBuilder` adds a docked TOC panel to the left column
+  showing each section's color swatch, label, and item count.
+  Click-to-scroll wired via `wallScroller.verticalScroller.setValue`.
+  Status-dot TICK plumbing in place (off-screen detection works on
+  the section's element bounds). **Outstanding:** drag-to-reorder
+  the TOC entries (needs a server-side reorder-island RPC).
+- **Phase 3 (container-screen sidebar).** NOT STARTED. The plan's
+  Phase 3a/3b/3c (sidebar alongside vanilla, hide vanilla band,
+  mod-observer transparency) are multi-week work each — Phase 3c in
+  particular needs iterative playtesting against modded screens
+  (EMI `+`, shift-click move, hotkey transfer, sorting hooks). Pick
+  up next session.
+
+The wayfinding / atlas-card status redesign / deposit affordances /
+top-level Gather plan shipped 2026-05-02. Three follow-on bugs from
+the 2026-05-01 pass remain in the queue (duplicate chest, hotbar
+ghost differentiation, non-stackable identity mismatch).
+
+The wayfinding / atlas-card status redesign / deposit affordances /
+top-level Gather plan shipped 2026-05-02. Three follow-on bugs from
+the 2026-05-01 pass remain in the queue (duplicate chest, hotbar
+ghost differentiation, non-stackable identity mismatch).
 
 ## Recent landings
+
+**2026-05-02 — wayfinding, card status redesign, deposit preview, top-level gather.**
+
+Plan archived in [`done/wayfinding.md`](done/wayfinding.md).
+
+- **Wayfinding (Phases 1–4).** Per the original plan: `WayfindingTarget`
+  projection on the view model, in-world chest glow on
+  `RenderLevelStageEvent.AFTER_TRANSLUCENT_BLOCKS`, a shared
+  `WayfindingChip` UIElement mounted in the proximity panel + chest
+  locator, and a HUD edge stack rendered on `RenderGuiEvent.Post`.
+  Movable-aware matching for the chest-content intersection so a
+  damaged tool satisfies a pristine kit slot. New
+  `key.slot.toggle_wayfinding_hud` keymap. Polish on top of the plan:
+  cardinal arrows now use stroke glyphs (↑↓←→) so they don't render as
+  fat triangles at the vanilla font's hinting; HUD chip widened to
+  132 px with text at 0.75× pose-scale; missing-item icons drawn at
+  0.625× scale so they fit inside `CHIP_HEIGHT`; no distance fade — the
+  HUD chips stay informative at any range.
+- **Atlas-card status redesign.** New `AtlasCardStatus` model
+  (NEUTRAL / FULFILLED / STORED / MIXED / CRAFT) drives a single status
+  colour shared by border + count text + progress bar. Removed the
+  kit-needed star and the standalone desired-count pip; both fold into
+  a unified bottom-right `M/N` badge with status-coloured digits. New
+  thin border (1 logical pixel) frames cards with carried < desired,
+  with kit relevance bumping saturation rather than introducing a
+  separate visual axis. New progress bar across the bottom: green
+  carried fill + status-coloured tail, plus a translucent stored-
+  coverage band for MIXED so the bar's shape tells you "how close + how
+  easy to fix" at any zoom. 1 px gap between the bottom border and
+  the bar so they don't merge into one band. Cleanup pass on chrome
+  sizing: every decoration now uses fixed-screen-pixel thickness (via
+  `worldUnitsForPixels`) and corner pips share one
+  `cornerInset(... border + 1px)` rule, killing the long-standing zoom
+  inconsistency where MAX-of-(screen-px, card-fraction) for thicknesses
+  fought MIN-of-(card-fraction, screen-px) for insets.
+- **Deposit affordances.**
+  - Server projects `Set<IdentityRef> depositableIdentities` (carried
+    identities with positive direct affinity to a proximate chest);
+    codec round-tripped onto every view-model push.
+  - Button label is `Deposit (N)` when N > 0, plain `Deposit`
+    otherwise. Visibility now requires *both* a proximate chest AND
+    `N > 0` — the button hides instead of teasing a no-op click. Tooltip
+    explains the affinity rule.
+  - Hovering the button paints an ACCENT outline on every depositable
+    atlas card via `host.depositPreviewActive` + per-card TICK
+    listeners. Cards that aren't depositable skip the listener so
+    there's no per-card cost during normal play.
+  - Structured logging at every step of the flow: client click, RPC
+    send, server receive, plan size, executor outcome, final status.
+    `nothing_to_deposit` diagnostic is now a sentence and the
+    `[SLOT] deposit ...` log lines fire even on no-op so the absence of
+    output isn't the only signal.
+- **Top-level Gather button + universal hotkey.** Replaces "open kit
+  rack → click gather inside the active card" with a one-click action
+  in the top-right overlay (visible when a chest is proximate and a kit
+  is active). New `key.slot.gather_active_kit` keymap (UNIVERSAL,
+  unbound default) covers in-world too. Both paths route through one
+  `SlotGatherActiveKitPayload` → `KitGatherService.gatherActiveKit`
+  which unions kit page slots (gap = 1 each) + kit-scoped desired
+  counts (gap = desired - carried), ranks proximate chests by affinity,
+  and pulls until each gap closes.
+- **Kits panel scrolls horizontally.** `ScrollerView` wrap with
+  `viewContainer` set to `FlexDirection.ROW` so a base with many kits
+  no longer overflows the right edge.
+
+`:common:test :neoforge:test` green.
 
 **2026-05-01 — split-cursor mode and full-scope desired counts.**
 
@@ -152,10 +259,11 @@ Compile clean, `:common:test :neoforge:test` green.
 Roughly ordered by playtest signal. Pull from the top when the active
 track lands.
 
-1. **Cursor + desired-counts playtest bug pass (2026-05-01).** Six
-   items reported after the split-cursor and desired-counts work
-   landed. Likely best taken as one batch since several share root
-   causes (#1 + #5 in particular) and #6 unblocks the rest.
+1. **Cursor + desired-counts playtest bug pass — remainder.** Three
+   items still open from the original 2026-05-01 batch (the wayfinding
+   nav and kit-carry want-vs-have items shipped 2026-05-02 and are
+   gone from this list). Likely best taken as one batch since #1 + #3
+   share root causes and #4 unblocks the rest.
 
    1. **Duplicate chest in proximate panel + chest-locator panel.**
       A nearby chest holding a kit-needed item appears in both
@@ -163,25 +271,13 @@ track lands.
       (chest locator already shows kit-needed identities under
       search; proximate panel shouldn't double up) or render a single
       visual hint that the chest covers both intents.
-   2. **Kit "carry" section gives no want-vs-have indication.**
-      Currently the section shows what the kit wants but doesn't
-      surface the gap. Probably the same data path that drives the
-      atlas-card pip — `KitBringItem` already has `present`, and
-      `kitDesiredCounts` has the target. Need to plumb both into the
-      kit-rack carry row and render `M / N`.
-   3. **Navigation to chests with kit-needed items.** No in-world or
-      in-atlas wayfinder. Brainstorm needed: particle trails in-world
-      were one idea but not obviously best — also consider in-atlas
-      "this chest →" arrow when hovering a kit-needed card, a
-      breadcrumb on the chest locator entry, or compass-style HUD
-      hint. Atlas UI may need refinement here too.
-   4. **Ghost vs carried not differentiated enough on the hotbar.**
+   2. **Ghost vs carried not differentiated enough on the hotbar.**
       The faded kit-needed ghost preview reads too similar to a real
-      hotbar item; players miss "this slot is empty / waiting." Try
-      stronger transparency, a dashed outline, or an inset corner
-      glyph. Trivial to iterate; pick a treatment after #6 lands so
-      we have screenshots / logs to reason from.
-   5. **Multi-chest / non-stackable identity bug.** Specific repro:
+      hotbar item; players miss "this slot is empty / waiting." Atlas
+      cards got a status-redesign treatment 2026-05-02; the hotbar
+      didn't. Try stronger transparency, a dashed outline, or an
+      inset corner glyph on the hotbar specifically.
+   3. **Multi-chest / non-stackable identity bug.** Specific repro:
       kit needs `bucket_of_water`, a proximate chest contains one,
       and the atlas ends up with **two** `bucket_of_water` cards —
       one with the desired-count star but no chest-stock pip, one
@@ -193,19 +289,19 @@ track lands.
       identity. Likely culprits: `ElsewhereGhostProjection`,
       ghost-accumulator merge logic in
       `SlotWorkspaceViewModel.build`, or the chest-locator query.
-      Use `ItemIdentityMatcher.matchesMovable` semantics consistently
-      end-to-end (kits already do; chest projections may not).
-   6. **More debug logging.** The kit-need / chest-presence /
-      identity-resolution paths are sparse on diagnostics, making
-      bugs like #5 hard to triage from screenshots alone. Add
-      structured INFO/DEBUG at: identity creation per chest
-      enumeration, chest-locator query (which identities matched and
-      via which equality path), kit-needed projection (input
-      identities + carried set + final needed set), proximate
-      vs elsewhere classification. Prefer `SlotDiagnostics` /
-      `SlotDebugLog` over raw `LOGGER.info` so the pattern stays
-      consistent with the chest deposit / mutation logging that
-      already exists.
+      Wayfinding's `WayfindingTarget` projection sidesteps this with
+      `ItemIdentityMatcher.matchesMovable` end-to-end; the older atlas
+      paths still don't.
+   4. **More debug logging.** The deposit pipeline got end-to-end
+      structured logging on 2026-05-02. The kit-need / chest-presence /
+      identity-resolution paths are still sparse, making bugs like
+      #3 hard to triage from screenshots alone. Add structured
+      INFO/DEBUG at: identity creation per chest enumeration,
+      chest-locator query (which identities matched and via which
+      equality path), kit-needed projection (input identities +
+      carried set + final needed set), proximate vs elsewhere
+      classification. Prefer `SlotDiagnostics` / `SlotDebugLog` over
+      raw `LOGGER.info` so the pattern stays consistent.
 
    Cursor / desired-counts polish that was deferred from the
    2026-05-01 ship and could be folded into this pass if convenient
@@ -214,8 +310,22 @@ track lands.
    - Atlas card *drop* (cursor → "send to home").
    - Chest-drop overflow tracking (return-count from RPC).
    - Origin-slot highlight while cursor is non-empty.
-   - "Need N more" status text on the desired-count pip.
+   - "Need N more" status text on the desired-count pip — partially
+     subsumed by 2026-05-02's unified `M/N` badge with status-coloured
+     digits, which already communicates the gap; explicit "need N more"
+     text would still be a more direct read.
    - Right-click "Set desired count…" kit-vs-global toggle.
+
+   Wayfinding follow-ups (each minor; defer until playtest signals
+   demand):
+
+   - The deposit-preview server projection only checks direct affinity,
+     not the facet-affinity fallback the planner uses, so items that
+     deposit via facet similarity won't light up in the preview. Tighten
+     by walking the same `LearnedAdjacencyKey` set the planner uses.
+   - The `[SLOT] deposit ...` log lines fire on every click. Throttle
+     once the deposit UX is stable — currently they're useful for
+     bug triage but will eventually be log-spam.
 
 2. **Learned-storage residual polish**
    ([learned-storage.md](learned-storage.md)). Sticky cluster
@@ -249,15 +359,17 @@ track lands.
      reachable Kit-needed identities from proximate chests in one
      click. A general-purpose withdraw verb (independent of an active
      Kit) hasn't been planned. Defer until playtest signals demand.
-6. **Relevance-LOD UI refinement**
-   ([relevance-lod-prototype.md](relevance-lod-prototype.md)).
-   Playtest-driven polish — pip readability at modded scale, atlas
-   convulse on pickup, drag-drop ordinal feel.
+6. **Relevance-LOD UI refinement** — *retired by
+   [list-view.md](list-view.md).* Single LOD going forward; the
+   band-driven density work isn't shipping. The
+   [retired/relevance-lod-prototype.md](retired/relevance-lod-prototype.md)
+   plan and [../design/relevance-lod.md](../design/relevance-lod.md)
+   doc are marked superseded; relevance scoring survives in reduced
+   form (ordering, search filter, TOC dots).
 7. **Kit prototype slice 4** ([kit-prototype.md](kit-prototype.md)).
 8. **Cleanup.** Remove (or downgrade to DEBUG) the
-   `[SLOT][nudge]` / `[SLOT][layout]` diagnostic INFO logging once
-   one or two fresh-world opens confirm the layout converges across
-   resolutions / GUI scales.
+   `[SLOT][nudge]` / `[SLOT][layout]` diagnostic INFO logging — moot
+   once Phase 1 of the list view lands and the nudge layout retires.
 
 ## Pointers
 
@@ -267,7 +379,8 @@ For current architecture, see
 action semantics, [../architecture/action-taxonomy.md](../architecture/action-taxonomy.md).
 For the LDLib2 workspace decision,
 [../decisions/0002-ldlib2-workspace.md](../decisions/0002-ldlib2-workspace.md).
-For the triage / home design, [../design/atlas.md](../design/atlas.md).
+For the triage / home design (canvas parts superseded by
+[list-view.md](list-view.md)), [../design/atlas.md](../design/atlas.md).
 For the carried-inventory fullness UI plan,
-[inventory-fullness.md](inventory-fullness.md). For relevance-LOD /
-storage areas history, [../design/relevance-lod.md](../design/relevance-lod.md).
+[inventory-fullness.md](inventory-fullness.md). For relevance-LOD
+history (retired), [../design/relevance-lod.md](../design/relevance-lod.md).

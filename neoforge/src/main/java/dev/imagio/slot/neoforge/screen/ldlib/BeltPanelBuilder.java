@@ -152,7 +152,7 @@ final class BeltPanelBuilder {
     Button slotButton(SlotWorkspaceViewModel.HotbarSlot slot) {
         boolean selected = host.selectedHotbarIndex.get() == slot.hotbarIndex();
         Button button = button("", true, slotChromeColor(slot, selected));
-        host.atlasContentSubscriptions.add(host.selectedHotbarIndex.subscribeLater(idx -> {
+        host.wallContentSubscriptions.add(host.selectedHotbarIndex.subscribeLater(idx -> {
             applyButtonColors(button, true, slotChromeColor(slot, idx == slot.hotbarIndex()));
         }));
         button.layout(layout -> layout

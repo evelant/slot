@@ -5,63 +5,25 @@ import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.*;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceUi.*;
 
 import com.lowdragmc.lowdraglib2.gui.sync.bindings.impl.DataBindingBuilder;
-import com.lowdragmc.lowdraglib2.gui.sync.rpc.RPCEmitter;
-import com.lowdragmc.lowdraglib2.gui.sync.rpc.RPCEventBuilder;
-import com.lowdragmc.lowdraglib2.gui.texture.IGuiTexture;
-import com.lowdragmc.lowdraglib2.gui.texture.Icons;
-import com.lowdragmc.lowdraglib2.gui.texture.ItemStackTexture;
 import com.lowdragmc.lowdraglib2.gui.ui.ModularUI;
 import com.lowdragmc.lowdraglib2.gui.ui.UI;
 import com.lowdragmc.lowdraglib2.gui.ui.UIElement;
-import com.lowdragmc.lowdraglib2.gui.ui.data.Horizontal;
-import com.lowdragmc.lowdraglib2.gui.ui.data.TextWrap;
-import com.lowdragmc.lowdraglib2.gui.ui.data.Vertical;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.BindableValue;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
-import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.ScrollerView;
-import com.lowdragmc.lowdraglib2.gui.ui.elements.TextField;
 import com.lowdragmc.lowdraglib2.gui.ui.event.HoverTooltips;
-import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
-import com.lowdragmc.lowdraglib2.gui.util.DrawerHelper;
-import dev.imagio.slot.atlas.AtlasSearchIndex;
-import dev.imagio.slot.atlas.FitCarriedCamera;
-import dev.imagio.slot.atlas.lod.AtlasLayout;
-import dev.imagio.slot.atlas.lod.AtlasLayoutConfig;
-import dev.imagio.slot.atlas.lod.AtlasLayoutResult;
-import dev.imagio.slot.atlas.lod.AtlasRelevance;
-import dev.imagio.slot.atlas.lod.Band;
-import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.AtlasItemDrag;
-import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.ChestStackDrag;
-import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.HotbarSlotDrag;
-import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.IslandDrag;
-import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.KitBringDrag;
-import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.KitSlotDrag;
 import dev.imagio.slot.neoforge.screen.ldlib.util.Observable;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
-import dev.imagio.slot.workflow.domain.KitPage;
-import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
-import dev.vfyjxf.taffy.style.AlignContent;
-import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
-import dev.vfyjxf.taffy.style.TaffyPosition;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
-import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.Set;
 
 final class SlotWorkspaceUiController {
     final SlotWorkspaceUiSession session;
@@ -70,15 +32,6 @@ final class SlotWorkspaceUiController {
     final UIElement content;
 
     SlotWorkspaceViewModel viewModel;
-    /**
-     * Latest client-side atlas layout, recomputed every refresh from
-     * {@link #viewModel} + the active search query. Per
-     * {@code docs/decisions/0005-relevance-score-and-layout-locality.md},
-     * positions and cell sizes for atlas items live here, not on
-     * {@link SlotWorkspaceViewModel.AtlasItem}. Use
-     * {@link #placementFor(SlotWorkspaceViewModel.AtlasItem)} to look up.
-     */
-    AtlasLayoutResult currentLayout = AtlasLayoutResult.EMPTY;
     final Observable<String> localStatus = new Observable<>("");
     final WorkspaceCursorCarry cursor = new WorkspaceCursorCarry();
     final Observable<SlotWorkspaceViewModel.IdentityRef> selectedAtlasIdentity = new Observable<>(null);
@@ -91,7 +44,7 @@ final class SlotWorkspaceUiController {
     String hoveredStorageId;
     final Observable<Integer> selectedHotbarIndex = new Observable<>(-1);
     int hoveredHotbarIndex = -1;
-    final List<Observable.Subscription> atlasContentSubscriptions = new ArrayList<>();
+    final List<Observable.Subscription> wallContentSubscriptions = new ArrayList<>();
     final java.util.Map<Integer, UIElement> hotbarSlotElements = new java.util.HashMap<>();
     SlotWorkspaceViewModel.IdentityRef contextMenuAtlasIdentity;
     int contextMenuHotbarIndex = -1;
@@ -126,35 +79,46 @@ final class SlotWorkspaceUiController {
     boolean pendingCreateFocusPending;
 
     boolean kitRackOpen;
-    AtlasCamera atlasCamera;
-    final AtlasCameraController cameraController = new AtlasCameraController();
+    /**
+     * True while the deposit button is hovered (or otherwise being
+     * previewed). Atlas cards check this in their TICK handler to draw
+     * an accent outline on identities the planner would actually move,
+     * so the player can see "what would happen if I click" before
+     * clicking.
+     */
+    boolean depositPreviewActive;
+    /**
+     * Mirror of {@link #depositPreviewActive} for the global Gather
+     * button. Atlas cards + TOC rows light up when the cursor is over
+     * Gather to show what would actually be pulled if clicked. Set
+     * by MOUSE_ENTER/MOUSE_LEAVE on the button itself.
+     */
+    boolean gatherPreviewActive;
     final SearchController searchController = new SearchController(this);
     final WorkspaceRpcDispatcher rpc = new WorkspaceRpcDispatcher(this);
     final DragDropWiring drag = new DragDropWiring(this);
     final HotkeyRouter hotkeys = new HotkeyRouter(this);
-    final CameraNavigator camera = new CameraNavigator(this);
     final WorkspaceOverlays overlays = new WorkspaceOverlays(this);
-    final AtlasPanelBuilder atlasPanel = new AtlasPanelBuilder(this);
+    final ListWallPanelBuilder listWall = new ListWallPanelBuilder(this);
     final TriagePanelBuilder triagePanel = new TriagePanelBuilder(this);
     final BeltPanelBuilder belt = new BeltPanelBuilder(this);
     final KitRackBuilder kit = new KitRackBuilder(this);
     final ContextMenuBuilder menu = new ContextMenuBuilder(this);
-    final IslandChestBuilder islandChest = new IslandChestBuilder(this);
     final AtlasCardBuilder atlasCard = new AtlasCardBuilder(this);
     final StoragePanelBuilder storagePanel = new StoragePanelBuilder(this);
     final LootChestPanelBuilder lootChestPanel = new LootChestPanelBuilder(this);
     final SearchResultsPanelBuilder searchResultsPanel = new SearchResultsPanelBuilder(this);
+    final TocPanelBuilder tocPanel = new TocPanelBuilder(this);
     final LeftColumnBuilder leftColumn = new LeftColumnBuilder(this);
-    SlotAtlasGraphView atlasView;
-    UIElement atlasPanelElement;
+    ScrollerView wallScroller;
+    UIElement wallLeftReservation;
+    UIElement wallPanelElement;
     UIElement storagePanelElement;
     UIElement lootChestPanelElement;
-    UIElement hoverTrailOverlayElement;
     UIElement carriedFreeSlotsChipElement;
     UIElement topRightActionsElement;
     UIElement statusBarElement;
-    Label statusBarLabel;
-    boolean atlasContentNeedsScreenTick;
+    com.lowdragmc.lowdraglib2.gui.ui.elements.Label statusBarLabel;
     // Deferred rebuild flag. Every server-sync round trip calls rebuild()
     // via syncBinding's remoteSetter; during rapid bursts (e.g. scroll-
     // wheel item transfer firing N RPCs) this used to destroy and recreate
@@ -164,15 +128,6 @@ final class SlotWorkspaceUiController {
     // the UI dirty; flushRebuildIfPending() in the per-frame tick
     // collapses any number of requests into one actual rebuild per frame.
     boolean rebuildPending;
-    /**
-     * Per-island state carried across renders by {@link AtlasNudgeLayout}.
-     * Records each island's home (player-authored), current render position
-     * (post-push / pre-pull-home), and current size, so the next call can
-     * detect "this grew" / "the player just dragged this" / etc. and react
-     * with the correct local response.
-     */
-    private final java.util.Map<String, dev.imagio.slot.atlas.lod.AtlasNudgeLayout.PrevIslandState> nudgeState =
-            new java.util.HashMap<>();
     SlotWorkspaceViewModel.IdentityRef hoveredChestCellIdentity;
     String hoveredChestCellStorageId;
     // Set by drop targets that handle a ChestStackDrag for something OTHER
@@ -181,15 +136,16 @@ final class SlotWorkspaceUiController {
     // DRAG_END reads this to decide whether its default sendTakeFromChest
     // should fire. Reset in DRAG_END regardless.
     boolean chestDragDropConsumed;
-    boolean peekActive;
-    long peekPressTimeMs;
-    AtlasCamera peekTarget;
 
     SlotWorkspaceUiController(SlotWorkspaceUiSession session, Player player) {
         this.session = session;
         this.player = player;
         this.viewModel = session.viewModel();
-        this.root = panel(BACKGROUND).layout(layout -> layout
+        // Root is transparent so the vanilla screen backdrop (dimmed
+        // world / panorama) shows through everywhere we don't explicitly
+        // paint a panel. Same idea as the vanilla inventory: chrome is
+        // localized to specific widgets, the world stays visible.
+        this.root = new UIElement().layout(layout -> layout
                 .widthPercent(100)
                 .heightPercent(100)
                 .paddingAll(14)
@@ -271,130 +227,8 @@ final class SlotWorkspaceUiController {
         }
     }
 
-    /**
-     * Re-run the client-side atlas layout pass. Must be called any
-     * time the inputs change: a new view model arrives, the search
-     * query is submitted/cleared, the kit activates, etc. Reads the
-     * search query from {@link #searchController}; cheap enough to
-     * call every {@link #rebuildNow()} for now (revisit if hot).
-     */
-    void recomputeLayout() {
-        currentLayout = AtlasLayout.layout(
-                viewModel,
-                searchController.normalizedQuery(),
-                AtlasRelevance.DEFAULT_CONTRIBUTORS,
-                AtlasLayoutConfig.DEFAULT,
-                nudgeState
-        );
-    }
-
-    /**
-     * Manual compaction gesture (Shift+click on island body): slide the
-     * island toward its nearest axis-aligned neighbour and set its new
-     * home {@code TIGHTEN_FOLLOW_DELTA} units past the stop position so
-     * subsequent shrinks of the snap target are absorbed automatically.
-     * See {@code docs/plans/atlas-nudge-layout.md}.
-     */
-    void tightenIsland(String islandId) {
-        if (islandId == null || islandId.isBlank() || viewModel == null) {
-            return;
-        }
-        SlotWorkspaceViewModel.AtlasIsland island = viewModel.island(islandId);
-        if (island == null || island.kind() == VisualAtlasIslandKind.TRIAGE) {
-            return;
-        }
-        dev.imagio.slot.atlas.lod.AtlasNudgeLayout.TightenResult result =
-                dev.imagio.slot.atlas.lod.AtlasNudgeLayout.tighten(
-                        nudgeState, islandId, TIGHTEN_FOLLOW_DELTA);
-        if (result == null) {
-            localStatus.set("nothing to snap to");
-            return;
-        }
-        // Convert padded → body coordinates for the move RPC.
-        AtlasLayoutConfig cfg = AtlasLayoutConfig.DEFAULT;
-        double leftPad = cfg.atlasIslandGap() / 2.0;
-        int headerBand = SlotWorkspaceAtlasLayout.ISLAND_HEADER_RESERVE;
-        double bodyHomeX = result.newHomeX() + leftPad;
-        double bodyHomeY = result.newHomeY() + headerBand;
-        // Optimistic: keep the local view model in sync so a stray rebuild
-        // before the server round-trip lands doesn't observe the old home
-        // (which would trigger HOME_MOVED and undo the snap).
-        viewModel = viewModel.withIslandHome(islandId, bodyHomeX, bodyHomeY);
-        rpc.sendMoveIsland(islandId, bodyHomeX, bodyHomeY);
-        rebuild();
-    }
-
-    /** One card-row of follow-on-shrink absorption. ~36 px in default config. */
-    private static final double TIGHTEN_FOLLOW_DELTA =
-            SlotWorkspaceAtlasLayout.CARD_WIDTH + SlotWorkspaceAtlasLayout.CARD_GAP;
-
-    /**
-     * World-space placement for an atlas item under the current
-     * layout. Falls back to a baseline placeholder when the item
-     * isn't part of the latest layout (e.g., triage items, freshly
-     * arrived items the layout pass hasn't yet seen).
-     */
-    AtlasLayoutResult.ItemPlacement placementFor(SlotWorkspaceViewModel.AtlasItem item) {
-        if (item == null) {
-            return PLACEMENT_FALLBACK;
-        }
-        AtlasLayoutResult.ItemPlacement placement = currentLayout.placementOf(item.identity());
-        return placement == null ? fallbackPlacement(item) : placement;
-    }
-
-    private static final AtlasLayoutResult.ItemPlacement PLACEMENT_FALLBACK =
-            new AtlasLayoutResult.ItemPlacement(
-                    "",
-                    0,
-                    0,
-                    SlotWorkspaceAtlasLayout.CARD_WIDTH,
-                    SlotWorkspaceAtlasLayout.CARD_HEIGHT,
-                    0f
-            );
-
-    /**
-     * World-space placement for an island under the current layout.
-     * Falls back to the island's authored origin with a baseline empty
-     * footprint when the island isn't part of the latest layout (Triage
-     * island, transient view-model state).
-     */
-    AtlasLayoutResult.IslandPlacement islandPlacementFor(SlotWorkspaceViewModel.AtlasIsland island) {
-        if (island == null) {
-            return null;
-        }
-        AtlasLayoutResult.IslandPlacement placement = currentLayout.islandPlacementOf(island.islandId());
-        if (placement != null) {
-            return placement;
-        }
-        return new AtlasLayoutResult.IslandPlacement(
-                island.islandId(),
-                (int) Math.round(island.x()),
-                (int) Math.round(island.y()),
-                SlotWorkspaceAtlasLayout.PLAYER_ISLAND_MIN_WIDTH,
-                SlotWorkspaceAtlasLayout.PLAYER_ISLAND_MIN_HEIGHT,
-                island.itemCount()
-        );
-    }
-
-    private static AtlasLayoutResult.ItemPlacement fallbackPlacement(SlotWorkspaceViewModel.AtlasItem item) {
-        // Sane default for items the layout pass hasn't (yet) seen — Triage
-        // items, freshly-arrived items, etc. Coordinates are zero-relative;
-        // callers that need world positions should be reading from
-        // {@link AtlasLayoutResult} directly (this fallback is for inner-card
-        // sizing math that only consumes width/height).
-        return new AtlasLayoutResult.ItemPlacement(
-                item.islandId(),
-                0,
-                0,
-                SlotWorkspaceAtlasLayout.CARD_WIDTH,
-                SlotWorkspaceAtlasLayout.CARD_HEIGHT,
-                0f
-        );
-    }
-
     void rebuildNow() {
         rebuildPending = false;
-        recomputeLayout();
         if (selectedAtlasIdentity.get() != null && viewModel.atlasItem(selectedAtlasIdentity.get()) == null) {
             selectedAtlasIdentity.set(null);
         }
@@ -408,29 +242,15 @@ final class SlotWorkspaceUiController {
         }
         hotbarSlotElements.clear();
         if (!contentPopulated) {
-            // First build only: create the body/statusBar wrappers and add
-            // them to content. Subsequent rebuilds reuse the same wrappers
-            // — replacing them caused a blank-frame flash, because
-            // rebuildNow runs inside atlas.perFrameTick (i.e. inside
-            // atlas.drawBackgroundTexture), which is *after* the parent
-            // content element has already drawn this frame with the old
-            // children. Replacing the children means next frame renders
-            // NEW elements whose layout hasn't settled yet — visible as a
-            // 1-frame mismatch / flash.
             content.clearAllChildren();
             content.addChildren(
-                    atlasPanel.body(),
+                    listWall.body(),
                     overlays.statusBar()
             );
             contentPopulated = true;
         } else {
-            // Incremental refresh: atlasPanel.atlasPanel() is the persistent panel
-            // inside body, and calling it reruns atlasPanel.repopulateAtlasPanel()
-            // which destroys+rebuilds just the atlas-content subtree
-            // (islands/cards/chest tiles). That subtree is what the
-            // server sync actually invalidates.
             storagePanel.repopulate();
-            atlasPanel.atlasPanel();
+            listWall.wallPanel();
         }
         content.markTaffyStyleDirty();
     }
