@@ -888,6 +888,11 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 data.kind = "VisualIslandDeleted";
                 data.islandId = event.islandId();
             }
+            case WorkflowEvent.VisualIslandReordered event -> {
+                data.kind = "VisualIslandReordered";
+                data.islandId = event.islandId();
+                data.targetIndex = event.targetIndex();
+            }
             case WorkflowEvent.TemplateIslandDismissed event -> {
                 data.kind = "TemplateIslandDismissed";
                 data.templateId = event.templateId();
@@ -1021,6 +1026,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             case "VisualIslandRecolored" -> new WorkflowEvent.VisualIslandRecolored(nonNull(data.islandId), data.color);
             case "VisualIslandIconChanged" -> new WorkflowEvent.VisualIslandIconChanged(nonNull(data.islandId), decodeIdentity(data.iconIdentity));
             case "VisualIslandDeleted" -> new WorkflowEvent.VisualIslandDeleted(nonNull(data.islandId));
+            case "VisualIslandReordered" -> new WorkflowEvent.VisualIslandReordered(nonNull(data.islandId), data.targetIndex);
             case "TemplateIslandDismissed" -> new WorkflowEvent.TemplateIslandDismissed(nonNull(data.templateId));
             case "ClaimedChestCreated" -> {
                 ClaimedChest chest = decodeClaimedChest(data.claimedChest);
@@ -1721,6 +1727,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         private String kitId;
         private int pageIndex;
         private int count;
+        private int targetIndex;
         private KitDefinitionData kit;
     }
 

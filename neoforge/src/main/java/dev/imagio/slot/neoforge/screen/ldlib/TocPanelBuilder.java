@@ -10,25 +10,32 @@ import com.lowdragmc.lowdraglib2.gui.ui.data.Vertical;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.ScrollerView;
+import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.neoforge.screen.ldlib.WorkspaceDrags.IslandDrag;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
 
 /**
- * Sectioned wall table-of-contents. Lists every non-Triage island in
- * display order with a colored swatch, label, and item count. Clicking
- * a row scrolls the wall to that section. Drag-to-reorder is wired
- * through the existing
- * {@link SlotWorkspaceUiController#sendReorderSection(String, int)} hook
- * (TODO: server-side reorder RPC; today drag is a no-op).
+ * Sectioned wall table-of-contents. Lists every non-empty non-Triage
+ * island in display order with a colored swatch, label, and item count.
  *
- * <p>Status dots (off-screen search match, off-screen kit-needed) are
- * a follow-up — the visual surface and TICK-driven check skeleton are
- * here but the off-screen detection is best-effort. Lights up when a
- * matching card lives in this section AND the section's center sits
- * outside the wall's viewport.
+ * <ul>
+ *   <li>Click a row → scroll the wall to that section.</li>
+ *   <li>Drag a row → reorder the section in the wall via
+ *       {@code sendReorderIsland}; the drop position (upper or lower
+ *       half of the anchor row) decides whether the source lands
+ *       before or after the anchor in the {@code playerIslands}
+ *       list. Empty (hidden) sections keep their position because the
+ *       command resolves indices in the projection's full
+ *       {@code playerIslands} order, not the visible TOC.</li>
+ * </ul>
+ *
+ * <p>Status dots (off-screen search match, off-screen kit-needed) light
+ * up when a matching card lives in this section and the section's
+ * center sits outside the wall's viewport.
  */
 final class TocPanelBuilder {
     private static final int ROW_HEIGHT = 9;
@@ -120,6 +127,8 @@ final class TocPanelBuilder {
             event.stopPropagation();
             scrollWallToSection(island.islandId());
         });
+        installRowDragSource(row, island);
+        installRowDropTarget(row, island);
 
         UIElement swatch = panel(island.color()).layout(layout -> layout
                 .width(SWATCH_WIDTH)
@@ -328,6 +337,105 @@ final class TocPanelBuilder {
             }
         }
         return null;
+    }
+
+    /**
+     * Drag-source binding for a TOC row. Mouse-down + drag past the row
+     * boundary starts an {@link IslandDrag} carrying just the source
+     * island id; the drag texture is a small colored stripe in the
+     * island's swatch color so the player has a visual handle to track.
+     */
+    private void installRowDragSource(Button row, SlotWorkspaceViewModel.AtlasIsland island) {
+        row.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
+            if (!row.isMouseDown(0)) {
+                return;
+            }
+            if (row.getModularUI() != null && row.getModularUI().getDragHandler().isDragging()) {
+                return;
+            }
+            row.startDrag(
+                    new IslandDrag(island.islandId()),
+                    rect(island.color())
+            ).setDragTexture(-12, -2, 24, 4);
+            host.localStatus.set("dragging " + island.label());
+        }, true);
+    }
+
+    /**
+     * Drop-target binding. Resolves the drop's vertical half (above or
+     * below the anchor row's center) into an insert position relative
+     * to the anchor's index in the canonical {@code playerIslands}
+     * list, then converts that to the post-removal final index the
+     * server expects (the projection clamps + reinserts). Drops onto
+     * the source's own row are no-ops.
+     */
+    private void installRowDropTarget(Button row, SlotWorkspaceViewModel.AtlasIsland anchor) {
+        row.addEventListener(UIEvents.DRAG_ENTER, event -> updateDropOverlay(row, event), true);
+        row.addEventListener(UIEvents.DRAG_UPDATE, event -> updateDropOverlay(row, event));
+        row.addEventListener(UIEvents.DRAG_LEAVE, event -> clearDropOverlay(row), true);
+        row.addEventListener(UIEvents.DRAG_PERFORM, event -> {
+            clearDropOverlay(row);
+            IslandDrag drag = islandDrag(event);
+            if (drag == null) {
+                return;
+            }
+            event.stopPropagation();
+            if (anchor.islandId().equals(drag.islandId())) {
+                return;
+            }
+            int sourceIndex = playerIslandIndexOf(drag.islandId());
+            int anchorIndex = playerIslandIndexOf(anchor.islandId());
+            if (sourceIndex < 0 || anchorIndex < 0) {
+                return;
+            }
+            float halfHeight = row.getSizeHeight() / 2f;
+            boolean upperHalf = (event.y - row.getPositionY()) < halfHeight;
+            int insertPosition = upperHalf ? anchorIndex : anchorIndex + 1;
+            // The projection removes the source first, then inserts at
+            // the clamped target. So if source sat to the left of the
+            // logical insert position, every later index drops by one.
+            int targetIndex = sourceIndex < insertPosition ? insertPosition - 1 : insertPosition;
+            if (targetIndex == sourceIndex) {
+                return;
+            }
+            host.rpc.sendReorderIsland(drag.islandId(), targetIndex);
+        });
+    }
+
+    private void updateDropOverlay(UIElement row, UIEvent event) {
+        if (islandDrag(event) == null) {
+            clearDropOverlay(row);
+            return;
+        }
+        row.style(style -> style.overlayTexture(rect((ACCENT & 0x00FFFFFF) | 0x44000000)));
+    }
+
+    private void clearDropOverlay(UIElement row) {
+        row.style(style -> style.overlayTexture(IGuiTexture.EMPTY));
+    }
+
+    private IslandDrag islandDrag(UIEvent event) {
+        Object payload = event == null || event.dragHandler == null ? null : event.dragHandler.getDraggingObject();
+        return payload instanceof IslandDrag islandDrag ? islandDrag : null;
+    }
+
+    /**
+     * Index of {@code islandId} in the view model's player-island list,
+     * which is in {@code playerIslands} order (Triage is never in the
+     * view model). Returns -1 if absent.
+     */
+    private int playerIslandIndexOf(String islandId) {
+        int index = 0;
+        for (SlotWorkspaceViewModel.AtlasIsland island : host.viewModel.islands()) {
+            if (island.kind() == VisualAtlasIslandKind.TRIAGE) {
+                continue;
+            }
+            if (islandId.equals(island.islandId())) {
+                return index;
+            }
+            index++;
+        }
+        return -1;
     }
 
     /**

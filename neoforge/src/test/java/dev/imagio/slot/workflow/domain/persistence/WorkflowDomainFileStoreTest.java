@@ -147,6 +147,12 @@ class WorkflowDomainFileStoreTest {
         );
         runtime.visualAtlasWorkflow().deleteIsland(doomed.id());
 
+        // Reorder: drop another island after the keeper, then move it to the head.
+        VisualAtlasIsland mover = runtime.visualAtlasWorkflow().createIsland(
+                "Mover", 0, 0, 0xFF333333, null
+        );
+        runtime.visualAtlasWorkflow().reorderIsland(mover.id(), 0);
+
         runtime.visualAtlasWorkflow().dismissTemplate("template.food");
 
         WorkflowDomainFileStore fileStore = new WorkflowDomainFileStore(tempDir.resolve("slot-island-mgmt.json"));
@@ -163,6 +169,11 @@ class WorkflowDomainFileStoreTest {
         assertEquals(ItemIdentity.of("minecraft:anvil"), restoredKeeper.iconIdentity());
         assertTrue(restored.workflowProjection().visualHomeMap().island(doomed.id()) == null);
         assertTrue(restored.workflowProjection().visualHomeMap().templateDismissed("template.food"));
+        // Reorder survived: "Mover" sits at index 0 ahead of the keeper.
+        java.util.List<VisualAtlasIsland> restoredIslands =
+                restored.workflowProjection().visualHomeMap().playerIslands();
+        assertEquals(mover.id(), restoredIslands.get(0).id());
+        assertEquals(keeper.id(), restoredIslands.get(1).id());
     }
 
     @Test

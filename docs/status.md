@@ -7,14 +7,39 @@ Last updated: 2026-05-03. Operational handoff. Read after
 
 ## Active
 
-**[plans/list-view.md](plans/list-view.md) drafted 2026-05-03** —
-replace the 2D pan/zoom atlas with a single-LOD sectioned vertical
-scroll list. Same projection, same item cards, same gestures (outside
-section reorder). Same widget renders standalone on the inventory key
-and as a left ~1/3 sidebar on container/machine screens, giving SLOT
-a story for crafting and EMI/JEI without losing carried-inventory
-unification. Pull Phase 1 (standalone list view) from the queue when
-picking up.
+**[plans/list-view.md](plans/list-view.md) — Phases 1 + 2 shipped
+2026-05-03**. The 2D pan/zoom atlas is gone; the wall is now a
+single-LOD sectioned vertical scroll list (`ListWallPanelBuilder`,
+`AtlasCardBuilder` rewritten) with a docked TOC tab strip on the
+left (`TocPanelBuilder`). Camera, layout, LOD-band, and nudge code
+all deleted (`AtlasCamera*`, `AtlasLayout`, `AtlasNudgeLayout`,
+`BandPicker`, `Band`, `AtlasRenderBudget`, `SlotAtlasGraphView`,
+`AtlasPanelBuilder`, `IslandChestBuilder`, `AtlasDropResolver`,
+`FitCarriedCamera`, `CameraHistory`, `CameraNavigator`,
+`WeightedGridPacker`). `SectionOrdinal` replaces `AtlasDropResolver`'s
+projection-only static helpers. Drag-drop is now section-aware via
+`DragDropWiring.installSectionDropTarget` resolving drop coords to
+ordinals from flex children. Search is a filter (hides non-matching
+cards). TOC has click-to-scroll, off-screen status dots, and
+deposit/gather hover-preview overlays.
+
+**Outstanding on list-view:**
+
+- Phase 3a/b/c (container-screen sidebar, hide vanilla band,
+  mod-observer transparency). A skeleton hook exists at
+  `neoforge/.../client/screen/SlotContainerSidebar.java` —
+  diagnostic-logs only. Real mount logic + cross-surface drag
+  routing not started; needs design pass first.
+
+(Wall renders empty sections as zero-height now;
+`TocPanelBuilder` rows are drag sources for section reorder,
+backed by the new `WorkflowEvent.VisualIslandReordered`.
+`SlotWorkspaceAtlasLayout.baseIslands` switched from a
+`(y, x, label)` sort to `playerIslands` list order, so the
+projection's list ordering is now the wall's display order.)
+
+Pickup priorities for the next session are at the top of
+[plans/current.md § Next session](plans/current.md#next-session--list-view-follow-up).
 
 Wayfinding (full plan), atlas-card status redesign, deposit-preview
 highlighting, and a top-level Gather button shipped 2026-05-02.
@@ -255,8 +280,12 @@ Top-level docs (see [../README.md](../README.md) for the full doc map):
 - architecture: [architecture/overview.md](architecture/overview.md),
   [architecture/action-taxonomy.md](architecture/action-taxonomy.md),
   [architecture/host-ui.md](architecture/host-ui.md)
-- design: [design/atlas.md](design/atlas.md), [design/kits.md](design/kits.md),
-  [design/storage.md](design/storage.md), [design/relevance-lod.md](design/relevance-lod.md)
+- design: [design/atlas.md](design/atlas.md) (superseded by
+  list-view.md; surviving parts only — homes, ghost vs carried,
+  Triage panel, single-element drag rule, kit / desired-count /
+  wayfinding integration), [design/kits.md](design/kits.md),
+  [design/storage.md](design/storage.md). Retired:
+  [design/retired/relevance-lod.md](design/retired/relevance-lod.md).
 - plans (active queue): [plans/current.md](plans/current.md). Shipped
   plans live in [plans/done/](plans/done/); superseded designs in
   [plans/retired/](plans/retired/).
@@ -284,8 +313,10 @@ Common module:
 - `classification`: `FacetIndex` + per-mod facet loaders
 - `workflow/domain`: visual homes, claimed chests, chest affinity, chest
   cluster map, kits, recents, persistence
-- `atlas`: pure layout helpers (`FitCarriedCamera`, `AtlasNudgeLayout`,
-  `AtlasLayout`)
+- `atlas`: pure helpers — `AtlasSearchIndex`, `AtlasRelevance` +
+  contributors, `SectionOrdinal` (per-section ordinal lookups for
+  drag-drop). Camera / layout / nudge / band / packer code retired
+  with the list-view swap.
 - `compat`: shared compat helpers
 
 NeoForge module:
@@ -293,7 +324,10 @@ NeoForge module:
 - `neoforge/client/host`: live screen/menu observation
 - `neoforge/client/screen`: player inventory replacement trigger/mount glue
 - `neoforge/screen/ldlib`: LDLib2 workspace menu, holder, UI session,
-  view-model projection, panel builders, RPC dispatcher, drag/drop
+  view-model projection, panel builders (`ListWallPanelBuilder`
+  is the wall surface; `TocPanelBuilder` the docked TOC),
+  `AtlasCardBuilder` for single-LOD pixel cards, RPC dispatcher,
+  drag/drop
 - `neoforge/network`: workspace-open + RPC payload definitions
 - `neoforge/storage`: BE `storage_id` attachment, claim orchestrator,
   break-event cleanup, chest contents reader, proximity resolvers,
@@ -322,7 +356,7 @@ Reference code (read-only, for design comparison):
 | Workspace composition + view model | `inventory/workspace` |
 | Deposit planner (pure) | `inventory/workspace` |
 | Visual homes, claimed chests, chest affinity, clusters, kits, persistence | `workflow/domain` |
-| Atlas layout (pure) | `atlas/lod` |
+| Section ordinal lookups, search index, relevance scoring | `atlas/lod` |
 | Item facets / classification | `classification` |
 | LDLib2 workspace UI | `neoforge/screen/ldlib` |
 | BE storage-id, claim orchestrator, deposit observer | `neoforge/storage` |
@@ -333,15 +367,20 @@ LDLib2 imports stay out of `common/`. Inventory semantics stay out of
 
 ## Key terms
 
-**Atlas** — pan/zoom visual inventory canvas; the primary
-player-inventory surface. **Home** — stable visual coordinate owned by
-one item identity. **Island** — player-facing organizational cluster.
-**Triage** — docked panel for unhomed/ambiguous identities (NOT an
-atlas island). **Kit** — task-shaped unit unifying earlier "collection"
-+ "loadout". **Belt** — camera-anchored atlas landmark for the active
-hotbar. **Authority** — source of truth about slot contents (kernel
-owns it; UI never invents). **Projection** — derived read model built
-from authority for a surface.
+**Wall** — the main inventory surface (formerly the "atlas").
+Now a sectioned vertical scroll list of single-LOD cards. The
+"atlas" name survives in code identifiers
+(`AtlasItem`, `AtlasIsland`, `AtlasCardBuilder`, `atlasItems`)
+to minimize churn — see list-view.md § Naming. **Section** —
+player-facing organizational block (the new presentation of an
+"island"). **Home** — stable section + ordinal owned by one item
+identity. **Triage** — docked panel for unhomed/ambiguous
+identities (NOT a wall section). **Kit** — task-shaped unit
+unifying earlier "collection" + "loadout". **Belt** — docked
+hotbar strip at the bottom of the wall. **Authority** — source
+of truth about slot contents (kernel owns it; UI never invents).
+**Projection** — derived read model built from authority for a
+surface.
 
 Expanded definitions in the linked design / architecture docs.
 

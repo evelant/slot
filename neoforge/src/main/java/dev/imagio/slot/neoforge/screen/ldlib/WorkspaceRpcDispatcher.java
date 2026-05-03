@@ -13,6 +13,7 @@ final class WorkspaceRpcDispatcher {
     RPCEmitter createNamedIslandEmitter;
     RPCEmitter hotbarToAtlasEmitter;
     RPCEmitter moveIslandEmitter;
+    RPCEmitter reorderIslandEmitter;
     RPCEmitter moveChestEmitter;
     RPCEmitter relabelChestEmitter;
     RPCEmitter forgetChestEmitter;
@@ -103,6 +104,11 @@ final class WorkspaceRpcDispatcher {
                 Double.class,
                 Double.class,
                 host.session::moveIsland
+        ));
+        reorderIslandEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                String.class,
+                Integer.class,
+                host.session::reorderIsland
         ));
         moveChestEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
                 String.class,
@@ -868,6 +874,20 @@ final class WorkspaceRpcDispatcher {
                 "[SLOT] sendMoveIsland id={} worldX={} worldY={} sent={}",
                 islandId, worldX, worldY, sent);
         host.localStatus.set(sent ? "island move requested" : "island move unavailable");
+        host.rebuild();
+    }
+
+    void sendReorderIsland(String islandId, int targetIndex) {
+        if (islandId == null || islandId.isBlank()) {
+            host.localStatus.set("invalid section reorder");
+            host.rebuild();
+            return;
+        }
+        boolean sent = reorderIslandEmitter != null && reorderIslandEmitter.send(
+                islandId,
+                Math.max(0, targetIndex)
+        );
+        host.localStatus.set(sent ? "section reorder requested" : "section reorder unavailable");
         host.rebuild();
     }
 

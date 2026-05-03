@@ -33,6 +33,7 @@ public sealed interface WorkflowEvent permits
         WorkflowEvent.VisualIslandRecolored,
         WorkflowEvent.VisualIslandIconChanged,
         WorkflowEvent.VisualIslandDeleted,
+        WorkflowEvent.VisualIslandReordered,
         WorkflowEvent.VisualHomeAssigned,
         WorkflowEvent.VisualHomeCleared,
         WorkflowEvent.TemplateIslandDismissed,
@@ -245,6 +246,24 @@ public sealed interface WorkflowEvent permits
     ) implements WorkflowEvent {
         public VisualIslandDeleted {
             islandId = islandId == null ? "" : islandId;
+        }
+    }
+
+    /**
+     * Move {@code islandId} to position {@code targetIndex} in the
+     * {@link VisualHomeMap#playerIslands()} list. The projection removes
+     * the island from its current position and inserts it at the clamped
+     * target index, so dropping it onto its own slot is a no-op. Drives
+     * the TOC drag-to-reorder gesture (see docs/plans/list-view.md §
+     * Phase 2).
+     */
+    record VisualIslandReordered(
+            String islandId,
+            int targetIndex
+    ) implements WorkflowEvent {
+        public VisualIslandReordered {
+            islandId = islandId == null ? "" : islandId;
+            targetIndex = Math.max(0, targetIndex);
         }
     }
 

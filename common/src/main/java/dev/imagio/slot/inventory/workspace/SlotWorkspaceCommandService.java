@@ -301,6 +301,52 @@ public final class SlotWorkspaceCommandService {
         return WorkspaceCommandOutcome.accepted("island moved", moved.label());
     }
 
+    public static WorkspaceCommandOutcome reorderIsland(
+            WorkflowDomainRuntime runtime,
+            SlotWorkspaceViewModel viewModel,
+            String islandId,
+            Integer targetIndex
+    ) {
+        if (runtime == null || islandId == null || islandId.isBlank() || targetIndex == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_island_reorder");
+        }
+        SlotWorkspaceViewModel.AtlasIsland island = viewModel == null ? null : viewModel.island(islandId);
+        if (island == null || island.kind() != VisualAtlasIslandKind.PLAYER) {
+            return WorkspaceCommandOutcome.rejected("unknown_player_island");
+        }
+        int beforeIndex = runtime.visualAtlasWorkflow().playerIslandIndex(islandId);
+        if (beforeIndex < 0) {
+            return WorkspaceCommandOutcome.rejected("unknown_player_island");
+        }
+        VisualAtlasIsland reordered = runtime.visualAtlasWorkflow().reorderIsland(
+                islandId,
+                targetIndex,
+                DomainEventMetadata.origin("slot_workspace.ldlib.island_reorder")
+        );
+        if (reordered == null) {
+            return WorkspaceCommandOutcome.rejected("island_reorder_rejected");
+        }
+        int afterIndex = runtime.visualAtlasWorkflow().playerIslandIndex(islandId);
+        SlotDebugLog.log("LDLib atlas island reordered {} -> {}", islandId, afterIndex);
+        if (afterIndex != beforeIndex) {
+            final String targetId = islandId;
+            final int previousIndex = beforeIndex;
+            final int nextIndex = afterIndex;
+            runtime.undoStack().record(
+                    "reorder section",
+                    ctx -> ctx.runtime().visualAtlasWorkflow().reorderIsland(
+                            targetId, previousIndex,
+                            DomainEventMetadata.origin("workflow.undo.island_reorder.restore")
+                    ),
+                    ctx -> ctx.runtime().visualAtlasWorkflow().reorderIsland(
+                            targetId, nextIndex,
+                            DomainEventMetadata.origin("workflow.undo.island_reorder.replay")
+                    )
+            );
+        }
+        return WorkspaceCommandOutcome.accepted("section reordered", reordered.label());
+    }
+
     public static WorkspaceCommandOutcome moveChest(
             WorkflowDomainRuntime runtime,
             SlotWorkspaceViewModel viewModel,

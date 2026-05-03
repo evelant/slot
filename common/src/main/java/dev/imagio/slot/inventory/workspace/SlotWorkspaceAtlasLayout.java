@@ -5,7 +5,6 @@ import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.VisualHomeMap;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -85,20 +84,20 @@ public final class SlotWorkspaceAtlasLayout {
     public static List<SlotWorkspaceViewModel.AtlasIsland> baseIslands(VisualHomeMap visualHomeMap) {
         ArrayList<SlotWorkspaceViewModel.AtlasIsland> islands = new ArrayList<>();
         if (visualHomeMap != null) {
-            visualHomeMap.playerIslands().stream()
-                    .sorted(Comparator
-                            .comparingDouble(VisualAtlasIsland::y)
-                            .thenComparingDouble(VisualAtlasIsland::x)
-                            .thenComparing(VisualAtlasIsland::label, String.CASE_INSENSITIVE_ORDER))
-                    .forEach(island -> islands.add(new SlotWorkspaceViewModel.AtlasIsland(
-                            island.id(),
-                            island.label(),
-                            island.kind(),
-                            island.x(),
-                            island.y(),
-                            island.color(),
-                            0
-                    )));
+            // List order is authoritative: WorkflowEvent.VisualIslandReordered
+            // mutates this list and TOC drag-to-reorder writes through it.
+            // Older y/x/label sorting was canvas-era dead weight.
+            for (VisualAtlasIsland island : visualHomeMap.playerIslands()) {
+                islands.add(new SlotWorkspaceViewModel.AtlasIsland(
+                        island.id(),
+                        island.label(),
+                        island.kind(),
+                        island.x(),
+                        island.y(),
+                        island.color(),
+                        0
+                ));
+            }
         }
         return List.copyOf(islands);
     }

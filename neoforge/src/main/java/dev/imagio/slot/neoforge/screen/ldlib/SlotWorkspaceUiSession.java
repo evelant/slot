@@ -228,6 +228,23 @@ final class SlotWorkspaceUiSession {
         applyOutcome(serverPlayer, outcome);
     }
 
+    void reorderIsland(String islandId, Integer targetIndex) {
+        dev.imagio.slot.SlotCommon.LOGGER.info(
+                "[SLOT] session.reorderIsland received id={} targetIndex={}",
+                islandId, targetIndex);
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        refreshServerView(serverPlayer);
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.reorderIsland(
+                workflowRuntime(serverPlayer),
+                viewModel,
+                islandId,
+                targetIndex
+        );
+        applyOutcome(serverPlayer, outcome);
+    }
+
     void deposit() {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             dev.imagio.slot.SlotCommon.LOGGER.warn(

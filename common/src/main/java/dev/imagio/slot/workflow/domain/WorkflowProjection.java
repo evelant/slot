@@ -264,6 +264,22 @@ public final class WorkflowProjection {
                             entry.getValue() != null && event.islandId().equals(entry.getValue().islandId()));
                 }
             }
+            case WorkflowEvent.VisualIslandReordered event -> {
+                if (event.islandId() != null && !event.islandId().isBlank()) {
+                    int currentIndex = -1;
+                    for (int index = 0; index < playerIslands.size(); index++) {
+                        if (playerIslands.get(index).id().equals(event.islandId())) {
+                            currentIndex = index;
+                            break;
+                        }
+                    }
+                    if (currentIndex >= 0) {
+                        VisualAtlasIsland moved = playerIslands.remove(currentIndex);
+                        int target = Math.min(event.targetIndex(), playerIslands.size());
+                        playerIslands.add(target, moved);
+                    }
+                }
+            }
             case WorkflowEvent.VisualHomeAssigned event -> {
                 VisualHomeAssignment requested = event.assignment();
                 if (requested != null && requested.identity() != null) {

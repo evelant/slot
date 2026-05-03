@@ -20,10 +20,14 @@ final class WorkspaceDrags {
     ) {
     }
 
+    /**
+     * Section reorder drag — payload for the TOC drag-to-reorder gesture
+     * that moves an island to a new ordinal position in the wall. Carries
+     * just the source island id; the drop target resolves the target
+     * ordinal from cursor position over the TOC row strip.
+     */
     record IslandDrag(
-            String islandId,
-            int grabOffsetX,
-            int grabOffsetY
+            String islandId
     ) {
     }
 

@@ -289,6 +289,65 @@ public final class VisualAtlasWorkflowDomainService {
         return visualHomeMap().island(islandId);
     }
 
+    public VisualAtlasIsland reorderIsland(String islandId, int targetIndex) {
+        return reorderIsland(
+                islandId,
+                targetIndex,
+                DomainEventMetadata.origin("workflow.visual.island.reorder")
+        );
+    }
+
+    /**
+     * Move {@code islandId} to ordinal {@code targetIndex} in the
+     * {@link VisualHomeMap#playerIslands()} list. Target index is
+     * clamped to {@code [0, size-1]} after removal so a drop past the
+     * end pins to the tail. Drops onto the island's current position
+     * are no-ops. Triage and template islands are never reorderable.
+     */
+    public VisualAtlasIsland reorderIsland(
+            String islandId,
+            int targetIndex,
+            DomainEventMetadata metadata
+    ) {
+        VisualAtlasIsland existing = mutablePlayerIsland(islandId);
+        if (existing == null) {
+            return null;
+        }
+        java.util.List<VisualAtlasIsland> islands = visualHomeMap().playerIslands();
+        int currentIndex = indexOf(islands, islandId);
+        if (currentIndex < 0) {
+            return null;
+        }
+        int clampedTarget = Math.max(0, Math.min(targetIndex, islands.size() - 1));
+        if (clampedTarget == currentIndex) {
+            return existing;
+        }
+        repository.appendWorkflowEvent(
+                new WorkflowEvent.VisualIslandReordered(islandId, clampedTarget),
+                (metadata == null ? DomainEventMetadata.origin("") : metadata).withOrigin("workflow.visual.island.reorder")
+        );
+        mutationObserver.run();
+        return visualHomeMap().island(islandId);
+    }
+
+    /** Index of {@code islandId} in {@code islands}, or -1 if absent. */
+    public int playerIslandIndex(String islandId) {
+        if (islandId == null || islandId.isBlank()) {
+            return -1;
+        }
+        return indexOf(visualHomeMap().playerIslands(), islandId);
+    }
+
+    private static int indexOf(java.util.List<VisualAtlasIsland> islands, String islandId) {
+        for (int i = 0; i < islands.size(); i++) {
+            VisualAtlasIsland candidate = islands.get(i);
+            if (candidate != null && islandId.equals(candidate.id())) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     public boolean deleteIsland(String islandId) {
         return deleteIsland(islandId, DomainEventMetadata.origin("workflow.visual.island.delete"));
     }

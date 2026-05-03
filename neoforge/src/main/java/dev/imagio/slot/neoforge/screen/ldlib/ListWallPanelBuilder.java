@@ -233,6 +233,15 @@ final class ListWallPanelBuilder {
             }
         }
 
+        // Hide sections with no atlas items entirely when no search is
+        // active. Mirrors TocPanelBuilder's filter so empty sections
+        // don't waste vertical space in the wall scroller. While search
+        // is active the collapsed "(0 / N)" header case stays — that's
+        // a deliberate "what got filtered out" signal.
+        if (!filtering && totalCards == 0) {
+            return null;
+        }
+
         UIElement section = new UIElement().layout(layout -> layout
                 .widthPercent(100)
                 .gapAll(2)

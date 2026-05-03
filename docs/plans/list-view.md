@@ -1,9 +1,12 @@
 # List View — Replace 2D Atlas With Sectioned Vertical List
 
-Status: planning. Replaces the pan/zoom atlas with a single-LOD
-sectioned vertical scroll list. Same projection, same item cards,
-same gestures (outside section reorder), same authority, same intent
-router. UI rearrangement, not a semantic redesign.
+Status: Phase 1 + Phase 2 shipped 2026-05-03 (TOC drag-to-reorder
+included). Phase 3 (container-screen sidebar + hide vanilla band +
+mod-observer transparency) outstanding. Replaces the pan/zoom atlas
+with a single-LOD sectioned vertical scroll list. Same projection,
+same item cards, same gestures (outside section reorder), same
+authority, same intent router. UI rearrangement, not a semantic
+redesign.
 
 For the design that's being replaced, see
 [../design/atlas.md](../design/atlas.md). For relevance scoring (which
@@ -94,7 +97,7 @@ A sectioned vertical list with one LOD addresses all four:
 
 ## Phases
 
-### Phase 1 — Standalone list view
+### Phase 1 — Standalone list view (SHIPPED 2026-05-03)
 
 Replace the atlas canvas with the sectioned vertical scroll list on
 the player inventory key.
@@ -130,32 +133,67 @@ the player inventory key.
   scale change.
 - `:common:test :neoforge:test` green.
 
-### Phase 2 — TOC left-bar tab
+### Phase 2 — TOC left-bar tab (SHIPPED 2026-05-03)
 
-- New left-bar tab strip attached to the wall (visually distinct
-  from triage / chest finder / nearby chests boxes).
-- Entries auto-track current sections in display order; each entry
-  shows name, color swatch, item count.
-- Status dot logic:
-  - Orange dot if any card in the section matches the active
-    search and is scrolled out of view.
-  - Kit-color dot if any card in the section is kit-needed (active
-    kit) and is scrolled out of view.
-- Click entry → animate-scroll the section into view at the top of
-  the viewport.
-- Drag entry up/down → reorder sections in the wall (same drop-
-  indicator pattern as card reorder).
-- Section color picker on the section header → mirrors to TOC
-  swatch live.
+Shipped:
 
-**Acceptance:**
+- TOC tab docked at the top of the left column
+  (`TocPanelBuilder.java`). Visually distinct from triage / chest
+  finder / nearby chests boxes — same `GLASS` panel skin, but no
+  inner panel chrome and a tighter row layout (9 px rows, 6 px
+  font, 3 px swatch).
+- Entries auto-track non-Triage sections in display order. Filters
+  out sections with zero atlas items (so empty sections from
+  populated bases don't dominate the strip). Each entry shows
+  swatch + label + item count; label truncates at 14 chars.
+- Capped at 12 visible rows with an inner `ScrollerView` for
+  overflow, so the TOC never monopolises the column.
+- Click → scrolls that section into view via
+  `wallScroller.verticalScroller.setValue(normalizedY)`.
+- Status-dot lighting (off-screen search match / kit-needed) is
+  handled by the same `installRowStateTracking` TICK handler that
+  also drives:
+  - **Deposit hover preview**: when `host.depositPreviewActive`,
+    highlight rows whose section has any depositable identity and
+    swap the count label to show the depositable count in `ACCENT`.
+  - **Gather hover preview** (mirrors deposit): when
+    `host.gatherPreviewActive`, same treatment in `ACTIVE_HOTBAR`
+    palette. Predicate: `item.kitNeeded() && !item.presence().isEmpty()`,
+    exposed as `AtlasCardBuilder.isGatherableItem(item)`.
 
-- TOC reflects current sections in current order.
-- Click scrolls; drag reorders.
-- Status dots light up correctly for off-screen matches/needs.
-- Section color changes propagate to TOC immediately.
+- TOC drag-to-reorder. Each row is now a drag source carrying an
+  `IslandDrag(islandId)` payload (a small colored stripe in the
+  island's swatch follows the cursor). Each row is also a drop
+  target — the drop's vertical half (above vs below the anchor's
+  center) decides whether the source lands before or after the
+  anchor in the canonical `playerIslands` list. Indices are
+  resolved in `playerIslands` order via the view-model islands
+  list (Triage is never present), so empty hidden sections keep
+  their position.
+  - Server side: new `WorkflowEvent.VisualIslandReordered`
+    (`islandId`, `targetIndex`) + projection case that removes
+    the island from its current index and reinserts at the
+    clamped target. `VisualAtlasWorkflowDomainService.reorderIsland`
+    + `playerIslandIndex` mirror the existing `assignHome` and
+    `moveIsland` patterns. `SlotWorkspaceCommandService.reorderIsland`
+    records an undo entry. New RPC plumbed through
+    `WorkspaceRpcDispatcher.sendReorderIsland` →
+    `SlotWorkspaceUiSession.reorderIsland`.
+  - Layout: `SlotWorkspaceAtlasLayout.baseIslands` no longer
+    sorts by `(y, x, label)` — the projection's
+    `playerIslands` list is now authoritative for display
+    order, so the reorder writes through to the wall directly.
+    The y/x coordinates on `VisualAtlasIsland` survive only as
+    legacy state ignored by the renderer.
+  - `WorkspaceDrags.IslandDrag` shed its `grabOffsetX/Y` fields
+    (canvas-era dead weight); now just carries `islandId`.
 
-### Phase 3 — Container screen injection
+**Outstanding (deferred):**
+
+- Section color picker on the section header.
+- Animated scroll (current implementation snaps).
+
+### Phase 3 — Container screen injection (NOT STARTED)
 
 Render the wall as a left-side sidebar on container/machine
 screens, replacing the role of the vanilla 36-slot player
@@ -163,6 +201,32 @@ inventory section. The unification of carried inventory is the
 load-bearing value here — the player must NOT have to shuffle
 items through the vanilla inventory to interact with crafting
 or machines.
+
+A skeleton hook exists in
+[../../neoforge/src/main/java/dev/imagio/slot/neoforge/client/screen/SlotContainerSidebar.java](../../neoforge/src/main/java/dev/imagio/slot/neoforge/client/screen/SlotContainerSidebar.java)
+— it listens for `ScreenEvent.Init.Post` on
+`AbstractContainerScreen` and currently just diagnostic-logs.
+Real mount logic (embedding LDLib2's `ModularUI` widget tree
+inside a vanilla container screen) hasn't been attempted; needs
+its own design/investigation pass first — see "Investigation
+needed" below.
+
+**Investigation needed before committing to 3a:**
+
+- LDLib2 lives in its own `Screen` subclass via `ModularUI`.
+  Mounting individual widgets inside an `AbstractContainerScreen`
+  requires either: (a) a `Screen.Opening` wrapper that swaps the
+  vanilla screen for a custom subclass that hosts both the
+  vanilla menu and our widget tree, (b) a mixin into the screen's
+  render path, or (c) `ScreenEvent.Render` overdraw with manual
+  hit-testing and event routing. Each has different mod-compat
+  costs.
+- z-order vs. EMI's right-edge real estate.
+- Cross-surface drag routing: the wall card's
+  `installAtlasItemDragSource` has no awareness of vanilla
+  `Slot` drop targets, and vanilla `Slot.mouseDragged` doesn't
+  know about LDLib2 drag payloads.
+- Width policy: ratio (~1/3 viewport) vs. fixed pixel target.
 
 #### 3a — Sidebar alongside vanilla
 

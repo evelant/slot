@@ -15,11 +15,12 @@ vertical list.** Drafted 2026-05-03; Phases 1 + 2 landed 2026-05-03.
 - **Phase 1 (standalone list view).** SHIPPED. The atlas surface is
   now a vertical `ScrollerView` of section blocks (one per non-Triage
   island), each section a flex-row-wrap grid of cards at a single
-  fixed cell size. New `ListWallPanelBuilder` drives population;
-  `AtlasCardBuilder` was rewritten as a single-LOD pixel-space
-  renderer (~1670 lines → ~500). Pan/zoom + camera + LOD bands are
-  gone (`AtlasCamera*`, `CameraNavigator`, `FitCarriedCamera`,
-  `CameraHistory`, `BandPicker*`, `AtlasLayout`, `AtlasNudgeLayout`,
+  fixed cell size (`CARD_CELL_PX = 22`, max 9 cards per row). New
+  `ListWallPanelBuilder` drives population; `AtlasCardBuilder` was
+  rewritten as a single-LOD pixel-space renderer (~1670 lines →
+  ~500). Pan/zoom + camera + LOD bands are gone (`AtlasCamera*`,
+  `CameraNavigator`, `FitCarriedCamera`, `CameraHistory`,
+  `BandPicker*`, `AtlasLayout`, `AtlasNudgeLayout`,
   `AtlasLayoutResult`, `WeightedGridPacker`, `Band`,
   `AtlasRenderBudget`, `SlotAtlasGraphView`, `IslandChestBuilder`,
   `AtlasPanelBuilder`, `AtlasDropResolver` all deleted). New
@@ -28,31 +29,103 @@ vertical list.** Drafted 2026-05-03; Phases 1 + 2 landed 2026-05-03.
   insert ordinals by walking the flex children in flow order. Search
   is now a filter — non-matching cards disappear and the section
   header shows `visible / total`. `WorkspaceFormat.cardChromeColor`
-  dropped its `Band` parameter. Memory entries already current.
-  `:common:test :neoforge:test` green; full `./gradlew build` green.
-- **Phase 2 (TOC tab strip).** SHIPPED partially. New
+  dropped its `Band` parameter.
+- **Phase 2 (TOC tab strip).** SHIPPED. New
   `TocPanelBuilder` adds a docked TOC panel to the left column
   showing each section's color swatch, label, and item count.
-  Click-to-scroll wired via `wallScroller.verticalScroller.setValue`.
-  Status-dot TICK plumbing in place (off-screen detection works on
-  the section's element bounds). **Outstanding:** drag-to-reorder
-  the TOC entries (needs a server-side reorder-island RPC).
-- **Phase 3 (container-screen sidebar).** NOT STARTED. The plan's
-  Phase 3a/3b/3c (sidebar alongside vanilla, hide vanilla band,
-  mod-observer transparency) are multi-week work each — Phase 3c in
-  particular needs iterative playtesting against modded screens
-  (EMI `+`, shift-click move, hotkey transfer, sorting hooks). Pick
-  up next session.
+  Filters out sections with zero atlas items so the strip stays
+  focused. Capped at 12 visible rows with an inner `ScrollerView`
+  for overflow. Click-to-scroll wired via
+  `wallScroller.verticalScroller.setValue` (normalized [0..1] —
+  not pixels). Combined with deposit *and* gather hover previews:
+  hovering Deposit or Gather highlights affected rows + swaps the
+  count label to show how many distinct identities would be moved
+  by that action (deposit = ACCENT, gather = ACTIVE_HOTBAR).
+  Same predicate exposed as `AtlasCardBuilder.isGatherableItem`
+  for card-level outlines. Drag-to-reorder is wired: each row
+  is both a drag source (carrying `IslandDrag(islandId)`) and
+  a drop target; the drop's vertical half decides before-vs-after
+  the anchor row, indices resolve in `playerIslands` order so
+  hidden empty sections keep their slot, server-side
+  `WorkflowEvent.VisualIslandReordered` records an undo entry.
+  Display order is now driven by `playerIslands` list order
+  (`SlotWorkspaceAtlasLayout.baseIslands` no longer sorts by
+  `y/x/label` — that was canvas-era dead weight).
+  **Outstanding (deferred):** section color picker, animated scroll.
+- **Phase 3 (container-screen sidebar).** NOT STARTED. A skeleton
+  `SlotContainerSidebar` exists at
+  [../../neoforge/src/main/java/dev/imagio/slot/neoforge/client/screen/SlotContainerSidebar.java](../../neoforge/src/main/java/dev/imagio/slot/neoforge/client/screen/SlotContainerSidebar.java)
+  — listens for `ScreenEvent.Init.Post` on
+  `AbstractContainerScreen` and diagnostic-logs only. Real
+  mount logic + cross-surface drag routing + Phase 3b/3c
+  (hide vanilla band, shuffle-through-vanilla for mod compat)
+  haven't been attempted. Needs its own design/investigation
+  pass before committing — see list-view.md § Phase 3
+  "Investigation needed".
+
+**Polish + bug fixes from 2026-05-03 playtest pass:**
+
+- Card chrome scaled to 22 px cells (was 32): corner pips 7→5 px,
+  badge font 6→5, chrome insets flush with border instead of
+  extra +1.
+- Wall layout converted from absolute-position scroller to
+  Taffy flex-row with a fixed-width `wallLeftReservation` placeholder
+  for the docked left column. Constant `LeftColumnBuilder.RESERVED_WIDTH
+  = LEFT + WIDTH + GAP` is the single source of truth for the
+  reserved space.
+- Wall scroller is now fixed at
+  `WALL_CONTENT_WIDTH_PX = CARDS_PER_ROW (9) × CARD_CELL_PX +
+  gaps + paddings` (~222 px). Empty space to the right of the
+  wall is intentional — leaves room for future right-side surfaces
+  (item details, action history, EMI integration).
+- Top-bar / belt clearance: wall panel now has
+  `paddingTop = WALL_TOP_PAD_PX (32)` and
+  `paddingBottom = WALL_BOTTOM_PAD_PX (BELT_HEIGHT + 8)` so
+  the in-flow scroller doesn't render under the abs-positioned
+  top action cluster or the belt.
+- Left column width narrowed: `TRIAGE_PANEL_WIDTH` 152 → 100.
+- TOC scroll bug: fixed `scrollWallToSection` — vertical scroller
+  value is normalized [0..1] not pixels; was passing raw section
+  Y which clamped to 1.0 and jumped to bottom.
+- Fullscreen background dropped: root is no longer a `BACKGROUND`-
+  filled `panel(...)`; vanilla screen backdrop (dimmed world)
+  shows through everywhere we don't explicitly paint.
+- `WorkspaceUi.button()` now sets `button.text.setAllowHitTest(false)`
+  globally — fixes the deposit-preview hover dropping when the
+  cursor crossed onto the button label.
+- `host.gatherPreviewActive` mirror of `depositPreviewActive`,
+  wired via `MOUSE_ENTER`/`MOUSE_LEAVE` on the gather button.
+- **Deposit affinity-decay parity bug.** `SlotWorkspaceViewModel.project`
+  was reading the raw `chestAffinityMap()` while the deposit-RPC
+  handler decayed it via `.decayed(tick)`. A bond decayed to 0
+  still had positive raw score → preview lit up but planner
+  found 0 candidates. `project` now takes `long currentTick` and
+  applies the same decay; legacy overload defaults to `0L` for
+  tests. Caller in `SlotWorkspaceUiSession` passes
+  `serverPlayer.serverLevel().getGameTime()`.
+
+`./gradlew build` green; `:common:test :neoforge:test` green.
 
 The wayfinding / atlas-card status redesign / deposit affordances /
 top-level Gather plan shipped 2026-05-02. Three follow-on bugs from
 the 2026-05-01 pass remain in the queue (duplicate chest, hotbar
 ghost differentiation, non-stackable identity mismatch).
 
-The wayfinding / atlas-card status redesign / deposit affordances /
-top-level Gather plan shipped 2026-05-02. Three follow-on bugs from
-the 2026-05-01 pass remain in the queue (duplicate chest, hotbar
-ghost differentiation, non-stackable identity mismatch).
+## Next session — list-view follow-up
+
+Two short items already shipped (hide empty wall sections;
+TOC drag-to-reorder + reorder-island RPC). Phase 3a investigation
+is the next pickup.
+
+1. **Phase 3a investigation pass.** Survey LDLib2 ↔ vanilla
+   `AbstractContainerScreen` mounting options:
+   - `Screen.Opening` wrapper that swaps to a custom subclass
+     hosting both vanilla menu + our widget tree.
+   - Mixin into `AbstractContainerScreen.render` / `mouseClicked`.
+   - `ScreenEvent.Render` overdraw with manual hit-testing.
+   Pick a strategy, write up trade-offs, then commit. The
+   investigation alone is worth its own session because it
+   determines the shape of 3a/b/c.
 
 ## Recent landings
 

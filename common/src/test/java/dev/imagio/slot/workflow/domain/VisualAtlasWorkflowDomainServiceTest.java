@@ -104,6 +104,47 @@ class VisualAtlasWorkflowDomainServiceTest {
     }
 
     @Test
+    void reorderIslandMovesIslandToTargetIndex() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
+        VisualAtlasIsland a = runtime.visualAtlasWorkflow().createIslandWithId("a", "A", 0, 0, 0xFF000001, null);
+        VisualAtlasIsland b = runtime.visualAtlasWorkflow().createIslandWithId("b", "B", 0, 0, 0xFF000002, null);
+        VisualAtlasIsland c = runtime.visualAtlasWorkflow().createIslandWithId("c", "C", 0, 0, 0xFF000003, null);
+        VisualAtlasIsland d = runtime.visualAtlasWorkflow().createIslandWithId("d", "D", 0, 0, 0xFF000004, null);
+
+        // Move "a" (index 0) to index 2 → expected order [B, C, A, D].
+        VisualAtlasIsland reordered = runtime.visualAtlasWorkflow().reorderIsland("a", 2);
+        assertNotNull(reordered);
+        java.util.List<VisualAtlasIsland> order = runtime.snapshot().visualHomeMap().playerIslands();
+        assertEquals(java.util.List.of("b", "c", "a", "d"),
+                order.stream().map(VisualAtlasIsland::id).toList());
+
+        // Move "d" (now last, index 3) up to index 0.
+        runtime.visualAtlasWorkflow().reorderIsland("d", 0);
+        order = runtime.snapshot().visualHomeMap().playerIslands();
+        assertEquals(java.util.List.of("d", "b", "c", "a"),
+                order.stream().map(VisualAtlasIsland::id).toList());
+
+        // Reorder past the end clamps to the tail.
+        runtime.visualAtlasWorkflow().reorderIsland("d", 999);
+        order = runtime.snapshot().visualHomeMap().playerIslands();
+        assertEquals(java.util.List.of("b", "c", "a", "d"),
+                order.stream().map(VisualAtlasIsland::id).toList());
+
+        // Reorder onto current index is a no-op (returns existing, no event).
+        VisualAtlasIsland sameSlot = runtime.visualAtlasWorkflow().reorderIsland("a", 2);
+        assertNotNull(sameSlot);
+        assertEquals(java.util.List.of("b", "c", "a", "d"),
+                runtime.snapshot().visualHomeMap().playerIslands().stream().map(VisualAtlasIsland::id).toList());
+
+        // Unknown / blank ids reject.
+        assertNull(runtime.visualAtlasWorkflow().reorderIsland("nope", 0));
+        assertNull(runtime.visualAtlasWorkflow().reorderIsland("", 0));
+        assertNull(runtime.visualAtlasWorkflow().reorderIsland(null, 0));
+        assertEquals(-1, runtime.visualAtlasWorkflow().playerIslandIndex("nope"));
+        assertEquals(0, runtime.visualAtlasWorkflow().playerIslandIndex("b"));
+    }
+
+    @Test
     void dismissTemplateAddsToDismissedSetAndIsIdempotent() {
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
 
