@@ -9,6 +9,7 @@ import dev.imagio.slot.inventory.storage.CarriedProviderRegistry;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.neoforge.screen.ldlib.GhostAtlasStackFactory;
+import dev.imagio.slot.neoforge.screen.ldlib.SlotSidebarUiHandles;
 import dev.imagio.slot.neoforge.screen.ldlib.SlotWorkspaceLdlibMenus;
 import dev.imagio.slot.neoforge.storage.ChestDepositObserver;
 import dev.imagio.slot.neoforge.storage.ChestStorageBreakListener;
@@ -36,6 +37,7 @@ public final class SlotNeoForge {
         StorageAccessRegistry.installCarriedSourceAccess(new NeoForgeCarriedSourceAccess());
         StorageAccessRegistry.installWorldStorageAccess(new NeoForgeWorldStorageAccess());
         SlotWorkspaceLdlibMenus.init();
+        SlotSidebarUiHandles.init();
         SlotNetworking.init(modBus);
         SlotAttachmentTypes.register(modBus);
         SlotPlayerWorkflowRuntimeService.init();

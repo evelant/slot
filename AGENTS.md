@@ -44,6 +44,9 @@ This is a fast-moving experimental repo. Docs describe intent as of their
   [docs/architecture/ui-lifecycle-rules.md](docs/architecture/ui-lifecycle-rules.md)
   for the rebuild/scale/animation rules we derived from real flicker
   bugs.
+- When writing UI code leverage LDLib2's Taffy flexbox layout engine before resorting
+  to fixed pixel sizes and absolute positioning. Think more in terms of CSS
+  layout than in traditional fixed pixel minecraft UI drawing.
 - Screens and client RPC commands must not provide authoritative stack,
   count, identity, host id, or menu ref for real mutations — build
   authoritative requests on the server from live authority.
@@ -95,6 +98,86 @@ concludes the current one is wrong, do all of this in the same change:
 
 Partial pivots (narrowing scope, swapping a planner, changing a single
 slice) do not need an ADR — just update status.md and current.md.
+
+## Documentation Maintenance
+
+Docs accumulate dated narrative if nobody trims them. The two
+running-state files in particular (`docs/status.md` and
+`docs/plans/current.md`) have repeatedly drifted into history logs.
+Apply these rules whenever you touch them, and on every plan
+archive.
+
+### File roles
+
+- **`docs/status.md`** — Timeless operational handoff: project
+  structure, key terms, working rules, verification commands,
+  current architecture state, queue *summary* (not detail).
+  Should *not* be a change log, a list of every recent ship, or a
+  redundant copy of `current.md`.
+- **`docs/plans/current.md`** — Active plans + queue + a thin
+  rolling log of the last week's landings + known issues
+  not tied to a plan. Should *not* be an archive of every plan's
+  full design narrative.
+- **`docs/plans/<plan>.md`** — One in-progress plan's full design
+  + phasing + acceptance criteria. Should *not* duplicate what's
+  in `current.md`.
+- **`docs/plans/done/<plan>.md`** — Closed plan, preserved as a
+  design reference for *why the code looks the way it does.* Should
+  *not* be a doc anyone is still adding to. Header carries a
+  closing blockquote with close date + dropped scope.
+- **`git log` / `git show`** — The full historical record of every
+  change. The first place to look when "what shipped" detail is
+  needed; almost always sufficient on its own.
+
+Before adding narrative to `status.md` or `current.md`, ask: does
+this belong in `done/<plan>.md` or in the commit message instead?
+Usually yes.
+
+### Recent landings is a rolling 7-day log
+
+`docs/plans/current.md § Recent landings` is a thin operational
+log, not an archive. Each entry is **one bullet, one paragraph
+maximum**, with a link into `done/<plan>.md` for full detail when
+applicable.
+
+Whenever you add a new entry: **delete every existing entry whose
+date is more than 7 days older than the new one.** Their detail
+already lives in commits and `done/<plan>.md` — nothing is lost.
+Without this trim the log grows monotonically and shoves the Queue
+below the fold.
+
+### Plan-archive checklist
+
+When a plan ships and is being closed, do all of this in the same
+change:
+
+1. **Add a closing-blockquote header to the plan.** Close date,
+   what shipped, what was dropped from scope (if anything), and a
+   "spin a fresh plan if dropped pieces gain playtest signal — do
+   not reopen this one" line.
+2. **`mv docs/plans/<plan>.md docs/plans/done/<plan>.md`.** Fix
+   relative paths inside the moved file: each `../` becomes
+   `../../` (one extra hop because `done/` is one directory
+   deeper). Sibling refs to other moved plans stay as bare names.
+3. **Patch every external reference.** Run `grep -rn '<plan>.md'
+   docs/ AGENTS.md README.md` and update each link to the new
+   location.
+4. **Compress the matching `current.md § Recent landings` entry to
+   one bullet.** No multi-paragraph rehash; the detail is in the
+   archived plan and in commits.
+5. **Update `status.md` only if the architecture state changed.**
+   Polish, bugfixes, and small features that don't change the
+   architecture do not warrant a status edit.
+
+### Soft size caps
+
+Treat as triggers to compress *before* adding content, not as
+ceilings to never cross.
+
+- `docs/status.md`: 250 lines.
+- `docs/plans/current.md`: 300 lines.
+
+If you're about to push past either, trim first.
 
 ## Traps
 

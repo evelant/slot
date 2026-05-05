@@ -2,7 +2,7 @@
 
 Status: accepted (relevance-score derivation rule); LOD-band /
 canvas-layout context retired 2026-05-03 — see
-[../plans/list-view.md](../plans/list-view.md). The score-as-derivation
+[../plans/done/list-view.md](../plans/done/list-view.md). The score-as-derivation
 and client-owned-layout boundary rules still apply; what's changed is
 that "layout" now means section flow + ordinal positions rather than
 2D nudge layout + LOD bands.
@@ -19,7 +19,7 @@ see [../design/relevance-lod.md](../design/relevance-lod.md).
 For the retired engineering plan, see
 [../plans/retired/relevance-lod-prototype.md](../plans/retired/relevance-lod-prototype.md).
 For the current direction, see
-[../plans/list-view.md](../plans/list-view.md).
+[../plans/done/list-view.md](../plans/done/list-view.md).
 For the LDLib2 transport boundary this still runs over, see
 [0002-ldlib2-workspace.md](0002-ldlib2-workspace.md).
 

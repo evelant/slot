@@ -5,7 +5,7 @@ import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 
 public final class SlotNetworking {
-    private static final String PROTOCOL_VERSION = "22";
+    private static final String PROTOCOL_VERSION = "24";
 
     private SlotNetworking() {
     }
@@ -19,5 +19,7 @@ public final class SlotNetworking {
         registrar.playToServer(SlotWorkspaceOpenPayload.TYPE, SlotWorkspaceOpenPayload.STREAM_CODEC, SlotWorkspaceOpenPayloadHandler::handle);
         registrar.playToServer(SlotKitPageCyclePayload.TYPE, SlotKitPageCyclePayload.STREAM_CODEC, SlotKitPageCyclePayloadHandler::handle);
         registrar.playToServer(SlotGatherActiveKitPayload.TYPE, SlotGatherActiveKitPayload.STREAM_CODEC, SlotGatherActiveKitPayloadHandler::handle);
+        registrar.playToServer(SlotSidebarOpenPayload.TYPE, SlotSidebarOpenPayload.STREAM_CODEC, SlotSidebarOpenPayloadHandler::handle);
+        registrar.playToServer(SlotSidebarClosePayload.TYPE, SlotSidebarClosePayload.STREAM_CODEC, SlotSidebarClosePayloadHandler::handle);
     }
 }

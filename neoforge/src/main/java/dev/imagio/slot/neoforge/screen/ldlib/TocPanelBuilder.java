@@ -9,7 +9,6 @@ import com.lowdragmc.lowdraglib2.gui.ui.data.Horizontal;
 import com.lowdragmc.lowdraglib2.gui.ui.data.Vertical;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
-import com.lowdragmc.lowdraglib2.gui.ui.elements.ScrollerView;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
@@ -43,13 +42,6 @@ final class TocPanelBuilder {
     private static final int PANEL_PADDING = 3;
     private static final int PANEL_GAP = 1;
     private static final float ROW_FONT_PX = 6f;
-    /**
-     * Visible row count cap before the inner scroller engages. Keeps
-     * the TOC from monopolising the left column when a base has many
-     * sections; other panels (search results / nearby chests / loot /
-     * triage) get to share the column below.
-     */
-    private static final int MAX_VISIBLE_ROWS = 12;
 
     private final SlotWorkspaceUiController host;
 
@@ -81,30 +73,17 @@ final class TocPanelBuilder {
         if (entries.isEmpty()) {
             return null;
         }
-        int visibleRows = Math.min(entries.size(), MAX_VISIBLE_ROWS);
-        int scrollerHeight = visibleRows * ROW_HEIGHT
-                + Math.max(0, visibleRows - 1) * PANEL_GAP
-                + (entries.size() > MAX_VISIBLE_ROWS ? ROW_HEIGHT / 2 : 0);
-        int panelHeight = PANEL_PADDING * 2 + scrollerHeight;
         UIElement panel = panel(GLASS).layout(layout -> layout
                 .widthPercent(100)
-                .height(panelHeight)
                 .paddingAll(PANEL_PADDING)
+                .gapAll(PANEL_GAP)
                 .flexDirection(FlexDirection.COLUMN));
         panel.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
         panel.style(style -> style.zIndex(7));
 
-        ScrollerView scroller = new ScrollerView();
-        scroller.layout(layout -> layout
-                .widthPercent(100)
-                .heightPercent(100)
-                .gapAll(PANEL_GAP)
-                .flexDirection(FlexDirection.COLUMN));
-        scroller.scrollerStyle(style -> style.minScrollPixel(12f).maxScrollPixel(40f));
         for (SlotWorkspaceViewModel.AtlasIsland island : entries) {
-            scroller.addScrollViewChild(row(island));
+            panel.addChild(row(island));
         }
-        panel.addChild(scroller);
         return panel;
     }
 
@@ -136,8 +115,17 @@ final class TocPanelBuilder {
         swatch.setAllowHitTest(false);
         row.addChild(swatch);
 
-        Label name = label(WorkspaceUi.shorten(island.label(), 14), TEXT);
-        name.layout(layout -> layout.flex(1).heightPercent(100));
+        // No hard truncation — the row's flex(1) label container
+        // soft-clips when the column is narrower than the text. A
+        // hardcoded 14-char cap was ellipsizing well-formed labels
+        // ("Mechanisms" → "Mechanism…", "Workbenches" → "Workbench…")
+        // even when the row had plenty of horizontal slack, especially
+        // in sidebar mode where the left column is much wider than
+        // standalone. paddingRight gives the text room to breathe
+        // before it bumps against the count / status indicators on the
+        // right.
+        Label name = label(island.label(), TEXT);
+        name.layout(layout -> layout.flex(1).heightPercent(100).paddingRight(6));
         name.textStyle(style -> style
                 .textColor(TEXT)
                 .textShadow(false)
@@ -347,7 +335,7 @@ final class TocPanelBuilder {
      */
     private void installRowDragSource(Button row, SlotWorkspaceViewModel.AtlasIsland island) {
         row.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
-            if (!row.isMouseDown(0)) {
+            if (!DragDropWiring.mouseIsHeldOnSource(row)) {
                 return;
             }
             if (row.getModularUI() != null && row.getModularUI().getDragHandler().isDragging()) {

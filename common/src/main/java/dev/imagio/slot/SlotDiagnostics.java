@@ -17,14 +17,50 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class SlotDiagnostics {
+    /**
+     * Per-diagnostic last-emitted signature, used by
+     * {@link #shouldEmitChange(String, String)} to dedupe per-tick
+     * spam from diagnostics fired inside the workspace projection
+     * (which re-runs every server tick whether inputs changed or not).
+     *
+     * <p>Single global slot per diagnostic key rather than per-player:
+     * under multiple players this can flap, but (a) these are debug
+     * aids not metrics, and (b) most singleplayer / small-server
+     * testing has one player. Promote keys to {@code "<diag>|<uuid>"}
+     * if multi-player flapping becomes a real problem.
+     */
+    private static final Map<String, String> LAST_DIAGNOSTIC_SIGNATURES = new ConcurrentHashMap<>();
+
     private SlotDiagnostics() {
+    }
+
+    /**
+     * True iff {@code signature} differs from the last value seen for
+     * {@code key}. Side-effect: stores {@code signature} on true.
+     * Use to gate per-tick diagnostics so the log only sees actual
+     * state transitions.
+     */
+    private static boolean shouldEmitChange(String key, String signature) {
+        String previous = LAST_DIAGNOSTIC_SIGNATURES.put(key, signature);
+        return !Objects.equals(previous, signature);
     }
 
     public static void hostResolved(String origin, InventoryHostDescriptor host) {
         if (!SlotDebugLog.enabled()) {
+            return;
+        }
+        // Re-resolves on every projection tick; dedupe so the log
+        // shows actual host transitions (open / switch / close)
+        // instead of one entry per 50 ms.
+        String signature = clean(origin)
+                + "|" + hostId(host)
+                + "|" + (host == null ? 0 : Objects.hashCode(host.diagnostics()));
+        if (!shouldEmitChange("hostResolved", signature)) {
             return;
         }
         SlotCommon.LOGGER.info(
@@ -274,7 +310,17 @@ public final class SlotDiagnostics {
             Set<ItemIdentity> kitNeededIdentities,
             String activeKitId
     ) {
-        if (!SlotDebugLog.enabled()) {
+        if (!SlotDebugLog.verbose()) {
+            return;
+        }
+        // Dedupe: per-tick projection re-emits identical input in
+        // steady state. Only log on actual change so the log reads as
+        // a sequence of events ("kit activated", "chest contents
+        // changed", "player picked up X") instead of an unreadable
+        // wall.
+        String signature = identityResolutionSignature(
+                carriedIdentities, proximateTotals, elsewhereTotals, kitNeededIdentities, activeKitId);
+        if (!shouldEmitChange("identityResolution", signature)) {
             return;
         }
         SlotCommon.LOGGER.info(
@@ -289,6 +335,30 @@ public final class SlotDiagnostics {
                 identityCountSummary(elsewhereTotals),
                 identitySetSummary(kitNeededIdentities)
         );
+    }
+
+    /**
+     * Cheap content-hash of the identity-resolution inputs, used to
+     * dedupe steady-state per-tick log spam. Relies on
+     * {@code Set.hashCode} / {@code Map.hashCode} contracts (sum of
+     * element hashes), so two equal collections produce the same
+     * signature regardless of iteration order — and a single identity
+     * delta flips at least one component hash, surfacing as a fresh
+     * log line. Hash collision risk is real but accepted: this is a
+     * debug aid, not a correctness primitive.
+     */
+    private static String identityResolutionSignature(
+            Set<ItemIdentity> carriedIdentities,
+            Map<ItemIdentity, Integer> proximateTotals,
+            Map<ItemIdentity, Integer> elsewhereTotals,
+            Set<ItemIdentity> kitNeededIdentities,
+            String activeKitId
+    ) {
+        return clean(activeKitId)
+                + "|" + (carriedIdentities == null ? 0 : carriedIdentities.hashCode())
+                + "|" + (proximateTotals == null ? 0 : proximateTotals.hashCode())
+                + "|" + (elsewhereTotals == null ? 0 : elsewhereTotals.hashCode())
+                + "|" + (kitNeededIdentities == null ? 0 : kitNeededIdentities.hashCode());
     }
 
     public static String identitySetSummary(Set<ItemIdentity> identities) {

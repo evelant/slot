@@ -34,12 +34,9 @@ final class BeltPanelBuilder {
 
     UIElement overlay() {
         UIElement overlay = buildPanel();
-        overlay.layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(0)
-                .right(0)
-                .bottom(4)
-                .height(BELT_HEIGHT));
+        // In-flow row at the bottom of the wall panel — same shape
+        // regardless of surface.
+        overlay.layout(layout -> layout.widthPercent(100).height(BELT_HEIGHT));
         overlay.style(style -> style.zIndex(6));
         return overlay;
     }
@@ -103,8 +100,14 @@ final class BeltPanelBuilder {
         // Swallow mouse and drag events that land on the belt chrome (gaps between
         // slots, dividers, spacers) so they don't bubble to the atlas underneath.
         // Individual slot handlers fire first and call stopPropagation() themselves;
-        // this catcher only sees events that missed a slot.
-        panel.addEventListener(UIEvents.MOUSE_DOWN, UIEvent::stopPropagation);
+        // this catcher only sees events that missed a slot. While carrying the
+        // menu cursor we let the click bubble through to root so the universal
+        // cancel / smart-deposit handlers fire (rows 1, 8).
+        panel.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+            if (!WorkspaceCursorState.isCarrying()) {
+                event.stopPropagation();
+            }
+        });
         panel.addEventListener(UIEvents.DRAG_PERFORM, UIEvent::stopPropagation);
         panel.addChild(spacer());
         panel.addChild(host.kit.kitCluster());
@@ -182,16 +185,49 @@ final class BeltPanelBuilder {
             host.selectedAtlasIdentity.set(null);
             host.localStatus.set("selected belt " + (slot.hotbarIndex() + 1) + " -> drag to atlas to return");
         });
-        // Capture-phase cursor handler: runs before setOnClick / right-click
-        // context menu so a ctrl+right-click pickup or a non-empty cursor
-        // drop preempts the slot's normal selection / context-menu behaviour.
+        // Capture-phase real cursor handler: while carrying the menu cursor,
+        // left-click drops all/merge/swap and right-click drops one (vanilla
+        // PICKUP semantics on a player-inventory slot). Beats the legacy
+        // virtual-cursor path below + the right-click context menu.
         button.addEventListener(UIEvents.MOUSE_DOWN, event -> {
-            if (handleCursorGesture(event, slot)) {
+            if (!WorkspaceCursorState.isCarrying()) {
+                return;
+            }
+            if (event.button != 0 && event.button != 1) {
+                return;
+            }
+            event.stopPropagation();
+            host.rpc.sendDropCursorAtHotbar(slot.hotbarIndex(), event.button);
+        }, true);
+        // Capture-phase ctrl+right-click pickup-half: extracts half of the
+        // hotbar slot's stack onto the menu cursor. Beats the bubble-phase
+        // right-click context menu.
+        button.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+            if (event.button != 1 || !Screen.hasControlDown()) {
+                return;
+            }
+            if (!slot.occupied()) {
+                return;
+            }
+            ItemStack stack = slot.displayStack();
+            SlotWorkspaceViewModel.IdentityRef identity =
+                    SlotWorkspaceViewModel.IdentityRef.from(
+                            dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(stack));
+            SlotWorkspaceViewModel.IdentityRef cursorId = WorkspaceCursorState.carriedIdentity();
+            boolean cursorEmpty = cursorId == null;
+            boolean cursorMatches = cursorId != null && cursorId.equals(identity);
+            if (cursorEmpty || cursorMatches) {
                 event.stopPropagation();
+                int half = Math.max(1, stack.getMaxStackSize() / 2);
+                host.rpc.sendPickupToCursor(identity, half);
             }
         }, true);
         button.addEventListener(UIEvents.MOUSE_DOWN, event -> {
             if (event.button == 1 && slot.occupied()) {
+                // Right-click while carrying = universal cancel; let it bubble.
+                if (WorkspaceCursorState.isCarrying()) {
+                    return;
+                }
                 event.stopPropagation();
                 host.menu.openContextMenuForHotbar(slot, event.x, event.y);
             }
@@ -255,120 +291,6 @@ final class BeltPanelBuilder {
         return button;
     }
 
-    /**
-     * Map a MOUSE_DOWN on this hotbar slot to a cursor pickup or drop, or
-     * return false to let the existing select / context-menu handlers run.
-     * Pickup is only valid on an occupied slot (nothing to halve from an
-     * empty one). Drops are valid on either: empty (placement merges into
-     * empty slot via INSERT_ONLY) or same-identity occupied (merges).
-     */
-    private boolean handleCursorGesture(UIEvent event, SlotWorkspaceViewModel.HotbarSlot slot) {
-        WorkspaceCursorGestures.Result mode = WorkspaceCursorGestures.classify(event, host.cursor.isCarrying());
-        return switch (mode) {
-            case PICKUP_HALF -> {
-                if (!slot.occupied()) {
-                    yield false;
-                }
-                ItemStack stack = slot.displayStack();
-                SlotWorkspaceViewModel.IdentityRef identity =
-                        SlotWorkspaceViewModel.IdentityRef.from(
-                                dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(stack));
-                boolean picked = host.cursor.pickupHalf(
-                        BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0,
-                        slot.hotbarIndex(),
-                        identity,
-                        stack,
-                        slot.count());
-                if (picked) {
-                    host.localStatus.set("cursor: " + host.cursor.current().count() + " " + itemName(stack));
-                    host.rebuild();
-                } else if (host.cursor.isCarrying()) {
-                    // Carrying something else — refuse and surface why so the
-                    // player isn't left wondering whether the click registered.
-                    host.localStatus.set("cursor already holds another item — drop or ESC first");
-                    host.rebuild();
-                }
-                // Always stopPropagation when ctrl+right was a deliberate
-                // pickup attempt, even if refused; otherwise the existing
-                // right-click context menu would pop up unexpectedly.
-                yield true;
-            }
-            case DROP_ALL, DROP_ONE, DROP_HALF -> {
-                WorkspaceCursorCarry.State state = host.cursor.current();
-                if (state == null) {
-                    yield false;
-                }
-                // Self-drop (cursor origin == this slot): the items never
-                // physically moved during pickup, so the right thing is to
-                // cancel the cursor rather than emit a no-op self-transfer
-                // RPC and decrement the count.
-                if (BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0.equals(state.sourceId())
-                        && state.slotIndex() == slot.hotbarIndex()) {
-                    host.cursor.clear();
-                    host.localStatus.set("cursor cancelled");
-                    host.rebuild();
-                    yield true;
-                }
-                int requested = host.cursor.dropCount(toDropMode(mode));
-                if (requested <= 0) {
-                    yield false;
-                }
-                // Client-side capacity + identity clamp. Without it, the
-                // server rejects (different item) or accepts only what fits
-                // (full slot), but the client decrements the cursor by the
-                // full requested amount, so the cursor reads empty while
-                // the items are still at the origin. The clamp keeps
-                // client/server in sync.
-                int capped = clampDropToHotbar(slot, state, requested);
-                if (capped <= 0) {
-                    host.localStatus.set(slot.occupied()
-                            ? "slot " + (slot.hotbarIndex() + 1) + " full or different item"
-                            : "drop refused");
-                    host.rebuild();
-                    yield true;
-                }
-                host.rpc.sendCursorDropToHotbar(state, slot.hotbarIndex(), capped);
-                host.cursor.consume(capped);
-                yield true;
-            }
-            case NONE -> false;
-        };
-    }
-
-    private static WorkspaceCursorCarry.DropMode toDropMode(WorkspaceCursorGestures.Result result) {
-        return switch (result) {
-            case DROP_ALL -> WorkspaceCursorCarry.DropMode.ALL;
-            case DROP_ONE -> WorkspaceCursorCarry.DropMode.ONE;
-            case DROP_HALF -> WorkspaceCursorCarry.DropMode.HALF;
-            default -> WorkspaceCursorCarry.DropMode.ALL;
-        };
-    }
-
-    /**
-     * Clamp the requested drop count by the target hotbar slot's actual
-     * capacity. Returns 0 if the slot is occupied with a different
-     * (non-mergeable) identity — caller surfaces a status and skips the
-     * RPC. Empty slots accept up to the cursor stack's max stack size.
-     */
-    private static int clampDropToHotbar(
-            SlotWorkspaceViewModel.HotbarSlot slot,
-            WorkspaceCursorCarry.State state,
-            int requested
-    ) {
-        if (state == null || requested <= 0) {
-            return 0;
-        }
-        int max = Math.max(1, state.displayStack().getMaxStackSize());
-        if (!slot.occupied()) {
-            return Math.min(requested, max);
-        }
-        if (!dev.imagio.slot.inventory.core.ItemIdentityMatcher.matchesMovable(
-                slot.displayStack(), state.identity().toIdentity())) {
-            return 0;
-        }
-        int room = Math.max(0, max - slot.count());
-        return Math.min(requested, room);
-    }
 
     /**
      * Display stack the active kit's current page declares for a given

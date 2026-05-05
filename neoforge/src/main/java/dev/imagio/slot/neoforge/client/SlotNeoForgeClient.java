@@ -41,6 +41,7 @@ public final class SlotNeoForgeClient {
             return;
         }
         SlotDebugLog.setEnabledSupplier(() -> SlotClientConfig.CLIENT.debugLogging.get());
+        SlotDebugLog.setVerboseSupplier(() -> SlotClientConfig.CLIENT.verboseLogging.get());
         SlotWorkspaceMountController.init();
         SlotReenableButton.init();
         SlotContainerSidebar.init();

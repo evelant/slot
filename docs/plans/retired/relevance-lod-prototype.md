@@ -3,7 +3,7 @@
 Last updated: 2026-04-25
 
 > **Retired (2026-05-03).** Superseded by
-> [list-view.md](list-view.md). LOD bands aren't shipping; the list view
+> [../done/list-view.md](../done/list-view.md). LOD bands aren't shipping; the list view
 > uses a single LOD. Phase 1 (the invisible refactor — relevance score
 > machinery + contributors) survives because the scoring is still useful
 > for ordering, search, and TOC status dots; subsequent phases (band

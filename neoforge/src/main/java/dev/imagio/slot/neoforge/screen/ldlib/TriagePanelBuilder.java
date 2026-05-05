@@ -11,7 +11,6 @@ import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
-import com.lowdragmc.lowdraglib2.gui.ui.elements.ScrollerView;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
@@ -28,17 +27,11 @@ final class TriagePanelBuilder {
         this.host = host;
     }
 
-    /** Soft floor for a populated Triage; 1–2 row inboxes still feel readable. */
-    static final int MIN_TRIAGE_HEIGHT = 120;
-
     /**
      * Returns null when the inbox is empty so the panel disappears
-     * entirely (letting the atlas underneath breathe). Otherwise builds
-     * a flex item for {@link LeftColumnBuilder}'s column —
-     * {@code flex(1)} so it shares remaining vertical space with the
-     * loot panel 50/50 (or claims it all when the loot panel is absent),
-     * with a min-height floor so a small inbox never compresses below
-     * a comfortable readable size.
+     * entirely. Otherwise builds a content-fit flex item for
+     * {@link LeftColumnBuilder}'s scroller — sized by its rows so the
+     * outer scroller, not Triage, owns vertical overflow.
      */
     UIElement overlay() {
         final int triageCount = host.viewModel.triageItems().size();
@@ -46,9 +39,7 @@ final class TriagePanelBuilder {
             return null;
         }
         UIElement overlay = panel(GLASS).layout(layout -> layout
-                .flex(1)
                 .widthPercent(100)
-                .minHeight(MIN_TRIAGE_HEIGHT)
                 .paddingAll(6)
                 .gapAll(4)
                 .flexDirection(FlexDirection.COLUMN));
@@ -82,21 +73,17 @@ final class TriagePanelBuilder {
         divider.setAllowHitTest(false);
         overlay.addChild(divider);
 
-        ScrollerView scroller = new ScrollerView();
-        scroller.layout(layout -> layout.flex(1).widthPercent(100).gapAll(2));
-        // LDLib's default per-tick wheel cap is 7px; at our 20px row height that
-        // feels glacial. Bump both min + max so each wheel tick scrolls roughly
-        // 3 rows.
-        scroller.scrollerStyle(style -> style
-                .minScrollPixel(30f)
-                .maxScrollPixel(80f));
+        UIElement rows = new UIElement().layout(layout -> layout
+                .widthPercent(100)
+                .gapAll(2)
+                .flexDirection(FlexDirection.COLUMN));
         for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.triageItems()) {
-            scroller.addScrollViewChild(row(item));
+            rows.addChild(row(item));
             for (ChipSuggestion chip : item.chipSuggestions()) {
-                scroller.addScrollViewChild(chip(item, chip));
+                rows.addChild(chip(item, chip));
             }
         }
-        overlay.addChild(scroller);
+        overlay.addChild(rows);
 
         installDropTarget(overlay);
         return overlay;
@@ -110,13 +97,19 @@ final class TriagePanelBuilder {
     }
 
     UIElement row(SlotWorkspaceViewModel.AtlasItem item) {
-        Button row = button("", true, rowChromeColor(item, item.identity().equals(host.selectedAtlasIdentity.get())));
+        Button row = button("", true, rowChromeColor(item, item.identity().equals(host.activeIdentity())));
         row.noText();
-        host.wallContentSubscriptions.add(host.selectedAtlasIdentity.subscribeLater(sel -> {
-            applyButtonColors(row, true, rowChromeColor(item, item.identity().equals(sel)));
-        }));
+        // Per-tick re-paint so cursor-identity changes (vanilla menu carried)
+        // are reflected without depending on the legacy selectedAtlasIdentity
+        // observable. Cheap: rowChromeColor + applyButtonColors are flat work.
+        boolean[] lastSelected = {item.identity().equals(host.activeIdentity())};
         boolean[] lastAccent = {false};
         row.addEventListener(UIEvents.TICK, event -> {
+            boolean nowSelected = item.identity().equals(host.activeIdentity());
+            if (nowSelected != lastSelected[0]) {
+                applyButtonColors(row, true, rowChromeColor(item, nowSelected));
+                lastSelected[0] = nowSelected;
+            }
             boolean accent = host.shouldAccentTriageRow(item);
             if (accent != lastAccent[0]) {
                 row.style(style -> style.overlayTexture(accent ? rect(HOVER_ACCENT_OVERLAY) : IGuiTexture.EMPTY));

@@ -47,27 +47,37 @@ final class ListWallPanelBuilder {
     static final int SECTION_GAP_PX = 4;
     static final int SECTION_INNER_PAD_PX = 4;
     /**
+     * Width (in screen px) the {@link ScrollerView}'s internal chrome
+     * eats out of its content rect: 5 px for the vertical scroller bar
+     * on the right of {@code verticalContainer}, plus 5 px on each
+     * side from {@code viewPort.paddingAll(5)}, plus a couple of px of
+     * safety margin so the rightmost card doesn't sit flush against
+     * the scrollbar. Without this slack a 9-card row mathematically
+     * fits but visually wraps to 8 because the section grid's
+     * effective width is {@code WALL_CONTENT_WIDTH_PX - own padding -
+     * 15} not {@code WALL_CONTENT_WIDTH_PX - own padding}.
+     */
+    private static final int SCROLLBAR_GUTTER_PX = 20;
+    /**
+     * Cap on how wide the left column (TOC + chest panels + triage)
+     * can grow. Without a cap it flexes to fill everything the wall
+     * doesn't claim, ballooning every panel and stretching label rows
+     * uncomfortably wide. 140 px fits TOC labels ("Building Blocks",
+     * "Raw Materials") and chest rows ("Storage Area 1 / Chest #abcd")
+     * with comfortable room for the count column on the right.
+     */
+    static final int SIDEBAR_LEFT_COLUMN_MAX_WIDTH_PX = 140;
+    /**
      * Pixel width that fits exactly {@link #CARDS_PER_ROW} cards plus
      * inter-card gaps and the surrounding padding/scrollbar chrome.
-     * Used as the scroller's fixed width so the wall stays narrow.
+     * Used as the scroller's fixed width in both standalone and sidebar
+     * modes so the wall density stays identical across surfaces.
      */
     static final int WALL_CONTENT_WIDTH_PX =
             CARD_CELL_PX * CARDS_PER_ROW
                     + CARD_GAP_PX * (CARDS_PER_ROW - 1)
                     + SECTION_INNER_PAD_PX * 2
-                    + 8;
-    /**
-     * Top padding on the wall panel to clear the floating action cluster
-     * (Deposit / Gather / undo / vanilla) at top:10 height:16. Inset is
-     * applied to in-flow children only; the action cluster is abs-
-     * positioned and references the panel's outer bounds.
-     */
-    static final int WALL_TOP_PAD_PX = 32;
-    /**
-     * Bottom padding to clear the docked belt (height {@link
-     * WorkspaceTheme#BELT_HEIGHT}, bottom:4).
-     */
-    static final int WALL_BOTTOM_PAD_PX = WorkspaceTheme.BELT_HEIGHT + 8;
+                    + SCROLLBAR_GUTTER_PX;
 
     private final SlotWorkspaceUiController host;
 
@@ -94,33 +104,26 @@ final class ListWallPanelBuilder {
     }
 
     void createPersistentWallPanel() {
-        // The wall panel is a flex-row: a fixed-width placeholder
-        // reserves space on the left for the docked left column (which
-        // floats over it as an absolutely-positioned overlay because it
-        // has its own dynamic top/bottom anchors against the search input
-        // and belt/kit chrome), and the scroller flex(1)s into the rest.
-        // This way Taffy computes the scroller's width — no hardcoded
-        // left inset on the scroller itself.
-        // No panel fill — the wall panel itself is just a flex container.
-        // The scroller renders its own translucent backdrop over the
-        // card grid; everywhere else is transparent so the vanilla
-        // backdrop shows through.
+        // Wall panel is a flex-column container that owns the entire
+        // workspace UI: action cluster + search + carried chip stack
+        // at the top, leftColumn (TOC / chests / triage) beside the
+        // wall scroller in a flex-row mid section, and status / kit
+        // rack / belt as a footer stack. Same layout for both
+        // standalone and sidebar surfaces — the only difference
+        // between them is whether a vanilla container screen happens
+        // to be hosting the workspace.
         UIElement panel = new UIElement().layout(layout -> layout
                 .flex(1)
                 .widthPercent(100)
-                .paddingTop(WALL_TOP_PAD_PX)
-                .paddingBottom(WALL_BOTTOM_PAD_PX)
                 .paddingHorizontal(0)
-                .flexDirection(FlexDirection.ROW));
+                .gapAll(SECTION_GAP_PX)
+                .flexDirection(FlexDirection.COLUMN));
         host.clearSelectionOnDirectClick(panel);
-
-        UIElement leftReservation = new UIElement().layout(layout -> layout
-                .width(LeftColumnBuilder.RESERVED_WIDTH)
-                .heightPercent(100));
-        leftReservation.setAllowHitTest(false);
 
         ScrollerView scroller = new ScrollerView();
         scroller.layout(layout -> layout
+                // Fixed-density wall: CARDS_PER_ROW (9) regardless of
+                // how much horizontal space the host gives us.
                 .width(WALL_CONTENT_WIDTH_PX)
                 .heightPercent(100)
                 .paddingAll(SECTION_INNER_PAD_PX)
@@ -130,7 +133,6 @@ final class ListWallPanelBuilder {
         scroller.style(style -> style.backgroundTexture(rect(0xB810171D)).zIndex(0));
 
         host.wallScroller = scroller;
-        host.wallLeftReservation = leftReservation;
         host.carriedFreeSlotsChipElement = host.overlays.carriedFreeSlotsChip();
         host.topRightActionsElement = host.overlays.topRightActionsOverlay();
         host.wallPanelElement = panel;
@@ -148,41 +150,77 @@ final class ListWallPanelBuilder {
         scroller.clearAllScrollViewChildren();
         buildSections(scroller);
 
-        // In-flow children first so flex-row sizes the scroller from
-        // the remaining width. The leftReservation reserves space for
-        // the docked left column overlay; the scroller flexes into
-        // the rest.
-        panel.addChild(host.wallLeftReservation);
-        panel.addChild(scroller);
-
         UIElement leftColumn = host.leftColumn.overlay();
+        // Top row: search hint/chip on the left, carried-free-slots
+        // chip in the middle, action cluster on the right. Spaced via
+        // justifyContent SPACE_BETWEEN so the row distributes leftover
+        // space cleanly without making any one element stretch
+        // (Label.flex(1) misbehaves under flex-row in Taffy and was
+        // making the chip overlap the search hint). All three children
+        // are content-sized and the row settles them at left / middle /
+        // right with even gutters. Flex-wrap so the actions cluster
+        // wraps to a second line when the workspace gets narrow at
+        // higher GUI scales — without it the search hint and free-chip
+        // overlap because SPACE_BETWEEN can't distribute negative slack.
+        UIElement topRow = new UIElement().layout(layout -> layout
+                .widthPercent(100)
+                .gapAll(SECTION_GAP_PX)
+                .alignItems(AlignItems.CENTER)
+                .justifyContent(dev.vfyjxf.taffy.style.AlignContent.SPACE_BETWEEN)
+                .wrap(dev.vfyjxf.taffy.style.FlexWrap.WRAP)
+                .flexDirection(FlexDirection.ROW));
+        UIElement search = host.searchController.modalActive()
+                ? host.overlays.searchChipOverlay()
+                : host.overlays.searchHintOverlay();
+        topRow.addChild(search);
+        topRow.addChild(host.carriedFreeSlotsChipElement);
+        topRow.addChild(host.topRightActionsElement);
+        panel.addChild(topRow);
+        // Mid section: leftColumn (capped width) beside the wall
+        // scroller (fixed CARDS_PER_ROW-derived width). The wall is
+        // the primary surface; the leftColumn flexes within its cap to
+        // consume whatever horizontal space remains.
+        UIElement midRow = new UIElement().layout(layout -> layout
+                .widthPercent(100)
+                .flex(1)
+                .gapAll(SECTION_GAP_PX)
+                .alignItems(AlignItems.STRETCH)
+                .flexDirection(FlexDirection.ROW));
         if (leftColumn != null) {
-            panel.addChild(leftColumn);
+            leftColumn.layout(layout -> layout
+                    .flex(1)
+                    .maxWidth(SIDEBAR_LEFT_COLUMN_MAX_WIDTH_PX)
+                    .heightPercent(100));
+            midRow.addChild(leftColumn);
         }
-        panel.addChild(host.belt.overlay());
-        panel.addChild(host.carriedFreeSlotsChipElement);
-        panel.addChild(host.topRightActionsElement);
-        if (host.searchController.modalActive()) {
-            panel.addChild(host.overlays.searchChipOverlay());
-        } else {
-            panel.addChild(host.overlays.searchHintOverlay());
+        midRow.addChild(scroller);
+        panel.addChild(midRow);
+        // Status row below the list — the only footer that lives
+        // inside the centered content. Kit rack + belt are rendered as
+        // root-level siblings of `content` (full-width, covering the
+        // vanilla hotbar in sidebar mode); see
+        // SlotWorkspaceUiController.rebuildNow.
+        if (host.statusBarElement != null) {
+            panel.addChild(host.statusBarElement);
         }
-        if (host.kitRackOpen) {
-            panel.addChild(host.kit.kitRackOverlay());
-        }
+        // Popovers mount on the root-level popover slot so their full-
+        // screen catcher actually covers the full screen (not just the
+        // wall panel's bounding box). See SlotWorkspaceUiController.
+        host.popoverSlot.clearAllChildren();
         UIElement contextMenu = host.menu.contextMenuOverlay();
         if (contextMenu != null) {
-            panel.addChild(contextMenu);
+            host.popoverSlot.addChild(contextMenu);
         }
         UIElement editPopover = host.menu.islandEditPopover();
         if (editPopover != null) {
-            panel.addChild(editPopover);
+            host.popoverSlot.addChild(editPopover);
         }
         UIElement createPopover = host.menu.createIslandPopover();
         if (createPopover != null) {
-            panel.addChild(createPopover);
+            host.popoverSlot.addChild(createPopover);
         }
     }
+
 
     /**
      * Walk the view model's islands and emit one section block per
@@ -233,14 +271,12 @@ final class ListWallPanelBuilder {
             }
         }
 
-        // Hide sections with no atlas items entirely when no search is
-        // active. Mirrors TocPanelBuilder's filter so empty sections
-        // don't waste vertical space in the wall scroller. While search
-        // is active the collapsed "(0 / N)" header case stays — that's
-        // a deliberate "what got filtered out" signal.
-        if (!filtering && totalCards == 0) {
-            return null;
-        }
+        // Empty sections stay in the wall as bare headers — they're
+        // valid drop targets for re-homing carried items, and hiding
+        // them strands the player without a way to send something to
+        // a curated-but-empty section. The TOC's own zero-item filter
+        // can hide them from the navigation strip; the wall keeps
+        // them so drops have somewhere to land.
 
         UIElement section = new UIElement().layout(layout -> layout
                 .widthPercent(100)
@@ -301,32 +337,31 @@ final class ListWallPanelBuilder {
         title.setAllowHitTest(false);
         header.addChild(title);
 
-        String countText = filtering && visibleCount != totalCount
-                ? visibleCount + " / " + totalCount
-                : String.valueOf(totalCount);
-        Label count = label(countText, MUTED);
+        // Right-edge count label. When the player has any of this section's
+        // items carried, the label tints ACCENT and prefixes the carried
+        // count: "5/12●" reads "5 of 12 carried." Otherwise just "12" in
+        // MUTED. Single label avoids the double-text overlap that fell out
+        // of stacking two right-aligned labels at the same anchor.
+        boolean hasCarried = island.carriedCount() > 0;
+        String countText;
+        if (filtering && visibleCount != totalCount) {
+            countText = visibleCount + " / " + totalCount;
+        } else if (hasCarried) {
+            countText = island.carriedCount() + "/" + totalCount + "●";
+        } else {
+            countText = String.valueOf(totalCount);
+        }
+        int countColor = hasCarried ? ACCENT : MUTED;
+        Label count = label(countText, countColor);
         count.layout(layout -> layout.heightPercent(100));
         count.textStyle(style -> style
-                .textColor(MUTED)
+                .textColor(countColor)
                 .textShadow(false)
                 .fontSize(7)
                 .textAlignHorizontal(Horizontal.RIGHT)
                 .textAlignVertical(Vertical.CENTER));
         count.setAllowHitTest(false);
         header.addChild(count);
-
-        if (island.carriedCount() > 0) {
-            Label carried = label(island.carriedCount() + "●", ACCENT);
-            carried.layout(layout -> layout.heightPercent(100));
-            carried.textStyle(style -> style
-                    .textColor(ACCENT)
-                    .textShadow(false)
-                    .fontSize(7)
-                    .textAlignHorizontal(Horizontal.RIGHT)
-                    .textAlignVertical(Vertical.CENTER));
-            carried.setAllowHitTest(false);
-            header.addChild(carried);
-        }
 
         // Right-click → island edit popover. Left-click on header with a
         // selected atlas item assigns the item's home to this island

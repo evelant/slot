@@ -135,16 +135,16 @@ final class WorkspaceUi {
         if (!renderVanillaCount && !iconStack.isEmpty()) {
             iconStack.setCount(1);
         }
-        ItemStackTexture texture = new ItemStackTexture(iconStack);
-        if (!carried) {
-            // Ghost icons render at reduced alpha rather than under a
-            // darkening overlay — a ghost-only kit-needed slot was
-            // reading too similarly to a real hotbar item with the
-            // overlay treatment. ItemStackTexture multiplies this color
-            // into DrawerHelper.drawItemStack's shader-color, so a
-            // low-alpha white shows the icon as straight transparency.
-            texture.setColor(GHOST_ICON_ALPHA_TINT);
-        }
+        // Ghost stacks use GhostItemTexture so the alpha tint actually
+        // blends for 3D blocks too — stock ItemStackTexture's tint hits
+        // entityCutout for blocks, which is alpha-test only and ignores
+        // the alpha. GhostItemTexture rewrites cutoutBlockSheet to
+        // translucentItemSheet at vertex-write time so blocks land on
+        // the alpha-blended path. Carried stacks keep using the stock
+        // texture — no tint, no rewrite, vanilla appearance.
+        ItemStackTexture texture = carried
+                ? new ItemStackTexture(iconStack)
+                : new GhostItemTexture(iconStack).setColor(GHOST_ICON_ALPHA_TINT);
         UIElement icon = new UIElement().layout(layout -> layout.width(size).height(size))
                 .style(style -> style.backgroundTexture(texture));
         icon.setAllowHitTest(false);

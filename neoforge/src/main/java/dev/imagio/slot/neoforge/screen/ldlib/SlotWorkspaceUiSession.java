@@ -63,6 +63,8 @@ import net.minecraft.world.Container;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
+import net.minecraft.world.inventory.ClickType;
+import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.ChestBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -96,6 +98,27 @@ final class SlotWorkspaceUiSession {
      */
     private String searchQuery = "";
 
+    /**
+     * Origin stamp for the current cursor stack. Set whenever a SLOT-
+     * initiated pickup writes to {@code menu.setCarried(...)}; cleared on
+     * any drop / cancel that empties the cursor. Phase B's right-click
+     * cancel reads this to route the cursor stack back to its source
+     * (so eager-from-chest pickups reverse cleanly into the chest rather
+     * than dump into player inventory). When {@code menu.getCarried()} is
+     * non-empty but origin is null, vanilla put the cursor there directly
+     * (player clicked a vanilla slot without going through SLOT) — Phase B
+     * routes that case through smart-deposit.
+     */
+    private CursorOrigin cursorOrigin = null;
+
+    enum CursorSourceKind { CARRY, CHEST, HOST_SLOT }
+
+    record CursorOrigin(CursorSourceKind kind, String sourceId, int slotIndex) {
+        CursorOrigin {
+            sourceId = sourceId == null ? "" : sourceId;
+        }
+    }
+
     SlotWorkspaceUiSession(Player player) {
         this.player = player;
     }
@@ -113,6 +136,659 @@ final class SlotWorkspaceUiSession {
 
     void acceptRemoteView(Tag tag) {
         viewModel = SlotWorkspaceViewModelCodec.decode(player.registryAccess(), tag);
+    }
+
+    /**
+     * Eager extract to the menu cursor. Resolves the identity, walks
+     * carry → backpacks (via {@link CarriedSourceAccess#findIdentity})
+     * → proximate chests by affinity (matching {@link #takeByIdentity})
+     * and writes the extracted stack to {@code menu.setCarried(...)}.
+     * Stamps {@link #cursorOrigin} so a subsequent right-click cancel
+     * (Phase B) can route the stack back to the exact source slot.
+     *
+     * <p>{@code count} caps the extract amount; pass
+     * {@link Integer#MAX_VALUE} for "as much as fits on the cursor."
+     * If the cursor already holds the same identity, the new amount is
+     * merged into it up to the stack's max size; mixing identities is
+     * rejected (Phase B will replace this with cancel + pickup).
+     */
+    void pickupToCursor(
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            Integer count
+    ) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        AbstractContainerMenu menu = serverPlayer.containerMenu;
+        if (menu == null) {
+            reject("no_menu");
+            return;
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            reject("invalid_identity");
+            return;
+        }
+        int requested = (count == null || count <= 0) ? Integer.MAX_VALUE : count;
+        ItemStack carriedStack = menu.getCarried();
+        boolean cursorHasSameIdentity = !carriedStack.isEmpty()
+                && identity.equals(ItemIdentityMatcher.create(carriedStack));
+        if (!carriedStack.isEmpty() && !cursorHasSameIdentity) {
+            reject("cursor_occupied");
+            return;
+        }
+        int cursorRoom;
+        if (cursorHasSameIdentity) {
+            cursorRoom = carriedStack.getMaxStackSize() - carriedStack.getCount();
+            if (cursorRoom <= 0) {
+                reject("cursor_full");
+                return;
+            }
+        } else {
+            cursorRoom = Integer.MAX_VALUE;
+        }
+        int amount = Math.min(requested, cursorRoom);
+        if (amount <= 0) {
+            reject("cursor_full");
+            return;
+        }
+
+        ItemStack extracted = ItemStack.EMPTY;
+        CursorOrigin newOrigin = null;
+        String sourceLabel = "";
+
+        CarriedSourceAccess carriedAccess = StorageAccessRegistry.carriedSourceAccess();
+        Optional<CarriedSourceAccess.CarriedLocation> carriedLoc = carriedAccess.findIdentity(serverPlayer, identity);
+        if (carriedLoc.isPresent()) {
+            CarriedSourceAccess.CarriedLocation loc = carriedLoc.get();
+            ItemStack peeked = carriedAccess.peek(serverPlayer, loc.sourceId(), loc.slotIndex());
+            if (!peeked.isEmpty()) {
+                int extractAmount = Math.min(amount, peeked.getCount());
+                extracted = carriedAccess.extract(serverPlayer, loc.sourceId(), loc.slotIndex(), extractAmount, false);
+                if (!extracted.isEmpty()) {
+                    newOrigin = new CursorOrigin(CursorSourceKind.CARRY, loc.sourceId(), loc.slotIndex());
+                    sourceLabel = loc.sourceId();
+                }
+            }
+        }
+
+        if (extracted.isEmpty()) {
+            MinecraftServer server = serverPlayer.getServer();
+            if (server != null) {
+                WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
+                ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
+                Set<String> proximate = ChestProximityResolver.proximateStorageIds(serverPlayer, claimedChestMap);
+                if (!proximate.isEmpty()) {
+                    long tick = serverPlayer.serverLevel().getGameTime();
+                    ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap().decayed(tick);
+                    java.util.ArrayList<ClaimedChest> ranked = new java.util.ArrayList<>();
+                    for (ClaimedChest chest : claimedChestMap.chests()) {
+                        if (proximate.contains(chest.storageId().toString())) {
+                            ranked.add(chest);
+                        }
+                    }
+                    ranked.sort((a, b) -> Integer.compare(
+                            affinityMap.score(b.storageId(), identity),
+                            affinityMap.score(a.storageId(), identity)
+                    ));
+                    WorldStorageAccess worldStorage = StorageAccessRegistry.worldStorageAccess();
+                    for (ClaimedChest chest : ranked) {
+                        WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
+                        for (WorldStorageAccess.SlotContent entry : worldStorage.enumerate(server, target)) {
+                            ItemStack stackInChest = entry.stack();
+                            if (stackInChest.isEmpty()) {
+                                continue;
+                            }
+                            if (!identity.equals(ItemIdentityMatcher.create(stackInChest))) {
+                                continue;
+                            }
+                            int extractAmount = Math.min(amount, stackInChest.getCount());
+                            ItemStack pulled = worldStorage.extract(server, target, entry.slotIndex(), extractAmount, false);
+                            if (pulled != null && !pulled.isEmpty()) {
+                                extracted = pulled;
+                                newOrigin = new CursorOrigin(CursorSourceKind.CHEST,
+                                        chest.storageId().toString(), entry.slotIndex());
+                                String label = chest.label();
+                                sourceLabel = (label == null || label.isBlank())
+                                        ? chest.storageId().toString()
+                                        : label;
+                                break;
+                            }
+                        }
+                        if (!extracted.isEmpty()) {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        if (extracted.isEmpty()) {
+            reject("nothing_to_pick");
+            return;
+        }
+
+        if (cursorHasSameIdentity) {
+            ItemStack merged = carriedStack.copy();
+            merged.grow(extracted.getCount());
+            menu.setCarried(merged);
+        } else {
+            menu.setCarried(extracted);
+        }
+        cursorOrigin = newOrigin;
+        status = "picked_up";
+        diagnostics = "moved=" + extracted.getCount() + " from=" + sourceLabel;
+        SlotDebugLog.log("[cursor][pickup] {} count={} from={} kind={}",
+                identity.itemId(), extracted.getCount(), sourceLabel,
+                newOrigin == null ? "?" : newOrigin.kind());
+        broadcast(serverPlayer);
+    }
+
+    /**
+     * Universal cancel: route the cursor stack back to its origin. Used
+     * by the right-click handler (universal-table row 1). Falls through
+     * to {@link #smartDepositLeftover} when origin is missing, the chest
+     * is gone, or the original source can't fully accept the stack.
+     */
+    void cursorCancel() {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        AbstractContainerMenu menu = serverPlayer.containerMenu;
+        if (menu == null) {
+            return;
+        }
+        ItemStack carried = menu.getCarried();
+        if (carried.isEmpty()) {
+            cursorOrigin = null;
+            return;
+        }
+        ItemStack remaining = carried.copy();
+        CursorOrigin origin = cursorOrigin;
+        if (origin != null) {
+            switch (origin.kind()) {
+                case CARRY -> {
+                    CarriedSourceAccess access = StorageAccessRegistry.carriedSourceAccess();
+                    ItemStack leftover = access.insertBestFit(serverPlayer, remaining, false);
+                    remaining = leftover == null ? ItemStack.EMPTY : leftover;
+                }
+                case CHEST -> {
+                    MinecraftServer server = serverPlayer.getServer();
+                    if (server != null) {
+                        ClaimedChest chest = lookupChestByStorageId(serverPlayer, origin.sourceId());
+                        if (chest != null) {
+                            WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
+                            WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
+                            ItemStack leftover = world.insert(server, target, remaining, false);
+                            remaining = leftover == null ? ItemStack.EMPTY : leftover;
+                        }
+                    }
+                }
+                case HOST_SLOT -> {
+                    // Recipes / machine result slots can't accept items back
+                    // cleanly. Smart-deposit handles it.
+                }
+            }
+        }
+        if (!remaining.isEmpty()) {
+            remaining = smartDepositLeftover(serverPlayer, remaining);
+        }
+        menu.setCarried(remaining);
+        if (remaining.isEmpty()) {
+            cursorOrigin = null;
+            status = "cursor_cancelled";
+        } else {
+            status = "cursor_partial_cancel";
+        }
+        diagnostics = "remaining=" + remaining.getCount();
+        SlotDebugLog.log("[cursor][cancel] kind={} remaining={}",
+                origin == null ? "null" : origin.kind(), remaining.getCount());
+        broadcast(serverPlayer);
+    }
+
+    /**
+     * Smart-deposit: route the cursor stack through the cascade —
+     * desired-count gap fill → proximate chest with affinity → home
+     * routing → Triage. Used by the universal-table row 8 (left-click
+     * on no specific target while carrying) and as the fallback for
+     * {@link #cursorCancel} when origin can't accept.
+     */
+    void cursorSmartDeposit() {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        AbstractContainerMenu menu = serverPlayer.containerMenu;
+        if (menu == null) {
+            return;
+        }
+        ItemStack carried = menu.getCarried();
+        if (carried.isEmpty()) {
+            cursorOrigin = null;
+            return;
+        }
+        ItemStack remaining = smartDepositLeftover(serverPlayer, carried.copy());
+        menu.setCarried(remaining);
+        if (remaining.isEmpty()) {
+            cursorOrigin = null;
+            status = "cursor_deposited";
+        } else {
+            status = "cursor_partial_deposit";
+        }
+        diagnostics = "remaining=" + remaining.getCount();
+        SlotDebugLog.log("[cursor][smart-deposit] remaining={}", remaining.getCount());
+        broadcast(serverPlayer);
+    }
+
+    /**
+     * Drop the cursor stack onto a player-hotbar slot. Translates to
+     * vanilla {@code menu.clicked(slotId, button, ClickType.PICKUP)}
+     * so left-click does drop-all/merge/swap and right-click does
+     * drop-one — the same semantics vanilla applies to its own slots.
+     * Used by belt panel left/right click when the cursor is non-empty.
+     */
+    void dropCursorAtHotbar(Integer hotbarIndex, Integer button) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        AbstractContainerMenu menu = serverPlayer.containerMenu;
+        if (menu == null) {
+            return;
+        }
+        int idx = hotbarIndex == null ? -1 : hotbarIndex;
+        if (idx < 0 || idx >= 9) {
+            reject("invalid_hotbar_slot");
+            return;
+        }
+        if (menu.getCarried().isEmpty()) {
+            return;
+        }
+        int menuSlotId = -1;
+        for (int i = 0; i < menu.slots.size(); i++) {
+            Slot s = menu.slots.get(i);
+            if (s.container == serverPlayer.getInventory() && s.getContainerSlot() == idx) {
+                menuSlotId = i;
+                break;
+            }
+        }
+        if (menuSlotId < 0) {
+            reject("hotbar_slot_not_in_menu");
+            return;
+        }
+        int btn = button == null ? 0 : button;
+        if (btn != 0 && btn != 1) {
+            return;
+        }
+        menu.clicked(menuSlotId, btn, ClickType.PICKUP, serverPlayer);
+        if (menu.getCarried().isEmpty()) {
+            cursorOrigin = null;
+            status = "cursor_deposited";
+        } else {
+            status = "cursor_partial_deposit";
+        }
+        diagnostics = "remaining=" + menu.getCarried().getCount();
+        broadcast(serverPlayer);
+    }
+
+    /**
+     * Direct chest drop: insert the cursor stack into a specific chest
+     * (via {@link WorldStorageAccess#insert}). Bumps affinity so future
+     * routing prefers this chest. Used by chest chip / loot chest panel
+     * left-click when the cursor is non-empty (universal-table rows 5,
+     * 6).
+     */
+    void dropCursorIntoChest(String storageIdRaw) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        AbstractContainerMenu menu = serverPlayer.containerMenu;
+        if (menu == null) {
+            return;
+        }
+        ItemStack carried = menu.getCarried();
+        if (carried.isEmpty()) {
+            return;
+        }
+        ChestProximityResult resolved = resolveProximateChest(serverPlayer, storageIdRaw);
+        if (resolved.outcome != null) {
+            applyChestDepositRejection(serverPlayer, resolved.outcome);
+            return;
+        }
+        MinecraftServer server = serverPlayer.getServer();
+        if (server == null) {
+            reject("server_unavailable");
+            return;
+        }
+        ItemStack remaining = carried.copy();
+        ItemIdentity identity = ItemIdentityMatcher.create(remaining);
+        int beforeCount = remaining.getCount();
+        WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
+        WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(resolved.chest);
+        ItemStack leftover = world.insert(server, target, remaining, false);
+        remaining = leftover == null ? ItemStack.EMPTY : leftover;
+        int deposited = beforeCount - remaining.getCount();
+        if (deposited > 0) {
+            workflowRuntime(serverPlayer).chestClaimWorkflow().recordDeposit(
+                    resolved.chest.storageId(), identity, deposited,
+                    serverPlayer.serverLevel().getGameTime());
+        }
+        menu.setCarried(remaining);
+        if (remaining.isEmpty()) {
+            cursorOrigin = null;
+            status = "cursor_deposited";
+        } else {
+            status = "cursor_partial_deposit";
+        }
+        diagnostics = "deposited=" + deposited + " remaining=" + remaining.getCount();
+        SlotDebugLog.log("[cursor][drop-chest] chest={} deposited={} remaining={}",
+                resolved.chest.storageId(), deposited, remaining.getCount());
+        broadcast(serverPlayer);
+    }
+
+    private ItemStack smartDepositLeftover(ServerPlayer serverPlayer, ItemStack stack) {
+        if (stack == null || stack.isEmpty()) {
+            return ItemStack.EMPTY;
+        }
+        ItemStack remaining = stack.copy();
+        ItemIdentity identity = ItemIdentityMatcher.create(remaining);
+        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
+
+        // Step 1: satisfy desired-count gap by inserting into player carry.
+        int desired = runtime.desiredCountWorkflow().resolved(runtime.snapshot().kitMap(), identity);
+        if (desired > 0) {
+            int currentInCarry = totalCarriedCount(serverPlayer, identity);
+            int gap = Math.max(0, desired - currentInCarry);
+            if (gap > 0) {
+                int amountToFill = Math.min(gap, remaining.getCount());
+                ItemStack toInsert = remaining.copyWithCount(amountToFill);
+                CarriedSourceAccess carriedAccess = StorageAccessRegistry.carriedSourceAccess();
+                ItemStack carryLeftover = carriedAccess.insertBestFit(serverPlayer, toInsert, false);
+                int leftoverCount = carryLeftover == null || carryLeftover.isEmpty() ? 0 : carryLeftover.getCount();
+                int actuallyInserted = amountToFill - leftoverCount;
+                remaining.shrink(actuallyInserted);
+            }
+        }
+        if (remaining.isEmpty()) {
+            return ItemStack.EMPTY;
+        }
+
+        // Step 2: deposit to proximate chest with affinity.
+        MinecraftServer server = serverPlayer.getServer();
+        if (server != null) {
+            ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
+            Set<String> proximate = ChestProximityResolver.proximateStorageIds(serverPlayer, claimedChestMap);
+            if (!proximate.isEmpty()) {
+                long tick = serverPlayer.serverLevel().getGameTime();
+                ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap().decayed(tick);
+                java.util.ArrayList<ClaimedChest> ranked = new java.util.ArrayList<>();
+                for (ClaimedChest chest : claimedChestMap.chests()) {
+                    if (proximate.contains(chest.storageId().toString())
+                            && affinityMap.score(chest.storageId(), identity) > 0) {
+                        ranked.add(chest);
+                    }
+                }
+                ranked.sort((a, b) -> Integer.compare(
+                        affinityMap.score(b.storageId(), identity),
+                        affinityMap.score(a.storageId(), identity)
+                ));
+                WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
+                for (ClaimedChest chest : ranked) {
+                    int beforeCount = remaining.getCount();
+                    WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
+                    ItemStack leftover = world.insert(server, target, remaining, false);
+                    remaining = leftover == null ? ItemStack.EMPTY : leftover;
+                    int depositedHere = beforeCount - remaining.getCount();
+                    if (depositedHere > 0) {
+                        runtime.chestClaimWorkflow().recordDeposit(
+                                chest.storageId(), identity, depositedHere, tick);
+                    }
+                    if (remaining.isEmpty()) {
+                        break;
+                    }
+                }
+            }
+        }
+        if (remaining.isEmpty()) {
+            return ItemStack.EMPTY;
+        }
+
+        // Step 3-5: home routing and Triage fold into a final
+        // insertBestFit fallback. Phase B v1: the wall card / Triage
+        // distinction is downstream of the projection, not the carry
+        // primitive — so insertBestFit ends up in the player's carry
+        // which is exactly where home / Triage land at projection time.
+        CarriedSourceAccess carriedAccess = StorageAccessRegistry.carriedSourceAccess();
+        ItemStack finalLeftover = carriedAccess.insertBestFit(serverPlayer, remaining, false);
+        return finalLeftover == null ? ItemStack.EMPTY : finalLeftover;
+    }
+
+    private int totalCarriedCount(ServerPlayer serverPlayer, ItemIdentity identity) {
+        CarriedSourceAccess access = StorageAccessRegistry.carriedSourceAccess();
+        int total = 0;
+        for (CarriedSourceAccess.CarriedLocation loc : access.findAllMatching(serverPlayer, identity)) {
+            total += access.peek(serverPlayer, loc.sourceId(), loc.slotIndex()).getCount();
+        }
+        return total;
+    }
+
+    private ClaimedChest lookupChestByStorageId(ServerPlayer serverPlayer, String storageIdRaw) {
+        if (storageIdRaw == null || storageIdRaw.isBlank()) {
+            return null;
+        }
+        UUID storageId;
+        try {
+            storageId = UUID.fromString(storageIdRaw);
+        } catch (IllegalArgumentException ignored) {
+            return null;
+        }
+        return workflowRuntime(serverPlayer).chestClaimWorkflow().claimedChestMap().chest(storageId);
+    }
+
+    /**
+     * Cross-surface: a wall card was drag-released over a vanilla slot
+     * in the host menu (chest, crafting input, machine input). Find a
+     * player-inventory slot inside the host menu carrying the same
+     * identity, then synthesize the vanilla two-click sequence
+     * {@code PICKUP source → PICKUP target} so the host menu's own
+     * {@code Slot.mayPlace} / {@code Slot.safeInsert} logic governs
+     * the move (so e.g. crafting input slot's max-stack-size-1 still
+     * applies and machine input filters reject what they reject).
+     *
+     * <p>If the target rejects part of the stack the leftover stays on
+     * the menu's cursor; we PICKUP the source again to put it back,
+     * and as a final fallback drop any irreducible leftover into the
+     * player inventory.
+     */
+    void crossSurfaceDropOnHostSlot(
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            Integer hostSlotIndex
+    ) {
+        SlotDebugLog.log(
+                "[xsurface][server] DropOnHostSlot itemId={} cmp={} fp='{}' hostSlot={}",
+                itemId, comparisonMode, componentFingerprint, hostSlotIndex);
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            SlotDebugLog.log("[xsurface][server] drop bailing: player is not ServerPlayer");
+            return;
+        }
+        AbstractContainerMenu menu = serverPlayer.containerMenu;
+        if (menu == null || hostSlotIndex == null
+                || hostSlotIndex < 0 || hostSlotIndex >= menu.slots.size()) {
+            SlotDebugLog.log(
+                    "[xsurface][server] drop bailing: menu={} hostSlot={} slotCount={}",
+                    menu == null ? "null" : menu.getClass().getSimpleName(),
+                    hostSlotIndex,
+                    menu == null ? 0 : menu.slots.size());
+            return;
+        }
+        Slot targetSlot = menu.slots.get(hostSlotIndex);
+        // Player-side slot as target is a no-op shuffle — the cross-surface
+        // gesture only makes sense for "outside the player inventory" slots.
+        if (targetSlot.container == serverPlayer.getInventory()) {
+            SlotDebugLog.log("[xsurface][server] drop bailing: target slot is player-side");
+            return;
+        }
+        ItemIdentity identity = new SlotWorkspaceViewModel.IdentityRef(itemId, comparisonMode, componentFingerprint).toIdentity();
+        if (identity == null) {
+            SlotDebugLog.log("[xsurface][server] drop bailing: identity null");
+            return;
+        }
+        // Use CarriedSourceAccess instead of a raw player.getInventory()
+        // scan: items can live in backpacks / curios / future provider
+        // sources too, and their entries are not in the menu's slots
+        // list at all. CarriedSourceAccess walks every registered carried
+        // source (vanilla main + hotbar + offhand + armor + every
+        // backpack) in stableOrder.
+        CarriedSourceAccess carried = StorageAccessRegistry.carriedSourceAccess();
+        Optional<CarriedSourceAccess.CarriedLocation> located = carried.findIdentity(serverPlayer, identity);
+        if (located.isEmpty()) {
+            SlotDebugLog.log("[xsurface][server] drop: no carried source has {}", identity.itemId());
+            return;
+        }
+        CarriedSourceAccess.CarriedLocation loc = located.get();
+        ItemStack peeked = carried.peek(serverPlayer, loc.sourceId(), loc.slotIndex());
+        if (peeked.isEmpty()) {
+            SlotDebugLog.log(
+                    "[xsurface][server] drop: peek({}, {}) returned empty after findIdentity hit",
+                    loc.sourceId(), loc.slotIndex());
+            return;
+        }
+        // Cap the extract at what the target slot can accept in one go
+        // (its max stack size for this stack). Anything beyond the slot's
+        // accept window stays in the source — no need to extract just to
+        // immediately put back.
+        int maxAccept = Math.max(1, targetSlot.getMaxStackSize(peeked));
+        int extractAmount = Math.min(peeked.getCount(), maxAccept);
+        ItemStack extracted = carried.extract(serverPlayer, loc.sourceId(), loc.slotIndex(), extractAmount, false);
+        if (extracted.isEmpty()) {
+            SlotDebugLog.log(
+                    "[xsurface][server] drop: extract({}, {}, {}) returned empty",
+                    loc.sourceId(), loc.slotIndex(), extractAmount);
+            return;
+        }
+        ItemStack targetBefore = targetSlot.getItem().copy();
+        ItemStack leftover = targetSlot.safeInsert(extracted);
+        ItemStack putBack = leftover.isEmpty() ? ItemStack.EMPTY : carried.insertBestFit(serverPlayer, leftover, false);
+        SlotDebugLog.log(
+                "[xsurface][server] drop done: extracted {} from {}#{}, target {} → {}, leftover={}, putback-remainder={}",
+                describeStack(extracted),
+                loc.sourceId(),
+                loc.slotIndex(),
+                describeStack(targetBefore),
+                describeStack(targetSlot.getItem()),
+                describeStack(leftover),
+                describeStack(putBack));
+        broadcast(serverPlayer);
+    }
+
+    /**
+     * Cross-surface: shift+click or shift+wheel-up on a wall card
+     * routed to the host menu. Synthesizes vanilla shift-click on a
+     * player-inventory slot containing the identity, repeated up to
+     * {@code count} times so the host menu's {@code quickMoveStack}
+     * fans the stacks across whatever slots it considers "outside"
+     * (crafting matrix, machine inputs, chest slots, etc.).
+     *
+     * <p>Bails when no further player slot carries the identity, or
+     * when a quickMove call results in no change — the latter prevents
+     * an infinite loop if the host's {@code quickMoveStack} returns
+     * the source unchanged (e.g. nothing accepts it).
+     */
+    void crossSurfaceQuickMoveAtlas(
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            Integer count
+    ) {
+        SlotDebugLog.log(
+                "[xsurface][server] QuickMoveAtlas itemId={} cmp={} fp='{}' count={}",
+                itemId, comparisonMode, componentFingerprint, count);
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            SlotDebugLog.log("[xsurface][server] quickMove bailing: player is not ServerPlayer");
+            return;
+        }
+        AbstractContainerMenu menu = serverPlayer.containerMenu;
+        if (menu == null || count == null || count <= 0) {
+            SlotDebugLog.log(
+                    "[xsurface][server] quickMove bailing: menu={} count={}",
+                    menu == null ? "null" : menu.getClass().getSimpleName(), count);
+            return;
+        }
+        ItemIdentity identity = new SlotWorkspaceViewModel.IdentityRef(itemId, comparisonMode, componentFingerprint).toIdentity();
+        if (identity == null) {
+            SlotDebugLog.log("[xsurface][server] quickMove bailing: identity null");
+            return;
+        }
+        // For QuickMove the source can be in a backpack (not in the
+        // menu's slots list), so vanilla menu.clicked QUICK_MOVE on the
+        // source isn't an option. Mirror the drop path: extract one
+        // stack from any carried source per iteration via
+        // CarriedSourceAccess, then walk the host's non-player menu
+        // slots and try Slot.safeInsert on each until the stack is
+        // consumed or no host slot accepts. safeInsert respects each
+        // slot's mayPlace so crafting input limits, machine input
+        // filters, and chest accept rules all govern natively.
+        CarriedSourceAccess carried = StorageAccessRegistry.carriedSourceAccess();
+        int requested = Math.min(count, 64);
+        int remaining = requested;
+        int moved = 0;
+        while (remaining > 0) {
+            Optional<CarriedSourceAccess.CarriedLocation> located = carried.findIdentity(serverPlayer, identity);
+            if (located.isEmpty()) {
+                SlotDebugLog.log(
+                        "[xsurface][server] quickMove halt: no carried source has {} (remaining={})",
+                        identity.itemId(), remaining);
+                break;
+            }
+            CarriedSourceAccess.CarriedLocation loc = located.get();
+            ItemStack peeked = carried.peek(serverPlayer, loc.sourceId(), loc.slotIndex());
+            if (peeked.isEmpty()) {
+                break;
+            }
+            ItemStack extracted = carried.extract(serverPlayer, loc.sourceId(), loc.slotIndex(), peeked.getCount(), false);
+            if (extracted.isEmpty()) {
+                break;
+            }
+            int extractedCount = extracted.getCount();
+            ItemStack remainingStack = extracted;
+            for (Slot hostSlot : menu.slots) {
+                if (remainingStack.isEmpty()) {
+                    break;
+                }
+                if (hostSlot.container == serverPlayer.getInventory()) {
+                    continue;
+                }
+                if (!hostSlot.mayPlace(remainingStack)) {
+                    continue;
+                }
+                remainingStack = hostSlot.safeInsert(remainingStack);
+            }
+            int placed = extractedCount - (remainingStack.isEmpty() ? 0 : remainingStack.getCount());
+            if (!remainingStack.isEmpty()) {
+                carried.insertBestFit(serverPlayer, remainingStack, false);
+            }
+            if (placed <= 0) {
+                SlotDebugLog.log(
+                        "[xsurface][server] quickMove halt: host menu rejected {} ({} extracted, all returned)",
+                        identity.itemId(), extractedCount);
+                break;
+            }
+            moved++;
+            remaining--;
+        }
+        SlotDebugLog.log(
+                "[xsurface][server] quickMove done itemId={} requested={} moved={}",
+                identity.itemId(), requested, moved);
+        broadcast(serverPlayer);
+    }
+
+    private static String describeStack(ItemStack stack) {
+        if (stack == null || stack.isEmpty()) {
+            return "EMPTY";
+        }
+        return stack.getCount() + "x" + stack.getItem();
     }
 
     void transfer(Integer sourceKind, Integer sourceIndex, Integer destinationKind, Integer destinationIndex, String origin) {
@@ -1727,161 +2403,6 @@ final class SlotWorkspaceUiSession {
      * surfaced as a status — drag remains the swap path; the cursor only
      * moves into compatible slots.
      */
-    void cursorDropToHotbar(
-            String originSourceId,
-            Integer originSlotIndexBoxed,
-            String itemId,
-            String comparisonMode,
-            String componentFingerprint,
-            Integer countBoxed,
-            Integer hotbarIndexBoxed
-    ) {
-        if (!(player instanceof ServerPlayer serverPlayer)) {
-            return;
-        }
-        int count = countBoxed == null ? 0 : countBoxed;
-        int originSlotIndex = originSlotIndexBoxed == null ? -1 : originSlotIndexBoxed;
-        int hotbarIndex = hotbarIndexBoxed == null ? -1 : hotbarIndexBoxed;
-        if (count <= 0 || originSlotIndex < 0
-                || originSourceId == null || originSourceId.isBlank()
-                || hotbarIndex < 0 || hotbarIndex >= 9) {
-            reject("invalid_cursor_drop");
-            return;
-        }
-        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
-        if (identity == null) {
-            reject("invalid_identity");
-            return;
-        }
-        executeCursorDrop(
-                serverPlayer,
-                originSourceId,
-                originSlotIndex,
-                identity,
-                count,
-                new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, hotbarIndex),
-                "slot_workspace.ldlib.cursor_drop_hotbar"
-        );
-    }
-
-    /**
-     * Cursor-drop variant that goes to a chest. Skips the
-     * action-executor path because chest deposits route through
-     * {@link DepositExecutor}, not {@code InventoryActionExecutor};
-     * instead invokes {@code depositPartialStack} which extracts
-     * {@code count} from the origin slot and inserts into the chest.
-     */
-    void cursorDropToChest(
-            String originSourceId,
-            Integer originSlotIndexBoxed,
-            String itemId,
-            String comparisonMode,
-            String componentFingerprint,
-            Integer countBoxed,
-            String storageIdRaw
-    ) {
-        if (!(player instanceof ServerPlayer serverPlayer)) {
-            return;
-        }
-        int count = countBoxed == null ? 0 : countBoxed;
-        int originSlotIndex = originSlotIndexBoxed == null ? -1 : originSlotIndexBoxed;
-        if (count <= 0 || originSlotIndex < 0
-                || originSourceId == null || originSourceId.isBlank()) {
-            reject("invalid_cursor_drop");
-            return;
-        }
-        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
-        if (identity == null) {
-            reject("invalid_identity");
-            return;
-        }
-        ChestProximityResult resolved = resolveProximateChest(serverPlayer, storageIdRaw);
-        if (resolved.outcome != null) {
-            applyChestDepositRejection(serverPlayer, resolved.outcome);
-            return;
-        }
-        DepositExecutor.SingleStackOutcome outcome = DepositExecutor.depositPartialStack(
-                serverPlayer,
-                originSourceId,
-                originSlotIndex,
-                count,
-                resolved.chest
-        );
-        if (outcome.success() && outcome.record() != null) {
-            workflowRuntime(serverPlayer).chestClaimWorkflow().recordDeposit(
-                    outcome.record().storageId(),
-                    outcome.record().identity(),
-                    outcome.record().count(),
-                    serverPlayer.serverLevel().getGameTime());
-        }
-        applyChestDepositOutcome(serverPlayer, outcome, resolved.chest);
-    }
-
-    private void executeCursorDrop(
-            ServerPlayer serverPlayer,
-            String originSourceId,
-            int originSlotIndex,
-            ItemIdentity identity,
-            int count,
-            InventoryActionTarget destination,
-            String origin
-    ) {
-        refreshServerView(serverPlayer);
-        InventoryHostDescriptor host = resolveHost(serverPlayer);
-        if (host == null) {
-            reject("host_resolution_failed");
-            return;
-        }
-        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
-        InventoryActionTarget source = new InventoryActionTarget.SourceSlotTarget(originSourceId, originSlotIndex);
-        InventoryEntrySnapshot sourceEntry = InventoryAuthorityReadService.entrySnapshot(authority, source);
-        if (sourceEntry == null || !sourceEntry.present()) {
-            status = "rejected";
-            diagnostics = "cursor_origin_empty";
-            broadcast(serverPlayer);
-            return;
-        }
-        // Re-clamp on the server: the source may have changed since pickup
-        // (another mod's tick, an auto-refill upgrade, etc.). The cursor
-        // count is a client intent — server enforces what's actually there.
-        int actualCount = Math.min(count, sourceEntry.count());
-        if (actualCount <= 0) {
-            status = "rejected";
-            diagnostics = "cursor_origin_empty";
-            broadcast(serverPlayer);
-            return;
-        }
-        ItemStack stack = sourceEntry.stack().copy();
-        stack.setCount(actualCount);
-        InventoryActionRequest request = new InventoryActionRequest(
-                host.hostId(),
-                host.serverMenuRef(),
-                UUID.randomUUID().toString(),
-                dev.imagio.slot.inventory.action.InventoryActionKind.TRANSFER,
-                dev.imagio.slot.inventory.action.InventoryActionMode.EXECUTE,
-                dev.imagio.slot.inventory.action.InventoryActionQuantity.EXACT_COUNT,
-                dev.imagio.slot.inventory.action.InventoryActionScope.SINGLE_TARGET,
-                dev.imagio.slot.inventory.action.InventoryActionConflictPolicy.INSERT_ONLY,
-                origin,
-                source,
-                destination,
-                actualCount,
-                identity,
-                stack,
-                null,
-                null,
-                false,
-                ""
-        );
-        InventoryActionOutcome outcome = InventoryActionExecutor.execute(
-                host, serverPlayer, request, ProtectionPolicy.allowAll());
-        workflowRuntime(serverPlayer).recordOutcome(outcome);
-        WorkspaceTransferFeedback feedback = WorkspaceTransferFeedback.interpret(request, outcome);
-        status = feedback.status();
-        diagnostics = feedback.diagnostics();
-        broadcast(serverPlayer);
-    }
-
     /**
      * Take one item of {@code identity} from the highest-affinity proximate
      * chest that contains it. Replaces slot-precise client-side take so

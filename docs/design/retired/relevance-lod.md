@@ -3,7 +3,7 @@
 Last updated: 2026-04-25
 
 > **Retired (2026-05-03).** Superseded by
-> [../plans/list-view.md](../plans/list-view.md). The list-view direction
+> [../../plans/done/list-view.md](../../plans/done/list-view.md). The list-view direction
 > uses a single LOD — no zoom, no band selection — so the LOD-band part
 > of this design isn't shipping. The **relevance scoring** machinery
 > survives in reduced form: scoring still drives ordering hints inside

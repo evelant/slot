@@ -48,8 +48,13 @@ Architecture:
 
 Design:
 
-- [docs/design/atlas.md](docs/design/atlas.md) — triage-first pan/zoom visual
-  atlas: islands, homes, lenses, progressive disclosure.
+- [docs/design/atlas.md](docs/design/atlas.md) — *superseded by
+  [docs/plans/done/list-view.md](docs/plans/done/list-view.md)
+  (2026-05-05).* The pan/zoom atlas is gone; the wall is now a
+  single-LOD sectioned vertical list. Surviving content (homes,
+  ghost vs carried, Triage docked panel, single-element drag rule,
+  kit / desired-count / wayfinding integration) still applies — see
+  the doc's own header for which sections are live.
 - [docs/design/kits.md](docs/design/kits.md) — task-oriented Kits (unifies
   earlier "collections + loadouts").
 - [docs/design/classification/README.md](docs/design/classification/README.md)
@@ -65,17 +70,21 @@ Plans:
   canonical design ref for the chest-affinity / chip-stack /
   proximate-ghost storage system (shipped 2026-04-30; residual polish
   items listed in `current.md`).
-- [docs/plans/facet-driven-suggestions.md](docs/plans/facet-driven-suggestions.md)
-  — active track: enriching the suggestion engine with the unused per-
-  mod facets (`mod_subsystem`, `activity`, `flavor`, `frequency`, …).
 - [docs/plans/kit-prototype.md](docs/plans/kit-prototype.md) — Kit
   prototype slices.
 - [docs/plans/item-classification.md](docs/plans/item-classification.md)
   — classification pipeline + runtime planning doc (long-form). Read
   [the design overview](docs/design/classification/README.md) first.
+- [docs/plans/inventory-fullness.md](docs/plans/inventory-fullness.md)
+  — proposed UI slice for surfacing carried-inventory capacity
+  without per-bag routing controls. Not yet active.
 - [docs/plans/done/](docs/plans/done/) — shipped plans preserved as
-  design refs (atlas, atlas-navigation, atlas-nudge-layout,
-  core-workflow-ux, storage-panel).
+  design refs. Currently: `atlas-prototype`, `atlas-navigation`,
+  `atlas-nudge-layout`, `core-workflow-ux`, `cursor-pickup`,
+  `facet-driven-suggestions`, `list-view`, `list-view-phase-3a`,
+  `storage-panel`, `wayfinding`. Add new entries here when a plan
+  closes; see `AGENTS.md § Documentation Maintenance § Plan-archive
+  checklist`.
 - [docs/plans/retired/](docs/plans/retired/) — superseded directions
   (storage-areas: the explicit-named-areas direction; storage-prototype:
   the chest-link / chest-tile / storage-zone prototype that was

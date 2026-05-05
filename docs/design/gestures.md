@@ -1,140 +1,63 @@
-# Gestures: Partial-Stack Cursor and Desired Counts
+# Gestures: Cursor Semantics and Desired Counts
 
-Last updated: 2026-05-01
+Last updated: 2026-05-04
 
-Status: split-cursor (#1) and desired counts (#2) are **shipped end to
-end**, including kit-scoped scope, the bring-list merge, auto-fetch on
-kit activation, and cleanup protection. The two features share an input
-vocabulary — ctrl modifies what the gesture *means*, shift refines its
-*amount* — so this doc is the central reference for both.
+Status: the cursor model is now **vanilla `menu.getCarried()`** end to
+end (cursor-pickup plan, shipped 2026-05-04 — see
+[../plans/done/cursor-pickup.md](../plans/done/cursor-pickup.md)). The
+previously-described virtual split-cursor (`WorkspaceCursorCarry`) was
+retired in the same pass. Desired counts (#2) shipped 2026-05-01 and
+are unchanged.
 
 For the surrounding interaction model see [atlas.md](atlas.md) and
 [kits.md](kits.md). For chest-side affinity routing see [storage.md](storage.md).
 
-## Current gesture vocabulary (for reference)
+## 1. Cursor model (vanilla menu cursor)
 
-Implemented today on atlas cards
-([AtlasCardBuilder](../../neoforge/src/main/java/dev/imagio/slot/neoforge/screen/ldlib/AtlasCardBuilder.java)):
+The wall card's plain left-click eagerly extracts onto
+`menu.getCarried()` — the real vanilla cursor. This unifies vanilla's
+full click / drag grammar (drop-all, drop-one, drag-distribute,
+shift-click quick-move, crafting-table use) with SLOT's identity
+addressing. Right-click is a universal cancel that returns the cursor
+stack to its tracked origin (so eager-from-chest pickups reverse
+cleanly into the chest rather than dump into player inventory).
+**Re-home is drag-only** — clicks never re-home; clicks that don't
+have a more specific destination route through the smart-deposit
+cascade.
 
-- **left-click** — select the card
-- **shift + left-click** — take stack from proximate chests, or send to
-  free hotbar slot if already carried
-- **right-click** — open context menu
-- **shift + scrollwheel up/down** — take / push one per wheel tick from
-  proximate chests, scaled by accumulated wheel delta
+The full universal click table while carrying:
 
-What is missing:
+| # | Click context | Behaviour |
+|---|---|---|
+| 1 | Right-click anywhere except a vanilla craft/machine slot | Cancel → origin (or smart-deposit if origin is gone / was a craft slot) |
+| 2 | Left-click a wall card with a *different* identity | Cancel cursor, then eager-extract the clicked identity |
+| 3 | Right-click a vanilla craft/machine slot | Vanilla drop-one |
+| 4 | Left-click a wall card while empty | Eager-extract → cursor (carry → backpack → proximate chest by affinity) |
+| 5 | Left-click a proximate chest card | Deposit cursor stack into that chest |
+| 6 | Left-click an untracked chest card | Claim chest + deposit |
+| 7 | Left-click a vanilla craft/machine slot | Vanilla drop-all / merge / swap |
+| 8 | Left-click anywhere else (empty UI region, search results, etc.) | Smart-deposit cascade |
 
-- moving an arbitrary count (e.g. "12 of this 30-stack to chest A, the
-  rest to chest B"). shift+scroll only works against the auto-target.
-- expressing a standing intent ("always keep 64 of this in carry").
+Smart-deposit cascade: desired-count gap fill → proximate chest with
+affinity → home → Triage. Reuses
+[`DepositPlanner`](../../common/src/main/java/dev/imagio/slot/inventory/workspace/DepositPlanner.java)
+end-to-end.
 
-## 1. Partial-stack cursor (split-cursor mode)
+Cursor pickup ranks sources server-side: carry → backpacks (via
+`CarriedSourceAccess`) → proximate chests (by affinity, descending).
+The server stamps a `CursorOrigin(kind, sourceId, slotIndex)` so
+right-click cancel can route the stack back to the exact slot it came
+from. ESC also fires cancel.
 
-### Goal
+ctrl+right-click on a wall card or hotbar slot still extracts a half
+stack, now via the same real-cursor RPC (`pickupToCursor` with
+`count = stack.maxStackSize / 2`).
 
-Let the player move arbitrary counts to specific targets without
-re-implementing vanilla pickup-to-cursor. The cursor *looks* like vanilla
-pickup (ghost item + count following the mouse) but is actually a UI
-state — drops resolve to the same `transfer` RPCs SLOT already uses.
-Whole-stack moves are handled by drag (already shipped), so the cursor
-is only needed for *partial* moves.
-
-### Pickup
-
-- **ctrl + right-click** on a source slot → pick up half of that slot's
-  current count onto the cursor.
-- **ctrl + right-click again on the same slot** → cumulative: each
-  subsequent pickup halves the source's *remaining* count and adds that
-  to the cursor (vanilla right-click cumulative behaviour: 30 → 15 → 23
-  → 27 → 29 → 30).
-- **ctrl + right-click on a different source while carrying** → refused
-  with a status message ("cursor already holds another item — drop or
-  ESC first"); the cursor is single-origin per session.
-- No `ctrl + left-click` for "pickup all" — drag covers the whole-stack
-  case, and adding it would create two ways to do the same thing.
-
-Pickup sources currently wired:
-
-- **hotbar slot** — full pickup support (incl. cumulative).
-- **atlas card** — full pickup support backed by a server-projected
-  "largest carried slot" tuple on each `AtlasItem` (source id + slot
-  index + count). Works for items in main, hotbar, offhand, or
-  backpack. Refuses with a clear status when the identity isn't carried.
-
-Pickup intentionally NOT wired:
-
-- **chest chip** — chips are chest handles, not slot handles. No
-  concrete source slot to halve.
-- **storage panel slot** — panel doesn't expose per-chest-slot widgets.
-
-### Drop
-
-While the cursor is non-empty, clicks on a valid drop target are
-interpreted as:
-
-- **left-click** → drop **all** of cursor
-- **right-click** → drop **1** of cursor
-- **shift + right-click** → drop **half** of cursor (rounded up)
-
-Drop targets currently wired:
-
-- **hotbar slot** — drop merges into the slot. Self-drop (origin
-  slot == target slot) cancels the cursor without a wire transfer.
-- **chest chip** — drop deposits the chosen count into that chest;
-  bumps affinity for the deposited identity.
-
-Atlas cards and storage panel slots aren't drop targets in the initial
-cut; clicking them while carrying cancels the cursor (same as clicking
-empty space).
-
-### Cancel
-
-- **ESC** while carrying → cancel.
-- **Click on any non-drop-target** → cancel. Implemented as a
-  bubble-phase MOUSE_DOWN handler on the workspace root: drop targets
-  call `event.stopPropagation()` when they handle a cursor click, so
-  unhandled clicks reach root and trigger cancel.
-
-Cancel is free of consequence: the cursor is virtual, so the source
-slot still holds the items that were "picked up." Cancelling just clears
-the client-side state.
-
-### Server semantics
-
-Each drop sends one of two RPCs that carry the cursor's origin slot
-explicitly:
-
-- `cursorDropToHotbar(originSourceId, originSlotIndex, identity, count, hotbarIndex)`
-- `cursorDropToChest(originSourceId, originSlotIndex, identity, count, storageId)`
-
-Server re-clamps `count` against the origin slot's actual current count
-(handles the case where another mod or auto-refill upgrade mutated the
-slot between pickup and drop). Drops to hotbar use TRANSFER + INSERT_ONLY
-+ EXACT_COUNT; drops to chest use a new `DepositExecutor.depositPartialStack`
-that extracts `count` from the source and inserts into the chest.
-
-### Conflicts disabled while carrying
-
-- **shift+scroll** on atlas cards is suppressed — that gesture mutates
-  the origin slot mid-flight and would desync the cursor.
-- **drag-from-atlas-item** and **drag-from-hotbar-slot** are suppressed
-  — drag and cursor are alternative move paths and shouldn't overlap.
-
-### Known gaps (follow-ups, not blocking)
-
-- **Atlas card drop.** Drop on a card should "send to home" — deposit
-  to the affinity-preferred chest if any, else merge into carry. Needs
-  a count-aware variant of the existing send-home RPC. Currently a
-  click on an atlas card while carrying just cancels the cursor.
-- **Chest-side overflow handling.** Hotbar drops are clamped client-
-  side against actual slot capacity + identity, so the cursor stays in
-  sync. Chest drops still send the requested count without a
-  capacity check (the server clamps but doesn't return the moved
-  count); cursor may decrement past actual moved when a chest is full.
-- **Origin highlight.** The origin slot doesn't visually highlight
-  while the cursor is non-empty. Adding a subtle glow would help the
-  player remember where the items came from.
+Drag from a wall card to a wall card / vanilla slot remains the
+re-home / cross-surface path
+([3a.2.A](../plans/done/list-view-phase-3a.md)). It is suppressed while
+carrying — the universal click table covers movement while a stack is
+on cursor.
 
 ## 2. Desired counts (standing-order pip)
 
@@ -156,7 +79,7 @@ follow-up; only the player-global standing order is shipped.
   "Clear" sets to 0. Used for precise values like "exactly 64."
 - **Suppressed while the cursor is non-empty.** ctrl+scroll mid-cursor
   would silently mutate intent; the gesture is gated behind
-  `!cursor.isCarrying()`.
+  `!WorkspaceCursorState.isCarrying()`.
 
 ### Scope: kit-active vs global
 

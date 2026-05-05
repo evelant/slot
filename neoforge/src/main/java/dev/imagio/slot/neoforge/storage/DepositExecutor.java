@@ -149,63 +149,6 @@ public final class DepositExecutor {
         return SingleStackOutcome.deposited(new DepositRecord(chest.storageId(), identity, 1));
     }
 
-    /**
-     * Deposit exactly {@code requestedCount} items from the source slot to
-     * the chest. Used by the split-cursor drop path: the cursor knows
-     * exactly how many items the player chose to drop, so the deposit
-     * must honour that count rather than dumping the whole source stack.
-     * Returns {@code source_empty} if the slot has no matching items, or
-     * {@code destination_full} if the chest can't fit the full count.
-     * Partial fits aren't supported here — the caller decides what to do
-     * with the rejection.
-     */
-    public static SingleStackOutcome depositPartialStack(
-            ServerPlayer player,
-            String laneId,
-            int slotIndex,
-            int requestedCount,
-            ClaimedChest chest
-    ) {
-        if (player == null || chest == null || requestedCount <= 0) {
-            return SingleStackOutcome.failed("invalid_args");
-        }
-        MinecraftServer server = player.getServer();
-        if (server == null) {
-            return SingleStackOutcome.failed("server_unavailable");
-        }
-        CarriedSourceAccess carried = StorageAccessRegistry.carriedSourceAccess();
-        WorldStorageAccess worldStorage = StorageAccessRegistry.worldStorageAccess();
-        ItemStack sourceStack = carried.peek(player, laneId, slotIndex);
-        if (sourceStack == null || sourceStack.isEmpty()) {
-            return SingleStackOutcome.failed("source_empty");
-        }
-        int actualCount = Math.min(requestedCount, sourceStack.getCount());
-        if (actualCount <= 0) {
-            return SingleStackOutcome.failed("source_empty");
-        }
-        WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
-        ItemStack partial = sourceStack.copy();
-        partial.setCount(actualCount);
-        ItemStack remaining = worldStorage.insert(server, target, partial.copy(), true);
-        if (!remaining.isEmpty()) {
-            return SingleStackOutcome.failed("destination_full");
-        }
-        ItemStack committed = worldStorage.insert(server, target, partial.copy(), false);
-        if (!committed.isEmpty()) {
-            return SingleStackOutcome.failed("commit_partial");
-        }
-        ItemIdentity identity = ItemIdentityMatcher.create(sourceStack);
-        ItemStack removed = carried.extract(player, laneId, slotIndex, actualCount, false);
-        if (removed == null || removed.isEmpty()) {
-            return SingleStackOutcome.failed("extract_failed");
-        }
-        SlotCommon.LOGGER.info(
-                "[SLOT] deposit-partial lane={} slot={} count={} chest={}",
-                laneId, slotIndex, actualCount, chest.storageId()
-        );
-        return SingleStackOutcome.deposited(new DepositRecord(chest.storageId(), identity, actualCount));
-    }
-
     public static SingleStackOutcome depositSingleStack(
             ServerPlayer player,
             String laneId,

@@ -41,13 +41,11 @@ final class HotkeyRouter {
         if (event.keyCode != GLFW.GLFW_KEY_ESCAPE) {
             return;
         }
-        if (!host.cursor.isCarrying()) {
+        if (!WorkspaceCursorState.isCarrying()) {
             return;
         }
         event.stopPropagation();
-        host.cursor.clear();
-        host.localStatus.set("cursor cancelled");
-        host.rebuild();
+        host.rpc.sendCursorCancel();
     }
 
     void handleBeltHotkey(UIEvent event) {

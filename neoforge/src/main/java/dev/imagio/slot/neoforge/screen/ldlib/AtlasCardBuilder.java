@@ -40,10 +40,14 @@ final class AtlasCardBuilder {
      * left-to-right, top-to-bottom.
      */
     Button atlasCardButton(SlotWorkspaceViewModel.AtlasItem item) {
-        boolean selected = item.identity().equals(host.selectedAtlasIdentity.get());
+        boolean selected = item.identity().equals(host.activeIdentity());
         boolean searchMatch = host.searchController.matchesItem(item);
         boolean filtering = !host.searchController.normalizedQuery().isBlank();
         boolean activeSearchMatch = filtering && searchMatch;
+        dev.imagio.slot.SlotDebugLog.verboseLog(
+                "[card] {} carried={} ghost={} totalCount={} proximate={} presence={} elsewhere={}",
+                item.identity().itemId(), item.carried(), item.ghost(), item.totalCount(),
+                item.proximateCount(), item.presence().size(), item.elsewhere().size());
         Button button = button("", true,
                 WorkspaceFormat.cardChromeColor(selected, searchMatch, item.recent(),
                         item.carried(), filtering));
@@ -72,7 +76,7 @@ final class AtlasCardBuilder {
         button.addChild(body);
 
         button.addEventListener(UIEvents.TICK, event -> {
-            boolean currentSelected = item.identity().equals(host.selectedAtlasIdentity.get());
+            boolean currentSelected = item.identity().equals(host.activeIdentity());
             boolean focused = host.isMapFocusItem(item);
             button.style(style -> style.zIndex(focused ? 10 : currentSelected ? 7 : 2));
             applyButtonColors(button, true,
@@ -314,7 +318,7 @@ final class AtlasCardBuilder {
         String text;
         if (desired > 0) {
             text = WorkspaceFormat.compactCount(carried) + "/" + WorkspaceFormat.compactCount(desired);
-        } else if (carried > 1) {
+        } else if (carried > 0) {
             text = WorkspaceFormat.compactCount(carried);
         } else {
             return;
@@ -613,16 +617,56 @@ final class AtlasCardBuilder {
     }
 
     private void installCardClickHandlers(Button button, SlotWorkspaceViewModel.AtlasItem item) {
+        // Capture-phase MOUSE_DOWN: ctrl+right-click eagerly extracts half
+        // a stack onto the menu cursor. Plain left-click pickup runs on
+        // UIEvents.CLICK (below) which fires on mouseReleased only when
+        // no drag started — so drag-from-card to re-home still works.
         button.addEventListener(UIEvents.MOUSE_DOWN, event -> {
-            if (handleCursorAtlasGesture(event, item)) {
-                event.stopPropagation();
+            if (event.button == 1 && Screen.hasControlDown()) {
+                SlotWorkspaceViewModel.IdentityRef cursorId = WorkspaceCursorState.carriedIdentity();
+                boolean cursorEmpty = cursorId == null;
+                boolean cursorMatches = cursorId != null && cursorId.equals(item.identity());
+                if (cursorEmpty || cursorMatches) {
+                    event.stopPropagation();
+                    int half = Math.max(1, item.displayStack().getMaxStackSize() / 2);
+                    host.rpc.sendPickupToCursor(item.identity(), half);
+                }
             }
         }, true);
-        button.setOnClick(event -> {
+        // Use UIEvents.CLICK rather than Button#setOnClick because the
+        // latter fires on MOUSE_DOWN — that picks up to cursor before a
+        // drag can start, which kills drag-to-rehome. CLICK fires on
+        // mouseReleased only when the release element matches the
+        // mousedown element (i.e. no drag), so quick clicks still
+        // trigger pickup but a press-drag-release goes through the
+        // drag pipeline instead.
+        button.addEventListener(UIEvents.CLICK, event -> {
+            if (event.button != 0) {
+                return;
+            }
             event.stopPropagation();
             if (Screen.hasShiftDown()) {
                 SlotWorkspaceViewModel.AtlasItem fresh = host.viewModel.atlasItem(item.identity());
                 SlotWorkspaceViewModel.AtlasItem target = fresh != null ? fresh : item;
+                // Sidebar mode prioritizes the host menu (chest, crafting,
+                // machine) over proximate chests: if the player has the
+                // SLOT sidebar open inside a vanilla container screen,
+                // shift+click on a wall card means "send this to whatever
+                // I'm working with right now," not "pull from the chest
+                // I happen to be standing near."
+                if (SlotSidebarClientUi.isActive() && target.carried()) {
+                    dev.imagio.slot.SlotDebugLog.log(
+                            "[xsurface][shift-click] item={} carried={} sidebar=true → QuickMove",
+                            target.identity().itemId(), target.carried());
+                    host.rpc.sendCrossSurfaceQuickMove(target.identity(), 1);
+                    return;
+                }
+                dev.imagio.slot.SlotDebugLog.log(
+                        "[xsurface][shift-click] item={} sidebar={} carried={} chestProx={} → fall-through",
+                        target.identity().itemId(),
+                        SlotSidebarClientUi.isActive(),
+                        target.carried(),
+                        proximateChestCount(target));
                 if (proximateChestCount(target) > 0) {
                     if (host.viewModel.carriedFreeSlotCount() <= 0 && !target.carried()) {
                         host.localStatus.set("carry full — drop something first");
@@ -635,14 +679,26 @@ final class AtlasCardBuilder {
                 }
                 return;
             }
-            host.selectedAtlasIdentity.set(item.identity());
-            host.selectedHotbarIndex.set(-1);
-            host.localStatus.set(item.playerPlaced()
-                    ? "selected homed item: drag to hotbar or another section"
-                    : "selected inbox item: drag to a section or create one");
+            // Plain left-click on a wall card eagerly extracts to the menu cursor:
+            // - cursor empty             → row 4: pickup as much as fits
+            // - cursor matches identity  → row 4 + merge: extract more from ranked source
+            // - cursor different identity → row 2: cancel current → pickup new identity
+            SlotWorkspaceViewModel.IdentityRef cursorId = WorkspaceCursorState.carriedIdentity();
+            boolean cursorEmpty = cursorId == null;
+            boolean cursorMatches = cursorId != null && cursorId.equals(item.identity());
+            if (!cursorEmpty && !cursorMatches) {
+                host.rpc.sendCursorCancel();
+            }
+            host.rpc.sendPickupToCursor(item.identity(), Integer.MAX_VALUE);
         });
         button.addEventListener(UIEvents.MOUSE_DOWN, event -> {
             if (event.button == 1) {
+                // While carrying the real menu cursor, right-click is
+                // universal cancel (row 1) — let it bubble to root.
+                // Context menu only opens when the cursor is empty.
+                if (WorkspaceCursorState.isCarrying()) {
+                    return;
+                }
                 event.stopPropagation();
                 host.menu.openContextMenuForAtlas(item, event.x, event.y);
             }
@@ -651,7 +707,7 @@ final class AtlasCardBuilder {
         float[] desiredScrollAccumulator = {0f};
         button.addEventListener(UIEvents.MOUSE_WHEEL, event -> {
             if (Screen.hasControlDown()) {
-                if (host.cursor.isCarrying()) {
+                if (WorkspaceCursorState.isCarrying()) {
                     return;
                 }
                 float dDelta = event.deltaY != 0f ? event.deltaY : event.deltaX;
@@ -671,7 +727,7 @@ final class AtlasCardBuilder {
             if (!Screen.hasShiftDown()) {
                 return;
             }
-            if (host.cursor.isCarrying()) {
+            if (WorkspaceCursorState.isCarrying()) {
                 return;
             }
             float delta = event.deltaY != 0f ? event.deltaY : event.deltaX;
@@ -690,6 +746,19 @@ final class AtlasCardBuilder {
                 return;
             }
             int magnitude = Math.abs(count);
+            // Sidebar mode redirects "push" wheel direction (count > 0
+            // typically reads as "more carried" but in the sidebar
+            // context the player wants "more in the host menu").
+            // Pull from carry → host via repeated quick-move; falls
+            // through to proximate-chest semantics only when the
+            // sidebar isn't active.
+            if (count > 0 && SlotSidebarClientUi.isActive() && fresh.carried()) {
+                dev.imagio.slot.SlotDebugLog.log(
+                        "[xsurface][shift-wheel] item={} count={} sidebar=true → QuickMove",
+                        fresh.identity().itemId(), magnitude);
+                host.rpc.sendCrossSurfaceQuickMove(fresh.identity(), magnitude);
+                return;
+            }
             if (count > 0) {
                 if (proximateChestCount(fresh) <= 0) {
                     host.localStatus.set("no nearby chest has " + fresh.name());
@@ -719,38 +788,4 @@ final class AtlasCardBuilder {
         });
     }
 
-    private boolean handleCursorAtlasGesture(
-            com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent event,
-            SlotWorkspaceViewModel.AtlasItem item
-    ) {
-        boolean carrying = host.cursor.isCarrying();
-        WorkspaceCursorGestures.Result mode = WorkspaceCursorGestures.classify(event, carrying);
-        if (mode == WorkspaceCursorGestures.Result.PICKUP_HALF) {
-            if (!item.hasLargestCarriedSlot()) {
-                host.localStatus.set(item.name() + " has no carried slot — pick up only works on items you carry");
-                host.rebuild();
-                return true;
-            }
-            boolean picked = host.cursor.pickupHalf(
-                    item.largestCarriedSourceId(),
-                    item.largestCarriedSlotIndex(),
-                    item.identity(),
-                    item.displayStack(),
-                    item.largestCarriedSlotCount());
-            if (picked) {
-                host.localStatus.set("cursor: " + host.cursor.current().count() + " " + item.name());
-            } else if (carrying) {
-                host.localStatus.set("cursor already holds another item — drop or ESC first");
-            }
-            host.rebuild();
-            return true;
-        }
-        if (carrying) {
-            host.cursor.clear();
-            host.localStatus.set("cursor cancelled");
-            host.rebuild();
-            return true;
-        }
-        return false;
-    }
 }

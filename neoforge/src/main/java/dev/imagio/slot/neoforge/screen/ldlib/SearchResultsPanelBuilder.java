@@ -8,7 +8,6 @@ import com.lowdragmc.lowdraglib2.gui.ui.UIElement;
 import com.lowdragmc.lowdraglib2.gui.ui.data.Horizontal;
 import com.lowdragmc.lowdraglib2.gui.ui.data.Vertical;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
-import com.lowdragmc.lowdraglib2.gui.ui.elements.ScrollerView;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.vfyjxf.taffy.style.AlignItems;
@@ -30,11 +29,9 @@ import java.util.List;
  */
 final class SearchResultsPanelBuilder {
     static final int PANEL_WIDTH = TRIAGE_PANEL_WIDTH;
-    private static final int CHIP_HEIGHT = 18;
     private static final int HEADER_HEIGHT = 14;
     private static final int PANEL_PADDING = 6;
     private static final int PANEL_GAP = 3;
-    private static final int MAX_CHIPS = 12;
 
     private final SlotWorkspaceUiController host;
 
@@ -42,31 +39,12 @@ final class SearchResultsPanelBuilder {
         this.host = host;
     }
 
-    private int panelHeight(int matchCount) {
-        int bodyChips = Math.min(matchCount, MAX_CHIPS);
-        // Layout components: 2 paddings + header + 1 gap (header→scroller)
-        // + chip stack (chips + inter-chip gaps) + scroller chrome buffer.
-        // The chrome buffer is what was previously under-sized: a single-
-        // chip panel was sizing exactly to the content rect and the
-        // ScrollerView's internal overhead (a few px between its frame
-        // and the contained child stack) pushed the chip a thumbnail's
-        // worth past the visible area, so the scrollbar engaged with a
-        // tiny scroll range. CHIP_HEIGHT / 2 is empirically generous
-        // across GUI scales without making the panel feel oversized at
-        // larger match counts.
-        int chipStack = bodyChips * CHIP_HEIGHT + Math.max(0, bodyChips - 1) * PANEL_GAP;
-        int scrollerChromeBuffer = CHIP_HEIGHT / 2;
-        return PANEL_PADDING * 2 + HEADER_HEIGHT + PANEL_GAP + chipStack + scrollerChromeBuffer;
-    }
-
     /**
      * Returns null when neither a search query nor an active kit needs
-     * surfacing. Otherwise builds a flex item for {@link LeftColumnBuilder}'s
-     * column — content-fit height capped at {@link #MAX_CHIPS} rows
-     * (the inner scroller handles longer lists). The panel doubles as
-     * a "chest locator": under search it lists chests holding query
-     * matches; with an active kit it lists chests holding kit-needed
-     * items the player still has to fetch.
+     * surfacing. Otherwise builds a content-fit pinned panel for
+     * {@link LeftColumnBuilder} — under search it lists chests holding
+     * query matches; with an active kit it lists chests holding
+     * kit-needed items the player still has to fetch.
      */
     UIElement overlay() {
         boolean searchActive = !host.searchController.normalizedQuery().isBlank();
@@ -78,11 +56,9 @@ final class SearchResultsPanelBuilder {
         if (matches.isEmpty()) {
             return null;
         }
-        int height = panelHeight(matches.size());
 
         UIElement overlay = panel(GLASS).layout(layout -> layout
                 .widthPercent(100)
-                .height(height)
                 .paddingAll(PANEL_PADDING)
                 .gapAll(PANEL_GAP)
                 .flexDirection(FlexDirection.COLUMN));
@@ -105,13 +81,9 @@ final class SearchResultsPanelBuilder {
         headerRow.setAllowHitTest(false);
         overlay.addChild(headerRow);
 
-        ScrollerView scroller = new ScrollerView();
-        scroller.layout(layout -> layout.flex(1).widthPercent(100).gapAll(PANEL_GAP));
-        scroller.scrollerStyle(style -> style.minScrollPixel(20f).maxScrollPixel(60f));
         for (Match match : matches) {
-            scroller.addScrollViewChild(matchChip(match));
+            overlay.addChild(matchChip(match));
         }
-        overlay.addChild(scroller);
         return overlay;
     }
 
@@ -161,7 +133,7 @@ final class SearchResultsPanelBuilder {
                 .comparing((Match m) -> !m.chip.proximate())
                 .thenComparingInt((Match m) -> -m.matchCount)
                 .thenComparing(m -> m.chip.label(), String.CASE_INSENSITIVE_ORDER));
-        if (dev.imagio.slot.SlotDebugLog.enabled()) {
+        if (dev.imagio.slot.SlotDebugLog.verbose()) {
             dev.imagio.slot.SlotCommon.LOGGER.info(
                     "[SLOT] Chest locator query searchActive={} query='{}' kitNeededCount={} chipsWalked={} matches={} proximateSkippedDueToProximityPanel={}",
                     searchActive,

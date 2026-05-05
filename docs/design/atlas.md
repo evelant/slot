@@ -2,7 +2,7 @@
 
 Last updated: 2026-04-25
 
-> **Superseded by [../plans/list-view.md](../plans/list-view.md) (2026-05-03).**
+> **Superseded by [../plans/done/list-view.md](../plans/done/list-view.md) (closed 2026-05-05; shipped 2026-05-03 / 2026-05-04).**
 > The pan/zoom atlas is being replaced by a single-LOD sectioned vertical
 > scroll list. Most of this document still describes the parts that survive
 > (item homes, ghost vs carried, Triage docked panel, single-island-only

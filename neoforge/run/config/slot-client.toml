@@ -6,5 +6,5 @@
 	replacePlayerInventory = true
 	#Replaces supported chest-like storage screens.
 	replaceChestLikeStorage = true
-	#Logs screen-observation events during early development.
-	debugLogging = false
+	#Logs SLOT-specific diagnostic events (screen mount, sidebar drag, status-line transitions, cross-surface RPCs). Default on during the prototype so issue reports include the trace; flip to false to silence.
+	debugLogging = true

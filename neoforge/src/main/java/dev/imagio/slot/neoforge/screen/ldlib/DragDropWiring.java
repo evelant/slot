@@ -52,12 +52,13 @@ final class DragDropWiring {
 
     void installAtlasItemDragSource(UIElement source, SlotWorkspaceViewModel.AtlasItem item) {
         source.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
-            if (!source.isMouseDown(0) || isDragging(source)) {
+            if (!mouseIsHeldOnSource(source) || isDragging(source)) {
                 return;
             }
-            // Drag = "move whole stack." Mutually exclusive with the
-            // partial-stack cursor.
-            if (host.cursor.isCarrying()) {
+            // Drag = re-home gesture. Mutually exclusive with carrying
+            // a real menu cursor (clicks while carrying go through the
+            // universal click table instead).
+            if (WorkspaceCursorState.isCarrying()) {
                 return;
             }
             source.startDrag(
@@ -67,6 +68,42 @@ final class DragDropWiring {
             host.localStatus.set("dragging " + item.name());
         }, true);
         source.addEventListener(UIEvents.DRAG_END, event -> handleDragEnd(event));
+    }
+
+    /**
+     * True iff mouse button 0 is currently held AND the mouse-down
+     * happened on this source (or one of its descendants).
+     *
+     * <p>{@link UIElement#isMouseDown(int)} only checks
+     * {@code modularUI.lastMouseDownButton} — a single global flag —
+     * so it returns true any time button 0 is held anywhere in the
+     * widget tree, regardless of where the click started. That used to
+     * make every drag source's {@code MOUSE_LEAVE} handler think a
+     * drag was in progress whenever the player click-and-held one
+     * element and then moved through another, picking up a phantom
+     * drag on whatever element they happened to leave first. Pairing
+     * the global "is the button held" check with the per-element
+     * "did the click start on me" check ({@code lastMouseDownElement}
+     * walks up to {@code source} or below) restores the intended
+     * semantics: drag only begins when the player drags out of the
+     * element they originally clicked.
+     */
+    static boolean mouseIsHeldOnSource(UIElement source) {
+        if (!source.isMouseDown(0)) {
+            return false;
+        }
+        var modularUI = source.getModularUI();
+        if (modularUI == null) {
+            return false;
+        }
+        UIElement clicked = modularUI.getLastMouseDownElement();
+        while (clicked != null) {
+            if (clicked == source) {
+                return true;
+            }
+            clicked = clicked.getParent();
+        }
+        return false;
     }
 
     void installAtlasHoverTooltip(Button button, SlotWorkspaceViewModel.AtlasItem item) {
@@ -117,10 +154,10 @@ final class DragDropWiring {
             return;
         }
         source.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
-            if (!source.isMouseDown(0) || isDragging(source)) {
+            if (!mouseIsHeldOnSource(source) || isDragging(source)) {
                 return;
             }
-            if (host.cursor.isCarrying()) {
+            if (WorkspaceCursorState.isCarrying()) {
                 return;
             }
             source.startDrag(
@@ -389,7 +426,7 @@ final class DragDropWiring {
             if (clickScreenX[0] == Integer.MIN_VALUE) {
                 return;
             }
-            if (!cell.isMouseDown(0) || isDragging(cell)) {
+            if (!mouseIsHeldOnSource(cell) || isDragging(cell)) {
                 return;
             }
             float dx = event.x - clickScreenX[0];

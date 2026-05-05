@@ -137,13 +137,11 @@ final class KitRackBuilder {
     }
 
     UIElement kitRackOverlay() {
-        // Dock flush with the belt top (belt sits at bottom(4) with height BELT_HEIGHT)
-        // so the rack feels like an extension of the belt rather than a floating panel.
+        // In-flow column child sitting above the belt in the wall
+        // panel — same pixel height regardless of surface, full panel
+        // width, no abs anchoring.
         UIElement overlay = panel(GLASS).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(16)
-                .right(16)
-                .bottom(BELT_HEIGHT + 4)
+                .widthPercent(100)
                 .height(kitRackHeight())
                 .paddingAll(6)
                 .gapAll(6)
@@ -588,7 +586,7 @@ final class KitRackBuilder {
             }
         });
         cell.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
-            if (!cell.isMouseDown(0) || host.drag.isDragging(cell)) {
+            if (!DragDropWiring.mouseIsHeldOnSource(cell) || host.drag.isDragging(cell)) {
                 return;
             }
             cell.startDrag(

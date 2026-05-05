@@ -57,10 +57,15 @@ final class WorkspaceRpcDispatcher {
     RPCEmitter assignIdentityToHotbarSlotEmitter;
     RPCEmitter depositHomeToLinkedChestEmitter;
     RPCEmitter depositOneHomeToLinkedChestEmitter;
-    RPCEmitter cursorDropToHotbarEmitter;
-    RPCEmitter cursorDropToChestEmitter;
     RPCEmitter setPlayerDesiredCountEmitter;
     RPCEmitter adjustPlayerDesiredCountEmitter;
+    RPCEmitter crossSurfaceDropOnHostSlotEmitter;
+    RPCEmitter crossSurfaceQuickMoveAtlasEmitter;
+    RPCEmitter pickupToCursorEmitter;
+    RPCEmitter cursorCancelEmitter;
+    RPCEmitter cursorSmartDepositEmitter;
+    RPCEmitter dropCursorIntoChestEmitter;
+    RPCEmitter dropCursorAtHotbarEmitter;
 
     WorkspaceRpcDispatcher(SlotWorkspaceUiController host) {
         this.host = host;
@@ -349,31 +354,6 @@ final class WorkspaceRpcDispatcher {
                 String.class,
                 host.session::depositOneHomeToLinkedChest
         ));
-        // Split-cursor drops carry an explicit (originSourceId, originSlotIndex)
-        // tuple. The server extracts exactly count items from THAT slot — the
-        // identity-based "find anywhere" route is wrong for cursor drops because
-        // a player who picked up half of slot A would otherwise see a drop pull
-        // from a different slot B that happens to share the identity.
-        cursorDropToHotbarEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
-                String.class,    // originSourceId
-                Integer.class,   // originSlotIndex
-                String.class,    // itemId
-                String.class,    // comparisonMode
-                String.class,    // componentFingerprint
-                Integer.class,   // count
-                Integer.class,   // hotbarIndex
-                host.session::cursorDropToHotbar
-        ));
-        cursorDropToChestEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
-                String.class,    // originSourceId
-                Integer.class,   // originSlotIndex
-                String.class,    // itemId
-                String.class,    // comparisonMode
-                String.class,    // componentFingerprint
-                Integer.class,   // count
-                String.class,    // storageId
-                host.session::cursorDropToChest
-        ));
         setPlayerDesiredCountEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
                 String.class,    // itemId
                 String.class,    // comparisonMode
@@ -387,6 +367,42 @@ final class WorkspaceRpcDispatcher {
                 String.class,    // componentFingerprint
                 Integer.class,   // delta (signed, often ±1 from ctrl+scroll)
                 host.session::adjustPlayerDesiredCount
+        ));
+        crossSurfaceDropOnHostSlotEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                String.class,    // itemId
+                String.class,    // comparisonMode
+                String.class,    // componentFingerprint
+                Integer.class,   // hostSlotIndex
+                host.session::crossSurfaceDropOnHostSlot
+        ));
+        crossSurfaceQuickMoveAtlasEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                String.class,    // itemId
+                String.class,    // comparisonMode
+                String.class,    // componentFingerprint
+                Integer.class,   // count of stacks to quick-move
+                host.session::crossSurfaceQuickMoveAtlas
+        ));
+        pickupToCursorEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                String.class,    // itemId
+                String.class,    // comparisonMode
+                String.class,    // componentFingerprint
+                Integer.class,   // count cap (Integer.MAX_VALUE for full)
+                host.session::pickupToCursor
+        ));
+        cursorCancelEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                (Runnable) host.session::cursorCancel
+        ));
+        cursorSmartDepositEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                (Runnable) host.session::cursorSmartDeposit
+        ));
+        dropCursorIntoChestEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                String.class,
+                host.session::dropCursorIntoChest
+        ));
+        dropCursorAtHotbarEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                Integer.class,
+                Integer.class,
+                host.session::dropCursorAtHotbar
         ));
     }
 
@@ -657,6 +673,144 @@ final class WorkspaceRpcDispatcher {
         boolean sent = setKitSlotIdentityEmitter != null && setKitSlotIdentityEmitter.send(
                 kitId, pageIndex, slotIndex, itemId, comparisonMode, fingerprint);
         host.localStatus.set(sent ? "updating kit slot..." : "update slot unavailable");
+        host.rebuild();
+    }
+
+    /**
+     * Cross-surface: a wall card was drag-released over a vanilla slot
+     * in the host menu. Server picks a player-inventory slot containing
+     * the identity and synthesizes vanilla PICKUP source → PICKUP target
+     * so the host menu's slot rules govern the move.
+     */
+    void sendCrossSurfaceDropOnHostSlot(SlotWorkspaceViewModel.IdentityRef identity, int hostSlotIndex) {
+        if (crossSurfaceDropOnHostSlotEmitter == null || identity == null || hostSlotIndex < 0) {
+            return;
+        }
+        boolean sent = crossSurfaceDropOnHostSlotEmitter.send(
+                identity.itemId(),
+                identity.comparisonMode(),
+                identity.componentFingerprint(),
+                hostSlotIndex
+        );
+        host.localStatus.set(sent ? "dropping on host slot..." : "drop unavailable");
+        host.rebuild();
+    }
+
+    /**
+     * Cross-surface: shift+click or shift+wheel-up on a wall card while
+     * the sidebar is mounted. Server runs vanilla quick-move on a
+     * player-inventory slot carrying the identity, repeated up to
+     * {@code count} times so multiple stacks fan into the host menu's
+     * accepting slots.
+     */
+    /**
+     * Universal cancel: route the cursor stack back to its origin (or
+     * smart-deposit cascade if origin can't accept). Bound to the
+     * root-level right-click handler when carrying.
+     */
+    void sendCursorCancel() {
+        if (cursorCancelEmitter == null) {
+            return;
+        }
+        stashLastDropped();
+        cursorCancelEmitter.send();
+    }
+
+    /**
+     * Smart-deposit: route the cursor stack through the deposit cascade
+     * (desired-count gap → proximate chest with affinity → home → Triage).
+     * Bound to the root-level left-click handler when carrying and no
+     * specific drop target handles the click.
+     */
+    void sendCursorSmartDeposit() {
+        if (cursorSmartDepositEmitter == null) {
+            return;
+        }
+        stashLastDropped();
+        cursorSmartDepositEmitter.send();
+    }
+
+    /**
+     * Drop the cursor stack onto a player-hotbar slot via vanilla
+     * {@code menu.clicked} so left = drop-all/merge/swap and right =
+     * drop-one. Bound to belt-panel left/right click while carrying.
+     */
+    void sendDropCursorAtHotbar(int hotbarIndex, int button) {
+        if (dropCursorAtHotbarEmitter == null || hotbarIndex < 0 || hotbarIndex >= 9) {
+            return;
+        }
+        stashLastDropped();
+        boolean sent = dropCursorAtHotbarEmitter.send(hotbarIndex, button);
+        if (!sent) {
+            host.localStatus.set("drop unavailable");
+            host.rebuild();
+        }
+    }
+
+    /**
+     * Drop the cursor stack directly into a specific chest. Used by
+     * left-click on a chest chip / loot chest panel row when carrying.
+     */
+    void sendDropCursorIntoChest(String storageId) {
+        if (dropCursorIntoChestEmitter == null || storageId == null || storageId.isBlank()) {
+            return;
+        }
+        stashLastDropped();
+        boolean sent = dropCursorIntoChestEmitter.send(storageId);
+        if (!sent) {
+            host.localStatus.set("drop unavailable");
+            host.rebuild();
+        }
+    }
+
+    /**
+     * Snapshot the cursor's identity right before any drop / cancel RPC
+     * fires so the wall card chrome can keep the dropped identity
+     * highlighted after the cursor goes empty.
+     */
+    private void stashLastDropped() {
+        SlotWorkspaceViewModel.IdentityRef cursorId = WorkspaceCursorState.carriedIdentity();
+        if (cursorId != null) {
+            host.lastDroppedIdentity = cursorId;
+        }
+    }
+
+    /**
+     * Eager extract the identity onto {@code menu.getCarried()} via the
+     * server's ranked source resolution (carry → backpacks → proximate
+     * chests by affinity). {@code count} caps the amount; pass
+     * {@link Integer#MAX_VALUE} for "as much as fits."
+     */
+    void sendPickupToCursor(SlotWorkspaceViewModel.IdentityRef identity, int count) {
+        if (pickupToCursorEmitter == null || identity == null || count <= 0) {
+            return;
+        }
+        // A fresh pickup overrides last-dropped — the new cursor identity
+        // is now the active chrome source.
+        host.lastDroppedIdentity = null;
+        boolean sent = pickupToCursorEmitter.send(
+                identity.itemId(),
+                identity.comparisonMode(),
+                identity.componentFingerprint(),
+                count
+        );
+        if (!sent) {
+            host.localStatus.set("pickup unavailable");
+            host.rebuild();
+        }
+    }
+
+    void sendCrossSurfaceQuickMove(SlotWorkspaceViewModel.IdentityRef identity, int count) {
+        if (crossSurfaceQuickMoveAtlasEmitter == null || identity == null || count <= 0) {
+            return;
+        }
+        boolean sent = crossSurfaceQuickMoveAtlasEmitter.send(
+                identity.itemId(),
+                identity.comparisonMode(),
+                identity.componentFingerprint(),
+                count
+        );
+        host.localStatus.set(sent ? "shift-clicking to host..." : "shift-click unavailable");
         host.rebuild();
     }
 
@@ -944,25 +1098,6 @@ final class WorkspaceRpcDispatcher {
         host.rebuild();
     }
 
-    void sendCursorDropToHotbar(WorkspaceCursorCarry.State state, int hotbarIndex, int count) {
-        if (cursorDropToHotbarEmitter == null || state == null || count <= 0) {
-            return;
-        }
-        boolean sent = cursorDropToHotbarEmitter.send(
-                state.sourceId(),
-                state.slotIndex(),
-                state.identity().itemId(),
-                state.identity().comparisonMode(),
-                state.identity().componentFingerprint(),
-                count,
-                hotbarIndex
-        );
-        if (!sent) {
-            host.localStatus.set("cursor drop unavailable");
-            host.rebuild();
-        }
-    }
-
     void sendSetPlayerDesiredCount(SlotWorkspaceViewModel.IdentityRef identity, int count) {
         if (setPlayerDesiredCountEmitter == null || identity == null) {
             return;
@@ -991,26 +1126,6 @@ final class WorkspaceRpcDispatcher {
         );
         if (!sent) {
             host.localStatus.set("desired count update unavailable");
-            host.rebuild();
-        }
-    }
-
-    void sendCursorDropToChest(WorkspaceCursorCarry.State state, String storageId, int count) {
-        if (cursorDropToChestEmitter == null || state == null || count <= 0
-                || storageId == null || storageId.isBlank()) {
-            return;
-        }
-        boolean sent = cursorDropToChestEmitter.send(
-                state.sourceId(),
-                state.slotIndex(),
-                state.identity().itemId(),
-                state.identity().comparisonMode(),
-                state.identity().componentFingerprint(),
-                count,
-                storageId
-        );
-        if (!sent) {
-            host.localStatus.set("cursor drop unavailable");
             host.rebuild();
         }
     }

@@ -669,10 +669,11 @@ final class ContextMenuBuilder {
     }
 
     void anchorPopover(UIElement menu, float screenX, float screenY, int width, int approxHeight) {
-        float originX = host.wallPanelElement != null ? host.wallPanelElement.getPositionX() : 0f;
-        float originY = host.wallPanelElement != null ? host.wallPanelElement.getPositionY() : 0f;
-        int left = Math.max(4, Math.round(screenX - originX) + 4);
-        int top = Math.max(4, Math.round(screenY - originY) + 4);
+        // Popovers mount in the root-level popoverSlot which fills the
+        // entire screen at (0, 0), so screen coordinates can pass through
+        // unchanged.
+        int left = Math.max(4, Math.round(screenX) + 4);
+        int top = Math.max(4, Math.round(screenY) + 4);
         menu.layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
                 .left(left)

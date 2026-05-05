@@ -4,8 +4,13 @@
   "package": "dev.imagio.slot.neoforge.mixin",
   "refmap": "${mod_id}.refmap.json",
   "compatibilityLevel": "JAVA_21",
-  "mixins": [],
-  "client": [],
+  "mixins": [
+    "MenuShiftClickMixin"
+  ],
+  "client": [
+    "AbstractContainerScreenAccessor",
+    "ScreenInvoker"
+  ],
   "server": [],
   "injectors": {
     "defaultRequire": 1

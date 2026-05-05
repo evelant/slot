@@ -1,16 +1,34 @@
 # List View — Replace 2D Atlas With Sectioned Vertical List
 
-Status: Phase 1 + Phase 2 shipped 2026-05-03 (TOC drag-to-reorder
-included). Phase 3 (container-screen sidebar + hide vanilla band +
-mod-observer transparency) outstanding. Replaces the pan/zoom atlas
-with a single-LOD sectioned vertical scroll list. Same projection,
-same item cards, same gestures (outside section reorder), same
-authority, same intent router. UI rearrangement, not a semantic
-redesign.
+> **Closed (2026-05-05).** The list-view direction is the wall going
+> forward; the canvas / pan / zoom / band machinery is gone and the
+> sidebar embed pattern is the production answer for container/machine
+> screens. Phases shipped: **1** (standalone list view, 2026-05-03),
+> **2** (TOC tab strip with drag-to-reorder, 2026-05-03), **3a.1**
+> (sidebar embed on every `AbstractContainerScreen`, 2026-05-04),
+> **3a.2 direction A** (wall → vanilla slot via drag / shift+click /
+> shift+wheel, 2026-05-04). **Phase 3b** (hide vanilla 36-slot
+> player-inventory band) is **deferred as a separate experiment** —
+> the visual reclaim is worth playtesting on its own and the
+> mod-compat surface (EMI `+`, sorting / hotkey-move observers,
+> hard-custom screens) wants its own plan rather than a phase of
+> this one. Phases that are explicitly *not* coming back as part of
+> this plan if needed: **3a.2 direction B** (vanilla cursor → wall
+> card), **3a.3** (broaden host coverage past plain chests), **3a.4**
+> (hard-custom screens like AE2 / RS), **3c** (mod-observer
+> transparency), **EMI exclusion area registration**. Spin a fresh
+> plan in `docs/plans/` if any of those gain playtest signal — don't
+> reopen this one. The phased sub-plan for 3a lives at
+> [list-view-phase-3a.md](list-view-phase-3a.md).
+
+Replaces the pan/zoom atlas with a single-LOD sectioned vertical
+scroll list. Same projection, same item cards, same gestures
+(outside section reorder), same authority, same intent router. UI
+rearrangement, not a semantic redesign.
 
 For the design that's being replaced, see
-[../design/atlas.md](../design/atlas.md). For relevance scoring (which
-survives in reduced form), see [../design/relevance-lod.md](../design/relevance-lod.md).
+[../design/atlas.md](../../design/atlas.md). For relevance scoring (which
+survives in reduced form), see [../design/relevance-lod.md](../../design/relevance-lod.md).
 
 ## Why
 
@@ -193,67 +211,62 @@ Shipped:
 - Section color picker on the section header.
 - Animated scroll (current implementation snaps).
 
-### Phase 3 — Container screen injection (NOT STARTED)
+### Phase 3 — Container screen injection
 
-Render the wall as a left-side sidebar on container/machine
-screens, replacing the role of the vanilla 36-slot player
-inventory section. The unification of carried inventory is the
-load-bearing value here — the player must NOT have to shuffle
-items through the vanilla inventory to interact with crafting
-or machines.
+Render the wall as a sidebar on container/machine screens,
+replacing the role of the vanilla 36-slot player inventory
+section. The unification of carried inventory is the load-bearing
+value here — the player must NOT have to shuffle items through
+the vanilla inventory to interact with crafting or machines.
 
-A skeleton hook exists in
-[../../neoforge/src/main/java/dev/imagio/slot/neoforge/client/screen/SlotContainerSidebar.java](../../neoforge/src/main/java/dev/imagio/slot/neoforge/client/screen/SlotContainerSidebar.java)
-— it listens for `ScreenEvent.Init.Post` on
-`AbstractContainerScreen` and currently just diagnostic-logs.
-Real mount logic (embedding LDLib2's `ModularUI` widget tree
-inside a vanilla container screen) hasn't been attempted; needs
-its own design/investigation pass first — see "Investigation
-needed" below.
-
-**Investigation needed before committing to 3a:**
-
-- LDLib2 lives in its own `Screen` subclass via `ModularUI`.
-  Mounting individual widgets inside an `AbstractContainerScreen`
-  requires either: (a) a `Screen.Opening` wrapper that swaps the
-  vanilla screen for a custom subclass that hosts both the
-  vanilla menu and our widget tree, (b) a mixin into the screen's
-  render path, or (c) `ScreenEvent.Render` overdraw with manual
-  hit-testing and event routing. Each has different mod-compat
-  costs.
-- z-order vs. EMI's right-edge real estate.
-- Cross-surface drag routing: the wall card's
-  `installAtlasItemDragSource` has no awareness of vanilla
-  `Slot` drop targets, and vanilla `Slot.mouseDragged` doesn't
-  know about LDLib2 drag payloads.
-- Width policy: ratio (~1/3 viewport) vs. fixed pixel target.
+The investigation pass picked the strategy; the phased
+implementation plan lives in
+[list-view-phase-3a.md](list-view-phase-3a.md). Strategy: embed
+the workspace's `ModularUI` as a child of the vanilla screen via
+`Screen.addRenderableWidget(...)`. The 3a.1 implementation
+attaches the sidebar's `ModularUI` to the host menu via LDLib2's
+`IModularUIHolderMenu` mixin (so `PacketModularUISync` routes
+correctly through `player.containerMenu`); vanilla
+`broadcastChanges` then ticks the sidebar for free. Standalone
+and sidebar render the same widget tree at the same width
+(`WORKSPACE_WIDTH_PX = 414`); the inner `content` wrapper carries
+`marginHorizontalAuto` to center on standalone, while belt + kit
+rack are root-level full-width siblings so they cover the vanilla
+hotbar in sidebar mode.
 
 #### 3a — Sidebar alongside vanilla
 
-- On any `AbstractContainerScreen` open: render the wall as a
-  left-side column (target ~1/3 viewport, with min/max clamps).
-- Vanilla container UI sits in its native position; the redundant
-  vanilla 36-slot band is visually present but functionally
-  ignored (the wall is the canonical interaction surface).
-- Drag from wall card → machine slot: route through intent
-  router using the existing `largestCarriedSlot{SourceId,Index,
-  Count}` projection (proven by split-cursor and atlas-card
-  pickup paths).
-- Drag from machine slot → wall card: cancels into split-cursor
-  or routes to home (same as carrying + dropping today).
-- EMI right-edge real estate untouched.
-- Sidebar uses the SAME widget as standalone, just narrower
-  (column count reflows). Ordinal-by-section addressing means
-  spatial memory transfers between contexts.
+- **3a.1 (sidebar embed).** SHIPPED 2026-05-04. Workspace mounts
+  on every non-SLOT `AbstractContainerScreen`; vanilla GUI shifts
+  right via `leftPos` accessor mixin so it doesn't overlap the
+  sidebar.
+- **3a.2 direction A (wall → vanilla slot).** SHIPPED 2026-05-04.
+  Drag-release, shift+click, shift+wheel-up on a wall card all
+  route to the host menu via cross-surface RPCs. Server uses
+  `CarriedSourceAccess` (covers backpacks) + `Slot.safeInsert`
+  (respects `mayPlace`).
+- **3a.2 direction B (vanilla → wall).** Outstanding. Mirror
+  shape: vanilla cursor item dropped on a wall card lands in
+  carry; shift-click chest content → wall homing.
+- **3a.3 (broaden host coverage).** Outstanding. Verify against
+  furnace / anvil / brewing stand and a TerraFirmaGreg /
+  GregTech machine GUI; capture breakers via per-screen-class
+  allow-list.
+- **3a.4 (hard-custom screens).** Outstanding. AE2 / RS
+  terminals don't extend `AbstractContainerScreen`; plan starts
+  with an EMI-coexistence study.
+- **EMI exclusion area registration.** Outstanding (deferred
+  from 3a.1 step 5). Needs an EMI plugin entrypoint scaffold.
 
-**Acceptance for 3a:**
+**Acceptance for 3a (overall):**
 
-- Open a chest, crafting table, furnace, anvil: left sidebar
-  shows the wall.
-- Drag-from-wall to grid slot works.
-- Drag-from-grid to wall works.
+- Open a chest, crafting table, furnace, anvil: sidebar
+  shows the wall. ✓ (3a.1)
+- Drag-from-wall to grid slot works. ✓ (3a.2.A)
+- Drag-from-grid to wall works. ✗ (3a.2.B outstanding)
 - EMI panel renders at its usual right edge without overlap.
-- `:common:test :neoforge:test` green.
+  ✗ (EMI exclusion outstanding)
+- `:common:test :neoforge:test` green. ✓
 
 #### 3b — Hide vanilla player inventory band
 
@@ -354,14 +367,14 @@ Survives but reduced:
 
 ### Docs
 
-- [../design/atlas.md](../design/atlas.md) — superseded by this
+- [../design/atlas.md](../../design/atlas.md) — superseded by this
   plan and the eventual `../design/list-view.md` write-up that
   follows execution. Add a superseded header in the meantime.
-- [../design/relevance-lod.md](../design/relevance-lod.md) —
+- [../design/relevance-lod.md](../../design/relevance-lod.md) —
   retire to `retired/`. Relevance scoring survives in reduced
   form; rewrite as a smaller "relevance scoring for ordering and
   highlighting" doc if/when needed.
-- [retired/relevance-lod-prototype.md](retired/relevance-lod-prototype.md)
+- [retired/relevance-lod-prototype.md](../retired/relevance-lod-prototype.md)
   — retired (moved 2026-05-03). The prototype it sketched (LOD
   bands) isn't happening.
 
@@ -402,12 +415,12 @@ Survives but reduced:
 
 ## Pointers
 
-For product goals, see [../product/direction.md](../product/direction.md).
+For product goals, see [../product/direction.md](../../product/direction.md).
 For action semantics,
-[../architecture/action-taxonomy.md](../architecture/action-taxonomy.md).
+[../architecture/action-taxonomy.md](../../architecture/action-taxonomy.md).
 For the LDLib2 workspace decision,
-[../decisions/0002-ldlib2-workspace.md](../decisions/0002-ldlib2-workspace.md).
+[../decisions/0002-ldlib2-workspace.md](../../decisions/0002-ldlib2-workspace.md).
 For Triage's docked-panel design (unchanged),
-[../design/atlas.md § Triage](../design/atlas.md). For the
+[../design/atlas.md § Triage](../../design/atlas.md). For the
 gestures vocabulary the wall inherits,
-[../design/gestures.md](../design/gestures.md).
+[../design/gestures.md](../../design/gestures.md).

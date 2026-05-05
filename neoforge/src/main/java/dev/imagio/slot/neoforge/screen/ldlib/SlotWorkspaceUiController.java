@@ -4,6 +4,7 @@ import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceFormat.*;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.*;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceUi.*;
 
+import dev.imagio.slot.SlotDebugLog;
 import com.lowdragmc.lowdraglib2.gui.sync.bindings.impl.DataBindingBuilder;
 import com.lowdragmc.lowdraglib2.gui.ui.ModularUI;
 import com.lowdragmc.lowdraglib2.gui.ui.UI;
@@ -26,15 +27,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 final class SlotWorkspaceUiController {
+    /**
+     * Natural content width (in screen px) of the workspace UI tree —
+     * wall scroller (fixed card-density) + flex gap + capped left
+     * column + root padding on each side. Single source of truth so
+     * the sidebar and standalone surfaces render the same widget tree
+     * at the same width.
+     */
+    static final int WORKSPACE_WIDTH_PX =
+            ListWallPanelBuilder.WALL_CONTENT_WIDTH_PX
+                    + ListWallPanelBuilder.SECTION_GAP_PX
+                    + ListWallPanelBuilder.SIDEBAR_LEFT_COLUMN_MAX_WIDTH_PX
+                    + 14 * 2;
+
     final SlotWorkspaceUiSession session;
     final Player player;
     final UIElement root;
     final UIElement content;
+    UIElement popoverSlot;
 
     SlotWorkspaceViewModel viewModel;
     final Observable<String> localStatus = new Observable<>("");
-    final WorkspaceCursorCarry cursor = new WorkspaceCursorCarry();
     final Observable<SlotWorkspaceViewModel.IdentityRef> selectedAtlasIdentity = new Observable<>(null);
+    /**
+     * Identity that was on the menu cursor right before the most recent
+     * drop / cancel RPC. Drives the wall card's "active" chrome after
+     * the cursor goes empty so the player can still see "this is what I
+     * just dropped." Cleared when a fresh pickup reassigns the cursor.
+     */
+    SlotWorkspaceViewModel.IdentityRef lastDroppedIdentity;
     SlotWorkspaceViewModel.IdentityRef hoveredAtlasIdentity;
     /**
      * Cross-surface hover cursor for storage chest cards: hovering a
@@ -111,7 +132,18 @@ final class SlotWorkspaceUiController {
     final TocPanelBuilder tocPanel = new TocPanelBuilder(this);
     final LeftColumnBuilder leftColumn = new LeftColumnBuilder(this);
     ScrollerView wallScroller;
-    UIElement wallLeftReservation;
+    /**
+     * Persistent root-level container for the kit rack overlay. Lives
+     * outside the centered content wrapper so it spans the full screen
+     * width when the rack is open. Empty when the rack is closed.
+     */
+    UIElement kitRackSlot;
+    /**
+     * Persistent root-level container for the belt (hotbar). Spans the
+     * full screen width regardless of the centered content cap, so it
+     * always covers the vanilla hotbar in sidebar mode.
+     */
+    UIElement beltSlot;
     UIElement wallPanelElement;
     UIElement storagePanelElement;
     UIElement lootChestPanelElement;
@@ -145,40 +177,106 @@ final class SlotWorkspaceUiController {
         // world / panorama) shows through everywhere we don't explicitly
         // paint a panel. Same idea as the vanilla inventory: chrome is
         // localized to specific widgets, the world stays visible.
+        //
+        // Root spans the full screen so the belt at the bottom can be
+        // full-width (covering the vanilla hotbar in sidebar mode).
+        // The actual workspace content is centered via the inner
+        // `content` wrapper which carries the maxWidth + auto-margins.
+        //
+        // widthPercent(100) on root (rather than a fixed width) is
+        // also load-bearing because of an LDLib2 ModularUI.init bug:
+        // when the root's WIDTH style is fixed, layoutWidth becomes
+        // NaN and Taffy gets MAX_CONTENT for BOTH axes (a typo in the
+        // calculateStyleAndLayout call uses layoutWidth in the second
+        // NaN check instead of layoutHeight). With unbounded height
+        // the scroller never scrolls and the belt gets pushed off
+        // screen. Keeping root at widthPercent(100) sidesteps this.
         this.root = new UIElement().layout(layout -> layout
                 .widthPercent(100)
                 .heightPercent(100)
+                .paddingAll(0)
+                .gapAll(0)
+                .flexDirection(FlexDirection.COLUMN));
+        // Centered content stack: workspace top + mid + status. Capped
+        // at WORKSPACE_WIDTH_PX so the layout doesn't sprawl on wide
+        // screens; auto horizontal margins center it within the
+        // (full-screen) root. flex(1) so it claims the leftover height
+        // above the belt.
+        this.content = new UIElement().layout(layout -> layout
+                .widthPercent(100)
+                .maxWidth(WORKSPACE_WIDTH_PX)
+                .flex(1)
+                .marginHorizontalAuto()
                 .paddingAll(14)
                 .gapAll(8)
                 .flexDirection(FlexDirection.COLUMN));
-        this.content = new UIElement().layout(layout -> layout
+        // Belt + kit rack slots: pinned full-width at the bottom of
+        // root, outside the centered content wrapper. The kit rack
+        // slot is empty when the rack is closed (height collapses to
+        // 0 via flex defaults).
+        this.kitRackSlot = new UIElement().layout(layout -> layout
                 .widthPercent(100)
-                .heightPercent(100)
-                .gapAll(8)
                 .flexDirection(FlexDirection.COLUMN));
+        this.beltSlot = new UIElement().layout(layout -> layout
+                .widthPercent(100)
+                .flexDirection(FlexDirection.COLUMN));
+        // Popovers (context menus, island edit, create-island) render
+        // here — at root level with absolute fill — so their full-screen
+        // dismiss catcher actually covers the full screen instead of
+        // being scoped to whichever ancestor's bounding box happens to
+        // be in scope. The slot itself is non-hit-testing so its
+        // always-present empty bounds don't absorb clicks meant for the
+        // wall / sections / chest list underneath; popover children
+        // (catcher, capsule) keep their own hit-testing.
+        this.popoverSlot = new UIElement().layout(layout -> layout
+                .positionType(dev.vfyjxf.taffy.style.TaffyPosition.ABSOLUTE)
+                .left(0).right(0).top(0).bottom(0));
+        this.popoverSlot.style(style -> style.zIndex(50));
+        this.popoverSlot.setAllowHitTest(false);
         clearSelectionOnDirectClick(root);
     }
 
     ModularUI create() {
         rpc.register();
         hotkeys.installBeltHotkeys();
+        // Passive status-line tracer: every actual change flows through
+        // localStatus.set(...) (Observable.set short-circuits no-ops),
+        // so subscribing once gives a clean event log of "what just
+        // happened" — useful for diagnosing cross-surface drag, RPC
+        // round trips, and any user-visible status bar message
+        // without sprinkling log statements at every set call site.
+        // Gated by SlotDebugLog so production users don't see noise.
+        localStatus.subscribeLater(value -> {
+            if (value == null || value.isBlank()) {
+                return;
+            }
+            SlotDebugLog.log("[status] {}", value);
+        });
         // Cursor overlay sits at root, above content + every panel — its
         // ghost item must always render on top regardless of whichever
         // chrome the mouse is over. Added once during create() because
         // its TICK + MOUSE_MOVE listeners on root persist across rebuilds;
         // recreating it on every rebuildNow() would leak handlers.
-        root.addChildren(syncBinding(), content, overlays.cursorOverlay());
-        // Bubble-phase cancel for the cursor: any MOUSE_DOWN that reaches
-        // root means no drop target intercepted (drop targets call
-        // stopPropagation when they handle a cursor click). Treat as "click
-        // outside a valid drop location" and cancel. Drop targets MUST stop
-        // propagation when handling a cursor click or this will cancel
-        // immediately after their drop fires.
+        // Order: invisible sync binding, centered content (flex 1),
+        // optional kit rack (full-width), belt (full-width), cursor
+        // overlay (abs, on top of everything). The flex-column flow
+        // gives content the leftover height above the bottom slots.
+        root.addChildren(syncBinding(), content, kitRackSlot, beltSlot, popoverSlot);
+        // Bubble-phase universal handlers for the real menu cursor:
+        // rows 1 (right-click cancel) + 8 (left-click smart-deposit) of
+        // the universal click table. Reaching root means no specific
+        // drop target intercepted (drop targets call stopPropagation
+        // when they handle a cursor click). Vanilla slot clicks short-
+        // circuit this path entirely because vanilla slots aren't in our
+        // LDLib widget tree — events on them never reach our root.
         root.addEventListener(UIEvents.MOUSE_DOWN, event -> {
-            if (cursor.isCarrying()) {
-                cursor.clear();
-                localStatus.set("cursor cancelled");
-                rebuild();
+            if (!WorkspaceCursorState.isCarrying()) {
+                return;
+            }
+            if (event.button == 1) {
+                rpc.sendCursorCancel();
+            } else if (event.button == 0) {
+                rpc.sendCursorSmartDeposit();
             }
         });
         rebuildNow();
@@ -243,14 +341,29 @@ final class SlotWorkspaceUiController {
         hotbarSlotElements.clear();
         if (!contentPopulated) {
             content.clearAllChildren();
-            content.addChildren(
-                    listWall.body(),
-                    overlays.statusBar()
-            );
+            // Status bar is now placed inside the wall panel (between
+            // the scroller mid-row and the kit/belt footer) by
+            // ListWallPanelBuilder, so it sits above the hotbar
+            // instead of taking a strip below it. Eagerly construct it
+            // here so the lazy-init in overlays.statusBar() runs once
+            // — repopulateWallPanel only references the cached element.
+            overlays.statusBar();
+            content.addChildren(listWall.body());
             contentPopulated = true;
         } else {
             storagePanel.repopulate();
             listWall.wallPanel();
+        }
+        // Belt + kit rack are root-level siblings of `content` so they
+        // span the full screen width (covering the vanilla hotbar in
+        // sidebar mode); they're rebuilt each refresh because the kit
+        // rack visibility flips and the belt's hotbar slot subtree
+        // depends on view-model state.
+        beltSlot.clearAllChildren();
+        beltSlot.addChild(belt.overlay());
+        kitRackSlot.clearAllChildren();
+        if (kitRackOpen) {
+            kitRackSlot.addChild(kit.kitRackOverlay());
         }
         content.markTaffyStyleDirty();
     }
@@ -533,6 +646,24 @@ final class SlotWorkspaceUiController {
         return selectedAtlasIdentity.get();
     }
 
+    /**
+     * The identity that should drive "active" chrome on wall / triage /
+     * loot rows. The vanilla menu cursor takes precedence (so picking up
+     * an identity onto cursor lights up its card), falling back to the
+     * legacy {@code selectedAtlasIdentity} observable. Phase B will add
+     * {@code lastDroppedIdentity} as a third tier between the two.
+     */
+    SlotWorkspaceViewModel.IdentityRef activeIdentity() {
+        SlotWorkspaceViewModel.IdentityRef cursor = WorkspaceCursorState.carriedIdentity();
+        if (cursor != null) {
+            return cursor;
+        }
+        if (lastDroppedIdentity != null) {
+            return lastDroppedIdentity;
+        }
+        return selectedAtlasIdentity.get();
+    }
+
     boolean isMapFocusItem(SlotWorkspaceViewModel.AtlasItem item) {
         SlotWorkspaceViewModel.IdentityRef focusIdentity = currentMapFocusIdentity();
         return item != null && focusIdentity != null && item.identity().equals(focusIdentity);
@@ -600,18 +731,14 @@ final class SlotWorkspaceUiController {
     void clearSelectionOnDirectClick(UIElement element) {
         element.addEventListener(UIEvents.MOUSE_DOWN, event -> {
             // Click hit the bare root chrome (no widget consumed it) — treated
-            // as "click on nothing." If the cursor is carrying virtual items,
-            // a click outside any valid drop target cancels the cursor; we
-            // intentionally cancel BEFORE clearing selection so the player
-            // gets the more important feedback first ("cursor cancelled" vs
-            // "selection cleared").
+            // as "click on nothing." Carrying takes precedence: the
+            // root-level universal cancel/smart-deposit handlers fire on
+            // the same MOUSE_DOWN, so we skip selection clearing while
+            // carrying to avoid stomping the cursor's own status.
             if (event.target != element) {
                 return;
             }
-            if (cursor.isCarrying()) {
-                cursor.clear();
-                localStatus.set("cursor cancelled");
-                rebuild();
+            if (WorkspaceCursorState.isCarrying()) {
                 return;
             }
             if (selectedAtlasIdentity.get() != null || selectedHotbarIndex.get() >= 0) {

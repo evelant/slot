@@ -278,34 +278,24 @@ final class StoragePanelBuilder {
     }
 
     /**
-     * While the split cursor is non-empty, intercept clicks on the chip
-     * and route them to a count-aware deposit. Capture-phase + early
-     * stopPropagation ensures this fires before the chip's context-menu
-     * handler (right-click) and before the bubble-phase root cancel
-     * handler. Pickup intentionally not wired on chips: chips are
-     * identity / chest handles, not slot handles, so there's no concrete
-     * source slot to halve.
+     * While the menu cursor is non-empty, left-click on a chip deposits
+     * the cursor stack directly into that chest (universal-table row 5).
+     * Right-click bubbles to the root universal cancel (row 1). Capture-
+     * phase + early stopPropagation so this beats the chip's context-menu
+     * handler.
      */
     private void installChipCursorDropTarget(UIElement chip, SlotWorkspaceViewModel.ChestChip target) {
         String storageId = target.storageId();
         chip.addEventListener(UIEvents.MOUSE_DOWN, event -> {
-            if (!host.cursor.isCarrying()) {
+            if (!WorkspaceCursorState.isCarrying()) {
                 return;
             }
-            WorkspaceCursorGestures.Result mode = WorkspaceCursorGestures.classify(event, true);
-            int count = switch (mode) {
-                case DROP_ALL -> host.cursor.dropCount(WorkspaceCursorCarry.DropMode.ALL);
-                case DROP_ONE -> host.cursor.dropCount(WorkspaceCursorCarry.DropMode.ONE);
-                case DROP_HALF -> host.cursor.dropCount(WorkspaceCursorCarry.DropMode.HALF);
-                default -> 0;
-            };
-            if (count <= 0) {
+            if (event.button != 0) {
+                // Right-click while carrying = universal cancel; let it bubble.
                 return;
             }
             event.stopPropagation();
-            WorkspaceCursorCarry.State state = host.cursor.current();
-            host.rpc.sendCursorDropToChest(state, storageId, count);
-            host.cursor.consume(count);
+            host.rpc.sendDropCursorIntoChest(storageId);
         }, true);
     }
 
@@ -320,6 +310,10 @@ final class StoragePanelBuilder {
         String storageId = target.storageId();
         chip.addEventListener(UIEvents.MOUSE_DOWN, event -> {
             if (event.button != 1) {
+                return;
+            }
+            // Right-click while carrying = universal cancel; let it bubble.
+            if (WorkspaceCursorState.isCarrying()) {
                 return;
             }
             event.stopPropagation();

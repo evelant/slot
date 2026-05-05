@@ -8,7 +8,6 @@ import com.lowdragmc.lowdraglib2.gui.ui.data.Horizontal;
 import com.lowdragmc.lowdraglib2.gui.ui.data.Vertical;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
-import com.lowdragmc.lowdraglib2.gui.ui.elements.ScrollerView;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
@@ -44,8 +43,6 @@ final class LootChestPanelBuilder {
     static final int FOOTER_HEIGHT = 16;
     static final int PANEL_PADDING = 6;
     static final int PANEL_GAP = 4;
-    /** Floor for the loot panel's flex(1) share so it stays usable in tight columns. */
-    static final int MIN_HEIGHT = 120;
 
     private final SlotWorkspaceUiController host;
 
@@ -55,10 +52,9 @@ final class LootChestPanelBuilder {
 
     /**
      * Returns null when no loot chest is in range so the panel collapses.
-     * Otherwise builds a flex item for {@link LeftColumnBuilder}'s
-     * column — {@code flex(1)} so it shares remaining vertical space
-     * with Triage 50/50 (or claims it all when Triage is empty), with
-     * a min-height so it stays usable even in cramped resolutions.
+     * Otherwise builds a content-fit flex item for
+     * {@link LeftColumnBuilder}'s scroller — sized by its content so the
+     * outer scroller, not the loot panel, owns vertical overflow.
      */
     UIElement overlay() {
         SlotWorkspaceViewModel.LootChestPanel panel = host.viewModel.lootChestPanel();
@@ -68,13 +64,14 @@ final class LootChestPanelBuilder {
         }
 
         UIElement overlay = panel(GLASS).layout(layout -> layout
-                .flex(1)
                 .widthPercent(100)
-                .minHeight(MIN_HEIGHT)
                 .paddingAll(PANEL_PADDING)
                 .gapAll(PANEL_GAP)
                 .flexDirection(FlexDirection.COLUMN));
-        overlay.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
+        // Dead-space clicks inside the panel bubble to root so the
+        // universal cancel / smart-deposit handlers fire when carrying.
+        // Children that handle clicks (rows, buttons) stopPropagation
+        // themselves, so this no longer needs to absorb.
 
         UIElement headerRow = new UIElement().layout(layout -> layout
                 .widthPercent(100)
@@ -127,15 +124,14 @@ final class LootChestPanelBuilder {
             empty.setAllowHitTest(false);
             overlay.addChild(empty);
         } else {
-            ScrollerView scroller = new ScrollerView();
-            scroller.layout(layout -> layout.flex(1).widthPercent(100).gapAll(2));
-            scroller.scrollerStyle(style -> style
-                    .minScrollPixel(30f)
-                    .maxScrollPixel(80f));
+            UIElement items = new UIElement().layout(layout -> layout
+                    .widthPercent(100)
+                    .gapAll(2)
+                    .flexDirection(FlexDirection.COLUMN));
             for (SlotWorkspaceViewModel.AtlasItem item : panel.items()) {
-                scroller.addScrollViewChild(itemBlock(item, panel));
+                items.addChild(itemBlock(item, panel));
             }
-            overlay.addChild(scroller);
+            overlay.addChild(items);
         }
 
         installClaimAndDepositDropTarget(overlay, panel);

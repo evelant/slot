@@ -18,12 +18,11 @@ import dev.vfyjxf.taffy.style.FlexDirection;
 import dev.vfyjxf.taffy.style.TaffyPosition;
 import com.lowdragmc.lowdraglib2.gui.texture.Icons;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
 
 final class WorkspaceOverlays {
-    private static final int CARRIED_CHIP_WIDTH = 96;
-    private static final int CARRIED_CHIP_HEIGHT = 20;
-    private static final int CARRIED_CHIP_BAR_HEIGHT = 3;
+    private static final int CARRIED_CHIP_WIDTH = 60;
+    private static final int CARRIED_CHIP_HEIGHT = 16;
+    private static final int CARRIED_CHIP_BAR_HEIGHT = 2;
 
     private final SlotWorkspaceUiController host;
 
@@ -32,16 +31,12 @@ final class WorkspaceOverlays {
     }
 
     UIElement topRightActionsOverlay() {
-        // Floating action cluster pinned to the atlas panel's top-right
-        // corner. Replaces the former persistent header strip. Vanilla is
-        // always visible (primary escape hatch, also bound to a keymap).
-        // Deposit only reveals itself when a claimed chest is proximate —
-        // the same TICK-poll pattern the old header used, kept here so
-        // the chip stays in sync as the host.player moves.
+        // In-flow row inside the top status bar; sized to its content
+        // (no widthPercent), so the parent flex-row gives the search
+        // hint the rest of the slack on its left. Vanilla button is
+        // always visible; deposit only reveals itself when a claimed
+        // chest is proximate (TICK-poll pattern).
         UIElement overlay = new UIElement().layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .top(10)
-                .right(10)
                 .gapAll(6)
                 .alignItems(AlignItems.CENTER)
                 .flexDirection(FlexDirection.ROW));
@@ -246,14 +241,11 @@ final class WorkspaceOverlays {
     }
 
     UIElement searchChipOverlay() {
-        // Anchor at the same top-left location as searchHintOverlay so opening
-        // search doesn't feel like the UI jumped — the hint slides seamlessly
-        // into the live modal.
+        // In-flow chip that takes the same row slot as
+        // searchHintOverlay when the search modal is active. The wall
+        // panel's top row applies flex(1) at the call site so width
+        // sizing happens there.
         UIElement chip = panel(GLASS).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .top(10)
-                .left(10)
-                .width(280)
                 .paddingAll(6)
                 .gapAll(3)
                 .flexDirection(FlexDirection.COLUMN));
@@ -288,17 +280,21 @@ final class WorkspaceOverlays {
     }
 
     UIElement searchHintOverlay() {
-        UIElement hint = panel(GLASS).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .top(10)
-                .left(10)
+        // Background lives directly on the label rather than on a
+        // wrapper panel: when the wrapper was a flex-row container of
+        // a single Label child, Taffy was sizing the wrapper to its
+        // measured content width and the GLASS texture only painted
+        // behind the first couple of characters. Putting the
+        // background + padding on the Label itself sidesteps the
+        // cross-axis sizing dance — the call site applies flex(1) so
+        // the label measures the full row width and its
+        // style.backgroundTexture renders at that measured size.
+        Label hint = label("Press / to search", MUTED);
+        hint.layout(layout -> layout
                 .paddingHorizontal(8)
-                .paddingVertical(4)
-                .alignItems(AlignItems.CENTER)
-                .flexDirection(FlexDirection.ROW));
-        hint.style(style -> style.zIndex(11));
+                .paddingVertical(4));
+        hint.style(style -> style.zIndex(11).backgroundTexture(rect(GLASS)));
         hint.setAllowHitTest(false);
-        hint.addChild(label("Press / to search", MUTED).layout(layout -> layout.height(10)));
         return hint;
     }
 
@@ -306,20 +302,22 @@ final class WorkspaceOverlays {
         int initialFree = host.viewModel == null ? 0 : host.viewModel.carriedFreeSlotCount();
         int initialCapacity = host.viewModel == null ? 0 : host.viewModel.carriedSlotCapacity();
         UIElement chip = panel(GLASS).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .top(10)
                 .width(CARRIED_CHIP_WIDTH)
                 .height(CARRIED_CHIP_HEIGHT)
-                .paddingHorizontal(8)
-                .paddingTop(3)
-                .paddingBottom(CARRIED_CHIP_BAR_HEIGHT + 3)
+                .paddingHorizontal(4)
+                .paddingTop(2)
+                .paddingBottom(CARRIED_CHIP_BAR_HEIGHT + 1)
                 .alignItems(AlignItems.CENTER)
                 .flexDirection(FlexDirection.ROW));
         chip.style(style -> style.zIndex(11));
         chip.setAllowHitTest(false);
         Label valueLabel = label(formatFreeSlots(initialFree), TEXT);
         valueLabel.layout(layout -> layout.widthPercent(100).flex(1));
-        valueLabel.textStyle(style -> style.textAlignHorizontal(Horizontal.CENTER));
+        valueLabel.textStyle(style -> style
+                .textColor(TEXT)
+                .textShadow(false)
+                .fontSize(7)
+                .textAlignHorizontal(Horizontal.CENTER));
         chip.addChild(valueLabel);
         // Fullness bar pinned to the bottom edge of the chip: the width
         // is the *filled* portion (capacity - free), so the bar grows
@@ -340,7 +338,6 @@ final class WorkspaceOverlays {
         int[] lastFree = {initialFree};
         int[] lastBarColor = {initialBarColor};
         float[] lastBarWidth = {initialBarWidth};
-        float[] lastLeft = {-1f};
         chip.addEventListener(UIEvents.TICK, event -> {
             int free = host.viewModel == null ? 0 : host.viewModel.carriedFreeSlotCount();
             int capacity = host.viewModel == null ? 0 : host.viewModel.carriedSlotCapacity();
@@ -359,15 +356,6 @@ final class WorkspaceOverlays {
                 lastBarWidth[0] = barWidth;
                 bar.layout(layout -> layout.width(barWidth));
             }
-            float panelWidth = host.wallPanelElement == null ? 0f : host.wallPanelElement.getContentWidth();
-            if (panelWidth <= 0f) {
-                return;
-            }
-            float desiredLeft = Math.max(0f, (panelWidth - CARRIED_CHIP_WIDTH) / 2f);
-            if (Math.abs(desiredLeft - lastLeft[0]) > 0.5f) {
-                lastLeft[0] = desiredLeft;
-                chip.layout(layout -> layout.left(desiredLeft));
-            }
         });
         return chip;
     }
@@ -384,15 +372,27 @@ final class WorkspaceOverlays {
         return panel;
     }
 
+    /**
+     * Debug-only thin status row. Shows the latest local status text +
+     * view-model revision / pending counts so we have an at-a-glance
+     * trace during playtest. No background, no padding, just a small
+     * muted line — the goal is "doesn't interfere with the layout."
+     * Sits in-flow between the scroller mid-row and the kit / belt
+     * footer (added by {@link ListWallPanelBuilder#repopulateWallPanel}).
+     * Once the workspace UX is stable this can be deleted entirely;
+     * for now it's load-bearing for diagnosing sync / RPC issues.
+     */
     UIElement statusBar() {
         if (host.statusBarElement == null) {
             host.statusBarLabel = label("", MUTED);
-            host.statusBarLabel.layout(layout -> layout.widthPercent(100).height(12));
-            host.statusBarElement = panel(PANEL_ALT).layout(layout -> layout
-                    .widthPercent(100)
-                    .height(25)
-                    .paddingAll(7));
-            host.statusBarElement.addChild(host.statusBarLabel);
+            host.statusBarLabel.layout(layout -> layout.widthPercent(100).height(8));
+            host.statusBarLabel.textStyle(style -> style
+                    .textColor(MUTED)
+                    .textShadow(false)
+                    .fontSize(6));
+            host.statusBarLabel.style(style -> style.zIndex(8));
+            host.statusBarLabel.setAllowHitTest(false);
+            host.statusBarElement = host.statusBarLabel;
             host.localStatus.subscribe(v -> refreshStatusBarLabel());
         }
         refreshStatusBarLabel();
@@ -411,70 +411,4 @@ final class WorkspaceOverlays {
                         + (host.viewModel.diagnostics().isBlank() ? "" : "  " + host.viewModel.diagnostics())));
     }
 
-    /**
-     * Floating cursor-carry ghost — a virtual item icon + count that
-     * follows the mouse while {@link WorkspaceCursorCarry} is non-empty.
-     * The cursor itself is purely client-side state (no server
-     * representation), so this overlay is the only on-screen evidence
-     * the player is mid-pickup. Hit-testing is disabled so clicks pass
-     * through to whatever drop target sits beneath the cursor.
-     *
-     * <p>Lives at root so it draws above every panel; positioning is a
-     * MOUSE_MOVE-driven absolute offset on the root tracked-mouse
-     * coordinate. Re-renders the inner card from the cursor state on
-     * every TICK so count updates immediately after a drop or a
-     * cumulative half-pickup.
-     */
-    UIElement cursorOverlay() {
-        UIElement overlay = new UIElement().layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .top(0)
-                .left(0)
-                .width(CURSOR_OVERLAY_SIZE)
-                .height(CURSOR_OVERLAY_SIZE));
-        overlay.style(style -> style.zIndex(99));
-        overlay.setAllowHitTest(false);
-        // Last-rendered identity + count so we only rebuild the inner card
-        // when something actually changed — TICK fires every frame and
-        // teardown/rebuild of the icon child every frame is wasted work.
-        final String[] lastIdentityKey = {""};
-        final int[] lastCount = {-1};
-        host.root.addEventListener(UIEvents.MOUSE_MOVE, event -> {
-            if (!host.cursor.isCarrying()) {
-                return;
-            }
-            // Offset the ghost so the cursor tip lands roughly at the
-            // ghost's top-left corner (vanilla cursor-carry visual).
-            float left = event.x - CURSOR_OVERLAY_SIZE / 2f;
-            float top = event.y - CURSOR_OVERLAY_SIZE / 2f;
-            overlay.layout(layout -> layout.left(left).top(top));
-        }, true);
-        overlay.addEventListener(UIEvents.TICK, event -> {
-            WorkspaceCursorCarry.State state = host.cursor.current();
-            if (state == null) {
-                if (!lastIdentityKey[0].isEmpty()) {
-                    overlay.clearAllChildren();
-                    lastIdentityKey[0] = "";
-                    lastCount[0] = -1;
-                }
-                return;
-            }
-            String key = state.identity().itemId() + "|" + state.identity().componentFingerprint();
-            if (key.equals(lastIdentityKey[0]) && state.count() == lastCount[0]) {
-                return;
-            }
-            overlay.clearAllChildren();
-            ItemStack stack = state.displayStack();
-            if (stack == null) {
-                stack = ItemStack.EMPTY;
-            }
-            UIElement card = itemSlotCard(stack, CURSOR_OVERLAY_SIZE, 0x00000000, true, state.count());
-            overlay.addChild(card);
-            lastIdentityKey[0] = key;
-            lastCount[0] = state.count();
-        });
-        return overlay;
-    }
-
-    private static final float CURSOR_OVERLAY_SIZE = 16f;
 }
