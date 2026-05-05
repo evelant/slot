@@ -43,7 +43,11 @@ This is a fast-moving experimental repo. Docs describe intent as of their
 - Before editing LDLib2 workspace UI code, skim
   [docs/architecture/ui-lifecycle-rules.md](docs/architecture/ui-lifecycle-rules.md)
   for the rebuild/scale/animation rules we derived from real flicker
-  bugs.
+  bugs, and
+  [docs/architecture/ldlib2-reference.md](docs/architecture/ldlib2-reference.md)
+  for layout / Label sizing / event-routing pitfalls (Taffy
+  flex-shrink, `adaptiveWidth`, sidebar-mode char/key forwarding) plus
+  pointers into the LDLib2 source.
 - When writing UI code leverage LDLib2's Taffy flexbox layout engine before resorting
   to fixed pixel sizes and absolute positioning. Think more in terms of CSS
   layout than in traditional fixed pixel minecraft UI drawing.

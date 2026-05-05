@@ -26,148 +26,114 @@ import net.minecraft.world.item.ItemStack;
 import java.util.Locale;
 
 /**
- * Phase 3 of docs/plans/wayfinding.md — the shared chip component
- * mounted in atlas chest panels (Phase 3) and the HUD edge stack
- * (Phase 4).
- *
- * <p>Five pieces: chest name, optional cluster name, missing-item icons
- * (capped to {@link #MAX_ICONS}, "+N" tail when more), compass arrow,
- * distance. Cross-dimension targets swap the compass + distance for a
- * dim-shorthand label + chest coords; the rest of the chip is unchanged.
+ * Single-line chip mounted in the atlas chest panels: chest name on
+ * the left (flex), missing-item icons in the middle (capped to
+ * {@link #MAX_ICONS}, "+N" tail when more), compass arrow + distance
+ * on the right. Cross-dimension targets swap the compass + distance
+ * for a dim-shorthand label + chest coords; the rest of the chip is
+ * unchanged.
  */
 public final class WayfindingChip {
-    public enum Mode {
-        /** Mounted inside the atlas chest panels — full font sizes. */
-        ATLAS,
-        /** Mounted on the HUD edge — tighter padding + smaller fonts. */
-        HUD
-    }
-
     public static final int MAX_ICONS = 4;
 
-    private static final int ATLAS_HEIGHT = 22;
-    private static final int HUD_HEIGHT = 18;
+    /**
+     * Chip height in screen px. Tight enough that nearby-chest lists
+     * stay scannable at standard GUI scale; matches the TOC row height
+     * so the left column reads as one consistent compact list.
+     */
+    private static final int CHIP_HEIGHT = 12;
+    /** Item icon size — fits within {@link #CHIP_HEIGHT} with 1px breathing each side. */
+    private static final float ICON_SIZE = 10f;
 
     private WayfindingChip() {
     }
 
     /**
      * Build a chip for the given {@code target}. {@code chestLabel} is
-     * required (the existing auto-name or player-renamed string);
-     * {@code clusterLabel} is optional ({@code null} → cluster row is
-     * omitted). When {@code target} is {@code null} the chip renders the
-     * same shape minus the missing-item strip — used by the proximity
-     * panel for non-wayfinding chests so the look stays uniform.
+     * required (the existing auto-name or player-renamed string).
+     * When {@code target} is {@code null} the chip renders the same
+     * shape minus the missing-item strip — used by the proximity panel
+     * for non-wayfinding chests so the look stays uniform.
      */
     public static UIElement build(
             WayfindingTarget target,
             String chestLabel,
-            String clusterLabel,
             String chestDimensionId,
             int chestWorldX,
             int chestWorldY,
-            int chestWorldZ,
-            Mode mode
+            int chestWorldZ
     ) {
-        int height = mode == Mode.HUD ? HUD_HEIGHT : ATLAS_HEIGHT;
         int fill = (PANEL_ALT & 0x00FFFFFF) | 0xC0000000;
 
         UIElement chip = panel(fill).layout(layout -> layout
                 .widthPercent(100)
-                .height(height)
-                .paddingHorizontal(mode == Mode.HUD ? 4 : 6)
-                .paddingVertical(2)
+                .height(CHIP_HEIGHT)
+                .paddingHorizontal(4)
+                .paddingVertical(1)
                 .gapAll(3)
                 .alignItems(AlignItems.CENTER)
                 .flexDirection(FlexDirection.ROW));
 
-        UIElement labelColumn = new UIElement().layout(layout -> layout
-                .flex(1)
-                .heightPercent(100)
-                .flexDirection(FlexDirection.COLUMN));
-        labelColumn.setAllowHitTest(false);
-
         Label nameEl = label(chestLabel == null ? "" : chestLabel, TEXT);
-        nameEl.layout(layout -> layout.widthPercent(100).flex(1));
+        nameEl.layout(layout -> layout.flex(1).heightPercent(100));
         nameEl.textStyle(style -> style
                 .textColor(TEXT)
                 .textShadow(false)
-                .fontSize(mode == Mode.HUD ? 7 : 8)
+                .fontSize(6)
                 .textAlignHorizontal(Horizontal.LEFT)
                 .textAlignVertical(Vertical.CENTER));
-        labelColumn.addChild(nameEl);
-
-        // Cluster gets its own row when present. Atlas mode shows it
-        // always; HUD mode hides it when space is tight to keep the
-        // chip readable. (Plan: "If the HUD chip ends up too dense in
-        // playtest, the cluster label is the first thing to drop.")
-        if (clusterLabel != null && !clusterLabel.isBlank() && mode == Mode.ATLAS) {
-            Label clusterEl = label(clusterLabel, MUTED);
-            clusterEl.layout(layout -> layout.widthPercent(100).flex(1));
-            clusterEl.textStyle(style -> style
-                    .textColor(MUTED)
-                    .textShadow(false)
-                    .fontSize(6)
-                    .textAlignHorizontal(Horizontal.LEFT)
-                    .textAlignVertical(Vertical.CENTER));
-            labelColumn.addChild(clusterEl);
-        }
-        chip.addChild(labelColumn);
+        nameEl.setAllowHitTest(false);
+        chip.addChild(nameEl);
 
         if (target != null && !target.missingIdentities().isEmpty()) {
-            chip.addChild(buildIconStrip(target, mode));
+            chip.addChild(buildIconStrip(target));
         }
 
-        // Compass + distance (or dim-shorthand + coords for cross-dim).
         boolean crossDimension = isCrossDimension(chestDimensionId);
-        UIElement directionCol = new UIElement().layout(layout -> layout
-                .width(mode == Mode.HUD ? 42 : 56)
-                .heightPercent(100)
-                .flexDirection(FlexDirection.COLUMN)
-                .alignItems(AlignItems.CENTER));
-        directionCol.setAllowHitTest(false);
-
         if (crossDimension) {
             Label dimEl = label(shortDimension(chestDimensionId), ACCENT);
-            dimEl.layout(layout -> layout.widthPercent(100).flex(1));
+            dimEl.layout(layout -> layout.heightPercent(100));
             dimEl.textStyle(style -> style
                     .textColor(ACCENT)
                     .textShadow(false)
-                    .fontSize(mode == Mode.HUD ? 6 : 7)
-                    .textAlignHorizontal(Horizontal.RIGHT)
+                    .fontSize(6)
+                    .adaptiveWidth(true)
                     .textAlignVertical(Vertical.CENTER));
-            directionCol.addChild(dimEl);
+            dimEl.setAllowHitTest(false);
+            chip.addChild(dimEl);
 
-            String coords = chestWorldX + " " + chestWorldY + " " + chestWorldZ;
-            Label coordsEl = label(coords, MUTED);
-            coordsEl.layout(layout -> layout.widthPercent(100).flex(1));
+            Label coordsEl = label(chestWorldX + " " + chestWorldY + " " + chestWorldZ, MUTED);
+            coordsEl.layout(layout -> layout.heightPercent(100));
             coordsEl.textStyle(style -> style
                     .textColor(MUTED)
                     .textShadow(false)
                     .fontSize(5)
-                    .textAlignHorizontal(Horizontal.RIGHT)
+                    .adaptiveWidth(true)
                     .textAlignVertical(Vertical.CENTER));
-            directionCol.addChild(coordsEl);
+            coordsEl.setAllowHitTest(false);
+            chip.addChild(coordsEl);
         } else {
             Label compassEl = label("·", ACCENT);
-            compassEl.layout(layout -> layout.widthPercent(100).flex(1));
+            compassEl.layout(layout -> layout.heightPercent(100));
             compassEl.textStyle(style -> style
                     .textColor(ACCENT)
                     .textShadow(false)
-                    .fontSize(mode == Mode.HUD ? 8 : 10)
-                    .textAlignHorizontal(Horizontal.RIGHT)
+                    .fontSize(7)
+                    .adaptiveWidth(true)
                     .textAlignVertical(Vertical.CENTER));
-            directionCol.addChild(compassEl);
+            compassEl.setAllowHitTest(false);
+            chip.addChild(compassEl);
 
             Label distanceEl = label("--m", MUTED);
-            distanceEl.layout(layout -> layout.widthPercent(100).flex(1));
+            distanceEl.layout(layout -> layout.heightPercent(100));
             distanceEl.textStyle(style -> style
                     .textColor(MUTED)
                     .textShadow(false)
-                    .fontSize(mode == Mode.HUD ? 5 : 6)
-                    .textAlignHorizontal(Horizontal.RIGHT)
+                    .fontSize(6)
+                    .adaptiveWidth(true)
                     .textAlignVertical(Vertical.CENTER));
-            directionCol.addChild(distanceEl);
+            distanceEl.setAllowHitTest(false);
+            chip.addChild(distanceEl);
 
             // Per-frame compass + distance update. Reads off the current
             // local player; chip stays static when the player isn't
@@ -176,12 +142,11 @@ public final class WayfindingChip {
                     compassEl, distanceEl,
                     chestDimensionId, chestWorldX, chestWorldY, chestWorldZ));
         }
-        chip.addChild(directionCol);
         return chip;
     }
 
-    private static UIElement buildIconStrip(WayfindingTarget target, Mode mode) {
-        float iconSize = mode == Mode.HUD ? 10f : 12f;
+    private static UIElement buildIconStrip(WayfindingTarget target) {
+        float iconSize = ICON_SIZE;
         UIElement strip = new UIElement().layout(layout -> layout
                 .heightPercent(100)
                 .gapAll(2)
@@ -297,19 +262,15 @@ public final class WayfindingChip {
     /** Convenience for atlas chip builders that have a {@link SlotWorkspaceViewModel.ChestChip}. */
     public static UIElement build(
             SlotWorkspaceViewModel.ChestChip chip,
-            WayfindingTarget target,
-            String clusterLabel,
-            Mode mode
+            WayfindingTarget target
     ) {
         return build(
                 target,
                 chip.label(),
-                clusterLabel,
                 chip.dimensionId(),
                 chip.worldX(),
                 chip.worldY(),
-                chip.worldZ(),
-                mode
+                chip.worldZ()
         );
     }
 }

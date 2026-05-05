@@ -33,23 +33,6 @@ import net.neoforged.neoforge.network.PacketDistributor;
 public final class SlotContainerSidebar {
     /** Min sidebar width in screen pixels — narrow enough to fit on a 720p screen, wide enough to host the wall. */
     static final int MIN_SIDEBAR_WIDTH = 320;
-    /**
-     * Pixel gap between the sidebar's right edge and the host GUI's
-     * left edge. The host is anchored flush against this gap (not
-     * centered in the remaining space) so the player doesn't see a big
-     * empty corridor between the SLOT panel and the crafting / chest
-     * UI; whatever right-side space is left over is where EMI / JEI
-     * naturally live.
-     */
-    static final int HOST_GUI_GAP = 8;
-    /**
-     * Pixel space we keep clear on the right of the host GUI for
-     * EMI / JEI / similar right-edge tooling. Sidebar width grows to
-     * consume everything not claimed by the host or this reserve, so
-     * on wide screens the sidebar can take well over half the screen
-     * without crashing into the recipe panel.
-     */
-    static final int RIGHT_PANEL_RESERVE = 200;
 
     private static boolean registered;
     private static Screen activeHostScreen;
@@ -83,6 +66,8 @@ public final class SlotContainerSidebar {
         NeoForge.EVENT_BUS.addListener(SlotContainerSidebar::onScreenInit);
         NeoForge.EVENT_BUS.addListener(SlotContainerSidebar::onScreenClosing);
         NeoForge.EVENT_BUS.addListener(SlotContainerSidebar::onMouseReleased);
+        NeoForge.EVENT_BUS.addListener(SlotContainerSidebar::onCharTyped);
+        NeoForge.EVENT_BUS.addListener(SlotContainerSidebar::onKeyPressed);
         registered = true;
     }
 
@@ -90,13 +75,9 @@ public final class SlotContainerSidebar {
      * Width (in screen px) the sidebar will occupy. Defers to the
      * sidebar UI's preferred content size (wall + capped left column
      * + padding) so the sidebar consumes only the space its content
-     * needs — leaving the host GUI flush against the sidebar's right
-     * edge with no dead strip between them. {@code screenWidth} +
-     * {@code hostImageWidth} are accepted for the case where we'd
-     * want to clamp on a very narrow screen, but in practice the
-     * preferred width fits comfortably on every reasonable resolution.
+     * needs.
      */
-    static int sidebarWidthFor(int screenWidth, int hostImageWidth) {
+    static int sidebarWidthFor() {
         return Math.max(MIN_SIDEBAR_WIDTH, SlotSidebarClientUi.preferredSidebarWidth());
     }
 
@@ -131,34 +112,17 @@ public final class SlotContainerSidebar {
             activeSidebarWidth = 0;
         }
 
-        int hostImageWidth = screen.getXSize();
-        int sidebarWidth = sidebarWidthFor(screen.width, hostImageWidth);
+        int sidebarWidth = sidebarWidthFor();
 
-        // Push the host into the right strip BEFORE mounting our sidebar:
-        // re-init it with a virtual screen width that, when centered by
-        // AbstractContainerScreen.init(), lands leftPos at sidebarWidth +
-        // HOST_GUI_GAP. This way any side widgets the host attaches in
-        // init() (Sophisticated Backpacks upgrade tabs, Curios slots,
-        // etc.) compute their positions from the post-shift leftPos
-        // instead of the centered default, so they don't end up floating
-        // inside the SLOT sidebar's space. After init we restore the
-        // real screen width — leftPos is already where we want it and
-        // the sidebar widget tree uses the full viewport for its own
-        // bounds. Skipped on screens too narrow to fit the host without
-        // overlap, where we fall back to the simple leftPos shift.
-        int gap = HOST_GUI_GAP;
-        int virtualScreenWidth = hostImageWidth + 2 * (sidebarWidth + gap);
-        if (virtualScreenWidth <= screen.width) {
-            int originalScreenWidth = screen.width;
-            try {
-                screen.resize(minecraft, virtualScreenWidth, screen.height);
-            } finally {
-                screen.width = originalScreenWidth;
-            }
-        } else {
-            ((AbstractContainerScreenAccessor) screen).slot$setLeftPos(sidebarWidth + gap);
-        }
-
+        // The host stays in its native centered position. Earlier
+        // iterations tried to shift it right (mutate leftPos / re-init
+        // with a virtual screen width) so the SLOT sidebar wouldn't
+        // overlap it, but every approach broke modded screens that
+        // attach side widgets in init (Sophisticated Backpacks upgrade
+        // tabs ended up scattered across the workspace). Living with
+        // overlap in sidebar mode is the lesser evil; reworking the
+        // SLOT UI to fit beside an unshifted host is tracked as a
+        // separate design pass.
         boolean mounted = SlotSidebarClientUi.mount(minecraft.player, screen, sidebarWidth, screen.height);
         if (!mounted) {
             return;
@@ -256,6 +220,51 @@ public final class SlotContainerSidebar {
         boolean consumed = SlotSidebarClientUi.tryConsumeAtlasDragForHostSlot(
                 slot.index, event.getMouseX(), event.getMouseY());
         if (consumed) {
+            event.setCanceled(true);
+        }
+    }
+
+    /**
+     * Forward typed characters to the sidebar's widget tree. LDLib2's
+     * {@code ScreenMixin.charTyped} is not present — only {@code keyPressed}
+     * is mixed in, and even that fires only for the inventory key. So
+     * {@code /} (search), digits (belt assign), and any other char input
+     * never reach the sidebar when it's mounted on a non-LDLib2 host
+     * screen. This listener bridges the gap by dispatching directly into
+     * the modular UI's root.
+     *
+     * <p>Skipped while the host screen has a vanilla {@link EditBox}
+     * focused (e.g. anvil rename) so the player's typing flows there
+     * instead of getting stolen by SLOT.
+     */
+    private static void onCharTyped(ScreenEvent.CharacterTyped.Pre event) {
+        if (activeHostScreen == null || event.getScreen() != activeHostScreen) {
+            return;
+        }
+        if (event.getScreen().getFocused() instanceof net.minecraft.client.gui.components.EditBox) {
+            return;
+        }
+        if (SlotSidebarClientUi.dispatchCharTyped(event.getCodePoint(), event.getModifiers())) {
+            event.setCanceled(true);
+        }
+    }
+
+    /**
+     * Forward key presses to the sidebar widget tree, same plumbing as
+     * {@link #onCharTyped}. Required for the search modal's
+     * ESC/Enter/Backspace/Tab handlers, the 1–9 belt-assign hotkeys,
+     * undo/redo, and the open-vanilla key — none of which fire while
+     * the sidebar is mounted on a non-LDLib2 host screen because
+     * LDLib2's mixin only forwards the inventory key.
+     */
+    private static void onKeyPressed(ScreenEvent.KeyPressed.Pre event) {
+        if (activeHostScreen == null || event.getScreen() != activeHostScreen) {
+            return;
+        }
+        if (event.getScreen().getFocused() instanceof net.minecraft.client.gui.components.EditBox) {
+            return;
+        }
+        if (SlotSidebarClientUi.dispatchKeyPressed(event.getKeyCode(), event.getScanCode(), event.getModifiers())) {
             event.setCanceled(true);
         }
     }

@@ -9,11 +9,14 @@ see [../status.md](../status.md). For shipped plans, see
 
 ## Active
 
-No single dominant track. The list-view rewrite that ran from
-2026-05-03 closed 2026-05-05 — plan archived in
-[`done/list-view.md`](done/list-view.md), sidebar embed sub-plan in
-[`done/list-view-phase-3a.md`](done/list-view-phase-3a.md). Pull
-from the queue below.
+**[`single-column-workspace.md`](single-column-workspace.md) —
+collapse the left column into a vertical sliver + fold its
+contents into the wall.** Goal: shrink `WORKSPACE_WIDTH_PX` from
+414 to ≈ 280 so the sidebar mounts cleanly alongside arbitrary
+modded container UIs. Seven phases: hide redundant panels,
+auto-home (eliminating Triage), Recents section, TOC sliver,
+chest-finder fold-in to cards, action-cluster icon-ification,
+width recalibration. Each phase lands independently.
 
 **Recently shipped, no further plan:**
 

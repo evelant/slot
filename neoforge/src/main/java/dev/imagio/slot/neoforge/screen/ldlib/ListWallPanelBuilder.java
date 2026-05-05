@@ -151,31 +151,29 @@ final class ListWallPanelBuilder {
         buildSections(scroller);
 
         UIElement leftColumn = host.leftColumn.overlay();
-        // Top row: search hint/chip on the left, carried-free-slots
-        // chip in the middle, action cluster on the right. Spaced via
-        // justifyContent SPACE_BETWEEN so the row distributes leftover
-        // space cleanly without making any one element stretch
-        // (Label.flex(1) misbehaves under flex-row in Taffy and was
-        // making the chip overlap the search hint). All three children
-        // are content-sized and the row settles them at left / middle /
-        // right with even gutters. Flex-wrap so the actions cluster
-        // wraps to a second line when the workspace gets narrow at
-        // higher GUI scales — without it the search hint and free-chip
-        // overlap because SPACE_BETWEEN can't distribute negative slack.
-        UIElement topRow = new UIElement().layout(layout -> layout
-                .widthPercent(100)
-                .gapAll(SECTION_GAP_PX)
-                .alignItems(AlignItems.CENTER)
-                .justifyContent(dev.vfyjxf.taffy.style.AlignContent.SPACE_BETWEEN)
-                .wrap(dev.vfyjxf.taffy.style.FlexWrap.WRAP)
-                .flexDirection(FlexDirection.ROW));
-        UIElement search = host.searchController.modalActive()
-                ? host.overlays.searchChipOverlay()
-                : host.overlays.searchHintOverlay();
-        topRow.addChild(search);
-        topRow.addChild(host.carriedFreeSlotsChipElement);
-        topRow.addChild(host.topRightActionsElement);
-        panel.addChild(topRow);
+        // Top row layout. When the search modal isn't active, three
+        // content-sized siblings — hint, carried-free chip, actions —
+        // distributed via SPACE_BETWEEN with NO_WRAP. When the modal
+        // IS active, replace the whole row with a single full-width
+        // search bar so the buffer + status text never have to fight
+        // the chip + actions for horizontal space (which used to
+        // squeeze them into a 30px column where the status text
+        // wrapped vertically per-character).
+        if (host.searchController.modalActive()) {
+            panel.addChild(host.overlays.searchModalRowOverlay());
+        } else {
+            UIElement topRow = new UIElement().layout(layout -> layout
+                    .widthPercent(100)
+                    .gapAll(SECTION_GAP_PX)
+                    .alignItems(AlignItems.CENTER)
+                    .justifyContent(dev.vfyjxf.taffy.style.AlignContent.SPACE_BETWEEN)
+                    .wrap(dev.vfyjxf.taffy.style.FlexWrap.NO_WRAP)
+                    .flexDirection(FlexDirection.ROW));
+            topRow.addChild(host.overlays.searchHintOverlay());
+            topRow.addChild(host.carriedFreeSlotsChipElement);
+            topRow.addChild(host.topRightActionsElement);
+            panel.addChild(topRow);
+        }
         // Mid section: leftColumn (capped width) beside the wall
         // scroller (fixed CARDS_PER_ROW-derived width). The wall is
         // the primary surface; the leftColumn flexes within its cap to

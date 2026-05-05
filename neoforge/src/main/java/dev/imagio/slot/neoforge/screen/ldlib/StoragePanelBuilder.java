@@ -29,7 +29,6 @@ final class StoragePanelBuilder {
     static final int PANEL_GAP = 3;
     static final int PANEL_PADDING = 6;
     static final int HEADER_HEIGHT = 12;
-    static final int MAX_CHIPS = 7;
 
     private final SlotWorkspaceUiController host;
 
@@ -126,21 +125,17 @@ final class StoragePanelBuilder {
         header.setAllowHitTest(false);
         overlay.addChild(header);
 
-        // Tally visible chips per cluster up to MAX_CHIPS so we can skip
-        // a header for single-chip clusters (visual noise otherwise).
+        // Tally visible chips per cluster so we can skip a header for
+        // single-chip clusters (visual noise otherwise). All proximate
+        // chips render — the outer left-column scroller handles overflow.
         java.util.Map<String, Integer> chipsPerCluster = new java.util.LinkedHashMap<>();
-        int previewed = 0;
         for (SlotWorkspaceViewModel.ChestChip chip : host.viewModel.chestChips()) {
             if (!isChipVisible(chip)) {
                 continue;
             }
             chipsPerCluster.merge(chip.clusterId(), 1, Integer::sum);
-            if (++previewed >= MAX_CHIPS) {
-                break;
-            }
         }
 
-        int rendered = 0;
         String currentClusterId = null;
         for (SlotWorkspaceViewModel.ChestChip chip : host.viewModel.chestChips()) {
             if (!isChipVisible(chip)) {
@@ -154,9 +149,6 @@ final class StoragePanelBuilder {
                 }
             }
             overlay.addChild(chestChip(chip));
-            if (++rendered >= MAX_CHIPS) {
-                break;
-            }
         }
 
         host.storagePanelElement = overlay;
@@ -259,15 +251,14 @@ final class StoragePanelBuilder {
     }
 
     private UIElement chestChip(SlotWorkspaceViewModel.ChestChip chip) {
-        // Wayfinding-aware chip: name + cluster + (if needed) missing-icons
-        // + compass + distance. Non-wayfinding chests render the same chip
-        // shape minus the icon strip — see WayfindingChip.build for the
-        // null-target fallback.
+        // Wayfinding-aware chip: name + (if needed) missing-icons +
+        // compass + distance. Non-wayfinding chests render the same
+        // chip shape minus the icon strip — see WayfindingChip.build
+        // for the null-target fallback. Cluster name lives in the
+        // panel's group header above, not on each chip.
         dev.imagio.slot.inventory.workspace.WayfindingTarget target =
                 dev.imagio.slot.neoforge.client.wayfinding.WayfindingTargetCache.targetFor(chip.storageId());
-        SlotWorkspaceViewModel.ChestClusterDescriptor clusterDescriptor = cluster(chip.clusterId());
-        String clusterLabel = clusterDescriptor == null ? null : clusterDescriptor.label();
-        UIElement element = WayfindingChip.build(chip, target, clusterLabel, WayfindingChip.Mode.ATLAS);
+        UIElement element = WayfindingChip.build(chip, target);
 
         installChipDropTarget(element, chip);
         installChipHover(element, chip);

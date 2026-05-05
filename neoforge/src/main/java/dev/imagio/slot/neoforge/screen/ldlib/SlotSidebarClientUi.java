@@ -112,6 +112,66 @@ public final class SlotSidebarClientUi {
     }
 
     /**
+     * Dispatch a CHAR_TYPED event into the active sidebar's widget tree,
+     * targeted at the controller root. Bypasses {@code ModularUI.charTyped}'s
+     * focused-element check so the sidebar's hotkeys ({@code /} for
+     * search, etc.) work even when the host screen owns focus and our
+     * sidebar widget never becomes the focused child of the host.
+     *
+     * <p>{@link dev.imagio.slot.neoforge.client.screen.SlotContainerSidebar}
+     * subscribes to NeoForge's
+     * {@code ScreenEvent.CharacterTyped.Pre} and feeds chars in here;
+     * if any listener consumed the event the caller should cancel the
+     * screen event so vanilla doesn't see the keystroke twice.
+     *
+     * <p>Returns true when at least one listener handled the event.
+     */
+    public static boolean dispatchCharTyped(char codePoint, int modifiers) {
+        ActiveMount mount = activeMount;
+        if (mount == null) {
+            return false;
+        }
+        com.lowdragmc.lowdraglib2.gui.ui.UIElement root = mount.controller.root;
+        if (root == null) {
+            return false;
+        }
+        com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent event =
+                com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent.create(
+                        com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents.CHAR_TYPED);
+        event.codePoint = codePoint;
+        event.modifiers = modifiers;
+        event.target = root;
+        com.lowdragmc.lowdraglib2.gui.ui.event.UIEventDispatcher.dispatchEvent(event);
+        return event.hasHandler;
+    }
+
+    /**
+     * Same shape as {@link #dispatchCharTyped} for KEY_DOWN — routes the
+     * keystroke to the sidebar root so the hotbar / undo / open-vanilla
+     * / search-modal hotkeys fire while the sidebar is mounted on a
+     * non-LDLib2 host screen.
+     */
+    public static boolean dispatchKeyPressed(int keyCode, int scanCode, int modifiers) {
+        ActiveMount mount = activeMount;
+        if (mount == null) {
+            return false;
+        }
+        com.lowdragmc.lowdraglib2.gui.ui.UIElement root = mount.controller.root;
+        if (root == null) {
+            return false;
+        }
+        com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent event =
+                com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent.create(
+                        com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents.KEY_DOWN);
+        event.keyCode = keyCode;
+        event.scanCode = scanCode;
+        event.modifiers = modifiers;
+        event.target = root;
+        com.lowdragmc.lowdraglib2.gui.ui.event.UIEventDispatcher.dispatchEvent(event);
+        return event.hasHandler;
+    }
+
+    /**
      * If the active sidebar is mid-drag with an {@link AtlasItemDrag}
      * payload, fire {@code sendCrossSurfaceDropOnHostSlot(identity,
      * hostSlotIndex)} and end the drag. Returns true when consumed —

@@ -240,20 +240,37 @@ final class WorkspaceOverlays {
         return count > 0 ? "Deposit (" + count + ")" : "Deposit";
     }
 
-    UIElement searchChipOverlay() {
-        // In-flow chip that takes the same row slot as
-        // searchHintOverlay when the search modal is active. The wall
-        // panel's top row applies flex(1) at the call site so width
-        // sizing happens there.
-        UIElement chip = panel(GLASS).layout(layout -> layout
-                .paddingAll(6)
-                .gapAll(3)
-                .flexDirection(FlexDirection.COLUMN));
-        chip.style(style -> style.zIndex(12));
-        chip.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
+    /**
+     * Full-width search modal row, mounted by
+     * {@link ListWallPanelBuilder#repopulateWallPanel} when the search
+     * modal is active — it replaces the whole top row (hint + carry chip
+     * + actions) for the duration of the search session. Single line:
+     * buffer label on the left ({@code adaptiveWidth} so it sizes to its
+     * text), summary label on the right with {@code flex(1)} so it
+     * grows to fill remaining space without wrapping.
+     *
+     * <p>Earlier versions tried to squeeze a column-stacked chip into
+     * the 3-element top row's middle slot — when the player started
+     * typing, flex-shrink collapsed the chip down to a sliver where
+     * {@code wrappedLabel.widthPercent(100)} promptly wrapped the
+     * summary into a vertical column of single characters. Replacing
+     * the row outright sidesteps the whole conflict.
+     */
+    UIElement searchModalRowOverlay() {
+        UIElement row = panel(GLASS).layout(layout -> layout
+                .widthPercent(100)
+                .gapAll(8)
+                .paddingHorizontal(8)
+                .paddingVertical(4)
+                .alignItems(AlignItems.CENTER)
+                .flexDirection(FlexDirection.ROW));
+        row.style(style -> style.zIndex(12));
+        row.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
 
         String bufferDisplay = "/" + host.searchController.buffer() + "_";
-        chip.addChild(label(bufferDisplay, ACCENT).layout(layout -> layout.height(12)));
+        Label bufferLabel = label(bufferDisplay, ACCENT);
+        bufferLabel.textStyle(style -> style.adaptiveWidth(true));
+        row.addChild(bufferLabel);
 
         String summary;
         if (host.searchController.buffer().length() < AtlasSearchIndex.DEFAULT_MIN_QUERY_CHARS) {
@@ -268,31 +285,26 @@ final class WorkspaceOverlays {
             summary = (host.searchController.matchIndex() + 1) + " of " + host.searchController.matches().size()
                     + " matches  ·  Tab cycle  ·  Enter commit  ·  " + commitHint;
         }
-        // Content-fit the summary line: the previous flex(1) caused the
-        // chip to claim extra vertical space below the buffer line, so
-        // the search modal grew a strip of empty space when active.
-        // Wrapping is still allowed via wrappedLabel's textWrap, so a
-        // long summary line still spills onto a second row when needed.
-        Label summaryLabel = wrappedLabel(summary, MUTED);
-        summaryLabel.layout(layout -> layout.widthPercent(100));
-        chip.addChild(summaryLabel);
-        return chip;
+        Label summaryLabel = label(summary, MUTED);
+        summaryLabel.layout(layout -> layout.flex(1));
+        row.addChild(summaryLabel);
+        return row;
     }
 
     UIElement searchHintOverlay() {
-        // Background lives directly on the label rather than on a
-        // wrapper panel: when the wrapper was a flex-row container of
-        // a single Label child, Taffy was sizing the wrapper to its
-        // measured content width and the GLASS texture only painted
-        // behind the first couple of characters. Putting the
-        // background + padding on the Label itself sidesteps the
-        // cross-axis sizing dance — the call site applies flex(1) so
-        // the label measures the full row width and its
-        // style.backgroundTexture renders at that measured size.
+        // adaptiveWidth(true) is required: without it Taffy gives the
+        // Label its parent's available width (auto-grow), so the
+        // GLASS background paints across the entire top row and the
+        // SPACE_BETWEEN-aligned free-slots chip ends up sitting on
+        // top of the Label's invisible right half. With adaptiveWidth
+        // the recompute() in TextElement pins the label's layout
+        // width to the measured text width — the background hugs the
+        // text, and the chip's flex slot gets the slack it expects.
         Label hint = label("Press / to search", MUTED);
         hint.layout(layout -> layout
                 .paddingHorizontal(8)
                 .paddingVertical(4));
+        hint.textStyle(style -> style.adaptiveWidth(true));
         hint.style(style -> style.zIndex(11).backgroundTexture(rect(GLASS)));
         hint.setAllowHitTest(false);
         return hint;

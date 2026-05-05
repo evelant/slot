@@ -176,14 +176,12 @@ final class SearchResultsPanelBuilder {
     }
 
     private UIElement matchChip(Match match) {
-        // Same wayfinding chip as the proximity panel — name + cluster +
+        // Same wayfinding chip as the proximity panel — name +
         // missing-icons + compass + distance — so the player sees the
         // same shape regardless of which atlas panel they're scanning.
         dev.imagio.slot.inventory.workspace.WayfindingTarget target =
                 dev.imagio.slot.neoforge.client.wayfinding.WayfindingTargetCache.targetFor(match.chip.storageId());
-        SlotWorkspaceViewModel.ChestClusterDescriptor clusterDescriptor = cluster(match.chip.clusterId());
-        String clusterLabel = clusterDescriptor == null ? null : clusterDescriptor.label();
-        UIElement chip = WayfindingChip.build(match.chip, target, clusterLabel, WayfindingChip.Mode.ATLAS);
+        UIElement chip = WayfindingChip.build(match.chip, target);
         installSearchChipHover(chip, match);
         return chip;
     }
