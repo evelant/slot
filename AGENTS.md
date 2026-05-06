@@ -73,6 +73,7 @@ This is a fast-moving experimental repo. Docs describe intent as of their
   per-record NBT methods — those create a ratchet where every core
   addition forces a platform edit. Keep codecs in a sibling class in the
   same module as the data.
+- Never add time estimates when planning. They're always wrong.
 
 ## When Direction Changes
 
