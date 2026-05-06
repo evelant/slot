@@ -10,6 +10,7 @@ import dev.imagio.slot.neoforge.screen.ldlib.SlotSidebarClientUi;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.neoforged.neoforge.client.event.ScreenEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.network.PacketDistributor;
@@ -31,8 +32,17 @@ import net.neoforged.neoforge.network.PacketDistributor;
  * remains the player's {@code containerMenu}.
  */
 public final class SlotContainerSidebar {
-    /** Min sidebar width in screen pixels — narrow enough to fit on a 720p screen, wide enough to host the wall. */
-    static final int MIN_SIDEBAR_WIDTH = 320;
+    /**
+     * Floor on the sidebar's screen-pixel width. The actual width comes
+     * from {@link SlotSidebarClientUi#preferredSidebarWidth()} (post-
+     * Phase-7 single-column layout this is ~280 px); this floor is a
+     * safety net for any future configuration that pushes the workspace
+     * narrower than its widget tree can reasonably layout. Pinned at
+     * 240 because the wall's 9-card row plus padding doesn't reflow
+     * below that, and going wider here adds dead pixels on the side
+     * that visually cover the host GUI for no benefit.
+     */
+    static final int MIN_SIDEBAR_WIDTH = 240;
 
     private static boolean registered;
     private static Screen activeHostScreen;
@@ -91,6 +101,16 @@ public final class SlotContainerSidebar {
         String className = screen.getClass().getName();
         if (className.startsWith("dev.imagio.slot.")
                 || className.startsWith("com.lowdragmc.lowdraglib2.")) {
+            return;
+        }
+        // Vanilla {@link InventoryScreen} only ever shows up as the
+        // bypass-to-vanilla escape hatch from the workspace's "open
+        // vanilla inventory" button (or when SLOT is disabled below).
+        // Mounting a sidebar on it defeats the purpose — and the
+        // sidebar widget swallows the Esc keystroke before the host
+        // screen sees it, leaving the player unable to dismiss the
+        // screen short of killing the client.
+        if (screen instanceof InventoryScreen) {
             return;
         }
         // Honor the global escape hatch — if SLOT is disabled in the

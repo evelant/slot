@@ -98,6 +98,26 @@ public final class ChestDepositObserver {
         PENDING.put(player.getUUID(), new PendingInteraction(pos.immutable(), tick));
     }
 
+    /**
+     * The block position of the chest backing the player's currently-open
+     * container menu, or {@code null} when the player isn't viewing a
+     * tracked chest session. Surfaced for the workspace's active-chest
+     * panel — it needs the BlockPos to resolve the chest's claim state
+     * (or offer a "Claim" affordance when unclaimed) without re-walking
+     * the world.
+     */
+    public static BlockPos activeChestPos(ServerPlayer player) {
+        if (player == null) {
+            return null;
+        }
+        AbstractContainerMenu menu = player.containerMenu;
+        if (!(menu instanceof ChestMenu)) {
+            return null;
+        }
+        OpenSession session = SESSIONS.get(menu);
+        return session == null ? null : session.pos;
+    }
+
     private static void onContainerOpen(PlayerContainerEvent.Open event) {
         if (!(event.getEntity() instanceof ServerPlayer player)) {
             return;
@@ -155,16 +175,17 @@ public final class ChestDepositObserver {
             return;
         }
 
-        // Take-back guard: if the player just took items out of a CLAIMED
-        // chest whose affinity for that identity was bumped within the
-        // last ~30 s, that signals "I didn't mean to deposit those" — the
-        // chest's affinity bond gets cleared so the bump doesn't linger
-        // until decay. Covers both "atlas-deposit then walked over and
-        // grabbed it back" and "vanilla-deposit then immediately reopened
-        // to take it back" — both leave a fresh lastTouchedTick on the
-        // bond, so the same heuristic catches them.
-        if (!takes.isEmpty()) {
-            applyTakeBackGuard(player, chestService, anchor, takes, level.getGameTime());
+        // Recents filter: takes from a CLAIMED (tracked) chest don't
+        // belong in the player's "where did the thing I just grabbed
+        // end up?" strip — the chest is part of their organised
+        // storage, not a discovery. Dismiss those identities so the
+        // ACQUIRED events from the authority diff don't surface them.
+        // Loot/world pickups + crafting outputs aren't routed through
+        // here, so they keep populating recents normally.
+        if (!takes.isEmpty() && chestService.chestByAnchor(anchor) != null) {
+            for (ItemIdentity identity : takes.keySet()) {
+                runtime.dismissRecent(identity);
+            }
         }
 
         // Loot chest summary: player took items from a chest with no
@@ -174,44 +195,6 @@ public final class ChestDepositObserver {
         // surface for "Triage-style loot panel" per docs/plans/learned-storage.md.
         if (!takes.isEmpty() && chestService.chestByAnchor(anchor) == null) {
             sendLootChestSummary(player, runtime, takes);
-        }
-    }
-
-    /** ~30 seconds at 20 tps. */
-    private static final long TAKE_BACK_WINDOW_TICKS = 600L;
-
-    private static void applyTakeBackGuard(
-            ServerPlayer player,
-            ChestClaimWorkflowDomainService chestService,
-            ChestAnchor anchor,
-            Map<ItemIdentity, Integer> takes,
-            long currentTick
-    ) {
-        var claim = chestService.chestByAnchor(anchor);
-        if (claim == null) {
-            return;
-        }
-        UUID storageId = claim.storageId();
-        var affinityMap = chestService.chestAffinityMap();
-        int forgotten = 0;
-        for (ItemIdentity identity : takes.keySet()) {
-            var bond = affinityMap.affinity(storageId, identity);
-            if (bond == null) {
-                continue;
-            }
-            long elapsed = currentTick - bond.lastTouchedTick();
-            if (elapsed < 0 || elapsed > TAKE_BACK_WINDOW_TICKS) {
-                continue;
-            }
-            if (chestService.forgetIdentity(storageId, identity)) {
-                forgotten++;
-            }
-        }
-        if (forgotten > 0) {
-            SlotCommon.LOGGER.info(
-                    "[SLOT] take-back guard player={} chest={} forgotten={}",
-                    player.getScoreboardName(), storageId, forgotten
-            );
         }
     }
 

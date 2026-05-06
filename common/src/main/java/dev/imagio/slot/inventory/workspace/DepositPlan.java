@@ -19,12 +19,14 @@ public record DepositPlan(List<Assignment> assignments) {
             String laneId,
             int slotIndex,
             String itemId,
+            int count,
             List<String> candidateStorageIds
     ) {
         public Assignment {
             laneId = laneId == null ? "" : laneId;
             slotIndex = Math.max(0, slotIndex);
             itemId = itemId == null ? "" : itemId;
+            count = Math.max(0, count);
             candidateStorageIds = candidateStorageIds == null ? List.of() : List.copyOf(candidateStorageIds);
         }
     }

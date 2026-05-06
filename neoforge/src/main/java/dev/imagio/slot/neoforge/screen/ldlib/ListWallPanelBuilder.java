@@ -59,15 +59,6 @@ final class ListWallPanelBuilder {
      */
     private static final int SCROLLBAR_GUTTER_PX = 20;
     /**
-     * Cap on how wide the left column (TOC + chest panels + triage)
-     * can grow. Without a cap it flexes to fill everything the wall
-     * doesn't claim, ballooning every panel and stretching label rows
-     * uncomfortably wide. 140 px fits TOC labels ("Building Blocks",
-     * "Raw Materials") and chest rows ("Storage Area 1 / Chest #abcd")
-     * with comfortable room for the count column on the right.
-     */
-    static final int SIDEBAR_LEFT_COLUMN_MAX_WIDTH_PX = 140;
-    /**
      * Pixel width that fits exactly {@link #CARDS_PER_ROW} cards plus
      * inter-card gaps and the surrounding padding/scrollbar chrome.
      * Used as the scroller's fixed width in both standalone and sidebar
@@ -150,7 +141,6 @@ final class ListWallPanelBuilder {
         scroller.clearAllScrollViewChildren();
         buildSections(scroller);
 
-        UIElement leftColumn = host.leftColumn.overlay();
         // Top row layout. When the search modal isn't active, three
         // content-sized siblings — hint, carried-free chip, actions —
         // distributed via SPACE_BETWEEN with NO_WRAP. When the modal
@@ -174,22 +164,38 @@ final class ListWallPanelBuilder {
             topRow.addChild(host.topRightActionsElement);
             panel.addChild(topRow);
         }
-        // Mid section: leftColumn (capped width) beside the wall
-        // scroller (fixed CARDS_PER_ROW-derived width). The wall is
-        // the primary surface; the leftColumn flexes within its cap to
-        // consume whatever horizontal space remains.
+        // Active-chest control strip — only when the host screen is a
+        // chest screen. Shows above the recents strip so the chest
+        // controls stay close to the action row, with recents (which is
+        // navigation, not a per-host action) just below.
+        UIElement activeChest = host.activeChestStrip.overlay();
+        if (activeChest != null) {
+            panel.addChild(activeChest);
+        }
+        // Recents strip stays pinned below the top row and outside the
+        // wall scroller — "where did the thing I just grabbed end up?"
+        // doesn't follow the scroll position. See
+        // docs/plans/single-column-workspace.md Phase 3.
+        UIElement recentsStrip = host.recentsStrip.overlay();
+        if (recentsStrip != null) {
+            panel.addChild(recentsStrip);
+        }
+        // Mid section: TOC sliver glued to the left edge of the wall
+        // scroller (fixed CARDS_PER_ROW-derived width). The wall is the
+        // primary surface; the sliver is a thin navigation strip and
+        // adds only a few px to total width.
         UIElement midRow = new UIElement().layout(layout -> layout
                 .widthPercent(100)
                 .flex(1)
                 .gapAll(SECTION_GAP_PX)
                 .alignItems(AlignItems.STRETCH)
                 .flexDirection(FlexDirection.ROW));
-        if (leftColumn != null) {
-            leftColumn.layout(layout -> layout
-                    .flex(1)
-                    .maxWidth(SIDEBAR_LEFT_COLUMN_MAX_WIDTH_PX)
+        UIElement tocSliver = host.tocPanel.overlay();
+        if (tocSliver != null) {
+            tocSliver.layout(layout -> layout
+                    .width(TocPanelBuilder.SLIVER_WIDTH_PX)
                     .heightPercent(100));
-            midRow.addChild(leftColumn);
+            midRow.addChild(tocSliver);
         }
         midRow.addChild(scroller);
         panel.addChild(midRow);
@@ -387,6 +393,9 @@ final class ListWallPanelBuilder {
                 }
                 host.rpc.sendAssignHome(island.islandId());
             });
+        }
+        if (island.kind() == VisualAtlasIslandKind.PLAYER) {
+            host.drag.installSectionHeaderDragSource(header, island);
         }
         host.drag.installSectionHeaderDropTarget(header, island);
         return header;

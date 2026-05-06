@@ -105,7 +105,52 @@ public final class SlotWorkspaceViewModelCodec {
             depositableTags.add(encodeIdentity(ref));
         }
         tag.put("depositableIdentities", depositableTags);
+
+        ListTag recentTags = new ListTag();
+        for (SlotWorkspaceViewModel.IdentityRef ref : viewModel.recentIdentities()) {
+            recentTags.add(encodeIdentity(ref));
+        }
+        tag.put("recentIdentities", recentTags);
+
+        tag.put("activeChestPanel", encodeActiveChestPanel(viewModel.activeChestPanel()));
         return tag;
+    }
+
+    private static CompoundTag encodeActiveChestPanel(SlotWorkspaceViewModel.ActiveChestPanel panel) {
+        CompoundTag tag = new CompoundTag();
+        if (panel == null || !panel.isPresent()) {
+            return tag;
+        }
+        tag.putString("storageId", panel.storageId());
+        tag.putString("label", panel.label());
+        tag.putString("clusterId", panel.clusterId());
+        tag.putString("clusterLabel", panel.clusterLabel());
+        tag.putInt("swatchColor", panel.swatchColor());
+        tag.putInt("posX", panel.posX());
+        tag.putInt("posY", panel.posY());
+        tag.putInt("posZ", panel.posZ());
+        tag.putString("dimensionId", panel.dimensionId());
+        return tag;
+    }
+
+    private static SlotWorkspaceViewModel.ActiveChestPanel decodeActiveChestPanel(CompoundTag tag) {
+        // The encoder writes an empty tag (no keys) when no chest is
+        // active; treat absence-or-blank-dimensionId as "not present"
+        // since dimensionId is the panel's isPresent() check.
+        if (tag == null || tag.getString("dimensionId").isBlank()) {
+            return SlotWorkspaceViewModel.ActiveChestPanel.empty();
+        }
+        return new SlotWorkspaceViewModel.ActiveChestPanel(
+                tag.getString("storageId"),
+                tag.getString("label"),
+                tag.getString("clusterId"),
+                tag.getString("clusterLabel"),
+                tag.getInt("swatchColor"),
+                tag.getInt("posX"),
+                tag.getInt("posY"),
+                tag.getInt("posZ"),
+                tag.getString("dimensionId")
+        );
     }
 
     public static SlotWorkspaceViewModel decode(HolderLookup.Provider provider, Tag tag) {
@@ -189,6 +234,15 @@ public final class SlotWorkspaceViewModelCodec {
             depositableIdentities.add(decodeIdentity(depositableTags.getCompound(index)));
         }
 
+        ArrayList<SlotWorkspaceViewModel.IdentityRef> recentIdentities = new ArrayList<>();
+        ListTag recentTags = compoundTag.getList("recentIdentities", Tag.TAG_COMPOUND);
+        for (int index = 0; index < recentTags.size(); index++) {
+            recentIdentities.add(decodeIdentity(recentTags.getCompound(index)));
+        }
+
+        SlotWorkspaceViewModel.ActiveChestPanel activeChestPanel =
+                decodeActiveChestPanel(compoundTag.getCompound("activeChestPanel"));
+
         return new SlotWorkspaceViewModel(
                 compoundTag.getLong("revision"),
                 compoundTag.getString("status"),
@@ -211,7 +265,9 @@ public final class SlotWorkspaceViewModelCodec {
                 kits,
                 lootChestPanel,
                 wayfindingTargets,
-                depositableIdentities
+                depositableIdentities,
+                recentIdentities,
+                activeChestPanel
         );
     }
 

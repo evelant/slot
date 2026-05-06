@@ -66,6 +66,27 @@ final class WorkspaceUi {
         return button;
     }
 
+    /**
+     * Disable hit-testing on every current child of {@code button}. Match
+     * fix to the {@code button.text.setAllowHitTest(false)} we already do
+     * in {@link #button(String, boolean, int)} — addPreIcon / addPostIcon
+     * append a plain UIElement child whose default hit-test ON state
+     * absorbs the cursor and fires MOUSE_LEAVE on the Button as soon as
+     * the cursor moves onto the icon. Hover-driven previews
+     * (deposit-preview, gather-preview) stop firing without this.
+     *
+     * <p>Call after every {@code addPreIcon} / {@code addPostIcon} on
+     * any button that has hover-sensitive listeners.
+     */
+    static void noChildHitTest(Button button) {
+        if (button == null) {
+            return;
+        }
+        for (UIElement child : button.getChildren()) {
+            child.setAllowHitTest(false);
+        }
+    }
+
     static void applyButtonColors(Button button, boolean active, int color) {
         button.buttonStyle(style -> {
             style.baseTexture(rect(color));

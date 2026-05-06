@@ -42,29 +42,25 @@ final class WorkspaceOverlays {
                 .flexDirection(FlexDirection.ROW));
         overlay.style(style -> style.zIndex(11));
 
-        int initialDepositCount = countDepositable();
-        boolean initialDepositEnabled = host.anyChestProximate() && initialDepositCount > 0;
-        Button depositButton = button(depositLabel(initialDepositCount), true, ACCENT);
-        depositButton.layout(layout -> layout.width(72).height(16));
-        depositButton.textStyle(style -> style
-                .textColor(TEXT)
-                .textShadow(false)
-                .fontSize(7)
-                .textAlignHorizontal(Horizontal.CENTER)
-                .textAlignVertical(Vertical.CENTER));
-        depositButton.setVisible(initialDepositEnabled);
-        boolean[] lastDepositVisible = {initialDepositEnabled};
-        int[] lastDepositCount = {initialDepositCount};
+        // Deposit + gather stay in the top-right cluster all the time so
+        // the player can see they exist; the chrome flips between
+        // ACCENT (actionable) and MUTED (not actionable) instead of
+        // hiding the button entirely. With 16-px icons the on/off
+        // toggle from the text-button era was too easy to miss.
+        boolean initialDepositEnabled = host.anyChestProximate() && countDepositable() > 0;
+        Button depositButton = button("", true, initialDepositEnabled ? ACCENT : MUTED).noText();
+        depositButton.addPreIcon(Icons.EXPORT);
+        // Without this the icon child absorbs the cursor's hit-test and
+        // fires MOUSE_LEAVE on the button as soon as the player moves
+        // onto the icon — killing the deposit-preview outline.
+        noChildHitTest(depositButton);
+        depositButton.layout(layout -> layout.width(16).height(16));
+        boolean[] lastDepositEnabled = {initialDepositEnabled};
         depositButton.addEventListener(UIEvents.TICK, event -> {
-            int count = countDepositable();
-            boolean enabled = host.anyChestProximate() && count > 0;
-            if (enabled != lastDepositVisible[0]) {
-                lastDepositVisible[0] = enabled;
-                depositButton.setVisible(enabled);
-            }
-            if (count != lastDepositCount[0]) {
-                lastDepositCount[0] = count;
-                depositButton.setText(Component.literal(depositLabel(count)));
+            boolean enabled = host.anyChestProximate() && countDepositable() > 0;
+            if (enabled != lastDepositEnabled[0]) {
+                lastDepositEnabled[0] = enabled;
+                applyButtonColors(depositButton, true, enabled ? ACCENT : MUTED);
             }
         });
         depositButton.addEventListener(UIEvents.MOUSE_ENTER, event -> {
@@ -107,28 +103,27 @@ final class WorkspaceOverlays {
                         "Deposit carried items into proximate chests by learned affinity. "
                                 + "Items without an existing bond stay in carry — drop one in manually first to teach the chest."));
 
-        // Top-level Gather button. Mirrors the per-kit "gather N" inside
-        // the kit rack but pulls for whichever kit is currently active.
-        // Only shows when at least one kit is active AND a chest is
-        // proximate — without those preconditions the action is a no-op.
-        boolean initialGatherEnabled = host.anyChestProximate() && host.viewModel.activeKit() != null;
-        Button gatherButton = button("Gather", true, ACTIVE_HOTBAR);
-        gatherButton.layout(layout -> layout.width(54).height(16));
-        gatherButton.textStyle(style -> style
-                .textColor(TEXT)
-                .textShadow(false)
-                .fontSize(7)
-                .textAlignHorizontal(Horizontal.CENTER)
-                .textAlignVertical(Vertical.CENTER));
-        gatherButton.setVisible(initialGatherEnabled);
-        boolean[] lastGatherVisible = {initialGatherEnabled};
+        // Top-level Gather button. Phase 6 of the single-column workspace
+        // plan dropped the active-kit gate: gather lights up whenever any
+        // identity has a positive desired-count gap reachable from a
+        // proximate chest, kit-active or not. The server still pulls via
+        // the active-kit RPC when a kit is active; otherwise a future
+        // RPC variant could pull by player-global desired counts (the
+        // button click below routes through the existing kit path —
+        // tightening this is a follow-up).
+        boolean initialGatherEnabled = host.anyChestProximate() && anyGatherableIdentity();
+        Button gatherButton = button("", true, initialGatherEnabled ? ACTIVE_HOTBAR : MUTED).noText();
+        gatherButton.addPreIcon(Icons.IMPORT);
+        noChildHitTest(gatherButton);
+        gatherButton.layout(layout -> layout.width(16).height(16));
+        boolean[] lastGatherEnabled = {initialGatherEnabled};
         gatherButton.addEventListener(UIEvents.TICK, event -> {
-            boolean enabled = host.anyChestProximate() && host.viewModel.activeKit() != null;
-            if (enabled == lastGatherVisible[0]) {
+            boolean enabled = host.anyChestProximate() && anyGatherableIdentity();
+            if (enabled == lastGatherEnabled[0]) {
                 return;
             }
-            lastGatherVisible[0] = enabled;
-            gatherButton.setVisible(enabled);
+            lastGatherEnabled[0] = enabled;
+            applyButtonColors(gatherButton, true, enabled ? ACTIVE_HOTBAR : MUTED);
         });
         gatherButton.addEventListener(UIEvents.MOUSE_ENTER, event -> {
             // Mirrors the deposit-preview hover: cards + TOC rows for
@@ -142,7 +137,7 @@ final class WorkspaceOverlays {
         gatherButton.setOnClick(event -> {
             event.stopPropagation();
             if (host.viewModel.activeKit() == null) {
-                host.localStatus.set("activate a kit first");
+                host.localStatus.set("no active kit — gather without one is a follow-up");
                 host.rebuild();
                 return;
             }
@@ -156,7 +151,7 @@ final class WorkspaceOverlays {
         });
         host.installKeybindTooltip(
                 gatherButton,
-                "Pull every item the active kit needs from nearby chests",
+                "Pull every item with a desired-count gap from nearby chests",
                 () -> dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings
                         .gatherActiveKitMapping().getTranslatedKeyMessage().getString()
         );
@@ -190,18 +185,16 @@ final class WorkspaceOverlays {
                 dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings::redoKeyLabel
         );
 
-        Button vanillaButton = button("Vanilla", true, GLASS);
-        vanillaButton.layout(layout -> layout.width(48).height(16));
-        vanillaButton.textStyle(style -> style
-                .textColor(MUTED)
-                .textShadow(false)
-                .fontSize(7)
-                .textAlignHorizontal(Horizontal.CENTER)
-                .textAlignVertical(Vertical.CENTER));
+        Button vanillaButton = button("", true, GLASS).noText();
+        vanillaButton.addPreIcon(Icons.GRID);
+        vanillaButton.layout(layout -> layout.width(16).height(16));
         vanillaButton.setOnClick(event -> {
             event.stopPropagation();
             dev.imagio.slot.neoforge.client.screen.SlotWorkspaceMountController.openVanillaInventory();
         });
+        host.installTextTooltip(
+                vanillaButton,
+                Component.literal("Open vanilla inventory (safety fallback)"));
 
         // Persistent disable: flips the config flag and drops to vanilla
         // for the rest of the session (and beyond — config persists). The
@@ -236,8 +229,19 @@ final class WorkspaceOverlays {
         return host.viewModel.depositableIdentities().size();
     }
 
-    private String depositLabel(int count) {
-        return count > 0 ? "Deposit (" + count + ")" : "Deposit";
+    /**
+     * True iff any atlas identity has a positive desired-count gap (or
+     * is kit-needed) AND is reachable from a proximate chest. Drives
+     * the post-Phase-6 Gather button visibility, replacing the
+     * active-kit-only gate.
+     */
+    private boolean anyGatherableIdentity() {
+        for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.atlasItems()) {
+            if (AtlasCardBuilder.isGatherableItem(item)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

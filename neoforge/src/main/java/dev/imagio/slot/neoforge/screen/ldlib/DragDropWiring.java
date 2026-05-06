@@ -267,6 +267,28 @@ final class DragDropWiring {
         header.addEventListener(UIEvents.DRAG_LEAVE, event -> clearDropOverlay(header), true);
         header.addEventListener(UIEvents.DRAG_PERFORM, event -> {
             clearDropOverlay(header);
+            // Header reorder: dropping one section header onto another
+            // moves the source so it lands above-or-below the anchor
+            // depending on which half the drop hit. Same math as the
+            // legacy TOC row reorder.
+            IslandDrag islandDrag = islandDrag(event);
+            if (islandDrag != null) {
+                if (!islandDrag.islandId().equals(island.islandId())) {
+                    int sourceIndex = playerIslandIndexOf(islandDrag.islandId());
+                    int anchorIndex = playerIslandIndexOf(island.islandId());
+                    if (sourceIndex >= 0 && anchorIndex >= 0) {
+                        float halfHeight = header.getSizeHeight() / 2f;
+                        boolean upperHalf = (event.y - header.getPositionY()) < halfHeight;
+                        int insertPosition = upperHalf ? anchorIndex : anchorIndex + 1;
+                        int targetIndex = sourceIndex < insertPosition ? insertPosition - 1 : insertPosition;
+                        if (targetIndex != sourceIndex) {
+                            host.rpc.sendReorderIsland(islandDrag.islandId(), targetIndex);
+                        }
+                    }
+                }
+                event.stopPropagation();
+                return;
+            }
             AtlasItemDrag atlasItem = atlasItemDrag(event);
             if (atlasItem != null) {
                 host.rpc.sendAssignHome(atlasItem.identity(), island.islandId(), null);
@@ -283,6 +305,42 @@ final class DragDropWiring {
                 event.stopPropagation();
             }
         });
+    }
+
+    /**
+     * Drag a wall section header to start an {@link IslandDrag}. The
+     * sliver-era TOC has no row-based reorder anymore, so the section
+     * header is the canonical reorder grip.
+     */
+    void installSectionHeaderDragSource(Button header, SlotWorkspaceViewModel.AtlasIsland island) {
+        if (island.kind() == VisualAtlasIslandKind.TRIAGE) {
+            return;
+        }
+        header.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
+            if (!mouseIsHeldOnSource(header) || isDragging(header)) {
+                return;
+            }
+            int swatchColor = island.color() == 0 ? ACCENT : island.color();
+            header.startDrag(
+                    new IslandDrag(island.islandId()),
+                    rect(swatchColor)
+            ).setDragTexture(-12, -2, 24, 4);
+            host.localStatus.set("dragging " + island.label());
+        }, true);
+    }
+
+    private int playerIslandIndexOf(String islandId) {
+        int index = 0;
+        for (SlotWorkspaceViewModel.AtlasIsland island : host.viewModel.islands()) {
+            if (island.kind() == VisualAtlasIslandKind.TRIAGE) {
+                continue;
+            }
+            if (island.islandId().equals(islandId)) {
+                return index;
+            }
+            index++;
+        }
+        return -1;
     }
 
     /**
@@ -344,6 +402,12 @@ final class DragDropWiring {
     }
 
     void updateSectionDropOverlay(UIElement target, SlotWorkspaceViewModel.AtlasIsland island, UIEvent event) {
+        IslandDrag islandDrag = islandDrag(event);
+        if (islandDrag != null) {
+            boolean acceptable = !islandDrag.islandId().equals(island.islandId());
+            updateGenericDropOverlay(target, acceptable, ACCENT);
+            return;
+        }
         boolean acceptable = atlasItemDrag(event) != null
                 || hotbarSlotDrag(event) != null
                 || chestStackDrag(event) != null;

@@ -31,6 +31,9 @@ public final class SlotWorkspaceAtlasLayout {
     public static final int CHEST_TILE_PADDING = 4;
     public static final int STORAGE_ZONE_PADDING = 32;
     public static final String ISLAND_TRIAGE = "triage";
+    public static final String ISLAND_MISC = "misc";
+    public static final String ISLAND_MISC_LABEL = "Misc";
+    public static final int ISLAND_MISC_COLOR = 0xCC6E5A4A;
 
     public static int chestTileWidth() {
         return CHEST_TILE_PADDING * 2 + CHEST_TILE_COLUMNS * CHEST_TILE_CELL;

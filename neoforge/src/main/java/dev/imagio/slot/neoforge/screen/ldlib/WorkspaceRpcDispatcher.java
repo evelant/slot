@@ -66,6 +66,7 @@ final class WorkspaceRpcDispatcher {
     RPCEmitter cursorSmartDepositEmitter;
     RPCEmitter dropCursorIntoChestEmitter;
     RPCEmitter dropCursorAtHotbarEmitter;
+    RPCEmitter claimChestAtPosEmitter;
 
     WorkspaceRpcDispatcher(SlotWorkspaceUiController host) {
         this.host = host;
@@ -129,6 +130,13 @@ final class WorkspaceRpcDispatcher {
         forgetChestEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
                 String.class,
                 host.session::forgetChest
+        ));
+        claimChestAtPosEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+                String.class,
+                Integer.class,
+                Integer.class,
+                Integer.class,
+                host.session::claimChestAtPos
         ));
         forgetItemAffinityEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
                 String.class,
@@ -1057,6 +1065,24 @@ final class WorkspaceRpcDispatcher {
                 "[SLOT] deposit RPC send: emitterPresent={} sent={}",
                 depositEmitter != null, sent);
         host.localStatus.set(sent ? "deposit requested" : "deposit unavailable (no RPC emitter)");
+        host.rebuild();
+    }
+
+    /**
+     * Claim the chest at the given world position. Only sent from the
+     * active-chest strip when the chest the player is currently viewing
+     * is unclaimed; the server resolves the BlockPos to a ChestAnchor
+     * and runs the same {@code autoClaimByAnchor} path used by the
+     * deposit observer.
+     */
+    void sendClaimChestAt(String dimensionId, int x, int y, int z) {
+        if (claimChestAtPosEmitter == null || dimensionId == null || dimensionId.isBlank()) {
+            host.localStatus.set("claim unavailable");
+            host.rebuild();
+            return;
+        }
+        boolean sent = claimChestAtPosEmitter.send(dimensionId, x, y, z);
+        host.localStatus.set(sent ? "chest claimed" : "claim unavailable");
         host.rebuild();
     }
 

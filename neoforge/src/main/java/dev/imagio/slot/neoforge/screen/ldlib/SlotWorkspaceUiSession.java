@@ -40,11 +40,15 @@ import dev.imagio.slot.neoforge.storage.ChestProximityResolver;
 import dev.imagio.slot.neoforge.storage.ChestStorageAnchors;
 import dev.imagio.slot.neoforge.storage.ChestStorageIds;
 import dev.imagio.slot.neoforge.storage.DepositExecutor;
+import dev.imagio.slot.neoforge.storage.DepositReverser;
+import dev.imagio.slot.neoforge.storage.HotbarSlotReverser;
 import dev.imagio.slot.neoforge.storage.LootChestProximityResolver;
 import dev.imagio.slot.neoforge.storage.TakeAllExecutor;
 import dev.imagio.slot.neoforge.triage.IslandSignalExtractor;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.ChestAffinityMap;
+import dev.imagio.slot.workflow.domain.ChestAnchor;
+import dev.imagio.slot.workflow.domain.ChestClusterMap;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.ProtectionPolicy;
@@ -88,6 +92,18 @@ final class SlotWorkspaceUiSession {
     private long nextRevision = 1L;
     private String status = "ready";
     private String diagnostics = "";
+    /**
+     * Identities the auto-home pipeline has already attempted in this
+     * session, so we don't replay the same suggest-and-assign work on
+     * every refresh. Each {@code assignHome} hits the persistence
+     * service synchronously; without this gate the first refresh after
+     * opening a screen with a full inventory would hang the server tick
+     * long enough that the player's close-screen packet never gets
+     * processed. The set lives for the lifetime of the session — once
+     * persistence is in place, future sessions inherit the assignments
+     * via the workflow snapshot.
+     */
+    private final java.util.Set<ItemIdentity> autoHomeAttempted = new java.util.HashSet<>();
     /**
      * Mirror of the client-side search query, pushed via
      * {@link #setSearchQuery}. Drives server-side gating of the remote-only
@@ -223,16 +239,8 @@ final class SlotWorkspaceUiSession {
                 if (!proximate.isEmpty()) {
                     long tick = serverPlayer.serverLevel().getGameTime();
                     ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap().decayed(tick);
-                    java.util.ArrayList<ClaimedChest> ranked = new java.util.ArrayList<>();
-                    for (ClaimedChest chest : claimedChestMap.chests()) {
-                        if (proximate.contains(chest.storageId().toString())) {
-                            ranked.add(chest);
-                        }
-                    }
-                    ranked.sort((a, b) -> Integer.compare(
-                            affinityMap.score(b.storageId(), identity),
-                            affinityMap.score(a.storageId(), identity)
-                    ));
+                    java.util.List<ClaimedChest> ranked = DepositPlanner.rankProximateChestsForTake(
+                            identity, claimedChestMap, affinityMap, proximate);
                     WorldStorageAccess worldStorage = StorageAccessRegistry.worldStorageAccess();
                     for (ClaimedChest chest : ranked) {
                         WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
@@ -513,7 +521,12 @@ final class SlotWorkspaceUiSession {
             return ItemStack.EMPTY;
         }
 
-        // Step 2: deposit to proximate chest with affinity.
+        // Step 2: deposit to proximate chest using the canonical
+        // {@link DepositPlanner} ranking — direct affinity > facet-
+        // similar > presence. Sharing the planner with the deposit
+        // button means there's exactly one definition of "where does
+        // this item belong"; the cursor and button paths can never
+        // drift again.
         MinecraftServer server = serverPlayer.getServer();
         if (server != null) {
             ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
@@ -521,19 +534,18 @@ final class SlotWorkspaceUiSession {
             if (!proximate.isEmpty()) {
                 long tick = serverPlayer.serverLevel().getGameTime();
                 ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap().decayed(tick);
-                java.util.ArrayList<ClaimedChest> ranked = new java.util.ArrayList<>();
-                for (ClaimedChest chest : claimedChestMap.chests()) {
-                    if (proximate.contains(chest.storageId().toString())
-                            && affinityMap.score(chest.storageId(), identity) > 0) {
-                        ranked.add(chest);
-                    }
-                }
-                ranked.sort((a, b) -> Integer.compare(
-                        affinityMap.score(b.storageId(), identity),
-                        affinityMap.score(a.storageId(), identity)
-                ));
+                java.util.Map<UUID, java.util.Set<ItemIdentity>> contentsCache = new java.util.HashMap<>();
+                java.util.function.Function<UUID, java.util.Set<ItemIdentity>> contentsLookup =
+                        chestContentsLookup(server, claimedChestMap, contentsCache);
+                java.util.List<UUID> ranked = DepositPlanner.rankChestsForIdentity(
+                        identity, claimedChestMap, affinityMap, proximate,
+                        this::descriptorForIdentity, contentsLookup);
                 WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
-                for (ClaimedChest chest : ranked) {
+                for (UUID storageUuid : ranked) {
+                    ClaimedChest chest = claimedChestMap.chest(storageUuid);
+                    if (chest == null) {
+                        continue;
+                    }
                     int beforeCount = remaining.getCount();
                     WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
                     ItemStack leftover = world.insert(server, target, remaining, false);
@@ -541,7 +553,7 @@ final class SlotWorkspaceUiSession {
                     int depositedHere = beforeCount - remaining.getCount();
                     if (depositedHere > 0) {
                         runtime.chestClaimWorkflow().recordDeposit(
-                                chest.storageId(), identity, depositedHere, tick);
+                                storageUuid, identity, depositedHere, tick);
                     }
                     if (remaining.isEmpty()) {
                         break;
@@ -561,6 +573,42 @@ final class SlotWorkspaceUiSession {
         CarriedSourceAccess carriedAccess = StorageAccessRegistry.carriedSourceAccess();
         ItemStack finalLeftover = carriedAccess.insertBestFit(serverPlayer, remaining, false);
         return finalLeftover == null ? ItemStack.EMPTY : finalLeftover;
+    }
+
+    /**
+     * Build a memoised chest-contents lookup for the
+     * {@link DepositPlanner}'s presence tier. Reads each chest at most
+     * once per call and returns a stable, copy-of identity set so
+     * repeated lookups during a single deposit pass are O(1) after the
+     * first hit. Both the deposit-button RPC and the cursor smart-
+     * deposit pipeline build their own cache via this helper.
+     */
+    private static java.util.function.Function<UUID, java.util.Set<ItemIdentity>>
+            chestContentsLookup(
+                    MinecraftServer server,
+                    ClaimedChestMap claimedChestMap,
+                    java.util.Map<UUID, java.util.Set<ItemIdentity>> cache
+            ) {
+        return storageId -> {
+            if (server == null) {
+                return java.util.Set.of();
+            }
+            return cache.computeIfAbsent(storageId, id -> {
+                ClaimedChest chest = claimedChestMap.chest(id);
+                if (chest == null) {
+                    return java.util.Set.of();
+                }
+                SlotWorkspaceViewModel.ChestContentsSnapshot snapshot =
+                        ChestContentsReader.read(server, chest);
+                java.util.LinkedHashSet<ItemIdentity> identities = new java.util.LinkedHashSet<>();
+                for (ItemStack stack : snapshot.contents()) {
+                    if (stack != null && !stack.isEmpty()) {
+                        identities.add(ItemIdentityMatcher.create(stack));
+                    }
+                }
+                return java.util.Set.copyOf(identities);
+            });
+        };
     }
 
     private int totalCarriedCount(ServerPlayer serverPlayer, ItemIdentity identity) {
@@ -927,7 +975,12 @@ final class SlotWorkspaceUiSession {
                     "[SLOT] deposit RPC received but player is not a ServerPlayer (player={})", player);
             return;
         }
-        refreshServerView(serverPlayer);
+        // No leading refreshServerView: the client view we're acting on
+        // is from the *previous* broadcast (or the deposit button
+        // wouldn't have been clickable), and the proximity / affinity
+        // lookups below read from the runtime + world directly. The
+        // trailing broadcast() rebuilds the view post-deposit; doing it
+        // twice was the dominant cost on the deposit click path.
         WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
         ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
         Set<String> proximate = ChestProximityResolver.proximateStorageIds(serverPlayer, claimedChestMap);
@@ -948,29 +1001,78 @@ final class SlotWorkspaceUiSession {
                 : InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
         long tick = serverPlayer.serverLevel().getGameTime();
         ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap().decayed(tick);
+        MinecraftServer server = serverPlayer.getServer();
+        java.util.Map<UUID, java.util.Set<ItemIdentity>> contentsCache = new java.util.HashMap<>();
+        java.util.function.ToIntFunction<ItemIdentity> reservedCountResolver =
+                identity -> {
+                    var kitMap = runtime.snapshot().kitMap();
+                    var activation = kitMap == null ? null : kitMap.activation();
+                    String kitId = activation != null && activation.isActive() ? activation.kitId() : null;
+                    java.util.Map<ItemIdentity, Integer> activeKitDesired = kitId == null
+                            ? java.util.Map.of()
+                            : runtime.snapshot().kitDesiredCounts().getOrDefault(kitId, java.util.Map.of());
+                    return SlotWorkspaceViewModel.reservedCarryCount(
+                            identity,
+                            kitMap,
+                            activeKitDesired,
+                            runtime.snapshot().playerDesiredCounts());
+                };
         DepositPlan plan = DepositPlanner.plan(
                 authority,
                 affinityMap,
                 claimedChestMap,
                 proximate,
-                this::descriptorForIdentity
+                this::descriptorForIdentity,
+                chestContentsLookup(server, claimedChestMap, contentsCache),
+                reservedCountResolver
         );
         dev.imagio.slot.SlotCommon.LOGGER.info(
-                "[SLOT] deposit plan: assignments={} (one per stack with positive affinity)",
+                "[SLOT] deposit plan: assignments={} (one per stack with affinity / facet / presence)",
                 plan.assignments().size());
         DepositExecutor.DepositOutcome outcome = DepositExecutor.execute(serverPlayer, plan, claimedChestMap);
         for (DepositExecutor.DepositRecord record : outcome.records()) {
             runtime.chestClaimWorkflow().recordDeposit(
                     record.storageId(), record.identity(), record.count(), tick);
         }
+        if (outcome.deposited() > 0 && !outcome.records().isEmpty()) {
+            // Snapshot the records so the closure doesn't share state with
+            // future deposits. Single batched undo entry covers all stacks
+            // moved by this click. Affinity bumps recorded above are NOT
+            // reverted on undo — affinity is a learned signal that decays
+            // naturally, and there's no decrement-by-N API; replaying via
+            // redo would re-bump anyway.
+            java.util.List<DepositExecutor.DepositRecord> records = java.util.List.copyOf(outcome.records());
+            ServerPlayer undoPlayer = serverPlayer;
+            String label = records.size() == 1
+                    ? "deposit " + records.get(0).identity().itemId()
+                    : "deposit (" + records.size() + ")";
+            runtime.undoStack().record(
+                    label,
+                    ctx -> {
+                        for (DepositExecutor.DepositRecord r : records) {
+                            DepositReverser.pullFromChestToCarry(
+                                    undoPlayer, r.storageId(), r.identity(), r.count());
+                        }
+                    },
+                    ctx -> {
+                        for (DepositExecutor.DepositRecord r : records) {
+                            DepositReverser.pushFromCarryToChest(
+                                    undoPlayer, r.storageId(), r.identity(), r.count());
+                        }
+                    }
+            );
+        }
         if (outcome.deposited() == 0 && outcome.failed() == 0) {
             // Empty plan + empty outcome means no carried stack had a
-            // direct or facet affinity bond with any proximate claimed
-            // chest. Surface this clearly so the player understands the
-            // affinity-driven nature of deposit (vs "deposit anything").
+            // direct affinity bond, facet-similar bond, OR presence in
+            // any proximate claimed chest. Surface this clearly so the
+            // player understands the affinity-driven nature of deposit
+            // (vs "deposit anything") — the chest still needs to either
+            // hold the item already or have a learned bond before it
+            // becomes a deposit target.
             status = "nothing_to_deposit";
             diagnostics = plan.assignments().isEmpty()
-                    ? "no carried stack matches a chest's affinity (deposit something there manually first)"
+                    ? "no carried stack matches a proximate chest (no affinity, no facet match, not present)"
                     : "all candidate chests rejected the items";
         } else if (outcome.deposited() > 0 && outcome.failed() == 0) {
             status = "deposited";
@@ -1030,6 +1132,48 @@ final class SlotWorkspaceUiSession {
         if (player instanceof ServerPlayer serverPlayer) {
             broadcast(serverPlayer);
         }
+    }
+
+    /**
+     * Claim the chest at {@code (x, y, z)} in {@code dimensionId}. Driven
+     * by the active-chest strip's "Claim" button when the player is
+     * looking at an unclaimed chest. Routes through
+     * {@link ChestDepositObserver#resolveOrCreateClaim} so a double chest
+     * folds both halves into one storage UUID and stamps the
+     * {@code slot:storage_id} attachment on the partner — matching what
+     * the deposit observer produces on a real deposit.
+     */
+    void claimChestAtPos(String dimensionId, Integer x, Integer y, Integer z) {
+        if (!(player instanceof ServerPlayer serverPlayer)
+                || dimensionId == null || dimensionId.isBlank()
+                || x == null || y == null || z == null) {
+            reject("invalid_claim_request");
+            return;
+        }
+        ServerLevel level = serverPlayer.serverLevel();
+        if (!level.dimension().location().toString().equals(dimensionId)) {
+            reject("dimension_mismatch");
+            return;
+        }
+        BlockPos pos = new BlockPos(x, y, z);
+        if (!ChestStorageAnchors.isClaimable(level, pos)) {
+            reject("not_claimable");
+            return;
+        }
+        ChestAnchor anchor = ChestStorageAnchors.toAnchor(level, pos);
+        if (anchor == null) {
+            reject("anchor_resolution_failed");
+            return;
+        }
+        UUID storageId = ChestDepositObserver.resolveOrCreateClaim(
+                workflowRuntime(serverPlayer).chestClaimWorkflow(), level, pos, anchor);
+        if (storageId == null) {
+            reject("claim_failed");
+            return;
+        }
+        status = "chest_claimed";
+        diagnostics = "";
+        broadcast(serverPlayer);
     }
 
     void forgetChest(String storageId) {
@@ -1628,16 +1772,8 @@ final class SlotWorkspaceUiSession {
             }
             // Sort chests for THIS identity by affinity score so the most
             // likely home gets walked first.
-            java.util.ArrayList<ClaimedChest> ranked = new java.util.ArrayList<>();
-            for (ClaimedChest chest : claimedChestMap.chests()) {
-                if (proximate.contains(chest.storageId().toString())) {
-                    ranked.add(chest);
-                }
-            }
-            ranked.sort((a, b) -> Integer.compare(
-                    affinityMap.score(b.storageId(), identity),
-                    affinityMap.score(a.storageId(), identity)
-            ));
+            java.util.List<ClaimedChest> ranked = DepositPlanner.rankProximateChestsForTake(
+                    identity, claimedChestMap, affinityMap, proximate);
             int remaining = gap;
             for (ClaimedChest chest : ranked) {
                 if (remaining <= 0) {
@@ -1958,6 +2094,7 @@ final class SlotWorkspaceUiSession {
         }
         ItemIdentity identity = ItemIdentityMatcher.create(slot.displayStack());
         boolean homed = workflowRuntime(serverPlayer).snapshot().visualHomeMap().assignment(identity) != null;
+        ItemStack hotbarBefore = HotbarSlotReverser.peekSlot(serverPlayer, index);
         ClaimedChest depositTarget = resolveProximateLinkedChestForIdentity(
                 serverPlayer, identity, slot.displayStack());
         if (depositTarget != null) {
@@ -1967,6 +2104,21 @@ final class SlotWorkspaceUiSession {
                     index,
                     depositTarget
             );
+            // Bumps affinity + undo entry only on success — same shape as
+            // depositCarriedToChest. Undo's chest-pull will restore the
+            // identity into carry; the hotbar slot stays empty (the
+            // player can re-assign via the existing hotbar-undo flow).
+            if (outcome.success() && outcome.record() != null) {
+                workflowRuntime(serverPlayer).chestClaimWorkflow().recordDeposit(
+                        outcome.record().storageId(),
+                        outcome.record().identity(),
+                        outcome.record().count(),
+                        serverPlayer.serverLevel().getGameTime());
+                recordChestTransferUndo(
+                        serverPlayer, outcome.record().storageId(),
+                        outcome.record().identity(), outcome.record().count(),
+                        ChestTransferDirection.DEPOSIT);
+            }
             applyChestDepositOutcome(serverPlayer, outcome, depositTarget);
             return;
         }
@@ -1979,6 +2131,9 @@ final class SlotWorkspaceUiSession {
         if (execution.appliedCompletely()) {
             status = homed ? "returned_to_home" : "returned_unhomed";
             diagnostics = homed ? "returned to its home" : "returned to inventory";
+            ItemStack hotbarAfter = HotbarSlotReverser.peekSlot(serverPlayer, index);
+            recordHotbarSlotUndo(serverPlayer, index, hotbarBefore, hotbarAfter,
+                    "return hotbar " + (index + 1) + " to inventory");
         } else {
             String feedbackDiagnostics = execution.feedback().diagnostics();
             boolean fullDestination = "destination_full_or_incompatible".equals(feedbackDiagnostics);
@@ -2066,6 +2221,7 @@ final class SlotWorkspaceUiSession {
             broadcast(serverPlayer);
             return;
         }
+        ItemStack hotbarBefore = HotbarSlotReverser.peekSlot(serverPlayer, hotbarIndex);
         String sourceId = located.get().sourceId();
         int slotIndex = located.get().slotIndex();
         if (BuiltinInventoryIds.PLAYER_MAIN.equals(sourceId)
@@ -2079,6 +2235,9 @@ final class SlotWorkspaceUiSession {
             if (execution.appliedCompletely()) {
                 status = "assigned_to_hotbar_" + (hotbarIndex + 1);
                 diagnostics = "moved to hotbar " + (hotbarIndex + 1);
+                ItemStack hotbarAfter = HotbarSlotReverser.peekSlot(serverPlayer, hotbarIndex);
+                recordHotbarSlotUndo(serverPlayer, hotbarIndex, hotbarBefore, hotbarAfter,
+                        "assign " + identity.itemId() + " to hotbar " + (hotbarIndex + 1));
             } else {
                 status = execution.feedback().status();
                 diagnostics = execution.feedback().diagnostics();
@@ -2087,6 +2246,9 @@ final class SlotWorkspaceUiSession {
             return;
         }
         applyLoadoutSingleTarget(serverPlayer, hotbarIndex, identity);
+        ItemStack hotbarAfter = HotbarSlotReverser.peekSlot(serverPlayer, hotbarIndex);
+        recordHotbarSlotUndo(serverPlayer, hotbarIndex, hotbarBefore, hotbarAfter,
+                "assign " + identity.itemId() + " to hotbar " + (hotbarIndex + 1));
     }
 
     // Identity-based hotbar slot assignment. Unlike the slot-index-based
@@ -2236,6 +2398,10 @@ final class SlotWorkspaceUiSession {
                     outcome.record().identity(),
                     outcome.record().count(),
                     serverPlayer.serverLevel().getGameTime());
+            recordChestTransferUndo(
+                    serverPlayer, outcome.record().storageId(),
+                    outcome.record().identity(), outcome.record().count(),
+                    ChestTransferDirection.DEPOSIT);
         }
         applyChestDepositOutcome(serverPlayer, outcome, resolved.chest);
     }
@@ -2266,6 +2432,10 @@ final class SlotWorkspaceUiSession {
                     outcome.record().identity(),
                     outcome.record().count(),
                     serverPlayer.serverLevel().getGameTime());
+            recordChestTransferUndo(
+                    serverPlayer, outcome.record().storageId(),
+                    outcome.record().identity(), outcome.record().count(),
+                    ChestTransferDirection.DEPOSIT);
         }
         applyChestDepositOutcome(serverPlayer, outcome, resolved.chest);
     }
@@ -2284,6 +2454,7 @@ final class SlotWorkspaceUiSession {
             applyChestDepositRejection(serverPlayer, resolved.outcome);
             return;
         }
+        ItemIdentity preTakeIdentity = peekChestSlotIdentity(serverPlayer, resolved.chest, slotIndex);
         TakeAllExecutor.TakeSingleOutcome outcome = TakeAllExecutor.takeSingleItem(
                 serverPlayer, resolved.chest, slotIndex);
         if (!outcome.tookAnything()) {
@@ -2294,6 +2465,9 @@ final class SlotWorkspaceUiSession {
             diagnostics = "moved=" + outcome.moved();
         }
         if (outcome.tookAnything()) {
+            recordChestTransferUndo(
+                    serverPlayer, resolved.chest.storageId(), preTakeIdentity, outcome.moved(),
+                    ChestTransferDirection.TAKE);
             reapplyActiveKitFromCarry(serverPlayer);
         }
         broadcast(serverPlayer);
@@ -2440,16 +2614,8 @@ final class SlotWorkspaceUiSession {
         // (a chest may carry the item without the player having deposited
         // it yet — affinity is monotonically learned, not authoritative).
         ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap();
-        java.util.ArrayList<ClaimedChest> ranked = new java.util.ArrayList<>();
-        for (ClaimedChest chest : claimedChestMap.chests()) {
-            if (proximate.contains(chest.storageId().toString())) {
-                ranked.add(chest);
-            }
-        }
-        ranked.sort((a, b) -> Integer.compare(
-                affinityMap.score(b.storageId(), identity),
-                affinityMap.score(a.storageId(), identity)
-        ));
+        java.util.List<ClaimedChest> ranked = DepositPlanner.rankProximateChestsForTake(
+                identity, claimedChestMap, affinityMap, proximate);
         boolean foundMatchButCouldNotInsert = false;
         for (ClaimedChest chest : ranked) {
             TakeAllExecutor.TakeSingleOutcome outcome = TakeAllExecutor.takeByIdentity(
@@ -2458,6 +2624,9 @@ final class SlotWorkspaceUiSession {
             if (outcome.tookAnything()) {
                 status = maxCount == 1 ? "took_one" : "took_stack";
                 diagnostics = "moved=" + outcome.moved();
+                recordChestTransferUndo(
+                        serverPlayer, chest.storageId(), identity, outcome.moved(),
+                        ChestTransferDirection.TAKE);
                 reapplyActiveKitFromCarry(serverPlayer);
                 broadcast(serverPlayer);
                 return;
@@ -2492,6 +2661,7 @@ final class SlotWorkspaceUiSession {
             applyChestDepositRejection(serverPlayer, resolved.outcome);
             return;
         }
+        ItemIdentity preTakeIdentity = peekChestSlotIdentity(serverPlayer, resolved.chest, slotIndex);
         TakeAllExecutor.TakeSingleOutcome outcome = TakeAllExecutor.takeSingleStack(
                 serverPlayer, resolved.chest, slotIndex);
         if (!outcome.tookAnything()) {
@@ -2505,6 +2675,9 @@ final class SlotWorkspaceUiSession {
             diagnostics = "moved=" + outcome.moved();
         }
         if (outcome.tookAnything()) {
+            recordChestTransferUndo(
+                    serverPlayer, resolved.chest.storageId(), preTakeIdentity, outcome.moved(),
+                    ChestTransferDirection.TAKE);
             reapplyActiveKitFromCarry(serverPlayer);
         }
         broadcast(serverPlayer);
@@ -2537,6 +2710,114 @@ final class SlotWorkspaceUiSession {
         status = "rejected";
         diagnostics = reason;
         broadcast(serverPlayer);
+    }
+
+    /**
+     * Push a single undo entry for a chest ↔ carry transfer.
+     * {@code direction} is the action that just succeeded; the undo
+     * closure runs the opposite direction, the redo closure replays the
+     * action. Captured {@code serverPlayer} is safe — the runtime (and
+     * its undo stack) is dropped on player disconnect.
+     */
+    private void recordChestTransferUndo(
+            ServerPlayer serverPlayer,
+            UUID storageId,
+            ItemIdentity identity,
+            int count,
+            ChestTransferDirection direction
+    ) {
+        if (serverPlayer == null || storageId == null || identity == null
+                || count <= 0 || direction == null) {
+            return;
+        }
+        String verb = direction == ChestTransferDirection.DEPOSIT ? "deposit" : "take";
+        String label = count == 1
+                ? verb + " " + identity.itemId()
+                : verb + " " + identity.itemId() + " ×" + count;
+        workflowRuntime(serverPlayer).undoStack().record(
+                label,
+                ctx -> {
+                    if (direction == ChestTransferDirection.DEPOSIT) {
+                        DepositReverser.pullFromChestToCarry(serverPlayer, storageId, identity, count);
+                    } else {
+                        DepositReverser.pushFromCarryToChest(serverPlayer, storageId, identity, count);
+                    }
+                },
+                ctx -> {
+                    if (direction == ChestTransferDirection.DEPOSIT) {
+                        DepositReverser.pushFromCarryToChest(serverPlayer, storageId, identity, count);
+                    } else {
+                        DepositReverser.pullFromChestToCarry(serverPlayer, storageId, identity, count);
+                    }
+                }
+        );
+    }
+
+    private enum ChestTransferDirection { DEPOSIT, TAKE }
+
+    /**
+     * Push a single undo entry for a hotbar-slot mutation. {@code before} /
+     * {@code after} are the slot's stack snapshots taken around the
+     * action; the closures route through {@link HotbarSlotReverser} which
+     * pushes the displaced occupant back into carry and pulls matching
+     * identity from elsewhere in carry to seed the target.
+     *
+     * <p>Best-effort: if the player has consumed the item between the
+     * action and the undo, the slot ends up with whatever is still in
+     * carry — same shape as the chest-transfer undo.
+     */
+    private void recordHotbarSlotUndo(
+            ServerPlayer serverPlayer,
+            int hotbarIndex,
+            ItemStack before,
+            ItemStack after,
+            String label
+    ) {
+        if (serverPlayer == null || hotbarIndex < 0 || hotbarIndex >= 9) {
+            return;
+        }
+        ItemStack beforeCopy = before == null ? ItemStack.EMPTY : before.copy();
+        ItemStack afterCopy = after == null ? ItemStack.EMPTY : after.copy();
+        if (ItemStack.matches(beforeCopy, afterCopy)) {
+            return; // No-op action — nothing to undo.
+        }
+        workflowRuntime(serverPlayer).undoStack().record(
+                label,
+                ctx -> HotbarSlotReverser.restoreSlot(serverPlayer, hotbarIndex, beforeCopy),
+                ctx -> HotbarSlotReverser.restoreSlot(serverPlayer, hotbarIndex, afterCopy)
+        );
+    }
+
+    /**
+     * Read the identity at {@code slotIndex} in {@code chest} so a slot-precise
+     * take can record an undo entry that knows what to push back. Returns
+     * {@code null} when the slot is empty / the chest isn't accessible —
+     * the caller skips undo recording in that case.
+     */
+    private static ItemIdentity peekChestSlotIdentity(ServerPlayer serverPlayer, ClaimedChest chest, int slotIndex) {
+        if (serverPlayer == null || chest == null || slotIndex < 0) {
+            return null;
+        }
+        MinecraftServer server = serverPlayer.getServer();
+        if (server == null) {
+            return null;
+        }
+        WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
+        WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
+        if (!world.isAccessible(server, target)) {
+            return null;
+        }
+        for (WorldStorageAccess.SlotContent entry : world.enumerate(server, target)) {
+            if (entry.slotIndex() != slotIndex) {
+                continue;
+            }
+            ItemStack stack = entry.stack();
+            if (stack == null || stack.isEmpty()) {
+                return null;
+            }
+            return ItemIdentityMatcher.create(stack);
+        }
+        return null;
     }
 
     private void applyChestDepositOutcome(
@@ -2594,6 +2875,17 @@ final class SlotWorkspaceUiSession {
             case ITEM -> DepositExecutor.depositSingleItem(
                     serverPlayer, located.get().sourceId(), located.get().slotIndex(), chest);
         };
+        if (outcome.success() && outcome.record() != null) {
+            workflowRuntime(serverPlayer).chestClaimWorkflow().recordDeposit(
+                    outcome.record().storageId(),
+                    outcome.record().identity(),
+                    outcome.record().count(),
+                    serverPlayer.serverLevel().getGameTime());
+            recordChestTransferUndo(
+                    serverPlayer, outcome.record().storageId(),
+                    outcome.record().identity(), outcome.record().count(),
+                    ChestTransferDirection.DEPOSIT);
+        }
         applyChestDepositOutcome(serverPlayer, outcome, chest);
         return DepositAttempt.DISPATCHED;
     }
@@ -2615,10 +2907,12 @@ final class SlotWorkspaceUiSession {
     }
 
     /**
-     * Pick a proximate claimed chest for {@code identity} based on stored
-     * affinity (highest score first; ties broken by chest order). Falls
-     * back to "any proximate chest with capacity for the stack" so the
-     * cold-start case still works before affinity has been observed.
+     * Pick a proximate claimed chest for {@code identity} for the
+     * per-card "deposit home to linked chest" actions. Routes through
+     * {@link DepositPlanner#rankChestsForIdentity} so direct affinity,
+     * facet-similar, and presence tiers match the deposit button —
+     * filtering by simulated-insert capacity so a chest that can't fit
+     * the stack is skipped over.
      */
     private ClaimedChest resolveProximateLinkedChestForIdentity(
             ServerPlayer serverPlayer,
@@ -2638,13 +2932,17 @@ final class SlotWorkspaceUiSession {
         if (server == null || !StorageAccessRegistry.isInstalled()) {
             return null;
         }
-        ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap();
+        long tick = serverPlayer.serverLevel().getGameTime();
+        ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap().decayed(tick);
+        java.util.Map<UUID, java.util.Set<ItemIdentity>> contentsCache = new java.util.HashMap<>();
+        java.util.List<UUID> ranked = DepositPlanner.rankChestsForIdentity(
+                identity, claimedChestMap, affinityMap, proximate,
+                this::descriptorForIdentity,
+                chestContentsLookup(server, claimedChestMap, contentsCache));
         WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
-        record Candidate(ClaimedChest chest, int score, int freeSlots) {
-        }
-        java.util.ArrayList<Candidate> candidates = new java.util.ArrayList<>();
-        for (ClaimedChest chest : claimedChestMap.chests()) {
-            if (!proximate.contains(chest.storageId().toString())) {
+        for (UUID storageId : ranked) {
+            ClaimedChest chest = claimedChestMap.chest(storageId);
+            if (chest == null) {
                 continue;
             }
             WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
@@ -2652,31 +2950,11 @@ final class SlotWorkspaceUiSession {
                 continue;
             }
             ItemStack simulation = world.insert(server, target, sourceStack.copy(), true);
-            if (!simulation.isEmpty()) {
-                continue;
+            if (simulation.isEmpty()) {
+                return chest;
             }
-            int score = affinityMap.score(chest.storageId(), identity);
-            int totalSlots = world.slotCount(server, target);
-            int occupied = 0;
-            for (WorldStorageAccess.SlotContent content : world.enumerate(server, target)) {
-                if (!content.stack().isEmpty()) {
-                    occupied++;
-                }
-            }
-            int free = Math.max(0, totalSlots - occupied);
-            candidates.add(new Candidate(chest, score, free));
         }
-        if (candidates.isEmpty()) {
-            return null;
-        }
-        candidates.sort((a, b) -> {
-            int cmp = Integer.compare(b.score(), a.score());
-            if (cmp != 0) return cmp;
-            cmp = Integer.compare(a.freeSlots(), b.freeSlots());
-            if (cmp != 0) return cmp;
-            return a.chest().storageId().compareTo(b.chest().storageId());
-        });
-        return candidates.get(0).chest();
+        return null;
     }
 
     private static final class ChestProximityResult {
@@ -2723,6 +3001,9 @@ final class SlotWorkspaceUiSession {
             return;
         }
         ItemIdentity identity = ItemIdentityMatcher.create(hotbarSlot.displayStack());
+        ItemStack hotbarBefore = HotbarSlotReverser.peekSlot(serverPlayer, resolvedHotbarIndex);
+        VisualHomeAssignment homeBefore = workflowRuntime(serverPlayer)
+                .snapshot().visualHomeMap().assignment(identity);
         WorkspaceTransferExecution execution = executeTransfer(
                 serverPlayer,
                 new InventoryActionTarget.QuickAccessTarget(BuiltinInventoryIds.QUICK_ACCESS_LANE_0, resolvedHotbarIndex),
@@ -2736,7 +3017,7 @@ final class SlotWorkspaceUiSession {
             return;
         }
         refreshServerView(serverPlayer);
-        applyOutcome(serverPlayer, SlotWorkspaceCommandService.applyHomeDrop(
+        WorkspaceCommandOutcome dropOutcome = SlotWorkspaceCommandService.applyHomeDrop(
                 workflowRuntime(serverPlayer),
                 viewModel,
                 learnedRules,
@@ -2745,7 +3026,37 @@ final class SlotWorkspaceUiSession {
                 islandId,
                 ordinal,
                 "slot_workspace.ldlib.drag.hotbar_home"
-        ));
+        );
+        if (dropOutcome.success()) {
+            // Capture the post-action home assignment so redo replays it.
+            // Combined undo restores both the hotbar slot and the home in
+            // one entry — the transfer + drop are a single user gesture
+            // and should reverse together. Learned-rule recording inside
+            // applyHomeDrop is NOT reverted (same pragmatism as affinity
+            // bumps); the rule is a long-lived signal that decays via
+            // future drags.
+            VisualHomeAssignment homeAfter = workflowRuntime(serverPlayer)
+                    .snapshot().visualHomeMap().assignment(identity);
+            ItemStack hotbarAfter = HotbarSlotReverser.peekSlot(serverPlayer, resolvedHotbarIndex);
+            ServerPlayer undoPlayer = serverPlayer;
+            String label = SlotWorkspaceAtlasLayout.ISLAND_TRIAGE.equals(islandId)
+                    ? "send " + identity.itemId() + " to triage"
+                    : "drag hotbar " + (resolvedHotbarIndex + 1) + " to atlas";
+            workflowRuntime(serverPlayer).undoStack().record(
+                    label,
+                    ctx -> {
+                        SlotWorkspaceCommandService.restoreHomeAssignment(
+                                ctx.runtime(), identity, homeBefore);
+                        HotbarSlotReverser.restoreSlot(undoPlayer, resolvedHotbarIndex, hotbarBefore);
+                    },
+                    ctx -> {
+                        HotbarSlotReverser.restoreSlot(undoPlayer, resolvedHotbarIndex, hotbarAfter);
+                        SlotWorkspaceCommandService.restoreHomeAssignment(
+                                ctx.runtime(), identity, homeAfter);
+                    }
+            );
+        }
+        applyOutcome(serverPlayer, dropOutcome);
     }
 
     private void applyOutcome(ServerPlayer serverPlayer, WorkspaceCommandOutcome outcome) {
@@ -2795,6 +3106,8 @@ final class SlotWorkspaceUiSession {
         Function<ItemIdentity, SlotWorkspaceViewModel.CarriedContainerInfo> containerResolver =
                 containerInfo.isEmpty() ? identity -> null : containerInfo::get;
         SlotWorkspaceViewModel.LootChestSource lootChestSource = resolveLootChestSource(serverPlayer, claimedChestMap);
+        SlotWorkspaceViewModel.ActiveChestPanel activeChestPanel = resolveActiveChestPanel(
+                serverPlayer, runtime, claimedChestMap);
         SlotWorkspaceViewModel projected = SlotWorkspaceViewModel.project(
                 authority,
                 runtime.snapshot(),
@@ -2810,14 +3123,106 @@ final class SlotWorkspaceUiSession {
                 containerResolver,
                 lootChestSource,
                 searchQuery,
-                serverPlayer.serverLevel().getGameTime()
+                serverPlayer.serverLevel().getGameTime(),
+                activeChestPanel
         );
+        // Pickup-time auto-home: at most one carried-but-unassigned
+        // identity per refresh gets routed via its top chip suggestion
+        // (or Misc when none fires). Throttled to one per refresh
+        // because each {@code assignHome} writes through the persistence
+        // service synchronously; without throttling, opening a screen
+        // with a full inventory froze the server tick long enough that
+        // the close-screen packet never landed. Subsequent refreshes
+        // chip away at the remaining triage list. Re-projects against
+        // the freshly-mutated snapshot so the broadcast reflects the
+        // new assignment.
+        if (SlotWorkspaceCommandService.autoHomeTriageItems(runtime, projected, autoHomeAttempted)) {
+            activeChestPanel = resolveActiveChestPanel(serverPlayer, runtime, claimedChestMap);
+            projected = SlotWorkspaceViewModel.project(
+                    authority,
+                    runtime.snapshot(),
+                    status,
+                    combinedDiagnostics,
+                    0,
+                    selected,
+                    0,
+                    learnedRules,
+                    IslandSignalExtractor::extract,
+                    contentsResolver,
+                    proximateIds,
+                    containerResolver,
+                    lootChestSource,
+                    searchQuery,
+                    serverPlayer.serverLevel().getGameTime(),
+                    activeChestPanel
+            );
+        }
         CompoundTag nextContent = SlotWorkspaceViewModelCodec.encode(projected, serverPlayer.registryAccess(), false);
         if (!nextContent.equals(lastContentTag)) {
             lastContentTag = nextContent.copy();
             viewModel = projected.withRevision(nextRevision++);
             lastViewTag = SlotWorkspaceViewModelCodec.encode(viewModel, serverPlayer.registryAccess());
         }
+    }
+
+    /**
+     * Build the active-chest panel snapshot for the player's currently
+     * open chest screen. Empty when the player isn't viewing a chest
+     * (host = crafting / inventory / etc.) or when the chest's BlockPos
+     * isn't tracked by the deposit observer's session table. Surfaces
+     * the chest's claim state + cluster info so the sidebar's chest
+     * control strip can render rename / forget / claim affordances
+     * scoped to the chest the player is actively interacting with.
+     */
+    private static SlotWorkspaceViewModel.ActiveChestPanel resolveActiveChestPanel(
+            ServerPlayer serverPlayer,
+            WorkflowDomainRuntime runtime,
+            ClaimedChestMap claimedChestMap
+    ) {
+        BlockPos pos = ChestDepositObserver.activeChestPos(serverPlayer);
+        if (pos == null) {
+            return SlotWorkspaceViewModel.ActiveChestPanel.empty();
+        }
+        ServerLevel level = serverPlayer.serverLevel();
+        String dimensionId = level.dimension().location().toString();
+        ChestAnchor anchor = ChestStorageAnchors.toAnchor(level, pos);
+        ClaimedChest claim = anchor == null
+                ? null
+                : runtime.chestClaimWorkflow().chestByAnchor(anchor);
+        if (claim == null) {
+            return new SlotWorkspaceViewModel.ActiveChestPanel(
+                    "", "", "", "", 0,
+                    pos.getX(), pos.getY(), pos.getZ(),
+                    dimensionId
+            );
+        }
+        ChestClusterMap clusterMap = ChestClusterMap.derive(claimedChestMap);
+        ChestClusterMap.Cluster cluster = null;
+        for (ChestClusterMap.Cluster c : clusterMap.clusters()) {
+            if (c.storageIds().contains(claim.storageId())) {
+                cluster = c;
+                break;
+            }
+        }
+        String clusterId = cluster == null ? "" : cluster.clusterId();
+        String customClusterLabel = clusterId.isEmpty()
+                ? ""
+                : runtime.snapshot().clusterLabels().getOrDefault(clusterId, "");
+        String clusterLabel = customClusterLabel.isBlank() && cluster != null
+                ? cluster.defaultLabel()
+                : customClusterLabel;
+        String chestLabel = claim.label() == null || claim.label().isBlank()
+                ? "Chest"
+                : claim.label();
+        return new SlotWorkspaceViewModel.ActiveChestPanel(
+                claim.storageId().toString(),
+                chestLabel,
+                clusterId,
+                clusterLabel,
+                0,
+                pos.getX(), pos.getY(), pos.getZ(),
+                dimensionId
+        );
     }
 
     private static SlotWorkspaceViewModel.LootChestSource resolveLootChestSource(

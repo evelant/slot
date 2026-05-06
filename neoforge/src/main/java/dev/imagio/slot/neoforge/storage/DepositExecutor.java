@@ -57,9 +57,34 @@ public final class DepositExecutor {
                 failed++;
                 continue;
             }
+            int budget = Math.min(assignment.count(), sourceStack.getCount());
+            if (budget <= 0) {
+                continue;
+            }
+            ItemIdentity identity = ItemIdentityMatcher.create(sourceStack);
 
-            UUID chosen = null;
+            // Extract from carry first so we own a real stack to push into
+            // chests. Anything we can't insert later is reinserted into
+            // carry — never duplicated, never lost.
+            ItemStack inHand = carried.extract(
+                    player, assignment.laneId(), assignment.slotIndex(), budget, false);
+            if (inHand == null || inHand.isEmpty()) {
+                failed++;
+                continue;
+            }
+            ItemStack remaining = inHand;
+            int insertedTotal = 0;
+
+            // Walk candidates in rank order; each chest takes what it can,
+            // leftover spills to the next. Different from the prior
+            // all-or-nothing path: a chest with room for 30 of 54 used to
+            // be skipped (and the whole assignment failed if no single
+            // chest fit everything); now its 30 land there and the other
+            // 24 fall through to the next chest.
             for (String candidateId : assignment.candidateStorageIds()) {
+                if (remaining.isEmpty()) {
+                    break;
+                }
                 UUID candidateUuid;
                 try {
                     candidateUuid = UUID.fromString(candidateId);
@@ -71,34 +96,37 @@ public final class DepositExecutor {
                     continue;
                 }
                 WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
-                ItemStack simulated = worldStorage.insert(server, target, sourceStack.copy(), true);
-                if (!simulated.isEmpty()) {
+                int beforeCount = remaining.getCount();
+                ItemStack leftover = worldStorage.insert(server, target, remaining, false);
+                int leftoverCount = leftover == null || leftover.isEmpty() ? 0 : leftover.getCount();
+                int insertedHere = beforeCount - leftoverCount;
+                if (insertedHere <= 0) {
                     continue;
                 }
-                ItemStack committed = worldStorage.insert(server, target, sourceStack.copy(), false);
-                if (!committed.isEmpty()) {
-                    continue;
+                destinations.add(candidateUuid);
+                records.add(new DepositRecord(candidateUuid, identity, insertedHere));
+                insertedTotal += insertedHere;
+                remaining = leftover == null ? ItemStack.EMPTY : leftover;
+            }
+
+            // Put any leftover back into carry. Best-effort; if even carry
+            // can't take it (shouldn't happen — we just extracted from
+            // there), drop in world to avoid item loss.
+            if (!remaining.isEmpty()) {
+                ItemStack carryLeftover = carried.insertBestFit(player, remaining, false);
+                if (carryLeftover != null && !carryLeftover.isEmpty()) {
+                    SlotCommon.LOGGER.warn(
+                            "[SLOT] deposit: dropping {} of {} (couldn't reinsert into carry)",
+                            carryLeftover.getCount(), identity.itemId());
+                    player.drop(carryLeftover, false);
                 }
-                chosen = candidateUuid;
-                break;
             }
 
-            if (chosen == null) {
+            if (insertedTotal > 0) {
+                deposited++;
+            } else {
                 failed++;
-                continue;
             }
-
-            int depositedCount = sourceStack.getCount();
-            ItemIdentity identity = ItemIdentityMatcher.create(sourceStack);
-            ItemStack removed = carried.extract(
-                    player, assignment.laneId(), assignment.slotIndex(), depositedCount, false);
-            if (removed == null || removed.isEmpty()) {
-                failed++;
-                continue;
-            }
-            deposited++;
-            destinations.add(chosen);
-            records.add(new DepositRecord(chosen, identity, depositedCount));
         }
 
         SlotCommon.LOGGER.info(

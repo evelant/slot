@@ -65,7 +65,9 @@ public record SlotWorkspaceViewModel(
         List<KitCard> kits,
         LootChestPanel lootChestPanel,
         List<WayfindingTarget> wayfindingTargets,
-        Set<IdentityRef> depositableIdentities
+        Set<IdentityRef> depositableIdentities,
+        List<IdentityRef> recentIdentities,
+        ActiveChestPanel activeChestPanel
 ) {
     public SlotWorkspaceViewModel {
         status = status == null || status.isBlank() ? "ready" : status;
@@ -88,6 +90,8 @@ public record SlotWorkspaceViewModel(
         depositableIdentities = depositableIdentities == null
                 ? Set.of()
                 : Set.copyOf(new LinkedHashSet<>(depositableIdentities));
+        recentIdentities = recentIdentities == null ? List.of() : List.copyOf(recentIdentities);
+        activeChestPanel = activeChestPanel == null ? ActiveChestPanel.empty() : activeChestPanel;
     }
 
     /** Backwards-compatible constructor: defaults chestClusters + lootChestPanel. */
@@ -112,7 +116,7 @@ public record SlotWorkspaceViewModel(
         this(revision, status, diagnostics, pendingCount, selectedQuickAccessSlot,
                 canvasWidth, canvasHeight, carriedFreeSlotCount, carriedSlotCapacity,
                 islands, atlasItems, triageItems, chestChips, List.of(),
-                hotbarSlots, offhand, kits, LootChestPanel.empty(), List.of(), Set.of());
+                hotbarSlots, offhand, kits, LootChestPanel.empty(), List.of(), Set.of(), List.of(), ActiveChestPanel.empty());
     }
 
     /** Backwards-compatible constructor: defaults lootChestPanel. */
@@ -138,7 +142,7 @@ public record SlotWorkspaceViewModel(
         this(revision, status, diagnostics, pendingCount, selectedQuickAccessSlot,
                 canvasWidth, canvasHeight, carriedFreeSlotCount, carriedSlotCapacity,
                 islands, atlasItems, triageItems, chestChips, chestClusters,
-                hotbarSlots, offhand, kits, LootChestPanel.empty(), List.of(), Set.of());
+                hotbarSlots, offhand, kits, LootChestPanel.empty(), List.of(), Set.of(), List.of(), ActiveChestPanel.empty());
     }
 
     /** Backwards-compatible constructor: defaults wayfindingTargets. */
@@ -165,7 +169,7 @@ public record SlotWorkspaceViewModel(
         this(revision, status, diagnostics, pendingCount, selectedQuickAccessSlot,
                 canvasWidth, canvasHeight, carriedFreeSlotCount, carriedSlotCapacity,
                 islands, atlasItems, triageItems, chestChips, chestClusters,
-                hotbarSlots, offhand, kits, lootChestPanel, List.of(), Set.of());
+                hotbarSlots, offhand, kits, lootChestPanel, List.of(), Set.of(), List.of(), ActiveChestPanel.empty());
     }
 
     /** Backwards-compatible constructor: defaults depositableIdentities. */
@@ -193,7 +197,7 @@ public record SlotWorkspaceViewModel(
         this(revision, status, diagnostics, pendingCount, selectedQuickAccessSlot,
                 canvasWidth, canvasHeight, carriedFreeSlotCount, carriedSlotCapacity,
                 islands, atlasItems, triageItems, chestChips, chestClusters,
-                hotbarSlots, offhand, kits, lootChestPanel, wayfindingTargets, Set.of());
+                hotbarSlots, offhand, kits, lootChestPanel, wayfindingTargets, Set.of(), List.of(), ActiveChestPanel.empty());
     }
 
     public static SlotWorkspaceViewModel empty() {
@@ -362,6 +366,30 @@ public record SlotWorkspaceViewModel(
             LootChestSource lootChestSource,
             String searchQuery,
             long currentTick
+    ) {
+        return project(authority, workflow, status, diagnostics, pendingCount,
+                selectedQuickAccessSlot, revision, learnedRules, signalExtractor,
+                chestContentsResolver, proximateStorageIds, carriedContainerInfoResolver,
+                lootChestSource, searchQuery, currentTick, ActiveChestPanel.empty());
+    }
+
+    public static SlotWorkspaceViewModel project(
+            InventoryAuthoritySnapshot authority,
+            WorkflowDomainSnapshot workflow,
+            String status,
+            String diagnostics,
+            int pendingCount,
+            int selectedQuickAccessSlot,
+            long revision,
+            LearnedIslandRuleStore learnedRules,
+            Function<ItemStack, IslandSignalDescriptor> signalExtractor,
+            Function<String, ChestContentsSnapshot> chestContentsResolver,
+            Set<String> proximateStorageIds,
+            Function<ItemIdentity, CarriedContainerInfo> carriedContainerInfoResolver,
+            LootChestSource lootChestSource,
+            String searchQuery,
+            long currentTick,
+            ActiveChestPanel activeChestPanel
     ) {
         InventoryAuthoritySnapshot resolvedAuthority = authority == null ? InventoryAuthoritySnapshot.empty() : authority;
         WorkflowDomainSnapshot resolvedWorkflow = workflow == null ? WorkflowDomainSnapshot.empty() : workflow;
@@ -668,11 +696,18 @@ public record SlotWorkspaceViewModel(
                 kitNeededIdentities,
                 activeKitDesiredCounts,
                 playerDesiredCounts);
+        java.util.function.ToIntFunction<ItemIdentity> reservedCountResolver = identity -> reservedCarryCount(
+                identity,
+                resolvedWorkflow.kitMap(),
+                activeKitDesiredCounts,
+                playerDesiredCounts);
         Set<IdentityRef> depositableIdentities = depositableIdentities(
                 atlasItems,
                 claimedChestMap,
                 affinityMap,
-                proximate);
+                proximate,
+                reservedCountResolver);
+        List<IdentityRef> recentIdentitiesList = recentIdentityRefs(recents);
         return new SlotWorkspaceViewModel(
                 revision,
                 status,
@@ -693,8 +728,27 @@ public record SlotWorkspaceViewModel(
                 kitCards,
                 lootPanel,
                 wayfindingTargets,
-                depositableIdentities
+                depositableIdentities,
+                recentIdentitiesList,
+                activeChestPanel == null ? ActiveChestPanel.empty() : activeChestPanel
         );
+    }
+
+    private static List<IdentityRef> recentIdentityRefs(RecentView recents) {
+        if (recents == null) {
+            return List.of();
+        }
+        List<ItemIdentity> visible = recents.visibleItems();
+        if (visible.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<IdentityRef> refs = new ArrayList<>(visible.size());
+        for (ItemIdentity identity : visible) {
+            if (identity != null) {
+                refs.add(IdentityRef.from(identity));
+            }
+        }
+        return List.copyOf(refs);
     }
 
     /**
@@ -714,11 +768,66 @@ public record SlotWorkspaceViewModel(
      * safer than an over-bright preview that promises items the
      * planner won't actually move.
      */
+    /**
+     * Items the player must keep in carry: at least one of each active
+     * kit-page slot identity, plus the resolved desired count (kit
+     * scope > player scope). The deposit planner caps the depositable
+     * total at {@code totalCarried - reserved}, and the deposit-preview
+     * uses the same cap so the highlighted set matches what would
+     * actually move.
+     */
+    public static int reservedCarryCount(
+            ItemIdentity identity,
+            KitMap kitMap,
+            Map<ItemIdentity, Integer> activeKitDesiredCounts,
+            Map<ItemIdentity, Integer> playerDesiredCounts
+    ) {
+        if (identity == null) {
+            return 0;
+        }
+        int kitDesired = activeKitDesiredCounts == null ? 0
+                : activeKitDesiredCounts.getOrDefault(identity, 0);
+        int playerDesired = playerDesiredCounts == null ? 0
+                : playerDesiredCounts.getOrDefault(identity, 0);
+        // Mirror DesiredCountWorkflowDomainService.resolved: kit scope wins
+        // when active and non-zero, else player scope.
+        int desired = kitDesired > 0 ? kitDesired : playerDesired;
+        int kitSlotCount = activeKitPageSlotCount(kitMap, identity);
+        return Math.max(desired, kitSlotCount);
+    }
+
+    private static int activeKitPageSlotCount(KitMap kitMap, ItemIdentity identity) {
+        if (kitMap == null || identity == null) {
+            return 0;
+        }
+        KitActivation activation = kitMap.activation();
+        if (activation == null || !activation.isActive()) {
+            return 0;
+        }
+        KitDefinition kit = kitMap.kit(activation.kitId());
+        if (kit == null) {
+            return 0;
+        }
+        int pageIndex = Math.max(0, Math.min(activation.pageIndex(), kit.pageCount() - 1));
+        KitPage page = kit.page(pageIndex);
+        if (page == null) {
+            return 0;
+        }
+        int count = 0;
+        for (int slotIndex = 0; slotIndex < KitPage.HOTBAR_SLOT_COUNT; slotIndex++) {
+            if (identity.equals(page.slot(slotIndex))) {
+                count++;
+            }
+        }
+        return count;
+    }
+
     private static Set<IdentityRef> depositableIdentities(
             List<AtlasItem> atlasItems,
             ClaimedChestMap claimedChestMap,
             ChestAffinityMap affinityMap,
-            Set<String> proximateStorageIds
+            Set<String> proximateStorageIds,
+            java.util.function.ToIntFunction<ItemIdentity> reservedCountResolver
     ) {
         if (atlasItems == null || atlasItems.isEmpty()
                 || claimedChestMap == null || claimedChestMap.chests().isEmpty()
@@ -733,6 +842,29 @@ public record SlotWorkspaceViewModel(
             }
             ItemIdentity identity = item.identity().toIdentity();
             if (identity == null) {
+                continue;
+            }
+            // Kit / desired-count protection: items the planner would
+            // refuse to deposit (because all carried instances are
+            // reserved) shouldn't show in the highlight. Without this
+            // the deposit-preview lights up an item the click would
+            // leave alone.
+            if (reservedCountResolver != null) {
+                int reserved = Math.max(0, reservedCountResolver.applyAsInt(identity));
+                if (item.totalCount() <= reserved) {
+                    continue;
+                }
+            }
+            // Presence-based path: a proximate chest already holds this
+            // identity, so the chest is implicitly "where this belongs"
+            // even when no learned affinity bond exists yet. Important
+            // for multiplayer worlds where other players (or other
+            // factions) organised the chest without going through
+            // SLOT — we still want SLOT-using players to deposit into
+            // the right chest. Also covers debug-populated chests and
+            // world-generated containers.
+            if (!item.presence().isEmpty()) {
+                result.add(item.identity());
                 continue;
             }
             for (ClaimedChest chest : claimedChestMap.chests()) {
@@ -1313,7 +1445,9 @@ public record SlotWorkspaceViewModel(
                 kits,
                 lootChestPanel,
                 wayfindingTargets,
-                depositableIdentities
+                depositableIdentities,
+                recentIdentities,
+                activeChestPanel
         );
     }
 
@@ -1338,7 +1472,9 @@ public record SlotWorkspaceViewModel(
                 kits,
                 lootChestPanel,
                 wayfindingTargets,
-                depositableIdentities
+                depositableIdentities,
+                recentIdentities,
+                activeChestPanel
         );
     }
 
@@ -2003,6 +2139,46 @@ public record SlotWorkspaceViewModel(
 
         public boolean isPresent() {
             return !dimensionId.isBlank();
+        }
+    }
+
+    /**
+     * Per-frame snapshot of the chest the player currently has open as
+     * the host of the SLOT sidebar. Drives the chest-control strip that
+     * shows above the wall — rename / forget gestures + a claim button
+     * for unclaimed chests. {@link #isPresent()} guards rendering;
+     * {@link #isClaimed()} switches the strip between claim and manage
+     * affordances.
+     */
+    public record ActiveChestPanel(
+            String storageId,
+            String label,
+            String clusterId,
+            String clusterLabel,
+            int swatchColor,
+            int posX,
+            int posY,
+            int posZ,
+            String dimensionId
+    ) {
+        public ActiveChestPanel {
+            storageId = storageId == null ? "" : storageId;
+            label = label == null ? "" : label;
+            clusterId = clusterId == null ? "" : clusterId;
+            clusterLabel = clusterLabel == null ? "" : clusterLabel;
+            dimensionId = dimensionId == null ? "" : dimensionId;
+        }
+
+        public static ActiveChestPanel empty() {
+            return new ActiveChestPanel("", "", "", "", 0, 0, 0, 0, "");
+        }
+
+        public boolean isPresent() {
+            return !dimensionId.isBlank();
+        }
+
+        public boolean isClaimed() {
+            return !storageId.isBlank();
         }
     }
 

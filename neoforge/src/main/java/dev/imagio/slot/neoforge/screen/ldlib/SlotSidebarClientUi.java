@@ -142,7 +142,13 @@ public final class SlotSidebarClientUi {
         event.modifiers = modifiers;
         event.target = root;
         com.lowdragmc.lowdraglib2.gui.ui.event.UIEventDispatcher.dispatchEvent(event);
-        return event.hasHandler;
+        // Cancel the host screen event only when a SLOT listener
+        // actually claimed the input by calling stopPropagation. The
+        // older {@code hasHandler} check fired on any listener
+        // registration / run — including HotkeyRouter handlers that
+        // early-return on irrelevant keycodes — which trapped Esc and
+        // every other host hotkey behind the sidebar.
+        return event.propagationStopped;
     }
 
     /**
@@ -168,7 +174,11 @@ public final class SlotSidebarClientUi {
         event.modifiers = modifiers;
         event.target = root;
         com.lowdragmc.lowdraglib2.gui.ui.event.UIEventDispatcher.dispatchEvent(event);
-        return event.hasHandler;
+        // See {@link #dispatchCharTyped} — same propagation semantics
+        // so Esc / E / W / etc. that the SLOT root only conditionally
+        // cares about (search modal active, cursor carry, etc.) reach
+        // the host screen when no handler actually consumed them.
+        return event.propagationStopped;
     }
 
     /**

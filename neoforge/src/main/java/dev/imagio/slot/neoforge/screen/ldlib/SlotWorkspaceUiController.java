@@ -29,15 +29,16 @@ import java.util.List;
 final class SlotWorkspaceUiController {
     /**
      * Natural content width (in screen px) of the workspace UI tree —
-     * wall scroller (fixed card-density) + flex gap + capped left
-     * column + root padding on each side. Single source of truth so
-     * the sidebar and standalone surfaces render the same widget tree
-     * at the same width.
+     * wall scroller (fixed card-density) + TOC sliver + flex gap +
+     * root padding on each side. Single source of truth so the sidebar
+     * and standalone surfaces render the same widget tree at the same
+     * width. Phase 7 of the single-column workspace plan dropped the
+     * left column entirely; the sliver carries TOC navigation in ~6 px.
      */
     static final int WORKSPACE_WIDTH_PX =
             ListWallPanelBuilder.WALL_CONTENT_WIDTH_PX
                     + ListWallPanelBuilder.SECTION_GAP_PX
-                    + ListWallPanelBuilder.SIDEBAR_LEFT_COLUMN_MAX_WIDTH_PX
+                    + TocPanelBuilder.SLIVER_WIDTH_PX
                     + 14 * 2;
 
     final SlotWorkspaceUiSession session;
@@ -130,7 +131,8 @@ final class SlotWorkspaceUiController {
     final LootChestPanelBuilder lootChestPanel = new LootChestPanelBuilder(this);
     final SearchResultsPanelBuilder searchResultsPanel = new SearchResultsPanelBuilder(this);
     final TocPanelBuilder tocPanel = new TocPanelBuilder(this);
-    final LeftColumnBuilder leftColumn = new LeftColumnBuilder(this);
+    final RecentsStripBuilder recentsStrip = new RecentsStripBuilder(this);
+    final ActiveChestStripBuilder activeChestStrip = new ActiveChestStripBuilder(this);
     ScrollerView wallScroller;
     /**
      * Persistent root-level container for the kit rack overlay. Lives

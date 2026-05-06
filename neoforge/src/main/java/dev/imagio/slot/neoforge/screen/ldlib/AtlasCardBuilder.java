@@ -11,8 +11,15 @@ import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.inventory.workspace.WayfindingTarget;
+import dev.imagio.slot.neoforge.client.wayfinding.WayfindingTargetCache;
+import dev.vfyjxf.taffy.style.AlignItems;
+import dev.vfyjxf.taffy.style.FlexDirection;
 import dev.vfyjxf.taffy.style.TaffyPosition;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.network.chat.Component;
 
 /**
  * Single-LOD pixel-space card renderer for the sectioned list-view wall.
@@ -27,6 +34,14 @@ import net.minecraft.client.gui.screens.Screen;
  * fixed size; sized for legibility at the chosen cell size.
  */
 final class AtlasCardBuilder {
+    /**
+     * Width (px) of the inline wayfinding strip that grows on the right
+     * of an expanded card. Sized to fit "↗ 12m" comfortably; cards
+     * without wayfinding info stay at the standard square so the grid
+     * keeps its rhythm. See Phase 5 of {@code single-column-workspace.md}.
+     */
+    private static final int WAYFINDING_STRIP_WIDTH_PX = 36;
+
     private final SlotWorkspaceUiController host;
 
     AtlasCardBuilder(SlotWorkspaceUiController host) {
@@ -51,8 +66,21 @@ final class AtlasCardBuilder {
         Button button = button("", true,
                 WorkspaceFormat.cardChromeColor(selected, searchMatch, item.recent(),
                         item.carried(), filtering));
+        // Wayfinding fold: when the card matches the active search OR is
+        // gather-needed (kit / desired-count gap) AND lives in a non-
+        // proximate chest, the card grows wider to embed an inline
+        // distance + direction strip on its right edge. Cards without a
+        // pointer stay at CARD_CELL_PX × CARD_CELL_PX so the grid stays
+        // uniform; expanded cards reflow naturally via the section's
+        // FlexWrap.WRAP. See Phase 5 of single-column-workspace.md.
+        SlotWorkspaceViewModel.ChestPresenceEntry wayfindingEntry =
+                wayfindingEntryFor(item, activeSearchMatch);
+        boolean expanded = wayfindingEntry != null;
+        int cardWidth = expanded
+                ? ListWallPanelBuilder.CARD_CELL_PX + WAYFINDING_STRIP_WIDTH_PX
+                : ListWallPanelBuilder.CARD_CELL_PX;
         button.layout(layout -> layout
-                .width(ListWallPanelBuilder.CARD_CELL_PX)
+                .width(cardWidth)
                 .height(ListWallPanelBuilder.CARD_CELL_PX)
                 .paddingAll(0));
         button.noText();
@@ -70,9 +98,23 @@ final class AtlasCardBuilder {
         host.drag.installAtlasItemDragSource(button, item);
         installChestHoverPaint(button, item);
 
-        UIElement body = new UIElement().layout(layout -> layout.widthPercent(100).heightPercent(100));
+        UIElement body = new UIElement().layout(layout -> layout
+                .widthPercent(100)
+                .heightPercent(100));
         body.setAllowHitTest(false);
-        buildCardBody(body, item, activeSearchMatch);
+        if (expanded) {
+            UIElement iconCell = new UIElement().layout(layout -> layout
+                    .positionType(TaffyPosition.ABSOLUTE)
+                    .left(0).top(0)
+                    .width(ListWallPanelBuilder.CARD_CELL_PX)
+                    .height(ListWallPanelBuilder.CARD_CELL_PX));
+            iconCell.setAllowHitTest(false);
+            buildCardBody(iconCell, item, activeSearchMatch);
+            body.addChild(iconCell);
+            body.addChild(buildWayfindingStrip(wayfindingEntry));
+        } else {
+            buildCardBody(body, item, activeSearchMatch);
+        }
         button.addChild(body);
 
         button.addEventListener(UIEvents.TICK, event -> {
@@ -410,12 +452,196 @@ final class AtlasCardBuilder {
 
     /**
      * Whether this item would be pulled by a click on the global
-     * Gather button: the active kit needs it (carry-gap > 0), AND it's
-     * present in a proximate chest. Mirrors the server-side gather
-     * walk closely enough for a hover preview.
+     * Gather button. A gatherable identity has presence in a proximate
+     * chest AND either: (a) the active kit needs it (carry-gap > 0),
+     * or (b) the player has set a positive desired count and the
+     * carry total falls short of it. Phase 6 of the single-column
+     * workspace plan generalised the gate so Gather works without an
+     * active kit when player-global desired counts have a gap.
      */
     static boolean isGatherableItem(SlotWorkspaceViewModel.AtlasItem item) {
-        return item != null && item.kitNeeded() && !item.presence().isEmpty();
+        if (item == null || item.presence().isEmpty()) {
+            return false;
+        }
+        if (item.kitNeeded()) {
+            return true;
+        }
+        return item.desiredCount() > 0 && item.totalCount() < item.desiredCount();
+    }
+
+    /**
+     * True when the player has a desired-count gap for this identity
+     * regardless of whether a proximate chest can fill it. Used by the
+     * wayfinding fold to decide whether a non-proximate chest should
+     * be surfaced as a directional pointer.
+     */
+    private static boolean hasDesiredGap(SlotWorkspaceViewModel.AtlasItem item) {
+        if (item == null) {
+            return false;
+        }
+        if (item.kitNeeded()) {
+            return true;
+        }
+        return item.desiredCount() > 0 && item.totalCount() < item.desiredCount();
+    }
+
+    /**
+     * Pick the chest entry the wayfinding strip should point at, or
+     * {@code null} when the card shouldn't expand. Three triggers:
+     * <ul>
+     *   <li>Active search match with non-proximate presence — the
+     *       player asked "where is X?" and the answer is "not here."</li>
+     *   <li>Desired-count gap with non-proximate presence — gather
+     *       can't pull it from nearby; a remote chest holds it.</li>
+     * </ul>
+     * Picks the elsewhere entry with the largest count (the most
+     * useful destination) and returns its presence record so the
+     * caller can look up coords via {@link WayfindingTargetCache}.
+     */
+    private SlotWorkspaceViewModel.ChestPresenceEntry wayfindingEntryFor(
+            SlotWorkspaceViewModel.AtlasItem item,
+            boolean activeSearchMatch
+    ) {
+        if (item == null || item.elsewhere().isEmpty()) {
+            return null;
+        }
+        boolean wantsPointer = activeSearchMatch
+                || (hasDesiredGap(item) && item.presence().isEmpty());
+        if (!wantsPointer) {
+            return null;
+        }
+        SlotWorkspaceViewModel.ChestPresenceEntry best = null;
+        int bestCount = -1;
+        for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.elsewhere()) {
+            if (entry == null) {
+                continue;
+            }
+            if (entry.count() > bestCount) {
+                bestCount = entry.count();
+                best = entry;
+            }
+        }
+        return best;
+    }
+
+    private UIElement buildWayfindingStrip(SlotWorkspaceViewModel.ChestPresenceEntry entry) {
+        UIElement strip = new UIElement().layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .left(ListWallPanelBuilder.CARD_CELL_PX)
+                .top(0)
+                .width(WAYFINDING_STRIP_WIDTH_PX)
+                .height(ListWallPanelBuilder.CARD_CELL_PX)
+                .paddingHorizontal(2)
+                .gapAll(2)
+                .alignItems(AlignItems.CENTER)
+                .flexDirection(FlexDirection.ROW));
+        strip.setAllowHitTest(false);
+
+        Label arrow = label("·", ACCENT);
+        arrow.layout(layout -> layout.height(ListWallPanelBuilder.CARD_CELL_PX));
+        arrow.textStyle(style -> style
+                .textColor(ACCENT)
+                .textShadow(false)
+                .fontSize(7)
+                .adaptiveWidth(true)
+                .textAlignVertical(Vertical.CENTER));
+        arrow.setAllowHitTest(false);
+        strip.addChild(arrow);
+
+        Label distance = label("--m", MUTED);
+        distance.layout(layout -> layout.flex(1).height(ListWallPanelBuilder.CARD_CELL_PX));
+        distance.textStyle(style -> style
+                .textColor(MUTED)
+                .textShadow(false)
+                .fontSize(6)
+                .textAlignHorizontal(Horizontal.RIGHT)
+                .textAlignVertical(Vertical.CENTER));
+        distance.setAllowHitTest(false);
+        strip.addChild(distance);
+
+        strip.addEventListener(UIEvents.TICK, ignored ->
+                updateWayfindingStrip(arrow, distance, entry.storageId()));
+        return strip;
+    }
+
+    private void updateWayfindingStrip(Label arrow, Label distance, String storageId) {
+        // wayfindingTargets() only carries chests with kit/desired-gap
+        // missing identities; for plain search-only matches we fall back
+        // to chestChips, which has every claimed chest's coords.
+        String dimensionId = null;
+        int worldX = 0, worldY = 0, worldZ = 0;
+        WayfindingTarget target = WayfindingTargetCache.targetFor(storageId);
+        if (target != null) {
+            dimensionId = target.dimensionId();
+            worldX = target.worldX();
+            worldY = target.worldY();
+            worldZ = target.worldZ();
+        } else {
+            for (SlotWorkspaceViewModel.ChestChip chip : host.viewModel.chestChips()) {
+                if (storageId.equals(chip.storageId())) {
+                    dimensionId = chip.dimensionId();
+                    worldX = chip.worldX();
+                    worldY = chip.worldY();
+                    worldZ = chip.worldZ();
+                    break;
+                }
+            }
+        }
+        if (dimensionId == null) {
+            arrow.setText(Component.literal("·"));
+            distance.setText(Component.literal("--m"));
+            return;
+        }
+        Minecraft mc = Minecraft.getInstance();
+        LocalPlayer player = mc == null ? null : mc.player;
+        if (player == null || mc.level == null) {
+            arrow.setText(Component.literal("·"));
+            distance.setText(Component.literal("--m"));
+            return;
+        }
+        if (!mc.level.dimension().location().toString().equals(dimensionId)) {
+            arrow.setText(Component.literal(shortDimension(dimensionId)));
+            distance.setText(Component.literal(""));
+            return;
+        }
+        double dx = (worldX + 0.5) - player.getX();
+        double dz = (worldZ + 0.5) - player.getZ();
+        double dy = (worldY + 0.5) - player.getY();
+        double horizontal = Math.sqrt(dx * dx + dz * dz);
+        double dist = Math.sqrt(horizontal * horizontal + dy * dy);
+        float yawRadians = (float) Math.toRadians(player.getYRot());
+        double absoluteBearing = Math.atan2(-dx, dz);
+        double relativeBearing = absoluteBearing - yawRadians;
+        arrow.setText(Component.literal(arrowGlyph(relativeBearing)));
+        distance.setText(Component.literal(((int) Math.round(dist)) + "m"));
+    }
+
+    private static String arrowGlyph(double relativeBearing) {
+        double normalized = ((relativeBearing % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+        int sector = (int) Math.floor((normalized + Math.PI / 8.0) / (Math.PI / 4.0)) % 8;
+        return switch (sector) {
+            case 0 -> "↑";
+            case 1 -> "↗";
+            case 2 -> "→";
+            case 3 -> "↘";
+            case 4 -> "↓";
+            case 5 -> "↙";
+            case 6 -> "←";
+            case 7 -> "↖";
+            default -> "·";
+        };
+    }
+
+    private static String shortDimension(String dimensionId) {
+        if (dimensionId == null) {
+            return "";
+        }
+        int colon = dimensionId.indexOf(':');
+        String tail = colon < 0 ? dimensionId : dimensionId.substring(colon + 1);
+        if (tail.startsWith("the_")) {
+            tail = tail.substring(4);
+        }
+        return tail;
     }
 
     /** Twin of {@link #addDepositPreviewOutline}, gated on

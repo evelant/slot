@@ -12,6 +12,7 @@ import dev.imagio.slot.inventory.integration.InventorySlotOwnershipPosture;
 import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
+import dev.imagio.slot.inventory.workspace.DepositPlanner;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
@@ -126,16 +127,8 @@ public final class KitGatherService {
             }
             // Affinity-ranked walk through proximate chests so the
             // chest most likely to hold this identity gets first dibs.
-            java.util.ArrayList<ClaimedChest> ranked = new java.util.ArrayList<>();
-            for (ClaimedChest chest : claimedChestMap.chests()) {
-                if (chest != null && proximate.contains(chest.storageId().toString())) {
-                    ranked.add(chest);
-                }
-            }
-            ranked.sort((a, b) -> Integer.compare(
-                    affinityMap.score(b.storageId(), identity),
-                    affinityMap.score(a.storageId(), identity)
-            ));
+            java.util.List<ClaimedChest> ranked = DepositPlanner.rankProximateChestsForTake(
+                    identity, claimedChestMap, affinityMap, proximate);
             int remaining = gap;
             int pulledForIdentity = 0;
             for (ClaimedChest chest : ranked) {

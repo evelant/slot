@@ -1473,7 +1473,7 @@ public final class SlotWorkspaceCommandService {
     // activation, chest deposit/take, hotbar transfers) will layer on top in phase 2
     // with a full UndoContext (authority + action executor).
 
-    static void restoreHomeAssignment(
+    public static void restoreHomeAssignment(
             WorkflowDomainRuntime runtime,
             ItemIdentity identity,
             VisualHomeAssignment target
@@ -1547,5 +1547,138 @@ public final class SlotWorkspaceCommandService {
                     return WorkspaceCommandOutcome.accepted("redid: " + label, label);
                 })
                 .orElseGet(() -> WorkspaceCommandOutcome.rejected("nothing_to_redo"));
+    }
+
+    /**
+     * Pickup-time auto-home pass: a triage candidate (carried but
+     * unassigned) gets routed via its top chip suggestion or to the
+     * Misc fallback. Skips undo + learned-rule recording — the player
+     * can drag-to-rehome to override; auto-placements aren't a sanctioned
+     * adjacency signal.
+     *
+     * <p>Processes at most one identity per call. Each
+     * {@code assignHome}/{@code createIsland} fires
+     * {@link WorkflowDomainRuntime#saveNow()} synchronously, so doing
+     * a whole-inventory pass in a single tick blocked the server thread
+     * long enough that crafting-table screens couldn't close.
+     * Per-tick throttling spreads the work and lets the input loop keep
+     * pumping; the projection's triage list only ever shrinks, so the
+     * pass converges.
+     *
+     * <p>Returns true iff one assignment was written, so the caller
+     * knows to re-project.
+     */
+    public static boolean autoHomeTriageItems(
+            WorkflowDomainRuntime runtime,
+            SlotWorkspaceViewModel viewModel,
+            java.util.Set<ItemIdentity> alreadyAttempted
+    ) {
+        if (runtime == null || viewModel == null) {
+            return false;
+        }
+        List<SlotWorkspaceViewModel.AtlasItem> triage = viewModel.triageItems();
+        if (triage.isEmpty()) {
+            return false;
+        }
+        for (SlotWorkspaceViewModel.AtlasItem item : triage) {
+            if (!item.carried()) {
+                continue;
+            }
+            ItemIdentity identity = item.identity().toIdentity();
+            if (alreadyAttempted != null && alreadyAttempted.contains(identity)) {
+                continue;
+            }
+            if (runtime.visualAtlasWorkflow().visualHomeMap().assignment(identity) != null) {
+                if (alreadyAttempted != null) {
+                    alreadyAttempted.add(identity);
+                }
+                continue;
+            }
+            if (alreadyAttempted != null) {
+                alreadyAttempted.add(identity);
+            }
+            String targetIslandId = resolveAutoHomeIsland(runtime, item);
+            if (targetIslandId == null || targetIslandId.isBlank()) {
+                continue;
+            }
+            int ordinal = appendOrdinal(runtime, targetIslandId);
+            runtime.visualAtlasWorkflow().assignHome(
+                    identity,
+                    targetIslandId,
+                    ordinal,
+                    VisualHomeOrigin.AUTO_HOMED,
+                    true,
+                    DomainEventMetadata.origin("slot_workspace.ldlib.auto_home")
+            );
+            SlotDebugLog.log(
+                    "LDLib atlas auto-homed {} -> {} ordinal={}",
+                    identity.itemId(),
+                    targetIslandId,
+                    ordinal
+            );
+            return true;
+        }
+        return false;
+    }
+
+    private static String resolveAutoHomeIsland(
+            WorkflowDomainRuntime runtime,
+            SlotWorkspaceViewModel.AtlasItem item
+    ) {
+        for (dev.imagio.slot.inventory.triage.ChipSuggestion chip : item.chipSuggestions()) {
+            if (chip == null) {
+                continue;
+            }
+            if (chip.kind() == dev.imagio.slot.inventory.triage.ChipSuggestion.ChipKind.TEMPLATE) {
+                IslandSuggestionTemplate template = chip.template();
+                if (template == null) {
+                    continue;
+                }
+                ItemIdentity seed = item.identity().toIdentity();
+                return resolveOrMaterializeTemplateIsland(runtime, template, seed, item.name());
+            }
+            if (runtime.visualAtlasWorkflow().visualHomeMap().island(chip.islandId()) != null) {
+                return chip.islandId();
+            }
+        }
+        return resolveOrMaterializeMiscIsland(runtime, item);
+    }
+
+    private static String resolveOrMaterializeMiscIsland(
+            WorkflowDomainRuntime runtime,
+            SlotWorkspaceViewModel.AtlasItem item
+    ) {
+        VisualAtlasIsland existing = runtime.visualAtlasWorkflow().visualHomeMap()
+                .island(SlotWorkspaceAtlasLayout.ISLAND_MISC);
+        if (existing != null) {
+            return existing.id();
+        }
+        SlotWorkspaceAtlasLayout.PlayerIslandDraft draft = SlotWorkspaceAtlasLayout
+                .createNextPlayerIslandDraft(
+                        SlotWorkspaceAtlasLayout.ISLAND_MISC_LABEL,
+                        item == null ? null : item.identity().toIdentity(),
+                        runtime.visualAtlasWorkflow().visualHomeMap()
+                );
+        VisualAtlasIsland created = runtime.visualAtlasWorkflow().createIslandWithId(
+                SlotWorkspaceAtlasLayout.ISLAND_MISC,
+                draft.label(),
+                draft.x(),
+                draft.y(),
+                SlotWorkspaceAtlasLayout.ISLAND_MISC_COLOR,
+                item == null ? null : item.identity().toIdentity(),
+                DomainEventMetadata.origin("slot_workspace.ldlib.auto_home.misc_create")
+        );
+        return created == null ? null : created.id();
+    }
+
+    private static int appendOrdinal(WorkflowDomainRuntime runtime, String islandId) {
+        int count = 0;
+        for (VisualHomeAssignment assignment :
+                runtime.visualAtlasWorkflow().visualHomeMap().assignments().values()) {
+            if (assignment != null && islandId.equals(assignment.islandId())) {
+                count++;
+            }
+        }
+        return count;
     }
 }
