@@ -16,6 +16,8 @@ public final class WorkspaceUiAttachments {
     public static final String HOTBAR_SLOT = "slot.workspace.hotbar_slot";
     public static final String OFFHAND_SLOT = "slot.workspace.offhand_slot";
     public static final String ACTIVE_CHEST_STRIP = "slot.workspace.active_chest_strip";
+    public static final String STORAGE_PANEL = "slot.workspace.storage_panel";
+    public static final String STORAGE_CHIP = "slot.workspace.storage_chip";
     public static final String KIT_CLUSTER = "slot.workspace.kit_cluster";
     public static final String KIT_RACK = "slot.workspace.kit_rack";
     public static final String KIT_CARD = "slot.workspace.kit_card";

@@ -38,13 +38,15 @@ belt/workflow interactions. Forge `/slot test populate <profile>` and
 chest ids stored in Forge persistent block-entity data and claimed chest
 contents feeding the common projection. Manual chest-close deposit
 observation and chest-claim persistence reconciliation now use shared
-helpers with loader-specific storage-id readers. Phase 2 has begun with
-the main wall section/card shells, shared fallback card details, Recents
-strip, hotbar belt, and non-drag kit rack rendered through the first
-narrow UI SPI + LDLib2/backend-specific renderers. The next risks are
-expanding the legacy screen/session beyond the wall/Recents/belt/kit
-surface and avoiding panel-by-panel reimplementation as richer chest
-surfaces are brought across.
+helpers with loader-specific storage-id readers. Phase 2 has the main
+wall section/card shells, shared fallback card details, Recents strip,
+hotbar belt, active chest strip, and non-drag kit rack rendered through
+the first narrow UI SPI + LDLib2/backend-specific renderers. A tested
+compact storage-chip builder exists but is intentionally hidden to match
+NeoForge's current product surface. Forge also has HUD/in-world
+wayfinding driven by the same common view-model projection. The next
+risks are migrating remaining richer modern-only affordances without
+reintroducing panel-by-panel backend semantics.
 
 Previously active
 [`single-column-workspace.md`](single-column-workspace.md) is paused
@@ -63,7 +65,7 @@ boundary no longer dominates engineering risk.
   cursor retirement are shipped.
 
 Verified for the current cross-loader slice:
-`./gradlew :common:test :neoforge:test :forge-1.20:compileJava :forge-1.20:compileSharedProbeJava`.
+`./gradlew :common:test :neoforge:test :forge-1.20:test :forge-1.20:compileJava :forge-1.20:compileSharedProbeJava`.
 
 ## Recent landings
 
@@ -99,7 +101,9 @@ hold the rest.
   sidebar, with a Forge-only quiet refresh message for host-menu view
   sync. Forge full-screen and sidebar hosts now share the same
   `ForgeWorkspaceSurface` controller instead of carrying parallel
-  widget/action glue.
+  widget/action glue; Forge now also renders shared tooltip metadata,
+  has a parked common storage-chip builder, and renders view-model-driven
+  HUD/world wayfinding.
 - **2026-05-05** — backpack-first shift-click routing generalised
   via new `MenuShiftClickMixin` on `AbstractContainerMenu.clicked`
   (snapshot-diffs vanilla lanes, routes positive deltas through

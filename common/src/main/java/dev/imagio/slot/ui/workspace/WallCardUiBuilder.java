@@ -17,6 +17,7 @@ import static dev.imagio.slot.ui.workspace.WorkspaceUiPalette.TEXT;
 public final class WallCardUiBuilder {
     public static final int CARD_CELL_PX = 22;
     public static final int WAYFINDING_STRIP_WIDTH_PX = 36;
+    private static final int FOCUS_OVERLAY = 0x44365743;
 
     private final Context context;
 
@@ -54,6 +55,7 @@ public final class WallCardUiBuilder {
             boolean currentSelected = item.identity().equals(context.activeIdentity());
             boolean focused = context.isMapFocusItem(item);
             button.zIndex(focused ? 10 : currentSelected ? 7 : 2);
+            button.overlayColor(focused ? FOCUS_OVERLAY : null);
             button.buttonColor(cardChromeColor(
                     currentSelected,
                     searchMatch,

@@ -267,19 +267,30 @@ Current state:
   event tree, and the LDLib2 backend renders it through
   `LdlibSlotUiRenderer`.
 - The first production migration is the main wall section shell, card
-  shell, Recents strip, hotbar belt, and non-drag kit rack, via `WallSectionUiBuilder`,
+  shell, Recents strip, hotbar belt, non-drag kit rack, and active chest
+  strip, via `WallSectionUiBuilder`,
   `WallSectionHeaderUiBuilder`, `WallCardUiBuilder`,
   `RecentsStripUiBuilder`, `HotbarBeltUiBuilder`, and
-  `KitRackUiBuilder`. It covers section layout, card width/search
+  `KitRackUiBuilder` / `ActiveChestStripUiBuilder`. It covers section layout,
+  card width/search
   chrome, Recents icon layout, hotbar/offhand slot chrome, kit summary /
-  page / gather controls, text/count layout, click vs mouse-down event separation,
-  edit actions, section grid drop targets, a shared fallback atlas-card
-  body (item icon, count badge, chest-presence pips, desired marker,
-  wayfinding strip), and backend-owned modern section/card/tooltip
+  page / gather controls, chest claim/forget, text/count layout, click vs
+  mouse-down event separation, edit actions, section grid drop targets, a
+  shared fallback atlas-card body (item icon, count badge, chest-presence
+  pips, desired marker, wayfinding strip), and backend-owned modern
+  section/card/tooltip
   hooks. NeoForge still overrides the body with its richer LDLib2 card
   renderer and keeps its richer LDLib2 kit rack for drag/context-menu
   affordances; Forge uses the shared non-drag kit rack and fallback card
-  body until those richer panels migrate.
+  body until those richer panels migrate. Forge now also renders the shared
+  tooltip metadata and a Forge-native in-world wayfinding chest glow driven
+  by the same common `WayfindingTarget` projection.
+- A compact `StoragePanelUiBuilder` exists from the Forge parity pass
+  and has tests for proximate/search-driven chip visibility and cursor
+  deposit, but it is intentionally not mounted right now. NeoForge hides
+  the old nearby-chest chip stack too; item-finder affordances live on
+  cards/HUD, and active chest management lives in the per-chest bar until
+  product direction says otherwise.
 - The removed docked Triage panel is intentionally not a migration
   target. Auto-home plus Recents are the live flow; Triage survives only
   as older naming around the auto-home candidate/suggestion pipeline and
@@ -370,15 +381,17 @@ Current early backend test point:
 - Forge now also mounts an early vanilla-container sidebar on
   `AbstractContainerScreen` hosts. The sidebar opens its own workspace
   session against the live host menu, renders the common active chest
-  controls, non-drag kit rack, Recents, wall cards, search, card
-  gestures, and hotbar belt, and lets vanilla host slots continue
+  controls, non-drag kit rack, Recents, wall cards, search, card gestures,
+  and hotbar belt, and lets vanilla host slots continue
   receiving input outside the sidebar. Host-menu changes are refreshed
   through a Forge transport sync message, not a shared inventory action.
   The full-screen debug surface and container sidebar now share
   `ForgeWorkspaceSurface`, so Forge has one local controller for
   view-model application, widget composition, card gestures, search,
-  kit/hotbar/active-chest contexts, and action sends. It is still a
-  first-cut adapter: NeoForge drag parity is out of scope for Forge.
+  kit/hotbar/storage/active-chest contexts, and action sends. Forge also
+  renders HUD wayfinding chips and in-world chest outlines from the latest
+  synced workspace view. It is still a first-cut adapter: NeoForge drag
+  parity is out of scope for Forge.
 
 1. Element tree, direct Taffy renderer, scissor stack, z-index render and
    hit-test ordering.
