@@ -12,6 +12,8 @@ base {
     archivesName = "${mod_id}-forge-${forge_minecraft_version}"
 }
 
+evaluationDependsOn(':common')
+
 minecraft {
     // Mojmap; Parchment requires the org.parchmentmc.librarian.forgegradle
     // plugin to layer on top — defer until/unless devs ask for it.
@@ -40,6 +42,11 @@ minecraft {
 sourceSets {
     main {
         java.srcDirs += project(':common').sourceSets.main.java.srcDirs
+        resources.srcDirs += project(':common').sourceSets.main.resources.srcDirs
+        // The shared Mixin config targets the modern Java 21 build and is
+        // explicitly referenced only by NeoForge's mods.toml. Forge still
+        // needs the shared assets/data resources, especially classification.
+        resources.exclude 'slot.mixins.json'
     }
     sharedProbe {
         java {
