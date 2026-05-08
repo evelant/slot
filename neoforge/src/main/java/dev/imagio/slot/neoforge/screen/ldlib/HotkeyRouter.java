@@ -56,13 +56,11 @@ final class HotkeyRouter {
         event.stopPropagation();
         SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
         if (target == null) {
-            target = host.selectedAtlasItem();
-        }
-        if (target == null) {
-            host.localStatus.set("hover or select an atlas item to assign with 1-9");
+            host.localStatus.set("hover an atlas item to assign with 1-9");
             host.rebuild();
             return;
         }
+        host.searchController.confirmForHotbar();
         host.rpc.sendAssignToHotbarSlot(target, digit - 1);
     }
 

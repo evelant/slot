@@ -8,11 +8,14 @@ import dev.imagio.slot.neoforge.network.SlotNetworking;
 import dev.imagio.slot.inventory.storage.CarriedProviderRegistry;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.platform.SlotResourceAccess;
+import dev.imagio.slot.platform.SlotStackAccess;
 import dev.imagio.slot.neoforge.screen.ldlib.GhostAtlasStackFactory;
 import dev.imagio.slot.neoforge.screen.ldlib.SlotSidebarUiHandles;
 import dev.imagio.slot.neoforge.screen.ldlib.SlotWorkspaceLdlibMenus;
 import dev.imagio.slot.neoforge.storage.ChestDepositObserver;
 import dev.imagio.slot.neoforge.storage.ChestStorageBreakListener;
+import dev.imagio.slot.neoforge.storage.NeoForgeCarriedActivityTracker;
 import dev.imagio.slot.neoforge.storage.NeoForgeCarriedSourceAccess;
 import dev.imagio.slot.neoforge.storage.NeoForgeWorldStorageAccess;
 import dev.imagio.slot.neoforge.storage.SlotAttachmentTypes;
@@ -28,6 +31,8 @@ import net.neoforged.fml.config.ModConfig;
 @Mod(SlotCommon.MOD_ID)
 public final class SlotNeoForge {
     public SlotNeoForge(IEventBus modBus, Dist dist, ModContainer container) {
+        SlotResourceAccess.install(new NeoForgeResourceAccess());
+        SlotStackAccess.install(new NeoForgeStackAccess());
         SlotCommon.init();
 
         container.registerConfig(ModConfig.Type.CLIENT, SlotClientConfig.CLIENT_SPEC);
@@ -43,6 +48,7 @@ public final class SlotNeoForge {
         SlotTestCommands.init();
         ChestStorageBreakListener.init();
         ChestDepositObserver.init();
+        NeoForgeCarriedActivityTracker.init();
         SlotPickupRouter.init();
 
         if (dist == Dist.CLIENT) {

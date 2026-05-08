@@ -1,0 +1,677 @@
+package dev.imagio.slot.forge.ui;
+
+import dev.imagio.slot.ui.spi.SlotUiElement;
+import dev.imagio.slot.ui.spi.SlotUiEvent;
+import dev.imagio.slot.ui.spi.SlotUiEventKind;
+import dev.imagio.slot.ui.spi.SlotUiLayout;
+import dev.imagio.slot.ui.spi.SlotUiTextStyle;
+import dev.vfyjxf.taffy.geometry.FloatSize;
+import dev.vfyjxf.taffy.geometry.TaffyPoint;
+import dev.vfyjxf.taffy.geometry.TaffyRect;
+import dev.vfyjxf.taffy.geometry.TaffySize;
+import dev.vfyjxf.taffy.style.AvailableSpace;
+import dev.vfyjxf.taffy.style.LengthPercentage;
+import dev.vfyjxf.taffy.style.LengthPercentageAuto;
+import dev.vfyjxf.taffy.style.Overflow;
+import dev.vfyjxf.taffy.style.TaffyDimension;
+import dev.vfyjxf.taffy.style.TaffyDisplay;
+import dev.vfyjxf.taffy.style.TaffyStyle;
+import dev.vfyjxf.taffy.tree.Layout;
+import dev.vfyjxf.taffy.tree.NodeId;
+import dev.vfyjxf.taffy.tree.TaffyTree;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Font;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.ItemStack;
+
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public final class ForgeSlotUiTree {
+    public static final String SCROLL_VIEWPORT = "slot.forge.scroll_viewport";
+    private static final int ROW = 0xEC24313D;
+    private static final int ROW_DIM = 0x7C24313D;
+    private static final int ROW_HOVER = 0xEC334354;
+    private static final int SELECTED = 0xF0507E6B;
+
+    private final Minecraft minecraft;
+    private final Font font;
+    private final TaffyTree taffy = new TaffyTree();
+    private final Map<NodeId, Node> nodes = new HashMap<>();
+    private final Map<NodeId, NodeId> parents = new HashMap<>();
+    private NodeId rootId;
+    private Node lastMouseDown;
+    private Node hovered;
+
+    private ForgeSlotUiTree(Minecraft minecraft) {
+        this.minecraft = minecraft;
+        this.font = minecraft.font;
+    }
+
+    public static ForgeSlotUiTree build(Minecraft minecraft, SlotUiElement root) {
+        ForgeSlotUiTree tree = new ForgeSlotUiTree(minecraft);
+        tree.rootId = tree.buildNode(root == null ? SlotUiElement.element() : root).id;
+        return tree;
+    }
+
+    public void compute(float width, float height) {
+        if (rootId == null) {
+            return;
+        }
+        taffy.computeLayout(rootId, TaffySize.of(
+                AvailableSpace.definite(width),
+                AvailableSpace.definite(height)));
+        for (Node node : nodes.values()) {
+            node.refreshContentHeight();
+        }
+    }
+
+    public float scrollY() {
+        Node node = firstScrollableNode();
+        return node == null ? 0f : node.scrollY;
+    }
+
+    public void setScrollY(float scrollY) {
+        Node node = firstScrollableNode();
+        if (node == null) {
+            return;
+        }
+        Layout layout = taffy.getLayout(node.id);
+        float max = Math.max(0f, node.contentHeight - layout.size().height);
+        node.scrollY = clamp(scrollY, 0f, max);
+    }
+
+    public void render(GuiGraphics graphics, int mouseX, int mouseY) {
+        if (rootId == null) {
+            return;
+        }
+        updateHover(mouseX, mouseY);
+        renderNode(graphics, rootId, 0f, 0f, new ArrayDeque<>());
+    }
+
+    public void renderTooltip(GuiGraphics graphics, int mouseX, int mouseY) {
+        if (rootId == null) {
+            return;
+        }
+        updateHover(mouseX, mouseY);
+        TooltipContent tooltip = tooltipFor(hovered);
+        if (tooltip == null) {
+            return;
+        }
+        if (!tooltip.stack().isEmpty()) {
+            graphics.renderTooltip(font, tooltip.stack(), mouseX, mouseY);
+            return;
+        }
+        if (!tooltip.lines().isEmpty()) {
+            graphics.renderComponentTooltip(font, tooltip.lines(), mouseX, mouseY);
+        }
+    }
+
+    public boolean mouseClicked(double mouseX, double mouseY, int button, boolean shiftDown) {
+        Node hit = hitTest(mouseX, mouseY);
+        if (hit == null) {
+            return false;
+        }
+        lastMouseDown = hit;
+        bubble(hit, new SlotUiEvent(SlotUiEventKind.MOUSE_DOWN, button, (float) mouseX, (float) mouseY, shiftDown));
+        return true;
+    }
+
+    public boolean mouseReleased(double mouseX, double mouseY, int button, boolean shiftDown) {
+        Node hit = hitTest(mouseX, mouseY);
+        if (hit == null) {
+            lastMouseDown = null;
+            return false;
+        }
+        if (lastMouseDown != null && sameOrDescendant(hit, lastMouseDown)) {
+            bubble(hit, new SlotUiEvent(SlotUiEventKind.CLICK, button, (float) mouseX, (float) mouseY, shiftDown));
+        }
+        lastMouseDown = null;
+        return true;
+    }
+
+    public boolean mouseScrolled(double mouseX, double mouseY, double delta, float step, boolean shiftDown) {
+        Node hit = hitTest(mouseX, mouseY);
+        if (hit != null) {
+            SlotUiEvent event = new SlotUiEvent(
+                    SlotUiEventKind.MOUSE_WHEEL,
+                    0,
+                    (float) mouseX,
+                    (float) mouseY,
+                    shiftDown,
+                    (float) delta);
+            bubble(hit, event);
+            if (event.propagationStopped()) {
+                return true;
+            }
+        }
+        Node scroll = scrollAncestor(hit);
+        if (scroll == null) {
+            return false;
+        }
+        Layout layout = taffy.getLayout(scroll.id);
+        float max = Math.max(0f, scroll.contentHeight - layout.size().height);
+        scroll.scrollY = clamp(scroll.scrollY - (float) delta * step, 0f, max);
+        return true;
+    }
+
+    public void tick() {
+        for (Node node : nodes.values()) {
+            node.model.dispatch(new SlotUiEvent(SlotUiEventKind.TICK, 0, 0, 0, false));
+        }
+    }
+
+    private Node buildNode(SlotUiElement model) {
+        List<Node> childNodes = new ArrayList<>();
+        List<NodeId> childIds = new ArrayList<>();
+        for (SlotUiElement child : model.children()) {
+            Node childNode = buildNode(child);
+            childNodes.add(childNode);
+            childIds.add(childNode.id);
+        }
+
+        TaffyStyle style = styleFor(model);
+        NodeId id;
+        if (childIds.isEmpty() && measuresText(model)) {
+            id = taffy.newLeafWithMeasure(style, (knownDimensions, availableSpace) -> measureText(model));
+        } else if (childIds.isEmpty()) {
+            id = taffy.newLeaf(style);
+        } else {
+            id = taffy.newWithChildren(style, childIds);
+        }
+        Node node = new Node(id, model);
+        nodes.put(id, node);
+        for (Node child : childNodes) {
+            parents.put(child.id, id);
+        }
+        return node;
+    }
+
+    private TaffyStyle styleFor(SlotUiElement model) {
+        SlotUiLayout layout = model.layout();
+        TaffyStyle style = new TaffyStyle();
+        style.display = TaffyDisplay.FLEX;
+        style.size = TaffySize.of(
+                layout.hasWidthPercent() ? TaffyDimension.percent(layout.widthPercent() / 100f)
+                        : layout.hasWidth() ? TaffyDimension.length(layout.width()) : TaffyDimension.AUTO,
+                layout.hasHeightPercent() ? TaffyDimension.percent(layout.heightPercent() / 100f)
+                        : layout.hasHeight() ? TaffyDimension.length(layout.height()) : TaffyDimension.AUTO);
+        if (layout.hasMaxWidth()) {
+            style.maxSize = TaffySize.of(TaffyDimension.length(layout.maxWidth()), TaffyDimension.AUTO);
+        }
+        if (layout.hasFlex()) {
+            style.flex = layout.flex();
+            style.flexGrow = layout.flex();
+            style.flexShrink = 1f;
+            style.flexBasis = TaffyDimension.ZERO;
+        }
+        style.padding = paddingFor(layout);
+        if (layout.hasGapAll()) {
+            LengthPercentage gap = LengthPercentage.length(layout.gapAll());
+            style.gap = TaffySize.of(gap, gap);
+        }
+        if (layout.flexDirection() != null) {
+            style.flexDirection = map(layout.flexDirection());
+        }
+        if (layout.alignItems() != null) {
+            style.alignItems = map(layout.alignItems());
+        }
+        if (layout.alignContent() != null) {
+            style.alignContent = map(layout.alignContent());
+        }
+        if (layout.flexWrap() != null) {
+            style.flexWrap = map(layout.flexWrap());
+        }
+        if (layout.positionType() != null) {
+            style.position = map(layout.positionType());
+        }
+        style.inset = insetFor(layout);
+        if (model.hasAttachment(SCROLL_VIEWPORT)) {
+            style.overflow = new TaffyPoint<>(Overflow.HIDDEN, Overflow.HIDDEN);
+        }
+        return style;
+    }
+
+    private TaffyRect<LengthPercentage> paddingFor(SlotUiLayout layout) {
+        float left = 0f;
+        float right = 0f;
+        float top = 0f;
+        float bottom = 0f;
+        if (layout.hasPaddingAll()) {
+            left = right = top = bottom = layout.paddingAll();
+        }
+        if (layout.hasPaddingHorizontal()) {
+            left = right = layout.paddingHorizontal();
+        }
+        if (layout.hasPaddingVertical()) {
+            top = bottom = layout.paddingVertical();
+        }
+        if (layout.hasPaddingLeft()) {
+            left = layout.paddingLeft();
+        }
+        if (layout.hasPaddingRight()) {
+            right = layout.paddingRight();
+        }
+        return TaffyRect.ltrb(
+                LengthPercentage.length(left),
+                LengthPercentage.length(right),
+                LengthPercentage.length(top),
+                LengthPercentage.length(bottom));
+    }
+
+    private TaffyRect<LengthPercentageAuto> insetFor(SlotUiLayout layout) {
+        LengthPercentageAuto left = LengthPercentageAuto.AUTO;
+        LengthPercentageAuto right = LengthPercentageAuto.AUTO;
+        LengthPercentageAuto top = LengthPercentageAuto.AUTO;
+        LengthPercentageAuto bottom = LengthPercentageAuto.AUTO;
+        if (layout.hasLeft()) {
+            left = LengthPercentageAuto.length(layout.left());
+        }
+        if (layout.hasRight()) {
+            right = LengthPercentageAuto.length(layout.right());
+        }
+        if (layout.hasTop()) {
+            top = LengthPercentageAuto.length(layout.top());
+        }
+        if (layout.hasBottom()) {
+            bottom = LengthPercentageAuto.length(layout.bottom());
+        }
+        return TaffyRect.ltrb(left, right, top, bottom);
+    }
+
+    private void renderNode(
+            GuiGraphics graphics,
+            NodeId id,
+            float originX,
+            float originY,
+            ArrayDeque<int[]> scissors
+    ) {
+        Node node = nodes.get(id);
+        Layout layout = taffy.getLayout(id);
+        float x = originX + layout.location().x;
+        float y = originY + layout.location().y;
+        float width = layout.size().width;
+        float height = layout.size().height;
+
+        fill(graphics, x, y, width, height, backgroundColor(node));
+        if (node.scrollable()) {
+            pushScissor(graphics, scissors, x, y, width, height);
+        }
+
+        float childOriginY = node.scrollable() ? y - node.scrollY : y;
+        for (NodeId child : sortedChildren(id)) {
+            renderNode(graphics, child, x, childOriginY, scissors);
+        }
+
+        renderText(graphics, node, x, y, width, height);
+        renderItem(graphics, node, x, y, width, height);
+        fill(graphics, x, y, width, height, node.model.overlayColor());
+
+        if (node.scrollable()) {
+            popScissor(graphics, scissors);
+            renderScrollbar(graphics, node, x, y, width, height);
+        }
+    }
+
+    private void renderText(GuiGraphics graphics, Node node, float x, float y, float width, float height) {
+        if (!(node.model.kind() == SlotUiElement.Kind.LABEL
+                || (node.model.kind() == SlotUiElement.Kind.BUTTON && node.model.buttonHasText()))) {
+            return;
+        }
+        String text = node.model.text();
+        if (text == null || text.isBlank()) {
+            return;
+        }
+        SlotUiTextStyle style = node.model.textStyle();
+        float scale = textScale(style);
+        int textWidth = Math.round(font.width(text) * scale);
+        int textHeight = Math.round(font.lineHeight * scale);
+        float drawX = x;
+        if (style.horizontal() == SlotUiTextStyle.Horizontal.CENTER) {
+            drawX = x + (width - textWidth) / 2f;
+        } else if (style.horizontal() == SlotUiTextStyle.Horizontal.RIGHT) {
+            drawX = x + width - textWidth;
+        }
+        float drawY = y;
+        if (style.vertical() == SlotUiTextStyle.Vertical.CENTER) {
+            drawY = y + (height - textHeight) / 2f;
+        } else if (style.vertical() == SlotUiTextStyle.Vertical.BOTTOM) {
+            drawY = y + height - textHeight;
+        }
+        graphics.pose().pushPose();
+        graphics.pose().translate(drawX, drawY, 0);
+        graphics.pose().scale(scale, scale, 1f);
+        graphics.drawString(font, text, 0, 0, style.color(), style.shadow());
+        graphics.pose().popPose();
+    }
+
+    private void renderItem(GuiGraphics graphics, Node node, float x, float y, float width, float height) {
+        if (node.model.kind() != SlotUiElement.Kind.ITEM_ICON) {
+            return;
+        }
+        ItemStack stack = node.model.itemStack();
+        if (stack.isEmpty()) {
+            return;
+        }
+        int size = Math.max(1, Math.round(Math.min(width, height)));
+        float scale = size / 16f;
+        int drawX = Math.round(x + (width - size) / 2f);
+        int drawY = Math.round(y + (height - size) / 2f);
+        ItemStack iconStack = stack.copy();
+        if (!node.model.renderVanillaCount()) {
+            iconStack.setCount(1);
+        }
+        graphics.pose().pushPose();
+        graphics.pose().translate(drawX, drawY, 0);
+        graphics.pose().scale(scale, scale, 1f);
+        graphics.renderItem(iconStack, 0, 0);
+        if (node.model.renderVanillaCount()) {
+            graphics.renderItemDecorations(font, iconStack, 0, 0);
+        }
+        graphics.pose().popPose();
+        if (!node.model.itemCarried()) {
+            graphics.fill(drawX, drawY, drawX + size, drawY + size, 0xAA0A1016);
+            graphics.fill(drawX, drawY, drawX + size, drawY + 1, 0x88A0AAB3);
+            graphics.fill(drawX, drawY + size - 1, drawX + size, drawY + size, 0x88A0AAB3);
+            graphics.fill(drawX, drawY, drawX + 1, drawY + size, 0x88A0AAB3);
+            graphics.fill(drawX + size - 1, drawY, drawX + size, drawY + size, 0x88A0AAB3);
+        }
+    }
+
+    private void renderScrollbar(GuiGraphics graphics, Node node, float x, float y, float width, float height) {
+        if (node.contentHeight <= height + 0.5f) {
+            return;
+        }
+        int trackX = Math.round(x + width - 3);
+        int trackTop = Math.round(y + 2);
+        int trackBottom = Math.round(y + height - 2);
+        int trackHeight = Math.max(1, trackBottom - trackTop);
+        float thumbHeight = Math.max(10f, trackHeight * (height / node.contentHeight));
+        float maxScroll = Math.max(1f, node.contentHeight - height);
+        float thumbY = trackTop + (trackHeight - thumbHeight) * (node.scrollY / maxScroll);
+        graphics.fill(trackX, trackTop, trackX + 2, trackBottom, 0x5024313D);
+        graphics.fill(trackX, Math.round(thumbY), trackX + 2, Math.round(thumbY + thumbHeight), 0xB0A0AAB3);
+    }
+
+    private void updateHover(int mouseX, int mouseY) {
+        Node hit = hitTest(mouseX, mouseY);
+        if (hit == hovered) {
+            return;
+        }
+        if (hovered != null) {
+            hovered.model.dispatch(new SlotUiEvent(SlotUiEventKind.MOUSE_LEAVE, 0, mouseX, mouseY, false));
+        }
+        hovered = hit;
+        if (hovered != null) {
+            hovered.model.dispatch(new SlotUiEvent(SlotUiEventKind.MOUSE_ENTER, 0, mouseX, mouseY, false));
+        }
+    }
+
+    private Node hitTest(double mouseX, double mouseY) {
+        if (rootId == null) {
+            return null;
+        }
+        return hitNode(rootId, 0f, 0f, (float) mouseX, (float) mouseY);
+    }
+
+    private Node hitNode(NodeId id, float originX, float originY, float mouseX, float mouseY) {
+        Node node = nodes.get(id);
+        Layout layout = taffy.getLayout(id);
+        float x = originX + layout.location().x;
+        float y = originY + layout.location().y;
+        float width = layout.size().width;
+        float height = layout.size().height;
+        if (mouseX < x || mouseY < y || mouseX >= x + width || mouseY >= y + height) {
+            return null;
+        }
+        float childOriginY = node.scrollable() ? y - node.scrollY : y;
+        List<NodeId> children = sortedChildren(id);
+        for (int index = children.size() - 1; index >= 0; index--) {
+            Node childHit = hitNode(children.get(index), x, childOriginY, mouseX, mouseY);
+            if (childHit != null) {
+                return childHit;
+            }
+        }
+        return node.model.allowHitTest() ? node : null;
+    }
+
+    private void bubble(Node target, SlotUiEvent event) {
+        Node current = target;
+        while (current != null && !event.propagationStopped()) {
+            current.model.dispatch(event);
+            current = parent(current);
+        }
+    }
+
+    private Node parent(Node node) {
+        NodeId parent = parents.get(node.id);
+        return parent == null ? null : nodes.get(parent);
+    }
+
+    private boolean sameOrDescendant(Node node, Node expectedAncestor) {
+        Node current = node;
+        while (current != null) {
+            if (current == expectedAncestor) {
+                return true;
+            }
+            current = parent(current);
+        }
+        return false;
+    }
+
+    private Node scrollAncestor(Node node) {
+        Node current = node;
+        while (current != null) {
+            if (current.scrollable()) {
+                return current;
+            }
+            current = parent(current);
+        }
+        return null;
+    }
+
+    private TooltipContent tooltipFor(Node node) {
+        Node current = node;
+        while (current != null) {
+            ItemStack stack = current.model.tooltipStack();
+            if (!stack.isEmpty()) {
+                return new TooltipContent(stack, List.of());
+            }
+            List<Component> lines = current.model.tooltipLines();
+            if (!lines.isEmpty()) {
+                return new TooltipContent(ItemStack.EMPTY, lines);
+            }
+            current = parent(current);
+        }
+        return null;
+    }
+
+    private Node firstScrollableNode() {
+        for (Node node : nodes.values()) {
+            if (node.scrollable()) {
+                return node;
+            }
+        }
+        return null;
+    }
+
+    private List<NodeId> sortedChildren(NodeId id) {
+        List<NodeId> children = taffy.getChildren(id);
+        if (children.size() < 2) {
+            return children;
+        }
+        ArrayList<NodeId> sorted = new ArrayList<>(children);
+        sorted.sort(Comparator.comparingInt(child -> nodes.get(child).zIndex()));
+        return sorted;
+    }
+
+    private FloatSize measureText(SlotUiElement model) {
+        String text = model.text() == null ? "" : model.text();
+        float scale = textScale(model.textStyle());
+        return FloatSize.of(Math.max(1f, font.width(text) * scale), Math.max(1f, font.lineHeight * scale));
+    }
+
+    private boolean measuresText(SlotUiElement model) {
+        if (model.kind() == SlotUiElement.Kind.LABEL) {
+            return true;
+        }
+        return model.kind() == SlotUiElement.Kind.BUTTON && model.buttonHasText();
+    }
+
+    private float textScale(SlotUiTextStyle style) {
+        return Math.max(0.5f, style.fontSize() / 8f);
+    }
+
+    private Integer backgroundColor(Node node) {
+        if (node.model.kind() == SlotUiElement.Kind.BUTTON) {
+            int color = node.model.buttonColor();
+            if (!node.model.buttonActive()) {
+                return color;
+            }
+            if (lastMouseDown != null && sameOrDescendant(hovered, node) && sameOrDescendant(hovered, lastMouseDown)) {
+                return SELECTED;
+            }
+            if (sameOrDescendant(hovered, node)) {
+                return hoverColor(color);
+            }
+            return color;
+        }
+        return node.model.backgroundColor();
+    }
+
+    private static int hoverColor(int color) {
+        if (color == ROW_DIM) {
+            return ROW;
+        }
+        int baseAlpha = (color >>> 24) & 0xFF;
+        if (baseAlpha < 0x80) {
+            return (baseAlpha << 24) | (ROW_HOVER & 0x00FFFFFF);
+        }
+        return ROW_HOVER;
+    }
+
+    private void fill(GuiGraphics graphics, float x, float y, float width, float height, Integer color) {
+        if (color == null || (color >>> 24) == 0) {
+            return;
+        }
+        graphics.fill(
+                Math.round(x),
+                Math.round(y),
+                Math.round(x + width),
+                Math.round(y + height),
+                color);
+    }
+
+    private void pushScissor(
+            GuiGraphics graphics,
+            ArrayDeque<int[]> scissors,
+            float x,
+            float y,
+            float width,
+            float height
+    ) {
+        int left = Math.round(x);
+        int top = Math.round(y);
+        int right = Math.round(x + width);
+        int bottom = Math.round(y + height);
+        if (!scissors.isEmpty()) {
+            int[] parent = scissors.peek();
+            left = Math.max(left, parent[0]);
+            top = Math.max(top, parent[1]);
+            right = Math.min(right, parent[2]);
+            bottom = Math.min(bottom, parent[3]);
+        }
+        int[] next = {left, top, Math.max(left, right), Math.max(top, bottom)};
+        scissors.push(next);
+        graphics.enableScissor(next[0], next[1], next[2], next[3]);
+    }
+
+    private void popScissor(GuiGraphics graphics, ArrayDeque<int[]> scissors) {
+        scissors.pop();
+        graphics.disableScissor();
+        if (!scissors.isEmpty()) {
+            int[] next = scissors.peek();
+            graphics.enableScissor(next[0], next[1], next[2], next[3]);
+        }
+    }
+
+    private static dev.vfyjxf.taffy.style.FlexDirection map(SlotUiLayout.FlexDirection value) {
+        return value == SlotUiLayout.FlexDirection.ROW
+                ? dev.vfyjxf.taffy.style.FlexDirection.ROW
+                : dev.vfyjxf.taffy.style.FlexDirection.COLUMN;
+    }
+
+    private static dev.vfyjxf.taffy.style.AlignItems map(SlotUiLayout.AlignItems value) {
+        if (value == SlotUiLayout.AlignItems.CENTER) {
+            return dev.vfyjxf.taffy.style.AlignItems.CENTER;
+        }
+        if (value == SlotUiLayout.AlignItems.FLEX_START) {
+            return dev.vfyjxf.taffy.style.AlignItems.FLEX_START;
+        }
+        return dev.vfyjxf.taffy.style.AlignItems.STRETCH;
+    }
+
+    private static dev.vfyjxf.taffy.style.AlignContent map(SlotUiLayout.AlignContent value) {
+        if (value == SlotUiLayout.AlignContent.SPACE_BETWEEN) {
+            return dev.vfyjxf.taffy.style.AlignContent.SPACE_BETWEEN;
+        }
+        return dev.vfyjxf.taffy.style.AlignContent.FLEX_START;
+    }
+
+    private static dev.vfyjxf.taffy.style.FlexWrap map(SlotUiLayout.FlexWrap value) {
+        return value == SlotUiLayout.FlexWrap.WRAP
+                ? dev.vfyjxf.taffy.style.FlexWrap.WRAP
+                : dev.vfyjxf.taffy.style.FlexWrap.NO_WRAP;
+    }
+
+    private static dev.vfyjxf.taffy.style.TaffyPosition map(SlotUiLayout.PositionType value) {
+        return value == SlotUiLayout.PositionType.ABSOLUTE
+                ? dev.vfyjxf.taffy.style.TaffyPosition.ABSOLUTE
+                : dev.vfyjxf.taffy.style.TaffyPosition.RELATIVE;
+    }
+
+    private static float clamp(float value, float min, float max) {
+        return Math.max(min, Math.min(max, value));
+    }
+
+    private final class Node {
+        final NodeId id;
+        final SlotUiElement model;
+        float scrollY;
+        float contentHeight;
+
+        Node(NodeId id, SlotUiElement model) {
+            this.id = id;
+            this.model = model;
+        }
+
+        boolean scrollable() {
+            return model.hasAttachment(SCROLL_VIEWPORT);
+        }
+
+        int zIndex() {
+            return model.zIndex() == null ? 0 : model.zIndex();
+        }
+
+        void refreshContentHeight() {
+            float max = 0f;
+            for (NodeId childId : taffy.getChildren(id)) {
+                Layout child = taffy.getLayout(childId);
+                max = Math.max(max, child.location().y + child.size().height);
+            }
+            contentHeight = max;
+            if (scrollable()) {
+                float ownHeight = taffy.getLayout(id).size().height;
+                scrollY = clamp(scrollY, 0f, Math.max(0f, contentHeight - ownHeight));
+            }
+        }
+    }
+
+    private record TooltipContent(ItemStack stack, List<Component> lines) {
+    }
+}

@@ -1,156 +1,434 @@
 # Cross-Loader UI SPI
 
+Last updated: 2026-05-07
+
+ADR: [0006-cross-loader-legacy-forge.md](../decisions/0006-cross-loader-legacy-forge.md).
+
 ## Why this exists
 
-LDLib2 only targets modern Minecraft (1.20.5+ networking, NeoForge ≥21). Going to 1.20.1 Forge means either backporting LDLib2 ourselves (multi-month, library we don't own) or rewriting our UI on something else. This plan picks the third path: introduce a small SLOT-internal UI SPI in `common`, with two backends — LDLib2 on modern, vanilla `Screen` + Taffy on legacy. The SPI captures only what we use.
+LDLib2 only targets modern Minecraft / NeoForge. Running SLOT on
+Minecraft 1.20.1 Forge means either backporting LDLib2 ourselves,
+rewriting the UI directly on vanilla screens, or introducing a small
+SLOT-owned UI SPI with two backends. This plan chooses the SPI path.
 
-Background analysis: LDLib2's actual layout engine is [Taffy](https://central.sonatype.com/artifact/dev.vfyjxf/taffy) — confirmed by the fact that LDLib2 v2.2.5 ships `taffy-1.1.4.jar` jarjar'd inside its mod jar, alongside a `TaffyLayoutStyle` DSL. Pure Java, Java 17, MIT — same engine on both sides. ScrollerView is not virtualized, so there is no parity gap to replicate. Yoga interop in LDLib2 is legacy / dead weight for our usage. The LDLib2 surfaces that genuinely don't port are its NeoForge networking (replaced with two custom Forge `SimpleChannel` packets) and its capture-phase drag system (which we eliminate entirely on legacy — see drag-scope section).
+The important Phase 0 finding is validated: Forge 1.20.1 can render a
+scrollable Taffy tree through vanilla `Screen` / `GuiGraphics`, with
+hit-test bubbling and `stopPropagation` behaving as expected. The
+throwaway spike source that proved this has been deleted now that the
+production `ForgeSlotUiTree` backend exists. Taffy
+(`dev.vfyjxf:taffy:1.1.4`) is pure Java and is already the layout
+engine LDLib2 ships jarjar'd.
 
-## SPI shape (`common/src/main/java/dev/imagio/slot/ui/`)
+The next risk is **not** another UI mock. It is making shared SLOT domain
+code compile and behave under Forge 1.20.1 before a large UI migration
+locks in the wrong boundaries.
 
-Concrete commitments. Layout types stay raw Taffy (`dev.vfyjxf.taffy.style.*`) — we already import them directly, and a wrapper would just rename the same DSL. `backgroundTexture` / `overlayTexture` / `zIndex` hang off `Element` directly rather than being a separate `Style` type (three fields don't justify a value class).
+## Target Shape
 
+Modern build:
+
+- Minecraft `1.21.1`, Java `21`, NeoForge, LDLib2 backend.
+- Keeps LDLib2 drag support and LDLib2 menu/sync plumbing where the
+  backend owns it.
+
+Legacy build:
+
+- Minecraft `1.20.1`, Java `17`, Forge `47.x`, vanilla screen backend.
+- Uses direct Taffy layout, vanilla `GuiGraphics`, Forge networking, and
+  Forge capabilities.
+- Does not implement drag. Cursor/drop and keyboard paths cover legacy
+  interactions.
+
+Shared code:
+
+- Workspace builders move behind `slot.ui.*` only after platform compile
+  risk is retired.
+- Inventory semantics remain in `common`.
+- Loader-specific APIs stay behind narrow platform adapters.
+
+## Semantic Authority
+
+The existing NeoForge implementation is the behavior oracle for the
+port. Forge is another adapter, not a second product surface. When a
+gesture or command is ported:
+
+- First trace the NeoForge path and write or update the common decision
+  table / command service from that behavior.
+- Platform UI should reduce to `raw event -> common Context -> common
+  Decision -> backend send`.
+- A recognized gesture must return a common action or a common status.
+  It must not return `NONE` and let backend code invent a fallback.
+- Backend-specific branches for gesture semantics are forbidden unless
+  this plan explicitly lists the loader delta. The current intentional
+  delta is only that legacy Forge omits drag; cursor, keyboard, and
+  catalog actions must preserve the same meaning.
+- Missing view-model data must fail closed with a useful diagnostic
+  rather than falling back to older fields or inferred behavior.
+- Click-to-select is not an inventory command mode. Hover/focus,
+  cursor pickup, shift-click, digit hotkeys, and drag/drop may initiate
+  commands; hidden "selected item" state must not route later hotbar or
+  section clicks.
+
+## SPI Shape
+
+Do not freeze this before migrating at least one hard panel. The first
+cut should be grown from actual adapter work, but the expected surface is:
+
+```text
+slot.ui.Element
+  Taffy layout handle, child list, listener registration, render hook,
+  backgroundTexture, overlayTexture, zIndex, allowHitTest, focus/display state
+
+slot.ui.elements
+  Button, Label, TextField, ScrollerView
+
+slot.ui.event
+  Event, EventKind, Listener
+  MOUSE_*, CLICK, KEY_DOWN, CHAR_TYPED, BLUR, TICK, LAYOUT_CHANGED,
+  MUI_CHANGED, HOVER_TOOLTIPS
+  Minimal capture/pre-dispatch is allowed for key/char/global shortcuts.
+  DRAG_* is not part of the cross-loader SPI.
+
+slot.ui.tex
+  Texture, ColorRect, ItemStackTex, Icons
+
+slot.ui.action
+  WorkspaceActionCatalog, WorkspaceActionId, WorkspaceActionChannel
+  One shared action registry consumed by both LDLib2 RPC and Forge packets.
+
+slot.ui.screen
+  UiBackend, ScreenFactory<MENU>, MenuHolder/viewTagPush equivalent
 ```
-slot.ui.Element                // Taffy NodeId + child list + listeners + render hook
-                               //   + backgroundTexture, overlayTexture, zIndex
-slot.ui.elements/
-    Button       Label        TextField        ScrollerView
-slot.ui.event/
-    Event        EventKind     Listener     // MOUSE_*, CLICK, KEY_DOWN, CHAR_TYPED, BLUR,
-                                            // TICK, LAYOUT_CHANGED, MUI_CHANGED, HOVER_TOOLTIPS
-                                            // (no DRAG_* — see drag-scope section below)
-                                            // single-pass bubble walk, stopPropagation; no capture phase
-slot.ui.tex/
-    Texture      ColorRect     ItemStackTex     Icons       // 7 constants we use
-slot.ui.rpc/
-    ActionChannel            // one channel; backends provide impl
-    ActionId<...>            // typed handle, replaces RPCEmitter
-slot.ui.screen/
-    UiBackend                // service-loaded factory; also exposes viewTagPush(CompoundTag)
-                             //   to replace the single DataBindingBuilder.tagS2C use site
-    ScreenFactory<MENU>      // wraps PlayerUIMenuType / vanilla MenuType per backend
-    MenuHolder               // analogue of IModularUIHolderMenu
-```
 
-Drop entirely from our surface: `BindableValue` (used once, replace with imperative update), LDLib2's LSS / stylesheets, animation engine, visual editor hooks, yoga interop overloads. No `Layout`, `Style`, or `ViewModelChannel<T>` SPI types — each was an over-abstraction for our usage (raw Taffy already works; three style fields belong on Element; one tag-push site is one method).
+Drop from the shared surface: LDLib2 LSS/stylesheets, visual editor,
+animation engine, configurator system, Yoga overloads, and
+`BindableValue` as a general reactive primitive. The one view-model tag
+push can be an explicit backend method.
 
-## Architecture
+### Drag Scope
 
-**Modern backend** (`neoforge/.../ui/backend/ldlib2/`): each `slot.ui.Element` wraps an LDLib2 `UIElement`; methods forward 1:1. `ActionChannel` wraps `RPCEmitter`. `viewTagPush` wraps `DataBindingBuilder.tagS2C`. `ScreenFactory` uses `PlayerUIMenuType` / `IModularUIHolderMenu`. LDLib2's drag system stays in use on modern via the existing `DragDropWiring` code — drag is *not* part of the SPI surface; modern code that needs drag continues to talk to LDLib2 directly.
+Modern retains existing LDLib2 drag. Legacy omits drag entirely.
 
-**Legacy backend** (`forge-1.20/.../ui/backend/vanilla/`): each `slot.ui.Element` owns a Taffy `NodeId` directly in a screen-scoped `TaffyTree`. Renders through vanilla `GuiGraphics`. Owns its own single-pass event dispatch (hit-test topmost → walk up parents until `stopPropagation`), scissor stack, scroll/clip math, z-order sort, and a Forge `SimpleChannel` pair (`C2SAction`, `S2CViewModel`). **No drag manager** — every gesture is cursor or keyboard (see drag-scope section). No LDLib1 dependency at any point.
+Common builders must not call LDLib2 drag APIs directly. Use an optional
+interaction/drag hook owned by the backend:
 
-**Both** depend on `dev.vfyjxf:taffy:1.1.4`. On modern this is already transitively present via LDLib2's jarjar; on legacy we declare it as a direct dep.
+- modern hook unwraps the native LDLib2 element and installs existing
+  `DragDropWiring`
+- legacy hook is a no-op because cursor and keyboard paths are the
+  supported interaction model
 
-### Drag-and-drop scope split
-
-The current code has 5 live drag types ([WorkspaceDrags.java](../../neoforge/src/main/java/dev/imagio/slot/neoforge/screen/ldlib/WorkspaceDrags.java) — plus `ChestTileDrag` which is dead and gets deleted in Phase 2). On legacy we eliminate drag entirely — replicating screen-level drag interception in vanilla would force a capture-phase event bus and a custom drag manager, both significant new code we'd own forever. Cursor and keyboard cover every gesture:
-
-| Drag type | Modern | Legacy | Reason |
-|---|---|---|---|
-| `AtlasItemDrag` (re-home) | drag (LDLib2) | cursor pickup → drop on section | Re-home becomes a deliberate two-step gesture; undo covers accidental drops. |
-| `IslandDrag` (section reorder) | drag (LDLib2) | ↑/↓ keyboard with section/TOC entry focused | Keyboard reorder is also an accessibility win on modern, but kept optional there. |
-| `HotbarSlotDrag` | drag (LDLib2) | cursor only | Stack swap/assign — cursor covers it cleanly. |
-| `ChestStackDrag` | drag (LDLib2) | cursor only | Already in cursor's wheelhouse. |
-| `KitSlotDrag` | drag (LDLib2) | cursor only | Stack swap. |
-| `KitBringDrag` | drag (LDLib2) | cursor only | Pickup-style gesture. |
-
-Modern users keep every gesture they have today, unchanged. Legacy users lose drag entirely; they use cursor pickup/drop and keyboard reorder. Documented UX divergence between loaders.
-
-This collapses the legacy event system to a vanilla-like hit-test + bubble walk. No screen-level capture, no synthetic DRAG_* dispatch, no multi-target ENTER/LEAVE bookkeeping anywhere.
+| Current drag payload | Modern | Legacy |
+|---|---|---|
+| `AtlasItemDrag` | LDLib2 drag | cursor pickup -> drop on section |
+| `IslandDrag` | LDLib2 drag | focused section / TOC keyboard reorder |
+| `HotbarSlotDrag` | LDLib2 drag | cursor/drop |
+| `ChestStackDrag` | LDLib2 drag | cursor/drop |
+| `KitSlotDrag` | LDLib2 drag | cursor/drop |
+| `KitBringDrag` | LDLib2 drag | cursor/drop |
 
 ## Phases
 
-Phases are sequenced so each one delivers value or de-risks something independently. After Phase 4 (the decision point) the modern build is shippable on the new SPI with extended cursor coverage; we can stop there if 1.20.1 stops looking worth it.
+### Phase 0 — Spike (validated)
 
-### Phase 0 — Spike
+Validated in the current `forge-1.20` module:
 
-- Spike only: vanilla 1.20.1 `Screen` rendering a Taffy tree of coloured rectangles, with hit-test + bubble dispatch and a working scroll viewport. Goal: validate Taffy → `GuiGraphics` translation, scissor stacking, the bubble walk, and `compute_layout` perf before committing to the SPI shape.
-- **No SPI signatures yet.** Designing the SPI before Phase 1 implements anything tends to bake in imagined needs. Defer the SPI commit to fall out of Phase 1's adapter work, when actual usage has shape.
-- **Gate:** spike scrolls a 200-row list at ≥60 fps; bubble dispatch + `stopPropagation` work; layout output for a representative tree matches what LDLib2 produces for the equivalent inputs.
+- Forge 1.20.1 module compiles with Java 17.
+- Taffy direct dependency and jarJar packaging compile.
+- Vanilla `Screen` renders a Taffy tree through `GuiGraphics`.
+- 200-row scroll viewport, hit testing, bubble dispatch, and
+  `stopPropagation` work in-game.
 
-### Phase 1 — Modern backend (LDLib2 adapter) + first-cut SPI
+The Phase 0 spike package has been deleted. Do not restore or extend it;
+future renderer checks should be small production-backend fixtures or
+tests against `ForgeSlotUiTree`.
 
-- Write `slot.ui.*` signatures *as the LDLib2 adapter is built*, in `neoforge/.../ui/backend/ldlib2/`. Each method exists because the adapter needs it.
-- Wire `UiBackend` via `ServiceLoader`.
-- Two- or three-screen smoke test exercising every element type, RPC, view-tag push. (No drag in the SPI; modern drag stays on direct LDLib2 calls.)
-- **Gate:** smoke screens behave identically to direct-LDLib2 equivalents; SPI surface is reviewed and frozen before Phase 2.
+### Phase 0.5 — Shared Platform Compile Gate
 
-### Phase 2 — Migrate existing UI to SPI
+Goal: discover and retire 1.20.1 blockers before the UI migration.
 
-- Mechanical translation of `neoforge/src/main/java/dev/imagio/slot/neoforge/screen/ldlib/` (~14.7k LOC, 30 files) to the SPI.
-- Builders moved to `common` where they don't reference loader-specific APIs; remaining loader-specific glue (e.g., menu factory, EMI integration, drag wiring) stays in `neoforge`.
-- **No behaviour changes.** Pure refactor.
-- **Gate:** parity with main-branch UI on every gameplay path used by Phase 1+2 list view; in-game test of triage panel, drag/drop, search, RPC actions, undo/redo, kit ops, chest ops.
+Current probe:
 
-### Phase 3 — Cursor coverage extension + keyboard reorder
+- `./gradlew :forge-1.20:compileSharedProbeJava` compiles the whole
+  shared `dev.imagio.slot` common source tree against Forge 1.20.1 /
+  Java 17, plus Forge-side probe adapters.
+- `forge-1.20` `main` now also compiles the shared common source tree,
+  with production Forge 1.20 implementations of `SlotStackAccess` and
+  `SlotResourceAccess` installed during mod bootstrap. The separate
+  shared probe remains as an explicit cross-loader compile gate.
+- The first real adapter seams are `SlotStackAccess` and
+  `SlotResourceAccess`: modern installs NeoForge implementations using
+  1.21 component/resource APIs; the Forge probe validates the matching
+  1.20 tag/resource APIs.
+- Common Java 21 syntax dependencies that blocked Java 17 compilation
+  are retired from the shared tree. Remaining known loader work is no
+  longer common compilation; it is platform implementation: Forge
+  capabilities/events/networking/storage-id persistence and the legacy
+  UI backend.
 
-This is the actual prerequisite for legacy: every gesture that legacy needs must have a working cursor or keyboard path on modern first, so the cursor code is the well-tested one before the legacy backend depends on it. Modern's drag handlers stay untouched.
+- Make `forge-1.20` compile a shared-source slice from `common`.
+- Start with non-client domain packages, then widen only when green.
+- Introduce a small `slot.platform` adapter only for real API deltas:
+  `ResourceLocation` construction, stack equivalence, item identity
+  fingerprinting, stack/NBT serialization, and registry access.
+- Split or adapt platform storage code:
+  - NeoForge attachments -> Forge block-entity persistence or Forge
+    capability-backed storage id
+  - NeoForge item/block capabilities -> Forge `LazyOptional` capability
+    resolution
+  - NeoForge events/networking -> Forge event bus + `SimpleChannel`
+- Keep all inventory semantics in `common`; platform code only exposes
+  primitives and adapters.
 
-- Audit cursor reachability across all gestures. Anywhere cursor *can't* reach today (drop-overlap between kit pages, dropping onto an empty section header for re-home, etc.), extend `WorkspaceCursorState` handling. This is the feature work that ships value to modern users.
-- Add keyboard section reorder: with a section card or its TOC entry focused, ↑/↓ moves the section by one ordinal. Wire it on modern first; legacy gets it for free in Phase 6. (Bonus: accessibility win on modern.)
-- Verify cursor pickup → drop on a section card or header executes the same re-home as drag does today.
+Gate:
 
-**Gate:** every legacy-bound gesture has a fully working cursor/keyboard path on modern; ChestTileDrag and any other dead drag code deleted.
+- A Forge 1.20.1 compile task covers the selected shared source.
+- The first platform adapter tests/fixtures cover item id, stack
+  equality, and identity fingerprint behavior.
+- No UI SPI files are introduced just to satisfy imagined future needs.
 
-### Phase 4 — Decision point
+### Phase 1 — Shared Workspace Action Catalog
 
-After Phase 3, modern is on the SPI and every gesture has a cursor/keyboard path that legacy can reuse. Reassess:
-- Is the SPI clean, or did Phase 2 surface compromises that mean Phase 6+ will be painful?
-- Is 1.20.1 Forge still a target worth the remaining work?
-- Alternative: park the legacy backend, treat the SPI + cursor/keyboard coverage as future-proofing only (which still ships value to modern users).
+Goal: replace ad hoc LDLib2 `RPCEmitter` shape with a backend-neutral
+catalog before Forge packets are written.
 
-### Phase 5 — Legacy module scaffolding
+Current state:
 
-- New gradle module `forge-1.20/` (Forge 1.20.1, Java 17). Pin a conservative Forge version in the 47.x range — *not* the latest patch, since 1.20.1 modpacks tend to lag and we want to maximise the set of packs we work in. Pick whatever current TFG Modern is targeting.
-- Mirrors `neoforge/` layout: registration, network, mixins, EMI compat stub. (EMI on 1.20.1 has a different API surface than 1.21.x — budget time for the integration glue here, not later.)
-- Vanilla deltas: `GuiGraphics` ↔ `PoseStack`, `DataComponents` ↔ NBT, `RegistryFriendlyByteBuf` ↔ `FriendlyByteBuf`. Most non-UI code in `common` either compiles unchanged or needs targeted adapters; build a small `slot.platform` SPI for the deltas.
-- **Gate:** mod loads, registers blocks/items/menus, opens an empty SLOT screen (no widgets yet).
+- `dev.imagio.slot.ui.action` defines stable workspace action ids,
+  argument schemas, validation, typed packet values, a session/menu
+  envelope, and a backend-neutral `WorkspaceActionChannel`.
+- `WorkspaceRpcDispatcher` implements the channel for modern LDLib2 RPC
+  and validates every RPC registration against the shared catalog at UI
+  creation. The dispatcher send helpers now route through
+  `WorkspaceActionChannel.send(...)` instead of calling individual
+  emitters directly.
+- `WorkspaceActionPacketCodec` owns argument encoding behind a tiny
+  buffer interface. NeoForge and the Forge 1.20 shared probe both have
+  `FriendlyByteBuf` wrappers, so packet encoding rules stay common
+  while loader networking stays local.
+- Forge 1.20 now registers a production `SimpleChannel` payload for
+  common workspace action packets. The handler validates packet shape
+  through the shared catalog, validates the session/menu envelope against
+  a server-side Forge workspace session registry, and routes safe
+  metadata actions through `SlotWorkspaceCommandService`. Forge now
+  installs carried/world storage accessors and binds the first guarded
+  `TRANSFER` path for built-in main/hotbar targets through
+  `InventoryActionExecutor`, plus identity-to-hotbar, hotbar-return,
+  hotbar-to-section, kit, desired-count, chest metadata, deposit/take,
+  cursor, and cross-surface adapters for the first belt/workflow
+  interactions. Verbs outside that basic workspace set still fail closed
+  until their Forge session adapters are explicitly ported. The Forge `G` screen opens a server-side workspace session and
+  syncs typed search through `SET_SEARCH_QUERY` on the same catalog path.
+  Forge also registers `/slot test populate <profile>` and `/slot test
+  clear` for carried-inventory/workflow/chest testing; chest placement
+  now uses Forge persistent block-entity data for storage ids.
+- The same Forge channel now has a server-to-client session view-model
+  payload. The server owns a Forge workflow runtime, projects carried
+  player inventory through the common `SlotWorkspaceViewModel` pipeline
+  with bounded auto-home and Forge 1.20 `ItemStack` NBT encoding, then
+  sends that view, including hotbar/offhand and claimed-chest ghost
+  projection, to the direct Taffy/GuiGraphics screen. This replaces the
+  temporary narrow debug projection. Forge now observes manual vanilla
+  chest deposits through the same common close-delta helper as NeoForge,
+  records learned affinity for those deposits, and reconciles persisted
+  chest claims through the shared reconciliation helper. The Forge
+  workspace screen now also mounts the first common kit-rack panel for
+  save/update, activate/deactivate, page management, and non-drag gather
+  actions. Rich chest panels remain pending UI adapters.
 
-### Phase 6 — Legacy backend implementation
+- Define action ids, argument schemas, handler binding, and validation in
+  one catalog.
+- Modern adapter sends catalog actions through LDLib2 RPC.
+- Legacy adapter sends the same action ids through Forge `SimpleChannel`.
+- Packets include enough session/menu identity to reject stale or wrong
+  menu requests server-side.
 
-Order is risk-first; ship per-component as it stabilises rather than as one big merge. With drag gone from legacy, every step here is well-trodden vanilla territory.
+Gate:
 
-1. **Element + Taffy renderer**. Walk tree, run `compute_layout`, draw via `GuiGraphics` at computed coords. Hit-test by reverse z-order traversal.
-2. **Z-index sort**. Sort siblings before render *and* hit-test.
-3. **Event dispatch (single-pass bubble)**. Hit-test the topmost element under the cursor, dispatch the event there, walk up parent chain until a listener calls `stopPropagation`. Dispatch kinds: MOUSE_*, CLICK, KEY_DOWN, CHAR_TYPED, BLUR, TICK, LAYOUT_CHANGED, MUI_CHANGED, HOVER_TOOLTIPS. No capture phase. Keyboard goes to focused element first, then bubbles. This is straightforward — no DRAG_* events, no synthetic dispatch, no screen-level interception. Match LDLib2's order-of-listener-invocation only on the bubble path so cross-backend listener registration order produces the same result.
-4. **Concrete elements**.
-   - `Label`: `Font.draw` with align/wrap (truncate-with-ellipsis logic from our usage).
-   - `Button`: `Label` + click event + hover/press visual states + `addPreIcon`.
-   - `TextField`: wrap vanilla `EditBox`. Focus, BLUR commit, KEY_DOWN forwarding.
-   - `ScrollerView`: viewPort + viewContainer Taffy nodes, scroll wheel, scissor on render, scrollbar element. **Match LDLib2's `setValue` normalization** (memory note).
-5. **Action channel + view-tag push**. Two `SimpleChannel` packets: `C2SAction(short id, byte[] payload)` with a 60-row codec table covering Integer/String/Double/Boolean args, and `S2CViewModel(CompoundTag)`. Dispatch through the same `host.session::*` methods.
-6. **Texture impls + Icons**. Port `ColorRectTexture`, `ItemStackTexture` (`GhostItemTexture` subclass), and the seven `Icons.*` we use.
-7. **Screen factory glue**. Vanilla `MenuType` + custom container. Sidebar's player-inventory overlay needs careful slot wiring on both server and client menus.
-8. **Keyboard section reorder hook-up**. The Phase 3 ↑/↓ handlers are in `common`; on legacy, just route `KEY_DOWN` from focused section/TOC entries into them.
+- Existing modern UI still sends every current workspace action.
+- Tests assert catalog uniqueness, action argument validation,
+  packet-codec round trip, and stale-session / wrong-menu rejection.
+- Phase 1 action transport now covers the basic Forge mutation set:
+  deposit/take, cursor pickup/cancel/smart-deposit/drop, and
+  cross-surface host-slot flows route through common services instead of
+  Forge-only business logic. Session validation, safe metadata command dispatch, Forge storage
+  accessors, guarded built-in transfer, identity-to-hotbar /
+  hotbar-return, kit/desired-count dispatch, chest metadata dispatch,
+  and carried/chest common projection are live. Forge populate/clear
+  commands cover carried inventory and claimed chest test loops.
 
-**Gate:** the legacy build opens the workspace screen, scrolls a 200-section list, re-home works via cursor pickup → drop on a section, section reorder works via ↑/↓ keyboard on a focused section/TOC entry, cursor pickup/drop covers hotbar/chest/kit interactions, every RPC action fires, view-tag pushes arrive, undo/redo works.
+### Phase 2 — First-Cut UI SPI + LDLib2 Backend
 
-### Phase 7 — Cross-loader product validation
+Goal: grow the SPI from real migration pressure, not a blank-screen
+abstraction.
 
-- Side-by-side play-testing on both loaders. Track parity bugs in a single list.
-- Performance: 60 fps target on both at the workspace screen with 500-section worst case.
-- Document the intentional drag-vs-cursor-vs-keyboard UX delta and any other loader-specific deltas in `docs/loader-deltas.md`.
-- **Gate:** zero P0 parity bugs; legacy and modern pass the same scripted UI walkthrough (with the documented drag delta).
+Current state:
 
-## Risks and contingencies
+- `dev.imagio.slot.ui.spi` defines the first narrow element/layout/text
+  event tree, and the LDLib2 backend renders it through
+  `LdlibSlotUiRenderer`.
+- The first production migration is the main wall section shell, card
+  shell, Recents strip, hotbar belt, and non-drag kit rack, via `WallSectionUiBuilder`,
+  `WallSectionHeaderUiBuilder`, `WallCardUiBuilder`,
+  `RecentsStripUiBuilder`, `HotbarBeltUiBuilder`, and
+  `KitRackUiBuilder`. It covers section layout, card width/search
+  chrome, Recents icon layout, hotbar/offhand slot chrome, kit summary /
+  page / gather controls, text/count layout, click vs mouse-down event separation,
+  edit actions, section grid drop targets, a shared fallback atlas-card
+  body (item icon, count badge, chest-presence pips, desired marker,
+  wayfinding strip), and backend-owned modern section/card/tooltip
+  hooks. NeoForge still overrides the body with its richer LDLib2 card
+  renderer and keeps its richer LDLib2 kit rack for drag/context-menu
+  affordances; Forge uses the shared non-drag kit rack and fallback card
+  body until those richer panels migrate.
+- The removed docked Triage panel is intentionally not a migration
+  target. Auto-home plus Recents are the live flow; Triage survives only
+  as older naming around the auto-home candidate/suggestion pipeline and
+  legacy routing sentinels.
+- Gesture semantics are now actively moving to common policy/command
+  classes such as `WallCardTransferGesturePolicy`,
+  `WorkspaceBeltCommandService`, and `WorkspaceSearchQuery`. NeoForge
+  remains the behavior source of truth; Forge and NeoForge should
+  dispatch common decisions rather than keeping local shift-click /
+  wheel/search/hotbar fallbacks.
+
+- Build the LDLib2 backend and SPI while porting one hard panel first.
+  Preferred candidates: atlas card/list section, context menu, or kit
+  rack, because they exercise events, text, icons, state, and actions.
+- Add optional backend interaction hooks for modern-only drag.
+- Keep direct LDLib2 code only in the backend and modern glue.
+
+Gate:
+
+- The migrated hard panel behaves identically on modern.
+- The SPI surface is reviewed after real panel pressure, then expanded
+  panel by panel.
+
+### Phase 3 — Migrate Modern UI To SPI
+
+Goal: move the existing LDLib2 UI builders without behavior changes.
+
+- Translate `neoforge/.../screen/ldlib/` builders in chunks.
+- Move UI-neutral builders to `common` only when they no longer import
+  loader APIs.
+- Keep menu factory, EMI integration, screen mounting, networking, and
+  modern drag hook in `neoforge`.
+
+Gate:
+
+- Modern in-game parity for search, wall cards, context menus, hotbar,
+  kits, chest panels, undo/redo, wayfinding, and current drag paths.
+- Modern compile/test tasks stay green throughout.
+
+### Phase 4 — Cursor Coverage + Keyboard Reorder
+
+Goal: make every legacy interaction path work on modern before the
+legacy backend depends on it.
+
+- Audit all gestures that currently require drag.
+- Extend cursor/drop handling where needed: section header re-home, empty
+  section drops, kit page/slot edge cases, chest/kit/hotbar cursor paths.
+- Add keyboard section reorder for focused section cards and TOC entries.
+- Delete dead drag payloads such as `ChestTileDrag` once verified unused.
+
+Gate:
+
+- Every legacy-bound gesture has a modern cursor or keyboard path.
+- Modern drag remains available and unchanged.
+
+### Phase 5 — Decision Point
+
+Reassess after modern runs on the SPI and legacy-bound gestures are
+usable:
+
+- Is the SPI clean enough to own?
+- Did Phase 0.5 expose manageable Forge 1.20.1 platform deltas?
+- Is Forge 1.20.1 still worth the backend work?
+
+If no, park the legacy backend and keep the modern SPI/action/catalog
+work only if it is still paying for itself.
+
+### Phase 6 — Legacy Backend
+
+Order risk-first:
+
+Current early backend test point:
+
+- `ForgeSlotUiTree` renders the common SPI directly through Taffy +
+  vanilla `GuiGraphics`, including color rects, labels, buttons, item
+  icons, z-index ordering, hit-test bubbling, click separation,
+  hover/tick dispatch, scissor clipping, and a scroll viewport.
+- The Forge debug key (`G`) opens `ForgeWorkspaceSpiDebugScreen`, a
+  session-backed wall/Recents/belt view built from the same common
+  `WallSectionUiBuilder`, `WallCardUiBuilder`, `RecentsStripUiBuilder`,
+  and `HotbarBeltUiBuilder` used by the migration. It waits for the
+  session-backed server view instead of rendering a local fixture, so
+  projection/session failures are visible. Card pickup uses the real
+  menu cursor; background/hotbar drops route through the shared cursor
+  command service. Forge installs the same item-id ghost stack resolver
+  hook as NeoForge so common view-model ghost synthesis can render item
+  icons on both loaders.
+- Forge now also mounts an early vanilla-container sidebar on
+  `AbstractContainerScreen` hosts. The sidebar opens its own workspace
+  session against the live host menu, renders the common active chest
+  controls, non-drag kit rack, Recents, wall cards, search, card
+  gestures, and hotbar belt, and lets vanilla host slots continue
+  receiving input outside the sidebar. Host-menu changes are refreshed
+  through a Forge transport sync message, not a shared inventory action.
+  The full-screen debug surface and container sidebar now share
+  `ForgeWorkspaceSurface`, so Forge has one local controller for
+  view-model application, widget composition, card gestures, search,
+  kit/hotbar/active-chest contexts, and action sends. It is still a
+  first-cut adapter: NeoForge drag parity is out of scope for Forge.
+
+1. Element tree, direct Taffy renderer, scissor stack, z-index render and
+   hit-test ordering.
+2. Event dispatch with bubble plus minimal pre-dispatch/capture for
+   global key/char shortcuts. No drag events.
+3. `Label`, `Button`, `TextField`, `ScrollerView`.
+4. Textures and icons, including item stack and ghost item rendering.
+5. View-model tag push.
+6. Forge `SimpleChannel` action transport backed by the shared catalog.
+7. Vanilla `MenuType` / `AbstractContainerMenu` / screen factory glue.
+8. Sidebar overlay and host-menu coexistence.
+
+Gate:
+
+- Legacy workspace opens, scrolls a representative worst-case wall, and
+  runs the same scripted UI walkthrough as modern except for documented
+  drag-vs-cursor deltas.
+
+### Phase 7 — Cross-Loader Product Validation
+
+- Side-by-side playtesting on both loaders.
+- Performance target: 60 fps on the workspace screen with the worst
+  practical wall data set.
+- Document intentional loader deltas in `docs/loader-deltas.md`.
+- Track parity bugs in one list, not per-loader folklore.
+
+Gate:
+
+- Zero P0 parity bugs.
+- Storage, carried-source, and item identity behavior match across
+  loaders for vanilla, Sophisticated Backpacks/Core, Tom's Storage, and
+  the supported test pack surface.
+
+## Risks And Contingencies
 
 | Risk | Mitigation | Contingency |
 |---|---|---|
-| Phase 2 refactor regresses modern UI | Phase 1 smoke tests must run before each Phase 2 PR. Land Phase 2 in chunks (per panel builder) rather than one mega-PR | Worst case: revert per-panel PRs without losing whole-effort progress |
-| Phase 3 surfaces cursor gaps that are bigger than they look | Audit cursor coverage at the start of Phase 3 before any other work | Expand cursor scope (this is feature work, but it's needed for legacy anyway and ships value to modern) |
-| Two-step cursor re-home on legacy is felt as worse UX than drag | Make sure undo is one keystroke and visually obvious; tutorial/tooltip on first re-home | Documented UX delta; no engineering response unless players actually complain |
-| Keyboard section reorder feels clunky on legacy | Spec it for both loaders in Phase 3 so modern users exercise it too — flushes UX issues out before legacy ships | Adjust key bindings; consider held-modifier + click as a secondary path |
-| Taffy layout perf differs subtly between versions / between LDLib2's wrapper and our direct use | Phase 0 spike spot-checks against equivalent LDLib2 screen for layout output equivalence | Pin the same Taffy version on both sides; diff `compute_layout` outputs in a test |
-| LDLib2 quirks leak through the SPI | Treat each known quirk (`ScrollerView.setValue` normalization, `Button.text` absorbing hit-tests, `project()` needs `currentTick` for affinity decay) as a documented SPI invariant; test both backends against it | Add quirk-specific tests in `common` that both backends run |
-| 1.20.1 vanilla deltas surface gameplay-not-just-UI work | Phase 5 forces this discovery before any UI work begins | If non-UI deltas are too large, abort cross-loader and keep SPI + Phase 3 cursor/keyboard coverage as future-proofing |
+| Forge 1.20.1 platform deltas are larger than UI work | Phase 0.5 compile/storage gate before SPI migration | Park legacy before sunk UI cost |
+| SPI turns into a private LDLib2 clone | Grow it from one hard panel at a time | Keep backend-specific hooks instead of abstracting unused features |
+| Modern drag leaks into common builders | Backend interaction hook owns drag installation | Move affected builder code back to modern glue until cursor path exists |
+| Legacy cursor UX is weaker than modern drag | Prove cursor/keyboard paths on modern first | Document loader delta; add non-drag shortcut only if playtest demands it |
+| Loader gesture semantics drift | NeoForge is the behavior oracle; gesture decision tables live in common with parity tests | Remove backend fallbacks and fail closed until the common action exists |
+| Action packet surface becomes unsafe | Shared catalog + server-side session/menu validation | Fail closed with diagnostics on stale or unsupported requests |
+| Taffy behavior differs between direct and LDLib2 wrapper | Equivalence fixture and shared version pin | Treat LDLib2 quirks as explicit SPI invariants |
 
-## Out of scope
+## Out Of Scope
 
-- LDLib2 visual editor, LSS stylesheets, animation engine, configurator system.
-- `BindableValue` as a reactive primitive (the one site is rewritten imperatively).
-- Yoga interop overloads (`YogaDisplay`, `StyleSizeLength`, `YogaCodecs`).
-- Backporting LDLib2 itself.
-- **Drag of any kind on the legacy backend** (intentional — cursor + keyboard cover everything; eliminates the entire drag manager and capture-phase event bus).
-- Drag-as-cursor-alias on modern (originally Phase 3; dropped — modern keeps drag using LDLib2 directly, with cursor as an independent parallel path).
-- Other loaders (Fabric, Quilt). The SPI shape doesn't preclude them but no work is planned.
+- Backporting LDLib2.
+- LDLib2 visual editor, LSS stylesheets, animation engine, configurator
+  system, or Yoga interop.
+- Drag support on the legacy backend.
+- Forcing modern users off LDLib2 drag.
+- Fabric or Quilt.

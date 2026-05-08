@@ -1,20 +1,58 @@
 # SLOT Project Status
 
-Last updated: 2026-05-05. Operational handoff. Read after
+Last updated: 2026-05-07. Operational handoff. Read after
 [../README.md](../README.md). For active work + queue see
 [plans/current.md](plans/current.md); for architecture see
 [architecture/overview.md](architecture/overview.md).
 
 ## Active
 
-No single dominant track. The list-view rewrite that was the active
-plan through 2026-05-04 closed 2026-05-05 — see **Production wall
-shape** below for the architectural snapshot it leaves behind. The
-queue in [plans/current.md](plans/current.md) is the source of truth
-for what's next; near the top sit the cursor + desired-counts
-playtest-bug pass, **the deferred Phase 3b experiment** (hide
-vanilla 36-slot band — separate task per user direction), and
-workspace projection caching.
+Cross-loader support is the active track. SLOT keeps the modern
+Minecraft 1.21.1 NeoForge + LDLib2 build and adds a Minecraft 1.20.1
+Forge target through the plan in
+[plans/cross-loader-refactor.md](plans/cross-loader-refactor.md) and
+ADR [0006](decisions/0006-cross-loader-legacy-forge.md). The validated
+Phase 0 proved direct Taffy rendering on vanilla `Screen`; the
+throwaway spike source has been deleted now that the production Forge
+UI tree exists. The Phase 0.5 shared-platform compile gate now compiles the whole common
+`dev.imagio.slot` tree against Forge 1.20.1 / Java 17, and Forge `main`
+now consumes that common tree with production Forge 1.20
+`SlotStackAccess` / `SlotResourceAccess` adapters. Phase 1 has the
+shared workspace action catalog/channel, packet codec, and session/menu
+envelope in common, with the modern LDLib2 RPC dispatcher validating
+registrations and sends against that catalog. Forge 1.20 now registers a
+matching `SimpleChannel` action payload that decodes the common packet
+codec, validates session/menu envelopes against a server-side Forge
+workspace session registry, and now owns a Forge workflow runtime plus a
+session-backed common workspace projection for carried player inventory.
+Safe workspace metadata actions (`SET_SEARCH_QUERY`, home/chip/island
+management, undo/redo) route through `SlotWorkspaceCommandService`;
+Forge installs carried/world storage accessors and the catalog
+`TRANSFER` action is bound for built-in main/hotbar targets through
+`InventoryActionExecutor`, with identity-to-hotbar, hotbar-return,
+hotbar-to-section, kit, desired-count, chest metadata, deposit/take,
+cursor, and cross-surface Forge adapters live for vanilla carried
+sources and claimed chests. Forge also registers `/slot test populate
+<profile>` and `/slot test clear` for carried-inventory/workflow/chest testing;
+claimed chest ids use Forge persistent block-entity data and claimed
+chest contents feed the common projection. Manual chest-close deposit
+observation and chest-claim persistence reconciliation now share common
+helpers, with loader-specific storage-id readers. Phase 2 has started
+with the main wall section/card shells, shared fallback card details,
+Recents strip, hotbar belt, and non-drag kit rack rendered through the
+first narrow common UI SPI and LDLib2/backend-specific renderers. The Forge `G` debug screen
+is now fed by session-backed view-model sync, including local search,
+scroll preservation across rebuilds, hotbar/offhand projection, claimed
+chest ghost projection, and the same item-id ghost stack resolver hook
+used by NeoForge. Forge also mounts a first-cut vanilla-container
+sidebar with the common active chest strip, non-drag kit rack, wall,
+Recents, search, and hotbar belt; host-menu changes refresh through a
+Forge transport sync message rather than a shared inventory action. The
+Forge full-screen and sidebar hosts share `ForgeWorkspaceSurface`, so
+widget composition and action dispatch do not fork by host.
+Modern drag/drop, tooltips, richer LDLib2 card body
+rendering, richer LDLib2 kit drag/context-menu affordances, and richer
+chest panels remain backend hooks, not common UI semantics.
 
 ### Production wall shape (post-list-view)
 
@@ -77,7 +115,7 @@ Top-level docs (see [../README.md](../README.md) for the full doc map):
   [architecture/host-ui.md](architecture/host-ui.md)
 - design: [design/atlas.md](design/atlas.md) (superseded by
   list-view.md; surviving parts only — homes, ghost vs carried,
-  Triage panel, single-element drag rule, kit / desired-count /
+  single-element drag rule, recents, kit / desired-count /
   wayfinding integration), [design/kits.md](design/kits.md),
   [design/storage.md](design/storage.md). Retired:
   [design/retired/relevance-lod.md](design/retired/relevance-lod.md).
@@ -126,11 +164,30 @@ NeoForge module:
 - `neoforge/network`: workspace-open + RPC payload definitions
 - `neoforge/storage`: BE `storage_id` attachment, claim orchestrator,
   break-event cleanup, chest contents reader, proximity resolvers,
-  deposit / take-all executors, deposit observer, loot-chest right-click
-  intercept
+  deposit observer, loot-chest right-click intercept. Deposit/take-all
+  executors live in `common/` behind `CarriedSourceAccess` and
+  `WorldStorageAccess`.
 - `neoforge/triage`: signal extractor + classifier glue
 - `neoforge/workflow`: per-player runtime lifecycle
 - `neoforge/config`: dedicated-test-instance config defaults
+
+Forge 1.20 module:
+
+- `forge-1.20`: legacy Forge 1.20.1 target. Current contents are
+  Gradle/module scaffolding, production common-source compilation with
+  Forge 1.20 platform adapters,
+  the direct Taffy + `GuiGraphics` SPI debug renderer, a Forge
+  `SimpleChannel` workspace-action path with server-side session
+  validation, Forge workflow persistence, session-backed common
+  view-model projection for carried player inventory and claimed chest
+  ghosts, safe metadata command dispatch, Forge carried/world storage
+  accessors, first guarded built-in transfer dispatch plus
+  identity-to-hotbar / hotbar-return / hotbar-to-section adapters,
+  kit/desired-count and chest metadata dispatch, Forge-side `/slot test
+  populate` / `clear` commands for carried-inventory and claimed-chest
+  testing, and the Phase 0.5
+  `compileSharedProbeJava` task compiling the shared common source tree
+  plus Forge 1.20 platform probes.
 
 Reference code (read-only, for design comparison):
 
@@ -155,6 +212,7 @@ Reference code (read-only, for design comparison):
 | Item facets / classification | `classification` |
 | LDLib2 workspace UI | `neoforge/screen/ldlib` |
 | BE storage-id, claim orchestrator, deposit observer | `neoforge/storage` |
+| World-storage deposit/take executors | `inventory/workspace` |
 | Per-player workflow runtime | `neoforge/workflow` |
 
 LDLib2 imports stay out of `common/`. Inventory semantics stay out of
@@ -169,8 +227,8 @@ Now a sectioned vertical scroll list of single-LOD cards. The
 to minimize churn — see list-view.md § Naming. **Section** —
 player-facing organizational block (the new presentation of an
 "island"). **Home** — stable section + ordinal owned by one item
-identity. **Triage** — docked panel for unhomed/ambiguous
-identities (NOT a wall section). **Kit** — task-shaped unit
+identity. **Recents** — pinned strip of recently picked-up identities
+above the wall. **Kit** — task-shaped unit
 unifying earlier "collection" + "loadout". **Belt** — docked
 hotbar strip at the bottom of the wall. **Authority** — source
 of truth about slot contents (kernel owns it; UI never invents).
@@ -183,6 +241,7 @@ Expanded definitions in the linked design / architecture docs.
 
 ```bash
 ./gradlew :common:compileJava :neoforge:compileJava
+./gradlew :forge-1.20:compileSharedProbeJava
 ./gradlew :common:test :neoforge:test
 ```
 

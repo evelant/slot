@@ -223,8 +223,8 @@ final class KitRackBuilder {
 
     int kitRackHeight() {
         // padding (6 top + 6 bottom) + header row (14) + gap to body (6) + body height.
-        // Kept as a single computation so triagePanelOverlay can lift itself above the
-        // rack when it's open.
+        // Kept as a single computation for any overlay that needs to clear
+        // the rack when it's open.
         return 12 + 14 + 6 + kitRackBodyHeight();
     }
 

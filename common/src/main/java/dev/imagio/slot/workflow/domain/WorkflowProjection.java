@@ -47,14 +47,14 @@ public final class WorkflowProjection {
             kitDesiredCounts.put(entry.getKey(), new LinkedHashMap<>(entry.getValue()));
         }
 
-        switch (record.event()) {
-            case WorkflowEvent.CollectionCreated event -> {
+        WorkflowEvent workflowEvent = record.event();
+        if (workflowEvent instanceof WorkflowEvent.CollectionCreated event) {
                 if (!event.collectionId().isBlank() && !event.name().isBlank() && userCollections.stream().noneMatch(def -> def.id().equals(event.collectionId()))) {
                     userCollections.add(new CollectionDefinition(event.collectionId(), event.name(), false));
                     loadoutsByCollection.putIfAbsent(event.collectionId(), List.of());
                 }
             }
-            case WorkflowEvent.CollectionRenamed event -> {
+        else if (workflowEvent instanceof WorkflowEvent.CollectionRenamed event) {
                 for (int index = 0; index < userCollections.size(); index++) {
                     CollectionDefinition existing = userCollections.get(index);
                     if (existing.id().equals(event.collectionId())) {
@@ -63,7 +63,7 @@ public final class WorkflowProjection {
                     }
                 }
             }
-            case WorkflowEvent.CollectionDeleted event -> {
+        else if (workflowEvent instanceof WorkflowEvent.CollectionDeleted event) {
                 userCollections.removeIf(definition -> definition.id().equals(event.collectionId()));
                 loadoutsByCollection.remove(event.collectionId());
                 memberships.replaceAll((identity, collectionIds) -> {
@@ -73,14 +73,14 @@ public final class WorkflowProjection {
                 });
                 memberships.entrySet().removeIf(entry -> entry.getValue().isEmpty());
             }
-            case WorkflowEvent.CollectionItemAdded event -> {
+        else if (workflowEvent instanceof WorkflowEvent.CollectionItemAdded event) {
                 if (event.identity() != null && current.collectionIds().contains(event.collectionId())) {
                     LinkedHashSet<String> updated = new LinkedHashSet<>(memberships.getOrDefault(event.identity(), Set.of()));
                     updated.add(event.collectionId());
                     memberships.put(event.identity(), Set.copyOf(updated));
                 }
             }
-            case WorkflowEvent.CollectionItemRemoved event -> {
+        else if (workflowEvent instanceof WorkflowEvent.CollectionItemRemoved event) {
                 if (event.identity() != null) {
                     LinkedHashSet<String> updated = new LinkedHashSet<>(memberships.getOrDefault(event.identity(), Set.of()));
                     updated.remove(event.collectionId());
@@ -91,7 +91,7 @@ public final class WorkflowProjection {
                     }
                 }
             }
-            case WorkflowEvent.LoadoutCreated event -> {
+        else if (workflowEvent instanceof WorkflowEvent.LoadoutCreated event) {
                 if (event.loadout() != null && current.collectionIds().contains(event.collectionId())) {
                     ArrayList<QuickAccessLoadoutDefinition> loadouts = new ArrayList<>(loadoutsByCollection.getOrDefault(event.collectionId(), List.of()));
                     loadouts.removeIf(existing -> existing.id().equals(event.loadout().id()));
@@ -99,7 +99,7 @@ public final class WorkflowProjection {
                     loadoutsByCollection.put(event.collectionId(), List.copyOf(loadouts));
                 }
             }
-            case WorkflowEvent.LoadoutRenamed event -> {
+        else if (workflowEvent instanceof WorkflowEvent.LoadoutRenamed event) {
                 ArrayList<QuickAccessLoadoutDefinition> loadouts = new ArrayList<>(loadoutsByCollection.getOrDefault(event.collectionId(), List.of()));
                 for (int index = 0; index < loadouts.size(); index++) {
                     QuickAccessLoadoutDefinition existing = loadouts.get(index);
@@ -110,7 +110,7 @@ public final class WorkflowProjection {
                 }
                 loadoutsByCollection.put(event.collectionId(), List.copyOf(loadouts));
             }
-            case WorkflowEvent.LoadoutUpdated event -> {
+        else if (workflowEvent instanceof WorkflowEvent.LoadoutUpdated event) {
                 ArrayList<QuickAccessLoadoutDefinition> loadouts = new ArrayList<>(loadoutsByCollection.getOrDefault(event.collectionId(), List.of()));
                 for (int index = 0; index < loadouts.size(); index++) {
                     QuickAccessLoadoutDefinition existing = loadouts.get(index);
@@ -121,53 +121,55 @@ public final class WorkflowProjection {
                 }
                 loadoutsByCollection.put(event.collectionId(), List.copyOf(loadouts));
             }
-            case WorkflowEvent.LoadoutDeleted event -> {
+        else if (workflowEvent instanceof WorkflowEvent.LoadoutDeleted event) {
                 ArrayList<QuickAccessLoadoutDefinition> loadouts = new ArrayList<>(loadoutsByCollection.getOrDefault(event.collectionId(), List.of()));
                 loadouts.removeIf(loadout -> loadout.id().equals(event.loadoutId()));
                 loadoutsByCollection.put(event.collectionId(), List.copyOf(loadouts));
             }
-            case WorkflowEvent.FavoriteMarked event -> {
+        else if (workflowEvent instanceof WorkflowEvent.FavoriteMarked event) {
                 if (event.identity() != null) {
                     favorites.add(event.identity());
                 }
             }
-            case WorkflowEvent.FavoriteUnmarked event -> {
+        else if (workflowEvent instanceof WorkflowEvent.FavoriteUnmarked event) {
                 if (event.identity() != null) {
                     favorites.remove(event.identity());
                 }
             }
-            case WorkflowEvent.JunkMarked event -> {
+        else if (workflowEvent instanceof WorkflowEvent.JunkMarked event) {
                 if (event.identity() != null) {
                     junk.add(event.identity());
                 }
             }
-            case WorkflowEvent.JunkUnmarked event -> {
+        else if (workflowEvent instanceof WorkflowEvent.JunkUnmarked event) {
                 if (event.identity() != null) {
                     junk.remove(event.identity());
                 }
             }
-            case WorkflowEvent.ProtectedIdentityMarked event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ProtectedIdentityMarked event) {
                 if (event.identity() != null) {
                     protectedIdentities.add(event.identity());
                 }
             }
-            case WorkflowEvent.ProtectedIdentityUnmarked event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ProtectedIdentityUnmarked event) {
                 if (event.identity() != null) {
                     protectedIdentities.remove(event.identity());
                 }
             }
-            case WorkflowEvent.ProtectedTargetMarked event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ProtectedTargetMarked event) {
                 if (event.target() != null) {
                     protectedTargets.add(event.target());
                 }
             }
-            case WorkflowEvent.ProtectedTargetUnmarked event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ProtectedTargetUnmarked event) {
                 if (event.target() != null) {
                     protectedTargets.removeIf(candidate -> candidate.stableKey().equals(event.target().stableKey()));
                 }
             }
-            case WorkflowEvent.PortableContainerProtectionSet event -> protectPortableContainers = event.enabled();
-            case WorkflowEvent.RecentDismissedUpTo event -> {
+        else if (workflowEvent instanceof WorkflowEvent.PortableContainerProtectionSet event) {
+            protectPortableContainers = event.enabled();
+        }
+        else if (workflowEvent instanceof WorkflowEvent.RecentDismissedUpTo event) {
                 if (event.identity() != null) {
                     recentDismissals.put(event.identity(), Math.max(
                             recentDismissals.getOrDefault(event.identity(), 0L),
@@ -175,13 +177,13 @@ public final class WorkflowProjection {
                     ));
                 }
             }
-            case WorkflowEvent.VisualIslandCreated event -> {
+        else if (workflowEvent instanceof WorkflowEvent.VisualIslandCreated event) {
                 if (event.island() != null) {
                     playerIslands.removeIf(island -> island.id().equals(event.island().id()));
                     playerIslands.add(event.island());
                 }
             }
-            case WorkflowEvent.VisualIslandMoved event -> {
+        else if (workflowEvent instanceof WorkflowEvent.VisualIslandMoved event) {
                 if (event.islandId() != null && !event.islandId().isBlank()) {
                     for (int index = 0; index < playerIslands.size(); index++) {
                         VisualAtlasIsland existing = playerIslands.get(index);
@@ -200,7 +202,7 @@ public final class WorkflowProjection {
                     }
                 }
             }
-            case WorkflowEvent.VisualIslandRenamed event -> {
+        else if (workflowEvent instanceof WorkflowEvent.VisualIslandRenamed event) {
                 if (event.islandId() != null && !event.islandId().isBlank() && !event.label().isBlank()) {
                     for (int index = 0; index < playerIslands.size(); index++) {
                         VisualAtlasIsland existing = playerIslands.get(index);
@@ -219,7 +221,7 @@ public final class WorkflowProjection {
                     }
                 }
             }
-            case WorkflowEvent.VisualIslandRecolored event -> {
+        else if (workflowEvent instanceof WorkflowEvent.VisualIslandRecolored event) {
                 if (event.islandId() != null && !event.islandId().isBlank()) {
                     for (int index = 0; index < playerIslands.size(); index++) {
                         VisualAtlasIsland existing = playerIslands.get(index);
@@ -238,7 +240,7 @@ public final class WorkflowProjection {
                     }
                 }
             }
-            case WorkflowEvent.VisualIslandIconChanged event -> {
+        else if (workflowEvent instanceof WorkflowEvent.VisualIslandIconChanged event) {
                 if (event.islandId() != null && !event.islandId().isBlank()) {
                     for (int index = 0; index < playerIslands.size(); index++) {
                         VisualAtlasIsland existing = playerIslands.get(index);
@@ -257,14 +259,14 @@ public final class WorkflowProjection {
                     }
                 }
             }
-            case WorkflowEvent.VisualIslandDeleted event -> {
+        else if (workflowEvent instanceof WorkflowEvent.VisualIslandDeleted event) {
                 if (event.islandId() != null && !event.islandId().isBlank()) {
                     playerIslands.removeIf(island -> island.id().equals(event.islandId()));
                     visualHomes.entrySet().removeIf(entry ->
                             entry.getValue() != null && event.islandId().equals(entry.getValue().islandId()));
                 }
             }
-            case WorkflowEvent.VisualIslandReordered event -> {
+        else if (workflowEvent instanceof WorkflowEvent.VisualIslandReordered event) {
                 if (event.islandId() != null && !event.islandId().isBlank()) {
                     int currentIndex = -1;
                     for (int index = 0; index < playerIslands.size(); index++) {
@@ -280,13 +282,13 @@ public final class WorkflowProjection {
                     }
                 }
             }
-            case WorkflowEvent.VisualHomeAssigned event -> {
+        else if (workflowEvent instanceof WorkflowEvent.VisualHomeAssigned event) {
                 VisualHomeAssignment requested = event.assignment();
                 if (requested != null && requested.identity() != null) {
                     applyVisualHomeAssignment(visualHomes, requested);
                 }
             }
-            case WorkflowEvent.VisualHomeCleared event -> {
+        else if (workflowEvent instanceof WorkflowEvent.VisualHomeCleared event) {
                 if (event.identity() != null) {
                     VisualHomeAssignment removed = visualHomes.remove(event.identity());
                     if (removed != null) {
@@ -294,17 +296,17 @@ public final class WorkflowProjection {
                     }
                 }
             }
-            case WorkflowEvent.TemplateIslandDismissed event -> {
+        else if (workflowEvent instanceof WorkflowEvent.TemplateIslandDismissed event) {
                 if (event.templateId() != null && !event.templateId().isBlank()) {
                     dismissedTemplateIds.add(event.templateId());
                 }
             }
-            case WorkflowEvent.ClaimedChestCreated event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ClaimedChestCreated event) {
                 if (event.chest() != null) {
                     claimedChests.put(event.chest().storageId(), event.chest());
                 }
             }
-            case WorkflowEvent.ClaimedChestMoved event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ClaimedChestMoved event) {
                 if (event.storageId() != null) {
                     ClaimedChest existing = claimedChests.get(event.storageId());
                     if (existing != null) {
@@ -312,7 +314,7 @@ public final class WorkflowProjection {
                     }
                 }
             }
-            case WorkflowEvent.ClaimedChestAnchorsChanged event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ClaimedChestAnchorsChanged event) {
                 if (event.storageId() != null) {
                     ClaimedChest existing = claimedChests.get(event.storageId());
                     if (existing != null) {
@@ -325,7 +327,7 @@ public final class WorkflowProjection {
                     }
                 }
             }
-            case WorkflowEvent.ClaimedChestRelabeled event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ClaimedChestRelabeled event) {
                 if (event.storageId() != null) {
                     ClaimedChest existing = claimedChests.get(event.storageId());
                     if (existing != null) {
@@ -333,13 +335,13 @@ public final class WorkflowProjection {
                     }
                 }
             }
-            case WorkflowEvent.ClaimedChestDeleted event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ClaimedChestDeleted event) {
                 if (event.storageId() != null) {
                     claimedChests.remove(event.storageId());
                     affinity.remove(event.storageId());
                 }
             }
-            case WorkflowEvent.ChestDepositObserved event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ChestDepositObserved event) {
                 if (event.storageId() != null && event.identity() != null
                         && claimedChests.containsKey(event.storageId())) {
                     LinkedHashMap<ItemIdentity, ChestAffinity> bonds =
@@ -352,7 +354,7 @@ public final class WorkflowProjection {
                     affinity.put(event.storageId(), Map.copyOf(bonds));
                 }
             }
-            case WorkflowEvent.ChestAffinityForgotten event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ChestAffinityForgotten event) {
                 if (event.storageId() != null && event.identity() != null) {
                     Map<ItemIdentity, ChestAffinity> bonds = affinity.get(event.storageId());
                     if (bonds != null && bonds.containsKey(event.identity())) {
@@ -366,34 +368,33 @@ public final class WorkflowProjection {
                     }
                 }
             }
-            case WorkflowEvent.ChestAffinityCleared event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ChestAffinityCleared event) {
                 if (event.storageId() != null) {
                     affinity.remove(event.storageId());
                 }
             }
-            case WorkflowEvent.ChestClusterRelabeled event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ChestClusterRelabeled event) {
                 String clusterId = event.clusterId();
-                if (clusterId == null || clusterId.isBlank()) {
-                    break;
-                }
-                String label = event.label() == null ? "" : event.label().trim();
-                if (label.isBlank()) {
-                    clusterLabels.remove(clusterId);
-                } else {
-                    clusterLabels.put(clusterId, label);
+                if (clusterId != null && !clusterId.isBlank()) {
+                    String label = event.label() == null ? "" : event.label().trim();
+                    if (label.isBlank()) {
+                        clusterLabels.remove(clusterId);
+                    } else {
+                        clusterLabels.put(clusterId, label);
+                    }
                 }
             }
-            case WorkflowEvent.KitCreated event -> {
+        else if (workflowEvent instanceof WorkflowEvent.KitCreated event) {
                 if (event.kit() != null && !event.kit().id().isBlank()) {
                     kitMap = kitMap.withKit(event.kit());
                 }
             }
-            case WorkflowEvent.KitUpdated event -> {
+        else if (workflowEvent instanceof WorkflowEvent.KitUpdated event) {
                 if (event.kit() != null && !event.kit().id().isBlank() && kitMap.kit(event.kit().id()) != null) {
                     kitMap = kitMap.withKit(event.kit());
                 }
             }
-            case WorkflowEvent.KitDeleted event -> {
+        else if (workflowEvent instanceof WorkflowEvent.KitDeleted event) {
                 if (!event.kitId().isBlank()) {
                     kitMap = kitMap.withoutKit(event.kitId());
                     // Drop any kit-scoped desired counts that referenced
@@ -403,15 +404,15 @@ public final class WorkflowProjection {
                     kitDesiredCounts.remove(event.kitId());
                 }
             }
-            case WorkflowEvent.KitActivated event -> {
+        else if (workflowEvent instanceof WorkflowEvent.KitActivated event) {
                 if (!event.kitId().isBlank() && kitMap.kit(event.kitId()) != null) {
                     kitMap = kitMap.withActivation(new KitActivation(event.kitId(), event.pageIndex()));
                 }
             }
-            case WorkflowEvent.KitDeactivated event -> {
+        else if (workflowEvent instanceof WorkflowEvent.KitDeactivated event) {
                 kitMap = kitMap.withActivation(KitActivation.NONE);
             }
-            case WorkflowEvent.KitPageSwitched event -> {
+        else if (workflowEvent instanceof WorkflowEvent.KitPageSwitched event) {
                 KitActivation activeAssignment = kitMap.activation();
                 if (activeAssignment.isActive()) {
                     KitDefinition activeKit = kitMap.kit(activeAssignment.kitId());
@@ -420,7 +421,7 @@ public final class WorkflowProjection {
                     }
                 }
             }
-            case WorkflowEvent.PlayerDesiredCountSet event -> {
+        else if (workflowEvent instanceof WorkflowEvent.PlayerDesiredCountSet event) {
                 if (event.identity() != null) {
                     if (event.count() <= 0) {
                         playerDesiredCounts.remove(event.identity());
@@ -429,7 +430,7 @@ public final class WorkflowProjection {
                     }
                 }
             }
-            case WorkflowEvent.KitDesiredCountSet event -> {
+        else if (workflowEvent instanceof WorkflowEvent.KitDesiredCountSet event) {
                 if (event.identity() != null && !event.kitId().isBlank()) {
                     Map<ItemIdentity, Integer> existing = kitDesiredCounts.getOrDefault(event.kitId(), Map.of());
                     LinkedHashMap<ItemIdentity, Integer> updated = new LinkedHashMap<>(existing);
@@ -445,7 +446,6 @@ public final class WorkflowProjection {
                     }
                 }
             }
-        }
 
         LinkedHashMap<String, Map<ItemIdentity, Integer>> kitDesiredCountsCopy = new LinkedHashMap<>();
         for (Map.Entry<String, Map<ItemIdentity, Integer>> entry : kitDesiredCounts.entrySet()) {

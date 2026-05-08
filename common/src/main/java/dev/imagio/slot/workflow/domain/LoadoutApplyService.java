@@ -886,22 +886,21 @@ public final class LoadoutApplyService {
         if (host == null || candidate == null || target == null) {
             return false;
         }
-        return switch (target) {
-            case LoadoutTarget.QuickAccessLaneTarget quickAccessLaneTarget -> {
-                var lane = host.quickAccessLane(quickAccessLaneTarget.laneId());
-                yield lane != null
-                        && candidate.sourceId() != null
-                        && candidate.sourceId().equals(lane.sourceId())
-                        && candidate.slotIndex() == quickAccessLaneTarget.slotIndex();
-            }
-            case LoadoutTarget.EquipmentSlotTarget equipmentSlotTarget -> {
-                var group = host.equipmentGroup(equipmentSlotTarget.groupId());
-                yield group != null
-                        && candidate.sourceId() != null
-                        && candidate.sourceId().equals(group.sourceId())
-                        && candidate.slotIndex() == equipmentSlotTarget.slotIndex();
-            }
-        };
+        if (target instanceof LoadoutTarget.QuickAccessLaneTarget quickAccessLaneTarget) {
+            var lane = host.quickAccessLane(quickAccessLaneTarget.laneId());
+            return lane != null
+                    && candidate.sourceId() != null
+                    && candidate.sourceId().equals(lane.sourceId())
+                    && candidate.slotIndex() == quickAccessLaneTarget.slotIndex();
+        }
+        if (target instanceof LoadoutTarget.EquipmentSlotTarget equipmentSlotTarget) {
+            var group = host.equipmentGroup(equipmentSlotTarget.groupId());
+            return group != null
+                    && candidate.sourceId() != null
+                    && candidate.sourceId().equals(group.sourceId())
+                    && candidate.slotIndex() == equipmentSlotTarget.slotIndex();
+        }
+        return false;
     }
 
     private static boolean isQuickAccessOrEquipmentSource(InventoryHostDescriptor host, String sourceId) {
@@ -973,12 +972,13 @@ public final class LoadoutApplyService {
     }
 
     private static InventoryActionTarget toActionTarget(LoadoutTarget target) {
-        return switch (target) {
-            case LoadoutTarget.QuickAccessLaneTarget quickAccessLaneTarget ->
-                    new InventoryActionTarget.QuickAccessTarget(quickAccessLaneTarget.laneId(), quickAccessLaneTarget.slotIndex());
-            case LoadoutTarget.EquipmentSlotTarget equipmentSlotTarget ->
-                    new InventoryActionTarget.EquipmentTarget(equipmentSlotTarget.groupId(), equipmentSlotTarget.slotIndex());
-        };
+        if (target instanceof LoadoutTarget.QuickAccessLaneTarget quickAccessLaneTarget) {
+            return new InventoryActionTarget.QuickAccessTarget(quickAccessLaneTarget.laneId(), quickAccessLaneTarget.slotIndex());
+        }
+        if (target instanceof LoadoutTarget.EquipmentSlotTarget equipmentSlotTarget) {
+            return new InventoryActionTarget.EquipmentTarget(equipmentSlotTarget.groupId(), equipmentSlotTarget.slotIndex());
+        }
+        return null;
     }
 
     private static InventoryActionTarget protectionTargetForSource(
@@ -1022,10 +1022,11 @@ public final class LoadoutApplyService {
     }
 
     private static InventoryActionKind actionKindFor(LoadoutTarget target) {
-        return switch (target) {
-            case LoadoutTarget.QuickAccessLaneTarget ignored -> InventoryActionKind.ASSIGN;
-            case LoadoutTarget.EquipmentSlotTarget ignored -> InventoryActionKind.ASSIGN;
-        };
+        if (target instanceof LoadoutTarget.QuickAccessLaneTarget
+                || target instanceof LoadoutTarget.EquipmentSlotTarget) {
+            return InventoryActionKind.ASSIGN;
+        }
+        throw new IllegalArgumentException("Unsupported loadout target: " + target);
     }
 
     private static boolean isFillOperation(PlannedTargetOperation operation) {
@@ -1063,13 +1064,13 @@ public final class LoadoutApplyService {
         if (target == null) {
             return null;
         }
-        return switch (target) {
-            case InventoryActionTarget.QuickAccessTarget quickAccessTarget ->
-                    new LoadoutTarget.QuickAccessLaneTarget(quickAccessTarget.laneId(), quickAccessTarget.slotIndex());
-            case InventoryActionTarget.EquipmentTarget equipmentTarget ->
-                    new LoadoutTarget.EquipmentSlotTarget(equipmentTarget.groupId(), equipmentTarget.slotIndex());
-            default -> null;
-        };
+        if (target instanceof InventoryActionTarget.QuickAccessTarget quickAccessTarget) {
+            return new LoadoutTarget.QuickAccessLaneTarget(quickAccessTarget.laneId(), quickAccessTarget.slotIndex());
+        }
+        if (target instanceof InventoryActionTarget.EquipmentTarget equipmentTarget) {
+            return new LoadoutTarget.EquipmentSlotTarget(equipmentTarget.groupId(), equipmentTarget.slotIndex());
+        }
+        return null;
     }
 
     private static List<LoadoutTarget> requestedTargets(LoadoutApplyPlan plan) {

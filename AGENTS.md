@@ -55,6 +55,12 @@ This is a fast-moving experimental repo. Docs describe intent as of their
   count, identity, host id, or menu ref for real mutations — build
   authoritative requests on the server from live authority.
 - Unsupported host state must fail closed and log a useful diagnostic.
+- Do not add permissive fallbacks that can mask incorrect behavior,
+  missing data, schema drift, or routing bugs. Prefer a clear failure
+  with an actionable diagnostic/status over "best effort" behavior that
+  appears to work while silently taking a different path. Only use a
+  fallback when it is an explicitly intended product behavior, and make
+  that intent obvious in code/tests.
 - Keep LDLib2 imports out of `common/`. Keep inventory semantics out of
   `neoforge/` UI code.
 - NEVER GUESS - especially when it comes to APIs and library behavior. 
@@ -281,6 +287,15 @@ writing new UI or action code.
     methods on it — split into a pure record (common) + a codec class
     (neoforge). See `SlotWorkspaceViewModel` (common) +
     `SlotWorkspaceViewModelCodec` (neoforge) for the canonical pattern.
+- **During the Forge 1.20 port, NeoForge behavior is the semantic
+  oracle.** Forge is another adapter, not a separate interaction model.
+  For gestures and workspace actions, first trace the existing NeoForge
+  route, then encode the decision in common code and make both backends
+  dispatch that common decision. Platform UI should reduce to raw event
+  → common context → common decision → backend send. Do not leave
+  platform-side shift-click / wheel / cursor fallbacks that can invent
+  different behavior; if a common decision cannot be produced, fail
+  closed with a diagnostic until the shared action exists.
 - **Do not put exhaustive `switch` over sealed domain types in a
   platform file.** The compiler enforces coverage, which means every new
   event type forces a platform edit. Keep the switch in the same module

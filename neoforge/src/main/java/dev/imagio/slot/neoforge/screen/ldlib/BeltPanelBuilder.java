@@ -1,7 +1,6 @@
 package dev.imagio.slot.neoforge.screen.ldlib;
 
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceFormat.compactCount;
-import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceFormat.itemName;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceFormat.selectionHomeStatus;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.*;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceUi.*;
@@ -14,7 +13,6 @@ import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
-import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.vfyjxf.taffy.style.AlignItems;
@@ -48,7 +46,6 @@ final class BeltPanelBuilder {
                 .gapAll(4)
                 .flexDirection(FlexDirection.COLUMN));
         SlotWorkspaceViewModel.AtlasItem atlasItem = host.focusedAtlasItem();
-        SlotWorkspaceViewModel.HotbarSlot hotbar = host.selectedHotbarSlot();
         if (atlasItem != null) {
             SlotWorkspaceViewModel.AtlasIsland island = host.viewModel.island(atlasItem.islandId());
             ArrayList<UIElement> children = new ArrayList<>();
@@ -63,26 +60,19 @@ final class BeltPanelBuilder {
                     label(shorten(atlasItem.name(), 24), TEXT).layout(layout -> layout.flex(1).height(12)),
                     label("x" + compactCount(atlasItem.totalCount()), ACCENT).layout(layout -> layout.width(28).height(12))
             );
-            children.add(label(host.selectedAtlasItem() != null ? "Selected Item" : "Focused Item", ACCENT).layout(layout -> layout.height(12)));
+            children.add(label("Focused Item", ACCENT).layout(layout -> layout.height(12)));
             children.add(hero);
             children.add(wrappedLabel("id: " + atlasItem.identity().itemId(), MUTED));
             children.add(wrappedLabel("source: main:" + atlasItem.firstSlotIndex(), MUTED));
             children.add(wrappedLabel("home: " + (island == null ? atlasItem.islandId() : island.label()), MUTED));
             children.add(label(selectionHomeStatus(atlasItem, island), atlasItem.playerPlaced() ? ACCENT : island != null && island.kind() == VisualAtlasIslandKind.TRIAGE ? WARNING : ACCENT)
                     .layout(layout -> layout.height(12)));
-            children.add(wrappedLabel("Drag to move this home. Drop on a hotbar slot to assign quick access.", MUTED));
             host.appendTooltipPreview(children, atlasItem);
             panelEl.addChildren(children.toArray(UIElement[]::new));
-        } else if (hotbar != null) {
-            panelEl.addChildren(
-                    label("Selected Hotbar", ACCENT).layout(layout -> layout.height(12)),
-                    label("slot " + (hotbar.hotbarIndex() + 1), TEXT).layout(layout -> layout.height(12)),
-                    label(hotbar.occupied() ? itemName(hotbar.displayStack()) : "empty", MUTED).layout(layout -> layout.height(12))
-            );
         } else {
             panelEl.addChildren(
-                    label("Selection", ACCENT).layout(layout -> layout.height(12)),
-                    wrappedLabel("Select an anchor or hotbar slot to inspect it. Rich detail lives here so atlas homes can stay compact.", MUTED)
+                    label("Focus", ACCENT).layout(layout -> layout.height(12)),
+                    wrappedLabel("Hover a carried item to inspect it.", MUTED)
             );
         }
         return panelEl;
@@ -133,10 +123,7 @@ final class BeltPanelBuilder {
         return divider;
     }
 
-    int slotChromeColor(SlotWorkspaceViewModel.HotbarSlot slot, boolean selected) {
-        if (selected) {
-            return SELECTED;
-        }
+    int slotChromeColor(SlotWorkspaceViewModel.HotbarSlot slot) {
         // Only paint the vanilla "currently-held" amber on slots that
         // actually carry an item. Without this, an empty slot whose
         // index happens to match the held-hotbar-index gets the same
@@ -153,11 +140,7 @@ final class BeltPanelBuilder {
     }
 
     Button slotButton(SlotWorkspaceViewModel.HotbarSlot slot) {
-        boolean selected = host.selectedHotbarIndex.get() == slot.hotbarIndex();
-        Button button = button("", true, slotChromeColor(slot, selected));
-        host.wallContentSubscriptions.add(host.selectedHotbarIndex.subscribeLater(idx -> {
-            applyButtonColors(button, true, slotChromeColor(slot, idx == slot.hotbarIndex()));
-        }));
+        Button button = button("", true, slotChromeColor(slot));
         button.layout(layout -> layout
                 .width(BELT_SLOT_SIZE)
                 .height(BELT_SLOT_SIZE)
@@ -171,19 +154,11 @@ final class BeltPanelBuilder {
                 host.rpc.sendReturnHotbarToHome(slot.hotbarIndex());
                 return;
             }
-            SlotWorkspaceViewModel.AtlasItem atlasItem = host.selectedAtlasItem();
-            if (atlasItem != null) {
-                host.rpc.sendAssignToHotbarSlot(atlasItem, slot.hotbarIndex());
-                return;
-            }
             if (!slot.occupied()) {
-                host.selectedHotbarIndex.set(-1);
                 host.localStatus.set("belt " + (slot.hotbarIndex() + 1) + " is empty");
                 return;
             }
-            host.selectedHotbarIndex.set(slot.hotbarIndex());
-            host.selectedAtlasIdentity.set(null);
-            host.localStatus.set("selected belt " + (slot.hotbarIndex() + 1) + " -> drag to atlas to return");
+            host.localStatus.set("");
         });
         // Capture-phase real cursor handler: while carrying the menu cursor,
         // left-click drops all/merge/swap and right-click drops one (vanilla

@@ -420,7 +420,7 @@ final class WorkspaceOverlays {
             return;
         }
         host.statusBarLabel.setText(Component.literal(
-                "selected: " + host.selectionLabel()
+                "focus: " + host.selectionLabel()
                         + "  pending: " + host.viewModel.pendingCount()
                         + "  rev: " + host.viewModel.revision()
                         + "  " + (host.localStatus.get().isBlank() ? host.viewModel.status() : host.localStatus.get())

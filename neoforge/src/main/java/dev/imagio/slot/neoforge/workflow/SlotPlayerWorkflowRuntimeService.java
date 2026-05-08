@@ -1,7 +1,8 @@
 package dev.imagio.slot.neoforge.workflow;
 
 import dev.imagio.slot.SlotCommon;
-import dev.imagio.slot.neoforge.storage.ChestPersistenceReconciliation;
+import dev.imagio.slot.inventory.workspace.ChestClaimPersistenceReconciliation;
+import dev.imagio.slot.neoforge.storage.ChestStorageIds;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
 import dev.imagio.slot.workflow.domain.WorkflowDomainPersistenceService;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
@@ -60,7 +61,7 @@ public final class SlotPlayerWorkflowRuntimeService {
         );
         persistence.loadInto(repository);
         WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(repository, persistence);
-        ChestPersistenceReconciliation.reconcile(server, runtime);
+        ChestClaimPersistenceReconciliation.reconcile(server, runtime, ChestStorageIds::read);
         SlotCommon.LOGGER.info("[SLOT] Loaded workflow runtime for {}", player.getScoreboardName());
         return runtime;
     }

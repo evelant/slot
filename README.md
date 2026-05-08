@@ -10,9 +10,10 @@ SLOT is not remote storage, infinite inventory, a logistics network, or
 autocrafting. The design target is a better way to browse, understand, and act
 on the inventories the player is already carrying or has actually opened.
 
-Current target: Minecraft `1.21.1`, Java `21`, NeoForge-first, LDLib2 required
-for the dedicated test instance. Optional integrations where available —
-especially EMI, Tom's Storage, and Sophisticated Backpacks.
+Current targets: modern Minecraft `1.21.1`, Java `21`, NeoForge + LDLib2;
+legacy Minecraft `1.20.1`, Java `17`, Forge `47.x` in progress via the
+cross-loader plan. Optional integrations where available — especially EMI,
+Tom's Storage, and Sophisticated Backpacks.
 
 ## Start Here
 
@@ -52,7 +53,7 @@ Design:
   [docs/plans/done/list-view.md](docs/plans/done/list-view.md)
   (2026-05-05).* The pan/zoom atlas is gone; the wall is now a
   single-LOD sectioned vertical list. Surviving content (homes,
-  ghost vs carried, Triage docked panel, single-element drag rule,
+  ghost vs carried, single-element drag rule, recents,
   kit / desired-count / wayfinding integration) still applies — see
   the doc's own header for which sections are live.
 - [docs/design/kits.md](docs/design/kits.md) — task-oriented Kits (unifies
@@ -66,6 +67,8 @@ Plans:
 
 - [docs/plans/current.md](docs/plans/current.md) — single-page entry:
   active plan + queue + pointers.
+- [docs/plans/cross-loader-refactor.md](docs/plans/cross-loader-refactor.md)
+  — active cross-loader plan for 1.21.1 NeoForge + 1.20.1 Forge support.
 - [docs/plans/learned-storage.md](docs/plans/learned-storage.md) —
   canonical design ref for the chest-affinity / chip-stack /
   proximate-ghost storage system (shipped 2026-04-30; residual polish
@@ -103,6 +106,9 @@ Decisions (ADR-style):
 - [docs/decisions/0005-relevance-score-and-layout-locality.md](docs/decisions/0005-relevance-score-and-layout-locality.md)
   — relevance score is a derivation; layout is client-owned; AtlasItem
   drops position/size from the wire.
+- [docs/decisions/0006-cross-loader-legacy-forge.md](docs/decisions/0006-cross-loader-legacy-forge.md)
+  — SLOT adds a 1.20.1 Forge target through a SLOT-owned UI/platform SPI
+  instead of backporting LDLib2.
 
 Research and assessments:
 

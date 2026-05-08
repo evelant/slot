@@ -3,6 +3,8 @@ package dev.imagio.slot.inventory.integration;
 import dev.imagio.slot.inventory.action.InventoryActionMode;
 import dev.imagio.slot.inventory.core.InventoryCapability;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
+import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.core.InventoryToolActionId;
 import dev.imagio.slot.inventory.core.InventoryToolDescriptor;
 import dev.imagio.slot.inventory.core.ToolRegionDescriptor;
@@ -73,8 +75,8 @@ final class MenuBackedToolActionExecutor {
     }
 
     private static boolean balanceGrid(AbstractContainerMenu menu, List<Integer> inputSlots) {
-        Map<String, List<Integer>> slotsByKey = new LinkedHashMap<>();
-        Map<String, Integer> countsByKey = new LinkedHashMap<>();
+        Map<ItemIdentity, List<Integer>> slotsByKey = new LinkedHashMap<>();
+        Map<ItemIdentity, Integer> countsByKey = new LinkedHashMap<>();
 
         for (int slotId : inputSlots) {
             Slot slot = safeMenuSlot(menu, slotId);
@@ -85,13 +87,13 @@ final class MenuBackedToolActionExecutor {
             if (stack.getMaxStackSize() <= 1) {
                 continue;
             }
-            String key = stack.getItem() + "@" + stack.getComponentsPatch();
+            ItemIdentity key = ItemIdentityMatcher.create(stack);
             slotsByKey.computeIfAbsent(key, ignored -> new ArrayList<>()).add(slotId);
             countsByKey.merge(key, stack.getCount(), Integer::sum);
         }
 
         boolean changed = false;
-        for (Map.Entry<String, List<Integer>> entry : slotsByKey.entrySet()) {
+        for (Map.Entry<ItemIdentity, List<Integer>> entry : slotsByKey.entrySet()) {
             List<Integer> slotIds = entry.getValue();
             if (slotIds.size() <= 1) {
                 continue;

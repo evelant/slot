@@ -45,13 +45,23 @@ public final class InventoryCommandPreflightService {
         }
 
         InventoryBrowseDocument document = session.browseDocument();
-        return switch (invocation.subjectRef()) {
-            case InventoryBrowseSubjectRef.ItemRowRef itemRowRef -> itemRow(session, invocation, document, itemRowRef);
-            case InventoryBrowseSubjectRef.PlaceholderRef placeholderRef -> placeholder(session, invocation, document, placeholderRef);
-            case InventoryBrowseSubjectRef.LoadoutRef loadoutRef -> loadout(session, invocation, document, loadoutRef);
-            case InventoryBrowseSubjectRef.SectionRef sectionRef -> section(session, invocation, document, sectionRef);
-            case InventoryBrowseSubjectRef.PaneRef paneRef -> pane(session, invocation, document, paneRef);
-        };
+        InventoryBrowseSubjectRef subjectRef = invocation.subjectRef();
+        if (subjectRef instanceof InventoryBrowseSubjectRef.ItemRowRef itemRowRef) {
+            return itemRow(session, invocation, document, itemRowRef);
+        }
+        if (subjectRef instanceof InventoryBrowseSubjectRef.PlaceholderRef placeholderRef) {
+            return placeholder(session, invocation, document, placeholderRef);
+        }
+        if (subjectRef instanceof InventoryBrowseSubjectRef.LoadoutRef loadoutRef) {
+            return loadout(session, invocation, document, loadoutRef);
+        }
+        if (subjectRef instanceof InventoryBrowseSubjectRef.SectionRef sectionRef) {
+            return section(session, invocation, document, sectionRef);
+        }
+        if (subjectRef instanceof InventoryBrowseSubjectRef.PaneRef paneRef) {
+            return pane(session, invocation, document, paneRef);
+        }
+        return rejected(invocation, "unsupported_subject_ref", InventoryCommandReasonCode.UNSUPPORTED);
     }
 
     private static InventoryCommandPreflight itemRow(
@@ -297,7 +307,7 @@ public final class InventoryCommandPreflightService {
         ProjectedRowTransferIntent transferIntent = new ProjectedRowTransferIntent(
                 session.authority(),
                 InventoryBrowseDocumentQueries.projectedRows(itemEntries),
-                itemEntries.getFirst().row(),
+                itemEntries.get(0).row(),
                 InventoryActionKind.TRANSFER,
                 InventoryActionQuantity.ALL_MATCHING,
                 InventoryActionScope.VISIBLE_ROWS,

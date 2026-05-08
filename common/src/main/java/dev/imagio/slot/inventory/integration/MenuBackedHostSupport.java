@@ -4,6 +4,7 @@ import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.InventoryStackSnapshot;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.ItemStackEquivalence;
 import dev.imagio.slot.inventory.query.InventoryEntryKey;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.query.InventorySourceSnapshot;
@@ -266,7 +267,7 @@ final class MenuBackedHostSupport {
         int transferable;
         if (existing.isEmpty()) {
             transferable = Math.min(sourceStack.getCount(), Math.min(sourceStack.getMaxStackSize(), slot.getMaxStackSize(sourceStack)));
-        } else if (ItemStack.isSameItemSameComponents(existing, sourceStack)) {
+        } else if (ItemStackEquivalence.sameItemAndData(existing, sourceStack)) {
             int capacity = Math.max(0, Math.min(existing.getMaxStackSize(), slot.getMaxStackSize(existing)) - existing.getCount());
             transferable = Math.min(sourceStack.getCount(), capacity);
         } else {

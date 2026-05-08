@@ -22,54 +22,52 @@ public final class InventoryActionPolicy {
             return false;
         }
 
-        return switch (target) {
-            case InventoryActionTarget.CursorTarget ignored -> false;
-            case InventoryActionTarget.SourceTarget sourceTarget -> {
-                InventorySourceDescriptor source = host.source(sourceTarget.sourceId());
-                yield source != null && source.actionable() && supports(source, kind);
+        if (target instanceof InventoryActionTarget.SourceTarget sourceTarget) {
+            InventorySourceDescriptor source = host.source(sourceTarget.sourceId());
+            return source != null && source.actionable() && supports(source, kind);
+        }
+        if (target instanceof InventoryActionTarget.SourceSlotTarget slotTarget) {
+            InventorySourceDescriptor source = host.source(slotTarget.sourceId());
+            return source != null && source.actionable() && supports(source, kind);
+        }
+        if (target instanceof InventoryActionTarget.SourceEntryTarget sourceEntryTarget) {
+            InventorySourceDescriptor source = host.source(sourceEntryTarget.sourceId());
+            return source != null && source.actionable() && source.providerBacked() && supports(source, kind);
+        }
+        if (target instanceof InventoryActionTarget.QuickAccessTarget laneTarget) {
+            QuickAccessLaneDescriptor lane = host.quickAccessLane(laneTarget.laneId());
+            return lane != null && supports(lane, kind);
+        }
+        if (target instanceof InventoryActionTarget.EquipmentTarget equipmentTarget) {
+            EquipmentGroupDescriptor group = host.equipmentGroup(equipmentTarget.groupId());
+            return group != null && supports(group, kind);
+        }
+        if (target instanceof InventoryActionTarget.ToolRegionTarget regionTarget) {
+            InventoryToolDescriptor tool = host.tool(regionTarget.toolId());
+            ToolRegionDescriptor region = tool == null ? null : tool.regions().stream()
+                    .filter(candidate -> regionTarget.regionId().equals(candidate.id()))
+                    .findFirst()
+                    .orElse(null);
+            if (region == null) {
+                return false;
             }
-            case InventoryActionTarget.SourceSlotTarget slotTarget -> {
-                InventorySourceDescriptor source = host.source(slotTarget.sourceId());
-                yield source != null && source.actionable() && supports(source, kind);
+            InventorySourceDescriptor linkedSource = region.linkedSourceId().isBlank() ? null : host.source(region.linkedSourceId());
+            return linkedSource != null
+                    ? linkedSource.actionable() && supports(linkedSource, kind)
+                    : supports(region, kind);
+        }
+        if (target instanceof InventoryActionTarget.ToolControlTarget controlTarget) {
+            InventoryToolDescriptor tool = host.tool(controlTarget.toolId());
+            if (tool == null) {
+                return false;
             }
-            case InventoryActionTarget.SourceEntryTarget sourceEntryTarget -> {
-                InventorySourceDescriptor source = host.source(sourceEntryTarget.sourceId());
-                yield source != null && source.actionable() && source.providerBacked() && supports(source, kind);
-            }
-            case InventoryActionTarget.QuickAccessTarget laneTarget -> {
-                QuickAccessLaneDescriptor lane = host.quickAccessLane(laneTarget.laneId());
-                yield lane != null && supports(lane, kind);
-            }
-            case InventoryActionTarget.EquipmentTarget equipmentTarget -> {
-                EquipmentGroupDescriptor group = host.equipmentGroup(equipmentTarget.groupId());
-                yield group != null && supports(group, kind);
-            }
-            case InventoryActionTarget.ToolRegionTarget regionTarget -> {
-                InventoryToolDescriptor tool = host.tool(regionTarget.toolId());
-                ToolRegionDescriptor region = tool == null ? null : tool.regions().stream()
-                        .filter(candidate -> regionTarget.regionId().equals(candidate.id()))
-                        .findFirst()
-                        .orElse(null);
-                if (region == null) {
-                    yield false;
-                }
-                InventorySourceDescriptor linkedSource = region.linkedSourceId().isBlank() ? null : host.source(region.linkedSourceId());
-                yield linkedSource != null
-                        ? linkedSource.actionable() && supports(linkedSource, kind)
-                        : supports(region, kind);
-            }
-            case InventoryActionTarget.ToolControlTarget controlTarget -> {
-                InventoryToolDescriptor tool = host.tool(controlTarget.toolId());
-                if (tool == null) {
-                    yield false;
-                }
-                boolean matchesAction = tool.actions().stream()
-                        .anyMatch(action -> action.stableId().equals(controlTarget.controlId()));
-                boolean matchesToggle = tool.toggles().stream()
-                        .anyMatch(toggle -> toggle.stableId().equals(controlTarget.controlId()));
-                yield matchesAction || matchesToggle;
-            }
-        };
+            boolean matchesAction = tool.actions().stream()
+                    .anyMatch(action -> action.stableId().equals(controlTarget.controlId()));
+            boolean matchesToggle = tool.toggles().stream()
+                    .anyMatch(toggle -> toggle.stableId().equals(controlTarget.controlId()));
+            return matchesAction || matchesToggle;
+        }
+        return false;
     }
 
     public static boolean blockedByProtection(

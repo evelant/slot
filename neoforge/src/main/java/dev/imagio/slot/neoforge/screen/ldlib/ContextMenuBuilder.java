@@ -810,10 +810,10 @@ final class ContextMenuBuilder {
         }
         capsule.addChild(paletteRow);
 
-        SlotWorkspaceViewModel.AtlasItem selected = host.selectedAtlasItem();
+        SlotWorkspaceViewModel.AtlasItem selected = host.focusedAtlasItem();
         boolean canSetIcon = selected != null;
         Button setIcon = button(
-                canSetIcon ? "Set icon: " + shorten(selected.name(), 16) : "Select an item to set icon",
+                canSetIcon ? "Set icon: " + shorten(selected.name(), 16) : "Focus an item to set icon",
                 canSetIcon
         );
         setIcon.layout(layout -> layout.widthPercent(100).height(18));

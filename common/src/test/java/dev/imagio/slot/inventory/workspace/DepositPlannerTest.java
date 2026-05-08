@@ -33,6 +33,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class DepositPlannerTest {
     private static final UUID CHEST_A = UUID.fromString("00000000-0000-0000-0000-000000000001");
     private static final UUID CHEST_B = UUID.fromString("00000000-0000-0000-0000-000000000002");
+    private static final UUID CHEST_C = UUID.fromString("00000000-0000-0000-0000-000000000003");
 
     @Test
     void emptyProximateSetProducesEmptyPlan() {
@@ -175,6 +176,115 @@ class DepositPlannerTest {
     }
 
     @Test
+    void explicitDepositKeepsLinkedRankingAheadOfSimilarityFallback() {
+        ItemIdentity target = ItemIdentity.of("minecraft:netherite_ingot");
+        ItemIdentity ironIngot = ItemIdentity.of("minecraft:iron_ingot");
+        Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup = identity -> switch (identity.itemId()) {
+            case "minecraft:netherite_ingot" -> ingotDescriptor(identity.itemId(), "netherite");
+            case "minecraft:iron_ingot" -> ingotDescriptor(identity.itemId(), "iron");
+            default -> null;
+        };
+
+        List<UUID> ranked = DepositPlanner.rankChestsForExplicitDeposit(
+                target,
+                claimedMap(CHEST_A, CHEST_B),
+                affinity(CHEST_B, "minecraft:netherite_ingot", 1),
+                Set.of(CHEST_A.toString(), CHEST_B.toString()),
+                descriptorLookup,
+                storageId -> storageId.equals(CHEST_A) ? Set.of(ironIngot) : Set.of(),
+                storageId -> new DepositPlanner.ChestSpace(27, 1)
+        );
+
+        assertEquals(List.of(CHEST_B), ranked);
+    }
+
+    @Test
+    void explicitDepositUsesFacetSimilarityWhenNoLinkedChestMatches() {
+        ItemIdentity target = ItemIdentity.of("minecraft:netherite_ingot");
+        ItemIdentity ironIngot = ItemIdentity.of("minecraft:iron_ingot");
+        ItemIdentity oakLog = ItemIdentity.of("minecraft:oak_log");
+        Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup = identity -> switch (identity.itemId()) {
+            case "minecraft:netherite_ingot" -> ingotDescriptor(identity.itemId(), "netherite");
+            case "minecraft:iron_ingot" -> ingotDescriptor(identity.itemId(), "iron");
+            case "minecraft:oak_log" -> woodDescriptor(identity.itemId());
+            default -> null;
+        };
+
+        List<UUID> ranked = DepositPlanner.rankChestsForExplicitDeposit(
+                target,
+                claimedMap(CHEST_A, CHEST_B),
+                ChestAffinityMap.empty(),
+                Set.of(CHEST_A.toString(), CHEST_B.toString()),
+                descriptorLookup,
+                storageId -> storageId.equals(CHEST_A) ? Set.of(ironIngot) : Set.of(oakLog),
+                storageId -> new DepositPlanner.ChestSpace(27, 1)
+        );
+
+        assertEquals(List.of(CHEST_A, CHEST_B), ranked);
+    }
+
+    @Test
+    void explicitDepositUsesEmptiestChestWhenNoSimilarityExists() {
+        ItemIdentity target = ItemIdentity.of("minecraft:amethyst_shard");
+
+        List<UUID> ranked = DepositPlanner.rankChestsForExplicitDeposit(
+                target,
+                claimedMap(CHEST_A, CHEST_B, CHEST_C),
+                ChestAffinityMap.empty(),
+                Set.of(CHEST_A.toString(), CHEST_B.toString(), CHEST_C.toString()),
+                identity -> null,
+                storageId -> Set.of(),
+                storageId -> {
+                    if (storageId.equals(CHEST_A)) {
+                        return new DepositPlanner.ChestSpace(27, 20);
+                    }
+                    if (storageId.equals(CHEST_B)) {
+                        return new DepositPlanner.ChestSpace(27, 1);
+                    }
+                    return new DepositPlanner.ChestSpace(27, 12);
+                }
+        );
+
+        assertEquals(List.of(CHEST_B, CHEST_C, CHEST_A), ranked);
+    }
+
+    @Test
+    void bulkDepositWithReservationDepositsOnlyExcessToPresenceChest() {
+        DepositPlan plan = DepositPlanner.plan(
+                authority(BuiltinInventoryIds.PLAYER_MAIN, 0, "minecraft:redstone", 5),
+                ChestAffinityMap.empty(),
+                claimedMap(CHEST_A),
+                Set.of(CHEST_A.toString()),
+                null,
+                storageId -> storageId.equals(CHEST_A)
+                        ? Set.of(ItemIdentity.of("minecraft:redstone"))
+                        : Set.of(),
+                identity -> identity.itemId().equals("minecraft:redstone") ? 3 : 0
+        );
+
+        assertEquals(1, plan.assignments().size());
+        DepositPlan.Assignment assignment = plan.assignments().get(0);
+        assertEquals("minecraft:redstone", assignment.itemId());
+        assertEquals(2, assignment.count());
+        assertEquals(List.of(CHEST_A.toString()), assignment.candidateStorageIds());
+    }
+
+    @Test
+    void bulkDepositWithReservationDoesNotUseExplicitSimilarityOrEmptyChestFallback() {
+        DepositPlan plan = DepositPlanner.plan(
+                authority(BuiltinInventoryIds.PLAYER_MAIN, 0, "minecraft:amethyst_shard", 5),
+                ChestAffinityMap.empty(),
+                claimedMap(CHEST_A),
+                Set.of(CHEST_A.toString()),
+                identity -> null,
+                storageId -> Set.of(),
+                identity -> identity.itemId().equals("minecraft:amethyst_shard") ? 3 : 0
+        );
+
+        assertTrue(plan.isEmpty());
+    }
+
+    @Test
     void facetFallbackSkippedWhenLookupReturnsNull() {
         // No descriptorLookup → exact-match identity affinity only.
         // (This is the legacy 4-arg overload.)
@@ -199,6 +309,29 @@ class DepositPlannerTest {
                 "material",
                 null,
                 materialFamily,
+                List.of(),
+                List.of(),
+                null,
+                null,
+                null,
+                null,
+                null,
+                List.of(),
+                null,
+                false
+        );
+    }
+
+    private static IslandSignalDescriptor woodDescriptor(String itemId) {
+        return new IslandSignalDescriptor(
+                ItemIdentity.of(itemId),
+                Set.of(),
+                Set.of("minecraft:logs"),
+                "minecraft",
+                "",
+                "building",
+                null,
+                "wood_oak",
                 List.of(),
                 List.of(),
                 null,

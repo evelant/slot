@@ -143,7 +143,7 @@ public final class InventoryBrowseService {
         LinkedHashMap<String, String> titleBySectionId = new LinkedHashMap<>();
         LinkedHashMap<String, InventoryBrowseSectionKind> kindBySectionId = new LinkedHashMap<>();
         for (InventoryBrowseEntry.ItemEntry itemEntry : itemEntries) {
-            String sourceId = itemEntry.row().backingSources().isEmpty() ? "unknown" : itemEntry.row().backingSources().getFirst();
+            String sourceId = itemEntry.row().backingSources().isEmpty() ? "unknown" : itemEntry.row().backingSources().get(0);
             InventorySourceDescriptor source = request.authority().source(sourceId);
             String sectionId = "source:" + sourceId;
             String title = source == null ? sourceId : source.label().getString();

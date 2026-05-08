@@ -18,6 +18,7 @@ import dev.imagio.slot.inventory.core.InventoryToolToggleId;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.ItemStackEquivalence;
 import dev.imagio.slot.inventory.core.ServerMenuRef;
 import dev.imagio.slot.inventory.intent.CraftingDragMode;
 import dev.imagio.slot.inventory.intent.CraftingPlacementMode;
@@ -372,7 +373,7 @@ public final class InventoryCraftingPlanner {
         int maxAdditional;
         if (destinationEntry == null || !destinationEntry.present() || destinationEntry.stack().isEmpty()) {
             maxAdditional = movingStack.getMaxStackSize();
-        } else if (ItemStack.isSameItemSameComponents(destinationEntry.stack(), movingStack)) {
+        } else if (ItemStackEquivalence.sameItemAndData(destinationEntry.stack(), movingStack)) {
             maxAdditional = Math.max(0, destinationEntry.stack().getMaxStackSize() - destinationEntry.count());
         } else {
             maxAdditional = 0;

@@ -17,6 +17,7 @@ import dev.imagio.slot.debug.RealisticAtlasGenerator;
 import dev.imagio.slot.debug.RealisticAtlasPlan;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.session.InventoryAcquisitionActivityRecorder;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
@@ -24,12 +25,15 @@ import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
 import dev.imagio.slot.inventory.triage.IslandTemplateMatch;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.neoforge.storage.ChestStorageIds;
+import dev.imagio.slot.neoforge.storage.NeoForgeCarriedActivityTracker;
 import dev.imagio.slot.neoforge.triage.IslandSignalExtractor;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ChestClaimWorkflowDomainService;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.DomainEventMetadata;
+import dev.imagio.slot.workflow.domain.InventoryActivityConfidence;
+import dev.imagio.slot.workflow.domain.InventoryActivityProducer;
 import dev.imagio.slot.workflow.domain.KitDefinition;
 import dev.imagio.slot.workflow.domain.KitPage;
 import dev.imagio.slot.workflow.domain.KitWorkflowDomainService;
@@ -173,7 +177,8 @@ public final class SlotTestCommands {
         int islandsCreated = applyIslands(workflow, plan);
         int assignmentsApplied = applyAssignments(workflow, plan);
         int backpacksGranted = ensureTopTierBackpacks(player);
-        InventoryGiveResult giveResult = giveStacksToPlayer(player, plan);
+        InventoryGiveResult giveResult = giveStacksToPlayer(player, runtime, plan);
+        NeoForgeCarriedActivityTracker.suppressNext(player);
         ChestPlacementResult chestResult = placeChests(player, chestWorkflow, plan, random);
 
         int finalIslands = islandsCreated;
@@ -744,7 +749,11 @@ public final class SlotTestCommands {
         return applied;
     }
 
-    private static InventoryGiveResult giveStacksToPlayer(ServerPlayer player, RealisticAtlasPlan plan) {
+    private static InventoryGiveResult giveStacksToPlayer(
+            ServerPlayer player,
+            WorkflowDomainRuntime runtime,
+            RealisticAtlasPlan plan
+    ) {
         ArrayList<ItemStack> allStacks = new ArrayList<>(plan.homedStacks().size() + plan.triageStacks().size());
         allStacks.addAll(plan.homedStacks());
         allStacks.addAll(plan.triageStacks());
@@ -789,6 +798,7 @@ public final class SlotTestCommands {
             if (stack.getCount() <= 0) {
                 stack.setCount(1);
             }
+            ItemStack acquiredStack = stack.copy();
             int initial = stack.getCount();
             ItemStack remaining;
             int vanillaDelta;
@@ -813,6 +823,15 @@ public final class SlotTestCommands {
             int placed = initial - leftover;
             mainInserted += vanillaDelta;
             backpackInserted += Math.max(0, placed - vanillaDelta);
+            if (placed > 0) {
+                InventoryAcquisitionActivityRecorder.recordStackAcquired(
+                        runtime,
+                        acquiredStack,
+                        placed,
+                        InventoryActivityProducer.COMPATIBILITY_API,
+                        InventoryActivityConfidence.AUTHORITATIVE,
+                        "test_populate");
+            }
 
             if (leftover > 0) {
                 dropped += leftover;
@@ -892,7 +911,7 @@ public final class SlotTestCommands {
                 continue;
             }
             // Stamp the BE with the canonical slot:storage_id so
-            // ChestPersistenceReconciliation doesn't prune the claim on
+            // ChestClaimPersistenceReconciliation doesn't prune the claim on
             // next login (it walks claimed chests, reads each anchor's
             // BE attachment, and deletes claims whose anchors are
             // attachment-less). The pre-refactor `ChestClaimServerService.claim`

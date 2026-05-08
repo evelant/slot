@@ -13,6 +13,8 @@ import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.workspace.DepositPlanner;
+import dev.imagio.slot.inventory.workspace.TakeAllExecutor;
+import dev.imagio.slot.inventory.workspace.WorkspaceChestProjectionSupport;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
@@ -76,7 +78,7 @@ public final class KitGatherService {
             return Outcome.empty("kit_definition_missing");
         }
         ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
-        Set<String> proximate = dev.imagio.slot.neoforge.storage.ChestProximityResolver.proximateStorageIds(player, claimedChestMap);
+        Set<String> proximate = WorkspaceChestProjectionSupport.proximateStorageIds(player, claimedChestMap);
         if (proximate.isEmpty()) {
             return Outcome.empty("no_proximate_chest");
         }

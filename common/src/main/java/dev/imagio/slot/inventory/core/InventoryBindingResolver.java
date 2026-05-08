@@ -13,28 +13,24 @@ public final class InventoryBindingResolver {
             return null;
         }
 
-        return switch (target) {
-            case InventoryActionTarget.CursorTarget ignored -> null;
-            case InventoryActionTarget.SourceTarget ignored -> null;
-            case InventoryActionTarget.SourceSlotTarget slotTarget ->
-                    host.topology().resolveMenuSlot(slotTarget.sourceId(), slotTarget.slotIndex());
-            case InventoryActionTarget.SourceEntryTarget ignored -> null;
-            case InventoryActionTarget.QuickAccessTarget laneTarget -> {
-                QuickAccessLaneDescriptor lane = host.quickAccessLane(laneTarget.laneId());
-                yield lane == null ? null : host.topology().resolveMenuSlot(lane.sourceId(), laneTarget.slotIndex());
-            }
-            case InventoryActionTarget.EquipmentTarget equipmentTarget -> {
-                EquipmentGroupDescriptor group = host.equipmentGroup(equipmentTarget.groupId());
-                yield group == null ? null : host.topology().resolveMenuSlot(group.sourceId(), equipmentTarget.slotIndex());
-            }
-            case InventoryActionTarget.ToolRegionTarget regionTarget -> {
-                List<Integer> slots = host.topology().menuSlotsForToolRegion(regionTarget.regionId());
-                yield regionTarget.slotIndex() < 0 || regionTarget.slotIndex() >= slots.size()
-                        ? null
-                        : slots.get(regionTarget.slotIndex());
-            }
-            case InventoryActionTarget.ToolControlTarget ignored -> null;
-        };
+        if (target instanceof InventoryActionTarget.SourceSlotTarget slotTarget) {
+            return host.topology().resolveMenuSlot(slotTarget.sourceId(), slotTarget.slotIndex());
+        }
+        if (target instanceof InventoryActionTarget.QuickAccessTarget laneTarget) {
+            QuickAccessLaneDescriptor lane = host.quickAccessLane(laneTarget.laneId());
+            return lane == null ? null : host.topology().resolveMenuSlot(lane.sourceId(), laneTarget.slotIndex());
+        }
+        if (target instanceof InventoryActionTarget.EquipmentTarget equipmentTarget) {
+            EquipmentGroupDescriptor group = host.equipmentGroup(equipmentTarget.groupId());
+            return group == null ? null : host.topology().resolveMenuSlot(group.sourceId(), equipmentTarget.slotIndex());
+        }
+        if (target instanceof InventoryActionTarget.ToolRegionTarget regionTarget) {
+            List<Integer> slots = host.topology().menuSlotsForToolRegion(regionTarget.regionId());
+            return regionTarget.slotIndex() < 0 || regionTarget.slotIndex() >= slots.size()
+                    ? null
+                    : slots.get(regionTarget.slotIndex());
+        }
+        return null;
     }
 
     public static List<Integer> resolveMenuSlotsForSource(InventoryHostDescriptor host, String sourceId) {

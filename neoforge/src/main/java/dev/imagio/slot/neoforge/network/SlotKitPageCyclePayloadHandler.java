@@ -17,6 +17,7 @@ import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceCommandOutcome;
+import dev.imagio.slot.neoforge.storage.NeoForgeCarriedActivityTracker;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.ProtectionPolicy;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
@@ -83,6 +84,9 @@ public final class SlotKitPageCyclePayloadHandler {
                         ProtectionPolicy.allowAll()
                 );
                 runtime.recordOutcome(outcome);
+                if (outcome != null && outcome.successful()) {
+                    NeoForgeCarriedActivityTracker.suppressNext(effectivePlayer);
+                }
                 return outcome;
             };
             WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.switchKitPage(

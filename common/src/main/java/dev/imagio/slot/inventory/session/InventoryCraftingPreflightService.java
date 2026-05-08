@@ -33,10 +33,14 @@ public final class InventoryCraftingPreflightService {
             return InventoryCraftingPlan.rejected("missing_host", InventoryCommandReasonCode.MISSING_AUTHORITY);
         }
 
-        return switch (mutationIntent) {
-            case InventoryMutationIntent.ToolAction toolAction -> toolAction(session, toolAction);
-            case InventoryMutationIntent.ToolToggle toolToggle -> toolToggle(session, toolToggle);
-            case InventoryMutationIntent.CraftingPlaceSelected craftPlaceSelected -> InventoryCraftingPlanner.planSelectedPlacement(
+        if (mutationIntent instanceof InventoryMutationIntent.ToolAction toolAction) {
+            return toolAction(session, toolAction);
+        }
+        if (mutationIntent instanceof InventoryMutationIntent.ToolToggle toolToggle) {
+            return toolToggle(session, toolToggle);
+        }
+        if (mutationIntent instanceof InventoryMutationIntent.CraftingPlaceSelected craftPlaceSelected) {
+            return InventoryCraftingPlanner.planSelectedPlacement(
                     session,
                     InventoryCraftingSurfaceSupport.resolve(host, craftPlaceSelected.toolId()),
                     craftPlaceSelected.inputIndex(),
@@ -44,7 +48,9 @@ public final class InventoryCraftingPreflightService {
                     craftPlaceSelected.mode(),
                     craftPlaceSelected.origin()
             );
-            case InventoryMutationIntent.CraftingPlaceCursor craftPlaceCursor -> InventoryCraftingPlanner.planCursorPlacement(
+        }
+        if (mutationIntent instanceof InventoryMutationIntent.CraftingPlaceCursor craftPlaceCursor) {
+            return InventoryCraftingPlanner.planCursorPlacement(
                     session,
                     InventoryCraftingSurfaceSupport.resolve(host, craftPlaceCursor.toolId()),
                     craftPlaceCursor.inputIndex(),
@@ -52,7 +58,9 @@ public final class InventoryCraftingPreflightService {
                     craftPlaceCursor.mode(),
                     craftPlaceCursor.origin()
             );
-            case InventoryMutationIntent.CraftingDragCursor craftDragCursor -> InventoryCraftingPlanner.planCursorDrag(
+        }
+        if (mutationIntent instanceof InventoryMutationIntent.CraftingDragCursor craftDragCursor) {
+            return InventoryCraftingPlanner.planCursorDrag(
                     session,
                     InventoryCraftingSurfaceSupport.resolve(host, craftDragCursor.toolId()),
                     craftDragCursor.orderedInputIndices(),
@@ -60,15 +68,17 @@ public final class InventoryCraftingPreflightService {
                     craftDragCursor.mode(),
                     craftDragCursor.origin()
             );
-            case InventoryMutationIntent.CraftingExtractResult craftExtractResult -> InventoryCraftingPlanner.planResultExtraction(
+        }
+        if (mutationIntent instanceof InventoryMutationIntent.CraftingExtractResult craftExtractResult) {
+            return InventoryCraftingPlanner.planResultExtraction(
                     session,
                     InventoryCraftingSurfaceSupport.resolve(host, craftExtractResult.toolId()),
                     craftExtractResult.resultMode(),
                     craftExtractResult.mode(),
                     craftExtractResult.origin()
             );
-            default -> InventoryCraftingPlan.rejected("unsupported_crafting_intent", InventoryCommandReasonCode.UNSUPPORTED);
-        };
+        }
+        return InventoryCraftingPlan.rejected("unsupported_crafting_intent", InventoryCommandReasonCode.UNSUPPORTED);
     }
 
     private static InventoryCraftingPlan toolAction(

@@ -19,10 +19,9 @@ import dev.vfyjxf.taffy.style.FlexDirection;
 /**
  * Compact chest chip stack — replaces the link-era storage strip.
  *
- * <p>Renders as an overlay docked above the Triage panel on the left
- * edge, mirroring Triage's column. Shows one chip per *proximate* claimed
- * chest; non-proximate chests are hidden (the player isn't near them, so
- * they aren't actionable here). See docs/plans/learned-storage.md.
+ * <p>Legacy compact chest-chip stack. The single-column wall currently
+ * keeps this visual panel hidden, but the builder remains as reference
+ * for a future horizontal chest strip. See docs/plans/learned-storage.md.
  */
 final class StoragePanelBuilder {
     static final int CHIP_HEIGHT = 18;
@@ -95,10 +94,8 @@ final class StoragePanelBuilder {
     }
 
     /**
-     * Returns null when there are no proximate chests so the panel
-     * disappears entirely. Otherwise returns a flex item to be added
-     * to {@link LeftColumnBuilder}'s flex column — content-fit height
-     * (the column's flex(1) children are loot + Triage, not this).
+     * Returns null when there are no visible chests so the panel
+     * disappears entirely. Otherwise returns a content-fit flex item.
      */
     UIElement overlay() {
         int visibleCount = countVisible();

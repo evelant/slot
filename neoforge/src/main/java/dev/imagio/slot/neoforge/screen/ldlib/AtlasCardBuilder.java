@@ -13,6 +13,10 @@ import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WayfindingTarget;
 import dev.imagio.slot.neoforge.client.wayfinding.WayfindingTargetCache;
+import dev.imagio.slot.ui.spi.SlotUiElement;
+import dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy;
+import dev.imagio.slot.ui.workspace.WallCardUiBuilder;
+import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
 import dev.vfyjxf.taffy.style.TaffyPosition;
@@ -40,12 +44,16 @@ final class AtlasCardBuilder {
      * without wayfinding info stay at the standard square so the grid
      * keeps its rhythm. See Phase 5 of {@code single-column-workspace.md}.
      */
-    private static final int WAYFINDING_STRIP_WIDTH_PX = 36;
+    private static final int WAYFINDING_STRIP_WIDTH_PX = WallCardUiBuilder.WAYFINDING_STRIP_WIDTH_PX;
 
     private final SlotWorkspaceUiController host;
+    private final WallCardUiBuilder cardBuilder;
+    private final LdlibSlotUiRenderer cardRenderer;
 
     AtlasCardBuilder(SlotWorkspaceUiController host) {
         this.host = host;
+        this.cardBuilder = new WallCardUiBuilder(new WallCardContext());
+        this.cardRenderer = new LdlibSlotUiRenderer(this::installCardInteractions);
     }
 
     /**
@@ -55,77 +63,63 @@ final class AtlasCardBuilder {
      * left-to-right, top-to-bottom.
      */
     Button atlasCardButton(SlotWorkspaceViewModel.AtlasItem item) {
-        boolean selected = item.identity().equals(host.activeIdentity());
-        boolean searchMatch = host.searchController.matchesItem(item);
-        boolean filtering = !host.searchController.normalizedQuery().isBlank();
-        boolean activeSearchMatch = filtering && searchMatch;
         dev.imagio.slot.SlotDebugLog.verboseLog(
                 "[card] {} carried={} ghost={} totalCount={} proximate={} presence={} elsewhere={}",
                 item.identity().itemId(), item.carried(), item.ghost(), item.totalCount(),
                 item.proximateCount(), item.presence().size(), item.elsewhere().size());
-        Button button = button("", true,
-                WorkspaceFormat.cardChromeColor(selected, searchMatch, item.recent(),
-                        item.carried(), filtering));
-        // Wayfinding fold: when the card matches the active search OR is
-        // gather-needed (kit / desired-count gap) AND lives in a non-
-        // proximate chest, the card grows wider to embed an inline
-        // distance + direction strip on its right edge. Cards without a
-        // pointer stay at CARD_CELL_PX × CARD_CELL_PX so the grid stays
-        // uniform; expanded cards reflow naturally via the section's
-        // FlexWrap.WRAP. See Phase 5 of single-column-workspace.md.
-        SlotWorkspaceViewModel.ChestPresenceEntry wayfindingEntry =
-                wayfindingEntryFor(item, activeSearchMatch);
-        boolean expanded = wayfindingEntry != null;
-        int cardWidth = expanded
-                ? ListWallPanelBuilder.CARD_CELL_PX + WAYFINDING_STRIP_WIDTH_PX
-                : ListWallPanelBuilder.CARD_CELL_PX;
-        button.layout(layout -> layout
-                .width(cardWidth)
-                .height(ListWallPanelBuilder.CARD_CELL_PX)
-                .paddingAll(0));
-        button.noText();
-        button.style(style -> style.zIndex(2));
+        UIElement element = cardRenderer.render(cardBuilder.card(item));
+        if (element instanceof Button button) {
+            return button;
+        }
+        throw new IllegalStateException("wall card renderer returned " + element.getClass().getName());
+    }
 
-        installCardClickHandlers(button, item);
-        button.addEventListener(UIEvents.MOUSE_ENTER,
-                event -> host.hoveredAtlasIdentity = item.identity(), true);
-        button.addEventListener(UIEvents.MOUSE_LEAVE, event -> {
-            if (item.identity().equals(host.hoveredAtlasIdentity)) {
-                host.hoveredAtlasIdentity = null;
+    private void installCardInteractions(SlotUiElement model, UIElement element) {
+        if (model.hasAttachment(WorkspaceUiAttachments.WALL_CARD_BODY)) {
+            SlotWorkspaceViewModel.AtlasItem item = model.attachment(
+                    WorkspaceUiAttachments.ATLAS_ITEM,
+                    SlotWorkspaceViewModel.AtlasItem.class
+            );
+            if (item == null) {
+                return;
             }
-        }, true);
+            Boolean activeSearchMatch = model.attachment(
+                    WorkspaceUiAttachments.WALL_CARD_ACTIVE_SEARCH_MATCH,
+                    Boolean.class
+            );
+            SlotWorkspaceViewModel.ChestPresenceEntry wayfindingEntry = model.attachment(
+                    WorkspaceUiAttachments.WALL_CARD_WAYFINDING_ENTRY,
+                    SlotWorkspaceViewModel.ChestPresenceEntry.class
+            );
+            if (wayfindingEntry != null) {
+                UIElement iconCell = new UIElement().layout(layout -> layout
+                        .positionType(TaffyPosition.ABSOLUTE)
+                        .left(0).top(0)
+                        .width(ListWallPanelBuilder.CARD_CELL_PX)
+                        .height(ListWallPanelBuilder.CARD_CELL_PX));
+                iconCell.setAllowHitTest(false);
+                buildCardBody(iconCell, item, Boolean.TRUE.equals(activeSearchMatch));
+                element.addChild(iconCell);
+                element.addChild(buildWayfindingStrip(wayfindingEntry));
+            } else {
+                buildCardBody(element, item, Boolean.TRUE.equals(activeSearchMatch));
+            }
+            return;
+        }
+        if (!model.hasAttachment(WorkspaceUiAttachments.WALL_CARD)) {
+            return;
+        }
+        SlotWorkspaceViewModel.AtlasItem item = model.attachment(
+                WorkspaceUiAttachments.ATLAS_ITEM,
+                SlotWorkspaceViewModel.AtlasItem.class
+        );
+        if (item == null || !(element instanceof Button button)) {
+            return;
+        }
+        installCardClickHandlers(button, item);
         host.drag.installAtlasHoverTooltip(button, item);
         host.drag.installAtlasItemDragSource(button, item);
         installChestHoverPaint(button, item);
-
-        UIElement body = new UIElement().layout(layout -> layout
-                .widthPercent(100)
-                .heightPercent(100));
-        body.setAllowHitTest(false);
-        if (expanded) {
-            UIElement iconCell = new UIElement().layout(layout -> layout
-                    .positionType(TaffyPosition.ABSOLUTE)
-                    .left(0).top(0)
-                    .width(ListWallPanelBuilder.CARD_CELL_PX)
-                    .height(ListWallPanelBuilder.CARD_CELL_PX));
-            iconCell.setAllowHitTest(false);
-            buildCardBody(iconCell, item, activeSearchMatch);
-            body.addChild(iconCell);
-            body.addChild(buildWayfindingStrip(wayfindingEntry));
-        } else {
-            buildCardBody(body, item, activeSearchMatch);
-        }
-        button.addChild(body);
-
-        button.addEventListener(UIEvents.TICK, event -> {
-            boolean currentSelected = item.identity().equals(host.activeIdentity());
-            boolean focused = host.isMapFocusItem(item);
-            button.style(style -> style.zIndex(focused ? 10 : currentSelected ? 7 : 2));
-            applyButtonColors(button, true,
-                    WorkspaceFormat.cardChromeColor(currentSelected, searchMatch, item.recent(),
-                            item.carried(), !host.searchController.normalizedQuery().isBlank()));
-        });
-        return button;
     }
 
     /**
@@ -469,61 +463,6 @@ final class AtlasCardBuilder {
         return item.desiredCount() > 0 && item.totalCount() < item.desiredCount();
     }
 
-    /**
-     * True when the player has a desired-count gap for this identity
-     * regardless of whether a proximate chest can fill it. Used by the
-     * wayfinding fold to decide whether a non-proximate chest should
-     * be surfaced as a directional pointer.
-     */
-    private static boolean hasDesiredGap(SlotWorkspaceViewModel.AtlasItem item) {
-        if (item == null) {
-            return false;
-        }
-        if (item.kitNeeded()) {
-            return true;
-        }
-        return item.desiredCount() > 0 && item.totalCount() < item.desiredCount();
-    }
-
-    /**
-     * Pick the chest entry the wayfinding strip should point at, or
-     * {@code null} when the card shouldn't expand. Three triggers:
-     * <ul>
-     *   <li>Active search match with non-proximate presence — the
-     *       player asked "where is X?" and the answer is "not here."</li>
-     *   <li>Desired-count gap with non-proximate presence — gather
-     *       can't pull it from nearby; a remote chest holds it.</li>
-     * </ul>
-     * Picks the elsewhere entry with the largest count (the most
-     * useful destination) and returns its presence record so the
-     * caller can look up coords via {@link WayfindingTargetCache}.
-     */
-    private SlotWorkspaceViewModel.ChestPresenceEntry wayfindingEntryFor(
-            SlotWorkspaceViewModel.AtlasItem item,
-            boolean activeSearchMatch
-    ) {
-        if (item == null || item.elsewhere().isEmpty()) {
-            return null;
-        }
-        boolean wantsPointer = activeSearchMatch
-                || (hasDesiredGap(item) && item.presence().isEmpty());
-        if (!wantsPointer) {
-            return null;
-        }
-        SlotWorkspaceViewModel.ChestPresenceEntry best = null;
-        int bestCount = -1;
-        for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.elsewhere()) {
-            if (entry == null) {
-                continue;
-            }
-            if (entry.count() > bestCount) {
-                bestCount = entry.count();
-                best = entry;
-            }
-        }
-        return best;
-    }
-
     private UIElement buildWayfindingStrip(SlotWorkspaceViewModel.ChestPresenceEntry entry) {
         UIElement strip = new UIElement().layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
@@ -820,43 +759,18 @@ final class AtlasCardBuilder {
     }
 
     int proximateChestCount(SlotWorkspaceViewModel.AtlasItem item) {
-        if (item == null || item.presence().isEmpty()) {
-            return 0;
-        }
-        int total = 0;
-        for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.presence()) {
-            total += entry.count();
-        }
-        return total;
-    }
-
-    /** Reference to a proximate chest holding the identity. The server
-     *  resolves the actual slot index when servicing the take RPC. */
-    record ChestSlotRef(String storageId, int chestSlotIndex) {
-    }
-
-    ChestSlotRef firstProximateChestSlotFor(SlotWorkspaceViewModel.AtlasItem item) {
-        if (item == null || item.presence().isEmpty()) {
-            return null;
-        }
-        return new ChestSlotRef(item.presence().get(0).storageId(), 0);
+        return WallCardTransferGesturePolicy.proximateChestCount(item);
     }
 
     private void installCardClickHandlers(Button button, SlotWorkspaceViewModel.AtlasItem item) {
-        // Capture-phase MOUSE_DOWN: ctrl+right-click eagerly extracts half
-        // a stack onto the menu cursor. Plain left-click pickup runs on
-        // UIEvents.CLICK (below) which fires on mouseReleased only when
-        // no drag started — so drag-from-card to re-home still works.
+        // Capture-phase MOUSE_DOWN handles right-click cursor gestures.
+        // Plain left-click pickup runs on UIEvents.CLICK (below), which
+        // fires on mouseReleased only when no drag started.
         button.addEventListener(UIEvents.MOUSE_DOWN, event -> {
-            if (event.button == 1 && Screen.hasControlDown()) {
-                SlotWorkspaceViewModel.IdentityRef cursorId = WorkspaceCursorState.carriedIdentity();
-                boolean cursorEmpty = cursorId == null;
-                boolean cursorMatches = cursorId != null && cursorId.equals(item.identity());
-                if (cursorEmpty || cursorMatches) {
-                    event.stopPropagation();
-                    int half = Math.max(1, item.displayStack().getMaxStackSize() / 2);
-                    host.rpc.sendPickupToCursor(item.identity(), half);
-                }
+            WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.pointerDown(
+                    cardGestureContext(item, event.button, Screen.hasShiftDown(), Screen.hasControlDown()));
+            if (dispatchCardGestureDecision(item, decision)) {
+                event.stopPropagation();
             }
         }, true);
         // Use UIEvents.CLICK rather than Button#setOnClick because the
@@ -871,57 +785,15 @@ final class AtlasCardBuilder {
                 return;
             }
             event.stopPropagation();
-            if (Screen.hasShiftDown()) {
-                SlotWorkspaceViewModel.AtlasItem fresh = host.viewModel.atlasItem(item.identity());
-                SlotWorkspaceViewModel.AtlasItem target = fresh != null ? fresh : item;
-                // Sidebar mode prioritizes the host menu (chest, crafting,
-                // machine) over proximate chests: if the player has the
-                // SLOT sidebar open inside a vanilla container screen,
-                // shift+click on a wall card means "send this to whatever
-                // I'm working with right now," not "pull from the chest
-                // I happen to be standing near."
-                if (SlotSidebarClientUi.isActive() && target.carried()) {
-                    dev.imagio.slot.SlotDebugLog.log(
-                            "[xsurface][shift-click] item={} carried={} sidebar=true → QuickMove",
-                            target.identity().itemId(), target.carried());
-                    host.rpc.sendCrossSurfaceQuickMove(target.identity(), 1);
-                    return;
-                }
-                dev.imagio.slot.SlotDebugLog.log(
-                        "[xsurface][shift-click] item={} sidebar={} carried={} chestProx={} → fall-through",
-                        target.identity().itemId(),
-                        SlotSidebarClientUi.isActive(),
-                        target.carried(),
-                        proximateChestCount(target));
-                if (proximateChestCount(target) > 0) {
-                    if (host.viewModel.carriedFreeSlotCount() <= 0 && !target.carried()) {
-                        host.localStatus.set("carry full — drop something first");
-                        host.rebuild();
-                        return;
-                    }
-                    host.rpc.sendTakeStackByIdentity(target.identity());
-                } else {
-                    host.rpc.sendAssignHomeToFreeHotbar(target);
-                }
+            SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
+            WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.click(
+                    cardGestureContext(target, event.button, Screen.hasShiftDown(), Screen.hasControlDown()));
+            if (dispatchCardGestureDecision(target, decision)) {
                 return;
             }
-            // Plain left-click on a wall card eagerly extracts to the menu cursor:
-            // - cursor empty             → row 4: pickup as much as fits
-            // - cursor matches identity  → row 4 + merge: extract more from ranked source
-            // - cursor different identity → row 2: cancel current → pickup new identity
-            SlotWorkspaceViewModel.IdentityRef cursorId = WorkspaceCursorState.carriedIdentity();
-            boolean cursorEmpty = cursorId == null;
-            boolean cursorMatches = cursorId != null && cursorId.equals(item.identity());
-            if (!cursorEmpty && !cursorMatches) {
-                host.rpc.sendCursorCancel();
-            }
-            host.rpc.sendPickupToCursor(item.identity(), Integer.MAX_VALUE);
         });
         button.addEventListener(UIEvents.MOUSE_DOWN, event -> {
             if (event.button == 1) {
-                // While carrying the real menu cursor, right-click is
-                // universal cancel (row 1) — let it bubble to root.
-                // Context menu only opens when the cursor is empty.
                 if (WorkspaceCursorState.isCarrying()) {
                     return;
                 }
@@ -936,24 +808,7 @@ final class AtlasCardBuilder {
                 if (WorkspaceCursorState.isCarrying()) {
                     return;
                 }
-                float dDelta = event.deltaY != 0f ? event.deltaY : event.deltaX;
-                if (dDelta == 0f) {
-                    return;
-                }
-                event.stopPropagation();
-                desiredScrollAccumulator[0] += dDelta;
-                int desiredDelta = (int) desiredScrollAccumulator[0];
-                if (desiredDelta == 0) {
-                    return;
-                }
-                desiredScrollAccumulator[0] -= desiredDelta;
-                host.rpc.sendAdjustPlayerDesiredCount(item.identity(), desiredDelta);
-                return;
-            }
-            if (!Screen.hasShiftDown()) {
-                return;
-            }
-            if (WorkspaceCursorState.isCarrying()) {
+            } else if (!Screen.hasShiftDown() || WorkspaceCursorState.isCarrying()) {
                 return;
             }
             float delta = event.deltaY != 0f ? event.deltaY : event.deltaX;
@@ -961,57 +816,124 @@ final class AtlasCardBuilder {
                 return;
             }
             event.stopPropagation();
-            scrollAccumulator[0] += delta;
-            int count = (int) scrollAccumulator[0];
-            if (count == 0) {
+            float[] accumulator = Screen.hasControlDown() ? desiredScrollAccumulator : scrollAccumulator;
+            accumulator[0] += delta;
+            int steps = (int) accumulator[0];
+            if (steps == 0) {
                 return;
             }
-            scrollAccumulator[0] -= count;
-            SlotWorkspaceViewModel.AtlasItem fresh = host.viewModel.atlasItem(item.identity());
-            if (fresh == null) {
-                return;
-            }
-            int magnitude = Math.abs(count);
-            // Sidebar mode redirects "push" wheel direction (count > 0
-            // typically reads as "more carried" but in the sidebar
-            // context the player wants "more in the host menu").
-            // Pull from carry → host via repeated quick-move; falls
-            // through to proximate-chest semantics only when the
-            // sidebar isn't active.
-            if (count > 0 && SlotSidebarClientUi.isActive() && fresh.carried()) {
-                dev.imagio.slot.SlotDebugLog.log(
-                        "[xsurface][shift-wheel] item={} count={} sidebar=true → QuickMove",
-                        fresh.identity().itemId(), magnitude);
-                host.rpc.sendCrossSurfaceQuickMove(fresh.identity(), magnitude);
-                return;
-            }
-            if (count > 0) {
-                if (proximateChestCount(fresh) <= 0) {
-                    host.localStatus.set("no nearby chest has " + fresh.name());
-                    return;
-                }
-                if (host.viewModel.carriedFreeSlotCount() <= 0 && !fresh.carried()) {
-                    host.localStatus.set("carry full — drop something first");
-                    host.rebuild();
-                    return;
-                }
-                for (int i = 0; i < magnitude; i++) {
-                    host.rpc.sendTakeOneByIdentity(fresh.identity());
-                }
-            } else {
-                if (!host.anyChestProximate()) {
-                    host.localStatus.set("no nearby chest to push " + fresh.name());
-                    return;
-                }
-                if (!fresh.carried()) {
-                    host.localStatus.set(fresh.name() + " not carried");
-                    return;
-                }
-                for (int i = 0; i < magnitude; i++) {
-                    host.rpc.sendDepositOneHomeToLinkedChest(fresh);
-                }
-            }
+            accumulator[0] -= steps;
+            SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
+            WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.wheel(
+                    cardGestureContext(target, 0, Screen.hasShiftDown(), Screen.hasControlDown()),
+                    steps);
+            dispatchCardGestureDecision(target, decision);
         });
+    }
+
+    private SlotWorkspaceViewModel.AtlasItem freshItem(SlotWorkspaceViewModel.AtlasItem item) {
+        if (item == null || host.viewModel == null) {
+            return item;
+        }
+        SlotWorkspaceViewModel.AtlasItem fresh = host.viewModel.atlasItem(item.identity());
+        return fresh != null ? fresh : item;
+    }
+
+    private WallCardTransferGesturePolicy.Context cardGestureContext(
+            SlotWorkspaceViewModel.AtlasItem item,
+            int button,
+            boolean shiftDown,
+            boolean controlDown
+    ) {
+        int freeSlots = host.viewModel == null ? 0 : host.viewModel.carriedFreeSlotCount();
+        return new WallCardTransferGesturePolicy.Context(
+                item,
+                button,
+                shiftDown,
+                controlDown,
+                WorkspaceCursorState.carriedIdentity(),
+                WorkspaceCursorState.isCarrying(),
+                SlotSidebarClientUi.isActive(),
+                freeSlots,
+                host.anyChestProximate());
+    }
+
+    private boolean dispatchCardGestureDecision(
+            SlotWorkspaceViewModel.AtlasItem item,
+            WallCardTransferGesturePolicy.Decision decision
+    ) {
+        if (decision == null || !decision.handled()) {
+            return false;
+        }
+        int count = decision.count();
+        switch (decision.action()) {
+            case NONE -> {
+                return false;
+            }
+            case STATUS -> {
+                host.localStatus.set(decision.status());
+                host.rebuild();
+            }
+            case PICKUP_TO_CURSOR -> host.rpc.sendPickupToCursor(
+                    item.identity(),
+                    count <= 0 ? WallCardTransferGesturePolicy.PICKUP_MAX : count);
+            case CURSOR_CANCEL -> host.rpc.sendCursorCancel();
+            case CURSOR_SMART_DEPOSIT -> host.rpc.sendCursorSmartDeposit();
+            case CURSOR_CANCEL_THEN_PICKUP_TO_CURSOR -> {
+                host.rpc.sendCursorCancel();
+                host.rpc.sendPickupToCursor(
+                        item.identity(),
+                        count <= 0 ? WallCardTransferGesturePolicy.PICKUP_MAX : count);
+            }
+            case TAKE_STACK_BY_IDENTITY -> host.rpc.sendTakeStackByIdentity(item.identity());
+            case TAKE_ONE_BY_IDENTITY -> repeat(count, () -> host.rpc.sendTakeOneByIdentity(item.identity()));
+            case DEPOSIT_HOME_TO_LINKED_CHEST -> host.rpc.sendDepositHomeToLinkedChest(item);
+            case DEPOSIT_ONE_HOME_TO_LINKED_CHEST -> repeat(count, () -> host.rpc.sendDepositOneHomeToLinkedChest(item));
+            case CROSS_SURFACE_QUICK_MOVE -> host.rpc.sendCrossSurfaceQuickMove(item.identity(), count);
+            case ADJUST_PLAYER_DESIRED_COUNT -> host.rpc.sendAdjustPlayerDesiredCount(item.identity(), count);
+        }
+        return true;
+    }
+
+    private void repeat(int count, Runnable action) {
+        int safeCount = Math.max(0, count);
+        for (int i = 0; i < safeCount; i++) {
+            action.run();
+        }
+    }
+
+    private final class WallCardContext implements WallCardUiBuilder.Context {
+        @Override
+        public SlotWorkspaceViewModel.IdentityRef activeIdentity() {
+            return host.activeIdentity();
+        }
+
+        @Override
+        public String normalizedSearchQuery() {
+            return host.searchController.normalizedQuery();
+        }
+
+        @Override
+        public boolean matchesItem(SlotWorkspaceViewModel.AtlasItem item) {
+            return host.searchController.matchesItem(item);
+        }
+
+        @Override
+        public boolean isMapFocusItem(SlotWorkspaceViewModel.AtlasItem item) {
+            return host.isMapFocusItem(item);
+        }
+
+        @Override
+        public void hoverAtlasIdentity(SlotWorkspaceViewModel.IdentityRef identity) {
+            host.hoveredAtlasIdentity = identity;
+        }
+
+        @Override
+        public void clearHoveredAtlasIdentity(SlotWorkspaceViewModel.IdentityRef identity) {
+            if (identity != null && identity.equals(host.hoveredAtlasIdentity)) {
+                host.hoveredAtlasIdentity = null;
+            }
+        }
     }
 
 }

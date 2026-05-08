@@ -763,154 +763,154 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         DomainEventEnvelope envelope = record.envelope();
         WorkflowEventData data = new WorkflowEventData();
         data.envelope = encodeEnvelope(envelope);
-        switch (record.event()) {
-            case WorkflowEvent.CollectionCreated event -> {
+        WorkflowEvent workflowEvent = record.event();
+        if (workflowEvent instanceof WorkflowEvent.CollectionCreated event) {
                 data.kind = "CollectionCreated";
                 data.collectionId = event.collectionId();
                 data.name = event.name();
             }
-            case WorkflowEvent.CollectionRenamed event -> {
+        else if (workflowEvent instanceof WorkflowEvent.CollectionRenamed event) {
                 data.kind = "CollectionRenamed";
                 data.collectionId = event.collectionId();
                 data.name = event.name();
             }
-            case WorkflowEvent.CollectionDeleted event -> {
+        else if (workflowEvent instanceof WorkflowEvent.CollectionDeleted event) {
                 data.kind = "CollectionDeleted";
                 data.collectionId = event.collectionId();
             }
-            case WorkflowEvent.CollectionItemAdded event -> {
+        else if (workflowEvent instanceof WorkflowEvent.CollectionItemAdded event) {
                 data.kind = "CollectionItemAdded";
                 data.collectionId = event.collectionId();
                 data.identity = identity(event.identity());
             }
-            case WorkflowEvent.CollectionItemRemoved event -> {
+        else if (workflowEvent instanceof WorkflowEvent.CollectionItemRemoved event) {
                 data.kind = "CollectionItemRemoved";
                 data.collectionId = event.collectionId();
                 data.identity = identity(event.identity());
             }
-            case WorkflowEvent.LoadoutCreated event -> {
+        else if (workflowEvent instanceof WorkflowEvent.LoadoutCreated event) {
                 data.kind = "LoadoutCreated";
                 data.collectionId = event.collectionId();
                 data.loadout = encodeLoadout(event.loadout(), event.collectionId());
             }
-            case WorkflowEvent.LoadoutRenamed event -> {
+        else if (workflowEvent instanceof WorkflowEvent.LoadoutRenamed event) {
                 data.kind = "LoadoutRenamed";
                 data.collectionId = event.collectionId();
                 data.loadoutId = event.loadoutId();
                 data.name = event.name();
             }
-            case WorkflowEvent.LoadoutUpdated event -> {
+        else if (workflowEvent instanceof WorkflowEvent.LoadoutUpdated event) {
                 data.kind = "LoadoutUpdated";
                 data.collectionId = event.collectionId();
                 data.loadoutId = event.loadoutId();
                 data.loadoutEntries = encodeLoadoutEntries(event.entries());
             }
-            case WorkflowEvent.LoadoutDeleted event -> {
+        else if (workflowEvent instanceof WorkflowEvent.LoadoutDeleted event) {
                 data.kind = "LoadoutDeleted";
                 data.collectionId = event.collectionId();
                 data.loadoutId = event.loadoutId();
             }
-            case WorkflowEvent.FavoriteMarked event -> {
+        else if (workflowEvent instanceof WorkflowEvent.FavoriteMarked event) {
                 data.kind = "FavoriteMarked";
                 data.identity = identity(event.identity());
             }
-            case WorkflowEvent.FavoriteUnmarked event -> {
+        else if (workflowEvent instanceof WorkflowEvent.FavoriteUnmarked event) {
                 data.kind = "FavoriteUnmarked";
                 data.identity = identity(event.identity());
             }
-            case WorkflowEvent.JunkMarked event -> {
+        else if (workflowEvent instanceof WorkflowEvent.JunkMarked event) {
                 data.kind = "JunkMarked";
                 data.identity = identity(event.identity());
             }
-            case WorkflowEvent.JunkUnmarked event -> {
+        else if (workflowEvent instanceof WorkflowEvent.JunkUnmarked event) {
                 data.kind = "JunkUnmarked";
                 data.identity = identity(event.identity());
             }
-            case WorkflowEvent.ProtectedIdentityMarked event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ProtectedIdentityMarked event) {
                 data.kind = "ProtectedIdentityMarked";
                 data.identity = identity(event.identity());
             }
-            case WorkflowEvent.ProtectedIdentityUnmarked event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ProtectedIdentityUnmarked event) {
                 data.kind = "ProtectedIdentityUnmarked";
                 data.identity = identity(event.identity());
             }
-            case WorkflowEvent.ProtectedTargetMarked event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ProtectedTargetMarked event) {
                 data.kind = "ProtectedTargetMarked";
                 data.target = target(event.target());
             }
-            case WorkflowEvent.ProtectedTargetUnmarked event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ProtectedTargetUnmarked event) {
                 data.kind = "ProtectedTargetUnmarked";
                 data.target = target(event.target());
             }
-            case WorkflowEvent.PortableContainerProtectionSet event -> {
+        else if (workflowEvent instanceof WorkflowEvent.PortableContainerProtectionSet event) {
                 data.kind = "PortableContainerProtectionSet";
                 data.enabled = event.enabled();
             }
-            case WorkflowEvent.RecentDismissedUpTo event -> {
+        else if (workflowEvent instanceof WorkflowEvent.RecentDismissedUpTo event) {
                 data.kind = "RecentDismissedUpTo";
                 data.identity = identity(event.identity());
                 data.sequence = event.dismissedUpToGlobalSequence();
             }
-            case WorkflowEvent.VisualIslandCreated event -> {
+        else if (workflowEvent instanceof WorkflowEvent.VisualIslandCreated event) {
                 data.kind = "VisualIslandCreated";
                 data.visualIsland = visualIsland(event.island());
             }
-            case WorkflowEvent.VisualIslandMoved event -> {
+        else if (workflowEvent instanceof WorkflowEvent.VisualIslandMoved event) {
                 data.kind = "VisualIslandMoved";
                 data.islandId = event.islandId();
                 data.x = event.x();
                 data.y = event.y();
             }
-            case WorkflowEvent.VisualHomeAssigned event -> {
+        else if (workflowEvent instanceof WorkflowEvent.VisualHomeAssigned event) {
                 data.kind = "VisualHomeAssigned";
                 data.visualHome = visualHome(event.assignment());
             }
-            case WorkflowEvent.VisualHomeCleared event -> {
+        else if (workflowEvent instanceof WorkflowEvent.VisualHomeCleared event) {
                 data.kind = "VisualHomeCleared";
                 data.identity = identity(event.identity());
             }
-            case WorkflowEvent.VisualIslandRenamed event -> {
+        else if (workflowEvent instanceof WorkflowEvent.VisualIslandRenamed event) {
                 data.kind = "VisualIslandRenamed";
                 data.islandId = event.islandId();
                 data.label = event.label();
             }
-            case WorkflowEvent.VisualIslandRecolored event -> {
+        else if (workflowEvent instanceof WorkflowEvent.VisualIslandRecolored event) {
                 data.kind = "VisualIslandRecolored";
                 data.islandId = event.islandId();
                 data.color = event.color();
             }
-            case WorkflowEvent.VisualIslandIconChanged event -> {
+        else if (workflowEvent instanceof WorkflowEvent.VisualIslandIconChanged event) {
                 data.kind = "VisualIslandIconChanged";
                 data.islandId = event.islandId();
                 data.iconIdentity = identity(event.iconIdentity());
             }
-            case WorkflowEvent.VisualIslandDeleted event -> {
+        else if (workflowEvent instanceof WorkflowEvent.VisualIslandDeleted event) {
                 data.kind = "VisualIslandDeleted";
                 data.islandId = event.islandId();
             }
-            case WorkflowEvent.VisualIslandReordered event -> {
+        else if (workflowEvent instanceof WorkflowEvent.VisualIslandReordered event) {
                 data.kind = "VisualIslandReordered";
                 data.islandId = event.islandId();
                 data.targetIndex = event.targetIndex();
             }
-            case WorkflowEvent.TemplateIslandDismissed event -> {
+        else if (workflowEvent instanceof WorkflowEvent.TemplateIslandDismissed event) {
                 data.kind = "TemplateIslandDismissed";
                 data.templateId = event.templateId();
             }
-            case WorkflowEvent.ClaimedChestCreated event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ClaimedChestCreated event) {
                 data.kind = "ClaimedChestCreated";
                 data.claimedChest = claimedChest(event.chest());
                 if (event.chest() != null) {
                     data.storageId = event.chest().storageId().toString();
                 }
             }
-            case WorkflowEvent.ClaimedChestMoved event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ClaimedChestMoved event) {
                 data.kind = "ClaimedChestMoved";
                 data.storageId = event.storageId() == null ? "" : event.storageId().toString();
                 data.x = event.atlasX();
                 data.y = event.atlasY();
             }
-            case WorkflowEvent.ClaimedChestAnchorsChanged event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ClaimedChestAnchorsChanged event) {
                 data.kind = "ClaimedChestAnchorsChanged";
                 data.storageId = event.storageId() == null ? "" : event.storageId().toString();
                 ArrayList<ChestAnchorData> anchors = new ArrayList<>();
@@ -921,74 +921,73 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 }
                 data.anchors = anchors;
             }
-            case WorkflowEvent.ClaimedChestRelabeled event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ClaimedChestRelabeled event) {
                 data.kind = "ClaimedChestRelabeled";
                 data.storageId = event.storageId() == null ? "" : event.storageId().toString();
                 data.label = event.label();
             }
-            case WorkflowEvent.ClaimedChestDeleted event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ClaimedChestDeleted event) {
                 data.kind = "ClaimedChestDeleted";
                 data.storageId = event.storageId() == null ? "" : event.storageId().toString();
             }
-            case WorkflowEvent.ChestDepositObserved event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ChestDepositObserved event) {
                 data.kind = "ChestDepositObserved";
                 data.storageId = event.storageId() == null ? "" : event.storageId().toString();
                 data.identity = identity(event.identity());
                 data.count = event.count();
                 data.sequence = event.tick();
             }
-            case WorkflowEvent.ChestAffinityForgotten event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ChestAffinityForgotten event) {
                 data.kind = "ChestAffinityForgotten";
                 data.storageId = event.storageId() == null ? "" : event.storageId().toString();
                 data.identity = identity(event.identity());
             }
-            case WorkflowEvent.ChestAffinityCleared event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ChestAffinityCleared event) {
                 data.kind = "ChestAffinityCleared";
                 data.storageId = event.storageId() == null ? "" : event.storageId().toString();
             }
-            case WorkflowEvent.ChestClusterRelabeled event -> {
+        else if (workflowEvent instanceof WorkflowEvent.ChestClusterRelabeled event) {
                 data.kind = "ChestClusterRelabeled";
                 data.collectionId = event.clusterId();
                 data.name = event.label();
             }
-            case WorkflowEvent.KitCreated event -> {
+        else if (workflowEvent instanceof WorkflowEvent.KitCreated event) {
                 data.kind = "KitCreated";
                 data.kit = kitDefinition(event.kit());
                 data.kitId = event.kit() == null ? "" : event.kit().id();
             }
-            case WorkflowEvent.KitUpdated event -> {
+        else if (workflowEvent instanceof WorkflowEvent.KitUpdated event) {
                 data.kind = "KitUpdated";
                 data.kit = kitDefinition(event.kit());
                 data.kitId = event.kit() == null ? "" : event.kit().id();
             }
-            case WorkflowEvent.KitDeleted event -> {
+        else if (workflowEvent instanceof WorkflowEvent.KitDeleted event) {
                 data.kind = "KitDeleted";
                 data.kitId = event.kitId();
             }
-            case WorkflowEvent.KitActivated event -> {
+        else if (workflowEvent instanceof WorkflowEvent.KitActivated event) {
                 data.kind = "KitActivated";
                 data.kitId = event.kitId();
                 data.pageIndex = event.pageIndex();
             }
-            case WorkflowEvent.KitDeactivated event -> {
+        else if (workflowEvent instanceof WorkflowEvent.KitDeactivated event) {
                 data.kind = "KitDeactivated";
             }
-            case WorkflowEvent.KitPageSwitched event -> {
+        else if (workflowEvent instanceof WorkflowEvent.KitPageSwitched event) {
                 data.kind = "KitPageSwitched";
                 data.pageIndex = event.pageIndex();
             }
-            case WorkflowEvent.PlayerDesiredCountSet event -> {
+        else if (workflowEvent instanceof WorkflowEvent.PlayerDesiredCountSet event) {
                 data.kind = "PlayerDesiredCountSet";
                 data.identity = identity(event.identity());
                 data.desiredCount = event.count();
             }
-            case WorkflowEvent.KitDesiredCountSet event -> {
+        else if (workflowEvent instanceof WorkflowEvent.KitDesiredCountSet event) {
                 data.kind = "KitDesiredCountSet";
                 data.kitId = event.kitId();
                 data.identity = identity(event.identity());
                 data.desiredCount = event.count();
             }
-        }
         return data;
     }
 
@@ -1485,36 +1484,44 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
     }
 
     private static TargetData target(LoadoutTarget target) {
-        return switch (target) {
-            case LoadoutTarget.QuickAccessLaneTarget laneTarget ->
-                    new TargetData("quick_access", laneTarget.laneId(), "", laneTarget.slotIndex());
-            case LoadoutTarget.EquipmentSlotTarget equipmentTarget ->
-                    new TargetData("equipment", "", equipmentTarget.groupId(), equipmentTarget.slotIndex());
-        };
+        if (target instanceof LoadoutTarget.QuickAccessLaneTarget laneTarget) {
+            return new TargetData("quick_access", laneTarget.laneId(), "", laneTarget.slotIndex());
+        }
+        if (target instanceof LoadoutTarget.EquipmentSlotTarget equipmentTarget) {
+            return new TargetData("equipment", "", equipmentTarget.groupId(), equipmentTarget.slotIndex());
+        }
+        return null;
     }
 
     private static TargetData target(InventoryActionTarget target) {
         if (target == null) {
             return null;
         }
-        return switch (target) {
-            case InventoryActionTarget.CursorTarget ignored ->
-                    new TargetData("cursor", "", "", 0);
-            case InventoryActionTarget.SourceTarget sourceTarget ->
-                    new TargetData("source_scope", sourceTarget.sourceId(), "", -1);
-            case InventoryActionTarget.SourceSlotTarget slotTarget ->
-                    new TargetData("source", slotTarget.sourceId(), "", slotTarget.slotIndex());
-            case InventoryActionTarget.SourceEntryTarget sourceEntryTarget ->
-                    new TargetData("source_entry", sourceEntryTarget.sourceId(), sourceEntryTarget.entryId(), 0);
-            case InventoryActionTarget.QuickAccessTarget quickAccessTarget ->
-                    new TargetData("quick_access", quickAccessTarget.laneId(), "", quickAccessTarget.slotIndex());
-            case InventoryActionTarget.EquipmentTarget equipmentTarget ->
-                    new TargetData("equipment", "", equipmentTarget.groupId(), equipmentTarget.slotIndex());
-            case InventoryActionTarget.ToolRegionTarget toolRegionTarget ->
-                    new TargetData("tool_region", toolRegionTarget.toolId() + "|" + toolRegionTarget.regionId(), "", toolRegionTarget.slotIndex());
-            case InventoryActionTarget.ToolControlTarget toolControlTarget ->
-                    new TargetData("tool_control", toolControlTarget.toolId() + "|" + toolControlTarget.controlId(), "", 0);
-        };
+        if (target instanceof InventoryActionTarget.CursorTarget) {
+            return new TargetData("cursor", "", "", 0);
+        }
+        if (target instanceof InventoryActionTarget.SourceTarget sourceTarget) {
+            return new TargetData("source_scope", sourceTarget.sourceId(), "", -1);
+        }
+        if (target instanceof InventoryActionTarget.SourceSlotTarget slotTarget) {
+            return new TargetData("source", slotTarget.sourceId(), "", slotTarget.slotIndex());
+        }
+        if (target instanceof InventoryActionTarget.SourceEntryTarget sourceEntryTarget) {
+            return new TargetData("source_entry", sourceEntryTarget.sourceId(), sourceEntryTarget.entryId(), 0);
+        }
+        if (target instanceof InventoryActionTarget.QuickAccessTarget quickAccessTarget) {
+            return new TargetData("quick_access", quickAccessTarget.laneId(), "", quickAccessTarget.slotIndex());
+        }
+        if (target instanceof InventoryActionTarget.EquipmentTarget equipmentTarget) {
+            return new TargetData("equipment", "", equipmentTarget.groupId(), equipmentTarget.slotIndex());
+        }
+        if (target instanceof InventoryActionTarget.ToolRegionTarget toolRegionTarget) {
+            return new TargetData("tool_region", toolRegionTarget.toolId() + "|" + toolRegionTarget.regionId(), "", toolRegionTarget.slotIndex());
+        }
+        if (target instanceof InventoryActionTarget.ToolControlTarget toolControlTarget) {
+            return new TargetData("tool_control", toolControlTarget.toolId() + "|" + toolControlTarget.controlId(), "", 0);
+        }
+        return null;
     }
 
     private static ItemIdentity decodeIdentity(IdentityData data) {

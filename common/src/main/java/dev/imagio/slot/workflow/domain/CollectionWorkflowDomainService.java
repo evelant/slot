@@ -95,7 +95,7 @@ public final class CollectionWorkflowDomainService {
         return loadouts.stream()
                 .filter(loadout -> loadout.id().equals(selectedId))
                 .findFirst()
-                .orElse(loadouts.getFirst());
+                .orElse(loadouts.get(0));
     }
 
     public QuickAccessLoadoutDefinition createLoadout(
@@ -447,7 +447,7 @@ public final class CollectionWorkflowDomainService {
                 ? state.selectedLoadoutId()
                 : "";
         if (selectedId == null || selectedId.isBlank() || loadouts.stream().noneMatch(loadout -> loadout.id().equals(selectedId))) {
-            select(collectionId, loadouts.getFirst().id());
+            select(collectionId, loadouts.get(0).id());
         }
     }
 

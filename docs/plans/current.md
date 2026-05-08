@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-05-05
+Last updated: 2026-05-07
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -9,47 +9,61 @@ see [../status.md](../status.md). For shipped plans, see
 
 ## Active
 
-**[`single-column-workspace.md`](single-column-workspace.md) —
-collapse the left column into a vertical sliver + fold its
-contents into the wall.** Goal: shrink `WORKSPACE_WIDTH_PX` from
-414 to ≈ 280 so the sidebar mounts cleanly alongside arbitrary
-modded container UIs. Seven phases: hide redundant panels,
-auto-home (eliminating Triage), Recents section, TOC sliver,
-chest-finder fold-in to cards, action-cluster icon-ification,
-width recalibration. Each phase lands independently.
+**[`cross-loader-refactor.md`](cross-loader-refactor.md) — add a
+Minecraft 1.20.1 Forge target while keeping the modern 1.21.1
+NeoForge + LDLib2 build.** ADR
+[`0006`](../decisions/0006-cross-loader-legacy-forge.md) records the
+platform decision. Phase 0 renderer viability is validated and the
+throwaway spike source has been deleted; current work is Phase
+2. The shared probe now compiles the whole common
+`dev.imagio.slot` tree against Forge 1.20.1 / Java 17, backed by
+`SlotStackAccess` and `SlotResourceAccess` loader seams; Forge `main`
+now consumes that common tree with production Forge 1.20 platform
+adapters. Phase 1 has a shared workspace action catalog/channel, packet
+codec, and session/menu envelope in common; NeoForge LDLib2 RPC
+registration and sends validate against it, and Forge 1.20 now has a
+production `SimpleChannel` payload that decodes the same packet codec and
+validates session/menu envelopes against a server-side Forge session
+registry. Forge now owns a workflow runtime, projects carried player
+inventory through the common `SlotWorkspaceViewModel` pipeline with
+bounded auto-home, syncs that view-model to the direct Taffy/GuiGraphics
+`G` screen, and routes safe metadata actions through
+`SlotWorkspaceCommandService`. Forge also installs carried/world storage
+accessors and binds the first guarded `TRANSFER` path for built-in
+main/hotbar targets through the common executor, plus identity-to-hotbar,
+hotbar-return, hotbar-to-section, kit, desired-count, chest metadata,
+deposit/take, cursor, and cross-surface Forge adapters for the first
+belt/workflow interactions. Forge `/slot test populate <profile>` and
+`/slot test clear` are available for carried-inventory/workflow/chest testing, with
+chest ids stored in Forge persistent block-entity data and claimed chest
+contents feeding the common projection. Manual chest-close deposit
+observation and chest-claim persistence reconciliation now use shared
+helpers with loader-specific storage-id readers. Phase 2 has begun with
+the main wall section/card shells, shared fallback card details, Recents
+strip, hotbar belt, and non-drag kit rack rendered through the first
+narrow UI SPI + LDLib2/backend-specific renderers. The next risks are
+expanding the legacy screen/session beyond the wall/Recents/belt/kit
+surface and avoiding panel-by-panel reimplementation as richer chest
+surfaces are brought across.
+
+Previously active
+[`single-column-workspace.md`](single-column-workspace.md) is paused
+behind the cross-loader work. Do not delete it; resume when the loader
+boundary no longer dominates engineering risk.
 
 **Recently shipped, no further plan:**
 
 - **[`done/list-view.md`](done/list-view.md) — replace 2D atlas with
-  sectioned vertical list.** Phases 1 + 2 (standalone wall + TOC tab
-  strip with drag-to-reorder) landed 2026-05-03; Phases 3a.1 +
-  3a.2 direction A (sidebar embed on every
-  `AbstractContainerScreen`, wall → vanilla slot via
-  drag/shift+click/shift+wheel) landed 2026-05-04, plus the
-  layout-mode unification pass that collapsed
-  `WorkspaceLayoutMode { STANDALONE, SIDEBAR }` so both surfaces
-  share one widget tree at `WORKSPACE_WIDTH_PX = 414`. Closed
-  2026-05-05 with **3b deferred as a separate experiment** (see
-  Queue) and **3a.2 direction B / 3a.3 / 3a.4 / 3c / EMI exclusion
-  area** dropped from active tracking — fresh plan if any gain
-  playtest signal.
+  sectioned vertical list.** Closed 2026-05-05 with Phase 3b
+  deferred as a separate experiment and the remaining sidebar/mod-compat
+  expansion dropped pending playtest signal.
 - **[`done/cursor-pickup.md`](done/cursor-pickup.md) — vanilla
-  cursor semantics on wall cards. SHIPPED 2026-05-04 (all three
-  phases). Closed 2026-05-05 with Phase D dropped (no playtest
-  demand for press-drag-release distribute from a wall card).**
-  Wall-card left-click eagerly extracts to `menu.getCarried()`
-  (resolves carry → backpack → proximate chest by affinity);
-  right-click is a universal cancel (returns cursor to its tracked
-  origin) so eager-from-chest pickups reverse cleanly into the
-  chest. Re-home is drag-only. Smart-deposit cascade
-  (desired-count gap → proximate chest with affinity → home →
-  Triage) handles cancel-from-host-slot and left-click-on-no-target.
-  Virtual `WorkspaceCursorCarry` / `WorkspaceCursorGestures`
-  retired in the same pass; "selected" is now a derived signal
-  (cursor identity OR legacy `selectedAtlasIdentity`). Network
-  protocol bumped 23 → 24.
+  cursor semantics on wall cards.** Closed 2026-05-05 with Phase D
+  dropped; eager extract, universal cancel, smart-deposit, and virtual
+  cursor retirement are shipped.
 
-`./gradlew build` green; `:common:test :neoforge:test` green.
+Verified for the current cross-loader slice:
+`./gradlew :common:test :neoforge:test :forge-1.20:compileJava :forge-1.20:compileSharedProbeJava`.
 
 ## Recent landings
 
@@ -57,6 +71,35 @@ Thin log; full detail lives in `git log` and the linked archived
 plans. Older entries are deleted — `git log` and `done/<plan>.md`
 hold the rest.
 
+- **2026-05-06** — cross-loader direction accepted via
+  [`cross-loader-refactor.md`](cross-loader-refactor.md) / ADR
+  [`0006`](../decisions/0006-cross-loader-legacy-forge.md): the Forge
+  Taffy/GuiGraphics renderer path is validated, `:forge-1.20:compileSharedProbeJava` now
+  compiles the whole common tree against Forge 1.20.1 / Java 17, Forge
+  `main` now consumes that common tree with production platform adapters,
+  and Phase 1 has the shared workspace action catalog/channel, packet
+  codec, and session/menu envelope wired into NeoForge LDLib2 RPC
+  registration and send validation plus a Forge 1.20 `SimpleChannel`
+  path with server-side session validation, workflow persistence,
+  session-backed common projection, safe metadata command dispatch,
+  Forge storage accessors, a guarded built-in transfer binding,
+  identity-to-hotbar / hotbar-return / hotbar-to-section adapters,
+  kit/desired-count, chest metadata, deposit/take, cursor, and
+  cross-surface dispatch, Forge-side
+  carried-inventory + claimed-chest populate/clear commands, and common
+  claimed-chest projection; Phase 2 has started with
+  the main wall section/card shells, Recents strip, hotbar belt, and
+  non-drag kit rack rendered through the first UI SPI +
+  LDLib2/backend-specific renderers, plus a Forge `G` screen that
+  renders the same common wall/Recents/belt/kit builders through direct
+  Taffy + `GuiGraphics`, preserves scroll across rebuilds, syncs search
+  through the shared action channel, and consumes the session-backed
+  server-to-client view-model. Forge now also mounts the common active
+  chest strip + kit rack + wall/belt surface as a vanilla-container
+  sidebar, with a Forge-only quiet refresh message for host-menu view
+  sync. Forge full-screen and sidebar hosts now share the same
+  `ForgeWorkspaceSurface` controller instead of carrying parallel
+  widget/action glue.
 - **2026-05-05** — backpack-first shift-click routing generalised
   via new `MenuShiftClickMixin` on `AbstractContainerMenu.clicked`
   (snapshot-diffs vanilla lanes, routes positive deltas through
@@ -230,14 +273,11 @@ track lands.
      reachable Kit-needed identities from proximate chests in one
      click. A general-purpose withdraw verb (independent of an active
      Kit) hasn't been planned. Defer until playtest signals demand.
-6. **Relevance-LOD UI refinement** — *retired by
-   [`done/list-view.md`](done/list-view.md).* Single LOD going
-   forward; the band-driven density work isn't shipping. The
-   [retired/relevance-lod-prototype.md](retired/relevance-lod-prototype.md)
-   plan and [../design/relevance-lod.md](../design/relevance-lod.md)
-   doc are marked superseded; relevance scoring survives in reduced
-   form (ordering, search filter, TOC dots).
-7. **Kit prototype slice 4** ([kit-prototype.md](kit-prototype.md)).
+6. **Kit prototype slice 4** ([kit-prototype.md](kit-prototype.md)).
+7. **Single-column workspace width pass**
+   ([single-column-workspace.md](single-column-workspace.md)). Paused
+   while the cross-loader/platform boundary is active. Resume once the
+   Forge 1.20.1 shared compile gate and UI SPI direction are stable.
 8. **Workspace projection caching.** Surfaced 2026-05-04 while
    wiring the cross-surface drag log spam: `SlotWorkspaceViewModel`
    re-projects the full carried/proximate/elsewhere/kit-needed

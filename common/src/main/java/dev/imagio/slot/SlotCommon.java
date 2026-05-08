@@ -7,6 +7,7 @@ import dev.imagio.slot.inventory.integration.SophisticatedBackpackInventoryInteg
 import dev.imagio.slot.inventory.integration.TomsStorageInventoryIntegrationProvider;
 import dev.imagio.slot.inventory.integration.VanillaCraftingInventoryIntegrationProvider;
 import dev.imagio.slot.inventory.storage.DefaultCarriedProviderIntegration;
+import dev.imagio.slot.platform.SlotResourceAccess;
 import net.minecraft.resources.ResourceLocation;
 import org.slf4j.Logger;
 
@@ -34,6 +35,6 @@ public final class SlotCommon {
     }
 
     public static ResourceLocation id(String path) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+        return SlotResourceAccess.current().id(MOD_ID, path);
     }
 }

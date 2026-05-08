@@ -49,7 +49,6 @@ final class SlotWorkspaceUiController {
 
     SlotWorkspaceViewModel viewModel;
     final Observable<String> localStatus = new Observable<>("");
-    final Observable<SlotWorkspaceViewModel.IdentityRef> selectedAtlasIdentity = new Observable<>(null);
     /**
      * Identity that was on the menu cursor right before the most recent
      * drop / cancel RPC. Drives the wall card's "active" chrome after
@@ -64,7 +63,6 @@ final class SlotWorkspaceUiController {
      * their linked-from counterparts.
      */
     String hoveredStorageId;
-    final Observable<Integer> selectedHotbarIndex = new Observable<>(-1);
     int hoveredHotbarIndex = -1;
     final List<Observable.Subscription> wallContentSubscriptions = new ArrayList<>();
     final java.util.Map<Integer, UIElement> hotbarSlotElements = new java.util.HashMap<>();
@@ -122,14 +120,12 @@ final class SlotWorkspaceUiController {
     final HotkeyRouter hotkeys = new HotkeyRouter(this);
     final WorkspaceOverlays overlays = new WorkspaceOverlays(this);
     final ListWallPanelBuilder listWall = new ListWallPanelBuilder(this);
-    final TriagePanelBuilder triagePanel = new TriagePanelBuilder(this);
     final BeltPanelBuilder belt = new BeltPanelBuilder(this);
     final KitRackBuilder kit = new KitRackBuilder(this);
     final ContextMenuBuilder menu = new ContextMenuBuilder(this);
     final AtlasCardBuilder atlasCard = new AtlasCardBuilder(this);
     final StoragePanelBuilder storagePanel = new StoragePanelBuilder(this);
     final LootChestPanelBuilder lootChestPanel = new LootChestPanelBuilder(this);
-    final SearchResultsPanelBuilder searchResultsPanel = new SearchResultsPanelBuilder(this);
     final TocPanelBuilder tocPanel = new TocPanelBuilder(this);
     final RecentsStripBuilder recentsStrip = new RecentsStripBuilder(this);
     final ActiveChestStripBuilder activeChestStrip = new ActiveChestStripBuilder(this);
@@ -329,9 +325,6 @@ final class SlotWorkspaceUiController {
 
     void rebuildNow() {
         rebuildPending = false;
-        if (selectedAtlasIdentity.get() != null && viewModel.atlasItem(selectedAtlasIdentity.get()) == null) {
-            selectedAtlasIdentity.set(null);
-        }
         if (hoveredAtlasIdentity != null && viewModel.atlasItem(hoveredAtlasIdentity) == null) {
             hoveredAtlasIdentity = null;
         }
@@ -632,28 +625,23 @@ final class SlotWorkspaceUiController {
         return viewModel.atlasItem(hoveredAtlasIdentity);
     }
 
-    SlotWorkspaceViewModel.AtlasItem selectedAtlasItem() {
-        return viewModel.atlasItem(selectedAtlasIdentity.get());
-    }
-
     SlotWorkspaceViewModel.AtlasItem focusedAtlasItem() {
-        SlotWorkspaceViewModel.AtlasItem selected = selectedAtlasItem();
-        return selected != null ? selected : hoveredAtlasItem();
+        return hoveredAtlasItem();
     }
 
     SlotWorkspaceViewModel.IdentityRef currentMapFocusIdentity() {
         if (hoveredAtlasIdentity != null && viewModel.atlasItem(hoveredAtlasIdentity) != null) {
             return hoveredAtlasIdentity;
         }
-        return selectedAtlasIdentity.get();
+        return null;
     }
 
     /**
      * The identity that should drive "active" chrome on wall / triage /
      * loot rows. The vanilla menu cursor takes precedence (so picking up
-     * an identity onto cursor lights up its card), falling back to the
-     * legacy {@code selectedAtlasIdentity} observable. Phase B will add
-     * {@code lastDroppedIdentity} as a third tier between the two.
+     * an identity onto cursor lights up its card), then the last dropped
+     * identity keeps the card warm after the cursor empties. Plain click
+     * selection is intentionally not a command mode.
      */
     SlotWorkspaceViewModel.IdentityRef activeIdentity() {
         SlotWorkspaceViewModel.IdentityRef cursor = WorkspaceCursorState.carriedIdentity();
@@ -663,7 +651,7 @@ final class SlotWorkspaceUiController {
         if (lastDroppedIdentity != null) {
             return lastDroppedIdentity;
         }
-        return selectedAtlasIdentity.get();
+        return null;
     }
 
     boolean isMapFocusItem(SlotWorkspaceViewModel.AtlasItem item) {
@@ -671,23 +659,10 @@ final class SlotWorkspaceUiController {
         return item != null && focusIdentity != null && item.identity().equals(focusIdentity);
     }
 
-    SlotWorkspaceViewModel.HotbarSlot selectedHotbarSlot() {
-        int idx = selectedHotbarIndex.get();
-        if (idx < 0 || idx >= viewModel.hotbarSlots().size()) {
-            return null;
-        }
-        SlotWorkspaceViewModel.HotbarSlot slot = viewModel.hotbarSlots().get(idx);
-        return slot.occupied() ? slot : null;
-    }
-
     String selectionLabel() {
-        SlotWorkspaceViewModel.AtlasItem atlasItem = selectedAtlasItem();
+        SlotWorkspaceViewModel.AtlasItem atlasItem = focusedAtlasItem();
         if (atlasItem != null) {
             return atlasItem.name();
-        }
-        SlotWorkspaceViewModel.HotbarSlot hotbar = selectedHotbarSlot();
-        if (hotbar != null) {
-            return "hotbar " + (hotbar.hotbarIndex() + 1);
         }
         return "none";
     }
@@ -742,11 +717,6 @@ final class SlotWorkspaceUiController {
             }
             if (WorkspaceCursorState.isCarrying()) {
                 return;
-            }
-            if (selectedAtlasIdentity.get() != null || selectedHotbarIndex.get() >= 0) {
-                selectedAtlasIdentity.set(null);
-                selectedHotbarIndex.set(-1);
-                localStatus.set("selection cleared");
             }
         });
     }

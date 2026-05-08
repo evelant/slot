@@ -144,6 +144,63 @@ class SlotWorkspaceKitCommandServiceTest {
         assertEquals("unknown_kit", outcome.diagnostics());
     }
 
+    @Test
+    void setKitScopedDesiredCountWritesKitScope() {
+        WorkflowDomainRuntime runtime = runtime();
+        KitDefinition kit = runtime.kitWorkflow().create("Mining");
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.setKitScopedDesiredCount(
+                runtime,
+                kit.id(),
+                "minecraft:torch",
+                "",
+                "",
+                32
+        );
+
+        assertTrue(outcome.success());
+        assertEquals("kit_desired_set_32", outcome.status());
+        assertEquals(32, runtime.desiredCountWorkflow().getForKit(kit.id(), ItemIdentity.of("minecraft:torch")));
+    }
+
+    @Test
+    void playerDesiredCountUsesActiveKitScopeWhenKitActive() {
+        WorkflowDomainRuntime runtime = runtime();
+        KitDefinition kit = runtime.kitWorkflow().create("Mining");
+        runtime.kitWorkflow().activate(kit.id());
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.setPlayerDesiredCount(
+                runtime,
+                "minecraft:coal",
+                "",
+                "",
+                16
+        );
+
+        assertTrue(outcome.success());
+        assertEquals("desired_count_kit_16", outcome.status());
+        assertEquals(16, runtime.desiredCountWorkflow().getForKit(kit.id(), ItemIdentity.of("minecraft:coal")));
+        assertEquals(0, runtime.desiredCountWorkflow().getPlayer(ItemIdentity.of("minecraft:coal")));
+    }
+
+    @Test
+    void adjustPlayerDesiredCountUsesGlobalScopeWhenNoKitActive() {
+        WorkflowDomainRuntime runtime = runtime();
+        SlotWorkspaceCommandService.setPlayerDesiredCount(runtime, "minecraft:arrow", "", "", 4);
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.adjustPlayerDesiredCount(
+                runtime,
+                "minecraft:arrow",
+                "",
+                "",
+                3
+        );
+
+        assertTrue(outcome.success());
+        assertEquals("desired_count_global_7", outcome.status());
+        assertEquals(7, runtime.desiredCountWorkflow().getPlayer(ItemIdentity.of("minecraft:arrow")));
+    }
+
     private static WorkflowDomainRuntime runtime() {
         return new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
     }

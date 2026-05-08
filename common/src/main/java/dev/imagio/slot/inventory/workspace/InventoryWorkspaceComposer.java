@@ -111,7 +111,7 @@ public final class InventoryWorkspaceComposer {
                             "primary_browse",
                             InventoryWorkspaceZoneKind.PRIMARY_BROWSE,
                             true,
-                            List.of(browseSurfaces.getFirst()),
+                            List.of(browseSurfaces.get(0)),
                             ""
                     )
             );
@@ -423,10 +423,10 @@ public final class InventoryWorkspaceComposer {
         for (InventoryWorkspaceZone zone : orderedZones) {
             for (InventoryWorkspaceSurface surface : zone.surfaces()) {
                 if (surface instanceof InventoryWorkspaceSurface.QuickAccessSurface quickAccessSurface && !quickAccessSurface.lanes().isEmpty()) {
-                    return quickAccessSurface.lanes().getFirst().subjectRef();
+                    return quickAccessSurface.lanes().get(0).subjectRef();
                 }
                 if (surface instanceof InventoryWorkspaceSurface.EquipmentSurface equipmentSurface && !equipmentSurface.groups().isEmpty()) {
-                    return equipmentSurface.groups().getFirst().subjectRef();
+                    return equipmentSurface.groups().get(0).subjectRef();
                 }
                 if (surface instanceof InventoryWorkspaceSurface.ToolSurface toolSurface) {
                     return toolSurface.subjectRef();

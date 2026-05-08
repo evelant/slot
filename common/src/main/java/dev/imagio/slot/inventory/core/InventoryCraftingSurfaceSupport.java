@@ -36,11 +36,13 @@ public final class InventoryCraftingSurfaceSupport {
         if (target == null) {
             return ResolvedCraftingSurface.empty();
         }
-        return switch (target) {
-            case InventoryActionTarget.ToolRegionTarget toolRegionTarget -> resolve(host, toolRegionTarget.toolId());
-            case InventoryActionTarget.ToolControlTarget toolControlTarget -> resolve(host, toolControlTarget.toolId());
-            default -> resolveByLinkedSlot(host, target);
-        };
+        if (target instanceof InventoryActionTarget.ToolRegionTarget toolRegionTarget) {
+            return resolve(host, toolRegionTarget.toolId());
+        }
+        if (target instanceof InventoryActionTarget.ToolControlTarget toolControlTarget) {
+            return resolve(host, toolControlTarget.toolId());
+        }
+        return resolveByLinkedSlot(host, target);
     }
 
     public static boolean isCraftingInputTarget(

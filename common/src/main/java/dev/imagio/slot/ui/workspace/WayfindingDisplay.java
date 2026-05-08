@@ -1,0 +1,146 @@
+package dev.imagio.slot.ui.workspace;
+
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.inventory.workspace.WayfindingTarget;
+
+import java.util.List;
+
+/**
+ * Shared presentation math for wayfinding direction/distance labels.
+ *
+ * <p>Inputs are plain coordinates and yaw so platform renderers can keep
+ * Minecraft client objects at the boundary while sharing the actual display
+ * semantics.
+ */
+public final class WayfindingDisplay {
+    private WayfindingDisplay() {
+    }
+
+    public static CardText forStorage(
+            String storageId,
+            List<WayfindingTarget> targets,
+            List<SlotWorkspaceViewModel.ChestChip> chestChips,
+            String playerDimensionId,
+            double playerX,
+            double playerY,
+            double playerZ,
+            float playerYawDegrees
+    ) {
+        Location location = locationFor(storageId, targets, chestChips);
+        if (location == null) {
+            return CardText.unavailable();
+        }
+        return forLocation(
+                location.dimensionId(),
+                location.worldX(),
+                location.worldY(),
+                location.worldZ(),
+                playerDimensionId,
+                playerX,
+                playerY,
+                playerZ,
+                playerYawDegrees);
+    }
+
+    public static CardText forLocation(
+            String targetDimensionId,
+            int worldX,
+            int worldY,
+            int worldZ,
+            String playerDimensionId,
+            double playerX,
+            double playerY,
+            double playerZ,
+            float playerYawDegrees
+    ) {
+        if (targetDimensionId == null || targetDimensionId.isBlank()) {
+            return CardText.unavailable();
+        }
+        if (!targetDimensionId.equals(playerDimensionId)) {
+            return new CardText(shortDimension(targetDimensionId), "");
+        }
+        double dx = (worldX + 0.5) - playerX;
+        double dy = (worldY + 0.5) - playerY;
+        double dz = (worldZ + 0.5) - playerZ;
+        double distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+        float yawRadians = (float) Math.toRadians(playerYawDegrees);
+        double absoluteBearing = Math.atan2(-dx, dz);
+        double relativeBearing = absoluteBearing - yawRadians;
+        return new CardText(arrowGlyph(relativeBearing), Math.max(0, Math.round(distance)) + "m");
+    }
+
+    public static String arrowGlyph(double relativeBearing) {
+        double normalized = ((relativeBearing % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
+        int sector = (int) Math.floor((normalized + Math.PI / 8.0) / (Math.PI / 4.0)) % 8;
+        return switch (sector) {
+            case 0 -> "↑";
+            case 1 -> "↗";
+            case 2 -> "→";
+            case 3 -> "↘";
+            case 4 -> "↓";
+            case 5 -> "↙";
+            case 6 -> "←";
+            case 7 -> "↖";
+            default -> "·";
+        };
+    }
+
+    public static String shortDimension(String dimensionId) {
+        if (dimensionId == null) {
+            return "";
+        }
+        int colon = dimensionId.indexOf(':');
+        String tail = colon < 0 ? dimensionId : dimensionId.substring(colon + 1);
+        if (tail.startsWith("the_")) {
+            tail = tail.substring(4);
+        }
+        return tail;
+    }
+
+    private static Location locationFor(
+            String storageId,
+            List<WayfindingTarget> targets,
+            List<SlotWorkspaceViewModel.ChestChip> chestChips
+    ) {
+        if (storageId == null || storageId.isBlank()) {
+            return null;
+        }
+        if (targets != null) {
+            for (WayfindingTarget target : targets) {
+                if (target != null && storageId.equals(target.storageId())) {
+                    return new Location(
+                            target.dimensionId(),
+                            target.worldX(),
+                            target.worldY(),
+                            target.worldZ());
+                }
+            }
+        }
+        if (chestChips != null) {
+            for (SlotWorkspaceViewModel.ChestChip chip : chestChips) {
+                if (chip != null && storageId.equals(chip.storageId())) {
+                    return new Location(
+                            chip.dimensionId(),
+                            chip.worldX(),
+                            chip.worldY(),
+                            chip.worldZ());
+                }
+            }
+        }
+        return null;
+    }
+
+    public record CardText(String arrow, String distance) {
+        public CardText {
+            arrow = arrow == null ? "" : arrow;
+            distance = distance == null ? "" : distance;
+        }
+
+        public static CardText unavailable() {
+            return new CardText("·", "--m");
+        }
+    }
+
+    private record Location(String dimensionId, int worldX, int worldY, int worldZ) {
+    }
+}

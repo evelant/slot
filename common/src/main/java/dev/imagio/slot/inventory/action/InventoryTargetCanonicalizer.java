@@ -17,32 +17,44 @@ public final class InventoryTargetCanonicalizer {
         if (target == null) {
             return "";
         }
-        return switch (target) {
-            case InventoryActionTarget.CursorTarget ignored -> "cursor";
-            case InventoryActionTarget.SourceTarget sourceTarget -> "source:" + normalize(sourceTarget.sourceId());
-            case InventoryActionTarget.SourceEntryTarget sourceEntryTarget ->
-                    "entry:" + normalize(sourceEntryTarget.sourceId()) + "@" + normalize(sourceEntryTarget.entryId());
-            case InventoryActionTarget.QuickAccessTarget quickAccessTarget ->
-                    "quick_access:" + normalize(quickAccessTarget.laneId()) + "#" + normalizeIndex(quickAccessTarget.slotIndex());
-            case InventoryActionTarget.EquipmentTarget equipmentTarget ->
-                    "equipment:" + normalize(equipmentTarget.groupId()) + "#" + normalizeIndex(equipmentTarget.slotIndex());
-            case InventoryActionTarget.SourceSlotTarget slotTarget -> canonicalSourceSlot(host, slotTarget.sourceId(), slotTarget.slotIndex());
-            case InventoryActionTarget.ToolRegionTarget toolRegionTarget -> canonicalToolRegion(host, toolRegionTarget);
-            case InventoryActionTarget.ToolControlTarget toolControlTarget ->
-                    "tool_control:" + normalize(toolControlTarget.toolId()) + "|" + normalize(toolControlTarget.controlId());
-        };
+        if (target instanceof InventoryActionTarget.CursorTarget) {
+            return "cursor";
+        }
+        if (target instanceof InventoryActionTarget.SourceTarget sourceTarget) {
+            return "source:" + normalize(sourceTarget.sourceId());
+        }
+        if (target instanceof InventoryActionTarget.SourceEntryTarget sourceEntryTarget) {
+            return "entry:" + normalize(sourceEntryTarget.sourceId()) + "@" + normalize(sourceEntryTarget.entryId());
+        }
+        if (target instanceof InventoryActionTarget.QuickAccessTarget quickAccessTarget) {
+            return "quick_access:" + normalize(quickAccessTarget.laneId()) + "#" + normalizeIndex(quickAccessTarget.slotIndex());
+        }
+        if (target instanceof InventoryActionTarget.EquipmentTarget equipmentTarget) {
+            return "equipment:" + normalize(equipmentTarget.groupId()) + "#" + normalizeIndex(equipmentTarget.slotIndex());
+        }
+        if (target instanceof InventoryActionTarget.SourceSlotTarget slotTarget) {
+            return canonicalSourceSlot(host, slotTarget.sourceId(), slotTarget.slotIndex());
+        }
+        if (target instanceof InventoryActionTarget.ToolRegionTarget toolRegionTarget) {
+            return canonicalToolRegion(host, toolRegionTarget);
+        }
+        if (target instanceof InventoryActionTarget.ToolControlTarget toolControlTarget) {
+            return "tool_control:" + normalize(toolControlTarget.toolId()) + "|" + normalize(toolControlTarget.controlId());
+        }
+        return "";
     }
 
     public static String canonicalKey(LoadoutTarget target) {
         if (target == null) {
             return "";
         }
-        return switch (target) {
-            case LoadoutTarget.QuickAccessLaneTarget quickAccessLaneTarget ->
-                    "quick_access:" + normalize(quickAccessLaneTarget.laneId()) + "#" + normalizeIndex(quickAccessLaneTarget.slotIndex());
-            case LoadoutTarget.EquipmentSlotTarget equipmentSlotTarget ->
-                    "equipment:" + normalize(equipmentSlotTarget.groupId()) + "#" + normalizeIndex(equipmentSlotTarget.slotIndex());
-        };
+        if (target instanceof LoadoutTarget.QuickAccessLaneTarget quickAccessLaneTarget) {
+            return "quick_access:" + normalize(quickAccessLaneTarget.laneId()) + "#" + normalizeIndex(quickAccessLaneTarget.slotIndex());
+        }
+        if (target instanceof LoadoutTarget.EquipmentSlotTarget equipmentSlotTarget) {
+            return "equipment:" + normalize(equipmentSlotTarget.groupId()) + "#" + normalizeIndex(equipmentSlotTarget.slotIndex());
+        }
+        return "";
     }
 
     public static String canonicalSourceSlot(InventoryHostDescriptor host, String sourceId, int slotIndex) {
@@ -93,30 +105,25 @@ public final class InventoryTargetCanonicalizer {
         if (host == null || target == null) {
             return target;
         }
-        return switch (target) {
-            case InventoryActionTarget.SourceTarget ignored -> target;
-            case InventoryActionTarget.SourceSlotTarget ignored -> target;
-            case InventoryActionTarget.SourceEntryTarget ignored -> target;
-            case InventoryActionTarget.QuickAccessTarget quickAccessTarget -> {
-                dev.imagio.slot.inventory.core.QuickAccessLaneDescriptor lane = host.quickAccessLane(quickAccessTarget.laneId());
-                yield lane == null ? target : new InventoryActionTarget.SourceSlotTarget(lane.sourceId(), quickAccessTarget.slotIndex());
-            }
-            case InventoryActionTarget.EquipmentTarget equipmentTarget -> {
-                EquipmentGroupDescriptor group = host.equipmentGroup(equipmentTarget.groupId());
-                yield group == null ? target : new InventoryActionTarget.SourceSlotTarget(group.sourceId(), equipmentTarget.slotIndex());
-            }
-            case InventoryActionTarget.ToolRegionTarget toolRegionTarget -> {
-                InventoryToolDescriptor tool = host.tool(toolRegionTarget.toolId());
-                ToolRegionDescriptor region = tool == null ? null : tool.regions().stream()
-                        .filter(candidate -> candidate != null && toolRegionTarget.regionId().equals(candidate.id()))
-                        .findFirst()
-                        .orElse(null);
-                yield region == null || region.linkedSourceId().isBlank()
-                        ? target
-                        : new InventoryActionTarget.SourceSlotTarget(region.linkedSourceId(), toolRegionTarget.slotIndex());
-            }
-            default -> target;
-        };
+        if (target instanceof InventoryActionTarget.QuickAccessTarget quickAccessTarget) {
+            dev.imagio.slot.inventory.core.QuickAccessLaneDescriptor lane = host.quickAccessLane(quickAccessTarget.laneId());
+            return lane == null ? target : new InventoryActionTarget.SourceSlotTarget(lane.sourceId(), quickAccessTarget.slotIndex());
+        }
+        if (target instanceof InventoryActionTarget.EquipmentTarget equipmentTarget) {
+            EquipmentGroupDescriptor group = host.equipmentGroup(equipmentTarget.groupId());
+            return group == null ? target : new InventoryActionTarget.SourceSlotTarget(group.sourceId(), equipmentTarget.slotIndex());
+        }
+        if (target instanceof InventoryActionTarget.ToolRegionTarget toolRegionTarget) {
+            InventoryToolDescriptor tool = host.tool(toolRegionTarget.toolId());
+            ToolRegionDescriptor region = tool == null ? null : tool.regions().stream()
+                    .filter(candidate -> candidate != null && toolRegionTarget.regionId().equals(candidate.id()))
+                    .findFirst()
+                    .orElse(null);
+            return region == null || region.linkedSourceId().isBlank()
+                    ? target
+                    : new InventoryActionTarget.SourceSlotTarget(region.linkedSourceId(), toolRegionTarget.slotIndex());
+        }
+        return target;
     }
 
     private static String normalize(String value) {

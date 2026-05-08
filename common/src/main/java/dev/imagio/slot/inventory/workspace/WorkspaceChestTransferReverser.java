@@ -1,0 +1,151 @@
+package dev.imagio.slot.inventory.workspace;
+
+import dev.imagio.slot.SlotCommon;
+import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
+import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
+import dev.imagio.slot.inventory.storage.WorldStorageAccess;
+import dev.imagio.slot.workflow.domain.ClaimedChest;
+import dev.imagio.slot.workflow.domain.ClaimedChestMap;
+import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
+import net.minecraft.server.MinecraftServer;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.item.ItemStack;
+
+import java.util.ArrayList;
+import java.util.UUID;
+
+/**
+ * Best-effort undo/redo primitive for chest <-> carry transfers.
+ */
+public final class WorkspaceChestTransferReverser {
+    private WorkspaceChestTransferReverser() {
+    }
+
+    public static int pullFromChestToCarry(
+            ServerPlayer player,
+            WorkflowDomainRuntime runtime,
+            UUID storageId,
+            ItemIdentity identity,
+            int count
+    ) {
+        if (player == null || runtime == null || storageId == null || identity == null || count <= 0) {
+            return 0;
+        }
+        MinecraftServer server = player.getServer();
+        ClaimedChest chest = lookupChest(runtime, storageId);
+        if (server == null || chest == null) {
+            return 0;
+        }
+        WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
+        WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
+        if (!world.isAccessible(server, target)) {
+            return 0;
+        }
+        CarriedSourceAccess carried = StorageAccessRegistry.carriedSourceAccess();
+
+        int remaining = count;
+        ArrayList<ItemStack> pulled = new ArrayList<>();
+        for (WorldStorageAccess.SlotContent entry : world.enumerate(server, target)) {
+            if (remaining <= 0) {
+                break;
+            }
+            ItemStack stack = entry.stack();
+            if (stack == null || stack.isEmpty() || !identity.equals(ItemIdentityMatcher.create(stack))) {
+                continue;
+            }
+            int pullCount = Math.min(stack.getCount(), remaining);
+            ItemStack taken = world.extract(server, target, entry.slotIndex(), pullCount, false);
+            if (taken == null || taken.isEmpty()) {
+                continue;
+            }
+            pulled.add(taken);
+            remaining -= taken.getCount();
+        }
+
+        int restored = 0;
+        for (ItemStack stack : pulled) {
+            ItemStack leftover = carried.insertBestFit(player, stack, false);
+            int leftoverCount = leftover == null || leftover.isEmpty() ? 0 : leftover.getCount();
+            restored += stack.getCount() - leftoverCount;
+            if (leftoverCount <= 0) {
+                continue;
+            }
+            ItemStack reinsertLeftover = world.insert(server, target, leftover, false);
+            if (reinsertLeftover != null && !reinsertLeftover.isEmpty()) {
+                SlotCommon.LOGGER.warn(
+                        "[SLOT] chest-transfer-undo: lost {} of {} (chest={} carry rejected, chest reinsert rejected)",
+                        reinsertLeftover.getCount(), identity.itemId(), storageId);
+            }
+        }
+        SlotCommon.LOGGER.info(
+                "[SLOT] chest-transfer-undo pulled identity={} requested={} restored={} chest={}",
+                identity.itemId(), count, restored, storageId);
+        return restored;
+    }
+
+    public static int pushFromCarryToChest(
+            ServerPlayer player,
+            WorkflowDomainRuntime runtime,
+            UUID storageId,
+            ItemIdentity identity,
+            int count
+    ) {
+        if (player == null || runtime == null || storageId == null || identity == null || count <= 0) {
+            return 0;
+        }
+        MinecraftServer server = player.getServer();
+        ClaimedChest chest = lookupChest(runtime, storageId);
+        if (server == null || chest == null) {
+            return 0;
+        }
+        WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
+        WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
+        if (!world.isAccessible(server, target)) {
+            return 0;
+        }
+        CarriedSourceAccess carried = StorageAccessRegistry.carriedSourceAccess();
+
+        int remaining = count;
+        int delivered = 0;
+        for (CarriedSourceAccess.CarriedLocation loc : carried.findAllMatching(player, identity)) {
+            if (remaining <= 0) {
+                break;
+            }
+            ItemStack peeked = carried.peek(player, loc.sourceId(), loc.slotIndex());
+            if (peeked == null || peeked.isEmpty()) {
+                continue;
+            }
+            int pullCount = Math.min(peeked.getCount(), remaining);
+            ItemStack taken = carried.extract(player, loc.sourceId(), loc.slotIndex(), pullCount, false);
+            if (taken == null || taken.isEmpty()) {
+                continue;
+            }
+            ItemStack chestLeftover = world.insert(server, target, taken, false);
+            int leftoverCount = chestLeftover == null || chestLeftover.isEmpty() ? 0 : chestLeftover.getCount();
+            int inserted = taken.getCount() - leftoverCount;
+            delivered += inserted;
+            remaining -= inserted;
+            if (leftoverCount <= 0) {
+                continue;
+            }
+            ItemStack carryLeftover = carried.insertBestFit(player, chestLeftover, false);
+            if (carryLeftover != null && !carryLeftover.isEmpty()) {
+                SlotCommon.LOGGER.warn(
+                        "[SLOT] chest-transfer-redo: lost {} of {} (chest={} both rejected leftover)",
+                        carryLeftover.getCount(), identity.itemId(), storageId);
+            }
+            break;
+        }
+        SlotCommon.LOGGER.info(
+                "[SLOT] chest-transfer-redo pushed identity={} requested={} delivered={} chest={}",
+                identity.itemId(), count, delivered, storageId);
+        return delivered;
+    }
+
+    private static ClaimedChest lookupChest(WorkflowDomainRuntime runtime, UUID storageId) {
+        ClaimedChestMap map = runtime.chestClaimWorkflow().claimedChestMap();
+        return map == null ? null : map.chest(storageId);
+    }
+}

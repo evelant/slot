@@ -33,7 +33,7 @@ public final class InMemoryInventoryActivityStore implements InventoryActivitySt
         InventoryActivityRecord record = new InventoryActivityRecord(resolvedEnvelope, event);
         records.add(record);
         while (records.size() > maxEvents) {
-            records.removeFirst();
+            records.remove(0);
         }
         nextStreamSequence = Math.max(nextStreamSequence, resolvedEnvelope.streamSequence() + 1L);
         return record;
@@ -57,7 +57,7 @@ public final class InMemoryInventoryActivityStore implements InventoryActivitySt
         maxEvents = resolved.maxEvents();
         nextStreamSequence = resolved.nextStreamSequence();
         while (records.size() > maxEvents) {
-            records.removeFirst();
+            records.remove(0);
         }
     }
 }

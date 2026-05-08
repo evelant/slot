@@ -2,7 +2,7 @@ package dev.imagio.slot.neoforge.storage;
 
 import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.inventory.core.ItemIdentity;
-import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.workspace.ChestDepositObservationSupport;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ChestClaimWorkflowDomainService;
@@ -155,9 +155,13 @@ public final class ChestDepositObserver {
         WorkflowDomainRuntime runtime = SlotPlayerWorkflowRuntimeService.runtime(player);
         ChestClaimWorkflowDomainService chestService = runtime.chestClaimWorkflow();
 
-        Map<ItemIdentity, Integer> deltas = computeNetDeltas(session.snapshot, chestMenu);
-        Map<ItemIdentity, Integer> deposits = positiveOnly(deltas);
-        Map<ItemIdentity, Integer> takes = negativeOnly(deltas);
+        ChestDepositObservationSupport.Observation observation =
+                ChestDepositObservationSupport.observe(
+                        session.snapshot,
+                        chestMenu.getContainer(),
+                        chestMenu.getRowCount() * 9);
+        Map<ItemIdentity, Integer> deposits = observation.deposits();
+        Map<ItemIdentity, Integer> takes = observation.takes();
 
         if (!deposits.isEmpty()) {
             UUID storageId = resolveOrCreateClaim(chestService, level, session.pos, anchor);
@@ -260,51 +264,10 @@ public final class ChestDepositObserver {
         return islandId;
     }
 
-    private static Map<ItemIdentity, Integer> positiveOnly(Map<ItemIdentity, Integer> deltas) {
-        LinkedHashMap<ItemIdentity, Integer> out = new LinkedHashMap<>();
-        deltas.forEach((id, delta) -> {
-            if (delta > 0) {
-                out.put(id, delta);
-            }
-        });
-        return out;
-    }
-
-    private static Map<ItemIdentity, Integer> negativeOnly(Map<ItemIdentity, Integer> deltas) {
-        LinkedHashMap<ItemIdentity, Integer> out = new LinkedHashMap<>();
-        deltas.forEach((id, delta) -> {
-            if (delta < 0) {
-                out.put(id, -delta);
-            }
-        });
-        return out;
-    }
-
     private static ItemStack[] snapshot(ChestMenu chestMenu) {
-        int chestSlots = chestMenu.getRowCount() * 9;
-        ItemStack[] snapshot = new ItemStack[chestSlots];
-        for (int i = 0; i < chestSlots; i++) {
-            snapshot[i] = chestMenu.getContainer().getItem(i).copy();
-        }
-        return snapshot;
-    }
-
-    private static Map<ItemIdentity, Integer> computeNetDeltas(ItemStack[] snapshot, ChestMenu chestMenu) {
-        int chestSlots = Math.min(snapshot.length, chestMenu.getContainer().getContainerSize());
-        LinkedHashMap<ItemIdentity, Integer> netDeltas = new LinkedHashMap<>();
-        for (int i = 0; i < chestSlots; i++) {
-            ItemStack initial = snapshot[i];
-            if (initial != null && !initial.isEmpty()) {
-                netDeltas.merge(ItemIdentityMatcher.create(initial), -initial.getCount(), Integer::sum);
-            }
-        }
-        for (int i = 0; i < chestSlots; i++) {
-            ItemStack finalStack = chestMenu.getContainer().getItem(i);
-            if (!finalStack.isEmpty()) {
-                netDeltas.merge(ItemIdentityMatcher.create(finalStack), finalStack.getCount(), Integer::sum);
-            }
-        }
-        return netDeltas;
+        return ChestDepositObservationSupport.snapshot(
+                chestMenu.getContainer(),
+                chestMenu.getRowCount() * 9);
     }
 
     /**

@@ -4,11 +4,12 @@ import com.lowdragmc.lowdraglib2.gui.ui.ModularUI;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent;
 import dev.imagio.slot.atlas.AtlasSearchIndex;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.inventory.workspace.WorkspaceSearchQuery;
+import dev.imagio.slot.ui.workspace.WorkspaceSearchInputPolicy;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Search controller for the sectioned list-view wall. In list-view
@@ -53,38 +54,30 @@ final class SearchController {
     }
 
     String normalizedQuery() {
-        return searchQuery == null ? "" : searchQuery.trim().toLowerCase(Locale.ROOT);
+        return WorkspaceSearchQuery.normalized(searchQuery);
     }
 
     boolean matchesItem(SlotWorkspaceViewModel.AtlasItem item) {
-        String query = normalizedQuery();
-        if (query.isBlank()) {
-            return true;
-        }
-        StringBuilder searchable = new StringBuilder();
-        searchable.append(item.name().toLowerCase(Locale.ROOT)).append(' ')
-                .append(item.identity().itemId().toLowerCase(Locale.ROOT)).append(' ');
-        SlotWorkspaceViewModel.AtlasIsland island = host.viewModel.island(item.islandId());
-        if (island != null) {
-            searchable.append(island.label().toLowerCase(Locale.ROOT)).append(' ');
-            searchable.append(island.kind().name().toLowerCase(Locale.ROOT)).append(' ');
-        }
-        return searchable.toString().contains(query);
+        return WorkspaceSearchQuery.matchesItem(
+                searchQuery,
+                item,
+                item == null ? null : host.viewModel.island(item.islandId()));
     }
 
     boolean matchesContentSummary(SlotWorkspaceViewModel.ChestContentSummary summary) {
-        String query = normalizedQuery();
-        if (query.isBlank() || summary == null) {
-            return false;
-        }
-        return (summary.name().toLowerCase(Locale.ROOT) + ' '
-                + summary.itemId().toLowerCase(Locale.ROOT))
-                .contains(query);
+        return WorkspaceSearchQuery.matchesContentSummary(searchQuery, summary);
     }
 
     void handleCharTyped(UIEvent event) {
         char codePoint = event.codePoint;
-        if (codePoint == '/' && !searchModalActive && !host.hotkeys.isTextInputFocused()) {
+        WorkspaceSearchInputPolicy.Decision decision = WorkspaceSearchInputPolicy.charTyped(
+                searchModalActive,
+                searchBuffer,
+                codePoint,
+                host.hotkeys.isTextInputFocused());
+        if (decision.handled()
+                && decision.action() == WorkspaceSearchInputPolicy.Action.OPEN
+                && !searchModalActive) {
             event.stopPropagation();
             openModal();
             return;
@@ -92,7 +85,7 @@ final class SearchController {
         if (!searchModalActive) {
             return;
         }
-        if (codePoint == '/') {
+        if (decision.handled() && decision.action() == WorkspaceSearchInputPolicy.Action.OPEN) {
             event.stopPropagation();
             if (searchInteractionDisablesAutoDismiss || !searchBuffer.isEmpty()) {
                 closeModal();
@@ -106,12 +99,13 @@ final class SearchController {
             }
             return;
         }
-        if (codePoint >= '0' && codePoint <= '9') {
+        if (decision.handled() && decision.action() == WorkspaceSearchInputPolicy.Action.IGNORE_DIGIT) {
+            event.stopPropagation();
             return;
         }
-        if (codePoint >= 0x20 && codePoint < 0x7F) {
+        if (decision.handled() && decision.action() == WorkspaceSearchInputPolicy.Action.APPEND) {
             event.stopPropagation();
-            appendBuffer(codePoint);
+            setBuffer(decision.query());
         }
     }
 
@@ -145,6 +139,15 @@ final class SearchController {
         }
     }
 
+    void confirmForHotbar() {
+        if (!searchModalActive) {
+            return;
+        }
+        searchInteractionDisablesAutoDismiss = true;
+        closeModal();
+        host.rebuild();
+    }
+
     private void openModal() {
         searchModalActive = true;
         searchBuffer = "";
@@ -158,6 +161,17 @@ final class SearchController {
 
     private void appendBuffer(char codePoint) {
         searchBuffer += codePoint;
+        recomputeMatches();
+        syncQuery();
+        host.rebuild();
+    }
+
+    private void setBuffer(String value) {
+        String next = WorkspaceSearchQuery.cleanInput(value);
+        if (next.equals(searchBuffer)) {
+            return;
+        }
+        searchBuffer = next;
         recomputeMatches();
         syncQuery();
         host.rebuild();

@@ -136,13 +136,15 @@ final class ProjectedTransferDestinationAllocator {
         if (intent == null || intent.authority() == null || intent.authority().host() == null || intent.destination() == null) {
             return List.of();
         }
-        List<InventorySourceDescriptor> baseSources = switch (intent.destination()) {
-            case InventoryActionDestination.SourceDestination sourceDestination -> {
-                InventorySourceDescriptor source = intent.authority().host().source(sourceDestination.sourceId());
-                yield source == null ? List.of() : List.of(source);
-            }
-            case InventoryActionDestination.PaneDestination paneDestination -> paneSources(intent.authority().host(), paneDestination.paneMembership());
-        };
+        List<InventorySourceDescriptor> baseSources;
+        if (intent.destination() instanceof InventoryActionDestination.SourceDestination sourceDestination) {
+            InventorySourceDescriptor source = intent.authority().host().source(sourceDestination.sourceId());
+            baseSources = source == null ? List.of() : List.of(source);
+        } else if (intent.destination() instanceof InventoryActionDestination.PaneDestination paneDestination) {
+            baseSources = paneSources(intent.authority().host(), paneDestination.paneMembership());
+        } else {
+            baseSources = List.of();
+        }
         ArrayList<InventorySourceDescriptor> matching = new ArrayList<>();
         ArrayList<InventorySourceDescriptor> others = new ArrayList<>();
         for (InventorySourceDescriptor source : baseSources) {

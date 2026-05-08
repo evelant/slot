@@ -495,7 +495,7 @@ public record SlotWorkspaceViewModel(
         // confirmation. Kit-needed remote items still surface via the
         // earlier kit-ghost loop (kitNeededIdentities seeds an
         // accumulator regardless of search state).
-        String normalizedQuery = searchQuery == null ? "" : searchQuery.trim().toLowerCase(Locale.ROOT);
+        String normalizedQuery = WorkspaceSearchQuery.normalized(searchQuery);
         if (!normalizedQuery.isBlank()) {
             for (Map.Entry<ItemIdentity, ItemStack> entry : elsewhereGhosts.displayStackByIdentity().entrySet()) {
                 ItemIdentity identity = entry.getKey();
@@ -1362,23 +1362,12 @@ public record SlotWorkspaceViewModel(
 
     /**
      * Substring match for the search-as-find ghost-synthesis filter:
-     * lowercase {@code itemId} or display name contains the (already
-     * normalized) query. Mirrors {@code SearchController.matchesItem}'s
-     * shape so the server-side gate matches what the client would
-     * highlight as a hit.
+     * lowercase {@code itemId} or display name contains the query.
+     * Mirrors {@link WorkspaceSearchQuery}'s shape so the server-side
+     * gate matches what the client would highlight as a hit.
      */
     private static boolean matchesQuery(ItemIdentity identity, ItemStack stack, String normalizedQuery) {
-        if (normalizedQuery == null || normalizedQuery.isBlank()) {
-            return false;
-        }
-        StringBuilder searchable = new StringBuilder();
-        if (identity != null && identity.itemId() != null) {
-            searchable.append(identity.itemId().toLowerCase(Locale.ROOT)).append(' ');
-        }
-        if (stack != null && !stack.isEmpty()) {
-            searchable.append(stack.getHoverName().getString().toLowerCase(Locale.ROOT));
-        }
-        return searchable.toString().contains(normalizedQuery);
+        return WorkspaceSearchQuery.matchesIdentityStack(normalizedQuery, identity, stack);
     }
 
     private static List<AtlasIsland> withCarriedCounts(List<AtlasIsland> islands, List<AtlasItem> atlasItems) {

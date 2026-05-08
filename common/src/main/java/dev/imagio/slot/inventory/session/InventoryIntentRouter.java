@@ -96,149 +96,168 @@ public final class InventoryIntentRouter {
                 session.token().sessionId()
         );
 
-        return switch (intent) {
-            case InventoryBrowseIntent.UpdateBrowseState updateBrowseState -> {
-                coordinator.workflowRuntime().browseSessionState().replaceWith(updateBrowseState.state());
-                yield applied(coordinator.publishCurrent(updateBrowseState.origin()), updateBrowseState.origin());
+        if (intent instanceof InventoryBrowseIntent.UpdateBrowseState updateBrowseState) {
+            coordinator.workflowRuntime().browseSessionState().replaceWith(updateBrowseState.state());
+            return applied(coordinator.publishCurrent(updateBrowseState.origin()), updateBrowseState.origin());
+        }
+        if (intent instanceof InventoryBrowseIntent.UpdateFilter updateFilter) {
+            coordinator.workflowRuntime().browseSessionState().update(state -> new InventoryBrowseSessionState(
+                    updateFilter.filter(),
+                    state.sortMode(),
+                    state.groupingMode(),
+                    state.paneMode(),
+                    state.activePane(),
+                    state.selectedCollectionId(),
+                    state.selectedLoadoutId(),
+                    state.pinnedToolId(),
+                    state.bulkActionScope(),
+                    state.selectedSubject(),
+                    state.expandedSectionIds()
+            ));
+            return applied(coordinator.publishCurrent(updateFilter.origin()), updateFilter.origin());
+        }
+        if (intent instanceof InventoryBrowseIntent.SelectPane selectPane) {
+            coordinator.workflowRuntime().browseSessionState().update(state -> new InventoryBrowseSessionState(
+                    state.filter(),
+                    state.sortMode(),
+                    state.groupingMode(),
+                    state.paneMode(),
+                    selectPane.paneMembership(),
+                    state.selectedCollectionId(),
+                    state.selectedLoadoutId(),
+                    state.pinnedToolId(),
+                    state.bulkActionScope(),
+                    state.selectedSubject(),
+                    state.expandedSectionIds()
+            ));
+            return applied(coordinator.publishCurrent(selectPane.origin()), selectPane.origin());
+        }
+        if (intent instanceof InventoryBrowseIntent.SelectSubject selectSubject) {
+            coordinator.workflowRuntime().browseSessionState().update(state -> new InventoryBrowseSessionState(
+                    state.filter(),
+                    state.sortMode(),
+                    state.groupingMode(),
+                    state.paneMode(),
+                    state.activePane(),
+                    state.selectedCollectionId(),
+                    state.selectedLoadoutId(),
+                    state.pinnedToolId(),
+                    state.bulkActionScope(),
+                    selectSubject.subjectRef(),
+                    state.expandedSectionIds()
+            ));
+            return applied(coordinator.publishCurrent(selectSubject.origin()), selectSubject.origin());
+        }
+        if (intent instanceof InventoryBrowseIntent.PinTool pinTool) {
+            coordinator.workflowRuntime().browseSessionState().update(state -> new InventoryBrowseSessionState(
+                    state.filter(),
+                    state.sortMode(),
+                    state.groupingMode(),
+                    state.paneMode(),
+                    state.activePane(),
+                    state.selectedCollectionId(),
+                    state.selectedLoadoutId(),
+                    pinTool.toolId(),
+                    state.bulkActionScope(),
+                    state.selectedSubject(),
+                    state.expandedSectionIds()
+            ));
+            return applied(coordinator.publishCurrent(pinTool.origin()), pinTool.origin());
+        }
+        if (intent instanceof InventoryWorkflowIntent.ToggleFavorite toggleFavorite) {
+            boolean changed = coordinator.workflowRuntime().collectionWorkflow().toggleFavorite(
+                    toggleFavorite.identity(),
+                    metadata(toggleFavorite.origin(), trace)
+            );
+            return changed
+                    ? applied(coordinator.publishCurrent(toggleFavorite.origin()), toggleFavorite.origin())
+                    : noOp(toggleFavorite.origin(), null, null);
+        }
+        if (intent instanceof InventoryWorkflowIntent.ToggleCollectionMembership toggleCollectionMembership) {
+            boolean changed = coordinator.workflowRuntime().collectionWorkflow().toggleCollectionMembership(
+                    toggleCollectionMembership.identity(),
+                    toggleCollectionMembership.collectionId(),
+                    metadata(toggleCollectionMembership.origin(), trace)
+            );
+            return changed
+                    ? applied(coordinator.publishCurrent(toggleCollectionMembership.origin()), toggleCollectionMembership.origin())
+                    : noOp(toggleCollectionMembership.origin(), null, null);
+        }
+        if (intent instanceof InventoryWorkflowIntent.SelectLoadout selectLoadout) {
+            boolean changed = coordinator.workflowRuntime().collectionWorkflow().selectLoadout(
+                    selectLoadout.collectionId(),
+                    selectLoadout.loadoutId()
+            );
+            if (changed) {
+                setSelectedSubject(new InventoryBrowseSubjectRef.LoadoutRef(selectLoadout.collectionId(), selectLoadout.loadoutId()));
             }
-            case InventoryBrowseIntent.UpdateFilter updateFilter -> {
-                coordinator.workflowRuntime().browseSessionState().update(state -> new InventoryBrowseSessionState(
-                        updateFilter.filter(),
-                        state.sortMode(),
-                        state.groupingMode(),
-                        state.paneMode(),
-                        state.activePane(),
-                        state.selectedCollectionId(),
-                        state.selectedLoadoutId(),
-                        state.pinnedToolId(),
-                        state.bulkActionScope(),
-                        state.selectedSubject(),
-                        state.expandedSectionIds()
-                ));
-                yield applied(coordinator.publishCurrent(updateFilter.origin()), updateFilter.origin());
-            }
-            case InventoryBrowseIntent.SelectPane selectPane -> {
-                coordinator.workflowRuntime().browseSessionState().update(state -> new InventoryBrowseSessionState(
-                        state.filter(),
-                        state.sortMode(),
-                        state.groupingMode(),
-                        state.paneMode(),
-                        selectPane.paneMembership(),
-                        state.selectedCollectionId(),
-                        state.selectedLoadoutId(),
-                        state.pinnedToolId(),
-                        state.bulkActionScope(),
-                        state.selectedSubject(),
-                        state.expandedSectionIds()
-                ));
-                yield applied(coordinator.publishCurrent(selectPane.origin()), selectPane.origin());
-            }
-            case InventoryBrowseIntent.SelectSubject selectSubject -> {
-                coordinator.workflowRuntime().browseSessionState().update(state -> new InventoryBrowseSessionState(
-                        state.filter(),
-                        state.sortMode(),
-                        state.groupingMode(),
-                        state.paneMode(),
-                        state.activePane(),
-                        state.selectedCollectionId(),
-                        state.selectedLoadoutId(),
-                        state.pinnedToolId(),
-                        state.bulkActionScope(),
-                        selectSubject.subjectRef(),
-                        state.expandedSectionIds()
-                ));
-                yield applied(coordinator.publishCurrent(selectSubject.origin()), selectSubject.origin());
-            }
-            case InventoryBrowseIntent.PinTool pinTool -> {
-                coordinator.workflowRuntime().browseSessionState().update(state -> new InventoryBrowseSessionState(
-                        state.filter(),
-                        state.sortMode(),
-                        state.groupingMode(),
-                        state.paneMode(),
-                        state.activePane(),
-                        state.selectedCollectionId(),
-                        state.selectedLoadoutId(),
-                        pinTool.toolId(),
-                        state.bulkActionScope(),
-                        state.selectedSubject(),
-                        state.expandedSectionIds()
-                ));
-                yield applied(coordinator.publishCurrent(pinTool.origin()), pinTool.origin());
-            }
-            case InventoryWorkflowIntent.ToggleFavorite toggleFavorite -> {
-                boolean changed = coordinator.workflowRuntime().collectionWorkflow().toggleFavorite(
-                        toggleFavorite.identity(),
-                        metadata(toggleFavorite.origin(), trace)
-                );
-                yield changed
-                        ? applied(coordinator.publishCurrent(toggleFavorite.origin()), toggleFavorite.origin())
-                        : noOp(toggleFavorite.origin(), null, null);
-            }
-            case InventoryWorkflowIntent.ToggleCollectionMembership toggleCollectionMembership -> {
-                boolean changed = coordinator.workflowRuntime().collectionWorkflow().toggleCollectionMembership(
-                        toggleCollectionMembership.identity(),
-                        toggleCollectionMembership.collectionId(),
-                        metadata(toggleCollectionMembership.origin(), trace)
-                );
-                yield changed
-                        ? applied(coordinator.publishCurrent(toggleCollectionMembership.origin()), toggleCollectionMembership.origin())
-                        : noOp(toggleCollectionMembership.origin(), null, null);
-            }
-            case InventoryWorkflowIntent.SelectLoadout selectLoadout -> {
-                boolean changed = coordinator.workflowRuntime().collectionWorkflow().selectLoadout(
-                        selectLoadout.collectionId(),
-                        selectLoadout.loadoutId()
-                );
-                if (changed) {
-                    setSelectedSubject(new InventoryBrowseSubjectRef.LoadoutRef(selectLoadout.collectionId(), selectLoadout.loadoutId()));
-                }
-                yield changed
-                        ? applied(coordinator.publishCurrent(selectLoadout.origin()), selectLoadout.origin())
-                        : noOp(selectLoadout.origin(), null, null);
-            }
-            case InventoryWorkflowIntent.CaptureLoadout captureLoadout -> {
-                coordinator.workflowRuntime().collectionWorkflow().captureNewLoadout(
-                        captureLoadout.collectionId(),
-                        captureLoadout.loadoutName(),
-                        coordinator.snapshot().authority(),
-                        candidate -> candidate == null || !candidate.present()
-                                ? null
-                                : dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(candidate.stack()),
-                        metadata(captureLoadout.origin(), trace)
-                );
-                yield applied(coordinator.publishCurrent(captureLoadout.origin()), captureLoadout.origin());
-            }
-            case InventoryWorkflowIntent.ApplyLoadout applyLoadout -> routeApplyLoadout(
+            return changed
+                    ? applied(coordinator.publishCurrent(selectLoadout.origin()), selectLoadout.origin())
+                    : noOp(selectLoadout.origin(), null, null);
+        }
+        if (intent instanceof InventoryWorkflowIntent.CaptureLoadout captureLoadout) {
+            coordinator.workflowRuntime().collectionWorkflow().captureNewLoadout(
+                    captureLoadout.collectionId(),
+                    captureLoadout.loadoutName(),
+                    coordinator.snapshot().authority(),
+                    candidate -> candidate == null || !candidate.present()
+                            ? null
+                            : dev.imagio.slot.inventory.core.ItemIdentityMatcher.create(candidate.stack()),
+                    metadata(captureLoadout.origin(), trace)
+            );
+            return applied(coordinator.publishCurrent(captureLoadout.origin()), captureLoadout.origin());
+        }
+        if (intent instanceof InventoryWorkflowIntent.ApplyLoadout applyLoadout) {
+            return routeApplyLoadout(
                     applyLoadout,
                     trace,
                     precomputedLoadoutPlan
             );
-            case InventoryWorkflowIntent.DismissRecent dismissRecent -> {
-                boolean changed = coordinator.workflowRuntime().dismissRecent(
-                        dismissRecent.identity(),
-                        metadata(dismissRecent.origin(), trace)
-                );
-                yield changed
-                        ? applied(coordinator.publishCurrent(dismissRecent.origin()), dismissRecent.origin())
-                        : noOp(dismissRecent.origin(), null, null);
-            }
-            case InventoryMutationIntent.ExecuteRequest executeRequest -> routeConcreteRequest(executeRequest, trace);
-            case InventoryMutationIntent.ProjectedRowTransfer projectedRowTransfer -> routeProjectedTransfer(
+        }
+        if (intent instanceof InventoryWorkflowIntent.DismissRecent dismissRecent) {
+            boolean changed = coordinator.workflowRuntime().dismissRecent(
+                    dismissRecent.identity(),
+                    metadata(dismissRecent.origin(), trace)
+            );
+            return changed
+                    ? applied(coordinator.publishCurrent(dismissRecent.origin()), dismissRecent.origin())
+                    : noOp(dismissRecent.origin(), null, null);
+        }
+        if (intent instanceof InventoryMutationIntent.ExecuteRequest executeRequest) {
+            return routeConcreteRequest(executeRequest, trace);
+        }
+        if (intent instanceof InventoryMutationIntent.ProjectedRowTransfer projectedRowTransfer) {
+            return routeProjectedTransfer(
                     projectedRowTransfer,
                     trace,
                     precomputedTransferPlan
             );
-            case InventoryMutationIntent.ToolAction toolAction -> routeCraftingMutation(toolAction, trace);
-            case InventoryMutationIntent.ToolToggle toolToggle -> routeCraftingMutation(toolToggle, trace);
-            case InventoryMutationIntent.CraftingPlaceSelected craftingPlaceSelected -> routeCraftingMutation(craftingPlaceSelected, trace);
-            case InventoryMutationIntent.CraftingPlaceCursor craftingPlaceCursor -> routeCraftingMutation(craftingPlaceCursor, trace);
-            case InventoryMutationIntent.CraftingDragCursor craftingDragCursor -> routeCraftingMutation(craftingDragCursor, trace);
-            case InventoryMutationIntent.CraftingExtractResult craftingExtractResult -> routeCraftingMutation(craftingExtractResult, trace);
-            case InventoryMutationIntent.TrashEntry ignored ->
-                    InventoryIntentRoutingResult.rejected(session, List.of(InventoryCommandReasonCode.UNSUPPORTED), "trash_not_yet_specified");
-            case InventoryMutationIntent.VoidEntry ignored ->
-                    InventoryIntentRoutingResult.rejected(session, List.of(InventoryCommandReasonCode.UNSUPPORTED), "void_not_yet_specified");
-        };
+        }
+        if (intent instanceof InventoryMutationIntent.ToolAction toolAction) {
+            return routeCraftingMutation(toolAction, trace);
+        }
+        if (intent instanceof InventoryMutationIntent.ToolToggle toolToggle) {
+            return routeCraftingMutation(toolToggle, trace);
+        }
+        if (intent instanceof InventoryMutationIntent.CraftingPlaceSelected craftingPlaceSelected) {
+            return routeCraftingMutation(craftingPlaceSelected, trace);
+        }
+        if (intent instanceof InventoryMutationIntent.CraftingPlaceCursor craftingPlaceCursor) {
+            return routeCraftingMutation(craftingPlaceCursor, trace);
+        }
+        if (intent instanceof InventoryMutationIntent.CraftingDragCursor craftingDragCursor) {
+            return routeCraftingMutation(craftingDragCursor, trace);
+        }
+        if (intent instanceof InventoryMutationIntent.CraftingExtractResult craftingExtractResult) {
+            return routeCraftingMutation(craftingExtractResult, trace);
+        }
+        if (intent instanceof InventoryMutationIntent.TrashEntry) {
+            return InventoryIntentRoutingResult.rejected(session, List.of(InventoryCommandReasonCode.UNSUPPORTED), "trash_not_yet_specified");
+        }
+        if (intent instanceof InventoryMutationIntent.VoidEntry) {
+            return InventoryIntentRoutingResult.rejected(session, List.of(InventoryCommandReasonCode.UNSUPPORTED), "void_not_yet_specified");
+        }
+        return InventoryIntentRoutingResult.rejected(session, List.of(InventoryCommandReasonCode.UNSUPPORTED), "unsupported_intent");
     }
 
     private InventoryIntentRoutingResult routeConcreteRequest(
@@ -337,7 +356,7 @@ public final class InventoryIntentRouter {
         }
 
         InventorySessionSnapshot updated = tracedRequests.size() == 1
-                ? coordinator.dispatch(trace.sequenceId(), InventoryActionDispatchNode.of(tracedRequests.getFirst()))
+                ? coordinator.dispatch(trace.sequenceId(), InventoryActionDispatchNode.of(tracedRequests.get(0)))
                 : coordinator.dispatchAll(
                 trace.sequenceId(),
                 tracedRequests.stream().map(InventoryActionDispatchNode::of).toList()
@@ -357,18 +376,37 @@ public final class InventoryIntentRouter {
         if (mutationIntent == null) {
             return "";
         }
-        return switch (mutationIntent) {
-            case InventoryMutationIntent.ExecuteRequest executeRequest -> executeRequest.origin();
-            case InventoryMutationIntent.ProjectedRowTransfer projectedRowTransfer -> projectedRowTransfer.origin();
-            case InventoryMutationIntent.TrashEntry trashEntry -> trashEntry.origin();
-            case InventoryMutationIntent.VoidEntry voidEntry -> voidEntry.origin();
-            case InventoryMutationIntent.ToolAction toolAction -> toolAction.origin();
-            case InventoryMutationIntent.ToolToggle toolToggle -> toolToggle.origin();
-            case InventoryMutationIntent.CraftingPlaceSelected craftingPlaceSelected -> craftingPlaceSelected.origin();
-            case InventoryMutationIntent.CraftingPlaceCursor craftingPlaceCursor -> craftingPlaceCursor.origin();
-            case InventoryMutationIntent.CraftingDragCursor craftingDragCursor -> craftingDragCursor.origin();
-            case InventoryMutationIntent.CraftingExtractResult craftingExtractResult -> craftingExtractResult.origin();
-        };
+        if (mutationIntent instanceof InventoryMutationIntent.ExecuteRequest executeRequest) {
+            return executeRequest.origin();
+        }
+        if (mutationIntent instanceof InventoryMutationIntent.ProjectedRowTransfer projectedRowTransfer) {
+            return projectedRowTransfer.origin();
+        }
+        if (mutationIntent instanceof InventoryMutationIntent.TrashEntry trashEntry) {
+            return trashEntry.origin();
+        }
+        if (mutationIntent instanceof InventoryMutationIntent.VoidEntry voidEntry) {
+            return voidEntry.origin();
+        }
+        if (mutationIntent instanceof InventoryMutationIntent.ToolAction toolAction) {
+            return toolAction.origin();
+        }
+        if (mutationIntent instanceof InventoryMutationIntent.ToolToggle toolToggle) {
+            return toolToggle.origin();
+        }
+        if (mutationIntent instanceof InventoryMutationIntent.CraftingPlaceSelected craftingPlaceSelected) {
+            return craftingPlaceSelected.origin();
+        }
+        if (mutationIntent instanceof InventoryMutationIntent.CraftingPlaceCursor craftingPlaceCursor) {
+            return craftingPlaceCursor.origin();
+        }
+        if (mutationIntent instanceof InventoryMutationIntent.CraftingDragCursor craftingDragCursor) {
+            return craftingDragCursor.origin();
+        }
+        if (mutationIntent instanceof InventoryMutationIntent.CraftingExtractResult craftingExtractResult) {
+            return craftingExtractResult.origin();
+        }
+        return "";
     }
 
     private InventoryIntentRoutingResult routeApplyLoadout(
@@ -476,12 +514,12 @@ public final class InventoryIntentRouter {
         }
         if (requests.size() == 1) {
             return rollbackNode == null
-                    ? InventoryActionDispatchNode.of(requests.getFirst())
-                    : InventoryActionDispatchNode.chain(requests.getFirst(), null, rollbackNode);
+                    ? InventoryActionDispatchNode.of(requests.get(0))
+                    : InventoryActionDispatchNode.chain(requests.get(0), null, rollbackNode);
         }
         InventoryActionDispatchNode tail = rollbackNode == null
-                ? InventoryActionDispatchNode.of(requests.getLast())
-                : InventoryActionDispatchNode.chain(requests.getLast(), null, rollbackNode);
+                ? InventoryActionDispatchNode.of(requests.get(requests.size() - 1))
+                : InventoryActionDispatchNode.chain(requests.get(requests.size() - 1), null, rollbackNode);
         for (int index = requests.size() - 2; index >= 0; index--) {
             tail = InventoryActionDispatchNode.chain(requests.get(index), tail, null);
         }

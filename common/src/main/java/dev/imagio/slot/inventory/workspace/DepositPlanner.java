@@ -261,6 +261,79 @@ public final class DepositPlanner {
     }
 
     /**
+     * Explicit single-identity deposit ranking. Starts with the normal
+     * linked-storage ranking (direct affinity, facet-affinity from learned
+     * bonds, then exact presence). If that finds nothing, choose a proximate
+     * chest by similarity to its current contents. If there is no similarity
+     * signal anywhere, choose the emptiest proximate chest.
+     *
+     * <p>Bulk deposit intentionally does not call this method; the
+     * similarity/empty fallback is only for explicit player gestures.
+     */
+    public static List<UUID> rankChestsForExplicitDeposit(
+            ItemIdentity identity,
+            ClaimedChestMap claimedChestMap,
+            ChestAffinityMap affinityMap,
+            Set<String> proximateStorageIds,
+            Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup,
+            Function<UUID, Set<ItemIdentity>> chestContentsLookup,
+            Function<UUID, ChestSpace> chestSpaceLookup
+    ) {
+        List<UUID> linked = rankChestsForIdentity(
+                identity,
+                claimedChestMap,
+                affinityMap,
+                proximateStorageIds,
+                descriptorLookup,
+                chestContentsLookup);
+        if (!linked.isEmpty()) {
+            return linked;
+        }
+        if (identity == null || claimedChestMap == null) {
+            return List.of();
+        }
+        Set<String> proximate = proximateStorageIds == null ? Set.of() : proximateStorageIds;
+        if (proximate.isEmpty()) {
+            return List.of();
+        }
+
+        record Candidate(UUID storageId, int similarityScore, ChestSpace space) {
+        }
+
+        Set<LearnedAdjacencyKey> targetKeys = targetAdjacencyKeys(identity, descriptorLookup);
+        ArrayList<Candidate> candidates = new ArrayList<>();
+        for (ClaimedChest chest : claimedChestMap.chests()) {
+            if (chest == null || !proximate.contains(chest.storageId().toString())) {
+                continue;
+            }
+            Set<ItemIdentity> contents = chestContentsLookup == null
+                    ? Set.of()
+                    : chestContentsLookup.apply(chest.storageId());
+            int similarity = contentSimilarityScore(targetKeys, contents, descriptorLookup);
+            ChestSpace space = chestSpaceLookup == null
+                    ? ChestSpace.unknown()
+                    : chestSpaceLookup.apply(chest.storageId());
+            candidates.add(new Candidate(chest.storageId(), similarity, space == null ? ChestSpace.unknown() : space));
+        }
+        if (candidates.isEmpty()) {
+            return List.of();
+        }
+
+        boolean anySimilar = candidates.stream().anyMatch(candidate -> candidate.similarityScore() > 0);
+        candidates.sort(Comparator
+                .<Candidate>comparingInt(candidate -> anySimilar ? -candidate.similarityScore() : 0)
+                .thenComparing(Comparator.<Candidate>comparingInt(candidate -> -candidate.space().freeSlots()))
+                .thenComparing(Comparator.comparingInt(candidate -> candidate.space().occupiedSlots()))
+                .thenComparing(candidate -> candidate.storageId().toString()));
+
+        ArrayList<UUID> ids = new ArrayList<>(candidates.size());
+        for (Candidate candidate : candidates) {
+            ids.add(candidate.storageId());
+        }
+        return List.copyOf(ids);
+    }
+
+    /**
      * Rank proximate claimed chests for {@code identity} by direct
      * affinity score (descending). Returns the chest objects so callers
      * can pass them straight to {@code TakeAllExecutor.takeByIdentity}.
@@ -364,6 +437,49 @@ public final class DepositPlanner {
             }
         }
         return total;
+    }
+
+    private static int contentSimilarityScore(
+            Set<LearnedAdjacencyKey> targetKeys,
+            Set<ItemIdentity> contents,
+            Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup
+    ) {
+        if (targetKeys == null || targetKeys.isEmpty()
+                || contents == null || contents.isEmpty()
+                || descriptorLookup == null) {
+            return 0;
+        }
+        int total = 0;
+        for (ItemIdentity other : contents) {
+            if (other == null) {
+                continue;
+            }
+            IslandSignalDescriptor descriptor = descriptorLookup.apply(other);
+            if (descriptor == null) {
+                continue;
+            }
+            for (LearnedAdjacencyKey key : LearnedAdjacencyKey.keysFor(descriptor)) {
+                if (targetKeys.contains(key)) {
+                    total++;
+                }
+            }
+        }
+        return total;
+    }
+
+    public record ChestSpace(int slotCount, int occupiedSlots) {
+        public ChestSpace {
+            slotCount = Math.max(0, slotCount);
+            occupiedSlots = Math.max(0, Math.min(occupiedSlots, slotCount));
+        }
+
+        public static ChestSpace unknown() {
+            return new ChestSpace(0, 0);
+        }
+
+        public int freeSlots() {
+            return Math.max(0, slotCount - occupiedSlots);
+        }
     }
 
     @SuppressWarnings("unused")

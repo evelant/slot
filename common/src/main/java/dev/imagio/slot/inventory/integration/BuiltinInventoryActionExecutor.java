@@ -13,6 +13,7 @@ import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.InventoryToolDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.ItemStackEquivalence;
 import dev.imagio.slot.inventory.core.MenuCursorAccess;
 import dev.imagio.slot.inventory.core.QuickAccessLaneDescriptor;
 import dev.imagio.slot.inventory.core.ToolRegionDescriptor;
@@ -736,33 +737,30 @@ final class BuiltinInventoryActionExecutor {
     }
 
     private static ResolvedTarget resolve(InventoryHostDescriptor host, InventoryActionTarget target) {
-        return switch (target) {
-            case InventoryActionTarget.CursorTarget ignored -> null;
-            case InventoryActionTarget.SourceTarget ignored -> null;
-            case InventoryActionTarget.SourceSlotTarget slotTarget -> resolveSourceTarget(host, slotTarget.sourceId(), slotTarget.slotIndex());
-            case InventoryActionTarget.SourceEntryTarget ignored -> null;
-            case InventoryActionTarget.QuickAccessTarget laneTarget -> {
-                QuickAccessLaneDescriptor lane = host.quickAccessLane(laneTarget.laneId());
-                yield lane == null ? null : resolveSourceTarget(host, lane.sourceId(), laneTarget.slotIndex());
+        if (target instanceof InventoryActionTarget.SourceSlotTarget slotTarget) {
+            return resolveSourceTarget(host, slotTarget.sourceId(), slotTarget.slotIndex());
+        }
+        if (target instanceof InventoryActionTarget.QuickAccessTarget laneTarget) {
+            QuickAccessLaneDescriptor lane = host.quickAccessLane(laneTarget.laneId());
+            return lane == null ? null : resolveSourceTarget(host, lane.sourceId(), laneTarget.slotIndex());
+        }
+        if (target instanceof InventoryActionTarget.EquipmentTarget equipmentTarget) {
+            EquipmentGroupDescriptor group = host.equipmentGroup(equipmentTarget.groupId());
+            return group == null ? null : resolveSourceTarget(host, group.sourceId(), equipmentTarget.slotIndex());
+        }
+        if (target instanceof InventoryActionTarget.ToolRegionTarget regionTarget) {
+            InventoryToolDescriptor tool = host.tool(regionTarget.toolId());
+            ToolRegionDescriptor region = tool == null ? null : tool.regions().stream()
+                    .filter(candidate -> candidate.id().equals(regionTarget.regionId()))
+                    .findFirst()
+                    .orElse(null);
+            if (region != null && !region.linkedSourceId().isBlank()) {
+                return resolveSourceTarget(host, region.linkedSourceId(), regionTarget.slotIndex());
             }
-            case InventoryActionTarget.EquipmentTarget equipmentTarget -> {
-                EquipmentGroupDescriptor group = host.equipmentGroup(equipmentTarget.groupId());
-                yield group == null ? null : resolveSourceTarget(host, group.sourceId(), equipmentTarget.slotIndex());
-            }
-            case InventoryActionTarget.ToolRegionTarget regionTarget -> {
-                InventoryToolDescriptor tool = host.tool(regionTarget.toolId());
-                ToolRegionDescriptor region = tool == null ? null : tool.regions().stream()
-                        .filter(candidate -> candidate.id().equals(regionTarget.regionId()))
-                        .findFirst()
-                        .orElse(null);
-                if (region != null && !region.linkedSourceId().isBlank()) {
-                    yield resolveSourceTarget(host, region.linkedSourceId(), regionTarget.slotIndex());
-                }
-                Integer menuSlot = InventoryBindingResolver.resolveMenuSlot(host, target);
-                yield region == null ? null : new ResolvedTarget(null, region.bindingRoute(), menuSlot, -1, region.supports(InventoryCapability.INSERT), region.supports(InventoryCapability.EXTRACT));
-            }
-            case InventoryActionTarget.ToolControlTarget ignored -> null;
-        };
+            Integer menuSlot = InventoryBindingResolver.resolveMenuSlot(host, target);
+            return region == null ? null : new ResolvedTarget(null, region.bindingRoute(), menuSlot, -1, region.supports(InventoryCapability.INSERT), region.supports(InventoryCapability.EXTRACT));
+        }
+        return null;
     }
 
     private static ResolvedTarget resolveSourceTarget(InventoryHostDescriptor host, String sourceId, int logicalSlotIndex) {
@@ -818,7 +816,7 @@ final class BuiltinInventoryActionExecutor {
         int transferable;
         if (existing.isEmpty()) {
             transferable = Math.min(stack.getCount(), Math.min(stack.getMaxStackSize(), slot.getMaxStackSize(stack)));
-        } else if (ItemStack.isSameItemSameComponents(existing, stack)) {
+        } else if (ItemStackEquivalence.sameItemAndData(existing, stack)) {
             int capacity = Math.max(0, Math.min(existing.getMaxStackSize(), slot.getMaxStackSize(existing)) - existing.getCount());
             transferable = Math.min(stack.getCount(), capacity);
         } else {
@@ -865,7 +863,7 @@ final class BuiltinInventoryActionExecutor {
             merged.setCount(unattempted);
             return merged;
         }
-        if (ItemStack.isSameItemSameComponents(resultRemainder, originalStack)) {
+        if (ItemStackEquivalence.sameItemAndData(resultRemainder, originalStack)) {
             resultRemainder.grow(unattempted);
             return resultRemainder;
         }
@@ -1066,7 +1064,7 @@ final class BuiltinInventoryActionExecutor {
         if (input.isEmpty() || source == null || !source.supports(InventoryCapability.INSERT)) {
             return false;
         }
-        return existing.isEmpty() || ItemStack.isSameItemSameComponents(existing, input);
+        return existing.isEmpty() || ItemStackEquivalence.sameItemAndData(existing, input);
     }
 
     private static int transferableCount(ItemStack existing, ItemStack input, InventorySourceDescriptor source) {
@@ -1091,7 +1089,7 @@ final class BuiltinInventoryActionExecutor {
             return inventory.armor.get(playerSlot - 36);
         }
         if (playerSlot == 40 && !inventory.offhand.isEmpty()) {
-            return inventory.offhand.getFirst();
+            return inventory.offhand.get(0);
         }
         return ItemStack.EMPTY;
     }

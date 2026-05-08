@@ -1,12 +1,21 @@
 package dev.imagio.slot.neoforge.screen.ldlib;
 
+import com.lowdragmc.lowdraglib2.gui.sync.rpc.RPCEvent;
 import com.lowdragmc.lowdraglib2.gui.sync.rpc.RPCEmitter;
 import com.lowdragmc.lowdraglib2.gui.sync.rpc.RPCEventBuilder;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.ui.action.WorkspaceActionChannel;
+import dev.imagio.slot.ui.action.WorkspaceActionCatalog;
+import dev.imagio.slot.ui.action.WorkspaceActionId;
+import dev.imagio.slot.ui.action.WorkspaceActionValidation;
+import dev.imagio.slot.ui.action.WorkspaceActionValidator;
 
-final class WorkspaceRpcDispatcher {
+import java.util.EnumMap;
+
+final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
     private final SlotWorkspaceUiController host;
+    private final EnumMap<WorkspaceActionId, RPCEmitter> actionEmitters = new EnumMap<>(WorkspaceActionId.class);
 
     RPCEmitter transferEmitter;
     RPCEmitter homeEmitter;
@@ -72,8 +81,47 @@ final class WorkspaceRpcDispatcher {
         this.host = host;
     }
 
+    private RPCEmitter add(WorkspaceActionId action, RPCEvent event) {
+        var definition = WorkspaceActionCatalog.require(action);
+        if (event == null) {
+            throw new IllegalArgumentException("Missing RPC event for " + definition.wireId());
+        }
+        if (event.argHolders().length != definition.argumentTypes().size()) {
+            throw new IllegalArgumentException("RPC argument count mismatch for " + definition.wireId());
+        }
+        for (int index = 0; index < event.argHolders().length; index++) {
+            Class<?> expected = definition.argumentTypes().get(index).javaType();
+            if (!expected.equals(event.argHolders()[index].type)) {
+                throw new IllegalArgumentException(
+                        "RPC argument " + index + " mismatch for " + definition.wireId()
+                                + ": expected " + expected + " got " + event.argHolders()[index].type
+                );
+            }
+        }
+        RPCEmitter emitter = host.root.addRPCEvent(event);
+        if (actionEmitters.put(action, emitter) != null) {
+            throw new IllegalStateException("Duplicate workspace RPC action registration: " + action);
+        }
+        return emitter;
+    }
+
+    @Override
+    public boolean send(WorkspaceActionId action, Object... arguments) {
+        WorkspaceActionValidation validation = WorkspaceActionValidator.validate(action, arguments);
+        if (!validation.valid()) {
+            host.localStatus.set("action rejected: " + validation.diagnostics());
+            return false;
+        }
+        RPCEmitter emitter = actionEmitters.get(action);
+        if (emitter == null) {
+            host.localStatus.set("action unavailable: " + (action == null ? "<missing>" : action.wireId()));
+            return false;
+        }
+        return emitter.send(arguments == null ? new Object[0] : arguments);
+    }
+
     void register() {
-        transferEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        transferEmitter = add(WorkspaceActionId.TRANSFER, RPCEventBuilder.simple(
                 Integer.class,
                 Integer.class,
                 Integer.class,
@@ -81,7 +129,7 @@ final class WorkspaceRpcDispatcher {
                 String.class,
                 host.session::transfer
         ));
-        homeEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        homeEmitter = add(WorkspaceActionId.ASSIGN_HOME, RPCEventBuilder.simple(
                 String.class,
                 String.class,
                 String.class,
@@ -89,7 +137,7 @@ final class WorkspaceRpcDispatcher {
                 Integer.class,
                 host.session::assignHome
         ));
-        createNamedIslandEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        createNamedIslandEmitter = add(WorkspaceActionId.CREATE_NAMED_ISLAND, RPCEventBuilder.simple(
                 String.class,
                 String.class,
                 String.class,
@@ -99,65 +147,65 @@ final class WorkspaceRpcDispatcher {
                 Integer.class,
                 host.session::createNamedIslandForItem
         ));
-        hotbarToAtlasEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        hotbarToAtlasEmitter = add(WorkspaceActionId.MOVE_HOTBAR_TO_ATLAS, RPCEventBuilder.simple(
                 Integer.class,
                 String.class,
                 Integer.class,
                 host.session::moveHotbarToAtlas
         ));
-        moveIslandEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        moveIslandEmitter = add(WorkspaceActionId.MOVE_ISLAND, RPCEventBuilder.simple(
                 String.class,
                 Double.class,
                 Double.class,
                 host.session::moveIsland
         ));
-        reorderIslandEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        reorderIslandEmitter = add(WorkspaceActionId.REORDER_ISLAND, RPCEventBuilder.simple(
                 String.class,
                 Integer.class,
                 host.session::reorderIsland
         ));
-        moveChestEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        moveChestEmitter = add(WorkspaceActionId.MOVE_CHEST, RPCEventBuilder.simple(
                 String.class,
                 Integer.class,
                 Integer.class,
                 host.session::moveChest
         ));
-        relabelChestEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        relabelChestEmitter = add(WorkspaceActionId.RELABEL_CHEST, RPCEventBuilder.simple(
                 String.class,
                 String.class,
                 host.session::relabelChest
         ));
-        forgetChestEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        forgetChestEmitter = add(WorkspaceActionId.FORGET_CHEST, RPCEventBuilder.simple(
                 String.class,
                 host.session::forgetChest
         ));
-        claimChestAtPosEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        claimChestAtPosEmitter = add(WorkspaceActionId.CLAIM_CHEST_AT_POS, RPCEventBuilder.simple(
                 String.class,
                 Integer.class,
                 Integer.class,
                 Integer.class,
                 host.session::claimChestAtPos
         ));
-        forgetItemAffinityEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        forgetItemAffinityEmitter = add(WorkspaceActionId.FORGET_ITEM_AFFINITY, RPCEventBuilder.simple(
                 String.class,
                 String.class,
                 String.class,
                 String.class,
                 host.session::forgetItemAffinity
         ));
-        depositEmitter = host.root.addRPCEvent(RPCEventBuilder.simple((Runnable) host.session::deposit));
-        takeAllEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        depositEmitter = add(WorkspaceActionId.DEPOSIT, RPCEventBuilder.simple((Runnable) host.session::deposit));
+        takeAllEmitter = add(WorkspaceActionId.TAKE_ALL_FROM_CHEST, RPCEventBuilder.simple(
                 String.class,
                 host.session::takeAllFromChest
         ));
-        lootChestTakeAllEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        lootChestTakeAllEmitter = add(WorkspaceActionId.LOOT_CHEST_TAKE_ALL, RPCEventBuilder.simple(
                 String.class,
                 Integer.class,
                 Integer.class,
                 Integer.class,
                 host.session::takeAllFromLootChest
         ));
-        lootChestTakeIdentityEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        lootChestTakeIdentityEmitter = add(WorkspaceActionId.LOOT_CHEST_TAKE_IDENTITY, RPCEventBuilder.simple(
                 String.class,
                 Integer.class,
                 Integer.class,
@@ -167,14 +215,14 @@ final class WorkspaceRpcDispatcher {
                 String.class,
                 host.session::takeIdentityFromLootChest
         ));
-        lootChestOpenVanillaEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        lootChestOpenVanillaEmitter = add(WorkspaceActionId.LOOT_CHEST_OPEN_VANILLA, RPCEventBuilder.simple(
                 String.class,
                 Integer.class,
                 Integer.class,
                 Integer.class,
                 host.session::openVanillaForLootChest
         ));
-        lootChestClaimAndDepositEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        lootChestClaimAndDepositEmitter = add(WorkspaceActionId.LOOT_CHEST_CLAIM_AND_DEPOSIT, RPCEventBuilder.simple(
                 String.class,
                 Integer.class,
                 Integer.class,
@@ -184,37 +232,37 @@ final class WorkspaceRpcDispatcher {
                 String.class,
                 host.session::claimAndDepositCarriedToLootChest
         ));
-        setSearchQueryEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        setSearchQueryEmitter = add(WorkspaceActionId.SET_SEARCH_QUERY, RPCEventBuilder.simple(
                 String.class,
                 host.session::setSearchQuery
         ));
-        renameClusterEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        renameClusterEmitter = add(WorkspaceActionId.RENAME_CLUSTER, RPCEventBuilder.simple(
                 String.class,
                 String.class,
                 host.session::renameCluster
         ));
-        renameIslandEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        renameIslandEmitter = add(WorkspaceActionId.RENAME_ISLAND, RPCEventBuilder.simple(
                 String.class,
                 String.class,
                 host.session::renameIsland
         ));
-        recolorIslandEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        recolorIslandEmitter = add(WorkspaceActionId.RECOLOR_ISLAND, RPCEventBuilder.simple(
                 String.class,
                 Integer.class,
                 host.session::recolorIsland
         ));
-        setIslandIconEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        setIslandIconEmitter = add(WorkspaceActionId.SET_ISLAND_ICON, RPCEventBuilder.simple(
                 String.class,
                 String.class,
                 String.class,
                 String.class,
                 host.session::setIslandIcon
         ));
-        deleteIslandEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        deleteIslandEmitter = add(WorkspaceActionId.DELETE_ISLAND, RPCEventBuilder.simple(
                 String.class,
                 host.session::deleteIsland
         ));
-        acceptChipEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        acceptChipEmitter = add(WorkspaceActionId.ACCEPT_CHIP, RPCEventBuilder.simple(
                 String.class,
                 String.class,
                 String.class,
@@ -222,36 +270,36 @@ final class WorkspaceRpcDispatcher {
                 String.class,
                 host.session::acceptChip
         ));
-        saveKitEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        saveKitEmitter = add(WorkspaceActionId.SAVE_KIT, RPCEventBuilder.simple(
                 String.class,
                 host.session::saveBeltAsKit
         ));
-        activateKitEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        activateKitEmitter = add(WorkspaceActionId.ACTIVATE_KIT, RPCEventBuilder.simple(
                 String.class,
                 host.session::activateKit
         ));
-        deactivateKitEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        deactivateKitEmitter = add(WorkspaceActionId.DEACTIVATE_KIT, RPCEventBuilder.simple(
                 (Runnable) host.session::deactivateKit
         ));
-        undoEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        undoEmitter = add(WorkspaceActionId.UNDO, RPCEventBuilder.simple(
                 (Runnable) host.session::performUndo
         ));
-        redoEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        redoEmitter = add(WorkspaceActionId.REDO, RPCEventBuilder.simple(
                 (Runnable) host.session::performRedo
         ));
-        deleteKitEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        deleteKitEmitter = add(WorkspaceActionId.DELETE_KIT, RPCEventBuilder.simple(
                 String.class,
                 host.session::deleteKit
         ));
-        switchKitPageEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        switchKitPageEmitter = add(WorkspaceActionId.SWITCH_KIT_PAGE, RPCEventBuilder.simple(
                 Integer.class,
                 host.session::switchKitPage
         ));
-        addKitPageEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        addKitPageEmitter = add(WorkspaceActionId.ADD_KIT_PAGE, RPCEventBuilder.simple(
                 String.class,
                 host.session::addKitPage
         ));
-        removeKitPageEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        removeKitPageEmitter = add(WorkspaceActionId.REMOVE_KIT_PAGE, RPCEventBuilder.simple(
                 String.class,
                 Integer.class,
                 host.session::removeKitPage
@@ -260,7 +308,7 @@ final class WorkspaceRpcDispatcher {
         // kit-scoped desired count for an explicit kitId, even when that
         // kit isn't the active one. The kit-rack UI uses count=1 for "add"
         // and count=0 for "remove."
-        setKitScopedDesiredCountEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        setKitScopedDesiredCountEmitter = add(WorkspaceActionId.SET_KIT_SCOPED_DESIRED_COUNT, RPCEventBuilder.simple(
                 String.class,    // kitId
                 String.class,    // itemId
                 String.class,    // comparisonMode
@@ -268,7 +316,7 @@ final class WorkspaceRpcDispatcher {
                 Integer.class,   // count (0 = clear)
                 host.session::setKitScopedDesiredCount
         ));
-        setKitSlotIdentityEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        setKitSlotIdentityEmitter = add(WorkspaceActionId.SET_KIT_SLOT_IDENTITY, RPCEventBuilder.simple(
                 String.class,
                 Integer.class,
                 Integer.class,
@@ -277,137 +325,137 @@ final class WorkspaceRpcDispatcher {
                 String.class,
                 host.session::setKitSlotIdentity
         ));
-        renameKitEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        renameKitEmitter = add(WorkspaceActionId.RENAME_KIT, RPCEventBuilder.simple(
                 String.class,
                 String.class,
                 host.session::renameKit
         ));
-        duplicateKitEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        duplicateKitEmitter = add(WorkspaceActionId.DUPLICATE_KIT, RPCEventBuilder.simple(
                 String.class,
                 host.session::duplicateKit
         ));
-        swapKitSlotsEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        swapKitSlotsEmitter = add(WorkspaceActionId.SWAP_KIT_SLOTS, RPCEventBuilder.simple(
                 String.class,
                 Integer.class,
                 Integer.class,
                 Integer.class,
                 host.session::swapKitSlots
         ));
-        returnHotbarToHomeEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        returnHotbarToHomeEmitter = add(WorkspaceActionId.RETURN_HOTBAR_TO_HOME, RPCEventBuilder.simple(
                 Integer.class,
                 host.session::returnHotbarToHome
         ));
-        assignHomeToFreeHotbarEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        assignHomeToFreeHotbarEmitter = add(WorkspaceActionId.ASSIGN_HOME_TO_FREE_HOTBAR, RPCEventBuilder.simple(
                 String.class,
                 String.class,
                 String.class,
                 host.session::assignHomeToFreeHotbar
         ));
-        depositCarriedToChestEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        depositCarriedToChestEmitter = add(WorkspaceActionId.DEPOSIT_CARRIED_TO_CHEST, RPCEventBuilder.simple(
                 String.class,
                 String.class,
                 String.class,
                 String.class,
                 host.session::depositCarriedToChest
         ));
-        depositHotbarToChestEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        depositHotbarToChestEmitter = add(WorkspaceActionId.DEPOSIT_HOTBAR_TO_CHEST, RPCEventBuilder.simple(
                 Integer.class,
                 String.class,
                 host.session::depositHotbarToChest
         ));
-        takeFromChestEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        takeFromChestEmitter = add(WorkspaceActionId.TAKE_FROM_CHEST, RPCEventBuilder.simple(
                 String.class,
                 Integer.class,
                 host.session::takeFromChest
         ));
-        takeOneFromChestEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        takeOneFromChestEmitter = add(WorkspaceActionId.TAKE_ONE_FROM_CHEST, RPCEventBuilder.simple(
                 String.class,
                 Integer.class,
                 host.session::takeOneFromChest
         ));
-        takeOneByIdentityEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        takeOneByIdentityEmitter = add(WorkspaceActionId.TAKE_ONE_BY_IDENTITY, RPCEventBuilder.simple(
                 String.class,
                 String.class,
                 String.class,
                 host.session::takeOneByIdentity
         ));
-        takeStackByIdentityEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        takeStackByIdentityEmitter = add(WorkspaceActionId.TAKE_STACK_BY_IDENTITY, RPCEventBuilder.simple(
                 String.class,
                 String.class,
                 String.class,
                 host.session::takeStackByIdentity
         ));
-        assignHomeToHotbarOnlyEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        assignHomeToHotbarOnlyEmitter = add(WorkspaceActionId.ASSIGN_HOME_TO_HOTBAR_ONLY, RPCEventBuilder.simple(
                 String.class,
                 String.class,
                 String.class,
                 host.session::assignHomeToHotbarOnly
         ));
-        assignIdentityToHotbarSlotEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        assignIdentityToHotbarSlotEmitter = add(WorkspaceActionId.ASSIGN_IDENTITY_TO_HOTBAR_SLOT, RPCEventBuilder.simple(
                 String.class,
                 String.class,
                 String.class,
                 Integer.class,
                 host.session::assignIdentityToHotbarSlot
         ));
-        depositHomeToLinkedChestEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        depositHomeToLinkedChestEmitter = add(WorkspaceActionId.DEPOSIT_HOME_TO_LINKED_CHEST, RPCEventBuilder.simple(
                 String.class,
                 String.class,
                 String.class,
                 host.session::depositHomeToLinkedChest
         ));
-        depositOneHomeToLinkedChestEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        depositOneHomeToLinkedChestEmitter = add(WorkspaceActionId.DEPOSIT_ONE_HOME_TO_LINKED_CHEST, RPCEventBuilder.simple(
                 String.class,
                 String.class,
                 String.class,
                 host.session::depositOneHomeToLinkedChest
         ));
-        setPlayerDesiredCountEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        setPlayerDesiredCountEmitter = add(WorkspaceActionId.SET_PLAYER_DESIRED_COUNT, RPCEventBuilder.simple(
                 String.class,    // itemId
                 String.class,    // comparisonMode
                 String.class,    // componentFingerprint
                 Integer.class,   // count (0 = clear)
                 host.session::setPlayerDesiredCount
         ));
-        adjustPlayerDesiredCountEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        adjustPlayerDesiredCountEmitter = add(WorkspaceActionId.ADJUST_PLAYER_DESIRED_COUNT, RPCEventBuilder.simple(
                 String.class,    // itemId
                 String.class,    // comparisonMode
                 String.class,    // componentFingerprint
                 Integer.class,   // delta (signed, often ±1 from ctrl+scroll)
                 host.session::adjustPlayerDesiredCount
         ));
-        crossSurfaceDropOnHostSlotEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        crossSurfaceDropOnHostSlotEmitter = add(WorkspaceActionId.CROSS_SURFACE_DROP_ON_HOST_SLOT, RPCEventBuilder.simple(
                 String.class,    // itemId
                 String.class,    // comparisonMode
                 String.class,    // componentFingerprint
                 Integer.class,   // hostSlotIndex
                 host.session::crossSurfaceDropOnHostSlot
         ));
-        crossSurfaceQuickMoveAtlasEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        crossSurfaceQuickMoveAtlasEmitter = add(WorkspaceActionId.CROSS_SURFACE_QUICK_MOVE_ATLAS, RPCEventBuilder.simple(
                 String.class,    // itemId
                 String.class,    // comparisonMode
                 String.class,    // componentFingerprint
                 Integer.class,   // count of stacks to quick-move
                 host.session::crossSurfaceQuickMoveAtlas
         ));
-        pickupToCursorEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        pickupToCursorEmitter = add(WorkspaceActionId.PICKUP_TO_CURSOR, RPCEventBuilder.simple(
                 String.class,    // itemId
                 String.class,    // comparisonMode
                 String.class,    // componentFingerprint
                 Integer.class,   // count cap (Integer.MAX_VALUE for full)
                 host.session::pickupToCursor
         ));
-        cursorCancelEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        cursorCancelEmitter = add(WorkspaceActionId.CURSOR_CANCEL, RPCEventBuilder.simple(
                 (Runnable) host.session::cursorCancel
         ));
-        cursorSmartDepositEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        cursorSmartDepositEmitter = add(WorkspaceActionId.CURSOR_SMART_DEPOSIT, RPCEventBuilder.simple(
                 (Runnable) host.session::cursorSmartDeposit
         ));
-        dropCursorIntoChestEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        dropCursorIntoChestEmitter = add(WorkspaceActionId.DROP_CURSOR_INTO_CHEST, RPCEventBuilder.simple(
                 String.class,
                 host.session::dropCursorIntoChest
         ));
-        dropCursorAtHotbarEmitter = host.root.addRPCEvent(RPCEventBuilder.simple(
+        dropCursorAtHotbarEmitter = add(WorkspaceActionId.DROP_CURSOR_AT_HOTBAR, RPCEventBuilder.simple(
                 Integer.class,
                 Integer.class,
                 host.session::dropCursorAtHotbar
@@ -415,16 +463,16 @@ final class WorkspaceRpcDispatcher {
     }
 
     void sendUndo() {
-        if (undoEmitter != null) {
+        if (actionEmitters.containsKey(WorkspaceActionId.UNDO)) {
             host.localStatus.set("undo");
-            undoEmitter.send();
+            send(WorkspaceActionId.UNDO);
         }
     }
 
     void sendRedo() {
-        if (redoEmitter != null) {
+        if (actionEmitters.containsKey(WorkspaceActionId.REDO)) {
             host.localStatus.set("redo");
-            redoEmitter.send();
+            send(WorkspaceActionId.REDO);
         }
     }
 
@@ -432,7 +480,7 @@ final class WorkspaceRpcDispatcher {
         if (depositCarriedToChestEmitter == null || identity == null || storageId == null || storageId.isBlank()) {
             return;
         }
-        boolean sent = depositCarriedToChestEmitter.send(
+        boolean sent = send(WorkspaceActionId.DEPOSIT_CARRIED_TO_CHEST,
                 identity.itemId(),
                 identity.comparisonMode(),
                 identity.componentFingerprint(),
@@ -448,7 +496,7 @@ final class WorkspaceRpcDispatcher {
         if (depositHotbarToChestEmitter == null || storageId == null || storageId.isBlank()) {
             return;
         }
-        boolean sent = depositHotbarToChestEmitter.send(hotbarIndex, storageId);
+        boolean sent = send(WorkspaceActionId.DEPOSIT_HOTBAR_TO_CHEST, hotbarIndex, storageId);
         if (!sent) {
             host.localStatus.set("deposit unavailable");
             host.rebuild();
@@ -459,7 +507,7 @@ final class WorkspaceRpcDispatcher {
         if (takeFromChestEmitter == null || storageId == null || storageId.isBlank()) {
             return;
         }
-        boolean sent = takeFromChestEmitter.send(storageId, chestSlotIndex);
+        boolean sent = send(WorkspaceActionId.TAKE_FROM_CHEST, storageId, chestSlotIndex);
         if (!sent) {
             host.localStatus.set("take unavailable");
             host.rebuild();
@@ -470,7 +518,7 @@ final class WorkspaceRpcDispatcher {
         if (lootChestTakeAllEmitter == null || panel == null || !panel.isPresent()) {
             return;
         }
-        boolean sent = lootChestTakeAllEmitter.send(
+        boolean sent = send(WorkspaceActionId.LOOT_CHEST_TAKE_ALL,
                 panel.dimensionId(),
                 panel.chestX(),
                 panel.chestY(),
@@ -488,7 +536,7 @@ final class WorkspaceRpcDispatcher {
         if (renameClusterEmitter == null || clusterId == null || clusterId.isBlank()) {
             return;
         }
-        boolean sent = renameClusterEmitter.send(clusterId, label == null ? "" : label);
+        boolean sent = send(WorkspaceActionId.RENAME_CLUSTER, clusterId, label == null ? "" : label);
         if (!sent) {
             host.localStatus.set("rename cluster unavailable");
             host.rebuild();
@@ -502,7 +550,7 @@ final class WorkspaceRpcDispatcher {
         if (lootChestTakeIdentityEmitter == null || panel == null || !panel.isPresent() || item == null) {
             return;
         }
-        boolean sent = lootChestTakeIdentityEmitter.send(
+        boolean sent = send(WorkspaceActionId.LOOT_CHEST_TAKE_IDENTITY,
                 panel.dimensionId(),
                 panel.chestX(),
                 panel.chestY(),
@@ -528,7 +576,7 @@ final class WorkspaceRpcDispatcher {
         if (setSearchQueryEmitter == null) {
             return;
         }
-        setSearchQueryEmitter.send(query == null ? "" : query);
+        send(WorkspaceActionId.SET_SEARCH_QUERY, query == null ? "" : query);
     }
 
     void sendLootChestClaimAndDeposit(
@@ -538,7 +586,7 @@ final class WorkspaceRpcDispatcher {
         if (lootChestClaimAndDepositEmitter == null || panel == null || !panel.isPresent() || identity == null) {
             return;
         }
-        boolean sent = lootChestClaimAndDepositEmitter.send(
+        boolean sent = send(WorkspaceActionId.LOOT_CHEST_CLAIM_AND_DEPOSIT,
                 panel.dimensionId(),
                 panel.chestX(),
                 panel.chestY(),
@@ -559,7 +607,7 @@ final class WorkspaceRpcDispatcher {
         if (lootChestOpenVanillaEmitter == null || panel == null || !panel.isPresent()) {
             return;
         }
-        boolean sent = lootChestOpenVanillaEmitter.send(
+        boolean sent = send(WorkspaceActionId.LOOT_CHEST_OPEN_VANILLA,
                 panel.dimensionId(),
                 panel.chestX(),
                 panel.chestY(),
@@ -577,14 +625,13 @@ final class WorkspaceRpcDispatcher {
         if (acceptChipEmitter == null) {
             return;
         }
-        host.selectedAtlasIdentity.set(item.identity());
         String templateName = chip.template() == null ? "" : chip.template().name();
         // Move only the clicked item. The previous batch-apply semantic
         // (move every atlas + triage item with a matching chip target)
         // looked like a runaway from the player's perspective: clicking
         // one Tools chip emptied half the inbox at once. Single-item is
         // the predictable mental model — one click, one move.
-        acceptChipEmitter.send(
+        send(WorkspaceActionId.ACCEPT_CHIP,
                 item.identity().itemId(),
                 item.identity().comparisonMode(),
                 item.identity().componentFingerprint(),
@@ -596,49 +643,49 @@ final class WorkspaceRpcDispatcher {
     }
 
     void sendDuplicateKit(String kitId) {
-        boolean sent = duplicateKitEmitter != null && duplicateKitEmitter.send(kitId);
+        boolean sent = send(WorkspaceActionId.DUPLICATE_KIT, kitId);
         host.localStatus.set(sent ? "duplicating kit..." : "duplicate unavailable");
         host.rebuild();
     }
 
     void sendSaveKit() {
-        boolean sent = saveKitEmitter != null && saveKitEmitter.send("");
+        boolean sent = send(WorkspaceActionId.SAVE_KIT, "");
         host.localStatus.set(sent ? "saving kit..." : "save kit unavailable");
         host.rebuild();
     }
 
     void sendActivateKit(String kitId) {
-        boolean sent = activateKitEmitter != null && activateKitEmitter.send(kitId);
+        boolean sent = send(WorkspaceActionId.ACTIVATE_KIT, kitId);
         host.localStatus.set(sent ? "activating kit..." : "activate kit unavailable");
         host.rebuild();
     }
 
     void sendDeactivateKit() {
-        boolean sent = deactivateKitEmitter != null && deactivateKitEmitter.send();
+        boolean sent = send(WorkspaceActionId.DEACTIVATE_KIT);
         host.localStatus.set(sent ? "deactivating kit..." : "deactivate kit unavailable");
         host.rebuild();
     }
 
     void sendDeleteKit(String kitId) {
-        boolean sent = deleteKitEmitter != null && deleteKitEmitter.send(kitId);
+        boolean sent = send(WorkspaceActionId.DELETE_KIT, kitId);
         host.localStatus.set(sent ? "deleting kit..." : "delete kit unavailable");
         host.rebuild();
     }
 
     void sendSwitchKitPage(int direction) {
-        boolean sent = switchKitPageEmitter != null && switchKitPageEmitter.send(direction);
+        boolean sent = send(WorkspaceActionId.SWITCH_KIT_PAGE, direction);
         host.localStatus.set(sent ? "switching kit page..." : "page switch unavailable");
         host.rebuild();
     }
 
     void sendAddKitPage(String kitId) {
-        boolean sent = addKitPageEmitter != null && addKitPageEmitter.send(kitId);
+        boolean sent = send(WorkspaceActionId.ADD_KIT_PAGE, kitId);
         host.localStatus.set(sent ? "adding kit page..." : "add page unavailable");
         host.rebuild();
     }
 
     void sendRemoveKitPage(String kitId, int pageIndex) {
-        boolean sent = removeKitPageEmitter != null && removeKitPageEmitter.send(kitId, pageIndex);
+        boolean sent = send(WorkspaceActionId.REMOVE_KIT_PAGE, kitId, pageIndex);
         host.localStatus.set(sent ? "removing kit page..." : "remove page unavailable");
         host.rebuild();
     }
@@ -655,7 +702,7 @@ final class WorkspaceRpcDispatcher {
         if (kitId == null || kitId.isBlank() || identity == null) {
             return;
         }
-        boolean sent = setKitScopedDesiredCountEmitter != null && setKitScopedDesiredCountEmitter.send(
+        boolean sent = send(WorkspaceActionId.SET_KIT_SCOPED_DESIRED_COUNT,
                 kitId,
                 identity.itemId(),
                 identity.comparisonMode(),
@@ -668,8 +715,7 @@ final class WorkspaceRpcDispatcher {
     }
 
     void sendSwapKitSlots(String kitId, int pageIndex, int fromIndex, int toIndex) {
-        boolean sent = swapKitSlotsEmitter != null
-                && swapKitSlotsEmitter.send(kitId, pageIndex, fromIndex, toIndex);
+        boolean sent = send(WorkspaceActionId.SWAP_KIT_SLOTS, kitId, pageIndex, fromIndex, toIndex);
         host.localStatus.set(sent ? "swapping kit slots..." : "swap slots unavailable");
         host.rebuild();
     }
@@ -678,7 +724,7 @@ final class WorkspaceRpcDispatcher {
         String itemId = identity == null ? "" : identity.itemId();
         String comparisonMode = identity == null ? "" : identity.comparisonMode();
         String fingerprint = identity == null ? "" : identity.componentFingerprint();
-        boolean sent = setKitSlotIdentityEmitter != null && setKitSlotIdentityEmitter.send(
+        boolean sent = send(WorkspaceActionId.SET_KIT_SLOT_IDENTITY,
                 kitId, pageIndex, slotIndex, itemId, comparisonMode, fingerprint);
         host.localStatus.set(sent ? "updating kit slot..." : "update slot unavailable");
         host.rebuild();
@@ -694,7 +740,7 @@ final class WorkspaceRpcDispatcher {
         if (crossSurfaceDropOnHostSlotEmitter == null || identity == null || hostSlotIndex < 0) {
             return;
         }
-        boolean sent = crossSurfaceDropOnHostSlotEmitter.send(
+        boolean sent = send(WorkspaceActionId.CROSS_SURFACE_DROP_ON_HOST_SLOT,
                 identity.itemId(),
                 identity.comparisonMode(),
                 identity.componentFingerprint(),
@@ -721,7 +767,7 @@ final class WorkspaceRpcDispatcher {
             return;
         }
         stashLastDropped();
-        cursorCancelEmitter.send();
+        send(WorkspaceActionId.CURSOR_CANCEL);
     }
 
     /**
@@ -735,7 +781,7 @@ final class WorkspaceRpcDispatcher {
             return;
         }
         stashLastDropped();
-        cursorSmartDepositEmitter.send();
+        send(WorkspaceActionId.CURSOR_SMART_DEPOSIT);
     }
 
     /**
@@ -748,7 +794,7 @@ final class WorkspaceRpcDispatcher {
             return;
         }
         stashLastDropped();
-        boolean sent = dropCursorAtHotbarEmitter.send(hotbarIndex, button);
+        boolean sent = send(WorkspaceActionId.DROP_CURSOR_AT_HOTBAR, hotbarIndex, button);
         if (!sent) {
             host.localStatus.set("drop unavailable");
             host.rebuild();
@@ -764,7 +810,7 @@ final class WorkspaceRpcDispatcher {
             return;
         }
         stashLastDropped();
-        boolean sent = dropCursorIntoChestEmitter.send(storageId);
+        boolean sent = send(WorkspaceActionId.DROP_CURSOR_INTO_CHEST, storageId);
         if (!sent) {
             host.localStatus.set("drop unavailable");
             host.rebuild();
@@ -796,7 +842,7 @@ final class WorkspaceRpcDispatcher {
         // A fresh pickup overrides last-dropped — the new cursor identity
         // is now the active chrome source.
         host.lastDroppedIdentity = null;
-        boolean sent = pickupToCursorEmitter.send(
+        boolean sent = send(WorkspaceActionId.PICKUP_TO_CURSOR,
                 identity.itemId(),
                 identity.comparisonMode(),
                 identity.componentFingerprint(),
@@ -812,7 +858,7 @@ final class WorkspaceRpcDispatcher {
         if (crossSurfaceQuickMoveAtlasEmitter == null || identity == null || count <= 0) {
             return;
         }
-        boolean sent = crossSurfaceQuickMoveAtlasEmitter.send(
+        boolean sent = send(WorkspaceActionId.CROSS_SURFACE_QUICK_MOVE_ATLAS,
                 identity.itemId(),
                 identity.comparisonMode(),
                 identity.componentFingerprint(),
@@ -823,7 +869,7 @@ final class WorkspaceRpcDispatcher {
     }
 
     void sendTransfer(int sourceKind, int sourceIndex, int destinationKind, int destinationIndex) {
-        boolean sent = transferEmitter != null && transferEmitter.send(
+        boolean sent = send(WorkspaceActionId.TRANSFER,
                 sourceKind,
                 sourceIndex,
                 destinationKind,
@@ -831,20 +877,7 @@ final class WorkspaceRpcDispatcher {
                 "slot_workspace.ldlib.hotbar_transfer"
         );
         host.localStatus.set(sent ? "transfer requested" : "transfer unavailable");
-        host.selectedAtlasIdentity.set(null);
-        host.selectedHotbarIndex.set(-1);
         host.rebuild();
-    }
-
-    void sendAssignHome(String islandId) {
-        SlotWorkspaceViewModel.AtlasItem item = host.selectedAtlasItem();
-        if (item == null) {
-            host.localStatus.set("select an atlas item first");
-            host.rebuild();
-            return;
-        }
-        // Append at end-of-island when no spatial target was provided.
-        sendAssignHome(item.identity(), islandId, null);
     }
 
     /**
@@ -866,7 +899,7 @@ final class WorkspaceRpcDispatcher {
             host.rebuild();
             return;
         }
-        boolean sent = homeEmitter != null && homeEmitter.send(
+        boolean sent = send(WorkspaceActionId.ASSIGN_HOME,
                 identity.itemId(),
                 identity.comparisonMode(),
                 identity.componentFingerprint(),
@@ -877,8 +910,6 @@ final class WorkspaceRpcDispatcher {
             host.rememberRehomeTarget(islandId);
         }
         host.localStatus.set(sent ? "home assignment requested" : "home assignment unavailable");
-        host.selectedAtlasIdentity.set(null);
-        host.selectedHotbarIndex.set(-1);
         host.rebuild();
     }
 
@@ -886,7 +917,7 @@ final class WorkspaceRpcDispatcher {
         if (returnHotbarToHomeEmitter == null) {
             return;
         }
-        boolean sent = returnHotbarToHomeEmitter.send(hotbarIndex);
+        boolean sent = send(WorkspaceActionId.RETURN_HOTBAR_TO_HOME, hotbarIndex);
         if (!sent) {
             host.localStatus.set("return-to-home unavailable");
             host.rebuild();
@@ -897,7 +928,7 @@ final class WorkspaceRpcDispatcher {
         if (assignHomeToFreeHotbarEmitter == null || item == null) {
             return;
         }
-        boolean sent = assignHomeToFreeHotbarEmitter.send(
+        boolean sent = send(WorkspaceActionId.ASSIGN_HOME_TO_FREE_HOTBAR,
                 item.identity().itemId(),
                 item.identity().comparisonMode(),
                 item.identity().componentFingerprint()
@@ -912,7 +943,7 @@ final class WorkspaceRpcDispatcher {
         if (assignHomeToHotbarOnlyEmitter == null || item == null) {
             return;
         }
-        boolean sent = assignHomeToHotbarOnlyEmitter.send(
+        boolean sent = send(WorkspaceActionId.ASSIGN_HOME_TO_HOTBAR_ONLY,
                 item.identity().itemId(),
                 item.identity().comparisonMode(),
                 item.identity().componentFingerprint()
@@ -927,28 +958,20 @@ final class WorkspaceRpcDispatcher {
         if (assignIdentityToHotbarSlotEmitter == null || item == null) {
             return;
         }
-        boolean sent = assignIdentityToHotbarSlotEmitter.send(
+        boolean sent = send(WorkspaceActionId.ASSIGN_IDENTITY_TO_HOTBAR_SLOT,
                 item.identity().itemId(),
                 item.identity().comparisonMode(),
                 item.identity().componentFingerprint(),
                 hotbarIndex
         );
         host.localStatus.set(sent ? "transfer requested" : "transfer unavailable");
-        host.selectedAtlasIdentity.set(null);
-        host.selectedHotbarIndex.set(-1);
-        // No explicit host.rebuild here — atlas-card TICK picks up the
-        // selection change next frame, and the server sync after the RPC
-        // triggers its own host.rebuild. Calling host.rebuild() now produced a
-        // noticeable blank-frame flash because the entire content tree
-        // (header, body, statusBar) got torn down between the local
-        // state update and the server's authoritative one.
     }
 
     void sendDepositHomeToLinkedChest(SlotWorkspaceViewModel.AtlasItem item) {
         if (depositHomeToLinkedChestEmitter == null || item == null) {
             return;
         }
-        boolean sent = depositHomeToLinkedChestEmitter.send(
+        boolean sent = send(WorkspaceActionId.DEPOSIT_HOME_TO_LINKED_CHEST,
                 item.identity().itemId(),
                 item.identity().comparisonMode(),
                 item.identity().componentFingerprint()
@@ -963,7 +986,7 @@ final class WorkspaceRpcDispatcher {
         if (depositOneHomeToLinkedChestEmitter == null || item == null) {
             return;
         }
-        boolean sent = depositOneHomeToLinkedChestEmitter.send(
+        boolean sent = send(WorkspaceActionId.DEPOSIT_ONE_HOME_TO_LINKED_CHEST,
                 item.identity().itemId(),
                 item.identity().comparisonMode(),
                 item.identity().componentFingerprint()
@@ -978,7 +1001,7 @@ final class WorkspaceRpcDispatcher {
         if (takeOneFromChestEmitter == null || storageId == null || storageId.isBlank()) {
             return;
         }
-        boolean sent = takeOneFromChestEmitter.send(storageId, chestSlotIndex);
+        boolean sent = send(WorkspaceActionId.TAKE_ONE_FROM_CHEST, storageId, chestSlotIndex);
         if (!sent) {
             host.localStatus.set("take unavailable");
             host.rebuild();
@@ -989,7 +1012,7 @@ final class WorkspaceRpcDispatcher {
         if (takeOneByIdentityEmitter == null || identity == null) {
             return;
         }
-        boolean sent = takeOneByIdentityEmitter.send(
+        boolean sent = send(WorkspaceActionId.TAKE_ONE_BY_IDENTITY,
                 identity.itemId(), identity.comparisonMode(), identity.componentFingerprint());
         if (!sent) {
             host.localStatus.set("take unavailable");
@@ -1001,7 +1024,7 @@ final class WorkspaceRpcDispatcher {
         if (takeStackByIdentityEmitter == null || identity == null) {
             return;
         }
-        boolean sent = takeStackByIdentityEmitter.send(
+        boolean sent = send(WorkspaceActionId.TAKE_STACK_BY_IDENTITY,
                 identity.itemId(), identity.comparisonMode(), identity.componentFingerprint());
         if (!sent) {
             host.localStatus.set("take unavailable");
@@ -1010,14 +1033,12 @@ final class WorkspaceRpcDispatcher {
     }
 
     void sendMoveHotbarToAtlas(int hotbarIndex, String islandId, Integer ordinal) {
-        boolean sent = hotbarToAtlasEmitter != null && hotbarToAtlasEmitter.send(
+        boolean sent = send(WorkspaceActionId.MOVE_HOTBAR_TO_ATLAS,
                 hotbarIndex,
                 islandId,
                 ordinal
         );
         host.localStatus.set(sent ? "return to atlas requested" : "return to atlas unavailable");
-        host.selectedAtlasIdentity.set(null);
-        host.selectedHotbarIndex.set(-1);
         host.rebuild();
     }
 
@@ -1027,7 +1048,7 @@ final class WorkspaceRpcDispatcher {
             host.rebuild();
             return;
         }
-        boolean sent = moveIslandEmitter != null && moveIslandEmitter.send(
+        boolean sent = send(WorkspaceActionId.MOVE_ISLAND,
                 islandId,
                 worldX,
                 worldY
@@ -1045,7 +1066,7 @@ final class WorkspaceRpcDispatcher {
             host.rebuild();
             return;
         }
-        boolean sent = reorderIslandEmitter != null && reorderIslandEmitter.send(
+        boolean sent = send(WorkspaceActionId.REORDER_ISLAND,
                 islandId,
                 Math.max(0, targetIndex)
         );
@@ -1054,13 +1075,13 @@ final class WorkspaceRpcDispatcher {
     }
 
     void sendTakeAll(String storageId) {
-        boolean sent = takeAllEmitter != null && takeAllEmitter.send(storageId);
+        boolean sent = send(WorkspaceActionId.TAKE_ALL_FROM_CHEST, storageId);
         host.localStatus.set(sent ? "take-all requested" : "take-all unavailable");
         host.rebuild();
     }
 
     void sendDeposit() {
-        boolean sent = depositEmitter != null && depositEmitter.send();
+        boolean sent = send(WorkspaceActionId.DEPOSIT);
         dev.imagio.slot.SlotCommon.LOGGER.info(
                 "[SLOT] deposit RPC send: emitterPresent={} sent={}",
                 depositEmitter != null, sent);
@@ -1081,7 +1102,7 @@ final class WorkspaceRpcDispatcher {
             host.rebuild();
             return;
         }
-        boolean sent = claimChestAtPosEmitter.send(dimensionId, x, y, z);
+        boolean sent = send(WorkspaceActionId.CLAIM_CHEST_AT_POS, dimensionId, x, y, z);
         host.localStatus.set(sent ? "chest claimed" : "claim unavailable");
         host.rebuild();
     }
@@ -1090,7 +1111,7 @@ final class WorkspaceRpcDispatcher {
         if (storageId == null || storageId.isBlank()) {
             return;
         }
-        boolean sent = forgetChestEmitter != null && forgetChestEmitter.send(storageId);
+        boolean sent = send(WorkspaceActionId.FORGET_CHEST, storageId);
         host.localStatus.set(sent ? "chest forgotten" : "forget unavailable");
         host.rebuild();
     }
@@ -1099,7 +1120,7 @@ final class WorkspaceRpcDispatcher {
         if (storageId == null || storageId.isBlank() || identity == null) {
             return;
         }
-        boolean sent = forgetItemAffinityEmitter != null && forgetItemAffinityEmitter.send(
+        boolean sent = send(WorkspaceActionId.FORGET_ITEM_AFFINITY,
                 storageId,
                 identity.itemId(),
                 identity.comparisonMode(),
@@ -1115,7 +1136,7 @@ final class WorkspaceRpcDispatcher {
             host.rebuild();
             return;
         }
-        boolean sent = moveChestEmitter != null && moveChestEmitter.send(
+        boolean sent = send(WorkspaceActionId.MOVE_CHEST,
                 storageId,
                 atlasX,
                 atlasY
@@ -1128,7 +1149,7 @@ final class WorkspaceRpcDispatcher {
         if (setPlayerDesiredCountEmitter == null || identity == null) {
             return;
         }
-        boolean sent = setPlayerDesiredCountEmitter.send(
+        boolean sent = send(WorkspaceActionId.SET_PLAYER_DESIRED_COUNT,
                 identity.itemId(),
                 identity.comparisonMode(),
                 identity.componentFingerprint(),
@@ -1144,7 +1165,7 @@ final class WorkspaceRpcDispatcher {
         if (adjustPlayerDesiredCountEmitter == null || identity == null || delta == 0) {
             return;
         }
-        boolean sent = adjustPlayerDesiredCountEmitter.send(
+        boolean sent = send(WorkspaceActionId.ADJUST_PLAYER_DESIRED_COUNT,
                 identity.itemId(),
                 identity.comparisonMode(),
                 identity.componentFingerprint(),

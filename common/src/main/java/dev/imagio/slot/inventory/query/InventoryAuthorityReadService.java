@@ -138,45 +138,51 @@ public final class InventoryAuthorityReadService {
         if (host == null || target == null) {
             return "";
         }
-        return switch (target) {
-            case InventoryActionTarget.CursorTarget ignored -> "";
-            case InventoryActionTarget.SourceTarget sourceTarget -> sourceTarget.sourceId();
-            case InventoryActionTarget.SourceSlotTarget sourceSlotTarget -> sourceSlotTarget.sourceId();
-            case InventoryActionTarget.SourceEntryTarget sourceEntryTarget -> sourceEntryTarget.sourceId();
-            case InventoryActionTarget.QuickAccessTarget quickAccessTarget -> {
-                dev.imagio.slot.inventory.core.QuickAccessLaneDescriptor lane = host.quickAccessLane(quickAccessTarget.laneId());
-                yield lane == null ? "" : lane.sourceId();
-            }
-            case InventoryActionTarget.EquipmentTarget equipmentTarget -> {
-                EquipmentGroupDescriptor group = host.equipmentGroup(equipmentTarget.groupId());
-                yield group == null ? "" : group.sourceId();
-            }
-            case InventoryActionTarget.ToolRegionTarget toolRegionTarget -> {
-                dev.imagio.slot.inventory.core.InventoryToolDescriptor tool = host.tool(toolRegionTarget.toolId());
-                dev.imagio.slot.inventory.core.ToolRegionDescriptor region = tool == null ? null : tool.regions().stream()
-                        .filter(candidate -> candidate != null && toolRegionTarget.regionId().equals(candidate.id()))
-                        .findFirst()
-                        .orElse(null);
-                yield region == null ? "" : region.linkedSourceId();
-            }
-            case InventoryActionTarget.ToolControlTarget ignored -> "";
-        };
+        if (target instanceof InventoryActionTarget.SourceTarget sourceTarget) {
+            return sourceTarget.sourceId();
+        }
+        if (target instanceof InventoryActionTarget.SourceSlotTarget sourceSlotTarget) {
+            return sourceSlotTarget.sourceId();
+        }
+        if (target instanceof InventoryActionTarget.SourceEntryTarget sourceEntryTarget) {
+            return sourceEntryTarget.sourceId();
+        }
+        if (target instanceof InventoryActionTarget.QuickAccessTarget quickAccessTarget) {
+            dev.imagio.slot.inventory.core.QuickAccessLaneDescriptor lane = host.quickAccessLane(quickAccessTarget.laneId());
+            return lane == null ? "" : lane.sourceId();
+        }
+        if (target instanceof InventoryActionTarget.EquipmentTarget equipmentTarget) {
+            EquipmentGroupDescriptor group = host.equipmentGroup(equipmentTarget.groupId());
+            return group == null ? "" : group.sourceId();
+        }
+        if (target instanceof InventoryActionTarget.ToolRegionTarget toolRegionTarget) {
+            dev.imagio.slot.inventory.core.InventoryToolDescriptor tool = host.tool(toolRegionTarget.toolId());
+            dev.imagio.slot.inventory.core.ToolRegionDescriptor region = tool == null ? null : tool.regions().stream()
+                    .filter(candidate -> candidate != null && toolRegionTarget.regionId().equals(candidate.id()))
+                    .findFirst()
+                    .orElse(null);
+            return region == null ? "" : region.linkedSourceId();
+        }
+        return "";
     }
 
     public static int slotIndex(InventoryHostDescriptor host, InventoryActionTarget target) {
         if (host == null || target == null) {
             return -1;
         }
-        return switch (target) {
-            case InventoryActionTarget.CursorTarget ignored -> -1;
-            case InventoryActionTarget.SourceTarget ignored -> -1;
-            case InventoryActionTarget.SourceSlotTarget sourceSlotTarget -> sourceSlotTarget.slotIndex();
-            case InventoryActionTarget.SourceEntryTarget ignored -> -1;
-            case InventoryActionTarget.QuickAccessTarget quickAccessTarget -> quickAccessTarget.slotIndex();
-            case InventoryActionTarget.EquipmentTarget equipmentTarget -> equipmentTarget.slotIndex();
-            case InventoryActionTarget.ToolRegionTarget toolRegionTarget -> toolRegionTarget.slotIndex();
-            case InventoryActionTarget.ToolControlTarget ignored -> -1;
-        };
+        if (target instanceof InventoryActionTarget.SourceSlotTarget sourceSlotTarget) {
+            return sourceSlotTarget.slotIndex();
+        }
+        if (target instanceof InventoryActionTarget.QuickAccessTarget quickAccessTarget) {
+            return quickAccessTarget.slotIndex();
+        }
+        if (target instanceof InventoryActionTarget.EquipmentTarget equipmentTarget) {
+            return equipmentTarget.slotIndex();
+        }
+        if (target instanceof InventoryActionTarget.ToolRegionTarget toolRegionTarget) {
+            return toolRegionTarget.slotIndex();
+        }
+        return -1;
     }
 
     public static String entryId(InventoryActionTarget target) {
@@ -278,7 +284,7 @@ public final class InventoryAuthorityReadService {
         if (inventory.offhand.isEmpty()) {
             return List.of();
         }
-        ItemStack stack = inventory.offhand.getFirst();
+        ItemStack stack = inventory.offhand.get(0);
         if (stack == null || stack.isEmpty()) {
             return List.of();
         }

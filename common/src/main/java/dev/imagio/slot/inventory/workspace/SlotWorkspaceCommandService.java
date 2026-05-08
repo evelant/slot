@@ -15,6 +15,7 @@ import dev.imagio.slot.inventory.triage.WithinIslandOrdering;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.CollectionDefinition;
 import dev.imagio.slot.workflow.domain.DomainEventMetadata;
+import dev.imagio.slot.workflow.domain.DesiredCountWorkflowDomainService;
 import dev.imagio.slot.workflow.domain.KitDefinition;
 import dev.imagio.slot.workflow.domain.KitPage;
 import dev.imagio.slot.workflow.domain.KitSnapshotSupport;
@@ -953,6 +954,106 @@ public final class SlotWorkspaceCommandService {
         }
         String detail = (identity == null ? "cleared" : identity.itemId());
         return WorkspaceCommandOutcome.accepted(status, detail);
+    }
+
+    public static WorkspaceCommandOutcome setKitScopedDesiredCount(
+            WorkflowDomainRuntime runtime,
+            String kitId,
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            int count
+    ) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_runtime");
+        }
+        if (kitId == null || kitId.isBlank()) {
+            return WorkspaceCommandOutcome.rejected("invalid_kit_id");
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_identity");
+        }
+        if (runtime.kitWorkflow().kit(kitId) == null) {
+            return WorkspaceCommandOutcome.rejected("unknown_kit");
+        }
+        boolean changed = runtime.desiredCountWorkflow().setForKit(kitId, identity, count);
+        if (!changed) {
+            return WorkspaceCommandOutcome.accepted("noop", "");
+        }
+        return WorkspaceCommandOutcome.accepted(
+                count > 0 ? "kit_desired_set_" + count : "kit_desired_cleared",
+                "");
+    }
+
+    /**
+     * Set the active-scope desired count. If a kit is active the write lands
+     * in that kit's desired-count scope; otherwise it lands in the player
+     * global scope. The platform adapter must not choose the scope.
+     */
+    public static WorkspaceCommandOutcome setPlayerDesiredCount(
+            WorkflowDomainRuntime runtime,
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            int count
+    ) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_desired_count_runtime");
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_identity");
+        }
+        DesiredCountWorkflowDomainService desired = runtime.desiredCountWorkflow();
+        String activeKit = desired.activeScope(runtime.snapshot().kitMap());
+        boolean changed = activeKit != null
+                ? desired.setForKit(activeKit, identity, count)
+                : desired.setPlayer(identity, count);
+        if (!changed) {
+            return WorkspaceCommandOutcome.accepted("noop", "");
+        }
+        String scopeTag = activeKit != null ? "kit" : "global";
+        return WorkspaceCommandOutcome.accepted(
+                count > 0 ? "desired_count_" + scopeTag + "_" + count : "desired_count_cleared",
+                "");
+    }
+
+    /**
+     * Adjust the active-scope desired count. Mirrors
+     * {@link #setPlayerDesiredCount}: kit scope wins while a kit is active,
+     * otherwise the player-global standing order is changed.
+     */
+    public static WorkspaceCommandOutcome adjustPlayerDesiredCount(
+            WorkflowDomainRuntime runtime,
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            int delta
+    ) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_desired_count_runtime");
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_identity");
+        }
+        if (delta == 0) {
+            return WorkspaceCommandOutcome.accepted("noop", "");
+        }
+        DesiredCountWorkflowDomainService desired = runtime.desiredCountWorkflow();
+        String activeKit = desired.activeScope(runtime.snapshot().kitMap());
+        boolean changed = activeKit != null
+                ? desired.adjustForKit(activeKit, identity, delta)
+                : desired.adjustPlayer(identity, delta);
+        if (!changed) {
+            return WorkspaceCommandOutcome.accepted("noop", "");
+        }
+        int now = activeKit != null
+                ? desired.getForKit(activeKit, identity)
+                : desired.getPlayer(identity);
+        String scopeTag = activeKit != null ? "kit" : "global";
+        return WorkspaceCommandOutcome.accepted("desired_count_" + scopeTag + "_" + now, "");
     }
 
     public static WorkspaceCommandOutcome swapKitSlots(

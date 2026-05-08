@@ -230,10 +230,6 @@ final class LootChestPanelBuilder {
             if (event.button != 0) {
                 return;
             }
-            // Shift+click is the fast path: accept the top chip (if any)
-            // and take immediately. Plain click only selects so the player
-            // can drag the row out to an island / empty atlas without
-            // accidentally home-and-take on every press.
             if (Screen.hasShiftDown()) {
                 if (!item.chipSuggestions().isEmpty()) {
                     host.rpc.sendChipAccept(item, item.chipSuggestions().get(0));
@@ -241,9 +237,7 @@ final class LootChestPanelBuilder {
                 host.rpc.sendLootChestTakeIdentity(panel, item);
                 return;
             }
-            host.selectedAtlasIdentity.set(item.identity());
-            host.selectedHotbarIndex.set(-1);
-            host.localStatus.set("selected " + item.name() + ": drag to an island, or shift-click to take");
+            host.hoveredAtlasIdentity = item.identity();
         });
         host.drag.installAtlasHoverTooltip(row, item);
         host.drag.installAtlasItemDragSource(row, item);

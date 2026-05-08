@@ -4,21 +4,22 @@ import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.*;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceUi.*;
 
 import com.lowdragmc.lowdraglib2.gui.ui.UIElement;
-import com.lowdragmc.lowdraglib2.gui.ui.data.Horizontal;
-import com.lowdragmc.lowdraglib2.gui.ui.data.Vertical;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.ScrollerView;
-import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.neoforge.screen.ldlib.util.Observable;
+import dev.imagio.slot.ui.spi.SlotUiElement;
+import dev.imagio.slot.ui.workspace.WallCardUiBuilder;
+import dev.imagio.slot.ui.workspace.WallSectionHeaderUiBuilder;
+import dev.imagio.slot.ui.workspace.WallSectionUiBuilder;
+import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
-import dev.vfyjxf.taffy.style.AlignContent;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
-import dev.vfyjxf.taffy.style.FlexWrap;
-import net.minecraft.client.gui.screens.Screen;
+
+import java.util.List;
 
 /**
  * Sectioned vertical scroll list that replaces the 2D pan/zoom atlas
@@ -34,8 +35,8 @@ final class ListWallPanelBuilder {
      * Pinned card cell size in screen pixels. Single-LOD: every card on
      * every surface renders at this exact size. Pick once, design well.
      */
-    static final int CARD_CELL_PX = 22;
-    static final int CARD_GAP_PX = 2;
+    static final int CARD_CELL_PX = WallCardUiBuilder.CARD_CELL_PX;
+    static final int CARD_GAP_PX = WallSectionUiBuilder.CARD_GAP_PX;
     /**
      * Hard column count for the section flow grid. Cards never wrap
      * past this many per row, so the wall stays a focused vertical
@@ -43,7 +44,7 @@ final class ListWallPanelBuilder {
      */
     static final int CARDS_PER_ROW = 9;
 
-    static final int SECTION_HEADER_HEIGHT_PX = 11;
+    static final int SECTION_HEADER_HEIGHT_PX = WallSectionHeaderUiBuilder.HEADER_HEIGHT_PX;
     static final int SECTION_GAP_PX = 4;
     static final int SECTION_INNER_PAD_PX = 4;
     /**
@@ -71,9 +72,15 @@ final class ListWallPanelBuilder {
                     + SCROLLBAR_GUTTER_PX;
 
     private final SlotWorkspaceUiController host;
+    private final WallSectionHeaderUiBuilder sectionHeaderBuilder;
+    private final WallSectionUiBuilder sectionBuilder;
+    private final LdlibSlotUiRenderer sectionRenderer;
 
     ListWallPanelBuilder(SlotWorkspaceUiController host) {
         this.host = host;
+        this.sectionHeaderBuilder = new WallSectionHeaderUiBuilder(new WallSectionHeaderContext());
+        this.sectionBuilder = new WallSectionUiBuilder(sectionHeaderBuilder);
+        this.sectionRenderer = new LdlibSlotUiRenderer(this::installSectionInteractions);
     }
 
     UIElement body() {
@@ -97,8 +104,8 @@ final class ListWallPanelBuilder {
     void createPersistentWallPanel() {
         // Wall panel is a flex-column container that owns the entire
         // workspace UI: action cluster + search + carried chip stack
-        // at the top, leftColumn (TOC / chests / triage) beside the
-        // wall scroller in a flex-row mid section, and status / kit
+        // at the top, TOC sliver beside the wall scroller in a
+        // flex-row mid section, and status / kit
         // rack / belt as a footer stack. Same layout for both
         // standalone and sidebar surfaces — the only difference
         // between them is whether a vanilla container screen happens
@@ -228,8 +235,8 @@ final class ListWallPanelBuilder {
 
     /**
      * Walk the view model's islands and emit one section block per
-     * non-Triage island. Triage stays as the docked overlay panel; it is
-     * never a wall section. See {@code MEMORY.md#project_triage_panel}.
+     * non-Triage island. Triage is only a legacy routing sentinel now,
+     * not a visible wall section.
      */
     void buildSections(ScrollerView scroller) {
         boolean filtering = !host.searchController.normalizedQuery().isBlank();
@@ -282,122 +289,55 @@ final class ListWallPanelBuilder {
         // can hide them from the navigation strip; the wall keeps
         // them so drops have somewhere to land.
 
-        UIElement section = new UIElement().layout(layout -> layout
-                .widthPercent(100)
-                .gapAll(2)
-                .paddingAll(0)
-                .flexDirection(FlexDirection.COLUMN));
-        section.setId(island.islandId());
-
-        UIElement header = sectionHeader(island, visibleCards.size(), totalCards, filtering);
-        section.addChild(header);
-
-        if (filtering && visibleCards.isEmpty()) {
-            return section;
-        }
-
-        UIElement grid = new UIElement().layout(layout -> layout
-                .widthPercent(100)
-                .gapAll(CARD_GAP_PX)
-                .paddingAll(0)
-                .flexDirection(FlexDirection.ROW)
-                .flexWrap(FlexWrap.WRAP)
-                .alignItems(AlignItems.FLEX_START)
-                .alignContent(AlignContent.FLEX_START));
-        host.drag.installSectionDropTarget(grid, island);
-        for (SlotWorkspaceViewModel.AtlasItem item : visibleCards) {
-            Button card = host.atlasCard.atlasCardButton(item);
-            grid.addChild(card);
-        }
-        section.addChild(grid);
-        return section;
+        return sectionRenderer.render(sectionBuilder.section(island, visibleCards, totalCards, filtering));
     }
 
-    UIElement sectionHeader(
-            SlotWorkspaceViewModel.AtlasIsland island,
-            int visibleCount,
-            int totalCount,
-            boolean filtering
-    ) {
-        Button header = button("", true, island.color());
-        header.layout(layout -> layout
-                .widthPercent(100)
-                .height(SECTION_HEADER_HEIGHT_PX)
-                .paddingHorizontal(6)
-                .gapAll(4)
-                .alignItems(AlignItems.CENTER)
-                .flexDirection(FlexDirection.ROW));
-        header.style(style -> style.zIndex(3));
-        header.noText();
-
-        Label title = label(island.label(), TEXT);
-        title.layout(layout -> layout.flex(1).heightPercent(100));
-        title.textStyle(style -> style
-                .textColor(TEXT)
-                .textShadow(true)
-                .fontSize(8)
-                .textAlignHorizontal(Horizontal.LEFT)
-                .textAlignVertical(Vertical.CENTER));
-        title.setAllowHitTest(false);
-        header.addChild(title);
-
-        // Right-edge count label. When the player has any of this section's
-        // items carried, the label tints ACCENT and prefixes the carried
-        // count: "5/12●" reads "5 of 12 carried." Otherwise just "12" in
-        // MUTED. Single label avoids the double-text overlap that fell out
-        // of stacking two right-aligned labels at the same anchor.
-        boolean hasCarried = island.carriedCount() > 0;
-        String countText;
-        if (filtering && visibleCount != totalCount) {
-            countText = visibleCount + " / " + totalCount;
-        } else if (hasCarried) {
-            countText = island.carriedCount() + "/" + totalCount + "●";
-        } else {
-            countText = String.valueOf(totalCount);
+    private void installSectionInteractions(SlotUiElement model, UIElement element) {
+        if (model.hasAttachment(WorkspaceUiAttachments.WALL_SECTION_GRID)) {
+            SlotWorkspaceViewModel.AtlasIsland island = model.attachment(
+                    WorkspaceUiAttachments.ATLAS_ISLAND,
+                    SlotWorkspaceViewModel.AtlasIsland.class
+            );
+            if (island == null) {
+                return;
+            }
+            host.drag.installSectionDropTarget(element, island);
+            List<?> cards = model.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class);
+            if (cards == null || cards.isEmpty()) {
+                return;
+            }
+            for (Object cardObject : cards) {
+                if (cardObject instanceof SlotWorkspaceViewModel.AtlasItem item) {
+                    Button card = host.atlasCard.atlasCardButton(item);
+                    element.addChild(card);
+                }
+            }
+            return;
         }
-        int countColor = hasCarried ? ACCENT : MUTED;
-        Label count = label(countText, countColor);
-        count.layout(layout -> layout.heightPercent(100));
-        count.textStyle(style -> style
-                .textColor(countColor)
-                .textShadow(false)
-                .fontSize(7)
-                .textAlignHorizontal(Horizontal.RIGHT)
-                .textAlignVertical(Vertical.CENTER));
-        count.setAllowHitTest(false);
-        header.addChild(count);
-
-        // Right-click → island edit popover. Left-click on header with a
-        // selected atlas item assigns the item's home to this island
-        // (matches the old island title bar behaviour).
-        if (island.kind() == VisualAtlasIslandKind.PLAYER) {
-            header.addEventListener(UIEvents.MOUSE_DOWN, event -> {
-                if (event.button == 1) {
-                    event.stopPropagation();
-                    host.menu.beginIslandEdit(island, event.x, event.y);
-                    return;
-                }
-                if (event.button == 0 && Screen.hasShiftDown()) {
-                    event.stopPropagation();
-                    return;
-                }
-            }, true);
-            header.setOnClick(event -> {
-                if (event.button != 0) {
-                    return;
-                }
-                event.stopPropagation();
-                if (host.selectedAtlasItem() == null) {
-                    host.localStatus.set("select a triage or homed item first");
-                    return;
-                }
-                host.rpc.sendAssignHome(island.islandId());
-            });
+        if (!model.hasAttachment(WorkspaceUiAttachments.WALL_SECTION_HEADER)) {
+            return;
+        }
+        SlotWorkspaceViewModel.AtlasIsland island = model.attachment(
+                WorkspaceUiAttachments.ATLAS_ISLAND,
+                SlotWorkspaceViewModel.AtlasIsland.class
+        );
+        if (island == null || !(element instanceof Button header)) {
+            return;
         }
         if (island.kind() == VisualAtlasIslandKind.PLAYER) {
             host.drag.installSectionHeaderDragSource(header, island);
         }
         host.drag.installSectionHeaderDropTarget(header, island);
-        return header;
+    }
+
+    private final class WallSectionHeaderContext implements WallSectionHeaderUiBuilder.Context {
+        @Override
+        public void beginIslandEdit(
+                SlotWorkspaceViewModel.AtlasIsland island,
+                float screenX,
+                float screenY
+        ) {
+            host.menu.beginIslandEdit(island, screenX, screenY);
+        }
     }
 }

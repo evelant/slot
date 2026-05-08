@@ -18,6 +18,7 @@ import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.InventoryPaneMembership;
 import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.core.ItemStackEquivalence;
 import dev.imagio.slot.inventory.core.MenuCursorAccess;
 import dev.imagio.slot.inventory.core.ToolRegionDescriptor;
 import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
@@ -571,12 +572,13 @@ public final class InventoryActionExecutor {
         if (request == null || request.primaryTarget() == null) {
             return "";
         }
-        return switch (request.primaryTarget()) {
-            case InventoryActionTarget.CursorTarget ignored -> "";
-            case InventoryActionTarget.ToolRegionTarget toolRegionTarget -> toolRegionTarget.toolId();
-            case InventoryActionTarget.ToolControlTarget toolControlTarget -> toolControlTarget.toolId();
-            default -> "";
-        };
+        if (request.primaryTarget() instanceof InventoryActionTarget.ToolRegionTarget toolRegionTarget) {
+            return toolRegionTarget.toolId();
+        }
+        if (request.primaryTarget() instanceof InventoryActionTarget.ToolControlTarget toolControlTarget) {
+            return toolControlTarget.toolId();
+        }
+        return "";
     }
 
     private static List<InventoryActivityEvent> explicitActivityEvents(
@@ -669,29 +671,27 @@ public final class InventoryActionExecutor {
         if (host == null || target == null) {
             return false;
         }
-        return switch (target) {
-            case InventoryActionTarget.CursorTarget ignored -> false;
-            case InventoryActionTarget.SourceTarget sourceTarget -> {
-                InventorySourceDescriptor source = host.source(sourceTarget.sourceId());
-                yield source != null && source.paneMembership() == InventoryPaneMembership.CARRIED;
-            }
-            case InventoryActionTarget.SourceSlotTarget slotTarget -> {
-                InventorySourceDescriptor source = host.source(slotTarget.sourceId());
-                yield source != null && source.paneMembership() == InventoryPaneMembership.CARRIED;
-            }
-            case InventoryActionTarget.SourceEntryTarget sourceEntryTarget -> {
-                InventorySourceDescriptor source = host.source(sourceEntryTarget.sourceId());
-                yield source != null && source.paneMembership() == InventoryPaneMembership.CARRIED;
-            }
-            case InventoryActionTarget.QuickAccessTarget ignored -> true;
-            case InventoryActionTarget.EquipmentTarget ignored -> true;
-            case InventoryActionTarget.ToolRegionTarget toolRegionTarget -> {
-                String sourceId = InventoryAuthorityReadService.sourceId(host, toolRegionTarget);
-                InventorySourceDescriptor source = sourceId.isBlank() ? null : host.source(sourceId);
-                yield source != null && source.paneMembership() == InventoryPaneMembership.CARRIED;
-            }
-            case InventoryActionTarget.ToolControlTarget ignored -> false;
-        };
+        if (target instanceof InventoryActionTarget.SourceTarget sourceTarget) {
+            InventorySourceDescriptor source = host.source(sourceTarget.sourceId());
+            return source != null && source.paneMembership() == InventoryPaneMembership.CARRIED;
+        }
+        if (target instanceof InventoryActionTarget.SourceSlotTarget slotTarget) {
+            InventorySourceDescriptor source = host.source(slotTarget.sourceId());
+            return source != null && source.paneMembership() == InventoryPaneMembership.CARRIED;
+        }
+        if (target instanceof InventoryActionTarget.SourceEntryTarget sourceEntryTarget) {
+            InventorySourceDescriptor source = host.source(sourceEntryTarget.sourceId());
+            return source != null && source.paneMembership() == InventoryPaneMembership.CARRIED;
+        }
+        if (target instanceof InventoryActionTarget.QuickAccessTarget || target instanceof InventoryActionTarget.EquipmentTarget) {
+            return true;
+        }
+        if (target instanceof InventoryActionTarget.ToolRegionTarget toolRegionTarget) {
+            String sourceId = InventoryAuthorityReadService.sourceId(host, toolRegionTarget);
+            InventorySourceDescriptor source = sourceId.isBlank() ? null : host.source(sourceId);
+            return source != null && source.paneMembership() == InventoryPaneMembership.CARRIED;
+        }
+        return false;
     }
 
     private static InventorySourceDescriptor sourceDescriptor(
@@ -940,7 +940,7 @@ public final class InventoryActionExecutor {
             merged.setCount(unattempted);
             return merged;
         }
-        if (ItemStack.isSameItemSameComponents(resultRemainder, originalStack)) {
+        if (ItemStackEquivalence.sameItemAndData(resultRemainder, originalStack)) {
             resultRemainder.grow(unattempted);
             return resultRemainder;
         }

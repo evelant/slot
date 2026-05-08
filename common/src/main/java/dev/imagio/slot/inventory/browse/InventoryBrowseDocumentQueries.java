@@ -165,12 +165,21 @@ public final class InventoryBrowseDocumentQueries {
         if (document == null || subjectRef == null) {
             return false;
         }
-        return switch (subjectRef) {
-            case InventoryBrowseSubjectRef.PaneRef paneRef -> findPane(document, paneRef) != null;
-            case InventoryBrowseSubjectRef.SectionRef sectionRef -> findSection(document, sectionRef) != null;
-            case InventoryBrowseSubjectRef.ItemRowRef itemRowRef -> findItemEntry(document, itemRowRef) != null;
-            case InventoryBrowseSubjectRef.PlaceholderRef placeholderRef -> findPlaceholderEntry(document, placeholderRef) != null;
-            case InventoryBrowseSubjectRef.LoadoutRef loadoutRef -> findLoadoutEntry(document, loadoutRef) != null;
-        };
+        if (subjectRef instanceof InventoryBrowseSubjectRef.PaneRef paneRef) {
+            return findPane(document, paneRef) != null;
+        }
+        if (subjectRef instanceof InventoryBrowseSubjectRef.SectionRef sectionRef) {
+            return findSection(document, sectionRef) != null;
+        }
+        if (subjectRef instanceof InventoryBrowseSubjectRef.ItemRowRef itemRowRef) {
+            return findItemEntry(document, itemRowRef) != null;
+        }
+        if (subjectRef instanceof InventoryBrowseSubjectRef.PlaceholderRef placeholderRef) {
+            return findPlaceholderEntry(document, placeholderRef) != null;
+        }
+        if (subjectRef instanceof InventoryBrowseSubjectRef.LoadoutRef loadoutRef) {
+            return findLoadoutEntry(document, loadoutRef) != null;
+        }
+        return false;
     }
 }
