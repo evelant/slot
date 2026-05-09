@@ -179,8 +179,14 @@ function extractResultId(
 ): string | null {
   if (!result) return null;
   if (typeof result === "string") return normalize(result, defaultNamespace);
-  if (typeof result === "object" && typeof result.id === "string") {
-    return normalize(result.id, defaultNamespace);
+  if (typeof result === "object") {
+    const object = result as Record<string, unknown>;
+    for (const key of ["id", "item", "name"]) {
+      const value = object[key];
+      if (typeof value === "string") {
+        return normalize(value, defaultNamespace);
+      }
+    }
   }
   return null;
 }

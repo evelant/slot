@@ -42,8 +42,10 @@ export const processingInRule: Rule = {
     for (const recipeId of record.recipe_role.ingredient_of) {
       const type = recipeTypes.get(recipeId);
       if (!type) continue;
-      const verb = VANILLA_TYPE_TO_VERB[type] ?? type;
-      verbs.add(verb);
+      verbs.add(recipeTypeVerb(type));
+    }
+    for (const type of Object.keys(record.recipe_role.ingredient_of_counts ?? {})) {
+      verbs.add(recipeTypeVerb(type));
     }
     if (verbs.size === 0) return [];
 
@@ -59,3 +61,13 @@ export const processingInRule: Rule = {
     ];
   },
 };
+
+function recipeTypeVerb(type: string): string {
+  const shortType = type.startsWith("minecraft:")
+    ? type.slice("minecraft:".length)
+    : type;
+  return VANILLA_TYPE_TO_VERB[type]
+    ?? VANILLA_TYPE_TO_VERB[shortType]
+    ?? VANILLA_TYPE_TO_VERB[`minecraft:${shortType}`]
+    ?? type;
+}

@@ -61,11 +61,21 @@ export interface DeterministicRunResult {
 
 export interface LayerFile {
   schema_version: number;
-  layer: "vanilla-base" | "per-mod";
+  layer: "vanilla-base" | "per-mod" | "runtime-crawl" | "modpack" | "server" | "player";
   source: string;
   generated_by?: string;
   generated_at?: string;
+  metadata?: LayerMetadata;
   entries: Record<string, LayerEntry>;
+}
+
+export interface LayerMetadata {
+  tool?: Record<string, unknown>;
+  schema?: Record<string, unknown>;
+  pipeline?: Record<string, unknown>;
+  input?: Record<string, unknown>;
+  prompt?: Record<string, unknown>;
+  [key: string]: unknown;
 }
 
 export interface LayerEntry {
@@ -226,4 +236,3 @@ function buildRecipeTypeIndex(
   }
   return out;
 }
-

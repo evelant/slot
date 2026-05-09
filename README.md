@@ -78,6 +78,9 @@ Plans:
 - [docs/plans/item-classification.md](docs/plans/item-classification.md)
   — classification pipeline + runtime planning doc (long-form). Read
   [the design overview](docs/design/classification/README.md) first.
+- [docs/plans/classification-database.md](docs/plans/classification-database.md)
+  — proposed public classification database, installed-pack scanning, and
+  contribution workflow plan.
 - [docs/plans/inventory-fullness.md](docs/plans/inventory-fullness.md)
   — proposed UI slice for surfacing carried-inventory capacity
   without per-bag routing controls. Not yet active.

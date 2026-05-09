@@ -2,6 +2,7 @@ package dev.imagio.slot.neoforge;
 
 import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.neoforge.client.SlotNeoForgeClient;
+import dev.imagio.slot.neoforge.classification.NeoForgeClassificationLayerReloadListener;
 import dev.imagio.slot.neoforge.command.SlotTestCommands;
 import dev.imagio.slot.compat.sophisticated.SophisticatedBackpacksCarriedProvider;
 import dev.imagio.slot.neoforge.config.SlotClientConfig;
@@ -42,6 +43,7 @@ public final class SlotNeoForge {
         StorageAccessRegistry.installWorldStorageAccess(new NeoForgeWorldStorageAccess());
         SlotWorkspaceLdlibMenus.init();
         SlotSidebarUiHandles.init();
+        NeoForgeClassificationLayerReloadListener.init();
         SlotNetworking.init(modBus);
         SlotAttachmentTypes.register(modBus);
         SlotPlayerWorkflowRuntimeService.init();

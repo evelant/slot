@@ -1,0 +1,168 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://imagio.dev/slot/classification/input-manifest.v2.schema.json",
+  "title": "SLOT Classification Input Manifest V2",
+  "type": "object",
+  "required": ["kind", "schema_version", "generated_by", "generated_at", "source", "summary", "mods"],
+  "additionalProperties": false,
+  "properties": {
+    "kind": { "const": "slot-classification-input-manifest" },
+    "schema_version": { "const": 2 },
+    "generated_by": { "type": "string" },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "source": {
+      "type": "object",
+      "required": ["kind", "requested_path"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["mods-folder", "jar", "source-tree", "curseforge-manifest", "modrinth-mrpack", "runtime-export"]
+        },
+        "requested_path": { "type": "string" },
+        "resolved_mods_path": { "type": "string" },
+        "minecraft_version": { "type": "string" },
+        "loader": { "type": "string", "enum": ["forge", "neoforge", "fabric", "quilt", "unknown"] },
+        "loader_version": { "type": "string" },
+        "pack_name": { "type": "string" },
+        "pack_version": { "type": "string" },
+        "platform": { "type": "string", "enum": ["curseforge", "modrinth", "prism", "unknown"] },
+        "platform_project_id": { "type": ["string", "number"] },
+        "platform_version_id": { "type": ["string", "number"] },
+        "pack_scripts": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kubejs": {
+              "type": "object",
+              "required": ["server_scripts", "startup_scripts", "client_scripts", "data_files", "asset_files"],
+              "additionalProperties": false,
+              "properties": {
+                "server_scripts": { "type": "integer", "minimum": 0 },
+                "startup_scripts": { "type": "integer", "minimum": 0 },
+                "client_scripts": { "type": "integer", "minimum": 0 },
+                "data_files": { "type": "integer", "minimum": 0 },
+                "asset_files": { "type": "integer", "minimum": 0 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "required": ["total_jars", "total_mod_entries", "total_item_candidates", "status_counts"],
+      "additionalProperties": false,
+      "properties": {
+        "total_jars": { "type": "integer", "minimum": 0 },
+        "total_mod_entries": { "type": "integer", "minimum": 0 },
+        "total_item_candidates": { "type": "integer", "minimum": 0 },
+        "status_counts": {
+          "type": "object",
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        }
+      }
+    },
+    "mods": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/ModEntry" }
+    }
+  },
+  "definitions": {
+    "ModEntry": {
+      "type": "object",
+      "required": [
+        "id",
+        "loader",
+        "minecraft_versions",
+        "source_kind",
+        "path",
+        "file_name",
+        "hashes",
+        "namespaces",
+        "resource_counts",
+        "item_candidate_count",
+        "item_set_signature",
+        "status",
+        "diagnostics"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string" },
+        "display_name": { "type": "string" },
+        "version": { "type": "string" },
+        "loader": { "type": "string", "enum": ["forge", "neoforge", "fabric", "quilt", "unknown"] },
+        "minecraft_versions": { "type": "array", "items": { "type": "string" } },
+        "source_kind": { "const": "jar" },
+        "path": { "type": "string" },
+        "file_name": { "type": "string" },
+        "hashes": {
+          "type": "object",
+          "required": ["sha1", "sha512"],
+          "additionalProperties": false,
+          "properties": {
+            "sha1": { "type": "string" },
+            "sha512": { "type": "string" }
+          }
+        },
+        "platform_ids": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "curseforge_project_id": { "type": "integer" },
+            "curseforge_file_id": { "type": "integer" },
+            "modrinth_project_id": { "type": "string" },
+            "modrinth_version_id": { "type": "string" }
+          }
+        },
+        "namespaces": { "type": "array", "items": { "type": "string" } },
+        "resource_counts": { "$ref": "#/definitions/ResourceCounts" },
+        "item_candidate_count": { "type": "integer", "minimum": 0 },
+        "item_set_signature": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": [
+            "covered:bundled",
+            "covered:public-exact",
+            "covered:public-compatible",
+            "covered:mod-shipped",
+            "covered:local-cache",
+            "partial:runtime-crawl-only",
+            "missing:semantic-generation-available",
+            "skipped:library",
+            "blocked:ambiguous-mod-id",
+            "blocked:malformed-jar"
+          ]
+        },
+        "skipped_reason": { "type": "string" },
+        "diagnostics": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "ResourceCounts": {
+      "type": "object",
+      "required": [
+        "recipes",
+        "loot_tables",
+        "item_tags",
+        "block_tags",
+        "lang_files",
+        "item_definitions",
+        "item_models",
+        "models",
+        "blockstates"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recipes": { "type": "integer", "minimum": 0 },
+        "loot_tables": { "type": "integer", "minimum": 0 },
+        "item_tags": { "type": "integer", "minimum": 0 },
+        "block_tags": { "type": "integer", "minimum": 0 },
+        "lang_files": { "type": "integer", "minimum": 0 },
+        "item_definitions": { "type": "integer", "minimum": 0 },
+        "item_models": { "type": "integer", "minimum": 0 },
+        "models": { "type": "integer", "minimum": 0 },
+        "blockstates": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

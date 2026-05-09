@@ -5,6 +5,10 @@ source trees / jars. Outputs validate against [layer.schema.json](layer.schema.j
 
 ## Primary reference
 
+For a concise "what this tool does / how it works / how to use it"
+overview, read
+[`docs/design/classification/tool-guide.md`](../../docs/design/classification/tool-guide.md).
+
 **All design decisions, facet schema, pipeline stages, layer format, merge rules,
 and test strategy live in** [`docs/plans/item-classification.md`](../../docs/plans/item-classification.md).
 Read that first. This README is just a landing page for developers who find themselves
@@ -14,16 +18,17 @@ in this directory.
 
 - [`layer.schema.json`](layer.schema.json) — JSONSchema (Draft-07) that validates
   every classification layer file. Source of truth for the wire format.
-- `src/extract/` — stage 1 extractor. Vanilla (mcmeta summary) and mod source
+- `src/extract/` — stage 1 extractor. Vanilla (mcmeta summary), mod source
   trees (NeoForge / Forge layouts, with gradle.properties + `${mod_*}` template
-  resolution) both supported.
+  resolution), and installed mod jars are supported.
+- `src/scan/` — installed `mods/` folder scanner. Reads local jar metadata,
+  hashes, resource counts, item-candidate estimates, and Prism/Packwiz
+  `.index/*.pw.toml` platform ids without network or LLM calls.
 - `src/deterministic/` — stage 2 rule-based facet derivation.
-- `src/llm/` — stage 3 LLM completion via `claude -p`. Includes a per-mod
-  `mod_subsystem` proposer pre-pass that reads README + mods.toml + recipe
-  types and pins a canonical vocabulary into the system prompt; split-prompt
-  mode (`--system-prompt` for the stable preamble, stdin for the per-batch
-  payload); fixture-based record/replay for free resume; and transient-error
-  retry in `ClaudeCliClient`.
+- `src/llm/` — stage 3 LLM completion. Includes per-mod and runtime-export
+  `mod_subsystem` proposer pre-passes that pin canonical vocabularies into
+  the system prompt; split-prompt mode; fixture-based record/replay for free
+  resume; OpenRouter support; and transient-error retry.
 - `src/schema/` — facet registry (v1 vocabulary) and AJV wrapper around
   `layer.schema.json`.
 - `datasets/<source>/` — curated, git-tracked layer outputs the rest of the
@@ -46,6 +51,10 @@ copied directly into `datasets/`.
 ```sh
 cd tools/classification
 bun install
+# Installed pack scan (no LLM/network):
+bun run src/cli.ts scan --mods /path/to/prism/instance-or-minecraft/mods --out out/scan
+# Installed pack jar extraction + deterministic facets (no LLM/network):
+bun run src/cli.ts classify-folder --mods /path/to/prism/instance-or-minecraft/mods --out out --stages 1,2
 # Vanilla, stages 1+2 (no LLM cost):
 bun run src/cli.ts classify --mod minecraft --source ../mcmeta/.worktrees/summary
 # Vanilla full LLM pass (concurrency 4, ~3h, hits 5h subscription cap once):
@@ -56,9 +65,29 @@ bun run src/cli.ts classify --mod minecraft --source ../mcmeta/.worktrees/summar
 bun run src/cli.ts classify --mod createaddition --source ../../reference/classification/createaddition \
     --stages 1,2,3 --model sonnet --concurrency 6 --batch-size 5 \
     --record-replay --fixture-dir test/fixtures/stage3-canary-createaddition-v5
+# One installed mod from a pack, including stage 3:
+bun run src/cli.ts classify-folder --mods /path/to/prism/instance --mod createaddition \
+    --out out --stages 1,2,3 --record-replay --fixture-dir test/fixtures/createaddition-jar
+# Runtime export subsystem vocabulary dry run:
+bun run src/cli.ts propose-runtime-subsystems \
+    --runtime-export modpacks/exports/tfg2.runtime-items.ndjson \
+    --summary modpacks/exports/tfg2.runtime-summary.json \
+    --namespace create --namespace gtceu --dry-run
+# Static+runtime pack layer packaged as a datapack folder:
+bun run src/cli.ts generate-pack-layer \
+    --runtime-export modpacks/exports/tfg2.runtime-items.ndjson \
+    --summary modpacks/exports/tfg2.runtime-summary.json \
+    --mods /path/to/prism/instance \
+    --subsystems-file out/tfg2.runtime-subsystems.json \
+    --stages 1,2,3 --datapack
 # Validate any layer file:
 bun run src/cli.ts validate datasets/minecraft/minecraft.facets.complete.json
 ```
+
+For KubeJS/datapack-heavy packs, run `/slot classification export
+<pack_id>` inside the loaded Minecraft instance. It writes live
+stage-1-compatible records under
+`config/slot/classification/exports/`.
 
 The vanilla extractor reads from [misode/mcmeta](https://github.com/misode/mcmeta),
 tracked as a git submodule at `tools/mcmeta`. On first run it auto-creates a git
@@ -75,6 +104,14 @@ Outputs (working dir, gitignored):
 - `out/<source>.facets.complete.json` — stage 3 merged layer (stage 2 + LLM).
 - `out/<source>.subsystems.json` — proposer's canonical `mod_subsystem`
   vocabulary, cached so the proposer LLM call only fires once per mod.
+- `out/<pack>.runtime-subsystems.json` — pack-specific namespace-scoped
+  `mod_subsystem` vocabulary generated from a live runtime export.
+- `out/<pack>.pack.items.ndjson` — merged runtime records enriched with
+  static jar facts when `generate-pack-layer --mods` is used.
+- `out/<pack>.pack.facets.partial.json` / `.complete.json` — generated
+  pack-specific `layer: "modpack"` classification layer.
+- `out/<pack>.classification-datapack/` — optional drop-in datapack folder
+  containing `data/slot/classification/layers/<pack>.json`.
 - `out/<source>.facets.corrections.json` — stage-3 corrections the LLM flagged
   on stage-2 entries (review queue, never auto-applied).
 - `out/<source>.facets.schema-proposals.json` — values/facets the LLM wanted

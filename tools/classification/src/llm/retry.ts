@@ -5,7 +5,12 @@ import type {
   LayerFacetEntry,
 } from "../deterministic/run.ts";
 import type { LlmClient } from "./client.ts";
-import { runStage3, type Stage3Result } from "./run.ts";
+import {
+  runStage3,
+  type Stage3Result,
+  type SubsystemVocabularyByNamespace,
+  type SubsystemVocabularyEntry,
+} from "./run.ts";
 import type { SchemaProposal, StageCorrection } from "./parse.ts";
 
 /**
@@ -65,7 +70,9 @@ export interface RetryOptions {
   onBatch?: Parameters<typeof runStage3>[0]["onBatch"];
   /** Same as Stage3Options.subsystemVocabulary; the retry pass should use
    *  the same canonical vocabulary as the first pass to avoid drift. */
-  subsystemVocabulary?: readonly { id: string; rationale?: string }[];
+  subsystemVocabulary?: readonly SubsystemVocabularyEntry[];
+  /** Same as Stage3Options.subsystemVocabularyByNamespace. */
+  subsystemVocabularyByNamespace?: SubsystemVocabularyByNamespace;
   /** Same as Stage3Options.promptExtras; retry should use the same prompt
    *  shape as the first pass so divergence between the two is purely about
    *  model strength, not prompt content. */
@@ -140,6 +147,7 @@ export async function runStage3Retry(
     clientOptions: options.effort ? { effort: options.effort } : undefined,
     onBatch: options.onBatch,
     subsystemVocabulary: options.subsystemVocabulary,
+    subsystemVocabularyByNamespace: options.subsystemVocabularyByNamespace,
     promptExtras: options.promptExtras,
   });
   warnings.push(...retry.warnings);

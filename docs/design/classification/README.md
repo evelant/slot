@@ -10,7 +10,9 @@ diving into the planning document — that one is comprehensive but long.
 
 | Want to… | Go to |
 | --- | --- |
+| Get the concise tool overview and usage guide | [tool-guide.md](tool-guide.md) |
 | Understand the design and tradeoffs | [../../plans/item-classification.md](../../plans/item-classification.md) |
+| Understand the public database / pack UX plan | [../../plans/classification-database.md](../../plans/classification-database.md) |
 | Read the formal facet-kind type system | [facet-kinds.md](facet-kinds.md) |
 | Understand schema evolution / versioning | [schema-changelog.md](schema-changelog.md) |
 | Run the pipeline / regenerate data | [tools/classification/README.md](../../../tools/classification/README.md) |
@@ -42,9 +44,9 @@ record:
 tools/classification/
 ├── layer.schema.json                          # canonical wire format
 ├── src/
-│   ├── extract/                               # stage 1: extract from mod sources
+│   ├── extract/                               # stage 1: extract from sources/jars/runtime exports
 │   ├── deterministic/                         # stage 2: rule-based facet derivation
-│   ├── llm/                                   # stage 3: LLM completion via claude -p
+│   ├── llm/                                   # stage 3: LLM completion / subsystem vocabulary
 │   └── schema/facets.ts                       # source of truth for the facet catalog
 └── datasets/
     └── minecraft/
@@ -53,13 +55,14 @@ tools/classification/
         └── minecraft.facets.schema-proposals.json  # audit trail (schema gaps)
 ```
 
-`datasets/<source>/` is the **shippable artifact**. `out/` is gitignored
-working dir; once a generation passes review it gets copied into
-`datasets/`. The runtime only ever loads from `datasets/`.
+`datasets/<source>/` is the curated public artifact. `out/` is a gitignored
+working dir. For modpacks, `generate-pack-layer --runtime-export ... --datapack`
+emits a pack-specific datapack folder containing
+`data/slot/classification/layers/<pack>.json`.
 
-Current scope: **vanilla v1 (1536 items, 30 facets in use)**. Mod datasets
-arrive once milestone 6 (runtime FacetIndex) is wired up — no point shipping
-modded layers until something can read them.
+At runtime SLOT loads bundled vanilla/per-mod resources, then datapack-provided
+classification layers. A generated pack layer can therefore be dropped into an
+instance without rebuilding the SLOT jar.
 
 ## The facet catalog at a glance
 
@@ -190,6 +193,11 @@ roadmap.
 1. **Stage 1 — Extract**: walk the mod's source tree (or mcmeta's `summary`
    branch for vanilla), produce one NDJSON record per item with tags,
    recipe role, loot sources, model chain, components.
+   Running Forge 1.20.1 and NeoForge 1.21.1 instances can also write
+   live stage-1-compatible records with `/slot classification export`;
+   this path is for KubeJS/datapack-heavy packs where static jar data is
+   not the final loaded state. Runtime tags are resolved live membership;
+   direct tag provenance remains a static-resource extractor feature.
 2. **Stage 2 — Deterministic rules**: rule-based facet derivation. Each
    rule is a TS function in [tools/classification/src/deterministic/rules/](../../../tools/classification/src/deterministic/rules/).
 3. **Stage 3 — LLM completion**: `claude -p` fills in the judgement-call

@@ -64,6 +64,29 @@ class FacetIndexTest {
     }
 
     @Test
+    void loadAllWithLayersMergesDatapackLayerOnTopOfBundledData() {
+        String json = """
+                {
+                  "schema_version": 1,
+                  "layer": "modpack",
+                  "source": "test-pack",
+                  "entries": {
+                    "testpack:custom_widget": {
+                      "facets": {
+                        "role": {"value": "mechanism", "confidence": 0.9}
+                      }
+                    }
+                  }
+                }
+                """;
+        FacetIndex index = FacetIndexBootstrap.loadAllWithLayers(List.of(
+                new FacetIndexBootstrap.NamedLayerResource("test layer", () -> new StringReader(json))
+        ));
+        assertEquals(Optional.of("mechanism"), index.role("testpack:custom_widget"));
+        assertTrue(index.size() > 1);
+    }
+
+    @Test
     void itemsWithoutAnyKnownFacetAreSkipped() {
         // Entries with only facets we don't load (e.g. tier, has_durability)
         // shouldn't pollute the index. role / material_family / form / the

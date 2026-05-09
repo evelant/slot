@@ -1,5 +1,5 @@
-import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { dirname, join, resolve } from "node:path";
+import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { basename, dirname, join, resolve } from "node:path";
 import { parseArgs } from "node:util";
 import {
   ensureVanillaSource,
@@ -13,6 +13,7 @@ import {
 import type { ItemExtractRecord } from "./extract/record.ts";
 import { loadModSourceBundle } from "./extract/mod/source.ts";
 import { extractFromModBundle } from "./extract/mod/extractor.ts";
+import { loadJarModBundle } from "./extract/jar/source.ts";
 import { runDeterministic, type LayerFile } from "./deterministic/run.ts";
 import { validateLayer, validateLayerFile } from "./schema/validate.ts";
 import {
@@ -23,11 +24,16 @@ import {
 } from "./llm/client.ts";
 import { OpenRouterClient } from "./llm/openrouter-client.ts";
 import { runStage3 } from "./llm/run.ts";
+import {
+  selectSubsystemVocabularyForRecords,
+  type SubsystemVocabularyByNamespace,
+} from "./llm/run.ts";
 import { runStage3Retry, selectRetryCandidates } from "./llm/retry.ts";
 import {
   buildBatchPrompt,
   buildItemPayload,
   defaultTargetFacets,
+  PROMPT_VERSION,
 } from "./llm/prompt.ts";
 import { VANILLA_CANARY_ITEMS } from "./llm/canary.ts";
 import {
@@ -36,15 +42,34 @@ import {
   type SubsystemEntry,
 } from "./llm/mod_metadata.ts";
 import {
+  buildRuntimeProposerPrompt,
+  buildRuntimeSubsystemContexts,
+  contextEvidence,
+  defaultRuntimeSummaryPath,
+  loadSubsystemVocabularyFile,
+  proposeRuntimeSubsystems,
+  readRuntimeExportRecords,
+  readRuntimeExportSummary,
+  type RuntimeExportSummary,
+  type RuntimeSubsystemVocabularyFile,
+} from "./llm/runtime_subsystems.ts";
+import {
   loadModpackManifest,
   planModpack,
+  inspectReusableCompleteOutput,
   formatRunSummary,
   type ModpackProcessingDecision,
   type ModpackRunSummary,
   type ResolvedModpack,
 } from "./modpack.ts";
+import { formatScanReport, scanModsFolder } from "./scan/mods_folder.ts";
+import type { InputManifestMod } from "./input/manifest.ts";
 
 const TOOL_VERSION = "slot-classify v0.1.0";
+const DEFAULT_STAGE3_MODEL = "deepseek/deepseek-v4-flash";
+const DEFAULT_STAGE3_BATCH_SIZE = 20;
+const DEFAULT_STAGE3_CONCURRENCY = 4;
+const REPO_ROOT = resolve(import.meta.dir, "..", "..", "..");
 
 interface StageSelection {
   stage1: boolean;
@@ -87,6 +112,27 @@ function parseBackend(input: string | undefined): "claude-cli" | "openrouter" | 
     throw new Error(`unknown --backend value: ${input} (use one of ${allowed.join("|")})`);
   }
   return input as "claude-cli" | "openrouter";
+}
+
+function parsePositiveInteger(input: string | undefined, optionName: string): number | undefined {
+  if (input === undefined) return undefined;
+  if (!/^[1-9]\d*$/.test(input)) {
+    throw new Error(`${optionName} must be a positive integer, got '${input}'`);
+  }
+  const value = Number(input);
+  if (!Number.isSafeInteger(value)) {
+    throw new Error(`${optionName} is too large: '${input}'`);
+  }
+  return value;
+}
+
+function parseConfidenceThreshold(input: string | undefined, optionName: string): number | undefined {
+  if (input === undefined) return undefined;
+  const value = Number(input);
+  if (!Number.isFinite(value) || value < 0 || value > 1) {
+    throw new Error(`${optionName} must be a number between 0 and 1, got '${input}'`);
+  }
+  return value;
 }
 
 function parseStages(input: string | undefined): StageSelection {
@@ -158,6 +204,7 @@ async function main() {
           // mod's README/metadata before stage 3 runs.
           "no-propose-subsystems": { type: "boolean" },
           "subsystems-model": { type: "string" },
+          "subsystems-file": { type: "string" },
           // verbose prompt extras. disambiguation defaults ON (principle-
           // based per-facet reasoning; carries production accuracy on hard
           // categories from ~50% → ~93%). misconceptions defaults OFF
@@ -187,11 +234,11 @@ async function main() {
         backend: parseBackend(args.values.backend),
         ignoredProviders: (args.values["ignore-provider"] as string[] | undefined) ?? undefined,
         onlyProviders: (args.values["only-provider"] as string[] | undefined) ?? undefined,
-        batchSize: args.values["batch-size"] ? Number(args.values["batch-size"]) : undefined,
-        concurrency: args.values.concurrency ? Number(args.values.concurrency) : undefined,
+        batchSize: parsePositiveInteger(args.values["batch-size"], "--batch-size"),
+        concurrency: parsePositiveInteger(args.values.concurrency, "--concurrency"),
         effort: parseEffort(args.values.effort),
         thinkingBudget: args.values["thinking-budget"]
-          ? Number(args.values["thinking-budget"])
+          ? parsePositiveInteger(args.values["thinking-budget"], "--thinking-budget")
           : undefined,
         disableAdaptiveThinking: args.values["disable-adaptive-thinking"] ?? false,
         sample: args.values.sample,
@@ -202,16 +249,17 @@ async function main() {
         retryModel: args.values["retry-model"],
         retryEffort: parseEffort(args.values["retry-effort"]),
         retryThreshold: args.values["retry-threshold"]
-          ? Number(args.values["retry-threshold"])
+          ? parseConfidenceThreshold(args.values["retry-threshold"], "--retry-threshold")
           : undefined,
         retryBatchSize: args.values["retry-batch-size"]
-          ? Number(args.values["retry-batch-size"])
+          ? parsePositiveInteger(args.values["retry-batch-size"], "--retry-batch-size")
           : undefined,
         retryFixtureDir: args.values["retry-fixture-dir"],
         retryUseReplay: args.values["retry-use-replay"],
         retryRecordReplay: args.values["retry-record-replay"],
         proposeSubsystems: !(args.values["no-propose-subsystems"] ?? false),
         subsystemsModel: args.values["subsystems-model"],
+        subsystemsFile: args.values["subsystems-file"],
         // disambiguation defaults ON; --no-verbose-disambiguation flips off.
         // --verbose-disambiguation is a no-op (always-on by default) — kept
         // for symmetry / discoverability.
@@ -255,6 +303,7 @@ async function main() {
           "dry-run": { type: "boolean" },
           "no-propose-subsystems": { type: "boolean" },
           "subsystems-model": { type: "string" },
+          "subsystems-file": { type: "string" },
           "verbose-disambiguation": { type: "boolean" },
           "no-verbose-disambiguation": { type: "boolean" },
           "verbose-misconceptions": { type: "boolean" },
@@ -280,11 +329,11 @@ async function main() {
         backend: parseBackend(args.values.backend),
         ignoredProviders: (args.values["ignore-provider"] as string[] | undefined) ?? undefined,
         onlyProviders: (args.values["only-provider"] as string[] | undefined) ?? undefined,
-        batchSize: args.values["batch-size"] ? Number(args.values["batch-size"]) : undefined,
-        concurrency: args.values.concurrency ? Number(args.values.concurrency) : undefined,
+        batchSize: parsePositiveInteger(args.values["batch-size"], "--batch-size"),
+        concurrency: parsePositiveInteger(args.values.concurrency, "--concurrency"),
         effort: parseEffort(args.values.effort),
         thinkingBudget: args.values["thinking-budget"]
-          ? Number(args.values["thinking-budget"])
+          ? parsePositiveInteger(args.values["thinking-budget"], "--thinking-budget")
           : undefined,
         disableAdaptiveThinking: args.values["disable-adaptive-thinking"] ?? false,
         fixtureDir: args.values["fixture-dir"],
@@ -293,6 +342,7 @@ async function main() {
         dryRun: args.values["dry-run"] ?? false,
         proposeSubsystems: !(args.values["no-propose-subsystems"] ?? false),
         subsystemsModel: args.values["subsystems-model"],
+        subsystemsFile: args.values["subsystems-file"],
         verboseFacetDisambiguation: args.values["no-verbose-disambiguation"]
           ? false
           : (args.values["verbose-disambiguation"] ?? true),
@@ -303,11 +353,307 @@ async function main() {
         force: args.values.force ?? false,
         forceSubsystems: args.values["force-subsystems"] ?? false,
         modConcurrency: args.values["mod-concurrency"]
-          ? Math.max(1, Number(args.values["mod-concurrency"]))
+          ? parsePositiveInteger(args.values["mod-concurrency"], "--mod-concurrency")
           : 1,
       };
 
       await runModpack(manifestPath, outDir, stages, stage3CliOpts, modpackOpts);
+      return;
+    }
+
+    case "scan": {
+      const args = parseArgs({
+        args: rest,
+        options: {
+          mods: { type: "string" },
+          out: { type: "string" },
+          json: { type: "string" },
+        },
+        allowPositionals: false,
+        strict: true,
+      });
+      const modsPath = args.values.mods;
+      if (!modsPath) {
+        console.error("usage: scan --mods <mods-folder-or-instance-root> [--out <dir>] [--json <path>]");
+        process.exit(2);
+        return;
+      }
+      const outDir = resolve(args.values.out ?? "out");
+      mkdirSync(outDir, { recursive: true });
+      const jsonPath = resolve(args.values.json ?? join(outDir, "scan-report.json"));
+      mkdirSync(dirname(jsonPath), { recursive: true });
+
+      const report = scanModsFolder({
+        requestedPath: modsPath,
+        generatedBy: TOOL_VERSION,
+        bundledModIds: loadBundledPerModIds(),
+      });
+      writeFileSync(jsonPath, JSON.stringify(report, null, 2) + "\n");
+      console.log(formatScanReport(report));
+      console.log("");
+      console.log(`[scan] JSON report: ${jsonPath}`);
+      console.log("[scan] use classify-folder --mods <path> to generate jar-backed stage-1/2 outputs.");
+      return;
+    }
+
+    case "classify-folder": {
+      const args = parseArgs({
+        args: rest,
+        options: {
+          mods: { type: "string" },
+          out: { type: "string" },
+          stages: { type: "string" },
+          mod: { type: "string", multiple: true },
+          "limit-mods": { type: "string" },
+          "include-covered": { type: "boolean" },
+          force: { type: "boolean" },
+          "mod-concurrency": { type: "string" },
+          model: { type: "string" },
+          backend: { type: "string" },
+          "ignore-provider": { type: "string", multiple: true },
+          "only-provider": { type: "string", multiple: true },
+          "batch-size": { type: "string" },
+          concurrency: { type: "string" },
+          effort: { type: "string" },
+          "thinking-budget": { type: "string" },
+          "disable-adaptive-thinking": { type: "boolean" },
+          sample: { type: "string" },
+          "fixture-dir": { type: "string" },
+          "use-replay": { type: "boolean" },
+          "record-replay": { type: "boolean" },
+          "dry-run": { type: "boolean" },
+          "retry-model": { type: "string" },
+          "retry-effort": { type: "string" },
+          "retry-threshold": { type: "string" },
+          "retry-batch-size": { type: "string" },
+          "retry-fixture-dir": { type: "string" },
+          "retry-use-replay": { type: "boolean" },
+          "retry-record-replay": { type: "boolean" },
+          "no-propose-subsystems": { type: "boolean" },
+          "subsystems-model": { type: "string" },
+          "subsystems-file": { type: "string" },
+          "verbose-disambiguation": { type: "boolean" },
+          "no-verbose-disambiguation": { type: "boolean" },
+          "verbose-misconceptions": { type: "boolean" },
+        },
+        allowPositionals: false,
+        strict: true,
+      });
+      const modsPath = args.values.mods;
+      if (!modsPath) {
+        console.error("usage: classify-folder --mods <mods-folder-or-instance-root> [--out <dir>] [--stages 1,2,3]");
+        process.exit(2);
+        return;
+      }
+      const outDir = resolve(args.values.out ?? "out");
+      mkdirSync(outDir, { recursive: true });
+
+      const stages = parseStages(args.values.stages);
+      const stage3CliOpts: Stage3CliOptions = {
+        model: args.values.model,
+        backend: parseBackend(args.values.backend),
+        ignoredProviders: (args.values["ignore-provider"] as string[] | undefined) ?? undefined,
+        onlyProviders: (args.values["only-provider"] as string[] | undefined) ?? undefined,
+        batchSize: parsePositiveInteger(args.values["batch-size"], "--batch-size"),
+        concurrency: parsePositiveInteger(args.values.concurrency, "--concurrency"),
+        effort: parseEffort(args.values.effort),
+        thinkingBudget: args.values["thinking-budget"]
+          ? parsePositiveInteger(args.values["thinking-budget"], "--thinking-budget")
+          : undefined,
+        disableAdaptiveThinking: args.values["disable-adaptive-thinking"] ?? false,
+        sample: args.values.sample,
+        fixtureDir: args.values["fixture-dir"],
+        useReplay: args.values["use-replay"] ?? false,
+        recordReplay: args.values["record-replay"] ?? false,
+        dryRun: args.values["dry-run"] ?? false,
+        retryModel: args.values["retry-model"],
+        retryEffort: parseEffort(args.values["retry-effort"]),
+        retryThreshold: args.values["retry-threshold"]
+          ? parseConfidenceThreshold(args.values["retry-threshold"], "--retry-threshold")
+          : undefined,
+        retryBatchSize: args.values["retry-batch-size"]
+          ? parsePositiveInteger(args.values["retry-batch-size"], "--retry-batch-size")
+          : undefined,
+        retryFixtureDir: args.values["retry-fixture-dir"],
+        retryUseReplay: args.values["retry-use-replay"],
+        retryRecordReplay: args.values["retry-record-replay"],
+        proposeSubsystems: !(args.values["no-propose-subsystems"] ?? false),
+        subsystemsModel: args.values["subsystems-model"],
+        subsystemsFile: args.values["subsystems-file"],
+        verboseFacetDisambiguation: args.values["no-verbose-disambiguation"]
+          ? false
+          : (args.values["verbose-disambiguation"] ?? true),
+        verboseCommonMisconceptions: args.values["verbose-misconceptions"] ?? false,
+      };
+
+      await runModsFolderClassification(modsPath, outDir, stages, stage3CliOpts, {
+        targetMods: (args.values.mod as string[] | undefined) ?? [],
+        limitMods: parsePositiveInteger(args.values["limit-mods"], "--limit-mods"),
+        includeCovered: args.values["include-covered"] ?? false,
+        force: args.values.force ?? false,
+        modConcurrency: parsePositiveInteger(args.values["mod-concurrency"], "--mod-concurrency") ?? 1,
+      });
+      return;
+    }
+
+    case "propose-runtime-subsystems": {
+      const args = parseArgs({
+        args: rest,
+        options: {
+          "runtime-export": { type: "string" },
+          summary: { type: "string" },
+          out: { type: "string" },
+          namespace: { type: "string", multiple: true },
+          "limit-namespaces": { type: "string" },
+          "min-items": { type: "string" },
+          model: { type: "string" },
+          backend: { type: "string" },
+          "ignore-provider": { type: "string", multiple: true },
+          "only-provider": { type: "string", multiple: true },
+          effort: { type: "string" },
+          "thinking-budget": { type: "string" },
+          "disable-adaptive-thinking": { type: "boolean" },
+          "fixture-dir": { type: "string" },
+          "use-replay": { type: "boolean" },
+          "record-replay": { type: "boolean" },
+          "dry-run": { type: "boolean" },
+          force: { type: "boolean" },
+        },
+        allowPositionals: false,
+        strict: true,
+      });
+      const runtimeExportPath = args.values["runtime-export"];
+      if (!runtimeExportPath) {
+        console.error("usage: propose-runtime-subsystems --runtime-export <pack.runtime-items.ndjson> [options]");
+        process.exit(2);
+        return;
+      }
+      const outDir = resolve(args.values.out ?? "out");
+      mkdirSync(outDir, { recursive: true });
+      const opts: Stage3CliOptions = {
+        model: args.values.model,
+        backend: parseBackend(args.values.backend),
+        ignoredProviders: (args.values["ignore-provider"] as string[] | undefined) ?? undefined,
+        onlyProviders: (args.values["only-provider"] as string[] | undefined) ?? undefined,
+        effort: parseEffort(args.values.effort),
+        thinkingBudget: args.values["thinking-budget"]
+          ? parsePositiveInteger(args.values["thinking-budget"], "--thinking-budget")
+          : undefined,
+        disableAdaptiveThinking: args.values["disable-adaptive-thinking"] ?? false,
+        fixtureDir: args.values["fixture-dir"],
+        useReplay: args.values["use-replay"] ?? false,
+        recordReplay: args.values["record-replay"] ?? false,
+        dryRun: args.values["dry-run"] ?? false,
+      };
+      await runRuntimeSubsystemProposal({
+        runtimeExportPath,
+        summaryPath: args.values.summary,
+        outDir,
+        namespaces: (args.values.namespace as string[] | undefined) ?? [],
+        limitNamespaces: parsePositiveInteger(args.values["limit-namespaces"], "--limit-namespaces"),
+        minItems: parsePositiveInteger(args.values["min-items"], "--min-items") ?? 4,
+        force: args.values.force ?? false,
+        opts,
+      });
+      return;
+    }
+
+    case "generate-pack-layer": {
+      const args = parseArgs({
+        args: rest,
+        options: {
+          "runtime-export": { type: "string" },
+          summary: { type: "string" },
+          mods: { type: "string" },
+          out: { type: "string" },
+          "pack-id": { type: "string" },
+          stages: { type: "string" },
+          datapack: { type: "boolean" },
+          "datapack-out": { type: "string" },
+          "pack-format": { type: "string" },
+          force: { type: "boolean" },
+          model: { type: "string" },
+          backend: { type: "string" },
+          "ignore-provider": { type: "string", multiple: true },
+          "only-provider": { type: "string", multiple: true },
+          "batch-size": { type: "string" },
+          concurrency: { type: "string" },
+          effort: { type: "string" },
+          "thinking-budget": { type: "string" },
+          "disable-adaptive-thinking": { type: "boolean" },
+          sample: { type: "string" },
+          "fixture-dir": { type: "string" },
+          "use-replay": { type: "boolean" },
+          "record-replay": { type: "boolean" },
+          "dry-run": { type: "boolean" },
+          "retry-model": { type: "string" },
+          "retry-effort": { type: "string" },
+          "retry-threshold": { type: "string" },
+          "retry-batch-size": { type: "string" },
+          "retry-fixture-dir": { type: "string" },
+          "retry-use-replay": { type: "boolean" },
+          "retry-record-replay": { type: "boolean" },
+          "subsystems-file": { type: "string" },
+          "verbose-disambiguation": { type: "boolean" },
+          "no-verbose-disambiguation": { type: "boolean" },
+          "verbose-misconceptions": { type: "boolean" },
+        },
+        allowPositionals: false,
+        strict: true,
+      });
+      const runtimeExportPath = args.values["runtime-export"];
+      if (!runtimeExportPath) {
+        console.error("usage: generate-pack-layer --runtime-export <pack.runtime-items.ndjson> [options]");
+        process.exit(2);
+        return;
+      }
+      const outDir = resolve(args.values.out ?? "out");
+      mkdirSync(outDir, { recursive: true });
+      const stages = parseStages(args.values.stages);
+      const stage3CliOpts: Stage3CliOptions = {
+        model: args.values.model,
+        backend: parseBackend(args.values.backend),
+        ignoredProviders: (args.values["ignore-provider"] as string[] | undefined) ?? undefined,
+        onlyProviders: (args.values["only-provider"] as string[] | undefined) ?? undefined,
+        batchSize: parsePositiveInteger(args.values["batch-size"], "--batch-size"),
+        concurrency: parsePositiveInteger(args.values.concurrency, "--concurrency"),
+        effort: parseEffort(args.values.effort),
+        thinkingBudget: args.values["thinking-budget"]
+          ? parsePositiveInteger(args.values["thinking-budget"], "--thinking-budget")
+          : undefined,
+        disableAdaptiveThinking: args.values["disable-adaptive-thinking"] ?? false,
+        sample: args.values.sample,
+        fixtureDir: args.values["fixture-dir"],
+        useReplay: args.values["use-replay"] ?? false,
+        recordReplay: args.values["record-replay"] ?? false,
+        dryRun: args.values["dry-run"] ?? false,
+        retryModel: args.values["retry-model"],
+        retryEffort: parseEffort(args.values["retry-effort"]),
+        retryThreshold: args.values["retry-threshold"]
+          ? parseConfidenceThreshold(args.values["retry-threshold"], "--retry-threshold")
+          : undefined,
+        retryBatchSize: args.values["retry-batch-size"]
+          ? parsePositiveInteger(args.values["retry-batch-size"], "--retry-batch-size")
+          : undefined,
+        retryFixtureDir: args.values["retry-fixture-dir"],
+        retryUseReplay: args.values["retry-use-replay"],
+        retryRecordReplay: args.values["retry-record-replay"],
+        proposeSubsystems: false,
+        subsystemsFile: args.values["subsystems-file"],
+        verboseFacetDisambiguation: args.values["no-verbose-disambiguation"]
+          ? false
+          : (args.values["verbose-disambiguation"] ?? true),
+        verboseCommonMisconceptions: args.values["verbose-misconceptions"] ?? false,
+      };
+      await runGeneratePackLayer(runtimeExportPath, outDir, stages, stage3CliOpts, {
+        summaryPath: args.values.summary,
+        modsPath: args.values.mods,
+        packId: args.values["pack-id"],
+        writeDatapack: args.values.datapack ?? false,
+        datapackOut: args.values["datapack-out"],
+        packFormat: parsePositiveInteger(args.values["pack-format"], "--pack-format"),
+        force: args.values.force ?? false,
+      });
       return;
     }
 
@@ -386,9 +732,15 @@ interface Stage3CliOptions {
   /** Model id for the proposer call.  Default haiku — it's cheap, the prompt
    *  is small, and we just want a plausible vocabulary. */
   subsystemsModel?: string;
+  /** Load canonical subsystem vocabulary from an existing cache/output file.
+   *  Supports both `<modid>.subsystems.json` and runtime
+   *  `<pack>.runtime-subsystems.json` namespace maps. */
+  subsystemsFile?: string;
   /** Pre-resolved canonical vocabulary, plumbed through to stage 3. Set
    *  inside `runMod` after the proposer runs; consumed by `executeStage3`. */
   subsystemVocabulary?: readonly { id: string; rationale?: string }[];
+  /** Namespace-scoped vocabulary for mixed-namespace runtime-export batches. */
+  subsystemVocabularyByNamespace?: SubsystemVocabularyByNamespace;
   /** Verbose-prompt extras. disambiguation defaults ON
    *  (principle-based per-facet reasoning; A/B testing showed it
    *  carries sonnet from ~50% → ~93% on hard categories). misconceptions
@@ -397,6 +749,103 @@ interface Stage3CliOptions {
    *  off; --verbose-misconceptions flips misconceptions on. */
   verboseFacetDisambiguation?: boolean;
   verboseCommonMisconceptions?: boolean;
+}
+
+function attachGenerationMetadata(
+  layer: LayerFile,
+  metadata: {
+    sourceKind?: string;
+    sourcePath?: string;
+    sourceVersion?: string;
+    namespace?: string;
+    stages: readonly string[];
+    stage3Opts?: Stage3CliOptions;
+    inputMetadata?: Record<string, unknown>;
+  },
+): void {
+  const existing = layer.metadata ?? {};
+  const prompt = metadata.stage3Opts ? buildPromptMetadata(metadata.stage3Opts) : existing.prompt;
+  layer.metadata = {
+    ...existing,
+    tool: {
+      name: "slot-classify",
+      version: TOOL_VERSION,
+    },
+    schema: {
+      layer_schema_version: layer.schema_version,
+    },
+    pipeline: {
+      stages: metadata.stages,
+      generated_at: layer.generated_at,
+    },
+    input: {
+      ...(isRecord(existing.input) ? existing.input : {}),
+      ...(metadata.sourceKind ? { source_kind: metadata.sourceKind } : {}),
+      ...(metadata.sourcePath ? { source_path: metadata.sourcePath } : {}),
+      ...(metadata.sourceVersion ? { source_version: metadata.sourceVersion } : {}),
+      ...(metadata.namespace ? { namespace: metadata.namespace } : {}),
+      ...(metadata.inputMetadata ?? {}),
+    },
+    ...(prompt ? { prompt } : {}),
+  };
+}
+
+function buildPromptMetadata(opts: Stage3CliOptions): Record<string, unknown> {
+  const backend = opts.useReplay ? "replay" : (opts.backend ?? inferBackend(opts.model));
+  return {
+    version: PROMPT_VERSION,
+    backend,
+    model: opts.model ?? DEFAULT_STAGE3_MODEL,
+    target_facets: defaultTargetFacets(),
+    batch_size: opts.batchSize ?? DEFAULT_STAGE3_BATCH_SIZE,
+    concurrency: opts.concurrency ?? DEFAULT_STAGE3_CONCURRENCY,
+    effort: opts.effort ?? null,
+    thinking_budget: opts.thinkingBudget ?? null,
+    record_replay: opts.recordReplay,
+    use_replay: opts.useReplay,
+    fixture_dir: opts.fixtureDir ?? null,
+    verbose_facet_disambiguation: opts.verboseFacetDisambiguation ?? true,
+    verbose_common_misconceptions: opts.verboseCommonMisconceptions ?? false,
+    subsystem_vocabulary: opts.subsystemVocabulary?.map((entry) => entry.id) ?? [],
+    subsystem_vocabulary_by_namespace: opts.subsystemVocabularyByNamespace
+      ? Object.fromEntries(
+          Object.entries(opts.subsystemVocabularyByNamespace)
+            .map(([namespace, entries]) => [namespace, entries.map((entry) => entry.id)])
+            .filter(([, entries]) => (entries as string[]).length > 0),
+        )
+      : {},
+    subsystem_vocabulary_file: opts.subsystemsFile ?? null,
+    retry: opts.retryModel
+      ? {
+          model: opts.retryModel,
+          effort: opts.retryEffort ?? null,
+          threshold: opts.retryThreshold ?? 0.5,
+          batch_size: opts.retryBatchSize ?? 8,
+          fixture_dir: opts.retryFixtureDir ?? null,
+        }
+      : null,
+  };
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return !!value && typeof value === "object" && !Array.isArray(value);
+}
+
+function loadBundledPerModIds(): Set<string> {
+  const indexPath = resolve(
+    REPO_ROOT,
+    "common/src/main/resources/data/slot/classification/per-mod/index.json",
+  );
+  try {
+    const parsed = JSON.parse(readFileSync(indexPath, "utf8")) as { mods?: unknown };
+    return new Set(
+      Array.isArray(parsed.mods)
+        ? parsed.mods.filter((mod): mod is string => typeof mod === "string")
+        : [],
+    );
+  } catch {
+    return new Set();
+  }
 }
 
 async function runVanilla(
@@ -451,6 +900,13 @@ async function runVanilla(
     });
     layer.generated_by = TOOL_VERSION;
     layer.generated_at = new Date().toISOString();
+    attachGenerationMetadata(layer, {
+      sourceKind: "mcmeta-summary",
+      sourcePath,
+      sourceVersion: bundle!.version,
+      namespace: VANILLA_NAMESPACE,
+      stages: ["stage1", "stage2"],
+    });
     const validation = validateLayer(layer);
     if (!validation.ok) {
       console.error(`[stage2] layer failed schema validation`);
@@ -549,6 +1005,13 @@ async function runMod(
     layer.source = modNamespace;
     layer.generated_by = TOOL_VERSION;
     layer.generated_at = new Date().toISOString();
+    attachGenerationMetadata(layer, {
+      sourceKind: "source-tree",
+      sourcePath: modPath,
+      sourceVersion: bundle!.version,
+      namespace: modNamespace,
+      stages: ["stage1", "stage2"],
+    });
     const validation = validateLayer(layer);
     if (!validation.ok) {
       console.error(`[stage2] layer failed schema validation`);
@@ -769,6 +1232,761 @@ function clearModpackCaches(
   return { facets, subsystems };
 }
 
+interface ModsFolderClassificationOptions {
+  targetMods: readonly string[];
+  limitMods?: number;
+  includeCovered: boolean;
+  force: boolean;
+  modConcurrency: number;
+}
+
+async function runModsFolderClassification(
+  modsPath: string,
+  outDir: string,
+  stages: StageSelection,
+  stage3Opts: Stage3CliOptions,
+  options: ModsFolderClassificationOptions,
+) {
+  const start = Date.now();
+  const report = scanModsFolder({
+    requestedPath: modsPath,
+    generatedBy: TOOL_VERSION,
+    bundledModIds: loadBundledPerModIds(),
+  });
+  const scanPath = join(outDir, "scan-report.json");
+  writeFileSync(scanPath, JSON.stringify(report, null, 2) + "\n");
+
+  console.log(formatScanReport(report));
+  console.log("");
+  console.log(`[classify-folder] scan report: ${scanPath}`);
+
+  const targetSet = new Set(options.targetMods);
+  const allCandidates = report.mods
+    .filter((mod) => shouldProcessScannedMod(mod, targetSet, options.includeCovered))
+    .sort((a, b) => {
+      const bySize = b.item_candidate_count - a.item_candidate_count;
+      return bySize !== 0 ? bySize : a.id.localeCompare(b.id);
+    });
+
+  let skipped = 0;
+  let alreadyClassified = 0;
+  let processed = 0;
+  const failures: Array<{ namespace: string; error: string }> = [];
+  const toProcess: InputManifestMod[] = [];
+
+  for (const mod of allCandidates) {
+    const completePath = resolve(outDir, `${mod.id}.facets.complete.json`);
+    const tag = mod.id.padEnd(28);
+    if (options.force && existsSync(completePath)) {
+      rmSync(completePath);
+      console.log(`[classify-folder] ${tag} force removed existing complete output`);
+    }
+    if (!options.force && existsSync(completePath)) {
+      const reusable = inspectReusableCompleteOutput(completePath);
+      if (reusable.ok && reusable.entryCount > 0) {
+        alreadyClassified++;
+        console.log(`[classify-folder] ${tag} already classified — ${reusable.entryCount} entries → ${completePath}`);
+        continue;
+      }
+      if (!reusable.ok) {
+        console.log(`[classify-folder] ${tag} reprocessing — ${reusable.reason}`);
+      }
+    }
+    toProcess.push(mod);
+    if (options.limitMods && toProcess.length >= options.limitMods) break;
+  }
+
+  skipped = report.mods.length - toProcess.length - alreadyClassified;
+  const modConcurrency = Math.max(1, options.modConcurrency);
+  const batchConcurrency = stage3Opts.concurrency ?? DEFAULT_STAGE3_CONCURRENCY;
+  console.log(
+    `[classify-folder] settings: mods=${toProcess.length}/${report.mods.length} ` +
+      `mod-concurrency=${modConcurrency} batch-concurrency=${batchConcurrency}` +
+      (options.force ? ` force=true` : ``) +
+      (options.includeCovered ? ` include-covered=true` : ``),
+  );
+
+  let nextIndex = 0;
+  const worker = async (workerId: number): Promise<void> => {
+    while (true) {
+      const idx = nextIndex++;
+      if (idx >= toProcess.length) return;
+      const mod = toProcess[idx]!;
+      const workerLabel = modConcurrency > 1 ? `[w${workerId}] ` : ``;
+      console.log("");
+      console.log("─".repeat(72));
+      console.log(`[classify-folder] ${workerLabel}${mod.id.padEnd(28)} processing — jar ${mod.file_name}`);
+      console.log("─".repeat(72));
+      try {
+        await runJarMod(mod, outDir, stages, stage3Opts);
+        processed++;
+      } catch (err) {
+        const message = err instanceof Error ? err.message : String(err);
+        console.error(`[classify-folder] ${workerLabel}${mod.id.padEnd(28)} FAILED — ${message}`);
+        failures.push({ namespace: mod.id, error: message });
+      }
+    }
+  };
+
+  await Promise.all(
+    Array.from(
+      { length: Math.min(modConcurrency, toProcess.length || 1) },
+      (_, i) => worker(i + 1),
+    ),
+  );
+
+  console.log("");
+  console.log("=".repeat(72));
+  console.log(`Mods-folder run complete: ${report.source.pack_name ?? report.source.resolved_mods_path ?? report.source.requested_path}`);
+  console.log("=".repeat(72));
+  console.log(`Total scanned mod entries: ${report.mods.length}`);
+  console.log(`  skipped:              ${skipped}`);
+  console.log(`  already classified:   ${alreadyClassified}`);
+  console.log(`  processed:            ${processed}`);
+  console.log(`  failed:               ${failures.length}`);
+  console.log(`Wall time:              ${((Date.now() - start) / 1000).toFixed(1)}s`);
+  if (failures.length > 0) {
+    console.log("");
+    console.log("Failures:");
+    for (const failure of failures) {
+      console.log(`  - ${failure.namespace}: ${failure.error.slice(0, 200)}`);
+    }
+    process.exitCode = 1;
+  }
+  console.log("=".repeat(72));
+}
+
+function shouldProcessScannedMod(
+  mod: InputManifestMod,
+  targetSet: ReadonlySet<string>,
+  includeCovered: boolean,
+): boolean {
+  const explicitlyTargeted = targetSet.size > 0 && targetSet.has(mod.id);
+  if (targetSet.size > 0 && !explicitlyTargeted) return false;
+  if (mod.status.startsWith("blocked:")) return false;
+  if (mod.status === "skipped:library") return false;
+  if (mod.status === "missing:semantic-generation-available") return true;
+  if (mod.status.startsWith("covered:")) return includeCovered || explicitlyTargeted;
+  return explicitlyTargeted && mod.item_candidate_count > 0;
+}
+
+interface RuntimeSubsystemProposalOptions {
+  runtimeExportPath: string;
+  summaryPath?: string;
+  outDir: string;
+  namespaces: readonly string[];
+  limitNamespaces?: number;
+  minItems: number;
+  force: boolean;
+  opts: Stage3CliOptions;
+}
+
+async function runRuntimeSubsystemProposal(
+  options: RuntimeSubsystemProposalOptions,
+): Promise<void> {
+  const start = Date.now();
+  const runtimeItemsPath = resolve(options.runtimeExportPath);
+  const summaryPath = resolve(options.summaryPath ?? defaultRuntimeSummaryPath(runtimeItemsPath));
+  const records = readRuntimeExportRecords(runtimeItemsPath);
+  let summary: RuntimeExportSummary | null = null;
+  if (existsSync(summaryPath)) {
+    summary = readRuntimeExportSummary(summaryPath);
+  } else if (options.summaryPath) {
+    throw new Error(`runtime summary not found: ${summaryPath}`);
+  } else {
+    console.warn(`[runtime-subsystems] summary not found at ${summaryPath}; continuing with item records only`);
+  }
+
+  const packId = summary?.pack_id ?? summary?.requested_pack_id ?? packIdFromRuntimeItemsPath(runtimeItemsPath);
+  const outputPath = join(options.outDir, `${safeFileComponent(packId)}.runtime-subsystems.json`);
+  if (existsSync(outputPath) && !options.force && !options.opts.dryRun) {
+    console.error(`[runtime-subsystems] output already exists: ${outputPath}`);
+    console.error(`[runtime-subsystems] pass --force to regenerate it`);
+    process.exit(1);
+    return;
+  }
+
+  let contexts = buildRuntimeSubsystemContexts({
+    records,
+    summary,
+    namespaces: options.namespaces,
+    minItems: options.minItems,
+  });
+  if (options.limitNamespaces) contexts = contexts.slice(0, options.limitNamespaces);
+
+  console.log(
+    `[runtime-subsystems] ${records.length} runtime item record(s), ` +
+      `${contexts.length} namespace context(s), pack=${packId}`,
+  );
+  if (contexts.length === 0) {
+    console.log(`[runtime-subsystems] no namespaces matched --namespace/--min-items filters`);
+    return;
+  }
+
+  const model = options.opts.model ?? DEFAULT_STAGE3_MODEL;
+  const backend = options.opts.backend ?? inferBackend(model);
+
+  if (options.opts.dryRun) {
+    const dryRunDir = join(options.outDir, "runtime-subsystems-dry-run");
+    mkdirSync(dryRunDir, { recursive: true });
+    const promptSummary: Array<{ namespace: string; system: string; user: string; chars: number; approxTokens: number }> = [];
+    for (const context of contexts) {
+      const prompt = buildRuntimeProposerPrompt(context);
+      const systemPath = join(dryRunDir, `${context.modNamespace}.system.md`);
+      const userPath = join(dryRunDir, `${context.modNamespace}.user.md`);
+      writeFileSync(systemPath, prompt.system);
+      writeFileSync(userPath, prompt.user);
+      const chars = prompt.system.length + prompt.user.length;
+      promptSummary.push({
+        namespace: context.modNamespace,
+        system: systemPath,
+        user: userPath,
+        chars,
+        approxTokens: Math.round(chars / 4),
+      });
+    }
+    const summaryFile = join(dryRunDir, "summary.json");
+    writeFileSync(summaryFile, JSON.stringify(promptSummary, null, 2) + "\n");
+    console.log(`[runtime-subsystems] dry run: wrote ${contexts.length} prompt pair(s) to ${dryRunDir}`);
+    console.log(`[runtime-subsystems] summary → ${summaryFile}`);
+    return;
+  }
+
+  console.log(`[runtime-subsystems] proposing vocabulary with ${model} via ${backend}`);
+  const client = buildClient(options.opts);
+  const output: RuntimeSubsystemVocabularyFile = {
+    schema_version: 1,
+    kind: "slot-runtime-subsystem-vocabulary",
+    pack_id: packId,
+    generated_by: TOOL_VERSION,
+    generated_at: new Date().toISOString(),
+    model,
+    source: {
+      runtime_items: runtimeItemsPath,
+      ...(existsSync(summaryPath) ? { runtime_summary: summaryPath } : {}),
+      ...(summary?.loader ? { loader: summary.loader } : {}),
+      ...(summary?.minecraft_version ? { minecraft_version: summary.minecraft_version } : {}),
+      ...(summary?.item_count ? { item_count: summary.item_count } : { item_count: records.length }),
+    },
+    namespaces: {},
+  };
+
+  for (let i = 0; i < contexts.length; i++) {
+    const context = contexts[i]!;
+    console.log(
+      `[runtime-subsystems] ${i + 1}/${contexts.length} ${context.modNamespace} ` +
+        `(${context.itemCount} items)`,
+    );
+    const proposal = await proposeRuntimeSubsystems(context, {
+      client,
+      model,
+      clientOptions: buildClientOptions(
+        options.opts.effort,
+        options.opts.thinkingBudget,
+        options.opts.disableAdaptiveThinking,
+      ),
+    });
+    output.namespaces[context.modNamespace] = {
+      modNamespace: context.modNamespace,
+      item_count: context.itemCount,
+      evidence: contextEvidence(context),
+      vocabulary: proposal.vocabulary,
+      raw_response: proposal.raw,
+    };
+    if (proposal.vocabulary.length === 0) {
+      console.log(`  (no vocabulary entries)`);
+    } else {
+      for (const entry of proposal.vocabulary) {
+        console.log(`  ${entry.id.padEnd(40)}${entry.rationale ? " " + entry.rationale : ""}`);
+      }
+    }
+  }
+
+  writeFileSync(outputPath, JSON.stringify(output, null, 2) + "\n");
+  console.log(`[runtime-subsystems] wrote ${Object.keys(output.namespaces).length} namespace(s) → ${outputPath}`);
+  console.log(`done in ${((Date.now() - start) / 1000).toFixed(2)}s`);
+}
+
+interface GeneratePackLayerOptions {
+  summaryPath?: string;
+  modsPath?: string;
+  packId?: string;
+  writeDatapack: boolean;
+  datapackOut?: string;
+  packFormat?: number;
+  force: boolean;
+}
+
+async function runGeneratePackLayer(
+  runtimeExportPath: string,
+  outDir: string,
+  stages: StageSelection,
+  stage3Opts: Stage3CliOptions,
+  options: GeneratePackLayerOptions,
+): Promise<void> {
+  const start = Date.now();
+  const runtimeItemsPath = resolve(runtimeExportPath);
+  const summaryPath = resolve(options.summaryPath ?? defaultRuntimeSummaryPath(runtimeItemsPath));
+  let summary: RuntimeExportSummary | null = null;
+  if (existsSync(summaryPath)) {
+    summary = readRuntimeExportSummary(summaryPath);
+  } else if (options.summaryPath) {
+    throw new Error(`runtime summary not found: ${summaryPath}`);
+  } else {
+    console.warn(`[pack-layer] summary not found at ${summaryPath}; continuing with item records only`);
+  }
+
+  const packId = safeFileComponent(
+    options.packId ?? summary?.pack_id ?? summary?.requested_pack_id ?? packIdFromRuntimeItemsPath(runtimeItemsPath),
+  );
+  const recordsPath = join(outDir, `${packId}.pack.items.ndjson`);
+  const partialPath = join(outDir, `${packId}.pack.facets.partial.json`);
+  const completePath = join(outDir, `${packId}.pack.facets.complete.json`);
+  for (const path of [recordsPath, partialPath, completePath]) {
+    if (existsSync(path) && options.force) rmSync(path);
+  }
+  if (!options.force && (existsSync(partialPath) || existsSync(completePath)) && (stages.stage2 || stages.stage3)) {
+    console.error(`[pack-layer] output already exists for pack ${packId}`);
+    console.error(`[pack-layer] pass --force to regenerate ${partialPath} / ${completePath}`);
+    process.exit(1);
+    return;
+  }
+
+  let records = readRuntimeExportRecords(runtimeItemsPath);
+  console.log(`[pack-layer] runtime records: ${records.length} item(s), pack=${packId}`);
+  if (options.modsPath) {
+    const staticRecords = loadStaticEnrichmentRecords(options.modsPath, records);
+    const merged = mergeRuntimeWithStaticRecords(records, staticRecords);
+    records = merged.records;
+    console.log(
+      `[pack-layer] static jar enrichment: ${staticRecords.size} matching static record(s), ` +
+        `${merged.enriched} runtime record(s) enriched`,
+    );
+  }
+
+  if (stages.stage1) {
+    writeFileSync(recordsPath, records.map((record) => JSON.stringify(record)).join("\n") + "\n");
+    console.log(`[stage1] ${records.length} merged runtime/static records → ${recordsPath}`);
+  }
+
+  let stage2Layer: LayerFile | null = null;
+  if (stages.stage2) {
+    const bundle = runtimeSyntheticBundle(records, summary);
+    const { layer, coverage, warnings } = runDeterministic({
+      records,
+      bundle,
+      namespace: packId,
+    });
+    layer.layer = "modpack";
+    layer.source = packId;
+    layer.generated_by = TOOL_VERSION;
+    layer.generated_at = new Date().toISOString();
+    attachGenerationMetadata(layer, {
+      sourceKind: "runtime-export",
+      sourcePath: runtimeItemsPath,
+      sourceVersion: summary?.minecraft_version,
+      namespace: packId,
+      stages: ["stage1", "stage2"],
+      inputMetadata: {
+        runtime_summary: existsSync(summaryPath) ? summaryPath : null,
+        static_mods_path: options.modsPath ? resolve(options.modsPath) : null,
+        loader: summary?.loader ?? null,
+        minecraft_version: summary?.minecraft_version ?? null,
+        runtime_item_count: summary?.item_count ?? records.length,
+      },
+    });
+    const validation = validateLayer(layer);
+    if (!validation.ok) {
+      console.error(`[stage2] pack layer failed schema validation`);
+      for (const err of validation.errors.slice(0, 10)) console.error(`  ${err}`);
+      process.exit(1);
+      return;
+    }
+    writeFileSync(partialPath, JSON.stringify(layer, null, 2) + "\n");
+    console.log(`[stage2] ${Object.keys(layer.entries).length} items with ≥1 facet → ${partialPath}`);
+    console.log(`[stage2] coverage:`);
+    const facetOrder = Object.keys(coverage).sort((a, b) => coverage[b]! - coverage[a]!);
+    for (const facet of facetOrder) {
+      const pct = records.length === 0 ? "0.0" : ((coverage[facet]! / records.length) * 100).toFixed(1);
+      console.log(`  ${facet.padEnd(22)} ${String(coverage[facet]).padStart(5)}/${records.length} (${pct}%)`);
+    }
+    if (warnings.length > 0) {
+      console.log(`[stage2] ${warnings.length} warnings:`);
+      for (const warning of warnings.slice(0, 20)) console.log(`  ${warning}`);
+      if (warnings.length > 20) console.log(`  … and ${warnings.length - 20} more`);
+    }
+    stage2Layer = layer;
+  } else if (stages.stage3) {
+    if (!existsSync(partialPath)) {
+      console.error(`[stage3] need stage 2 output at ${partialPath}; run with --stages 1,2,3 first`);
+      process.exit(1);
+      return;
+    }
+    stage2Layer = JSON.parse(readFileSync(partialPath, "utf8")) as LayerFile;
+    console.log(`[stage2] (skipped; loaded ${Object.keys(stage2Layer.entries).length} entries)`);
+  }
+
+  let layerForDatapack = stage2Layer ? partialPath : null;
+  if (stages.stage3 && stage2Layer) {
+    await executeStage3(records, stage2Layer, completePath, stage3Opts);
+    if (!stage3Opts.dryRun && existsSync(completePath)) {
+      layerForDatapack = completePath;
+    }
+  }
+
+  if (options.writeDatapack) {
+    if (!layerForDatapack || !existsSync(layerForDatapack)) {
+      console.warn(`[datapack] no generated layer file available; skipping datapack packaging`);
+    } else if (stage3Opts.dryRun) {
+      console.warn(`[datapack] stage 3 dry-run requested; skipping datapack packaging`);
+    } else {
+      const datapackDir = writeClassificationDatapack({
+        sourceLayerPath: layerForDatapack,
+        outDir,
+        explicitOut: options.datapackOut,
+        packId,
+        packFormat: options.packFormat ?? inferDatapackPackFormat(summary?.minecraft_version),
+        force: options.force,
+      });
+      console.log(`[datapack] wrote ${datapackDir}`);
+    }
+  }
+
+  console.log(`done in ${((Date.now() - start) / 1000).toFixed(2)}s`);
+}
+
+function loadStaticEnrichmentRecords(
+  modsPath: string,
+  runtimeRecords: readonly ItemExtractRecord[],
+): Map<string, ItemExtractRecord> {
+  const runtimeIds = new Set(runtimeRecords.map((record) => record.id));
+  const report = scanModsFolder({
+    requestedPath: modsPath,
+    generatedBy: TOOL_VERSION,
+    bundledModIds: loadBundledPerModIds(),
+  });
+  const out = new Map<string, ItemExtractRecord>();
+  const candidates = report.mods
+    .filter((mod) => !mod.status.startsWith("blocked:") && mod.item_candidate_count > 0)
+    .sort((a, b) => a.id.localeCompare(b.id));
+
+  console.log(
+    `[pack-layer] scanning static jar data: ${candidates.length} candidate mod jar(s) from ` +
+      `${report.source.resolved_mods_path ?? report.source.requested_path}`,
+  );
+  let failures = 0;
+  for (const mod of candidates) {
+    try {
+      const bundle = loadJarModBundle({
+        jarPath: mod.path,
+        modNamespace: mod.id,
+        version: mod.version,
+      });
+      const { records } = extractFromModBundle(bundle, TOOL_VERSION);
+      let matched = 0;
+      for (const record of records) {
+        if (!runtimeIds.has(record.id) || out.has(record.id)) continue;
+        out.set(record.id, record);
+        matched++;
+      }
+      if (matched > 0) {
+        console.log(`[pack-layer] ${mod.id.padEnd(28)} static matches=${matched}`);
+      }
+    } catch (err) {
+      failures++;
+      const message = err instanceof Error ? err.message : String(err);
+      console.warn(`[pack-layer] ${mod.id.padEnd(28)} static enrichment failed: ${message.slice(0, 160)}`);
+    }
+  }
+  if (failures > 0) {
+    console.warn(`[pack-layer] static enrichment skipped ${failures} jar(s) after extraction errors`);
+  }
+  return out;
+}
+
+function mergeRuntimeWithStaticRecords(
+  records: readonly ItemExtractRecord[],
+  staticRecords: ReadonlyMap<string, ItemExtractRecord>,
+): { records: ItemExtractRecord[]; enriched: number } {
+  let enriched = 0;
+  const merged = records.map((runtime) => {
+    const stat = staticRecords.get(runtime.id);
+    if (!stat) return runtime;
+    enriched++;
+    return {
+      ...runtime,
+      display_name: nonBlank(runtime.display_name) ? runtime.display_name : stat.display_name,
+      model_parents: runtime.model_parents.length > 0 ? runtime.model_parents : stat.model_parents,
+      loot_table_sources: runtime.loot_table_sources.length > 0 ? runtime.loot_table_sources : stat.loot_table_sources,
+      creative_tabs: runtime.creative_tabs.length > 0 ? runtime.creative_tabs : stat.creative_tabs,
+      extractor_meta: {
+        ...(runtime.extractor_meta ?? {}),
+        static_enrichment: "jar",
+        static_model_parents: stat.model_parents.length,
+        static_loot_sources: stat.loot_table_sources.length,
+        static_minecraft_tags_direct: stat.minecraft_tags_direct,
+      },
+    };
+  });
+  return { records: merged, enriched };
+}
+
+function runtimeSyntheticBundle(
+  records: readonly ItemExtractRecord[],
+  summary: RuntimeExportSummary | null,
+): SummaryBundle {
+  const blocks: Record<string, unknown> = {};
+  const itemComponents: Record<string, Record<string, unknown>> = {};
+  for (const record of records) {
+    itemComponents[record.path] = record.component_data ?? {};
+    const meta = record.extractor_meta ?? {};
+    if (meta["is_block_item"] === true) {
+      blocks[record.path] = {};
+    }
+    if (typeof meta["block_id"] === "string" && meta["block_id"].length > 0) {
+      blocks[pathPart(meta["block_id"])] = {};
+    }
+  }
+  return {
+    registries: {
+      item: records.map((record) => record.id).sort(),
+      block: Object.keys(blocks).sort(),
+    },
+    itemComponents,
+    recipes: {},
+    lootTables: {},
+    itemTags: tagMemberMapToTagJson(summary?.item_tag_members),
+    blockTags: tagMemberMapToTagJson(summary?.block_tag_members),
+    itemDefinitions: {},
+    models: {},
+    lang: {},
+    blocks,
+    version: summary?.minecraft_version ?? "runtime-export",
+  };
+}
+
+function tagMemberMapToTagJson(
+  members: Record<string, string[]> | undefined,
+): SummaryBundle["itemTags"] {
+  const out: SummaryBundle["itemTags"] = {};
+  for (const [tag, values] of Object.entries(members ?? {})) {
+    out[tag] = { values };
+  }
+  return out;
+}
+
+function writeClassificationDatapack(options: {
+  sourceLayerPath: string;
+  outDir: string;
+  explicitOut?: string;
+  packId: string;
+  packFormat: number;
+  force: boolean;
+}): string {
+  const datapackDir = resolve(options.explicitOut ?? join(options.outDir, `${options.packId}.classification-datapack`));
+  if (existsSync(datapackDir)) {
+    if (!options.force) {
+      throw new Error(`datapack output already exists: ${datapackDir}; pass --force to overwrite`);
+    }
+    rmSync(datapackDir, { recursive: true, force: true });
+  }
+  const layerDir = join(datapackDir, "data", "slot", "classification", "layers");
+  mkdirSync(layerDir, { recursive: true });
+  const layerName = `${safeFileComponent(options.packId)}.json`;
+  copyFileSync(options.sourceLayerPath, join(layerDir, layerName));
+  writeFileSync(
+    join(datapackDir, "pack.mcmeta"),
+    JSON.stringify(
+      {
+        pack: {
+          pack_format: options.packFormat,
+          description: `SLOT classification layer for ${options.packId}`,
+        },
+      },
+      null,
+      2,
+    ) + "\n",
+  );
+  return datapackDir;
+}
+
+function inferDatapackPackFormat(minecraftVersion: string | undefined): number {
+  if (minecraftVersion?.startsWith("1.20")) return 15;
+  if (minecraftVersion?.startsWith("1.21")) return 48;
+  return 15;
+}
+
+function nonBlank(value: string | null | undefined): value is string {
+  return typeof value === "string" && value.trim().length > 0;
+}
+
+function pathPart(itemId: string): string {
+  const colon = itemId.indexOf(":");
+  return colon >= 0 ? itemId.slice(colon + 1) : itemId;
+}
+
+function packIdFromRuntimeItemsPath(path: string): string {
+  const name = basename(path);
+  if (name.endsWith(".runtime-items.ndjson")) {
+    return name.slice(0, -".runtime-items.ndjson".length);
+  }
+  if (name.endsWith(".ndjson")) {
+    return name.slice(0, -".ndjson".length);
+  }
+  return name.replace(/[^a-zA-Z0-9_.-]+/g, "_");
+}
+
+function safeFileComponent(value: string): string {
+  const safe = value.replace(/[^a-zA-Z0-9_.-]+/g, "_");
+  return safe.length > 0 ? safe : "runtime-export";
+}
+
+async function runJarMod(
+  mod: InputManifestMod,
+  outDir: string,
+  stages: StageSelection,
+  stage3Opts: Stage3CliOptions,
+) {
+  const start = Date.now();
+  const needsBundle = stages.stage1 || stages.stage2;
+  let bundle: ReturnType<typeof loadJarModBundle> | null = null;
+  if (needsBundle) {
+    console.log(`[${mod.id}] loading jar resources from ${mod.path}`);
+    bundle = loadJarModBundle({
+      jarPath: mod.path,
+      modNamespace: mod.id,
+      version: mod.version,
+    });
+    console.log(
+      `[${mod.id}] jar resources: items=${bundle.registries.item?.length ?? 0}; ` +
+        `tags(item)=${Object.keys(bundle.itemTags).length}; recipes=${Object.keys(bundle.recipes).length}`,
+    );
+  } else {
+    console.log(`[${mod.id}] (stages 1+2 skipped — jar load skipped)`);
+  }
+
+  const ndjsonPath = join(outDir, `${mod.id}.items.ndjson`);
+  const metaPath = join(outDir, `${mod.id}.items.meta.json`);
+  const partialPath = join(outDir, `${mod.id}.facets.partial.json`);
+  const completePath = join(outDir, `${mod.id}.facets.complete.json`);
+  mkdirSync(dirname(ndjsonPath), { recursive: true });
+
+  let records: ItemExtractRecord[];
+  if (stages.stage1) {
+    const { records: extracted, meta } = extractFromModBundle(bundle!, TOOL_VERSION);
+    records = extracted;
+    const ndjson = records.map((r) => JSON.stringify(r)).join("\n") + "\n";
+    writeFileSync(ndjsonPath, ndjson);
+    writeFileSync(
+      metaPath,
+      JSON.stringify(
+        {
+          ...meta,
+          extractor: `jar:${mod.id}`,
+          jar: jarInputMetadata(mod),
+        },
+        null,
+        2,
+      ) + "\n",
+    );
+    console.log(`[stage1] ${records.length} items → ${ndjsonPath}`);
+  } else {
+    records = readNdjson(ndjsonPath);
+    console.log(`[stage1] (skipped; loaded ${records.length} records from ${ndjsonPath})`);
+  }
+
+  let stage2Layer: LayerFile | null = null;
+  if (stages.stage2) {
+    const { layer, coverage, warnings } = runDeterministic({
+      records,
+      bundle: bundle!,
+      namespace: mod.id,
+    });
+    layer.layer = "per-mod";
+    layer.source = mod.id;
+    layer.generated_by = TOOL_VERSION;
+    layer.generated_at = new Date().toISOString();
+    attachGenerationMetadata(layer, {
+      sourceKind: "jar",
+      sourcePath: mod.path,
+      sourceVersion: bundle!.version,
+      namespace: mod.id,
+      stages: ["stage1", "stage2"],
+      inputMetadata: jarInputMetadata(mod),
+    });
+    const validation = validateLayer(layer);
+    if (!validation.ok) {
+      console.error(`[stage2] layer failed schema validation`);
+      for (const err of validation.errors.slice(0, 10)) console.error(`  ${err}`);
+      process.exit(1);
+    }
+    writeFileSync(partialPath, JSON.stringify(layer, null, 2) + "\n");
+    console.log(`[stage2] ${Object.keys(layer.entries).length} items with ≥1 facet → ${partialPath}`);
+    console.log(`[stage2] coverage:`);
+    const facetOrder = Object.keys(coverage).sort((a, b) => coverage[b]! - coverage[a]!);
+    for (const facet of facetOrder) {
+      const pct = records.length === 0 ? "0.0" : ((coverage[facet]! / records.length) * 100).toFixed(1);
+      console.log(`  ${facet.padEnd(22)} ${String(coverage[facet]).padStart(5)}/${records.length} (${pct}%)`);
+    }
+    if (warnings.length > 0) {
+      console.log(`[stage2] ${warnings.length} warnings:`);
+      for (const w of warnings.slice(0, 20)) console.log(`  ${w}`);
+      if (warnings.length > 20) console.log(`  … and ${warnings.length - 20} more`);
+    }
+    stage2Layer = layer;
+  } else if (stages.stage3) {
+    if (!existsSync(partialPath)) {
+      console.error(`[stage3] need stage 2 output at ${partialPath}; run with --stages 2,3`);
+      process.exit(1);
+    }
+    stage2Layer = JSON.parse(readFileSync(partialPath, "utf8")) as LayerFile;
+    console.log(`[stage2] (skipped; loaded ${Object.keys(stage2Layer.entries).length} entries)`);
+  }
+
+  if (stages.stage3 && stage2Layer) {
+    let modOpts = stage3Opts;
+    if (stage3Opts.proposeSubsystems !== false) {
+      const cached = readCachedSubsystems(outDir, mod.id);
+      if (cached.length > 0) {
+        console.log(`[subsystems] using cached vocabulary (${cached.length} entries) for jar-backed run`);
+        modOpts = { ...stage3Opts, subsystemVocabulary: cached };
+      } else {
+        console.log(`[subsystems] jar-backed run has no source README; stage 3 will run without canonical vocabulary.`);
+      }
+    }
+    await executeStage3(records, stage2Layer, completePath, modOpts);
+  }
+
+  console.log(`done in ${((Date.now() - start) / 1000).toFixed(2)}s`);
+}
+
+function jarInputMetadata(mod: InputManifestMod): Record<string, unknown> {
+  return {
+    file_name: mod.file_name,
+    loader: mod.loader,
+    minecraft_versions: mod.minecraft_versions,
+    hashes: mod.hashes,
+    item_set_signature: mod.item_set_signature,
+    item_candidate_count: mod.item_candidate_count,
+    resource_counts: mod.resource_counts,
+    namespaces: mod.namespaces,
+    ...(mod.platform_ids ? { platform_ids: mod.platform_ids } : {}),
+  };
+}
+
+function readCachedSubsystems(outDir: string, modNamespace: string): SubsystemEntry[] {
+  const cachePath = join(outDir, `${modNamespace}.subsystems.json`);
+  if (!existsSync(cachePath)) return [];
+  try {
+    const data = JSON.parse(readFileSync(cachePath, "utf8")) as {
+      vocabulary?: SubsystemEntry[];
+    };
+    return Array.isArray(data.vocabulary) ? data.vocabulary : [];
+  } catch {
+    return [];
+  }
+}
+
 /**
  * Resolve the canonical `mod_subsystem` vocabulary for a mod run. Uses an
  * on-disk cache (`<outDir>/<modid>.subsystems.json`) so the proposer LLM call
@@ -878,12 +2096,69 @@ async function resolveModSubsystems(args: {
   return proposal.vocabulary;
 }
 
+function resolveStage3SubsystemVocabulary(opts: Stage3CliOptions): Stage3CliOptions {
+  if (!opts.subsystemsFile) return opts;
+  const resolvedPath = resolve(opts.subsystemsFile);
+  const loaded = loadSubsystemVocabularyFile(resolvedPath);
+  const globalVocabulary = mergeSubsystemEntries(
+    opts.subsystemVocabulary,
+    loaded.vocabulary,
+  );
+  const byNamespace = mergeSubsystemMaps(
+    opts.subsystemVocabularyByNamespace,
+    loaded.byNamespace,
+  );
+  const globalCount = globalVocabulary.length;
+  const namespaceCount = byNamespace ? Object.keys(byNamespace).length : 0;
+  console.log(
+    `[subsystems] loaded vocabulary file ${resolvedPath} ` +
+      `(${globalCount} global entr(y/ies), ${namespaceCount} namespace map entr(y/ies))`,
+  );
+  return {
+    ...opts,
+    subsystemVocabulary: globalCount > 0 ? globalVocabulary : undefined,
+    subsystemVocabularyByNamespace: byNamespace,
+  };
+}
+
+function mergeSubsystemEntries(
+  a: readonly SubsystemEntry[] | undefined,
+  b: readonly SubsystemEntry[] | undefined,
+): SubsystemEntry[] {
+  const out: SubsystemEntry[] = [];
+  const seen = new Set<string>();
+  for (const entry of [...(a ?? []), ...(b ?? [])]) {
+    if (seen.has(entry.id)) continue;
+    seen.add(entry.id);
+    out.push(entry);
+  }
+  return out;
+}
+
+function mergeSubsystemMaps(
+  a: SubsystemVocabularyByNamespace | undefined,
+  b: SubsystemVocabularyByNamespace | undefined,
+): SubsystemVocabularyByNamespace | undefined {
+  const namespaces = new Set([
+    ...Object.keys(a ?? {}),
+    ...Object.keys(b ?? {}),
+  ]);
+  if (namespaces.size === 0) return undefined;
+  const out: SubsystemVocabularyByNamespace = {};
+  for (const namespace of namespaces) {
+    const merged = mergeSubsystemEntries(a?.[namespace], b?.[namespace]);
+    if (merged.length > 0) out[namespace] = merged;
+  }
+  return Object.keys(out).length > 0 ? out : undefined;
+}
+
 async function executeStage3(
   records: readonly ItemExtractRecord[],
   stage2Layer: LayerFile,
   completePath: string,
   opts: Stage3CliOptions,
 ) {
+  opts = resolveStage3SubsystemVocabulary(opts);
   const only = resolveSample(opts.sample, records);
   if (only && only.length === 0) {
     console.error(`[stage3] sample selection produced 0 items`);
@@ -909,6 +2184,7 @@ async function executeStage3(
     only,
     clientOptions: buildClientOptions(opts.effort, opts.thinkingBudget, opts.disableAdaptiveThinking),
     subsystemVocabulary: opts.subsystemVocabulary,
+    subsystemVocabularyByNamespace: opts.subsystemVocabularyByNamespace,
     promptExtras: {
       verboseFacetDisambiguation: opts.verboseFacetDisambiguation,
       verboseCommonMisconceptions: opts.verboseCommonMisconceptions,
@@ -959,6 +2235,7 @@ async function executeStage3(
         threshold: opts.retryThreshold,
         batchSize: opts.retryBatchSize,
         subsystemVocabulary: opts.subsystemVocabulary,
+        subsystemVocabularyByNamespace: opts.subsystemVocabularyByNamespace,
         promptExtras: {
           verboseFacetDisambiguation: opts.verboseFacetDisambiguation,
           verboseCommonMisconceptions: opts.verboseCommonMisconceptions,
@@ -990,6 +2267,10 @@ async function executeStage3(
     }
   }
 
+  attachGenerationMetadata(result.layer, {
+    stages: ["stage1", "stage2", "stage3"],
+    stage3Opts: opts,
+  });
   const validation = validateLayer(result.layer);
   if (!validation.ok) {
     console.error(`[stage3] layer failed schema validation`);
@@ -1154,7 +2435,19 @@ async function dryRunStage3(
       const stage2 = stage2Layer.entries[record.id]?.facets ?? {};
       return buildItemPayload(record, stage2);
     });
-    const prompt = buildBatchPrompt({ items: payloads, target_facets: targetFacets });
+    const prompt = buildBatchPrompt({
+      items: payloads,
+      target_facets: targetFacets,
+      subsystem_vocabulary: selectSubsystemVocabularyForRecords(
+        batch,
+        opts.subsystemVocabulary,
+        opts.subsystemVocabularyByNamespace,
+      ),
+      prompt_extras: {
+        verbose_facet_disambiguation: opts.verboseFacetDisambiguation,
+        verbose_common_misconceptions: opts.verboseCommonMisconceptions,
+      },
+    });
     const file = join(dryRunDir, `batch-${String(i + 1).padStart(2, "0")}.prompt.txt`);
     writeFileSync(file, prompt);
     summary.push({
@@ -1274,9 +2567,33 @@ function printHelp() {
   console.log(`slot-classify — item classification pipeline
 
 Commands:
+  scan --mods <mods-folder-or-instance-root> [options]
+      Inspect an installed mods folder or Prism-style instance root without
+      network or LLM calls. Writes an input-manifest v2 JSON report and prints
+      coverage/status counts. If Prism .index/*.pw.toml metadata exists, local
+      CurseForge/Modrinth ids are preserved from those files.
+
   classify --mod <id> --source <path> [options]
-      Run stages against a source. Currently only --mod minecraft is wired up;
-      the source must be a clone of misode/mcmeta (use tools/mcmeta submodule).
+      Run stages against a source. Use --mod minecraft with a misode/mcmeta
+      checkout (the tools/mcmeta submodule path is fine), or use any other
+      mod id with a source repository containing standard Forge/NeoForge
+      resource roots. For installed jars, use classify-folder instead.
+
+  classify-folder --mods <mods-folder-or-instance-root> [options]
+      Scan an installed mods folder or Prism-style instance root, then run
+      stage 1/2 extraction directly from the local jars for missing semantic
+      layers. By default it skips bundled/covered mods, libraries, blocked
+      jars, and entries whose <modid>.facets.complete.json already exists.
+      Pass --mod <id> to target one or more mods, --include-covered to
+      regenerate bundled/covered mods, --force to reprocess existing outputs,
+      and --stages 1,2,3 to opt into the offline LLM semantic pass.
+
+      Folder-only flags:
+        --mod <id>             Target one mod id. Repeatable.
+        --limit-mods <n>       Process only the N largest eligible mods.
+        --include-covered      Include bundled/public-covered mods.
+        --force                Remove existing complete outputs first.
+        --mod-concurrency <n>  Process N mods in parallel.
 
   classify-modpack <manifest.json> [options]
       Run \`classify\` for every mod listed in a modpack manifest. By
@@ -1305,8 +2622,48 @@ Commands:
                                OpenRouter handles dozens comfortably;
                                recommend 3-4 for fast wall-time.
 
+  propose-runtime-subsystems --runtime-export <pack.runtime-items.ndjson> [options]
+      Build a pack-specific canonical mod_subsystem vocabulary from a live
+      runtime export. Reads the matching <pack>.runtime-summary.json by
+      default, proposes 0-8 labels per namespace, and writes
+      <out>/<pack>.runtime-subsystems.json. Use --namespace <id> to target
+      specific mods and --dry-run to write prompts without an LLM call.
+
+      Runtime-subsystem flags:
+        --summary <path>        Explicit runtime-summary.json path.
+        --namespace <id>        Target one namespace. Repeatable.
+        --limit-namespaces <n>  Process only the N largest matched namespaces.
+        --min-items <n>         Skip auto-selected namespaces below N items
+                                (default 4; explicit --namespace bypasses it).
+        --force                 Overwrite an existing runtime-subsystems file.
+
+  generate-pack-layer --runtime-export <pack.runtime-items.ndjson> [options]
+      Generate a pack-specific classification layer from a live runtime export.
+      Pass --mods <instance-or-mods-folder> to enrich runtime records with
+      static jar facts such as model parents and loot sources. With --datapack,
+      writes a drop-in datapack folder containing
+      data/slot/classification/layers/<pack>.json.
+
+      Pack-layer flags:
+        --summary <path>        Explicit runtime-summary.json path.
+        --mods <path>           Prism instance root or mods/ folder for static
+                                jar enrichment.
+        --pack-id <id>          Override output/layer/datapack id.
+        --datapack              Package the layer as a datapack folder.
+        --datapack-out <path>   Explicit datapack output folder.
+        --pack-format <n>       Datapack pack_format (default inferred from
+                                runtime MC version; 1.20.x -> 15).
+        --force                 Overwrite existing pack-layer/datapack outputs.
+
   validate <layer.json>
       Validate a layer file against layer.schema.json.
+
+Scan options:
+  --mods <path>             Required. May point directly at mods/, at a
+                            minecraft/ folder containing mods/, or at a
+                            Prism instance root containing minecraft/mods/.
+  --out <dir>               Output directory for scan-report.json (default out).
+  --json <path>             Explicit JSON report path.
 
 Stage selection:
   --stages 1,2[,3]          Which stages to run. Default: 1,2 (stage 3 opt-in).
@@ -1352,8 +2709,10 @@ Stage 3 (LLM) knobs — only used when 3 is in --stages:
                               N        – first N records from the extract.
                               id,...   – explicit comma-separated item ids.
   --fixture-dir <path>      Directory for replay fixtures (prompt/response pairs).
-  --record-replay           Call real claude -p AND persist fixtures to --fixture-dir.
-  --use-replay              Read responses from --fixture-dir; never call claude -p.
+  --record-replay           Call the selected live backend AND persist fixtures
+                            to --fixture-dir.
+  --use-replay              Read responses from --fixture-dir; never call a live
+                            backend.
   --dry-run                 Build prompts and stop before any LLM call.
 
 Retry pass (opt-in; runs after the first pass on low-confidence items):
@@ -1363,12 +2722,18 @@ Retry pass (opt-in; runs after the first pass on low-confidence items):
   --retry-batch-size <n>    Items per retry LLM call. Default 8.
   --retry-fixture-dir <p>   Separate fixture directory for the retry pass.
 
-Mod-only subsystem proposer (default: on for mods):
+Subsystem vocabulary:
   --no-propose-subsystems   Skip the README/metadata pre-pass. Stage 3 then
                             invents mod_subsystem labels per item.
   --subsystems-model <id>   Model id for the proposer call. Default haiku.
+                            With the OpenRouter default backend, the proposer
+                            uses deepseek/deepseek-v4-flash unless overridden.
                             Cached at <out>/<modid>.subsystems.json — delete
                             to regenerate.
+  --subsystems-file <path>  Load an existing subsystem vocabulary file into
+                            stage 3. Supports single-mod <modid>.subsystems.json
+                            and runtime <pack>.runtime-subsystems.json
+                            namespace maps.
 
 Prompt extras (defaults: disambiguation ON, misconceptions OFF):
   --no-verbose-disambiguation
@@ -1387,6 +2752,7 @@ Prompt extras (defaults: disambiguation ON, misconceptions OFF):
 
 Examples:
   bun run src/cli.ts classify --mod minecraft --source ../mcmeta
+  bun run src/cli.ts classify --mod createaddition --source ../../reference/classification/createaddition
   bun run src/cli.ts classify --mod minecraft --source ../mcmeta --stages 3 --sample canary --dry-run
   bun run src/cli.ts classify --mod minecraft --source ../mcmeta --stages 3 --sample canary \\
       --record-replay --fixture-dir test/fixtures/stage3-canary
@@ -1404,6 +2770,26 @@ Examples:
   # Classify every mod in a modpack manifest (idempotent — re-run to resume):
   OPENROUTER_API_KEY=sk-or-... \\
     bun run src/cli.ts classify-modpack modpacks/test-modset.json --out out
+
+  # Classify missing mods from an installed Prism instance or mods folder:
+  bun run src/cli.ts classify-folder --mods /path/to/prism/instance --out out --stages 1,2
+  OPENROUTER_API_KEY=sk-or-... \\
+    bun run src/cli.ts classify-folder --mods /path/to/prism/instance --mod createaddition \\
+      --out out --stages 1,2,3 --record-replay --fixture-dir test/fixtures/createaddition-jar
+
+  # Propose subsystem vocabulary from a live runtime export:
+  bun run src/cli.ts propose-runtime-subsystems \\
+      --runtime-export modpacks/exports/tfg2.runtime-items.ndjson \\
+      --summary modpacks/exports/tfg2.runtime-summary.json \\
+      --namespace create --namespace gtceu --dry-run
+
+  # Generate a static+runtime pack layer and package it as a datapack:
+  bun run src/cli.ts generate-pack-layer \\
+      --runtime-export modpacks/exports/tfg2.runtime-items.ndjson \\
+      --summary modpacks/exports/tfg2.runtime-summary.json \\
+      --mods /path/to/TerraFirmaGreg-Modern \\
+      --subsystems-file out/tfg2.runtime-subsystems.json \\
+      --stages 1,2,3 --datapack
 
   # FAST: reclassify the whole pack with high parallelism (after a prompt
   # change). --force clears the per-mod completion markers; --concurrency

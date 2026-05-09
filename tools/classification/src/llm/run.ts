@@ -42,7 +42,13 @@ export interface Stage3Options {
    * system prompt so the LLM picks consistent labels across items in this run.
    * Omit for vanilla / mods with no meaningful subsystem groupings.
    */
-  subsystemVocabulary?: readonly { id: string; rationale?: string }[];
+  subsystemVocabulary?: readonly SubsystemVocabularyEntry[];
+  /**
+   * Namespace-scoped canonical vocabulary for mixed-namespace inputs, such as
+   * runtime exports from a loaded modpack. Each batch receives only entries
+   * whose namespace appears in that batch.
+   */
+  subsystemVocabularyByNamespace?: SubsystemVocabularyByNamespace;
   /**
    * Verbose-prompt extras. Defaults align with {@link LlmPromptInput.prompt_extras}:
    * disambiguation ON (principle-based, generalizes well), misconceptions
@@ -82,6 +88,16 @@ export interface Stage3Result {
   /** Warnings collected across all batches. */
   warnings: string[];
 }
+
+export interface SubsystemVocabularyEntry {
+  id: string;
+  rationale?: string;
+}
+
+export type SubsystemVocabularyByNamespace = Record<
+  string,
+  readonly SubsystemVocabularyEntry[]
+>;
 
 // Production default: deepseek-v4-flash via OpenRouter pinned to the
 // deepseek provider. Locked in 2026-04-26 after A/B-ing against Claude
@@ -172,7 +188,11 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
     const promptInput = {
       items: payloads,
       target_facets: targetFacets,
-      subsystem_vocabulary: options.subsystemVocabulary,
+      subsystem_vocabulary: selectSubsystemVocabularyForRecords(
+        batch,
+        options.subsystemVocabulary,
+        options.subsystemVocabularyByNamespace,
+      ),
       prompt_extras: options.promptExtras
         ? {
             verbose_facet_disambiguation: options.promptExtras.verboseFacetDisambiguation,
@@ -292,6 +312,31 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
   };
 
   return { layer, filledItems, coverageAdded, proposals, corrections, fillIns, warnings };
+}
+
+export function selectSubsystemVocabularyForRecords(
+  records: readonly ItemExtractRecord[],
+  globalVocabulary: readonly SubsystemVocabularyEntry[] | undefined,
+  byNamespace: SubsystemVocabularyByNamespace | undefined,
+): readonly SubsystemVocabularyEntry[] | undefined {
+  const out: SubsystemVocabularyEntry[] = [];
+  const seen = new Set<string>();
+  const add = (entry: SubsystemVocabularyEntry) => {
+    if (seen.has(entry.id)) return;
+    seen.add(entry.id);
+    out.push(entry);
+  };
+
+  for (const entry of globalVocabulary ?? []) add(entry);
+
+  if (byNamespace) {
+    const namespaces = new Set(records.map((record) => record.namespace));
+    for (const namespace of [...namespaces].sort()) {
+      for (const entry of byNamespace[namespace] ?? []) add(entry);
+    }
+  }
+
+  return out.length > 0 ? out : undefined;
 }
 
 /** Compact string summary of a layer entry for warning text. */

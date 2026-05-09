@@ -232,6 +232,28 @@ describe("processingInRule", () => {
     }));
     expect(out[0]!).toMatchObject({ values: ["create:milling"] });
   });
+
+  test("uses recipe type counts when recipe ids are not in the static bundle", () => {
+    const rec = record({
+      recipe_role: {
+        ingredient_of: ["kubejs:runtime_only_recipe"],
+        output_of: [],
+        in_degree: 1,
+        out_degree: 0,
+        ingredient_of_counts: {
+          crafting_shaped: 3,
+          "create:deploying": 1,
+          "kubejs:shapeless": 2,
+        },
+        output_of_counts: {},
+      },
+    });
+    const out = processingInRule.run(ctx(rec));
+    expect(out[0]!).toMatchObject({
+      facet: "processing_in",
+      values: ["crafting", "create:deploying", "kubejs:shapeless"],
+    });
+  });
 });
 
 describe("originRule", () => {

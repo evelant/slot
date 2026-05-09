@@ -30,6 +30,11 @@
       "format": "date-time",
       "description": "Optional ISO-8601 timestamp."
     },
+    "metadata": {
+      "type": "object",
+      "description": "Optional generation provenance. The runtime ignores this, but tooling uses it for cache and review decisions.",
+      "additionalProperties": true
+    },
     "entries": {
       "type": "object",
       "description": "Map of item id -> facet entries.",

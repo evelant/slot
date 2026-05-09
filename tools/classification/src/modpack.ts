@@ -13,6 +13,7 @@
 
 import { readFileSync, existsSync } from "node:fs";
 import { resolve, isAbsolute, dirname, join } from "node:path";
+import { validateLayer } from "./schema/validate.ts";
 
 export interface ModpackEntry {
   /** Mod namespace as it appears in the registry (e.g. `create`,
@@ -149,25 +150,32 @@ export function planModpack(
       return { entry, decision: "skipped:library", reason: entry.skip, completePath };
     }
     if (existsSync(completePath)) {
-      let entryCount = 0;
-      try {
-        const data = JSON.parse(readFileSync(completePath, "utf8")) as {
-          entries?: Record<string, unknown>;
-        };
-        entryCount = Object.keys(data.entries ?? {}).length;
-      } catch {
-        // Treat unparseable file as needing reprocess.
-        return { entry, decision: "process", sourcePath: resolveModSource(resolved.manifestDir, entry.sourcePath!), completePath };
-      }
-      if (entryCount > 0) {
+      const reusable = inspectReusableCompleteOutput(completePath);
+      if (!reusable.ok) {
         return {
           entry,
-          decision: "skipped:already-classified",
-          reason: `${entryCount} entries`,
-          entryCount,
+          decision: "process",
+          reason: reusable.reason,
+          sourcePath: resolveModSource(resolved.manifestDir, entry.sourcePath!),
           completePath,
         };
       }
+      if (reusable.entryCount > 0) {
+        return {
+          entry,
+          decision: "skipped:already-classified",
+          reason: `${reusable.entryCount} entries`,
+          entryCount: reusable.entryCount,
+          completePath,
+        };
+      }
+      return {
+        entry,
+        decision: "process",
+        reason: "existing complete output has no entries",
+        sourcePath: resolveModSource(resolved.manifestDir, entry.sourcePath!),
+        completePath,
+      };
     }
     return {
       entry,
@@ -176,6 +184,29 @@ export function planModpack(
       completePath,
     };
   });
+}
+
+export function inspectReusableCompleteOutput(path: string):
+  | { ok: true; entryCount: number }
+  | { ok: false; reason: string } {
+  let data: unknown;
+  try {
+    data = JSON.parse(readFileSync(path, "utf8"));
+  } catch (err) {
+    return {
+      ok: false,
+      reason: `existing complete output is not valid JSON: ${(err as Error).message}`,
+    };
+  }
+  const validation = validateLayer(data);
+  if (!validation.ok) {
+    return {
+      ok: false,
+      reason: `existing complete output failed schema validation: ${validation.errors.slice(0, 3).join("; ")}`,
+    };
+  }
+  const entries = (data as { entries?: Record<string, unknown> }).entries ?? {};
+  return { ok: true, entryCount: Object.keys(entries).length };
 }
 
 export interface ModpackRunSummary {

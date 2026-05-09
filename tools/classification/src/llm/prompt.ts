@@ -1,11 +1,18 @@
 import type { ItemExtractRecord } from "../extract/record.ts";
 import { FACETS, type FacetDef } from "../schema/facets.ts";
 
+export const PROMPT_VERSION = "stage3-prompt-v6";
+
+const RECIPE_EXAMPLE_LIMIT = 96;
+const LOOT_SOURCE_LIMIT = 64;
+const BLOCK_TAG_LIMIT = 96;
+
 /**
  * One item as presented to the LLM — a trimmed projection of the extract record
- * plus the stage-2 deterministic facets already resolved for it. Keeping the
- * wire format narrow (only fields the LLM will actually reason over) keeps the
- * prompt short and the response focused.
+ * plus the stage-2 deterministic facets already resolved for it. The wire
+ * format is intentionally bounded but not tiny: include enough concrete
+ * evidence for judgment calls while preventing single items from dominating a
+ * batch.
  */
 export interface LlmItemPayload {
   id: string;
@@ -22,6 +29,14 @@ export interface LlmItemPayload {
    * is direct, → `wooden_tool_materials` is inherited via `#planks`).
    */
   minecraft_tags_inherited: readonly string[];
+  /**
+   * Live runtime tag membership when direct/inherited provenance is unavailable.
+   * These are useful semantic signals, but weaker than known-direct tags because
+   * they may include direct or transitive membership.
+   */
+  minecraft_tags_resolved?: readonly string[];
+  /** How to interpret the tag fields above. */
+  minecraft_tag_membership?: "direct_and_inherited" | "resolved_runtime";
   /** Short list of recipe types this item is consumed in (from stage 2 output). */
   processing_in: readonly string[];
   /**
@@ -33,21 +48,41 @@ export interface LlmItemPayload {
   recipe_consumption_by_type: Record<string, number>;
   /** Count of recipes producing this item, grouped by recipe type. */
   recipe_production_by_type: Record<string, number>;
-  /** Top-10 of the hundreds-element recipe lists — concrete examples. */
-  sample_ingredient_of: readonly string[];
-  /** Handful of output recipes. */
-  sample_output_of: readonly string[];
+  /** Count of concrete recipe ids that consume this item. */
+  recipe_ingredient_count: number;
+  /** Count of concrete recipe ids that produce this item. */
+  recipe_output_count: number;
+  /**
+   * Bounded representative recipe ids that consume this item. When count is
+   * larger than this array, treat it as examples only, not the full universe.
+   */
+  recipe_ingredient_examples: readonly string[];
+  /** Bounded representative recipe ids that produce this item. */
+  recipe_output_examples: readonly string[];
+  /** True when one or both recipe example arrays were capped. */
+  recipe_examples_truncated?: boolean;
   /** Model chain from stage 1 — useful for template-shape hints. */
   model_parents: readonly string[];
-  /** Loot-table ids (trimmed) — useful when stage 2's origin rule didn't fire. */
-  sample_loot_sources: readonly string[];
+  /** Count of loot-table ids that can produce this item. */
+  loot_source_count: number;
+  /** Bounded representative loot-table ids. */
+  loot_source_examples: readonly string[];
+  /** True when loot source examples were capped. */
+  loot_sources_truncated?: boolean;
+  /** Block-side context for block items, when the extractor has it. */
+  block_context?: {
+    block_id?: string;
+    block_tags?: readonly string[];
+    block_tags_truncated?: boolean;
+    requires_correct_tool?: boolean;
+  };
   /** Lore lines from minecraft:lore — big semantic signal when present. */
   lore: readonly string[];
   /**
    * Key component values with semantic meaning the LLM can't derive from
    * tags/recipes alone — food nutrition, potion effects, damage resistance
    * types, weapon stats, jukebox song, dye color, trim material, etc.
-   * Pulled from `component_data` and kept narrow so the prompt stays short.
+   * Pulled from `component_data` and kept focused on player-visible semantics.
    */
   component_highlights: Record<string, unknown>;
   /** Facets stage 2 already assigned; the LLM should not overwrite these. */
@@ -130,11 +165,13 @@ reconsider.
 # Output rules
 - Only output values from the facet's allowed list, or (for free_text facets) values matching the pattern.
 - Only emit facets that actually apply to the item. The test: would a player consider this facet meaningful for this item? \`combat_bonus\` on bread, \`biome\` on a crafted-only item — players wouldn't expect a value, so omit. Do not emit \`null\`, empty arrays, or placeholder values to satisfy a target-facet list.
+- Multi-value facets must use \`values: [...]\` even when there is only one
+  value. This includes \`mod_subsystem\`; never emit it as a scalar \`value\`.
 - For single-value enum facets where two values could apply with similar confidence, emit a two-element \`values\` array AND set \`ambiguous: true\`. Downstream reviewers see both.
 - **Each facet entry MUST include a \`signal\` field** — a marker for
     downstream review tools, NOT a quality grade. All four levels are
     valid answers. Format:
-    \`{value, signal: "named|pattern|inferred|guess", rationale: "<≤40 char>"}\`
+    \`{value, signal: "named|pattern|inferred|guess", rationale: "<≤80 char>"}\`
 
     The signal records HOW the value happens to be supported so review
     tools can filter (e.g. "show me only the judgment calls"). Player
@@ -161,10 +198,27 @@ reconsider.
     as correct as a \`pattern\` one.
 
     Optional \`evidence: "<short quote>"\` field allowed for citing a
-    specific input. Skip to save tokens.
-- **Be terse**: rationales must be ≤40 characters. No evidence field unless it adds real information beyond the rationale. Compact output means more items fit in a batch before hitting the token cap.
+    specific input. Use it when it makes a non-obvious judgment auditable.
+- Be concise, not cryptic: rationales should be ≤80 characters. Use
+  \`evidence\` for the tag, recipe id, component, or display-name phrase that
+  actually drove a tricky choice.
 - Lore, display_name, and component_highlights are **player-perception signals** — they're strings the player actually reads and forms expectations from. Take them seriously when present.
+- If \`minecraft_tags_resolved\` is present, those tags are live runtime membership with unknown directness. Use them as semantic context, but don't treat them as intentional direct-tag evidence.
+- Fields ending in \`_examples\` are bounded evidence. If the matching
+  \`*_count\` is larger, do not infer that omitted recipe / loot ids are absent.
 - If you want to use a value that isn't in the schema, DO NOT emit the facet; instead add an entry to \`schema_proposals\` at the top level.
+- Emit a best \`role\` for every item unless the data is genuinely unusable.
+  If two roles are close, use the ambiguous two-value shape.
+- Emit \`primary_uses\` for every item unless the data is genuinely unusable:
+  one to three short player-facing phrases are enough. For SLOT, \`role\`,
+  \`primary_uses\`, and \`carry_frequency\` are more valuable than low-evidence
+  \`origin\`, \`flavor\`, or \`palette\`; if output is getting long, keep the
+  high-value inventory semantics and omit lower-value facets first.
+- \`origin\` is optional and should be high-evidence. Do not emit it merely
+  because an item is probably crafted, probably looted, or probably found in
+  the world. A valid \`origin\` needs positive input evidence such as a
+  production recipe, a loot source, an ore/wild-crop/mob-drop tag, or a name
+  that directly identifies the origin.
 - Don't re-emit facets listed under \`stage2_facets\` inside \`facets\` — those are already fixed by deterministic rules. But if you think a stage 2 assertion is **clearly wrong** (e.g. wrong material, wrong form), record it in the top-level \`corrections\` array instead of silently accepting it. Only flag stage 2 values you're confident are wrong (confidence ≥ 0.7) — it costs a human review round.
 - **Stage-2 fill-in.** If a deterministic facet is *missing* from \`stage2_facets\` but the item obviously has a value (e.g., \`dark_oak_window\` clearly has \`form=window\` even though stage-2's \`form_from_id\` rule didn't catch it; \`copper_pipe\` clearly has \`material_family=copper\`; \`lime_concrete\` clearly has \`dye_color=lime\`; a modded glowing block whose stage-2 \`emits_light\` is missing), record it in the top-level \`fill_ins\` array — DON'T emit it inside \`facets\`. \`fill_ins\` exists alongside \`schema_proposals\` and \`corrections\` so downstream review tools can audit gaps in the stage-2 deterministic layer separately from your judgment-call work. Format each entry as \`{item, facet, value, rationale}\`. Use sparingly: only obvious gaps where a player would clearly agree, not edge cases. The deterministic facets you can fill: \`form\`, \`material_family\`, \`dye_color\`, \`required_tool\`, \`required_tool_tier\`, \`is_fuel\`, \`emits_light\`. \`emits_light\` specifically catches modded lit blocks (Create's lit variants, glowing crystals, modded glowstones) — set \`value: true\` when the block visibly emits light when placed, even if stage-2's id-list and suffix patterns missed it. Don't fill role / activity / carry_frequency / rarity / etc. — those are llm-authored, just emit them in \`facets\` normally.
 - Output strict JSON only: no markdown, no code fences, no comments (// or /* */), no trailing commas, no commentary outside the JSON object.
@@ -199,6 +253,7 @@ export function buildSplitPrompt(input: LlmPromptInput): { system: string; user:
   const outputShape = renderExpectedOutput(input.target_facets);
   const neighborsNote = renderNeighborsSection(input.neighbors);
   const subsystemHint = renderSubsystemVocabulary(input.subsystem_vocabulary);
+  const runtimeInputNotes = renderRuntimeInputNotes(input.items);
 
   // Default-on for `verbose_facet_disambiguation`: A/B testing on the
   // 40-item playtest sample showed it carries production accuracy from
@@ -218,6 +273,8 @@ export function buildSplitPrompt(input: LlmPromptInput): { system: string; user:
   const includeMisconceptions = extras.verbose_common_misconceptions ?? false;
   const sections: string[] = [
     SYSTEM_PREAMBLE,
+    "",
+    runtimeInputNotes,
     "",
     "# Facet schema",
     schemaDoc,
@@ -242,6 +299,40 @@ export function buildSplitPrompt(input: LlmPromptInput): { system: string; user:
     .join("\n");
 
   return { system, user };
+}
+
+function renderRuntimeInputNotes(items: readonly LlmItemPayload[]): string {
+  const hasRuntimeResolvedInput = items.some(
+    (item) => item.minecraft_tag_membership === "resolved_runtime",
+  );
+  if (!hasRuntimeResolvedInput) return "";
+
+  return `# Runtime export input notes
+
+This batch was generated from a live Minecraft registry / recipe manager
+instead of only static mod files. Treat present runtime evidence as
+pack-specific truth for this exact modpack, including KubeJS and datapack
+recipe/tag changes.
+
+- Runtime export v1 intentionally lacks model, loot-table, and creative-tab
+  extraction. In this prompt, empty \`model_parents\` or
+  \`loot_source_examples\` means "not collected here", not "semantically absent".
+- Recipe presences, counts, and recipe-type names are strong evidence for this
+  pack. Recipe absences are weaker: some custom recipe classes expose only a
+  primary result through the runtime API, so missing output examples do not
+  prove the item has no secondary/custom outputs.
+- For \`origin\`, do not use empty loot/source fields as evidence, and do not
+  emit origin for every item. Emit \`crafted_only\` only when there is positive
+  production-recipe evidence in the payload. Rationales like "no loot source",
+  "crafted from components", or "crafted from materials" are invalid unless a
+  concrete output recipe id/count is present.
+- Runtime resolved tags include helper and compat tags. Treat technical tags
+  like \`c:hidden_from_recipe_viewers\`, \`buildinggadgets2:deny\`,
+  \`tacz:*\`, \`*_whitelist\`, \`*_blacklist\`, and generic mineability tags
+  as weak implementation context unless they clearly match player-facing
+  semantics.
+- Ignore Minecraft formatting codes in display names (for example \`§b\`).
+  The visible words still matter; the color/style code usually does not.`;
 }
 
 /**
@@ -305,6 +396,10 @@ inventory or hotbar belong on the inventory side.
   leather, blaze_rod), raw chunks (raw_iron), and compressed material
   blocks (\`iron_block\`, \`diamond_block\` — these are 9× the base material,
   not containers). The mental tag is "stuff I use in a recipe."
+- Ore blocks and ore variants (\`*_ore\`, deepslate ore, modded stone ore,
+  raw ore blocks) are also \`material\`, not \`natural_resource\`. They are
+  mined and processed into crafting stock; players store them with metals /
+  minerals, not with plants or living nature.
 - Test: *garden or crafting stash?*
 - Anchor: \`raw_iron\` is mined and smelted; players store it next to
   ingots, not next to saplings. → \`material\`.
@@ -416,6 +511,12 @@ with each block individually.
 - Anchor: powered_rail / detector_rail / activator_rail are powered by
   redstone, but their job is the rail network — players store them
   with the rest of the rails, not with redstone components.
+- Wearable mobility gear follows the same mental model. Elytra, jetpacks,
+  gliders, flight packs, and space-flight packs are transport-first if their
+  player-facing purpose is movement. If they also occupy an armor slot and
+  provide meaningful protection, emit the ambiguous role shape
+  \`values: ["armor", "transport"], ambiguous: true\` rather than forcing
+  them into plain \`armor\`.
 
 ### upgrade — applied to other items in a UI
 
@@ -520,6 +621,8 @@ The \`mod_subsystem\` facet groups items by the **functional sub-area
 of the mod they themselves belong to** — Create's mechanical-power
 network, Create's logistics network, Sophisticated Backpacks' upgrade
 modules. The question is **identity**, not **interaction graph**.
+\`mod_subsystem\` is optional and high-precision; bad subsystem labels
+are worse than omission because they fragment inventory homes.
 
 The single biggest failure mode here is assigning a subsystem based on
 which recipes the item appears in. A \`golden_sheet\` is *processed by*
@@ -548,6 +651,14 @@ Items with role \`material\`, \`building_block\`, \`decorative_block\`,
 \`armor\`, \`storage_block\`, \`utility\`, \`curiosity\` should generally
 NOT carry mod_subsystem. Exceptions are rare; if you're not certain,
 omit.
+
+If no "Suggested mod_subsystem vocabulary" section is present, be even
+more conservative: emit \`mod_subsystem\` only for a broad, unmistakable
+system that would group many mechanism / workstation / logistics /
+transport / redstone items. Do NOT coin narrow one-off labels for
+equipment sets, material families, machine hulls/casings, tool families,
+jetpacks, space suits, or mining hammers. Use \`role\`, \`tier\`,
+\`material_family\`, and \`primary_uses\` for those instead.
 
 Concrete anchors:
 - \`create:cogwheel\` IS a mechanical_power part the player chains into
@@ -707,7 +818,7 @@ function renderExpectedOutput(targetFacets: readonly string[]): string {
     "- Ambiguous single-value (enum / free_text only): `values: [a, b]` AND `ambiguous: true`.",
     "- `schema_proposals` (optional top-level array, default `[]`): use when you want a value the schema doesn't include. Each entry is `{kind: 'add_value', facet, value, rationale}` or `{kind: 'add_facet', name, suggested_kind, rationale}`.",
     "- `corrections` (optional top-level array, default `[]`): use when a stage 2 facet is clearly wrong. Each entry is `{item, facet, current, suggested, rationale, confidence}` — confidence ≥ 0.7 required.",
-    "- `fill_ins` (optional top-level array, default `[]`): use when a stage-2 deterministic facet is *missing* but the item obviously has a value. Each entry is `{item, facet, value, rationale}`. Only the deterministic facets (`form`, `material_family`, `dye_color`, `required_tool`, `required_tool_tier`, `is_fuel`) — NOT llm-authored facets like role/activity/carry_frequency.",
+    "- `fill_ins` (optional top-level array, default `[]`): use when a stage-2 deterministic facet is *missing* but the item obviously has a value. Each entry is `{item, facet, value, rationale}`. Only the deterministic facets (`form`, `material_family`, `dye_color`, `required_tool`, `required_tool_tier`, `is_fuel`, `emits_light`) — NOT llm-authored facets like role/activity/carry_frequency.",
   ].join("\n");
 }
 
@@ -790,7 +901,7 @@ function renderSubsystemVocabulary(
   if (!vocab || vocab.length === 0) return "";
   const lines: string[] = ["# Suggested mod_subsystem vocabulary"];
   lines.push(
-    "Prefer these canonical labels for the `mod_subsystem` facet over inventing new names. Pick zero or more per item; if none fit, omit the facet rather than coining a synonym.",
+    "Prefer these canonical labels for the `mod_subsystem` facet over inventing new names. Pick zero or more per item; only use labels whose namespace prefix matches the item's namespace. If none fit, omit the facet rather than coining a synonym.",
   );
   lines.push("");
   for (const entry of vocab) {
@@ -833,26 +944,113 @@ export function buildItemPayload(
   // pull the array directly so the LLM doesn't have to re-derive it.
   const processingIn = extractProcessingIn(stage2Facets["processing_in"]);
 
-  const directTags = new Set(record.minecraft_tags_direct);
-  const inheritedTags = record.minecraft_tags.filter((t) => !directTags.has(t));
+  const tagMembership = tagMembershipMode(record);
+  const directTags = tagMembership === "resolved_runtime"
+    ? new Set<string>()
+    : new Set(record.minecraft_tags_direct);
+  const inheritedTags = tagMembership === "resolved_runtime"
+    ? []
+    : record.minecraft_tags.filter((t) => !directTags.has(t));
+  const tagFields = tagMembership === "resolved_runtime"
+    ? {
+        minecraft_tags_direct: [] as readonly string[],
+        minecraft_tags_inherited: [] as readonly string[],
+        minecraft_tags_resolved: record.minecraft_tags,
+        minecraft_tag_membership: "resolved_runtime" as const,
+      }
+    : {
+        minecraft_tags_direct: record.minecraft_tags_direct,
+        minecraft_tags_inherited: inheritedTags,
+        minecraft_tag_membership: "direct_and_inherited" as const,
+      };
+
+  const ingredientExamples = boundedExamples(
+    record.recipe_role.ingredient_of,
+    RECIPE_EXAMPLE_LIMIT,
+  );
+  const outputExamples = boundedExamples(
+    record.recipe_role.output_of,
+    RECIPE_EXAMPLE_LIMIT,
+  );
+  const lootExamples = boundedExamples(record.loot_table_sources, LOOT_SOURCE_LIMIT);
+  const blockContext = extractBlockContext(record);
 
   return {
     id: record.id,
     namespace: record.namespace,
     display_name: record.display_name,
-    minecraft_tags_direct: record.minecraft_tags_direct,
-    minecraft_tags_inherited: inheritedTags,
+    ...tagFields,
     processing_in: processingIn,
     recipe_consumption_by_type: record.recipe_role.ingredient_of_counts ?? {},
     recipe_production_by_type: record.recipe_role.output_of_counts ?? {},
-    sample_ingredient_of: record.recipe_role.ingredient_of.slice(0, 10),
-    sample_output_of: record.recipe_role.output_of.slice(0, 10),
+    recipe_ingredient_count: record.recipe_role.in_degree,
+    recipe_output_count: record.recipe_role.out_degree,
+    recipe_ingredient_examples: ingredientExamples,
+    recipe_output_examples: outputExamples,
+    ...((ingredientExamples.length < record.recipe_role.ingredient_of.length
+      || outputExamples.length < record.recipe_role.output_of.length)
+      ? { recipe_examples_truncated: true }
+      : {}),
     model_parents: record.model_parents,
-    sample_loot_sources: record.loot_table_sources.slice(0, 10),
+    loot_source_count: record.loot_table_sources.length,
+    loot_source_examples: lootExamples,
+    ...(lootExamples.length < record.loot_table_sources.length
+      ? { loot_sources_truncated: true }
+      : {}),
+    ...(blockContext ? { block_context: blockContext } : {}),
     lore,
     component_highlights: componentHighlights,
     stage2_facets: stage2Facets,
   };
+}
+
+function boundedExamples(values: readonly string[], limit: number): readonly string[] {
+  if (values.length <= limit) return values;
+  if (limit <= 0) return [];
+  if (limit === 1) return [values[0]!];
+
+  const indexes = new Set<number>();
+  for (let i = 0; i < limit; i++) {
+    indexes.add(Math.round(i * (values.length - 1) / (limit - 1)));
+  }
+  for (let i = 0; indexes.size < limit && i < values.length; i++) {
+    indexes.add(i);
+  }
+  return [...indexes]
+    .sort((a, b) => a - b)
+    .map((index) => values[index]!)
+    .filter((value): value is string => typeof value === "string" && value.length > 0);
+}
+
+function extractBlockContext(record: ItemExtractRecord): LlmItemPayload["block_context"] {
+  const meta = record.extractor_meta ?? {};
+  if (meta["is_block_item"] !== true && typeof meta["block_id"] !== "string") return undefined;
+
+  const rawTags = Array.isArray(meta["block_tags"])
+    ? meta["block_tags"].filter((tag): tag is string => typeof tag === "string")
+    : [];
+  const blockTags = boundedExamples(rawTags, BLOCK_TAG_LIMIT);
+  const out: NonNullable<LlmItemPayload["block_context"]> = {};
+  if (typeof meta["block_id"] === "string" && meta["block_id"].length > 0) {
+    out.block_id = meta["block_id"];
+  }
+  if (blockTags.length > 0) {
+    out.block_tags = blockTags;
+  }
+  if (blockTags.length < rawTags.length) {
+    out.block_tags_truncated = true;
+  }
+  if (typeof meta["block_requires_correct_tool"] === "boolean") {
+    out.requires_correct_tool = meta["block_requires_correct_tool"];
+  }
+  return Object.keys(out).length === 0 ? undefined : out;
+}
+
+function tagMembershipMode(record: ItemExtractRecord): "direct_and_inherited" | "resolved_runtime" {
+  const meta = record.extractor_meta ?? {};
+  if (meta["direct_item_tags_available"] === false) return "resolved_runtime";
+  if (meta["item_tag_membership"] === "resolved_runtime") return "resolved_runtime";
+  return "direct_and_inherited";
 }
 
 function extractLore(components: Record<string, unknown>): string[] {
@@ -872,7 +1070,7 @@ function extractLore(components: Record<string, unknown>): string[] {
  *
  * We pass the raw shape through unchanged (not stringified / renamed) so the
  * LLM sees the real Minecraft vocabulary. Unknown components are dropped to
- * keep prompts compact.
+ * keep prompts focused and bounded.
  */
 function extractComponentHighlights(
   components: Record<string, unknown>,
@@ -897,6 +1095,11 @@ function extractComponentHighlights(
     "minecraft:fire_resistant",
     "minecraft:death_protection",
     "minecraft:bees",
+    "minecraft:max_stack_size",
+    "minecraft:max_damage",
+    "minecraft:enchantable",
+    "minecraft:equippable",
+    "minecraft:light_emission",
     "minecraft:writable_book_content",
     "minecraft:written_book_content",
     "minecraft:rarity",

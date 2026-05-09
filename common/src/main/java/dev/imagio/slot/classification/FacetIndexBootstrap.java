@@ -12,6 +12,7 @@ import java.io.Reader;
 import java.lang.System.Logger.Level;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public final class FacetIndexBootstrap {
@@ -19,10 +20,27 @@ public final class FacetIndexBootstrap {
     public static final String VANILLA_BASE_RESOURCE = "/data/slot/classification/vanilla-base.json";
     public static final String PER_MOD_INDEX_RESOURCE = "/data/slot/classification/per-mod/index.json";
     public static final String PER_MOD_RESOURCE_PREFIX = "/data/slot/classification/per-mod/";
+    public static final String DATAPACK_LAYER_PREFIX = "classification/layers";
 
     private static final System.Logger LOGGER = System.getLogger(FacetIndexBootstrap.class.getName());
 
     private FacetIndexBootstrap() {
+    }
+
+    @FunctionalInterface
+    public interface LayerReaderFactory {
+        Reader open() throws IOException;
+    }
+
+    public record NamedLayerResource(String description, LayerReaderFactory readerFactory) {
+        public NamedLayerResource {
+            if (description == null || description.isBlank()) {
+                throw new IllegalArgumentException("classification layer resource description is required");
+            }
+            if (readerFactory == null) {
+                throw new IllegalArgumentException("classification layer reader factory is required");
+            }
+        }
     }
 
     public static FacetIndex loadVanillaBase() {
@@ -47,6 +65,10 @@ public final class FacetIndexBootstrap {
      * ~1.5K entries.</p>
      */
     public static FacetIndex loadAll() {
+        return loadAllWithLayers(List.of());
+    }
+
+    public static FacetIndex loadAllWithLayers(Collection<NamedLayerResource> datapackLayers) {
         FacetIndex base = loadVanillaBase();
         List<String> modIds = readPerModManifest();
         FacetIndex merged = base;
@@ -61,6 +83,22 @@ public final class FacetIndexBootstrap {
             LOGGER.log(Level.INFO,
                     "[SLOT] FacetIndex bootstrap merged " + modIds.size()
                             + " per-mod layer(s); total entries: " + merged.size());
+        }
+        int extraCount = 0;
+        if (datapackLayers != null) {
+            for (NamedLayerResource layer : datapackLayers) {
+                FacetIndex datapack = loadNamedLayer(layer);
+                if (datapack.isEmpty()) {
+                    continue;
+                }
+                merged = merged.mergedWith(datapack);
+                extraCount++;
+            }
+        }
+        if (extraCount > 0) {
+            LOGGER.log(Level.INFO,
+                    "[SLOT] FacetIndex bootstrap merged " + extraCount
+                            + " datapack classification layer(s); total entries: " + merged.size());
         }
         return merged;
     }
@@ -80,6 +118,21 @@ public final class FacetIndexBootstrap {
         } catch (IOException | RuntimeException exception) {
             LOGGER.log(Level.ERROR,
                     "[SLOT] FacetIndex failed to load " + resourcePath + "; falling back to empty index",
+                    exception);
+            return FacetIndex.empty();
+        }
+    }
+
+    private static FacetIndex loadNamedLayer(NamedLayerResource layer) {
+        try (Reader reader = layer.readerFactory().open()) {
+            FacetIndex index = FacetIndex.load(reader);
+            LOGGER.log(Level.INFO,
+                    "[SLOT] FacetIndex loaded " + index.size()
+                            + " role-bearing entries from " + layer.description());
+            return index;
+        } catch (IOException | RuntimeException exception) {
+            LOGGER.log(Level.ERROR,
+                    "[SLOT] FacetIndex failed to load " + layer.description() + "; skipping layer",
                     exception);
             return FacetIndex.empty();
         }

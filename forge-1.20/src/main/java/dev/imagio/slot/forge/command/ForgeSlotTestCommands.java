@@ -18,6 +18,7 @@ import dev.imagio.slot.debug.PopulateProfile;
 import dev.imagio.slot.debug.RealisticAtlasGenerator;
 import dev.imagio.slot.debug.RealisticAtlasPlan;
 import dev.imagio.slot.forge.SlotForge;
+import dev.imagio.slot.forge.classification.Forge120RuntimeClassificationExport;
 import dev.imagio.slot.forge.storage.ForgeCarriedActivityTracker;
 import dev.imagio.slot.forge.storage.ForgeChestStorageAnchors;
 import dev.imagio.slot.forge.storage.ForgeChestStorageIds;
@@ -44,6 +45,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
@@ -57,6 +59,7 @@ import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -94,15 +97,33 @@ public final class ForgeSlotTestCommands {
 
     private static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
         LiteralArgumentBuilder<CommandSourceStack> root = Commands.literal("slot")
-                .requires(source -> source.hasPermission(2))
+                .requires(ForgeSlotTestCommands::canUseSlotCommand)
                 .then(Commands.literal("test")
+                        .requires(source -> source.hasPermission(2))
                         .then(Commands.literal("populate")
                                 .then(Commands.argument("profile", StringArgumentType.word())
                                         .suggests(PROFILE_SUGGESTIONS)
                                         .executes(ForgeSlotTestCommands::runPopulate)))
                         .then(Commands.literal("clear")
-                                .executes(ForgeSlotTestCommands::runClear)));
+                                .executes(ForgeSlotTestCommands::runClear)))
+                .then(Commands.literal("classification")
+                        .requires(ForgeSlotTestCommands::canUseSlotCommand)
+                        .then(Commands.literal("export")
+                                .executes(context -> runClassificationExport(context, null))
+                                .then(Commands.argument("pack_id", StringArgumentType.word())
+                                        .executes(context -> runClassificationExport(
+                                                context,
+                                                StringArgumentType.getString(context, "pack_id"))))));
         dispatcher.register(root);
+    }
+
+    private static boolean canUseSlotCommand(CommandSourceStack source) {
+        if (source.hasPermission(2)) {
+            return true;
+        }
+        ServerPlayer player = source.getPlayer();
+        MinecraftServer server = source.getServer();
+        return player != null && server != null && server.isSingleplayerOwner(player.getGameProfile());
     }
 
     private static CompletableFuture<Suggestions> suggestProfiles(
@@ -291,6 +312,34 @@ public final class ForgeSlotTestCommands {
             }
         }
         return null;
+    }
+
+    private static int runClassificationExport(
+            CommandContext<CommandSourceStack> context,
+            String packId
+    ) {
+        try {
+            var result = Forge120RuntimeClassificationExport.export(context.getSource().getServer(), packId);
+            context.getSource().sendSuccess(() -> Component.literal(String.format(
+                    "[SLOT] classification export: items=%d pack=%s items=%s summary=%s",
+                    result.itemCount(),
+                    result.packId(),
+                    result.itemsPath(),
+                    result.summaryPath()
+            )), false);
+            SlotCommon.LOGGER.info(
+                    "[SLOT] Forge classification export pack={} items={} itemsPath={} summaryPath={}",
+                    result.packId(),
+                    result.itemCount(),
+                    result.itemsPath(),
+                    result.summaryPath());
+            return result.itemCount();
+        } catch (IOException | RuntimeException exception) {
+            context.getSource().sendFailure(Component.literal(
+                    "[SLOT] classification export failed: " + exception.getMessage()));
+            SlotCommon.LOGGER.warn("[SLOT] Forge classification export failed", exception);
+            return 0;
+        }
     }
 
     private static int applyIslands(VisualAtlasWorkflowDomainService workflow, RealisticAtlasPlan plan) {

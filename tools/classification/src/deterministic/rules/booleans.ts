@@ -51,7 +51,8 @@ export const booleansRule: Rule = {
       emit("has_enchantments", "has_enchantments_from_component");
     }
 
-    if (record.path in bundle.blocks) {
+    const meta = record.extractor_meta ?? {};
+    if (meta["is_block_item"] === true || typeof meta["block_id"] === "string" || record.path in bundle.blocks) {
       emit("is_block_item", "is_block_item_from_registry");
     }
 

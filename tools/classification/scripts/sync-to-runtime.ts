@@ -28,7 +28,7 @@
  *     --modpack tools/classification/modpacks/test-modset.json
  */
 
-import { copyFileSync, existsSync } from "node:fs";
+import { copyFileSync, existsSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { spawnSync } from "node:child_process";
 import { loadModpackManifest } from "../src/modpack.ts";
@@ -39,6 +39,7 @@ const PER_MOD_DIR = resolve(
   REPO_ROOT,
   "common/src/main/resources/data/slot/classification/per-mod",
 );
+const PER_MOD_INDEX = resolve(PER_MOD_DIR, "index.json");
 const VANILLA_DATASET = resolve(
   REPO_ROOT,
   "tools/classification/datasets/minecraft/minecraft.facets.complete.json",
@@ -58,6 +59,7 @@ interface SyncSummary {
   vanillaCorrectionsApplied: boolean;
   modsCopied: string[];
   modsMissing: string[];
+  perModIndexUpdated: boolean;
 }
 
 function syncVanilla(summary: SyncSummary): void {
@@ -101,6 +103,48 @@ function syncModpack(manifestPath: string, summary: SyncSummary): void {
     summary.modsCopied.push(entry.namespace);
     console.log(`[sync] ${entry.namespace.padEnd(28)} → ${dst}`);
   }
+  updatePerModIndex(summary);
+}
+
+function updatePerModIndex(summary: SyncSummary): void {
+  const mods = readdirSync(PER_MOD_DIR)
+    .filter((name) => name.endsWith(".json") && name !== "index.json")
+    .map((name) => name.slice(0, -".json".length))
+    .filter((id) => /^[a-z0-9_]+$/.test(id))
+    .sort();
+
+  let description = [
+    "List of per-mod classification layer files bundled with SLOT.",
+    "FacetIndexBootstrap loads each one and merges its entries into the runtime FacetIndex on top of vanilla-base.",
+    "Mods whose items aren't actually present at runtime simply won't be queried — no harm in shipping their data eagerly.",
+  ].join(" ");
+  if (existsSync(PER_MOD_INDEX)) {
+    try {
+      const existing = JSON.parse(readFileSync(PER_MOD_INDEX, "utf8")) as {
+        description?: unknown;
+      };
+      if (typeof existing.description === "string") {
+        description = existing.description;
+      }
+    } catch {
+      // Overwrite malformed manifests with a valid regenerated one.
+    }
+  }
+
+  writeFileSync(
+    PER_MOD_INDEX,
+    JSON.stringify(
+      {
+        schema_version: 1,
+        description,
+        mods,
+      },
+      null,
+      2,
+    ) + "\n",
+  );
+  summary.perModIndexUpdated = true;
+  console.log(`[sync] per-mod index: ${mods.length} mod(s) → ${PER_MOD_INDEX}`);
 }
 
 function parseFlags(argv: string[]): {
@@ -147,6 +191,7 @@ function main(): void {
     vanillaCorrectionsApplied: false,
     modsCopied: [],
     modsMissing: [],
+    perModIndexUpdated: false,
   };
 
   if (flags.vanilla) {
@@ -175,6 +220,7 @@ function main(): void {
       console.log(`  mods missing:   ${summary.modsMissing.length}`);
       console.log(`    ${summary.modsMissing.join(", ")}`);
     }
+    console.log(`  per-mod index:  ${summary.perModIndexUpdated ? "updated" : "unchanged"}`);
   }
 }
 

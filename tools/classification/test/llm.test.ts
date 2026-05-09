@@ -9,9 +9,17 @@ import {
   defaultTargetFacets,
 } from "../src/llm/prompt.ts";
 import { parseLlmResponse } from "../src/llm/parse.ts";
-import { runStage3 } from "../src/llm/run.ts";
+import {
+  runStage3,
+  selectSubsystemVocabularyForRecords,
+} from "../src/llm/run.ts";
 import { selectRetryCandidates, runStage3Retry } from "../src/llm/retry.ts";
 import { ReplayLlmClient, RecordingLlmClient, fixtureHash } from "../src/llm/client.ts";
+import {
+  buildRuntimeProposerPrompt,
+  buildRuntimeSubsystemContexts,
+  loadSubsystemVocabularyFile,
+} from "../src/llm/runtime_subsystems.ts";
 import type { ItemExtractRecord } from "../src/extract/record.ts";
 import type { LayerFile } from "../src/deterministic/run.ts";
 
@@ -55,6 +63,48 @@ function ironIngotStage2Layer(): LayerFile {
   };
 }
 
+function runtimeRecord(args: {
+  id: string;
+  displayName: string;
+  tags?: string[];
+  blockTags?: string[];
+  ingredientCounts?: Record<string, number>;
+  outputCounts?: Record<string, number>;
+  ingredientOf?: string[];
+  outputOf?: string[];
+  components?: Record<string, unknown>;
+  isBlock?: boolean;
+}): ItemExtractRecord {
+  const [namespace, path] = args.id.split(":") as [string, string];
+  return {
+    id: args.id,
+    namespace,
+    path,
+    display_name: args.displayName,
+    minecraft_tags: args.tags ?? [],
+    minecraft_tags_direct: [],
+    recipe_role: {
+      ingredient_of: args.ingredientOf ?? [],
+      output_of: args.outputOf ?? [],
+      in_degree: args.ingredientOf?.length ?? 0,
+      out_degree: args.outputOf?.length ?? 0,
+      ingredient_of_counts: args.ingredientCounts ?? {},
+      output_of_counts: args.outputCounts ?? {},
+    },
+    model_parents: [],
+    loot_table_sources: [],
+    creative_tabs: [],
+    component_data: args.components ?? { "minecraft:max_stack_size": 64 },
+    extractor_meta: {
+      extractor: "slot-runtime-export",
+      item_tag_membership: "resolved_runtime",
+      direct_item_tags_available: false,
+      ...(args.isBlock ? { is_block_item: true, block_id: args.id } : {}),
+      ...(args.blockTags ? { block_tags: args.blockTags } : {}),
+    },
+  };
+}
+
 describe("prompt building", () => {
   test("includes schema for every target facet", () => {
     const record = ironIngotRecord();
@@ -85,17 +135,101 @@ describe("prompt building", () => {
   test("payload keeps recipe-role and loot lists bounded", () => {
     const r = ironIngotRecord();
     r.recipe_role = {
-      ingredient_of: Array.from({ length: 50 }, (_, i) => `minecraft:r${i}`),
-      output_of: [],
-      in_degree: 50,
-      out_degree: 0,
-      ingredient_of_counts: { crafting_shaped: 50 },
+      ingredient_of: Array.from({ length: 200 }, (_, i) => `minecraft:r${i}`),
+      output_of: Array.from({ length: 110 }, (_, i) => `minecraft:o${i}`),
+      in_degree: 200,
+      out_degree: 110,
+      ingredient_of_counts: { crafting_shaped: 200 },
       output_of_counts: {},
     };
-    r.loot_table_sources = Array.from({ length: 30 }, (_, i) => `minecraft:t${i}`);
+    r.loot_table_sources = Array.from({ length: 90 }, (_, i) => `minecraft:t${i}`);
     const p = buildItemPayload(r, {});
-    expect(p.sample_ingredient_of.length).toBeLessThanOrEqual(10);
-    expect(p.sample_loot_sources.length).toBeLessThanOrEqual(10);
+    expect(p.recipe_ingredient_examples.length).toBeGreaterThan(10);
+    expect(p.recipe_ingredient_examples.length).toBeLessThanOrEqual(96);
+    expect(p.recipe_output_examples.length).toBeLessThanOrEqual(96);
+    expect(p.loot_source_examples.length).toBeGreaterThan(10);
+    expect(p.loot_source_examples.length).toBeLessThanOrEqual(64);
+    expect(p.recipe_ingredient_count).toBe(200);
+    expect(p.recipe_output_count).toBe(110);
+    expect(p.loot_source_count).toBe(90);
+    expect(p.recipe_examples_truncated).toBe(true);
+    expect(p.loot_sources_truncated).toBe(true);
+  });
+
+  test("payload preserves runtime resolved tags without calling them inherited", () => {
+    const r = ironIngotRecord();
+    r.minecraft_tags = ["forge:ingots", "forge:ingots/iron"];
+    r.minecraft_tags_direct = [];
+    r.extractor_meta = {
+      item_tag_membership: "resolved_runtime",
+      direct_item_tags_available: false,
+    };
+
+    const p = buildItemPayload(r, {});
+    expect(p.minecraft_tag_membership).toBe("resolved_runtime");
+    expect(p.minecraft_tags_direct).toEqual([]);
+    expect(p.minecraft_tags_inherited).toEqual([]);
+    expect(p.minecraft_tags_resolved).toEqual(["forge:ingots", "forge:ingots/iron"]);
+  });
+
+  test("runtime-resolved prompt includes runtime export interpretation notes", () => {
+    const staticPayload = buildItemPayload(ironIngotRecord(), {});
+    const staticPrompt = buildSplitPrompt({
+      items: [staticPayload],
+      target_facets: ["role"],
+    });
+    expect(staticPrompt.system).not.toContain("# Runtime export input notes");
+
+    const r = ironIngotRecord();
+    r.display_name = "§bTungstensteel Space Helmet";
+    r.minecraft_tags = ["c:hidden_from_recipe_viewers", "gtceu:ppe_armor"];
+    r.minecraft_tags_direct = [];
+    r.extractor_meta = {
+      item_tag_membership: "resolved_runtime",
+      direct_item_tags_available: false,
+    };
+    const runtimePrompt = buildSplitPrompt({
+      items: [buildItemPayload(r, {})],
+      target_facets: ["role"],
+    });
+    expect(runtimePrompt.system).toContain("# Runtime export input notes");
+    expect(runtimePrompt.system).toContain("KubeJS and datapack");
+    expect(runtimePrompt.system).toContain("not collected here");
+    expect(runtimePrompt.system).toContain("Recipe absences are weaker");
+    expect(runtimePrompt.system).toContain("Emit `primary_uses` for every item");
+    expect(runtimePrompt.system).toContain("do not use empty loot/source fields as evidence");
+    expect(runtimePrompt.system).toContain("Rationales like \"no loot source\"");
+    expect(runtimePrompt.system).toContain("c:hidden_from_recipe_viewers");
+    expect(runtimePrompt.system).toContain("§b");
+    expect(runtimePrompt.system).toContain("never emit it as a scalar `value`");
+  });
+
+  test("payload carries block context and semantic runtime components", () => {
+    const r = ironIngotRecord();
+    r.component_data = {
+      "minecraft:max_stack_size": 1,
+      "minecraft:max_damage": 250,
+      "minecraft:enchantable": {},
+      "minecraft:equippable": { slot: "head" },
+      "minecraft:light_emission": 14,
+      "minecraft:rarity": "rare",
+    };
+    r.extractor_meta = {
+      is_block_item: true,
+      block_id: "minecraft:lantern",
+      block_requires_correct_tool: false,
+      block_tags: ["minecraft:mineable/pickaxe", "minecraft:needs_stone_tool"],
+    };
+
+    const p = buildItemPayload(r, {});
+    expect(p.block_context).toEqual({
+      block_id: "minecraft:lantern",
+      block_tags: ["minecraft:mineable/pickaxe", "minecraft:needs_stone_tool"],
+      requires_correct_tool: false,
+    });
+    expect(p.component_highlights["minecraft:max_damage"]).toBe(250);
+    expect(p.component_highlights["minecraft:equippable"]).toEqual({ slot: "head" });
+    expect(p.component_highlights["minecraft:light_emission"]).toBe(14);
   });
 });
 
@@ -527,6 +661,107 @@ describe("runStage3", () => {
       client,
       only: ["minecraft:a"],
     });
+  });
+});
+
+describe("runtime subsystem vocabulary", () => {
+  test("builds namespace-scoped evidence from runtime export records", () => {
+    const records = [
+      runtimeRecord({
+        id: "create:mechanical_press",
+        displayName: "Mechanical Press",
+        tags: ["create:wrench_pickup"],
+        blockTags: ["create:stress_impact"],
+        ingredientCounts: { "create:pressing": 4 },
+        outputCounts: { crafting_shaped: 1 },
+        ingredientOf: ["tfg:create/pressing/iron_plate"],
+        outputOf: ["create:crafting/mechanical_press"],
+        isBlock: true,
+      }),
+      runtimeRecord({
+        id: "create:fluid_pipe",
+        displayName: "Fluid Pipe",
+        tags: ["create:pipes"],
+        blockTags: ["create:fluid_pipe"],
+        ingredientCounts: { crafting_shaped: 3 },
+        outputCounts: { crafting_shaped: 1 },
+        isBlock: true,
+      }),
+      runtimeRecord({
+        id: "gtceu:lv_transformer",
+        displayName: "LV Transformer",
+        tags: ["gtceu:machines"],
+        blockTags: ["gtceu:machines"],
+        ingredientCounts: { "gtceu:machine": 2 },
+        outputCounts: { crafting_shaped: 1 },
+        isBlock: true,
+      }),
+    ];
+    const contexts = buildRuntimeSubsystemContexts({
+      records,
+      minItems: 1,
+      summary: {
+        pack_id: "sample_pack",
+        loader: "forge",
+        minecraft_version: "1.20.1",
+        item_tag_members: {
+          "create:pipes": ["create:fluid_pipe"],
+          "gtceu:machines": ["gtceu:lv_transformer"],
+        },
+        block_tag_members: {
+          "create:stress_impact": ["create:mechanical_press"],
+          "gtceu:machines": ["gtceu:lv_transformer"],
+        },
+      },
+    });
+
+    const create = contexts.find((context) => context.modNamespace === "create")!;
+    expect(create.packId).toBe("sample_pack");
+    expect(create.componentCounts.block_items).toBe(2);
+    expect(create.tokenClusters.some((cluster) => cluster.id === "press")).toBe(true);
+    expect(create.itemTagSummaries.some((tag) => tag.tag === "create:pipes")).toBe(true);
+    expect(create.blockTagSummaries.some((tag) => tag.tag === "create:stress_impact")).toBe(true);
+    expect(create.recipeIdNamespaces.some((row) => row.id === "tfg")).toBe(true);
+
+    const prompt = buildRuntimeProposerPrompt(create);
+    expect(prompt.system).toContain("Pick **0 to 8** entries");
+    expect(prompt.user).toContain("KubeJS/datapack recipe and tag edits");
+    expect(prompt.user).toContain("Mod namespace: create");
+    expect(prompt.user).toContain("create:mechanical_press");
+  });
+
+  test("loads runtime vocabulary maps and filters them per batch namespace", () => {
+    const fixtureDir = mkdtempSync(join(tmpdir(), "slot-runtime-vocab-"));
+    const path = join(fixtureDir, "pack.runtime-subsystems.json");
+    writeFileSync(path, JSON.stringify({
+      kind: "slot-runtime-subsystem-vocabulary",
+      namespaces: {
+        create: {
+          vocabulary: [{ id: "create:processing", rationale: "processing machines" }],
+        },
+        gtceu: {
+          vocabulary: [{ id: "gtceu:energy_net", rationale: "power transfer" }],
+        },
+        ae2: {
+          vocabulary: [{ id: "ae2:me_network", rationale: "ME network" }],
+        },
+      },
+    }));
+
+    const loaded = loadSubsystemVocabularyFile(path);
+    const selected = selectSubsystemVocabularyForRecords(
+      [
+        runtimeRecord({ id: "create:mechanical_press", displayName: "Mechanical Press" }),
+        runtimeRecord({ id: "gtceu:lv_transformer", displayName: "LV Transformer" }),
+      ],
+      undefined,
+      loaded.byNamespace,
+    );
+
+    expect(selected?.map((entry) => entry.id).sort()).toEqual([
+      "create:processing",
+      "gtceu:energy_net",
+    ]);
   });
 });
 
