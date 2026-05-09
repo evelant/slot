@@ -1,6 +1,5 @@
 package dev.imagio.slot.compat.sophisticated;
 
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
@@ -27,24 +26,12 @@ public final class SophisticatedBackpackSupport {
         return stack != null && !stack.isEmpty() && REFLECTION.isBackpackItem(stack);
     }
 
-    public static List<BackpackSlotStack> readPlayerBackpackStacks(LocalPlayer player) {
-        return readPlayerBackpackStacks(player, null);
-    }
-
     public static List<BackpackSlotStack> readPlayerBackpackStacks(Player player) {
         return readPlayerBackpackStacks(player, null);
     }
 
-    public static int countPlayerBackpackSlots(LocalPlayer player) {
-        return countPlayerBackpackSlots(player, null);
-    }
-
     public static int countPlayerBackpackSlots(Player player) {
         return countPlayerBackpackSlots(player, null);
-    }
-
-    public static int countPlayerBackpackSlots(LocalPlayer player, BackpackCarrierRef excludedCarrier) {
-        return countPlayerBackpackSlots((Player) player, excludedCarrier);
     }
 
     public static int countPlayerBackpackSlots(Player player, BackpackCarrierRef excludedCarrier) {
@@ -65,10 +52,6 @@ public final class SophisticatedBackpackSupport {
         return totalSlots[0];
     }
 
-    public static List<BackpackSlotStack> readPlayerBackpackStacks(LocalPlayer player, BackpackCarrierRef excludedCarrier) {
-        return readPlayerBackpackStacks((Player) player, excludedCarrier);
-    }
-
     public static List<BackpackSlotStack> readPlayerBackpackStacks(Player player, BackpackCarrierRef excludedCarrier) {
         if (player == null || !REFLECTION.available()) {
             return List.of();
@@ -85,10 +68,6 @@ public final class SophisticatedBackpackSupport {
             return false;
         });
         return List.copyOf(stacks);
-    }
-
-    public static List<BackpackInventorySnapshot> readPlayerBackpacks(LocalPlayer player, BackpackCarrierRef excludedCarrier) {
-        return readPlayerBackpacks((Player) player, excludedCarrier);
     }
 
     public static List<BackpackInventorySnapshot> readPlayerBackpacks(Player player, BackpackCarrierRef excludedCarrier) {
@@ -119,7 +98,7 @@ public final class SophisticatedBackpackSupport {
         return REFLECTION.openedBackpackCarrier(menu);
     }
 
-    public static void refreshClientBackpackContents(LocalPlayer player, UUID backpackUuid) {
+    public static void refreshClientBackpackContents(Player player, UUID backpackUuid) {
         if (player == null || backpackUuid == null || !REFLECTION.available()) {
             return;
         }
@@ -490,7 +469,7 @@ public final class SophisticatedBackpackSupport {
             }
         }
 
-        private void refreshClientBackpackContents(LocalPlayer player, UUID backpackUuid) {
+        private void refreshClientBackpackContents(Player player, UUID backpackUuid) {
             runOnBackpacks(player, (carrierStack, handlerName, identifier, carrierSlotIndex) -> {
                 Object wrapper = fromStack(carrierStack);
                 if (wrapper == null) {

@@ -629,6 +629,57 @@ describe("runStage3", () => {
     expect(count).toBe(12);
   });
 
+  test("response validator rejects missing requested items before accepting a batch", async () => {
+    const records: ItemExtractRecord[] = [
+      { ...ironIngotRecord(), id: "minecraft:a", path: "a" },
+      { ...ironIngotRecord(), id: "minecraft:b", path: "b" },
+    ];
+    const stage2: LayerFile = {
+      schema_version: 1,
+      layer: "vanilla-base",
+      source: "minecraft",
+      entries: {},
+    };
+    let calls = 0;
+    const client = {
+      async query(prompt: string, options: { responseValidator?: (text: string) => { ok: boolean } }) {
+        calls++;
+        const missing = JSON.stringify({
+          items: {
+            "minecraft:a": {
+              facets: { role: { value: "material", signal: "named", evidence: "test" } },
+            },
+          },
+        });
+        if (calls === 1 && options.responseValidator?.(missing).ok === false) {
+          return JSON.stringify({
+            items: {
+              "minecraft:a": {
+                facets: { role: { value: "material", signal: "named", evidence: "test" } },
+              },
+              "minecraft:b": {
+                facets: { role: { value: "material", signal: "named", evidence: "test" } },
+              },
+            },
+          });
+        }
+        return missing;
+      },
+    };
+
+    const result = await runStage3({
+      records,
+      stage2Layer: stage2,
+      client,
+      batchSize: 2,
+    });
+
+    expect(calls).toBe(1);
+    expect(result.responseMismatches).toEqual([]);
+    expect(result.layer.entries["minecraft:a"]?.facets.role).toBeDefined();
+    expect(result.layer.entries["minecraft:b"]?.facets.role).toBeDefined();
+  });
+
   test("only-list restricts execution", async () => {
     const recA: ItemExtractRecord = {
       ...ironIngotRecord(),

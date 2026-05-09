@@ -1,6 +1,6 @@
 # Item Classification Tool Guide
 
-Last updated: 2026-05-08
+Last updated: 2026-05-09
 
 Concise operator/developer guide for the SLOT item classification tool:
 what it does, how it works, how to use it today, and where the tool is
@@ -75,7 +75,6 @@ Planned inputs:
 
 - `.mrpack` files
 - CurseForge manifests with locally available jars
-- runtime-export ingestion that writes a reviewed pack-specific layer
 
 ### Stage 2: Deterministic Facets
 
@@ -261,6 +260,26 @@ and loot-table sources. The datapack output is a folder containing
 `data/slot/classification/layers/<pack>.json`; drop it into a world or
 pack datapacks folder so SLOT can load it without rebuilding the mod jar.
 
+For a real pack run, prefer the one-command wrapper:
+
+```sh
+bun run classify:runtime-pack -- \
+  --runtime-export exports/pack.runtime-items.ndjson \
+  --summary exports/pack.runtime-summary.json \
+  --mods /path/to/prism/instance-or-minecraft/mods \
+  --out out/pack \
+  --force
+```
+
+`classify-runtime-pack` runs the same static+runtime layer generation, but
+also generates or reuses runtime subsystem vocabulary, defaults stage 3 to
+the OpenRouter `deepseek/deepseek-v4-flash` path, records replay fixtures,
+checks for items that received no LLM facets, runs a focused repair pass,
+validates the final layer and datapack layer, writes a datapack zip, and
+emits `run-report.json` plus `run-report.md`. The CLI auto-loads a
+repo-root `.env`, so `OPENROUTER_API_KEY=...` can live there for manual
+runs.
+
 Validate a layer:
 
 ```sh
@@ -284,8 +303,11 @@ bun run sync:test-modset
   already exists.
 - Hand-authored modpack manifests still point at cloned source
   repositories; installed pack folders use `classify-folder` instead.
-- Existing resume behavior needs stronger cache identity; output
-  existence alone is not enough.
+- Existing resume behavior is strongest in `classify-runtime-pack`, which
+  records fixtures and refuses to overwrite outputs unless `--force` is
+  passed. Cache identity is still path/output based; future public-database
+  work should key by jar hashes, platform file ids, runtime export hashes,
+  and item-set signatures.
 - Runtime consumes bundled vanilla/per-mod resources and datapack-provided
   pack layers under `data/slot/classification/layers/*.json`. Public DB
   fetch, mod-shipped layers, and richer override policy are planned work.
@@ -304,7 +326,7 @@ slot-classify fetch-public --mods /path/to/instance/mods
 slot-classify classify-folder --mods /path/to/instance/mods --stages 1,2
 slot-classify generate-missing --mods /path/to/instance/mods --stages 1,2,3
 slot-classify propose-runtime-subsystems --runtime-export exports/pack.runtime-items.ndjson
-slot-classify generate-pack-layer --runtime-export exports/pack.runtime-items.ndjson --mods /path/to/instance --datapack
+slot-classify classify-runtime-pack --runtime-export exports/pack.runtime-items.ndjson --mods /path/to/instance
 ```
 
 For normal players, the ideal outcome is no command at all: SLOT ships
@@ -319,12 +341,11 @@ For KubeJS-heavy packs, the best source is a running-instance export:
 /slot classification export
 ```
 
-The first implementation captures the actual loaded item registry, item
-and block tag membership, recipe participation, and compact component
-signals. Runtime tag membership is resolved rather than direct source
-provenance. The generated datapack layer is the deployable artifact; the
-remaining target is to add datapack/KubeJS provenance hashes and stronger
-cache identity.
+The implementation captures the actual loaded item registry, item and
+block tag membership, recipe participation, and compact component signals.
+Runtime tag membership is resolved rather than direct source provenance.
+The generated datapack layer or zip is the deployable artifact; remaining
+targets are datapack/KubeJS provenance hashes and stronger cache identity.
 
 ## Operating Rules
 
@@ -344,13 +365,13 @@ cache identity.
 
 The near-term implementation plan is in
 [../../plans/classification-database.md](../../plans/classification-database.md).
-The first useful milestone is:
+The first useful milestone is now the public-data and repeatability track:
 
-1. stabilize the current CLI and cache decisions
-2. define input manifest v2
-3. implement `scan --mods`
-4. implement jar-backed stages 1 and 2
-5. add runtime export for KubeJS/datapack-heavy pack layers
+1. key generated data by exact artifact/runtime-export identity
+2. define the public database fetch/contribution shape
+3. add downloaded-pack manifest ingestion where local jars are present
+4. add datapack/KubeJS provenance hashes to runtime exports
+5. tighten review tooling around report outputs and schema proposals
 
 That milestone proves the pack UX before adding public database fetch,
-runtime exports, or broader LLM generation workflows.
+mod-shipped layers, or broader LLM generation workflows.

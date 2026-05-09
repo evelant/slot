@@ -530,12 +530,12 @@ function componentCounts(records: readonly ItemExtractRecord[]): Record<string, 
   for (const record of records) {
     const meta = record.extractor_meta ?? {};
     const components = record.component_data ?? {};
-    if (meta.is_block_item === true) counts.block_items++;
-    if (components["minecraft:max_damage"] !== undefined) counts.durable_items++;
-    if (components["minecraft:equippable"] !== undefined) counts.equippable_items++;
-    if (components["minecraft:food"] !== undefined || components["minecraft:use_remainder"] !== undefined) counts.food_items++;
-    if (isPositiveNumber(components["minecraft:light_emission"])) counts.light_emitting_items++;
-    if (components["minecraft:max_stack_size"] === 1) counts.non_stackable_items++;
+    if (meta.is_block_item === true) counts.block_items = (counts.block_items ?? 0) + 1;
+    if (components["minecraft:max_damage"] !== undefined) counts.durable_items = (counts.durable_items ?? 0) + 1;
+    if (components["minecraft:equippable"] !== undefined) counts.equippable_items = (counts.equippable_items ?? 0) + 1;
+    if (components["minecraft:food"] !== undefined || components["minecraft:use_remainder"] !== undefined) counts.food_items = (counts.food_items ?? 0) + 1;
+    if (isPositiveNumber(components["minecraft:light_emission"])) counts.light_emitting_items = (counts.light_emitting_items ?? 0) + 1;
+    if (components["minecraft:max_stack_size"] === 1) counts.non_stackable_items = (counts.non_stackable_items ?? 0) + 1;
   }
   return counts;
 }

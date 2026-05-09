@@ -1682,7 +1682,8 @@ public final class SlotWorkspaceCommandService {
             return false;
         }
         for (SlotWorkspaceViewModel.AtlasItem item : triage) {
-            if (!item.carried()) {
+            boolean proximateClaimedChestGhost = item.ghost() && item.proximateCount() > 0;
+            if (!item.carried() && !proximateClaimedChestGhost) {
                 continue;
             }
             ItemIdentity identity = item.identity().toIdentity();

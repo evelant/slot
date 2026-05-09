@@ -1,6 +1,7 @@
-import { copyFileSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
-import { basename, dirname, join, resolve } from "node:path";
+import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { basename, dirname, join, relative, resolve } from "node:path";
 import { parseArgs } from "node:util";
+import { deflateRawSync } from "node:zlib";
 import {
   ensureVanillaSource,
   loadSummaryBundle,
@@ -27,6 +28,7 @@ import { runStage3 } from "./llm/run.ts";
 import {
   selectSubsystemVocabularyForRecords,
   type SubsystemVocabularyByNamespace,
+  type SubsystemVocabularyEntry,
 } from "./llm/run.ts";
 import { runStage3Retry, selectRetryCandidates } from "./llm/retry.ts";
 import {
@@ -69,6 +71,8 @@ const TOOL_VERSION = "slot-classify v0.1.0";
 const DEFAULT_STAGE3_MODEL = "deepseek/deepseek-v4-flash";
 const DEFAULT_STAGE3_BATCH_SIZE = 20;
 const DEFAULT_STAGE3_CONCURRENCY = 4;
+const DEFAULT_RUNTIME_PACK_BATCH_SIZE = 25;
+const DEFAULT_RUNTIME_PACK_CONCURRENCY = 8;
 const REPO_ROOT = resolve(import.meta.dir, "..", "..", "..");
 
 interface StageSelection {
@@ -145,6 +149,45 @@ function parseStages(input: string | undefined): StageSelection {
   return { stage1: set.has("1"), stage2: set.has("2"), stage3: set.has("3") };
 }
 
+function loadDotEnv(path = join(REPO_ROOT, ".env")): boolean {
+  if (!existsSync(path)) return false;
+  const text = readFileSync(path, "utf8");
+  let loaded = false;
+  for (const rawLine of text.split(/\r?\n/)) {
+    const line = rawLine.trim();
+    if (!line || line.startsWith("#")) continue;
+    const eq = line.indexOf("=");
+    if (eq <= 0) continue;
+    const key = line.slice(0, eq).trim();
+    if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(key)) continue;
+    if (process.env[key] !== undefined) continue;
+    process.env[key] = unquoteEnvValue(line.slice(eq + 1).trim());
+    loaded = true;
+  }
+  return loaded;
+}
+
+function unquoteEnvValue(value: string): string {
+  if (
+    (value.startsWith("\"") && value.endsWith("\"")) ||
+    (value.startsWith("'") && value.endsWith("'"))
+  ) {
+    return value.slice(1, -1);
+  }
+  return value;
+}
+
+function ensureLiveBackendConfigured(opts: Stage3CliOptions, context: string): void {
+  if (opts.dryRun || opts.useReplay) return;
+  const backend = opts.backend ?? inferBackend(opts.model);
+  if (backend === "openrouter" && !process.env.OPENROUTER_API_KEY) {
+    throw new Error(
+      `${context} requires OPENROUTER_API_KEY. Put it in ${join(REPO_ROOT, ".env")} ` +
+        `or export it in the shell before running.`,
+    );
+  }
+}
+
 // Bun's default behavior on an unhandled promise rejection is to terminate
 // the process. The OpenRouter SDK has internal retry / matcher machinery
 // that occasionally fires non-awaited promises (e.g. on truncated upstream
@@ -158,6 +201,7 @@ process.on("unhandledRejection", (reason) => {
 });
 
 async function main() {
+  loadDotEnv();
   const [cmd, ...rest] = Bun.argv.slice(2);
 
   switch (cmd) {
@@ -554,6 +598,108 @@ async function main() {
         minItems: parsePositiveInteger(args.values["min-items"], "--min-items") ?? 4,
         force: args.values.force ?? false,
         opts,
+      });
+      return;
+    }
+
+    case "classify-runtime-pack": {
+      const args = parseArgs({
+        args: rest,
+        options: {
+          "runtime-export": { type: "string" },
+          summary: { type: "string" },
+          mods: { type: "string" },
+          out: { type: "string" },
+          "pack-id": { type: "string" },
+          stages: { type: "string" },
+          datapack: { type: "boolean" },
+          "no-datapack": { type: "boolean" },
+          "datapack-out": { type: "string" },
+          "pack-format": { type: "string" },
+          zip: { type: "boolean" },
+          "no-zip": { type: "boolean" },
+          force: { type: "boolean" },
+          "force-subsystems": { type: "boolean" },
+          "no-repair": { type: "boolean" },
+          "repair-batch-size": { type: "string" },
+          "repair-concurrency": { type: "string" },
+          model: { type: "string" },
+          backend: { type: "string" },
+          "ignore-provider": { type: "string", multiple: true },
+          "only-provider": { type: "string", multiple: true },
+          "batch-size": { type: "string" },
+          concurrency: { type: "string" },
+          effort: { type: "string" },
+          "thinking-budget": { type: "string" },
+          "disable-adaptive-thinking": { type: "boolean" },
+          "fixture-dir": { type: "string" },
+          "use-replay": { type: "boolean" },
+          "record-replay": { type: "boolean" },
+          "dry-run": { type: "boolean" },
+          "subsystems-file": { type: "string" },
+          "limit-namespaces": { type: "string" },
+          "min-items": { type: "string" },
+          "verbose-disambiguation": { type: "boolean" },
+          "no-verbose-disambiguation": { type: "boolean" },
+          "verbose-misconceptions": { type: "boolean" },
+        },
+        allowPositionals: false,
+        strict: true,
+      });
+      const runtimeExportPath = args.values["runtime-export"];
+      if (!runtimeExportPath) {
+        console.error("usage: classify-runtime-pack --runtime-export <pack.runtime-items.ndjson> [options]");
+        process.exit(2);
+        return;
+      }
+      const packId = safeFileComponent(args.values["pack-id"] ?? inferRuntimePackId(runtimeExportPath, args.values.summary));
+      const outDir = resolve(args.values.out ?? join("out", packId));
+      mkdirSync(outDir, { recursive: true });
+      const stages = parseStages(args.values.stages ?? "1,2,3");
+      const useReplay = args.values["use-replay"] ?? false;
+      const stage3FixtureDir = args.values["fixture-dir"] ?? join(outDir, "fixtures", "stage3");
+      const stage3CliOpts: Stage3CliOptions = {
+        model: args.values.model ?? DEFAULT_STAGE3_MODEL,
+        backend: parseBackend(args.values.backend),
+        ignoredProviders: (args.values["ignore-provider"] as string[] | undefined) ?? undefined,
+        onlyProviders: (args.values["only-provider"] as string[] | undefined) ?? undefined,
+        batchSize: parsePositiveInteger(args.values["batch-size"], "--batch-size") ?? DEFAULT_RUNTIME_PACK_BATCH_SIZE,
+        concurrency: parsePositiveInteger(args.values.concurrency, "--concurrency") ?? DEFAULT_RUNTIME_PACK_CONCURRENCY,
+        effort: parseEffort(args.values.effort),
+        thinkingBudget: args.values["thinking-budget"]
+          ? parsePositiveInteger(args.values["thinking-budget"], "--thinking-budget")
+          : undefined,
+        disableAdaptiveThinking: args.values["disable-adaptive-thinking"] ?? false,
+        fixtureDir: stage3FixtureDir,
+        useReplay,
+        recordReplay: useReplay ? false : (args.values["record-replay"] ?? true),
+        dryRun: args.values["dry-run"] ?? false,
+        proposeSubsystems: false,
+        subsystemsFile: args.values["subsystems-file"],
+        verboseFacetDisambiguation: args.values["no-verbose-disambiguation"]
+          ? false
+          : (args.values["verbose-disambiguation"] ?? true),
+        verboseCommonMisconceptions: args.values["verbose-misconceptions"] ?? false,
+      };
+      await runClassifyRuntimePack({
+        runtimeExportPath,
+        summaryPath: args.values.summary,
+        modsPath: args.values.mods,
+        outDir,
+        packId,
+        stages,
+        stage3Opts: stage3CliOpts,
+        writeDatapack: !(args.values["no-datapack"] ?? false) && (args.values.datapack ?? true),
+        datapackOut: args.values["datapack-out"],
+        packFormat: parsePositiveInteger(args.values["pack-format"], "--pack-format"),
+        zipDatapack: !(args.values["no-zip"] ?? false) && (args.values.zip ?? true),
+        force: args.values.force ?? false,
+        forceSubsystems: args.values["force-subsystems"] ?? false,
+        repairMissing: !(args.values["no-repair"] ?? false),
+        repairBatchSize: parsePositiveInteger(args.values["repair-batch-size"], "--repair-batch-size") ?? 25,
+        repairConcurrency: parsePositiveInteger(args.values["repair-concurrency"], "--repair-concurrency") ?? 8,
+        limitNamespaces: parsePositiveInteger(args.values["limit-namespaces"], "--limit-namespaces"),
+        minItems: parsePositiveInteger(args.values["min-items"], "--min-items") ?? 4,
       });
       return;
     }
@@ -1453,6 +1599,7 @@ async function runRuntimeSubsystemProposal(
   }
 
   console.log(`[runtime-subsystems] proposing vocabulary with ${model} via ${backend}`);
+  ensureLiveBackendConfigured(options.opts, "propose-runtime-subsystems");
   const client = buildClient(options.opts);
   const output: RuntimeSubsystemVocabularyFile = {
     schema_version: 1,
@@ -1507,6 +1654,165 @@ async function runRuntimeSubsystemProposal(
   console.log(`done in ${((Date.now() - start) / 1000).toFixed(2)}s`);
 }
 
+interface ClassifyRuntimePackOptions {
+  runtimeExportPath: string;
+  summaryPath?: string;
+  modsPath?: string;
+  outDir: string;
+  packId: string;
+  stages: StageSelection;
+  stage3Opts: Stage3CliOptions;
+  writeDatapack: boolean;
+  datapackOut?: string;
+  packFormat?: number;
+  zipDatapack: boolean;
+  force: boolean;
+  forceSubsystems: boolean;
+  repairMissing: boolean;
+  repairBatchSize: number;
+  repairConcurrency: number;
+  limitNamespaces?: number;
+  minItems: number;
+}
+
+async function runClassifyRuntimePack(options: ClassifyRuntimePackOptions): Promise<void> {
+  const start = Date.now();
+  console.log(`[runtime-pack] pack=${options.packId}`);
+  console.log(`[runtime-pack] out=${options.outDir}`);
+  const stage3Enabled = options.stages.stage3;
+  const subsystemPath = join(options.outDir, `${options.packId}.runtime-subsystems.json`);
+
+  let stage3Opts = { ...options.stage3Opts };
+  if (stage3Enabled) {
+    ensureLiveBackendConfigured(stage3Opts, "classify-runtime-pack");
+    if (!stage3Opts.subsystemsFile) {
+      if (!existsSync(subsystemPath) || options.forceSubsystems) {
+        console.log(`[runtime-pack] generating runtime subsystem vocabulary`);
+        await runRuntimeSubsystemProposal({
+          runtimeExportPath: options.runtimeExportPath,
+          summaryPath: options.summaryPath,
+          outDir: options.outDir,
+          namespaces: [],
+          limitNamespaces: options.limitNamespaces,
+          minItems: options.minItems,
+          force: true,
+          opts: {
+            ...stage3Opts,
+            fixtureDir: join(options.outDir, "fixtures", "runtime-subsystems"),
+            recordReplay: stage3Opts.useReplay ? false : true,
+          },
+        });
+      } else {
+        console.log(`[runtime-pack] using cached runtime subsystem vocabulary: ${subsystemPath}`);
+      }
+      if (existsSync(subsystemPath)) {
+        stage3Opts = { ...stage3Opts, subsystemsFile: subsystemPath };
+      }
+    }
+  }
+
+  const run = await runGeneratePackLayer(
+    options.runtimeExportPath,
+    options.outDir,
+    options.stages,
+    stage3Opts,
+    {
+      summaryPath: options.summaryPath,
+      modsPath: options.modsPath,
+      packId: options.packId,
+      writeDatapack: options.writeDatapack,
+      datapackOut: options.datapackOut,
+      packFormat: options.packFormat,
+      force: options.force,
+    },
+  );
+
+  let noLlmBeforeRepair: string[] = [];
+  let noLlmAfterRepair: string[] = [];
+  let repairedItems = 0;
+  let repairedFacets = 0;
+
+  if (stage3Enabled && !stage3Opts.dryRun && existsSync(run.completePath)) {
+    noLlmBeforeRepair = collectItemsWithoutLlmFacets(readLayerFile(run.completePath));
+    const noLlmPath = join(options.outDir, `${options.packId}.pack.no-llm-items.json`);
+    writeFileSync(noLlmPath, JSON.stringify(noLlmBeforeRepair, null, 2) + "\n");
+    console.log(`[runtime-pack] LLM coverage gap after main pass: ${noLlmBeforeRepair.length} item(s)`);
+
+    if (noLlmBeforeRepair.length > 0 && options.repairMissing) {
+      const repairDir = join(options.outDir, "repair");
+      mkdirSync(repairDir, { recursive: true });
+      const repairPath = join(repairDir, `${options.packId}.pack.facets.complete.json`);
+      const repairOpts: Stage3CliOptions = {
+        ...stage3Opts,
+        sample: noLlmBeforeRepair.join(","),
+        batchSize: options.repairBatchSize,
+        concurrency: options.repairConcurrency,
+        fixtureDir: join(options.outDir, "fixtures", `stage3-repair-b${options.repairBatchSize}`),
+        recordReplay: stage3Opts.useReplay ? false : true,
+      };
+      console.log(
+        `[runtime-pack] repairing ${noLlmBeforeRepair.length} item(s) with ` +
+          `batch-size=${options.repairBatchSize} concurrency=${options.repairConcurrency}`,
+      );
+      const stage2Layer = readLayerFile(run.partialPath);
+      await executeStage3(run.records, stage2Layer, repairPath, repairOpts);
+      const merged = mergeLlmFacetsFromRepair({
+        fullPath: run.completePath,
+        repairPath,
+        itemIds: noLlmBeforeRepair,
+      });
+      repairedItems = merged.itemsTouched;
+      repairedFacets = merged.facetsAdded;
+      console.log(`[runtime-pack] merged repair facets: items=${repairedItems}, facets=${repairedFacets}`);
+      if (run.datapackDir) {
+        refreshDatapackLayer(run.datapackDir, options.packId, run.completePath);
+      }
+    }
+
+    noLlmAfterRepair = collectItemsWithoutLlmFacets(readLayerFile(run.completePath));
+    writeFileSync(
+      join(options.outDir, `${options.packId}.pack.no-llm-items.after-repair.json`),
+      JSON.stringify(noLlmAfterRepair, null, 2) + "\n",
+    );
+    console.log(`[runtime-pack] LLM coverage gap after repair: ${noLlmAfterRepair.length} item(s)`);
+  }
+
+  let datapackZipPath: string | undefined;
+  if (options.zipDatapack && run.datapackDir && existsSync(run.datapackDir) && !stage3Opts.dryRun) {
+    datapackZipPath = `${run.datapackDir}.zip`;
+    writeZipFromDirectory(run.datapackDir, datapackZipPath, { force: true });
+    console.log(`[runtime-pack] zipped datapack → ${datapackZipPath}`);
+  }
+
+  const finalLayerPath = stage3Enabled && existsSync(run.completePath) ? run.completePath : run.layerForDatapack;
+  if (finalLayerPath && existsSync(finalLayerPath) && !stage3Opts.dryRun) {
+    const validation = validateLayerFile(finalLayerPath);
+    if (!validation.ok) {
+      throw new Error(`final layer failed validation: ${validation.errors.slice(0, 5).join("; ")}`);
+    }
+    if (run.datapackDir) {
+      const datapackLayer = datapackLayerPath(run.datapackDir, options.packId);
+      const datapackValidation = validateLayerFile(datapackLayer);
+      if (!datapackValidation.ok) {
+        throw new Error(`datapack layer failed validation: ${datapackValidation.errors.slice(0, 5).join("; ")}`);
+      }
+    }
+  }
+
+  writeRuntimePackReports({
+    outDir: options.outDir,
+    packId: options.packId,
+    elapsedSeconds: (Date.now() - start) / 1000,
+    run,
+    stage3Enabled,
+    noLlmBeforeRepair,
+    noLlmAfterRepair,
+    repairedItems,
+    repairedFacets,
+    datapackZipPath,
+  });
+}
+
 interface GeneratePackLayerOptions {
   summaryPath?: string;
   modsPath?: string;
@@ -1517,13 +1823,29 @@ interface GeneratePackLayerOptions {
   force: boolean;
 }
 
+interface GeneratePackLayerRunResult {
+  packId: string;
+  runtimeItemsPath: string;
+  summaryPath: string;
+  staticModsPath?: string;
+  staticMatchingRecords: number;
+  staticEnrichedRecords: number;
+  recordsPath: string;
+  partialPath: string;
+  completePath: string;
+  layerForDatapack: string | null;
+  datapackDir?: string;
+  records: ItemExtractRecord[];
+  summary: RuntimeExportSummary | null;
+}
+
 async function runGeneratePackLayer(
   runtimeExportPath: string,
   outDir: string,
   stages: StageSelection,
   stage3Opts: Stage3CliOptions,
   options: GeneratePackLayerOptions,
-): Promise<void> {
+): Promise<GeneratePackLayerRunResult> {
   const start = Date.now();
   const runtimeItemsPath = resolve(runtimeExportPath);
   const summaryPath = resolve(options.summaryPath ?? defaultRuntimeSummaryPath(runtimeItemsPath));
@@ -1549,15 +1871,19 @@ async function runGeneratePackLayer(
     console.error(`[pack-layer] output already exists for pack ${packId}`);
     console.error(`[pack-layer] pass --force to regenerate ${partialPath} / ${completePath}`);
     process.exit(1);
-    return;
+    throw new Error(`output already exists for pack ${packId}`);
   }
 
   let records = readRuntimeExportRecords(runtimeItemsPath);
+  let staticMatchingRecords = 0;
+  let staticEnrichedRecords = 0;
   console.log(`[pack-layer] runtime records: ${records.length} item(s), pack=${packId}`);
   if (options.modsPath) {
     const staticRecords = loadStaticEnrichmentRecords(options.modsPath, records);
     const merged = mergeRuntimeWithStaticRecords(records, staticRecords);
     records = merged.records;
+    staticMatchingRecords = staticRecords.size;
+    staticEnrichedRecords = merged.enriched;
     console.log(
       `[pack-layer] static jar enrichment: ${staticRecords.size} matching static record(s), ` +
         `${merged.enriched} runtime record(s) enriched`,
@@ -1600,7 +1926,7 @@ async function runGeneratePackLayer(
       console.error(`[stage2] pack layer failed schema validation`);
       for (const err of validation.errors.slice(0, 10)) console.error(`  ${err}`);
       process.exit(1);
-      return;
+      throw new Error(`stage 2 pack layer failed schema validation`);
     }
     writeFileSync(partialPath, JSON.stringify(layer, null, 2) + "\n");
     console.log(`[stage2] ${Object.keys(layer.entries).length} items with ≥1 facet → ${partialPath}`);
@@ -1620,7 +1946,7 @@ async function runGeneratePackLayer(
     if (!existsSync(partialPath)) {
       console.error(`[stage3] need stage 2 output at ${partialPath}; run with --stages 1,2,3 first`);
       process.exit(1);
-      return;
+      throw new Error(`missing stage 2 output at ${partialPath}`);
     }
     stage2Layer = JSON.parse(readFileSync(partialPath, "utf8")) as LayerFile;
     console.log(`[stage2] (skipped; loaded ${Object.keys(stage2Layer.entries).length} entries)`);
@@ -1628,19 +1954,21 @@ async function runGeneratePackLayer(
 
   let layerForDatapack = stage2Layer ? partialPath : null;
   if (stages.stage3 && stage2Layer) {
+    ensureLiveBackendConfigured(stage3Opts, "generate-pack-layer stage 3");
     await executeStage3(records, stage2Layer, completePath, stage3Opts);
     if (!stage3Opts.dryRun && existsSync(completePath)) {
       layerForDatapack = completePath;
     }
   }
 
+  let datapackDir: string | undefined;
   if (options.writeDatapack) {
     if (!layerForDatapack || !existsSync(layerForDatapack)) {
       console.warn(`[datapack] no generated layer file available; skipping datapack packaging`);
     } else if (stage3Opts.dryRun) {
       console.warn(`[datapack] stage 3 dry-run requested; skipping datapack packaging`);
     } else {
-      const datapackDir = writeClassificationDatapack({
+      datapackDir = writeClassificationDatapack({
         sourceLayerPath: layerForDatapack,
         outDir,
         explicitOut: options.datapackOut,
@@ -1653,6 +1981,21 @@ async function runGeneratePackLayer(
   }
 
   console.log(`done in ${((Date.now() - start) / 1000).toFixed(2)}s`);
+  return {
+    packId,
+    runtimeItemsPath,
+    summaryPath,
+    staticModsPath: options.modsPath ? resolve(options.modsPath) : undefined,
+    staticMatchingRecords,
+    staticEnrichedRecords,
+    recordsPath,
+    partialPath,
+    completePath,
+    layerForDatapack,
+    datapackDir,
+    records,
+    summary,
+  };
 }
 
 function loadStaticEnrichmentRecords(
@@ -1808,6 +2151,318 @@ function writeClassificationDatapack(options: {
     ) + "\n",
   );
   return datapackDir;
+}
+
+function inferRuntimePackId(runtimeExportPath: string, summaryPath: string | undefined): string {
+  const runtimeItemsPath = resolve(runtimeExportPath);
+  const resolvedSummary = resolve(summaryPath ?? defaultRuntimeSummaryPath(runtimeItemsPath));
+  if (existsSync(resolvedSummary)) {
+    try {
+      const summary = readRuntimeExportSummary(resolvedSummary);
+      return summary.pack_id ?? summary.requested_pack_id ?? packIdFromRuntimeItemsPath(runtimeItemsPath);
+    } catch {
+      return packIdFromRuntimeItemsPath(runtimeItemsPath);
+    }
+  }
+  return packIdFromRuntimeItemsPath(runtimeItemsPath);
+}
+
+function readLayerFile(path: string): LayerFile {
+  return JSON.parse(readFileSync(path, "utf8")) as LayerFile;
+}
+
+function collectItemsWithoutLlmFacets(layer: LayerFile): string[] {
+  const out: string[] = [];
+  for (const [itemId, entry] of Object.entries(layer.entries)) {
+    const hasLlm = Object.values(entry.facets ?? {}).some((facet) => {
+      const source = (facet as { source?: unknown }).source;
+      return typeof source === "string" && source.startsWith("llm:");
+    });
+    if (!hasLlm) out.push(itemId);
+  }
+  return out.sort();
+}
+
+function countLlmFacets(layer: LayerFile): number {
+  let count = 0;
+  for (const entry of Object.values(layer.entries)) {
+    for (const facet of Object.values(entry.facets ?? {})) {
+      const source = (facet as { source?: unknown }).source;
+      if (typeof source === "string" && source.startsWith("llm:")) count++;
+    }
+  }
+  return count;
+}
+
+function mergeLlmFacetsFromRepair(args: {
+  fullPath: string;
+  repairPath: string;
+  itemIds: readonly string[];
+}): { itemsTouched: number; facetsAdded: number; missingRepair: number } {
+  const full = readLayerFile(args.fullPath);
+  const repair = readLayerFile(args.repairPath);
+  let itemsTouched = 0;
+  let facetsAdded = 0;
+  let missingRepair = 0;
+
+  for (const itemId of args.itemIds) {
+    const sourceEntry = repair.entries[itemId];
+    if (!sourceEntry) {
+      missingRepair++;
+      continue;
+    }
+    const targetEntry = full.entries[itemId] ?? { facets: {} };
+    const nextFacets = { ...(targetEntry.facets ?? {}) };
+    let touched = false;
+    for (const [facetId, entry] of Object.entries(sourceEntry.facets ?? {})) {
+      const source = (entry as { source?: unknown }).source;
+      if (typeof source !== "string" || !source.startsWith("llm:")) continue;
+      const existing = nextFacets[facetId];
+      const existingSource = (existing as { source?: unknown } | undefined)?.source;
+      if (existing && (typeof existingSource !== "string" || !existingSource.startsWith("llm:"))) {
+        continue;
+      }
+      nextFacets[facetId] = entry;
+      facetsAdded++;
+      touched = true;
+    }
+    full.entries[itemId] = { facets: nextFacets };
+    if (touched) itemsTouched++;
+  }
+
+  full.generated_at = new Date().toISOString();
+  writeFileSync(args.fullPath, JSON.stringify(full, null, 2) + "\n");
+  return { itemsTouched, facetsAdded, missingRepair };
+}
+
+function datapackLayerPath(datapackDir: string, packId: string): string {
+  return join(datapackDir, "data", "slot", "classification", "layers", `${safeFileComponent(packId)}.json`);
+}
+
+function refreshDatapackLayer(datapackDir: string, packId: string, sourceLayerPath: string): void {
+  const target = datapackLayerPath(datapackDir, packId);
+  if (!existsSync(target)) {
+    mkdirSync(dirname(target), { recursive: true });
+  }
+  copyFileSync(sourceLayerPath, target);
+}
+
+function writeRuntimePackReports(args: {
+  outDir: string;
+  packId: string;
+  elapsedSeconds: number;
+  run: GeneratePackLayerRunResult;
+  stage3Enabled: boolean;
+  noLlmBeforeRepair: readonly string[];
+  noLlmAfterRepair: readonly string[];
+  repairedItems: number;
+  repairedFacets: number;
+  datapackZipPath?: string;
+}): void {
+  const finalLayerPath = args.stage3Enabled && existsSync(args.run.completePath)
+    ? args.run.completePath
+    : args.run.layerForDatapack;
+  const finalLayer = finalLayerPath && existsSync(finalLayerPath)
+    ? readLayerFile(finalLayerPath)
+    : null;
+  const report = {
+    schema_version: 1,
+    kind: "slot-runtime-pack-classification-report",
+    pack_id: args.packId,
+    generated_at: new Date().toISOString(),
+    generated_by: TOOL_VERSION,
+    elapsed_seconds: args.elapsedSeconds,
+    input: {
+      runtime_items: args.run.runtimeItemsPath,
+      runtime_summary: existsSync(args.run.summaryPath) ? args.run.summaryPath : null,
+      static_mods_path: args.run.staticModsPath ?? null,
+      static_matching_item_records: args.run.staticMatchingRecords,
+      static_enriched_runtime_records: args.run.staticEnrichedRecords,
+      loader: args.run.summary?.loader ?? null,
+      minecraft_version: args.run.summary?.minecraft_version ?? null,
+      item_count: args.run.records.length,
+    },
+    output: {
+      records: args.run.recordsPath,
+      partial_layer: args.run.partialPath,
+      complete_layer: finalLayerPath,
+      datapack: args.run.datapackDir ?? null,
+      datapack_zip: args.datapackZipPath ?? null,
+    },
+    coverage: finalLayer
+      ? {
+          entries: Object.keys(finalLayer.entries).length,
+          llm_facets: countLlmFacets(finalLayer),
+          items_without_llm_before_repair: args.noLlmBeforeRepair.length,
+          items_without_llm_after_repair: args.noLlmAfterRepair.length,
+          repaired_items: args.repairedItems,
+          repaired_facets: args.repairedFacets,
+        }
+      : null,
+    review: {
+      corrections: countJsonArrayFile(args.run.completePath.replace(/\.complete\.json$/, ".corrections.json")),
+      fill_ins: countJsonArrayFile(args.run.completePath.replace(/\.complete\.json$/, ".fill-ins.json")),
+      schema_proposals: countJsonArrayFile(args.run.completePath.replace(/\.complete\.json$/, ".schema-proposals.json")),
+      warnings: countJsonArrayFile(args.run.completePath.replace(/\.complete\.json$/, ".warnings.json")),
+      response_mismatches: countJsonArrayFile(args.run.completePath.replace(/\.complete\.json$/, ".response-mismatches.json")),
+    },
+  };
+  const jsonPath = join(args.outDir, `${args.packId}.run-report.json`);
+  const mdPath = join(args.outDir, `${args.packId}.run-report.md`);
+  writeFileSync(jsonPath, JSON.stringify(report, null, 2) + "\n");
+  writeFileSync(mdPath, formatRuntimePackMarkdownReport(report));
+  console.log(`[runtime-pack] report → ${jsonPath}`);
+  console.log(`[runtime-pack] summary → ${mdPath}`);
+}
+
+function countJsonArrayFile(path: string): number {
+  if (!existsSync(path)) return 0;
+  try {
+    const parsed = JSON.parse(readFileSync(path, "utf8"));
+    return Array.isArray(parsed) ? parsed.length : 0;
+  } catch {
+    return 0;
+  }
+}
+
+function formatRuntimePackMarkdownReport(report: Record<string, unknown>): string {
+  const output = report.output as Record<string, unknown>;
+  const coverage = report.coverage as Record<string, unknown> | null;
+  const review = report.review as Record<string, unknown>;
+  const lines = [
+    `# SLOT Runtime Pack Classification Report`,
+    ``,
+    `Pack: \`${report.pack_id}\``,
+    `Generated: \`${report.generated_at}\``,
+    `Elapsed: \`${Number(report.elapsed_seconds).toFixed(1)}s\``,
+    ``,
+    `## Outputs`,
+    ``,
+    `- Complete layer: \`${output.complete_layer ?? "n/a"}\``,
+    `- Datapack: \`${output.datapack ?? "n/a"}\``,
+    `- Datapack zip: \`${output.datapack_zip ?? "n/a"}\``,
+    ``,
+    `## Coverage`,
+    ``,
+    coverage
+      ? `- Entries: \`${coverage.entries}\`\n- LLM facets: \`${coverage.llm_facets}\`\n- Missing LLM before repair: \`${coverage.items_without_llm_before_repair}\`\n- Missing LLM after repair: \`${coverage.items_without_llm_after_repair}\`\n- Repaired items: \`${coverage.repaired_items}\``
+      : `- Stage 3 did not produce a complete layer.`,
+    ``,
+    `## Review Queue`,
+    ``,
+    `- Corrections: \`${review.corrections}\``,
+    `- Fill-ins: \`${review.fill_ins}\``,
+    `- Schema proposals: \`${review.schema_proposals}\``,
+    `- Warnings: \`${review.warnings}\``,
+    `- Response mismatches: \`${review.response_mismatches}\``,
+    ``,
+  ];
+  return lines.join("\n");
+}
+
+function writeZipFromDirectory(sourceDir: string, zipPath: string, options: { force: boolean }): void {
+  if (existsSync(zipPath)) {
+    if (!options.force) throw new Error(`zip output already exists: ${zipPath}`);
+    rmSync(zipPath, { force: true });
+  }
+  const entries = listFilesRecursive(sourceDir)
+    .map((file) => ({
+      absolute: file,
+      name: relative(sourceDir, file).split(/[\\/]+/).join("/"),
+    }))
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  const locals: Buffer[] = [];
+  const centrals: Buffer[] = [];
+  let offset = 0;
+  for (const entry of entries) {
+    const nameBytes = Buffer.from(entry.name, "utf8");
+    const data = readFileSync(entry.absolute);
+    const compressed = deflateRawSync(data, { level: 9 });
+    const crc = crc32(data);
+    const local = Buffer.alloc(30);
+    local.writeUInt32LE(0x04034b50, 0);
+    local.writeUInt16LE(20, 4);
+    local.writeUInt16LE(0, 6);
+    local.writeUInt16LE(8, 8);
+    local.writeUInt32LE(0, 10);
+    local.writeUInt32LE(crc, 14);
+    local.writeUInt32LE(compressed.length, 18);
+    local.writeUInt32LE(data.length, 22);
+    local.writeUInt16LE(nameBytes.length, 26);
+    local.writeUInt16LE(0, 28);
+    locals.push(local, nameBytes, compressed);
+
+    const central = Buffer.alloc(46);
+    central.writeUInt32LE(0x02014b50, 0);
+    central.writeUInt16LE(20, 4);
+    central.writeUInt16LE(20, 6);
+    central.writeUInt16LE(0, 8);
+    central.writeUInt16LE(8, 10);
+    central.writeUInt32LE(0, 12);
+    central.writeUInt32LE(crc, 16);
+    central.writeUInt32LE(compressed.length, 20);
+    central.writeUInt32LE(data.length, 24);
+    central.writeUInt16LE(nameBytes.length, 28);
+    central.writeUInt16LE(0, 30);
+    central.writeUInt16LE(0, 32);
+    central.writeUInt16LE(0, 34);
+    central.writeUInt16LE(0, 36);
+    central.writeUInt32LE(0, 38);
+    central.writeUInt32LE(offset, 42);
+    centrals.push(central, nameBytes);
+    offset += local.length + nameBytes.length + compressed.length;
+  }
+
+  const localData = Buffer.concat(locals);
+  const centralDirectory = Buffer.concat(centrals);
+  const eocd = Buffer.alloc(22);
+  eocd.writeUInt32LE(0x06054b50, 0);
+  eocd.writeUInt16LE(0, 4);
+  eocd.writeUInt16LE(0, 6);
+  eocd.writeUInt16LE(entries.length, 8);
+  eocd.writeUInt16LE(entries.length, 10);
+  eocd.writeUInt32LE(centralDirectory.length, 12);
+  eocd.writeUInt32LE(localData.length, 16);
+  eocd.writeUInt16LE(0, 20);
+  mkdirSync(dirname(zipPath), { recursive: true });
+  writeFileSync(zipPath, Buffer.concat([localData, centralDirectory, eocd]));
+}
+
+function listFilesRecursive(dir: string): string[] {
+  const out: string[] = [];
+  for (const name of readdirSync(dir)) {
+    const path = join(dir, name);
+    const stat = statSync(path);
+    if (stat.isDirectory()) {
+      out.push(...listFilesRecursive(path));
+    } else if (stat.isFile()) {
+      out.push(path);
+    }
+  }
+  return out;
+}
+
+let CRC_TABLE: Uint32Array | null = null;
+function crc32(buffer: Buffer): number {
+  const table = CRC_TABLE ??= buildCrcTable();
+  let crc = 0xffffffff;
+  for (const byte of buffer) {
+    crc = (crc >>> 8) ^ table[(crc ^ byte) & 0xff]!;
+  }
+  return (crc ^ 0xffffffff) >>> 0;
+}
+
+function buildCrcTable(): Uint32Array {
+  const table = new Uint32Array(256);
+  for (let i = 0; i < 256; i++) {
+    let c = i;
+    for (let j = 0; j < 8; j++) {
+      c = (c & 1) ? (0xedb88320 ^ (c >>> 1)) : (c >>> 1);
+    }
+    table[i] = c >>> 0;
+  }
+  return table;
 }
 
 function inferDatapackPackFormat(minecraftVersion: string | undefined): number {
@@ -2122,10 +2777,10 @@ function resolveStage3SubsystemVocabulary(opts: Stage3CliOptions): Stage3CliOpti
 }
 
 function mergeSubsystemEntries(
-  a: readonly SubsystemEntry[] | undefined,
-  b: readonly SubsystemEntry[] | undefined,
-): SubsystemEntry[] {
-  const out: SubsystemEntry[] = [];
+  a: readonly SubsystemVocabularyEntry[] | undefined,
+  b: readonly SubsystemVocabularyEntry[] | undefined,
+): SubsystemVocabularyEntry[] {
+  const out: SubsystemVocabularyEntry[] = [];
   const seen = new Set<string>();
   for (const entry of [...(a ?? []), ...(b ?? [])]) {
     if (seen.has(entry.id)) continue;
@@ -2172,6 +2827,7 @@ async function executeStage3(
     return;
   }
 
+  ensureLiveBackendConfigured(opts, "stage 3");
   const client = buildClient(opts);
 
   const result = await runStage3({
@@ -2254,6 +2910,7 @@ async function executeStage3(
       result.proposals.push(...retryResult.proposals);
       result.corrections.push(...retryResult.corrections);
       result.fillIns.push(...retryResult.fillIns);
+      result.responseMismatches.push(...retryResult.responseMismatches);
       console.log(
         `[stage3-retry] changed: ${Object.values(retryResult.facetsChanged).reduce((a, b) => a + b, 0)} facet(s), confirmed: ${Object.values(retryResult.facetsConfirmed).reduce((a, b) => a + b, 0)} facet(s)`,
       );
@@ -2306,6 +2963,22 @@ async function executeStage3(
     writtenFiles.push({
       path: fillInsPath,
       description: `${result.fillIns.length} stage-2 fill-in(s) — deterministic facets the rule layer missed; expand stage-2 rules to cover these patterns`,
+    });
+  }
+  if (result.responseMismatches.length) {
+    const mismatchesPath = completePath.replace(/\.complete\.json$/, ".response-mismatches.json");
+    writeFileSync(mismatchesPath, JSON.stringify(result.responseMismatches, null, 2) + "\n");
+    writtenFiles.push({
+      path: mismatchesPath,
+      description: `${result.responseMismatches.length} batch response coverage mismatch(es) — rerun or repair missing item ids`,
+    });
+  }
+  if (result.warnings.length) {
+    const warningsPath = completePath.replace(/\.complete\.json$/, ".warnings.json");
+    writeFileSync(warningsPath, JSON.stringify(result.warnings, null, 2) + "\n");
+    writtenFiles.push({
+      path: warningsPath,
+      description: `${result.warnings.length} parser/merge warning(s) for audit`,
     });
   }
 
@@ -2376,6 +3049,17 @@ async function executeStage3(
       kind: "WARNINGS",
       summary: `${result.warnings.length} warning(s) (most are stage-2 disagreements + format-fix wraps; usually fine)`,
       detail: result.warnings.slice(0, 5),
+      path: completePath.replace(/\.complete\.json$/, ".warnings.json"),
+    });
+  }
+  if (result.responseMismatches.length) {
+    reviewItems.push({
+      kind: "RESPONSE COVERAGE MISMATCHES",
+      summary: `${result.responseMismatches.length} batch response(s) omitted or added item ids`,
+      detail: result.responseMismatches.slice(0, 5).map((m) =>
+        `batch ${m.batchIndex + 1}: missing=${m.missing.length}, extra=${m.extra.length}`,
+      ),
+      path: completePath.replace(/\.complete\.json$/, ".response-mismatches.json"),
     });
   }
 
@@ -2655,6 +3339,32 @@ Commands:
                                 runtime MC version; 1.20.x -> 15).
         --force                 Overwrite existing pack-layer/datapack outputs.
 
+  classify-runtime-pack --runtime-export <pack.runtime-items.ndjson> [options]
+      Recommended one-command workflow for a real modpack runtime export.
+      Combines runtime records, optional static jar enrichment, namespace
+      subsystem vocabulary generation, stage 3 semantic completion, missing-LLM
+      repair, validation, datapack packaging, datapack zip creation, and a
+      machine/human run report. Defaults are tuned for the cheap OpenRouter
+      deepseek/deepseek-v4-flash path and record replay fixtures.
+
+      Runtime-pack flags:
+        --summary <path>        Explicit runtime-summary.json path.
+        --mods <path>           Prism instance root or mods/ folder for static
+                                jar enrichment.
+        --pack-id <id>          Override output/layer/datapack id.
+        --out <dir>             Output directory (default out/<pack-id>).
+        --stages <list>         Default 1,2,3.
+        --no-datapack           Skip datapack folder output.
+        --datapack-out <path>   Explicit datapack output folder.
+        --pack-format <n>       Datapack pack_format.
+        --no-zip                Skip datapack zip output.
+        --force                 Overwrite existing generated outputs.
+        --force-subsystems      Regenerate <pack>.runtime-subsystems.json.
+        --no-repair             Skip the missing-LLM repair pass.
+        --repair-batch-size <n> Items per repair batch (default 25).
+        --repair-concurrency <n>
+                                Parallel repair batches (default 8).
+
   validate <layer.json>
       Validate a layer file against layer.schema.json.
 
@@ -2676,7 +3386,7 @@ Stage 3 (LLM) knobs — only used when 3 is in --stages:
                             (haiku/sonnet/opus) or claude-* full id
                             routes to claude-cli. Pass explicitly to
                             override. openrouter requires OPENROUTER_API_KEY
-                            in env. Replay mode ignores this.
+                            in env or repo-root .env. Replay mode ignores this.
   --only-provider <slug>    (openrouter) Pin routing to a single upstream
                             provider — sends provider.only + allow_fallbacks=false.
                             Repeatable. Falls back to OPENROUTER_ONLY_PROVIDERS
@@ -2790,6 +3500,16 @@ Examples:
       --mods /path/to/TerraFirmaGreg-Modern \\
       --subsystems-file out/tfg2.runtime-subsystems.json \\
       --stages 1,2,3 --datapack
+
+  # Recommended one-command pack workflow: uses repo-root .env for
+  # OPENROUTER_API_KEY, records fixtures, repairs missing stage-3 coverage,
+  # writes a datapack folder + zip, and emits run-report.{json,md}.
+  bun run src/cli.ts classify-runtime-pack \\
+      --runtime-export modpacks/exports/tfg2.runtime-items.ndjson \\
+      --summary modpacks/exports/tfg2.runtime-summary.json \\
+      --mods /path/to/TerraFirmaGreg-Modern \\
+      --out out/tfg2 \\
+      --force
 
   # FAST: reclassify the whole pack with high parallelism (after a prompt
   # change). --force clears the per-mod completion markers; --concurrency

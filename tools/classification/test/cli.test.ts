@@ -194,6 +194,94 @@ description="fixture"
       expect(readFileSync(join(out, "fixture.pack.items.ndjson"), "utf8")).toContain("static_model_parents");
     });
   });
+
+  test("classify-runtime-pack writes report, datapack, and zip in one command", () => {
+    withTempDir((dir) => {
+      const mods = join(dir, "mods");
+      const out = join(dir, "out");
+      const runtimeItems = join(dir, "fixture.runtime-items.ndjson");
+      const runtimeSummary = join(dir, "fixture.runtime-summary.json");
+      mkdirSync(mods, { recursive: true });
+      writeZip(join(mods, "example.jar"), {
+        "META-INF/mods.toml": `
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+[[mods]]
+modId="example"
+version="1.0.0"
+displayName="Example"
+description="fixture"
+`,
+        "assets/example/lang/en_us.json": JSON.stringify({
+          "item.example.gear": "Gear",
+        }),
+        "assets/example/models/item/gear.json": JSON.stringify({
+          parent: "minecraft:item/generated",
+        }),
+      });
+      writeFileSync(runtimeItems, JSON.stringify({
+        id: "example:gear",
+        namespace: "example",
+        path: "gear",
+        display_name: "Runtime Gear",
+        minecraft_tags: [],
+        minecraft_tags_direct: [],
+        recipe_role: {
+          ingredient_of: [],
+          output_of: [],
+          in_degree: 0,
+          out_degree: 0,
+          ingredient_of_counts: {},
+          output_of_counts: {},
+        },
+        model_parents: [],
+        loot_table_sources: [],
+        creative_tabs: [],
+        component_data: { "minecraft:max_stack_size": 64 },
+        extractor_meta: {
+          extractor: "slot-runtime-export",
+          item_tag_membership: "resolved_runtime",
+          direct_item_tags_available: false,
+        },
+      }) + "\n");
+      writeFileSync(runtimeSummary, JSON.stringify({
+        schema_version: 1,
+        format: "slot-runtime-classification-export",
+        pack_id: "fixture",
+        loader: "forge",
+        minecraft_version: "1.20.1",
+        item_count: 1,
+        item_tag_members: {},
+        block_tag_members: {},
+      }));
+
+      const result = runCli([
+        "classify-runtime-pack",
+        "--runtime-export",
+        runtimeItems,
+        "--summary",
+        runtimeSummary,
+        "--mods",
+        mods,
+        "--out",
+        out,
+        "--stages",
+        "1,2",
+      ]);
+
+      expect(result.exitCode).toBe(0);
+      expect(existsSync(join(out, "fixture.run-report.json"))).toBe(true);
+      expect(existsSync(join(out, "fixture.run-report.md"))).toBe(true);
+      expect(existsSync(join(out, "fixture.classification-datapack.zip"))).toBe(true);
+      const report = JSON.parse(readFileSync(join(out, "fixture.run-report.json"), "utf8")) as {
+        output?: { datapack_zip?: string };
+        coverage?: { entries?: number };
+      };
+      expect(report.output?.datapack_zip).toBe(join(out, "fixture.classification-datapack.zip"));
+      expect(report.coverage?.entries).toBe(1);
+    });
+  });
 });
 
 function withTempDir<T>(fn: (dir: string) => T): T {

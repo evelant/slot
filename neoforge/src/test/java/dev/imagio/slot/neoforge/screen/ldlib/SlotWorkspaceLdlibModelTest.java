@@ -26,11 +26,13 @@ import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
 import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
 import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceCommandService;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceTransferRequestFactory;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WorkspaceTransferFeedback;
 import dev.imagio.slot.neoforge.triage.IslandSignalExtractor;
 import dev.imagio.slot.testsupport.InventoryAuthorityFixtures;
+import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
 import dev.imagio.slot.workflow.domain.VisualAtlasIsland;
 import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
@@ -46,9 +48,11 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SlotWorkspaceLdlibModelTest {
@@ -478,6 +482,76 @@ class SlotWorkspaceLdlibModelTest {
                 .findFirst()
                 .orElseThrow();
         assertEquals(materialized.id(), learnedChip.islandId());
+    }
+
+    @Test
+    void proximateClaimedChestGhostWithoutHomeIsQueuedForAutoHome() {
+        WorkflowDomainRuntime runtime = runtime();
+        ItemIdentity identity = ItemIdentity.of("minecraft:cobblestone");
+        var claimed = runtime.chestClaimWorkflow().claim(
+                Set.of(new ChestAnchor("minecraft:overworld", 10, 64, 10)),
+                0,
+                0,
+                "Mine"
+        );
+        String storageId = claimed.storageId().toString();
+
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                InventoryAuthoritySnapshot.empty(),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1,
+                new LearnedIslandRuleStore(),
+                null,
+                id -> storageId.equals(id)
+                        ? new SlotWorkspaceViewModel.ChestContentsSnapshot(
+                        27,
+                        List.of(new ItemStack("minecraft:cobblestone", 32, 64)),
+                        List.of(0))
+                        : SlotWorkspaceViewModel.ChestContentsSnapshot.empty(),
+                Set.of(storageId)
+        );
+
+        assertTrue(viewModel.atlasItems().isEmpty(), "unhomed chest ghosts are not rendered before auto-home");
+        SlotWorkspaceViewModel.AtlasItem queued = viewModel.triageItems().stream()
+                .filter(item -> item.identity().toIdentity().equals(identity))
+                .findFirst()
+                .orElseThrow();
+        assertTrue(queued.ghost());
+        assertFalse(queued.carried());
+        assertEquals(32, queued.proximateCount());
+
+        assertTrue(SlotWorkspaceCommandService.autoHomeTriageItems(runtime, viewModel, new java.util.HashSet<>()));
+        assertNotNull(runtime.visualAtlasWorkflow().visualHomeMap().assignment(identity));
+
+        SlotWorkspaceViewModel afterAutoHome = SlotWorkspaceViewModel.project(
+                InventoryAuthoritySnapshot.empty(),
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                2,
+                new LearnedIslandRuleStore(),
+                null,
+                id -> storageId.equals(id)
+                        ? new SlotWorkspaceViewModel.ChestContentsSnapshot(
+                        27,
+                        List.of(new ItemStack("minecraft:cobblestone", 32, 64)),
+                        List.of(0))
+                        : SlotWorkspaceViewModel.ChestContentsSnapshot.empty(),
+                Set.of(storageId)
+        );
+
+        SlotWorkspaceViewModel.AtlasItem ghost = afterAutoHome.atlasItems().stream()
+                .filter(item -> item.identity().toIdentity().equals(identity))
+                .findFirst()
+                .orElseThrow();
+        assertTrue(ghost.ghost());
+        assertEquals(32, ghost.proximateCount());
     }
 
     @Test

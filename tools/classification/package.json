@@ -6,6 +6,7 @@
   "description": "Slot item classification pipeline — produces per-mod classification layer files.",
   "scripts": {
     "classify": "bun run src/cli.ts",
+    "classify:runtime-pack": "bun run src/cli.ts classify-runtime-pack",
     "validate": "bun run src/cli.ts validate",
     "test": "bun test",
     "reclassify:vanilla": "bun run src/cli.ts classify --mod minecraft --source ../mcmeta --stages 1,2,3 --concurrency 8",

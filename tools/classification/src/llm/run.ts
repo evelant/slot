@@ -87,6 +87,16 @@ export interface Stage3Result {
   fillIns: StageFillIn[];
   /** Warnings collected across all batches. */
   warnings: string[];
+  /** Batch responses that did not exactly cover the requested item ids. */
+  responseMismatches: BatchResponseMismatch[];
+}
+
+export interface BatchResponseMismatch {
+  batchIndex: number;
+  requested: readonly string[];
+  parsed: readonly string[];
+  missing: readonly string[];
+  extra: readonly string[];
 }
 
 export interface SubsystemVocabularyEntry {
@@ -139,6 +149,7 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
   const corrections: StageCorrection[] = [];
   const fillIns: StageFillIn[] = [];
   const coverageAdded: Record<string, number> = {};
+  const responseMismatches: BatchResponseMismatch[] = [];
 
   // Deep-clone only what we'll mutate; the entries map itself is new but
   // entries that were already present are referenced, not copied.
@@ -177,7 +188,14 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
       ...options.clientOptions,
       responseValidator: (text) => {
         try {
-          parseLlmResponse(text);
+          const parsed = parseLlmResponse(text);
+          const mismatch = batchResponseMismatch(batch, parsed.items);
+          if (mismatch && mismatch.missing.length > 0) {
+            return {
+              ok: false,
+              reason: responseMismatchReason(mismatch),
+            };
+          }
           return { ok: true };
         } catch (err) {
           return { ok: false, reason: (err as Error).message.slice(0, 120) };
@@ -228,7 +246,18 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
     corrections.push(...parsed.corrections);
     fillIns.push(...parsed.fillIns);
 
+    const mismatch = batchResponseMismatch(batch, parsed.items);
+    if (mismatch) {
+      responseMismatches.push({ batchIndex: i, ...mismatch });
+      warnings.push(`batch ${i + 1}: ${responseMismatchReason(mismatch)}`);
+    }
+    const batchIds = new Set(batch.map((record) => record.id));
+
     for (const [itemId, itemFacets] of parsed.items) {
+      if (!batchIds.has(itemId)) {
+        warnings.push(`${itemId}: not in batch ${i + 1}, ignoring`);
+        continue;
+      }
       if (!recordIndex.has(itemId)) {
         warnings.push(`${itemId}: not in the extract set, ignoring`);
         continue;
@@ -311,7 +340,33 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
     generated_at: new Date().toISOString(),
   };
 
-  return { layer, filledItems, coverageAdded, proposals, corrections, fillIns, warnings };
+  return { layer, filledItems, coverageAdded, proposals, corrections, fillIns, warnings, responseMismatches };
+}
+
+function batchResponseMismatch(
+  batch: readonly ItemExtractRecord[],
+  parsedItems: ReadonlyMap<string, unknown>,
+): Omit<BatchResponseMismatch, "batchIndex"> | null {
+  const requested = batch.map((record) => record.id);
+  const requestedSet = new Set(requested);
+  const parsed = [...parsedItems.keys()];
+  const parsedSet = new Set(parsed);
+  const missing = requested.filter((id) => !parsedSet.has(id));
+  const extra = parsed.filter((id) => !requestedSet.has(id));
+  return missing.length > 0 || extra.length > 0
+    ? { requested, parsed, missing, extra }
+    : null;
+}
+
+function responseMismatchReason(mismatch: Omit<BatchResponseMismatch, "batchIndex">): string {
+  const parts: string[] = [];
+  if (mismatch.missing.length > 0) {
+    parts.push(`missing ${mismatch.missing.length}/${mismatch.requested.length} requested item(s)`);
+  }
+  if (mismatch.extra.length > 0) {
+    parts.push(`included ${mismatch.extra.length} item(s) outside the batch`);
+  }
+  return `response coverage mismatch: ${parts.join("; ")}`;
 }
 
 export function selectSubsystemVocabularyForRecords(

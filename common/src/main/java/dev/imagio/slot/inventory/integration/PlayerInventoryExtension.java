@@ -8,8 +8,8 @@ import dev.imagio.slot.inventory.core.QuickAccessLaneDescriptor;
 import dev.imagio.slot.inventory.query.InventoryEntryKey;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.query.InventorySourceSnapshot;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ public interface PlayerInventoryExtension {
     }
 
     default InventorySourceSnapshot readSourceSnapshot(
-            LocalPlayer player,
+            Player player,
             InventoryHostDescriptor host,
             String sourceId
     ) {
@@ -38,7 +38,7 @@ public interface PlayerInventoryExtension {
     }
 
     default List<InventoryStackSnapshot> readSnapshots(
-            LocalPlayer player,
+            Player player,
             InventoryHostDescriptor host,
             String sourceId
     ) {
@@ -61,7 +61,7 @@ public interface PlayerInventoryExtension {
         return List.of();
     }
 
-    default int slotCapacity(LocalPlayer player, InventoryHostDescriptor host, String sourceId) {
+    default int slotCapacity(Player player, InventoryHostDescriptor host, String sourceId) {
         return 0;
     }
 

@@ -20,7 +20,6 @@ import dev.imagio.slot.inventory.integration.MutationResult;
 import dev.imagio.slot.inventory.integration.PlayerInventoryContext;
 import dev.imagio.slot.inventory.integration.PlayerInventoryExtension;
 import dev.imagio.slot.registry.ProviderResult;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
@@ -154,7 +153,7 @@ public final class DefaultCarriedProviderIntegration implements InventoryIntegra
 
         @Override
         public List<InventoryStackSnapshot> readSnapshots(
-                LocalPlayer player,
+                Player player,
                 InventoryHostDescriptor host,
                 String sourceId
         ) {
@@ -171,7 +170,7 @@ public final class DefaultCarriedProviderIntegration implements InventoryIntegra
         }
 
         @Override
-        public int slotCapacity(LocalPlayer player, InventoryHostDescriptor host, String sourceId) {
+        public int slotCapacity(Player player, InventoryHostDescriptor host, String sourceId) {
             return safeSlotCount(sourceId);
         }
 

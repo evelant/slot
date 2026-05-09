@@ -34,7 +34,6 @@ import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.query.InventorySourceSnapshot;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.registry.ProviderResult;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -324,7 +323,7 @@ public final class SophisticatedBackpackInventoryIntegrationProvider implements 
 
             @Override
             public InventorySourceSnapshot readSourceSnapshot(
-                    LocalPlayer player,
+                    Player player,
                     InventoryHostDescriptor host,
                     String sourceId
             ) {
@@ -342,7 +341,7 @@ public final class SophisticatedBackpackInventoryIntegrationProvider implements 
 
             @Override
             public int slotCapacity(
-                    LocalPlayer player,
+                    Player player,
                     InventoryHostDescriptor host,
                     String sourceId
             ) {

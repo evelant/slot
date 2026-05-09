@@ -56,8 +56,8 @@ tools/classification/
 ```
 
 `datasets/<source>/` is the curated public artifact. `out/` is a gitignored
-working dir. For modpacks, `generate-pack-layer --runtime-export ... --datapack`
-emits a pack-specific datapack folder containing
+working dir. For modpacks, `classify-runtime-pack --runtime-export ... --mods ...`
+emits a pack-specific datapack folder and zip containing
 `data/slot/classification/layers/<pack>.json`.
 
 At runtime SLOT loads bundled vanilla/per-mod resources, then datapack-provided

@@ -9,8 +9,8 @@ import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.InventorySourceRole;
 import dev.imagio.slot.inventory.core.MenuCursorAccess;
 import dev.imagio.slot.inventory.integration.PlayerInventoryExtension;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
@@ -24,7 +24,7 @@ public final class InventoryAuthorityReadService {
     private InventoryAuthorityReadService() {
     }
 
-    public static InventoryAuthoritySnapshot clientAuthority(LocalPlayer player, InventoryHostDescriptor host) {
+    public static InventoryAuthoritySnapshot clientAuthority(Player player, InventoryHostDescriptor host) {
         return authority(host, source -> clientSourceSnapshot(player, host, source.id()));
     }
 
@@ -33,7 +33,7 @@ public final class InventoryAuthorityReadService {
     }
 
     public static InventorySourceSnapshot clientSourceSnapshot(
-            LocalPlayer player,
+            Player player,
             InventoryHostDescriptor host,
             String sourceId
     ) {

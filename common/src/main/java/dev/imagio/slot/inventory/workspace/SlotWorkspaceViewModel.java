@@ -563,7 +563,7 @@ public record SlotWorkspaceViewModel(
 
             if (assignment == null) {
                 List<ChipSuggestion> chipSuggestions = List.of();
-                if (accumulator.carried() && signalExtractor != null) {
+                if (signalExtractor != null) {
                     IslandSignalDescriptor descriptor = signalExtractor.apply(accumulator.displayStack());
                     if (descriptor != null) {
                         chipSuggestions = IslandSuggestionService.suggest(
@@ -579,8 +579,39 @@ public record SlotWorkspaceViewModel(
                 int containerFree = isContainer ? containerInfo.freeSlots() : 0;
                 int containerCapacity = isContainer ? containerInfo.slotCapacity() : 0;
                 if (ghostOnly) {
-                    // Unhomed ghost item — not carried, not assigned. Don't
-                    // render: triage is for *carried* items needing a home.
+                    if (proximateCount > 0) {
+                        // Nearby claimed-chest contents can be the first time
+                        // SLOT sees an identity on an existing world. Queue
+                        // them for the same common auto-home pass as carried
+                        // items so existing storage becomes visible without a
+                        // take/deposit round-trip. Triage is not rendered as a
+                        // product section; here it is a bounded work queue.
+                        triageItems.add(new AtlasItem(
+                                IdentityRef.from(accumulator.identity()),
+                                accumulator.displayStack(),
+                                accumulator.name(),
+                                accumulator.totalCount(),
+                                accumulator.firstSlotIndex(),
+                                SlotWorkspaceAtlasLayout.ISLAND_TRIAGE,
+                                recentIdentities.contains(accumulator.identity()),
+                                false,
+                                false,
+                                true,
+                                proximateCount,
+                                chipSuggestions,
+                                presence,
+                                elsewhere,
+                                isContainer,
+                                containerFree,
+                                containerCapacity,
+                                kitNeeded,
+                                desiredCount,
+                                desiredCountFromKit,
+                                accumulator.largestCarriedSourceId(),
+                                accumulator.largestCarriedSlotIndex(),
+                                accumulator.largestCarriedSlotCount()
+                        ));
+                    }
                     continue;
                 }
                 triageItems.add(new AtlasItem(

@@ -73,6 +73,13 @@ bun run src/cli.ts propose-runtime-subsystems \
     --runtime-export modpacks/exports/tfg2.runtime-items.ndjson \
     --summary modpacks/exports/tfg2.runtime-summary.json \
     --namespace create --namespace gtceu --dry-run
+# Recommended one-command static+runtime pack workflow:
+bun run classify:runtime-pack -- \
+    --runtime-export modpacks/exports/tfg2.runtime-items.ndjson \
+    --summary modpacks/exports/tfg2.runtime-summary.json \
+    --mods /path/to/prism/instance \
+    --out out/tfg2 \
+    --force
 # Static+runtime pack layer packaged as a datapack folder:
 bun run src/cli.ts generate-pack-layer \
     --runtime-export modpacks/exports/tfg2.runtime-items.ndjson \
@@ -107,15 +114,28 @@ Outputs (working dir, gitignored):
 - `out/<pack>.runtime-subsystems.json` — pack-specific namespace-scoped
   `mod_subsystem` vocabulary generated from a live runtime export.
 - `out/<pack>.pack.items.ndjson` — merged runtime records enriched with
-  static jar facts when `generate-pack-layer --mods` is used.
+  static jar facts when `generate-pack-layer --mods` or
+  `classify-runtime-pack --mods` is used.
 - `out/<pack>.pack.facets.partial.json` / `.complete.json` — generated
   pack-specific `layer: "modpack"` classification layer.
 - `out/<pack>.classification-datapack/` — optional drop-in datapack folder
   containing `data/slot/classification/layers/<pack>.json`.
+- `out/<pack>.classification-datapack.zip` — zipped datapack from the
+  one-command runtime-pack workflow.
+- `out/<pack>.run-report.json` / `.md` — machine and human summaries from
+  `classify-runtime-pack`, including final paths, review counts, and LLM
+  coverage before/after repair.
+- `out/<pack>.pack.no-llm-items.json` / `.after-repair.json` — coverage-gap
+  audit files written by `classify-runtime-pack`.
 - `out/<source>.facets.corrections.json` — stage-3 corrections the LLM flagged
   on stage-2 entries (review queue, never auto-applied).
 - `out/<source>.facets.schema-proposals.json` — values/facets the LLM wanted
   but didn't find in the schema. Drives schema evolution.
+- `out/<source>.facets.response-mismatches.json` — batch responses that
+  omitted requested ids or returned extra ids; missing ids are repaired or
+  left visible for rerun.
+- `out/<source>.facets.warnings.json` — parser/merge warnings retained for
+  audit instead of only scrolling by in the terminal.
 
 Curated outputs (committed):
 
@@ -135,7 +155,7 @@ Stage 3 has two backends behind the same `LlmClient` interface
   the OpenRouter API. The default model is `deepseek/deepseek-v4-flash`,
   pinned to the `deepseek` upstream provider for price / caching /
   throughput / known-good behaviour. Set `OPENROUTER_API_KEY` in env (the
-  repo-root `.env` is auto-sourced by `scripts/eval-prompt.sh`).
+  CLI auto-loads the repo-root `.env` without overriding existing env vars).
 - **`claude-cli`** — shells out to `claude -p` (Claude Code CLI in print
   mode). Selected automatically when `--model` is a Claude alias
   (`haiku`/`sonnet`/`opus`) or a `claude-*` full id; pass explicitly via
