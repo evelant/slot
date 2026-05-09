@@ -5,6 +5,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import dev.imagio.slot.forge.network.ForgeWorkspaceViewModelClientCache;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WayfindingTarget;
+import dev.imagio.slot.ui.workspace.WayfindingGlowMath;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.player.LocalPlayer;
@@ -23,15 +24,6 @@ import net.minecraftforge.client.event.RenderLevelStageEvent;
 import java.util.List;
 
 public final class ForgeWayfindingChestGlowRenderer {
-    private static final double MAX_GLOW_RADIUS = 64.0;
-    private static final double LOS_TRACE_LIMIT = 32.0;
-
-    private static final int KIT_RGB = 0xFFB347;
-    private static final int PLAYER_RGB = 0x4FB8FF;
-
-    private static final float MIN_ALPHA = 0.10f;
-    private static final float MAX_ALPHA = 0.85f;
-
     private ForgeWayfindingChestGlowRenderer() {
     }
 
@@ -55,7 +47,7 @@ public final class ForgeWayfindingChestGlowRenderer {
         Vec3 cameraPos = event.getCamera().getPosition();
         float partialTick = event.getPartialTick();
         Vec3 eyePos = player.getEyePosition(partialTick);
-        float pulse = computePulse(level.getGameTime(), partialTick);
+        float pulse = WayfindingGlowMath.computePulse(level.getGameTime(), partialTick);
 
         PoseStack poseStack = event.getPoseStack();
         MultiBufferSource.BufferSource bufferSource = minecraft.renderBuffers().bufferSource();
@@ -70,17 +62,18 @@ public final class ForgeWayfindingChestGlowRenderer {
             double dy = primaryPos.getY() + 0.5 - eyePos.y;
             double dz = primaryPos.getZ() + 0.5 - eyePos.z;
             double distSq = dx * dx + dy * dy + dz * dz;
-            if (distSq > MAX_GLOW_RADIUS * MAX_GLOW_RADIUS) {
+            if (distSq > WayfindingGlowMath.MAX_GLOW_RADIUS * WayfindingGlowMath.MAX_GLOW_RADIUS) {
                 continue;
             }
             if (!level.hasChunkAt(primaryPos)) {
                 continue;
             }
-            float alpha = computeAlpha(level, player, eyePos, primaryPos, Math.sqrt(distSq), pulse);
-            if (alpha < MIN_ALPHA / 2f) {
+            boolean clearLineOfSight = hasLineOfSight(level, player, eyePos, primaryPos);
+            float alpha = WayfindingGlowMath.computeAlpha(Math.sqrt(distSq), clearLineOfSight, pulse);
+            if (alpha < WayfindingGlowMath.MIN_ALPHA / 2f) {
                 continue;
             }
-            int rgb = target.scope() == WayfindingTarget.Scope.KIT ? KIT_RGB : PLAYER_RGB;
+            int rgb = WayfindingGlowMath.scopeRgb(target);
             float r = ((rgb >> 16) & 0xFF) / 255f;
             float g = ((rgb >> 8) & 0xFF) / 255f;
             float b = (rgb & 0xFF) / 255f;
@@ -92,35 +85,10 @@ public final class ForgeWayfindingChestGlowRenderer {
         bufferSource.endBatch(RenderType.lines());
     }
 
-    private static float computePulse(long gameTime, float partialTick) {
-        double t = (gameTime + partialTick) * Math.PI / 40.0;
-        return (float) ((Math.sin(t) + 1.0) * 0.5);
-    }
-
-    private static float computeAlpha(
-            ClientLevel level,
-            LocalPlayer player,
-            Vec3 eye,
-            BlockPos primaryPos,
-            double distance,
-            float pulse
-    ) {
-        double clamped = Math.min(distance, MAX_GLOW_RADIUS);
-        double distanceFactor = 1.0 - 0.75 * (clamped / MAX_GLOW_RADIUS);
-        boolean clear = hasLineOfSight(level, player, eye, primaryPos);
-        double losFactor = clear ? 1.0 : 0.5;
-        double pulseFactor = 0.6 + 0.4 * pulse;
-        double alpha = MAX_ALPHA * distanceFactor * losFactor * pulseFactor;
-        if (alpha < MIN_ALPHA) {
-            alpha = clear ? MIN_ALPHA : alpha;
-        }
-        return (float) Math.max(0.0, Math.min(1.0, alpha));
-    }
-
     private static boolean hasLineOfSight(ClientLevel level, LocalPlayer player, Vec3 eye, BlockPos primaryPos) {
         Vec3 target = Vec3.atCenterOf(primaryPos);
         Vec3 direction = target.subtract(eye);
-        double length = Math.min(direction.length(), LOS_TRACE_LIMIT);
+        double length = Math.min(direction.length(), WayfindingGlowMath.LOS_TRACE_LIMIT);
         if (length <= 0.0) {
             return true;
         }

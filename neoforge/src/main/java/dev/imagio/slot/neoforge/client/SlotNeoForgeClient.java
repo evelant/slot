@@ -73,7 +73,7 @@ public final class SlotNeoForgeClient {
             int direction = Screen.hasShiftDown() ? -1 : 1;
             PacketDistributor.sendToServer(new SlotKitPageCyclePayload(direction));
         }
-        // Gather-active-kit hotkey. Works in or out of the SLOT atlas;
+        // Gather hotkey. Works in or out of the SLOT atlas;
         // when the atlas is open, HotkeyRouter intercepts the key event
         // and sends the same packet, so this loop covers the in-world
         // case (no screen) and skips otherwise to avoid double-firing.

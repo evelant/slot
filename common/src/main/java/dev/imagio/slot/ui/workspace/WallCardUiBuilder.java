@@ -73,7 +73,7 @@ public final class WallCardUiBuilder {
                 .layout(layout -> layout
                         .widthPercent(100)
                         .heightPercent(100)
-                        .paddingAll(3)
+                        .paddingAll(0)
                         .alignItems(SlotUiLayout.AlignItems.CENTER)
                         .flexDirection(SlotUiLayout.FlexDirection.ROW));
         if (wayfindingEntry != null) {
@@ -86,7 +86,14 @@ public final class WallCardUiBuilder {
 
     private void buildFallbackBody(SlotUiElement body, SlotWorkspaceViewModel.AtlasItem item) {
         body.addChild(SlotUiElement.itemIcon(item.displayStack(), 16, item.carried())
-                .renderVanillaCount(false));
+                .renderVanillaCount(false)
+                .zIndex(100)
+                .layout(layout -> layout
+                        .positionType(SlotUiLayout.PositionType.ABSOLUTE)
+                        .left(3)
+                        .top(3)
+                        .width(16)
+                        .height(16)));
         addCountBadge(body, item);
         addProximatePip(body, item);
         addElsewherePip(body, item);
@@ -174,11 +181,11 @@ public final class WallCardUiBuilder {
         int textColor = item.kitNeeded() ? 0xFFFFD166 : TEXT;
         SlotUiElement badge = SlotUiElement.panel(0xD00C141A)
                 .allowHitTest(false)
-                .zIndex(12)
+                .zIndex(320)
                 .layout(layout -> layout
                         .positionType(SlotUiLayout.PositionType.ABSOLUTE)
-                        .right(1)
-                        .bottom(1)
+                        .right(0)
+                        .bottom(0)
                         .width(width)
                         .height(6));
         badge.addChild(SlotUiElement.label(text, textColor)
@@ -192,33 +199,55 @@ public final class WallCardUiBuilder {
     }
 
     private static void addProximatePip(SlotUiElement body, SlotWorkspaceViewModel.AtlasItem item) {
-        if (presenceCount(item.presence()) <= 0) {
+        int count = presenceCount(item.presence());
+        if (count <= 0) {
             return;
         }
-        body.addChild(SlotUiElement.panel(0xE07AC7A7)
+        String text = WorkspaceCountFormat.compact(count);
+        SlotUiElement pip = SlotUiElement.panel(0xE07AC7A7)
                 .allowHitTest(false)
-                .zIndex(10)
+                .zIndex(321)
                 .layout(layout -> layout
                         .positionType(SlotUiLayout.PositionType.ABSOLUTE)
-                        .left(1)
-                        .top(1)
-                        .width(5)
-                        .height(5)));
+                        .right(0)
+                        .top(0)
+                        .width(pipWidth(text))
+                        .height(6));
+        pip.addChild(SlotUiElement.label(text, TEXT)
+                .allowHitTest(false)
+                .layout(layout -> layout.widthPercent(100).heightPercent(100))
+                .textStyle(style -> style
+                        .color(TEXT)
+                        .fontSize(5)
+                        .horizontal(SlotUiTextStyle.Horizontal.CENTER)
+                        .vertical(SlotUiTextStyle.Vertical.CENTER)));
+        body.addChild(pip);
     }
 
     private static void addElsewherePip(SlotUiElement body, SlotWorkspaceViewModel.AtlasItem item) {
-        if (presenceCount(item.elsewhere()) <= 0) {
+        int count = presenceCount(item.elsewhere());
+        if (count <= 0) {
             return;
         }
-        body.addChild(SlotUiElement.panel(0xE0809ACB)
+        String text = "+" + WorkspaceCountFormat.compact(count);
+        SlotUiElement pip = SlotUiElement.panel(0xE0809ACB)
                 .allowHitTest(false)
-                .zIndex(9)
+                .zIndex(321)
                 .layout(layout -> layout
                         .positionType(SlotUiLayout.PositionType.ABSOLUTE)
-                        .right(1)
-                        .top(1)
-                        .width(5)
-                        .height(5)));
+                        .left(0)
+                        .top(0)
+                        .width(pipWidth(text))
+                        .height(6));
+        pip.addChild(SlotUiElement.label(text, TEXT)
+                .allowHitTest(false)
+                .layout(layout -> layout.widthPercent(100).heightPercent(100))
+                .textStyle(style -> style
+                        .color(TEXT)
+                        .fontSize(5)
+                        .horizontal(SlotUiTextStyle.Horizontal.CENTER)
+                        .vertical(SlotUiTextStyle.Vertical.CENTER)));
+        body.addChild(pip);
     }
 
     private static void addDesiredMarker(SlotUiElement body, SlotWorkspaceViewModel.AtlasItem item) {
@@ -227,11 +256,11 @@ public final class WallCardUiBuilder {
         }
         body.addChild(SlotUiElement.panel(0xE0FFD166)
                 .allowHitTest(false)
-                .zIndex(11)
+                .zIndex(319)
                 .layout(layout -> layout
                         .positionType(SlotUiLayout.PositionType.ABSOLUTE)
-                        .left(1)
-                        .bottom(1)
+                        .left(0)
+                        .bottom(0)
                         .width(5)
                         .height(5)));
     }
@@ -245,8 +274,11 @@ public final class WallCardUiBuilder {
         }
         SlotUiElement strip = SlotUiElement.panel(0xAA1F3448)
                 .allowHitTest(false)
-                .zIndex(8)
+                .zIndex(310)
                 .layout(layout -> layout
+                        .positionType(SlotUiLayout.PositionType.ABSOLUTE)
+                        .left(CARD_CELL_PX)
+                        .top(3)
                         .width(28)
                         .height(16)
                         .paddingHorizontal(1)
@@ -306,6 +338,11 @@ public final class WallCardUiBuilder {
             }
         }
         return count;
+    }
+
+    private static int pipWidth(String text) {
+        String value = text == null ? "" : text;
+        return Math.max(6, value.length() * 3 + 2);
     }
 
     public interface Context {

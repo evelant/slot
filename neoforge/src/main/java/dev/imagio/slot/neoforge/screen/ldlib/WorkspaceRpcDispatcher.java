@@ -28,6 +28,7 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
     RPCEmitter forgetChestEmitter;
     RPCEmitter forgetItemAffinityEmitter;
     RPCEmitter depositEmitter;
+    RPCEmitter gatherActiveKitEmitter;
     RPCEmitter takeAllEmitter;
     RPCEmitter lootChestTakeAllEmitter;
     RPCEmitter lootChestTakeIdentityEmitter;
@@ -194,6 +195,8 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
                 host.session::forgetItemAffinity
         ));
         depositEmitter = add(WorkspaceActionId.DEPOSIT, RPCEventBuilder.simple((Runnable) host.session::deposit));
+        gatherActiveKitEmitter = add(WorkspaceActionId.GATHER_ACTIVE_KIT,
+                RPCEventBuilder.simple((Runnable) host.session::gatherActiveKit));
         takeAllEmitter = add(WorkspaceActionId.TAKE_ALL_FROM_CHEST, RPCEventBuilder.simple(
                 String.class,
                 host.session::takeAllFromChest

@@ -13,8 +13,8 @@ import static dev.imagio.slot.ui.workspace.WorkspaceUiPalette.MUTED;
 import static dev.imagio.slot.ui.workspace.WorkspaceUiPalette.ROW_DIM;
 
 public final class HotbarBeltUiBuilder {
-    public static final int BELT_HEIGHT_PX = 28;
-    public static final int SLOT_SIZE_PX = 22;
+    public static final int BELT_HEIGHT_PX = 24;
+    public static final int SLOT_SIZE_PX = 20;
     public static final int ICON_SIZE_PX = 16;
 
     private static final int PANEL = 0xC8162029;

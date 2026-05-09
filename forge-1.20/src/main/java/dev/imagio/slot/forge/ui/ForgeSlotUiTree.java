@@ -86,6 +86,41 @@ public final class ForgeSlotUiTree {
         node.scrollY = clamp(scrollY, 0f, max);
     }
 
+    public void scrollToFraction(float fraction) {
+        Node node = firstScrollableNode();
+        if (node == null) {
+            return;
+        }
+        Layout layout = taffy.getLayout(node.id);
+        float max = Math.max(0f, node.contentHeight - layout.size().height);
+        node.scrollY = clamp(max * clamp(fraction, 0f, 1f), 0f, max);
+    }
+
+    public boolean scrollToElementId(String elementId) {
+        if (elementId == null || elementId.isBlank()) {
+            return false;
+        }
+        Node scroll = firstScrollableNode();
+        Node target = nodeByElementId(elementId);
+        if (scroll == null || target == null) {
+            return false;
+        }
+        float contentY = 0f;
+        Node current = target;
+        while (current != null && current != scroll) {
+            Layout layout = taffy.getLayout(current.id);
+            contentY += layout.location().y;
+            current = parent(current);
+        }
+        if (current != scroll) {
+            return false;
+        }
+        Layout scrollLayout = taffy.getLayout(scroll.id);
+        float max = Math.max(0f, scroll.contentHeight - scrollLayout.size().height);
+        scroll.scrollY = clamp(contentY, 0f, max);
+        return true;
+    }
+
     public void render(GuiGraphics graphics, int mouseX, int mouseY) {
         if (rootId == null) {
             return;
@@ -298,6 +333,12 @@ public final class ForgeSlotUiTree {
         float width = layout.size().width;
         float height = layout.size().height;
 
+        graphics.pose().pushPose();
+        int zIndex = node.zIndex();
+        if (zIndex != 0) {
+            graphics.pose().translate(0, 0, zIndex);
+        }
+
         fill(graphics, x, y, width, height, backgroundColor(node));
         if (node.scrollable()) {
             pushScissor(graphics, scissors, x, y, width, height);
@@ -316,6 +357,7 @@ public final class ForgeSlotUiTree {
             popScissor(graphics, scissors);
             renderScrollbar(graphics, node, x, y, width, height);
         }
+        graphics.pose().popPose();
     }
 
     private void renderText(GuiGraphics graphics, Node node, float x, float y, float width, float height) {
@@ -494,6 +536,15 @@ public final class ForgeSlotUiTree {
     private Node firstScrollableNode() {
         for (Node node : nodes.values()) {
             if (node.scrollable()) {
+                return node;
+            }
+        }
+        return null;
+    }
+
+    private Node nodeByElementId(String elementId) {
+        for (Node node : nodes.values()) {
+            if (elementId.equals(node.model.id())) {
                 return node;
             }
         }

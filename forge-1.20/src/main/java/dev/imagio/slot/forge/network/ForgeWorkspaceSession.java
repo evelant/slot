@@ -25,9 +25,12 @@ import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
 import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
+import dev.imagio.slot.inventory.workspace.ActiveChestPanelProjectionSupport;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceCommandService;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceTransferRequestFactory;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.inventory.workspace.KitGatherService;
+import dev.imagio.slot.inventory.workspace.KitPageCycleService;
 import dev.imagio.slot.inventory.workspace.LootChestProjectionSupport;
 import dev.imagio.slot.inventory.workspace.WorkspaceBeltCommandService;
 import dev.imagio.slot.inventory.workspace.WorkspaceChestCommandService;
@@ -42,7 +45,6 @@ import dev.imagio.slot.ui.action.WorkspaceActionPacket;
 import dev.imagio.slot.workflow.domain.ProtectionPolicy;
 import dev.imagio.slot.ui.action.WorkspaceActionSessionContext;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
-import dev.imagio.slot.workflow.domain.ChestClusterMap;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
@@ -162,6 +164,7 @@ final class ForgeWorkspaceSession {
                         authority,
                         this::descriptorForIdentity);
             }
+            case GATHER_ACTIVE_KIT -> gatherActiveKit(player);
             case TAKE_ALL_FROM_CHEST -> {
                 WorkspaceCommandOutcome chestOutcome = WorkspaceChestCommandService.takeAllFromChest(
                         player,
@@ -593,52 +596,12 @@ final class ForgeWorkspaceSession {
             ServerPlayer player,
             ClaimedChestMap claimedChestMap
     ) {
-        if (player == null || runtime == null) {
-            return SlotWorkspaceViewModel.ActiveChestPanel.empty();
-        }
-        BlockPos pos = ForgeChestDepositObserver.activeChestPos(player);
-        if (pos == null) {
-            return SlotWorkspaceViewModel.ActiveChestPanel.empty();
-        }
-        ServerLevel level = player.serverLevel();
-        String dimensionId = level.dimension().location().toString();
-        ChestAnchor anchor = ForgeChestStorageAnchors.toAnchor(level, pos);
-        ClaimedChest claim = anchor == null ? null : runtime.chestClaimWorkflow().chestByAnchor(anchor);
-        if (claim == null) {
-            return new SlotWorkspaceViewModel.ActiveChestPanel(
-                    "", "", "", "", 0,
-                    pos.getX(), pos.getY(), pos.getZ(),
-                    dimensionId
-            );
-        }
-
-        ChestClusterMap clusterMap = ChestClusterMap.derive(claimedChestMap);
-        ChestClusterMap.Cluster cluster = null;
-        for (ChestClusterMap.Cluster candidate : clusterMap.clusters()) {
-            if (candidate.storageIds().contains(claim.storageId())) {
-                cluster = candidate;
-                break;
-            }
-        }
-        String clusterId = cluster == null ? "" : cluster.clusterId();
-        String customClusterLabel = clusterId.isEmpty()
-                ? ""
-                : runtime.snapshot().clusterLabels().getOrDefault(clusterId, "");
-        String clusterLabel = customClusterLabel.isBlank() && cluster != null
-                ? cluster.defaultLabel()
-                : customClusterLabel;
-        String chestLabel = claim.label() == null || claim.label().isBlank()
-                ? "Chest"
-                : claim.label();
-        return new SlotWorkspaceViewModel.ActiveChestPanel(
-                claim.storageId().toString(),
-                chestLabel,
-                clusterId,
-                clusterLabel,
-                0,
-                pos.getX(), pos.getY(), pos.getZ(),
-                dimensionId
-        );
+        return ActiveChestPanelProjectionSupport.resolve(
+                player,
+                runtime,
+                claimedChestMap,
+                ForgeChestDepositObserver.activeChestPos(player),
+                ForgeChestStorageAnchors::toAnchor);
     }
 
     private SlotWorkspaceViewModel.LootChestSource resolveLootChestSource(
@@ -825,18 +788,20 @@ final class ForgeWorkspaceSession {
     }
 
     private WorkspaceCommandOutcome switchKitPage(ServerPlayer player, Integer direction) {
-        InventoryHostDescriptor host = resolveHost(player);
-        if (host == null) {
-            return WorkspaceCommandOutcome.rejected("host_resolution_failed");
-        }
-        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(player, host);
-        return SlotWorkspaceCommandService.switchKitPage(
+        return KitPageCycleService.switchActivePage(
+                player,
                 runtime,
-                authority,
-                ProtectionPolicy.allowAll(),
-                KIT_IDENTITY_RESOLVER,
-                actionExecutor(host, player),
-                direction == null ? 1 : direction);
+                direction == null ? 1 : direction,
+                "forge_session",
+                outcome -> {
+                    if (outcome != null && outcome.successful()) {
+                        ForgeCarriedActivityTracker.suppressNext(player);
+                    }
+                });
+    }
+
+    private WorkspaceCommandOutcome gatherActiveKit(ServerPlayer player) {
+        return KitGatherService.toWorkspaceOutcome(KitGatherService.gatherActiveKit(player, runtime));
     }
 
     private WorkspaceCommandOutcome setKitSlotIdentity(

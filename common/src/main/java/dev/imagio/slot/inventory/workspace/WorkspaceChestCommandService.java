@@ -107,7 +107,7 @@ public final class WorkspaceChestCommandService {
             return WorkspaceCommandOutcome.rejected(resolved.outcome());
         }
         TakeAllExecutor.TakeAllOutcome outcome = TakeAllExecutor.execute(player, resolved.chest());
-        recordAcquisitions(runtime, outcome.records(), "take_all_from_chest");
+        recordTakeRecords(player, runtime, outcome.records(), "take_all_from_chest");
         if (outcome.movedStacks() == 0 && outcome.leftoverSlots() == 0) {
             return WorkspaceCommandOutcome.accepted("nothing_to_take", "");
         }
@@ -291,7 +291,6 @@ public final class WorkspaceChestCommandService {
         if (resolved.outcome() != null) {
             return WorkspaceCommandOutcome.rejected(resolved.outcome());
         }
-        ItemIdentity preTakeIdentity = peekChestSlotIdentity(player, resolved.chest(), slotIndex);
         boolean one = quantity == TakeQuantity.ITEM;
         TakeAllExecutor.TakeSingleOutcome outcome = one
                 ? TakeAllExecutor.takeSingleItem(player, resolved.chest(), slotIndex)
@@ -299,10 +298,7 @@ public final class WorkspaceChestCommandService {
         if (!outcome.tookAnything()) {
             return WorkspaceCommandOutcome.accepted("nothing_to_take", "");
         }
-        recordAcquisition(runtime, preTakeIdentity, outcome.moved(), "take_from_chest");
-        recordChestTransferUndo(
-                player, runtime, resolved.chest().storageId(), preTakeIdentity, outcome.moved(),
-                ChestTransferDirection.TAKE);
+        recordTakeRecord(player, runtime, outcome.record(), "take_from_chest");
         if (one) {
             return WorkspaceCommandOutcome.accepted("took_one", "moved=" + outcome.moved());
         }
@@ -344,10 +340,7 @@ public final class WorkspaceChestCommandService {
                     maxCount,
                     one ? "take-one-by-identity" : "take-stack-by-identity");
             if (outcome.tookAnything()) {
-                recordAcquisition(runtime, identity, outcome.moved(), "take_by_identity");
-                recordChestTransferUndo(
-                        player, runtime, chest.storageId(), identity, outcome.moved(),
-                        ChestTransferDirection.TAKE);
+                recordTakeRecord(player, runtime, outcome.record(), "take_by_identity");
                 return WorkspaceCommandOutcome.accepted(
                         one ? "took_one" : "took_stack",
                         "moved=" + outcome.moved());
@@ -568,7 +561,8 @@ public final class WorkspaceChestCommandService {
         );
     }
 
-    private static void recordAcquisitions(
+    static void recordTakeRecords(
+            ServerPlayer player,
             WorkflowDomainRuntime runtime,
             List<TakeAllExecutor.TakeRecord> records,
             String diagnostics
@@ -577,10 +571,23 @@ public final class WorkspaceChestCommandService {
             return;
         }
         for (TakeAllExecutor.TakeRecord record : records) {
-            if (record != null) {
-                recordAcquisition(runtime, record.identity(), record.count(), diagnostics);
-            }
+            recordTakeRecord(player, runtime, record, diagnostics);
         }
+    }
+
+    static void recordTakeRecord(
+            ServerPlayer player,
+            WorkflowDomainRuntime runtime,
+            TakeAllExecutor.TakeRecord record,
+            String diagnostics
+    ) {
+        if (record == null) {
+            return;
+        }
+        recordAcquisition(runtime, record.identity(), record.count(), diagnostics);
+        recordChestTransferUndo(
+                player, runtime, record.storageId(), record.identity(), record.count(),
+                ChestTransferDirection.TAKE);
     }
 
     private static void recordAcquisition(
@@ -635,29 +642,6 @@ public final class WorkspaceChestCommandService {
                     }
                 }
         );
-    }
-
-    private static ItemIdentity peekChestSlotIdentity(ServerPlayer player, ClaimedChest chest, int slotIndex) {
-        if (player == null || chest == null || slotIndex < 0) {
-            return null;
-        }
-        MinecraftServer server = player.getServer();
-        if (server == null) {
-            return null;
-        }
-        WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
-        WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
-        if (!world.isAccessible(server, target)) {
-            return null;
-        }
-        for (WorldStorageAccess.SlotContent entry : world.enumerate(server, target)) {
-            if (entry.slotIndex() != slotIndex) {
-                continue;
-            }
-            ItemStack stack = entry.stack();
-            return stack == null || stack.isEmpty() ? null : ItemIdentityMatcher.create(stack);
-        }
-        return null;
     }
 
     static Function<UUID, Set<ItemIdentity>> chestContentsLookup(

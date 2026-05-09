@@ -13,6 +13,8 @@ import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.atlas.AtlasSearchIndex;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.ui.action.WorkspaceActionId;
+import dev.imagio.slot.ui.workspace.WorkspaceGatherUiSupport;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
 import dev.vfyjxf.taffy.style.TaffyPosition;
@@ -103,14 +105,10 @@ final class WorkspaceOverlays {
                         "Deposit carried items into proximate chests by learned affinity. "
                                 + "Items without an existing bond stay in carry — drop one in manually first to teach the chest."));
 
-        // Top-level Gather button. Phase 6 of the single-column workspace
-        // plan dropped the active-kit gate: gather lights up whenever any
-        // identity has a positive desired-count gap reachable from a
-        // proximate chest, kit-active or not. The server still pulls via
-        // the active-kit RPC when a kit is active; otherwise a future
-        // RPC variant could pull by player-global desired counts (the
-        // button click below routes through the existing kit path —
-        // tightening this is a follow-up).
+        // Top-level Gather button. Common gather semantics cover both
+        // player-global desired counts and active-kit needs; the wire name
+        // remains GATHER_ACTIVE_KIT for compatibility with the existing
+        // action vocabulary.
         boolean initialGatherEnabled = host.anyChestProximate() && anyGatherableIdentity();
         Button gatherButton = button("", true, initialGatherEnabled ? ACTIVE_HOTBAR : MUTED).noText();
         gatherButton.addPreIcon(Icons.IMPORT);
@@ -136,17 +134,17 @@ final class WorkspaceOverlays {
         });
         gatherButton.setOnClick(event -> {
             event.stopPropagation();
-            if (host.viewModel.activeKit() == null) {
-                host.localStatus.set("no active kit — gather without one is a follow-up");
+            if (!host.anyChestProximate() || !anyGatherableIdentity()) {
+                host.localStatus.set("nothing to gather from nearby chests");
                 host.rebuild();
                 return;
             }
             dev.imagio.slot.SlotCommon.LOGGER.info(
-                    "[SLOT] gather button clicked: activeKit={}",
-                    host.viewModel.activeKit().kitId());
-            net.neoforged.neoforge.network.PacketDistributor.sendToServer(
-                    new dev.imagio.slot.neoforge.network.SlotGatherActiveKitPayload());
-            host.localStatus.set("gathering active kit from nearby chests");
+                    "[SLOT] gather button clicked: activeKit={} gatherable={}",
+                    host.viewModel.activeKit() == null ? "<none>" : host.viewModel.activeKit().kitId(),
+                    anyGatherableIdentity());
+            host.rpc.send(WorkspaceActionId.GATHER_ACTIVE_KIT);
+            host.localStatus.set("gathering desired items from nearby chests");
             host.rebuild();
         });
         host.installKeybindTooltip(
@@ -237,7 +235,7 @@ final class WorkspaceOverlays {
      */
     private boolean anyGatherableIdentity() {
         for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.atlasItems()) {
-            if (AtlasCardBuilder.isGatherableItem(item)) {
+            if (WorkspaceGatherUiSupport.isGatherableItem(item)) {
                 return true;
             }
         }

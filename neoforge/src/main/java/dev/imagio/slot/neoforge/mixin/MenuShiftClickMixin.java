@@ -1,6 +1,6 @@
 package dev.imagio.slot.neoforge.mixin;
 
-import dev.imagio.slot.neoforge.storage.BackpackReroute;
+import dev.imagio.slot.inventory.storage.BackpackReroute;
 import net.minecraft.core.NonNullList;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;

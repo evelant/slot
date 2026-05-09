@@ -22,7 +22,9 @@ import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
+import dev.imagio.slot.inventory.workspace.ActiveChestPanelProjectionSupport;
 import dev.imagio.slot.inventory.workspace.DepositPlanner;
+import dev.imagio.slot.inventory.workspace.KitGatherService;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.workspace.LootChestProjectionSupport;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
@@ -48,7 +50,6 @@ import dev.imagio.slot.neoforge.triage.IslandSignalExtractor;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
-import dev.imagio.slot.workflow.domain.ChestClusterMap;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import dev.imagio.slot.workflow.domain.ProtectionPolicy;
@@ -408,6 +409,14 @@ final class SlotWorkspaceUiSession {
                 workflowRuntime(serverPlayer),
                 authority,
                 this::descriptorForIdentity));
+    }
+
+    void gatherActiveKit() {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        applyOutcome(serverPlayer, KitGatherService.toWorkspaceOutcome(
+                KitGatherService.gatherActiveKit(serverPlayer, workflowRuntime(serverPlayer))));
     }
 
     /**
@@ -1865,50 +1874,12 @@ final class SlotWorkspaceUiSession {
             WorkflowDomainRuntime runtime,
             ClaimedChestMap claimedChestMap
     ) {
-        BlockPos pos = ChestDepositObserver.activeChestPos(serverPlayer);
-        if (pos == null) {
-            return SlotWorkspaceViewModel.ActiveChestPanel.empty();
-        }
-        ServerLevel level = serverPlayer.serverLevel();
-        String dimensionId = level.dimension().location().toString();
-        ChestAnchor anchor = ChestStorageAnchors.toAnchor(level, pos);
-        ClaimedChest claim = anchor == null
-                ? null
-                : runtime.chestClaimWorkflow().chestByAnchor(anchor);
-        if (claim == null) {
-            return new SlotWorkspaceViewModel.ActiveChestPanel(
-                    "", "", "", "", 0,
-                    pos.getX(), pos.getY(), pos.getZ(),
-                    dimensionId
-            );
-        }
-        ChestClusterMap clusterMap = ChestClusterMap.derive(claimedChestMap);
-        ChestClusterMap.Cluster cluster = null;
-        for (ChestClusterMap.Cluster c : clusterMap.clusters()) {
-            if (c.storageIds().contains(claim.storageId())) {
-                cluster = c;
-                break;
-            }
-        }
-        String clusterId = cluster == null ? "" : cluster.clusterId();
-        String customClusterLabel = clusterId.isEmpty()
-                ? ""
-                : runtime.snapshot().clusterLabels().getOrDefault(clusterId, "");
-        String clusterLabel = customClusterLabel.isBlank() && cluster != null
-                ? cluster.defaultLabel()
-                : customClusterLabel;
-        String chestLabel = claim.label() == null || claim.label().isBlank()
-                ? "Chest"
-                : claim.label();
-        return new SlotWorkspaceViewModel.ActiveChestPanel(
-                claim.storageId().toString(),
-                chestLabel,
-                clusterId,
-                clusterLabel,
-                0,
-                pos.getX(), pos.getY(), pos.getZ(),
-                dimensionId
-        );
+        return ActiveChestPanelProjectionSupport.resolve(
+                serverPlayer,
+                runtime,
+                claimedChestMap,
+                ChestDepositObserver.activeChestPos(serverPlayer),
+                ChestStorageAnchors::toAnchor);
     }
 
     private static SlotWorkspaceViewModel.LootChestSource resolveLootChestSource(

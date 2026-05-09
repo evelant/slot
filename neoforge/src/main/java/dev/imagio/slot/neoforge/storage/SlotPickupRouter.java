@@ -1,6 +1,7 @@
 package dev.imagio.slot.neoforge.storage;
 
 import dev.imagio.slot.inventory.session.InventoryAcquisitionActivityRecorder;
+import dev.imagio.slot.inventory.storage.BackpackReroute;
 import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.InventoryActivityConfidence;
 import dev.imagio.slot.workflow.domain.InventoryActivityProducer;

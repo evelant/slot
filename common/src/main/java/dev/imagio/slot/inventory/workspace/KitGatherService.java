@@ -1,21 +1,17 @@
-package dev.imagio.slot.neoforge.storage;
+package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.integration.InventoryHostContext;
 import dev.imagio.slot.inventory.integration.InventoryHostFamilyHint;
 import dev.imagio.slot.inventory.integration.InventoryHostObservationHints;
-import dev.imagio.slot.inventory.integration.InventoryHostContext;
 import dev.imagio.slot.inventory.integration.InventoryHostResolver;
 import dev.imagio.slot.inventory.integration.InventorySlotOwnershipPosture;
 import dev.imagio.slot.inventory.query.InventoryAuthorityReadService;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
-import dev.imagio.slot.inventory.workspace.DepositPlanner;
-import dev.imagio.slot.inventory.workspace.TakeAllExecutor;
-import dev.imagio.slot.inventory.workspace.WorkspaceChestProjectionSupport;
-import dev.imagio.slot.neoforge.workflow.SlotPlayerWorkflowRuntimeService;
 import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
@@ -33,19 +29,16 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Server-side "gather everything the active kit needs from nearby chests"
- * action. Both the in-screen action overlay (Gather button + atlas
- * hotkey) and the in-world hotkey route through here so the resulting
- * server state and side effects are identical.
+ * Server-side "gather desired carried items from nearby chests" action shared
+ * by every loader/transport.
  *
- * <p>Resolves missing identities as the union of (a) kit page slots not
- * currently carried (gap = 1) and (b) kit-scoped desired counts where
- * carried &lt; desired (gap = desired - carried). For each missing
- * identity, walks proximate claimed chests in affinity-score order and
- * pulls until the gap closes or no chest holds another copy.
+ * <p>Resolves missing identities as the union of player-global desired counts
+ * plus, when a kit is active, active kit-page slots and kit-scoped desired
+ * counts. Each missing identity walks proximate claimed chests in
+ * affinity-score order until the gap closes or no chest can provide another
+ * matching stack.
  */
 public final class KitGatherService {
-
     public record Outcome(
             int identitiesPulled,
             int totalItemsPulled,
@@ -60,23 +53,16 @@ public final class KitGatherService {
     private KitGatherService() {
     }
 
-    public static Outcome gatherActiveKit(ServerPlayer player) {
+    public static Outcome gatherActiveKit(ServerPlayer player, WorkflowDomainRuntime runtime) {
         if (player == null) {
             return Outcome.empty("no_player");
         }
-        WorkflowDomainRuntime runtime = SlotPlayerWorkflowRuntimeService.runtime(player);
         if (runtime == null) {
             return Outcome.empty("no_runtime");
         }
-        KitMap kitMap = runtime.snapshot().kitMap();
+        var snapshot = runtime.snapshot();
+        KitMap kitMap = snapshot.kitMap();
         KitActivation activation = kitMap.activation();
-        if (!activation.isActive()) {
-            return Outcome.empty("no_active_kit");
-        }
-        KitDefinition kit = kitMap.kit(activation.kitId());
-        if (kit == null) {
-            return Outcome.empty("kit_definition_missing");
-        }
         ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
         Set<String> proximate = WorkspaceChestProjectionSupport.proximateStorageIds(player, claimedChestMap);
         if (proximate.isEmpty()) {
@@ -88,34 +74,12 @@ public final class KitGatherService {
         }
         InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(player, host);
 
-        // Build per-identity gap map. Active page slots want at least 1
-        // of the slot's identity; kit-scoped desired counts want N. When
-        // both apply to the same identity the larger gap wins.
-        Map<ItemIdentity, Integer> targets = new LinkedHashMap<>();
-        int activePageIndex = Math.max(0, Math.min(activation.pageIndex(), kit.pageCount() - 1));
-        KitPage page = kit.page(activePageIndex);
-        if (page != null) {
-            for (int slotIndex = 0; slotIndex < KitPage.HOTBAR_SLOT_COUNT; slotIndex++) {
-                ItemIdentity identity = page.slot(slotIndex);
-                if (identity != null) {
-                    targets.merge(identity, 1, Math::max);
-                }
-            }
-        }
-        Map<ItemIdentity, Integer> kitWants = runtime.desiredCountWorkflow().forKit(kit.id());
-        for (Map.Entry<ItemIdentity, Integer> entry : kitWants.entrySet()) {
-            ItemIdentity identity = entry.getKey();
-            Integer want = entry.getValue();
-            if (identity == null || want == null || want <= 0) {
-                continue;
-            }
-            targets.merge(identity, want, Math::max);
-        }
+        Map<ItemIdentity, Integer> targets = gatherTargets(runtime, kitMap, activation);
         if (targets.isEmpty()) {
-            return Outcome.empty("kit_has_no_needs");
+            return Outcome.empty("no_desired_counts");
         }
 
-        ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap();
+        ChestAffinityMap affinityMap = snapshot.chestAffinityMap();
         int identitiesPulled = 0;
         int totalItemsPulled = 0;
         int unreachable = 0;
@@ -127,10 +91,11 @@ public final class KitGatherService {
             if (gap <= 0) {
                 continue;
             }
-            // Affinity-ranked walk through proximate chests so the
-            // chest most likely to hold this identity gets first dibs.
-            java.util.List<ClaimedChest> ranked = DepositPlanner.rankProximateChestsForTake(
-                    identity, claimedChestMap, affinityMap, proximate);
+            var ranked = DepositPlanner.rankProximateChestsForTake(
+                    identity,
+                    claimedChestMap,
+                    affinityMap,
+                    proximate);
             int remaining = gap;
             int pulledForIdentity = 0;
             for (ClaimedChest chest : ranked) {
@@ -138,8 +103,14 @@ public final class KitGatherService {
                     break;
                 }
                 TakeAllExecutor.TakeSingleOutcome outcome = TakeAllExecutor.takeByIdentity(
-                        player, chest, identity, remaining, "kit-gather");
+                        player,
+                        chest,
+                        identity,
+                        remaining,
+                        "gather");
                 if (outcome.tookAnything()) {
+                    WorkspaceChestCommandService.recordTakeRecord(
+                            player, runtime, outcome.record(), "gather");
                     remaining -= outcome.moved();
                     pulledForIdentity += outcome.moved();
                 }
@@ -149,19 +120,78 @@ public final class KitGatherService {
                 totalItemsPulled += pulledForIdentity;
             }
             if (remaining > 0) {
-                // Still short for this identity — every proximate chest
-                // we walked either had nothing matching or its insert
-                // failed. Track for player feedback.
                 unreachable++;
             }
         }
         SlotCommon.LOGGER.info(
-                "[SLOT] gather active kit: kitId={} identitiesPulled={} totalItems={} unreachable={}",
-                kit.id(), identitiesPulled, totalItemsPulled, unreachable);
+                "[SLOT] gather desired items: activeKit={} targets={} identitiesPulled={} totalItems={} unreachable={}",
+                activation.isActive() ? activation.kitId() : "<none>",
+                targets.size(),
+                identitiesPulled,
+                totalItemsPulled,
+                unreachable);
         String reason = totalItemsPulled > 0
                 ? "ok"
                 : (unreachable > 0 ? "all_short" : "all_satisfied");
         return new Outcome(identitiesPulled, totalItemsPulled, unreachable, reason);
+    }
+
+    private static Map<ItemIdentity, Integer> gatherTargets(
+            WorkflowDomainRuntime runtime,
+            KitMap kitMap,
+            KitActivation activation
+    ) {
+        Map<ItemIdentity, Integer> targets = new LinkedHashMap<>();
+        for (Map.Entry<ItemIdentity, Integer> entry : runtime.desiredCountWorkflow().allPlayer().entrySet()) {
+            mergePositiveTarget(targets, entry.getKey(), entry.getValue());
+        }
+        if (activation == null || !activation.isActive()) {
+            return targets;
+        }
+        KitDefinition kit = kitMap.kit(activation.kitId());
+        if (kit == null) {
+            return targets;
+        }
+        int activePageIndex = Math.max(0, Math.min(activation.pageIndex(), kit.pageCount() - 1));
+        KitPage page = kit.page(activePageIndex);
+        if (page != null) {
+            for (int slotIndex = 0; slotIndex < KitPage.HOTBAR_SLOT_COUNT; slotIndex++) {
+                mergePositiveTarget(targets, page.slot(slotIndex), 1);
+            }
+        }
+        Map<ItemIdentity, Integer> kitWants = runtime.desiredCountWorkflow().forKit(kit.id());
+        for (Map.Entry<ItemIdentity, Integer> entry : kitWants.entrySet()) {
+            mergePositiveTarget(targets, entry.getKey(), entry.getValue());
+        }
+        return targets;
+    }
+
+    private static void mergePositiveTarget(Map<ItemIdentity, Integer> targets, ItemIdentity identity, Integer count) {
+        if (targets == null || identity == null || count == null || count <= 0) {
+            return;
+        }
+        targets.merge(identity, count, Math::max);
+    }
+
+    public static WorkspaceCommandOutcome toWorkspaceOutcome(Outcome outcome) {
+        if (outcome == null) {
+            return WorkspaceCommandOutcome.rejected("gather_failed");
+        }
+        String reason = outcome.reason() == null ? "" : outcome.reason();
+        if ("no_player".equals(reason) || "no_runtime".equals(reason) || "no_host".equals(reason)) {
+            return WorkspaceCommandOutcome.rejected(reason);
+        }
+        if ("ok".equals(reason)) {
+            return WorkspaceCommandOutcome.accepted(
+                    "gathered items",
+                    "pulled=" + outcome.totalItemsPulled()
+                            + " identities=" + outcome.identitiesPulled()
+                            + " unreachable=" + outcome.identitiesUnreachable());
+        }
+        return WorkspaceCommandOutcome.accepted(
+                "nothing to gather",
+                reason + " pulled=" + outcome.totalItemsPulled()
+                        + " unreachable=" + outcome.identitiesUnreachable());
     }
 
     private static int countCarried(InventoryAuthoritySnapshot authority, ItemIdentity identity) {

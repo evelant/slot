@@ -5,6 +5,8 @@ import com.lowdragmc.lowdraglib2.gui.ui.elements.TextField;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.ui.action.WorkspaceActionId;
+import dev.imagio.slot.ui.workspace.WorkspaceGatherUiSupport;
 import net.minecraft.client.gui.screens.Screen;
 import org.lwjgl.glfw.GLFW;
 
@@ -91,14 +93,9 @@ final class HotkeyRouter {
     }
 
     /**
-     * In-screen handler for the gather-active-kit hotkey. Sends the
-     * same packet as the in-world client-tick path so server-side
-     * behaviour is identical regardless of where the player triggered
-     * it. Stopping propagation prevents the keymap's
-     * {@code consumeClick} loop in {@code SlotNeoForgeClient.onClientTick}
-     * from also firing — the in-tick loop skips when a screen is open
-     * but the keymap still records the click, so swallowing the event
-     * here keeps things tidy.
+     * In-screen handler for the gather hotkey. Uses the shared workspace
+     * action; the in-world client-tick path sends a packet that delegates
+     * to the same common service.
      */
     void handleGatherActiveKitKey(UIEvent event) {
         if (isTextInputFocused() || host.searchController.modalActive()) {
@@ -108,17 +105,24 @@ final class HotkeyRouter {
                 .matchesGatherActiveKit(event.keyCode, event.scanCode)) {
             return;
         }
-        SlotWorkspaceViewModel.KitCard active = host.viewModel.activeKit();
-        if (active == null) {
-            host.localStatus.set("activate a kit first");
+        if (!anyGatherableIdentity()) {
+            host.localStatus.set("nothing to gather");
             host.rebuild();
             return;
         }
         event.stopPropagation();
-        net.neoforged.neoforge.network.PacketDistributor.sendToServer(
-                new dev.imagio.slot.neoforge.network.SlotGatherActiveKitPayload());
-        host.localStatus.set("gathering active kit from nearby chests");
+        host.rpc.send(WorkspaceActionId.GATHER_ACTIVE_KIT);
+        host.localStatus.set("gathering desired items from nearby chests");
         host.rebuild();
+    }
+
+    private boolean anyGatherableIdentity() {
+        for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.atlasItems()) {
+            if (WorkspaceGatherUiSupport.isGatherableItem(item)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     void handleUndoRedoKey(UIEvent event) {

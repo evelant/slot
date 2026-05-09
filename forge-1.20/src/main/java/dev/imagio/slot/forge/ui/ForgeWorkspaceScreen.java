@@ -5,11 +5,11 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import org.lwjgl.glfw.GLFW;
 
-public final class ForgeWorkspaceSpiDebugScreen extends Screen {
+public final class ForgeWorkspaceScreen extends Screen {
     private final ForgeWorkspaceSurface surface = new ForgeWorkspaceSurface(ForgeWorkspaceSurface.Mode.STANDALONE);
 
-    public ForgeWorkspaceSpiDebugScreen() {
-        super(Component.literal("SLOT Forge SPI Debug"));
+    public ForgeWorkspaceScreen() {
+        super(Component.literal("SLOT"));
     }
 
     @Override
@@ -59,7 +59,7 @@ public final class ForgeWorkspaceSpiDebugScreen extends Screen {
             surface.rebuild(width, height);
             return true;
         }
-        if (surface.keyPressed(keyCode)) {
+        if (surface.keyPressed(keyCode, scanCode)) {
             return true;
         }
         return super.keyPressed(keyCode, scanCode, modifiers);

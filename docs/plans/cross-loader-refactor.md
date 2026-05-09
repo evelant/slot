@@ -214,9 +214,10 @@ Current state:
   `TRANSFER` path for built-in main/hotbar targets through
   `InventoryActionExecutor`, plus identity-to-hotbar, hotbar-return,
   hotbar-to-section, kit, desired-count, chest metadata, deposit/take,
-  cursor, and cross-surface adapters for the first belt/workflow
-  interactions. Verbs outside that basic workspace set still fail closed
-  until their Forge session adapters are explicitly ported. The Forge `G` screen opens a server-side workspace session and
+  cursor, active-kit gather, and cross-surface adapters for the first
+  belt/workflow interactions. Verbs outside that basic workspace set
+  still fail closed until their Forge session adapters are explicitly
+  ported. The Forge `G` screen opens a server-side workspace session and
   syncs typed search through `SET_SEARCH_QUERY` on the same catalog path.
   Forge also registers `/slot test populate <profile>` and `/slot test
   clear` for carried-inventory/workflow/chest testing; chest placement
@@ -227,7 +228,7 @@ Current state:
   with bounded auto-home and Forge 1.20 `ItemStack` NBT encoding, then
   sends that view, including hotbar/offhand and claimed-chest ghost
   projection, to the direct Taffy/GuiGraphics screen. This replaces the
-  temporary narrow debug projection. Forge now observes manual vanilla
+  temporary narrow projection. Forge now observes manual vanilla
   chest deposits through the same common close-delta helper as NeoForge,
   records learned affinity for those deposits, and reconciles persisted
   chest claims through the shared reconciliation helper. The Forge
@@ -300,7 +301,10 @@ Current state:
   `WorkspaceBeltCommandService`, and `WorkspaceSearchQuery`. NeoForge
   remains the behavior source of truth; Forge and NeoForge should
   dispatch common decisions rather than keeping local shift-click /
-  wheel/search/hotbar fallbacks.
+  wheel/search/hotbar fallbacks. Active-kit gather and kit-page cycle
+  now live in shared services (`KitGatherService`,
+  `KitPageCycleService`) with loader code reduced to runtime lookup,
+  transport, and activity-tracker side effects.
 
 - Build the LDLib2 backend and SPI while porting one hard panel first.
   Preferred candidates: atlas card/list section, context menu, or kit
@@ -368,7 +372,7 @@ Current early backend test point:
   vanilla `GuiGraphics`, including color rects, labels, buttons, item
   icons, z-index ordering, hit-test bubbling, click separation,
   hover/tick dispatch, scissor clipping, and a scroll viewport.
-- The Forge debug key (`G`) opens `ForgeWorkspaceSpiDebugScreen`, a
+- The Forge workspace key (`G`) opens `ForgeWorkspaceScreen`, a
   session-backed wall/Recents/belt view built from the same common
   `WallSectionUiBuilder`, `WallCardUiBuilder`, `RecentsStripUiBuilder`,
   and `HotbarBeltUiBuilder` used by the migration. It waits for the
@@ -385,13 +389,15 @@ Current early backend test point:
   and hotbar belt, and lets vanilla host slots continue
   receiving input outside the sidebar. Host-menu changes are refreshed
   through a Forge transport sync message, not a shared inventory action.
-  The full-screen debug surface and container sidebar now share
+  The full-screen workspace surface and container sidebar now share
   `ForgeWorkspaceSurface`, so Forge has one local controller for
   view-model application, widget composition, card gestures, search,
   kit/hotbar/storage/active-chest contexts, and action sends. Forge also
   renders HUD wayfinding chips and in-world chest outlines from the latest
-  synced workspace view. It is still a first-cut adapter: NeoForge drag
-  parity is out of scope for Forge.
+  synced workspace view. Forge key parity now covers the vanilla-inventory
+  escape hatch, active-kit page cycle, active-kit gather, and wayfinding
+  HUD toggle. It is still a first-cut adapter: NeoForge drag parity is
+  out of scope for Forge.
 
 1. Element tree, direct Taffy renderer, scissor stack, z-index render and
    hit-test ordering.

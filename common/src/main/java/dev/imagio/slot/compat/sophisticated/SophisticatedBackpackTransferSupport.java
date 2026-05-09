@@ -97,6 +97,14 @@ public final class SophisticatedBackpackTransferSupport {
         return remainder.isEmpty();
     }
 
+    public static ItemStack simulateInsertIntoBackpack(Player player, BackpackCarrierRef carrier, ItemStack stack) {
+        if (player == null || carrier == null || stack == null || stack.isEmpty() || !REFLECTION.available()) {
+            return stack == null ? ItemStack.EMPTY : stack;
+        }
+        return withBackpack(player, carrier, stack.copy(), (wrapper, inventoryHandler) ->
+                REFLECTION.simulateInsertIntoHandler(inventoryHandler, stack.copy()));
+    }
+
     public static ItemStack insertIntoBackpackSlot(
             Player player,
             BackpackCarrierRef carrier,
@@ -510,6 +518,9 @@ public final class SophisticatedBackpackTransferSupport {
             Object backpackStorage,
             Method runOnBackpacksMethod,
             Method fromStackMethod,
+            Object backpackWrapperCapability,
+            Method itemStackGetCapabilityMethod,
+            Method lazyOptionalResolveMethod,
             Method getInventoryHandlerMethod,
             Method getSlotsMethod,
             Method getStackInSlotMethod,
@@ -530,6 +541,18 @@ public final class SophisticatedBackpackTransferSupport {
 
                 Object playerInventoryProvider = playerInventoryProviderClass.getMethod("get").invoke(null);
                 Object backpackStorage = backpackStorageClass.getMethod("get").invoke(null);
+                Method fromStackMethod = methodOrNull(backpackWrapperClass, "fromStack", ItemStack.class);
+                Object backpackWrapperCapability = null;
+                Method itemStackGetCapabilityMethod = null;
+                Method lazyOptionalResolveMethod = null;
+                if (fromStackMethod == null) {
+                    Class<?> capabilityWrapperClass = Class.forName("net.p3pp3rf1y.sophisticatedbackpacks.api.CapabilityBackpackWrapper", false, loader);
+                    Class<?> capabilityClass = Class.forName("net.minecraftforge.common.capabilities.Capability", false, loader);
+                    Class<?> lazyOptionalClass = Class.forName("net.minecraftforge.common.util.LazyOptional", false, loader);
+                    backpackWrapperCapability = capabilityWrapperClass.getMethod("getCapabilityInstance").invoke(null);
+                    itemStackGetCapabilityMethod = ItemStack.class.getMethod("getCapability", capabilityClass, net.minecraft.core.Direction.class);
+                    lazyOptionalResolveMethod = lazyOptionalClass.getMethod("resolve");
+                }
 
                 return new ReflectionState(
                         true,
@@ -537,7 +560,10 @@ public final class SophisticatedBackpackTransferSupport {
                         playerInventoryProvider,
                         backpackStorage,
                         playerInventoryProviderClass.getMethod("runOnBackpacks", Player.class, backpackInventorySlotConsumerClass),
-                        backpackWrapperClass.getMethod("fromStack", ItemStack.class),
+                        fromStackMethod,
+                        backpackWrapperCapability,
+                        itemStackGetCapabilityMethod,
+                        lazyOptionalResolveMethod,
                         backpackWrapperClass.getMethod("getInventoryHandler"),
                         inventoryHandlerClass.getMethod("getSlots"),
                         inventoryHandlerClass.getMethod("getStackInSlot", int.class),
@@ -547,8 +573,16 @@ public final class SophisticatedBackpackTransferSupport {
                         backpackStorageClass.getMethod("getOrCreateBackpackContents", UUID.class),
                         backpackStorageClass.getMethod("setBackpackContents", UUID.class, CompoundTag.class)
                 );
-            } catch (ReflectiveOperationException ignored) {
-                return new ReflectionState(false, null, null, null, null, null, null, null, null, null, null, null, null, null);
+            } catch (ReflectiveOperationException | RuntimeException | LinkageError ignored) {
+                return new ReflectionState(false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+            }
+        }
+
+        private static Method methodOrNull(Class<?> owner, String name, Class<?>... parameterTypes) {
+            try {
+                return owner.getMethod(name, parameterTypes);
+            } catch (NoSuchMethodException ignored) {
+                return null;
             }
         }
 
@@ -581,10 +615,23 @@ public final class SophisticatedBackpackTransferSupport {
                 return null;
             }
             try {
-                return fromStackMethod.invoke(null, stack);
-            } catch (ReflectiveOperationException ignored) {
+                if (fromStackMethod != null) {
+                    return fromStackMethod.invoke(null, stack);
+                }
+                if (itemStackGetCapabilityMethod == null
+                        || backpackWrapperCapability == null
+                        || lazyOptionalResolveMethod == null) {
+                    return null;
+                }
+                Object lazyOptional = itemStackGetCapabilityMethod.invoke(stack, backpackWrapperCapability, null);
+                Object resolved = lazyOptionalResolveMethod.invoke(lazyOptional);
+                if (resolved instanceof Optional<?> optional) {
+                    return optional.orElse(null);
+                }
+            } catch (ReflectiveOperationException | RuntimeException | LinkageError ignored) {
                 return null;
             }
+            return null;
         }
 
         private Object inventoryHandler(Object wrapper) {

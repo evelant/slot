@@ -154,6 +154,13 @@ public final class StoragePanelUiBuilder {
             context.setStatus(displayLabel(chip) + " "
                     + chip.filledSlots() + "/" + chip.slotCapacity() + " slots");
         });
+        button.on(SlotUiEventKind.MOUSE_DOWN, event -> {
+            if (event.button() != 1) {
+                return;
+            }
+            event.stopPropagation();
+            context.openChestMenu(chip.storageId(), event.x(), event.y());
+        });
 
         button.addChild(SlotUiElement.label(displayLabel(chip), TEXT)
                 .layout(layout -> layout.flex(1).heightPercent(100))
@@ -336,5 +343,8 @@ public final class StoragePanelUiBuilder {
         void dropCursorIntoChest(String storageId);
 
         void setStatus(String nextStatus);
+
+        default void openChestMenu(String storageId, float screenX, float screenY) {
+        }
     }
 }

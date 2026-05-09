@@ -4,6 +4,8 @@ import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.workspace.WayfindingTarget;
 import dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings;
 import dev.imagio.slot.neoforge.screen.ldlib.GhostAtlasStackFactory;
+import dev.imagio.slot.ui.workspace.WayfindingDisplay;
+import dev.imagio.slot.ui.workspace.WayfindingGlowMath;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
@@ -11,10 +13,7 @@ import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.neoforged.neoforge.client.event.RenderGuiEvent;
 
-import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 
 /**
  * Phase 4 of docs/plans/wayfinding.md — the HUD edge stack of
@@ -48,21 +47,19 @@ public final class WayfindingHudRenderer {
     private static final int TEXT_RGB = 0xE8EEF2;
     private static final int MUTED_RGB = 0xA0AAB3;
     private static final int ACCENT_RGB = 0x7AC7A7;
-    private static final int KIT_RGB = 0xFFB347;
-    private static final int PLAYER_RGB = 0x4FB8FF;
 
     private WayfindingHudRenderer() {
     }
 
     public static void onRenderGui(RenderGuiEvent.Post event) {
-        if (!SlotAtlasKeyMappings.wayfindingHudEnabled()) {
-            return;
-        }
         // Drain the toggle key here too — the client-tick handler in
         // SlotNeoForgeClient already reads other mappings, but we want
         // the toggle to fire whether or not the workspace is open.
         while (SlotAtlasKeyMappings.toggleWayfindingHudMapping().consumeClick()) {
             SlotAtlasKeyMappings.setWayfindingHudEnabled(!SlotAtlasKeyMappings.wayfindingHudEnabled());
+        }
+        if (!SlotAtlasKeyMappings.wayfindingHudEnabled()) {
+            return;
         }
         Minecraft minecraft = Minecraft.getInstance();
         if (minecraft.screen != null) {
@@ -78,19 +75,12 @@ public final class WayfindingHudRenderer {
 
         LocalPlayer player = minecraft.player;
         String currentDimension = minecraft.level.dimension().location().toString();
-        ArrayList<Ranked> here = new ArrayList<>();
-        ArrayList<WayfindingTarget> elsewhere = new ArrayList<>();
-        for (WayfindingTarget target : targets) {
-            if (currentDimension.equals(target.dimensionId())) {
-                double dx = (target.worldX() + 0.5) - player.getX();
-                double dy = (target.worldY() + 0.5) - player.getY();
-                double dz = (target.worldZ() + 0.5) - player.getZ();
-                here.add(new Ranked(target, dx * dx + dy * dy + dz * dz));
-            } else {
-                elsewhere.add(target);
-            }
-        }
-        here.sort(Comparator.comparingDouble(Ranked::distSq));
+        WayfindingDisplay.HudTargets split = WayfindingDisplay.splitTargets(
+                targets,
+                currentDimension,
+                player.getX(),
+                player.getY(),
+                player.getZ());
 
         GuiGraphics graphics = event.getGuiGraphics();
         int screenWidth = graphics.guiWidth();
@@ -98,18 +88,18 @@ public final class WayfindingHudRenderer {
         int y = TOP_OFFSET;
 
         int rendered = 0;
-        for (Ranked ranked : here) {
+        for (WayfindingDisplay.RankedTarget ranked : split.here()) {
             if (rendered >= MAX_CHIPS) {
                 break;
             }
             // No distance fade: chips are useful at any range because
             // they list which items live in which chest. The in-world
             // glow shows you *where*; the HUD chip tells you *what*.
-            renderChip(graphics, minecraft.font, x, y, ranked.target, false, 1.0f, player);
+            renderChip(graphics, minecraft.font, x, y, ranked.target(), false, 1.0f, player);
             y += CHIP_HEIGHT + CHIP_GAP;
             rendered++;
         }
-        int overflow = here.size() - rendered;
+        int overflow = split.here().size() - rendered;
         if (overflow > 0) {
             renderOverflowChip(graphics, minecraft.font, x, y, overflow);
             y += CHIP_HEIGHT + CHIP_GAP;
@@ -118,9 +108,9 @@ public final class WayfindingHudRenderer {
         // Cross-dimension chips render in a separate stack below the
         // current-dim list so they don't shift around as the player walks.
         // They get a single line of "+N other dim" if the list is long.
-        if (!elsewhere.isEmpty()) {
+        if (!split.elsewhere().isEmpty()) {
             int dimRendered = 0;
-            for (WayfindingTarget target : elsewhere) {
+            for (WayfindingTarget target : split.elsewhere()) {
                 if (dimRendered >= 2) {
                     break;
                 }
@@ -128,7 +118,7 @@ public final class WayfindingHudRenderer {
                 y += CHIP_HEIGHT + CHIP_GAP;
                 dimRendered++;
             }
-            int dimOverflow = elsewhere.size() - dimRendered;
+            int dimOverflow = split.elsewhere().size() - dimRendered;
             if (dimOverflow > 0) {
                 renderOverflowChip(graphics, minecraft.font, x, y, dimOverflow);
             }
@@ -149,7 +139,7 @@ public final class WayfindingHudRenderer {
         int alphaByte = Math.max(0, Math.min(255, (int) (alpha * 255f)));
         int fill = (CHIP_FILL & 0x00FFFFFF) | (alphaByte << 24);
         graphics.fill(x, y, x + CHIP_WIDTH, y + CHIP_HEIGHT, fill);
-        int scopeRgb = target.scope() == WayfindingTarget.Scope.KIT ? KIT_RGB : PLAYER_RGB;
+        int scopeRgb = WayfindingGlowMath.scopeRgb(target);
         // Left scope-color stripe so KIT vs PLAYER reads at a glance.
         graphics.fill(x, y, x + 2, y + CHIP_HEIGHT, withAlpha(scopeRgb, alphaByte));
 
@@ -163,7 +153,7 @@ public final class WayfindingHudRenderer {
         // budget.
         int rightColumnWidth = crossDimension ? 50 : 28;
         int nameAvailable = (int) ((CHIP_WIDTH - 8 - rightColumnWidth) / TEXT_SCALE);
-        String label = truncate(font, chestLabel(target), nameAvailable);
+        String label = truncate(font, WayfindingDisplay.chestLabel(target), nameAvailable);
         drawScaled(graphics, font, label, x + 5, y + 3, textColor);
 
         // Missing-item icon strip under the label, capped to 4. Vanilla
@@ -200,7 +190,7 @@ public final class WayfindingHudRenderer {
 
         // Right column: compass+distance OR dim-shorthand+coords.
         if (crossDimension) {
-            String dim = shortDimension(target.dimensionId());
+            String dim = WayfindingDisplay.shortDimension(target.dimensionId());
             float scaledDimWidth = font.width(dim) * TEXT_SCALE;
             drawScaled(graphics, font, dim,
                     x + CHIP_WIDTH - (int) scaledDimWidth - 4, y + 3, accentColor);
@@ -210,14 +200,21 @@ public final class WayfindingHudRenderer {
             drawScaled(graphics, font, coordsTruncated,
                     x + CHIP_WIDTH - (int) scaledCoordsWidth - 4, y + CHIP_HEIGHT - 8, mutedColor);
         } else {
-            String compass = compassGlyph(player, target);
-            float scaledCompassWidth = font.width(compass) * TEXT_SCALE;
-            drawScaled(graphics, font, compass,
+            WayfindingDisplay.CardText cardText = WayfindingDisplay.forLocation(
+                    target.dimensionId(),
+                    target.worldX(),
+                    target.worldY(),
+                    target.worldZ(),
+                    target.dimensionId(),
+                    player.getX(),
+                    player.getY(),
+                    player.getZ(),
+                    player.getYRot());
+            float scaledCompassWidth = font.width(cardText.arrow()) * TEXT_SCALE;
+            drawScaled(graphics, font, cardText.arrow(),
                     x + CHIP_WIDTH - (int) scaledCompassWidth - 4, y + 3, accentColor);
-            int distMeters = (int) Math.round(distance(player, target));
-            String distText = String.format(Locale.ROOT, "%dm", Math.max(0, distMeters));
-            float scaledDistWidth = font.width(distText) * TEXT_SCALE;
-            drawScaled(graphics, font, distText,
+            float scaledDistWidth = font.width(cardText.distance()) * TEXT_SCALE;
+            drawScaled(graphics, font, cardText.distance(),
                     x + CHIP_WIDTH - (int) scaledDistWidth - 4, y + CHIP_HEIGHT - 8, mutedColor);
         }
     }
@@ -251,22 +248,6 @@ public final class WayfindingHudRenderer {
         return ((alpha & 0xFF) << 24) | (rgb & 0x00FFFFFF);
     }
 
-    private static String chestLabel(WayfindingTarget target) {
-        // The HUD doesn't have a server-pushed chest label per target, so
-        // synthesize "Chest #abcd" from the storageId — same auto-name
-        // shape the workspace uses when no custom label is set.
-        String storageId = target.storageId();
-        if (storageId == null || storageId.isBlank()) {
-            return "Chest";
-        }
-        int dash = storageId.indexOf('-');
-        String shortId = dash < 0 ? storageId : storageId.substring(0, dash);
-        if (shortId.length() > 4) {
-            shortId = shortId.substring(shortId.length() - 4);
-        }
-        return "Chest #" + shortId;
-    }
-
     private static String truncate(Font font, String text, int maxWidth) {
         if (font.width(text) <= maxWidth) {
             return text;
@@ -279,48 +260,5 @@ public final class WayfindingHudRenderer {
             sb.deleteCharAt(sb.length() - 1);
         }
         return sb.toString() + ellipsis;
-    }
-
-    private static String compassGlyph(LocalPlayer player, WayfindingTarget target) {
-        double dx = (target.worldX() + 0.5) - player.getX();
-        double dz = (target.worldZ() + 0.5) - player.getZ();
-        float yawRadians = (float) Math.toRadians(player.getYRot());
-        double absoluteBearing = Math.atan2(-dx, dz);
-        double relativeBearing = absoluteBearing - yawRadians;
-        double normalized = ((relativeBearing % (Math.PI * 2)) + Math.PI * 2) % (Math.PI * 2);
-        int sector = (int) Math.floor((normalized + Math.PI / 8.0) / (Math.PI / 4.0)) % 8;
-        return switch (sector) {
-            case 0 -> "↑";
-            case 1 -> "↗";
-            case 2 -> "→";
-            case 3 -> "↘";
-            case 4 -> "↓";
-            case 5 -> "↙";
-            case 6 -> "←";
-            case 7 -> "↖";
-            default -> "·";
-        };
-    }
-
-    private static double distance(LocalPlayer player, WayfindingTarget target) {
-        double dx = (target.worldX() + 0.5) - player.getX();
-        double dy = (target.worldY() + 0.5) - player.getY();
-        double dz = (target.worldZ() + 0.5) - player.getZ();
-        return Math.sqrt(dx * dx + dy * dy + dz * dz);
-    }
-
-    private static String shortDimension(String dimensionId) {
-        if (dimensionId == null) {
-            return "";
-        }
-        int colon = dimensionId.indexOf(':');
-        String tail = colon < 0 ? dimensionId : dimensionId.substring(colon + 1);
-        if (tail.startsWith("the_")) {
-            tail = tail.substring(4);
-        }
-        return tail;
-    }
-
-    private record Ranked(WayfindingTarget target, double distSq) {
     }
 }

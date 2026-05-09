@@ -1,6 +1,10 @@
 package dev.imagio.slot.forge.network;
 
 import dev.imagio.slot.SlotCommon;
+import dev.imagio.slot.forge.storage.ForgeCarriedActivityTracker;
+import dev.imagio.slot.forge.workflow.ForgePlayerWorkflowRuntimeService;
+import dev.imagio.slot.inventory.workspace.KitGatherService;
+import dev.imagio.slot.inventory.workspace.KitPageCycleService;
 import dev.imagio.slot.ui.action.WorkspaceActionEnvelope;
 import dev.imagio.slot.ui.action.WorkspaceActionPacket;
 import dev.imagio.slot.ui.action.WorkspaceActionSessionContext;
@@ -53,6 +57,16 @@ public final class SlotForgeNetworking {
                 .decoder(ForgeWorkspaceRefreshMessage::decode)
                 .consumerMainThread(SlotForgeNetworking::handleWorkspaceRefresh)
                 .add();
+        channel.messageBuilder(ForgeGatherActiveKitMessage.class, 4, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(ForgeGatherActiveKitMessage::encode)
+                .decoder(ForgeGatherActiveKitMessage::decode)
+                .consumerMainThread(SlotForgeNetworking::handleGatherActiveKit)
+                .add();
+        channel.messageBuilder(ForgeKitPageCycleMessage.class, 5, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(ForgeKitPageCycleMessage::encode)
+                .decoder(ForgeKitPageCycleMessage::decode)
+                .consumerMainThread(SlotForgeNetworking::handleKitPageCycle)
+                .add();
     }
 
     public static boolean sendToServer(ForgeWorkspaceActionMessage message) {
@@ -93,6 +107,34 @@ public final class SlotForgeNetworking {
             return true;
         } catch (RuntimeException exception) {
             SlotCommon.LOGGER.warn("Failed to send Forge workspace refresh packet", exception);
+            return false;
+        }
+    }
+
+    public static boolean gatherActiveKit() {
+        if (channel == null) {
+            SlotCommon.LOGGER.warn("Cannot gather desired items before network channel registration");
+            return false;
+        }
+        try {
+            channel.sendToServer(new ForgeGatherActiveKitMessage());
+            return true;
+        } catch (RuntimeException exception) {
+            SlotCommon.LOGGER.warn("Failed to send Forge gather desired items packet", exception);
+            return false;
+        }
+    }
+
+    public static boolean cycleKitPage(int direction) {
+        if (channel == null) {
+            SlotCommon.LOGGER.warn("Cannot cycle kit page before network channel registration");
+            return false;
+        }
+        try {
+            channel.sendToServer(new ForgeKitPageCycleMessage(direction));
+            return true;
+        } catch (RuntimeException exception) {
+            SlotCommon.LOGGER.warn("Failed to send Forge kit page cycle packet", exception);
             return false;
         }
     }
@@ -191,6 +233,63 @@ public final class SlotForgeNetworking {
                 packet.action(),
                 packet.envelope().sessionId(),
                 packet.envelope().menuContainerId(),
+                outcome.status(),
+                outcome.diagnostics());
+    }
+
+    private static void handleGatherActiveKit(
+            ForgeGatherActiveKitMessage message,
+            Supplier<NetworkEvent.Context> contextSupplier
+    ) {
+        ServerPlayer player = contextSupplier.get().getSender();
+        if (player == null) {
+            return;
+        }
+        KitGatherService.Outcome outcome = KitGatherService.gatherActiveKit(
+                player,
+                ForgePlayerWorkflowRuntimeService.runtime(player));
+        ForgeWorkspaceSession session = ForgeWorkspaceSessionRegistry.session(player);
+        if (session != null) {
+            sendViewToPlayer(player, session, true);
+        }
+        SlotCommon.LOGGER.info(
+                "[SLOT] gather hotkey (Forge): player={} reason={} pulled={} unreachable={}",
+                playerName(player),
+                outcome.reason(),
+                outcome.totalItemsPulled(),
+                outcome.identitiesUnreachable());
+    }
+
+    private static void handleKitPageCycle(
+            ForgeKitPageCycleMessage message,
+            Supplier<NetworkEvent.Context> contextSupplier
+    ) {
+        ServerPlayer player = contextSupplier.get().getSender();
+        if (player == null) {
+            return;
+        }
+        int direction = Integer.signum(message.direction());
+        if (direction == 0) {
+            direction = 1;
+        }
+        WorkspaceCommandOutcome outcome = KitPageCycleService.switchActivePage(
+                player,
+                ForgePlayerWorkflowRuntimeService.runtime(player),
+                direction,
+                "forge_in_world",
+                actionOutcome -> {
+                    if (actionOutcome != null && actionOutcome.successful()) {
+                        ForgeCarriedActivityTracker.suppressNext(player);
+                    }
+                });
+        ForgeWorkspaceSession session = ForgeWorkspaceSessionRegistry.session(player);
+        if (session != null) {
+            sendViewToPlayer(player, session, true);
+        }
+        SlotCommon.LOGGER.info(
+                "[SLOT] kit page cycle hotkey (Forge): player={} direction={} status={} diagnostics={}",
+                playerName(player),
+                direction,
                 outcome.status(),
                 outcome.diagnostics());
     }

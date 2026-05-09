@@ -1,5 +1,6 @@
 package dev.imagio.slot.forge.ui;
 
+import dev.imagio.slot.forge.client.ForgeWorkspaceClient;
 import dev.imagio.slot.forge.network.ForgeWorkspaceActionChannel;
 import dev.imagio.slot.forge.network.ForgeWorkspaceOpenMessage;
 import dev.imagio.slot.forge.network.ForgeWorkspaceRefreshMessage;
@@ -23,12 +24,15 @@ import dev.imagio.slot.ui.workspace.WallCardUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionHeaderUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionUiBuilder;
 import dev.imagio.slot.ui.workspace.WayfindingDisplay;
+import dev.imagio.slot.ui.workspace.WorkspaceGatherUiSupport;
 import dev.imagio.slot.ui.workspace.WorkspaceSearchInputPolicy;
 import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
 import dev.imagio.slot.ui.workspace.WorkspaceUiPalette;
+import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import org.lwjgl.glfw.GLFW;
@@ -40,7 +44,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * Forge-local workspace controller shared by the full-screen debug surface and
+ * Forge-local workspace controller shared by the full-screen surface and
  * vanilla-container sidebar. Common owns the widget builders and semantics;
  * this class owns Forge session, event, and packet plumbing.
  */
@@ -75,6 +79,22 @@ public final class ForgeWorkspaceSurface {
     private boolean openSessionRequested;
     private boolean rebuildRequested = true;
     private boolean kitRackOpen;
+    private SlotWorkspaceViewModel.IdentityRef contextMenuIdentity;
+    private String contextMenuKitId;
+    private String contextMenuChestStorageId;
+    private String renamingKitId;
+    private String renameKitDraft = "";
+    private String confirmDeleteKitId;
+    private String renamingChestStorageId;
+    private String renameChestDraft = "";
+    private float contextMenuX;
+    private float contextMenuY;
+    private String editingIslandId;
+    private String islandLabelDraft = "";
+    private float islandEditX;
+    private float islandEditY;
+    private SlotWorkspaceViewModel.IdentityRef editingDesiredCountIdentity;
+    private String desiredCountDraft = "";
 
     public ForgeWorkspaceSurface(Mode mode) {
         this.mode = mode == null ? Mode.STANDALONE : mode;
@@ -85,7 +105,7 @@ public final class ForgeWorkspaceSurface {
         this.actionChannel = new ForgeWorkspaceActionChannel(envelope);
         this.status = this.mode == Mode.SIDEBAR
                 ? "opening SLOT sidebar"
-                : "waiting for Forge workspace session";
+                : "opening SLOT workspace";
     }
 
     public void openSessionIfNeeded() {
@@ -94,7 +114,7 @@ public final class ForgeWorkspaceSurface {
         }
         openSessionRequested = true;
         boolean sent = SlotForgeNetworking.openWorkspaceSession(new ForgeWorkspaceOpenMessage(envelope));
-        status = sent ? openedStatus() : "failed to open Forge workspace session";
+        status = sent ? openedStatus() : "failed to open SLOT workspace";
         if (sent) {
             lastRefreshGameTime = clientGameTime();
         }
@@ -153,7 +173,17 @@ public final class ForgeWorkspaceSurface {
         return tree.mouseScrolled(mouseX, mouseY, delta, 22f, Screen.hasShiftDown());
     }
 
-    public boolean keyPressed(int keyCode) {
+    public boolean keyPressed(int keyCode, int scanCode) {
+        return keyPressed(keyCode, scanCode, false);
+    }
+
+    public boolean keyPressed(int keyCode, int scanCode, boolean hostTextInputFocused) {
+        if (hostTextInputFocused && !wantsKeyboardInput()) {
+            return false;
+        }
+        if (handleEditorKey(keyCode)) {
+            return true;
+        }
         if (Screen.hasControlDown() && keyCode == GLFW.GLFW_KEY_Z) {
             sendAction(WorkspaceActionId.UNDO, "undo requested");
             return true;
@@ -165,6 +195,16 @@ public final class ForgeWorkspaceSurface {
         if (keyCode == GLFW.GLFW_KEY_ESCAPE && isCursorCarrying()) {
             sendAction(WorkspaceActionId.CURSOR_CANCEL, "returning cursor");
             return true;
+        }
+        if (ForgeWorkspaceClient.matchesOpenVanilla(keyCode, scanCode)) {
+            return openVanillaInventory();
+        }
+        if (ForgeWorkspaceClient.matchesCycleKitPage(keyCode, scanCode)) {
+            int direction = Screen.hasShiftDown() ? -1 : 1;
+            return switchKitPageFromKey(direction);
+        }
+        if (ForgeWorkspaceClient.matchesGatherActiveKit(keyCode, scanCode)) {
+            return gatherActiveKitFromKey();
         }
         int hotbarIndex = hotbarIndexFromKeyCode(keyCode);
         if (hotbarIndex >= 0) {
@@ -181,19 +221,69 @@ public final class ForgeWorkspaceSurface {
                 controlKey));
     }
 
+    private boolean openVanillaInventory() {
+        if (mode == Mode.SIDEBAR) {
+            return false;
+        }
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft == null || minecraft.player == null) {
+            status = "vanilla inventory unavailable";
+            rebuildRequested = true;
+            return true;
+        }
+        minecraft.setScreen(new InventoryScreen(minecraft.player));
+        return true;
+    }
+
+    private boolean switchKitPageFromKey(int direction) {
+        SlotWorkspaceViewModel.KitCard active = viewModel.activeKit();
+        if (active == null || active.pageCount() <= 1) {
+            status = active == null ? "activate a kit first" : "kit has one page";
+            rebuildRequested = true;
+            return true;
+        }
+        sendKitAction(WorkspaceActionId.SWITCH_KIT_PAGE, "switching kit page", direction);
+        return true;
+    }
+
+    private boolean gatherActiveKitFromKey() {
+        if (!anyGatherableIdentity()) {
+            status = "nothing to gather";
+            rebuildRequested = true;
+            return true;
+        }
+        sendAction(WorkspaceActionId.GATHER_ACTIVE_KIT, "gathering desired items from nearby chests");
+        return true;
+    }
+
     public boolean charTyped(char codePoint) {
+        return charTyped(codePoint, false);
+    }
+
+    public boolean charTyped(char codePoint, boolean hostTextInputFocused) {
+        if (handleEditorChar(codePoint)) {
+            return true;
+        }
         return applySearchDecision(WorkspaceSearchInputPolicy.charTyped(
                 searchActive,
                 searchQuery,
                 codePoint,
-                false));
+                hostTextInputFocused));
+    }
+
+    public boolean wantsKeyboardInput() {
+        return searchActive
+                || editingIslandId != null
+                || editingDesiredCountIdentity != null
+                || renamingKitId != null
+                || renamingChestStorageId != null;
     }
 
     private String openedStatus() {
         if (mode == Mode.SIDEBAR) {
             return "opened chest sidebar";
         }
-        return "opened Forge workspace session for menu " + envelope.menuContainerId();
+        return "opened SLOT workspace";
     }
 
     private void requestViewRefreshIfDue() {
@@ -217,13 +307,16 @@ public final class ForgeWorkspaceSurface {
         }
         appliedRevision = synced.revision();
         applyViewModel(synced);
-        String diagnostics = synced.diagnostics() == null || synced.diagnostics().isBlank()
-                ? ""
-                : " · " + synced.diagnostics();
-        status = synced.status() + " · rev " + synced.revision()
-                + " · items " + synced.atlasItems().size()
-                + diagnostics;
+        status = displayStatus(synced.status(), synced.diagnostics());
         rebuildRequested = true;
+    }
+
+    private static String displayStatus(String nextStatus, String nextDiagnostics) {
+        String base = nextStatus == null || nextStatus.isBlank() ? "ready" : nextStatus;
+        if (nextDiagnostics == null || nextDiagnostics.isBlank()) {
+            return base;
+        }
+        return base + " - " + nextDiagnostics;
     }
 
     private void applyViewModel(SlotWorkspaceViewModel synced) {
@@ -289,13 +382,12 @@ public final class ForgeWorkspaceSurface {
             }
         });
 
-        column.addChild(titleRow(sidebarMode));
         if (sidebarMode) {
+            column.addChild(searchDepositRow(true));
             column.addChild(activeChestOrEmpty());
-            column.addChild(summaryDepositRow());
-        }
-        column.addChild(searchDepositRow(sidebarMode));
-        if (!sidebarMode) {
+        } else {
+            column.addChild(titleRow(false));
+            column.addChild(searchDepositRow(false));
             SlotUiElement activeChestStrip = new ActiveChestStripUiBuilder(new ActiveChestContext())
                     .strip(viewModel.activeChestPanel());
             if (activeChestStrip != null) {
@@ -309,28 +401,59 @@ public final class ForgeWorkspaceSurface {
                     .addChild(new KitRackUiBuilder(new KitContext()).rack(viewModel)));
         }
         column.addChild(recents(sidebarMode));
-        column.addChild(wallViewport(sidebarMode));
+        column.addChild(wallArea(sidebarMode));
         if (kitRackOpen && !sidebarMode) {
             column.addChild(SlotUiElement.element()
                     .layout(layout -> layout.width(WIDTH))
                     .addChild(new KitRackUiBuilder(new KitContext()).rack(viewModel)));
         }
-        column.addChild(hotbar(sidebarMode));
         column.addChild(statusRow(sidebarMode));
+        column.addChild(hotbar(sidebarMode));
+        SlotUiElement overlay = activeOverlay();
+        if (overlay != null) {
+            column.addChild(overlay);
+        }
         return column;
     }
 
     private SlotUiElement titleRow(boolean sidebarMode) {
-        String title = sidebarMode ? "SLOT" : "SLOT Forge 1.20.1 SPI renderer";
-        return SlotUiElement.label(title, WorkspaceUiPalette.ACCENT)
-                .layout(layout -> layout.height(12))
+        SlotUiElement row = SlotUiElement.element()
+                .layout(layout -> {
+                    if (sidebarMode) {
+                        layout.widthPercent(100);
+                    } else {
+                        layout.width(WIDTH);
+                    }
+                    layout.height(16)
+                            .gapAll(4)
+                            .alignItems(SlotUiLayout.AlignItems.CENTER)
+                            .flexDirection(SlotUiLayout.FlexDirection.ROW);
+                });
+        row.addChild(SlotUiElement.label("SLOT", WorkspaceUiPalette.ACCENT)
+                .layout(layout -> layout.flex(1).heightPercent(100))
                 .textStyle(style -> style
                         .color(WorkspaceUiPalette.ACCENT)
                         .fontSize(9)
-                        .horizontal(sidebarMode
-                                ? SlotUiTextStyle.Horizontal.LEFT
-                                : SlotUiTextStyle.Horizontal.CENTER)
-                        .vertical(SlotUiTextStyle.Vertical.CENTER));
+                        .horizontal(SlotUiTextStyle.Horizontal.LEFT)
+                        .vertical(SlotUiTextStyle.Vertical.CENTER)));
+        if (!sidebarMode) {
+            row.addChild(SlotUiElement.button("Vanilla", true, WorkspaceUiPalette.ROW_DIM)
+                    .tooltip(Component.literal("Open the vanilla inventory screen"))
+                    .layout(layout -> layout.width(48).height(12))
+                    .textStyle(style -> style
+                            .color(WorkspaceUiPalette.TEXT)
+                            .fontSize(7)
+                            .horizontal(SlotUiTextStyle.Horizontal.CENTER)
+                            .vertical(SlotUiTextStyle.Vertical.CENTER))
+                    .on(SlotUiEventKind.CLICK, event -> {
+                        if (event.button() != 0) {
+                            return;
+                        }
+                        event.stopPropagation();
+                        openVanillaInventory();
+                    }));
+        }
+        return row;
     }
 
     private SlotUiElement activeChestOrEmpty() {
@@ -353,25 +476,6 @@ public final class ForgeWorkspaceSurface {
                                 .fontSize(7)
                                 .horizontal(SlotUiTextStyle.Horizontal.LEFT)
                                 .vertical(SlotUiTextStyle.Vertical.CENTER)));
-    }
-
-    private SlotUiElement summaryDepositRow() {
-        return SlotUiElement.panel(PANEL)
-                .layout(layout -> layout
-                        .widthPercent(100)
-                        .height(20)
-                        .paddingHorizontal(4)
-                        .gapAll(4)
-                        .alignItems(SlotUiLayout.AlignItems.CENTER)
-                        .flexDirection(SlotUiLayout.FlexDirection.ROW))
-                .addChild(SlotUiElement.label("Items " + viewModel.atlasItems().size(), WorkspaceUiPalette.TEXT)
-                        .layout(layout -> layout.flex(1).heightPercent(100))
-                        .textStyle(style -> style
-                                .color(WorkspaceUiPalette.TEXT)
-                                .fontSize(7)
-                                .horizontal(SlotUiTextStyle.Horizontal.LEFT)
-                                .vertical(SlotUiTextStyle.Vertical.CENTER)))
-                .addChild(depositButton(48, 12));
     }
 
     private SlotUiElement searchDepositRow(boolean sidebarMode) {
@@ -400,16 +504,48 @@ public final class ForgeWorkspaceSurface {
                         .color(searchActive ? WorkspaceUiPalette.ACCENT : WorkspaceUiPalette.TEXT)
                         .fontSize(8)
                         .horizontal(SlotUiTextStyle.Horizontal.LEFT)));
-        if (!sidebarMode) {
-            row.addChild(depositButton(42, 11));
-        }
+        row.addChild(SlotUiElement.label(viewModel.carriedFreeSlotCount() + " free", WorkspaceUiPalette.TEXT)
+                .layout(layout -> layout.width(44))
+                .textStyle(style -> style
+                        .color(WorkspaceUiPalette.TEXT)
+                        .fontSize(7)
+                        .horizontal(SlotUiTextStyle.Horizontal.CENTER)
+                        .vertical(SlotUiTextStyle.Vertical.CENTER)));
+        int buttonWidth = sidebarMode ? 48 : 42;
+        row.addChild(gatherButton(buttonWidth, 11));
+        row.addChild(depositButton(buttonWidth, 11));
         return row;
+    }
+
+    private SlotUiElement gatherButton(int width, int height) {
+        boolean enabled = anyGatherableIdentity();
+        int color = enabled ? WorkspaceUiPalette.ROW_HOVER : WorkspaceUiPalette.ROW_DIM;
+        return SlotUiElement.button("Gather", true, color)
+                .tooltip(Component.literal("Pull desired-count gaps and active-kit needs from nearby chests."))
+                .layout(layout -> layout.width(width).height(height))
+                .textStyle(style -> style
+                        .color(enabled ? WorkspaceUiPalette.TEXT : WorkspaceUiPalette.MUTED)
+                        .fontSize(7)
+                        .horizontal(SlotUiTextStyle.Horizontal.CENTER)
+                        .vertical(SlotUiTextStyle.Vertical.CENTER))
+                .on(SlotUiEventKind.CLICK, event -> {
+                    if (event.button() != 0) {
+                        return;
+                    }
+                    event.stopPropagation();
+                    if (!enabled) {
+                        status = "nothing to gather";
+                        rebuildRequested = true;
+                        return;
+                    }
+                    sendAction(WorkspaceActionId.GATHER_ACTIVE_KIT, "gathering desired items from nearby chests");
+                });
     }
 
     private SlotUiElement depositButton(int width, int height) {
         return SlotUiElement.button("Deposit", true, WorkspaceUiPalette.ROW_HOVER)
                 .tooltip(Component.literal(
-                        "Deposit carried items into proximate chests by learned affinity. "
+                        "Deposit carried items into nearby chests by learned affinity. "
                                 + "Items without an existing bond stay in carry - drop one in manually first."))
                 .layout(layout -> layout.width(width).height(height))
                 .textStyle(style -> style
@@ -447,15 +583,16 @@ public final class ForgeWorkspaceSurface {
 
     private SlotUiElement recents(boolean sidebarMode) {
         SlotUiElement strip = new RecentsStripUiBuilder(new RecentsContext()).overlay(recents);
-        if (!sidebarMode) {
-            strip.layout(layout -> layout.width(WIDTH));
+        if (sidebarMode) {
+            return strip;
         }
-        return strip;
+        return SlotUiElement.element()
+                .layout(layout -> layout.width(WIDTH))
+                .addChild(strip);
     }
 
-    private SlotUiElement wallViewport(boolean sidebarMode) {
-        SlotUiElement viewport = SlotUiElement.panel(0xB810171D)
-                .attach(ForgeSlotUiTree.SCROLL_VIEWPORT, Boolean.TRUE)
+    private SlotUiElement wallArea(boolean sidebarMode) {
+        SlotUiElement area = SlotUiElement.element()
                 .layout(layout -> {
                     if (sidebarMode) {
                         layout.widthPercent(100);
@@ -463,6 +600,97 @@ public final class ForgeWorkspaceSurface {
                         layout.width(WIDTH);
                     }
                     layout.flex(1)
+                            .flexDirection(SlotUiLayout.FlexDirection.COLUMN);
+                });
+        SlotUiElement row = SlotUiElement.element()
+                .layout(layout -> layout
+                        .widthPercent(100)
+                        .heightPercent(100)
+                        .gapAll(3)
+                        .alignItems(SlotUiLayout.AlignItems.STRETCH)
+                        .flexDirection(SlotUiLayout.FlexDirection.ROW));
+        row.addChild(tocStrip());
+        row.addChild(SlotUiElement.element()
+                .layout(layout -> layout
+                        .flex(1)
+                        .heightPercent(100)
+                        .flexDirection(SlotUiLayout.FlexDirection.COLUMN))
+                .addChild(wallViewport(sidebarMode)));
+        area.addChild(row);
+        return area;
+    }
+
+    private SlotUiElement tocStrip() {
+        List<SlotWorkspaceViewModel.AtlasIsland> entries = tocEntries();
+        SlotUiElement strip = SlotUiElement.panel(0x7010171D)
+                .tooltip(Component.literal("Section index"))
+                .layout(layout -> layout
+                        .width(7)
+                        .heightPercent(100)
+                        .paddingVertical(3)
+                        .gapAll(2)
+                        .alignItems(SlotUiLayout.AlignItems.CENTER)
+                        .flexDirection(SlotUiLayout.FlexDirection.COLUMN));
+        if (entries.isEmpty()) {
+            strip.allowHitTest(false);
+            return strip;
+        }
+        int count = entries.size();
+        for (int index = 0; index < count; index++) {
+            SlotWorkspaceViewModel.AtlasIsland island = entries.get(index);
+            float fraction = count <= 1 ? 0f : (float) index / (float) (count - 1);
+            int color = island.color() == 0 ? WorkspaceUiPalette.MUTED : island.color();
+            SlotUiElement dot = SlotUiElement.button("", true, color)
+                    .noText()
+                    .tooltip(Component.literal(island.label()))
+                    .layout(layout -> layout.width(5).height(5))
+                    .on(SlotUiEventKind.CLICK, event -> {
+                        if (event.button() != 0) {
+                            return;
+                        }
+                        event.stopPropagation();
+                        if (tree != null) {
+                            if (!tree.scrollToElementId(island.islandId())) {
+                                tree.scrollToFraction(fraction);
+                            }
+                        }
+                        setStatus(island.label());
+                    });
+            strip.addChild(dot);
+        }
+        return strip;
+    }
+
+    private List<SlotWorkspaceViewModel.AtlasIsland> tocEntries() {
+        ArrayList<SlotWorkspaceViewModel.AtlasIsland> entries = new ArrayList<>();
+        boolean filtering = !normalizedSearchQuery().isBlank();
+        for (SlotWorkspaceViewModel.AtlasIsland island : islands) {
+            if (island == null || island.kind() != VisualAtlasIslandKind.PLAYER) {
+                continue;
+            }
+            boolean hasVisibleItems = false;
+            for (SlotWorkspaceViewModel.AtlasItem item : items) {
+                if (item == null || !island.islandId().equals(item.islandId())) {
+                    continue;
+                }
+                if (!filtering || matchesSearch(item)) {
+                    hasVisibleItems = true;
+                    break;
+                }
+            }
+            if (hasVisibleItems) {
+                entries.add(island);
+            }
+        }
+        return entries;
+    }
+
+    private SlotUiElement wallViewport(boolean sidebarMode) {
+        SlotUiElement viewport = SlotUiElement.panel(0xB810171D)
+                .attach(ForgeSlotUiTree.SCROLL_VIEWPORT, Boolean.TRUE)
+                .layout(layout -> {
+                    layout.widthPercent(100)
+                            .flex(1)
                             .paddingAll(4)
                             .flexDirection(SlotUiLayout.FlexDirection.COLUMN);
                 });
@@ -503,9 +731,9 @@ public final class ForgeWorkspaceSurface {
         return SlotUiElement.panel(PANEL)
                 .layout(layout -> {
                     if (sidebarMode) {
-                        layout.widthPercent(100).height(30).paddingAll(4);
+                        layout.widthPercent(100).height(12).paddingHorizontal(4);
                     } else {
-                        layout.width(WIDTH).height(18).paddingHorizontal(6);
+                        layout.width(WIDTH).height(12).paddingHorizontal(4);
                     }
                     layout.alignItems(SlotUiLayout.AlignItems.CENTER)
                             .flexDirection(SlotUiLayout.FlexDirection.ROW);
@@ -514,9 +742,351 @@ public final class ForgeWorkspaceSurface {
                         .layout(layout -> layout.flex(1).heightPercent(100))
                         .textStyle(style -> style
                                 .color(WorkspaceUiPalette.MUTED)
-                                .fontSize(7)
+                                .fontSize(6)
                                 .horizontal(SlotUiTextStyle.Horizontal.LEFT)
                                 .vertical(SlotUiTextStyle.Vertical.CENTER)));
+    }
+
+    private SlotUiElement activeOverlay() {
+        if (editingDesiredCountIdentity != null) {
+            return desiredCountOverlay();
+        }
+        if (editingIslandId != null) {
+            return islandEditOverlay();
+        }
+        if (contextMenuKitId != null) {
+            return kitContextOverlay();
+        }
+        if (contextMenuChestStorageId != null) {
+            return chestContextOverlay();
+        }
+        if (contextMenuIdentity != null) {
+            return itemContextOverlay();
+        }
+        return null;
+    }
+
+    private SlotUiElement overlayRoot() {
+        return SlotUiElement.panel(0x33000000)
+                .zIndex(500)
+                .layout(layout -> layout
+                        .positionType(SlotUiLayout.PositionType.ABSOLUTE)
+                        .left(0)
+                        .top(0)
+                        .widthPercent(100)
+                        .heightPercent(100))
+                .on(SlotUiEventKind.MOUSE_DOWN, event -> {
+                    event.stopPropagation();
+                    closeOverlays();
+                });
+    }
+
+    private SlotUiElement overlayPanel(float screenX, float screenY, float width) {
+        float x = mode == Mode.SIDEBAR
+                ? Math.max(4f, Math.min(screenX, WIDTH - width - 4f))
+                : Math.max(4f, screenX);
+        float y = Math.max(8f, screenY - 4f);
+        return SlotUiElement.panel(0xF00B1117)
+                .zIndex(501)
+                .layout(layout -> layout
+                        .positionType(SlotUiLayout.PositionType.ABSOLUTE)
+                        .left(x)
+                        .top(y)
+                        .width(width)
+                        .paddingAll(6)
+                        .gapAll(4)
+                        .flexDirection(SlotUiLayout.FlexDirection.COLUMN))
+                .on(SlotUiEventKind.MOUSE_DOWN, event -> event.stopPropagation(), true);
+    }
+
+    private SlotUiElement itemContextOverlay() {
+        SlotWorkspaceViewModel.AtlasItem item = byIdentity.get(contextMenuIdentity);
+        if (item == null) {
+            contextMenuIdentity = null;
+            return null;
+        }
+        SlotUiElement overlay = overlayRoot();
+        SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, 174);
+        panel.addChild(menuLabel(shorten(item.name(), 30), WorkspaceUiPalette.TEXT));
+        if (item.ghost()) {
+            panel.addChild(menuButton(
+                    "Take stack",
+                    item.proximateCount() > 0,
+                    "Take this stack from a nearby chest",
+                    closeThen(() -> sendIdentityRefAction(
+                            WorkspaceActionId.TAKE_STACK_BY_IDENTITY,
+                            item.identity(),
+                            "taking " + item.name()))));
+        }
+        panel.addChild(menuButton(
+                "Put in hotbar",
+                item.carried(),
+                "Move this carried item to a free hotbar slot",
+                closeThen(() -> sendIdentityRefAction(
+                        WorkspaceActionId.ASSIGN_HOME_TO_HOTBAR_ONLY,
+                        item.identity(),
+                        "moving to hotbar"))));
+        panel.addChild(menuButton(
+                "Deposit to chest",
+                item.carried() && anyChestProximate(),
+                "Deposit this item into a nearby chest",
+                closeThen(() -> sendIdentityRefAction(
+                        WorkspaceActionId.DEPOSIT_HOME_TO_LINKED_CHEST,
+                        item.identity(),
+                        "depositing " + item.name()))));
+        panel.addChild(menuButton(
+                item.desiredCount() > 0 ? "Desired: " + item.desiredCount() : "Set desired count",
+                true,
+                "Set the player-global desired count for this item",
+                () -> beginDesiredCountEdit(item)));
+        if (item.desiredCount() > 0 && !item.desiredCountFromKit()) {
+            panel.addChild(menuButton(
+                    "Clear desired",
+                    true,
+                    "Clear the player-global desired count",
+                    closeThen(() -> sendIdentityRefAction(
+                            WorkspaceActionId.SET_PLAYER_DESIRED_COUNT,
+                            item.identity(),
+                            "clearing desired count",
+                            0))));
+        }
+        panel.addChild(menuButton(
+                "New section",
+                true,
+                "Create a new section for this item",
+                closeThen(() -> sendIdentityRefAction(
+                        WorkspaceActionId.CREATE_NAMED_ISLAND,
+                        item.identity(),
+                        "creating section",
+                        item.name(),
+                        WorkspaceUiPalette.ISLAND_SWATCHES[
+                                Math.floorMod(islands.size(), WorkspaceUiPalette.ISLAND_SWATCHES.length)],
+                        0,
+                        0))));
+        panel.addChild(menuLabel("Move home", WorkspaceUiPalette.MUTED));
+        int targetCount = 0;
+        for (SlotWorkspaceViewModel.AtlasIsland island : islands) {
+            if (island == null || island.kind() != VisualAtlasIslandKind.PLAYER
+                    || island.islandId().equals(item.islandId())) {
+                continue;
+            }
+            targetCount++;
+            panel.addChild(menuButton(
+                    shorten(island.label(), 26),
+                    true,
+                    "Move this item's home to " + island.label(),
+                    closeThen(() -> sendIdentityRefAction(
+                            WorkspaceActionId.ASSIGN_HOME,
+                            item.identity(),
+                            "moving home",
+                            island.islandId(),
+                            null))));
+            if (targetCount >= 6) {
+                break;
+            }
+        }
+        if (targetCount == 0) {
+            panel.addChild(menuLabel("No other sections", WorkspaceUiPalette.MUTED));
+        }
+        overlay.addChild(panel);
+        return overlay;
+    }
+
+    private SlotUiElement kitContextOverlay() {
+        SlotWorkspaceViewModel.KitCard kit = viewModel.kit(contextMenuKitId);
+        if (kit == null) {
+            closeOverlayState();
+            return null;
+        }
+        SlotUiElement overlay = overlayRoot();
+        SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, 178);
+        panel.addChild(menuLabel(shorten(kit.name(), 30), WorkspaceUiPalette.ACCENT));
+        if (kit.kitId().equals(renamingKitId)) {
+            panel.addChild(menuLabel("Name: " + renameKitDraft + "_", WorkspaceUiPalette.TEXT));
+            panel.addChild(menuButton("Save", true, "Rename this kit", this::commitKitRenameEdit));
+            panel.addChild(menuButton("Cancel", true, "Close", this::closeOverlays));
+        } else if (kit.kitId().equals(confirmDeleteKitId)) {
+            panel.addChild(menuLabel("Delete this kit?", WorkspaceUiPalette.MUTED));
+            panel.addChild(menuButton(
+                    "Delete",
+                    true,
+                    "Delete this kit",
+                    closeThen(() -> sendKitAction(WorkspaceActionId.DELETE_KIT, "deleting kit", kit.kitId()))));
+            panel.addChild(menuButton("Cancel", true, "Close", () -> {
+                confirmDeleteKitId = null;
+                rebuildRequested = true;
+            }));
+        } else {
+            panel.addChild(menuButton("Rename...", true, "Rename this kit", () -> beginKitRenameEdit(kit)));
+            panel.addChild(menuButton(
+                    "Duplicate",
+                    true,
+                    "Duplicate this kit",
+                    closeThen(() -> sendKitAction(WorkspaceActionId.DUPLICATE_KIT, "duplicating kit", kit.kitId()))));
+            panel.addChild(menuButton("Delete...", true, "Delete this kit", () -> {
+                confirmDeleteKitId = kit.kitId();
+                renamingKitId = null;
+                renameKitDraft = "";
+                rebuildRequested = true;
+            }));
+            panel.addChild(menuButton("Cancel", true, "Close", this::closeOverlays));
+        }
+        overlay.addChild(panel);
+        return overlay;
+    }
+
+    private SlotUiElement chestContextOverlay() {
+        SlotWorkspaceViewModel.ChestChip chip = viewModel.chestChip(contextMenuChestStorageId);
+        if (chip == null) {
+            closeOverlayState();
+            return null;
+        }
+        SlotUiElement overlay = overlayRoot();
+        SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, 178);
+        String label = chip.label().isBlank() ? "Chest" : chip.label();
+        panel.addChild(menuLabel(shorten(label, 30), WorkspaceUiPalette.ACCENT));
+        if (chip.storageId().equals(renamingChestStorageId)) {
+            panel.addChild(menuLabel("Name: " + renameChestDraft + "_", WorkspaceUiPalette.TEXT));
+            panel.addChild(menuButton("Save", true, "Rename this chest", this::commitChestRenameEdit));
+            panel.addChild(menuButton("Cancel", true, "Close", this::closeOverlays));
+        } else {
+            panel.addChild(menuButton("Rename...", true, "Rename this chest", () -> beginChestRenameEdit(chip)));
+            panel.addChild(menuButton(
+                    "Forget chest",
+                    true,
+                    "Forget this claimed chest",
+                    closeThen(() -> sendAction(WorkspaceActionId.FORGET_CHEST, "forgetting chest", chip.storageId()))));
+            panel.addChild(menuButton("Cancel", true, "Close", this::closeOverlays));
+        }
+        overlay.addChild(panel);
+        return overlay;
+    }
+
+    private SlotUiElement desiredCountOverlay() {
+        SlotWorkspaceViewModel.IdentityRef identity = editingDesiredCountIdentity;
+        SlotWorkspaceViewModel.AtlasItem item = byIdentity.get(identity);
+        SlotUiElement overlay = overlayRoot();
+        SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, 170);
+        panel.addChild(menuLabel("Desired count", WorkspaceUiPalette.ACCENT));
+        panel.addChild(menuLabel(shorten(item == null ? identity.itemId() : item.name(), 30), WorkspaceUiPalette.TEXT));
+        panel.addChild(menuLabel("Count: " + (desiredCountDraft.isBlank() ? "0" : desiredCountDraft) + "_",
+                WorkspaceUiPalette.TEXT));
+        panel.addChild(menuButton("Save", true, "Save desired count", this::commitDesiredCountEdit));
+        panel.addChild(menuButton("Clear", true, "Clear desired count", () -> {
+            desiredCountDraft = "0";
+            commitDesiredCountEdit();
+        }));
+        panel.addChild(menuButton("Cancel", true, "Close", this::closeOverlays));
+        overlay.addChild(panel);
+        return overlay;
+    }
+
+    private SlotUiElement islandEditOverlay() {
+        SlotWorkspaceViewModel.AtlasIsland island = island(editingIslandId);
+        if (island == null) {
+            editingIslandId = null;
+            return null;
+        }
+        SlotUiElement overlay = overlayRoot();
+        SlotUiElement panel = overlayPanel(islandEditX, islandEditY, 178);
+        panel.addChild(menuLabel("Edit section", WorkspaceUiPalette.ACCENT));
+        panel.addChild(menuLabel("Name: " + islandLabelDraft + "_", WorkspaceUiPalette.TEXT));
+        panel.addChild(menuButton("Save name", true, "Rename this section", this::commitIslandNameEdit));
+
+        SlotUiElement swatches = SlotUiElement.element()
+                .layout(layout -> layout
+                        .widthPercent(100)
+                        .height(14)
+                        .gapAll(3)
+                        .flexDirection(SlotUiLayout.FlexDirection.ROW));
+        for (int color : WorkspaceUiPalette.ISLAND_SWATCHES) {
+            swatches.addChild(SlotUiElement.button("", true, color)
+                    .noText()
+                    .tooltip(Component.literal("Set section color"))
+                    .layout(layout -> layout.flex(1).height(12))
+                    .on(SlotUiEventKind.CLICK, event -> {
+                        if (event.button() != 0) {
+                            return;
+                        }
+                        event.stopPropagation();
+                        closeOverlayState();
+                        sendAction(WorkspaceActionId.RECOLOR_ISLAND, "recoloring section", island.islandId(), color);
+                    }));
+        }
+        panel.addChild(swatches);
+
+        boolean hasHoveredItem = hoveredIdentity != null && byIdentity.containsKey(hoveredIdentity);
+        panel.addChild(menuButton(
+                "Use hovered icon",
+                hasHoveredItem,
+                "Set the section icon to the currently hovered item",
+                closeThen(() -> {
+                    SlotWorkspaceViewModel.IdentityRef icon = hoveredIdentity;
+                    sendAction(
+                            WorkspaceActionId.SET_ISLAND_ICON,
+                            "setting section icon",
+                            island.islandId(),
+                            icon.itemId(),
+                            icon.comparisonMode(),
+                            icon.componentFingerprint());
+                })));
+        panel.addChild(menuButton(
+                "Clear icon",
+                true,
+                "Clear the section icon",
+                closeThen(() -> sendAction(WorkspaceActionId.SET_ISLAND_ICON, "clearing section icon",
+                        island.islandId(), "", "", ""))));
+        panel.addChild(menuButton(
+                "Delete section",
+                island.itemCount() == 0,
+                island.itemCount() == 0 ? "Delete this empty section" : "Move items out before deleting",
+                closeThen(() -> sendAction(WorkspaceActionId.DELETE_ISLAND, "deleting section", island.islandId()))));
+        panel.addChild(menuButton("Close", true, "Close", this::closeOverlays));
+        overlay.addChild(panel);
+        return overlay;
+    }
+
+    private SlotUiElement menuLabel(String text, int color) {
+        return SlotUiElement.label(text, color)
+                .layout(layout -> layout.widthPercent(100).height(11))
+                .textStyle(style -> style
+                        .color(color)
+                        .fontSize(7)
+                        .horizontal(SlotUiTextStyle.Horizontal.LEFT)
+                        .vertical(SlotUiTextStyle.Vertical.CENTER));
+    }
+
+    private SlotUiElement menuButton(String text, boolean enabled, String inactiveStatus, Runnable action) {
+        return SlotUiElement.button(text, enabled, enabled ? WorkspaceUiPalette.ROW_HOVER : WorkspaceUiPalette.ROW_DIM)
+                .tooltip(Component.literal(inactiveStatus == null ? "" : inactiveStatus))
+                .layout(layout -> layout.widthPercent(100).height(14))
+                .textStyle(style -> style
+                        .color(enabled ? WorkspaceUiPalette.TEXT : WorkspaceUiPalette.MUTED)
+                        .fontSize(7)
+                        .horizontal(SlotUiTextStyle.Horizontal.CENTER)
+                        .vertical(SlotUiTextStyle.Vertical.CENTER))
+                .on(SlotUiEventKind.CLICK, event -> {
+                    if (event.button() != 0) {
+                        return;
+                    }
+                    event.stopPropagation();
+                    if (!enabled) {
+                        setStatus(inactiveStatus);
+                        return;
+                    }
+                    if (action != null) {
+                        action.run();
+                    }
+                });
+    }
+
+    private Runnable closeThen(Runnable action) {
+        return () -> {
+            closeOverlayState();
+            if (action != null) {
+                action.run();
+            }
+        };
     }
 
     private SlotUiElement enrichSection(
@@ -542,9 +1112,15 @@ public final class ForgeWorkspaceSurface {
                     event.stopPropagation();
                     return;
                 }
+                if (event.button() == 1 && !isCursorCarrying()) {
+                    event.stopPropagation();
+                    openItemContextMenu(freshItem(item), event.x(), event.y());
+                    return;
+                }
+                SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
                 WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.pointerDown(
-                        cardGestureContext(item, event.button(), event.shiftDown()));
-                if (dispatchCardGestureDecision(item, decision)) {
+                        cardGestureContext(target, event.button(), event.shiftDown()));
+                if (dispatchCardGestureDecision(target, decision)) {
                     event.stopPropagation();
                 }
             });
@@ -553,9 +1129,10 @@ public final class ForgeWorkspaceSurface {
                     return;
                 }
                 event.stopPropagation();
+                SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
                 WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.click(
-                        cardGestureContext(item, event.button(), event.shiftDown()));
-                dispatchCardGestureDecision(item, decision);
+                        cardGestureContext(target, event.button(), event.shiftDown()));
+                dispatchCardGestureDecision(target, decision);
             });
             card.on(SlotUiEventKind.MOUSE_WHEEL, event -> {
                 if (!event.shiftDown() && !Screen.hasControlDown()) {
@@ -575,14 +1152,23 @@ public final class ForgeWorkspaceSurface {
                     return;
                 }
                 wheelAccumulator[0] -= steps;
+                SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
                 WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.wheel(
-                        cardGestureContext(item, 0, event.shiftDown()),
+                        cardGestureContext(target, 0, event.shiftDown()),
                         steps);
-                dispatchCardGestureDecision(item, decision);
+                dispatchCardGestureDecision(target, decision);
             });
             grid.addChild(card);
         }
         return section;
+    }
+
+    private SlotWorkspaceViewModel.AtlasItem freshItem(SlotWorkspaceViewModel.AtlasItem item) {
+        if (item == null || viewModel == null) {
+            return item;
+        }
+        SlotWorkspaceViewModel.AtlasItem fresh = viewModel.atlasItem(item.identity());
+        return fresh == null ? item : fresh;
     }
 
     private String normalizedSearchQuery() {
@@ -596,6 +1182,15 @@ public final class ForgeWorkspaceSurface {
                 item == null ? null : island(item.islandId()));
     }
 
+    private boolean anyGatherableIdentity() {
+        for (SlotWorkspaceViewModel.AtlasItem item : items) {
+            if (WorkspaceGatherUiSupport.isGatherableItem(item)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     private SlotWorkspaceViewModel.AtlasIsland island(String islandId) {
         for (SlotWorkspaceViewModel.AtlasIsland island : islands) {
             if (island.islandId().equals(islandId)) {
@@ -603,6 +1198,308 @@ public final class ForgeWorkspaceSurface {
             }
         }
         return null;
+    }
+
+    private void openItemContextMenu(SlotWorkspaceViewModel.AtlasItem item, float screenX, float screenY) {
+        if (item == null || item.identity() == null) {
+            setStatus("missing item identity");
+            return;
+        }
+        contextMenuIdentity = item.identity();
+        contextMenuKitId = null;
+        contextMenuChestStorageId = null;
+        contextMenuX = screenX;
+        contextMenuY = screenY;
+        editingIslandId = null;
+        editingDesiredCountIdentity = null;
+        renamingKitId = null;
+        renameKitDraft = "";
+        confirmDeleteKitId = null;
+        renamingChestStorageId = null;
+        renameChestDraft = "";
+        status = item.name();
+        rebuildRequested = true;
+    }
+
+    private void openKitContextMenu(String kitId, float screenX, float screenY) {
+        if (kitId == null || kitId.isBlank()) {
+            setStatus("missing kit");
+            return;
+        }
+        contextMenuKitId = kitId;
+        contextMenuIdentity = null;
+        contextMenuChestStorageId = null;
+        contextMenuX = screenX;
+        contextMenuY = screenY;
+        editingIslandId = null;
+        editingDesiredCountIdentity = null;
+        renamingKitId = null;
+        renameKitDraft = "";
+        confirmDeleteKitId = null;
+        renamingChestStorageId = null;
+        renameChestDraft = "";
+        status = "kit menu";
+        rebuildRequested = true;
+    }
+
+    private void openChestContextMenu(String storageId, float screenX, float screenY) {
+        if (storageId == null || storageId.isBlank()) {
+            setStatus("missing chest");
+            return;
+        }
+        contextMenuChestStorageId = storageId;
+        contextMenuIdentity = null;
+        contextMenuKitId = null;
+        contextMenuX = screenX;
+        contextMenuY = screenY;
+        editingIslandId = null;
+        editingDesiredCountIdentity = null;
+        renamingKitId = null;
+        renameKitDraft = "";
+        confirmDeleteKitId = null;
+        renamingChestStorageId = null;
+        renameChestDraft = "";
+        status = "chest menu";
+        rebuildRequested = true;
+    }
+
+    private void beginDesiredCountEdit(SlotWorkspaceViewModel.AtlasItem item) {
+        if (item == null || item.identity() == null) {
+            setStatus("missing item identity");
+            return;
+        }
+        editingDesiredCountIdentity = item.identity();
+        desiredCountDraft = item.desiredCount() > 0 && !item.desiredCountFromKit()
+                ? Integer.toString(item.desiredCount())
+                : "";
+        contextMenuIdentity = null;
+        contextMenuKitId = null;
+        contextMenuChestStorageId = null;
+        editingIslandId = null;
+        status = "desired count";
+        rebuildRequested = true;
+    }
+
+    private void beginIslandEdit(SlotWorkspaceViewModel.AtlasIsland island, float screenX, float screenY) {
+        if (island == null || island.kind() != VisualAtlasIslandKind.PLAYER) {
+            setStatus("section cannot be edited");
+            return;
+        }
+        editingIslandId = island.islandId();
+        islandLabelDraft = island.label();
+        islandEditX = screenX;
+        islandEditY = screenY;
+        contextMenuIdentity = null;
+        contextMenuKitId = null;
+        contextMenuChestStorageId = null;
+        editingDesiredCountIdentity = null;
+        renamingKitId = null;
+        renameKitDraft = "";
+        confirmDeleteKitId = null;
+        renamingChestStorageId = null;
+        renameChestDraft = "";
+        status = "editing " + island.label();
+        rebuildRequested = true;
+    }
+
+    private void beginKitRenameEdit(SlotWorkspaceViewModel.KitCard kit) {
+        if (kit == null || kit.kitId().isBlank()) {
+            setStatus("missing kit");
+            return;
+        }
+        renamingKitId = kit.kitId();
+        renameKitDraft = kit.name();
+        confirmDeleteKitId = null;
+        status = "renaming kit";
+        rebuildRequested = true;
+    }
+
+    private void beginChestRenameEdit(SlotWorkspaceViewModel.ChestChip chip) {
+        if (chip == null || chip.storageId().isBlank()) {
+            setStatus("missing chest");
+            return;
+        }
+        renamingChestStorageId = chip.storageId();
+        renameChestDraft = chip.label();
+        status = "renaming chest";
+        rebuildRequested = true;
+    }
+
+    private boolean handleEditorKey(int keyCode) {
+        if (editingDesiredCountIdentity == null
+                && editingIslandId == null
+                && renamingKitId == null
+                && renamingChestStorageId == null) {
+            return false;
+        }
+        if (keyCode == GLFW.GLFW_KEY_ESCAPE) {
+            closeOverlays();
+            return true;
+        }
+        if (keyCode == GLFW.GLFW_KEY_ENTER || keyCode == GLFW.GLFW_KEY_KP_ENTER) {
+            if (editingDesiredCountIdentity != null) {
+                commitDesiredCountEdit();
+            } else if (editingIslandId != null) {
+                commitIslandNameEdit();
+            } else if (renamingKitId != null) {
+                commitKitRenameEdit();
+            } else if (renamingChestStorageId != null) {
+                commitChestRenameEdit();
+            }
+            return true;
+        }
+        if (keyCode == GLFW.GLFW_KEY_BACKSPACE) {
+            if (editingDesiredCountIdentity != null) {
+                if (!desiredCountDraft.isEmpty()) {
+                    desiredCountDraft = desiredCountDraft.substring(0, desiredCountDraft.length() - 1);
+                    rebuildRequested = true;
+                }
+            } else if (editingIslandId != null && !islandLabelDraft.isEmpty()) {
+                islandLabelDraft = islandLabelDraft.substring(0, islandLabelDraft.length() - 1);
+                rebuildRequested = true;
+            } else if (renamingKitId != null && !renameKitDraft.isEmpty()) {
+                renameKitDraft = renameKitDraft.substring(0, renameKitDraft.length() - 1);
+                rebuildRequested = true;
+            } else if (renamingChestStorageId != null && !renameChestDraft.isEmpty()) {
+                renameChestDraft = renameChestDraft.substring(0, renameChestDraft.length() - 1);
+                rebuildRequested = true;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    private boolean handleEditorChar(char codePoint) {
+        if (editingDesiredCountIdentity == null
+                && editingIslandId == null
+                && renamingKitId == null
+                && renamingChestStorageId == null) {
+            return false;
+        }
+        if (editingDesiredCountIdentity != null) {
+            if (codePoint >= '0' && codePoint <= '9' && desiredCountDraft.length() < 4) {
+                desiredCountDraft += codePoint;
+                rebuildRequested = true;
+            }
+            return true;
+        }
+        if (renamingKitId != null) {
+            if (isPrintable(codePoint) && renameKitDraft.length() < 32) {
+                renameKitDraft += codePoint;
+                rebuildRequested = true;
+            }
+            return true;
+        }
+        if (renamingChestStorageId != null) {
+            if (isPrintable(codePoint) && renameChestDraft.length() < 32) {
+                renameChestDraft += codePoint;
+                rebuildRequested = true;
+            }
+            return true;
+        }
+        if (isPrintable(codePoint) && islandLabelDraft.length() < 32) {
+            islandLabelDraft += codePoint;
+            rebuildRequested = true;
+        }
+        return true;
+    }
+
+    private void commitDesiredCountEdit() {
+        SlotWorkspaceViewModel.IdentityRef identity = editingDesiredCountIdentity;
+        if (identity == null) {
+            closeOverlays();
+            return;
+        }
+        int count;
+        try {
+            count = desiredCountDraft.isBlank() ? 0 : Integer.parseInt(desiredCountDraft);
+        } catch (NumberFormatException exception) {
+            setStatus("desired count must be a number");
+            return;
+        }
+        closeOverlayState();
+        sendIdentityRefAction(WorkspaceActionId.SET_PLAYER_DESIRED_COUNT, identity, "desired count updated", count);
+    }
+
+    private void commitIslandNameEdit() {
+        if (editingIslandId == null) {
+            closeOverlays();
+            return;
+        }
+        String label = islandLabelDraft == null ? "" : islandLabelDraft.trim();
+        if (label.isBlank()) {
+            setStatus("section name required");
+            return;
+        }
+        String islandId = editingIslandId;
+        closeOverlayState();
+        sendAction(WorkspaceActionId.RENAME_ISLAND, "renaming section", islandId, label);
+    }
+
+    private void commitKitRenameEdit() {
+        if (renamingKitId == null) {
+            closeOverlays();
+            return;
+        }
+        String label = renameKitDraft == null ? "" : renameKitDraft.trim();
+        if (label.isBlank()) {
+            setStatus("kit name required");
+            return;
+        }
+        String kitId = renamingKitId;
+        closeOverlayState();
+        sendKitAction(WorkspaceActionId.RENAME_KIT, "renaming kit", kitId, label);
+    }
+
+    private void commitChestRenameEdit() {
+        if (renamingChestStorageId == null) {
+            closeOverlays();
+            return;
+        }
+        String label = renameChestDraft == null ? "" : renameChestDraft.trim();
+        if (label.isBlank()) {
+            setStatus("chest name required");
+            return;
+        }
+        String storageId = renamingChestStorageId;
+        closeOverlayState();
+        sendAction(WorkspaceActionId.RELABEL_CHEST, "renaming chest", storageId, label);
+    }
+
+    private void closeOverlays() {
+        closeOverlayState();
+        rebuildRequested = true;
+    }
+
+    private void closeOverlayState() {
+        contextMenuIdentity = null;
+        contextMenuKitId = null;
+        contextMenuChestStorageId = null;
+        editingIslandId = null;
+        editingDesiredCountIdentity = null;
+        islandLabelDraft = "";
+        desiredCountDraft = "";
+        renamingKitId = null;
+        renameKitDraft = "";
+        confirmDeleteKitId = null;
+        renamingChestStorageId = null;
+        renameChestDraft = "";
+    }
+
+    private static boolean isPrintable(char codePoint) {
+        return codePoint >= 32 && codePoint != 127;
+    }
+
+    private static String shorten(String text, int maxChars) {
+        String value = text == null ? "" : text;
+        int max = Math.max(1, maxChars);
+        if (value.length() <= max) {
+            return value;
+        }
+        if (max <= 3) {
+            return value.substring(0, max);
+        }
+        return value.substring(0, max - 3) + "...";
     }
 
     private String searchDisplayText() {
@@ -799,10 +1696,23 @@ public final class ForgeWorkspaceSurface {
             setStatus("missing item identity");
             return;
         }
+        sendIdentityRefAction(action, item.identity(), sentStatus, tail);
+    }
+
+    private void sendIdentityRefAction(
+            WorkspaceActionId action,
+            SlotWorkspaceViewModel.IdentityRef identity,
+            String sentStatus,
+            Object... tail
+    ) {
+        if (identity == null) {
+            setStatus("missing item identity");
+            return;
+        }
         Object[] args = new Object[3 + (tail == null ? 0 : tail.length)];
-        args[0] = item.identity().itemId();
-        args[1] = item.identity().comparisonMode();
-        args[2] = item.identity().componentFingerprint();
+        args[0] = identity.itemId();
+        args[1] = identity.comparisonMode();
+        args[2] = identity.componentFingerprint();
         if (tail != null) {
             System.arraycopy(tail, 0, args, 3, tail.length);
         }
@@ -928,12 +1838,17 @@ public final class ForgeWorkspaceSurface {
             }
             sendAction(WorkspaceActionId.FORGET_CHEST, "forgetting chest", storageId);
         }
+
+        @Override
+        public void openChestMenu(String storageId, float screenX, float screenY) {
+            ForgeWorkspaceSurface.this.openChestContextMenu(storageId, screenX, screenY);
+        }
     }
 
     private final class HeaderContext implements WallSectionHeaderUiBuilder.Context {
         @Override
         public void beginIslandEdit(SlotWorkspaceViewModel.AtlasIsland island, float screenX, float screenY) {
-            setStatus("would edit section " + island.label());
+            ForgeWorkspaceSurface.this.beginIslandEdit(island, screenX, screenY);
         }
     }
 
@@ -1025,6 +1940,11 @@ public final class ForgeWorkspaceSurface {
         @Override
         public void setStatus(String nextStatus) {
             ForgeWorkspaceSurface.this.setStatus(nextStatus);
+        }
+
+        @Override
+        public void openKitMenu(String kitId, float screenX, float screenY) {
+            ForgeWorkspaceSurface.this.openKitContextMenu(kitId, screenX, screenY);
         }
     }
 

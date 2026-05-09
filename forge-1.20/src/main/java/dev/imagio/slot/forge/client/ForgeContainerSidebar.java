@@ -1,7 +1,10 @@
 package dev.imagio.slot.forge.client;
 
-import dev.imagio.slot.forge.ui.ForgeWorkspaceSpiDebugScreen;
+import dev.imagio.slot.forge.ui.ForgeWorkspaceScreen;
 import dev.imagio.slot.forge.ui.ForgeWorkspaceSurface;
+import net.minecraft.client.gui.components.EditBox;
+import net.minecraft.client.gui.components.events.ContainerEventHandler;
+import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
@@ -15,7 +18,7 @@ public final class ForgeContainerSidebar {
     }
 
     public static void onScreenInit(ScreenEvent.Init.Post event) {
-        if (event.getScreen() instanceof ForgeWorkspaceSpiDebugScreen) {
+        if (event.getScreen() instanceof ForgeWorkspaceScreen) {
             return;
         }
         if (!(event.getScreen() instanceof AbstractContainerScreen<?> screen)) {
@@ -91,7 +94,11 @@ public final class ForgeContainerSidebar {
         if (event.getScreen() != activeHostScreen || activeSurface == null) {
             return;
         }
-        if (activeSurface.keyPressed(event.getKeyCode())) {
+        boolean hostTextInputFocused = hostTextInputFocused(event.getScreen());
+        if (hostTextInputFocused && !activeSurface.wantsKeyboardInput()) {
+            return;
+        }
+        if (activeSurface.keyPressed(event.getKeyCode(), event.getScanCode(), hostTextInputFocused)) {
             event.setCanceled(true);
         }
     }
@@ -100,9 +107,33 @@ public final class ForgeContainerSidebar {
         if (event.getScreen() != activeHostScreen || activeSurface == null) {
             return;
         }
-        if (activeSurface.charTyped(event.getCodePoint())) {
+        boolean hostTextInputFocused = hostTextInputFocused(event.getScreen());
+        if (hostTextInputFocused && !activeSurface.wantsKeyboardInput()) {
+            return;
+        }
+        if (activeSurface.charTyped(event.getCodePoint(), hostTextInputFocused)) {
             event.setCanceled(true);
         }
+    }
+
+    private static boolean hostTextInputFocused(Screen screen) {
+        if (screen == null) {
+            return false;
+        }
+        return isTextInputFocused(screen.getFocused());
+    }
+
+    private static boolean isTextInputFocused(GuiEventListener listener) {
+        if (listener == null) {
+            return false;
+        }
+        if (listener instanceof EditBox editBox) {
+            return editBox.isFocused();
+        }
+        if (listener instanceof ContainerEventHandler container) {
+            return isTextInputFocused(container.getFocused());
+        }
+        return listener.isFocused();
     }
 
     private static void release() {

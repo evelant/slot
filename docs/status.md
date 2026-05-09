@@ -9,50 +9,30 @@ Last updated: 2026-05-07. Operational handoff. Read after
 
 Cross-loader support is the active track. SLOT keeps the modern
 Minecraft 1.21.1 NeoForge + LDLib2 build and adds a Minecraft 1.20.1
-Forge target through the plan in
-[plans/cross-loader-refactor.md](plans/cross-loader-refactor.md) and
-ADR [0006](decisions/0006-cross-loader-legacy-forge.md). The validated
-Phase 0 proved direct Taffy rendering on vanilla `Screen`; the
-throwaway spike source has been deleted now that the production Forge
-UI tree exists. The Phase 0.5 shared-platform compile gate now compiles the whole common
-`dev.imagio.slot` tree against Forge 1.20.1 / Java 17, and Forge `main`
-now consumes that common tree with production Forge 1.20
-`SlotStackAccess` / `SlotResourceAccess` adapters. Phase 1 has the
-shared workspace action catalog/channel, packet codec, and session/menu
-envelope in common, with the modern LDLib2 RPC dispatcher validating
-registrations and sends against that catalog. Forge 1.20 now registers a
-matching `SimpleChannel` action payload that decodes the common packet
-codec, validates session/menu envelopes against a server-side Forge
-workspace session registry, and now owns a Forge workflow runtime plus a
-session-backed common workspace projection for carried player inventory.
-Safe workspace metadata actions (`SET_SEARCH_QUERY`, home/chip/island
-management, undo/redo) route through `SlotWorkspaceCommandService`;
-Forge installs carried/world storage accessors and the catalog
-`TRANSFER` action is bound for built-in main/hotbar targets through
-`InventoryActionExecutor`, with identity-to-hotbar, hotbar-return,
-hotbar-to-section, kit, desired-count, chest metadata, deposit/take,
-cursor, and cross-surface Forge adapters live for vanilla carried
-sources and claimed chests. Forge also registers `/slot test populate
-<profile>` and `/slot test clear` for carried-inventory/workflow/chest testing;
-claimed chest ids use Forge persistent block-entity data and claimed
-chest contents feed the common projection. Manual chest-close deposit
-observation and chest-claim persistence reconciliation now share common
-helpers, with loader-specific storage-id readers. Phase 2 has started
-with the main wall section/card shells, shared fallback card details,
-Recents strip, hotbar belt, and non-drag kit rack rendered through the
-first narrow common UI SPI and LDLib2/backend-specific renderers. The Forge `G` debug screen
-is now fed by session-backed view-model sync, including local search,
-scroll preservation across rebuilds, hotbar/offhand projection, claimed
-chest ghost projection, and the same item-id ghost stack resolver hook
-used by NeoForge. Forge also mounts a first-cut vanilla-container
-sidebar with the common active chest strip, non-drag kit rack, wall,
-Recents, search, and hotbar belt; host-menu changes refresh through a
-Forge transport sync message rather than a shared inventory action. The
-Forge full-screen and sidebar hosts share `ForgeWorkspaceSurface`, so
-widget composition and action dispatch do not fork by host.
-Modern drag/drop, tooltips, richer LDLib2 card body
-rendering, richer LDLib2 kit drag/context-menu affordances, and richer
-chest panels remain backend hooks, not common UI semantics.
+Forge target through [plans/cross-loader-refactor.md](plans/cross-loader-refactor.md)
+and ADR [0006](decisions/0006-cross-loader-legacy-forge.md). The spike
+is deleted; production Forge renders direct Taffy on vanilla `Screen`,
+and `:forge-1.20:compileSharedProbeJava` compiles the whole common tree
+against Forge 1.20.1 / Java 17 with real platform adapters.
+
+Phase 1 has the shared action catalog/channel, packet codec,
+session/menu envelope, Forge transport/runtime, and session-backed
+common projection. Forge routes metadata, transfer, hotbar, kit,
+desired-count, chest, deposit/take, cursor, active-kit gather, and
+cross-surface actions through common services/executors for vanilla
+carried sources and claimed chests. Active-kit gather and kit-page cycle
+are common services; Forge `/slot test populate <profile>` and
+`/slot test clear` cover carried inventory, workflow state, and claimed
+chests.
+
+Phase 2 has the wall/card shells, fallback card details, Recents, hotbar,
+active chest strip, and non-drag kit rack through the first common UI
+SPI. Forge full-screen and sidebar hosts share `ForgeWorkspaceSurface`
+and common view-model/search/wall/Recents/kit/active-chest/hotbar
+builders plus tooltip metadata. Forge key parity covers vanilla
+inventory, kit page cycle, gather, and the wayfinding HUD toggle. Modern
+drag/drop, richer LDLib2 card/kit affordances, and richer chest panels
+remain backend hooks, not common UI semantics.
 
 ### Production wall shape (post-list-view)
 
@@ -176,7 +156,7 @@ Forge 1.20 module:
 - `forge-1.20`: legacy Forge 1.20.1 target. Current contents are
   Gradle/module scaffolding, production common-source compilation with
   Forge 1.20 platform adapters,
-  the direct Taffy + `GuiGraphics` SPI debug renderer, a Forge
+  the direct Taffy + `GuiGraphics` workspace renderer, a Forge
   `SimpleChannel` workspace-action path with server-side session
   validation, Forge workflow persistence, session-backed common
   view-model projection for carried player inventory and claimed chest

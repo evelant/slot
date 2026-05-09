@@ -11,6 +11,8 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import dev.imagio.slot.debug.ChestContentEntry;
 import dev.imagio.slot.debug.ChestSpec;
 import dev.imagio.slot.SlotCommon;
+import dev.imagio.slot.compat.sophisticated.SophisticatedBackpackSupport;
+import dev.imagio.slot.compat.sophisticated.SophisticatedBackpackTransferSupport;
 import dev.imagio.slot.debug.FacetIndexTemplateClassifier;
 import dev.imagio.slot.debug.PopulateProfile;
 import dev.imagio.slot.debug.RealisticAtlasGenerator;
@@ -41,6 +43,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Inventory;
@@ -66,6 +69,20 @@ import java.util.concurrent.CompletableFuture;
 public final class ForgeSlotTestCommands {
     private static final SuggestionProvider<CommandSourceStack> PROFILE_SUGGESTIONS =
             ForgeSlotTestCommands::suggestProfiles;
+
+    /**
+     * Match the NeoForge debug generator: guarantee real high-capacity
+     * backpack carriers before test stacks route through carried storage.
+     */
+    private static final int TOP_TIER_BACKPACK_TARGET = 3;
+
+    private static final List<String> BACKPACK_TIER_FALLBACK = List.of(
+            "sophisticatedbackpacks:netherite_backpack",
+            "sophisticatedbackpacks:diamond_backpack",
+            "sophisticatedbackpacks:gold_backpack",
+            "sophisticatedbackpacks:iron_backpack",
+            "sophisticatedbackpacks:backpack"
+    );
 
     private ForgeSlotTestCommands() {
     }
@@ -130,25 +147,36 @@ public final class ForgeSlotTestCommands {
         VisualAtlasWorkflowDomainService workflow = runtime.visualAtlasWorkflow();
         int islandsCreated = applyIslands(workflow, plan);
         int assignmentsApplied = applyAssignments(workflow, plan);
+        int backpacksGranted = ensureTopTierBackpacks(player);
+        int readableBackpacks = SophisticatedBackpackSupport.readPlayerBackpacks(player, null).size();
+        String backpackDiagnostic = backpackRoutingDiagnostic(player, readableBackpacks);
+        if (!backpackDiagnostic.isBlank()) {
+            context.getSource().sendFailure(Component.literal("[SLOT] forge populate: " + backpackDiagnostic));
+            SlotCommon.LOGGER.warn("[SLOT] /slot test populate forge aborted: {}", backpackDiagnostic);
+            return 0;
+        }
         InventoryGiveResult giveResult = giveStacksToPlayer(player, runtime, plan);
         ForgeCarriedActivityTracker.suppressNext(player);
         ChestPopulateResult chestResult = placeChests(player, runtime, plan);
 
         int finalIslands = islandsCreated;
         int finalAssignments = assignmentsApplied;
-        int finalInserted = giveResult.inserted;
+        int finalMain = giveResult.mainInserted;
+        int finalBackpack = giveResult.backpackInserted;
         int finalDropped = giveResult.dropped;
         int finalChests = chestResult.chestsPlaced;
         int finalChestItems = chestResult.itemsStocked;
+        int finalBackpacksGranted = backpacksGranted;
+        int finalReadableBackpacks = readableBackpacks;
         context.getSource().sendSuccess(() -> Component.literal(String.format(
-                "[SLOT] forge populate %s: islands=%d assignments=%d stacks=%d dropped=%d chests=%d chestItems=%d",
-                profile.id(), finalIslands, finalAssignments, finalInserted, finalDropped,
-                finalChests, finalChestItems
+                "[SLOT] forge populate %s: islands=%d assignments=%d stacks main=%d backpack=%d dropped=%d chests=%d chestItems=%d backpacks_granted=%d readable_backpacks=%d",
+                profile.id(), finalIslands, finalAssignments, finalMain, finalBackpack, finalDropped,
+                finalChests, finalChestItems, finalBackpacksGranted, finalReadableBackpacks
         )), false);
         SlotCommon.LOGGER.info(
-                "[SLOT] /slot test populate forge profile={} -> islands={} assignments={} stacks={} dropped={} chests={} chestItems={}",
-                profile.id(), finalIslands, finalAssignments, finalInserted, finalDropped,
-                finalChests, finalChestItems);
+                "[SLOT] /slot test populate forge profile={} -> islands={} assignments={} stacks_main={} stacks_backpack={} stacks_dropped={} chests={} chestItems={} backpacks_granted={} readable_backpacks={}",
+                profile.id(), finalIslands, finalAssignments, finalMain, finalBackpack, finalDropped,
+                finalChests, finalChestItems, finalBackpacksGranted, finalReadableBackpacks);
         return finalAssignments;
     }
 
@@ -178,22 +206,91 @@ public final class ForgeSlotTestCommands {
         }
 
         ChestClearResult chestClear = clearClaimedChests(player, runtime);
-        int inventoryCleared = clearPlayerInventory(player);
+        InventoryClearResult inventoryResult = clearPlayerInventory(player);
         int finalDeletedIslands = deletedIslands;
         int finalClearedAssignments = clearedAssignments;
         int finalChestClaims = chestClear.claimsCleared;
         int finalChestBlocks = chestClear.blocksRemoved;
-        int finalInventoryCleared = inventoryCleared;
+        int finalInventoryCleared = inventoryResult.slotsCleared;
+        int finalBackpacksPreserved = inventoryResult.backpacksPreserved;
+        int finalBackpackContents = inventoryResult.backpackContentsCleared;
         context.getSource().sendSuccess(() -> Component.literal(String.format(
-                "[SLOT] forge test clear: islands=%d assignments=%d inventory=%d chestClaims=%d chestBlocks=%d",
+                "[SLOT] forge test clear: islands=%d assignments=%d inventory=%d backpacks_kept=%d backpack_contents=%d chestClaims=%d chestBlocks=%d",
                 finalDeletedIslands, finalClearedAssignments, finalInventoryCleared,
+                finalBackpacksPreserved, finalBackpackContents,
                 finalChestClaims, finalChestBlocks
         )), false);
         SlotCommon.LOGGER.info(
-                "[SLOT] /slot test clear forge -> islands={} assignments={} inventory={} chestClaims={} chestBlocks={}",
+                "[SLOT] /slot test clear forge -> islands={} assignments={} inventory={} backpacks_preserved={} backpack_contents_cleared={} chestClaims={} chestBlocks={}",
                 finalDeletedIslands, finalClearedAssignments, finalInventoryCleared,
+                finalBackpacksPreserved, finalBackpackContents,
                 finalChestClaims, finalChestBlocks);
         return finalDeletedIslands;
+    }
+
+    private static int ensureTopTierBackpacks(ServerPlayer player) {
+        Item backpackItem = resolveTopTierBackpackItem();
+        if (backpackItem == null) {
+            return 0;
+        }
+        NonNullList<ItemStack> items = player.getInventory().items;
+        int existing = 0;
+        for (ItemStack stack : items) {
+            if (stack != null && !stack.isEmpty() && stack.getItem() == backpackItem) {
+                existing++;
+            }
+        }
+        int needed = TOP_TIER_BACKPACK_TARGET - existing;
+        int granted = 0;
+        for (int i = 0; i < needed; i++) {
+            if (player.getInventory().add(new ItemStack(backpackItem, 1))) {
+                granted++;
+            }
+        }
+        return granted;
+    }
+
+    private static boolean hasTopTierBackpack(ServerPlayer player) {
+        Item backpackItem = resolveTopTierBackpackItem();
+        if (backpackItem == null) {
+            return false;
+        }
+        for (ItemStack stack : player.getInventory().items) {
+            if (stack != null && !stack.isEmpty() && stack.getItem() == backpackItem) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static String backpackRoutingDiagnostic(ServerPlayer player, int readableBackpacks) {
+        if (!hasTopTierBackpack(player)) {
+            return "";
+        }
+        if (!SophisticatedBackpackSupport.isAvailable()) {
+            return "sophisticated backpack item exists, but backpack read support is unavailable";
+        }
+        if (!SophisticatedBackpackTransferSupport.isAvailable()) {
+            return "sophisticated backpack item exists, but backpack transfer support is unavailable";
+        }
+        if (readableBackpacks <= 0) {
+            return "sophisticated backpack item exists, but carried-provider enumeration returned zero sources";
+        }
+        return "";
+    }
+
+    private static Item resolveTopTierBackpackItem() {
+        for (String id : BACKPACK_TIER_FALLBACK) {
+            ResourceLocation key = ResourceLocation.tryParse(id);
+            if (key == null || !BuiltInRegistries.ITEM.containsKey(key)) {
+                continue;
+            }
+            Item item = BuiltInRegistries.ITEM.get(key);
+            if (item != null && !new ItemStack(item).isEmpty()) {
+                return item;
+            }
+        }
+        return null;
     }
 
     private static int applyIslands(VisualAtlasWorkflowDomainService workflow, RealisticAtlasPlan plan) {
@@ -237,10 +334,25 @@ public final class ForgeSlotTestCommands {
         ArrayList<ItemStack> allStacks = new ArrayList<>(plan.homedStacks().size() + plan.triageStacks().size());
         allStacks.addAll(plan.homedStacks());
         allStacks.addAll(plan.triageStacks());
+
+        ArrayList<ItemStack> reordered = new ArrayList<>(allStacks.size());
+        for (ItemStack stack : allStacks) {
+            if (stack != null && !stack.isEmpty() && isBackpackStack(stack)) {
+                reordered.add(stack);
+            }
+        }
+        for (ItemStack stack : allStacks) {
+            if (stack == null || stack.isEmpty() || !isBackpackStack(stack)) {
+                reordered.add(stack);
+            }
+        }
+        allStacks = reordered;
+
         CarriedSourceAccess carried = StorageAccessRegistry.isInstalled()
                 ? StorageAccessRegistry.carriedSourceAccess()
                 : null;
-        int inserted = 0;
+        int mainInserted = 0;
+        int backpackInserted = 0;
         int dropped = 0;
         for (ItemStack template : allStacks) {
             if (template == null || template.isEmpty()) {
@@ -252,12 +364,24 @@ public final class ForgeSlotTestCommands {
             }
             ItemStack acquiredStack = stack.copy();
             int initial = stack.getCount();
-            ItemStack remaining = carried == null
-                    ? insertVanilla(player, stack)
-                    : carried.insertBestFit(player, stack, false);
+            ItemStack remaining;
+            int vanillaDelta;
+            if (isBackpackStack(stack) || carried == null) {
+                int before = countVanillaInventory(player);
+                player.getInventory().add(stack);
+                int after = countVanillaInventory(player);
+                vanillaDelta = Math.max(0, after - before);
+                remaining = stack;
+            } else {
+                int before = countVanillaInventory(player);
+                remaining = carried.insertBestFit(player, stack, false);
+                int after = countVanillaInventory(player);
+                vanillaDelta = Math.max(0, after - before);
+            }
             int leftover = remaining == null || remaining.isEmpty() ? 0 : remaining.getCount();
             int placed = Math.max(0, initial - leftover);
-            inserted += placed;
+            mainInserted += vanillaDelta;
+            backpackInserted += Math.max(0, placed - vanillaDelta);
             if (placed > 0) {
                 InventoryAcquisitionActivityRecorder.recordStackAcquired(
                         runtime,
@@ -272,13 +396,22 @@ public final class ForgeSlotTestCommands {
                 player.drop(remaining, false);
             }
         }
-        return new InventoryGiveResult(inserted, dropped);
+        return new InventoryGiveResult(mainInserted, backpackInserted, dropped);
     }
 
-    private static ItemStack insertVanilla(ServerPlayer player, ItemStack stack) {
-        ItemStack remaining = stack.copy();
-        player.getInventory().add(remaining);
-        return remaining;
+    private static int countVanillaInventory(ServerPlayer player) {
+        int total = 0;
+        for (ItemStack stack : player.getInventory().items) {
+            if (stack != null && !stack.isEmpty()) {
+                total += stack.getCount();
+            }
+        }
+        for (ItemStack stack : player.getInventory().offhand) {
+            if (stack != null && !stack.isEmpty()) {
+                total += stack.getCount();
+            }
+        }
+        return total;
     }
 
     private static ChestPopulateResult placeChests(
@@ -412,26 +545,79 @@ public final class ForgeSlotTestCommands {
         return null;
     }
 
-    private static int clearPlayerInventory(ServerPlayer player) {
+    private static InventoryClearResult clearPlayerInventory(ServerPlayer player) {
         Inventory inventory = player.getInventory();
-        int cleared = clearSlots(inventory.items)
-                + clearSlots(inventory.armor)
-                + clearSlots(inventory.offhand);
+        InventoryListResult main = clearPreservingBackpacks(inventory.items);
+        InventoryListResult armor = clearPreservingBackpacks(inventory.armor);
+        InventoryListResult offhand = clearPreservingBackpacks(inventory.offhand);
+        int backpackContents = clearPlayerBackpackContents(player);
         inventory.setChanged();
-        return cleared;
+        return new InventoryClearResult(
+                main.cleared + armor.cleared + offhand.cleared,
+                main.preserved + armor.preserved + offhand.preserved,
+                backpackContents
+        );
     }
 
-    private static int clearSlots(NonNullList<ItemStack> slots) {
+    private static InventoryListResult clearPreservingBackpacks(NonNullList<ItemStack> slots) {
         int cleared = 0;
+        int preserved = 0;
         for (int index = 0; index < slots.size(); index++) {
             ItemStack stack = slots.get(index);
             if (stack == null || stack.isEmpty()) {
                 continue;
             }
+            if (isBackpackStack(stack)) {
+                preserved++;
+                continue;
+            }
             slots.set(index, ItemStack.EMPTY);
             cleared++;
         }
+        return new InventoryListResult(cleared, preserved);
+    }
+
+    private static int clearPlayerBackpackContents(ServerPlayer player) {
+        int cleared = 0;
+        for (SophisticatedBackpackSupport.BackpackInventorySnapshot snapshot :
+                SophisticatedBackpackSupport.readPlayerBackpacks(player, null)) {
+            if (snapshot == null) {
+                continue;
+            }
+            for (SophisticatedBackpackSupport.BackpackEntry entry : snapshot.entries()) {
+                ItemStack extracted = SophisticatedBackpackTransferSupport.extractBackpackSlot(
+                        player,
+                        snapshot.carrier(),
+                        entry.slotIndex(),
+                        Integer.MAX_VALUE,
+                        false,
+                        new LinkedHashMap<>()
+                );
+                if (extracted != null && !extracted.isEmpty()) {
+                    cleared++;
+                }
+            }
+        }
         return cleared;
+    }
+
+    private static boolean isBackpackStack(ItemStack stack) {
+        if (stack == null || stack.isEmpty()) {
+            return false;
+        }
+        if (SophisticatedBackpackSupport.isBackpackItem(stack)) {
+            return true;
+        }
+        try {
+            ResourceLocation key = BuiltInRegistries.ITEM.getKey(stack.getItem());
+            if (key == null) {
+                return false;
+            }
+            String path = key.getPath();
+            return path != null && path.toLowerCase(Locale.ROOT).contains("backpack");
+        } catch (RuntimeException | LinkageError ignored) {
+            return false;
+        }
     }
 
     private static List<ItemStack> nonEmptyItemStackPool() {
@@ -448,7 +634,13 @@ public final class ForgeSlotTestCommands {
         return stacks;
     }
 
-    private record InventoryGiveResult(int inserted, int dropped) {
+    private record InventoryGiveResult(int mainInserted, int backpackInserted, int dropped) {
+    }
+
+    private record InventoryClearResult(int slotsCleared, int backpacksPreserved, int backpackContentsCleared) {
+    }
+
+    private record InventoryListResult(int cleared, int preserved) {
     }
 
     private record ChestPopulateResult(int chestsPlaced, int itemsStocked) {

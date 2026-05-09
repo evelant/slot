@@ -18,6 +18,7 @@ import dev.imagio.slot.neoforge.screen.ldlib.util.Observable;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
@@ -194,6 +195,7 @@ final class SlotWorkspaceUiController {
                 .heightPercent(100)
                 .paddingAll(0)
                 .gapAll(0)
+                .alignItems(AlignItems.CENTER)
                 .flexDirection(FlexDirection.COLUMN));
         // Centered content stack: workspace top + mid + status. Capped
         // at WORKSPACE_WIDTH_PX so the layout doesn't sprawl on wide
@@ -201,8 +203,7 @@ final class SlotWorkspaceUiController {
         // (full-screen) root. flex(1) so it claims the leftover height
         // above the belt.
         this.content = new UIElement().layout(layout -> layout
-                .widthPercent(100)
-                .maxWidth(WORKSPACE_WIDTH_PX)
+                .width(WORKSPACE_WIDTH_PX)
                 .flex(1)
                 .marginHorizontalAuto()
                 .paddingAll(14)

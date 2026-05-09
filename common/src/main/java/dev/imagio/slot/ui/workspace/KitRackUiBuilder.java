@@ -191,6 +191,13 @@ public final class KitRackUiBuilder {
                 context.activateKit(card.kitId());
             }
         });
+        button.on(SlotUiEventKind.MOUSE_DOWN, event -> {
+            if (event.button() != 1) {
+                return;
+            }
+            event.stopPropagation();
+            context.openKitMenu(card.kitId(), event.x(), event.y());
+        });
         button.addChild(kitCardHeader(card));
         for (SlotWorkspaceViewModel.KitPageView page : card.pages()) {
             button.addChild(kitCardPageRow(card, page));
@@ -514,5 +521,8 @@ public final class KitRackUiBuilder {
         int proximateCount(SlotWorkspaceViewModel.IdentityRef identity);
 
         void setStatus(String status);
+
+        default void openKitMenu(String kitId, float screenX, float screenY) {
+        }
     }
 }

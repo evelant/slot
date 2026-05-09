@@ -32,8 +32,10 @@ bounded auto-home, syncs that view-model to the direct Taffy/GuiGraphics
 accessors and binds the first guarded `TRANSFER` path for built-in
 main/hotbar targets through the common executor, plus identity-to-hotbar,
 hotbar-return, hotbar-to-section, kit, desired-count, chest metadata,
-deposit/take, cursor, and cross-surface Forge adapters for the first
-belt/workflow interactions. Forge `/slot test populate <profile>` and
+deposit/take, cursor, active-kit gather, and cross-surface Forge
+adapters for the first belt/workflow interactions. Active-kit gather and
+kit-page cycle now live in common services shared by NeoForge and Forge
+transports. Forge `/slot test populate <profile>` and
 `/slot test clear` are available for carried-inventory/workflow/chest testing, with
 chest ids stored in Forge persistent block-entity data and claimed chest
 contents feeding the common projection. Manual chest-close deposit
@@ -44,9 +46,11 @@ hotbar belt, active chest strip, and non-drag kit rack rendered through
 the first narrow UI SPI + LDLib2/backend-specific renderers. A tested
 compact storage-chip builder exists but is intentionally hidden to match
 NeoForge's current product surface. Forge also has HUD/in-world
-wayfinding driven by the same common view-model projection. The next
-risks are migrating remaining richer modern-only affordances without
-reintroducing panel-by-panel backend semantics.
+wayfinding driven by the same common view-model projection, plus hotkey
+parity for vanilla inventory, active-kit page cycle, active-kit gather,
+and the wayfinding HUD toggle. The next risks are migrating remaining
+richer modern-only affordances without reintroducing panel-by-panel
+backend semantics.
 
 Previously active
 [`single-column-workspace.md`](single-column-workspace.md) is paused
@@ -73,78 +77,34 @@ Thin log; full detail lives in `git log` and the linked archived
 plans. Older entries are deleted — `git log` and `done/<plan>.md`
 hold the rest.
 
+- **2026-05-07** — Forge parity pass moved active-kit gather and
+  in-world kit-page cycle into shared common services, registered
+  `GATHER_ACTIVE_KIT`, wired in-screen gather through catalog actions
+  on both loaders, added Forge vanilla-inventory / kit-cycle / gather /
+  wayfinding-HUD keys, removed the Forge debug/SPI product labels, and
+  fixed the NeoForge HUD toggle ordering bug.
 - **2026-05-06** — cross-loader direction accepted via
   [`cross-loader-refactor.md`](cross-loader-refactor.md) / ADR
-  [`0006`](../decisions/0006-cross-loader-legacy-forge.md): the Forge
-  Taffy/GuiGraphics renderer path is validated, `:forge-1.20:compileSharedProbeJava` now
-  compiles the whole common tree against Forge 1.20.1 / Java 17, Forge
-  `main` now consumes that common tree with production platform adapters,
-  and Phase 1 has the shared workspace action catalog/channel, packet
-  codec, and session/menu envelope wired into NeoForge LDLib2 RPC
-  registration and send validation plus a Forge 1.20 `SimpleChannel`
-  path with server-side session validation, workflow persistence,
-  session-backed common projection, safe metadata command dispatch,
-  Forge storage accessors, a guarded built-in transfer binding,
-  identity-to-hotbar / hotbar-return / hotbar-to-section adapters,
-  kit/desired-count, chest metadata, deposit/take, cursor, and
-  cross-surface dispatch, Forge-side
-  carried-inventory + claimed-chest populate/clear commands, and common
-  claimed-chest projection; Phase 2 has started with
-  the main wall section/card shells, Recents strip, hotbar belt, and
-  non-drag kit rack rendered through the first UI SPI +
-  LDLib2/backend-specific renderers, plus a Forge `G` screen that
-  renders the same common wall/Recents/belt/kit builders through direct
-  Taffy + `GuiGraphics`, preserves scroll across rebuilds, syncs search
-  through the shared action channel, and consumes the session-backed
-  server-to-client view-model. Forge now also mounts the common active
-  chest strip + kit rack + wall/belt surface as a vanilla-container
-  sidebar, with a Forge-only quiet refresh message for host-menu view
-  sync. Forge full-screen and sidebar hosts now share the same
-  `ForgeWorkspaceSurface` controller instead of carrying parallel
-  widget/action glue; Forge now also renders shared tooltip metadata,
-  has a parked common storage-chip builder, and renders view-model-driven
-  HUD/world wayfinding.
-- **2026-05-05** — backpack-first shift-click routing generalised
-  via new `MenuShiftClickMixin` on `AbstractContainerMenu.clicked`
-  (snapshot-diffs vanilla lanes, routes positive deltas through
-  the extracted `BackpackReroute` helper); ghost-block rendering
-  via `GhostItemTexture` redirecting 3D-block GUI rendering to the
-  alpha-blended sheet so the 20 % alpha tint actually blends;
-  carried-count badge shows "1"; status + plans cleanup pass —
-  list-view + cursor-pickup closed and archived to `done/`.
-- **2026-05-04** — list-view Phases 3a.1 (sidebar embed on every
-  `AbstractContainerScreen`) + 3a.2 direction A (wall → vanilla
-  slot via drag / shift+click / shift+wheel); cursor-pickup phases
-  A/B/C (eager extract on left-click, universal cancel +
-  smart-deposit, virtual cursor retired); layout-mode unification
-  collapsed `WorkspaceLayoutMode { STANDALONE, SIDEBAR }` to one
-  widget tree at `WORKSPACE_WIDTH_PX = 414`. Network protocol
-  23 → 24. ([`done/list-view.md`](done/list-view.md),
-  [`done/list-view-phase-3a.md`](done/list-view-phase-3a.md),
-  [`done/cursor-pickup.md`](done/cursor-pickup.md)).
-- **2026-05-03** — list-view Phases 1 + 2: single-LOD sectioned
-  vertical wall with a `ScrollerView` + flow-grid sections, plus
-  `TocPanelBuilder` tab strip with drag-to-reorder. 2D pan/zoom
-  atlas, camera, LOD bands, and nudge layout retired
-  ([`done/list-view.md`](done/list-view.md)).
-- **2026-05-02** — wayfinding (4 phases: server projection +
-  in-world chest glow + atlas chips + HUD edge stack), atlas-card
-  status redesign (NEUTRAL / FULFILLED / STORED / MIXED / CRAFT
-  unified colour + bottom-right `M/N` badge), deposit affordances
-  + hover preview, top-level Gather button + universal hotkey
-  ([`done/wayfinding.md`](done/wayfinding.md)).
-- **2026-05-01** — split-cursor (ctrl+right pickup-half on
-  hotbar / atlas / chest with virtual drop targets), full-scope
-  desired counts (player-global + kit-scoped, ctrl+scroll ±1 +
-  numeric entry, kit-active and desired-count cleanup protection);
-  legacy collection-scoped `DesiredCount*` deleted. Playtest bug
-  pass folded in alongside.
-- **2026-04-30** — facet-driven suggestions Phases 1–6.6:
-  `FacetIndex` consumed end-to-end by routing, ordering, learned
-  rules, deposit fallback, and generator content clustering
-  ([`done/facet-driven-suggestions.md`](done/facet-driven-suggestions.md));
-  learned-storage UX bug pass closed (14 original + 9 follow-on).
-
+  [`0006`](../decisions/0006-cross-loader-legacy-forge.md): Forge
+  1.20 now has the shared compile gate, action catalog transport,
+  workflow persistence, session-backed projection, common wall/card/
+  Recents/belt/kit/active-chest builders, sidebar host, tooltips,
+  parked storage-chip builder, and HUD/world wayfinding.
+- **2026-05-05** — backpack-first shift-click routing, ghost-block
+  rendering, carried-count badge fix, and docs cleanup landed;
+  list-view + cursor-pickup were closed and archived to `done/`.
+- **2026-05-04** — list-view sidebar + wall-to-vanilla-slot paths,
+  cursor-pickup A/B/C, and layout-mode unification shipped; see
+  [`done/list-view.md`](done/list-view.md),
+  [`done/list-view-phase-3a.md`](done/list-view-phase-3a.md), and
+  [`done/cursor-pickup.md`](done/cursor-pickup.md).
+- **2026-05-03** — list-view Phases 1 + 2 retired the 2D atlas in
+  favour of the sectioned vertical wall and TOC tab strip.
+- **2026-05-02** — wayfinding, atlas-card status redesign, deposit
+  affordances/preview, and the first top-level Gather path landed; see
+  [`done/wayfinding.md`](done/wayfinding.md).
+- **2026-05-01** — split-cursor and full-scope desired counts landed;
+  legacy collection-scoped `DesiredCount*` was deleted.
 ## Known issues
 
 Operational bugs not currently tied to a plan. Items from the

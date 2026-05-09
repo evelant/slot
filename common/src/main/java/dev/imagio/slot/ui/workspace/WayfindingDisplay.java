@@ -3,6 +3,8 @@ package dev.imagio.slot.ui.workspace;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WayfindingTarget;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -97,6 +99,48 @@ public final class WayfindingDisplay {
         return tail;
     }
 
+    public static HudTargets splitTargets(
+            List<WayfindingTarget> targets,
+            String playerDimensionId,
+            double playerX,
+            double playerY,
+            double playerZ
+    ) {
+        if (targets == null || targets.isEmpty()) {
+            return new HudTargets(List.of(), List.of());
+        }
+        ArrayList<RankedTarget> here = new ArrayList<>();
+        ArrayList<WayfindingTarget> elsewhere = new ArrayList<>();
+        for (WayfindingTarget target : targets) {
+            if (target == null) {
+                continue;
+            }
+            if (target.dimensionId().equals(playerDimensionId)) {
+                double dx = (target.worldX() + 0.5) - playerX;
+                double dy = (target.worldY() + 0.5) - playerY;
+                double dz = (target.worldZ() + 0.5) - playerZ;
+                here.add(new RankedTarget(target, dx * dx + dy * dy + dz * dz));
+            } else {
+                elsewhere.add(target);
+            }
+        }
+        here.sort(Comparator.comparingDouble(RankedTarget::distSq));
+        return new HudTargets(here, elsewhere);
+    }
+
+    public static String chestLabel(WayfindingTarget target) {
+        String storageId = target == null ? "" : target.storageId();
+        if (storageId == null || storageId.isBlank()) {
+            return "Chest";
+        }
+        int dash = storageId.indexOf('-');
+        String shortId = dash < 0 ? storageId : storageId.substring(0, dash);
+        if (shortId.length() > 4) {
+            shortId = shortId.substring(shortId.length() - 4);
+        }
+        return "Chest #" + shortId;
+    }
+
     private static Location locationFor(
             String storageId,
             List<WayfindingTarget> targets,
@@ -139,6 +183,16 @@ public final class WayfindingDisplay {
         public static CardText unavailable() {
             return new CardText("·", "--m");
         }
+    }
+
+    public record HudTargets(List<RankedTarget> here, List<WayfindingTarget> elsewhere) {
+        public HudTargets {
+            here = here == null ? List.of() : List.copyOf(here);
+            elsewhere = elsewhere == null ? List.of() : List.copyOf(elsewhere);
+        }
+    }
+
+    public record RankedTarget(WayfindingTarget target, double distSq) {
     }
 
     private record Location(String dimensionId, int worldX, int worldY, int worldZ) {

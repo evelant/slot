@@ -277,6 +277,9 @@ public final class SophisticatedBackpackSupport {
             Class<?> backpackInventorySlotConsumerClass,
             Method runOnBackpacksMethod,
             Method fromStackMethod,
+            Object backpackWrapperCapability,
+            Method itemStackGetCapabilityMethod,
+            Method lazyOptionalResolveMethod,
             Method getInventoryHandlerMethod,
             Method getSlotsMethod,
             Method getStackInSlotMethod,
@@ -293,25 +296,52 @@ public final class SophisticatedBackpackSupport {
                 Class<?> backpackItemClass = Class.forName("net.p3pp3rf1y.sophisticatedbackpacks.backpack.BackpackItem", false, loader);
                 Class<?> backpackWrapperClass = Class.forName("net.p3pp3rf1y.sophisticatedbackpacks.backpack.wrapper.BackpackWrapper", false, loader);
                 Class<?> storageWrapperClass = Class.forName("net.p3pp3rf1y.sophisticatedcore.api.IStorageWrapper", false, loader);
-                Class<?> itemStackHandlerClass = Class.forName("net.neoforged.neoforge.items.ItemStackHandler", false, loader);
+                Class<?> itemStackHandlerClass = firstClass(
+                        loader,
+                        "net.neoforged.neoforge.items.ItemStackHandler",
+                        "net.minecraftforge.items.ItemStackHandler"
+                );
                 Class<?> playerInventoryProviderClass = Class.forName("net.p3pp3rf1y.sophisticatedbackpacks.util.PlayerInventoryProvider", false, loader);
                 Class<?> backpackInventorySlotConsumerClass = Class.forName("net.p3pp3rf1y.sophisticatedbackpacks.util.PlayerInventoryProvider$BackpackInventorySlotConsumer", false, loader);
-                Class<?> backpackContainerClass = Class.forName("net.p3pp3rf1y.sophisticatedbackpacks.common.gui.BackpackContainer", false, loader);
-                Class<?> backpackContextItemClass = Class.forName("net.p3pp3rf1y.sophisticatedbackpacks.common.gui.BackpackContext$Item", false, loader);
                 Object playerInventoryProvider = playerInventoryProviderClass.getMethod("get").invoke(null);
                 Method runOnBackpacksMethod = playerInventoryProviderClass.getMethod("runOnBackpacks", net.minecraft.world.entity.player.Player.class, backpackInventorySlotConsumerClass);
-                Method fromStackMethod = backpackWrapperClass.getMethod("fromStack", ItemStack.class);
+                Method fromStackMethod = methodOrNull(backpackWrapperClass, "fromStack", ItemStack.class);
+                Object backpackWrapperCapability = null;
+                Method itemStackGetCapabilityMethod = null;
+                Method lazyOptionalResolveMethod = null;
+                if (fromStackMethod == null) {
+                    Class<?> capabilityWrapperClass = Class.forName("net.p3pp3rf1y.sophisticatedbackpacks.api.CapabilityBackpackWrapper", false, loader);
+                    Class<?> capabilityClass = Class.forName("net.minecraftforge.common.capabilities.Capability", false, loader);
+                    Class<?> lazyOptionalClass = Class.forName("net.minecraftforge.common.util.LazyOptional", false, loader);
+                    backpackWrapperCapability = capabilityWrapperClass.getMethod("getCapabilityInstance").invoke(null);
+                    itemStackGetCapabilityMethod = ItemStack.class.getMethod("getCapability", capabilityClass, net.minecraft.core.Direction.class);
+                    lazyOptionalResolveMethod = lazyOptionalClass.getMethod("resolve");
+                }
                 Method getInventoryHandlerMethod = storageWrapperClass.getMethod("getInventoryHandler");
                 Method getSlotsMethod = itemStackHandlerClass.getMethod("getSlots");
                 Method getStackInSlotMethod = itemStackHandlerClass.getMethod("getStackInSlot", int.class);
-                Method getBackpackContextMethod = backpackContainerClass.getMethod("getBackpackContext");
-                Method getBackpackSlotIndexMethod = backpackContextItemClass.getMethod("getBackpackSlotIndex");
                 Method getContentsUuidMethod = backpackWrapperClass.getMethod("getContentsUuid");
                 Method onContentsNbtUpdatedMethod = backpackWrapperClass.getMethod("onContentsNbtUpdated");
-                Field handlerNameField = backpackContextItemClass.getDeclaredField("handlerName");
-                handlerNameField.setAccessible(true);
-                Field identifierField = backpackContextItemClass.getDeclaredField("identifier");
-                identifierField.setAccessible(true);
+
+                Class<?> backpackContainerClass = null;
+                Method getBackpackContextMethod = null;
+                Method getBackpackSlotIndexMethod = null;
+                Field handlerNameField = null;
+                Field identifierField = null;
+                try {
+                    backpackContainerClass = Class.forName("net.p3pp3rf1y.sophisticatedbackpacks.common.gui.BackpackContainer", false, loader);
+                    Class<?> backpackContextItemClass = Class.forName("net.p3pp3rf1y.sophisticatedbackpacks.common.gui.BackpackContext$Item", false, loader);
+                    getBackpackContextMethod = backpackContainerClass.getMethod("getBackpackContext");
+                    getBackpackSlotIndexMethod = backpackContextItemClass.getMethod("getBackpackSlotIndex");
+                    handlerNameField = backpackContextItemClass.getDeclaredField("handlerName");
+                    handlerNameField.setAccessible(true);
+                    identifierField = backpackContextItemClass.getDeclaredField("identifier");
+                    identifierField.setAccessible(true);
+                } catch (ReflectiveOperationException | LinkageError ignored) {
+                    // Opened-backpack menu detection is optional. Carried
+                    // inventory discovery/routing must keep working across
+                    // SB loader/version UI package drift.
+                }
                 return new ReflectionState(
                         true,
                         backpackItemClass,
@@ -320,6 +350,9 @@ public final class SophisticatedBackpackSupport {
                         backpackInventorySlotConsumerClass,
                         runOnBackpacksMethod,
                         fromStackMethod,
+                        backpackWrapperCapability,
+                        itemStackGetCapabilityMethod,
+                        lazyOptionalResolveMethod,
                         getInventoryHandlerMethod,
                         getSlotsMethod,
                         getStackInSlotMethod,
@@ -330,8 +363,28 @@ public final class SophisticatedBackpackSupport {
                         handlerNameField,
                         identifierField
                 );
-            } catch (ReflectiveOperationException ignored) {
-                return new ReflectionState(false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+            } catch (ReflectiveOperationException | RuntimeException | LinkageError ignored) {
+                return new ReflectionState(false, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+            }
+        }
+
+        private static Class<?> firstClass(ClassLoader loader, String... classNames) throws ClassNotFoundException {
+            ClassNotFoundException last = null;
+            for (String className : classNames) {
+                try {
+                    return Class.forName(className, false, loader);
+                } catch (ClassNotFoundException exception) {
+                    last = exception;
+                }
+            }
+            throw last == null ? new ClassNotFoundException("missing class candidates") : last;
+        }
+
+        private static Method methodOrNull(Class<?> owner, String name, Class<?>... parameterTypes) {
+            try {
+                return owner.getMethod(name, parameterTypes);
+            } catch (NoSuchMethodException ignored) {
+                return null;
             }
         }
 
@@ -340,14 +393,27 @@ public final class SophisticatedBackpackSupport {
         }
 
         private Object fromStack(ItemStack stack) {
-            if (!available) {
+            if (!available || stack == null || stack.isEmpty()) {
                 return null;
             }
             try {
-                return fromStackMethod.invoke(null, stack);
-            } catch (ReflectiveOperationException ignored) {
+                if (fromStackMethod != null) {
+                    return fromStackMethod.invoke(null, stack);
+                }
+                if (itemStackGetCapabilityMethod == null
+                        || backpackWrapperCapability == null
+                        || lazyOptionalResolveMethod == null) {
+                    return null;
+                }
+                Object lazyOptional = itemStackGetCapabilityMethod.invoke(stack, backpackWrapperCapability, null);
+                Object resolved = lazyOptionalResolveMethod.invoke(lazyOptional);
+                if (resolved instanceof Optional<?> optional) {
+                    return optional.orElse(null);
+                }
+            } catch (ReflectiveOperationException | RuntimeException | LinkageError ignored) {
                 return null;
             }
+            return null;
         }
 
         private Object inventoryHandler(Object wrapper) {
@@ -448,7 +514,14 @@ public final class SophisticatedBackpackSupport {
         }
 
         private BackpackCarrierRef openedBackpackCarrier(AbstractContainerMenu menu) {
-            if (!available || menu == null || backpackContainerClass == null || !backpackContainerClass.isInstance(menu)) {
+            if (!available
+                    || menu == null
+                    || backpackContainerClass == null
+                    || getBackpackContextMethod == null
+                    || getBackpackSlotIndexMethod == null
+                    || handlerNameField == null
+                    || identifierField == null
+                    || !backpackContainerClass.isInstance(menu)) {
                 return null;
             }
             try {

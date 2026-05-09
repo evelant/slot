@@ -127,12 +127,12 @@ class WallCardTransferGesturePolicyTest {
     }
 
     @Test
-    void shiftClickCarriedInSidebarQuickMovesToHost() {
+    void shiftClickCarriedInSidebarQuickMovesAllMatchingToHost() {
         var decision = WallCardTransferGesturePolicy.click(new WallCardTransferGesturePolicy.Context(
                 carriedItem(), 0, true, false, null, false, true, 9, true));
 
         assertEquals(CROSS_SURFACE_QUICK_MOVE, decision.action());
-        assertEquals(1, decision.count());
+        assertEquals(WallCardTransferGesturePolicy.PICKUP_MAX, decision.count());
     }
 
     @Test

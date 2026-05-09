@@ -6,13 +6,13 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 
 /**
- * Client → server "gather active kit from nearby chests". Carries no
- * fields — the active kit and proximate chests are resolved server-
- * side from the player's runtime state.
+ * Client -> server "gather desired items from nearby chests". Carries no
+ * fields; desired counts, active kit needs, and proximate chests are
+ * resolved server-side from the player's runtime state.
  *
- * <p>Sent by both the in-world client-tick handler (when the SLOT UI
- * is not mounted) and the in-screen action overlay's Gather button so
- * one server path covers both contexts.
+ * <p>Sent by the in-world client-tick handler when the SLOT UI is not
+ * mounted. In-screen gather uses the shared workspace action catalog
+ * and delegates to the same common service.
  */
 public record SlotGatherActiveKitPayload() implements CustomPacketPayload {
     public static final Type<SlotGatherActiveKitPayload> TYPE =

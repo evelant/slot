@@ -51,7 +51,7 @@ public final class WallCardTransferGesturePolicy {
         }
         if (context.shiftDown()) {
             if (context.sidebarActive() && item.carried()) {
-                return Decision.action(Action.CROSS_SURFACE_QUICK_MOVE, 1);
+                return Decision.action(Action.CROSS_SURFACE_QUICK_MOVE, PICKUP_MAX);
             }
             if (missingProximatePresence(item)) {
                 return Decision.status("nearby chest data missing");

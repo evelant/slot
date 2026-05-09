@@ -1,5 +1,6 @@
 package dev.imagio.slot.neoforge.storage;
 
+import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
@@ -93,7 +94,13 @@ public final class NeoForgeCarriedSourceAccess implements CarriedSourceAccess {
                 if (result != null) {
                     remaining = result;
                 }
-            } catch (RuntimeException | LinkageError ignored) {
+            } catch (RuntimeException | LinkageError failure) {
+                SlotCommon.LOGGER.warn(
+                        "[SLOT] NeoForge carried provider insertBestFit failed provider={} simulate=false item={} count={} error={}",
+                        provider.prefix(),
+                        itemDescription(remaining),
+                        remaining.getCount(),
+                        failure.toString());
             }
         }
         if (remaining.isEmpty()) {
@@ -125,7 +132,14 @@ public final class NeoForgeCarriedSourceAccess implements CarriedSourceAccess {
                     result = ItemStack.EMPTY;
                 }
                 remaining = result;
-            } catch (RuntimeException | LinkageError ignored) {
+            } catch (RuntimeException | LinkageError failure) {
+                SlotCommon.LOGGER.warn(
+                        "[SLOT] NeoForge carried provider insertIntoProviders failed provider={} simulate={} item={} count={} error={}",
+                        provider.prefix(),
+                        simulate,
+                        itemDescription(remaining),
+                        remaining.getCount(),
+                        failure.toString());
             }
         }
         return remaining;
@@ -177,6 +191,13 @@ public final class NeoForgeCarriedSourceAccess implements CarriedSourceAccess {
         return BuiltinInventoryIds.PLAYER_MAIN.equals(sourceId)
                 || BuiltinInventoryIds.PLAYER_QUICK_ACCESS_LANE_0.equals(sourceId)
                 || BuiltinInventoryIds.PLAYER_OFFHAND.equals(sourceId);
+    }
+
+    private static String itemDescription(ItemStack stack) {
+        if (stack == null || stack.isEmpty()) {
+            return "empty";
+        }
+        return stack.getItem().builtInRegistryHolder().key().location().toString();
     }
 
     private static ItemStack builtinPeek(ServerPlayer player, String sourceId, int slotIndex) {

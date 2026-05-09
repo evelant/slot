@@ -89,7 +89,7 @@ public final class ActiveChestStripUiBuilder {
         return strip;
     }
 
-    private static SlotUiElement baseStrip(SlotWorkspaceViewModel.ActiveChestPanel panel) {
+    private SlotUiElement baseStrip(SlotWorkspaceViewModel.ActiveChestPanel panel) {
         return SlotUiElement.panel(PANEL)
                 .zIndex(7)
                 .attach(WorkspaceUiAttachments.ACTIVE_CHEST_STRIP, panel)
@@ -100,7 +100,12 @@ public final class ActiveChestStripUiBuilder {
                         .gapAll(4)
                         .alignItems(SlotUiLayout.AlignItems.CENTER)
                         .flexDirection(SlotUiLayout.FlexDirection.ROW))
-                .on(SlotUiEventKind.MOUSE_DOWN, event -> event.stopPropagation());
+                .on(SlotUiEventKind.MOUSE_DOWN, event -> {
+                    event.stopPropagation();
+                    if (event.button() == 1 && panel != null && panel.isClaimed()) {
+                        context.openChestMenu(panel.storageId(), event.x(), event.y());
+                    }
+                });
     }
 
     private static String claimedDisplayLabel(SlotWorkspaceViewModel.ActiveChestPanel panel) {
@@ -115,6 +120,9 @@ public final class ActiveChestStripUiBuilder {
         void claimChestAt(SlotWorkspaceViewModel.ActiveChestPanel panel);
 
         default void forgetChest(String storageId) {
+        }
+
+        default void openChestMenu(String storageId, float screenX, float screenY) {
         }
     }
 }

@@ -112,9 +112,8 @@ public final class SlotAtlasKeyMappings {
             CATEGORY
     );
 
-    // One-press "gather everything the active kit needs from nearby
-    // chests". Works from inside the SLOT atlas AND in-world so the
-    // player can fetch a kit without first opening the inventory.
+    // One-press gather for desired-count gaps and active-kit needs from
+    // nearby chests. Works from inside the SLOT atlas AND in-world.
     // Unbound by default — the action is a small button-click away
     // inside the atlas, and the in-world hotkey is opt-in for power
     // users who refresh kits often.

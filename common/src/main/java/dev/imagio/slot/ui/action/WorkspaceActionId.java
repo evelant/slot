@@ -19,6 +19,7 @@ public enum WorkspaceActionId {
     CLAIM_CHEST_AT_POS("slot.workspace.claim_chest_at_pos", STRING, INTEGER, INTEGER, INTEGER),
     FORGET_ITEM_AFFINITY("slot.workspace.forget_item_affinity", STRING, STRING, STRING, STRING),
     DEPOSIT("slot.workspace.deposit"),
+    GATHER_ACTIVE_KIT("slot.workspace.gather_active_kit"),
     TAKE_ALL_FROM_CHEST("slot.workspace.take_all_from_chest", STRING),
     LOOT_CHEST_TAKE_ALL("slot.workspace.loot_chest_take_all", STRING, INTEGER, INTEGER, INTEGER),
     LOOT_CHEST_TAKE_IDENTITY("slot.workspace.loot_chest_take_identity", STRING, INTEGER, INTEGER, INTEGER, STRING, STRING, STRING),

@@ -1,7 +1,10 @@
 package dev.imagio.slot.forge;
 
 import dev.imagio.slot.SlotCommon;
+import dev.imagio.slot.compat.sophisticated.SophisticatedBackpacksCarriedProvider;
 import dev.imagio.slot.forge.network.SlotForgeNetworking;
+import dev.imagio.slot.forge.storage.ForgeSlotPickupRouter;
+import dev.imagio.slot.inventory.storage.CarriedProviderRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
@@ -12,8 +15,10 @@ public final class SlotForge {
 
     public SlotForge(FMLJavaModLoadingContext context) {
         Forge120Platform.bootstrap();
+        CarriedProviderRegistry.register(new SophisticatedBackpacksCarriedProvider());
         SlotForgeNetworking.register();
         SlotCommon.init();
+        ForgeSlotPickupRouter.init();
         SlotCommon.LOGGER.info("SLOT (forge-1.20) loaded");
     }
 }

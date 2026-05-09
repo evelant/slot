@@ -16,6 +16,7 @@ import dev.imagio.slot.neoforge.client.wayfinding.WayfindingTargetCache;
 import dev.imagio.slot.ui.spi.SlotUiElement;
 import dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy;
 import dev.imagio.slot.ui.workspace.WallCardUiBuilder;
+import dev.imagio.slot.ui.workspace.WorkspaceGatherUiSupport;
 import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
@@ -92,6 +93,7 @@ final class AtlasCardBuilder {
                     SlotWorkspaceViewModel.ChestPresenceEntry.class
             );
             if (wayfindingEntry != null) {
+                element.clearAllChildren();
                 UIElement iconCell = new UIElement().layout(layout -> layout
                         .positionType(TaffyPosition.ABSOLUTE)
                         .left(0).top(0)
@@ -232,7 +234,7 @@ final class AtlasCardBuilder {
         if (host.viewModel.depositableIdentities().contains(item.identity())) {
             addDepositPreviewOutline(body);
         }
-        if (isGatherableItem(item)) {
+        if (WorkspaceGatherUiSupport.isGatherableItem(item)) {
             addGatherPreviewOutline(body);
         }
         if (!host.searchController.normalizedQuery().isBlank()) {
@@ -442,25 +444,6 @@ final class AtlasCardBuilder {
                 .textAlignVertical(Vertical.CENTER));
         pip.addChild(count);
         body.addChild(pip);
-    }
-
-    /**
-     * Whether this item would be pulled by a click on the global
-     * Gather button. A gatherable identity has presence in a proximate
-     * chest AND either: (a) the active kit needs it (carry-gap > 0),
-     * or (b) the player has set a positive desired count and the
-     * carry total falls short of it. Phase 6 of the single-column
-     * workspace plan generalised the gate so Gather works without an
-     * active kit when player-global desired counts have a gap.
-     */
-    static boolean isGatherableItem(SlotWorkspaceViewModel.AtlasItem item) {
-        if (item == null || item.presence().isEmpty()) {
-            return false;
-        }
-        if (item.kitNeeded()) {
-            return true;
-        }
-        return item.desiredCount() > 0 && item.totalCount() < item.desiredCount();
     }
 
     private UIElement buildWayfindingStrip(SlotWorkspaceViewModel.ChestPresenceEntry entry) {
