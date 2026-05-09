@@ -240,8 +240,6 @@ final class ContextMenuBuilder {
             ));
         }
 
-        menu.addChild(menuButton("Cancel", true, null, this::closeContextMenu));
-
         UIElement wrapper = new UIElement().layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
                 .left(0).right(0).top(0).bottom(0));

@@ -47,6 +47,14 @@ class WorkspaceActionCatalogTest {
                 WorkspaceActionCatalog.require(WorkspaceActionId.PICKUP_TO_CURSOR).argumentTypes()
         );
         assertEquals(
+                java.util.List.of(
+                        WorkspaceActionArgumentType.STRING,
+                        WorkspaceActionArgumentType.STRING,
+                        WorkspaceActionArgumentType.STRING
+                ),
+                WorkspaceActionCatalog.require(WorkspaceActionId.TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY).argumentTypes()
+        );
+        assertEquals(
                 java.util.List.of(),
                 WorkspaceActionCatalog.require(WorkspaceActionId.CURSOR_CANCEL).argumentTypes()
         );

@@ -119,6 +119,40 @@ class WallSectionHeaderUiBuilderTest {
     }
 
     @Test
+    void wallCardDoesNotRenderElsewherePlusBadgeWithoutSearch() {
+        RecordingCardContext context = new RecordingCardContext();
+        SlotWorkspaceViewModel.AtlasItem item = atlasItem(
+                "minecraft:torch",
+                "Torch",
+                false,
+                true,
+                java.util.List.of(new SlotWorkspaceViewModel.ChestPresenceEntry("remote", "Warehouse", 32))
+        );
+
+        SlotUiElement card = new WallCardUiBuilder(context).card(item);
+
+        assertTrue(descendantText(card).stream().noneMatch(text -> text.startsWith("+")));
+    }
+
+    @Test
+    void wallCardRendersStoredPlusBadgeForSearchMatch() {
+        RecordingCardContext context = new RecordingCardContext();
+        context.searchQuery = "torch";
+        context.searchMatches = true;
+        SlotWorkspaceViewModel.AtlasItem item = atlasItem(
+                "minecraft:torch",
+                "Torch",
+                false,
+                true,
+                java.util.List.of(new SlotWorkspaceViewModel.ChestPresenceEntry("remote", "Warehouse", 32))
+        );
+
+        SlotUiElement card = new WallCardUiBuilder(context).card(item);
+
+        assertTrue(descendantText(card).contains("+32"));
+    }
+
+    @Test
     void wallCardExpandsForBestElsewhereSearchHit() {
         RecordingCardContext context = new RecordingCardContext();
         context.searchQuery = "stone";
@@ -243,6 +277,22 @@ class WallSectionHeaderUiBuilderTest {
         assertSame(item, context.focused);
     }
 
+    @Test
+    void recentsIconHoverTracksItem() {
+        RecordingRecentsContext context = new RecordingRecentsContext();
+        SlotWorkspaceViewModel.AtlasItem item = atlasItem("minecraft:stone", "Stone", true, true);
+        context.items.put(item.identity(), item);
+        SlotUiElement strip = new RecentsStripUiBuilder(context).overlay(java.util.List.of(item.identity()));
+        SlotUiElement icon = strip.children().get(1);
+
+        icon.dispatch(new SlotUiEvent(SlotUiEventKind.MOUSE_ENTER, 0, 0, 0, false));
+        icon.dispatch(new SlotUiEvent(SlotUiEventKind.MOUSE_LEAVE, 0, 0, 0, false));
+
+        assertSame(item, context.hovered);
+        assertSame(item, context.cleared);
+    }
+
+
     private static SlotWorkspaceViewModel.AtlasIsland island(String id, String label, int count) {
         return new SlotWorkspaceViewModel.AtlasIsland(
                 id,
@@ -302,6 +352,24 @@ class WallSectionHeaderUiBuilderTest {
                 -1,
                 0
         );
+    }
+
+    private static java.util.List<String> descendantText(SlotUiElement root) {
+        java.util.ArrayList<String> text = new java.util.ArrayList<>();
+        collectText(root, text);
+        return text;
+    }
+
+    private static void collectText(SlotUiElement element, java.util.ArrayList<String> text) {
+        if (element == null) {
+            return;
+        }
+        if (element.text() != null && !element.text().isBlank()) {
+            text.add(element.text());
+        }
+        for (SlotUiElement child : element.children()) {
+            collectText(child, text);
+        }
     }
 
     private static final class RecordingContext implements WallSectionHeaderUiBuilder.Context {
@@ -364,6 +432,8 @@ class WallSectionHeaderUiBuilderTest {
         final java.util.Map<SlotWorkspaceViewModel.IdentityRef, SlotWorkspaceViewModel.AtlasItem> items =
                 new java.util.LinkedHashMap<>();
         SlotWorkspaceViewModel.AtlasItem focused;
+        SlotWorkspaceViewModel.AtlasItem hovered;
+        SlotWorkspaceViewModel.AtlasItem cleared;
 
         @Override
         public SlotWorkspaceViewModel.AtlasItem atlasItem(SlotWorkspaceViewModel.IdentityRef identity) {
@@ -373,6 +443,16 @@ class WallSectionHeaderUiBuilderTest {
         @Override
         public void focusRecent(SlotWorkspaceViewModel.AtlasItem item) {
             focused = item;
+        }
+
+        @Override
+        public void hoverRecent(SlotWorkspaceViewModel.AtlasItem item) {
+            hovered = item;
+        }
+
+        @Override
+        public void clearHoveredRecent(SlotWorkspaceViewModel.AtlasItem item) {
+            cleared = item;
         }
     }
 }

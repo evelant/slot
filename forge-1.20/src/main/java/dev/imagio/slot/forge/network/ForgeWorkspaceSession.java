@@ -212,6 +212,14 @@ final class ForgeWorkspaceSession {
                 reapplyActiveKitAfterCarryAcquisition(player, chestOutcome);
                 yield chestOutcome;
             }
+            case TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY -> {
+                WorkspaceCommandOutcome chestOutcome = WorkspaceChestCommandService.takeDesiredGapOrStackByIdentity(
+                        player,
+                        runtime,
+                        identityArg(args, 0));
+                reapplyActiveKitAfterCarryAcquisition(player, chestOutcome);
+                yield chestOutcome;
+            }
             case TAKE_STACK_BY_IDENTITY -> {
                 WorkspaceCommandOutcome chestOutcome = WorkspaceChestCommandService.takeByIdentity(
                         player,
@@ -801,7 +809,7 @@ final class ForgeWorkspaceSession {
     }
 
     private WorkspaceCommandOutcome gatherActiveKit(ServerPlayer player) {
-        return KitGatherService.toWorkspaceOutcome(KitGatherService.gatherActiveKit(player, runtime));
+        return KitGatherService.toWorkspaceOutcome(gatherActiveKitAndReapply(player, runtime));
     }
 
     private WorkspaceCommandOutcome setKitSlotIdentity(
@@ -838,6 +846,23 @@ final class ForgeWorkspaceSession {
             InventoryHostDescriptor host,
             ServerPlayer player
     ) {
+        return actionExecutor(runtime, host, player);
+    }
+
+    static KitGatherService.Outcome gatherActiveKitAndReapply(
+            ServerPlayer player,
+            WorkflowDomainRuntime runtime
+    ) {
+        KitGatherService.Outcome outcome = KitGatherService.gatherActiveKit(player, runtime);
+        reapplyActiveKitFromCarry(player, runtime);
+        return outcome;
+    }
+
+    private static Function<InventoryActionRequest, InventoryActionOutcome> actionExecutor(
+            WorkflowDomainRuntime runtime,
+            InventoryHostDescriptor host,
+            ServerPlayer player
+    ) {
         return request -> {
             InventoryActionOutcome outcome = InventoryActionExecutor.execute(
                     host,
@@ -845,7 +870,7 @@ final class ForgeWorkspaceSession {
                     request,
                     ProtectionPolicy.allowAll()
             );
-            recordOutcome(player, outcome);
+            recordOutcome(runtime, player, outcome);
             return outcome;
         };
     }
@@ -880,21 +905,25 @@ final class ForgeWorkspaceSession {
                 || "took_all_partial".equals(status))) {
             return;
         }
-        ForgeCarriedActivityTracker.suppressNext(player);
-        if (!runtime.kitWorkflow().activation().isActive()) {
-            return;
-        }
+        reapplyActiveKitFromCarry(player, runtime);
+    }
+
+    private static void reapplyActiveKitFromCarry(ServerPlayer player, WorkflowDomainRuntime runtime) {
         InventoryHostDescriptor host = resolveHost(player);
         if (host == null) {
             return;
         }
+        if (runtime == null || !runtime.kitWorkflow().activation().isActive()) {
+            return;
+        }
+        ForgeCarriedActivityTracker.suppressNext(player);
         InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(player, host);
         SlotWorkspaceCommandService.reapplyActiveKit(
                 runtime,
                 authority,
                 ProtectionPolicy.allowAll(),
                 KIT_IDENTITY_RESOLVER,
-                actionExecutor(host, player));
+                actionExecutor(runtime, host, player));
     }
 
     private dev.imagio.slot.inventory.triage.IslandSignalDescriptor descriptorForIdentity(ItemIdentity identity) {
@@ -917,6 +946,14 @@ final class ForgeWorkspaceSession {
     }
 
     private void recordOutcome(ServerPlayer player, InventoryActionOutcome outcome) {
+        recordOutcome(runtime, player, outcome);
+    }
+
+    private static void recordOutcome(
+            WorkflowDomainRuntime runtime,
+            ServerPlayer player,
+            InventoryActionOutcome outcome
+    ) {
         if (runtime != null) {
             runtime.recordOutcome(outcome);
         }

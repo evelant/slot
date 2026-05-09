@@ -415,8 +415,11 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
-        applyOutcome(serverPlayer, KitGatherService.toWorkspaceOutcome(
-                KitGatherService.gatherActiveKit(serverPlayer, workflowRuntime(serverPlayer))));
+        KitGatherService.Outcome gatherOutcome = KitGatherService.gatherActiveKit(
+                serverPlayer,
+                workflowRuntime(serverPlayer));
+        reapplyActiveKitFromCarry(serverPlayer);
+        applyOutcome(serverPlayer, KitGatherService.toWorkspaceOutcome(gatherOutcome));
     }
 
     /**
@@ -1617,6 +1620,21 @@ final class SlotWorkspaceUiSession {
      */
     void takeOneByIdentity(String itemId, String comparisonMode, String componentFingerprint) {
         takeByIdentity(itemId, comparisonMode, componentFingerprint, 1);
+    }
+
+    void takeDesiredGapOrStackByIdentity(String itemId, String comparisonMode, String componentFingerprint) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            reject("invalid_identity");
+            return;
+        }
+        applyTakeOutcome(serverPlayer, WorkspaceChestCommandService.takeDesiredGapOrStackByIdentity(
+                serverPlayer,
+                workflowRuntime(serverPlayer),
+                identity));
     }
 
     void takeStackByIdentity(String itemId, String comparisonMode, String componentFingerprint) {

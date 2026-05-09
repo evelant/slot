@@ -4,8 +4,8 @@ import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 
 /**
  * Card-level fulfillment status derived from the projection's per-item
- * fields. Drives the status border + count text + progress bar so the
- * three signals share one vocabulary.
+ * fields. Drives the status border + count text so the signals share
+ * one vocabulary without adding extra chrome.
  *
  * <p>The status answers "do you have enough, and if not how easy is it
  * to fix?" The answer maps to one of {@link Level}; orthogonal kit
@@ -89,26 +89,4 @@ record AtlasCardStatus(Level level, boolean kitRelevant, int carriedCount, int s
         return level == Level.STORED || level == Level.MIXED || level == Level.CRAFT;
     }
 
-    /** True when the card should paint a progress bar (any desired-count item). */
-    boolean wantsProgressBar() {
-        return desiredCount > 0;
-    }
-
-    /** Carried as a fraction of desired, clamped to [0, 1]. */
-    float carriedFraction() {
-        if (desiredCount <= 0) {
-            return 1f;
-        }
-        return Math.max(0f, Math.min(1f, carriedCount / (float) desiredCount));
-    }
-
-    /** Storage-coverage of the *remaining* gap, fraction of total desired in [0, 1]. */
-    float storedFraction() {
-        if (desiredCount <= 0) {
-            return 0f;
-        }
-        int gap = Math.max(0, desiredCount - carriedCount);
-        int fillable = Math.min(storedCount, gap);
-        return Math.max(0f, Math.min(1f, fillable / (float) desiredCount));
-    }
 }

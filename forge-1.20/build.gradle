@@ -87,6 +87,8 @@ dependencies {
         transitive = false
     }
 
+    implementation "maven.modrinth:embers-text-api:${emberstextapi_version}+forge-${forge_minecraft_version}"
+
     testImplementation platform("org.junit:junit-bom:${junit_version}")
     testImplementation "org.junit.jupiter:junit-jupiter-api"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine"

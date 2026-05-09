@@ -53,6 +53,7 @@ public enum WorkspaceActionId {
     TAKE_FROM_CHEST("slot.workspace.take_from_chest", STRING, INTEGER),
     TAKE_ONE_FROM_CHEST("slot.workspace.take_one_from_chest", STRING, INTEGER),
     TAKE_ONE_BY_IDENTITY("slot.workspace.take_one_by_identity", STRING, STRING, STRING),
+    TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY("slot.workspace.take_desired_gap_or_stack_by_identity", STRING, STRING, STRING),
     TAKE_STACK_BY_IDENTITY("slot.workspace.take_stack_by_identity", STRING, STRING, STRING),
     ASSIGN_HOME_TO_HOTBAR_ONLY("slot.workspace.assign_home_to_hotbar_only", STRING, STRING, STRING),
     ASSIGN_IDENTITY_TO_HOTBAR_SLOT("slot.workspace.assign_identity_to_hotbar_slot", STRING, STRING, STRING, INTEGER),

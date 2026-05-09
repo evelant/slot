@@ -5,12 +5,15 @@ import dev.imagio.slot.forge.network.ForgeWorkspaceViewModelClientCache;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WayfindingTarget;
+import dev.imagio.slot.platform.SlotResourceAccess;
 import dev.imagio.slot.ui.workspace.WayfindingDisplay;
 import dev.imagio.slot.ui.workspace.WayfindingGlowMath;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.event.RenderGuiEvent;
 
@@ -31,6 +34,7 @@ public final class ForgeWayfindingHudRenderer {
     private static final int TEXT_RGB = 0xE8EEF2;
     private static final int MUTED_RGB = 0xA0AAB3;
     private static final int ACCENT_RGB = 0x7AC7A7;
+    private static final ResourceLocation SLOT_UI_FONT = SlotResourceAccess.current().id("slot", "slot_ui");
 
     private ForgeWayfindingHudRenderer() {
     }
@@ -158,7 +162,7 @@ public final class ForgeWayfindingHudRenderer {
         int width = CHIP_WIDTH / 2;
         graphics.fill(x + CHIP_WIDTH - width, y, x + CHIP_WIDTH, y + CHIP_HEIGHT / 2 + 2, CHIP_FILL);
         String text = "+" + overflow + " more";
-        float scaledWidth = font.width(text) * TEXT_SCALE;
+        float scaledWidth = textWidth(font, text) * TEXT_SCALE;
         drawScaled(graphics, font, text,
                 x + CHIP_WIDTH - width / 2 - (int) (scaledWidth / 2),
                 y + 2,
@@ -166,7 +170,7 @@ public final class ForgeWayfindingHudRenderer {
     }
 
     private static void drawRightScaled(GuiGraphics graphics, Font font, String text, int rightX, int y, int color) {
-        float scaledWidth = font.width(text) * TEXT_SCALE;
+        float scaledWidth = textWidth(font, text) * TEXT_SCALE;
         drawScaled(graphics, font, text, rightX - (int) scaledWidth, y, color);
     }
 
@@ -177,8 +181,17 @@ public final class ForgeWayfindingHudRenderer {
         graphics.pose().pushPose();
         graphics.pose().translate(x, y, 0);
         graphics.pose().scale(TEXT_SCALE, TEXT_SCALE, 1f);
-        graphics.drawString(font, text, 0, 0, color, false);
+        graphics.drawString(font, uiText(text), 0, 0, color, false);
         graphics.pose().popPose();
+    }
+
+    private static int textWidth(Font font, String text) {
+        return font.width(uiText(text));
+    }
+
+    private static Component uiText(String text) {
+        return Component.literal(text == null ? "" : text)
+                .withStyle(style -> style.withFont(SLOT_UI_FONT));
     }
 
     private static int withAlpha(int rgb, int alpha) {
@@ -189,13 +202,13 @@ public final class ForgeWayfindingHudRenderer {
         if (text == null) {
             return "";
         }
-        if (font.width(text) <= maxWidth) {
+        if (textWidth(font, text) <= maxWidth) {
             return text;
         }
         String ellipsis = "…";
-        int ellipsisWidth = font.width(ellipsis);
+        int ellipsisWidth = textWidth(font, ellipsis);
         StringBuilder sb = new StringBuilder(text);
-        while (sb.length() > 0 && font.width(sb.toString()) + ellipsisWidth > maxWidth) {
+        while (sb.length() > 0 && textWidth(font, sb.toString()) + ellipsisWidth > maxWidth) {
             sb.deleteCharAt(sb.length() - 1);
         }
         return sb + ellipsis;

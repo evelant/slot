@@ -14,6 +14,7 @@ import static dev.imagio.slot.ui.workspace.WorkspaceUiPalette.ROW_DIM;
 
 public final class HotbarBeltUiBuilder {
     public static final int BELT_HEIGHT_PX = 24;
+    public static final int BELT_WITH_LEADING_HEIGHT_PX = 28;
     public static final int SLOT_SIZE_PX = 20;
     public static final int ICON_SIZE_PX = 16;
 
@@ -35,33 +36,49 @@ public final class HotbarBeltUiBuilder {
             List<SlotWorkspaceViewModel.HotbarSlot> hotbarSlots,
             SlotWorkspaceViewModel.OffhandSlot offhand
     ) {
+        return belt(hotbarSlots, offhand, null);
+    }
+
+    public SlotUiElement belt(
+            List<SlotWorkspaceViewModel.HotbarSlot> hotbarSlots,
+            SlotWorkspaceViewModel.OffhandSlot offhand,
+            SlotUiElement leading
+    ) {
+        int slotSize = leading == null ? SLOT_SIZE_PX : 16;
+        int iconSize = leading == null ? ICON_SIZE_PX : 14;
         SlotUiElement strip = SlotUiElement.panel(PANEL)
                 .zIndex(6)
                 .attach(WorkspaceUiAttachments.HOTBAR_STRIP, Boolean.TRUE)
                 .layout(layout -> layout
                         .widthPercent(100)
-                        .height(BELT_HEIGHT_PX)
+                        .height(leading == null ? BELT_HEIGHT_PX : BELT_WITH_LEADING_HEIGHT_PX)
                         .paddingAll(3)
-                        .gapAll(2)
+                        .gapAll(leading == null ? 2 : 1)
                         .alignItems(SlotUiLayout.AlignItems.CENTER)
                         .flexDirection(SlotUiLayout.FlexDirection.ROW));
         strip.on(SlotUiEventKind.MOUSE_DOWN, event -> event.stopPropagation());
 
-        for (SlotWorkspaceViewModel.HotbarSlot slot : safeHotbar(hotbarSlots)) {
-            strip.addChild(slotButton(slot));
+        if (leading != null) {
+            strip.addChild(leading);
         }
-        strip.addChild(offhandButton(offhand == null ? SlotWorkspaceViewModel.OffhandSlot.empty() : offhand));
+        for (SlotWorkspaceViewModel.HotbarSlot slot : safeHotbar(hotbarSlots)) {
+            strip.addChild(slotButton(slot, slotSize, iconSize));
+        }
+        strip.addChild(offhandButton(
+                offhand == null ? SlotWorkspaceViewModel.OffhandSlot.empty() : offhand,
+                slotSize,
+                iconSize));
         return strip;
     }
 
-    private SlotUiElement slotButton(SlotWorkspaceViewModel.HotbarSlot slot) {
+    private SlotUiElement slotButton(SlotWorkspaceViewModel.HotbarSlot slot, int slotSize, int iconSize) {
         SlotUiElement button = SlotUiElement.button("", true, slotColor(slot))
                 .noText()
                 .zIndex(2)
                 .attach(WorkspaceUiAttachments.HOTBAR_SLOT, slot)
                 .layout(layout -> layout
-                        .width(SLOT_SIZE_PX)
-                        .height(SLOT_SIZE_PX)
+                        .width(slotSize)
+                        .height(slotSize)
                         .paddingAll(1)
                         .alignItems(SlotUiLayout.AlignItems.CENTER)
                         .flexDirection(SlotUiLayout.FlexDirection.COLUMN));
@@ -92,8 +109,8 @@ public final class HotbarBeltUiBuilder {
             context.setStatus("ready");
         });
         button.addChild(slot.occupied()
-                ? SlotUiElement.itemIcon(slot.displayStack(), ICON_SIZE_PX, true).renderVanillaCount(true)
-                : SlotUiElement.panel(EMPTY_SLOT).layout(layout -> layout.width(ICON_SIZE_PX).height(ICON_SIZE_PX)));
+                ? SlotUiElement.itemIcon(slot.displayStack(), iconSize, true).renderVanillaCount(true)
+                : SlotUiElement.panel(EMPTY_SLOT).layout(layout -> layout.width(iconSize).height(iconSize)));
         button.addChild(slotIndexLabel(Integer.toString(slot.hotbarIndex() + 1), slot.selected() ? ACCENT : MUTED));
         return button;
     }
@@ -102,14 +119,14 @@ public final class HotbarBeltUiBuilder {
         return slot.selected() && slot.occupied() ? ACTIVE_HOTBAR : ROW;
     }
 
-    private SlotUiElement offhandButton(SlotWorkspaceViewModel.OffhandSlot offhand) {
+    private SlotUiElement offhandButton(SlotWorkspaceViewModel.OffhandSlot offhand, int slotSize, int iconSize) {
         SlotUiElement button = SlotUiElement.button("", false, ROW_DIM)
                 .noText()
                 .zIndex(1)
                 .attach(WorkspaceUiAttachments.OFFHAND_SLOT, offhand)
                 .layout(layout -> layout
-                        .width(SLOT_SIZE_PX)
-                        .height(SLOT_SIZE_PX)
+                        .width(slotSize)
+                        .height(slotSize)
                         .paddingAll(1)
                         .alignItems(SlotUiLayout.AlignItems.CENTER)
                         .flexDirection(SlotUiLayout.FlexDirection.COLUMN));
@@ -118,8 +135,8 @@ public final class HotbarBeltUiBuilder {
             button.tooltipStack(offhand.displayStack());
         }
         button.addChild(offhand.occupied()
-                ? SlotUiElement.itemIcon(offhand.displayStack(), ICON_SIZE_PX, true).renderVanillaCount(true)
-                : SlotUiElement.panel(EMPTY_SLOT).layout(layout -> layout.width(ICON_SIZE_PX).height(ICON_SIZE_PX)));
+                ? SlotUiElement.itemIcon(offhand.displayStack(), iconSize, true).renderVanillaCount(true)
+                : SlotUiElement.panel(EMPTY_SLOT).layout(layout -> layout.width(iconSize).height(iconSize)));
         button.addChild(slotIndexLabel("off", MUTED));
         return button;
     }

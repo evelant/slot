@@ -354,6 +354,29 @@ public final class WorkspaceChestCommandService {
                 : WorkspaceCommandOutcome.accepted("nothing_to_take", "no_matching_proximate_chest");
     }
 
+    /**
+     * First shift-click take semantics: fill an unmet desired/kit carry
+     * reservation when one exists; otherwise take one stack. Follow-up
+     * clicks in the same held-Shift sequence use {@link #takeByIdentity}
+     * with {@link Integer#MAX_VALUE} directly.
+     */
+    public static WorkspaceCommandOutcome takeDesiredGapOrStackByIdentity(
+            ServerPlayer player,
+            WorkflowDomainRuntime runtime,
+            ItemIdentity identity
+    ) {
+        if (identity == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_identity");
+        }
+        if (player == null || runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_take_context");
+        }
+        int reserved = Math.max(0, reservedCountResolver(runtime).applyAsInt(identity));
+        int carried = totalCarriedCount(player, identity);
+        int gap = Math.max(0, reserved - carried);
+        return takeByIdentity(player, runtime, identity, gap > 0 ? gap : Integer.MAX_VALUE);
+    }
+
     public static ClaimedChest resolveProximateLinkedChestForIdentity(
             ServerPlayer player,
             WorkflowDomainRuntime runtime,
@@ -729,6 +752,21 @@ public final class WorkspaceChestCommandService {
                     activeKitDesired,
                     snapshot.playerDesiredCounts());
         };
+    }
+
+    private static int totalCarriedCount(ServerPlayer player, ItemIdentity identity) {
+        if (player == null || identity == null) {
+            return 0;
+        }
+        CarriedSourceAccess carried = StorageAccessRegistry.carriedSourceAccess();
+        int total = 0;
+        for (CarriedSourceAccess.CarriedLocation location : carried.findAllMatching(player, identity)) {
+            ItemStack stack = carried.peek(player, location.sourceId(), location.slotIndex());
+            if (stack != null && !stack.isEmpty()) {
+                total += stack.getCount();
+            }
+        }
+        return total;
     }
 
     private static String chestLabel(ClaimedChest chest) {

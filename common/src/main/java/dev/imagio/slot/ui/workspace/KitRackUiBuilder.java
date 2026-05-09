@@ -43,12 +43,12 @@ public final class KitRackUiBuilder {
     }
 
     public SlotUiElement cluster(SlotWorkspaceViewModel viewModel, boolean open) {
+        return cluster(viewModel, open, false);
+    }
+
+    public SlotUiElement cluster(SlotWorkspaceViewModel viewModel, boolean open, boolean compact) {
         SlotWorkspaceViewModel.KitCard active = viewModel == null ? null : viewModel.activeKit();
-        String label = active == null
-                ? "Kits"
-                : shorten(active.name(), 10) + (active.pageCount() > 1
-                        ? " " + (active.activePageIndex() + 1) + "/" + active.pageCount()
-                        : "");
+        String label = clusterLabel(active, compact);
         SlotUiElement cluster = SlotUiElement.element()
                 .attach(WorkspaceUiAttachments.KIT_CLUSTER, Boolean.TRUE)
                 .layout(layout -> layout
@@ -58,7 +58,7 @@ public final class KitRackUiBuilder {
                         .flexDirection(SlotUiLayout.FlexDirection.ROW));
         SlotUiElement toggle = button(label, open || active != null, open ? ACCENT : active == null ? MUTED : TEXT)
                 .layout(layout -> layout
-                        .width(Math.max(44, label.length() * 5 + 12))
+                        .width(Math.max(compact ? 34 : 44, label.length() * (compact ? 4 : 5) + (compact ? 8 : 12)))
                         .height(CLUSTER_HEIGHT_PX));
         toggle.on(SlotUiEventKind.CLICK, event -> {
             if (event.button() != 0) {
@@ -70,7 +70,7 @@ public final class KitRackUiBuilder {
         cluster.addChild(toggle);
         if (active != null && active.pageCount() > 1) {
             SlotUiElement page = button(">", true, TEXT)
-                    .layout(layout -> layout.width(16).height(CLUSTER_HEIGHT_PX));
+                    .layout(layout -> layout.width(compact ? 12 : 16).height(CLUSTER_HEIGHT_PX));
             page.on(SlotUiEventKind.CLICK, event -> {
                 if (event.button() != 0 && event.button() != 1) {
                     return;
@@ -81,6 +81,20 @@ public final class KitRackUiBuilder {
             cluster.addChild(page);
         }
         return cluster;
+    }
+
+    private static String clusterLabel(SlotWorkspaceViewModel.KitCard active, boolean compact) {
+        if (active == null) {
+            return "Kits";
+        }
+        if (compact) {
+            return active.pageCount() > 1
+                    ? "Kit " + (active.activePageIndex() + 1) + "/" + active.pageCount()
+                    : shorten(active.name(), 7);
+        }
+        return shorten(active.name(), 10) + (active.pageCount() > 1
+                ? " " + (active.activePageIndex() + 1) + "/" + active.pageCount()
+                : "");
     }
 
     public SlotUiElement rack(SlotWorkspaceViewModel viewModel) {

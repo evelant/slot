@@ -84,6 +84,7 @@ public final class RecentsStripUiBuilder {
                 .noText()
                 .zIndex(2)
                 .tooltipStack(item.displayStack())
+                .tooltipLines(WorkspaceItemTooltipBuilder.slotLines(item))
                 .attach(WorkspaceUiAttachments.RECENTS_ICON, Boolean.TRUE)
                 .attach(WorkspaceUiAttachments.ATLAS_ITEM, item)
                 .layout(layout -> layout
@@ -97,6 +98,8 @@ public final class RecentsStripUiBuilder {
             event.stopPropagation();
             context.focusRecent(item);
         });
+        button.on(SlotUiEventKind.MOUSE_ENTER, event -> context.hoverRecent(item), true);
+        button.on(SlotUiEventKind.MOUSE_LEAVE, event -> context.clearHoveredRecent(item), true);
         button.addChild(SlotUiElement.itemIcon(item.displayStack(), ICON_SIZE_PX, item.carried())
                 .renderVanillaCount(false)
                 .layout(layout -> layout.widthPercent(100).heightPercent(100)));
@@ -113,5 +116,9 @@ public final class RecentsStripUiBuilder {
         SlotWorkspaceViewModel.AtlasItem atlasItem(SlotWorkspaceViewModel.IdentityRef identity);
 
         void focusRecent(SlotWorkspaceViewModel.AtlasItem item);
+
+        void hoverRecent(SlotWorkspaceViewModel.AtlasItem item);
+
+        void clearHoveredRecent(SlotWorkspaceViewModel.AtlasItem item);
     }
 }

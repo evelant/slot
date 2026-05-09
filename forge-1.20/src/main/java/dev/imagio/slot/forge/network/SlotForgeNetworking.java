@@ -245,7 +245,7 @@ public final class SlotForgeNetworking {
         if (player == null) {
             return;
         }
-        KitGatherService.Outcome outcome = KitGatherService.gatherActiveKit(
+        KitGatherService.Outcome outcome = ForgeWorkspaceSession.gatherActiveKitAndReapply(
                 player,
                 ForgePlayerWorkflowRuntimeService.runtime(player));
         ForgeWorkspaceSession session = ForgeWorkspaceSessionRegistry.session(player);

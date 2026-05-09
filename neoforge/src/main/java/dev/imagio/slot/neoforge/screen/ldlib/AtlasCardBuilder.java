@@ -33,10 +33,10 @@ import net.minecraft.network.chat.Component;
  * layout in the parent grid handles wrap/positioning. No world-unit
  * math, no camera dependency.
  *
- * <p>Card chrome (status border + colored progress bar + count badge +
- * proximate pip + search outline + deposit preview + container fullness
- * + selection highlight + carried/ghost tint) is preserved at the new
- * fixed size; sized for legibility at the chosen cell size.
+ * <p>Card chrome (status border + count badge + proximate pip + search
+ * outline + deposit preview + container fullness + selection highlight
+ * + carried/ghost tint) is preserved at the new fixed size; sized for
+ * legibility at the chosen cell size.
  */
 final class AtlasCardBuilder {
     /**
@@ -228,9 +228,6 @@ final class AtlasCardBuilder {
         if (status.wantsBorder()) {
             addStatusBorder(body, status);
         }
-        if (status.wantsProgressBar()) {
-            addStatusProgressBar(body, status);
-        }
         if (host.viewModel.depositableIdentities().contains(item.identity())) {
             addDepositPreviewOutline(body);
         }
@@ -243,7 +240,7 @@ final class AtlasCardBuilder {
                 storedCount += entry.count();
             }
             if (storedCount > 0) {
-                addAlsoStoredBadge(body, status, storedCount);
+                addSearchStoredBadge(body, status, storedCount);
             }
         }
         if (RelevanceDebugOverlay.enabled()) {
@@ -292,56 +289,6 @@ final class AtlasCardBuilder {
         body.addChild(right);
     }
 
-    private void addStatusProgressBar(UIElement body, AtlasCardStatus status) {
-        int barHeight = 2;
-        int border = status.wantsBorder() ? 1 : 0;
-        int gap = status.wantsBorder() ? 1 : 0;
-        int barBottom = border + gap;
-        UIElement bar = new UIElement().layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(0).right(0).bottom(barBottom).height(barHeight));
-        bar.style(style -> style.zIndex(262));
-        bar.setAllowHitTest(false);
-
-        int trackColor = status.level() == AtlasCardStatus.Level.FULFILLED
-                ? 0x802A323D
-                : status.color();
-        UIElement track = panel(trackColor).layout(layout -> layout
-                .positionType(TaffyPosition.ABSOLUTE)
-                .left(0).top(0).widthPercent(100).heightPercent(100));
-        track.style(style -> style.zIndex(262));
-        track.setAllowHitTest(false);
-        bar.addChild(track);
-
-        float carriedFraction = status.carriedFraction();
-        if (carriedFraction > 0f) {
-            int fillColor = status.kitRelevant()
-                    ? STATUS_FULFILLED_KIT
-                    : STATUS_FULFILLED_PLAYER;
-            UIElement fill = panel(fillColor).layout(layout -> layout
-                    .positionType(TaffyPosition.ABSOLUTE)
-                    .left(0).top(0).heightPercent(100)
-                    .widthPercent(carriedFraction * 100f));
-            fill.style(style -> style.zIndex(263));
-            fill.setAllowHitTest(false);
-            bar.addChild(fill);
-        }
-        if (status.level() == AtlasCardStatus.Level.MIXED && status.storedFraction() > 0f) {
-            int storedColor = status.kitRelevant()
-                    ? STATUS_STORED_KIT
-                    : STATUS_STORED_PLAYER;
-            UIElement stored = panel((storedColor & 0x00FFFFFF) | 0x80000000).layout(layout -> layout
-                    .positionType(TaffyPosition.ABSOLUTE)
-                    .leftPercent(carriedFraction * 100f)
-                    .top(0).heightPercent(100)
-                    .widthPercent(status.storedFraction() * 100f));
-            stored.style(style -> style.zIndex(263));
-            stored.setAllowHitTest(false);
-            bar.addChild(stored);
-        }
-        body.addChild(bar);
-    }
-
     /**
      * Bottom-right "M" or "M/N" badge replacing both the vanilla count and
      * the standalone desired-count pip. Kit-needed status modulates the
@@ -362,7 +309,7 @@ final class AtlasCardBuilder {
             return;
         }
         int border = status.wantsBorder() ? 1 : 0;
-        int chrome = border + (status.wantsBorder() ? 1 : 0) + (status.wantsProgressBar() ? 2 : 0);
+        int chrome = border + (status.wantsBorder() ? 1 : 0);
         int sideInset = border;
         int bottomInset = chrome;
         int pipHeight = 5;
@@ -419,21 +366,20 @@ final class AtlasCardBuilder {
         body.addChild(pip);
     }
 
-    private void addAlsoStoredBadge(UIElement body, AtlasCardStatus status, int storedCount) {
-        int border = status.wantsBorder() ? 1 : 0;
-        int chrome = border + (status.wantsBorder() ? 1 : 0) + (status.wantsProgressBar() ? 2 : 0);
-        int sideInset = border;
-        int bottomInset = chrome;
-        int pipSize = 5;
+    private void addSearchStoredBadge(UIElement body, AtlasCardStatus status, int storedCount) {
+        int sideInset = status.wantsBorder() ? 1 : 0;
+        String text = "+" + WorkspaceFormat.compactCount(storedCount);
+        int pipHeight = 5;
+        int pipWidth = Math.max(pipHeight, text.length() * 3 + 2);
         UIElement pip = panel(LINK_THREAD_COLOR).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
                 .left(sideInset)
-                .bottom(bottomInset)
-                .width(pipSize)
-                .height(pipSize));
+                .top(sideInset)
+                .width(pipWidth)
+                .height(pipHeight));
         pip.style(style -> style.zIndex(265));
         pip.setAllowHitTest(false);
-        Label count = label("+" + Math.min(storedCount, 999), TEXT);
+        Label count = label(text, TEXT);
         count.layout(layout -> layout.widthPercent(100).heightPercent(100));
         count.setAllowHitTest(false);
         count.textStyle(style -> style
@@ -838,7 +784,10 @@ final class AtlasCardBuilder {
                 WorkspaceCursorState.isCarrying(),
                 SlotSidebarClientUi.isActive(),
                 freeSlots,
-                host.anyChestProximate());
+                host.anyChestProximate(),
+                host.shiftClickTransferState.continuingTake(
+                        item == null ? null : item.identity(),
+                        shiftDown));
     }
 
     private boolean dispatchCardGestureDecision(
@@ -868,6 +817,7 @@ final class AtlasCardBuilder {
                         item.identity(),
                         count <= 0 ? WallCardTransferGesturePolicy.PICKUP_MAX : count);
             }
+            case TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY -> host.rpc.sendTakeDesiredGapOrStackByIdentity(item.identity());
             case TAKE_STACK_BY_IDENTITY -> host.rpc.sendTakeStackByIdentity(item.identity());
             case TAKE_ONE_BY_IDENTITY -> repeat(count, () -> host.rpc.sendTakeOneByIdentity(item.identity()));
             case DEPOSIT_HOME_TO_LINKED_CHEST -> host.rpc.sendDepositHomeToLinkedChest(item);
@@ -875,6 +825,7 @@ final class AtlasCardBuilder {
             case CROSS_SURFACE_QUICK_MOVE -> host.rpc.sendCrossSurfaceQuickMove(item.identity(), count);
             case ADJUST_PLAYER_DESIRED_COUNT -> host.rpc.sendAdjustPlayerDesiredCount(item.identity(), count);
         }
+        host.shiftClickTransferState.record(decision, item == null ? null : item.identity(), Screen.hasShiftDown());
         return true;
     }
 

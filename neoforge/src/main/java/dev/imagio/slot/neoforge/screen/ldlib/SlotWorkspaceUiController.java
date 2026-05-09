@@ -11,6 +11,7 @@ import com.lowdragmc.lowdraglib2.gui.ui.UI;
 import com.lowdragmc.lowdraglib2.gui.ui.UIElement;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.BindableValue;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
+import com.lowdragmc.lowdraglib2.gui.ui.elements.Label;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.ScrollerView;
 import com.lowdragmc.lowdraglib2.gui.ui.event.HoverTooltips;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
@@ -18,14 +19,19 @@ import dev.imagio.slot.neoforge.screen.ldlib.util.Observable;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.ui.workspace.ShiftClickTransferState;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
+import dev.vfyjxf.taffy.style.TaffyPosition;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Player;
 
 import java.util.ArrayList;
+import java.util.ArrayDeque;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 final class SlotWorkspaceUiController {
     /**
@@ -66,7 +72,7 @@ final class SlotWorkspaceUiController {
     String hoveredStorageId;
     int hoveredHotbarIndex = -1;
     final List<Observable.Subscription> wallContentSubscriptions = new ArrayList<>();
-    final java.util.Map<Integer, UIElement> hotbarSlotElements = new java.util.HashMap<>();
+    final Map<Integer, UIElement> hotbarSlotElements = new HashMap<>();
     SlotWorkspaceViewModel.IdentityRef contextMenuAtlasIdentity;
     int contextMenuHotbarIndex = -1;
     String contextMenuKitId;
@@ -83,7 +89,7 @@ final class SlotWorkspaceUiController {
     String renameChestDraft = "";
     float contextMenuScreenX;
     float contextMenuScreenY;
-    final java.util.ArrayDeque<String> recentRehomeIslandIds = new java.util.ArrayDeque<>();
+    final ArrayDeque<String> recentRehomeIslandIds = new ArrayDeque<>();
     static final int RECENT_REHOME_MAX_DISPLAYED = 3;
     static final int RECENT_REHOME_CAPACITY = 6;
     String editingIslandId = null;
@@ -116,6 +122,7 @@ final class SlotWorkspaceUiController {
      */
     boolean gatherPreviewActive;
     final SearchController searchController = new SearchController(this);
+    final ShiftClickTransferState shiftClickTransferState = new ShiftClickTransferState();
     final WorkspaceRpcDispatcher rpc = new WorkspaceRpcDispatcher(this);
     final DragDropWiring drag = new DragDropWiring(this);
     final HotkeyRouter hotkeys = new HotkeyRouter(this);
@@ -149,7 +156,7 @@ final class SlotWorkspaceUiController {
     UIElement carriedFreeSlotsChipElement;
     UIElement topRightActionsElement;
     UIElement statusBarElement;
-    com.lowdragmc.lowdraglib2.gui.ui.elements.Label statusBarLabel;
+    Label statusBarLabel;
     // Deferred rebuild flag. Every server-sync round trip calls rebuild()
     // via syncBinding's remoteSetter; during rapid bursts (e.g. scroll-
     // wheel item transfer firing N RPCs) this used to destroy and recreate
@@ -228,7 +235,7 @@ final class SlotWorkspaceUiController {
         // wall / sections / chest list underneath; popover children
         // (catcher, capsule) keep their own hit-testing.
         this.popoverSlot = new UIElement().layout(layout -> layout
-                .positionType(dev.vfyjxf.taffy.style.TaffyPosition.ABSOLUTE)
+                .positionType(TaffyPosition.ABSOLUTE)
                 .left(0).right(0).top(0).bottom(0));
         this.popoverSlot.style(style -> style.zIndex(50));
         this.popoverSlot.setAllowHitTest(false);

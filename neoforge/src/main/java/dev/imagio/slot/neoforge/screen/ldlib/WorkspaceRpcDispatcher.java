@@ -62,6 +62,7 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
     RPCEmitter takeFromChestEmitter;
     RPCEmitter takeOneFromChestEmitter;
     RPCEmitter takeOneByIdentityEmitter;
+    RPCEmitter takeDesiredGapOrStackByIdentityEmitter;
     RPCEmitter takeStackByIdentityEmitter;
     RPCEmitter assignHomeToHotbarOnlyEmitter;
     RPCEmitter assignIdentityToHotbarSlotEmitter;
@@ -381,6 +382,12 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
                 String.class,
                 String.class,
                 host.session::takeOneByIdentity
+        ));
+        takeDesiredGapOrStackByIdentityEmitter = add(WorkspaceActionId.TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY, RPCEventBuilder.simple(
+                String.class,
+                String.class,
+                String.class,
+                host.session::takeDesiredGapOrStackByIdentity
         ));
         takeStackByIdentityEmitter = add(WorkspaceActionId.TAKE_STACK_BY_IDENTITY, RPCEventBuilder.simple(
                 String.class,
@@ -1028,6 +1035,18 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
             return;
         }
         boolean sent = send(WorkspaceActionId.TAKE_STACK_BY_IDENTITY,
+                identity.itemId(), identity.comparisonMode(), identity.componentFingerprint());
+        if (!sent) {
+            host.localStatus.set("take unavailable");
+            host.rebuild();
+        }
+    }
+
+    void sendTakeDesiredGapOrStackByIdentity(SlotWorkspaceViewModel.IdentityRef identity) {
+        if (takeDesiredGapOrStackByIdentityEmitter == null || identity == null) {
+            return;
+        }
+        boolean sent = send(WorkspaceActionId.TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY,
                 identity.itemId(), identity.comparisonMode(), identity.componentFingerprint());
         if (!sent) {
             host.localStatus.set("take unavailable");

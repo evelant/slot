@@ -140,9 +140,13 @@ final class TocPanelBuilder {
         if (!isSectionOffscreen(island.islandId())) {
             return false;
         }
+        SlotWorkspaceViewModel.IdentityRef hovered = host.currentMapFocusIdentity();
         for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.atlasItems()) {
             if (!island.islandId().equals(item.islandId())) {
                 continue;
+            }
+            if (hovered != null && hovered.equals(item.identity())) {
+                return true;
             }
             if (searching && host.searchController.matchesItem(item)) {
                 return true;

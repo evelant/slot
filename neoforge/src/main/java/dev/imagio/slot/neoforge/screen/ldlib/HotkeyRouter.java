@@ -37,6 +37,7 @@ final class HotkeyRouter {
         host.root.addEventListener(UIEvents.CHAR_TYPED, host.searchController::handleCharTyped, true);
         host.root.addEventListener(UIEvents.TICK, event -> host.flushRebuildIfPending());
         host.root.addEventListener(UIEvents.TICK, event -> host.searchController.tickIdleTimer());
+        host.root.addEventListener(UIEvents.TICK, event -> host.shiftClickTransferState.observeShiftDown(Screen.hasShiftDown()));
     }
 
     void handleCursorCancelKey(UIEvent event) {

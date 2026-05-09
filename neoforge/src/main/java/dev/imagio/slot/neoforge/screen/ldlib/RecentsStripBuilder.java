@@ -74,5 +74,17 @@ final class RecentsStripBuilder {
             host.hoveredAtlasIdentity = item.identity();
             scrollWallToIsland(item.islandId());
         }
+
+        @Override
+        public void hoverRecent(SlotWorkspaceViewModel.AtlasItem item) {
+            host.hoveredAtlasIdentity = item == null ? null : item.identity();
+        }
+
+        @Override
+        public void clearHoveredRecent(SlotWorkspaceViewModel.AtlasItem item) {
+            if (item != null && item.identity().equals(host.hoveredAtlasIdentity)) {
+                host.hoveredAtlasIdentity = null;
+            }
+        }
     }
 }

@@ -19,6 +19,7 @@ import dev.imagio.slot.ui.workspace.ActiveChestStripUiBuilder;
 import dev.imagio.slot.ui.workspace.HotbarBeltUiBuilder;
 import dev.imagio.slot.ui.workspace.KitRackUiBuilder;
 import dev.imagio.slot.ui.workspace.RecentsStripUiBuilder;
+import dev.imagio.slot.ui.workspace.ShiftClickTransferState;
 import dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy;
 import dev.imagio.slot.ui.workspace.WallCardUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionHeaderUiBuilder;
@@ -65,6 +66,7 @@ public final class ForgeWorkspaceSurface {
     private final List<SlotWorkspaceViewModel.HotbarSlot> hotbarSlots = new ArrayList<>();
     private final Map<SlotWorkspaceViewModel.IdentityRef, SlotWorkspaceViewModel.AtlasItem> byIdentity =
             new LinkedHashMap<>();
+    private final ShiftClickTransferState shiftClickTransferState = new ShiftClickTransferState();
 
     private ForgeSlotUiTree tree;
     private SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.empty();
@@ -122,6 +124,7 @@ public final class ForgeWorkspaceSurface {
     }
 
     public void tick(int width, int height) {
+        shiftClickTransferState.observeShiftDown(Screen.hasShiftDown());
         openSessionIfNeeded();
         requestViewRefreshIfDue();
         applySyncedViewIfAvailable();
@@ -394,18 +397,10 @@ public final class ForgeWorkspaceSurface {
                 column.addChild(activeChestStrip.layout(layout -> layout.width(WIDTH)));
             }
         }
-        column.addChild(kitCluster(sidebarMode));
-        if (kitRackOpen && sidebarMode) {
-            column.addChild(SlotUiElement.element()
-                    .layout(layout -> layout.widthPercent(100))
-                    .addChild(new KitRackUiBuilder(new KitContext()).rack(viewModel)));
-        }
         column.addChild(recents(sidebarMode));
         column.addChild(wallArea(sidebarMode));
-        if (kitRackOpen && !sidebarMode) {
-            column.addChild(SlotUiElement.element()
-                    .layout(layout -> layout.width(WIDTH))
-                    .addChild(new KitRackUiBuilder(new KitContext()).rack(viewModel)));
+        if (kitRackOpen) {
+            column.addChild(kitRack(sidebarMode));
         }
         column.addChild(statusRow(sidebarMode));
         column.addChild(hotbar(sidebarMode));
@@ -562,23 +557,17 @@ public final class ForgeWorkspaceSurface {
                 });
     }
 
-    private SlotUiElement kitCluster(boolean sidebarMode) {
-        return SlotUiElement.panel(PANEL)
+    private SlotUiElement kitRack(boolean sidebarMode) {
+        return SlotUiElement.element()
                 .layout(layout -> {
                     if (sidebarMode) {
                         layout.widthPercent(100);
                     } else {
                         layout.width(WIDTH);
                     }
-                    layout.height(26)
-                            .paddingHorizontal(6)
-                            .gapAll(4)
-                            .alignItems(SlotUiLayout.AlignItems.CENTER)
-                            .flexDirection(SlotUiLayout.FlexDirection.ROW);
+                    layout.flexDirection(SlotUiLayout.FlexDirection.COLUMN);
                 })
-                .addChild(new KitRackUiBuilder(new KitContext())
-                        .cluster(viewModel, kitRackOpen)
-                        .layout(layout -> layout.flex(1)));
+                .addChild(new KitRackUiBuilder(new KitContext()).rack(viewModel));
     }
 
     private SlotUiElement recents(boolean sidebarMode) {
@@ -643,19 +632,20 @@ public final class ForgeWorkspaceSurface {
             SlotUiElement dot = SlotUiElement.button("", true, color)
                     .noText()
                     .tooltip(Component.literal(island.label()))
-                    .layout(layout -> layout.width(5).height(5))
-                    .on(SlotUiEventKind.CLICK, event -> {
-                        if (event.button() != 0) {
-                            return;
-                        }
-                        event.stopPropagation();
-                        if (tree != null) {
-                            if (!tree.scrollToElementId(island.islandId())) {
-                                tree.scrollToFraction(fraction);
-                            }
-                        }
-                        setStatus(island.label());
-                    });
+                    .layout(layout -> layout.width(5).height(5));
+            dot.on(SlotUiEventKind.TICK, event -> dotAttention(dot, island));
+            dot.on(SlotUiEventKind.CLICK, event -> {
+                if (event.button() != 0) {
+                    return;
+                }
+                event.stopPropagation();
+                if (tree != null) {
+                    if (!tree.scrollToElementId(island.islandId())) {
+                        tree.scrollToFraction(fraction);
+                    }
+                }
+                setStatus(island.label());
+            });
             strip.addChild(dot);
         }
         return strip;
@@ -683,6 +673,35 @@ public final class ForgeWorkspaceSurface {
             }
         }
         return entries;
+    }
+
+    private void dotAttention(SlotUiElement dot, SlotWorkspaceViewModel.AtlasIsland island) {
+        if (dot == null || island == null) {
+            return;
+        }
+        dot.overlayColor(sectionNeedsAttention(island) ? 0x66365743 : null);
+    }
+
+    private boolean sectionNeedsAttention(SlotWorkspaceViewModel.AtlasIsland island) {
+        if (tree == null || island == null || !tree.isElementOffscreen(island.islandId())) {
+            return false;
+        }
+        boolean searching = !normalizedSearchQuery().isBlank();
+        for (SlotWorkspaceViewModel.AtlasItem item : items) {
+            if (item == null || !island.islandId().equals(item.islandId())) {
+                continue;
+            }
+            if (hoveredIdentity != null && hoveredIdentity.equals(item.identity())) {
+                return true;
+            }
+            if (searching && matchesSearch(item)) {
+                return true;
+            }
+            if (item.kitNeeded()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private SlotUiElement wallViewport(boolean sidebarMode) {
@@ -718,7 +737,10 @@ public final class ForgeWorkspaceSurface {
     }
 
     private SlotUiElement hotbar(boolean sidebarMode) {
-        SlotUiElement belt = new HotbarBeltUiBuilder(new HotbarContext()).belt(hotbarSlots, offhand);
+        SlotUiElement kit = new KitRackUiBuilder(new KitContext())
+                .cluster(viewModel, kitRackOpen, true)
+                .layout(layout -> layout.height(KitRackUiBuilder.CLUSTER_HEIGHT_PX));
+        SlotUiElement belt = new HotbarBeltUiBuilder(new HotbarContext()).belt(hotbarSlots, offhand, kit);
         if (!sidebarMode) {
             return SlotUiElement.element()
                     .layout(layout -> layout.width(WIDTH))
@@ -1625,7 +1647,10 @@ public final class ForgeWorkspaceSurface {
                 isCursorCarrying(),
                 mode == Mode.SIDEBAR,
                 carriedFreeSlotCount(),
-                anyChestProximate());
+                anyChestProximate(),
+                shiftClickTransferState.continuingTake(
+                        item == null ? null : item.identity(),
+                        shiftDown));
     }
 
     private boolean dispatchCardGestureDecision(
@@ -1656,6 +1681,10 @@ public final class ForgeWorkspaceSurface {
                         "picking up " + item.name(),
                         count <= 0 ? WallCardTransferGesturePolicy.PICKUP_MAX : count);
             }
+            case TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY -> sendIdentityAction(
+                    WorkspaceActionId.TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY,
+                    item,
+                    "taking " + item.name());
             case TAKE_STACK_BY_IDENTITY -> sendIdentityAction(
                     WorkspaceActionId.TAKE_STACK_BY_IDENTITY,
                     item,
@@ -1683,6 +1712,7 @@ public final class ForgeWorkspaceSurface {
                     "desired count updated",
                     count);
         }
+        shiftClickTransferState.record(decision, item == null ? null : item.identity(), Screen.hasShiftDown());
         return true;
     }
 
@@ -1957,7 +1987,22 @@ public final class ForgeWorkspaceSurface {
         @Override
         public void focusRecent(SlotWorkspaceViewModel.AtlasItem item) {
             hoveredIdentity = item == null ? null : item.identity();
+            if (item != null && tree != null) {
+                tree.scrollToElementId(item.islandId());
+            }
             setStatus(item == null ? "ready" : item.name());
+        }
+
+        @Override
+        public void hoverRecent(SlotWorkspaceViewModel.AtlasItem item) {
+            hoveredIdentity = item == null ? null : item.identity();
+        }
+
+        @Override
+        public void clearHoveredRecent(SlotWorkspaceViewModel.AtlasItem item) {
+            if (item != null && item.identity().equals(hoveredIdentity)) {
+                hoveredIdentity = null;
+            }
         }
     }
 

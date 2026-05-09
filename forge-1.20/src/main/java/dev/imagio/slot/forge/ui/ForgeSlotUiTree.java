@@ -1,20 +1,27 @@
 package dev.imagio.slot.forge.ui;
 
+import dev.imagio.slot.platform.SlotResourceAccess;
 import dev.imagio.slot.ui.spi.SlotUiElement;
 import dev.imagio.slot.ui.spi.SlotUiEvent;
 import dev.imagio.slot.ui.spi.SlotUiEventKind;
 import dev.imagio.slot.ui.spi.SlotUiLayout;
 import dev.imagio.slot.ui.spi.SlotUiTextStyle;
+import dev.imagio.slot.ui.workspace.WorkspaceUiPalette;
 import dev.vfyjxf.taffy.geometry.FloatSize;
 import dev.vfyjxf.taffy.geometry.TaffyPoint;
 import dev.vfyjxf.taffy.geometry.TaffyRect;
 import dev.vfyjxf.taffy.geometry.TaffySize;
+import dev.vfyjxf.taffy.style.AlignContent;
+import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.AvailableSpace;
+import dev.vfyjxf.taffy.style.FlexDirection;
+import dev.vfyjxf.taffy.style.FlexWrap;
 import dev.vfyjxf.taffy.style.LengthPercentage;
 import dev.vfyjxf.taffy.style.LengthPercentageAuto;
 import dev.vfyjxf.taffy.style.Overflow;
 import dev.vfyjxf.taffy.style.TaffyDimension;
 import dev.vfyjxf.taffy.style.TaffyDisplay;
+import dev.vfyjxf.taffy.style.TaffyPosition;
 import dev.vfyjxf.taffy.style.TaffyStyle;
 import dev.vfyjxf.taffy.tree.Layout;
 import dev.vfyjxf.taffy.tree.NodeId;
@@ -22,7 +29,10 @@ import dev.vfyjxf.taffy.tree.TaffyTree;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextColor;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayDeque;
@@ -38,6 +48,7 @@ public final class ForgeSlotUiTree {
     private static final int ROW_DIM = 0x7C24313D;
     private static final int ROW_HOVER = 0xEC334354;
     private static final int SELECTED = 0xF0507E6B;
+    private static final ResourceLocation SLOT_UI_FONT = SlotResourceAccess.current().id("slot", "slot_ui");
 
     private final Minecraft minecraft;
     private final Font font;
@@ -121,6 +132,33 @@ public final class ForgeSlotUiTree {
         return true;
     }
 
+    public boolean isElementOffscreen(String elementId) {
+        if (elementId == null || elementId.isBlank()) {
+            return false;
+        }
+        Node scroll = firstScrollableNode();
+        Node target = nodeByElementId(elementId);
+        if (scroll == null || target == null) {
+            return false;
+        }
+        float contentY = 0f;
+        Node current = target;
+        while (current != null && current != scroll) {
+            Layout layout = taffy.getLayout(current.id);
+            contentY += layout.location().y;
+            current = parent(current);
+        }
+        if (current != scroll) {
+            return false;
+        }
+        Layout targetLayout = taffy.getLayout(target.id);
+        Layout scrollLayout = taffy.getLayout(scroll.id);
+        float contentBottom = contentY + targetLayout.size().height;
+        float viewportTop = scroll.scrollY;
+        float viewportBottom = viewportTop + scrollLayout.size().height;
+        return contentBottom <= viewportTop || contentY >= viewportBottom;
+    }
+
     public void render(GuiGraphics graphics, int mouseX, int mouseY) {
         if (rootId == null) {
             return;
@@ -139,7 +177,14 @@ public final class ForgeSlotUiTree {
             return;
         }
         if (!tooltip.stack().isEmpty()) {
-            graphics.renderTooltip(font, tooltip.stack(), mouseX, mouseY);
+            List<Component> lines = tooltipLines(tooltip.stack(), tooltip.lines());
+            graphics.renderTooltip(
+                    font,
+                    lines,
+                    tooltip.stack().getTooltipImage(),
+                    tooltip.stack(),
+                    mouseX,
+                    mouseY);
             return;
         }
         if (!tooltip.lines().isEmpty()) {
@@ -369,9 +414,10 @@ public final class ForgeSlotUiTree {
         if (text == null || text.isBlank()) {
             return;
         }
+        Component component = uiText(text);
         SlotUiTextStyle style = node.model.textStyle();
         float scale = textScale(style);
-        int textWidth = Math.round(font.width(text) * scale);
+        int textWidth = Math.round(font.width(component) * scale);
         int textHeight = Math.round(font.lineHeight * scale);
         float drawX = x;
         if (style.horizontal() == SlotUiTextStyle.Horizontal.CENTER) {
@@ -388,7 +434,7 @@ public final class ForgeSlotUiTree {
         graphics.pose().pushPose();
         graphics.pose().translate(drawX, drawY, 0);
         graphics.pose().scale(scale, scale, 1f);
-        graphics.drawString(font, text, 0, 0, style.color(), style.shadow());
+        graphics.drawString(font, component, 0, 0, style.color(), style.shadow());
         graphics.pose().popPose();
     }
 
@@ -521,16 +567,70 @@ public final class ForgeSlotUiTree {
         Node current = node;
         while (current != null) {
             ItemStack stack = current.model.tooltipStack();
-            if (!stack.isEmpty()) {
-                return new TooltipContent(stack, List.of());
-            }
             List<Component> lines = current.model.tooltipLines();
+            if (!stack.isEmpty()) {
+                return new TooltipContent(stack, lines);
+            }
             if (!lines.isEmpty()) {
                 return new TooltipContent(ItemStack.EMPTY, lines);
             }
             current = parent(current);
         }
         return null;
+    }
+
+    private List<Component> tooltipLines(ItemStack stack, List<Component> extraLines) {
+        List<Component> base = Screen.getTooltipFromItem(minecraft, stack);
+        if (extraLines == null || extraLines.isEmpty()) {
+            return base;
+        }
+        ArrayList<Component> lines = new ArrayList<>(base.size() + extraLines.size());
+        lines.addAll(base);
+        for (Component line : extraLines) {
+            lines.add(styleSlotTooltipLine(line));
+        }
+        return List.copyOf(lines);
+    }
+
+    private static Component styleSlotTooltipLine(Component line) {
+        if (line == null) {
+            return Component.empty();
+        }
+        String text = line.getString();
+        if (text == null || text.isBlank()) {
+            return Component.empty();
+        }
+        int color = slotTooltipColor(text);
+        if (color == 0) {
+            return line;
+        }
+        return Component.literal(text)
+                .withStyle(style -> style.withColor(TextColor.fromRgb(color & 0x00FFFFFF)));
+    }
+
+    private static int slotTooltipColor(String text) {
+        if ("SLOT".equals(text)) {
+            return WorkspaceUiPalette.ACCENT;
+        }
+        if (text.startsWith("Desired badge")) {
+            return 0xFFFFD166;
+        }
+        if (text.startsWith("Nearby pip")) {
+            return WorkspaceUiPalette.ACCENT;
+        }
+        if (text.startsWith("Stored elsewhere")) {
+            return WorkspaceUiPalette.MUTED;
+        }
+        if (text.startsWith("Kit marker")) {
+            return 0xFFB38CFF;
+        }
+        if (text.startsWith("Container")) {
+            return 0xFF8DB7D6;
+        }
+        if (text.startsWith("Carried count")) {
+            return WorkspaceUiPalette.TEXT;
+        }
+        return 0;
     }
 
     private Node firstScrollableNode() {
@@ -564,7 +664,12 @@ public final class ForgeSlotUiTree {
     private FloatSize measureText(SlotUiElement model) {
         String text = model.text() == null ? "" : model.text();
         float scale = textScale(model.textStyle());
-        return FloatSize.of(Math.max(1f, font.width(text) * scale), Math.max(1f, font.lineHeight * scale));
+        return FloatSize.of(Math.max(1f, font.width(uiText(text)) * scale), Math.max(1f, font.lineHeight * scale));
+    }
+
+    private static Component uiText(String text) {
+        return Component.literal(text == null ? "" : text)
+                .withStyle(style -> style.withFont(SLOT_UI_FONT));
     }
 
     private boolean measuresText(SlotUiElement model) {
@@ -651,39 +756,39 @@ public final class ForgeSlotUiTree {
         }
     }
 
-    private static dev.vfyjxf.taffy.style.FlexDirection map(SlotUiLayout.FlexDirection value) {
+    private static FlexDirection map(SlotUiLayout.FlexDirection value) {
         return value == SlotUiLayout.FlexDirection.ROW
-                ? dev.vfyjxf.taffy.style.FlexDirection.ROW
-                : dev.vfyjxf.taffy.style.FlexDirection.COLUMN;
+                ? FlexDirection.ROW
+                : FlexDirection.COLUMN;
     }
 
-    private static dev.vfyjxf.taffy.style.AlignItems map(SlotUiLayout.AlignItems value) {
+    private static AlignItems map(SlotUiLayout.AlignItems value) {
         if (value == SlotUiLayout.AlignItems.CENTER) {
-            return dev.vfyjxf.taffy.style.AlignItems.CENTER;
+            return AlignItems.CENTER;
         }
         if (value == SlotUiLayout.AlignItems.FLEX_START) {
-            return dev.vfyjxf.taffy.style.AlignItems.FLEX_START;
+            return AlignItems.FLEX_START;
         }
-        return dev.vfyjxf.taffy.style.AlignItems.STRETCH;
+        return AlignItems.STRETCH;
     }
 
-    private static dev.vfyjxf.taffy.style.AlignContent map(SlotUiLayout.AlignContent value) {
+    private static AlignContent map(SlotUiLayout.AlignContent value) {
         if (value == SlotUiLayout.AlignContent.SPACE_BETWEEN) {
-            return dev.vfyjxf.taffy.style.AlignContent.SPACE_BETWEEN;
+            return AlignContent.SPACE_BETWEEN;
         }
-        return dev.vfyjxf.taffy.style.AlignContent.FLEX_START;
+        return AlignContent.FLEX_START;
     }
 
-    private static dev.vfyjxf.taffy.style.FlexWrap map(SlotUiLayout.FlexWrap value) {
+    private static FlexWrap map(SlotUiLayout.FlexWrap value) {
         return value == SlotUiLayout.FlexWrap.WRAP
-                ? dev.vfyjxf.taffy.style.FlexWrap.WRAP
-                : dev.vfyjxf.taffy.style.FlexWrap.NO_WRAP;
+                ? FlexWrap.WRAP
+                : FlexWrap.NO_WRAP;
     }
 
-    private static dev.vfyjxf.taffy.style.TaffyPosition map(SlotUiLayout.PositionType value) {
+    private static TaffyPosition map(SlotUiLayout.PositionType value) {
         return value == SlotUiLayout.PositionType.ABSOLUTE
-                ? dev.vfyjxf.taffy.style.TaffyPosition.ABSOLUTE
-                : dev.vfyjxf.taffy.style.TaffyPosition.RELATIVE;
+                ? TaffyPosition.ABSOLUTE
+                : TaffyPosition.RELATIVE;
     }
 
     private static float clamp(float value, float min, float max) {

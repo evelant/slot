@@ -1,5 +1,6 @@
 package dev.imagio.slot.neoforge.screen.ldlib;
 
+import com.lowdragmc.lowdraglib2.gui.texture.IGuiTexture;
 import com.lowdragmc.lowdraglib2.gui.ui.UIElement;
 import com.lowdragmc.lowdraglib2.gui.ui.data.Horizontal;
 import com.lowdragmc.lowdraglib2.gui.ui.data.Vertical;
@@ -12,6 +13,10 @@ import dev.imagio.slot.ui.spi.SlotUiEvent;
 import dev.imagio.slot.ui.spi.SlotUiEventBinding;
 import dev.imagio.slot.ui.spi.SlotUiLayout;
 import dev.imagio.slot.ui.spi.SlotUiTextStyle;
+import dev.vfyjxf.taffy.style.AlignContent;
+import dev.vfyjxf.taffy.style.AlignItems;
+import dev.vfyjxf.taffy.style.FlexDirection;
+import dev.vfyjxf.taffy.style.FlexWrap;
 import dev.vfyjxf.taffy.style.TaffyPosition;
 import net.minecraft.client.gui.screens.Screen;
 
@@ -149,9 +154,9 @@ final class LdlibSlotUiRenderer {
             if (model.backgroundColor() != null) {
                 style.backgroundTexture(WorkspaceUi.rect(model.backgroundColor()));
             }
-            if (model.overlayColor() != null) {
-                style.overlayTexture(WorkspaceUi.rect(model.overlayColor()));
-            }
+            style.overlayTexture(model.overlayColor() == null
+                    ? IGuiTexture.EMPTY
+                    : WorkspaceUi.rect(model.overlayColor()));
             if (model.zIndex() != null) {
                 style.zIndex(model.zIndex());
             }
@@ -237,35 +242,35 @@ final class LdlibSlotUiRenderer {
         }
     }
 
-    private static dev.vfyjxf.taffy.style.FlexDirection map(SlotUiLayout.FlexDirection direction) {
+    private static FlexDirection map(SlotUiLayout.FlexDirection direction) {
         if (direction == SlotUiLayout.FlexDirection.ROW) {
-            return dev.vfyjxf.taffy.style.FlexDirection.ROW;
+            return FlexDirection.ROW;
         }
-        return dev.vfyjxf.taffy.style.FlexDirection.COLUMN;
+        return FlexDirection.COLUMN;
     }
 
-    private static dev.vfyjxf.taffy.style.AlignItems map(SlotUiLayout.AlignItems alignItems) {
+    private static AlignItems map(SlotUiLayout.AlignItems alignItems) {
         if (alignItems == SlotUiLayout.AlignItems.CENTER) {
-            return dev.vfyjxf.taffy.style.AlignItems.CENTER;
+            return AlignItems.CENTER;
         }
         if (alignItems == SlotUiLayout.AlignItems.FLEX_START) {
-            return dev.vfyjxf.taffy.style.AlignItems.FLEX_START;
+            return AlignItems.FLEX_START;
         }
-        return dev.vfyjxf.taffy.style.AlignItems.STRETCH;
+        return AlignItems.STRETCH;
     }
 
-    private static dev.vfyjxf.taffy.style.AlignContent map(SlotUiLayout.AlignContent alignContent) {
+    private static AlignContent map(SlotUiLayout.AlignContent alignContent) {
         if (alignContent == SlotUiLayout.AlignContent.SPACE_BETWEEN) {
-            return dev.vfyjxf.taffy.style.AlignContent.SPACE_BETWEEN;
+            return AlignContent.SPACE_BETWEEN;
         }
-        return dev.vfyjxf.taffy.style.AlignContent.FLEX_START;
+        return AlignContent.FLEX_START;
     }
 
-    private static dev.vfyjxf.taffy.style.FlexWrap map(SlotUiLayout.FlexWrap flexWrap) {
+    private static FlexWrap map(SlotUiLayout.FlexWrap flexWrap) {
         if (flexWrap == SlotUiLayout.FlexWrap.WRAP) {
-            return dev.vfyjxf.taffy.style.FlexWrap.WRAP;
+            return FlexWrap.WRAP;
         }
-        return dev.vfyjxf.taffy.style.FlexWrap.NO_WRAP;
+        return FlexWrap.NO_WRAP;
     }
 
     private static TaffyPosition map(SlotUiLayout.PositionType positionType) {

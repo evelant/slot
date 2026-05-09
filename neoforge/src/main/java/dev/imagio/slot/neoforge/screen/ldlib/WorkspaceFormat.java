@@ -14,8 +14,11 @@ import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceUi.shorten;
 
 import com.lowdragmc.lowdraglib2.gui.util.DrawerHelper;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.ui.workspace.WorkspaceItemTooltipBuilder;
+import dev.imagio.slot.ui.workspace.WorkspaceUiPalette;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextColor;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.List;
@@ -90,7 +93,7 @@ final class WorkspaceFormat {
     }
 
     static String tooltipVariantToken(SlotWorkspaceViewModel.AtlasItem item, int maxLength) {
-        List<Component> tooltipLines = atlasTooltipLines(item);
+        List<Component> tooltipLines = vanillaAtlasTooltipLines(item);
         String name = item == null ? "" : item.name();
         String namespace = namespace(item == null ? "" : item.identity().itemId());
         for (Component line : tooltipLines) {
@@ -284,9 +287,67 @@ final class WorkspaceFormat {
     }
 
     static List<Component> atlasTooltipLines(SlotWorkspaceViewModel.AtlasItem item) {
+        List<Component> vanilla = vanillaAtlasTooltipLines(item);
+        List<Component> slot = styledSlotTooltipLines(WorkspaceItemTooltipBuilder.slotLines(item));
+        if (slot.isEmpty()) {
+            return vanilla;
+        }
+        java.util.ArrayList<Component> lines = new java.util.ArrayList<>(vanilla.size() + slot.size());
+        lines.addAll(vanilla);
+        lines.addAll(slot);
+        return List.copyOf(lines);
+    }
+
+    private static List<Component> vanillaAtlasTooltipLines(SlotWorkspaceViewModel.AtlasItem item) {
         if (item == null || item.displayStack().isEmpty()) {
             return List.of();
         }
         return List.copyOf(DrawerHelper.getItemToolTip(item.displayStack()));
+    }
+
+    private static List<Component> styledSlotTooltipLines(List<Component> lines) {
+        if (lines == null || lines.isEmpty()) {
+            return List.of();
+        }
+        java.util.ArrayList<Component> styled = new java.util.ArrayList<>(lines.size());
+        for (Component line : lines) {
+            styled.add(styleSlotTooltipLine(line));
+        }
+        return List.copyOf(styled);
+    }
+
+    private static Component styleSlotTooltipLine(Component line) {
+        if (line == null) {
+            return Component.empty();
+        }
+        String text = line.getString();
+        if (text == null || text.isBlank()) {
+            return Component.empty();
+        }
+        int color = slotTooltipColor(text);
+        return Component.literal(text)
+                .withStyle(style -> style.withColor(TextColor.fromRgb(color & 0x00FFFFFF)));
+    }
+
+    private static int slotTooltipColor(String text) {
+        if ("SLOT".equals(text)) {
+            return WorkspaceUiPalette.ACCENT;
+        }
+        if (text.startsWith("Desired badge")) {
+            return WARNING;
+        }
+        if (text.startsWith("Nearby pip")) {
+            return WorkspaceUiPalette.ACCENT;
+        }
+        if (text.startsWith("Stored elsewhere")) {
+            return WorkspaceUiPalette.MUTED;
+        }
+        if (text.startsWith("Kit marker")) {
+            return 0xFFB38CFF;
+        }
+        if (text.startsWith("Container")) {
+            return 0xFF8DB7D6;
+        }
+        return WorkspaceUiPalette.TEXT;
     }
 }

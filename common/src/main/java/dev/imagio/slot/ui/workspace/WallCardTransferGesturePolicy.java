@@ -50,6 +50,15 @@ public final class WallCardTransferGesturePolicy {
             return Decision.action(Action.CURSOR_CANCEL_THEN_PICKUP_TO_CURSOR, PICKUP_MAX);
         }
         if (context.shiftDown()) {
+            if (context.continuingShiftTake()) {
+                if (missingProximatePresence(item)) {
+                    return Decision.status("nearby chest data missing");
+                }
+                if (proximateChestCount(item) > 0) {
+                    return Decision.action(Action.TAKE_STACK_BY_IDENTITY);
+                }
+                return Decision.status("no nearby chest has " + item.name());
+            }
             if (context.sidebarActive() && item.carried()) {
                 return Decision.action(Action.CROSS_SURFACE_QUICK_MOVE, PICKUP_MAX);
             }
@@ -66,7 +75,7 @@ public final class WallCardTransferGesturePolicy {
                 if (context.carriedFreeSlotCount() == 0) {
                     return Decision.status("carry full - drop something first");
                 }
-                return Decision.action(Action.TAKE_STACK_BY_IDENTITY);
+                return Decision.action(Action.TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY);
             }
             return Decision.status("no nearby chest has " + item.name());
         }
@@ -131,6 +140,7 @@ public final class WallCardTransferGesturePolicy {
         CURSOR_CANCEL,
         CURSOR_SMART_DEPOSIT,
         CURSOR_CANCEL_THEN_PICKUP_TO_CURSOR,
+        TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY,
         TAKE_STACK_BY_IDENTITY,
         TAKE_ONE_BY_IDENTITY,
         DEPOSIT_HOME_TO_LINKED_CHEST,
@@ -175,10 +185,35 @@ public final class WallCardTransferGesturePolicy {
             boolean cursorCarrying,
             boolean sidebarActive,
             int carriedFreeSlotCount,
-            boolean anyChestProximate
+            boolean anyChestProximate,
+            boolean continuingShiftTake
     ) {
         public Context {
             carriedFreeSlotCount = Math.max(0, carriedFreeSlotCount);
+        }
+
+        public Context(
+                SlotWorkspaceViewModel.AtlasItem item,
+                int button,
+                boolean shiftDown,
+                boolean controlDown,
+                SlotWorkspaceViewModel.IdentityRef cursorIdentity,
+                boolean cursorCarrying,
+                boolean sidebarActive,
+                int carriedFreeSlotCount,
+                boolean anyChestProximate
+        ) {
+            this(
+                    item,
+                    button,
+                    shiftDown,
+                    controlDown,
+                    cursorIdentity,
+                    cursorCarrying,
+                    sidebarActive,
+                    carriedFreeSlotCount,
+                    anyChestProximate,
+                    false);
         }
     }
 }

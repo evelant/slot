@@ -18,6 +18,8 @@ public final class WallCardUiBuilder {
     public static final int CARD_CELL_PX = 22;
     public static final int WAYFINDING_STRIP_WIDTH_PX = 36;
     private static final int FOCUS_OVERLAY = 0x44365743;
+    private static final int STOCK_PIP_HEIGHT_PX = 5;
+    private static final float STOCK_PIP_FONT_SIZE = 4.5f;
 
     private final Context context;
 
@@ -43,6 +45,7 @@ public final class WallCardUiBuilder {
                 .noText()
                 .zIndex(2)
                 .tooltipStack(item.displayStack())
+                .tooltipLines(WorkspaceItemTooltipBuilder.slotLines(item))
                 .attach(WorkspaceUiAttachments.WALL_CARD, Boolean.TRUE)
                 .attach(WorkspaceUiAttachments.ATLAS_ITEM, item)
                 .layout(layout -> layout
@@ -79,12 +82,12 @@ public final class WallCardUiBuilder {
         if (wayfindingEntry != null) {
             body.attach(WorkspaceUiAttachments.WALL_CARD_WAYFINDING_ENTRY, wayfindingEntry);
         }
-        buildFallbackBody(body, item);
+        buildFallbackBody(body, item, activeSearchMatch);
         button.addChild(body);
         return button;
     }
 
-    private void buildFallbackBody(SlotUiElement body, SlotWorkspaceViewModel.AtlasItem item) {
+    private void buildFallbackBody(SlotUiElement body, SlotWorkspaceViewModel.AtlasItem item, boolean activeSearchMatch) {
         body.addChild(SlotUiElement.itemIcon(item.displayStack(), 16, item.carried())
                 .renderVanillaCount(false)
                 .zIndex(100)
@@ -96,7 +99,7 @@ public final class WallCardUiBuilder {
                         .height(16)));
         addCountBadge(body, item);
         addProximatePip(body, item);
-        addElsewherePip(body, item);
+        addSearchStoredPip(body, item, activeSearchMatch);
         addDesiredMarker(body, item);
         addWayfindingStrip(body);
     }
@@ -211,21 +214,28 @@ public final class WallCardUiBuilder {
                         .positionType(SlotUiLayout.PositionType.ABSOLUTE)
                         .right(0)
                         .top(0)
-                        .width(pipWidth(text))
-                        .height(6));
+                        .width(stockPipWidth(text))
+                        .height(STOCK_PIP_HEIGHT_PX));
         pip.addChild(SlotUiElement.label(text, TEXT)
                 .allowHitTest(false)
                 .layout(layout -> layout.widthPercent(100).heightPercent(100))
                 .textStyle(style -> style
                         .color(TEXT)
-                        .fontSize(5)
+                        .fontSize(STOCK_PIP_FONT_SIZE)
                         .horizontal(SlotUiTextStyle.Horizontal.CENTER)
                         .vertical(SlotUiTextStyle.Vertical.CENTER)));
         body.addChild(pip);
     }
 
-    private static void addElsewherePip(SlotUiElement body, SlotWorkspaceViewModel.AtlasItem item) {
-        int count = presenceCount(item.elsewhere());
+    private static void addSearchStoredPip(
+            SlotUiElement body,
+            SlotWorkspaceViewModel.AtlasItem item,
+            boolean activeSearchMatch
+    ) {
+        if (!activeSearchMatch) {
+            return;
+        }
+        int count = presenceCount(item.presence()) + presenceCount(item.elsewhere());
         if (count <= 0) {
             return;
         }
@@ -237,14 +247,14 @@ public final class WallCardUiBuilder {
                         .positionType(SlotUiLayout.PositionType.ABSOLUTE)
                         .left(0)
                         .top(0)
-                        .width(pipWidth(text))
-                        .height(6));
+                        .width(stockPipWidth(text))
+                        .height(STOCK_PIP_HEIGHT_PX));
         pip.addChild(SlotUiElement.label(text, TEXT)
                 .allowHitTest(false)
                 .layout(layout -> layout.widthPercent(100).heightPercent(100))
                 .textStyle(style -> style
                         .color(TEXT)
-                        .fontSize(5)
+                        .fontSize(STOCK_PIP_FONT_SIZE)
                         .horizontal(SlotUiTextStyle.Horizontal.CENTER)
                         .vertical(SlotUiTextStyle.Vertical.CENTER)));
         body.addChild(pip);
@@ -340,9 +350,9 @@ public final class WallCardUiBuilder {
         return count;
     }
 
-    private static int pipWidth(String text) {
+    private static int stockPipWidth(String text) {
         String value = text == null ? "" : text;
-        return Math.max(6, value.length() * 3 + 2);
+        return Math.max(STOCK_PIP_HEIGHT_PX, Math.round(value.length() * 3.25f + 1));
     }
 
     public interface Context {

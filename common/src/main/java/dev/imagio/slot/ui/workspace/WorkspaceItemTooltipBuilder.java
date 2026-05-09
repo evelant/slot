@@ -1,0 +1,116 @@
+package dev.imagio.slot.ui.workspace;
+
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import net.minecraft.network.chat.Component;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public final class WorkspaceItemTooltipBuilder {
+    private static final int MAX_CHEST_LABELS = 2;
+
+    private WorkspaceItemTooltipBuilder() {
+    }
+
+    public static List<Component> slotLines(SlotWorkspaceViewModel.AtlasItem item) {
+        if (item == null) {
+            return List.of();
+        }
+        ArrayList<Component> lines = new ArrayList<>();
+        addDesiredLine(lines, item);
+        addCarriedLine(lines, item);
+        addStorageLine(lines, "Nearby pip", sum(item.presence()), item.presence());
+        addStorageLine(lines, "Stored elsewhere", sum(item.elsewhere()), item.elsewhere());
+        addContainerLine(lines, item);
+        if (lines.isEmpty()) {
+            return List.of();
+        }
+        ArrayList<Component> result = new ArrayList<>(lines.size() + 2);
+        result.add(Component.empty());
+        result.add(Component.literal("SLOT"));
+        result.addAll(lines);
+        return List.copyOf(result);
+    }
+
+    private static void addDesiredLine(ArrayList<Component> lines, SlotWorkspaceViewModel.AtlasItem item) {
+        int desired = item.desiredCount();
+        int carried = item.carried() ? item.totalCount() : 0;
+        if (desired > 0) {
+            String source = item.desiredCountFromKit() ? " kit" : "";
+            lines.add(Component.literal("Desired badge: " + carried + "/" + desired + source));
+            return;
+        }
+        if (item.kitNeeded()) {
+            lines.add(Component.literal("Kit marker: needed by active kit"));
+        }
+    }
+
+    private static void addCarriedLine(ArrayList<Component> lines, SlotWorkspaceViewModel.AtlasItem item) {
+        if (!item.carried() || item.desiredCount() > 0 || item.totalCount() <= 1) {
+            return;
+        }
+        lines.add(Component.literal("Carried count: " + item.totalCount()));
+    }
+
+    private static void addStorageLine(
+            ArrayList<Component> lines,
+            String label,
+            int count,
+            List<SlotWorkspaceViewModel.ChestPresenceEntry> entries
+    ) {
+        if (count <= 0) {
+            return;
+        }
+        StringBuilder text = new StringBuilder(label).append(": ").append(count);
+        String breakdown = chestBreakdown(entries);
+        if (!breakdown.isBlank()) {
+            text.append(" in ").append(breakdown);
+        }
+        lines.add(Component.literal(text.toString()));
+    }
+
+    private static void addContainerLine(ArrayList<Component> lines, SlotWorkspaceViewModel.AtlasItem item) {
+        if (!item.isCarriedContainer() || item.containerSlotCapacity() <= 0) {
+            return;
+        }
+        lines.add(Component.literal(
+                "Container: " + item.containerFreeSlotCount() + "/" + item.containerSlotCapacity() + " slots free"));
+    }
+
+    private static String chestBreakdown(List<SlotWorkspaceViewModel.ChestPresenceEntry> entries) {
+        if (entries == null || entries.isEmpty()) {
+            return "";
+        }
+        ArrayList<String> parts = new ArrayList<>();
+        int positiveEntries = 0;
+        for (SlotWorkspaceViewModel.ChestPresenceEntry entry : entries) {
+            if (entry == null || entry.count() <= 0) {
+                continue;
+            }
+            positiveEntries++;
+            if (parts.size() >= MAX_CHEST_LABELS) {
+                continue;
+            }
+            String label = entry.label().isBlank() ? "chest" : entry.label();
+            parts.add(label + ": " + entry.count());
+        }
+        if (positiveEntries > MAX_CHEST_LABELS) {
+            parts.add("+" + (positiveEntries - MAX_CHEST_LABELS) + " more");
+        }
+        return String.join(", ", parts);
+    }
+
+    private static int sum(List<SlotWorkspaceViewModel.ChestPresenceEntry> entries) {
+        int total = 0;
+        if (entries == null) {
+            return 0;
+        }
+        for (SlotWorkspaceViewModel.ChestPresenceEntry entry : entries) {
+            if (entry != null) {
+                total += entry.count();
+            }
+        }
+        return total;
+    }
+
+}

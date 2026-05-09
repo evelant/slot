@@ -15,6 +15,7 @@ import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.DEPOSIT_ONE_HOME_TO_LINKED_CHEST;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.PICKUP_TO_CURSOR;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.STATUS;
+import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.TAKE_ONE_BY_IDENTITY;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.TAKE_STACK_BY_IDENTITY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -68,8 +69,16 @@ class WallCardTransferGesturePolicyTest {
     }
 
     @Test
-    void shiftClickGhostWithNearbyChestTakesStack() {
+    void shiftClickGhostWithNearbyChestTakesDesiredGapOrStack() {
         var decision = WallCardTransferGesturePolicy.click(context(ghostItem(), 0, true, false, null, false));
+
+        assertEquals(TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY, decision.action());
+    }
+
+    @Test
+    void shiftClickCarriedContinuesTakingDuringSameShiftHold() {
+        var decision = WallCardTransferGesturePolicy.click(new WallCardTransferGesturePolicy.Context(
+                item(true, true), 0, true, false, null, false, false, 0, true, true));
 
         assertEquals(TAKE_STACK_BY_IDENTITY, decision.action());
     }
@@ -79,6 +88,22 @@ class WallCardTransferGesturePolicyTest {
         var decision = WallCardTransferGesturePolicy.click(context(carriedItem(), 0, true, false, null, false));
 
         assertEquals(DEPOSIT_HOME_TO_LINKED_CHEST, decision.action());
+    }
+
+    @Test
+    void shiftClickTakeStateResetsWhenShiftIsReleased() {
+        ShiftClickTransferState state = new ShiftClickTransferState();
+        SlotWorkspaceViewModel.AtlasItem item = ghostItem();
+        state.observeShiftDown(true);
+        state.record(
+                WallCardTransferGesturePolicy.Decision.action(TAKE_DESIRED_GAP_OR_STACK_BY_IDENTITY),
+                item.identity(),
+                true);
+        assertEquals(true, state.continuingTake(item.identity(), true));
+
+        state.observeShiftDown(false);
+
+        assertEquals(false, state.continuingTake(item.identity(), true));
     }
 
     @Test
