@@ -60,7 +60,6 @@ public final class WorkspaceBeltCommandService {
             WorkflowDomainRuntime runtime,
             SlotWorkspaceViewModel viewModel,
             Integer hotbarIndex,
-            Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup,
             TransferExecutor transferExecutor,
             String originPrefix
     ) {
@@ -86,8 +85,7 @@ public final class WorkspaceBeltCommandService {
                 player,
                 runtime,
                 identity,
-                slot.displayStack(),
-                descriptorLookup);
+                slot.displayStack());
         if (depositTarget != null) {
             return WorkspaceChestCommandService.depositHotbarToChest(
                     player,
@@ -128,7 +126,6 @@ public final class WorkspaceBeltCommandService {
             SlotWorkspaceViewModel viewModel,
             ItemIdentity identity,
             boolean suppressChestPreference,
-            Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup,
             IntFunction<WorkspaceCommandOutcome> hotbarAssigner
     ) {
         if (identity == null) {
@@ -143,8 +140,7 @@ public final class WorkspaceBeltCommandService {
                     runtime,
                     identity,
                     WorkspaceChestCommandService.DepositQuantity.STACK,
-                    WorkspaceChestCommandService.DesiredCountPolicy.RESPECT,
-                    descriptorLookup);
+                    WorkspaceChestCommandService.DesiredCountPolicy.RESPECT);
             if (depositOutcome.success() && "deposited_stack".equals(depositOutcome.status())) {
                 return depositOutcome;
             }

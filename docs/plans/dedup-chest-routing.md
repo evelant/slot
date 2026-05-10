@@ -49,22 +49,18 @@ sensible options:
   Affinity-only, returns ClaimedChest (not UUID) since every caller
   needs the chest object to pass to `TakeAllExecutor`.
 - **(b)** New common-side class `ChestRoutingRanker` that owns both
-  `forDeposit` (the existing 3-tier) and `forTake` (affinity-only).
+  `forDeposit` (direct affinity only) and `forTake` (affinity-only).
   Cleaner home for "chest routing decisions" but bigger move.
 
 Lean toward **(a)** for the smaller diff. The deposit ranker already
 returns UUIDs; the take ranker can return ClaimedChest directly, both
 on the same class.
 
-**Note for take semantics.** Affinity-only is the current behavior;
-the more accurate signal would be presence-first (the chest with the
-identity in stock is by definition where to take from). Adding a
-`chestContentsLookup` parameter to the take ranker would let it
-prioritize present chests before affinity-only ones. The four call
-sites already build a `MinecraftServer` reference, so wiring the same
-[`chestContentsLookup` helper](../../neoforge/src/main/java/dev/imagio/slot/neoforge/screen/ldlib/SlotWorkspaceUiSession.java)
-that the deposit RPC uses is straightforward. Decide whether this pass
-includes that upgrade or stays affinity-only for a clean lift-and-shift.
+**Note for take semantics.** Affinity-only is the current behavior.
+Presence-first take ranking may still become useful, but it is not part
+of the deposit rule. Any future presence-aware take work should add its
+own explicit contents lookup instead of reintroducing presence as a
+deposit signal.
 
 ## 3. `resolveProximateLinkedChestForIdentity` is a third deposit-ranker
 
@@ -73,18 +69,18 @@ includes that upgrade or stays affinity-only for a clean lift-and-shift.
 chest" / "deposit one home to linked chest" actions. Has its own
 affinity sort + simulated-insert capacity filter. Falls back to "any
 proximate chest with capacity" when affinity is empty — a homegrown
-mini-version of what `DepositPlanner.rankChestsForIdentity` now does
-across three tiers.
+mini-version of what `DepositPlanner.rankChestsForIdentity` now owns.
 
 **Fix.** Call
 `DepositPlanner.rankChestsForIdentity(identity, claims, affinity,
-proximate, descriptorLookup, contentsLookup)` and walk the returned
-UUIDs in order, returning the first whose capacity simulation passes.
-The capacity filter (simulated insert returns empty leftover) stays
-local to this function since the planner doesn't do simulation.
+proximate)` and walk the returned UUIDs in order, returning the first
+whose capacity simulation passes. The capacity filter (simulated insert
+returns empty leftover) stays local to this function since the planner
+doesn't do simulation. Do not add a fallback to similar contents,
+presence, or the emptiest chest.
 
 **Test.** Per-card "deposit home to linked chest" should now also
-honor facet-similar and presence tiers — same routing as the deposit
+honor direct learned affinity only — same routing as the deposit
 button.
 
 ## Out of scope for this pass
@@ -110,9 +106,10 @@ Manual checks:
 - Claim a double chest from the active-chest strip → both halves
   share one storage UUID (read each half's `slot:storage_id` BE
   attachment with `/data get block ...`).
-- Deposit something into a chest where another player put compatible
-  items but the local player never has → routes correctly via the
-  presence tier (deposit button + cursor smart-deposit + per-card
-  "deposit home to linked chest" all behave the same).
+- Try to deposit something into a chest where another player put
+  compatible items but the local player never has → it stays carried
+  until the player teaches exact affinity. Deposit button,
+  cursor smart-deposit, and per-card "deposit home to linked chest"
+  all behave the same.
 - Active kit gather pulls from the highest-affinity chest first
   (existing behavior, just verifying no regression).

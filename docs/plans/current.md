@@ -82,7 +82,10 @@ hold the rest.
   `mods/` scanning, jar-backed static extraction, OpenRouter-backed
   stage 3, runtime subsystem vocabulary, Forge/NeoForge runtime export,
   datapack generation, dynamic organization/subsystem auto-home cohorts,
-  and `/slot classification inspect` / `rehome`.
+  and `/slot classification inspect` / `rehome`; deposit routing was
+  tightened back to exact learned chest affinity only, with facet,
+  presence, similarity, and emptiest-chest fallbacks removed from
+  auto-choice paths.
 - **2026-05-07** — Forge parity pass moved active-kit gather and
   in-world kit-page cycle into shared common services, registered
   `GATHER_ACTIVE_KIT`, wired in-screen gather through catalog actions
@@ -198,10 +201,6 @@ track lands.
    Wayfinding follow-ups (each minor; defer until playtest signals
    demand):
 
-   - The deposit-preview server projection only checks direct affinity,
-     not the facet-affinity fallback the planner uses, so items that
-     deposit via facet similarity won't light up in the preview. Tighten
-     by walking the same `LearnedAdjacencyKey` set the planner uses.
    - The `[SLOT] deposit ...` log lines fire on every click. Throttle
      once the deposit UX is stable — currently they're useful for
      bug triage but will eventually be log-spam.

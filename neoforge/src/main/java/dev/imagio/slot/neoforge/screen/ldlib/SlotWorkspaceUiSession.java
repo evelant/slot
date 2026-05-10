@@ -169,8 +169,7 @@ final class SlotWorkspaceUiSession {
         applyCursorOutcome(serverPlayer, WorkspaceCursorCommandService.cursorCancel(
                 serverPlayer,
                 workflowRuntime(serverPlayer),
-                cursorOrigin,
-                this::descriptorForIdentity));
+                cursorOrigin));
     }
 
     void cursorSmartDeposit() {
@@ -180,8 +179,7 @@ final class SlotWorkspaceUiSession {
         applyCursorOutcome(serverPlayer, WorkspaceCursorCommandService.cursorSmartDeposit(
                 serverPlayer,
                 workflowRuntime(serverPlayer),
-                cursorOrigin,
-                this::descriptorForIdentity));
+                cursorOrigin));
     }
 
     void dropCursorAtHotbar(Integer hotbarIndex, Integer button) {
@@ -407,8 +405,7 @@ final class SlotWorkspaceUiSession {
         applyOutcome(serverPlayer, WorkspaceChestCommandService.deposit(
                 serverPlayer,
                 workflowRuntime(serverPlayer),
-                authority,
-                this::descriptorForIdentity));
+                authority));
     }
 
     void gatherActiveKit() {
@@ -420,33 +417,6 @@ final class SlotWorkspaceUiSession {
                 workflowRuntime(serverPlayer));
         reapplyActiveKitFromCarry(serverPlayer);
         applyOutcome(serverPlayer, KitGatherService.toWorkspaceOutcome(gatherOutcome));
-    }
-
-    /**
-     * Resolve an {@link ItemIdentity} back to an
-     * {@link dev.imagio.slot.inventory.triage.IslandSignalDescriptor}
-     * for the deposit-planner facet-affinity fallback. Builds a
-     * synthetic default {@link ItemStack} via the registry, which is
-     * enough to recover tags, role, material_family, etc. — chest
-     * affinity bonds don't carry component fingerprints, so the
-     * default stack is good enough for the adjacency-key lookup.
-     * Returns {@code null} when the registry doesn't have the item
-     * (datapack-only or removed mods); the caller treats null as "no
-     * facet match" and falls through to direct affinity only.
-     */
-    private dev.imagio.slot.inventory.triage.IslandSignalDescriptor descriptorForIdentity(ItemIdentity identity) {
-        if (identity == null || identity.itemId() == null || identity.itemId().isBlank()) {
-            return null;
-        }
-        ItemStack stack = GhostAtlasStackFactory.resolve(identity.itemId());
-        if (stack == null || stack.isEmpty()) {
-            return null;
-        }
-        try {
-            return IslandSignalExtractor.extract(stack);
-        } catch (RuntimeException | LinkageError ignored) {
-            return null;
-        }
     }
 
     /**
@@ -1349,7 +1319,6 @@ final class SlotWorkspaceUiSession {
                 workflowRuntime(serverPlayer),
                 viewModel,
                 hotbarIndex,
-                this::descriptorForIdentity,
                 (source, destination, origin) -> executeTransfer(serverPlayer, source, destination, origin),
                 "slot_workspace.ldlib"));
     }
@@ -1378,7 +1347,6 @@ final class SlotWorkspaceUiSession {
                 viewModel,
                 identity,
                 suppressChestPreference,
-                this::descriptorForIdentity,
                 targetHotbarIndex -> assignIdentityToHotbarIndex(serverPlayer, identity, targetHotbarIndex)));
     }
 
@@ -1511,8 +1479,7 @@ final class SlotWorkspaceUiSession {
                 workflowRuntime(serverPlayer),
                 identity,
                 WorkspaceChestCommandService.DepositQuantity.STACK,
-                WorkspaceChestCommandService.DesiredCountPolicy.RESPECT,
-                this::descriptorForIdentity));
+                WorkspaceChestCommandService.DesiredCountPolicy.RESPECT));
     }
 
     void depositCarriedToChest(String itemId, String comparisonMode, String componentFingerprint, String storageIdRaw) {
@@ -1569,8 +1536,7 @@ final class SlotWorkspaceUiSession {
                 workflowRuntime(serverPlayer),
                 identity,
                 WorkspaceChestCommandService.DepositQuantity.ITEM,
-                WorkspaceChestCommandService.DesiredCountPolicy.IGNORE,
-                this::descriptorForIdentity));
+                WorkspaceChestCommandService.DesiredCountPolicy.IGNORE));
     }
 
     /**

@@ -1,6 +1,5 @@
 package dev.imagio.slot.forge.network;
 
-import dev.imagio.slot.forge.Forge120GhostStackFactory;
 import dev.imagio.slot.forge.storage.ForgeChestDepositObserver;
 import dev.imagio.slot.forge.storage.ForgeChestStorageAnchors;
 import dev.imagio.slot.forge.storage.ForgeChestStorageIds;
@@ -179,8 +178,7 @@ final class ForgeWorkspaceSession {
                 yield WorkspaceChestCommandService.deposit(
                         player,
                         runtime,
-                        authority,
-                        this::descriptorForIdentity);
+                        authority);
             }
             case GATHER_ACTIVE_KIT -> gatherActiveKit(player);
             case TAKE_ALL_FROM_CHEST -> {
@@ -252,15 +250,13 @@ final class ForgeWorkspaceSession {
                     runtime,
                     identityArg(args, 0),
                     WorkspaceChestCommandService.DepositQuantity.STACK,
-                    WorkspaceChestCommandService.DesiredCountPolicy.RESPECT,
-                    this::descriptorForIdentity);
+                    WorkspaceChestCommandService.DesiredCountPolicy.RESPECT);
             case DEPOSIT_ONE_HOME_TO_LINKED_CHEST -> WorkspaceChestCommandService.depositIdentityToLinkedChest(
                     player,
                     runtime,
                     identityArg(args, 0),
                     WorkspaceChestCommandService.DepositQuantity.ITEM,
-                    WorkspaceChestCommandService.DesiredCountPolicy.IGNORE,
-                    this::descriptorForIdentity);
+                    WorkspaceChestCommandService.DesiredCountPolicy.IGNORE);
             case PICKUP_TO_CURSOR -> applyCursorOutcome(player, WorkspaceCursorCommandService.pickupToCursor(
                     player,
                     runtime,
@@ -269,13 +265,11 @@ final class ForgeWorkspaceSession {
             case CURSOR_CANCEL -> applyCursorOutcome(player, WorkspaceCursorCommandService.cursorCancel(
                     player,
                     runtime,
-                    cursorOrigin,
-                    this::descriptorForIdentity));
+                    cursorOrigin));
             case CURSOR_SMART_DEPOSIT -> applyCursorOutcome(player, WorkspaceCursorCommandService.cursorSmartDeposit(
                     player,
                     runtime,
-                    cursorOrigin,
-                    this::descriptorForIdentity));
+                    cursorOrigin));
             case DROP_CURSOR_INTO_CHEST -> applyCursorOutcome(player, WorkspaceCursorCommandService.dropCursorIntoChest(
                     player,
                     runtime,
@@ -698,7 +692,6 @@ final class ForgeWorkspaceSession {
                 runtime,
                 viewModel,
                 hotbarIndex,
-                this::descriptorForIdentity,
                 (source, destination, origin) -> executeTransfer(player, source, destination, origin),
                 "slot_workspace.forge");
     }
@@ -714,7 +707,6 @@ final class ForgeWorkspaceSession {
                 viewModel,
                 identity,
                 suppressChestPreference,
-                this::descriptorForIdentity,
                 targetHotbarIndex -> assignIdentityToHotbarIndex(player, identity, targetHotbarIndex));
     }
 
@@ -942,25 +934,6 @@ final class ForgeWorkspaceSession {
                 ProtectionPolicy.allowAll(),
                 KIT_IDENTITY_RESOLVER,
                 actionExecutor(runtime, host, player));
-    }
-
-    private dev.imagio.slot.inventory.triage.IslandSignalDescriptor descriptorForIdentity(ItemIdentity identity) {
-        if (identity == null || identity.itemId() == null || identity.itemId().isBlank()) {
-            return null;
-        }
-        ItemStack stack = resolveGhostStack(identity.itemId());
-        if (stack.isEmpty()) {
-            return null;
-        }
-        try {
-            return Forge120IslandSignalExtractor.extract(stack);
-        } catch (RuntimeException | LinkageError ignored) {
-            return null;
-        }
-    }
-
-    private static ItemStack resolveGhostStack(String itemId) {
-        return Forge120GhostStackFactory.resolve(itemId);
     }
 
     private void recordOutcome(ServerPlayer player, InventoryActionOutcome outcome) {

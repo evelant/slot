@@ -793,23 +793,6 @@ public record SlotWorkspaceViewModel(
     }
 
     /**
-     * Carried atlas-item identities that have a positive direct
-     * affinity score against at least one proximate claimed chest.
-     * Drives the "Deposit (N)" button label and the deposit-preview
-     * highlight on atlas cards: hovering the deposit button paints
-     * these cards with an accent outline so the player can see exactly
-     * which stacks would route into chests before clicking.
-     *
-     * <p>Only direct affinity is checked (not the facet-affinity
-     * fallback that {@link DepositPlanner} applies) — keeping the
-     * preview tight to "I have already deposited this here" matches
-     * the player's mental model. Items that the planner would route
-     * via facet similarity won't show up in the preview but will still
-     * deposit when clicked; that's a worse-truth-than-needed but
-     * safer than an over-bright preview that promises items the
-     * planner won't actually move.
-     */
-    /**
      * Items the player must keep in carry: at least one of each active
      * kit-page slot identity, plus the resolved desired count (kit
      * scope > player scope). The deposit planner caps the depositable
@@ -863,6 +846,17 @@ public record SlotWorkspaceViewModel(
         return count;
     }
 
+    /**
+     * Carried atlas-item identities that have a positive direct
+     * affinity score against at least one proximate claimed chest.
+     * Drives the "Deposit (N)" button label and the deposit-preview
+     * highlight on atlas cards.
+     *
+     * <p>Only direct affinity is checked. Live chest presence and item
+     * similarity are intentionally ignored so the preview stays tight
+     * to "I have already deposited this exact item here" and matches
+     * the server planner.
+     */
     private static Set<IdentityRef> depositableIdentities(
             List<AtlasItem> atlasItems,
             ClaimedChestMap claimedChestMap,
@@ -895,18 +889,6 @@ public record SlotWorkspaceViewModel(
                 if (item.totalCount() <= reserved) {
                     continue;
                 }
-            }
-            // Presence-based path: a proximate chest already holds this
-            // identity, so the chest is implicitly "where this belongs"
-            // even when no learned affinity bond exists yet. Important
-            // for multiplayer worlds where other players (or other
-            // factions) organised the chest without going through
-            // SLOT — we still want SLOT-using players to deposit into
-            // the right chest. Also covers debug-populated chests and
-            // world-generated containers.
-            if (!item.presence().isEmpty()) {
-                result.add(item.identity());
-                continue;
             }
             for (ClaimedChest chest : claimedChestMap.chests()) {
                 if (chest == null) {

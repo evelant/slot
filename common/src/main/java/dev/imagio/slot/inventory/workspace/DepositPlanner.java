@@ -5,9 +5,6 @@ import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
-import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
-import dev.imagio.slot.inventory.triage.LearnedAdjacencyKey;
-import dev.imagio.slot.workflow.domain.ChestAffinity;
 import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
@@ -15,38 +12,21 @@ import dev.imagio.slot.workflow.domain.ClaimedChestMap;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
-import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
 /**
  * Affinity-driven deposit routing.
  *
- * <p>For each carried-pane item, find proximate claimed chests in three
- * tiers:
- * <ol>
- *   <li><b>Direct affinity</b> — {@code affinity[chest, identity] > 0}.
- *       Highest score wins (ties broken by stable storage-id ordering).</li>
- *   <li><b>Facet-similar affinity</b> — when no direct bond exists, sum
- *       affinity over chest residents that share a learned-rule
- *       adjacency key with the carried identity (tag, material_family,
- *       subsystem, dye_color, namespace, creative_tab). A brand-new
- *       netherite_ingot deposits into the "Mining" chest because it
- *       shares c:ingots / material_family / namespace with the iron and
- *       gold ingots already there. This requires a {@code descriptorLookup}
- *       that maps stored identities back to their facet descriptors.</li>
- *   <li><b>Presence</b> — the chest already holds at least one stack of
- *       this identity right now. Covers shared-world multiplayer (other
- *       players organised the chest without using SLOT) and any chest
- *       seeded with content the player hasn't personally deposited
- *       into yet. Requires a {@code chestContentsLookup} that returns
- *       the set of identities currently in a given chest.</li>
- * </ol>
- * Direct &gt; facet &gt; presence. Items still with no signal anywhere
+ * <p>For each carried item, route only to proximate claimed chests that
+ * already have a positive learned affinity bond for the exact identity:
+ * {@code affinity[chest, identity] > 0}. Similarity, classifier facets,
+ * and live chest presence are intentionally ignored so deposit never
+ * invents organization the player has not taught it. Highest score wins,
+ * with stable storage-id ordering for ties. Items with no direct affinity
  * stay in carry.
  */
 public final class DepositPlanner {
@@ -59,42 +39,7 @@ public final class DepositPlanner {
             ClaimedChestMap claimedChestMap,
             Set<String> proximateStorageIds
     ) {
-        return plan(authority, affinityMap, claimedChestMap, proximateStorageIds, null, null, null);
-    }
-
-    /**
-     * Cluster-aware overload. {@code descriptorLookup} maps an
-     * {@link ItemIdentity} to its {@link IslandSignalDescriptor} so the
-     * facet-affinity fallback can fire. Pass {@code null} to disable
-     * the fallback (legacy behavior — exact-match identity affinity
-     * only).
-     */
-    public static DepositPlan plan(
-            InventoryAuthoritySnapshot authority,
-            ChestAffinityMap affinityMap,
-            ClaimedChestMap claimedChestMap,
-            Set<String> proximateStorageIds,
-            Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup
-    ) {
-        return plan(authority, affinityMap, claimedChestMap, proximateStorageIds,
-                descriptorLookup, null, null);
-    }
-
-    /**
-     * Overload with the presence fallback. {@code chestContentsLookup}
-     * returns the set of identities currently present in a chest, keyed
-     * by storage UUID. Pass {@code null} to disable the presence tier.
-     */
-    public static DepositPlan plan(
-            InventoryAuthoritySnapshot authority,
-            ChestAffinityMap affinityMap,
-            ClaimedChestMap claimedChestMap,
-            Set<String> proximateStorageIds,
-            Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup,
-            Function<UUID, Set<ItemIdentity>> chestContentsLookup
-    ) {
-        return plan(authority, affinityMap, claimedChestMap, proximateStorageIds,
-                descriptorLookup, chestContentsLookup, null);
+        return plan(authority, affinityMap, claimedChestMap, proximateStorageIds, null);
     }
 
     /**
@@ -112,8 +57,6 @@ public final class DepositPlanner {
             ChestAffinityMap affinityMap,
             ClaimedChestMap claimedChestMap,
             Set<String> proximateStorageIds,
-            Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup,
-            Function<UUID, Set<ItemIdentity>> chestContentsLookup,
             ToIntFunction<ItemIdentity> reservedCountResolver
     ) {
         if (authority == null || affinityMap == null || claimedChestMap == null) {
@@ -167,8 +110,7 @@ public final class DepositPlanner {
                     continue;
                 }
                 List<String> candidates = rankCandidates(
-                        identity, claimedChestMap, affinityMap, proximate,
-                        descriptorLookup, chestContentsLookup);
+                        identity, claimedChestMap, affinityMap, proximate);
                 if (candidates.isEmpty()) {
                     continue;
                 }
@@ -186,23 +128,17 @@ public final class DepositPlanner {
     }
 
     /**
-     * Rank proximate claimed chests for {@code identity} across three
-     * tiers: direct affinity, facet-affinity fallback, and presence
-     * (chest already holds the identity). Returns storage UUIDs in
-     * descending preference order. Public so callers outside the
-     * planner (e.g., the cursor smart-deposit path) share the exact
-     * same routing rules and never drift.
-     *
-     * @param chestContentsLookup nullable; when {@code null} the
-     *     presence tier is skipped.
+     * Rank proximate claimed chests for {@code identity} by direct
+     * learned affinity. Returns storage UUIDs in descending preference
+     * order. Public so callers outside the planner (e.g., the cursor
+     * smart-deposit path) share the exact same routing rules and never
+     * drift.
      */
     public static List<UUID> rankChestsForIdentity(
             ItemIdentity identity,
             ClaimedChestMap claimedChestMap,
             ChestAffinityMap affinityMap,
-            Set<String> proximateStorageIds,
-            Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup,
-            Function<UUID, Set<ItemIdentity>> chestContentsLookup
+            Set<String> proximateStorageIds
     ) {
         if (identity == null || claimedChestMap == null || affinityMap == null) {
             return List.of();
@@ -211,9 +147,8 @@ public final class DepositPlanner {
         if (proximate.isEmpty()) {
             return List.of();
         }
-        record Candidate(UUID storageId, int directScore, int facetScore, boolean present) {
+        record Candidate(UUID storageId, int score) {
         }
-        Set<LearnedAdjacencyKey> targetKeys = targetAdjacencyKeys(identity, descriptorLookup);
         ArrayList<Candidate> ranked = new ArrayList<>();
         for (ClaimedChest chest : claimedChestMap.chests()) {
             if (chest == null) {
@@ -223,35 +158,17 @@ public final class DepositPlanner {
             if (!proximate.contains(storageUuid.toString())) {
                 continue;
             }
-            int directScore = affinityMap.score(storageUuid, identity);
-            int facetScore = 0;
-            if (directScore <= 0 && !targetKeys.isEmpty()) {
-                facetScore = facetAffinityScore(
-                        storageUuid, affinityMap, targetKeys, descriptorLookup);
-            }
-            boolean present = false;
-            if (directScore <= 0 && facetScore <= 0 && chestContentsLookup != null) {
-                Set<ItemIdentity> contents = chestContentsLookup.apply(storageUuid);
-                present = contents != null && contents.contains(identity);
-            }
-            if (directScore <= 0 && facetScore <= 0 && !present) {
+            int score = affinityMap.score(storageUuid, identity);
+            if (score <= 0) {
                 continue;
             }
-            ranked.add(new Candidate(storageUuid, directScore, facetScore, present));
+            ranked.add(new Candidate(storageUuid, score));
         }
         if (ranked.isEmpty()) {
             return List.of();
         }
-        // Tiered ordering: direct > facet > presence. Within a tier,
-        // higher score wins; storage id breaks ties.
         ranked.sort(Comparator
-                .<Candidate>comparingInt(c -> {
-                    if (c.directScore() > 0) return 0;
-                    if (c.facetScore() > 0) return 1;
-                    return 2;
-                })
-                .thenComparing(Comparator.<Candidate>comparingInt(c -> -c.directScore()))
-                .thenComparing(Comparator.<Candidate>comparingInt(c -> -c.facetScore()))
+                .<Candidate>comparingInt(c -> -c.score())
                 .thenComparing(c -> c.storageId().toString()));
         ArrayList<UUID> ids = new ArrayList<>(ranked.size());
         for (Candidate candidate : ranked) {
@@ -261,76 +178,18 @@ public final class DepositPlanner {
     }
 
     /**
-     * Explicit single-identity deposit ranking. Starts with the normal
-     * linked-storage ranking (direct affinity, facet-affinity from learned
-     * bonds, then exact presence). If that finds nothing, choose a proximate
-     * chest by similarity to its current contents. If there is no similarity
-     * signal anywhere, choose the emptiest proximate chest.
-     *
-     * <p>Bulk deposit intentionally does not call this method; the
-     * similarity/empty fallback is only for explicit player gestures.
+     * Explicit single-identity deposit ranking. This is intentionally the
+     * same direct-affinity rule as bulk deposit: a per-item gesture may
+     * choose how much to deposit, but it still must not choose a chest by
+     * inferred similarity or emptiness.
      */
     public static List<UUID> rankChestsForExplicitDeposit(
             ItemIdentity identity,
             ClaimedChestMap claimedChestMap,
             ChestAffinityMap affinityMap,
-            Set<String> proximateStorageIds,
-            Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup,
-            Function<UUID, Set<ItemIdentity>> chestContentsLookup,
-            Function<UUID, ChestSpace> chestSpaceLookup
+            Set<String> proximateStorageIds
     ) {
-        List<UUID> linked = rankChestsForIdentity(
-                identity,
-                claimedChestMap,
-                affinityMap,
-                proximateStorageIds,
-                descriptorLookup,
-                chestContentsLookup);
-        if (!linked.isEmpty()) {
-            return linked;
-        }
-        if (identity == null || claimedChestMap == null) {
-            return List.of();
-        }
-        Set<String> proximate = proximateStorageIds == null ? Set.of() : proximateStorageIds;
-        if (proximate.isEmpty()) {
-            return List.of();
-        }
-
-        record Candidate(UUID storageId, int similarityScore, ChestSpace space) {
-        }
-
-        Set<LearnedAdjacencyKey> targetKeys = targetAdjacencyKeys(identity, descriptorLookup);
-        ArrayList<Candidate> candidates = new ArrayList<>();
-        for (ClaimedChest chest : claimedChestMap.chests()) {
-            if (chest == null || !proximate.contains(chest.storageId().toString())) {
-                continue;
-            }
-            Set<ItemIdentity> contents = chestContentsLookup == null
-                    ? Set.of()
-                    : chestContentsLookup.apply(chest.storageId());
-            int similarity = contentSimilarityScore(targetKeys, contents, descriptorLookup);
-            ChestSpace space = chestSpaceLookup == null
-                    ? ChestSpace.unknown()
-                    : chestSpaceLookup.apply(chest.storageId());
-            candidates.add(new Candidate(chest.storageId(), similarity, space == null ? ChestSpace.unknown() : space));
-        }
-        if (candidates.isEmpty()) {
-            return List.of();
-        }
-
-        boolean anySimilar = candidates.stream().anyMatch(candidate -> candidate.similarityScore() > 0);
-        candidates.sort(Comparator
-                .<Candidate>comparingInt(candidate -> anySimilar ? -candidate.similarityScore() : 0)
-                .thenComparing(Comparator.<Candidate>comparingInt(candidate -> -candidate.space().freeSlots()))
-                .thenComparing(Comparator.comparingInt(candidate -> candidate.space().occupiedSlots()))
-                .thenComparing(candidate -> candidate.storageId().toString()));
-
-        ArrayList<UUID> ids = new ArrayList<>(candidates.size());
-        for (Candidate candidate : candidates) {
-            ids.add(candidate.storageId());
-        }
-        return List.copyOf(ids);
+        return rankChestsForIdentity(identity, claimedChestMap, affinityMap, proximateStorageIds);
     }
 
     /**
@@ -381,13 +240,10 @@ public final class DepositPlanner {
             ItemIdentity identity,
             ClaimedChestMap claimedChestMap,
             ChestAffinityMap affinityMap,
-            Set<String> proximate,
-            Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup,
-            Function<UUID, Set<ItemIdentity>> chestContentsLookup
+            Set<String> proximate
     ) {
         List<UUID> uuids = rankChestsForIdentity(
-                identity, claimedChestMap, affinityMap, proximate,
-                descriptorLookup, chestContentsLookup);
+                identity, claimedChestMap, affinityMap, proximate);
         if (uuids.isEmpty()) {
             return List.of();
         }
@@ -396,98 +252,5 @@ public final class DepositPlanner {
             ids.add(uuid.toString());
         }
         return List.copyOf(ids);
-    }
-
-    private static Set<LearnedAdjacencyKey> targetAdjacencyKeys(
-            ItemIdentity identity,
-            Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup
-    ) {
-        if (descriptorLookup == null) {
-            return Set.of();
-        }
-        IslandSignalDescriptor descriptor = descriptorLookup.apply(identity);
-        if (descriptor == null) {
-            return Set.of();
-        }
-        return new LinkedHashSet<>(LearnedAdjacencyKey.keysFor(descriptor));
-    }
-
-    private static int facetAffinityScore(
-            UUID storageId,
-            ChestAffinityMap affinityMap,
-            Set<LearnedAdjacencyKey> targetKeys,
-            Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup
-    ) {
-        Map<ItemIdentity, ChestAffinity> bonds = affinityMap.forChest(storageId);
-        if (bonds.isEmpty()) {
-            return 0;
-        }
-        int total = 0;
-        for (Map.Entry<ItemIdentity, ChestAffinity> bond : bonds.entrySet()) {
-            ItemIdentity other = bond.getKey();
-            IslandSignalDescriptor otherDescriptor = descriptorLookup.apply(other);
-            if (otherDescriptor == null) {
-                continue;
-            }
-            for (LearnedAdjacencyKey key : LearnedAdjacencyKey.keysFor(otherDescriptor)) {
-                if (targetKeys.contains(key)) {
-                    total += bond.getValue().score();
-                    break;
-                }
-            }
-        }
-        return total;
-    }
-
-    private static int contentSimilarityScore(
-            Set<LearnedAdjacencyKey> targetKeys,
-            Set<ItemIdentity> contents,
-            Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup
-    ) {
-        if (targetKeys == null || targetKeys.isEmpty()
-                || contents == null || contents.isEmpty()
-                || descriptorLookup == null) {
-            return 0;
-        }
-        int total = 0;
-        for (ItemIdentity other : contents) {
-            if (other == null) {
-                continue;
-            }
-            IslandSignalDescriptor descriptor = descriptorLookup.apply(other);
-            if (descriptor == null) {
-                continue;
-            }
-            for (LearnedAdjacencyKey key : LearnedAdjacencyKey.keysFor(descriptor)) {
-                if (targetKeys.contains(key)) {
-                    total++;
-                }
-            }
-        }
-        return total;
-    }
-
-    public record ChestSpace(int slotCount, int occupiedSlots) {
-        public ChestSpace {
-            slotCount = Math.max(0, slotCount);
-            occupiedSlots = Math.max(0, Math.min(occupiedSlots, slotCount));
-        }
-
-        public static ChestSpace unknown() {
-            return new ChestSpace(0, 0);
-        }
-
-        public int freeSlots() {
-            return Math.max(0, slotCount - occupiedSlots);
-        }
-    }
-
-    @SuppressWarnings("unused")
-    private static UUID parseStorageId(String raw) {
-        try {
-            return UUID.fromString(raw);
-        } catch (IllegalArgumentException ignored) {
-            return null;
-        }
     }
 }

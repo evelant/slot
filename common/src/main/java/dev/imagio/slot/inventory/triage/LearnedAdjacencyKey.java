@@ -9,10 +9,8 @@ public record LearnedAdjacencyKey(Kind kind, String value) implements Comparable
 
     /**
      * Same broad-namespace blacklist
-     * {@link LearnedIslandRuleStore} uses internally — exposed so
-     * other consumers (e.g. {@code DepositPlanner}'s facet-affinity
-     * fallback) can build the exact same adjacency-key set without
-     * importing the rule store.
+     * {@link LearnedIslandRuleStore} uses internally so rule learning
+     * has one canonical adjacency-key set.
      */
     private static final Set<String> OVERLY_BROAD_NAMESPACES = Set.of(
             "minecraft",
@@ -30,11 +28,8 @@ public record LearnedAdjacencyKey(Kind kind, String value) implements Comparable
 
     /**
      * Build the canonical adjacency-key list for an
-     * {@link IslandSignalDescriptor}. Single source of truth — both
-     * {@link LearnedIslandRuleStore} (for chip suggestions) and
-     * {@code DepositPlanner} (for facet-affinity deposit fallback) call
-     * this so a player's "items I home together" learnings line up
-     * with their "items I deposit together" learnings.
+     * {@link IslandSignalDescriptor}. Single source of truth for
+     * chip-suggestion rule learning.
      */
     public static List<LearnedAdjacencyKey> keysFor(IslandSignalDescriptor descriptor) {
         if (descriptor == null) {

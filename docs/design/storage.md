@@ -308,27 +308,30 @@ proximity of one or more claimed chests.
 
 For each stack in carried inventory:
 
-- if the stack's identity lives on an island linked to a nearby chest, the
-  stack is **eligible** for deposit
+- if the stack's exact identity has positive learned affinity with a
+  nearby claimed chest, the stack is **eligible** for deposit
 - otherwise it stays carried
 - eligibility is further reduced by kit holdouts (next section)
 
 ### Destination
 
-When a stack is eligible and multiple linked chests are nearby, the
-destination is the nearest linked chest with space. No distribution rules,
-no concentration heuristics, no fallback routing to chests at other bases.
+When a stack is eligible and multiple learned-affinity chests are nearby,
+the destination walk follows affinity score, then stable storage-id order,
+and inserts into the first chest with space. No classifier/facet
+similarity, live-presence inference, empty-chest fallback, distribution
+rules, concentration heuristics, or fallback routing to chests at other
+bases.
 
 ### Full Chest Behavior
 
-If the nearest linked chest is full and no other nearby linked chest has
-space, the deposit for that stack fails with a simple notification:
+If every learned-affinity chest for the identity is full or inaccessible,
+the deposit for that stack fails with a simple notification:
 
 > Couldn't deposit Iron Ingot · 64 — Ore Chest full
 
-The player's response is deterministic and low-friction: place another chest
-at the base, link it to the same island, deposit again. No overflow tray, no
-review queue, no scatter.
+The player's response is deterministic and low-friction: place the stack in
+the chest they want to teach, then future deposits can follow that learned
+affinity. No overflow tray, no review queue, no scatter.
 
 ### Feedback
 

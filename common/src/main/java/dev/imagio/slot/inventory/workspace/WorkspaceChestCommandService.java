@@ -9,7 +9,6 @@ import dev.imagio.slot.inventory.session.InventoryAcquisitionActivityRecorder;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
-import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
 import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
@@ -21,13 +20,11 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
-import java.util.function.Function;
 import java.util.function.ToIntFunction;
 
 /**
@@ -42,8 +39,7 @@ public final class WorkspaceChestCommandService {
     public static WorkspaceCommandOutcome deposit(
             ServerPlayer player,
             WorkflowDomainRuntime runtime,
-            InventoryAuthoritySnapshot authority,
-            Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup
+            InventoryAuthoritySnapshot authority
     ) {
         if (player == null || runtime == null) {
             return WorkspaceCommandOutcome.rejected("invalid_deposit_context");
@@ -59,19 +55,15 @@ public final class WorkspaceChestCommandService {
 
         long tick = player.serverLevel().getGameTime();
         ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap().decayed(tick);
-        MinecraftServer server = player.getServer();
-        Map<UUID, Set<ItemIdentity>> contentsCache = new HashMap<>();
         DepositPlan plan = DepositPlanner.plan(
                 authority == null ? InventoryAuthoritySnapshot.empty() : authority,
                 affinityMap,
                 claimedChestMap,
                 proximate,
-                descriptorLookup,
-                chestContentsLookup(server, claimedChestMap, contentsCache),
                 reservedCountResolver(runtime)
         );
         SlotCommon.LOGGER.info(
-                "[SLOT] deposit plan: assignments={} (one per stack with affinity / facet / presence)",
+                "[SLOT] deposit plan: assignments={} (one per stack with learned affinity)",
                 plan.assignments().size());
         DepositExecutor.DepositOutcome outcome = DepositExecutor.execute(player, plan, claimedChestMap);
         for (DepositExecutor.DepositRecord record : outcome.records()) {
@@ -83,7 +75,7 @@ public final class WorkspaceChestCommandService {
             return WorkspaceCommandOutcome.accepted(
                     "nothing_to_deposit",
                     plan.assignments().isEmpty()
-                            ? "no carried stack matches a proximate chest (no affinity, no facet match, not present)"
+                            ? "no carried stack has learned affinity with a proximate chest"
                             : "all candidate chests rejected the items");
         }
         if (outcome.deposited() > 0 && outcome.failed() == 0) {
@@ -172,8 +164,7 @@ public final class WorkspaceChestCommandService {
             WorkflowDomainRuntime runtime,
             ItemIdentity identity,
             DepositQuantity quantity,
-            DesiredCountPolicy desiredCountPolicy,
-            Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup
+            DesiredCountPolicy desiredCountPolicy
     ) {
         if (identity == null) {
             return WorkspaceCommandOutcome.rejected("invalid_identity");
@@ -218,8 +209,7 @@ public final class WorkspaceChestCommandService {
                 runtime,
                 identity,
                 representativeStack,
-                requested,
-                descriptorLookup);
+                requested);
         if (candidates.isEmpty()) {
             return WorkspaceCommandOutcome.rejected("no_linked_proximate_chest_with_room");
         }
@@ -381,8 +371,7 @@ public final class WorkspaceChestCommandService {
             ServerPlayer player,
             WorkflowDomainRuntime runtime,
             ItemIdentity identity,
-            ItemStack sourceStack,
-            Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup
+            ItemStack sourceStack
     ) {
         if (player == null || runtime == null || identity == null || sourceStack == null || sourceStack.isEmpty()) {
             return null;
@@ -398,16 +387,11 @@ public final class WorkspaceChestCommandService {
         }
         long tick = player.serverLevel().getGameTime();
         ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap().decayed(tick);
-        Map<UUID, Set<ItemIdentity>> contentsCache = new HashMap<>();
-        Map<UUID, DepositPlanner.ChestSpace> spaceCache = new HashMap<>();
         List<UUID> ranked = DepositPlanner.rankChestsForExplicitDeposit(
                 identity,
                 claimedChestMap,
                 affinityMap,
-                proximate,
-                descriptorLookup,
-                chestContentsLookup(server, claimedChestMap, contentsCache),
-                chestSpaceLookup(server, claimedChestMap, spaceCache));
+                proximate);
         WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
         for (UUID storageId : ranked) {
             ClaimedChest chest = claimedChestMap.chest(storageId);
@@ -431,8 +415,7 @@ public final class WorkspaceChestCommandService {
             WorkflowDomainRuntime runtime,
             ItemIdentity identity,
             ItemStack sourceStack,
-            int requestedCount,
-            Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup
+            int requestedCount
     ) {
         if (player == null || runtime == null || identity == null
                 || sourceStack == null || sourceStack.isEmpty() || requestedCount <= 0) {
@@ -449,16 +432,11 @@ public final class WorkspaceChestCommandService {
         }
         long tick = player.serverLevel().getGameTime();
         ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap().decayed(tick);
-        Map<UUID, Set<ItemIdentity>> contentsCache = new HashMap<>();
-        Map<UUID, DepositPlanner.ChestSpace> spaceCache = new HashMap<>();
         List<UUID> ranked = DepositPlanner.rankChestsForExplicitDeposit(
                 identity,
                 claimedChestMap,
                 affinityMap,
-                proximate,
-                descriptorLookup,
-                chestContentsLookup(server, claimedChestMap, contentsCache),
-                chestSpaceLookup(server, claimedChestMap, spaceCache));
+                proximate);
         if (ranked.isEmpty()) {
             return List.of();
         }
@@ -665,73 +643,6 @@ public final class WorkspaceChestCommandService {
                     }
                 }
         );
-    }
-
-    static Function<UUID, Set<ItemIdentity>> chestContentsLookup(
-            MinecraftServer server,
-            ClaimedChestMap claimedChestMap,
-            Map<UUID, Set<ItemIdentity>> contentsCache
-    ) {
-        return storageId -> {
-            if (server == null || storageId == null) {
-                return Set.of();
-            }
-            Map<UUID, Set<ItemIdentity>> cache = contentsCache == null ? new HashMap<>() : contentsCache;
-            if (cache.containsKey(storageId)) {
-                return cache.get(storageId);
-            }
-            ClaimedChest chest = claimedChestMap == null ? null : claimedChestMap.chest(storageId);
-            if (chest == null || !StorageAccessRegistry.isInstalled()) {
-                cache.put(storageId, Set.of());
-                return Set.of();
-            }
-            WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
-            WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
-            ArrayList<ItemIdentity> identities = new ArrayList<>();
-            for (WorldStorageAccess.SlotContent entry : world.enumerate(server, target)) {
-                ItemStack stack = entry.stack();
-                if (stack != null && !stack.isEmpty()) {
-                    identities.add(ItemIdentityMatcher.create(stack));
-                }
-            }
-            Set<ItemIdentity> resolved = Set.copyOf(identities);
-            cache.put(storageId, resolved);
-            return resolved;
-        };
-    }
-
-    static Function<UUID, DepositPlanner.ChestSpace> chestSpaceLookup(
-            MinecraftServer server,
-            ClaimedChestMap claimedChestMap,
-            Map<UUID, DepositPlanner.ChestSpace> spaceCache
-    ) {
-        return storageId -> {
-            if (server == null || storageId == null) {
-                return DepositPlanner.ChestSpace.unknown();
-            }
-            Map<UUID, DepositPlanner.ChestSpace> cache = spaceCache == null ? new HashMap<>() : spaceCache;
-            if (cache.containsKey(storageId)) {
-                return cache.get(storageId);
-            }
-            ClaimedChest chest = claimedChestMap == null ? null : claimedChestMap.chest(storageId);
-            if (chest == null || !StorageAccessRegistry.isInstalled()) {
-                DepositPlanner.ChestSpace unknown = DepositPlanner.ChestSpace.unknown();
-                cache.put(storageId, unknown);
-                return unknown;
-            }
-            WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
-            WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
-            if (!world.isAccessible(server, target)) {
-                DepositPlanner.ChestSpace unknown = DepositPlanner.ChestSpace.unknown();
-                cache.put(storageId, unknown);
-                return unknown;
-            }
-            DepositPlanner.ChestSpace space = new DepositPlanner.ChestSpace(
-                    world.slotCount(server, target),
-                    world.enumerate(server, target).size());
-            cache.put(storageId, space);
-            return space;
-        };
     }
 
     private static ToIntFunction<ItemIdentity> reservedCountResolver(WorkflowDomainRuntime runtime) {

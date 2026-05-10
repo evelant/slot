@@ -7,7 +7,6 @@ import dev.imagio.slot.inventory.session.InventoryAcquisitionActivityRecorder;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
 import dev.imagio.slot.inventory.storage.WorldStorageAccess;
-import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
 import dev.imagio.slot.workflow.domain.ChestAffinityMap;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
 import dev.imagio.slot.workflow.domain.ClaimedChestMap;
@@ -21,12 +20,10 @@ import net.minecraft.world.inventory.ClickType;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
-import java.util.function.Function;
 
 public final class WorkspaceCursorCommandService {
     private WorkspaceCursorCommandService() {
@@ -101,8 +98,7 @@ public final class WorkspaceCursorCommandService {
     public static CursorCommandOutcome cursorCancel(
             ServerPlayer player,
             WorkflowDomainRuntime runtime,
-            CursorOrigin origin,
-            Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup
+            CursorOrigin origin
     ) {
         if (player == null || runtime == null) {
             return rejected("invalid_cursor_context", null);
@@ -124,7 +120,7 @@ public final class WorkspaceCursorCommandService {
             };
         }
         if (!remaining.isEmpty()) {
-            remaining = smartDepositLeftover(player, runtime, remaining, descriptorLookup);
+            remaining = smartDepositLeftover(player, runtime, remaining);
         }
         menu.setCarried(remaining);
         CursorOrigin nextOrigin = remaining.isEmpty() ? null : origin;
@@ -139,8 +135,7 @@ public final class WorkspaceCursorCommandService {
     public static CursorCommandOutcome cursorSmartDeposit(
             ServerPlayer player,
             WorkflowDomainRuntime runtime,
-            CursorOrigin origin,
-            Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup
+            CursorOrigin origin
     ) {
         if (player == null || runtime == null) {
             return rejected("invalid_cursor_context", null);
@@ -162,7 +157,7 @@ public final class WorkspaceCursorCommandService {
                     "remaining=" + remaining.getCount(),
                     remaining.isEmpty() ? null : origin);
         }
-        ItemStack remaining = smartDepositLeftover(player, runtime, carried.copy(), descriptorLookup);
+        ItemStack remaining = smartDepositLeftover(player, runtime, carried.copy());
         menu.setCarried(remaining);
         SlotDebugLog.log("[cursor][smart-deposit] remaining={}", remaining.getCount());
         return accepted(
@@ -434,8 +429,7 @@ public final class WorkspaceCursorCommandService {
     private static ItemStack smartDepositLeftover(
             ServerPlayer player,
             WorkflowDomainRuntime runtime,
-            ItemStack stack,
-            Function<ItemIdentity, IslandSignalDescriptor> descriptorLookup
+            ItemStack stack
     ) {
         if (stack == null || stack.isEmpty()) {
             return ItemStack.EMPTY;
@@ -468,14 +462,11 @@ public final class WorkspaceCursorCommandService {
             if (!proximate.isEmpty()) {
                 long tick = player.serverLevel().getGameTime();
                 ChestAffinityMap affinityMap = runtime.snapshot().chestAffinityMap().decayed(tick);
-                var contentsCache = new HashMap<UUID, Set<ItemIdentity>>();
                 List<UUID> ranked = DepositPlanner.rankChestsForIdentity(
                         identity,
                         claimedChestMap,
                         affinityMap,
-                        proximate,
-                        descriptorLookup,
-                        WorkspaceChestCommandService.chestContentsLookup(server, claimedChestMap, contentsCache));
+                        proximate);
                 WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
                 for (UUID storageUuid : ranked) {
                     ClaimedChest chest = claimedChestMap.chest(storageUuid);
