@@ -772,13 +772,54 @@ describe("runtime subsystem vocabulary", () => {
     expect(create.tokenClusters.some((cluster) => cluster.id === "press")).toBe(true);
     expect(create.itemTagSummaries.some((tag) => tag.tag === "create:pipes")).toBe(true);
     expect(create.blockTagSummaries.some((tag) => tag.tag === "create:stress_impact")).toBe(true);
+    expect(create.recipeFamilyCandidates.some((row) => row.id === "create:pressing")).toBe(true);
     expect(create.recipeIdNamespaces.some((row) => row.id === "tfg")).toBe(true);
 
     const prompt = buildRuntimeProposerPrompt(create);
     expect(prompt.system).toContain("Pick **0 to 8** entries");
+    expect(prompt.system).toContain("Prominent namespace-owned recipe families");
     expect(prompt.user).toContain("KubeJS/datapack recipe and tag edits");
+    expect(prompt.user).toContain("Candidate namespace workflow recipe families");
     expect(prompt.user).toContain("Mod namespace: create");
     expect(prompt.user).toContain("create:mechanical_press");
+  });
+
+  test("surfaces namespace recipe families for survival workflow mods", () => {
+    const records = [
+      runtimeRecord({
+        id: "tfc:ceramic/ingot_mold",
+        displayName: "Ingot Mold",
+        outputCounts: { "tfc:casting": 12, "tfc:advanced_shapeless_crafting": 50 },
+        outputOf: ["tfc:casting/copper_ingot"],
+      }),
+      runtimeRecord({
+        id: "tfc:metal/anvil/wrought_iron",
+        displayName: "Wrought Iron Anvil",
+        outputCounts: { "tfc:anvil": 8, "tfc:welding": 3 },
+        outputOf: ["tfc:anvil/double_ingot", "tfc:welding/wrought_iron_anvil"],
+        isBlock: true,
+      }),
+      runtimeRecord({
+        id: "tfc:barrel",
+        displayName: "Barrel",
+        ingredientCounts: { "tfc:barrel_sealed": 5 },
+        outputCounts: { crafting_shaped: 1 },
+        isBlock: true,
+      }),
+    ];
+    const contexts = buildRuntimeSubsystemContexts({ records, minItems: 1 });
+    const tfc = contexts.find((context) => context.modNamespace === "tfc")!;
+
+    expect(tfc.recipeFamilyCandidates.map((row) => row.id)).toContain("tfc:casting");
+    expect(tfc.recipeFamilyCandidates.map((row) => row.id)).toContain("tfc:anvil");
+    expect(tfc.recipeFamilyCandidates.map((row) => row.id)).toContain("tfc:barrel_sealed");
+    expect(tfc.recipeFamilyCandidates.map((row) => row.id)).not.toContain("tfc:advanced_shapeless_crafting");
+
+    const prompt = buildRuntimeProposerPrompt(tfc);
+    expect(prompt.system).toContain("casting");
+    expect(prompt.system).toContain("smithing");
+    expect(prompt.user).toContain("tfc:casting");
+    expect(prompt.user).toContain("tfc:barrel_sealed");
   });
 
   test("loads runtime vocabulary maps and filters them per batch namespace", () => {

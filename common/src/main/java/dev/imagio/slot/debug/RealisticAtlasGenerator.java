@@ -1,7 +1,9 @@
 package dev.imagio.slot.debug;
 
+import dev.imagio.slot.classification.DynamicHomeCohortPolicy;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.triage.CommonItemTagFamilies;
 import dev.imagio.slot.inventory.triage.IslandSignal;
 import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
 import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
@@ -40,7 +42,7 @@ public final class RealisticAtlasGenerator {
      * the genuine "machinery area" and "logistics network" splits and
      * lets smaller groups collapse into the parent template's pile.
      */
-    public static final int DEFAULT_MIN_SUBSYSTEM_ITEMS = 10;
+    public static final int DEFAULT_MIN_SUBSYSTEM_ITEMS = DynamicHomeCohortPolicy.DEFAULT_MIN_SUBSYSTEM_ITEMS;
 
     // Mirror the real atlas layout so generated assignments land on the same invisible
     // grid the UI uses for clamp + snap — otherwise every card shows up misaligned and
@@ -361,9 +363,12 @@ public final class RealisticAtlasGenerator {
 
     private static java.util.Set<String> tagTriggerFor(IslandSuggestionTemplate template) {
         return switch (template) {
-            case INGOTS -> java.util.Set.of("c:ingots");
-            case GEMS -> java.util.Set.of("c:gems");
-            case RAW_MATERIALS -> java.util.Set.of("c:raw_materials");
+            case INGOTS -> java.util.Set.of(
+                    CommonItemTagFamilies.canonicalRootTag(CommonItemTagFamilies.Family.INGOTS));
+            case GEMS -> java.util.Set.of(
+                    CommonItemTagFamilies.canonicalRootTag(CommonItemTagFamilies.Family.GEMS));
+            case RAW_MATERIALS -> java.util.Set.of(
+                    CommonItemTagFamilies.canonicalRootTag(CommonItemTagFamilies.Family.RAW_MATERIALS));
             default -> java.util.Set.of();
         };
     }

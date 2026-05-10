@@ -121,14 +121,15 @@ class IslandSuggestionTemplateCoverageTest {
         // Spawn eggs → CURIOSITY (was utility / admin).
         expected.put("minecraft:bee_spawn_egg", IslandSuggestionTemplate.CURIOSITY);
         expected.put("minecraft:zombie_spawn_egg", IslandSuggestionTemplate.CURIOSITY);
-        // Mob drops + raw ores → MATERIALS (was natural_resource).
+        // Mob drops → MATERIALS (was natural_resource).
         expected.put("minecraft:blaze_rod", IslandSuggestionTemplate.MATERIALS);
         expected.put("minecraft:string", IslandSuggestionTemplate.MATERIALS);
         expected.put("minecraft:leather", IslandSuggestionTemplate.MATERIALS);
         expected.put("minecraft:feather", IslandSuggestionTemplate.MATERIALS);
         expected.put("minecraft:bone", IslandSuggestionTemplate.MATERIALS);
         expected.put("minecraft:slime_ball", IslandSuggestionTemplate.MATERIALS);
-        expected.put("minecraft:raw_iron", IslandSuggestionTemplate.MATERIALS);
+        // Raw ores → RAW_MATERIALS, not the broad MATERIALS pile.
+        expected.put("minecraft:raw_iron", IslandSuggestionTemplate.RAW_MATERIALS);
 
         Map<String, String> rolesByItemId = loadVanillaRoles();
         for (Map.Entry<String, IslandSuggestionTemplate> e : expected.entrySet()) {

@@ -122,6 +122,22 @@ describe("formRule", () => {
     expect(out[0]!).toMatchObject({ value: "ingot" });
   });
 
+  test("common tag roots normalize loader tag conventions", () => {
+    const forgeIngot = formRule.run(ctx(record({
+      id: "tfc:metal/ingot/copper",
+      path: "metal/ingot/copper",
+      minecraft_tags: ["forge:ingots/copper"],
+    })));
+    expect(forgeIngot[0]!).toMatchObject({ value: "ingot" });
+
+    const cRaw = formRule.run(ctx(record({
+      id: "modernmod:raw_tin",
+      path: "raw_tin",
+      minecraft_tags: ["c:raw_materials/tin"],
+    })));
+    expect(cRaw[0]!).toMatchObject({ value: "raw" });
+  });
+
   test("window suffix maps to pane (Create's _window blocks)", () => {
     const out = formRule.run(ctx(record({
       id: "create:dark_oak_window",

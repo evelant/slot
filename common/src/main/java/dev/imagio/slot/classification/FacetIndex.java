@@ -265,6 +265,10 @@ public final class FacetIndex {
         return entriesByItemId.isEmpty();
     }
 
+    public Set<String> itemIds() {
+        return entriesByItemId.keySet();
+    }
+
     private record ItemFacets(
             String role,
             List<String> roleAlternatives,

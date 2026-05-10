@@ -96,6 +96,18 @@ For KubeJS/datapack-heavy packs, run `/slot classification export
 stage-1-compatible records under
 `config/slot/classification/exports/`.
 
+For in-game validation after installing a generated datapack, run:
+
+```text
+/slot classification inspect <item_id>
+/slot classification rehome
+```
+
+`inspect` shows the loaded facet/template/subsystem view for one item.
+`rehome` recomputes classifier-owned homes for every unique item in
+carried storage plus currently accessible claimed chests; it does not
+move physical stacks.
+
 The vanilla extractor reads from [misode/mcmeta](https://github.com/misode/mcmeta),
 tracked as a git submodule at `tools/mcmeta`. On first run it auto-creates a git
 worktree for the `summary` branch under `tools/mcmeta/.worktrees/summary` and

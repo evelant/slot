@@ -2,7 +2,10 @@ package dev.imagio.slot.workflow.domain;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
 
+import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -212,6 +215,49 @@ public final class VisualAtlasWorkflowDomainService {
         return visualHomeMap().assignment(identity);
     }
 
+    public Map<ItemIdentity, VisualHomeAssignment> assignHomes(
+            Collection<VisualHomeAssignment> assignments,
+            DomainEventMetadata metadata
+    ) {
+        if (assignments == null || assignments.isEmpty()) {
+            return Map.of();
+        }
+        LinkedHashMap<ItemIdentity, VisualHomeAssignment> requestedByIdentity = new LinkedHashMap<>();
+        for (VisualHomeAssignment assignment : assignments) {
+            if (assignment == null
+                    || assignment.identity() == null
+                    || assignment.islandId() == null
+                    || assignment.islandId().isBlank()) {
+                continue;
+            }
+            VisualHomeAssignment requested = new VisualHomeAssignment(
+                    assignment.identity(),
+                    assignment.islandId(),
+                    Math.max(0, assignment.ordinal()),
+                    assignment.origin() == null ? VisualHomeOrigin.PLAYER_PLACED : assignment.origin(),
+                    assignment.locked()
+            );
+            repository.appendWorkflowEvent(
+                    new WorkflowEvent.VisualHomeAssigned(requested),
+                    (metadata == null ? DomainEventMetadata.origin("") : metadata)
+                            .withOrigin("workflow.visual.home.assign")
+            );
+            requestedByIdentity.put(requested.identity(), requested);
+        }
+        if (requestedByIdentity.isEmpty()) {
+            return Map.of();
+        }
+        mutationObserver.run();
+        LinkedHashMap<ItemIdentity, VisualHomeAssignment> results = new LinkedHashMap<>();
+        for (ItemIdentity identity : requestedByIdentity.keySet()) {
+            VisualHomeAssignment result = visualHomeMap().assignment(identity);
+            if (result != null) {
+                results.put(identity, result);
+            }
+        }
+        return Map.copyOf(results);
+    }
+
     public boolean clearHome(ItemIdentity identity) {
         return clearHome(identity, DomainEventMetadata.origin("workflow.visual.home.clear"));
     }
@@ -226,6 +272,31 @@ public final class VisualAtlasWorkflowDomainService {
         );
         mutationObserver.run();
         return true;
+    }
+
+    public int clearHomes(
+            Collection<ItemIdentity> identities,
+            DomainEventMetadata metadata
+    ) {
+        if (identities == null || identities.isEmpty()) {
+            return 0;
+        }
+        int cleared = 0;
+        for (ItemIdentity identity : identities) {
+            if (identity == null || visualHomeMap().assignment(identity) == null) {
+                continue;
+            }
+            repository.appendWorkflowEvent(
+                    new WorkflowEvent.VisualHomeCleared(identity),
+                    (metadata == null ? DomainEventMetadata.origin("") : metadata)
+                            .withOrigin("workflow.visual.home.clear")
+            );
+            cleared++;
+        }
+        if (cleared > 0) {
+            mutationObserver.run();
+        }
+        return cleared;
     }
 
     public VisualAtlasIsland renameIsland(String islandId, String label) {

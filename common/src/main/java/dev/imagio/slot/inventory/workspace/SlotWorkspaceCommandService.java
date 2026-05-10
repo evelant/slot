@@ -1,12 +1,15 @@
 package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.SlotDebugLog;
+import dev.imagio.slot.classification.DynamicHomeCohortPolicy;
 import dev.imagio.slot.inventory.action.InventoryActionOutcome;
 import dev.imagio.slot.inventory.action.InventoryActionRequest;
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
+import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
 import dev.imagio.slot.inventory.triage.IslandSuggestionTemplate;
 import dev.imagio.slot.inventory.triage.IslandTemplateMatch;
@@ -33,8 +36,11 @@ import dev.imagio.slot.workflow.domain.undo.UndoRecord;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
@@ -139,10 +145,29 @@ public final class SlotWorkspaceCommandService {
             }
             materializedNewIsland = (templateIslandBefore == null);
         } else {
-            if (runtime.visualAtlasWorkflow().visualHomeMap().island(chipIslandId) == null) {
+            VisualAtlasIsland existing = runtime.visualAtlasWorkflow().visualHomeMap().island(chipIslandId);
+            if (existing != null) {
+                resolvedIslandId = chipIslandId;
+            } else if (chipIslandId.startsWith(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX)) {
+                IslandTemplateMatch subsystemMatch = qualifiedSubsystemMatch(item, signalExtractor, chipIslandId);
+                if (subsystemMatch == null) {
+                    return WorkspaceCommandOutcome.rejected("unknown_island");
+                }
+                resolvedIslandId = resolveOrMaterializeSubsystemIsland(
+                        runtime,
+                        subsystemMatch.islandId(),
+                        subsystemMatch.label(),
+                        subsystemMatch.color(),
+                        identity,
+                        item.name()
+                );
+                if (resolvedIslandId == null) {
+                    return WorkspaceCommandOutcome.rejected("subsystem_island_creation_failed");
+                }
+                materializedNewIsland = true;
+            } else {
                 return WorkspaceCommandOutcome.rejected("unknown_island");
             }
-            resolvedIslandId = chipIslandId;
         }
         final ItemIdentity targetIdentity = identity;
         final String targetIslandId = resolvedIslandId;
@@ -1248,6 +1273,255 @@ public final class SlotWorkspaceCommandService {
         return WorkspaceCommandOutcome.accepted("island deleted", existing.label());
     }
 
+    /**
+     * Recompute classifier-owned homes for every distinct identity in the
+     * supplied stacks. This is intentionally a workflow-only operation:
+     * it does not move physical items and it does not record learned rules.
+     * Existing homes for identities outside the scanned stack set are left
+     * untouched so the command can be run against a partial loaded world.
+     */
+    public static ClassificationRehomeResult reclassifyHomes(
+            WorkflowDomainRuntime runtime,
+            Collection<ItemStack> stacks,
+            Function<ItemStack, IslandSignalDescriptor> signalExtractor
+    ) {
+        if (runtime == null || stacks == null || stacks.isEmpty() || signalExtractor == null) {
+            return ClassificationRehomeResult.empty();
+        }
+
+        LinkedHashMap<ItemIdentity, RehomeCandidate> candidates = new LinkedHashMap<>();
+        int inputStacks = 0;
+        for (ItemStack source : stacks) {
+            if (source == null || source.isEmpty()) {
+                continue;
+            }
+            inputStacks++;
+            ItemStack stack = source.copy();
+            ItemIdentity identity = ItemIdentityMatcher.create(stack);
+            candidates.putIfAbsent(identity, new RehomeCandidate(identity, stack));
+        }
+        if (candidates.isEmpty()) {
+            return new ClassificationRehomeResult(inputStacks, 0, 0, 0, 0, 0, 0);
+        }
+
+        int islandsBefore = runtime.visualAtlasWorkflow().visualHomeMap().playerIslands().size();
+        ArrayList<RehomePlanEntry> plan = new ArrayList<>(candidates.size());
+        int skipped = 0;
+        for (RehomeCandidate candidate : candidates.values()) {
+            IslandSignalDescriptor descriptor;
+            try {
+                descriptor = signalExtractor.apply(candidate.stack());
+            } catch (RuntimeException exception) {
+                SlotDebugLog.log(
+                        "LDLib classification rehome skipped {}: descriptor extraction failed {}",
+                        candidate.identity().itemId(),
+                        exception.getMessage()
+                );
+                skipped++;
+                continue;
+            }
+            if (descriptor == null) {
+                descriptor = IslandSignalDescriptor.empty(candidate.identity());
+            }
+            IslandTemplateMatch match = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
+                    descriptor,
+                    DynamicHomeCohortPolicy.current().qualifier()
+            );
+            if (match == null) {
+                skipped++;
+                continue;
+            }
+            String targetIslandId = resolveOrMaterializeClassificationIsland(
+                    runtime,
+                    match,
+                    candidate.identity(),
+                    candidate.stack().getHoverName().getString()
+            );
+            if (targetIslandId == null || targetIslandId.isBlank()) {
+                skipped++;
+                continue;
+            }
+            plan.add(new RehomePlanEntry(
+                    candidate.identity(),
+                    candidate.stack(),
+                    descriptor,
+                    targetIslandId
+            ));
+        }
+
+        if (plan.isEmpty()) {
+            int islandsAfter = runtime.visualAtlasWorkflow().visualHomeMap().playerIslands().size();
+            return new ClassificationRehomeResult(
+                    inputStacks,
+                    candidates.size(),
+                    0,
+                    0,
+                    0,
+                    Math.max(0, islandsAfter - islandsBefore),
+                    skipped
+            );
+        }
+
+        Map<ItemIdentity, VisualHomeAssignment> before = new LinkedHashMap<>();
+        for (RehomePlanEntry entry : plan) {
+            before.put(entry.identity(), runtime.visualAtlasWorkflow().visualHomeMap().assignment(entry.identity()));
+        }
+        runtime.visualAtlasWorkflow().clearHomes(
+                before.keySet(),
+                DomainEventMetadata.origin("slot_workspace.classification_rehome.clear")
+        );
+
+        plan.sort(Comparator
+                .comparing(RehomePlanEntry::targetIslandId)
+                .thenComparing(
+                        RehomePlanEntry::describedStack,
+                        WithinIslandOrdering.WITHIN_ISLAND_COMPARATOR
+                ));
+
+        Map<String, Integer> nextOrdinalByIsland = currentIslandAssignmentCounts(runtime);
+        ArrayList<VisualHomeAssignment> requestedAssignments = new ArrayList<>(plan.size());
+        for (RehomePlanEntry entry : plan) {
+            int ordinal = nextOrdinalByIsland.getOrDefault(entry.targetIslandId(), 0);
+            nextOrdinalByIsland.put(entry.targetIslandId(), ordinal + 1);
+            requestedAssignments.add(new VisualHomeAssignment(
+                    entry.identity(),
+                    entry.targetIslandId(),
+                    ordinal,
+                    VisualHomeOrigin.AUTO_HOMED,
+                    true
+            ));
+        }
+        Map<ItemIdentity, VisualHomeAssignment> results = runtime.visualAtlasWorkflow().assignHomes(
+                requestedAssignments,
+                DomainEventMetadata.origin("slot_workspace.classification_rehome.assign")
+        );
+
+        int assigned = 0;
+        int changed = 0;
+        int unchanged = 0;
+        for (VisualHomeAssignment requested : requestedAssignments) {
+            VisualHomeAssignment result = results.get(requested.identity());
+            if (result == null) {
+                skipped++;
+                continue;
+            }
+            assigned++;
+            if (sameRehomeAssignment(before.get(requested.identity()), result)) {
+                unchanged++;
+            } else {
+                changed++;
+            }
+        }
+        int islandsAfter = runtime.visualAtlasWorkflow().visualHomeMap().playerIslands().size();
+        SlotDebugLog.log(
+                "LDLib classification rehome stacks={} unique={} assigned={} changed={} unchanged={} skipped={} islandsCreated={}",
+                inputStacks,
+                candidates.size(),
+                assigned,
+                changed,
+                unchanged,
+                skipped,
+                Math.max(0, islandsAfter - islandsBefore)
+        );
+        return new ClassificationRehomeResult(
+                inputStacks,
+                candidates.size(),
+                assigned,
+                changed,
+                unchanged,
+                Math.max(0, islandsAfter - islandsBefore),
+                skipped
+        );
+    }
+
+    public record ClassificationRehomeResult(
+            int inputStacks,
+            int uniqueIdentities,
+            int assigned,
+            int changed,
+            int unchanged,
+            int islandsCreated,
+            int skipped
+    ) {
+        public static ClassificationRehomeResult empty() {
+            return new ClassificationRehomeResult(0, 0, 0, 0, 0, 0, 0);
+        }
+    }
+
+    private record RehomeCandidate(ItemIdentity identity, ItemStack stack) {
+        private RehomeCandidate {
+            stack = stack == null ? ItemStack.EMPTY : stack.copy();
+        }
+    }
+
+    private record RehomePlanEntry(
+            ItemIdentity identity,
+            ItemStack stack,
+            IslandSignalDescriptor descriptor,
+            String targetIslandId
+    ) {
+        private RehomePlanEntry {
+            stack = stack == null ? ItemStack.EMPTY : stack.copy();
+        }
+
+        WithinIslandOrdering.DescribedStack describedStack() {
+            return new WithinIslandOrdering.DescribedStack(stack, descriptor);
+        }
+    }
+
+    private static String resolveOrMaterializeClassificationIsland(
+            WorkflowDomainRuntime runtime,
+            IslandTemplateMatch match,
+            ItemIdentity seedIdentity,
+            String seedLabel
+    ) {
+        if (match == null) {
+            return null;
+        }
+        if (match.isSubsystem()) {
+            return resolveOrMaterializeSubsystemIsland(
+                    runtime,
+                    match.islandId(),
+                    match.label(),
+                    match.color(),
+                    seedIdentity,
+                    seedLabel
+            );
+        }
+        return resolveOrMaterializeTemplateIsland(
+                runtime,
+                match.parentTemplate(),
+                seedIdentity,
+                seedLabel,
+                "slot_workspace.classification_rehome.island_create",
+                "classification rehome"
+        );
+    }
+
+    private static boolean sameRehomeAssignment(VisualHomeAssignment before, VisualHomeAssignment after) {
+        if (before == null || after == null) {
+            return before == after;
+        }
+        return Objects.equals(before.islandId(), after.islandId())
+                && before.ordinal() == after.ordinal()
+                && before.origin() == VisualHomeOrigin.AUTO_HOMED
+                && before.locked() == after.locked();
+    }
+
+    private static Map<String, Integer> currentIslandAssignmentCounts(WorkflowDomainRuntime runtime) {
+        LinkedHashMap<String, Integer> counts = new LinkedHashMap<>();
+        if (runtime == null) {
+            return counts;
+        }
+        for (VisualHomeAssignment assignment :
+                runtime.visualAtlasWorkflow().visualHomeMap().assignments().values()) {
+            if (assignment == null || assignment.islandId() == null || assignment.islandId().isBlank()) {
+                continue;
+            }
+            counts.merge(assignment.islandId(), 1, Integer::sum);
+        }
+        return counts;
+    }
 
     /**
      * Apply the "drop identity onto island" rule: triage target clears the home;
@@ -1442,6 +1716,24 @@ public final class SlotWorkspaceCommandService {
             ItemIdentity seedIdentity,
             String seedLabel
     ) {
+        return resolveOrMaterializeTemplateIsland(
+                runtime,
+                template,
+                seedIdentity,
+                seedLabel,
+                "slot_workspace.ldlib.chip_accept.island_create",
+                "chip accept"
+        );
+    }
+
+    private static String resolveOrMaterializeTemplateIsland(
+            WorkflowDomainRuntime runtime,
+            IslandSuggestionTemplate template,
+            ItemIdentity seedIdentity,
+            String seedLabel,
+            String origin,
+            String reason
+    ) {
         VisualAtlasIsland existing = runtime.visualAtlasWorkflow().visualHomeMap().playerIslands().stream()
                 .filter(island -> island != null && template.defaultLabel().equalsIgnoreCase(island.label()))
                 .findFirst()
@@ -1460,12 +1752,87 @@ public final class SlotWorkspaceCommandService {
                 draft.y(),
                 template.defaultColor(),
                 seedIdentity,
-                DomainEventMetadata.origin("slot_workspace.ldlib.chip_accept.island_create")
+                DomainEventMetadata.origin(origin)
         );
         SlotDebugLog.log(
-                "LDLib atlas template island materialized {} ({}) for chip accept seed={}",
+                "LDLib atlas template island materialized {} ({}) for {} seed={}",
                 created == null ? "null" : created.id(),
                 template.name(),
+                reason,
+                seedLabel
+        );
+        return created == null ? null : created.id();
+    }
+
+    private static IslandTemplateMatch qualifiedSubsystemMatch(
+            SlotWorkspaceViewModel.AtlasItem item,
+            Function<ItemStack, IslandSignalDescriptor> signalExtractor,
+            String islandId
+    ) {
+        if (item == null
+                || signalExtractor == null
+                || islandId == null
+                || !islandId.startsWith(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX)) {
+            return null;
+        }
+        ItemStack stack = item.displayStack();
+        if (stack == null || stack.isEmpty()) {
+            return null;
+        }
+        IslandSignalDescriptor descriptor = signalExtractor.apply(stack);
+        if (descriptor == null) {
+            return null;
+        }
+        IslandTemplateMatch match = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
+                descriptor,
+                DynamicHomeCohortPolicy.current().qualifier()
+        );
+        if (!match.isSubsystem() || !islandId.equals(match.islandId())) {
+            return null;
+        }
+        return match;
+    }
+
+    private static String resolveOrMaterializeSubsystemIsland(
+            WorkflowDomainRuntime runtime,
+            String islandId,
+            String label,
+            int color,
+            ItemIdentity seedIdentity,
+            String seedLabel
+    ) {
+        if (runtime == null
+                || islandId == null
+                || !islandId.startsWith(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX)) {
+            return null;
+        }
+        VisualAtlasIsland existing = runtime.visualAtlasWorkflow().visualHomeMap().island(islandId);
+        if (existing != null) {
+            return existing.id();
+        }
+        String resolvedLabel = label;
+        if (resolvedLabel == null || resolvedLabel.isBlank()) {
+            resolvedLabel = IslandTemplateMatch.formatSubsystemLabel(
+                    islandId.substring(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX.length()));
+        }
+        SlotWorkspaceAtlasLayout.PlayerIslandDraft draft = SlotWorkspaceAtlasLayout.createNextPlayerIslandDraft(
+                resolvedLabel,
+                seedIdentity,
+                runtime.visualAtlasWorkflow().visualHomeMap()
+        );
+        VisualAtlasIsland created = runtime.visualAtlasWorkflow().createIslandWithId(
+                islandId,
+                draft.label(),
+                draft.x(),
+                draft.y(),
+                color,
+                seedIdentity,
+                DomainEventMetadata.origin("slot_workspace.ldlib.subsystem_island_create")
+        );
+        SlotDebugLog.log(
+                "LDLib atlas subsystem island materialized {} ({}) seed={}",
+                created == null ? "null" : created.id(),
+                resolvedLabel,
                 seedLabel
         );
         return created == null ? null : created.id();
@@ -1727,11 +2094,11 @@ public final class SlotWorkspaceCommandService {
             WorkflowDomainRuntime runtime,
             SlotWorkspaceViewModel.AtlasItem item
     ) {
-        for (dev.imagio.slot.inventory.triage.ChipSuggestion chip : item.chipSuggestions()) {
+        for (ChipSuggestion chip : item.chipSuggestions()) {
             if (chip == null) {
                 continue;
             }
-            if (chip.kind() == dev.imagio.slot.inventory.triage.ChipSuggestion.ChipKind.TEMPLATE) {
+            if (chip.kind() == ChipSuggestion.ChipKind.TEMPLATE) {
                 IslandSuggestionTemplate template = chip.template();
                 if (template == null) {
                     continue;
@@ -1741,6 +2108,17 @@ public final class SlotWorkspaceCommandService {
             }
             if (runtime.visualAtlasWorkflow().visualHomeMap().island(chip.islandId()) != null) {
                 return chip.islandId();
+            }
+            if (chip.islandId().startsWith(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX)) {
+                ItemIdentity seed = item.identity().toIdentity();
+                return resolveOrMaterializeSubsystemIsland(
+                        runtime,
+                        chip.islandId(),
+                        chip.label(),
+                        chip.color(),
+                        seed,
+                        item.name()
+                );
             }
         }
         return resolveOrMaterializeMiscIsland(runtime, item);

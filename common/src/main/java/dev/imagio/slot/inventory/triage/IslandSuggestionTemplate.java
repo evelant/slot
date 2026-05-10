@@ -96,7 +96,7 @@ public enum IslandSuggestionTemplate {
             0xCC3D6E5A,
             2, 0,
             Set.of(),
-            Set.of("c:ingots"),
+            Set.of(),
             Set.of(),
             Set.of(),
             Set.of()
@@ -107,7 +107,7 @@ public enum IslandSuggestionTemplate {
             0xCC3D6E70,
             2, 0,
             Set.of(),
-            Set.of("c:gems"),
+            Set.of(),
             Set.of(),
             Set.of(),
             Set.of()
@@ -118,7 +118,7 @@ public enum IslandSuggestionTemplate {
             0xCC3D5C4A,
             2, 0,
             Set.of(),
-            Set.of("c:raw_materials", "c:ores"),
+            Set.of(),
             Set.of(),
             Set.of(),
             Set.of()
@@ -401,19 +401,16 @@ public enum IslandSuggestionTemplate {
     }
 
     /**
-     * Whether this template's items are meaningfully grouped by mod
-     * subsystem on the atlas. Players think of "my Create machines area"
-     * as a real area in their base — but they don't think of "Create's
-     * decoration" as separate from vanilla decoration. Decoration,
-     * Materials, Building, Food, Tools, Weapons, Armor, Natural, Storage,
-     * Utility, Redstone, and Upgrades are cross-mod-shared in player
-     * mental model: items live in one role-based pile regardless of mod.
-     * Only the heavy machinery / construction / movement templates
-     * benefit from a mod-subsystem split.
+     * Whether this template can split into a count-qualified subsystem
+     * island. Broad use-case parents like MATERIALS and UTILITY need
+     * this for large modpack mechanics ("TFC — Casting") while narrow,
+     * universal parents like FOOD / TOOLS / STORAGE should stay shared.
+     * The dynamic cohort policy still gates the actual split by count,
+     * so this whitelist only says "subsystem grouping can make sense".
      */
     public boolean allowsSubsystemGrouping() {
         return switch (this) {
-            case MECHANISMS, WORKBENCHES, TRANSPORT -> true;
+            case MATERIALS, MECHANISMS, WORKBENCHES, TRANSPORT, UTILITY -> true;
             default -> false;
         };
     }
@@ -500,10 +497,11 @@ public enum IslandSuggestionTemplate {
                 return true;
             }
         }
-        for (String tag : itemTagTriggers) {
-            if (descriptor.itemTags().contains(tag)) {
-                return true;
-            }
+        if (hasMatchingTag(descriptor.itemTags(), itemTagTriggers)) {
+            return true;
+        }
+        if (matchesCommodityFormOrPath(descriptor)) {
+            return true;
         }
         // RAW_MATERIALS id-suffix fallback: "Block of X" items
         // (raw_iron_block, iron_block, gold_block, diamond_block,
@@ -524,6 +522,101 @@ public enum IslandSuggestionTemplate {
             }
         }
         return false;
+    }
+
+    private boolean matchesCommodityFormOrPath(IslandSignalDescriptor descriptor) {
+        if (this != INGOTS && this != GEMS && this != RAW_MATERIALS) {
+            return false;
+        }
+        if (!allowsCommodityPathMatch(descriptor)) {
+            return false;
+        }
+        if (this == INGOTS
+                && CommonItemTagFamilies.hasFamily(descriptor.itemTags(), CommonItemTagFamilies.Family.INGOTS)) {
+            return true;
+        }
+        if (this == GEMS
+                && CommonItemTagFamilies.hasFamily(descriptor.itemTags(), CommonItemTagFamilies.Family.GEMS)) {
+            return true;
+        }
+        if (this == RAW_MATERIALS
+                && (CommonItemTagFamilies.hasFamily(descriptor.itemTags(), CommonItemTagFamilies.Family.RAW_MATERIALS)
+                || CommonItemTagFamilies.hasFamily(descriptor.itemTags(), CommonItemTagFamilies.Family.ORES))) {
+            return true;
+        }
+        String form = descriptor.form();
+        if (form != null) {
+            if (this == INGOTS && "ingot".equals(form)) {
+                return true;
+            }
+            if (this == GEMS && ("gem".equals(form) || "crystal".equals(form))) {
+                return true;
+            }
+            if (this == RAW_MATERIALS && ("raw".equals(form) || "ore".equals(form))) {
+                return true;
+            }
+        }
+        String path = identityPath(descriptor);
+        if (path.isBlank()) {
+            return false;
+        }
+        return switch (this) {
+            case INGOTS -> hasPathToken(path, "ingot");
+            case GEMS -> hasPathToken(path, "gem") || hasPathToken(path, "crystal");
+            case RAW_MATERIALS -> hasPathToken(path, "raw") || hasPathToken(path, "ore");
+            default -> false;
+        };
+    }
+
+    private static boolean allowsCommodityPathMatch(IslandSignalDescriptor descriptor) {
+        List<String> roles = descriptor.roleAlternatives();
+        if (roles == null || roles.isEmpty()) {
+            return true;
+        }
+        for (String role : roles) {
+            if ("material".equals(role) || "natural_resource".equals(role)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean hasMatchingTag(Set<String> actualTags, Set<String> triggerTags) {
+        if (actualTags == null || actualTags.isEmpty() || triggerTags == null || triggerTags.isEmpty()) {
+            return false;
+        }
+        for (String actual : actualTags) {
+            if (actual == null || actual.isBlank()) {
+                continue;
+            }
+            for (String trigger : triggerTags) {
+                if (actual.equals(trigger) || actual.startsWith(trigger + "/")) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    private static boolean hasPathToken(String path, String token) {
+        if (path == null || path.isBlank() || token == null || token.isBlank()) {
+            return false;
+        }
+        for (String part : path.split("[/_.-]+")) {
+            if (token.equals(part)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static String identityPath(IslandSignalDescriptor descriptor) {
+        if (descriptor == null || descriptor.identity() == null || descriptor.identity().itemId() == null) {
+            return "";
+        }
+        String itemId = descriptor.identity().itemId();
+        int colon = itemId.indexOf(':');
+        return colon >= 0 ? itemId.substring(colon + 1) : itemId;
     }
 
     /**

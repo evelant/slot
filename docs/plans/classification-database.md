@@ -1,10 +1,15 @@
 # Classification Database And Pack UX Plan
 
-Last updated: 2026-05-08
+Last updated: 2026-05-10
 
-Status: proposed. This plan turns item classification from a local
-one-off generation tool into shared mod metadata that normal SLOT users
-consume automatically. It does not replace
+Status: partially implemented. Installed-pack scanning, jar-backed
+classification, runtime export, runtime subsystem vocabulary, datapack
+pack-layer generation, and in-game classifier diagnostics are now
+implemented. Public database distribution, review/diff/publish tooling,
+runtime-crawl, and persistent server/player facet layers remain planned.
+This plan turns item classification from a local one-off generation tool
+into shared mod metadata that normal SLOT users consume automatically.
+It does not replace
 [item-classification.md](item-classification.md); that document remains
 the facet/schema/pipeline reference. This plan covers distribution,
 pack scanning, cache identity, and contribution workflows.
@@ -87,6 +92,9 @@ Behavior:
   available
 - `/slot classification export` writes a deterministic runtime export
   from the loaded game when static jar data is not enough
+- `/slot classification inspect` verifies the loaded classifier view for
+  one item, and `/slot classification rehome` bulk-recomputes homes for
+  carried items plus accessible claimed chests
 - `generate-missing --mods <folder>` only runs for explicit missing
   semantic layers
 - `write-modpack-layer` emits pack-specific overrides for private
@@ -774,6 +782,10 @@ Deliverables:
 - offline `generate-pack-layer --runtime-export` command *(implemented;
   supports static jar enrichment with `--mods` and datapack packaging with
   `--datapack`)*
+- `/slot classification inspect` and `/slot classification rehome`
+  commands *(implemented on Forge 1.20.1 + NeoForge 1.21.1)* for
+  verifying loaded layers and recomputing classifier-owned homes against
+  a played instance
 - optional per-item KubeJS snippet extraction under strict byte/line caps
 - tests for export shape using a small fake registry/recipe/tag fixture
 
@@ -846,16 +858,21 @@ Exit criteria:
 - Should running-instance exports be generated from client singleplayer,
   integrated server, dedicated server, or all three?
 
-## First Milestone Recommendation
+## Implemented Baseline And Next Work
 
-Start with slices 1 through 4:
+The implemented baseline covers the original first milestone plus the
+first running-instance pack-layer workflow:
 
 - fix current tool safety
 - define input manifest v2
 - implement `scan --mods`
 - implement jar-backed stages 1 and 2
+- implement runtime export
+- implement runtime subsystem vocabulary
+- implement `generate-pack-layer --runtime-export --mods --datapack`
+- implement in-game inspect/rehome diagnostics
 
-That milestone is the current implementation baseline. It proves the
-real pack UX and tells us how much reliable signal jars contain before
-we spend more effort on public distribution, runtime exports, or a
-larger LLM generation workflow.
+The next useful milestone is review/diff/publish tooling plus public
+cache identity and distribution. Runtime-crawl remains valuable for
+unknown items, but reviewed pack/mod layers are now the higher-value path
+for large played packs.

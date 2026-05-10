@@ -8,6 +8,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.suggestion.SuggestionProvider;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
+import dev.imagio.slot.classification.ClassificationInspectFormatter;
 import dev.imagio.slot.debug.ChestContentEntry;
 import dev.imagio.slot.debug.ChestSpec;
 import dev.imagio.slot.SlotCommon;
@@ -32,6 +33,8 @@ import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.session.InventoryAcquisitionActivityRecorder;
 import dev.imagio.slot.inventory.storage.CarriedSourceAccess;
 import dev.imagio.slot.inventory.storage.StorageAccessRegistry;
+import dev.imagio.slot.inventory.workspace.ClassificationRehomeScanner;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceCommandService;
 import dev.imagio.slot.workflow.domain.ChestAnchor;
 import dev.imagio.slot.workflow.domain.ChestClaimWorkflowDomainService;
 import dev.imagio.slot.workflow.domain.ClaimedChest;
@@ -113,6 +116,16 @@ public final class ForgeSlotTestCommands {
                         .requires(ForgeSlotTestCommands::canUseSlotCommand)
                         .then(Commands.literal("status")
                                 .executes(ForgeSlotTestCommands::runClassificationStatus))
+                        .then(Commands.literal("inspect")
+                                .executes(context -> runClassificationInspect(context, null))
+                                .then(Commands.argument("item_id", StringArgumentType.greedyString())
+                                        .executes(context -> runClassificationInspect(
+                                                context,
+                                                StringArgumentType.getString(context, "item_id")))))
+                        .then(Commands.literal("recompute")
+                                .executes(ForgeSlotTestCommands::runClassificationRehome))
+                        .then(Commands.literal("rehome")
+                                .executes(ForgeSlotTestCommands::runClassificationRehome))
                         .then(Commands.literal("export")
                                 .executes(context -> runClassificationExport(context, null))
                                 .then(Commands.argument("pack_id", StringArgumentType.word())
@@ -353,6 +366,128 @@ public final class ForgeSlotTestCommands {
             context.getSource().sendSuccess(() -> Component.literal(line), false);
         }
         return status.totalEntries();
+    }
+
+    private static int runClassificationInspect(
+            CommandContext<CommandSourceStack> context,
+            String itemId
+    ) throws CommandSyntaxException {
+        ItemStack stack = itemId == null || itemId.isBlank()
+                ? inspectedHeldStack(context)
+                : stackForItemId(context, itemId.trim());
+        if (stack.isEmpty()) {
+            return 0;
+        }
+        var descriptor = Forge120IslandSignalExtractor.extract(stack);
+        for (String line : ClassificationInspectFormatter.format(descriptor)) {
+            context.getSource().sendSuccess(() -> Component.literal(line), false);
+        }
+        return 1;
+    }
+
+    private static int runClassificationRehome(
+            CommandContext<CommandSourceStack> context
+    ) throws CommandSyntaxException {
+        ServerPlayer player = context.getSource().getPlayerOrException();
+        WorkflowDomainRuntime runtime = ForgePlayerWorkflowRuntimeService.runtime(player);
+        ClassificationRehomeScanner.ScanResult scan = ClassificationRehomeScanner.scan(player, runtime);
+        if (scan.failed()) {
+            String detail = scan.diagnostics().isEmpty() ? "unknown" : String.join(", ", scan.diagnostics());
+            context.getSource().sendFailure(Component.literal(
+                    "[SLOT] classification rehome failed: " + detail));
+            return 0;
+        }
+
+        SlotWorkspaceCommandService.ClassificationRehomeResult result =
+                SlotWorkspaceCommandService.reclassifyHomes(
+                        runtime,
+                        scan.stacks(),
+                        Forge120IslandSignalExtractor::extract
+                );
+        sendClassificationRehomeDiagnostics(context.getSource(), scan);
+        context.getSource().sendSuccess(() -> Component.literal(String.format(
+                "[SLOT] forge classification rehome: stacks=%d unique=%d assigned=%d changed=%d unchanged=%d islands_created=%d skipped=%d carried_stacks=%d chest_stacks=%d chests_read=%d chests_skipped=%d diagnostics=%d",
+                result.inputStacks(),
+                result.uniqueIdentities(),
+                result.assigned(),
+                result.changed(),
+                result.unchanged(),
+                result.islandsCreated(),
+                result.skipped(),
+                scan.carriedStacks(),
+                scan.chestStacks(),
+                scan.readableClaimedChests(),
+                scan.skippedClaimedChests(),
+                scan.diagnostics().size()
+        )), false);
+        SlotCommon.LOGGER.info(
+                "[SLOT] Forge classification rehome stacks={} unique={} assigned={} changed={} unchanged={} islands_created={} skipped={} carried_stacks={} chest_stacks={} chests_read={} chests_skipped={} diagnostics={}",
+                result.inputStacks(),
+                result.uniqueIdentities(),
+                result.assigned(),
+                result.changed(),
+                result.unchanged(),
+                result.islandsCreated(),
+                result.skipped(),
+                scan.carriedStacks(),
+                scan.chestStacks(),
+                scan.readableClaimedChests(),
+                scan.skippedClaimedChests(),
+                scan.diagnostics().size()
+        );
+        return result.assigned();
+    }
+
+    private static void sendClassificationRehomeDiagnostics(
+            CommandSourceStack source,
+            ClassificationRehomeScanner.ScanResult scan
+    ) {
+        List<String> diagnostics = scan.diagnostics();
+        int limit = Math.min(3, diagnostics.size());
+        for (int i = 0; i < limit; i++) {
+            String diagnostic = diagnostics.get(i);
+            source.sendFailure(Component.literal("[SLOT] classification rehome diagnostic: " + diagnostic));
+        }
+        if (diagnostics.size() > limit) {
+            source.sendFailure(Component.literal(
+                    "[SLOT] classification rehome diagnostic: +" + (diagnostics.size() - limit) + " more"));
+        }
+    }
+
+    private static ItemStack inspectedHeldStack(
+            CommandContext<CommandSourceStack> context
+    ) throws CommandSyntaxException {
+        ServerPlayer player = context.getSource().getPlayerOrException();
+        ItemStack stack = player.getMainHandItem();
+        if (stack.isEmpty()) {
+            stack = player.getOffhandItem();
+        }
+        if (stack.isEmpty()) {
+            context.getSource().sendFailure(Component.literal(
+                    "[SLOT] classification inspect failed: hold an item or pass an item id"));
+            return ItemStack.EMPTY;
+        }
+        return stack.copy();
+    }
+
+    private static ItemStack stackForItemId(
+            CommandContext<CommandSourceStack> context,
+            String itemId
+    ) {
+        ResourceLocation key = ResourceLocation.tryParse(itemId);
+        if (key == null || !BuiltInRegistries.ITEM.containsKey(key)) {
+            context.getSource().sendFailure(Component.literal(
+                    "[SLOT] classification inspect failed: unknown item id " + itemId));
+            return ItemStack.EMPTY;
+        }
+        Item item = BuiltInRegistries.ITEM.get(key);
+        ItemStack stack = new ItemStack(item, 1);
+        if (stack.isEmpty()) {
+            context.getSource().sendFailure(Component.literal(
+                    "[SLOT] classification inspect failed: empty item " + itemId));
+            return ItemStack.EMPTY;
+        }
+        return stack;
     }
 
     private static int applyIslands(VisualAtlasWorkflowDomainService workflow, RealisticAtlasPlan plan) {
