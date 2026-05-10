@@ -27,19 +27,26 @@ public final class ClassificationInspectFormatter {
         IslandSuggestionTemplate template = IslandSuggestionTemplate.firstMatchOrMisc(descriptor);
         DynamicHomeCohortPolicy cohortPolicy = DynamicHomeCohortPolicy.current();
         IslandTemplateMatch dynamicMatch = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
-                descriptor, cohortPolicy.qualifier());
+                descriptor, cohortPolicy.qualifier(), cohortPolicy.organizationGroupQualifier());
         IslandTemplateMatch possibleSubsystemMatch = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
                 descriptor, id -> true);
+        IslandTemplateMatch possibleOrganizationMatch = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
+                descriptor, id -> false, id -> true);
         List<String> matchingTemplates = matchingTemplates(descriptor);
 
         lines.add("[SLOT] classification inspect: " + descriptor.identity().itemId());
         lines.add("  template=" + template.name() + " (" + template.defaultLabel() + ")"
+                + (possibleOrganizationMatch.isOrganizationGroup()
+                ? " possible_group=" + possibleOrganizationMatch.organizationGroupId().orElse("")
+                + " label=" + possibleOrganizationMatch.label()
+                : "")
                 + (possibleSubsystemMatch.isSubsystem()
                 ? " possible_subsystem=" + possibleSubsystemMatch.subsystemId().orElse("")
                 + " label=" + possibleSubsystemMatch.label()
                 : ""));
         lines.add("  auto_home_target=" + dynamicMatch.islandId()
                 + " label=" + dynamicMatch.label()
+                + " group_counts=" + summarizeGroupCounts(descriptor.organizationGroups(), cohortPolicy)
                 + " subsystem_counts=" + summarizeSubsystemCounts(descriptor.subsystems(), cohortPolicy));
         lines.add("  matching_templates=" + summarize(matchingTemplates));
         lines.add("  role=" + noneIfBlank(descriptor.role())
@@ -47,7 +54,8 @@ public final class ClassificationInspectFormatter {
                 + " material_family=" + noneIfBlank(descriptor.materialFamily())
                 + " form=" + noneIfBlank(descriptor.form())
                 + " emits_light=" + descriptor.emitsLight());
-        lines.add("  subsystems=" + summarize(descriptor.subsystems())
+        lines.add("  organization_groups=" + summarize(descriptor.organizationGroups())
+                + " subsystems=" + summarize(descriptor.subsystems())
                 + " activities=" + summarize(descriptor.activities()));
         lines.add("  flavor=" + noneIfBlank(descriptor.flavor())
                 + " carry_frequency=" + noneIfBlank(descriptor.carryFrequency())
@@ -116,6 +124,20 @@ public final class ClassificationInspectFormatter {
                 continue;
             }
             values.add(subsystemId + "=" + policy.count(subsystemId) + "/" + policy.minSubsystemItems());
+        }
+        return values.isEmpty() ? "none" : String.join(",", values);
+    }
+
+    private static String summarizeGroupCounts(List<String> groupIds, DynamicHomeCohortPolicy policy) {
+        if (groupIds == null || groupIds.isEmpty() || policy == null) {
+            return "none";
+        }
+        ArrayList<String> values = new ArrayList<>();
+        for (String groupId : groupIds) {
+            if (groupId == null || groupId.isBlank()) {
+                continue;
+            }
+            values.add(groupId + "=" + policy.organizationGroupCount(groupId) + "/" + policy.minSubsystemItems());
         }
         return values.isEmpty() ? "none" : String.join(",", values);
     }

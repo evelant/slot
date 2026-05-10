@@ -19,9 +19,12 @@ class DynamicHomeCohortPolicyTest {
             entries.add(entry("tfc:ceramic/casting_mold_" + i, "utility", "tfc:casting"));
             entries.add(entry("tfc:fiber/thread_" + i, "material", "tfc:weaving"));
             entries.add(entry("create:decorative_panel_" + i, "decorative_block", "create:decoration"));
+            entries.add(groupEntry("tfc:brick/masonry_" + i, "material", "tfc:masonry"));
+            entries.add(groupEntry("tfc:decorative/masonry_" + i, "decorative_block", "tfc:masonry_decor"));
         }
         for (int i = 0; i < 9; i++) {
             entries.add(entry("tfc:tiny_tool_" + i, "utility", "tfc:tiny_mechanic"));
+            entries.add(groupEntry("tfc:tiny_group_" + i, "material", "tfc:tiny_group"));
         }
 
         DynamicHomeCohortPolicy policy = DynamicHomeCohortPolicy.from(
@@ -34,6 +37,10 @@ class DynamicHomeCohortPolicyTest {
         assertFalse(policy.qualifies("tfc:tiny_mechanic"));
         assertFalse(policy.qualifies("create:decoration"));
         assertEquals(0, policy.count("create:decoration"));
+        assertTrue(policy.organizationGroupQualifies("tfc:masonry"));
+        assertTrue(policy.organizationGroupQualifies("tfc:masonry_decor"));
+        assertEquals(10, policy.organizationGroupCount("tfc:masonry"));
+        assertFalse(policy.organizationGroupQualifies("tfc:tiny_group"));
     }
 
     private static String layer(List<String> entries) {
@@ -55,6 +62,13 @@ class DynamicHomeCohortPolicyTest {
         return "    \"" + itemId + "\": {\"facets\": {"
                 + "\"role\": {\"value\": \"" + role + "\"}, "
                 + "\"mod_subsystem\": {\"values\": [\"" + subsystem + "\"]}"
+                + "}}";
+    }
+
+    private static String groupEntry(String itemId, String role, String group) {
+        return "    \"" + itemId + "\": {\"facets\": {"
+                + "\"role\": {\"value\": \"" + role + "\"}, "
+                + "\"organization_group\": {\"values\": [\"" + group + "\"]}"
                 + "}}";
     }
 }

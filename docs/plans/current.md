@@ -81,8 +81,8 @@ hold the rest.
 - **2026-05-10** — classification pack-layer pass landed installed
   `mods/` scanning, jar-backed static extraction, OpenRouter-backed
   stage 3, runtime subsystem vocabulary, Forge/NeoForge runtime export,
-  datapack generation, dynamic subsystem auto-home cohorts, and
-  `/slot classification inspect` / `rehome`.
+  datapack generation, dynamic organization/subsystem auto-home cohorts,
+  and `/slot classification inspect` / `rehome`.
 - **2026-05-07** — Forge parity pass moved active-kit gather and
   in-world kit-page cycle into shared common services, registered
   `GATHER_ACTIVE_KIT`, wired in-screen gather through catalog actions

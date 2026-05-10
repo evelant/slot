@@ -22,6 +22,9 @@ Examples:
   and `primary_uses=[...]`.
 - `create:cogwheel` can get facets like `role=mechanism`,
   `activity=automation`, and `mod_subsystem=create:kinetics`.
+- `tfc:ceramic/ingot_mold` can get `role=utility` plus
+  `organization_group=tfc:casting`, which tells SLOT it belongs in the
+  player's casting/metalworking area instead of a broad Utility pile.
 
 SLOT uses these facets to make item organization feel semantic instead
 of substring-driven. The immediate runtime use is better default homes
@@ -104,6 +107,7 @@ An LLM fills judgment-call facets:
 - `flavor`
 - `carry_frequency`
 - `mod_subsystem`
+- `organization_group`
 
 The output is validated, cached, and reviewed. The model can propose
 schema changes or flag deterministic-rule mistakes, but those are review
@@ -114,6 +118,13 @@ For source-tree mods this reads README/mod metadata. For runtime exports
 it reads the whole loaded pack export and proposes namespace-scoped
 subsystem labels, so later item batches choose from a stable vocabulary
 instead of inventing labels item-by-item.
+
+`organization_group` is the stronger auto-home signal for large packs.
+It answers "where would a skilled player put this item?" and can split
+broad roles into workflow sections such as `tfc:casting`, `tfc:masonry`,
+or `tfc:leatherworking` once the loaded layer has enough sibling items
+for that group. Generic sections like Ingots or Tools remain the home
+only when the generated data does not assert a better workflow group.
 
 ## Layer Outputs
 
@@ -203,7 +214,7 @@ Inspect the classifier view of an item in a running instance:
 
 Without an item id the command inspects the held main-hand item, then the
 offhand item. The output includes loaded-layer diagnostics, raw facets,
-template/subsystem target, and the dynamic auto-home target.
+template/group/subsystem target, and the dynamic auto-home target.
 
 Recompute classifier-driven homes in a running instance:
 
@@ -217,8 +228,8 @@ offhand, backpacks/providers) plus every currently accessible claimed
 chest, including claimed chests outside the proximity panel. It does
 not move physical items. It rebuilds auto-home assignments for the
 unique item identities it scanned, materializes qualified dynamic
-subsystem sections, and reports skipped claimed chests when the storage
-is unloaded or otherwise inaccessible.
+organization-group or subsystem sections, and reports skipped claimed
+chests when the storage is unloaded or otherwise inaccessible.
 
 Run vanilla stages 1 and 2:
 

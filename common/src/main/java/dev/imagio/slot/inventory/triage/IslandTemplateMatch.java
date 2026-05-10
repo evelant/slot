@@ -6,31 +6,39 @@ import java.util.Optional;
 /**
  * Result of resolving a descriptor to a target island. Wraps either a
  * built-in {@link IslandSuggestionTemplate} (the role / class / tag
- * fallback) or a synthetic subsystem-named island that inherits
- * color and cluster placement from a parent template.
+ * fallback) or a synthetic classifier-named island that inherits color and
+ * cluster placement from a parent template.
  *
- * <p>Subsystem matches let modded items group under "Create — Mechanical
- * Power" rather than collapsing into the catch-all MECHANISMS pile;
- * they only fire when a histogram-based qualifier deems the subsystem
- * "big enough" — small subsystems fall back to the parent template so
- * the atlas isn't fragmented into singleton islands.
+ * <p>Organization-group matches let modded items group under player storage
+ * workflows such as "TFC — Casting" rather than collapsing into broad
+ * MATERIALS / UTILITY piles. Mod-subsystem matches remain a fallback for
+ * true subsystem identities such as "Create — Mechanical Power". Both only
+ * fire when a histogram-based qualifier deems the cohort "big enough".
  */
 public final class IslandTemplateMatch {
 
     public static final String SUBSYSTEM_ISLAND_PREFIX = "subsystem:";
+    public static final String ORGANIZATION_GROUP_ISLAND_PREFIX = "group:";
 
     private final IslandSuggestionTemplate parent;
     private final String subsystemId;
-    private final String subsystemLabel;
+    private final String organizationGroupId;
+    private final String dynamicLabel;
 
-    private IslandTemplateMatch(IslandSuggestionTemplate parent, String subsystemId, String subsystemLabel) {
+    private IslandTemplateMatch(
+            IslandSuggestionTemplate parent,
+            String subsystemId,
+            String organizationGroupId,
+            String dynamicLabel
+    ) {
         this.parent = Objects.requireNonNull(parent, "parent");
         this.subsystemId = subsystemId;
-        this.subsystemLabel = subsystemLabel;
+        this.organizationGroupId = organizationGroupId;
+        this.dynamicLabel = dynamicLabel;
     }
 
     public static IslandTemplateMatch of(IslandSuggestionTemplate parent) {
-        return new IslandTemplateMatch(parent, null, null);
+        return new IslandTemplateMatch(parent, null, null, null);
     }
 
     public static IslandTemplateMatch subsystem(IslandSuggestionTemplate parent, String subsystemId, String label) {
@@ -38,8 +46,22 @@ public final class IslandTemplateMatch {
         if (subsystemId.isBlank()) {
             throw new IllegalArgumentException("subsystemId must not be blank");
         }
-        return new IslandTemplateMatch(parent, subsystemId, label == null || label.isBlank()
+        return new IslandTemplateMatch(parent, subsystemId, null, label == null || label.isBlank()
                 ? formatSubsystemLabel(subsystemId)
+                : label);
+    }
+
+    public static IslandTemplateMatch organizationGroup(
+            IslandSuggestionTemplate parent,
+            String organizationGroupId,
+            String label
+    ) {
+        Objects.requireNonNull(organizationGroupId, "organizationGroupId");
+        if (organizationGroupId.isBlank()) {
+            throw new IllegalArgumentException("organizationGroupId must not be blank");
+        }
+        return new IslandTemplateMatch(parent, null, organizationGroupId, label == null || label.isBlank()
+                ? formatSubsystemLabel(organizationGroupId)
                 : label);
     }
 
@@ -48,11 +70,14 @@ public final class IslandTemplateMatch {
     }
 
     public String islandId() {
+        if (organizationGroupId != null) {
+            return ORGANIZATION_GROUP_ISLAND_PREFIX + organizationGroupId;
+        }
         return subsystemId == null ? parent.defaultIslandId() : SUBSYSTEM_ISLAND_PREFIX + subsystemId;
     }
 
     public String label() {
-        return subsystemId == null ? parent.defaultLabel() : subsystemLabel;
+        return isDynamic() ? dynamicLabel : parent.defaultLabel();
     }
 
     public int color() {
@@ -71,15 +96,26 @@ public final class IslandTemplateMatch {
         return Optional.ofNullable(subsystemId);
     }
 
+    public Optional<String> organizationGroupId() {
+        return Optional.ofNullable(organizationGroupId);
+    }
+
     public boolean isSubsystem() {
         return subsystemId != null;
     }
 
+    public boolean isOrganizationGroup() {
+        return organizationGroupId != null;
+    }
+
+    public boolean isDynamic() {
+        return subsystemId != null || organizationGroupId != null;
+    }
+
     /**
-     * Turn a subsystem id like {@code create:mechanical_power} into a
-     * human-readable label {@code "Create — Mechanical Power"}.
-     * Mirrors how players would name an island they built for that
-     * subsystem.
+     * Turn a namespaced classifier id like {@code create:mechanical_power} into
+     * a human-readable label {@code "Create — Mechanical Power"}. Mirrors how
+     * players would name an island they built for that group.
      */
     public static String formatSubsystemLabel(String subsystemId) {
         if (subsystemId == null || subsystemId.isBlank()) {
@@ -130,16 +166,20 @@ public final class IslandTemplateMatch {
         }
         return parent == other.parent
                 && Objects.equals(subsystemId, other.subsystemId)
-                && Objects.equals(subsystemLabel, other.subsystemLabel);
+                && Objects.equals(organizationGroupId, other.organizationGroupId)
+                && Objects.equals(dynamicLabel, other.dynamicLabel);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(parent, subsystemId, subsystemLabel);
+        return Objects.hash(parent, subsystemId, organizationGroupId, dynamicLabel);
     }
 
     @Override
     public String toString() {
+        if (organizationGroupId != null) {
+            return "IslandTemplateMatch[" + parent.name() + ":group=" + organizationGroupId + "]";
+        }
         return subsystemId == null
                 ? "IslandTemplateMatch[" + parent.name() + "]"
                 : "IslandTemplateMatch[" + parent.name() + ":subsystem=" + subsystemId + "]";

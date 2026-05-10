@@ -12,7 +12,7 @@ loaded at runtime by
 SLOT now also loads bundled per-mod layers and datapack
 `data/slot/classification/layers/*.json` layers, exposes layer/load
 diagnostics, and uses facet data for template chips plus dynamic
-subsystem auto-home sections. The tool can scan installed `mods/`
+organization/subsystem auto-home sections. The tool can scan installed `mods/`
 folders, classify jar resources, run OpenRouter-backed stage 3, derive
 runtime subsystem vocabularies, ingest Forge/NeoForge running-instance
 exports, and emit a drop-in datapack layer. Last updated: 2026-05-10.
@@ -29,10 +29,10 @@ This document is ~1400 lines. If you're picking it up without prior context:
 6. **[Pipeline](#pipeline)** and **[Runtime discovery](#runtime-discovery)** — what the offline pipeline does vs what the runtime crawl does.
 7. **[Milestones](#milestones)** — historical execution order. The V1
    runtime, installed-pack scan, jar-backed extraction, runtime export,
-   datapack pack-layer, and dynamic subsystem auto-home slices have
+   datapack pack-layer, and dynamic organization/subsystem auto-home slices have
    landed; remaining items are public database distribution, review/diff
    tooling, runtime-crawl, and persistent server/player facet layers.
-8. **Facet list (1–28)** — skim the headings; read the specific facets you need.
+8. **Facet list (1–28, plus 14a)** — skim the headings; read the specific facets you need.
 
 Skip **[Modeling principles](#modeling-principles)** until you're about to add or change a facet — those rules are authored for that case.
 
@@ -123,7 +123,7 @@ enforces these via JSONSchema.
 | `enum` | single | string, must be in declared value set | `replace`, `override-if-null` | `role`, `rarity`, `frequency`, `form`, `dye_color`, `equip_slot`, `required_tool`, `y_level_range`, `multiblock_role` |
 | `multi_enum` | multi | array of strings, each must be in declared value set | `replace`, `add`, `remove` | `activity`, `flavor`, `palette`, `origin`, `storage_categories`, `spawn_interaction`, `combat_bonus`, `environmental_property`, `transport_medium`, `material_secondary` |
 | `free_text` | single | string matching declared regex | `replace`, `override-if-null` | `tier`, `required_tool_tier`, `mod_namespace`, `material_family` (when admitting mod-specific values) |
-| `multi_free_text` | multi | array of strings, each matching declared regex | `replace`, `add`, `remove` | `mod_subsystem`, `processing_in`, `primary_uses`, `biome`, `produces_effect`, `multiblock_component_of`, `player_island` |
+| `multi_free_text` | multi | array of strings, each matching declared regex | `replace`, `add`, `remove` | `organization_group`, `mod_subsystem`, `processing_in`, `primary_uses`, `biome`, `produces_effect`, `multiblock_component_of`, `player_island` |
 | `boolean` | single | `true` or `false` | `replace`, `override-if-null` | all derived booleans (`is_block_item`, `is_fuel`, etc.) |
 | `numeric` | single | number, with optional declared unit | `replace`, `override-if-null` | deferred — first V1 candidate is `container_capacity` |
 | `item_ref` | single | string matching `^[a-z0-9_.-]+:[a-z0-9_/.-]+$`, must resolve to a registered item | `replace`, `override-if-null` | deferred to V2 |
@@ -392,6 +392,27 @@ Examples:
 
 Free-text, capped at ~40 chars per phrase. LLM generates; curator reviews. This is the
 facet that most directly answers "what is this useful for?" for the player.
+
+### 14a. `organization_group` — multi, free-text, LLM-authored
+
+Player-facing storage/workflow group: the direct answer to "where would a
+skilled player put this item while organizing the pack manually?"
+
+Examples:
+- TFC casting molds, unfired molds, and molten-metal helpers:
+  `tfc:casting`
+- Bricks, mortar, clay masonry inputs: `tfc:masonry`
+- Hides, scraped/soaked hides, leatherworking tools: `tfc:leatherworking`
+- Thread, cloth, looms, textile inputs: `tfc:textiles`
+
+This is deliberately different from `mod_subsystem`. `mod_subsystem`
+describes what part of a mod the item itself belongs to; `organization_group`
+describes the storage/workflow pile that removes player sorting tedium. The
+runtime tries count-qualified `organization_group` sections before
+`mod_subsystem` sections. Narrow universal sections like Ingots, Raw Materials,
+Stairs, Tools, Food, and Armor win by omission: the classifier should leave
+`organization_group` empty when that generic section is the better manual home,
+not rely on runtime code to veto a stronger workflow signal.
 
 ### 15. `biome` — multi, nullable
 
@@ -668,9 +689,10 @@ with prior judgements rather than generating fresh interpretations.
 
 ### Schema size summary
 
-28 facet types. Closed-enum values: ~460. Free-text facets: `tier`, `mod_namespace`,
-`mod_subsystem`, `palette` (schema-vocab-seeded), `primary_uses`, `biome`,
-`produces_effect`, `multiblock_component_of`.
+38 facet ids in the live schema, documented here as 29 facet groups. Closed-
+enum values: ~460. Free-text facets: `tier`, `mod_namespace`,
+`organization_group`, `mod_subsystem`, `palette` (schema-vocab-seeded),
+`primary_uses`, `biome`, `produces_effect`, `multiblock_component_of`.
 
 Average item carries 8–14 facet entries (most items have no interaction facets; combat, mob-farm, and multiblock items have several).
 A modded catalog of ~15k items × 12 entries = ~180k facet entries — trivially small for
@@ -689,6 +711,7 @@ High-leverage, judgement-heavy:
 - `tier` — for mod items where vanilla tier markers don't apply
 - `material_secondary` — composite items
 - `storage_categories` — especially curio / pedestal / backpack_restricted values
+- `organization_group` — direct "where would the player put it?" storage/workflow grouping for large packs
 - `mod_subsystem` — the LLM typically knows the major product lines of big mods
 - `combat_bonus` — requires lore knowledge (which enchantments help vs which mobs)
 - `spawn_interaction` — requires game-physics knowledge (what blocks monster spawns, what damages mobs)
@@ -904,8 +927,9 @@ items** (player-created islands are just another layer).
 Higher layers override lower layers under explicit merge rules. At `FacetIndex` build time,
 layers are merged into a single denormalized view. There is no runtime merging per query.
 
-**LLM-authored facets** (`role`, `primary_uses`, `palette`, `flavor`, `frequency`, and
-refined `tier`) only appear in precomputed layers (`vanilla-base`, `per-mod`, `modpack`).
+**LLM-authored facets** (`role`, `organization_group`, `primary_uses`,
+`palette`, `flavor`, `frequency`, and refined `tier`) only appear in
+precomputed layers (`vanilla-base`, `per-mod`, `modpack`).
 Items classified purely by the runtime-crawl layer will have deterministic facets filled
 in but the semantic facets empty — that's the quality floor for unknown mods.
 
@@ -1100,20 +1124,22 @@ New component: `dev.imagio.slot.classification.FacetIndex` in the `common` modul
 ### Homing rule (V1)
 
 Islands in V1 continue to be single-home per item. No presets, no user-facing switching.
-Exactly one rule, hardcoded:
+The runtime rule is deterministic:
 
-1. If the item has any `player_island` entry, its home is the first player island listed.
-2. Otherwise, its home is the island that corresponds to the item's `role` value
-   (one island per role: `mechanism-island`, `mining-island`, `building-island`, etc.).
-3. If the item has no `role` (classification gap), `IslandSuggestionTemplate.matches`
-   falls through to its class-signal + item-tag triggers (FOOD/TOOLS/WEAPONS/ARMOR/
-   MATERIALS/STORAGE), and lands on `IslandSuggestionTemplate.MISC` only when even
-   those produce no match.
+1. If the item has a player-owned home, keep it.
+2. Otherwise, resolve the built-in parent template from role / form / tag /
+   class signals.
+3. If the descriptor carries a count-qualified `organization_group`, home to
+   `group:<id>`.
+4. Otherwise, if the descriptor carries a count-qualified `mod_subsystem` and
+   the parent template permits subsystem grouping, home to `subsystem:<id>`.
+5. Otherwise, home to the built-in template island, falling back to Misc only
+   when no role/form/tag/class signal matches.
 
-No priority list, no "default island map" as a separate artifact — just `role`. The
-bundled roles (~20 values) map 1:1 to islands. That's close enough to the current
-bucket layout to be a drop-in replacement and simple enough to not require a whole
-authoring pass.
+The cohort count comes from the loaded dataset, not from the player's current
+inventory, so a pack workflow can earn a stable section before the player has
+handled every sibling item. Generic templates remain the fallback when the data
+does not assert a better player-facing workflow group.
 
 ### Why this is intentionally underbuilt
 
@@ -1130,12 +1156,12 @@ switching adds UI and migration complexity for no V1 benefit. The facet infrastr
 is forward-compatible — presets become a layer of "facet priority lists + island maps"
 whenever we want them.
 
-### Integration sequence (next concrete work)
+### Original integration sequence (historical)
 
 The first vanilla dataset is committed at
 [`tools/classification/datasets/minecraft/minecraft.facets.complete.json`](../../tools/classification/datasets/minecraft/minecraft.facets.complete.json).
-The minimal path to get it powering atlas-homing — without building the inverted-index
-query API yet — is:
+This was the minimal path that first got facets powering atlas-homing
+without building the inverted-index query API:
 
 1. **Ship the dataset as a mod resource.** Copy
    `tools/classification/datasets/minecraft/minecraft.facets.complete.json` (and its
@@ -1409,13 +1435,19 @@ without a changelog entry). CI (once present) enforces the same rule.
 4. **Deterministic facet extractor** (stage 2) against vanilla. *(Done: [tools/classification/src/deterministic/](../../tools/classification/src/deterministic/). Rules cover `mod_namespace`, `material_family`, `form`, `dye_color`, `equip_slot`, `required_tool`/`required_tool_tier`, `processing_in`, `origin`, `rarity`, `y_level_range`, `is_creative_only`, `is_fuel`, and the derived booleans. Vanilla v1 stage-2 coverage: `mod_namespace` 100%, `is_stackable` 84%, `origin` 71%, `is_block_item` 68%, `required_tool` 53%, `processing_in` 46%, `form` 43%, `material_family` 38%, `is_fuel` 20%, `dye_color` 14%, smaller slices for the rest. Vanilla v1 corrections sweep applied 17 stage-2 rule fixes + ~40 per-item overrides (origin world-gen / structural, rarity, spawn-eggs, glow_lichen, honeycomb_block, etc.).)*
 5. **LLM completer** (stage 3) against vanilla and the first three mods. *(Done: [tools/classification/src/llm/](../../tools/classification/src/llm/). Vanilla full pass produced 1536-item layer in [`datasets/minecraft/`](../../tools/classification/datasets/minecraft/) at concurrency 4 with split-prompt + fixture record/replay + transient-error retry. Per-mod `mod_subsystem` proposer pre-pass reads README + mods.toml (with `gradle.properties` fallback) + recipe types and pins a 3–8 entry canonical vocabulary into the system prompt — validated on createaddition (5 vocab/49-item coverage), AE2 (7 vocab/284-item coverage), and SophisticatedStorage (5 vocab/112-item coverage), all with zero synonym drift.)*
 6. **Runtime `FacetIndex`** — layer loading + merging + queries + lookup in `common/`, integrated behind a feature flag. **(LANDED, V1 surface only.)** [`FacetIndex`](../../common/src/main/java/dev/imagio/slot/classification/FacetIndex.java) loads the bundled `vanilla-base.json`, validates `schema_version`/`layer`, and exposes `Optional<String> role(String itemId)`. Multi-layer merging, inverted indices, and the expression AST are deferred until a second feature actually needs them. Stages 4 (nearest-neighbor) and the explicit "compile" step (stage 5) stay deferred for the same reason — the stage-3 output is already a valid layer file. Feature flag is `FacetIndex.ENABLED` (static boolean, default on). Tests at [`FacetIndexTest`](../../common/src/test/java/dev/imagio/slot/classification/FacetIndexTest.java).
-7. **Atlas-homing wiring** — **(LANDED.)** `FacetIndexBucketClassifier` (in [`common/.../debug/`](../../common/src/main/java/dev/imagio/slot/debug/FacetIndexBucketClassifier.java) next to `SemanticBucketResolver`) runs role-lookup → `RoleSemanticBucketMap` → `SemanticBucket`, falling through to `SemanticBucketResolver::classify` when the item is absent from the dataset, when its role doesn't map to a bucket, or when `FacetIndex.ENABLED == false`. Wired in at [`SlotTestCommands.runPopulate`](../../neoforge/src/main/java/dev/imagio/slot/neoforge/command/SlotTestCommands.java) (the only existing homing call site). `RealisticAtlasGeneratorTest` continues to pass against an in-test classifier; production `runPopulate` now uses `FacetIndexHolder.get()`. Mapping table at [`RoleSemanticBucketMap`](../../common/src/main/java/dev/imagio/slot/classification/RoleSemanticBucketMap.java).
+7. **Atlas-homing wiring** — **(LANDED, evolved.)** `FacetIndex` now feeds
+   `IslandSignalDescriptor` extraction, built-in `IslandSuggestionTemplate`
+   matching, and count-gated dynamic `organization_group` / `mod_subsystem`
+   sections. `SlotTestCommands.runPopulate`, workspace suggestions, and
+   `/slot classification rehome` all use the same descriptor path.
 8. **Runtime-crawl layer** — direct registry walk to populate deterministic facets for items without a precomputed layer (datapacks, KubeJS, unknown mods). Ship without EMI/ALI enrichment first; add those as follow-ups once the base crawl is proven.
 9. **Player-island layer** — persist player island assignments as a player layer; read back into `FacetIndex`. Exercise the merge path end-to-end.
 10. **Expand to Create** as the first modded target. Identify schema gaps and merge-mode edge cases the vanilla-only run didn't reveal.
 11. **Add remaining reference mods.** One per iteration, catching schema holes each time.
 12. **EMI / ALI enrichment** on the runtime-crawl layer — optional integrations that lift quality for mods without precomputed layers (custom recipe categories, loot origin, breeding, archaeology). Ships independently from milestone 11.
-13. **Ship** classification layers as mod resources / datapacks. `FacetIndex` becomes the default source of homing suggestions; `SemanticBucketResolver` becomes the fallback only.
+13. **Ship** classification layers as mod resources / datapacks. `FacetIndex`
+    is the default source of homing suggestions; class/tag template matching
+    remains the no-data fallback.
 
 Stop after milestone 9 and review before expanding to modded targets. If V1 feels right,
 continue with mod expansion. If the abstraction isn't working, rewind.
@@ -1437,7 +1469,9 @@ continue with mod expansion. If the abstraction isn't working, rewind.
 - **LLM ambiguity policy** — up to two low-confidence entries with `ambiguous: true`.
 - **Player islands** — modeled as the `player_island` multi-value facet in a per-world player layer. Same merge machinery as mod overrides.
 - **Mod overrides / merging** — explicit layer system with `mode` per entry. Player layer always wins.
-- **Default island map** — no separate map. Homing is just `role → one-island-per-role` plus the `player_island` shortcut.
+- **Default island map** — no separate map. Homing is built-in template
+  resolution plus count-gated `organization_group` / `mod_subsystem` dynamic
+  sections and player-owned homes.
 - **Server layer** — included in the layer stack for completeness, but classification isn't gameplay-authoritative, so priority details don't matter much. Current order (modpack < server < player) stands unless a concrete scenario pushes back.
 - **Datapack support** — both paths. Community per-mod layers can ship as Slot resources or as datapacks, whichever the contributor finds easier.
 - **Load-time merge** — all layers merged at init. No lazy merging. Cross the "worldsave write is hot" bridge only if it actually becomes hot.

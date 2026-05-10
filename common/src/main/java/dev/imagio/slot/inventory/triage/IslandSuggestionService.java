@@ -38,6 +38,17 @@ public final class IslandSuggestionService {
             Set<String> dismissedTemplateIds,
             Predicate<String> subsystemQualifier
     ) {
+        return suggest(descriptor, learnedRules, existingIslands, dismissedTemplateIds, subsystemQualifier, id -> false);
+    }
+
+    public static List<ChipSuggestion> suggest(
+            IslandSignalDescriptor descriptor,
+            LearnedIslandRuleStore learnedRules,
+            Collection<TriageIslandRef> existingIslands,
+            Set<String> dismissedTemplateIds,
+            Predicate<String> subsystemQualifier,
+            Predicate<String> organizationGroupQualifier
+    ) {
         if (descriptor == null) {
             return List.of();
         }
@@ -45,6 +56,8 @@ public final class IslandSuggestionService {
         Map<String, TriageIslandRef> islandsById = indexIslands(existingIslands);
         Set<String> dismissed = dismissedTemplateIds == null ? Set.of() : dismissedTemplateIds;
         Predicate<String> qualifiedSubsystem = subsystemQualifier == null ? id -> false : subsystemQualifier;
+        Predicate<String> qualifiedOrganizationGroup =
+                organizationGroupQualifier == null ? id -> false : organizationGroupQualifier;
         List<LearnedIslandRule> sortedLearned = sortedLearnedRules(rules.firingRulesFor(descriptor));
 
         List<ChipSuggestion> result = new ArrayList<>(MAX_TOTAL_CHIPS);
@@ -57,7 +70,7 @@ public final class IslandSuggestionService {
         // rules, so a "_wall" form facet should beat "you also homed
         // some other Create item recently" when ranking suggestions.
         ChipSuggestion specificTemplateChip = buildSpecificTemplateChip(
-                descriptor, islandsById, dismissed, qualifiedSubsystem);
+                descriptor, islandsById, dismissed, qualifiedSubsystem, qualifiedOrganizationGroup);
         if (specificTemplateChip != null) {
             result.add(specificTemplateChip);
         }
@@ -75,7 +88,7 @@ public final class IslandSuggestionService {
         // when there's room and no specific template already led.
         if (specificTemplateChip == null && result.size() < MAX_TOTAL_CHIPS) {
             ChipSuggestion templateChip = buildTemplateChip(
-                    descriptor, result, islandsById, dismissed, qualifiedSubsystem);
+                    descriptor, result, islandsById, dismissed, qualifiedSubsystem, qualifiedOrganizationGroup);
             if (templateChip != null && !containsIsland(result, templateChip.islandId())) {
                 result.add(templateChip);
             }
@@ -165,7 +178,8 @@ public final class IslandSuggestionService {
             IslandSignalDescriptor descriptor,
             Map<String, TriageIslandRef> islandsById,
             Set<String> dismissedTemplateIds,
-            Predicate<String> subsystemQualifier
+            Predicate<String> subsystemQualifier,
+            Predicate<String> organizationGroupQualifier
     ) {
         // Trophies are unconditionally specific — they belong in
         // CURIOSITY regardless of role / namespace / learned rules.
@@ -182,6 +196,13 @@ public final class IslandSuggestionService {
             }
             if (dismissedTemplateIds.contains(template.defaultIslandId())) {
                 continue;
+            }
+            if (template.allowsOrganizationGrouping()) {
+                ChipSuggestion groupChip = organizationGroupChipIfQualified(
+                        descriptor, islandsById, organizationGroupQualifier, template);
+                if (groupChip != null) {
+                    return groupChip;
+                }
             }
             if (template.allowsSubsystemGrouping()) {
                 ChipSuggestion subsystemChip = subsystemChipIfQualified(
@@ -213,7 +234,8 @@ public final class IslandSuggestionService {
             List<ChipSuggestion> existingChips,
             Map<String, TriageIslandRef> islandsById,
             Set<String> dismissedTemplateIds,
-            Predicate<String> subsystemQualifier
+            Predicate<String> subsystemQualifier,
+            Predicate<String> organizationGroupQualifier
     ) {
         // Trophy shunt: rarity=unique or role=trophy items belong on
         // display (CURIOSITY), regardless of whatever else they'd match.
@@ -235,16 +257,18 @@ public final class IslandSuggestionService {
             if (isTemplateSuppressed(template, existingChips, islandsById)) {
                 return null;
             }
-            // Subsystem-aware: if any existing island matches one of this
-            // descriptor's subsystems, route the chip there instead of the
-            // generic template island. Mirrors the player's mental model
-            // ("Create — Mechanical Power" already exists, drop into it
-            // rather than spawning a parallel MECHANISMS pile). If no
-            // island exists yet, a count-qualified subsystem can also
-            // surface a learned-looking chip that auto-home / chip-accept
-            // will materialize as a real island.
-            // Only honored for parent templates the player actually wants
-            // mod-segregated — see IslandSuggestionTemplate#allowsSubsystemGrouping.
+            // Dynamic classifier-aware: if an existing organization group or
+            // subsystem island matches the descriptor, route the chip there
+            // instead of the generic template island. Count-qualified cohorts
+            // can also surface a chip that auto-home / chip-accept will
+            // materialize as a real island.
+            if (template.allowsOrganizationGrouping()) {
+                ChipSuggestion groupChip = organizationGroupChipIfQualified(
+                        descriptor, islandsById, organizationGroupQualifier, template);
+                if (groupChip != null) {
+                    return groupChip;
+                }
+            }
             if (template.allowsSubsystemGrouping()) {
                 ChipSuggestion subsystemChip = subsystemChipIfQualified(
                         descriptor, islandsById, subsystemQualifier, template);
@@ -258,7 +282,44 @@ public final class IslandSuggestionService {
         // subsystem-island that already exists should still capture the
         // item — the chip surfaces the place the player has already
         // sanctioned.
-        return subsystemChipIfQualified(descriptor, islandsById, id -> false, null);
+        ChipSuggestion groupChip = organizationGroupChipIfQualified(descriptor, islandsById, id -> false, null);
+        return groupChip != null ? groupChip : subsystemChipIfQualified(descriptor, islandsById, id -> false, null);
+    }
+
+    private static ChipSuggestion organizationGroupChipIfQualified(
+            IslandSignalDescriptor descriptor,
+            Map<String, TriageIslandRef> islandsById,
+            Predicate<String> organizationGroupQualifier,
+            IslandSuggestionTemplate parentTemplate
+    ) {
+        if (descriptor.organizationGroups().isEmpty()) {
+            return null;
+        }
+        Predicate<String> qualifiedGroup = organizationGroupQualifier == null ? id -> false : organizationGroupQualifier;
+        for (String groupId : descriptor.organizationGroups()) {
+            if (groupId == null || groupId.isBlank()) {
+                continue;
+            }
+            String islandId = IslandTemplateMatch.ORGANIZATION_GROUP_ISLAND_PREFIX + groupId;
+            TriageIslandRef island = islandsById.get(islandId);
+            if (island != null) {
+                return ChipSuggestion.learned(
+                        island.islandId(),
+                        island.label(),
+                        island.color(),
+                        island.iconIdentity()
+                );
+            }
+            if (parentTemplate != null && qualifiedGroup.test(groupId)) {
+                return ChipSuggestion.learned(
+                        islandId,
+                        IslandTemplateMatch.formatSubsystemLabel(groupId),
+                        parentTemplate.defaultColor(),
+                        descriptor.identity()
+                );
+            }
+        }
+        return null;
     }
 
     private static ChipSuggestion subsystemChipIfQualified(

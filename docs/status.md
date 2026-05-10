@@ -37,7 +37,8 @@ remain backend hooks, not common UI semantics.
 Classification now has a pack-authoring path for large modpacks: installed
 `mods/` scanning, jar extraction, OpenRouter-backed stage 3, runtime export,
 runtime subsystem vocabulary, and drop-in datapack layer output. Runtime
-auto-home uses bundled/datapack facets plus dynamic subsystem cohorts; both
+auto-home uses bundled/datapack facets plus count-gated dynamic organization
+groups (`organization_group`) and subsystem cohorts (`mod_subsystem`); both
 loaders expose `inspect`, `export`, and `rehome` / `recompute` commands.
 
 ### Production wall shape (post-list-view)

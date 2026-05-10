@@ -46,7 +46,7 @@ tools/classification/
 ├── src/
 │   ├── extract/                               # stage 1: extract from sources/jars/runtime exports
 │   ├── deterministic/                         # stage 2: rule-based facet derivation
-│   ├── llm/                                   # stage 3: LLM completion / subsystem vocabulary
+│   ├── llm/                                   # stage 3: LLM completion / vocabulary hints
 │   └── schema/facets.ts                       # source of truth for the facet catalog
 └── datasets/
     └── minecraft/
@@ -70,7 +70,7 @@ bulk auto-home testing.
 ## The facet catalog at a glance
 
 Schema lives at [tools/classification/src/schema/facets.ts](../../../tools/classification/src/schema/facets.ts)
-and is the only authoritative list. As of v1 (in-flight) there are **36
+and is the only authoritative list. As of v1 (in-flight) there are **38
 facets**, grouped by purpose:
 
 **Identity / scope (4):**
@@ -81,10 +81,12 @@ facets**, grouped by purpose:
 `material_family` + `material_secondary` (iron, wood_oak, certus_quartz, …),
 `form` (ingot, plank, stairs, log, …), `tier` (wood / stone / iron / diamond / …)
 
-**What you do with it (3):**
+**What you do with it / where a player stores it (4):**
 `activity` (mining, combat, redstone, …), `primary_uses` (LLM-authored
 short verbs: "smelting fuel", "building structure", …), `processing_in`
-(crafting, smelting, blast_furnace, smithing, …)
+(crafting, smelting, blast_furnace, smithing, …), `organization_group`
+(player-facing storage/workflow groups such as `tfc:casting`,
+`tfc:masonry`, `tfc:leatherworking`)
 
 **Where it comes from (3):**
 `origin` (overworld_surface, nether, mob_drop, brewing, crafted_only, …),
@@ -210,7 +212,9 @@ serialized facet entries.
    backend. The model fills judgement-call facets (role, flavor, palette,
    primary_uses, …). Per-mod and runtime-export runs first do a
    `mod_subsystem` proposer pre-pass that pins a canonical vocabulary into
-   the system prompt so item batches stop inventing synonyms.
+   the system prompt so item batches stop inventing synonyms. The LLM also
+   authors `organization_group`, the direct "where would a player put this?"
+   signal used to split broad roles like Materials and Utility in large packs.
 
 Stages 4 (nearest-neighbor priming) and 5 (compile) are spec'd in the plan
 but deferred — the stage-3 output is already a valid layer and gets copied
@@ -239,11 +243,12 @@ CLI surface.
 - **Init** — loads bundled vanilla/per-mod resources plus datapack
   `data/slot/classification/layers/*.json`, validates schema/layer names,
   merges, and exposes a load report for `/slot classification inspect`.
-- **Per-item lookup** — exposes role/material/form/subsystem/activity and
-  adjacent facet helpers used by signal extraction and auto-home.
-- **Dynamic homes** — auto-home uses built-in templates plus dynamic
-  `mod_subsystem` sections when the loaded dataset says the subsystem has
-  enough items to avoid singleton clutter.
+- **Per-item lookup** — exposes role/material/form/subsystem/organization
+  group/activity and adjacent facet helpers used by signal extraction and
+  auto-home.
+- **Dynamic homes** — auto-home uses count-qualified `organization_group`
+  sections first, then `mod_subsystem` sections, then built-in templates. A
+  generic section wins when the dataset omits a stronger player-facing group.
 - **Bulk recompute** — `/slot classification rehome` scans every carried
   source plus currently accessible claimed chests, then recomputes
   classifier-owned homes without moving physical items.

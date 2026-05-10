@@ -82,6 +82,7 @@ public final class FacetIndex {
             String role = roleCandidates.isEmpty() ? null : roleCandidates.get(0);
             String materialFamily = readSingleStringFacet(facetsObj, "material_family");
             List<String> subsystems = readMultiStringFacet(facetsObj, "mod_subsystem");
+            List<String> organizationGroups = readMultiStringFacet(facetsObj, "organization_group");
             List<String> activities = readMultiStringFacet(facetsObj, "activity");
             String flavor = readSingleStringFacet(facetsObj, "flavor");
             String carryFrequency = readSingleStringFacet(facetsObj, "carry_frequency");
@@ -95,6 +96,7 @@ public final class FacetIndex {
             boolean hasAnyFacet = role != null
                     || materialFamily != null
                     || !subsystems.isEmpty()
+                    || !organizationGroups.isEmpty()
                     || !activities.isEmpty()
                     || flavor != null
                     || carryFrequency != null
@@ -110,6 +112,7 @@ public final class FacetIndex {
                         roleCandidates,
                         materialFamily,
                         subsystems,
+                        organizationGroups,
                         activities,
                         flavor,
                         carryFrequency,
@@ -174,6 +177,11 @@ public final class FacetIndex {
     public List<String> subsystems(String itemId) {
         ItemFacets f = lookup(itemId);
         return f == null ? List.of() : f.subsystems();
+    }
+
+    public List<String> organizationGroups(String itemId) {
+        ItemFacets f = lookup(itemId);
+        return f == null ? List.of() : f.organizationGroups();
     }
 
     public List<String> activities(String itemId) {
@@ -274,6 +282,7 @@ public final class FacetIndex {
             List<String> roleAlternatives,
             String materialFamily,
             List<String> subsystems,
+            List<String> organizationGroups,
             List<String> activities,
             String flavor,
             String carryFrequency,
@@ -287,6 +296,7 @@ public final class FacetIndex {
         ItemFacets {
             roleAlternatives = roleAlternatives == null ? List.of() : List.copyOf(roleAlternatives);
             subsystems = subsystems == null ? List.of() : List.copyOf(subsystems);
+            organizationGroups = organizationGroups == null ? List.of() : List.copyOf(organizationGroups);
             activities = activities == null ? List.of() : List.copyOf(activities);
             palette = palette == null ? List.of() : List.copyOf(palette);
         }

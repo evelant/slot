@@ -10,6 +10,7 @@ import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.classification.ClassificationInspectFormatter;
+import dev.imagio.slot.classification.DynamicHomeCohortPolicy;
 import dev.imagio.slot.classification.FacetIndex;
 import dev.imagio.slot.classification.FacetIndexHolder;
 import dev.imagio.slot.classification.FacetIndexStatusFormatter;
@@ -689,13 +690,17 @@ public final class SlotTestCommands {
             if (descriptor == null) {
                 continue;
             }
+            DynamicHomeCohortPolicy cohortPolicy = DynamicHomeCohortPolicy.current();
             IslandTemplateMatch match = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
-                    descriptor, null);
+                    descriptor,
+                    cohortPolicy.qualifier(),
+                    cohortPolicy.organizationGroupQualifier()
+            );
             if (match == null) {
                 continue;
             }
             String islandId = resolveOrMaterializeKitIsland(
-                    visualWorkflow, match.parentTemplate(), identity);
+                    visualWorkflow, match, identity);
             if (islandId == null) {
                 continue;
             }
@@ -709,9 +714,35 @@ public final class SlotTestCommands {
 
     private static String resolveOrMaterializeKitIsland(
             VisualAtlasWorkflowDomainService visualWorkflow,
-            IslandSuggestionTemplate template,
+            IslandTemplateMatch match,
             ItemIdentity seedIdentity
     ) {
+        if (match == null) {
+            return null;
+        }
+        if (match.isDynamic()) {
+            VisualAtlasIsland existing = visualWorkflow.visualHomeMap().island(match.islandId());
+            if (existing != null) {
+                return existing.id();
+            }
+            SlotWorkspaceAtlasLayout.PlayerIslandDraft draft =
+                    SlotWorkspaceAtlasLayout.createNextPlayerIslandDraft(
+                            match.label(),
+                            seedIdentity,
+                            visualWorkflow.visualHomeMap()
+                    );
+            VisualAtlasIsland created = visualWorkflow.createIslandWithId(
+                    match.islandId(),
+                    draft.label(),
+                    draft.x(),
+                    draft.y(),
+                    match.color(),
+                    seedIdentity,
+                    DomainEventMetadata.origin("slot.test.kits.dynamic_island_create")
+            );
+            return created == null ? null : created.id();
+        }
+        IslandSuggestionTemplate template = match.parentTemplate();
         VisualAtlasIsland existing = visualWorkflow.visualHomeMap().playerIslands().stream()
                 .filter(island -> island != null
                         && template.defaultLabel().equalsIgnoreCase(island.label()))

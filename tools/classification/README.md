@@ -27,8 +27,9 @@ in this directory.
 - `src/deterministic/` — stage 2 rule-based facet derivation.
 - `src/llm/` — stage 3 LLM completion. Includes per-mod and runtime-export
   `mod_subsystem` proposer pre-passes that pin canonical vocabularies into
-  the system prompt; split-prompt mode; fixture-based record/replay for free
-  resume; OpenRouter support; and transient-error retry.
+  the system prompt; the `organization_group` auto-home facet; split-prompt
+  mode; fixture-based record/replay for free resume; OpenRouter support; and
+  transient-error retry.
 - `src/schema/` — facet registry (v1 vocabulary) and AJV wrapper around
   `layer.schema.json`.
 - `datasets/<source>/` — curated, git-tracked layer outputs the rest of the
@@ -103,7 +104,7 @@ For in-game validation after installing a generated datapack, run:
 /slot classification rehome
 ```
 
-`inspect` shows the loaded facet/template/subsystem view for one item.
+`inspect` shows the loaded facet/template/group/subsystem view for one item.
 `rehome` recomputes classifier-owned homes for every unique item in
 carried storage plus currently accessible claimed chests; it does not
 move physical stacks.

@@ -33,14 +33,9 @@ import java.util.function.Function;
 public final class RealisticAtlasGenerator {
 
     /**
-     * Minimum subsystem-tagged items required for a subsystem to qualify
-     * as its own island. Subsystems with fewer items fold back into the
-     * parent template — otherwise the atlas fragments into small
-     * subsystem islands that just add navigation overhead. Playtest of
-     * the late-modpack profile showed 4 was too aggressive (every minor
-     * subsystem-of-a-subsystem split into its own island); 10 keeps only
-     * the genuine "machinery area" and "logistics network" splits and
-     * lets smaller groups collapse into the parent template's pile.
+     * Minimum classifier-tagged items required for a dynamic group to qualify
+     * as its own island. Smaller cohorts fold back into the parent template so
+     * generated atlases do not fragment into singleton sections.
      */
     public static final int DEFAULT_MIN_SUBSYSTEM_ITEMS = DynamicHomeCohortPolicy.DEFAULT_MIN_SUBSYSTEM_ITEMS;
 
@@ -160,7 +155,7 @@ public final class RealisticAtlasGenerator {
 
     /**
      * Production overload: classify each stack via its full
-     * {@link IslandSignalDescriptor}, allowing subsystem-primary matching,
+     * {@link IslandSignalDescriptor}, allowing dynamic classifier matching,
      * frequency-driven ordering, and trophy-shunt logic to fire.
      */
     public static RealisticAtlasPlan generateWithDescriptors(
@@ -226,27 +221,40 @@ public final class RealisticAtlasGenerator {
                 triageCandidates.subList(0, Math.min(triageTarget, triageCandidates.size()))
         );
 
-        // First pass: extract descriptors for every homed stack; histogram subsystem ids
-        // so we can decide which subsystems qualify as their own islands. Subsystems with
-        // fewer than `minSubsystemItems` items collapse back to their parent template.
+        // First pass: extract descriptors for every homed stack; histogram dynamic
+        // classification ids so we can decide which groups qualify as their own
+        // islands. Small cohorts collapse back to their parent template so populate
+        // does not fragment into singleton sections.
         ArrayList<DescribedStack> described = new ArrayList<>(homedTemplates.size());
         HashMap<String, Integer> subsystemHistogram = new HashMap<>();
+        HashMap<String, Integer> organizationGroupHistogram = new HashMap<>();
         for (ItemStack stack : homedTemplates) {
             IslandSignalDescriptor descriptor = descriptorFn.apply(stack);
             if (descriptor == null) {
                 descriptor = IslandSignalDescriptor.empty(ItemIdentityMatcher.create(stack));
             }
             described.add(new DescribedStack(stack, descriptor));
-            // Trophies bypass subsystem grouping by design — they belong on
-            // display, not filed under their mod's subsystem.
+            // Trophies bypass dynamic grouping by design — they belong on
+            // display, not filed under their mod's workflow/subsystem.
             if (IslandSuggestionTemplate.isTrophy(descriptor)) {
                 continue;
             }
-            for (String subsystemId : descriptor.subsystems()) {
-                if (subsystemId == null || subsystemId.isBlank()) {
-                    continue;
+            IslandSuggestionTemplate parent = IslandSuggestionTemplate.firstMatchOrMisc(descriptor);
+            if (parent.allowsSubsystemGrouping()) {
+                for (String subsystemId : descriptor.subsystems()) {
+                    if (subsystemId == null || subsystemId.isBlank()) {
+                        continue;
+                    }
+                    subsystemHistogram.merge(subsystemId, 1, Integer::sum);
                 }
-                subsystemHistogram.merge(subsystemId, 1, Integer::sum);
+            }
+            if (parent.allowsOrganizationGrouping()) {
+                for (String groupId : descriptor.organizationGroups()) {
+                    if (groupId == null || groupId.isBlank()) {
+                        continue;
+                    }
+                    organizationGroupHistogram.merge(groupId, 1, Integer::sum);
+                }
             }
         }
         int threshold = Math.max(1, minSubsystemItems);
@@ -254,12 +262,19 @@ public final class RealisticAtlasGenerator {
             Integer count = subsystemHistogram.get(id);
             return count != null && count >= threshold;
         };
+        java.util.function.Predicate<String> organizationGroupQualifier = id -> {
+            Integer count = organizationGroupHistogram.get(id);
+            return count != null && count >= threshold;
+        };
 
         // Second pass: classify each stack via firstMatchExtended.
         LinkedHashMap<String, CategoryGroup> grouped = new LinkedHashMap<>();
         for (DescribedStack ds : described) {
             IslandTemplateMatch match = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
-                    ds.descriptor, subsystemQualifier);
+                    ds.descriptor,
+                    subsystemQualifier,
+                    organizationGroupQualifier
+            );
             grouped.computeIfAbsent(match.islandId(), id -> new CategoryGroup(match))
                     .stacks().add(ds);
         }
@@ -300,7 +315,13 @@ public final class RealisticAtlasGenerator {
         }
 
         List<ChestSpec> chests = planChests(builds, profile.chestCount(), random);
-        List<ItemStack> triageStacks = rollTriageStacks(triageTemplates, descriptorFn, subsystemQualifier, random);
+        List<ItemStack> triageStacks = rollTriageStacks(
+                triageTemplates,
+                descriptorFn,
+                subsystemQualifier,
+                organizationGroupQualifier,
+                random
+        );
 
         return new RealisticAtlasPlan(islands, assignments, triageStacks, chests, homedStacks);
     }
@@ -325,6 +346,7 @@ public final class RealisticAtlasGenerator {
                 role,
                 null,
                 null,
+                java.util.List.of(),
                 java.util.List.of(),
                 java.util.List.of(),
                 null, null, null, null, null,
@@ -397,6 +419,7 @@ public final class RealisticAtlasGenerator {
             List<ItemStack> templates,
             Function<ItemStack, IslandSignalDescriptor> descriptorFn,
             java.util.function.Predicate<String> subsystemQualifier,
+            java.util.function.Predicate<String> organizationGroupQualifier,
             Random random
     ) {
         ArrayList<ItemStack> out = new ArrayList<>(templates.size());
@@ -410,7 +433,10 @@ public final class RealisticAtlasGenerator {
                 descriptor = IslandSignalDescriptor.empty(ItemIdentityMatcher.create(copy));
             }
             IslandTemplateMatch match = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
-                    descriptor, subsystemQualifier);
+                    descriptor,
+                    subsystemQualifier,
+                    organizationGroupQualifier
+            );
             copy.setCount(Math.max(1, rollStackCount(copy, match.parentTemplate(), descriptor, random)));
             out.add(copy);
         }
@@ -526,13 +552,14 @@ public final class RealisticAtlasGenerator {
         // This gives populate-generated atlases a deterministic spatial
         // layout that mirrors the template enum's intended grouping
         // (player-gear row, raw/build row, machinery row, extras row).
-        // Subsystem islands inherit cluster row/column from their parent
-        // template, so all Create-mechanism subsystems still land in the
-        // mechanisms row and sort by subsystem id within that row.
+        // Dynamic islands inherit cluster row/column from their parent
+        // template, so all TFC masonry/material groups still land in the
+        // materials row and sort by classifier id within that row.
         builds.sort(Comparator
                 .comparingInt((IslandBuild b) -> b.match().clusterRow())
                 .thenComparingInt(b -> b.match().clusterColumn())
-                .thenComparingInt(b -> b.match().isSubsystem() ? 1 : 0)
+                .thenComparingInt(b -> b.match().isDynamic() ? 1 : 0)
+                .thenComparingInt(b -> b.match().isOrganizationGroup() ? 0 : 1)
                 .thenComparing(b -> b.island().id()));
 
         // Wide target: monitors are ~16:10, so prefer a long horizontal
@@ -840,8 +867,8 @@ public final class RealisticAtlasGenerator {
 
         // Each chest picks a "seed" from the linked island; subsequent
         // linked-pool fills prefer items that share a *specific*
-        // adjacency key with the seed (tag, material_family, subsystem,
-        // dye_color — the priority-rank-0 kinds). NAMESPACE and
+        // adjacency key with the seed (organization group, subsystem, tag,
+        // material_family, dye_color — the priority-rank-0 kinds). NAMESPACE and
         // CREATIVE_TAB are deliberately excluded from this clustering
         // signal: every modpack item shares "minecraft" or "create"
         // namespace, so namespace matches collapse the cluster back to

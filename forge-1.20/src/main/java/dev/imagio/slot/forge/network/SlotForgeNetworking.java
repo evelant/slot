@@ -299,7 +299,11 @@ public final class SlotForgeNetworking {
             return;
         }
         try {
-            SlotWorkspaceViewModel viewModel = session.project(player);
+            long previousRevision = session.context().latestViewRevision();
+            SlotWorkspaceViewModel viewModel = session.project(player, logViewSend);
+            if (!logViewSend && viewModel.revision() == previousRevision) {
+                return;
+            }
             WorkspaceActionEnvelope viewEnvelope = new WorkspaceActionEnvelope(
                     session.context().sessionId(),
                     session.context().menuContainerId(),

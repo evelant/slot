@@ -166,7 +166,7 @@ reconsider.
 - Only output values from the facet's allowed list, or (for free_text facets) values matching the pattern.
 - Only emit facets that actually apply to the item. The test: would a player consider this facet meaningful for this item? \`combat_bonus\` on bread, \`biome\` on a crafted-only item — players wouldn't expect a value, so omit. Do not emit \`null\`, empty arrays, or placeholder values to satisfy a target-facet list.
 - Multi-value facets must use \`values: [...]\` even when there is only one
-  value. This includes \`mod_subsystem\`; never emit it as a scalar \`value\`.
+  value. This includes \`organization_group\` and \`mod_subsystem\`; never emit it as a scalar \`value\` facet.
 - For single-value enum facets where two values could apply with similar confidence, emit a two-element \`values\` array AND set \`ambiguous: true\`. Downstream reviewers see both.
 - **Each facet entry MUST include a \`signal\` field** — a marker for
     downstream review tools, NOT a quality grade. All four levels are
@@ -615,6 +615,44 @@ activities the item is an ingredient of.
   item is craftable; the value would be noise).
 - If unsure, omit. One good activity beats three weak ones.
 
+## organization_group — where would a player put this item?
+
+The \`organization_group\` facet is the direct SLOT auto-home signal for
+large modpacks. It answers:
+
+> "If a skilled player organized this pack manually, which named
+> workflow/storage section would this item belong in?"
+
+Use it for coherent groups that cut across broad roles when the group
+is how players actually store the items: TFC casting molds and molten-
+metal helpers → \`tfc:casting\`; bricks, mortar, clay masonry inputs →
+\`tfc:masonry\`; hides, scraped hides, soaked hides, and leatherworking
+tools → \`tfc:leatherworking\`; looms, cloth, thread, and textile inputs
+→ \`tfc:textiles\`.
+
+This facet is intentionally different from \`mod_subsystem\`.
+\`organization_group\` is allowed on materials, utility items,
+building blocks, natural resources, and intermediate crafting items
+when those items form a player-recognizable workflow pile. Do NOT emit
+it for singleton quirks, decorative style families, color/material
+families, or generic catch-alls like \`<ns>:materials\`,
+\`<ns>:crafting\`, \`<ns>:blocks\`, \`<ns>:misc\`.
+
+Prefer namespaced, stable, player-facing tokens. Use the item's own
+namespace unless the group is clearly pack-owned. Do not omit the facet
+just because the item also has a narrow form like \`ingot\`, \`gem\`,
+\`raw ore\`, \`stairs\`, \`slab\`, \`tool\`, or \`armor\`; emit the group
+when the workflow pile is the more useful manual-storage destination.
+Omit it when the universal section really is where a player would put
+the item, or when no useful group has enough sibling items.
+
+Concrete anchors:
+- \`tfc:ceramic/ingot_mold\` → organization_group=\`tfc:casting\`.
+- \`tfc:ceramic/unfired_ingot_mold\` → organization_group=\`tfc:casting\`.
+- \`tfc:mortar\` → organization_group=\`tfc:masonry\`.
+- \`tfc:large_raw_hide\` → organization_group=\`tfc:leatherworking\`.
+- \`minecraft:iron_ingot\` → no organization_group; the Ingots section wins.
+
 ## mod_subsystem — what part of the mod IS this item
 
 The \`mod_subsystem\` facet groups items by the **functional sub-area
@@ -826,7 +864,7 @@ function chooseMultiExampleFacet(targetFacets: readonly string[]): {
   facet: string;
   entry: Record<string, unknown>;
 } {
-  for (const candidate of ["activity", "primary_uses", "flavor"]) {
+  for (const candidate of ["organization_group", "activity", "primary_uses", "flavor"]) {
     if (!targetFacets.includes(candidate)) continue;
     const def = FACETS[candidate]!;
     return {

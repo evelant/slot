@@ -148,21 +148,21 @@ public final class SlotWorkspaceCommandService {
             VisualAtlasIsland existing = runtime.visualAtlasWorkflow().visualHomeMap().island(chipIslandId);
             if (existing != null) {
                 resolvedIslandId = chipIslandId;
-            } else if (chipIslandId.startsWith(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX)) {
-                IslandTemplateMatch subsystemMatch = qualifiedSubsystemMatch(item, signalExtractor, chipIslandId);
-                if (subsystemMatch == null) {
+            } else if (isDynamicClassificationIsland(chipIslandId)) {
+                IslandTemplateMatch dynamicMatch = qualifiedDynamicMatch(item, signalExtractor, chipIslandId);
+                if (dynamicMatch == null) {
                     return WorkspaceCommandOutcome.rejected("unknown_island");
                 }
-                resolvedIslandId = resolveOrMaterializeSubsystemIsland(
+                resolvedIslandId = resolveOrMaterializeDynamicIsland(
                         runtime,
-                        subsystemMatch.islandId(),
-                        subsystemMatch.label(),
-                        subsystemMatch.color(),
+                        dynamicMatch.islandId(),
+                        dynamicMatch.label(),
+                        dynamicMatch.color(),
                         identity,
                         item.name()
                 );
                 if (resolvedIslandId == null) {
-                    return WorkspaceCommandOutcome.rejected("subsystem_island_creation_failed");
+                    return WorkspaceCommandOutcome.rejected("dynamic_island_creation_failed");
                 }
                 materializedNewIsland = true;
             } else {
@@ -1323,9 +1323,11 @@ public final class SlotWorkspaceCommandService {
             if (descriptor == null) {
                 descriptor = IslandSignalDescriptor.empty(candidate.identity());
             }
+            DynamicHomeCohortPolicy cohortPolicy = DynamicHomeCohortPolicy.current();
             IslandTemplateMatch match = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
                     descriptor,
-                    DynamicHomeCohortPolicy.current().qualifier()
+                    cohortPolicy.qualifier(),
+                    cohortPolicy.organizationGroupQualifier()
             );
             if (match == null) {
                 skipped++;
@@ -1366,11 +1368,6 @@ public final class SlotWorkspaceCommandService {
         for (RehomePlanEntry entry : plan) {
             before.put(entry.identity(), runtime.visualAtlasWorkflow().visualHomeMap().assignment(entry.identity()));
         }
-        runtime.visualAtlasWorkflow().clearHomes(
-                before.keySet(),
-                DomainEventMetadata.origin("slot_workspace.classification_rehome.clear")
-        );
-
         plan.sort(Comparator
                 .comparing(RehomePlanEntry::targetIslandId)
                 .thenComparing(
@@ -1378,7 +1375,7 @@ public final class SlotWorkspaceCommandService {
                         WithinIslandOrdering.WITHIN_ISLAND_COMPARATOR
                 ));
 
-        Map<String, Integer> nextOrdinalByIsland = currentIslandAssignmentCounts(runtime);
+        Map<String, Integer> nextOrdinalByIsland = currentIslandAssignmentCountsExcluding(runtime, before.keySet());
         ArrayList<VisualHomeAssignment> requestedAssignments = new ArrayList<>(plan.size());
         for (RehomePlanEntry entry : plan) {
             int ordinal = nextOrdinalByIsland.getOrDefault(entry.targetIslandId(), 0);
@@ -1391,25 +1388,38 @@ public final class SlotWorkspaceCommandService {
                     true
             ));
         }
-        Map<ItemIdentity, VisualHomeAssignment> results = runtime.visualAtlasWorkflow().assignHomes(
-                requestedAssignments,
-                DomainEventMetadata.origin("slot_workspace.classification_rehome.assign")
-        );
 
         int assigned = 0;
         int changed = 0;
         int unchanged = 0;
+        ArrayList<ItemIdentity> homesToClear = new ArrayList<>();
+        ArrayList<VisualHomeAssignment> homesToAssign = new ArrayList<>();
         for (VisualHomeAssignment requested : requestedAssignments) {
-            VisualHomeAssignment result = results.get(requested.identity());
-            if (result == null) {
-                skipped++;
-                continue;
-            }
             assigned++;
-            if (sameRehomeAssignment(before.get(requested.identity()), result)) {
+            VisualHomeAssignment current = before.get(requested.identity());
+            if (sameRehomeAssignment(current, requested)) {
                 unchanged++;
             } else {
                 changed++;
+                if (current != null) {
+                    homesToClear.add(requested.identity());
+                }
+                homesToAssign.add(requested);
+            }
+        }
+        runtime.visualAtlasWorkflow().clearHomes(
+                homesToClear,
+                DomainEventMetadata.origin("slot_workspace.classification_rehome.clear")
+        );
+        Map<ItemIdentity, VisualHomeAssignment> results = runtime.visualAtlasWorkflow().assignHomes(
+                homesToAssign,
+                DomainEventMetadata.origin("slot_workspace.classification_rehome.assign")
+        );
+        for (VisualHomeAssignment requested : homesToAssign) {
+            if (!results.containsKey(requested.identity())) {
+                assigned--;
+                changed--;
+                skipped++;
             }
         }
         int islandsAfter = runtime.visualAtlasWorkflow().visualHomeMap().playerIslands().size();
@@ -1478,8 +1488,8 @@ public final class SlotWorkspaceCommandService {
         if (match == null) {
             return null;
         }
-        if (match.isSubsystem()) {
-            return resolveOrMaterializeSubsystemIsland(
+        if (match.isDynamic()) {
+            return resolveOrMaterializeDynamicIsland(
                     runtime,
                     match.islandId(),
                     match.label(),
@@ -1505,17 +1515,29 @@ public final class SlotWorkspaceCommandService {
         return Objects.equals(before.islandId(), after.islandId())
                 && before.ordinal() == after.ordinal()
                 && before.origin() == VisualHomeOrigin.AUTO_HOMED
+                && after.origin() == VisualHomeOrigin.AUTO_HOMED
                 && before.locked() == after.locked();
     }
 
     private static Map<String, Integer> currentIslandAssignmentCounts(WorkflowDomainRuntime runtime) {
+        return currentIslandAssignmentCountsExcluding(runtime, Set.of());
+    }
+
+    private static Map<String, Integer> currentIslandAssignmentCountsExcluding(
+            WorkflowDomainRuntime runtime,
+            Set<ItemIdentity> excludedIdentities
+    ) {
         LinkedHashMap<String, Integer> counts = new LinkedHashMap<>();
         if (runtime == null) {
             return counts;
         }
+        Set<ItemIdentity> excluded = excludedIdentities == null ? Set.of() : excludedIdentities;
         for (VisualHomeAssignment assignment :
                 runtime.visualAtlasWorkflow().visualHomeMap().assignments().values()) {
             if (assignment == null || assignment.islandId() == null || assignment.islandId().isBlank()) {
+                continue;
+            }
+            if (excluded.contains(assignment.identity())) {
                 continue;
             }
             counts.merge(assignment.islandId(), 1, Integer::sum);
@@ -1764,7 +1786,7 @@ public final class SlotWorkspaceCommandService {
         return created == null ? null : created.id();
     }
 
-    private static IslandTemplateMatch qualifiedSubsystemMatch(
+    private static IslandTemplateMatch qualifiedDynamicMatch(
             SlotWorkspaceViewModel.AtlasItem item,
             Function<ItemStack, IslandSignalDescriptor> signalExtractor,
             String islandId
@@ -1772,7 +1794,7 @@ public final class SlotWorkspaceCommandService {
         if (item == null
                 || signalExtractor == null
                 || islandId == null
-                || !islandId.startsWith(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX)) {
+                || !isDynamicClassificationIsland(islandId)) {
             return null;
         }
         ItemStack stack = item.displayStack();
@@ -1783,17 +1805,38 @@ public final class SlotWorkspaceCommandService {
         if (descriptor == null) {
             return null;
         }
+        DynamicHomeCohortPolicy cohortPolicy = DynamicHomeCohortPolicy.current();
         IslandTemplateMatch match = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
                 descriptor,
-                DynamicHomeCohortPolicy.current().qualifier()
+                cohortPolicy.qualifier(),
+                cohortPolicy.organizationGroupQualifier()
         );
-        if (!match.isSubsystem() || !islandId.equals(match.islandId())) {
+        if (!match.isDynamic() || !islandId.equals(match.islandId())) {
             return null;
         }
         return match;
     }
 
-    private static String resolveOrMaterializeSubsystemIsland(
+    private static boolean isDynamicClassificationIsland(String islandId) {
+        return islandId != null
+                && (islandId.startsWith(IslandTemplateMatch.ORGANIZATION_GROUP_ISLAND_PREFIX)
+                || islandId.startsWith(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX));
+    }
+
+    private static String dynamicClassificationId(String islandId) {
+        if (islandId == null) {
+            return "";
+        }
+        if (islandId.startsWith(IslandTemplateMatch.ORGANIZATION_GROUP_ISLAND_PREFIX)) {
+            return islandId.substring(IslandTemplateMatch.ORGANIZATION_GROUP_ISLAND_PREFIX.length());
+        }
+        if (islandId.startsWith(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX)) {
+            return islandId.substring(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX.length());
+        }
+        return "";
+    }
+
+    private static String resolveOrMaterializeDynamicIsland(
             WorkflowDomainRuntime runtime,
             String islandId,
             String label,
@@ -1803,7 +1846,7 @@ public final class SlotWorkspaceCommandService {
     ) {
         if (runtime == null
                 || islandId == null
-                || !islandId.startsWith(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX)) {
+                || !isDynamicClassificationIsland(islandId)) {
             return null;
         }
         VisualAtlasIsland existing = runtime.visualAtlasWorkflow().visualHomeMap().island(islandId);
@@ -1812,8 +1855,7 @@ public final class SlotWorkspaceCommandService {
         }
         String resolvedLabel = label;
         if (resolvedLabel == null || resolvedLabel.isBlank()) {
-            resolvedLabel = IslandTemplateMatch.formatSubsystemLabel(
-                    islandId.substring(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX.length()));
+            resolvedLabel = IslandTemplateMatch.formatSubsystemLabel(dynamicClassificationId(islandId));
         }
         SlotWorkspaceAtlasLayout.PlayerIslandDraft draft = SlotWorkspaceAtlasLayout.createNextPlayerIslandDraft(
                 resolvedLabel,
@@ -1827,10 +1869,10 @@ public final class SlotWorkspaceCommandService {
                 draft.y(),
                 color,
                 seedIdentity,
-                DomainEventMetadata.origin("slot_workspace.ldlib.subsystem_island_create")
+                DomainEventMetadata.origin("slot_workspace.ldlib.dynamic_island_create")
         );
         SlotDebugLog.log(
-                "LDLib atlas subsystem island materialized {} ({}) seed={}",
+                "LDLib atlas dynamic classification island materialized {} ({}) seed={}",
                 created == null ? "null" : created.id(),
                 resolvedLabel,
                 seedLabel
@@ -1867,7 +1909,7 @@ public final class SlotWorkspaceCommandService {
             );
         }
         // Don't record when the assigned island is what the template /
-        // subsystem chip already would have suggested for this descriptor —
+        // dynamic classifier chip already would have suggested for this descriptor —
         // that's a confirmation, not a learned divergence. Recording it
         // still captures the descriptor's broad adjacency keys (TAG /
         // MATERIAL_FAMILY / NAMESPACE / CREATIVE_TAB) against the
@@ -1892,9 +1934,17 @@ public final class SlotWorkspaceCommandService {
         if (templateMatch != null && islandId.equals(templateMatch.islandId())) {
             return true;
         }
-        // Subsystem-id islands are the chip the suggestion service offers
-        // when descriptor.subsystems() contains a matching key — accepting
-        // that chip is also a confirmation, not a learned override.
+        // Generated dynamic islands are chips the suggestion service offers
+        // from descriptor organization/subsystem keys. Accepting the chip is
+        // a confirmation of the classifier, not a learned divergence.
+        if (islandId.startsWith(IslandTemplateMatch.ORGANIZATION_GROUP_ISLAND_PREFIX)) {
+            String group = islandId.substring(IslandTemplateMatch.ORGANIZATION_GROUP_ISLAND_PREFIX.length());
+            for (String descriptorGroup : descriptor.organizationGroups()) {
+                if (group.equals(descriptorGroup)) {
+                    return true;
+                }
+            }
+        }
         if (islandId.startsWith(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX)) {
             String subsystem = islandId.substring(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX.length());
             for (String descriptorSubsystem : descriptor.subsystems()) {
@@ -2109,9 +2159,9 @@ public final class SlotWorkspaceCommandService {
             if (runtime.visualAtlasWorkflow().visualHomeMap().island(chip.islandId()) != null) {
                 return chip.islandId();
             }
-            if (chip.islandId().startsWith(IslandTemplateMatch.SUBSYSTEM_ISLAND_PREFIX)) {
+            if (isDynamicClassificationIsland(chip.islandId())) {
                 ItemIdentity seed = item.identity().toIdentity();
-                return resolveOrMaterializeSubsystemIsland(
+                return resolveOrMaterializeDynamicIsland(
                         runtime,
                         chip.islandId(),
                         chip.label(),

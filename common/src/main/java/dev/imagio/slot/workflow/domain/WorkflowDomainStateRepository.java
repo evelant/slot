@@ -20,4 +20,12 @@ public interface WorkflowDomainStateRepository {
     WorkflowDomainSnapshot snapshot();
 
     void replaceWith(WorkflowDomainSnapshot snapshot);
+
+    default void compactWorkflowEvents() {
+        WorkflowEventStore store = workflowEvents();
+        if (store == null) {
+            return;
+        }
+        store.compact();
+    }
 }

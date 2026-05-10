@@ -14,8 +14,8 @@ import java.util.function.Function;
  * pipeline the live triage chip suggestions use. Given an
  * {@link ItemStack}, runs the platform-side extractor to produce an
  * {@link IslandSignalDescriptor} (FacetIndex role / material_family /
- * subsystem / activity / flavor / frequency / rarity / origin / dye
- * color, class subclass signals, item tags), then asks
+ * subsystem / organization group / activity / flavor / frequency /
+ * rarity / origin / dye color, class subclass signals, item tags), then asks
  * {@link IslandSuggestionTemplate#firstMatchOrMisc} to pick a target
  * template.
  *
@@ -43,8 +43,8 @@ public final class FacetIndexTemplateClassifier {
 
     /**
      * Return the full descriptor for a stack — used by the populate
-     * generator's subsystem-primary matching pass, which needs richer
-     * facets than just the resolved template.
+     * generator's dynamic-group matching pass, which needs richer facets
+     * than just the resolved template.
      */
     public IslandSignalDescriptor describe(ItemStack stack) {
         if (stack == null || stack.isEmpty()) {

@@ -17,6 +17,27 @@ public final class ForgeContainerSidebar {
     private ForgeContainerSidebar() {
     }
 
+    /**
+     * Currently-mounted host screen, or {@code null} when no Forge sidebar
+     * is active. Read by recipe-viewer compat plugins to publish exclusion
+     * bounds only for the screen SLOT is actually rendering into.
+     */
+    public static Screen activeHostScreen() {
+        return activeHostScreen;
+    }
+
+    /**
+     * Width (in screen px) of the active Forge sidebar mount, or {@code 0}
+     * when no sidebar is mounted.
+     */
+    public static int activeSidebarWidth() {
+        return activeHostScreen == null ? 0 : ForgeWorkspaceSurface.WIDTH;
+    }
+
+    public static void clearClientState() {
+        release();
+    }
+
     public static void onScreenInit(ScreenEvent.Init.Post event) {
         if (event.getScreen() instanceof ForgeWorkspaceScreen) {
             return;
@@ -43,11 +64,17 @@ public final class ForgeContainerSidebar {
         }
     }
 
+    public static void onClientTick() {
+        if (activeHostScreen == null || activeSurface == null) {
+            return;
+        }
+        activeSurface.tick(activeHostScreen.width, activeHostScreen.height);
+    }
+
     public static void onScreenRender(ScreenEvent.Render.Post event) {
         if (event.getScreen() != activeHostScreen || activeSurface == null) {
             return;
         }
-        activeSurface.tick(event.getScreen().width, event.getScreen().height);
         activeSurface.render(
                 event.getGuiGraphics(),
                 event.getMouseX(),

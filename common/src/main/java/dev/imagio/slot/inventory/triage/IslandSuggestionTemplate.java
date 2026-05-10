@@ -416,6 +416,20 @@ public enum IslandSuggestionTemplate {
     }
 
     /**
+     * Whether this template can split into player-facing organization
+     * groups. These are not mod-internal subsystems; they represent where a
+     * player would manually put the item in a large modpack ("TFC — Casting",
+     * "TFC — Masonry", "TFC — Leatherworking"). Because this facet is the
+     * direct storage/workflow signal, it can override both broad and narrow
+     * built-in templates when the cohort is large enough. The dataset should
+     * simply omit {@code organization_group} when a generic universal section
+     * is the better home.
+     */
+    public boolean allowsOrganizationGrouping() {
+        return true;
+    }
+
+    /**
      * Whether a match for this template is a strong, narrow signal —
      * strong enough that it should outrank broad learned chips
      * (especially NAMESPACE / CREATIVE_TAB) when surfacing
@@ -701,12 +715,37 @@ public enum IslandSuggestionTemplate {
             IslandSignalDescriptor descriptor,
             Predicate<String> subsystemQualifier
     ) {
+        return firstMatchExtendedOrMisc(descriptor, subsystemQualifier, id -> false);
+    }
+
+    /**
+     * Organization-aware extension of {@link #firstMatchOrMisc}. A
+     * count-qualified {@code organization_group} wins over a subsystem
+     * because it is the direct "where would the player put this" signal.
+     * Subsystems remain the fallback for mod-internal mechanics when no
+     * organization group is present or large enough.
+     */
+    public static IslandTemplateMatch firstMatchExtendedOrMisc(
+            IslandSignalDescriptor descriptor,
+            Predicate<String> subsystemQualifier,
+            Predicate<String> organizationGroupQualifier
+    ) {
         if (descriptor == null) {
             return IslandTemplateMatch.of(MISC);
         }
         IslandSuggestionTemplate parent = firstMatchOrMisc(descriptor);
         if (isTrophy(descriptor)) {
             return IslandTemplateMatch.of(CURIOSITY);
+        }
+        if (organizationGroupQualifier != null && parent.allowsOrganizationGrouping()) {
+            for (String groupId : descriptor.organizationGroups()) {
+                if (groupId == null || groupId.isBlank()) {
+                    continue;
+                }
+                if (organizationGroupQualifier.test(groupId)) {
+                    return IslandTemplateMatch.organizationGroup(parent, groupId, null);
+                }
+            }
         }
         if (subsystemQualifier != null && parent.allowsSubsystemGrouping()) {
             for (String subsystemId : descriptor.subsystems()) {

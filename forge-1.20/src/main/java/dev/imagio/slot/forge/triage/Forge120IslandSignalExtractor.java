@@ -50,6 +50,7 @@ public final class Forge120IslandSignalExtractor {
                 facets.roleAlternatives,
                 facets.materialFamily,
                 facets.subsystems,
+                facets.organizationGroups,
                 facets.activities,
                 facets.flavor,
                 facets.carryFrequency,
@@ -67,6 +68,7 @@ public final class Forge120IslandSignalExtractor {
             List<String> roleAlternatives,
             String materialFamily,
             List<String> subsystems,
+            List<String> organizationGroups,
             List<String> activities,
             String flavor,
             String carryFrequency,
@@ -78,7 +80,7 @@ public final class Forge120IslandSignalExtractor {
             boolean emitsLight
     ) {
         static Facets empty() {
-            return new Facets(null, List.of(), null, List.of(), List.of(), null, null, null, null, null, List.of(), null, false);
+            return new Facets(null, List.of(), null, List.of(), List.of(), List.of(), null, null, null, null, null, List.of(), null, false);
         }
     }
 
@@ -94,6 +96,7 @@ public final class Forge120IslandSignalExtractor {
                     index.roleAlternatives(itemId),
                     index.materialFamily(itemId).orElse(null),
                     index.subsystems(itemId),
+                    index.organizationGroups(itemId),
                     index.activities(itemId),
                     index.flavor(itemId).orElse(null),
                     index.carryFrequency(itemId).orElse(null),

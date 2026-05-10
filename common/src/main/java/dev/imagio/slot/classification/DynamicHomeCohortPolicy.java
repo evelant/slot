@@ -12,10 +12,10 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 /**
- * Cohort-sized gate for dynamic subsystem islands. Counts come from the
- * loaded classification dataset, not the player's current carried items,
- * so a large modpack mechanic can earn a stable island before the player
- * has picked up every item in that mechanic.
+ * Cohort-sized gate for dynamic classification islands. Counts come from the
+ * loaded classification dataset, not the player's current carried items, so a
+ * large modpack workflow can earn a stable island before the player has picked
+ * up every item in that workflow.
  */
 public final class DynamicHomeCohortPolicy {
     public static final int DEFAULT_MIN_SUBSYSTEM_ITEMS = 10;
@@ -25,10 +25,16 @@ public final class DynamicHomeCohortPolicy {
     private static volatile DynamicHomeCohortPolicy cachedPolicy;
 
     private final Map<String, Integer> subsystemCounts;
+    private final Map<String, Integer> organizationGroupCounts;
     private final int minSubsystemItems;
 
-    private DynamicHomeCohortPolicy(Map<String, Integer> subsystemCounts, int minSubsystemItems) {
+    private DynamicHomeCohortPolicy(
+            Map<String, Integer> subsystemCounts,
+            Map<String, Integer> organizationGroupCounts,
+            int minSubsystemItems
+    ) {
         this.subsystemCounts = Collections.unmodifiableMap(new LinkedHashMap<>(subsystemCounts));
+        this.organizationGroupCounts = Collections.unmodifiableMap(new LinkedHashMap<>(organizationGroupCounts));
         this.minSubsystemItems = Math.max(1, minSubsystemItems);
     }
 
@@ -53,27 +59,39 @@ public final class DynamicHomeCohortPolicy {
 
     public static DynamicHomeCohortPolicy from(FacetIndex index, int minSubsystemItems) {
         LinkedHashMap<String, Integer> counts = new LinkedHashMap<>();
+        LinkedHashMap<String, Integer> groupCounts = new LinkedHashMap<>();
         if (index != null && !index.isEmpty()) {
             for (String itemId : index.itemIds()) {
                 if (itemId == null || itemId.isBlank()) {
                     continue;
                 }
                 IslandSignalDescriptor descriptor = descriptorFrom(index, itemId);
-                if (descriptor.subsystems().isEmpty()
-                        || IslandSuggestionTemplate.isTrophy(descriptor)
-                        || !IslandSuggestionTemplate.firstMatchOrMisc(descriptor).allowsSubsystemGrouping()) {
+                if (IslandSuggestionTemplate.isTrophy(descriptor)) {
                     continue;
                 }
-                Set<String> seenForItem = new LinkedHashSet<>();
-                for (String subsystemId : descriptor.subsystems()) {
-                    if (subsystemId == null || subsystemId.isBlank() || !seenForItem.add(subsystemId)) {
-                        continue;
-                    }
-                    counts.merge(subsystemId, 1, Integer::sum);
+                IslandSuggestionTemplate parent = IslandSuggestionTemplate.firstMatchOrMisc(descriptor);
+                if (parent.allowsSubsystemGrouping()) {
+                    addCounts(counts, descriptor.subsystems());
+                }
+                if (parent.allowsOrganizationGrouping()) {
+                    addCounts(groupCounts, descriptor.organizationGroups());
                 }
             }
         }
-        return new DynamicHomeCohortPolicy(counts, minSubsystemItems);
+        return new DynamicHomeCohortPolicy(counts, groupCounts, minSubsystemItems);
+    }
+
+    private static void addCounts(Map<String, Integer> counts, Iterable<String> ids) {
+        if (ids == null) {
+            return;
+        }
+        Set<String> seenForItem = new LinkedHashSet<>();
+        for (String id : ids) {
+            if (id == null || id.isBlank() || !seenForItem.add(id)) {
+                continue;
+            }
+            counts.merge(id, 1, Integer::sum);
+        }
     }
 
     public boolean qualifies(String subsystemId) {
@@ -87,6 +105,17 @@ public final class DynamicHomeCohortPolicy {
         return subsystemCounts.getOrDefault(subsystemId, 0);
     }
 
+    public boolean organizationGroupQualifies(String groupId) {
+        return organizationGroupCount(groupId) >= minSubsystemItems;
+    }
+
+    public int organizationGroupCount(String groupId) {
+        if (groupId == null || groupId.isBlank()) {
+            return 0;
+        }
+        return organizationGroupCounts.getOrDefault(groupId, 0);
+    }
+
     public int minSubsystemItems() {
         return minSubsystemItems;
     }
@@ -95,8 +124,16 @@ public final class DynamicHomeCohortPolicy {
         return subsystemCounts;
     }
 
+    public Map<String, Integer> organizationGroupCounts() {
+        return organizationGroupCounts;
+    }
+
     public Predicate<String> qualifier() {
         return this::qualifies;
+    }
+
+    public Predicate<String> organizationGroupQualifier() {
+        return this::organizationGroupQualifies;
     }
 
     private static IslandSignalDescriptor descriptorFrom(FacetIndex index, String itemId) {
@@ -110,6 +147,7 @@ public final class DynamicHomeCohortPolicy {
                 index.roleAlternatives(itemId),
                 index.materialFamily(itemId).orElse(null),
                 index.subsystems(itemId),
+                index.organizationGroups(itemId),
                 index.activities(itemId),
                 index.flavor(itemId).orElse(null),
                 index.carryFrequency(itemId).orElse(null),

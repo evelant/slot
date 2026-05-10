@@ -64,6 +64,59 @@ class IslandSuggestionTemplateSubsystemTest {
     }
 
     @Test
+    void organizationGroupWinsOverBroadTemplateAndSubsystem() {
+        IslandSignalDescriptor descriptor = organizationDescriptor(
+                "tfc:ceramic/ingot_mold",
+                "utility",
+                List.of("tfc:metalworking"),
+                List.of("tfc:casting")
+        );
+        IslandTemplateMatch match = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
+                descriptor,
+                id -> "tfc:metalworking".equals(id),
+                id -> "tfc:casting".equals(id));
+        assertTrue(match.isOrganizationGroup());
+        assertFalse(match.isSubsystem());
+        assertEquals("group:tfc:casting", match.islandId());
+        assertEquals("Tfc — Casting", match.label());
+        assertEquals(IslandSuggestionTemplate.UTILITY, match.parentTemplate());
+    }
+
+    @Test
+    void organizationGroupsCanSplitBuildingAndDecorationParents() {
+        IslandTemplateMatch masonry = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
+                organizationDescriptor("tfc:mortar", "material", List.of(), List.of("tfc:masonry")),
+                id -> false,
+                id -> "tfc:masonry".equals(id));
+        assertTrue(masonry.isOrganizationGroup());
+        assertEquals(IslandSuggestionTemplate.MATERIALS, masonry.parentTemplate());
+
+        IslandTemplateMatch decorativeMasonry = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
+                organizationDescriptor("tfc:alabaster/bricks/black", "building_block", List.of(), List.of("tfc:masonry")),
+                id -> false,
+                id -> "tfc:masonry".equals(id));
+        assertTrue(decorativeMasonry.isOrganizationGroup());
+        assertEquals(IslandSuggestionTemplate.BUILDING, decorativeMasonry.parentTemplate());
+    }
+
+    @Test
+    void organizationGroupOverridesNarrowSpecificTemplates() {
+        IslandSignalDescriptor descriptor = organizationDescriptor(
+                "minecraft:iron_ingot",
+                "material",
+                List.of(),
+                List.of("tfc:metalworking")
+        );
+        IslandTemplateMatch match = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
+                descriptor,
+                id -> false,
+                id -> true);
+        assertTrue(match.isOrganizationGroup());
+        assertEquals("group:tfc:metalworking", match.islandId());
+        assertEquals(IslandSuggestionTemplate.INGOTS, match.parentTemplate());
+    }
+
+    @Test
     void decorationParentNeverHonorsSubsystem() {
         // Even with a fully-qualified subsystem, decoration items don't
         // get a "create:decoration" island — players don't think of
@@ -160,6 +213,7 @@ class IslandSuggestionTemplateSubsystemTest {
                 null,
                 List.of(),
                 List.of(),
+                List.of(),
                 null,
                 null,
                 "unique",
@@ -251,7 +305,37 @@ class IslandSuggestionTemplateSubsystemTest {
                 null,
                 null,
                 subsystems,
+                List.of(),
                 activities,
+                null,
+                null,
+                null,
+                null,
+                null,
+                List.of(),
+                null,
+                false
+        );
+    }
+
+    private static IslandSignalDescriptor organizationDescriptor(
+            String itemId,
+            String role,
+            List<String> subsystems,
+            List<String> organizationGroups
+    ) {
+        return new IslandSignalDescriptor(
+                ItemIdentity.of(itemId),
+                Set.of(),
+                Set.of(),
+                itemId.substring(0, itemId.indexOf(':')),
+                "",
+                role,
+                null,
+                null,
+                subsystems,
+                organizationGroups,
+                List.of(),
                 null,
                 null,
                 null,
@@ -277,6 +361,7 @@ class IslandSuggestionTemplateSubsystemTest {
                 roles.isEmpty() ? null : roles.get(0),
                 roles,
                 null,
+                List.of(),
                 List.of(),
                 activities,
                 null,

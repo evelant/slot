@@ -350,6 +350,10 @@ class FacetIndexTest {
                           "values": ["create:mechanical_power"],
                           "mode": "add"
                         },
+                        "organization_group": {
+                          "values": ["create:mechanical_power"],
+                          "mode": "add"
+                        },
                         "activity": {
                           "values": ["redstone", "transportation"],
                           "mode": "add"
@@ -366,6 +370,7 @@ class FacetIndexTest {
                 """;
         FacetIndex index = FacetIndex.load(new StringReader(json));
         assertEquals(List.of("create:mechanical_power"), index.subsystems("create:cogwheel"));
+        assertEquals(List.of("create:mechanical_power"), index.organizationGroups("create:cogwheel"));
         assertEquals(List.of("redstone", "transportation"), index.activities("create:cogwheel"));
         assertEquals(Optional.of("mechanical"), index.flavor("create:cogwheel"));
         assertEquals(Optional.of("frequent"), index.carryFrequency("create:cogwheel"));
@@ -441,6 +446,7 @@ class FacetIndexTest {
                 """;
         FacetIndex index = FacetIndex.load(new StringReader(json));
         assertTrue(index.subsystems("minecraft:apple").isEmpty());
+        assertTrue(index.organizationGroups("minecraft:apple").isEmpty());
         assertTrue(index.activities("minecraft:apple").isEmpty());
         assertEquals(Optional.empty(), index.flavor("minecraft:apple"));
         assertEquals(Optional.empty(), index.carryFrequency("minecraft:apple"));
@@ -450,8 +456,29 @@ class FacetIndexTest {
         assertTrue(index.palette("minecraft:apple").isEmpty());
         // Unknown items return empty as well.
         assertTrue(index.subsystems("minecraft:unknown").isEmpty());
+        assertTrue(index.organizationGroups("minecraft:unknown").isEmpty());
         assertTrue(index.activities("minecraft:unknown").isEmpty());
         assertTrue(index.palette("minecraft:unknown").isEmpty());
+    }
+
+    @Test
+    void itemWithOnlyOrganizationGroupFacetIsStillIndexed() {
+        String json = """
+                {
+                  "schema_version": 1,
+                  "layer": "modpack",
+                  "entries": {
+                    "tfc:ceramic/ingot_mold": {
+                      "facets": {
+                        "organization_group": {"values": ["tfc:casting"]}
+                      }
+                    }
+                  }
+                }
+                """;
+        FacetIndex index = FacetIndex.load(new StringReader(json));
+        assertEquals(List.of("tfc:casting"), index.organizationGroups("tfc:ceramic/ingot_mold"));
+        assertEquals(Optional.empty(), index.role("tfc:ceramic/ingot_mold"));
     }
 
     @Test

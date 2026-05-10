@@ -2,6 +2,7 @@ package dev.imagio.slot.forge.client;
 
 import com.mojang.blaze3d.platform.InputConstants;
 import dev.imagio.slot.forge.SlotForge;
+import dev.imagio.slot.forge.network.ForgeWorkspaceViewModelClientCache;
 import dev.imagio.slot.forge.ui.ForgeWorkspaceScreen;
 import dev.imagio.slot.forge.network.SlotForgeNetworking;
 import net.minecraft.client.KeyMapping;
@@ -9,6 +10,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.client.event.RenderGuiEvent;
 import net.minecraftforge.client.event.RenderLevelStageEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
@@ -133,6 +135,7 @@ public final class ForgeWorkspaceClient {
                 }
                 SlotForgeNetworking.gatherActiveKit();
             }
+            ForgeContainerSidebar.onClientTick();
         }
 
         @SubscribeEvent
@@ -183,6 +186,12 @@ public final class ForgeWorkspaceClient {
         @SubscribeEvent
         public static void onCharTyped(ScreenEvent.CharacterTyped.Pre event) {
             ForgeContainerSidebar.onCharTyped(event);
+        }
+
+        @SubscribeEvent
+        public static void onClientLoggingOut(ClientPlayerNetworkEvent.LoggingOut event) {
+            ForgeContainerSidebar.clearClientState();
+            ForgeWorkspaceViewModelClientCache.clear();
         }
     }
 }

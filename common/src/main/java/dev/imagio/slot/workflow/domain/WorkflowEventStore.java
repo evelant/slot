@@ -11,6 +11,10 @@ public interface WorkflowEventStore {
 
     void replaceWith(Snapshot snapshot);
 
+    default void compact() {
+        replaceWith(new Snapshot(snapshot().nextStreamSequence(), java.util.List.of()));
+    }
+
     record Snapshot(
             long nextStreamSequence,
             List<WorkflowEventRecord> records

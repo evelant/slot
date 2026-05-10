@@ -55,6 +55,11 @@ public record LearnedAdjacencyKey(Kind kind, String value) implements Comparable
                 keys.add(subsystem(subsystem));
             }
         }
+        for (String group : descriptor.organizationGroups()) {
+            if (group != null && !group.isBlank()) {
+                keys.add(organizationGroup(group));
+            }
+        }
         String dyeColor = descriptor.dyeColor();
         if (dyeColor != null && !dyeColor.isBlank()) {
             keys.add(dyeColor(dyeColor));
@@ -81,6 +86,10 @@ public record LearnedAdjacencyKey(Kind kind, String value) implements Comparable
 
     public static LearnedAdjacencyKey subsystem(String subsystemId) {
         return new LearnedAdjacencyKey(Kind.SUBSYSTEM, subsystemId);
+    }
+
+    public static LearnedAdjacencyKey organizationGroup(String groupId) {
+        return new LearnedAdjacencyKey(Kind.ORGANIZATION_GROUP, groupId);
     }
 
     public static LearnedAdjacencyKey dyeColor(String dyeColor) {
@@ -123,6 +132,10 @@ public record LearnedAdjacencyKey(Kind kind, String value) implements Comparable
         // placement; this learned-rule key covers the player's manual
         // override that diverges from the template default.
         SUBSYSTEM(0),
+        // Generated player-facing auto-organization groups
+        // (`tfc:casting`, `tfc:masonry`). Same strength as tags and
+        // subsystems because it is directly about "where this belongs".
+        ORGANIZATION_GROUP(0),
         // FacetIndex `dye_color` (e.g. white, light_gray, gray, black).
         // Strong intent signal when a player builds a color-themed
         // island (e.g. "White Decoration") — a fourth white-prefix

@@ -373,6 +373,13 @@ export const FACETS: Record<string, FacetDef> = {
     llm_authored: true,
     examples: ["crafting tools and armor", "building with iron blocks", "anvil repairs"],
   },
+  organization_group: {
+    kind: "multi_free_text",
+    pattern: NAMESPACED_TOKEN,
+    description: "Player-facing storage/workflow group for auto-home (`tfc:casting`, `tfc:masonry`, `tfc:leatherworking`). Free-text, <namespace>:<group>.",
+    llm_authored: true,
+    examples: ["tfc:casting", "tfc:masonry", "create:mechanical_power"],
+  },
   mod_subsystem: {
     kind: "multi_free_text",
     pattern: NAMESPACED_TOKEN,

@@ -3,6 +3,8 @@ package dev.imagio.slot.workflow.domain.persistence;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParseException;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
 import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.inventory.action.InventoryActionScope;
 import dev.imagio.slot.inventory.action.InventoryActionTarget;
@@ -85,7 +87,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         }
 
         try (Reader reader = Files.newBufferedReader(statePath)) {
-            StateData state = GSON.fromJson(reader, StateData.class);
+            StateData state = readStateSkippingWorkflowEvents(reader);
             if (state == null) {
                 return WorkflowDomainSnapshot.empty();
             }
@@ -121,10 +123,10 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         state.activityNextStreamSequence = snapshot.activityEvents().nextStreamSequence();
         state.activityMaxEvents = snapshot.activityEvents().maxEvents();
         state.workflowCheckpoint = encodeWorkflowCheckpoint(snapshot.workflowProjection());
-        state.workflowEvents = snapshot.workflowEvents().records().stream()
-                .map(WorkflowDomainFileStore::encodeWorkflowRecord)
-                .filter(java.util.Objects::nonNull)
-                .toList();
+        // The checkpoint is the durable source of truth. Persisting the full
+        // workflow event stream as well makes large auto-home/reclassify runs
+        // grow the save file and retained heap without adding replay value.
+        state.workflowEvents = List.of();
         state.activityCheckpoint = encodeActivityCheckpoint(snapshot.activityProjection());
         state.activityEvents = snapshot.activityEvents().records().stream()
                 .map(WorkflowDomainFileStore::encodeActivityRecord)
@@ -155,6 +157,84 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 List.copyOf(browseSessionState.expandedSectionIds())
         );
         return state;
+    }
+
+    private static StateData readStateSkippingWorkflowEvents(Reader reader) throws IOException {
+        if (reader == null) {
+            return null;
+        }
+        JsonReader json = new JsonReader(reader);
+        if (json.peek() != JsonToken.BEGIN_OBJECT) {
+            json.skipValue();
+            return null;
+        }
+        StateData state = new StateData();
+        json.beginObject();
+        while (json.hasNext()) {
+            String name = json.nextName();
+            switch (name) {
+                case "version" -> state.version = readInt(json);
+                case "nextGlobalSequence" -> state.nextGlobalSequence = readLong(json);
+                case "workflowNextStreamSequence" -> state.workflowNextStreamSequence = readLong(json);
+                case "activityNextStreamSequence" -> state.activityNextStreamSequence = readLong(json);
+                case "activityMaxEvents" -> state.activityMaxEvents = readInt(json);
+                case "workflowCheckpoint" -> state.workflowCheckpoint =
+                        GSON.fromJson(json, WorkflowCheckpointData.class);
+                case "workflowEvents" -> {
+                    state.workflowEvents = List.of();
+                    json.skipValue();
+                }
+                case "activityCheckpoint" -> state.activityCheckpoint =
+                        GSON.fromJson(json, ActivityCheckpointData.class);
+                case "activityEvents" -> state.activityEvents =
+                        listFrom(GSON.fromJson(json, ActivityEventData[].class));
+                case "browsePreferences" -> state.browsePreferences =
+                        GSON.fromJson(json, BrowsePreferencesData.class);
+                case "browseSession" -> state.browseSession =
+                        GSON.fromJson(json, BrowseSessionData.class);
+                case "query" -> state.query = GSON.fromJson(json, QueryStateData.class);
+                case "collections" -> state.collections =
+                        listFrom(GSON.fromJson(json, CollectionData[].class));
+                case "memberships" -> state.memberships =
+                        listFrom(GSON.fromJson(json, MembershipData[].class));
+                case "desiredCounts" -> state.desiredCounts =
+                        listFrom(GSON.fromJson(json, DesiredCountData[].class));
+                case "loadouts" -> state.loadouts =
+                        listFrom(GSON.fromJson(json, LoadoutData[].class));
+                case "recents" -> state.recents =
+                        listFrom(GSON.fromJson(json, RecentData[].class));
+                case "protection" -> state.protection =
+                        GSON.fromJson(json, ProtectionData.class);
+                default -> json.skipValue();
+            }
+        }
+        json.endObject();
+        return state;
+    }
+
+    private static int readInt(JsonReader json) throws IOException {
+        if (json.peek() == JsonToken.NULL) {
+            json.nextNull();
+            return 0;
+        }
+        return json.nextInt();
+    }
+
+    private static long readLong(JsonReader json) throws IOException {
+        if (json.peek() == JsonToken.NULL) {
+            json.nextNull();
+            return 0L;
+        }
+        return json.nextLong();
+    }
+
+    private static <T> List<T> listFrom(T[] values) {
+        if (values == null || values.length == 0) {
+            return List.of();
+        }
+        ArrayList<T> out = new ArrayList<>(values.length);
+        java.util.Collections.addAll(out, values);
+        return out;
     }
 
     private static WorkflowDomainSnapshot decode(StateData state) {

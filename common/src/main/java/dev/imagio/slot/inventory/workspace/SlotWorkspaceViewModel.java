@@ -538,9 +538,11 @@ public record SlotWorkspaceViewModel(
         Set<ItemIdentity> recentIdentities = new LinkedHashSet<>(recents.visibleItems());
         List<TriageIslandRef> triageIslandRefs = triageIslandRefs(visualHomeMap);
         LearnedIslandRuleStore resolvedLearnedRules = learnedRules == null ? new LearnedIslandRuleStore() : learnedRules;
-        Predicate<String> subsystemQualifier = signalExtractor == null
+        DynamicHomeCohortPolicy cohortPolicy = signalExtractor == null ? null : DynamicHomeCohortPolicy.current();
+        Predicate<String> subsystemQualifier = cohortPolicy == null ? id -> false : cohortPolicy.qualifier();
+        Predicate<String> organizationGroupQualifier = cohortPolicy == null
                 ? id -> false
-                : DynamicHomeCohortPolicy.current().qualifier();
+                : cohortPolicy.organizationGroupQualifier();
 
         Map<ItemIdentity, Integer> playerDesiredCounts = resolvedWorkflow.playerDesiredCounts();
         Map<String, Map<ItemIdentity, Integer>> kitDesiredCounts = resolvedWorkflow.kitDesiredCounts();
@@ -576,7 +578,8 @@ public record SlotWorkspaceViewModel(
                                 resolvedLearnedRules,
                                 triageIslandRefs,
                                 visualHomeMap.dismissedTemplateIds(),
-                                subsystemQualifier
+                                subsystemQualifier,
+                                organizationGroupQualifier
                         );
                     }
                 }
@@ -726,7 +729,7 @@ public record SlotWorkspaceViewModel(
                 resolvedAuthority, resolvedWorkflow.kitMap(), resolvedWorkflow.kitDesiredCounts());
         LootChestPanel lootPanel = lootChestPanel(
                 lootChestSource, visualHomeMap, signalExtractor, resolvedLearnedRules, triageIslandRefs,
-                subsystemQualifier);
+                subsystemQualifier, organizationGroupQualifier);
         List<WayfindingTarget> wayfindingTargets = wayfindingTargets(
                 resolvedAuthority,
                 claimedChestMap,
@@ -934,7 +937,8 @@ public record SlotWorkspaceViewModel(
             Function<ItemStack, IslandSignalDescriptor> signalExtractor,
             LearnedIslandRuleStore learnedRules,
             List<TriageIslandRef> triageIslandRefs,
-            Predicate<String> subsystemQualifier
+            Predicate<String> subsystemQualifier,
+            Predicate<String> organizationGroupQualifier
     ) {
         if (source == null || source.contents() == null || source.contents().isEmpty()) {
             return LootChestPanel.empty();
@@ -975,7 +979,8 @@ public record SlotWorkspaceViewModel(
                             learnedRules == null ? new LearnedIslandRuleStore() : learnedRules,
                             triageIslandRefs == null ? List.of() : triageIslandRefs,
                             visualHomeMap.dismissedTemplateIds(),
-                            subsystemQualifier
+                            subsystemQualifier,
+                            organizationGroupQualifier
                     );
                 }
             }

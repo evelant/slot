@@ -13,11 +13,16 @@ import dev.imagio.slot.inventory.browse.InventoryBrowseSubjectRef;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.InventoryPaneMembership;
+import dev.imagio.slot.workflow.domain.persistence.WorkflowDomainFileStore;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class WorkflowDomainPersistenceServiceTest {
@@ -107,6 +112,34 @@ class WorkflowDomainPersistenceServiceTest {
         );
         assertTrue(restored.workflowProjection().protection().protects(ItemIdentity.of("minecraft:shield"), null));
         assertTrue(restored.workflowProjection().protection().protectsPortableContainers());
+    }
+
+    @Test
+    void filePersistenceCompactsWorkflowEventHistory(@TempDir Path tempDir) throws Exception {
+        Path statePath = tempDir.resolve("workflow.json");
+        WorkflowDomainPersistenceService service = new WorkflowDomainPersistenceService(
+                new WorkflowDomainFileStore(statePath)
+        );
+        InMemoryWorkflowDomainStateRepository repository = new InMemoryWorkflowDomainStateRepository();
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(repository, service);
+
+        VisualAtlasIsland island = runtime.visualAtlasWorkflow().createIsland(
+                "Metals",
+                10,
+                20,
+                0xFFAA8844,
+                ItemIdentity.of("minecraft:iron_ingot")
+        );
+        runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:iron_ingot"), island.id(), 0);
+
+        assertEquals(0, repository.workflowEvents().snapshot().records().size());
+        String saved = Files.readString(statePath);
+        assertTrue(saved.contains("\"workflowEvents\": []"));
+
+        InMemoryWorkflowDomainStateRepository restored = new InMemoryWorkflowDomainStateRepository();
+        service.loadInto(restored);
+        assertEquals(0, restored.workflowEvents().snapshot().records().size());
+        assertNotNull(restored.workflowProjection().visualHomeMap().assignment(ItemIdentity.of("minecraft:iron_ingot")));
     }
 
     private static final class RecordingPort implements WorkflowDomainPersistencePort {

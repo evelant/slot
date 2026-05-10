@@ -96,6 +96,10 @@ final class ForgeWorkspaceSession {
     }
 
     SlotWorkspaceViewModel project(ServerPlayer player) {
+        return project(player, true);
+    }
+
+    SlotWorkspaceViewModel project(ServerPlayer player, boolean forceRevision) {
         InventoryHostDescriptor host = resolveHost(player);
         InventoryAuthoritySnapshot authority = host == null || player == null
                 ? InventoryAuthoritySnapshot.empty()
@@ -117,10 +121,24 @@ final class ForgeWorkspaceSession {
             projected = project(authority, selected, combinedDiagnostics, gameTime, player);
         }
 
+        if (!forceRevision && sameViewIgnoringRevision(viewModel, projected)) {
+            return viewModel;
+        }
+
         long revision = nextRevision++;
         viewModel = projected.withRevision(revision);
         context = new WorkspaceActionSessionContext(context.sessionId(), context.menuContainerId(), revision);
         return viewModel;
+    }
+
+    private static boolean sameViewIgnoringRevision(
+            SlotWorkspaceViewModel current,
+            SlotWorkspaceViewModel projected
+    ) {
+        if (current == null || projected == null) {
+            return current == projected;
+        }
+        return current.withRevision(projected.revision()).equals(projected);
     }
 
     WorkspaceCommandOutcome handleAction(ServerPlayer player, WorkspaceActionPacket packet) {

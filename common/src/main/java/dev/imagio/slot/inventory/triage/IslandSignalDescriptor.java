@@ -17,6 +17,7 @@ public record IslandSignalDescriptor(
         List<String> roleAlternatives,
         String materialFamily,
         List<String> subsystems,
+        List<String> organizationGroups,
         List<String> activities,
         String flavor,
         String carryFrequency,
@@ -44,6 +45,7 @@ public record IslandSignalDescriptor(
         }
         materialFamily = materialFamily == null || materialFamily.isBlank() ? null : materialFamily;
         subsystems = subsystems == null ? List.of() : List.copyOf(subsystems);
+        organizationGroups = organizationGroups == null ? List.of() : List.copyOf(organizationGroups);
         activities = activities == null ? List.of() : List.copyOf(activities);
         flavor = flavor == null || flavor.isBlank() ? null : flavor;
         carryFrequency = carryFrequency == null || carryFrequency.isBlank() ? null : carryFrequency;
@@ -62,7 +64,7 @@ public record IslandSignalDescriptor(
             String creativeTabId
     ) {
         this(identity, classSignals, itemTags, namespace, creativeTabId, null, null, null,
-                List.of(), List.of(), null, null, null, null, null, List.of(), null, false);
+                List.of(), List.of(), List.of(), null, null, null, null, null, List.of(), null, false);
     }
 
     public IslandSignalDescriptor(
@@ -74,7 +76,7 @@ public record IslandSignalDescriptor(
             String role
     ) {
         this(identity, classSignals, itemTags, namespace, creativeTabId, role, null, null,
-                List.of(), List.of(), null, null, null, null, null, List.of(), null, false);
+                List.of(), List.of(), List.of(), null, null, null, null, null, List.of(), null, false);
     }
 
     public IslandSignalDescriptor(
@@ -87,7 +89,38 @@ public record IslandSignalDescriptor(
             String materialFamily
     ) {
         this(identity, classSignals, itemTags, namespace, creativeTabId, role, null, materialFamily,
-                List.of(), List.of(), null, null, null, null, null, List.of(), null, false);
+                List.of(), List.of(), List.of(), null, null, null, null, null, List.of(), null, false);
+    }
+
+    /**
+     * Backward-compatible full constructor for callers that do not yet
+     * provide the generated player-facing organization groups. Runtime
+     * extractors should prefer the canonical record constructor so
+     * organization-driven auto-home can fire.
+     */
+    public IslandSignalDescriptor(
+            ItemIdentity identity,
+            Set<IslandSignal> classSignals,
+            Set<String> itemTags,
+            String namespace,
+            String creativeTabId,
+            String role,
+            List<String> roleAlternatives,
+            String materialFamily,
+            List<String> subsystems,
+            List<String> activities,
+            String flavor,
+            String carryFrequency,
+            String rarity,
+            String origin,
+            String dyeColor,
+            List<String> palette,
+            String form,
+            boolean emitsLight
+    ) {
+        this(identity, classSignals, itemTags, namespace, creativeTabId, role, roleAlternatives,
+                materialFamily, subsystems, List.of(), activities, flavor, carryFrequency,
+                rarity, origin, dyeColor, palette, form, emitsLight);
     }
 
     public static IslandSignalDescriptor empty(ItemIdentity identity) {

@@ -44,4 +44,9 @@ public final class InMemoryWorkflowEventStore implements WorkflowEventStore {
         records.addAll(resolved.records());
         nextStreamSequence = resolved.nextStreamSequence();
     }
+
+    @Override
+    public void compact() {
+        records.clear();
+    }
 }

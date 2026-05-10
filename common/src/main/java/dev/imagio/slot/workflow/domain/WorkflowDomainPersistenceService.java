@@ -18,6 +18,7 @@ public final class WorkflowDomainPersistenceService {
 
     public void saveFrom(WorkflowDomainStateRepository repository) {
         Objects.requireNonNull(repository, "repository");
+        repository.compactWorkflowEvents();
         persistencePort.save(repository.snapshot());
     }
 }

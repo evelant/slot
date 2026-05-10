@@ -44,6 +44,7 @@ import java.util.Map;
 
 public final class ForgeSlotUiTree {
     public static final String SCROLL_VIEWPORT = "slot.forge.scroll_viewport";
+    public static final String ICON = "slot.forge.icon";
     private static final int ROW = 0xEC24313D;
     private static final int ROW_DIM = 0x7C24313D;
     private static final int ROW_HOVER = 0xEC334354;
@@ -58,6 +59,12 @@ public final class ForgeSlotUiTree {
     private NodeId rootId;
     private Node lastMouseDown;
     private Node hovered;
+
+    public enum Icon {
+        GATHER,
+        DEPOSIT,
+        VANILLA_GRID
+    }
 
     private ForgeSlotUiTree(Minecraft minecraft) {
         this.minecraft = minecraft;
@@ -105,6 +112,22 @@ public final class ForgeSlotUiTree {
         Layout layout = taffy.getLayout(node.id);
         float max = Math.max(0f, node.contentHeight - layout.size().height);
         node.scrollY = clamp(max * clamp(fraction, 0f, 1f), 0f, max);
+    }
+
+    public boolean hasActivePointerGesture() {
+        return lastMouseDown != null;
+    }
+
+    public <T> T attachmentAt(double mouseX, double mouseY, String key, Class<T> type) {
+        Node node = hitTest(mouseX, mouseY);
+        while (node != null) {
+            T value = node.model.attachment(key, type);
+            if (value != null) {
+                return value;
+            }
+            node = parent(node);
+        }
+        return null;
     }
 
     public boolean scrollToElementId(String elementId) {
@@ -377,6 +400,9 @@ public final class ForgeSlotUiTree {
         float y = originY + layout.location().y;
         float width = layout.size().width;
         float height = layout.size().height;
+        if (outsideCurrentScissor(scissors, x, y, width, height)) {
+            return;
+        }
 
         graphics.pose().pushPose();
         int zIndex = node.zIndex();
@@ -395,6 +421,7 @@ public final class ForgeSlotUiTree {
         }
 
         renderText(graphics, node, x, y, width, height);
+        renderIcon(graphics, node, x, y, width, height);
         renderItem(graphics, node, x, y, width, height);
         fill(graphics, x, y, width, height, node.model.overlayColor());
 
@@ -468,6 +495,48 @@ public final class ForgeSlotUiTree {
             graphics.fill(drawX, drawY + size - 1, drawX + size, drawY + size, 0x88A0AAB3);
             graphics.fill(drawX, drawY, drawX + 1, drawY + size, 0x88A0AAB3);
             graphics.fill(drawX + size - 1, drawY, drawX + size, drawY + size, 0x88A0AAB3);
+        }
+    }
+
+    private void renderIcon(GuiGraphics graphics, Node node, float x, float y, float width, float height) {
+        Icon icon = node.model.attachment(ICON, Icon.class);
+        if (icon == null) {
+            return;
+        }
+        int centerX = Math.round(x + width / 2f);
+        int centerY = Math.round(y + height / 2f);
+        int color = node.model.textStyle().color();
+        switch (icon) {
+            case GATHER -> renderArrowIcon(graphics, centerX, centerY, color, false);
+            case DEPOSIT -> renderArrowIcon(graphics, centerX, centerY, color, true);
+            case VANILLA_GRID -> renderGridIcon(graphics, centerX, centerY, color);
+        }
+    }
+
+    private void renderArrowIcon(GuiGraphics graphics, int centerX, int centerY, int color, boolean up) {
+        if (up) {
+            graphics.fill(centerX - 1, centerY - 2, centerX + 1, centerY + 5, color);
+            graphics.fill(centerX - 4, centerY - 3, centerX + 4, centerY - 2, color);
+            graphics.fill(centerX - 3, centerY - 4, centerX + 3, centerY - 3, color);
+            graphics.fill(centerX - 2, centerY - 5, centerX + 2, centerY - 4, color);
+        } else {
+            graphics.fill(centerX - 1, centerY - 5, centerX + 1, centerY + 2, color);
+            graphics.fill(centerX - 4, centerY + 2, centerX + 4, centerY + 3, color);
+            graphics.fill(centerX - 3, centerY + 3, centerX + 3, centerY + 4, color);
+            graphics.fill(centerX - 2, centerY + 4, centerX + 2, centerY + 5, color);
+        }
+        graphics.fill(centerX - 5, centerY + 5, centerX + 5, centerY + 6, color);
+    }
+
+    private void renderGridIcon(GuiGraphics graphics, int centerX, int centerY, int color) {
+        int left = centerX - 5;
+        int top = centerY - 5;
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++) {
+                int cellX = left + col * 4;
+                int cellY = top + row * 4;
+                graphics.fill(cellX, cellY, cellX + 2, cellY + 2, color);
+            }
         }
     }
 
@@ -656,6 +725,19 @@ public final class ForgeSlotUiTree {
         if (children.size() < 2) {
             return children;
         }
+        int previousZ = Integer.MIN_VALUE;
+        boolean alreadySorted = true;
+        for (NodeId child : children) {
+            int zIndex = nodes.get(child).zIndex();
+            if (zIndex < previousZ) {
+                alreadySorted = false;
+                break;
+            }
+            previousZ = zIndex;
+        }
+        if (alreadySorted) {
+            return children;
+        }
         ArrayList<NodeId> sorted = new ArrayList<>(children);
         sorted.sort(Comparator.comparingInt(child -> nodes.get(child).zIndex()));
         return sorted;
@@ -721,6 +803,25 @@ public final class ForgeSlotUiTree {
                 Math.round(x + width),
                 Math.round(y + height),
                 color);
+    }
+
+    private boolean outsideCurrentScissor(
+            ArrayDeque<int[]> scissors,
+            float x,
+            float y,
+            float width,
+            float height
+    ) {
+        if (scissors.isEmpty()) {
+            return false;
+        }
+        int[] clip = scissors.peek();
+        float right = x + width;
+        float bottom = y + height;
+        return right <= clip[0]
+                || bottom <= clip[1]
+                || x >= clip[2]
+                || y >= clip[3];
     }
 
     private void pushScissor(
