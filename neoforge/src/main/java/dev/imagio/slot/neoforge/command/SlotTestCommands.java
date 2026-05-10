@@ -9,6 +9,9 @@ import com.mojang.brigadier.suggestion.SuggestionProvider;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import dev.imagio.slot.SlotCommon;
+import dev.imagio.slot.classification.FacetIndex;
+import dev.imagio.slot.classification.FacetIndexHolder;
+import dev.imagio.slot.classification.FacetIndexStatusFormatter;
 import dev.imagio.slot.debug.ChestContentEntry;
 import dev.imagio.slot.debug.ChestSpec;
 import dev.imagio.slot.debug.FacetIndexTemplateClassifier;
@@ -137,6 +140,8 @@ public final class SlotTestCommands {
                                 .executes(SlotTestCommands::runClear)))
                 .then(Commands.literal("classification")
                         .requires(SlotTestCommands::canUseSlotCommand)
+                        .then(Commands.literal("status")
+                                .executes(SlotTestCommands::runClassificationStatus))
                         .then(Commands.literal("export")
                                 .executes(context -> runClassificationExport(context, null))
                                 .then(Commands.argument("pack_id", StringArgumentType.word())
@@ -288,6 +293,14 @@ public final class SlotTestCommands {
             SlotCommon.LOGGER.warn("[SLOT] classification export failed", exception);
             return 0;
         }
+    }
+
+    private static int runClassificationStatus(CommandContext<CommandSourceStack> context) {
+        var status = FacetIndexHolder.status();
+        for (String line : FacetIndexStatusFormatter.format(status, FacetIndex.ENABLED)) {
+            context.getSource().sendSuccess(() -> Component.literal(line), false);
+        }
+        return status.totalEntries();
     }
 
     private static Item resolveTopTierBackpackItem() {

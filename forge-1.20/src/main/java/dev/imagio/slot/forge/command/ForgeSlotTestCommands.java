@@ -11,6 +11,9 @@ import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import dev.imagio.slot.debug.ChestContentEntry;
 import dev.imagio.slot.debug.ChestSpec;
 import dev.imagio.slot.SlotCommon;
+import dev.imagio.slot.classification.FacetIndex;
+import dev.imagio.slot.classification.FacetIndexHolder;
+import dev.imagio.slot.classification.FacetIndexStatusFormatter;
 import dev.imagio.slot.compat.sophisticated.SophisticatedBackpackSupport;
 import dev.imagio.slot.compat.sophisticated.SophisticatedBackpackTransferSupport;
 import dev.imagio.slot.debug.FacetIndexTemplateClassifier;
@@ -108,6 +111,8 @@ public final class ForgeSlotTestCommands {
                                 .executes(ForgeSlotTestCommands::runClear)))
                 .then(Commands.literal("classification")
                         .requires(ForgeSlotTestCommands::canUseSlotCommand)
+                        .then(Commands.literal("status")
+                                .executes(ForgeSlotTestCommands::runClassificationStatus))
                         .then(Commands.literal("export")
                                 .executes(context -> runClassificationExport(context, null))
                                 .then(Commands.argument("pack_id", StringArgumentType.word())
@@ -340,6 +345,14 @@ public final class ForgeSlotTestCommands {
             SlotCommon.LOGGER.warn("[SLOT] Forge classification export failed", exception);
             return 0;
         }
+    }
+
+    private static int runClassificationStatus(CommandContext<CommandSourceStack> context) {
+        var status = FacetIndexHolder.status();
+        for (String line : FacetIndexStatusFormatter.format(status, FacetIndex.ENABLED)) {
+            context.getSource().sendSuccess(() -> Component.literal(line), false);
+        }
+        return status.totalEntries();
     }
 
     private static int applyIslands(VisualAtlasWorkflowDomainService workflow, RealisticAtlasPlan plan) {

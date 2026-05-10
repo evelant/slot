@@ -43,6 +43,20 @@ public final class FacetIndexBootstrap {
         }
     }
 
+    public record LoadResult(FacetIndex index, FacetIndexLoadReport report) {
+        public LoadResult {
+            if (index == null) {
+                throw new IllegalArgumentException("classification index is required");
+            }
+            if (report == null) {
+                throw new IllegalArgumentException("classification load report is required");
+            }
+        }
+    }
+
+    private record LayerLoadResult(FacetIndex index, FacetIndexLoadReport.Layer report) {
+    }
+
     public static FacetIndex loadVanillaBase() {
         return loadResource(VANILLA_BASE_RESOURCE);
     }
@@ -69,15 +83,27 @@ public final class FacetIndexBootstrap {
     }
 
     public static FacetIndex loadAllWithLayers(Collection<NamedLayerResource> datapackLayers) {
-        FacetIndex base = loadVanillaBase();
+        return loadAllWithReport(datapackLayers).index();
+    }
+
+    public static LoadResult loadAllWithReport() {
+        return loadAllWithReport(List.of());
+    }
+
+    public static LoadResult loadAllWithReport(Collection<NamedLayerResource> datapackLayers) {
+        LayerLoadResult vanillaBase = loadClasspathLayer(VANILLA_BASE_RESOURCE);
+        List<FacetIndexLoadReport.Layer> bundledReports = new ArrayList<>();
+        bundledReports.add(vanillaBase.report());
+
         List<String> modIds = readPerModManifest();
-        FacetIndex merged = base;
+        FacetIndex merged = vanillaBase.index();
         for (String modId : modIds) {
-            FacetIndex perMod = loadResource(PER_MOD_RESOURCE_PREFIX + modId + ".json");
-            if (perMod.isEmpty()) {
+            LayerLoadResult perMod = loadClasspathLayer(PER_MOD_RESOURCE_PREFIX + modId + ".json");
+            bundledReports.add(perMod.report());
+            if (perMod.index().isEmpty()) {
                 continue;
             }
-            merged = merged.mergedWith(perMod);
+            merged = merged.mergedWith(perMod.index());
         }
         if (!modIds.isEmpty()) {
             LOGGER.log(Level.INFO,
@@ -85,13 +111,15 @@ public final class FacetIndexBootstrap {
                             + " per-mod layer(s); total entries: " + merged.size());
         }
         int extraCount = 0;
+        List<FacetIndexLoadReport.Layer> datapackReports = new ArrayList<>();
         if (datapackLayers != null) {
             for (NamedLayerResource layer : datapackLayers) {
-                FacetIndex datapack = loadNamedLayer(layer);
-                if (datapack.isEmpty()) {
+                LayerLoadResult datapack = loadNamedLayer(layer);
+                datapackReports.add(datapack.report());
+                if (datapack.index().isEmpty()) {
                     continue;
                 }
-                merged = merged.mergedWith(datapack);
+                merged = merged.mergedWith(datapack.index());
                 extraCount++;
             }
         }
@@ -100,41 +128,60 @@ public final class FacetIndexBootstrap {
                     "[SLOT] FacetIndex bootstrap merged " + extraCount
                             + " datapack classification layer(s); total entries: " + merged.size());
         }
-        return merged;
+        FacetIndexLoadReport report = new FacetIndexLoadReport(
+                System.currentTimeMillis(),
+                merged.size(),
+                bundledReports,
+                datapackReports
+        );
+        return new LoadResult(merged, report);
     }
 
     public static FacetIndex loadResource(String resourcePath) {
+        return loadClasspathLayer(resourcePath).index();
+    }
+
+    private static LayerLoadResult loadClasspathLayer(String resourcePath) {
         InputStream stream = FacetIndexBootstrap.class.getResourceAsStream(resourcePath);
         if (stream == null) {
             LOGGER.log(Level.WARNING,
                     "[SLOT] FacetIndex resource missing: " + resourcePath + "; falling back to empty index");
-            return FacetIndex.empty();
+            return new LayerLoadResult(
+                    FacetIndex.empty(),
+                    FacetIndexLoadReport.Layer.failed(resourcePath, "resource missing")
+            );
         }
         try (Reader reader = new InputStreamReader(stream, StandardCharsets.UTF_8)) {
             FacetIndex index = FacetIndex.load(reader);
             LOGGER.log(Level.INFO,
                     "[SLOT] FacetIndex loaded " + index.size() + " role-bearing entries from " + resourcePath);
-            return index;
+            return new LayerLoadResult(index, FacetIndexLoadReport.Layer.loaded(resourcePath, index.size()));
         } catch (IOException | RuntimeException exception) {
             LOGGER.log(Level.ERROR,
                     "[SLOT] FacetIndex failed to load " + resourcePath + "; falling back to empty index",
                     exception);
-            return FacetIndex.empty();
+            return new LayerLoadResult(
+                    FacetIndex.empty(),
+                    FacetIndexLoadReport.Layer.failed(resourcePath, exception.getMessage())
+            );
         }
     }
 
-    private static FacetIndex loadNamedLayer(NamedLayerResource layer) {
+    private static LayerLoadResult loadNamedLayer(NamedLayerResource layer) {
         try (Reader reader = layer.readerFactory().open()) {
             FacetIndex index = FacetIndex.load(reader);
             LOGGER.log(Level.INFO,
                     "[SLOT] FacetIndex loaded " + index.size()
                             + " role-bearing entries from " + layer.description());
-            return index;
+            return new LayerLoadResult(index, FacetIndexLoadReport.Layer.loaded(layer.description(), index.size()));
         } catch (IOException | RuntimeException exception) {
             LOGGER.log(Level.ERROR,
                     "[SLOT] FacetIndex failed to load " + layer.description() + "; skipping layer",
                     exception);
-            return FacetIndex.empty();
+            return new LayerLoadResult(
+                    FacetIndex.empty(),
+                    FacetIndexLoadReport.Layer.failed(layer.description(), exception.getMessage())
+            );
         }
     }
 

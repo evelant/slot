@@ -87,6 +87,60 @@ class FacetIndexTest {
     }
 
     @Test
+    void loadAllWithReportTracksDatapackLayers() {
+        String json = """
+                {
+                  "schema_version": 1,
+                  "layer": "modpack",
+                  "source": "test-pack",
+                  "entries": {
+                    "testpack:custom_widget": {
+                      "facets": {
+                        "role": {"value": "mechanism", "confidence": 0.9}
+                      }
+                    }
+                  }
+                }
+                """;
+        FacetIndexBootstrap.LoadResult result = FacetIndexBootstrap.loadAllWithReport(List.of(
+                new FacetIndexBootstrap.NamedLayerResource(
+                        "datapack:slot:classification/layers/test-pack.json",
+                        () -> new StringReader(json))
+        ));
+
+        assertEquals(Optional.of("mechanism"), result.index().role("testpack:custom_widget"));
+        assertEquals(result.index().size(), result.report().totalEntries());
+        assertEquals(1, result.report().datapackLayers().size());
+        FacetIndexLoadReport.Layer layer = result.report().datapackLayers().get(0);
+        assertTrue(layer.loaded());
+        assertEquals("datapack:slot:classification/layers/test-pack.json", layer.description());
+        assertEquals(1, layer.entries());
+    }
+
+    @Test
+    void statusFormatterReportsDatapackLayerSummary() {
+        FacetIndexLoadReport report = new FacetIndexLoadReport(
+                0L,
+                10,
+                List.of(FacetIndexLoadReport.Layer.loaded("/data/slot/classification/vanilla-base.json", 9)),
+                List.of(
+                        FacetIndexLoadReport.Layer.loaded("datapack:slot:classification/layers/pack.json", 1),
+                        FacetIndexLoadReport.Layer.failed("datapack:slot:classification/layers/bad.json", "bad json")
+                )
+        );
+
+        List<String> lines = FacetIndexStatusFormatter.format(report, true);
+
+        assertTrue(lines.get(0).contains("entries=10"));
+        assertTrue(lines.get(0).contains("datapack=1/2"));
+        assertTrue(lines.get(0).contains("failed=1"));
+        assertTrue(lines.stream().anyMatch(line -> line.contains(
+                "loaded datapack:slot:classification/layers/pack.json entries=1")));
+        assertTrue(lines.stream().anyMatch(line -> line.contains(
+                "failed datapack:slot:classification/layers/bad.json error=bad json")));
+    }
+
+    @Test
     void itemsWithoutAnyKnownFacetAreSkipped() {
         // Entries with only facets we don't load (e.g. tier, has_durability)
         // shouldn't pollute the index. role / material_family / form / the

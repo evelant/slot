@@ -280,6 +280,18 @@ emits `run-report.json` plus `run-report.md`. The CLI auto-loads a
 repo-root `.env`, so `OPENROUTER_API_KEY=...` can live there for manual
 runs.
 
+Check a loaded server or singleplayer instance:
+
+```text
+/datapack list enabled
+/slot classification status
+```
+
+`/datapack list enabled` proves Minecraft enabled the datapack.
+`/slot classification status` proves SLOT discovered and parsed
+`data/slot/classification/layers/*.json`, reporting total role-bearing
+entries plus every loaded or failed datapack classification layer.
+
 Validate a layer:
 
 ```sh

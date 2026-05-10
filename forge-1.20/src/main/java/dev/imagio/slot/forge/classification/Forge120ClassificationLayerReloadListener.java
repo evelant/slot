@@ -1,8 +1,8 @@
 package dev.imagio.slot.forge.classification;
 
 import dev.imagio.slot.SlotCommon;
-import dev.imagio.slot.classification.FacetIndex;
 import dev.imagio.slot.classification.FacetIndexBootstrap;
+import dev.imagio.slot.classification.FacetIndexBootstrap.LoadResult;
 import dev.imagio.slot.classification.FacetIndexBootstrap.NamedLayerResource;
 import dev.imagio.slot.classification.FacetIndexHolder;
 import net.minecraft.resources.ResourceLocation;
@@ -42,13 +42,16 @@ public final class Forge120ClassificationLayerReloadListener implements Preparab
             Executor backgroundExecutor,
             Executor gameExecutor
     ) {
-        CompletableFuture<FacetIndex> prepared = CompletableFuture.supplyAsync(
+        CompletableFuture<LoadResult> prepared = CompletableFuture.supplyAsync(
                 () -> load(resourceManager),
                 backgroundExecutor
         );
         return prepared
                 .thenCompose(stage::wait)
-                .thenAcceptAsync(FacetIndexHolder::install, gameExecutor);
+                .thenAcceptAsync(
+                        result -> FacetIndexHolder.install(result.index(), result.report()),
+                        gameExecutor
+                );
     }
 
     @Override
@@ -56,7 +59,7 @@ public final class Forge120ClassificationLayerReloadListener implements Preparab
         return "slot:classification_layers";
     }
 
-    private static FacetIndex load(ResourceManager resourceManager) {
+    private static LoadResult load(ResourceManager resourceManager) {
         Map<ResourceLocation, Resource> resources = resourceManager.listResources(
                 FacetIndexBootstrap.DATAPACK_LAYER_PREFIX,
                 location -> SlotCommon.MOD_ID.equals(location.getNamespace())
@@ -74,6 +77,6 @@ public final class Forge120ClassificationLayerReloadListener implements Preparab
                     resource::openAsReader
             ));
         }
-        return FacetIndexBootstrap.loadAllWithLayers(layers);
+        return FacetIndexBootstrap.loadAllWithReport(layers);
     }
 }
