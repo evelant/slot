@@ -82,7 +82,7 @@ public final class BackpackReroute {
         }
         int absorbed = count - (remainder == null ? 0 : remainder.getCount());
         if (absorbed <= 0) {
-            if (diagnostics.simulatedAbsorb > 0 || diagnostics.emptySlots > 0) {
+            if (diagnostics.simulatedAbsorb > 0 || diagnostics.matchingRoom > 0) {
                 SlotCommon.LOGGER.warn(
                         "[SLOT] BackpackReroute inserted nothing despite visible provider capacity item={} count={} providers={} sources={} slots={} empty={} matchingRoom={} simulatedAbsorb={} errors={}",
                         itemId(template),
