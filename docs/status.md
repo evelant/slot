@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-05-07. Operational handoff. Read after
+Last updated: 2026-05-10. Operational handoff. Read after
 [../README.md](../README.md). For active work + queue see
 [plans/current.md](plans/current.md); for architecture see
 [architecture/overview.md](architecture/overview.md).
@@ -33,6 +33,12 @@ builders plus tooltip metadata. Forge key parity covers vanilla
 inventory, kit page cycle, gather, and the wayfinding HUD toggle. Modern
 drag/drop, richer LDLib2 card/kit affordances, and richer chest panels
 remain backend hooks, not common UI semantics.
+
+Classification now has a pack-authoring path for large modpacks: installed
+`mods/` scanning, jar extraction, OpenRouter-backed stage 3, runtime export,
+runtime subsystem vocabulary, and drop-in datapack layer output. Runtime
+auto-home uses bundled/datapack facets plus dynamic subsystem cohorts; both
+loaders expose `inspect`, `export`, and `rehome` / `recompute` commands.
 
 ### Production wall shape (post-list-view)
 
@@ -75,22 +81,16 @@ observers, hard-custom screens) wants its own plan. Tracked from
 experiments." If you start this, write a fresh plan in
 `docs/plans/`; don't reopen the closed list-view plan.
 
-**Discovered LDLib2 bug** (worked around, **user filing
-upstream**): `ModularUI.calculateStyleAndLayout` line 563 uses
-`Float.isNaN(layoutWidth)` in the second NaN check instead of
-`layoutHeight`. When root has a fixed WIDTH style, both axes get
-`MAX_CONTENT` available space; scroller never engages, belt
-overflows off-screen. Workaround: keep root at `widthPercent(100)`.
-
-For dated landings and the operational bug list, see
-[plans/current.md](plans/current.md).
+**Discovered LDLib2 bug** (worked around, **user filing upstream**):
+`ModularUI.calculateStyleAndLayout` checks width twice instead of height;
+keep root at `widthPercent(100)` so scrollers get bounded space.
 
 ## Project structure
 
-Top-level docs (see [../README.md](../README.md) for the full doc map):
+Top-level docs (see [../README.md](../README.md) for the full map):
 
 - product: [product/direction.md](product/direction.md), [product/spec.md](product/spec.md)
-- architecture: [architecture/overview.md](architecture/overview.md),
+- architecture: [overview](architecture/overview.md),
   [architecture/action-taxonomy.md](architecture/action-taxonomy.md),
   [architecture/host-ui.md](architecture/host-ui.md)
 - design: [design/atlas.md](design/atlas.md) (superseded by
@@ -123,7 +123,8 @@ Common module:
 - `inventory/workspace`: UI-neutral workspace composition + view-model,
   deposit planner
 - `inventory/triage`: chip-suggestion service + island templates
-- `classification`: `FacetIndex` + per-mod facet loaders
+- `classification`: `FacetIndex`, layer bootstrap/load reports, runtime
+  export formatting, dynamic home-cohort policy
 - `workflow/domain`: visual homes, claimed chests, chest affinity, chest
   cluster map, kits, recents, persistence
 - `atlas`: pure helpers — `AtlasSearchIndex`, `AtlasRelevance` +
@@ -154,26 +155,24 @@ NeoForge module:
 Forge 1.20 module:
 
 - `forge-1.20`: legacy Forge 1.20.1 target. Current contents are
-  Gradle/module scaffolding, production common-source compilation with
-  Forge 1.20 platform adapters,
-  the direct Taffy + `GuiGraphics` workspace renderer, a Forge
-  `SimpleChannel` workspace-action path with server-side session
-  validation, Forge workflow persistence, session-backed common
-  view-model projection for carried player inventory and claimed chest
-  ghosts, safe metadata command dispatch, Forge carried/world storage
-  accessors, first guarded built-in transfer dispatch plus
+  production common-source compilation with Forge 1.20 adapters,
+  direct Taffy + `GuiGraphics` workspace renderer, Forge
+  `SimpleChannel` action transport with server-side validation, Forge
+  workflow persistence, session-backed common projection for carried
+  inventory and claimed chest ghosts, safe metadata command dispatch,
+  carried/world storage accessors, first guarded built-in transfer plus
   identity-to-hotbar / hotbar-return / hotbar-to-section adapters,
   kit/desired-count and chest metadata dispatch, Forge-side `/slot test
   populate` / `clear` commands for carried-inventory and claimed-chest
-  testing, and the Phase 0.5
+  testing, `/slot classification inspect` / `export` / `rehome`
+  commands for classifier diagnostics and pack-layer work, and the
+  Phase 0.5
   `compileSharedProbeJava` task compiling the shared common source tree
   plus Forge 1.20 platform probes.
 
-Reference code (read-only, for design comparison):
-
-- `reference/LDLib2`, `reference/InventoryEssentials`, `reference/TrashSlot`,
-  `reference/Applied-Energistics-2`, `reference/SophisticatedBackpacks`,
-  `reference/SophisticatedCore`, `reference/Toms-Storage`, `reference/emi`
+Reference code (read-only): `reference/LDLib2`, `InventoryEssentials`,
+`TrashSlot`, `Applied-Energistics-2`, `SophisticatedBackpacks`,
+`SophisticatedCore`, `Toms-Storage`, `emi`.
 
 ## Concept → Code Map
 

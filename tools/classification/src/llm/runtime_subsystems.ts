@@ -38,6 +38,7 @@ export interface RuntimeSubsystemContext {
   tokenClusters: RuntimeCountExamples[];
   itemTagSummaries: RuntimeTagSummary[];
   blockTagSummaries: RuntimeTagSummary[];
+  recipeFamilyCandidates: RuntimeCountExamples[];
   ingredientRecipeTypes: RuntimeCountExamples[];
   outputRecipeTypes: RuntimeCountExamples[];
   recipeIdNamespaces: RuntimeCountExamples[];
@@ -94,6 +95,7 @@ export interface RuntimeSubsystemEvidence {
   token_clusters: RuntimeCountExamples[];
   item_tags: RuntimeTagSummary[];
   block_tags: RuntimeTagSummary[];
+  recipe_family_candidates: RuntimeCountExamples[];
   ingredient_recipe_types: RuntimeCountExamples[];
   output_recipe_types: RuntimeCountExamples[];
   recipe_id_namespaces: RuntimeCountExamples[];
@@ -127,6 +129,8 @@ const RUNTIME_PROPOSER_SYSTEM = `You are designing a small canonical vocabulary 
 
 Runtime export evidence is pack-specific truth: tags and recipes include KubeJS, datapacks, and compatibility scripts from the loaded game. Recipe ownership can come from another namespace, so do not confuse "this item appears in a recipe owned by subsystem X" with "this item is itself part of subsystem X".
 
+Prominent namespace-owned recipe families are often the strongest runtime clue for survival/processing mods. A recipe type like \`tfc:casting\`, \`tfc:anvil\`, \`tfc:barrel_sealed\`, or \`mod:pressing\` can justify a subsystem label when it covers many items and maps to a player-recognizable workflow. Do not collapse these into generic \`crafting\`; name the concrete workflow.
+
 Output strict JSON of this shape (no markdown fences, no commentary):
 {
   "vocabulary": [
@@ -137,7 +141,7 @@ Output strict JSON of this shape (no markdown fences, no commentary):
 
 Rules:
 - Pick **0 to 8** entries. Use 0 when the namespace has no clear broad functional subsystems.
-- Prefer broad functional/mechanical systems a player would organize separately: energy networks, item/fluid transport, processing machines, storage networks, rockets, oxygen systems, automation, farming systems.
+- Prefer broad functional/mechanical/workflow systems a player would organize separately: energy networks, item/fluid transport, processing machines, storage networks, rockets, oxygen systems, automation, farming systems, casting, smithing, barrel processing, heating, pressing.
 - Do NOT propose labels for materials, ores, ingots, dusts, plates, rods, blocks, decorative families, tool families, weapon/armor sets, machine hulls/casings, tiers, or generic crafting ingredients.
 - Do NOT propose catch-alls like \`misc\`, \`general\`, \`items\`, \`blocks\`, \`materials\`, \`components\`, \`resources\`, or \`crafting\`.
 - Each \`id\` MUST start with the namespace from the user message followed by a colon and a snake_case token.
@@ -358,6 +362,7 @@ export function contextEvidence(
     token_clusters: context.tokenClusters,
     item_tags: context.itemTagSummaries,
     block_tags: context.blockTagSummaries,
+    recipe_family_candidates: context.recipeFamilyCandidates,
     ingredient_recipe_types: context.ingredientRecipeTypes,
     output_recipe_types: context.outputRecipeTypes,
     recipe_id_namespaces: context.recipeIdNamespaces,
@@ -412,6 +417,7 @@ function buildContextForNamespace(
     tokenClusters: tokenClusters(records),
     itemTagSummaries: tagSummaries(summary?.item_tag_members, namespace),
     blockTagSummaries: tagSummaries(summary?.block_tag_members, namespace),
+    recipeFamilyCandidates: recipeFamilyCandidates(records, namespace),
     ingredientRecipeTypes: recipeTypeCounts(records, "ingredient"),
     outputRecipeTypes: recipeTypeCounts(records, "output"),
     recipeIdNamespaces: recipeIdNamespaceCounts(records),
@@ -436,6 +442,7 @@ function buildRuntimeProposerUser(context: RuntimeSubsystemContext): string {
 
   renderRecordMap(parts, "Component signal counts", context.componentCounts);
   renderCountExamples(parts, "Repeated id-token clusters", context.tokenClusters);
+  renderCountExamples(parts, "Candidate namespace workflow recipe families", context.recipeFamilyCandidates);
   renderTagSummaries(parts, "Resolved item tags involving this namespace", context.itemTagSummaries);
   renderTagSummaries(parts, "Resolved block tags involving this namespace", context.blockTagSummaries);
   renderCountExamples(parts, "Recipe types where namespace items are ingredients", context.ingredientRecipeTypes);
@@ -605,6 +612,72 @@ function isPotentiallyUsefulTag(tag: string, namespace: string): boolean {
   void namespace;
   return pathTokens(tag).some((token) => HIGH_SIGNAL_TOKENS.has(token));
 }
+
+function recipeFamilyCandidates(
+  records: readonly ItemExtractRecord[],
+  namespace: string,
+): RuntimeCountExamples[] {
+  const buckets = new Map<string, { count: number; examples: Set<string> }>();
+  for (const record of records) {
+    addRecipeFamilyCounts(buckets, record, record.recipe_role.output_of_counts, namespace, 2);
+    addRecipeFamilyCounts(buckets, record, record.recipe_role.ingredient_of_counts, namespace, 1);
+  }
+  return [...buckets.entries()]
+    .map(([id, bucket]) => ({ id, count: bucket.count, examples: [...bucket.examples] }))
+    .sort((a, b) => {
+      const ownNamespaceDelta =
+        Number(b.id.startsWith(`${namespace}:`)) - Number(a.id.startsWith(`${namespace}:`));
+      if (ownNamespaceDelta !== 0) return ownNamespaceDelta;
+      const countDelta = b.count - a.count;
+      return countDelta !== 0 ? countDelta : a.id.localeCompare(b.id);
+    })
+    .slice(0, RECIPE_TYPE_LIMIT);
+}
+
+function addRecipeFamilyCounts(
+  buckets: Map<string, { count: number; examples: Set<string> }>,
+  record: ItemExtractRecord,
+  counts: Record<string, number>,
+  namespace: string,
+  weight: number,
+): void {
+  for (const [type, count] of Object.entries(counts)) {
+    if (!isPotentialSubsystemRecipeType(type, namespace)) continue;
+    const bucket = buckets.get(type) ?? { count: 0, examples: new Set<string>() };
+    bucket.count += count * weight;
+    if (bucket.examples.size < EXAMPLES_PER_GROUP) bucket.examples.add(record.id);
+    buckets.set(type, bucket);
+  }
+}
+
+function isPotentialSubsystemRecipeType(type: string, namespace: string): boolean {
+  if (!type.includes(":")) return false;
+  if (type.startsWith(`${namespace}:`)) {
+    const tail = type.slice(namespace.length + 1).toLowerCase();
+    return !isGenericRecipeFamilyTail(tail);
+  }
+  return pathTokens(type).some((token) => HIGH_SIGNAL_TOKENS.has(token));
+}
+
+function isGenericRecipeFamilyTail(tail: string): boolean {
+  return GENERIC_RECIPE_FAMILY_TAILS.has(tail);
+}
+
+const GENERIC_RECIPE_FAMILY_TAILS = new Set([
+  "crafting",
+  "crafting_shaped",
+  "crafting_shapeless",
+  "advanced_shaped_crafting",
+  "advanced_shapeless_crafting",
+  "damage_inputs_shaped_crafting",
+  "damage_inputs_shapeless_crafting",
+  "extra_products_shapeless_crafting",
+  "no_remainder_shaped_crafting",
+  "no_remainder_shapeless_crafting",
+  "recipe",
+  "collapse",
+  "landslide",
+]);
 
 function recipeTypeCounts(
   records: readonly ItemExtractRecord[],

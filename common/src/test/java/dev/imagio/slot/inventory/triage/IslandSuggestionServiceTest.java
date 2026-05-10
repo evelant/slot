@@ -247,6 +247,45 @@ class IslandSuggestionServiceTest {
     }
 
     @Test
+    void qualifiedSubsystemChipSurfacesWithoutExistingIsland() {
+        IslandSignalDescriptor castingMold = subsystemDescriptor(
+                "tfc:ceramic/ingot_mold",
+                "utility",
+                "tfc:casting"
+        );
+
+        List<ChipSuggestion> chips = IslandSuggestionService.suggest(
+                castingMold,
+                new LearnedIslandRuleStore(),
+                List.of(),
+                Set.of(),
+                id -> "tfc:casting".equals(id)
+        );
+
+        assertEquals(1, chips.size());
+        ChipSuggestion chip = chips.get(0);
+        assertEquals(ChipSuggestion.ChipKind.LEARNED, chip.kind());
+        assertEquals("subsystem:tfc:casting", chip.islandId());
+        assertEquals("Tfc — Casting", chip.label());
+        assertEquals(IslandSuggestionTemplate.UTILITY.defaultColor(), chip.color());
+    }
+
+    @Test
+    void unqualifiedSubsystemFallsBackToBroadParentTemplate() {
+        List<ChipSuggestion> chips = IslandSuggestionService.suggest(
+                subsystemDescriptor("tfc:ceramic/ingot_mold", "utility", "tfc:casting"),
+                new LearnedIslandRuleStore(),
+                List.of(),
+                Set.of(),
+                id -> false
+        );
+
+        assertEquals(1, chips.size());
+        assertEquals(ChipSuggestion.ChipKind.TEMPLATE, chips.get(0).kind());
+        assertEquals(IslandSuggestionTemplate.UTILITY, chips.get(0).template());
+    }
+
+    @Test
     void dyeColorAdjacencyDrivesLearnedChipEndToEnd() {
         LearnedIslandRuleStore rules = new LearnedIslandRuleStore();
         rules.recordAssignment(dyedDescriptor("modded:white_wool", "white"),
@@ -352,13 +391,17 @@ class IslandSuggestionServiceTest {
     }
 
     private static IslandSignalDescriptor subsystemDescriptor(String itemId, String subsystemId) {
+        return subsystemDescriptor(itemId, "mechanism", subsystemId);
+    }
+
+    private static IslandSignalDescriptor subsystemDescriptor(String itemId, String role, String subsystemId) {
         return new IslandSignalDescriptor(
                 ItemIdentity.of(itemId),
                 Set.of(),
                 Set.of(),
                 itemId.contains(":") ? itemId.substring(0, itemId.indexOf(':')) : "",
                 "",
-                "mechanism",
+                role,
                 null,
                 null,
                 subsystemId == null ? List.of() : List.of(subsystemId),

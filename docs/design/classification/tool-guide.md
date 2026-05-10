@@ -1,6 +1,6 @@
 # Item Classification Tool Guide
 
-Last updated: 2026-05-08
+Last updated: 2026-05-10
 
 Concise operator/developer guide for the SLOT item classification tool:
 what it does, how it works, how to use it today, and where the tool is
@@ -75,7 +75,6 @@ Planned inputs:
 
 - `.mrpack` files
 - CurseForge manifests with locally available jars
-- runtime-export ingestion that writes a reviewed pack-specific layer
 
 ### Stage 2: Deterministic Facets
 
@@ -194,6 +193,32 @@ rarity/equipment/food-like signals, light emission for block items, and
 recipe participation from the loaded recipe manager. Runtime item tags
 come from live membership APIs, so `minecraft_tags` is populated and
 `minecraft_tags_direct` is intentionally empty.
+
+Inspect the classifier view of an item in a running instance:
+
+```text
+/slot classification inspect
+/slot classification inspect <item_id>
+```
+
+Without an item id the command inspects the held main-hand item, then the
+offhand item. The output includes loaded-layer diagnostics, raw facets,
+template/subsystem target, and the dynamic auto-home target.
+
+Recompute classifier-driven homes in a running instance:
+
+```text
+/slot classification rehome
+/slot classification recompute
+```
+
+This scans every carried source SLOT can see (main inventory, hotbar,
+offhand, backpacks/providers) plus every currently accessible claimed
+chest, including claimed chests outside the proximity panel. It does
+not move physical items. It rebuilds auto-home assignments for the
+unique item identities it scanned, materializes qualified dynamic
+subsystem sections, and reports skipped claimed chests when the storage
+is unloaded or otherwise inaccessible.
 
 Run vanilla stages 1 and 2:
 

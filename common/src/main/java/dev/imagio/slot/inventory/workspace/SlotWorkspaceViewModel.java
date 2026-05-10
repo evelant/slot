@@ -1,5 +1,6 @@
 package dev.imagio.slot.inventory.workspace;
 
+import dev.imagio.slot.classification.DynamicHomeCohortPolicy;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
@@ -39,6 +40,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 /**
  * Server-projected workspace state. Replaces the old link/area projection
@@ -536,6 +538,9 @@ public record SlotWorkspaceViewModel(
         Set<ItemIdentity> recentIdentities = new LinkedHashSet<>(recents.visibleItems());
         List<TriageIslandRef> triageIslandRefs = triageIslandRefs(visualHomeMap);
         LearnedIslandRuleStore resolvedLearnedRules = learnedRules == null ? new LearnedIslandRuleStore() : learnedRules;
+        Predicate<String> subsystemQualifier = signalExtractor == null
+                ? id -> false
+                : DynamicHomeCohortPolicy.current().qualifier();
 
         Map<ItemIdentity, Integer> playerDesiredCounts = resolvedWorkflow.playerDesiredCounts();
         Map<String, Map<ItemIdentity, Integer>> kitDesiredCounts = resolvedWorkflow.kitDesiredCounts();
@@ -570,7 +575,8 @@ public record SlotWorkspaceViewModel(
                                 descriptor,
                                 resolvedLearnedRules,
                                 triageIslandRefs,
-                                visualHomeMap.dismissedTemplateIds()
+                                visualHomeMap.dismissedTemplateIds(),
+                                subsystemQualifier
                         );
                     }
                 }
@@ -688,7 +694,8 @@ public record SlotWorkspaceViewModel(
         List<KitCard> kitCards = kitCards(
                 resolvedAuthority, resolvedWorkflow.kitMap(), resolvedWorkflow.kitDesiredCounts());
         LootChestPanel lootPanel = lootChestPanel(
-                lootChestSource, visualHomeMap, signalExtractor, resolvedLearnedRules, triageIslandRefs);
+                lootChestSource, visualHomeMap, signalExtractor, resolvedLearnedRules, triageIslandRefs,
+                subsystemQualifier);
         List<WayfindingTarget> wayfindingTargets = wayfindingTargets(
                 resolvedAuthority,
                 claimedChestMap,
@@ -895,7 +902,8 @@ public record SlotWorkspaceViewModel(
             VisualHomeMap visualHomeMap,
             Function<ItemStack, IslandSignalDescriptor> signalExtractor,
             LearnedIslandRuleStore learnedRules,
-            List<TriageIslandRef> triageIslandRefs
+            List<TriageIslandRef> triageIslandRefs,
+            Predicate<String> subsystemQualifier
     ) {
         if (source == null || source.contents() == null || source.contents().isEmpty()) {
             return LootChestPanel.empty();
@@ -935,7 +943,8 @@ public record SlotWorkspaceViewModel(
                             descriptor,
                             learnedRules == null ? new LearnedIslandRuleStore() : learnedRules,
                             triageIslandRefs == null ? List.of() : triageIslandRefs,
-                            visualHomeMap.dismissedTemplateIds()
+                            visualHomeMap.dismissedTemplateIds(),
+                            subsystemQualifier
                     );
                 }
             }

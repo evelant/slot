@@ -62,7 +62,10 @@ emits a pack-specific datapack folder containing
 
 At runtime SLOT loads bundled vanilla/per-mod resources, then datapack-provided
 classification layers. A generated pack layer can therefore be dropped into an
-instance without rebuilding the SLOT jar.
+instance without rebuilding the SLOT jar. Both Forge 1.20.1 and NeoForge
+1.21.1 expose `/slot classification inspect`, `export`, and
+`rehome` / `recompute` for diagnostics, running-instance exports, and
+bulk auto-home testing.
 
 ## The facet catalog at a glance
 
@@ -185,8 +188,10 @@ Six layers, lowest → highest priority:
 
 `FacetIndex` merges them at init under the rules in
 [../../plans/item-classification.md § Layering & merging](../../plans/item-classification.md#layering--merging).
-For V1 only `vanilla-base` is implemented; the others arrive on the
-roadmap.
+Bundled vanilla/per-mod resources and datapack-provided modpack layers are
+implemented. Runtime-crawl and persistent server/player facet layers remain
+future work; player visual homes are still workflow-domain state rather than
+serialized facet entries.
 
 ## Pipeline (offline)
 
@@ -200,11 +205,12 @@ roadmap.
    direct tag provenance remains a static-resource extractor feature.
 2. **Stage 2 — Deterministic rules**: rule-based facet derivation. Each
    rule is a TS function in [tools/classification/src/deterministic/rules/](../../../tools/classification/src/deterministic/rules/).
-3. **Stage 3 — LLM completion**: `claude -p` fills in the judgement-call
-   facets (role, flavor, palette, primary_uses, …) in batches of 5 items.
-   Per-mod runs first do a `mod_subsystem` proposer pre-pass that pins a
-   canonical 3–8 entry vocabulary into the system prompt so the LLM stops
-   inventing synonyms across batches.
+3. **Stage 3 — LLM completion**: the current default backend is OpenRouter
+   with `deepseek/deepseek-v4-flash`; `claude-cli` remains a fallback
+   backend. The model fills judgement-call facets (role, flavor, palette,
+   primary_uses, …). Per-mod and runtime-export runs first do a
+   `mod_subsystem` proposer pre-pass that pins a canonical vocabulary into
+   the system prompt so item batches stop inventing synonyms.
 
 Stages 4 (nearest-neighbor priming) and 5 (compile) are spec'd in the plan
 but deferred — the stage-3 output is already a valid layer and gets copied
@@ -226,16 +232,21 @@ LLM calls are recorded as fixtures, so resuming a run with the same
 API. See the tool [README](../../../tools/classification/README.md) for full
 CLI surface.
 
-## Runtime (planned)
+## Runtime
 
 `dev.imagio.slot.classification.FacetIndex` in `common/`:
 
-- **Init** — discover layer files (mod resources, then `config/slot/classification/`,
-  then worldsave player layer), validate against the bundled schema, merge.
-- **Per-item lookup** — `index.facets(itemId): ItemRecord` returns the merged
-  record. The atlas-homing rule is just `index.role(itemId).map(roleToIsland)`.
-- **Fallback** — items with no facet entries fall back to the existing
-  `SemanticBucketResolver` so brand-new datapack items still get a home.
+- **Init** — loads bundled vanilla/per-mod resources plus datapack
+  `data/slot/classification/layers/*.json`, validates schema/layer names,
+  merges, and exposes a load report for `/slot classification inspect`.
+- **Per-item lookup** — exposes role/material/form/subsystem/activity and
+  adjacent facet helpers used by signal extraction and auto-home.
+- **Dynamic homes** — auto-home uses built-in templates plus dynamic
+  `mod_subsystem` sections when the loaded dataset says the subsystem has
+  enough items to avoid singleton clutter.
+- **Bulk recompute** — `/slot classification rehome` scans every carried
+  source plus currently accessible claimed chests, then recomputes
+  classifier-owned homes without moving physical items.
 - **Queries** — inverted-index `index.where(Expr)` API arrives when a real
   use-site needs it. Skipped for V1.
 

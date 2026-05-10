@@ -49,6 +49,21 @@ class IslandSuggestionTemplateSubsystemTest {
     }
 
     @Test
+    void broadUtilityAndMaterialParentsCanHonorQualifiedSubsystems() {
+        IslandTemplateMatch casting = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
+                subsystemDescriptor("tfc:ceramic/ingot_mold", "utility", List.of("tfc:casting"), List.of()),
+                id -> "tfc:casting".equals(id));
+        assertTrue(casting.isSubsystem());
+        assertEquals(IslandSuggestionTemplate.UTILITY, casting.parentTemplate());
+
+        IslandTemplateMatch weaving = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
+                subsystemDescriptor("tfc:fiber/linen_thread", "material", List.of("tfc:weaving"), List.of()),
+                id -> "tfc:weaving".equals(id));
+        assertTrue(weaving.isSubsystem());
+        assertEquals(IslandSuggestionTemplate.MATERIALS, weaving.parentTemplate());
+    }
+
+    @Test
     void decorationParentNeverHonorsSubsystem() {
         // Even with a fully-qualified subsystem, decoration items don't
         // get a "create:decoration" island — players don't think of

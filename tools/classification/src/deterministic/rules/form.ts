@@ -36,6 +36,17 @@ const TAG_TO_FORM: Record<string, string> = {
   "minecraft:wool": "whole_block",
 };
 
+const COMMON_TAG_ROOT_TO_FORM: Record<string, string> = {
+  dusts: "dust",
+  gems: "gem",
+  ingots: "ingot",
+  nuggets: "nugget",
+  ores: "ore",
+  plates: "plate",
+  raw_materials: "raw",
+  rods: "rod",
+};
+
 /** Model parent id → form. Only used when no tag matched. */
 const MODEL_PARENT_TO_FORM: Record<string, string> = {
   "block/button": "button",
@@ -184,6 +195,11 @@ export const formRule: Rule = {
       if (form) return emit(form, "rule:form_from_tag", `tag ${tag}`);
     }
 
+    for (const tag of record.minecraft_tags) {
+      const form = commonTagForm(tag);
+      if (form) return emit(form, "rule:form_from_common_tag", `tag ${tag}`);
+    }
+
     for (const parent of record.model_parents) {
       const form = MODEL_PARENT_TO_FORM[parent];
       if (form) return emit(form, "rule:form_from_model", `model ${parent}`);
@@ -201,6 +217,15 @@ export const formRule: Rule = {
     return [];
   },
 };
+
+function commonTagForm(tag: string): string | null {
+  const [namespace, path] = tag.toLowerCase().split(":", 2);
+  if ((namespace !== "c" && namespace !== "forge") || !path) {
+    return null;
+  }
+  const root = path.split("/", 1)[0] ?? "";
+  return COMMON_TAG_ROOT_TO_FORM[root] ?? null;
+}
 
 function emit(value: string, source: string, rationale: string): RuleOutput[] {
   return [

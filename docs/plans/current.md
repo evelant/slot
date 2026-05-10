@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-05-07
+Last updated: 2026-05-10
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -48,9 +48,10 @@ compact storage-chip builder exists but is intentionally hidden to match
 NeoForge's current product surface. Forge also has HUD/in-world
 wayfinding driven by the same common view-model projection, plus hotkey
 parity for vanilla inventory, active-kit page cycle, active-kit gather,
-and the wayfinding HUD toggle. The next risks are migrating remaining
-richer modern-only affordances without reintroducing panel-by-panel
-backend semantics.
+the wayfinding HUD toggle, and shared classification diagnostics /
+runtime-export / rehome commands on both loaders. The next risks are
+migrating remaining richer modern-only affordances without reintroducing
+panel-by-panel backend semantics.
 
 Previously active
 [`single-column-workspace.md`](single-column-workspace.md) is paused
@@ -77,6 +78,11 @@ Thin log; full detail lives in `git log` and the linked archived
 plans. Older entries are deleted — `git log` and `done/<plan>.md`
 hold the rest.
 
+- **2026-05-10** — classification pack-layer pass landed installed
+  `mods/` scanning, jar-backed static extraction, OpenRouter-backed
+  stage 3, runtime subsystem vocabulary, Forge/NeoForge runtime export,
+  datapack generation, dynamic subsystem auto-home cohorts, and
+  `/slot classification inspect` / `rehome`.
 - **2026-05-07** — Forge parity pass moved active-kit gather and
   in-world kit-page cycle into shared common services, registered
   `GATHER_ACTIVE_KIT`, wired in-screen gather through catalog actions
@@ -100,11 +106,6 @@ hold the rest.
   [`done/cursor-pickup.md`](done/cursor-pickup.md).
 - **2026-05-03** — list-view Phases 1 + 2 retired the 2D atlas in
   favour of the sectioned vertical wall and TOC tab strip.
-- **2026-05-02** — wayfinding, atlas-card status redesign, deposit
-  affordances/preview, and the first top-level Gather path landed; see
-  [`done/wayfinding.md`](done/wayfinding.md).
-- **2026-05-01** — split-cursor and full-scope desired counts landed;
-  legacy collection-scoped `DesiredCount*` was deleted.
 ## Known issues
 
 Operational bugs not currently tied to a plan. Items from the

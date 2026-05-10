@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.io.StringReader;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -42,6 +43,7 @@ class FacetIndexTest {
         assertEquals(1, index.size());
         assertEquals(Optional.of("tool"), index.role("minecraft:diamond_pickaxe"));
         assertEquals(Optional.empty(), index.role("minecraft:unknown"));
+        assertEquals(Set.of("minecraft:diamond_pickaxe"), index.itemIds());
     }
 
     @Test

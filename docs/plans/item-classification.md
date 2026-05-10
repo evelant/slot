@@ -1,28 +1,21 @@
 # Item Classification & Facet Schema
 
-Status: **vanilla dataset shipped + thin FacetIndex runtime + atlas-homing
-wired + role-driven Triage chips (vanilla-only)**. Stages 1–3 of the
-pipeline are implemented and have produced
+Status: **classification runtime and pack-layer workflow are implemented
+for the current V1 surface**. Stages 1–3 of the pipeline are implemented
+and have produced
 [`tools/classification/datasets/minecraft/minecraft.facets.complete.json`](../../tools/classification/datasets/minecraft/minecraft.facets.complete.json)
-(1536 items, validated against `layer.schema.json`). That dataset now also
-ships as a mod resource at
+(1536 items, validated against `layer.schema.json`). That dataset ships as
+a mod resource at
 [`common/src/main/resources/data/slot/classification/vanilla-base.json`](../../common/src/main/resources/data/slot/classification/vanilla-base.json),
 loaded at runtime by
-[`common/.../classification/FacetIndex`](../../common/src/main/java/dev/imagio/slot/classification/FacetIndex.java)
-and consumed by both the realistic-populate classifier
-([`FacetIndexBucketClassifier`](../../common/src/main/java/dev/imagio/slot/debug/FacetIndexBucketClassifier.java))
-and the Triage chip pipeline
-([`IslandSignalExtractor`](../../neoforge/src/main/java/dev/imagio/slot/neoforge/triage/IslandSignalExtractor.java)
-populates `IslandSignalDescriptor.role`; templates check role first,
-then fall through to existing class/tag signals). The
-[`IslandSuggestionTemplate`](../../common/src/main/java/dev/imagio/slot/inventory/triage/IslandSuggestionTemplate.java)
-enum expanded from 6 to 13 (added BUILDING / DECORATION / NATURAL /
-WORKBENCHES / MECHANISMS / REDSTONE / UPGRADES) so the full role
-taxonomy gets coverage; vanilla items reach ~85% chip coverage.
-Modded items still fall through to the legacy class/tag signals
-because no per-mod layer is shipped yet — that's the next concrete
-track (milestones 10–11). Milestones 6, 7, and the V1 surface of
-Phase 4a are landed. Last updated: 2026-04-25.
+[`common/.../classification/FacetIndex`](../../common/src/main/java/dev/imagio/slot/classification/FacetIndex.java).
+SLOT now also loads bundled per-mod layers and datapack
+`data/slot/classification/layers/*.json` layers, exposes layer/load
+diagnostics, and uses facet data for template chips plus dynamic
+subsystem auto-home sections. The tool can scan installed `mods/`
+folders, classify jar resources, run OpenRouter-backed stage 3, derive
+runtime subsystem vocabularies, ingest Forge/NeoForge running-instance
+exports, and emit a drop-in datapack layer. Last updated: 2026-05-10.
 
 ## Reading order for a fresh session
 
@@ -34,7 +27,11 @@ This document is ~1400 lines. If you're picking it up without prior context:
 4. **[Layer file format](#layer-file-format)** + the JSONSchema at [tools/classification/layer.schema.json](../../tools/classification/layer.schema.json) — the wire contract.
 5. **[Layering & merging](#layering--merging)** — how the 6 layers stack, including the [Resource-location matrix](#resource-location-matrix).
 6. **[Pipeline](#pipeline)** and **[Runtime discovery](#runtime-discovery)** — what the offline pipeline does vs what the runtime crawl does.
-7. **[Milestones](#milestones)** — the execution order. Milestones 1–5 complete (stage-1 extractor + stage-2 rules + stage-3 LLM with per-mod subsystem proposer in [tools/classification/](../../tools/classification/); first vanilla dataset at [datasets/minecraft/](../../tools/classification/datasets/minecraft/)); milestone 6 (runtime `FacetIndex` in `common/`) is the next concrete work.
+7. **[Milestones](#milestones)** — historical execution order. The V1
+   runtime, installed-pack scan, jar-backed extraction, runtime export,
+   datapack pack-layer, and dynamic subsystem auto-home slices have
+   landed; remaining items are public database distribution, review/diff
+   tooling, runtime-crawl, and persistent server/player facet layers.
 8. **Facet list (1–28)** — skim the headings; read the specific facets you need.
 
 Skip **[Modeling principles](#modeling-principles)** until you're about to add or change a facet — those rules are authored for that case.
@@ -735,7 +732,7 @@ tools/classification/
 │   │   └── validate.ts      # ajv wrapper around layer.schema.json
 │   ├── extract/             # stage 1
 │   ├── deterministic/       # stage 2
-│   ├── llm/                 # stage 3 (shells out to `claude -p`)
+│   ├── llm/                 # stage 3 backends + prompt fixtures
 │   ├── neighbors/           # stage 4
 │   └── compile/             # stage 5
 ├── out/                     # generated layer files (gitignored during dev,
@@ -771,40 +768,27 @@ bun classify --mod create --source ... --stages 1,2
 bun validate out/minecraft.json
 ```
 
-### LLM gateway: `claude -p`
+### LLM gateway
 
-Stage 3 shells out to `claude -p <prompt>` (Claude Code CLI in print mode) rather than
-using the Anthropic API directly. Design decisions:
+Stage 3 uses a backend abstraction. The current default is OpenRouter
+with `deepseek/deepseek-v4-flash` pinned to the `deepseek` provider;
+`claude-cli` remains available for Claude Code print-mode runs. Design
+decisions:
 
-- **No API-key management.** The pipeline inherits the maintainer's Claude Code session.
-- **Solo-maintainer ownership.** Only the primary maintainer runs the pipeline in
-  production. Contributors who want to re-run it locally need their own Claude
-  subscription — no shared org key.
-- **Not run in CI.** The pipeline is a local development tool. Outputs are committed
-  layer JSON files; those are what ship.
-- **Model selection** via the `--model` flag on `claude -p` (`haiku-4.5` default,
-  escalate to `sonnet-4.6` when stage 3 confidence is low or `ambiguous: true` on
-  any facet).
-- **Batching.** Stage 3 sends batches of ~20 items per `claude -p` call to amortize
-  invocation overhead; context window is plenty large. Each call gets the schema + the
-  items' extracted data + nearest-neighbor priming + clear output-format instructions.
+- **Not run in CI.** The pipeline is a local authoring tool. Outputs are
+  committed layer JSON files; those are what ship.
+- **Backend selection.** A model slug containing `/` routes to OpenRouter;
+  Claude aliases route to `claude-cli`. OpenRouter reads
+  `OPENROUTER_API_KEY` from the environment or repo-root `.env`.
+- **Record/replay.** LLM calls are fixture-backed so interrupted runs
+  resume cleanly and prompt changes can be evaluated without re-calling
+  cached batches.
+- **Batching.** Stage 3 can use larger batches than the first prototype;
+  the default model is cheap and has enough context for rich runtime
+  export evidence without aggressive sampling.
 
-Concrete invocation shape (schematic — exact prompt content is stage 3's responsibility):
-
-```sh
-claude -p --model=haiku-4-5 --output-format=json <<'EOF'
-{
-  "instruction": "Classify these items against the Slot facet schema...",
-  "schema": { ... },
-  "items": [ { "id": "create:cogwheel", "tags": [...], "recipe_role": {...}, ... } ],
-  "neighbors": { "create:cogwheel": [ ... ] }
-}
-EOF
-```
-
-The pipeline reads stdout, parses JSON, validates against the wire-format schema,
-and feeds results into stage 4. Non-zero exit or parse failure triggers a
-Sonnet 4.6 retry for the failing batch.
+Both backends return the same JSON contract, which is parsed, validated
+against the wire-format schema, and merged into the stage-3 layer.
 
 ### Stage 1 — Extract
 

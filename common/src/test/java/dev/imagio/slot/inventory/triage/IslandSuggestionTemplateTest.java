@@ -56,11 +56,26 @@ class IslandSuggestionTemplateTest {
         assertTrue(IslandSuggestionTemplate.INGOTS.matches(
                 descriptor("minecraft:iron_ingot", Set.of(), Set.of("c:ingots"))
         ));
+        assertTrue(IslandSuggestionTemplate.INGOTS.matches(
+                descriptor("minecraft:iron_ingot", Set.of(), Set.of("forge:ingots"))
+        ));
+        assertTrue(IslandSuggestionTemplate.INGOTS.matches(
+                descriptor("tfc:metal/ingot/copper", Set.of(), Set.of("forge:ingots/copper"))
+        ));
         assertTrue(IslandSuggestionTemplate.GEMS.matches(
                 descriptor("minecraft:diamond", Set.of(), Set.of("c:gems"))
         ));
+        assertTrue(IslandSuggestionTemplate.GEMS.matches(
+                descriptor("minecraft:diamond", Set.of(), Set.of("forge:gems/diamond"))
+        ));
         assertTrue(IslandSuggestionTemplate.RAW_MATERIALS.matches(
                 descriptor("minecraft:raw_iron", Set.of(), Set.of("c:raw_materials"))
+        ));
+        assertTrue(IslandSuggestionTemplate.RAW_MATERIALS.matches(
+                descriptor("tfc:ore/normal_native_copper", Set.of(), Set.of("forge:raw_materials/copper"))
+        ));
+        assertFalse(IslandSuggestionTemplate.INGOTS.matches(
+                descriptor("modded:compressed_resource", Set.of(), Set.of("balm:ingots"))
         ));
         assertFalse(IslandSuggestionTemplate.MATERIALS.matches(
                 descriptor("modded:wire", Set.of(), Set.of("mod:wires"))
@@ -68,6 +83,19 @@ class IslandSuggestionTemplateTest {
         assertTrue(IslandSuggestionTemplate.MATERIALS.matches(
                 roleDescriptor("minecraft:stick", "material")
         ));
+    }
+
+    @Test
+    void materialPathSegmentsRouteForgeStyleCommodityItems() {
+        assertEquals(IslandSuggestionTemplate.INGOTS,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("tfc:metal/ingot/copper", "material")));
+        assertEquals(IslandSuggestionTemplate.RAW_MATERIALS,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("tfc:ore/normal_native_copper", "material")));
+        assertEquals(IslandSuggestionTemplate.RAW_MATERIALS,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("gtceu:purified_copper_ore", "material")));
+
+        assertEquals(IslandSuggestionTemplate.UTILITY,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("tfc:ceramic/ingot_mold", "utility")));
     }
 
     @Test
