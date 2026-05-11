@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-05-10. Operational handoff. Read after
+Last updated: 2026-05-11. Operational handoff. Read after
 [../README.md](../README.md). For active work + queue see
 [plans/current.md](plans/current.md); for architecture see
 [architecture/overview.md](architecture/overview.md).
@@ -36,10 +36,17 @@ remain backend hooks, not common UI semantics.
 
 Classification now has a pack-authoring path for large modpacks: installed
 `mods/` scanning, jar extraction, OpenRouter-backed stage 3, runtime export,
-runtime subsystem vocabulary, and drop-in datapack layer output. Runtime
-auto-home uses bundled/datapack facets plus count-gated dynamic organization
-groups (`organization_group`) and subsystem cohorts (`mod_subsystem`); both
-loaders expose `inspect`, `export`, and `rehome` / `recompute` commands.
+runtime subsystem vocabulary, pack facet-vocabulary evidence collection,
+accepted/review/rejected vocabulary proposal, stage-3 `document_context`,
+accepted vocabulary prompting via `--facet-vocabulary`, and drop-in datapack
+layer output. Semantic text is the highest-value input for this path; preserve
+tooltip/lore prose, guidebook and quest text, lang-resolved descriptions,
+KubeJS/datapack overlays, Ponder/category labels, stack groups, resource-pack
+lang overrides, and mod descriptions instead of reducing prompts to item ids.
+Runtime auto-home uses bundled/datapack facets plus count-gated dynamic
+organization groups (`organization_group`) and subsystem cohorts
+(`mod_subsystem`); both loaders expose `inspect`, `export`, and `rehome` /
+`recompute` commands.
 
 ### Production wall shape (post-list-view)
 
@@ -88,27 +95,11 @@ keep root at `widthPercent(100)` so scrollers get bounded space.
 
 ## Project structure
 
-Top-level docs (see [../README.md](../README.md) for the full map):
-
-- product: [product/direction.md](product/direction.md), [product/spec.md](product/spec.md)
-- architecture: [overview](architecture/overview.md),
-  [architecture/action-taxonomy.md](architecture/action-taxonomy.md),
-  [architecture/host-ui.md](architecture/host-ui.md)
-- design: [design/atlas.md](design/atlas.md) (superseded by
-  list-view.md; surviving parts only — homes, ghost vs carried,
-  single-element drag rule, recents, kit / desired-count /
-  wayfinding integration), [design/kits.md](design/kits.md),
-  [design/storage.md](design/storage.md). Retired:
-  [design/retired/relevance-lod.md](design/retired/relevance-lod.md).
-- plans (active queue): [plans/current.md](plans/current.md). Shipped
-  plans live in [plans/done/](plans/done/); superseded designs in
-  [plans/retired/](plans/retired/).
-- decisions: [decisions/0001-core-rewrite.md](decisions/0001-core-rewrite.md),
-  [decisions/0002-ldlib2-workspace.md](decisions/0002-ldlib2-workspace.md)
-- research: [research/ui-ux-brainstorm.md](research/ui-ux-brainstorm.md),
-  [research/ui-library-assessment.md](research/ui-library-assessment.md),
-  [research/core-inventory-library-assessment.md](research/core-inventory-library-assessment.md),
-  [research/integration-learnings.md](research/integration-learnings.md)
+Top-level docs: see [../README.md](../README.md) for the full map. The
+near-term queue lives in [plans/current.md](plans/current.md); product direction
+in [product/direction.md](product/direction.md); current architecture in
+[architecture/overview.md](architecture/overview.md); shipped plan references in
+[plans/done/](plans/done/); superseded directions in [plans/retired/](plans/retired/).
 
 Common module:
 
@@ -223,6 +214,14 @@ Expanded definitions in the linked design / architecture docs.
 ./gradlew :common:compileJava :neoforge:compileJava
 ./gradlew :forge-1.20:compileSharedProbeJava
 ./gradlew :common:test :neoforge:test
+```
+
+Classification tool checks:
+
+```bash
+cd tools/classification
+bunx tsc --noEmit
+bun test
 ```
 
 ## Working rules

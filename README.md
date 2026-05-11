@@ -83,8 +83,8 @@ Plans:
   — proposed public classification database, installed-pack scanning, and
   contribution workflow plan.
 - [docs/plans/classification-facet-vocabulary.md](docs/plans/classification-facet-vocabulary.md)
-  — proposed two-stage workflow-vocabulary and facet-generation plan for
-  better classification data.
+  — active pack semantic-vocabulary, evidence, and stage-3 integration plan
+  for better classification data.
 - [docs/plans/emi-goal-projections.md](docs/plans/emi-goal-projections.md)
   — proposed EMI-pinned recipe goal tabs with normal wall cards, ghosts,
   pips, and goal-scoped desired counts.

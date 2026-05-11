@@ -127,7 +127,7 @@ directly:
   `required_tool`, `equip_slot`, `environmental_property`, `storage_categories`,
   `transport_medium`, booleans, and related deterministic signals
 
-Semantic facets that vary by pack are moving behind generated vocabulary:
+Semantic facets that vary by pack are modeled behind generated vocabulary:
 
 - `activity`
 - `workflow`
@@ -256,7 +256,14 @@ modpack layer.
 
 ### Pack Vocabulary
 
-Slices 0-2 of the facet-vocabulary plan are implemented:
+Facet vocabulary is now part of the stage-3 pack workflow. The tool can collect
+pack-level evidence, propose accepted/review/rejected vocabulary, feed accepted
+values into stage 3 with `--facet-vocabulary`, attach conservative
+`document_context` from the same evidence artifact, reject/downgrade
+out-of-vocabulary model output, and validate the final layer against the
+accepted vocabulary.
+
+Collect evidence:
 
 ```sh
 bun run src/cli.ts collect-pack-facet-evidence \
@@ -272,7 +279,10 @@ recipe-type summaries, recipe-role summaries, recipe-id families, item/block
 tags, mod metadata, guide pages, quest nodes, advancements, and adapter
 diagnostics.
 
-Then propose the accepted/review/rejected vocabulary:
+Then propose the accepted/review/rejected vocabulary. Run the first full
+proposal for a pack without `--previous-vocabulary`; that option is for
+refining a nearly satisfactory vocabulary and intentionally biases the
+candidate set toward previous accepted values.
 
 ```sh
 bun run src/cli.ts propose-pack-facet-vocabulary \
@@ -283,9 +293,23 @@ bun run src/cli.ts propose-pack-facet-vocabulary \
   --force
 ```
 
-Stage-3 vocabulary integration is still the next slice. Do not trust a full
-deep-pack rerun as publishable until stage 3 receives only accepted vocabulary
-values and out-of-vocabulary suggestions are review artifacts, not layer data.
+Use the accepted vocabulary and evidence for the full pack run:
+
+```sh
+bun run classify:runtime-pack -- \
+  --runtime-export modpacks/exports/tfg2.runtime-items.ndjson \
+  --summary modpacks/exports/tfg2.runtime-summary.json \
+  --mods /path/to/prism/instance-or-minecraft/mods \
+  --evidence out/tfg2/tfg2.facet-evidence.json \
+  --facet-vocabulary out/tfg2/tfg2.facet-vocabulary.json \
+  --out out/tfg2 \
+  --force
+```
+
+The next validation step is output quality, not stage-3 plumbing: inspect the
+run report, prompt fixtures, warning/review artifacts, and runtime
+`/slot classification inspect` results before treating a deep-pack layer as
+good enough to ship.
 
 ## Runtime Consumers
 

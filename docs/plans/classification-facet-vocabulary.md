@@ -2,13 +2,16 @@
 
 Last updated: 2026-05-11
 
-Status: active. Slices 0 through 2 are implemented for the TypeScript toolchain,
-but the first full TFG prompt review showed the evidence payload was too thin
-for useful vocabulary generation. Semantic evidence is now the active repair:
+Status: active. Slices 0 through 3 are implemented for the TypeScript
+toolchain: vocabulary-backed semantic facets, rich evidence collection,
+accepted/review/rejected vocabulary proposal, stage-3 `document_context`,
+accepted vocabulary prompting via `--facet-vocabulary`, and vocabulary-backed
+layer validation are all wired. The first full TFG prompt review showed that
+thin `seed_items`-heavy prompts were inadequate; the current direction is to
 preserve tooltip/lore text, guidebook page bodies, quest text, resolved lang
-strings, KubeJS/datapack overlays, and mod descriptions before asking the LLM
-to derive vocabulary. Do not treat the current `seed_items`-heavy prompt shape
-as sufficient.
+strings, KubeJS/datapack overlays, Ponder/category labels, stack groups,
+resource-pack lang overrides, and mod descriptions before asking the LLM to
+derive vocabulary or classify items.
 
 This plan owns the generic modpack-classification workflow: pack vocabulary,
 evidence extraction, vocabulary-backed semantic facets, and pack-layer
@@ -941,24 +944,34 @@ Runtime rules:
 - generated datapacks must remain complete enough that current whole-entry
   layer merge semantics do not erase lower-layer facets
 
-## Readiness
+## Current Handoff
 
-This plan is ready to start the vocabulary-generation work through Slice 2:
+The vocabulary-generation and stage-3 integration plumbing is in place. The
+toolchain now supports:
 
-- the value-id grammar and scoping policy are accepted as the V1 starting point
-- most semantic facets should be closed by the generated vocabulary artifact,
-  not by hardcoded TypeScript enums
-- `process_material` stays as a distinct facet
-- schema-version compatibility is not a blocker for the current experimental
-  consumers
-- initial evidence thresholds can be conservative guesses, then tuned from
-  review reports
+- vocabulary-backed semantic facets with scoped value-id validation
+- `collect-pack-facet-evidence` for runtime/static/guide/quest/advancement
+  evidence plus Ponder/category lang, KubeJS client tooltips, stack groups, and
+  zipped resource-pack lang overrides
+- `propose-pack-facet-vocabulary` with large semantic prompts, split candidate
+  batches, fixture record/replay, accepted/review/rejected output, and
+  validated vocabulary artifacts
+- `--facet-vocabulary` on stage-3 pack runs so prompts contain only accepted
+  pack vocabulary values for vocabulary-backed facets
+- conservative per-item `document_context` from evidence artifacts
+- response validators that retry missing-item or out-of-vocabulary outputs, then
+  drop invalid vocabulary values rather than writing them into the layer
+- metadata recording the evidence/vocabulary files used for stage 3
 
-Do not regenerate and trust a full pack layer until the vocabulary artifact,
-review artifact, validation reports, and stage-3 prompt integration exist. The
-first implementation should prove the `facet-evidence.json` →
-`facet-vocabulary.json` pipeline with fixture/replay coverage before using the
-new vocabulary to classify every item in a deep pack.
+The next slice is full-pack quality validation: run `classify-runtime-pack`
+against the fresh runtime export, static jars, `facet-evidence.json`, and a
+clean vocabulary proposal generated without `--previous-vocabulary`; inspect
+the final layer, run report, prompt fixtures, warnings, and runtime
+`/slot classification inspect` output; tune deterministic domain facets or
+validation reports only from the observed gaps.
+
+Do not use `--previous-vocabulary` for a first baseline run. It is intentionally
+biased refinement input for a vocabulary that is already nearly satisfactory.
 
 ## Implementation Slices
 
@@ -1044,8 +1057,8 @@ Status: implemented 2026-05-11 for the TypeScript toolchain. The command
 previous accepted vocabulary when supplied, builds deterministic candidates,
 writes dry-run prompt pairs, reuses the shared LLM replay/recording clients,
 policy-gates accepted values, and emits `facet-vocabulary.json` plus
-`facet-vocabulary.review.json`. Stage 3 does not consume the artifact yet; that
-is Slice 3.
+`facet-vocabulary.review.json`. Stage 3 consumes the accepted artifact through
+the Slice 3 `--facet-vocabulary` path.
 
 - add `propose-pack-facet-vocabulary`
 - reuse the existing LLM client, split-prompt, fixture recording, and replay
@@ -1078,24 +1091,31 @@ Exit criteria:
 
 ### Slice 3: Stage 3 Vocabulary Integration
 
+Status: implemented 2026-05-11 for the TypeScript toolchain, with one
+deliberate scope change: `classify-runtime-pack` does **not** silently run
+`propose-pack-facet-vocabulary` when no vocabulary file is supplied. The first
+baseline for a pack should pass an explicit clean vocabulary artifact so
+expensive/biasing generation is visible and reviewable.
+
 - feed conservative per-item `document_context` into stage 3 from the
   `facet-evidence.json` guide/advancement records; keep current quest SNBT out
   until the quest adapter is local enough for item classification
-- add a `--facet-vocabulary-file` option to `classify-runtime-pack` and
+- add a `--facet-vocabulary` option to `classify-runtime-pack` and
   `generate-pack-layer`
-- auto-run `propose-pack-facet-vocabulary` in `classify-runtime-pack` when
-  stage 3 is enabled and no vocabulary file is supplied
+- require explicit vocabulary input for baseline pack runs; do not auto-run
+  vocabulary proposal inside `classify-runtime-pack` yet
 - render vocabulary-backed facet values into the stage-3 system prompt
 - replace hardcoded facet examples in the shared prompt with vocabulary-rendered
   examples wherever practical
-- add parse/merge warnings for proposed values not in the vocabulary
+- add response validation, parse/merge warnings, and invalid-value dropping for
+  proposed values not in the accepted vocabulary
 - write metadata linking the generated layer to the facet vocabulary file
 
 Exit criteria:
 
 - stage 3 batches receive only relevant facet vocabulary
 - layer metadata records the facet vocabulary source
-- out-of-vocabulary suggestions are review artifacts, not layer data
+- out-of-vocabulary suggestions trigger retry or warnings and are not layer data
 - stage 3 never receives `review` or `rejected` vocabulary values
 - existing `mod_subsystem` vocabulary behavior still works
 
