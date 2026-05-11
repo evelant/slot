@@ -20,7 +20,7 @@ public enum IslandSuggestionTemplate {
             Set.of(IslandSignal.FOOD),
             Set.of(),
             Set.of("consumable"),
-            Set.of("eating"),
+            Set.of("slot:eating"),
             Set.of()
     ),
     TOOLS(
@@ -31,7 +31,7 @@ public enum IslandSuggestionTemplate {
             Set.of(IslandSignal.DIGGER_TOOL),
             Set.of(),
             Set.of("tool"),
-            Set.of("mining", "harvesting", "tool_use"),
+            Set.of("slot:mining", "slot:harvesting", "slot:tool_use"),
             Set.of()
     ),
     WEAPONS(
@@ -48,7 +48,7 @@ public enum IslandSuggestionTemplate {
             ),
             Set.of(),
             Set.of("weapon", "ammunition"),
-            Set.of("combat"),
+            Set.of("slot:combat"),
             Set.of()
     ),
     ARMOR(
@@ -64,7 +64,7 @@ public enum IslandSuggestionTemplate {
             ),
             Set.of(),
             Set.of("armor"),
-            Set.of("combat", "defense"),
+            Set.of("slot:combat", "slot:defense"),
             Set.of()
     ),
     // Lighting — torches, lanterns, glowstone, shroomlight, etc.
@@ -142,7 +142,7 @@ public enum IslandSuggestionTemplate {
             Set.of(),
             Set.of("c:chests", "c:shulker_boxes", "c:barrels"),
             Set.of("storage_block", "container_portable"),
-            Set.of("storage"),
+            Set.of("slot:storage_management"),
             Set.of()
     ),
     // Roles below are role-only (FacetIndex-driven). The legacy
@@ -165,7 +165,7 @@ public enum IslandSuggestionTemplate {
             Set.of(),
             Set.of(),
             Set.of(),
-            Set.of("building", "construction"),
+            Set.of("slot:building", "slot:construction"),
             Set.of("stairs")
     ),
     SLABS(
@@ -176,7 +176,7 @@ public enum IslandSuggestionTemplate {
             Set.of(),
             Set.of(),
             Set.of(),
-            Set.of("building", "construction"),
+            Set.of("slot:building", "slot:construction"),
             Set.of("slab")
     ),
     WALLS(
@@ -187,7 +187,7 @@ public enum IslandSuggestionTemplate {
             Set.of(),
             Set.of(),
             Set.of(),
-            Set.of("building", "construction"),
+            Set.of("slot:building", "slot:construction"),
             Set.of("wall")
     ),
     DOORS(
@@ -198,7 +198,7 @@ public enum IslandSuggestionTemplate {
             Set.of(),
             Set.of(),
             Set.of(),
-            Set.of("building", "construction"),
+            Set.of("slot:building", "slot:construction"),
             Set.of("door", "trapdoor", "fence_gate")
     ),
     FENCES(
@@ -209,7 +209,7 @@ public enum IslandSuggestionTemplate {
             Set.of(),
             Set.of(),
             Set.of(),
-            Set.of("building", "construction"),
+            Set.of("slot:building", "slot:construction"),
             Set.of("fence")
     ),
     WINDOWS(
@@ -220,7 +220,7 @@ public enum IslandSuggestionTemplate {
             Set.of(),
             Set.of(),
             Set.of(),
-            Set.of("building", "construction"),
+            Set.of("slot:building", "slot:construction"),
             Set.of("pane", "bars")
     ),
     BUILDING(
@@ -231,7 +231,7 @@ public enum IslandSuggestionTemplate {
             Set.of(),
             Set.of(),
             Set.of("building_block"),
-            Set.of("building", "construction"),
+            Set.of("slot:building", "slot:construction"),
             Set.of()
     ),
     DECORATION(
@@ -242,7 +242,7 @@ public enum IslandSuggestionTemplate {
             Set.of(),
             Set.of(),
             Set.of("decorative_block"),
-            Set.of("decorating"),
+            Set.of("slot:decorating"),
             Set.of()
     ),
     NATURAL(
@@ -253,7 +253,7 @@ public enum IslandSuggestionTemplate {
             Set.of(),
             Set.of(),
             Set.of("natural_resource"),
-            Set.of("farming", "gathering"),
+            Set.of("slot:farming", "slot:gathering"),
             Set.of()
     ),
     WORKBENCHES(
@@ -264,7 +264,7 @@ public enum IslandSuggestionTemplate {
             Set.of(),
             Set.of(),
             Set.of("functional_block"),
-            Set.of("crafting", "automation", "smelting"),
+            Set.of("slot:crafting", "slot:automation", "slot:smelting"),
             Set.of()
     ),
     MECHANISMS(
@@ -275,7 +275,7 @@ public enum IslandSuggestionTemplate {
             Set.of(),
             Set.of(),
             Set.of("mechanism"),
-            Set.of("automation"),
+            Set.of("slot:automation"),
             Set.of()
     ),
     REDSTONE(
@@ -286,7 +286,7 @@ public enum IslandSuggestionTemplate {
             Set.of(),
             Set.of(),
             Set.of("redstone_component"),
-            Set.of("redstone"),
+            Set.of("slot:redstone"),
             Set.of()
     ),
     UPGRADES(
@@ -297,7 +297,7 @@ public enum IslandSuggestionTemplate {
             Set.of(),
             Set.of(),
             Set.of("upgrade"),
-            Set.of("enchanting"),
+            Set.of("slot:enchanting"),
             Set.of()
     ),
     TRANSPORT(
@@ -308,7 +308,7 @@ public enum IslandSuggestionTemplate {
             Set.of(),
             Set.of(),
             Set.of("transport"),
-            Set.of("transportation", "logistics"),
+            Set.of("slot:transportation", "slot:logistics"),
             Set.of()
     ),
     UTILITY(
@@ -330,7 +330,7 @@ public enum IslandSuggestionTemplate {
             Set.of(),
             Set.of(),
             Set.of("curiosity", "trophy"),
-            Set.of("display"),
+            Set.of("slot:display"),
             Set.of()
     ),
     MISC(

@@ -310,17 +310,20 @@ For each stack in carried inventory:
 
 - if the stack's exact identity has positive learned affinity with a
   nearby claimed chest, the stack is **eligible** for deposit
+- if a nearby claimed chest already contains the same movable identity,
+  the stack is **eligible** for deposit even before affinity has been
+  learned
 - otherwise it stays carried
 - eligibility is further reduced by kit holdouts (next section)
 
 ### Destination
 
-When a stack is eligible and multiple learned-affinity chests are nearby,
-the destination walk follows affinity score, then stable storage-id order,
-and inserts into the first chest with space. No classifier/facet
-similarity, live-presence inference, empty-chest fallback, distribution
-rules, concentration heuristics, or fallback routing to chests at other
-bases.
+When a stack is eligible and multiple chests are nearby, the destination
+walk follows affinity score first, then current matching-content chests,
+then stable storage-id order, and inserts into the first chest with
+space. No classifier/facet similarity, empty-chest fallback,
+distribution rules, concentration heuristics, or fallback routing to
+chests at other bases.
 
 ### Full Chest Behavior
 

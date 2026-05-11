@@ -1,4 +1,5 @@
 import { describe, expect, test } from "bun:test";
+import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
@@ -50,6 +51,43 @@ describe("cli option validation", () => {
 
     expect(result.exitCode).not.toBe(0);
     expect(result.stderr.toString()).toContain("--mod-concurrency must be a positive integer");
+  });
+
+  test("validate-vocabulary accepts scoped pack vocabulary artifacts", () => {
+    withTempDir((dir) => {
+      const vocabularyPath = join(dir, "fixture.facet-vocabulary.json");
+      writeFileSync(vocabularyPath, JSON.stringify({
+        schema_version: 1,
+        kind: "slot-pack-facet-vocabulary",
+        pack_id: "fixture",
+        facets: {
+          activity: {
+            values: {
+              "slot:cooking": {
+                label: "Cooking",
+                origin: "universal_default",
+                state: "accepted",
+              },
+            },
+          },
+          workflow: {
+            values: {
+              "pack:fixture/steelmaking": {
+                label: "Steelmaking",
+                origin: "pack_generated",
+                state: "accepted",
+                evidence: [{ kind: "recipe_type", id: "gtceu:alloy_smelter" }],
+              },
+            },
+          },
+        },
+      }));
+
+      const result = runCli(["validate-vocabulary", vocabularyPath]);
+
+      expect(result.exitCode).toBe(0);
+      expect(result.stdout.toString()).toContain("ok:");
+    });
   });
 
   test("classify-folder runs stage 1 and 2 directly from a mods folder", () => {
@@ -192,6 +230,207 @@ description="fixture"
       expect(layer.source).toBe("fixture");
       expect(layer.entries?.["example:gear"]?.facets?.mod_namespace).toBeDefined();
       expect(readFileSync(join(out, "fixture.pack.items.ndjson"), "utf8")).toContain("static_model_parents");
+    });
+  });
+
+  test("collect-pack-facet-evidence writes runtime and optional pack evidence", () => {
+    withTempDir((dir) => {
+      const mods = join(dir, "mods");
+      const out = join(dir, "out");
+      const runtimeItems = join(dir, "fixture.runtime-items.ndjson");
+      const runtimeSummary = join(dir, "fixture.runtime-summary.json");
+      mkdirSync(mods, { recursive: true });
+      writeZip(join(mods, "example.jar"), {
+        "META-INF/mods.toml": `
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+[[mods]]
+modId="example"
+version="1.0.0"
+displayName="Example"
+description="fixture"
+`,
+        "assets/example/lang/en_us.json": JSON.stringify({
+          "item.example.ingot_mold": "Ingot Mold",
+        }),
+        "assets/example/models/item/ingot_mold.json": JSON.stringify({
+          parent: "minecraft:item/generated",
+        }),
+        "data/example/advancements/casting/start.json": JSON.stringify({
+          display: {
+            title: "Start Casting",
+            icon: { item: "example:ingot_mold" },
+          },
+        }),
+      });
+      writeFileSync(runtimeItems, JSON.stringify({
+        id: "example:ingot_mold",
+        namespace: "example",
+        path: "ingot_mold",
+        display_name: "Ingot Mold",
+        minecraft_tags: ["example:ingot_molds"],
+        minecraft_tags_direct: ["example:ingot_molds"],
+        recipe_role: {
+          ingredient_of: ["example:casting/cast_ingot"],
+          output_of: [],
+          in_degree: 1,
+          out_degree: 0,
+          ingredient_of_counts: { "example:casting": 1 },
+          output_of_counts: {},
+        },
+        model_parents: [],
+        loot_table_sources: [],
+        creative_tabs: [],
+        component_data: { "minecraft:max_stack_size": 64 },
+        extractor_meta: {
+          extractor: "slot-runtime-export",
+        },
+      }) + "\n");
+      writeFileSync(runtimeSummary, JSON.stringify({
+        schema_version: 1,
+        format: "slot-runtime-classification-export",
+        pack_id: "fixture",
+        loader: "forge",
+        minecraft_version: "1.20.1",
+        item_count: 1,
+        direct_item_tags_available: true,
+        item_tag_members: {
+          "example:ingot_molds": ["example:ingot_mold"],
+        },
+        block_tag_members: {},
+        recipe_type_counts: {
+          "example:casting": 1,
+        },
+      }));
+
+      const result = runCli([
+        "collect-pack-facet-evidence",
+        "--runtime-export",
+        runtimeItems,
+        "--summary",
+        runtimeSummary,
+        "--mods",
+        mods,
+        "--out",
+        out,
+      ]);
+
+      expect(result.exitCode).toBe(0);
+      const evidencePath = join(out, "fixture.facet-evidence.json");
+      expect(existsSync(evidencePath)).toBe(true);
+      const evidence = JSON.parse(readFileSync(evidencePath, "utf8")) as {
+        kind?: string;
+        records?: Array<{ kind?: string; id?: string }>;
+      };
+      expect(evidence.kind).toBe("slot-pack-facet-evidence");
+      expect(evidence.records?.find((record) => record.kind === "recipe_type" && record.id === "example:casting")).toBeDefined();
+      expect(evidence.records?.find((record) => record.kind === "advancement" && record.id === "example:casting/start")).toBeDefined();
+    });
+  });
+
+  test("propose-pack-facet-vocabulary supports dry-run prompts and replay output", () => {
+    withTempDir((dir) => {
+      const out = join(dir, "out");
+      const fixtures = join(dir, "fixtures");
+      const evidencePath = join(dir, "fixture.facet-evidence.json");
+      mkdirSync(fixtures, { recursive: true });
+      writeFileSync(evidencePath, JSON.stringify({
+        schema_version: 1,
+        kind: "slot-pack-facet-evidence",
+        pack_id: "fixture",
+        generated_by: "test",
+        generated_at: "2026-05-11T00:00:00.000Z",
+        source: { runtime_items: "fixture.runtime-items.ndjson", item_count: 1 },
+        records: [{
+          kind: "recipe_type",
+          id: "example:casting",
+          label: "Casting",
+          namespace: "example",
+          source: "runtime-summary",
+          confidence: 0.85,
+          count: 4,
+          item_refs: ["example:ingot_mold"],
+          recipe_refs: ["example:casting/cast_ingot"],
+        }],
+        diagnostics: [],
+      }));
+
+      const dryRun = runCli([
+        "propose-pack-facet-vocabulary",
+        "--evidence",
+        evidencePath,
+        "--facet",
+        "workflow",
+        "--out",
+        out,
+        "--dry-run",
+        "--force",
+      ]);
+      expect(dryRun.exitCode).toBe(0);
+      const dryRunDir = join(out, "fixture.facet-vocabulary-dry-run");
+      const system = readFileSync(join(dryRunDir, "workflow.system.md"), "utf8");
+      const user = readFileSync(join(dryRunDir, "workflow.user.json"), "utf8");
+      const hash = splitFixtureHash(system, user);
+      writeFileSync(join(fixtures, `${hash}.response.json`), JSON.stringify({
+        values: [{
+          id: "example:casting",
+          label: "Casting",
+          state: "accepted",
+          confidence: 0.9,
+          evidence: [{ kind: "recipe_type", id: "example:casting", confidence: 0.85 }],
+          seed_items: ["example:ingot_mold"],
+        }],
+      }));
+
+      const replay = runCli([
+        "propose-pack-facet-vocabulary",
+        "--evidence",
+        evidencePath,
+        "--facet",
+        "workflow",
+        "--out",
+        out,
+        "--use-replay",
+        "--fixture-dir",
+        fixtures,
+        "--force",
+      ]);
+
+      expect(replay.exitCode).toBe(0);
+      const vocabulary = JSON.parse(readFileSync(join(out, "fixture.facet-vocabulary.json"), "utf8")) as {
+        facets?: { workflow?: { values?: Record<string, unknown> } };
+      };
+      expect(vocabulary.facets?.workflow?.values?.["example:casting"]).toBeDefined();
+      expect(existsSync(join(out, "fixture.facet-vocabulary.review.json"))).toBe(true);
+    });
+  });
+
+  test("propose-pack-facet-vocabulary rejects unknown facets", () => {
+    withTempDir((dir) => {
+      const evidencePath = join(dir, "fixture.facet-evidence.json");
+      writeFileSync(evidencePath, JSON.stringify({
+        schema_version: 1,
+        kind: "slot-pack-facet-evidence",
+        pack_id: "fixture",
+        generated_by: "test",
+        generated_at: "2026-05-11T00:00:00.000Z",
+        source: { runtime_items: "fixture.runtime-items.ndjson", item_count: 0 },
+        records: [],
+        diagnostics: [],
+      }));
+
+      const result = runCli([
+        "propose-pack-facet-vocabulary",
+        "--evidence",
+        evidencePath,
+        "--facet",
+        "not_a_facet",
+        "--dry-run",
+      ]);
+
+      expect(result.exitCode).not.toBe(0);
+      expect(result.stderr.toString()).toContain("unknown vocabulary facet");
     });
   });
 
@@ -351,4 +590,8 @@ function writeZip(path: string, files: Record<string, string | Buffer>): void {
   eocd.writeUInt16LE(0, 20);
 
   writeFileSync(path, Buffer.concat([localData, centralDirectory, eocd]));
+}
+
+function splitFixtureHash(system: string, user: string): string {
+  return createHash("sha256").update(`${system}\n\n---\n\n${user}`).digest("hex").slice(0, 16);
 }

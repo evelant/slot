@@ -466,7 +466,8 @@ public final class WorkspaceCursorCommandService {
                         identity,
                         claimedChestMap,
                         affinityMap,
-                        proximate);
+                        proximate,
+                        WorkspaceChestCommandService.liveChestContentPresence(player));
                 WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
                 for (UUID storageUuid : ranked) {
                     ClaimedChest chest = claimedChestMap.chest(storageUuid);

@@ -297,7 +297,7 @@ per proximate chest. Each chip:
 - Chest name (default `Chest #abcd`, renamable)
 - Slot fullness summary (e.g., `16/27`)
 - Forget on hover/right-click
-- Drag target (deposit routes by affinity)
+- Drag target (deposit routes by affinity or existing matching contents)
 
 Chips do **not** render the chest grid. Contents surface as ghosts on
 islands; the chip is awareness + drag target + forget handle. The
@@ -494,9 +494,10 @@ What gets added:
 ## Edge cases / open questions
 
 - **Bootstrapping.** First-ever deposit into a never-touched chest:
-  no affinity anywhere, item stays in carry. Player manually
-  drops one stack into the chest of their choice; affinity now
-  exists; future deposits route. Acceptable cold start.
+  no affinity anywhere and no claimed proximate chest already holds
+  the item, so the item stays in carry. Player manually drops one
+  stack into the chest of their choice; existing contents and then
+  learned affinity make future deposits route.
 - **Decay rate.** TBD. Probably play-time-based, not wall-clock,
   so a player who shelves the mod for a month doesn't lose state.
 - **Take-window for accidental-placement guard.** 30 s as a

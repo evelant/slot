@@ -19,17 +19,25 @@ import java.util.UUID;
 import java.util.function.ToIntFunction;
 
 /**
- * Affinity-driven deposit routing.
+ * Affinity/content-driven deposit routing.
  *
  * <p>For each carried item, route only to proximate claimed chests that
- * already have a positive learned affinity bond for the exact identity:
- * {@code affinity[chest, identity] > 0}. Similarity, classifier facets,
- * and live chest presence are intentionally ignored so deposit never
- * invents organization the player has not taught it. Highest score wins,
- * with stable storage-id ordering for ties. Items with no direct affinity
- * stay in carry.
+ * either already have a positive learned affinity bond for the exact
+ * identity ({@code affinity[chest, identity] > 0}) or currently hold a
+ * matching item identity. Similarity, classifier facets, empty-chest
+ * fallback, and remote chests are intentionally ignored so deposit never
+ * invents organization the player has not taught or already materialized.
+ * Highest affinity score wins, content-only chests sort after affinity
+ * chests, and stable storage-id ordering breaks remaining ties.
  */
 public final class DepositPlanner {
+    @FunctionalInterface
+    public interface ChestContentPresence {
+        boolean contains(ClaimedChest chest, ItemIdentity identity);
+    }
+
+    private static final ChestContentPresence NO_CONTENT_PRESENCE = (chest, identity) -> false;
+
     private DepositPlanner() {
     }
 
@@ -59,7 +67,25 @@ public final class DepositPlanner {
             Set<String> proximateStorageIds,
             ToIntFunction<ItemIdentity> reservedCountResolver
     ) {
-        if (authority == null || affinityMap == null || claimedChestMap == null) {
+        return plan(authority, affinityMap, claimedChestMap, proximateStorageIds, reservedCountResolver, null);
+    }
+
+    /**
+     * Full overload with kit / desired-count protection and live chest
+     * contents. {@code chestContentPresence} is a deliberately narrow
+     * source of truth: it can say "this proximate claimed chest already
+     * contains this item identity", but cannot rank by similarity,
+     * emptiness, or any other fallback.
+     */
+    public static DepositPlan plan(
+            InventoryAuthoritySnapshot authority,
+            ChestAffinityMap affinityMap,
+            ClaimedChestMap claimedChestMap,
+            Set<String> proximateStorageIds,
+            ToIntFunction<ItemIdentity> reservedCountResolver,
+            ChestContentPresence chestContentPresence
+    ) {
+        if (authority == null || claimedChestMap == null) {
             return DepositPlan.empty();
         }
         Set<String> proximate = proximateStorageIds == null ? Set.of() : proximateStorageIds;
@@ -110,7 +136,7 @@ public final class DepositPlanner {
                     continue;
                 }
                 List<String> candidates = rankCandidates(
-                        identity, claimedChestMap, affinityMap, proximate);
+                        identity, claimedChestMap, affinityMap, proximate, chestContentPresence);
                 if (candidates.isEmpty()) {
                     continue;
                 }
@@ -128,11 +154,11 @@ public final class DepositPlanner {
     }
 
     /**
-     * Rank proximate claimed chests for {@code identity} by direct
-     * learned affinity. Returns storage UUIDs in descending preference
-     * order. Public so callers outside the planner (e.g., the cursor
-     * smart-deposit path) share the exact same routing rules and never
-     * drift.
+     * Rank proximate claimed chests for {@code identity} by direct learned
+     * affinity or existing contents. Returns storage UUIDs in descending
+     * preference order. Public so callers outside the planner (e.g., the
+     * cursor smart-deposit path) share the exact same routing rules and
+     * never drift.
      */
     public static List<UUID> rankChestsForIdentity(
             ItemIdentity identity,
@@ -140,14 +166,27 @@ public final class DepositPlanner {
             ChestAffinityMap affinityMap,
             Set<String> proximateStorageIds
     ) {
-        if (identity == null || claimedChestMap == null || affinityMap == null) {
+        return rankChestsForIdentity(identity, claimedChestMap, affinityMap, proximateStorageIds, null);
+    }
+
+    public static List<UUID> rankChestsForIdentity(
+            ItemIdentity identity,
+            ClaimedChestMap claimedChestMap,
+            ChestAffinityMap affinityMap,
+            Set<String> proximateStorageIds,
+            ChestContentPresence chestContentPresence
+    ) {
+        if (identity == null || claimedChestMap == null) {
             return List.of();
         }
         Set<String> proximate = proximateStorageIds == null ? Set.of() : proximateStorageIds;
         if (proximate.isEmpty()) {
             return List.of();
         }
-        record Candidate(UUID storageId, int score) {
+        ChestContentPresence contentPresence = chestContentPresence == null
+                ? NO_CONTENT_PRESENCE
+                : chestContentPresence;
+        record Candidate(UUID storageId, int score, boolean containsIdentity) {
         }
         ArrayList<Candidate> ranked = new ArrayList<>();
         for (ClaimedChest chest : claimedChestMap.chests()) {
@@ -158,17 +197,19 @@ public final class DepositPlanner {
             if (!proximate.contains(storageUuid.toString())) {
                 continue;
             }
-            int score = affinityMap.score(storageUuid, identity);
-            if (score <= 0) {
+            int score = affinityMap == null ? 0 : affinityMap.score(storageUuid, identity);
+            boolean containsIdentity = contentPresence.contains(chest, identity);
+            if (score <= 0 && !containsIdentity) {
                 continue;
             }
-            ranked.add(new Candidate(storageUuid, score));
+            ranked.add(new Candidate(storageUuid, score, containsIdentity));
         }
         if (ranked.isEmpty()) {
             return List.of();
         }
         ranked.sort(Comparator
                 .<Candidate>comparingInt(c -> -c.score())
+                .thenComparing(c -> !c.containsIdentity())
                 .thenComparing(c -> c.storageId().toString()));
         ArrayList<UUID> ids = new ArrayList<>(ranked.size());
         for (Candidate candidate : ranked) {
@@ -179,7 +220,7 @@ public final class DepositPlanner {
 
     /**
      * Explicit single-identity deposit ranking. This is intentionally the
-     * same direct-affinity rule as bulk deposit: a per-item gesture may
+     * same affinity/content rule as bulk deposit: a per-item gesture may
      * choose how much to deposit, but it still must not choose a chest by
      * inferred similarity or emptiness.
      */
@@ -190,6 +231,17 @@ public final class DepositPlanner {
             Set<String> proximateStorageIds
     ) {
         return rankChestsForIdentity(identity, claimedChestMap, affinityMap, proximateStorageIds);
+    }
+
+    public static List<UUID> rankChestsForExplicitDeposit(
+            ItemIdentity identity,
+            ClaimedChestMap claimedChestMap,
+            ChestAffinityMap affinityMap,
+            Set<String> proximateStorageIds,
+            ChestContentPresence chestContentPresence
+    ) {
+        return rankChestsForIdentity(
+                identity, claimedChestMap, affinityMap, proximateStorageIds, chestContentPresence);
     }
 
     /**
@@ -240,10 +292,11 @@ public final class DepositPlanner {
             ItemIdentity identity,
             ClaimedChestMap claimedChestMap,
             ChestAffinityMap affinityMap,
-            Set<String> proximate
+            Set<String> proximate,
+            ChestContentPresence chestContentPresence
     ) {
         List<UUID> uuids = rankChestsForIdentity(
-                identity, claimedChestMap, affinityMap, proximate);
+                identity, claimedChestMap, affinityMap, proximate, chestContentPresence);
         if (uuids.isEmpty()) {
             return List.of();
         }

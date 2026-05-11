@@ -508,10 +508,10 @@ final class SlotWorkspaceUiController {
     }
 
     /**
-     * Whether this carried atlas item has a "push" target. With affinity
-     * routing the answer is just "any proximate chest is available", since
-     * the deposit RPC walks affinity server-side. Without proximate chests
-     * there's nothing to push to.
+     * Whether this carried atlas item has a "push" target. With
+     * affinity/content routing the answer is just "any proximate chest is
+     * available", since the deposit RPC applies the exact server-side
+     * routing rule. Without proximate chests there's nothing to push to.
      */
     boolean atlasItemHasDepositTarget(SlotWorkspaceViewModel.AtlasItem item) {
         if (item == null) {

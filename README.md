@@ -60,8 +60,9 @@ Design:
   earlier "collections + loadouts").
 - [docs/design/classification/README.md](docs/design/classification/README.md)
   — item classification system overview: data layout, facet catalog, layer
-  format, and where the dataset comes from. Powers atlas-homing and future
-  semantic search / theme detection / clutter review.
+  format, and where the dataset comes from. Powers wall-home suggestions,
+  classification diagnostics, runtime export, rehome, and future semantic
+  task/search views.
 
 Plans:
 
@@ -81,6 +82,15 @@ Plans:
 - [docs/plans/classification-database.md](docs/plans/classification-database.md)
   — proposed public classification database, installed-pack scanning, and
   contribution workflow plan.
+- [docs/plans/classification-facet-vocabulary.md](docs/plans/classification-facet-vocabulary.md)
+  — proposed two-stage workflow-vocabulary and facet-generation plan for
+  better classification data.
+- [docs/plans/emi-goal-projections.md](docs/plans/emi-goal-projections.md)
+  — proposed EMI-pinned recipe goal tabs with normal wall cards, ghosts,
+  pips, and goal-scoped desired counts.
+- [docs/plans/ambient-task-views.md](docs/plans/ambient-task-views.md)
+  — deferred/research plan for generic task views such as Cooking,
+  Exploration, Mining, Cleanup, and Ore Processing.
 - [docs/plans/inventory-fullness.md](docs/plans/inventory-fullness.md)
   — proposed UI slice for surfacing carried-inventory capacity
   without per-bag routing controls. Not yet active.
@@ -143,6 +153,11 @@ is not part of the current project.
 - Reflection belongs behind narrow compat bridges.
 - UI refresh must preserve valid interaction state unless the logical session
   changed.
+- Classification LLM stages should receive as much semantic evidence as
+  practical: tooltip/lore prose, guidebook and quest text, lang-resolved
+  descriptions, KubeJS/datapack overlays, and mod descriptions. Do not reduce
+  pack vocabulary work to a handful of seed item ids; the cheap large-context
+  model should see enough text to infer the actual pack concepts.
 
 ## Development
 

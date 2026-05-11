@@ -355,7 +355,7 @@ class FacetIndexTest {
                           "mode": "add"
                         },
                         "activity": {
-                          "values": ["redstone", "transportation"],
+                          "values": ["slot:redstone", "slot:transportation"],
                           "mode": "add"
                         },
                         "flavor": {"values": ["mechanical"], "mode": "add"},
@@ -371,7 +371,7 @@ class FacetIndexTest {
         FacetIndex index = FacetIndex.load(new StringReader(json));
         assertEquals(List.of("create:mechanical_power"), index.subsystems("create:cogwheel"));
         assertEquals(List.of("create:mechanical_power"), index.organizationGroups("create:cogwheel"));
-        assertEquals(List.of("redstone", "transportation"), index.activities("create:cogwheel"));
+        assertEquals(List.of("slot:redstone", "slot:transportation"), index.activities("create:cogwheel"));
         assertEquals(Optional.of("mechanical"), index.flavor("create:cogwheel"));
         assertEquals(Optional.of("frequent"), index.carryFrequency("create:cogwheel"));
         assertEquals(Optional.of("common"), index.rarity("create:cogwheel"));

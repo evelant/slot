@@ -20,6 +20,8 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -60,10 +62,11 @@ public final class WorkspaceChestCommandService {
                 affinityMap,
                 claimedChestMap,
                 proximate,
-                reservedCountResolver(runtime)
+                reservedCountResolver(runtime),
+                liveChestContentPresence(player)
         );
         SlotCommon.LOGGER.info(
-                "[SLOT] deposit plan: assignments={} (one per stack with learned affinity)",
+                "[SLOT] deposit plan: assignments={} (one per stack with learned affinity or matching contents)",
                 plan.assignments().size());
         DepositExecutor.DepositOutcome outcome = DepositExecutor.execute(player, plan, claimedChestMap);
         for (DepositExecutor.DepositRecord record : outcome.records()) {
@@ -75,7 +78,7 @@ public final class WorkspaceChestCommandService {
             return WorkspaceCommandOutcome.accepted(
                     "nothing_to_deposit",
                     plan.assignments().isEmpty()
-                            ? "no carried stack has learned affinity with a proximate chest"
+                            ? "no carried stack has learned affinity or matching contents with a proximate chest"
                             : "all candidate chests rejected the items");
         }
         if (outcome.deposited() > 0 && outcome.failed() == 0) {
@@ -391,7 +394,8 @@ public final class WorkspaceChestCommandService {
                 identity,
                 claimedChestMap,
                 affinityMap,
-                proximate);
+                proximate,
+                liveChestContentPresence(player));
         WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
         for (UUID storageId : ranked) {
             ClaimedChest chest = claimedChestMap.chest(storageId);
@@ -436,7 +440,8 @@ public final class WorkspaceChestCommandService {
                 identity,
                 claimedChestMap,
                 affinityMap,
-                proximate);
+                proximate,
+                liveChestContentPresence(player));
         if (ranked.isEmpty()) {
             return List.of();
         }
@@ -478,6 +483,44 @@ public final class WorkspaceChestCommandService {
             case STACK -> depositable;
             case ITEM -> Math.min(1, depositable);
         };
+    }
+
+    static DepositPlanner.ChestContentPresence liveChestContentPresence(ServerPlayer player) {
+        if (player == null || player.getServer() == null || !StorageAccessRegistry.isInstalled()) {
+            return (chest, identity) -> false;
+        }
+        MinecraftServer server = player.getServer();
+        WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
+        LinkedHashMap<UUID, Set<ItemIdentity>> identitiesByChest = new LinkedHashMap<>();
+        return (chest, identity) -> {
+            if (chest == null || identity == null) {
+                return false;
+            }
+            Set<ItemIdentity> identities = identitiesByChest.computeIfAbsent(
+                    chest.storageId(),
+                    ignored -> liveChestIdentities(server, world, chest));
+            return identities.contains(ItemIdentityMatcher.normalizeMovable(identity));
+        };
+    }
+
+    private static Set<ItemIdentity> liveChestIdentities(
+            MinecraftServer server,
+            WorldStorageAccess world,
+            ClaimedChest chest
+    ) {
+        if (server == null || world == null || chest == null) {
+            return Set.of();
+        }
+        LinkedHashSet<ItemIdentity> identities = new LinkedHashSet<>();
+        WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(chest);
+        for (WorldStorageAccess.SlotContent entry : world.enumerate(server, target)) {
+            ItemStack stack = entry.stack();
+            if (stack == null || stack.isEmpty()) {
+                continue;
+            }
+            identities.add(ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack)));
+        }
+        return Set.copyOf(identities);
     }
 
     public static ChestProximityResult resolveProximateChest(

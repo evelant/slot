@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-05-10
+Last updated: 2026-05-11
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -78,14 +78,15 @@ Thin log; full detail lives in `git log` and the linked archived
 plans. Older entries are deleted — `git log` and `done/<plan>.md`
 hold the rest.
 
-- **2026-05-10** — classification pack-layer pass landed installed
+- **2026-05-11** — classification pack-layer pass landed installed
   `mods/` scanning, jar-backed static extraction, OpenRouter-backed
   stage 3, runtime subsystem vocabulary, Forge/NeoForge runtime export,
   datapack generation, dynamic organization/subsystem auto-home cohorts,
-  and `/slot classification inspect` / `rehome`; deposit routing was
-  tightened back to exact learned chest affinity only, with facet,
-  presence, similarity, and emptiest-chest fallbacks removed from
-  auto-choice paths.
+  `/slot classification inspect` / `rehome`, and the first
+  vocabulary-backed facet schema/validator contract plus
+  `facet-evidence.json` assembly and pack facet vocabulary proposal;
+  deposit routing was tightened back to explicit chest signals
+  (learned affinity or existing matching contents).
 - **2026-05-07** — Forge parity pass moved active-kit gather and
   in-world kit-page cycle into shared common services, registered
   `GATHER_ACTIVE_KIT`, wired in-screen gather through catalog actions
@@ -212,19 +213,30 @@ track lands.
    labels); per-row "→ suggested home" preview on the loot-chest
    panel; atlas-deposit take-back guard (only revisit if playtest
    shows stuck affinity).
-3. **Runtime-crawl deterministic fallback**
+3. **Classification facet vocabulary generation**
+   ([classification-facet-vocabulary.md](classification-facet-vocabulary.md)).
+   Slices 0-2 landed: the registry has vocabulary-backed semantic
+   facets, scoped value-id grammar, layer facet validation, vocabulary
+   artifact validation, parser/prompt coverage, and
+   `collect-pack-facet-evidence` for runtime/static/guide/quest/
+   advancement evidence plus Ponder/category lang text, KubeJS client
+   tooltip mappings, stack groups, and zipped resource-pack lang overrides;
+   `propose-pack-facet-vocabulary` emits accepted/review/rejected vocabulary
+   artifacts with fixture/replay tests and large semantic prompts. Next
+   slice is stage-3 vocabulary integration.
+4. **Runtime-crawl deterministic fallback**
    ([item-classification.md § Runtime discovery](item-classification.md#runtime-discovery)).
    Walks the live registry to derive deterministic facets
    (`material_family`, `form`, `processing_in`) for mods we don't
-   have LLM data for. Defer until facet-driven-suggestions plays out
-   — the next gap might already close from a richer prompt regen.
-4. **Item-classification stage-4 NN priming + confidence-band
+   have LLM data for. Defer until the facet-vocabulary path lands;
+   the next gap should close from richer pack semantics.
+5. **Item-classification stage-4 NN priming + confidence-band
    ranking + acceptance-rate logging**
    ([item-classification.md § Integration sequence](item-classification.md#integration-sequence-next-concrete-work)
    step 6). Now that the FacetIndex-driven populate path playtests
    clean, this is the next layer of suggestion-quality work that
    sits above facet-driven-suggestions.
-5. **Kit-holdout deposit + explicit withdraw verb.** Two pieces of
+6. **Kit-holdout deposit + explicit withdraw verb.** Two pieces of
    open work that the retired storage-prototype plan tracked under
    Slices 4b / 5; they need re-planning against the current chip /
    affinity model.
@@ -237,26 +249,17 @@ track lands.
      reachable Kit-needed identities from proximate chests in one
      click. A general-purpose withdraw verb (independent of an active
      Kit) hasn't been planned. Defer until playtest signals demand.
-6. **Kit prototype slice 4** ([kit-prototype.md](kit-prototype.md)).
-7. **Single-column workspace width pass**
+7. **Kit prototype slice 4** ([kit-prototype.md](kit-prototype.md)).
+8. **Single-column workspace width pass**
    ([single-column-workspace.md](single-column-workspace.md)). Paused
    while the cross-loader/platform boundary is active. Resume once the
    Forge 1.20.1 shared compile gate and UI SPI direction are stable.
-8. **Workspace projection caching.** Surfaced 2026-05-04 while
-   wiring the cross-surface drag log spam: `SlotWorkspaceViewModel`
-   re-projects the full carried/proximate/elsewhere/kit-needed
-   identity census on every server tick per player with the
-   workspace open, regardless of whether anything changed. The sync
-   layer compares serialized bytes and only sends on real change so
-   network/client are cheap, but the server-side scan is wasted CPU
-   in steady state. Natural cache invalidators: player inventory
-   delta, chest content delta (deposit / withdraw / break), kit
-   activate / deactivate / edit, player movement crossing a
-   chest-proximity threshold. The `SlotDiagnostics.identityResolution`
-   dedupe (content-hash of the inputs, only logs on change) is the
-   diagnostic tip of this iceberg — a real cache makes the log
-   stop spamming "for free" but is the smaller benefit; the bigger
-   one is server CPU on populated worlds.
+9. **Workspace projection caching.** `SlotWorkspaceViewModel`
+   re-projects carried / proximate / elsewhere / kit-needed identities
+   every server tick while open. Add cache invalidators for inventory
+   deltas, chest content, kit changes, and chest-proximity movement;
+   the main win is server CPU, with log-spam reduction as a side
+   benefit.
 
 ## Deferred experiments
 

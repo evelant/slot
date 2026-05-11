@@ -3,6 +3,7 @@ import { buildItemTagClosure, buildItemTagMembership } from "../tags.ts";
 import { buildRecipeRoles } from "../recipes.ts";
 import { buildLootSources } from "../loot.ts";
 import { resolveModelParents } from "../models.ts";
+import { itemSemanticTextFromLang } from "../semantic_text.ts";
 import {
   ensureVanillaSource,
   loadSummaryBundle,
@@ -56,6 +57,11 @@ export function extractFromBundle(
     const displayName = enUs[`item.${VANILLA_NAMESPACE}.${shortId}`]
       ?? enUs[`block.${VANILLA_NAMESPACE}.${shortId}`]
       ?? null;
+    const semanticText = itemSemanticTextFromLang({
+      lang: enUs,
+      namespace: VANILLA_NAMESPACE,
+      path: shortId,
+    });
 
     const membership = tagMembership.get(id);
     records.push({
@@ -79,6 +85,7 @@ export function extractFromBundle(
       // modded extractors fill it where the mod exposes tab membership.
       creative_tabs: [],
       component_data: components,
+      ...(semanticText.length > 0 ? { semantic_text: semanticText } : {}),
     });
   }
   records.sort((a, b) => a.id.localeCompare(b.id));

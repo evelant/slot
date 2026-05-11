@@ -1,6 +1,6 @@
 # Item Classification Tool Guide
 
-Last updated: 2026-05-10
+Last updated: 2026-05-11
 
 Concise operator/developer guide for the SLOT item classification tool:
 what it does, how it works, how to use it today, and where the tool is
@@ -21,15 +21,17 @@ Examples:
   `material_family=iron`, `form=ingot`, `processing_in=crafting`,
   and `primary_uses=[...]`.
 - `create:cogwheel` can get facets like `role=mechanism`,
-  `activity=automation`, and `mod_subsystem=create:kinetics`.
+  `activity=slot:automation`, and `mod_subsystem=create:kinetics`.
 - `tfc:ceramic/ingot_mold` can get `role=utility` plus
   `organization_group=tfc:casting`, which tells SLOT it belongs in the
   player's casting/metalworking area instead of a broad Utility pile.
 
 SLOT uses these facets to make item organization feel semantic instead
 of substring-driven. The immediate runtime use is better default homes
-and section suggestions; future uses include search, theme detection,
-kit suggestions, and clutter review.
+and section suggestions, plus `/slot classification inspect`, runtime
+export, and rehome diagnostics. The next semantic consumers should be
+task/search views backed by facets such as `workflow`, `used_at`,
+`loadout_context`, and `use_affordance`.
 
 ## What The Tool Does Not Do
 
@@ -102,22 +104,30 @@ An LLM fills judgment-call facets:
 
 - `role`
 - `activity`
+- `workflow`
+- `workflow_role`
+- `used_at`
 - `primary_uses`
 - `palette`
 - `flavor`
 - `carry_frequency`
 - `mod_subsystem`
 - `organization_group`
+- `food_category`, `food_use`, `preparation_state`,
+  `material_process_stage`, `stock_profile`, `container_state`,
+  `equipment_effect`, `protection_context`, `progression_stage`,
+  `loadout_context`, `use_affordance`
 
 The output is validated, cached, and reviewed. The model can propose
 schema changes or flag deterministic-rule mistakes, but those are review
 queues, not automatic truth.
 
-Before stage 3, the tool can run a `mod_subsystem` vocabulary pre-pass.
-For source-tree mods this reads README/mod metadata. For runtime exports
-it reads the whole loaded pack export and proposes namespace-scoped
-subsystem labels, so later item batches choose from a stable vocabulary
-instead of inventing labels item-by-item.
+Before stage 3, the tool can validate a pack facet vocabulary artifact.
+Vocabulary-backed facets use stable ids (`slot:cooking`,
+`create:mechanical_power`, `pack:tfg2/steelmaking`, and scoped
+`pack:tfg2/steelmaking#input`) rather than display labels. The older
+`mod_subsystem` vocabulary pre-pass still exists; the broader
+`facet-vocabulary.json` generation command is the next pipeline slice.
 
 `organization_group` is the stronger auto-home signal for large packs.
 It answers "where would a skilled player put this item?" and can split
@@ -297,6 +307,40 @@ and loot-table sources. The datapack output is a folder containing
 `data/slot/classification/layers/<pack>.json`; drop it into a world or
 pack datapacks folder so SLOT can load it without rebuilding the mod jar.
 
+Collect pack-level evidence before proposing vocabulary-backed semantic
+facets:
+
+```sh
+bun run src/cli.ts collect-pack-facet-evidence \
+  --runtime-export exports/pack.runtime-items.ndjson \
+  --summary exports/pack.runtime-summary.json \
+  --mods /path/to/prism/instance-or-minecraft/mods \
+  --out out
+```
+
+This writes `out/<pack>.facet-evidence.json`. The artifact keeps compact
+runtime item facts, recipe-type summaries, recipe-role summaries, recipe-id
+families, item/block tags, optional mod metadata, guide pages, quest nodes,
+advancements, and adapter diagnostics. Missing guide or quest data is an
+informational diagnostic, not a failed run.
+
+Propose a pack vocabulary from that evidence:
+
+```sh
+bun run src/cli.ts propose-pack-facet-vocabulary \
+  --evidence out/pack/pack.facet-evidence.json \
+  --out out/pack \
+  --record-replay \
+  --fixture-dir test/fixtures/pack-facet-vocabulary
+```
+
+Use `--dry-run` to inspect the per-facet curation prompts, `--facet <id>` to
+iterate on one vocabulary-backed facet, `--namespace <id>` to limit evidence,
+and `--previous-vocabulary <path>` to preserve earlier accepted ids.
+The command writes `facet-vocabulary.json` plus
+`facet-vocabulary.review.json`; stage 3 consumes the accepted values in the
+next integration slice.
+
 For a real pack run, prefer the one-command wrapper:
 
 ```sh
@@ -333,6 +377,9 @@ Validate a layer:
 
 ```sh
 bun run src/cli.ts validate out/createaddition.facets.complete.json
+bun run src/cli.ts validate out/tfg2.pack.facets.complete.json \
+    --vocabulary out/tfg2.facet-vocabulary.json
+bun run src/cli.ts validate-vocabulary out/tfg2.facet-vocabulary.json
 ```
 
 Sync generated layers into runtime resources:

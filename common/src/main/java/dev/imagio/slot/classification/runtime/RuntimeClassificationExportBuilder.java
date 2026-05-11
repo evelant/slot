@@ -78,8 +78,11 @@ public final class RuntimeClassificationExportBuilder {
         record.add("recipe_role", recipes.recipeRole(item.id()));
         record.add("model_parents", new JsonArray());
         record.add("loot_table_sources", new JsonArray());
-        record.add("creative_tabs", new JsonArray());
+        record.add("creative_tabs", stringArray(item.creativeTabs()));
         record.add("component_data", copyObject(item.componentData()));
+        if (!item.semanticText().isEmpty()) {
+            record.add("semantic_text", semanticTextArray(item.semanticText()));
+        }
         record.add("extractor_meta", extractorMeta(item, summary));
         return record;
     }
@@ -124,6 +127,36 @@ public final class RuntimeClassificationExportBuilder {
         return array;
     }
 
+    private static JsonArray semanticTextArray(Collection<SemanticEntry> values) {
+        JsonArray array = new JsonArray();
+        for (SemanticEntry value : semanticEntries(values)) {
+            JsonObject entry = new JsonObject();
+            entry.addProperty("source", value.source());
+            if (!value.key().isBlank()) {
+                entry.addProperty("key", value.key());
+            }
+            entry.addProperty("text", value.text());
+            array.add(entry);
+        }
+        return array;
+    }
+
+    public static SemanticEntry runtimeTooltip(String text) {
+        return new SemanticEntry("runtime-tooltip", "", text);
+    }
+
+    private static List<SemanticEntry> semanticEntries(Collection<SemanticEntry> values) {
+        LinkedHashMap<String, SemanticEntry> unique = new LinkedHashMap<>();
+        if (values != null) {
+            values.stream()
+                    .filter(Objects::nonNull)
+                    .map(SemanticEntry::normalized)
+                    .filter(value -> !value.text().isBlank())
+                    .forEach(value -> unique.putIfAbsent(value.source() + "\u0000" + value.key() + "\u0000" + value.text(), value));
+        }
+        return List.copyOf(unique.values());
+    }
+
     private static JsonObject countObject(Map<String, Integer> values) {
         JsonObject object = new JsonObject();
         if (values == null) {
@@ -150,6 +183,8 @@ public final class RuntimeClassificationExportBuilder {
             String displayName,
             String translationKey,
             List<String> itemTags,
+            List<String> creativeTabs,
+            List<SemanticEntry> semanticText,
             JsonObject componentData,
             BlockEntry block
     ) {
@@ -160,7 +195,25 @@ public final class RuntimeClassificationExportBuilder {
             displayName = Objects.requireNonNullElse(displayName, "");
             translationKey = Objects.requireNonNullElse(translationKey, "");
             itemTags = sortedStrings(itemTags);
+            creativeTabs = sortedStrings(creativeTabs);
+            semanticText = semanticEntries(semanticText);
             componentData = componentData == null ? new JsonObject() : componentData;
+        }
+    }
+
+    public record SemanticEntry(
+            String source,
+            String key,
+            String text
+    ) {
+        public SemanticEntry {
+            source = Objects.requireNonNullElse(source, "runtime-tooltip").trim();
+            key = Objects.requireNonNullElse(key, "").trim();
+            text = Objects.requireNonNullElse(text, "").trim();
+        }
+
+        private SemanticEntry normalized() {
+            return new SemanticEntry(source, key, text.replaceAll("\\s+", " ").trim());
         }
     }
 
@@ -289,7 +342,8 @@ public final class RuntimeClassificationExportBuilder {
             JsonArray notes = new JsonArray();
             notes.add("Item tags are live resolved runtime membership; minecraft_tags_direct is intentionally empty because runtime tag APIs do not expose direct provenance.");
             notes.add("Recipe outputs use Recipe#getResultItem, so multi-output custom recipes may need a later extractor pass.");
-            notes.add("Model, loot-table, and creative-tab fields are intentionally empty in runtime export v1.");
+            notes.add("Creative tabs are rebuilt from live runtime tab contents when the loader exposes them; search/inventory/hotbar/op tabs are omitted.");
+            notes.add("Model and loot-table fields are intentionally empty in runtime export v1.");
             object.add("runtime_notes", notes);
             return object;
         }

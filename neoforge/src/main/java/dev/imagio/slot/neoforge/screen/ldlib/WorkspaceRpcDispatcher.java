@@ -782,9 +782,9 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
 
     /**
      * Smart-deposit: route the cursor stack through the deposit cascade
-     * (desired-count gap → proximate chest with affinity → home → Triage).
-     * Bound to the root-level left-click handler when carrying and no
-     * specific drop target handles the click.
+     * (desired-count gap → proximate chest with affinity or matching
+     * contents → home → Triage). Bound to the root-level left-click
+     * handler when carrying and no specific drop target handles the click.
      */
     void sendCursorSmartDeposit() {
         if (cursorSmartDepositEmitter == null) {

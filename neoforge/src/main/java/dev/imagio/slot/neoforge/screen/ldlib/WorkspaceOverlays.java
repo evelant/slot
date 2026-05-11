@@ -94,16 +94,16 @@ final class WorkspaceOverlays {
             }
             host.rpc.sendDeposit();
         });
-        // Deposit is *affinity-driven* — only stacks the player has
-        // already deposited into a proximate chest at least once go
-        // automatically. Items with no learned bond stay in carry. The
-        // tooltip surfaces this so the player understands "nothing to
-        // deposit" instead of assuming the button is broken.
+        // Deposit is driven by explicit organization signals: learned
+        // affinity or existing matching contents in a proximate chest. Items
+        // with neither signal stay in carry. The tooltip surfaces this so
+        // the player understands "nothing to deposit" instead of assuming
+        // the button is broken.
         host.installTextTooltip(
                 depositButton,
                 Component.literal(
-                        "Deposit carried items into proximate chests by learned affinity. "
-                                + "Items without an existing bond stay in carry — drop one in manually first to teach the chest."));
+                        "Deposit carried items into proximate chests by learned affinity or matching contents. "
+                                + "Items without either signal stay in carry."));
 
         // Top-level Gather button. Common gather semantics cover both
         // player-global desired counts and active-kit needs; the wire name
@@ -220,8 +220,8 @@ final class WorkspaceOverlays {
      * Number of distinct carried identities the planner would route into
      * a proximate chest right now. Read off
      * {@link SlotWorkspaceViewModel#depositableIdentities()} which the
-     * server projects from the affinity map. Drives the deposit
-     * button's "Deposit (N)" label and visibility.
+     * server projects from affinity and live chest contents. Drives the
+     * deposit button's "Deposit (N)" label and visibility.
      */
     private int countDepositable() {
         return host.viewModel.depositableIdentities().size();

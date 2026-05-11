@@ -39,7 +39,7 @@ The full universal click table while carrying:
 | 8 | Left-click anywhere else (empty UI region, search results, etc.) | Smart-deposit cascade |
 
 Smart-deposit cascade: desired-count gap fill → proximate chest with
-affinity → home → Triage. Reuses
+affinity or existing matching contents → home → Triage. Reuses
 [`DepositPlanner`](../../common/src/main/java/dev/imagio/slot/inventory/workspace/DepositPlanner.java)
 end-to-end.
 

@@ -428,7 +428,7 @@ class IslandSuggestionServiceTest {
                 null,
                 null,
                 List.of(),
-                List.of("building"),
+                List.of("slot:building"),
                 null,
                 null,
                 null,

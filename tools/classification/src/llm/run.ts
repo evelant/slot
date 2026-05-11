@@ -1,9 +1,12 @@
 import type { ItemExtractRecord } from "../extract/record.ts";
 import type { LayerFile } from "../deterministic/run.ts";
+import type { PackFacetVocabulary } from "../schema/vocabulary.ts";
+import type { DocumentContextByItem } from "./document_context.ts";
 import type { LlmClient, QueryOptions } from "./client.ts";
 import {
   buildBatchPrompt,
   buildItemPayload,
+  buildPromptFacetVocabulary,
   buildSplitPrompt,
   defaultTargetFacets,
   type LlmItemPayload,
@@ -31,6 +34,8 @@ export interface Stage3Options {
   only?: readonly string[];
   /** Override the facet set the LLM tries to populate. */
   targetFacets?: readonly string[];
+  /** Optional guidebook/advancement context, keyed by item id. */
+  documentContextByItem?: DocumentContextByItem;
   /** Max parallel in-flight batches. Default 1 (serial). */
   concurrency?: number;
   /** QueryOptions passthrough (binary path, timeout). */
@@ -43,6 +48,8 @@ export interface Stage3Options {
    * Omit for vanilla / mods with no meaningful subsystem groupings.
    */
   subsystemVocabulary?: readonly SubsystemVocabularyEntry[];
+  /** Accepted pack vocabulary for vocabulary-backed facets. */
+  facetVocabulary?: PackFacetVocabulary;
   /**
    * Namespace-scoped canonical vocabulary for mixed-namespace inputs, such as
    * runtime exports from a loaded modpack. Each batch receives only entries
@@ -134,6 +141,7 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
   const model = options.model ?? DEFAULT_MODEL;
   const batchSize = options.batchSize ?? DEFAULT_BATCH_SIZE;
   const targetFacets = options.targetFacets ?? defaultTargetFacets();
+  const facetVocabulary = buildPromptFacetVocabulary(options.facetVocabulary, targetFacets);
   const recordIndex = new Map(options.records.map((r) => [r.id, r]));
 
   const selected = options.only
@@ -169,7 +177,7 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
 
     const payloads: LlmItemPayload[] = batch.map((record) => {
       const stage2 = options.stage2Layer.entries[record.id]?.facets ?? {};
-      return buildItemPayload(record, stage2);
+      return buildItemPayload(record, stage2, options.documentContextByItem?.[record.id]);
     });
 
     // Prefer split prompt when the client supports it — sends the stable
@@ -211,6 +219,7 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
         options.subsystemVocabulary,
         options.subsystemVocabularyByNamespace,
       ),
+      facet_vocabulary: facetVocabulary,
       prompt_extras: options.promptExtras
         ? {
             verbose_facet_disambiguation: options.promptExtras.verboseFacetDisambiguation,

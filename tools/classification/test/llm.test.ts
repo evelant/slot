@@ -5,6 +5,7 @@ import { join } from "node:path";
 import {
   buildBatchPrompt,
   buildItemPayload,
+  buildPromptFacetVocabulary,
   buildSplitPrompt,
   defaultTargetFacets,
 } from "../src/llm/prompt.ts";
@@ -20,8 +21,11 @@ import {
   buildRuntimeSubsystemContexts,
   loadSubsystemVocabularyFile,
 } from "../src/llm/runtime_subsystems.ts";
+import { buildDocumentContextByItem } from "../src/llm/document_context.ts";
+import type { FacetEvidenceArtifact } from "../src/evidence/facet_evidence.ts";
 import type { ItemExtractRecord } from "../src/extract/record.ts";
 import type { LayerFile } from "../src/deterministic/run.ts";
+import type { PackFacetVocabulary } from "../src/schema/vocabulary.ts";
 
 function ironIngotRecord(): ItemExtractRecord {
   return {
@@ -126,6 +130,9 @@ describe("prompt building", () => {
     const targets = defaultTargetFacets();
     expect(targets).toContain("role");
     expect(targets).toContain("activity");
+    expect(targets).toContain("workflow");
+    expect(targets).toContain("workflow_role");
+    expect(targets).toContain("used_at");
     expect(targets).toContain("primary_uses");
     // facets that are deterministic-only should NOT appear
     expect(targets).not.toContain("mod_namespace");
@@ -204,8 +211,66 @@ describe("prompt building", () => {
     expect(runtimePrompt.system).toContain("never emit it as a scalar `value`");
   });
 
+  test("pack facet vocabulary grounds vocabulary-backed facets", () => {
+    const vocabulary: PackFacetVocabulary = {
+      schema_version: 1,
+      kind: "slot-pack-facet-vocabulary",
+      pack_id: "fixture",
+      facets: {
+        workflow: {
+          values: {
+            "tfc:casting": {
+              label: "Casting",
+              description: "Mold-based metal casting.",
+              origin: "pack_generated",
+              state: "accepted",
+            },
+            "tfc:maybe": {
+              label: "Maybe",
+              origin: "pack_generated",
+              state: "review",
+            },
+          },
+        },
+        progression_stage: {
+          values: {
+            "pack:fixture/lv_low_voltage": {
+              label: "Low Voltage",
+              description: "Low Voltage machine age.",
+              origin: "pack_generated",
+              state: "accepted",
+            },
+          },
+        },
+      },
+    };
+    const prompt = buildSplitPrompt({
+      items: [buildItemPayload(ironIngotRecord(), {})],
+      target_facets: ["workflow", "progression_stage", "role"],
+      facet_vocabulary: buildPromptFacetVocabulary(vocabulary, ["workflow", "progression_stage", "role"]),
+    });
+
+    expect(prompt.system).toContain("# Pack facet vocabulary");
+    expect(prompt.system).toContain("use only these accepted ids");
+    expect(prompt.system).toContain("`tfc:casting`");
+    expect(prompt.system).toContain("`pack:fixture/lv_low_voltage`");
+    expect(prompt.system).not.toContain("tfc:maybe");
+    expect(prompt.system).toContain("Do not invent a syntactically valid id");
+  });
+
   test("payload carries block context and semantic runtime components", () => {
     const r = ironIngotRecord();
+    r.semantic_text = [
+      {
+        source: "runtime-tooltip",
+        text: "Stores heat and can be worked on an anvil.",
+      },
+      {
+        source: "lang",
+        key: "item.minecraft.iron_ingot.tooltip",
+        text: "Stores heat and can be worked on an anvil.",
+      },
+    ];
     r.component_data = {
       "minecraft:max_stack_size": 1,
       "minecraft:max_damage": 250,
@@ -230,6 +295,94 @@ describe("prompt building", () => {
     expect(p.component_highlights["minecraft:max_damage"]).toBe(250);
     expect(p.component_highlights["minecraft:equippable"]).toEqual({ slot: "head" });
     expect(p.component_highlights["minecraft:light_emission"]).toBe(14);
+    expect(p.semantic_text).toEqual([
+      {
+        source: "runtime-tooltip",
+        text: "Stores heat and can be worked on an anvil.",
+      },
+      {
+        source: "lang",
+        key: "item.minecraft.iron_ingot.tooltip",
+        text: "Stores heat and can be worked on an anvil.",
+      },
+    ]);
+  });
+
+  test("payload carries gated document context separately from item semantic text", () => {
+    const record = runtimeRecord({
+      id: "example:gear",
+      displayName: "Runtime Gear",
+    });
+    const siblingRecords = Array.from({ length: 9 }, (_, i) =>
+      runtimeRecord({ id: `example:part_${i}`, displayName: `Part ${i}` })
+    );
+    const evidence: FacetEvidenceArtifact = {
+      schema_version: 1,
+      kind: "slot-pack-facet-evidence",
+      pack_id: "fixture",
+      generated_by: "test",
+      generated_at: "2026-05-11T00:00:00.000Z",
+      source: { runtime_items: "fixture.runtime-items.ndjson", item_count: 10 },
+      records: [
+        {
+          kind: "advancement",
+          id: "example:automation/start",
+          label: "Start Automation",
+          source: "example.jar",
+          confidence: 0.65,
+          item_refs: ["example:gear", "patchouli:text"],
+          semantic_text: [{
+            source: "advancement-description",
+            text: "Build a gear to begin mechanical automation.",
+          }],
+        },
+        {
+          kind: "guide_page",
+          id: "example:broad/parts",
+          label: "Many Parts",
+          source: "example.jar",
+          confidence: 0.7,
+          item_refs: ["example:gear", ...siblingRecords.map((r) => r.id)],
+          semantic_text: [{
+            source: "guide-page",
+            text: "This broad page names too many parts for direct item context.",
+          }],
+        },
+        {
+          kind: "quest_node",
+          id: "pack:ftbquests/chapters/automation",
+          source: "ftbquests",
+          confidence: 0.65,
+          item_refs: ["example:gear"],
+          semantic_text: [{
+            source: "quest-snbt",
+            text: "Chapter-level quest prose should not enter stage 3 yet.",
+          }],
+        },
+      ],
+      diagnostics: [],
+    };
+
+    const { byItem, stats } = buildDocumentContextByItem(evidence, [record, ...siblingRecords]);
+    expect(stats.items_with_context).toBe(1);
+    expect(stats.skipped_broad_documents).toBe(1);
+    expect(stats.skipped_quest_records).toBe(1);
+
+    const payload = buildItemPayload(record, {}, byItem["example:gear"]);
+    expect(payload.document_context).toEqual([
+      {
+        kind: "advancement",
+        id: "example:automation/start",
+        label: "Start Automation",
+        item_ref_count: 1,
+        snippets: [{
+          source: "advancement-description",
+          text: "Build a gear to begin mechanical automation.",
+        }],
+      },
+    ]);
+    expect(JSON.stringify(payload.document_context)).not.toContain("quest");
+    expect(JSON.stringify(payload.document_context)).not.toContain("broad page");
   });
 });
 
@@ -240,7 +393,7 @@ describe("response parsing", () => {
         "minecraft:iron_ingot": {
           facets: {
             role: { value: "material", confidence: 0.98, rationale: "ingot" },
-            activity: { values: ["building", "combat"], confidence: 0.8 },
+            activity: { values: ["slot:building", "slot:combat"], confidence: 0.8 },
           },
         },
       },
@@ -253,7 +406,7 @@ describe("response parsing", () => {
     expect(parsed.warnings).toEqual([]);
     const item = parsed.items.get("minecraft:iron_ingot")!;
     expect(item.facets.role).toMatchObject({ kind: "single", value: "material" });
-    expect(item.facets.activity).toMatchObject({ kind: "multi", values: ["building", "combat"] });
+    expect(item.facets.activity).toMatchObject({ kind: "multi", values: ["slot:building", "slot:combat"] });
   });
 
   test("drops entries with out-of-enum values, keeps others", () => {
@@ -262,7 +415,7 @@ describe("response parsing", () => {
         "minecraft:iron_ingot": {
           facets: {
             role: { value: "nonsense-role", confidence: 0.5 }, // out of enum
-            activity: { values: ["building"], confidence: 0.9 }, // ok
+            activity: { values: ["slot:building"], confidence: 0.9 }, // ok
           },
         },
       },
@@ -387,7 +540,7 @@ describe("response parsing", () => {
         "minecraft:iron_ingot": {
           facets: {
             activity: {
-              values: ["building", "combat"],
+              values: ["slot:building", "slot:combat"],
               signal: "inferred",
               evidence: "ingredient_of: anvil, sword",
               rationale: "common combat + structural usage",
@@ -403,6 +556,32 @@ describe("response parsing", () => {
     expect(a.rationale).toContain("[inferred]");
     expect(a.rationale).toContain("ingredient_of");
     expect(a.rationale).toContain("structural usage");
+  });
+
+  test("accepts vocabulary-backed semantic facets with scoped ids", () => {
+    const response = JSON.stringify({
+      items: {
+        "gtceu:steel_ingot": {
+          facets: {
+            activity: { values: ["slot:automation"], signal: "inferred" },
+            workflow: { values: ["pack:tfg2/steelmaking"], signal: "named" },
+            workflow_role: { values: ["pack:tfg2/steelmaking#input"], signal: "pattern" },
+            used_at: { values: ["gtceu:electric_blast_furnace"], signal: "inferred" },
+          },
+        },
+      },
+    });
+    const parsed = parseLlmResponse(response);
+    const facets = parsed.items.get("gtceu:steel_ingot")!.facets;
+    expect(facets.workflow).toMatchObject({
+      kind: "multi",
+      values: ["pack:tfg2/steelmaking"],
+    });
+    expect(facets.workflow_role).toMatchObject({
+      kind: "multi",
+      values: ["pack:tfg2/steelmaking#input"],
+    });
+    expect(parsed.warnings).toEqual([]);
   });
 
   test("schema_proposals flow through unchanged", () => {
@@ -528,7 +707,7 @@ describe("runStage3", () => {
         "minecraft:iron_ingot": {
           facets: {
             role: { value: "material", confidence: 0.98, rationale: "canonical ingot" },
-            activity: { values: ["building", "combat", "mining"], confidence: 0.9 },
+            activity: { values: ["slot:building", "slot:combat", "slot:mining"], confidence: 0.9 },
             primary_uses: {
               values: ["crafting tools and armor", "anvil repairs"],
               confidence: 0.95,
@@ -555,7 +734,7 @@ describe("runStage3", () => {
     expect(facets.material_family).toMatchObject({ value: "iron" }); // NOT gold
     // stage-3 facets merged
     expect(facets.role).toMatchObject({ value: "material", source: "llm:stage3" });
-    expect(facets.activity).toMatchObject({ values: ["building", "combat", "mining"] });
+    expect(facets.activity).toMatchObject({ values: ["slot:building", "slot:combat", "slot:mining"] });
     expect(facets.primary_uses).toMatchObject({
       values: ["anvil repairs", "crafting tools and armor"],
     });

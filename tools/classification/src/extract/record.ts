@@ -48,11 +48,23 @@ export interface ItemExtractRecord {
   /** Item-component map from mcmeta, e.g. keyed by `minecraft:max_stack_size`. */
   component_data: Record<string, unknown> | null;
   /**
+   * Player-facing semantic text associated with this item: tooltip/lang/lore
+   * prose, resolved display descriptions, or exporter-collected tooltip lines.
+   * Keep this rich; the LLM stages use it as primary semantic evidence.
+   */
+  semantic_text?: SemanticTextEvidence[];
+  /**
    * Extractor-local debug hints / signals that don't fit the shared shape.
    * Included so per-extractor diagnostics can be written without growing
    * the schema.
    */
   extractor_meta?: Record<string, unknown>;
+}
+
+export interface SemanticTextEvidence {
+  source: string;
+  text: string;
+  key?: string;
 }
 
 export interface RecipeRole {

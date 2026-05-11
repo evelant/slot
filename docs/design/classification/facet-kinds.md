@@ -39,7 +39,7 @@ Facet declares a list of allowed values. Zero or more values per entry.
 Wire format:
 
 ```json
-"activity": { "values": ["mining", "combat"], "mode": "add" }
+"flavor": { "values": ["mechanical", "colored"], "mode": "add" }
 ```
 
 Validation: every string in `values` ∈ the facet's declared set. Duplicates within
@@ -47,7 +47,7 @@ the same `values` list are an error.
 
 Modes: `replace`, `add` (default), `remove`.
 
-Examples: `activity`, `origin`, `flavor`, `palette`, `storage_categories`,
+Examples: `origin`, `flavor`, `palette`, `storage_categories`,
 `material_secondary`, `spawn_interaction`, `combat_bonus`, `environmental_property`,
 `transport_medium`.
 
@@ -81,8 +81,27 @@ Wire format:
 
 Modes: `replace`, `add` (default), `remove`.
 
-Examples: `mod_subsystem`, `primary_uses` (uses `^.{1,40}$` for phrases),
-`biome`, `produces_effect`, `multiblock_component_of`.
+Examples: `activity`, `workflow`, `workflow_role`, `used_at`,
+`organization_group`, `mod_subsystem`, `primary_uses` (uses `^.{1,80}$` for
+phrases), `biome`, `produces_effect`, `multiblock_component_of`.
+
+### Vocabulary-backed values
+
+Most semantic `multi_free_text` facets are backed by a pack vocabulary
+artifact. The registry validates shape; `out/<pack>.facet-vocabulary.json`
+validates which values are accepted for that pack.
+
+Canonical value-id forms:
+
+```text
+slot:<token>
+<mod_namespace>:<token_path>
+pack:<pack_id>/<token_path>
+<workflow_value_id>#<role_token>
+```
+
+`token` is lowercase snake case and starts with a letter. `workflow_role` uses
+the scoped `#role` form, for example `pack:tfg2/steelmaking#input`.
 
 ### `boolean` — true/false
 

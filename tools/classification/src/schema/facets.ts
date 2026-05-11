@@ -36,6 +36,12 @@ export interface FacetDef {
   deterministic?: boolean;
   /** 1–3 short example values (for prompt priming on free-text or large enums). */
   examples?: readonly string[];
+  /**
+   * Semantic facet whose allowed values are supplied by a pack vocabulary
+   * artifact. The registry validates the stable id grammar; the vocabulary
+   * artifact validates the accepted value set for a specific pack.
+   */
+  vocabulary_backed?: boolean;
 }
 
 /** The valid `mode` strings for each kind. Matches layer.schema.json. */
@@ -57,13 +63,6 @@ export const ROLE_VALUES = [
   "functional_block", "storage_block", "mechanism", "redstone_component",
   "tool", "weapon", "armor", "consumable", "ammunition", "transport",
   "container_portable", "utility", "curiosity", "upgrade", "trophy", "admin",
-] as const;
-
-export const ACTIVITY_VALUES = [
-  "mining", "combat", "farming", "building", "decorating", "redstone",
-  "automation", "logistics", "storage_management", "exploration",
-  "brewing", "enchanting", "trading", "fishing", "magic",
-  "power_generation", "transportation",
 ] as const;
 
 export const CARRY_FREQUENCY_VALUES = [
@@ -216,6 +215,44 @@ const RARITY_VALUES = ["abundant", "common", "uncommon", "rare", "unique"] as co
 
 const NAMESPACED_TOKEN = /^[a-z0-9_]+(:[a-z0-9_]+)?$/;
 const NAMESPACED_ID = /^[a-z0-9_.-]+:[a-z0-9_/.-]+$/;
+const TOKEN = "[a-z][a-z0-9_]*";
+const TOKEN_PATH = `${TOKEN}(?:/${TOKEN})*`;
+const PACK_ID = "[a-z0-9_.-]+";
+
+export const VOCABULARY_VALUE_ID_PATTERN = new RegExp(
+  `^(?:slot:${TOKEN}|[a-z0-9_.-]+:${TOKEN_PATH}|pack:${PACK_ID}/${TOKEN_PATH})$`,
+);
+export const SCOPED_VOCABULARY_VALUE_ID_PATTERN = new RegExp(
+  `^(?:slot:${TOKEN}|[a-z0-9_.-]+:${TOKEN_PATH}|pack:${PACK_ID}/${TOKEN_PATH})#${TOKEN}$`,
+);
+
+export function isVocabularyValueId(value: string): boolean {
+  return VOCABULARY_VALUE_ID_PATTERN.test(value);
+}
+
+export function isScopedVocabularyValueId(value: string): boolean {
+  return SCOPED_VOCABULARY_VALUE_ID_PATTERN.test(value);
+}
+
+export const VOCABULARY_BACKED_FACETS = [
+  "activity",
+  "workflow",
+  "workflow_role",
+  "used_at",
+  "food_category",
+  "food_use",
+  "preparation_state",
+  "material_process_stage",
+  "stock_profile",
+  "container_state",
+  "equipment_effect",
+  "protection_context",
+  "progression_stage",
+  "loadout_context",
+  "use_affordance",
+  "organization_group",
+  "mod_subsystem",
+] as const;
 
 // --- facet catalog --------------------------------------------------------
 
@@ -305,10 +342,12 @@ export const FACETS: Record<string, FacetDef> = {
 
   // ===== Multi-value =====
   activity: {
-    kind: "multi_enum",
-    values: ACTIVITY_VALUES,
-    description: "Gameplay activities this item participates in.",
+    kind: "multi_free_text",
+    pattern: VOCABULARY_VALUE_ID_PATTERN,
+    description: "Vocabulary-backed gameplay activities this item participates in.",
     llm_authored: true,
+    vocabulary_backed: true,
+    examples: ["slot:mining", "slot:cooking", "slot:automation"],
   },
   flavor: {
     kind: "multi_enum",
@@ -366,6 +405,119 @@ export const FACETS: Record<string, FacetDef> = {
     description: "Processing verbs that consume this item as input (`smelting`, `crafting`, `create:crushing`).",
     deterministic: true,
   },
+  workflow: {
+    kind: "multi_free_text",
+    pattern: VOCABULARY_VALUE_ID_PATTERN,
+    description: "Vocabulary-backed player-facing process or task context this item participates in.",
+    llm_authored: true,
+    vocabulary_backed: true,
+    examples: ["slot:cooking", "create:mechanical_power", "pack:tfg2/steelmaking"],
+  },
+  workflow_role: {
+    kind: "multi_free_text",
+    pattern: SCOPED_VOCABULARY_VALUE_ID_PATTERN,
+    description: "Scoped role the item plays inside a workflow, formatted as `<workflow>#<role>`.",
+    llm_authored: true,
+    vocabulary_backed: true,
+    examples: ["tfc:casting#input", "pack:tfg2/steelmaking#catalyst"],
+  },
+  used_at: {
+    kind: "multi_free_text",
+    pattern: VOCABULARY_VALUE_ID_PATTERN,
+    description: "Vocabulary-backed station, machine, tool, or surface where the item is used.",
+    llm_authored: true,
+    vocabulary_backed: true,
+    examples: ["minecraft:furnace", "create:mechanical_press", "pack:tfg2/forge"],
+  },
+  food_category: {
+    kind: "multi_free_text",
+    pattern: VOCABULARY_VALUE_ID_PATTERN,
+    description: "Vocabulary-backed food family such as fruit, grain, meat, dairy, prepared meals, or drinks.",
+    llm_authored: true,
+    vocabulary_backed: true,
+    examples: ["slot:fruit", "slot:grain", "slot:prepared_meal"],
+  },
+  food_use: {
+    kind: "multi_free_text",
+    pattern: VOCABULARY_VALUE_ID_PATTERN,
+    description: "Vocabulary-backed reason a player cares about this item in food contexts.",
+    llm_authored: true,
+    vocabulary_backed: true,
+    examples: ["slot:eat_now", "slot:meal_component", "slot:animal_feed"],
+  },
+  preparation_state: {
+    kind: "multi_free_text",
+    pattern: VOCABULARY_VALUE_ID_PATTERN,
+    description: "Vocabulary-backed preparation state such as raw, cooked, dried, pickled, fermented, or sealed.",
+    llm_authored: true,
+    vocabulary_backed: true,
+    examples: ["slot:raw", "slot:cooked", "slot:fermented"],
+  },
+  material_process_stage: {
+    kind: "multi_free_text",
+    pattern: VOCABULARY_VALUE_ID_PATTERN,
+    description: "Vocabulary-backed material/process-chain stage such as ore, dust, ingot, plate, bloom, or molten.",
+    deterministic: true,
+    llm_authored: true,
+    vocabulary_backed: true,
+    examples: ["slot:ore", "slot:dust", "slot:plate"],
+  },
+  stock_profile: {
+    kind: "multi_free_text",
+    pattern: VOCABULARY_VALUE_ID_PATTERN,
+    description: "Vocabulary-backed inventory stock shape: bulk, small batch, singleton, tooling, reserve, display, overflow.",
+    llm_authored: true,
+    vocabulary_backed: true,
+    examples: ["slot:bulk", "slot:singleton", "slot:tooling"],
+  },
+  container_state: {
+    kind: "multi_free_text",
+    pattern: VOCABULARY_VALUE_ID_PATTERN,
+    description: "Vocabulary-backed container behavior or state, distinct from raw item capabilities.",
+    llm_authored: true,
+    vocabulary_backed: true,
+    examples: ["slot:empty_container", "slot:filled_container", "slot:reusable_mold"],
+  },
+  equipment_effect: {
+    kind: "multi_free_text",
+    pattern: VOCABULARY_VALUE_ID_PATTERN,
+    description: "Vocabulary-backed player-visible effect granted by carrying, wearing, or using the item.",
+    llm_authored: true,
+    vocabulary_backed: true,
+    examples: ["slot:night_vision", "slot:oxygen_supply", "slot:flight"],
+  },
+  protection_context: {
+    kind: "multi_free_text",
+    pattern: VOCABULARY_VALUE_ID_PATTERN,
+    description: "Vocabulary-backed hazard or environment this item protects against or is designed for.",
+    llm_authored: true,
+    vocabulary_backed: true,
+    examples: ["slot:fire", "slot:radiation", "slot:vacuum"],
+  },
+  progression_stage: {
+    kind: "multi_free_text",
+    pattern: VOCABULARY_VALUE_ID_PATTERN,
+    description: "Vocabulary-backed pack or mod progression stage, tier, age, voltage, dimension, or gate.",
+    llm_authored: true,
+    vocabulary_backed: true,
+    examples: ["pack:tfg2/early_survival", "tech_mod:low_voltage"],
+  },
+  loadout_context: {
+    kind: "multi_free_text",
+    pattern: VOCABULARY_VALUE_ID_PATTERN,
+    description: "Vocabulary-backed trip, kit, or task context where a player would pack this item.",
+    llm_authored: true,
+    vocabulary_backed: true,
+    examples: ["slot:mining_run", "slot:building_project", "pack:tfg2/moon_trip"],
+  },
+  use_affordance: {
+    kind: "multi_free_text",
+    pattern: VOCABULARY_VALUE_ID_PATTERN,
+    description: "Vocabulary-backed direct interaction verb or affordance, not generic recipe membership.",
+    llm_authored: true,
+    vocabulary_backed: true,
+    examples: ["slot:place", "slot:eat", "slot:fill"],
+  },
   primary_uses: {
     kind: "multi_free_text",
     pattern: /^.{1,80}$/,
@@ -375,16 +527,19 @@ export const FACETS: Record<string, FacetDef> = {
   },
   organization_group: {
     kind: "multi_free_text",
-    pattern: NAMESPACED_TOKEN,
-    description: "Player-facing storage/workflow group for auto-home (`tfc:casting`, `tfc:masonry`, `tfc:leatherworking`). Free-text, <namespace>:<group>.",
+    pattern: VOCABULARY_VALUE_ID_PATTERN,
+    description: "Vocabulary-backed player-facing storage/workflow group for auto-home (`tfc:casting`, `pack:tfg2/steelmaking`).",
     llm_authored: true,
-    examples: ["tfc:casting", "tfc:masonry", "create:mechanical_power"],
+    vocabulary_backed: true,
+    examples: ["tfc:casting", "tfc:masonry", "pack:tfg2/steelmaking"],
   },
   mod_subsystem: {
     kind: "multi_free_text",
-    pattern: NAMESPACED_TOKEN,
-    description: "Named sub-system within a mod (`create:trains`, `ae2:autocrafting`, `mekanism:fission`). Free-text, <namespace>:<subsystem>.",
+    pattern: VOCABULARY_VALUE_ID_PATTERN,
+    description: "Vocabulary-backed identity-oriented subsystem within a mod (`create:trains`, `ae2:autocrafting`).",
     llm_authored: true,
+    vocabulary_backed: true,
+    examples: ["create:trains", "ae2:autocrafting", "mekanism:fission"],
   },
   produces_effect: {
     kind: "multi_free_text",

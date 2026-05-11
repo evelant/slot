@@ -49,7 +49,8 @@ sensible options:
   Affinity-only, returns ClaimedChest (not UUID) since every caller
   needs the chest object to pass to `TakeAllExecutor`.
 - **(b)** New common-side class `ChestRoutingRanker` that owns both
-  `forDeposit` (direct affinity only) and `forTake` (affinity-only).
+  `forDeposit` (direct affinity or existing matching contents) and
+  `forTake` (affinity-only).
   Cleaner home for "chest routing decisions" but bigger move.
 
 Lean toward **(a)** for the smaller diff. The deposit ranker already
@@ -73,15 +74,16 @@ mini-version of what `DepositPlanner.rankChestsForIdentity` now owns.
 
 **Fix.** Call
 `DepositPlanner.rankChestsForIdentity(identity, claims, affinity,
-proximate)` and walk the returned UUIDs in order, returning the first
-whose capacity simulation passes. The capacity filter (simulated insert
-returns empty leftover) stays local to this function since the planner
-doesn't do simulation. Do not add a fallback to similar contents,
-presence, or the emptiest chest.
+proximate, contents)` and walk the returned UUIDs in order, returning the
+first whose capacity simulation passes. The capacity filter (simulated
+insert returns empty leftover) stays local to this function since the
+planner doesn't do simulation. Do not add a fallback to similar
+contents, presence without an exact movable identity match, or the
+emptiest chest.
 
 **Test.** Per-card "deposit home to linked chest" should now also
-honor direct learned affinity only — same routing as the deposit
-button.
+honor direct learned affinity or existing matching chest contents —
+same routing as the deposit button.
 
 ## Out of scope for this pass
 

@@ -1,4 +1,6 @@
 import type { ItemExtractRecord } from "../extract/record.ts";
+import type { PackFacetVocabulary } from "../schema/vocabulary.ts";
+import type { DocumentContextByItem } from "./document_context.ts";
 import type {
   LayerFile,
   LayerEntry,
@@ -55,6 +57,8 @@ export interface RetryOptions {
   threshold?: number;
   /** Passed through to runStage3. */
   model?: string;
+  /** Same as Stage3Options.documentContextByItem. */
+  documentContextByItem?: DocumentContextByItem;
   /**
    * Effort level for the retry pass. We deliberately do NOT plumb through
    * `thinkingBudget` or `disableAdaptiveThinking` here — Sonnet's adaptive
@@ -71,6 +75,8 @@ export interface RetryOptions {
   /** Same as Stage3Options.subsystemVocabulary; the retry pass should use
    *  the same canonical vocabulary as the first pass to avoid drift. */
   subsystemVocabulary?: readonly SubsystemVocabularyEntry[];
+  /** Same as Stage3Options.facetVocabulary. */
+  facetVocabulary?: PackFacetVocabulary;
   /** Same as Stage3Options.subsystemVocabularyByNamespace. */
   subsystemVocabularyByNamespace?: SubsystemVocabularyByNamespace;
   /** Same as Stage3Options.promptExtras; retry should use the same prompt
@@ -146,9 +152,11 @@ export async function runStage3Retry(
     batchSize: options.batchSize ?? 8,
     only: candidates,
     clientOptions: options.effort ? { effort: options.effort } : undefined,
+    documentContextByItem: options.documentContextByItem,
     onBatch: options.onBatch,
     subsystemVocabulary: options.subsystemVocabulary,
     subsystemVocabularyByNamespace: options.subsystemVocabularyByNamespace,
+    facetVocabulary: options.facetVocabulary,
     promptExtras: options.promptExtras,
   });
   warnings.push(...retry.warnings);

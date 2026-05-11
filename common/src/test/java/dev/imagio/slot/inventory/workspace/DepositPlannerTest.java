@@ -25,8 +25,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * Affinity-driven routing. Replaces the link-era tests; the planner now
- * looks up {@code affinity[chest, identity]} for proximate claimed chests.
+ * Affinity/content-driven routing. Replaces the link-era tests; the planner
+ * now looks up {@code affinity[chest, identity]} and live chest contents for
+ * proximate claimed chests.
  */
 class DepositPlannerTest {
     private static final UUID CHEST_A = UUID.fromString("00000000-0000-0000-0000-000000000001");
@@ -72,6 +73,24 @@ class DepositPlannerTest {
     }
 
     @Test
+    void existingProximateContentsRouteDepositWithoutAffinity() {
+        DepositPlan plan = DepositPlanner.plan(
+                authority(BuiltinInventoryIds.PLAYER_MAIN, 5, "minecraft:redstone", 16),
+                ChestAffinityMap.empty(),
+                claimedMap(CHEST_A),
+                Set.of(CHEST_A.toString()),
+                null,
+                (chest, identity) -> chest.storageId().equals(CHEST_A)
+                        && identity.equals(ItemIdentity.of("minecraft:redstone"))
+        );
+
+        assertEquals(1, plan.assignments().size());
+        DepositPlan.Assignment assignment = plan.assignments().get(0);
+        assertEquals("minecraft:redstone", assignment.itemId());
+        assertEquals(List.of(CHEST_A.toString()), assignment.candidateStorageIds());
+    }
+
+    @Test
     void multipleProximateChestsRankedByScore() {
         ItemIdentity redstone = ItemIdentity.of("minecraft:redstone");
         LinkedHashMap<UUID, Map<ItemIdentity, ChestAffinity>> bonds = new LinkedHashMap<>();
@@ -87,6 +106,24 @@ class DepositPlannerTest {
         DepositPlan.Assignment assignment = plan.assignments().get(0);
         // Highest-score chest first; spill on full goes to next.
         assertEquals(List.of(CHEST_B.toString(), CHEST_A.toString()), assignment.candidateStorageIds());
+    }
+
+    @Test
+    void affinityRanksBeforeContentOnlyChest() {
+        DepositPlan plan = DepositPlanner.plan(
+                authority(BuiltinInventoryIds.PLAYER_MAIN, 0, "minecraft:redstone", 16),
+                affinity(CHEST_A, "minecraft:redstone", 1),
+                claimedMap(CHEST_A, CHEST_B),
+                Set.of(CHEST_A.toString(), CHEST_B.toString()),
+                null,
+                (chest, identity) -> chest.storageId().equals(CHEST_B)
+                        && identity.equals(ItemIdentity.of("minecraft:redstone"))
+        );
+
+        assertEquals(1, plan.assignments().size());
+        assertEquals(
+                List.of(CHEST_A.toString(), CHEST_B.toString()),
+                plan.assignments().get(0).candidateStorageIds());
     }
 
     @Test
@@ -113,7 +150,7 @@ class DepositPlannerTest {
     }
 
     @Test
-    void directAffinityIsTheOnlyEligibleTier() {
+    void affinityAndContentAreTheOnlyEligibleTiers() {
         ItemIdentity rawIron = ItemIdentity.of("minecraft:raw_iron");
         ItemIdentity ironIngot = ItemIdentity.of("minecraft:iron_ingot");
         ItemIdentity ironBlock = ItemIdentity.of("minecraft:iron_block");
@@ -148,6 +185,22 @@ class DepositPlannerTest {
         );
 
         assertEquals(List.of(CHEST_B), ranked);
+    }
+
+    @Test
+    void explicitDepositUsesExistingContentsWithoutAffinity() {
+        ItemIdentity target = ItemIdentity.of("minecraft:netherite_ingot");
+
+        List<UUID> ranked = DepositPlanner.rankChestsForExplicitDeposit(
+                target,
+                claimedMap(CHEST_A, CHEST_B),
+                ChestAffinityMap.empty(),
+                Set.of(CHEST_A.toString(), CHEST_B.toString()),
+                (chest, identity) -> chest.storageId().equals(CHEST_A)
+                        && identity.equals(target)
+        );
+
+        assertEquals(List.of(CHEST_A), ranked);
     }
 
     @Test

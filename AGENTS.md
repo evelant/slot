@@ -79,6 +79,15 @@ This is a fast-moving experimental repo. Docs describe intent as of their
   per-record NBT methods — those create a ratchet where every core
   addition forces a platform edit. Keep codecs in a sibling class in the
   same module as the data.
+- For classification LLM work, semantic text is the primary signal. Preserve
+  tooltip/lore text, guidebook bodies, quest text, advancement/lang text,
+  Ponder text, recipe/category lang labels, KubeJS/datapack overlays,
+  KubeJS client tooltip mappings, stack groups, zipped resource-pack lang
+  overrides, and mod descriptions as structured evidence. Do not collapse rich
+  sources into a few seed item ids or terse deterministic candidates before
+  the LLM sees them. The target vocabulary model is cheap and has a large
+  context window; use that space for broad semantic context instead of
+  over-compressing prompts.
 - Never add time estimates when planning. They're always wrong.
 
 ## When Direction Changes

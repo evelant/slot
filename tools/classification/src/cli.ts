@@ -11,12 +11,16 @@ import {
   extractFromBundle,
   VANILLA_NAMESPACE,
 } from "./extract/vanilla/extractor.ts";
-import type { ItemExtractRecord } from "./extract/record.ts";
+import type { ItemExtractRecord, SemanticTextEvidence } from "./extract/record.ts";
 import { loadModSourceBundle } from "./extract/mod/source.ts";
 import { extractFromModBundle } from "./extract/mod/extractor.ts";
 import { loadJarModBundle } from "./extract/jar/source.ts";
 import { runDeterministic, type LayerFile } from "./deterministic/run.ts";
 import { validateLayer, validateLayerFile } from "./schema/validate.ts";
+import {
+  validateVocabularyArtifactFile,
+  type PackFacetVocabulary,
+} from "./schema/vocabulary.ts";
 import {
   ClaudeCliClient,
   RecordingLlmClient,
@@ -32,8 +36,14 @@ import {
 } from "./llm/run.ts";
 import { runStage3Retry, selectRetryCandidates } from "./llm/retry.ts";
 import {
+  buildDocumentContextByItem,
+  type DocumentContextBuildStats,
+  type DocumentContextByItem,
+} from "./llm/document_context.ts";
+import {
   buildBatchPrompt,
   buildItemPayload,
+  buildPromptFacetVocabulary,
   defaultTargetFacets,
   PROMPT_VERSION,
 } from "./llm/prompt.ts";
@@ -55,6 +65,16 @@ import {
   type RuntimeExportSummary,
   type RuntimeSubsystemVocabularyFile,
 } from "./llm/runtime_subsystems.ts";
+import {
+  buildFacetEvidenceArtifact,
+  collectExternalFacetEvidence,
+  type FacetEvidenceRecord,
+  type FacetEvidenceDiagnostic,
+} from "./evidence/facet_evidence.ts";
+import {
+  proposePackFacetVocabulary,
+  readFacetEvidenceArtifactFile,
+} from "./vocabulary/pack_vocabulary.ts";
 import {
   loadModpackManifest,
   planModpack,
@@ -249,6 +269,7 @@ async function main() {
           "no-propose-subsystems": { type: "boolean" },
           "subsystems-model": { type: "string" },
           "subsystems-file": { type: "string" },
+          "facet-vocabulary": { type: "string" },
           // verbose prompt extras. disambiguation defaults ON (principle-
           // based per-facet reasoning; carries production accuracy on hard
           // categories from ~50% → ~93%). misconceptions defaults OFF
@@ -304,6 +325,7 @@ async function main() {
         proposeSubsystems: !(args.values["no-propose-subsystems"] ?? false),
         subsystemsModel: args.values["subsystems-model"],
         subsystemsFile: args.values["subsystems-file"],
+        facetVocabularyFile: args.values["facet-vocabulary"],
         // disambiguation defaults ON; --no-verbose-disambiguation flips off.
         // --verbose-disambiguation is a no-op (always-on by default) — kept
         // for symmetry / discoverability.
@@ -348,6 +370,7 @@ async function main() {
           "no-propose-subsystems": { type: "boolean" },
           "subsystems-model": { type: "string" },
           "subsystems-file": { type: "string" },
+          "facet-vocabulary": { type: "string" },
           "verbose-disambiguation": { type: "boolean" },
           "no-verbose-disambiguation": { type: "boolean" },
           "verbose-misconceptions": { type: "boolean" },
@@ -387,6 +410,7 @@ async function main() {
         proposeSubsystems: !(args.values["no-propose-subsystems"] ?? false),
         subsystemsModel: args.values["subsystems-model"],
         subsystemsFile: args.values["subsystems-file"],
+        facetVocabularyFile: args.values["facet-vocabulary"],
         verboseFacetDisambiguation: args.values["no-verbose-disambiguation"]
           ? false
           : (args.values["verbose-disambiguation"] ?? true),
@@ -476,6 +500,7 @@ async function main() {
           "no-propose-subsystems": { type: "boolean" },
           "subsystems-model": { type: "string" },
           "subsystems-file": { type: "string" },
+          "facet-vocabulary": { type: "string" },
           "verbose-disambiguation": { type: "boolean" },
           "no-verbose-disambiguation": { type: "boolean" },
           "verbose-misconceptions": { type: "boolean" },
@@ -524,6 +549,7 @@ async function main() {
         proposeSubsystems: !(args.values["no-propose-subsystems"] ?? false),
         subsystemsModel: args.values["subsystems-model"],
         subsystemsFile: args.values["subsystems-file"],
+        facetVocabularyFile: args.values["facet-vocabulary"],
         verboseFacetDisambiguation: args.values["no-verbose-disambiguation"]
           ? false
           : (args.values["verbose-disambiguation"] ?? true),
@@ -609,6 +635,7 @@ async function main() {
           "runtime-export": { type: "string" },
           summary: { type: "string" },
           mods: { type: "string" },
+          evidence: { type: "string" },
           out: { type: "string" },
           "pack-id": { type: "string" },
           stages: { type: "string" },
@@ -637,6 +664,7 @@ async function main() {
           "record-replay": { type: "boolean" },
           "dry-run": { type: "boolean" },
           "subsystems-file": { type: "string" },
+          "facet-vocabulary": { type: "string" },
           "limit-namespaces": { type: "string" },
           "min-items": { type: "string" },
           "verbose-disambiguation": { type: "boolean" },
@@ -676,6 +704,8 @@ async function main() {
         dryRun: args.values["dry-run"] ?? false,
         proposeSubsystems: false,
         subsystemsFile: args.values["subsystems-file"],
+        facetVocabularyFile: args.values["facet-vocabulary"],
+        documentContextFile: args.values.evidence,
         verboseFacetDisambiguation: args.values["no-verbose-disambiguation"]
           ? false
           : (args.values["verbose-disambiguation"] ?? true),
@@ -711,6 +741,7 @@ async function main() {
           "runtime-export": { type: "string" },
           summary: { type: "string" },
           mods: { type: "string" },
+          evidence: { type: "string" },
           out: { type: "string" },
           "pack-id": { type: "string" },
           stages: { type: "string" },
@@ -740,6 +771,7 @@ async function main() {
           "retry-use-replay": { type: "boolean" },
           "retry-record-replay": { type: "boolean" },
           "subsystems-file": { type: "string" },
+          "facet-vocabulary": { type: "string" },
           "verbose-disambiguation": { type: "boolean" },
           "no-verbose-disambiguation": { type: "boolean" },
           "verbose-misconceptions": { type: "boolean" },
@@ -786,6 +818,8 @@ async function main() {
         retryRecordReplay: args.values["retry-record-replay"],
         proposeSubsystems: false,
         subsystemsFile: args.values["subsystems-file"],
+        facetVocabularyFile: args.values["facet-vocabulary"],
+        documentContextFile: args.values.evidence,
         verboseFacetDisambiguation: args.values["no-verbose-disambiguation"]
           ? false
           : (args.values["verbose-disambiguation"] ?? true),
@@ -803,7 +837,140 @@ async function main() {
       return;
     }
 
+    case "collect-pack-facet-evidence": {
+      const args = parseArgs({
+        args: rest,
+        options: {
+          "runtime-export": { type: "string" },
+          summary: { type: "string" },
+          mods: { type: "string" },
+          out: { type: "string" },
+          "pack-id": { type: "string" },
+          force: { type: "boolean" },
+        },
+        allowPositionals: false,
+        strict: true,
+      });
+      const runtimeExportPath = args.values["runtime-export"];
+      if (!runtimeExportPath) {
+        console.error("usage: collect-pack-facet-evidence --runtime-export <pack.runtime-items.ndjson> [options]");
+        process.exit(2);
+        return;
+      }
+      const outDir = resolve(args.values.out ?? "out");
+      mkdirSync(outDir, { recursive: true });
+      runCollectPackFacetEvidence(runtimeExportPath, outDir, {
+        summaryPath: args.values.summary,
+        modsPath: args.values.mods,
+        packId: args.values["pack-id"],
+        force: args.values.force ?? false,
+      });
+      return;
+    }
+
+    case "propose-pack-facet-vocabulary": {
+      const args = parseArgs({
+        args: rest,
+        options: {
+          evidence: { type: "string" },
+          out: { type: "string" },
+          "pack-id": { type: "string" },
+          "previous-vocabulary": { type: "string" },
+          facet: { type: "string", multiple: true },
+          namespace: { type: "string", multiple: true },
+          "min-evidence": { type: "string" },
+          "max-candidates-per-facet": { type: "string" },
+          force: { type: "boolean" },
+          model: { type: "string" },
+          backend: { type: "string" },
+          "ignore-provider": { type: "string", multiple: true },
+          "only-provider": { type: "string", multiple: true },
+          effort: { type: "string" },
+          "thinking-budget": { type: "string" },
+          "disable-adaptive-thinking": { type: "boolean" },
+          "fixture-dir": { type: "string" },
+          "use-replay": { type: "boolean" },
+          "record-replay": { type: "boolean" },
+          "dry-run": { type: "boolean" },
+        },
+        allowPositionals: false,
+        strict: true,
+      });
+      const evidencePath = args.values.evidence;
+      if (!evidencePath) {
+        console.error("usage: propose-pack-facet-vocabulary --evidence <pack.facet-evidence.json> [options]");
+        process.exit(2);
+        return;
+      }
+      const outDir = resolve(args.values.out ?? "out");
+      mkdirSync(outDir, { recursive: true });
+      await runProposePackFacetVocabulary({
+        evidencePath,
+        outDir,
+        packId: args.values["pack-id"],
+        previousVocabularyPath: args.values["previous-vocabulary"],
+        facets: (args.values.facet as string[] | undefined) ?? [],
+        namespaces: (args.values.namespace as string[] | undefined) ?? [],
+        minEvidence: parsePositiveInteger(args.values["min-evidence"], "--min-evidence") ?? 2,
+        maxCandidatesPerFacet: parsePositiveInteger(args.values["max-candidates-per-facet"], "--max-candidates-per-facet"),
+        force: args.values.force ?? false,
+        opts: {
+          model: args.values.model,
+          backend: parseBackend(args.values.backend),
+          ignoredProviders: (args.values["ignore-provider"] as string[] | undefined) ?? undefined,
+          onlyProviders: (args.values["only-provider"] as string[] | undefined) ?? undefined,
+          effort: parseEffort(args.values.effort),
+          thinkingBudget: args.values["thinking-budget"]
+            ? parsePositiveInteger(args.values["thinking-budget"], "--thinking-budget")
+            : undefined,
+          disableAdaptiveThinking: args.values["disable-adaptive-thinking"] ?? false,
+          fixtureDir: args.values["fixture-dir"],
+          useReplay: args.values["use-replay"] ?? false,
+          recordReplay: args.values["record-replay"] ?? false,
+          dryRun: args.values["dry-run"] ?? false,
+        },
+      });
+      return;
+    }
+
     case "validate": {
+      const args = parseArgs({
+        args: rest,
+        options: {
+          vocabulary: { type: "string" },
+        },
+        allowPositionals: true,
+        strict: true,
+      });
+      const target = args.positionals[0];
+      if (!target) {
+        console.error("usage: validate <layer.json> [--vocabulary <facet-vocabulary.json>]");
+        process.exit(2);
+        return;
+      }
+      let vocabulary;
+      if (args.values.vocabulary) {
+        const vocabularyResult = validateVocabularyArtifactFile(resolve(args.values.vocabulary));
+        if (!vocabularyResult.ok || !vocabularyResult.vocabulary) {
+          console.error(`invalid vocabulary: ${args.values.vocabulary}`);
+          for (const err of vocabularyResult.errors) console.error(`  ${err}`);
+          process.exit(1);
+          return;
+        }
+        vocabulary = vocabularyResult.vocabulary;
+      }
+      const result = validateLayerFile(resolve(target), { vocabulary });
+      if (result.ok) {
+        console.log(`ok: ${target}`);
+        return;
+      }
+      console.error(`invalid: ${target}`);
+      for (const err of result.errors) console.error(`  ${err}`);
+      process.exit(1);
+      return;
+    }
+
+    case "validate-vocabulary": {
       const args = parseArgs({
         args: rest,
         options: {},
@@ -812,11 +979,11 @@ async function main() {
       });
       const target = args.positionals[0];
       if (!target) {
-        console.error("usage: validate <layer.json>");
+        console.error("usage: validate-vocabulary <facet-vocabulary.json>");
         process.exit(2);
         return;
       }
-      const result = validateLayerFile(resolve(target));
+      const result = validateVocabularyArtifactFile(resolve(target));
       if (result.ok) {
         console.log(`ok: ${target}`);
         return;
@@ -887,6 +1054,15 @@ interface Stage3CliOptions {
   subsystemVocabulary?: readonly { id: string; rationale?: string }[];
   /** Namespace-scoped vocabulary for mixed-namespace runtime-export batches. */
   subsystemVocabularyByNamespace?: SubsystemVocabularyByNamespace;
+  /** Accepted pack facet vocabulary for vocabulary-backed semantic facets. */
+  facetVocabularyFile?: string;
+  facetVocabulary?: PackFacetVocabulary;
+  /** Optional facet-evidence artifact to convert into per-item document_context. */
+  documentContextFile?: string;
+  /** Pre-resolved document context, keyed by runtime item id. */
+  documentContextByItem?: DocumentContextByItem;
+  /** Stats from loading documentContextFile; surfaced in metadata/logs. */
+  documentContextStats?: DocumentContextBuildStats;
   /** Verbose-prompt extras. disambiguation defaults ON
    *  (principle-based per-facet reasoning; A/B testing showed it
    *  carries sonnet from ~50% → ~93% on hard categories). misconceptions
@@ -952,6 +1128,10 @@ function buildPromptMetadata(opts: Stage3CliOptions): Record<string, unknown> {
     fixture_dir: opts.fixtureDir ?? null,
     verbose_facet_disambiguation: opts.verboseFacetDisambiguation ?? true,
     verbose_common_misconceptions: opts.verboseCommonMisconceptions ?? false,
+    document_context_file: opts.documentContextFile ?? null,
+    document_context_items: opts.documentContextStats?.items_with_context ?? 0,
+    document_context_links: opts.documentContextStats?.context_count ?? 0,
+    facet_vocabulary_file: opts.facetVocabularyFile ?? null,
     subsystem_vocabulary: opts.subsystemVocabulary?.map((entry) => entry.id) ?? [],
     subsystem_vocabulary_by_namespace: opts.subsystemVocabularyByNamespace
       ? Object.fromEntries(
@@ -1839,6 +2019,264 @@ interface GeneratePackLayerRunResult {
   summary: RuntimeExportSummary | null;
 }
 
+interface CollectPackFacetEvidenceOptions {
+  summaryPath?: string;
+  modsPath?: string;
+  packId?: string;
+  force: boolean;
+}
+
+interface CollectPackFacetEvidenceResult {
+  packId: string;
+  evidencePath: string;
+  runtimeItemsPath: string;
+  summaryPath: string;
+  records: number;
+  evidenceRecords: number;
+  diagnostics: number;
+}
+
+interface ProposePackFacetVocabularyCliOptions {
+  evidencePath: string;
+  outDir: string;
+  packId?: string;
+  previousVocabularyPath?: string;
+  facets: readonly string[];
+  namespaces: readonly string[];
+  minEvidence: number;
+  maxCandidatesPerFacet?: number;
+  force: boolean;
+  opts: Stage3CliOptions;
+}
+
+function runCollectPackFacetEvidence(
+  runtimeExportPath: string,
+  outDir: string,
+  options: CollectPackFacetEvidenceOptions,
+): CollectPackFacetEvidenceResult {
+  const start = Date.now();
+  const runtimeItemsPath = resolve(runtimeExportPath);
+  const summaryPath = resolve(options.summaryPath ?? defaultRuntimeSummaryPath(runtimeItemsPath));
+  let summary: RuntimeExportSummary | null = null;
+  if (existsSync(summaryPath)) {
+    summary = readRuntimeExportSummary(summaryPath);
+  } else if (options.summaryPath) {
+    throw new Error(`runtime summary not found: ${summaryPath}`);
+  } else {
+    console.warn(`[facet-evidence] summary not found at ${summaryPath}; continuing with item records only`);
+  }
+
+  const packId = safeFileComponent(
+    options.packId ?? summary?.pack_id ?? summary?.requested_pack_id ?? packIdFromRuntimeItemsPath(runtimeItemsPath),
+  );
+  const evidencePath = join(outDir, `${packId}.facet-evidence.json`);
+  if (existsSync(evidencePath)) {
+    if (!options.force) {
+      console.error(`[facet-evidence] output already exists for pack ${packId}: ${evidencePath}`);
+      console.error(`[facet-evidence] pass --force to regenerate it`);
+      process.exit(1);
+      throw new Error(`output already exists for pack ${packId}`);
+    }
+    rmSync(evidencePath);
+  }
+
+  let records = readRuntimeExportRecords(runtimeItemsPath);
+  const externalRecords: FacetEvidenceRecord[] = [];
+  const diagnostics: FacetEvidenceDiagnostic[] = [];
+  console.log(`[facet-evidence] runtime records: ${records.length} item(s), pack=${packId}`);
+
+  if (options.modsPath) {
+    const staticRecords = loadStaticEnrichmentRecords(options.modsPath, records);
+    const merged = mergeRuntimeWithStaticRecords(records, staticRecords);
+    records = merged.records;
+    console.log(
+      `[facet-evidence] static jar enrichment: ${staticRecords.size} matching static record(s), ` +
+        `${merged.enriched} runtime record(s) enriched`,
+    );
+
+    const external = collectExternalFacetEvidence({
+      modsPath: options.modsPath,
+      generatedBy: TOOL_VERSION,
+      bundledModIds: loadBundledPerModIds(),
+    });
+    externalRecords.push(...external.records);
+    diagnostics.push(...external.diagnostics);
+    console.log(
+      `[facet-evidence] optional pack adapters: ${external.records.length} evidence record(s), ` +
+        `${external.diagnostics.length} diagnostic(s)`,
+    );
+  } else {
+    diagnostics.push({
+      adapter: "mods-folder",
+      severity: "info",
+      source: runtimeItemsPath,
+      message: "--mods not provided; static jar, guide, quest, advancement, and mod metadata evidence skipped",
+      count: 0,
+    });
+  }
+
+  const artifact = buildFacetEvidenceArtifact({
+    packId,
+    generatedBy: TOOL_VERSION,
+    runtimeItemsPath,
+    runtimeSummaryPath: existsSync(summaryPath) ? summaryPath : undefined,
+    modsPath: options.modsPath ? resolve(options.modsPath) : undefined,
+    records,
+    summary,
+    externalRecords,
+    diagnostics,
+  });
+  writeFileSync(evidencePath, JSON.stringify(artifact, null, 2) + "\n");
+  console.log(`[facet-evidence] wrote ${artifact.records.length} evidence record(s) -> ${evidencePath}`);
+  const counts = countBy(artifact.records.map((record) => record.kind));
+  for (const [kind, count] of Object.entries(counts).sort(([a], [b]) => a.localeCompare(b))) {
+    console.log(`  ${kind.padEnd(22)} ${String(count).padStart(5)}`);
+  }
+  if (artifact.diagnostics.length > 0) {
+    console.log(`[facet-evidence] ${artifact.diagnostics.length} diagnostic(s)`);
+  }
+  console.log(`done in ${((Date.now() - start) / 1000).toFixed(2)}s`);
+  return {
+    packId,
+    evidencePath,
+    runtimeItemsPath,
+    summaryPath,
+    records: records.length,
+    evidenceRecords: artifact.records.length,
+    diagnostics: artifact.diagnostics.length,
+  };
+}
+
+async function runProposePackFacetVocabulary(
+  options: ProposePackFacetVocabularyCliOptions,
+): Promise<void> {
+  const start = Date.now();
+  const evidencePath = resolve(options.evidencePath);
+  const evidence = readFacetEvidenceArtifactFile(evidencePath);
+  const packId = safeFileComponent(options.packId ?? evidence.pack_id);
+  const vocabularyPath = join(options.outDir, `${packId}.facet-vocabulary.json`);
+  const reviewPath = join(options.outDir, `${packId}.facet-vocabulary.review.json`);
+
+  let previousVocabulary: PackFacetVocabulary | undefined;
+  let previousVocabularyPath: string | undefined;
+  if (options.previousVocabularyPath) {
+    previousVocabularyPath = resolve(options.previousVocabularyPath);
+    const previous = validateVocabularyArtifactFile(previousVocabularyPath);
+    if (!previous.ok || !previous.vocabulary) {
+      console.error(`[facet-vocabulary] invalid previous vocabulary: ${previousVocabularyPath}`);
+      for (const error of previous.errors) console.error(`  ${error}`);
+      process.exit(1);
+      return;
+    }
+    previousVocabulary = previous.vocabulary;
+  }
+
+  if (!options.opts.dryRun && !options.force && (existsSync(vocabularyPath) || existsSync(reviewPath))) {
+    console.error(`[facet-vocabulary] output already exists for pack ${packId}`);
+    console.error(`[facet-vocabulary] pass --force to regenerate ${vocabularyPath} / ${reviewPath}`);
+    process.exit(1);
+    return;
+  }
+  if (!options.opts.dryRun && options.force) {
+    if (existsSync(vocabularyPath)) rmSync(vocabularyPath);
+    if (existsSync(reviewPath)) rmSync(reviewPath);
+  }
+
+  const model = options.opts.model ?? DEFAULT_STAGE3_MODEL;
+  console.log(
+    `[facet-vocabulary] evidence=${evidence.records.length} record(s), pack=${packId}, ` +
+      `facets=${options.facets.length > 0 ? options.facets.join(",") : "all"}, ` +
+      `namespaces=${options.namespaces.length > 0 ? options.namespaces.join(",") : "all"}`,
+  );
+
+  const client = options.opts.dryRun ? undefined : buildVocabularyClient(options.opts);
+  const result = await proposePackFacetVocabulary({
+    evidence,
+    evidencePath,
+    packId,
+    generatedBy: TOOL_VERSION,
+    previousVocabulary,
+    previousVocabularyPath,
+    facets: options.facets,
+    namespaces: options.namespaces,
+    minEvidence: options.minEvidence,
+    maxCandidatesPerFacet: options.maxCandidatesPerFacet,
+    model,
+    client,
+    clientOptions: buildClientOptions(
+      options.opts.effort,
+      options.opts.thinkingBudget,
+      options.opts.disableAdaptiveThinking,
+    ),
+  });
+
+  if (options.opts.dryRun) {
+    const dryRunDir = join(options.outDir, `${packId}.facet-vocabulary-dry-run`);
+    if (existsSync(dryRunDir)) {
+      if (!options.force) {
+        console.error(`[facet-vocabulary] dry-run output already exists for pack ${packId}: ${dryRunDir}`);
+        console.error(`[facet-vocabulary] pass --force to regenerate it`);
+        process.exit(1);
+        return;
+      }
+      rmSync(dryRunDir, { recursive: true, force: true });
+    }
+    mkdirSync(dryRunDir, { recursive: true });
+    const summary: Array<{ facet: string; system: string; user: string; candidates: number; chars: number; approxTokens: number }> = [];
+    for (const [facet, prompt] of Object.entries(result.prompts).sort(([a], [b]) => a.localeCompare(b))) {
+      const systemPath = join(dryRunDir, `${facet}.system.md`);
+      const userPath = join(dryRunDir, `${facet}.user.json`);
+      writeFileSync(systemPath, prompt.system);
+      writeFileSync(userPath, prompt.user);
+      const parsedUser = JSON.parse(prompt.user) as { candidates?: unknown[] };
+      const chars = prompt.system.length + prompt.user.length;
+      summary.push({
+        facet,
+        system: systemPath,
+        user: userPath,
+        candidates: Array.isArray(parsedUser.candidates) ? parsedUser.candidates.length : 0,
+        chars,
+        approxTokens: Math.round(chars / 4),
+      });
+    }
+    const summaryPath = join(dryRunDir, "summary.json");
+    writeFileSync(summaryPath, JSON.stringify(summary, null, 2) + "\n");
+    console.log(`[facet-vocabulary] dry run: wrote ${summary.length} prompt pair(s) to ${dryRunDir}`);
+    console.log(`[facet-vocabulary] summary -> ${summaryPath}`);
+    return;
+  }
+
+  const blockingErrors = result.review.diagnostics.filter((diagnostic) => diagnostic.severity === "error");
+  if (blockingErrors.length > 0) {
+    console.error(`[facet-vocabulary] generated vocabulary failed validation`);
+    for (const diagnostic of blockingErrors.slice(0, 20)) console.error(`  ${diagnostic.message}`);
+    process.exit(1);
+    return;
+  }
+
+  writeFileSync(vocabularyPath, JSON.stringify(result.vocabulary, null, 2) + "\n");
+  writeFileSync(reviewPath, JSON.stringify(result.review, null, 2) + "\n");
+  console.log(`[facet-vocabulary] wrote ${vocabularyPath}`);
+  console.log(`[facet-vocabulary] wrote ${reviewPath}`);
+
+  const acceptedCounts: Array<[string, number]> =
+    Object.entries(result.vocabulary.facets)
+      .map(([facet, value]): [string, number] => [facet, Object.keys(value.values).length])
+      .sort(([a], [b]) => a.localeCompare(b));
+  for (const [facet, count] of acceptedCounts) {
+    console.log(`  ${facet.padEnd(24)} ${String(count).padStart(4)} accepted`);
+  }
+  const reviewCount = Object.values(result.review.decisions).flat()
+    .filter((decision) => decision.state !== "accepted").length;
+  console.log(`[facet-vocabulary] review/rejected decision(s): ${reviewCount}`);
+  console.log(`done in ${((Date.now() - start) / 1000).toFixed(2)}s`);
+}
+
+function buildVocabularyClient(opts: Stage3CliOptions): LlmClient {
+  ensureLiveBackendConfigured(opts, "propose-pack-facet-vocabulary");
+  return buildClient(opts);
+}
+
 async function runGeneratePackLayer(
   runtimeExportPath: string,
   outDir: string,
@@ -2056,12 +2494,14 @@ function mergeRuntimeWithStaticRecords(
     const stat = staticRecords.get(runtime.id);
     if (!stat) return runtime;
     enriched++;
+    const semanticText = mergeSemanticText(runtime.semantic_text, stat.semantic_text);
     return {
       ...runtime,
       display_name: nonBlank(runtime.display_name) ? runtime.display_name : stat.display_name,
       model_parents: runtime.model_parents.length > 0 ? runtime.model_parents : stat.model_parents,
       loot_table_sources: runtime.loot_table_sources.length > 0 ? runtime.loot_table_sources : stat.loot_table_sources,
       creative_tabs: runtime.creative_tabs.length > 0 ? runtime.creative_tabs : stat.creative_tabs,
+      ...(semanticText ? { semantic_text: semanticText } : {}),
       extractor_meta: {
         ...(runtime.extractor_meta ?? {}),
         static_enrichment: "jar",
@@ -2072,6 +2512,28 @@ function mergeRuntimeWithStaticRecords(
     };
   });
   return { records: merged, enriched };
+}
+
+function mergeSemanticText(
+  runtime: readonly SemanticTextEvidence[] | undefined,
+  stat: readonly SemanticTextEvidence[] | undefined,
+): SemanticTextEvidence[] | undefined {
+  const merged: SemanticTextEvidence[] = [];
+  const seen = new Set<string>();
+  for (const entry of [...(runtime ?? []), ...(stat ?? [])]) {
+    if (!entry?.text) continue;
+    const text = entry.text.trim();
+    if (!text) continue;
+    const key = `${entry.source}\u0000${entry.key ?? ""}\u0000${text}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    merged.push({
+      source: entry.source,
+      text,
+      ...(entry.key ? { key: entry.key } : {}),
+    });
+  }
+  return merged.length > 0 ? merged : undefined;
 }
 
 function runtimeSyntheticBundle(
@@ -2496,6 +2958,12 @@ function safeFileComponent(value: string): string {
   return safe.length > 0 ? safe : "runtime-export";
 }
 
+function countBy(values: Iterable<string>): Record<string, number> {
+  const out: Record<string, number> = {};
+  for (const value of values) out[value] = (out[value] ?? 0) + 1;
+  return out;
+}
+
 async function runJarMod(
   mod: InputManifestMod,
   outDir: string,
@@ -2807,13 +3275,68 @@ function mergeSubsystemMaps(
   return Object.keys(out).length > 0 ? out : undefined;
 }
 
+function resolveStage3DocumentContext(
+  opts: Stage3CliOptions,
+  records: readonly ItemExtractRecord[],
+): Stage3CliOptions {
+  if (!opts.documentContextFile || opts.documentContextByItem) return opts;
+  const resolvedPath = resolve(opts.documentContextFile);
+  const evidence = readFacetEvidenceArtifactFile(resolvedPath);
+  const { byItem, stats } = buildDocumentContextByItem(evidence, records);
+  console.log(
+    `[document-context] loaded ${resolvedPath}: ` +
+      `${stats.items_with_context} item(s), ${stats.context_count} context link(s), ` +
+      `${stats.eligible_document_records} eligible document record(s)`,
+  );
+  if (stats.skipped_quest_records > 0) {
+    console.log(
+      `[document-context] skipped ${stats.skipped_quest_records} quest record(s); ` +
+        `quest SNBT is not local enough for item classification yet`,
+    );
+  }
+  if (stats.skipped_broad_documents > 0) {
+    console.log(`[document-context] skipped ${stats.skipped_broad_documents} broad document record(s)`);
+  }
+  return {
+    ...opts,
+    documentContextFile: resolvedPath,
+    documentContextByItem: byItem,
+    documentContextStats: stats,
+  };
+}
+
+function resolveStage3FacetVocabulary(opts: Stage3CliOptions): Stage3CliOptions {
+  if (!opts.facetVocabularyFile || opts.facetVocabulary) return opts;
+  const resolvedPath = resolve(opts.facetVocabularyFile);
+  const result = validateVocabularyArtifactFile(resolvedPath);
+  if (!result.ok || !result.vocabulary) {
+    console.error(`[facet-vocabulary] invalid vocabulary for stage 3: ${resolvedPath}`);
+    for (const error of result.errors) console.error(`  ${error}`);
+    process.exit(1);
+    throw new Error(`invalid facet vocabulary: ${resolvedPath}`);
+  }
+  const accepted = Object.values(result.vocabulary.facets ?? {})
+    .reduce((count, facet) =>
+      count + Object.values(facet.values ?? {}).filter((value) => value.state === "accepted").length,
+      0,
+    );
+  console.log(`[facet-vocabulary] loaded ${accepted} accepted value(s) for stage 3: ${resolvedPath}`);
+  return {
+    ...opts,
+    facetVocabularyFile: resolvedPath,
+    facetVocabulary: result.vocabulary,
+  };
+}
+
 async function executeStage3(
   records: readonly ItemExtractRecord[],
   stage2Layer: LayerFile,
   completePath: string,
   opts: Stage3CliOptions,
 ) {
+  opts = resolveStage3FacetVocabulary(opts);
   opts = resolveStage3SubsystemVocabulary(opts);
+  opts = resolveStage3DocumentContext(opts, records);
   const only = resolveSample(opts.sample, records);
   if (only && only.length === 0) {
     console.error(`[stage3] sample selection produced 0 items`);
@@ -2839,6 +3362,8 @@ async function executeStage3(
     concurrency: opts.concurrency,
     only,
     clientOptions: buildClientOptions(opts.effort, opts.thinkingBudget, opts.disableAdaptiveThinking),
+    documentContextByItem: opts.documentContextByItem,
+    facetVocabulary: opts.facetVocabulary,
     subsystemVocabulary: opts.subsystemVocabulary,
     subsystemVocabularyByNamespace: opts.subsystemVocabularyByNamespace,
     promptExtras: {
@@ -2890,6 +3415,8 @@ async function executeStage3(
         effort: opts.retryEffort,
         threshold: opts.retryThreshold,
         batchSize: opts.retryBatchSize,
+        documentContextByItem: opts.documentContextByItem,
+        facetVocabulary: opts.facetVocabulary,
         subsystemVocabulary: opts.subsystemVocabulary,
         subsystemVocabularyByNamespace: opts.subsystemVocabularyByNamespace,
         promptExtras: {
@@ -2928,7 +3455,7 @@ async function executeStage3(
     stages: ["stage1", "stage2", "stage3"],
     stage3Opts: opts,
   });
-  const validation = validateLayer(result.layer);
+  const validation = validateLayer(result.layer, { vocabulary: opts.facetVocabulary });
   if (!validation.ok) {
     console.error(`[stage3] layer failed schema validation`);
     for (const err of validation.errors.slice(0, 10)) console.error(`  ${err}`);
@@ -3117,7 +3644,7 @@ async function dryRunStage3(
     const batch = batches[i]!;
     const payloads = batch.map((record) => {
       const stage2 = stage2Layer.entries[record.id]?.facets ?? {};
-      return buildItemPayload(record, stage2);
+      return buildItemPayload(record, stage2, opts.documentContextByItem?.[record.id]);
     });
     const prompt = buildBatchPrompt({
       items: payloads,
@@ -3127,6 +3654,9 @@ async function dryRunStage3(
         opts.subsystemVocabulary,
         opts.subsystemVocabularyByNamespace,
       ),
+      facet_vocabulary: opts.facetVocabulary
+        ? buildPromptFacetVocabulary(opts.facetVocabulary, targetFacets)
+        : undefined,
       prompt_extras: {
         verbose_facet_disambiguation: opts.verboseFacetDisambiguation,
         verbose_common_misconceptions: opts.verboseCommonMisconceptions,
@@ -3332,12 +3862,56 @@ Commands:
         --summary <path>        Explicit runtime-summary.json path.
         --mods <path>           Prism instance root or mods/ folder for static
                                 jar enrichment.
+        --evidence <path>       Optional <pack>.facet-evidence.json. Stage 3
+                                converts low-breadth guide/advancement records
+                                into per-item document_context.
+        --facet-vocabulary <path>
+                                Accepted pack facet vocabulary to ground
+                                vocabulary-backed Stage 3 values.
         --pack-id <id>          Override output/layer/datapack id.
         --datapack              Package the layer as a datapack folder.
         --datapack-out <path>   Explicit datapack output folder.
         --pack-format <n>       Datapack pack_format (default inferred from
                                 runtime MC version; 1.20.x -> 15).
         --force                 Overwrite existing pack-layer/datapack outputs.
+
+  collect-pack-facet-evidence --runtime-export <pack.runtime-items.ndjson> [options]
+      Collect the pack-level evidence used by the facet vocabulary pass.
+      Writes <out>/<pack>.facet-evidence.json with runtime item facts,
+      recipe-type summaries, recipe-role summaries, recipe-id families,
+      item/block tags, optional mod metadata, guide pages, quest nodes,
+      advancements, Ponder/category lang text, KubeJS tooltip mappings, and
+      stack groups. Missing optional sources are reported as diagnostics and
+      do not fail the command.
+
+      Facet-evidence flags:
+        --summary <path>        Explicit runtime-summary.json path.
+        --mods <path>           Prism instance root or mods/ folder for static
+                                jar, guide, quest, advancement, and mod metadata
+                                evidence.
+        --pack-id <id>          Override output pack id.
+        --out <dir>             Output directory (default out).
+        --force                 Overwrite an existing facet-evidence file.
+
+  propose-pack-facet-vocabulary --evidence <pack.facet-evidence.json> [options]
+      Propose a pack-specific vocabulary for vocabulary-backed semantic facets.
+      Reads <pack>.facet-evidence.json, builds deterministic candidates,
+      optionally asks the configured LLM to curate them, and writes
+      <out>/<pack>.facet-vocabulary.json plus
+      <out>/<pack>.facet-vocabulary.review.json. Use --dry-run to write prompt
+      pairs without spending tokens.
+
+      Facet-vocabulary flags:
+        --facet <id>            Regenerate one facet vocabulary. Repeatable.
+        --namespace <id>        Limit evidence to one namespace. Repeatable.
+        --previous-vocabulary <path>
+                                Preserve and compare a previous vocabulary.
+        --min-evidence <n>      Minimum deterministic support for acceptance
+                                (default 2; previous/universal values bypass).
+        --max-candidates-per-facet <n>
+                                Bound prompt size per facet (default 256).
+        --dry-run               Write prompt pairs only.
+        --force                 Overwrite vocabulary/review outputs.
 
   classify-runtime-pack --runtime-export <pack.runtime-items.ndjson> [options]
       Recommended one-command workflow for a real modpack runtime export.
@@ -3351,6 +3925,12 @@ Commands:
         --summary <path>        Explicit runtime-summary.json path.
         --mods <path>           Prism instance root or mods/ folder for static
                                 jar enrichment.
+        --evidence <path>       Optional <pack>.facet-evidence.json. Stage 3
+                                converts low-breadth guide/advancement records
+                                into per-item document_context.
+        --facet-vocabulary <path>
+                                Accepted pack facet vocabulary to ground
+                                vocabulary-backed Stage 3 values.
         --pack-id <id>          Override output/layer/datapack id.
         --out <dir>             Output directory (default out/<pack-id>).
         --stages <list>         Default 1,2,3.
@@ -3365,8 +3945,15 @@ Commands:
         --repair-concurrency <n>
                                 Parallel repair batches (default 8).
 
-  validate <layer.json>
-      Validate a layer file against layer.schema.json.
+  validate <layer.json> [--vocabulary <facet-vocabulary.json>]
+      Validate a layer file against layer.schema.json plus the live facet
+      registry. With --vocabulary, vocabulary-backed facet values must be
+      accepted by that pack vocabulary artifact.
+
+  validate-vocabulary <facet-vocabulary.json>
+      Validate a pack facet vocabulary artifact: schema marker, pack id,
+      vocabulary-backed facet ids, value-id grammar, lifecycle state/origin,
+      and workflow-role parent links.
 
 Scan options:
   --mods <path>             Required. May point directly at mods/, at a
@@ -3424,6 +4011,9 @@ Stage 3 (LLM) knobs — only used when 3 is in --stages:
   --use-replay              Read responses from --fixture-dir; never call a live
                             backend.
   --dry-run                 Build prompts and stop before any LLM call.
+  --facet-vocabulary <path> Accepted pack facet vocabulary. Vocabulary-backed
+                            facets in Stage 3 are prompted to use only accepted
+                            ids from this file and final validation enforces it.
 
 Retry pass (opt-in; runs after the first pass on low-confidence items):
   --retry-model <id>        Retry model (e.g. sonnet). Enabling this turns on retry.
@@ -3500,6 +4090,19 @@ Examples:
       --mods /path/to/TerraFirmaGreg-Modern \\
       --subsystems-file out/tfg2.runtime-subsystems.json \\
       --stages 1,2,3 --datapack
+
+  # Collect pack-level facet evidence before proposing a vocabulary:
+  bun run src/cli.ts collect-pack-facet-evidence \\
+      --runtime-export modpacks/exports/tfg2.runtime-items.ndjson \\
+      --summary modpacks/exports/tfg2.runtime-summary.json \\
+      --mods /path/to/TerraFirmaGreg-Modern \\
+      --out out/tfg2
+
+  # Propose pack facet vocabulary from collected evidence:
+  bun run src/cli.ts propose-pack-facet-vocabulary \\
+      --evidence out/tfg2/tfg2.facet-evidence.json \\
+      --out out/tfg2 \\
+      --record-replay --fixture-dir test/fixtures/tfg2-facet-vocabulary
 
   # Recommended one-command pack workflow: uses repo-root .env for
   # OPENROUTER_API_KEY, records fixtures, repairs missing stage-3 coverage,

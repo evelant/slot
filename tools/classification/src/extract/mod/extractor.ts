@@ -3,6 +3,7 @@ import { buildItemTagClosure, buildItemTagMembership } from "../tags.ts";
 import { buildRecipeRoles } from "../recipes.ts";
 import { buildLootSources } from "../loot.ts";
 import { resolveModelParents } from "../models.ts";
+import { itemSemanticTextFromLang } from "../semantic_text.ts";
 import { loadModSourceBundle, type ModSourceBundle } from "./source.ts";
 
 export interface ModExtractResult {
@@ -51,6 +52,7 @@ export function extractFromModBundle(
     const displayName = enUs[`item.${ns}.${shortId}`]
       ?? enUs[`block.${ns}.${shortId}`]
       ?? null;
+    const semanticText = itemSemanticTextFromLang({ lang: enUs, namespace: ns, path: shortId });
     const membership = tagMembership.get(id);
 
     records.push({
@@ -72,6 +74,7 @@ export function extractFromModBundle(
       loot_table_sources: lootSources.get(id) ?? [],
       creative_tabs: [],
       component_data: components,
+      ...(semanticText.length > 0 ? { semantic_text: semanticText } : {}),
     });
   }
   records.sort((a, b) => a.id.localeCompare(b.id));

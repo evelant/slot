@@ -6,7 +6,9 @@ import dev.imagio.slot.classification.runtime.RuntimeClassificationExportBuilder
 import dev.imagio.slot.classification.runtime.RuntimeClassificationExportBuilder.BlockEntry;
 import dev.imagio.slot.classification.runtime.RuntimeClassificationExportBuilder.ItemEntry;
 import dev.imagio.slot.classification.runtime.RuntimeClassificationExportBuilder.RecipeIndex;
+import dev.imagio.slot.classification.runtime.RuntimeClassificationExportBuilder.SemanticEntry;
 import dev.imagio.slot.classification.runtime.RuntimeClassificationExportWriter;
+import net.minecraft.network.chat.Component;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -15,8 +17,11 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeHolder;
@@ -28,9 +33,11 @@ import net.neoforged.fml.loading.FMLPaths;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 
 public final class NeoForgeRuntimeClassificationExport {
@@ -43,6 +50,7 @@ public final class NeoForgeRuntimeClassificationExport {
     ) throws IOException {
         Objects.requireNonNull(server, "server");
         RecipeIndex recipeIndex = buildRecipeIndex(server);
+        Map<Item, List<String>> creativeTabs = buildCreativeTabIndex(server);
         ArrayList<ItemEntry> items = new ArrayList<>();
 
         for (Item item : BuiltInRegistries.ITEM) {
@@ -61,6 +69,8 @@ public final class NeoForgeRuntimeClassificationExport {
                     stack.getHoverName().getString(),
                     stack.getDescriptionId(),
                     itemTags(stack),
+                    creativeTabs.getOrDefault(item, List.of()),
+                    semanticText(server, stack),
                     componentData(item, stack),
                     blockEntry(item)
             ));
@@ -183,6 +193,72 @@ public final class NeoForgeRuntimeClassificationExport {
             }
         });
         return RuntimeClassificationExportBuilder.sortedStrings(tags);
+    }
+
+    private static List<SemanticEntry> semanticText(MinecraftServer server, ItemStack stack) {
+        ArrayList<SemanticEntry> lines = new ArrayList<>();
+        LinkedHashSet<String> seen = new LinkedHashSet<>();
+        String displayName = stack.getHoverName().getString();
+        try {
+            for (Component line : stack.getTooltipLines(Item.TooltipContext.of(server.overworld()), null, TooltipFlag.Default.NORMAL)) {
+                String text = normalizeTooltipLine(line.getString());
+                if (text.isBlank() || text.equals(displayName)) {
+                    continue;
+                }
+                if (seen.add(text)) {
+                    lines.add(RuntimeClassificationExportBuilder.runtimeTooltip(text));
+                }
+            }
+        } catch (RuntimeException ignored) {
+            return List.of();
+        }
+        return List.copyOf(lines);
+    }
+
+    private static String normalizeTooltipLine(String text) {
+        if (text == null) {
+            return "";
+        }
+        return text.replaceAll("\\s+", " ").trim();
+    }
+
+    private static Map<Item, List<String>> buildCreativeTabIndex(MinecraftServer server) {
+        LinkedHashMap<Item, LinkedHashSet<String>> byItem = new LinkedHashMap<>();
+        try {
+            CreativeModeTabs.tryRebuildTabContents(server.getWorldData().enabledFeatures(), true, server.registryAccess());
+        } catch (RuntimeException ignored) {
+            return Map.of();
+        }
+        for (CreativeModeTab tab : BuiltInRegistries.CREATIVE_MODE_TAB) {
+            ResourceLocation tabKey = BuiltInRegistries.CREATIVE_MODE_TAB.getKey(tab);
+            if (tabKey == null || isNonSemanticCreativeTab(tabKey)) {
+                continue;
+            }
+            String tabId = tabKey.toString();
+            for (ItemStack stack : tab.getDisplayItems()) {
+                addCreativeTab(byItem, stack, tabId);
+            }
+            for (ItemStack stack : tab.getSearchTabDisplayItems()) {
+                addCreativeTab(byItem, stack, tabId);
+            }
+        }
+        LinkedHashMap<Item, List<String>> out = new LinkedHashMap<>();
+        byItem.forEach((item, tabs) -> out.put(item, RuntimeClassificationExportBuilder.sortedStrings(tabs)));
+        return out;
+    }
+
+    private static boolean isNonSemanticCreativeTab(ResourceLocation tabKey) {
+        return tabKey.equals(CreativeModeTabs.SEARCH.location())
+                || tabKey.equals(CreativeModeTabs.HOTBAR.location())
+                || tabKey.equals(CreativeModeTabs.INVENTORY.location())
+                || tabKey.equals(CreativeModeTabs.OP_BLOCKS.location());
+    }
+
+    private static void addCreativeTab(Map<Item, LinkedHashSet<String>> byItem, ItemStack stack, String tabId) {
+        if (stack == null || stack.isEmpty()) {
+            return;
+        }
+        byItem.computeIfAbsent(stack.getItem(), ignored -> new LinkedHashSet<>()).add(tabId);
     }
 
     private static RecipeIndex buildRecipeIndex(MinecraftServer server) {

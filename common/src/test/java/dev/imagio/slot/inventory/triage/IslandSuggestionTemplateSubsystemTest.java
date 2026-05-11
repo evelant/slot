@@ -243,12 +243,12 @@ class IslandSuggestionTemplateSubsystemTest {
     void multiRoleAmbiguousFiresMultipleTemplatesAndActivityPicks() {
         // role=[material, building_block] would normally pick MATERIALS
         // (declaration order, since material comes before building_block
-        // role triggers in the enum). With activity=[building], the
+        // role triggers in the enum). With activity=[slot:building], the
         // activity tie-break narrows to BUILDING.
         IslandSignalDescriptor descriptor = activityDescriptor(
                 "modded:multi_role",
                 List.of("material", "building_block"),
-                List.of("building")
+                List.of("slot:building")
         );
         IslandSuggestionTemplate match = IslandSuggestionTemplate.firstMatch(descriptor);
         assertEquals(IslandSuggestionTemplate.BUILDING, match);
@@ -261,7 +261,7 @@ class IslandSuggestionTemplateSubsystemTest {
         IslandSignalDescriptor descriptor = activityDescriptor(
                 "modded:single_role",
                 List.of("tool"),
-                List.of("building", "redstone")
+                List.of("slot:building", "slot:redstone")
         );
         IslandSuggestionTemplate match = IslandSuggestionTemplate.firstMatch(descriptor);
         assertEquals(IslandSuggestionTemplate.TOOLS, match);
@@ -274,7 +274,7 @@ class IslandSuggestionTemplateSubsystemTest {
         IslandSignalDescriptor descriptor = activityDescriptor(
                 "modded:ambiguous",
                 List.of("material", "building_block"),
-                List.of("nonsense_activity")
+                List.of("slot:nonsense_activity")
         );
         IslandSuggestionTemplate match = IslandSuggestionTemplate.firstMatch(descriptor);
         assertEquals(IslandSuggestionTemplate.MATERIALS, match);

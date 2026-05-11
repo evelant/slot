@@ -122,16 +122,18 @@ export class OpenRouterClient implements LlmClient {
    *   1. HTTP 429 (rate limit) — OpenRouterError exposes statusCode; we
    *      honor a Retry-After header when present.
    *   2. HTTP 5xx (server error) — same path.
-   *   3. Empty / malformed response body — the SDK throws a SyntaxError
+   *   3. Network transport resets/timeouts — long prompt uploads can trip a
+   *      provider or edge socket even when the request is otherwise valid.
+   *   4. Empty / malformed response body — the SDK throws a SyntaxError
    *      from `JSON.parse(body)` inside `matchFunc` when the upstream
    *      returns an empty body or a partial response. We've observed
    *      this on deepseek under load even with the provider pinned;
    *      it's transient and a simple retry recovers.
-   *   4. 200 OK with empty / null `message.content` — the upstream
+   *   5. 200 OK with empty / null `message.content` — the upstream
    *      returned a syntactically-valid envelope but no actual text. We
    *      hit this on sophisticatedstorage after a string of 429s; it's
    *      transient at the upstream-provider layer and a retry recovers.
-   *   5. Truncated / unparseable content — when a `responseValidator`
+   *   6. Truncated / unparseable content — when a `responseValidator`
    *      is supplied, we run it on the unwrapped text and treat
    *      `{ ok: false }` as transient. We hit this on the create
    *      modpack run: 3 batches' content cut off mid-JSON
@@ -207,9 +209,10 @@ export class OpenRouterClient implements LlmClient {
         const message = err instanceof Error ? err.message : String(err);
         const isParseTransient = err instanceof SyntaxError
           || /Unexpected EOF|Unexpected end of JSON input/i.test(message);
+        const isNetworkTransient = isTransientNetworkError(err, message);
         const isEmptyContent = err instanceof EmptyContentError;
         const isInvalidContent = err instanceof InvalidContentError;
-        const transient = isHttpTransient || isParseTransient || isEmptyContent || isInvalidContent;
+        const transient = isHttpTransient || isNetworkTransient || isParseTransient || isEmptyContent || isInvalidContent;
         if (!transient || attempt === maxAttempts - 1) {
           throw err;
         }
@@ -219,6 +222,8 @@ export class OpenRouterClient implements LlmClient {
         const backoffMs = Math.max(baseMs, Math.min(60_000, 5_000 * Math.pow(2, attempt)));
         const reason = isHttpTransient
           ? `code=${code}`
+          : isNetworkTransient
+            ? `network:${message.slice(0, 60)}`
           : isEmptyContent
             ? `empty-content`
             : isInvalidContent
@@ -235,6 +240,23 @@ export class OpenRouterClient implements LlmClient {
     // Unreachable, but keep type-checker happy.
     throw lastErr;
   }
+}
+
+function isTransientNetworkError(err: unknown, message: string): boolean {
+  const code = (err as { code?: unknown; errno?: unknown }).code;
+  if (typeof code === "string" && [
+    "ECONNRESET",
+    "ETIMEDOUT",
+    "ECONNABORTED",
+    "EPIPE",
+    "UND_ERR_SOCKET",
+    "UND_ERR_CONNECT_TIMEOUT",
+    "UND_ERR_HEADERS_TIMEOUT",
+    "UND_ERR_BODY_TIMEOUT",
+  ].includes(code)) {
+    return true;
+  }
+  return /socket connection was closed|connection reset|network error|fetch failed|terminated/i.test(message);
 }
 
 /**

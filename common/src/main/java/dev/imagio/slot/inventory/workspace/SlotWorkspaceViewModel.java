@@ -747,6 +747,7 @@ public record SlotWorkspaceViewModel(
                 claimedChestMap,
                 affinityMap,
                 proximate,
+                chestContentsResolver,
                 reservedCountResolver);
         List<IdentityRef> recentIdentitiesList = recentIdentityRefs(recents);
         return new SlotWorkspaceViewModel(
@@ -847,14 +848,15 @@ public record SlotWorkspaceViewModel(
     }
 
     /**
-     * Carried atlas-item identities that have a positive direct
-     * affinity score against at least one proximate claimed chest.
+     * Carried atlas-item identities that have a positive direct affinity
+     * score or matching live contents against at least one proximate
+     * claimed chest.
      * Drives the "Deposit (N)" button label and the deposit-preview
      * highlight on atlas cards.
      *
-     * <p>Only direct affinity is checked. Live chest presence and item
-     * similarity are intentionally ignored so the preview stays tight
-     * to "I have already deposited this exact item here" and matches
+     * <p>Only explicit player-taught signals are checked: direct affinity
+     * and existing chest contents. Item similarity, classifier facets, and
+     * empty-chest fallback are intentionally ignored so the preview matches
      * the server planner.
      */
     private static Set<IdentityRef> depositableIdentities(
@@ -862,14 +864,16 @@ public record SlotWorkspaceViewModel(
             ClaimedChestMap claimedChestMap,
             ChestAffinityMap affinityMap,
             Set<String> proximateStorageIds,
+            Function<String, ChestContentsSnapshot> chestContentsResolver,
             java.util.function.ToIntFunction<ItemIdentity> reservedCountResolver
     ) {
         if (atlasItems == null || atlasItems.isEmpty()
                 || claimedChestMap == null || claimedChestMap.chests().isEmpty()
-                || affinityMap == null
                 || proximateStorageIds == null || proximateStorageIds.isEmpty()) {
             return Set.of();
         }
+        Map<String, Set<ItemIdentity>> contentIdentities = proximateContentIdentitiesByChest(
+                claimedChestMap, chestContentsResolver, proximateStorageIds);
         LinkedHashSet<IdentityRef> result = new LinkedHashSet<>();
         for (AtlasItem item : atlasItems) {
             if (!item.carried()) {
@@ -897,13 +901,54 @@ public record SlotWorkspaceViewModel(
                 if (!proximateStorageIds.contains(chest.storageId().toString())) {
                     continue;
                 }
-                if (affinityMap.score(chest.storageId(), identity) > 0) {
+                boolean affinityMatch = affinityMap != null && affinityMap.score(chest.storageId(), identity) > 0;
+                boolean contentMatch = contentIdentities
+                        .getOrDefault(chest.storageId().toString(), Set.of())
+                        .contains(ItemIdentityMatcher.normalizeMovable(identity));
+                if (affinityMatch || contentMatch) {
                     result.add(item.identity());
                     break;
                 }
             }
         }
         return Set.copyOf(result);
+    }
+
+    private static Map<String, Set<ItemIdentity>> proximateContentIdentitiesByChest(
+            ClaimedChestMap claimedChestMap,
+            Function<String, ChestContentsSnapshot> chestContentsResolver,
+            Set<String> proximateStorageIds
+    ) {
+        if (claimedChestMap == null || claimedChestMap.chests().isEmpty()
+                || chestContentsResolver == null
+                || proximateStorageIds == null || proximateStorageIds.isEmpty()) {
+            return Map.of();
+        }
+        LinkedHashMap<String, Set<ItemIdentity>> out = new LinkedHashMap<>();
+        for (ClaimedChest chest : claimedChestMap.chests()) {
+            if (chest == null) {
+                continue;
+            }
+            String storageId = chest.storageId().toString();
+            if (!proximateStorageIds.contains(storageId)) {
+                continue;
+            }
+            ChestContentsSnapshot snapshot = chestContentsResolver.apply(storageId);
+            if (snapshot == null || snapshot.contents().isEmpty()) {
+                continue;
+            }
+            LinkedHashSet<ItemIdentity> identities = new LinkedHashSet<>();
+            for (ItemStack stack : snapshot.contents()) {
+                if (stack == null || stack.isEmpty()) {
+                    continue;
+                }
+                identities.add(ItemIdentityMatcher.normalizeMovable(ItemIdentityMatcher.create(stack)));
+            }
+            if (!identities.isEmpty()) {
+                out.put(storageId, Set.copyOf(identities));
+            }
+        }
+        return Map.copyOf(out);
     }
 
     /**

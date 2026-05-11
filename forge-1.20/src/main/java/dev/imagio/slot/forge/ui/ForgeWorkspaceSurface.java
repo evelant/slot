@@ -564,10 +564,10 @@ public final class ForgeWorkspaceSurface {
                         true,
                         WorkspaceUiPalette.ROW_HOVER,
                         WorkspaceUiPalette.TEXT,
-                        "Deposit carried items into nearby chests by learned affinity.")
+                        "Deposit carried items into nearby chests by learned affinity or matching contents.")
                 .tooltip(Component.literal(
-                        "Deposit carried items into nearby chests by learned affinity. "
-                                + "Items without an existing bond stay in carry - drop one in manually first."))
+                        "Deposit carried items into nearby chests by learned affinity or matching contents. "
+                                + "Items without either signal stay in carry."))
                 .on(SlotUiEventKind.CLICK, event -> {
                     if (event.button() != 0) {
                         return;

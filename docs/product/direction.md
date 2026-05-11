@@ -1,6 +1,6 @@
 # SLOT Product Direction
 
-Last updated: 2026-04-14
+Last updated: 2026-05-10
 
 This document explains why SLOT exists and what player problems it is trying to
 solve. It is the living feature-direction document, not the normative behavior
@@ -88,6 +88,36 @@ carried inventory, and protection flags that activate when the Kit is active.
 This is the current user-facing answer to "switch quickly between tasks and
 have the right items in the right places."
 
+## How Players Set Goals
+
+In complex packs, the player usually does not start from an inventory
+taxonomy. They set goals from play context, guides, pressure, and
+opportunity, then use inventory and storage to make progress. SLOT should keep
+these goal-setting patterns visible when designing workflow surfaces:
+
+- **Quest/guide led.** "The quest says make a bloomery / LV machine hull /
+  blast furnace."
+- **Recipe led.** "I saw this item in EMI and want it."
+- **Pressure led.** "I need food, light, storage, tools, defense, warmth,
+  medicine."
+- **Bottleneck led.** "I'm always out of wrought iron sheets / leather /
+  charcoal / circuits."
+- **Opportunity led.** "I found nickel; can I do anything useful with it?"
+- **Cleanup led.** "I have a mess of ores, foods, and parts; what should be
+  processed or stored?"
+- **Creative led.** "I want to build a greenhouse / kitchen / workshop."
+- **Exploration led.** "I'm leaving base to resolve a bottleneck or quest
+  goal, find an ore, gather a plant or animal product, or bring back a
+  specific material. What do I need?"
+
+The product implication is that SLOT should focus on goal-aware inventory
+context, not on duplicating recipe encyclopedias. EMI/JEI should remain the
+place to inspect recipes, usages, and alternatives. SLOT adds value by showing
+how a chosen goal relates to what the player actually has across carried
+inventory and known storage: what is present, what is missing, where it is,
+which requirements are ambiguous, and which tools, stations, containers, or
+fuels are relevant.
+
 ## Product Principles
 
 - Keep real inventory authority visible where it matters, hidden where it
@@ -97,6 +127,8 @@ have the right items in the right places."
 - Let broad actions be powerful, but never mysterious.
 - Treat crafting, recipe viewers, and storage terminals as first-class workflow
   surfaces.
+- Do not replicate recipe-viewer data displays; connect selected recipes and
+  goals to the player's real inventory and storage context.
 - Keep recents, cleanup, and future undo/recovery flows grounded in real
   inventory activity rather than transient screen heuristics.
 - Keep unsupported or ambiguous integrations out rather than half-supported.

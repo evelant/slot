@@ -1,223 +1,299 @@
-# Slot Classification Pipeline
+# Slot Classification Tool
 
-Bun/TypeScript pipeline that produces item-classification layer files from mod
-source trees / jars. Outputs validate against [layer.schema.json](layer.schema.json).
+Last updated: 2026-05-11
 
-## Primary reference
+This Bun/TypeScript tool builds the item-classification data that SLOT loads at
+runtime. Classification tells the wall and command services what an item is, how
+players use it, which process or storage section it belongs near, and how to
+explain that decision during diagnostics.
 
-For a concise "what this tool does / how it works / how to use it"
-overview, read
-[`docs/design/classification/tool-guide.md`](../../docs/design/classification/tool-guide.md).
+The current production path is:
 
-**All design decisions, facet schema, pipeline stages, layer format, merge rules,
-and test strategy live in** [`docs/plans/item-classification.md`](../../docs/plans/item-classification.md).
-Read that first. This README is just a landing page for developers who find themselves
-in this directory.
+1. Build or export item facts.
+2. Derive deterministic facets from tags, recipes, components, ids, and jar
+   resources.
+3. Optionally run stage 3 LLM completion for judgement-call facets.
+4. Validate the layer.
+5. Ship bundled resources or package a modpack datapack layer.
 
-## What's here today
+No LLM runs in Minecraft. Runtime code only reads validated JSON layers through
+`FacetIndex`.
 
-- [`layer.schema.json`](layer.schema.json) — JSONSchema (Draft-07) that validates
-  every classification layer file. Source of truth for the wire format.
-- `src/extract/` — stage 1 extractor. Vanilla (mcmeta summary), mod source
-  trees (NeoForge / Forge layouts, with gradle.properties + `${mod_*}` template
-  resolution), and installed mod jars are supported.
-- `src/scan/` — installed `mods/` folder scanner. Reads local jar metadata,
-  hashes, resource counts, item-candidate estimates, and Prism/Packwiz
-  `.index/*.pw.toml` platform ids without network or LLM calls.
-- `src/deterministic/` — stage 2 rule-based facet derivation.
-- `src/llm/` — stage 3 LLM completion. Includes per-mod and runtime-export
-  `mod_subsystem` proposer pre-passes that pin canonical vocabularies into
-  the system prompt; the `organization_group` auto-home facet; split-prompt
-  mode; fixture-based record/replay for free resume; OpenRouter support; and
-  transient-error retry.
-- `src/schema/` — facet registry (v1 vocabulary) and AJV wrapper around
-  `layer.schema.json`.
-- `datasets/<source>/` — curated, git-tracked layer outputs the rest of the
-  mod consumes. `datasets/minecraft/` holds the first vanilla v1 layer
-  (1536 items) plus its corrections + schema-proposal audit trail.
-- `test/fixtures/<run>/` — recorded LLM fixtures for past runs. Resuming a
-  run with the same `--fixture-dir` replays them cache-first; new prompts
-  call the LLM and persist new fixtures.
+## Current Runtime Contract
 
-## What will be here (next stages)
+SLOT loads classification from:
 
-See [Pipeline layout](../../docs/plans/item-classification.md#pipeline-layout)
-in the plan. `src/neighbors/` (stage 4 nearest-neighbor precompute) and
-`src/compile/` (stage 5 compile-and-ship) are the remaining stages. For the
-current iteration the stage-3 output is already a valid layer file and is
-copied directly into `datasets/`.
+- bundled resources under
+  `common/src/main/resources/data/slot/classification/vanilla-base.json`
+- bundled per-mod resources listed by
+  `common/src/main/resources/data/slot/classification/per-mod/index.json`
+- datapack layers at `data/slot/classification/layers/<pack>.json`
 
-## Running the pipeline
+Both NeoForge 1.21.1 and Forge 1.20.1 expose:
+
+```text
+/slot classification status
+/slot classification inspect <item_id>
+/slot classification export <pack_id>
+/slot classification rehome
+```
+
+`inspect` shows the loaded role/template/group/subsystem view for an item.
+`export` writes live runtime item records and a summary after datapacks and
+scripts have modified registries, tags, and recipes. `rehome` recomputes
+classifier-owned homes for carried items and accessible claimed chests; it does
+not move physical stacks.
+
+The player surface is now the sectioned wall/list, not the old pan/zoom atlas.
+Some Java identifiers still say `AtlasItem`, `AtlasCardBuilder`, or
+`atlasItems` because the list-view migration intentionally avoided churn in
+model names. Treat those as legacy names for wall cards/sections, not as the
+product direction.
+
+## Directory Map
+
+- [`layer.schema.json`](layer.schema.json) validates layer files.
+- `src/schema/` owns the facet registry, AJV validation wrapper, and pack
+  facet-vocabulary artifact validation.
+- `src/extract/` builds stage-1 `ItemExtractRecord` data from mcmeta summaries,
+  mod source trees, installed jars, and runtime exports.
+- `src/scan/` scans installed `mods/` folders without network or LLM calls.
+- `src/deterministic/` derives stage-2 facets.
+- `src/evidence/` assembles pack-level evidence for facet vocabulary work:
+  runtime item facts, recipe summaries, tag summaries, mod metadata, guide
+  pages, quest nodes, advancements, and diagnostics.
+- `src/llm/` runs stage 3 completion, runtime subsystem vocabulary proposal,
+  fixture record/replay, retry repair, and OpenRouter / `claude-cli` backends.
+- `datasets/<source>/` holds committed classification outputs that can be
+  synced into runtime resources.
+- `test/fixtures/<run>/` holds recorded LLM prompt/response fixtures.
+
+Primary docs:
+
+- [classification tool guide](../../docs/design/classification/tool-guide.md)
+- [classification system overview](../../docs/design/classification/README.md)
+- [facet vocabulary plan](../../docs/plans/classification-facet-vocabulary.md)
+- [item classification plan](../../docs/plans/item-classification.md)
+
+## Recommended Pack Workflow
+
+For KubeJS/datapack-heavy packs, start inside a loaded Minecraft instance:
+
+```text
+/slot classification export tfg2
+```
+
+Copy or point the generated export paths at this tool, then run:
 
 ```sh
 cd tools/classification
 bun install
-# Installed pack scan (no LLM/network):
-bun run src/cli.ts scan --mods /path/to/prism/instance-or-minecraft/mods --out out/scan
-# Installed pack jar extraction + deterministic facets (no LLM/network):
-bun run src/cli.ts classify-folder --mods /path/to/prism/instance-or-minecraft/mods --out out --stages 1,2
-# Vanilla, stages 1+2 (no LLM cost):
-bun run src/cli.ts classify --mod minecraft --source ../mcmeta/.worktrees/summary
-# Vanilla full LLM pass (concurrency 4, ~3h, hits 5h subscription cap once):
-bun run src/cli.ts classify --mod minecraft --source ../mcmeta/.worktrees/summary \
-    --stages 1,2,3 --model sonnet --concurrency 4 --batch-size 5 \
-    --record-replay --fixture-dir test/fixtures/vanilla-full-v1
-# Mod source tree (proposer fires automatically; cached at out/<modid>.subsystems.json):
-bun run src/cli.ts classify --mod createaddition --source ../../reference/classification/createaddition \
-    --stages 1,2,3 --model sonnet --concurrency 6 --batch-size 5 \
-    --record-replay --fixture-dir test/fixtures/stage3-canary-createaddition-v5
-# One installed mod from a pack, including stage 3:
-bun run src/cli.ts classify-folder --mods /path/to/prism/instance --mod createaddition \
-    --out out --stages 1,2,3 --record-replay --fixture-dir test/fixtures/createaddition-jar
-# Runtime export subsystem vocabulary dry run:
-bun run src/cli.ts propose-runtime-subsystems \
-    --runtime-export modpacks/exports/tfg2.runtime-items.ndjson \
-    --summary modpacks/exports/tfg2.runtime-summary.json \
-    --namespace create --namespace gtceu --dry-run
-# Recommended one-command static+runtime pack workflow:
+
+bun run src/cli.ts collect-pack-facet-evidence \
+  --runtime-export modpacks/exports/tfg2.runtime-items.ndjson \
+  --summary modpacks/exports/tfg2.runtime-summary.json \
+  --mods /path/to/prism/instance-or-minecraft/mods \
+  --out out/tfg2 \
+  --force
+
 bun run classify:runtime-pack -- \
-    --runtime-export modpacks/exports/tfg2.runtime-items.ndjson \
-    --summary modpacks/exports/tfg2.runtime-summary.json \
-    --mods /path/to/prism/instance \
-    --out out/tfg2 \
-    --force
-# Static+runtime pack layer packaged as a datapack folder:
-bun run src/cli.ts generate-pack-layer \
-    --runtime-export modpacks/exports/tfg2.runtime-items.ndjson \
-    --summary modpacks/exports/tfg2.runtime-summary.json \
-    --mods /path/to/prism/instance \
-    --subsystems-file out/tfg2.runtime-subsystems.json \
-    --stages 1,2,3 --datapack
-# Validate any layer file:
-bun run src/cli.ts validate datasets/minecraft/minecraft.facets.complete.json
+  --runtime-export modpacks/exports/tfg2.runtime-items.ndjson \
+  --summary modpacks/exports/tfg2.runtime-summary.json \
+  --mods /path/to/prism/instance-or-minecraft/mods \
+  --evidence out/tfg2/tfg2.facet-evidence.json \
+  --out out/tfg2 \
+  --force
 ```
 
-For KubeJS/datapack-heavy packs, run `/slot classification export
-<pack_id>` inside the loaded Minecraft instance. It writes live
-stage-1-compatible records under
-`config/slot/classification/exports/`.
+`classify-runtime-pack` is the current one-command workflow for real packs. It:
 
-For in-game validation after installing a generated datapack, run:
+- merges live runtime records with optional static jar facts
+- passes gated guide/advancement snippets into stage 3 as `document_context`
+  when `--evidence <pack>.facet-evidence.json` is supplied
+- generates or reuses runtime `mod_subsystem` vocabulary
+- runs deterministic facets and optional stage 3 completion
+- repairs items that received no LLM-authored facets
+- validates the final layer
+- writes a datapack folder and zip
+- emits `run-report.json` and `run-report.md`
+
+Install the datapack into the test world or pack, reload, then verify:
 
 ```text
-/slot classification inspect <item_id>
+/datapack list enabled
+/slot classification status
+/slot classification inspect <known_pack_item>
 /slot classification rehome
 ```
 
-`inspect` shows the loaded facet/template/group/subsystem view for one item.
-`rehome` recomputes classifier-owned homes for every unique item in
-carried storage plus currently accessible claimed chests; it does not
-move physical stacks.
+## Facet Vocabulary Work
 
-The vanilla extractor reads from [misode/mcmeta](https://github.com/misode/mcmeta),
-tracked as a git submodule at `tools/mcmeta`. On first run it auto-creates a git
-worktree for the `summary` branch under `tools/mcmeta/.worktrees/summary` and
-reads the consolidated `*/data.min.json` files from there. To pick up a newer
-Minecraft version, `git -C tools/mcmeta fetch`, update the submodule commit,
-and delete the worktree; the next pipeline run recreates it.
+The next classification track is pack-specific semantic vocabulary. Slices 0
+through 2 are implemented:
 
-Outputs (working dir, gitignored):
+- vocabulary-backed facets and scoped value-id grammar
+- layer validation against a pack vocabulary artifact
+- `validate-vocabulary`
+- `collect-pack-facet-evidence`
+- `propose-pack-facet-vocabulary`
 
-- `out/<source>.items.ndjson` — stage 1, one JSON record per item.
-- `out/<source>.items.meta.json` — stage 1 metadata (extractor, version, timestamp).
-- `out/<source>.facets.partial.json` — stage 2 layer file.
-- `out/<source>.facets.complete.json` — stage 3 merged layer (stage 2 + LLM).
-- `out/<source>.subsystems.json` — proposer's canonical `mod_subsystem`
-  vocabulary, cached so the proposer LLM call only fires once per mod.
-- `out/<pack>.runtime-subsystems.json` — pack-specific namespace-scoped
-  `mod_subsystem` vocabulary generated from a live runtime export.
-- `out/<pack>.pack.items.ndjson` — merged runtime records enriched with
-  static jar facts when `generate-pack-layer --mods` or
-  `classify-runtime-pack --mods` is used.
-- `out/<pack>.pack.facets.partial.json` / `.complete.json` — generated
-  pack-specific `layer: "modpack"` classification layer.
-- `out/<pack>.classification-datapack/` — optional drop-in datapack folder
-  containing `data/slot/classification/layers/<pack>.json`.
-- `out/<pack>.classification-datapack.zip` — zipped datapack from the
-  one-command runtime-pack workflow.
-- `out/<pack>.run-report.json` / `.md` — machine and human summaries from
-  `classify-runtime-pack`, including final paths, review counts, and LLM
-  coverage before/after repair.
-- `out/<pack>.pack.no-llm-items.json` / `.after-repair.json` — coverage-gap
-  audit files written by `classify-runtime-pack`.
-- `out/<source>.facets.corrections.json` — stage-3 corrections the LLM flagged
-  on stage-2 entries (review queue, never auto-applied).
-- `out/<source>.facets.schema-proposals.json` — values/facets the LLM wanted
-  but didn't find in the schema. Drives schema evolution.
-- `out/<source>.facets.response-mismatches.json` — batch responses that
-  omitted requested ids or returned extra ids; missing ids are repaired or
-  left visible for rerun.
-- `out/<source>.facets.warnings.json` — parser/merge warnings retained for
-  audit instead of only scrolling by in the terminal.
+Semantic evidence is the point of this pass. Preserve tooltip/lore text,
+guidebook page bodies, quest text, lang-resolved advancement text,
+KubeJS/datapack overlays, Ponder lang text, recipe-category lang labels,
+KubeJS client tooltip mappings, stack-group names, zipped resource-pack lang
+overrides, and mod descriptions as structured prompt evidence. Do not reduce
+vocabulary generation to a few `seed_items` or terse recipe ids. The target
+model is cheap and has a very large context window, so prefer rich auditable
+context over over-compressed prompts.
 
-Curated outputs (committed):
-
-- `datasets/<source>/<source>.facets.complete.json` — what the runtime loads.
-- `datasets/<source>/<source>.facets.corrections.json` — audit trail for the
-  generation that produced `complete.json`.
-- `datasets/<source>/<source>.facets.schema-proposals.json` — same audit trail
-  for proposals.
-
-## LLM gateway
-
-Stage 3 has two backends behind the same `LlmClient` interface
-([`src/llm/client.ts`](src/llm/client.ts),
-[`src/llm/openrouter-client.ts`](src/llm/openrouter-client.ts)):
-
-- **`openrouter` (default)** — calls the official `@openrouter/sdk` against
-  the OpenRouter API. The default model is `deepseek/deepseek-v4-flash`,
-  pinned to the `deepseek` upstream provider for price / caching /
-  throughput / known-good behaviour. Set `OPENROUTER_API_KEY` in env (the
-  CLI auto-loads the repo-root `.env` without overriding existing env vars).
-- **`claude-cli`** — shells out to `claude -p` (Claude Code CLI in print
-  mode). Selected automatically when `--model` is a Claude alias
-  (`haiku`/`sonnet`/`opus`) or a `claude-*` full id; pass explicitly via
-  `--backend claude-cli` to force it. See
-  [LLM gateway: `claude -p`](../../docs/plans/item-classification.md#llm-gateway-claude--p)
-  for the rationale we kept it as a backend.
-
-Backend is auto-inferred from `--model`: a slug containing `/` routes to
-openrouter; otherwise claude-cli. The `--only-provider` flag also auto-
-defaults to `deepseek` when the model is in the deepseek family — avoids
-the SiliconFlow/DeepInfra flakiness we hit during evaluation.
-
-Reasoning-effort flags (`--effort`, `--thinking-budget`) and Claude-specific
-`--model` aliases are claude-cli-only and silently ignored on the openrouter
-path.
-
-Both backends round-trip through the same fixture-based record/replay
-machinery; replay mode (`--use-replay --fixture-dir <path>`) bypasses the
-network entirely.
-
-### Why deepseek-v4-flash as default?
-
-A/B-tested 2026-04-26 against Claude haiku/sonnet on a 60-item playtest
-sample covering doors, beds, Block-of-X, rails, spawn eggs, mob drops,
-buckets, ingredient-stage blocks, lighting, trophy items, and canonical
-sanity items:
-
-| Backend / model | Hits / 62 | Wall time | Notes |
-|---|---|---|---|
-| Claude haiku (lean prompt) | 20 | ~9 min | low cost, low accuracy |
-| Claude sonnet | 41 + 17 dropped | ~6.5 min | accuracy capped by silent batch drops |
-| **deepseek-v4-flash (deepseek pin)** | **60** | **~2 min** | best accuracy, ~20× cheaper than sonnet |
-| deepseek-v4-pro (deepseek pin) | 59 | ~23 min | no quality lift; ~10× cost of flash |
-
-v4-flash hits the sweet spot: better accuracy than sonnet, no batch
-dropping, dramatically cheaper, ~3× faster wall time.
-
-## Prompt-evaluation presets
-
-[`scripts/eval-prompt.sh`](scripts/eval-prompt.sh) runs a 60-item playtest
-sample (covering doors, beds, Block-of-X, rails, spawn eggs, mob drops,
-buckets, ingredient-stage blocks, lighting, trophy/progression items, and
-canonical sanity items) against a chosen model. Reads stage-1/2 outputs
-from `out/` so it doesn't require an mcmeta clone.
+Collect evidence before proposing vocabulary:
 
 ```sh
-bun run eval:sonnet                          # claude-cli + sonnet
-OPENROUTER_API_KEY=... bun run eval:deepseek # openrouter + deepseek/deepseek-v4-flash
-scripts/eval-prompt.sh --backend openrouter --model openai/gpt-4o-mini
+bun run src/cli.ts collect-pack-facet-evidence \
+  --runtime-export modpacks/exports/tfg2.runtime-items.ndjson \
+  --summary modpacks/exports/tfg2.runtime-summary.json \
+  --mods /path/to/prism/instance-or-minecraft/mods \
+  --out out/tfg2 \
+  --force
 ```
 
-Output writes to `/tmp/slot-prompt-eval-<label>/`.
+This writes `out/<pack>.facet-evidence.json`. Missing guide, quest, or
+advancement data is an informational diagnostic, not a failed run.
+The same artifact can be passed to stage 3 with `--evidence`; the prompt builder
+uses only conservative per-item `document_context` from low-breadth guide pages
+and advancements. Current quest SNBT evidence stays vocabulary-only until the
+quest adapter splits chapter files into local quest records.
+
+Propose the vocabulary from that evidence:
+
+```sh
+bun run src/cli.ts propose-pack-facet-vocabulary \
+  --evidence out/tfg2/tfg2.facet-evidence.json \
+  --out out/tfg2 \
+  --record-replay \
+  --fixture-dir test/fixtures/tfg2-facet-vocabulary \
+  --force
+```
+
+Vocabulary ids use stable scoped values:
+
+```text
+slot:cooking
+create:mechanical_power
+pack:tfg2/steelmaking
+pack:tfg2/steelmaking#input
+```
+
+The command writes `facet-vocabulary.json` and
+`facet-vocabulary.review.json`. Do not treat a full regenerated pack layer as
+publishable until stage-3 consumes the vocabulary and out-of-vocabulary
+suggestions are routed to review.
+
+## Other Common Commands
+
+Scan an installed pack without extraction or LLM calls:
+
+```sh
+bun run src/cli.ts scan \
+  --mods /path/to/prism/instance-or-minecraft/mods \
+  --out out/scan
+```
+
+Extract deterministic facets from installed jars:
+
+```sh
+bun run src/cli.ts classify-folder \
+  --mods /path/to/prism/instance-or-minecraft/mods \
+  --out out \
+  --stages 1,2
+```
+
+Generate a pack layer without the full wrapper:
+
+```sh
+bun run src/cli.ts generate-pack-layer \
+  --runtime-export modpacks/exports/tfg2.runtime-items.ndjson \
+  --summary modpacks/exports/tfg2.runtime-summary.json \
+  --mods /path/to/prism/instance-or-minecraft/mods \
+  --evidence out/tfg2/tfg2.facet-evidence.json \
+  --subsystems-file out/tfg2.runtime-subsystems.json \
+  --out out/tfg2 \
+  --stages 1,2,3 \
+  --datapack \
+  --force
+```
+
+Validate layer and vocabulary artifacts:
+
+```sh
+bun run src/cli.ts validate out/tfg2.pack.facets.complete.json
+bun run src/cli.ts validate out/tfg2.pack.facets.complete.json \
+  --vocabulary out/tfg2.facet-vocabulary.json
+bun run src/cli.ts validate-vocabulary out/tfg2.facet-vocabulary.json
+```
+
+Regenerate committed bundled data:
+
+```sh
+bun run reclassify:vanilla
+bun run reclassify:test-modset
+bun run sync:vanilla
+bun run sync:test-modset
+```
+
+## Outputs
+
+Working outputs are gitignored under `out/`:
+
+- `<source>.items.ndjson` and `<source>.items.meta.json`: stage-1 records.
+- `<source>.facets.partial.json`: deterministic stage-2 layer.
+- `<source>.facets.complete.json`: stage-2 plus stage-3 completion.
+- `<source>.subsystems.json`: per-mod `mod_subsystem` vocabulary cache.
+- `<pack>.runtime-subsystems.json`: namespace-scoped subsystem vocabulary from
+  a runtime export.
+- `<pack>.facet-evidence.json`: pack-level evidence for vocabulary generation.
+- `<pack>.pack.items.ndjson`: runtime records enriched with static jar facts.
+- `<pack>.pack.facets.partial.json` / `.complete.json`: generated modpack
+  classification layer.
+- `<pack>.classification-datapack/` and `.zip`: drop-in datapack output.
+- `<pack>.run-report.json` / `.md`: machine and human run summaries.
+- `<pack>.pack.no-llm-items.json` / `.after-repair.json`: coverage gap audits.
+- `<source>.facets.corrections.json`: LLM-flagged deterministic corrections.
+- `<source>.facets.schema-proposals.json`: proposed schema/facet additions.
+- `<source>.facets.response-mismatches.json`: malformed batch response audit.
+- `<source>.facets.warnings.json`: parser and merge warnings.
+- `<pack>.facet-vocabulary.json`: accepted pack semantic vocabulary.
+- `<pack>.facet-vocabulary.review.json`: review/rejected vocabulary candidates.
+
+Committed outputs live in `datasets/<source>/`, then `bun run sync:*` copies
+them into `common/src/main/resources/data/slot/classification/`.
+
+## Stage 3 Backend
+
+Stage 3 uses `LlmClient` implementations in `src/llm/`:
+
+- `openrouter` is the default path for production runs. The default model is
+  `deepseek/deepseek-v4-flash`, pinned to the `deepseek` provider unless
+  overridden.
+- `claude-cli` shells out to `claude -p` and remains useful for comparison,
+  canary work, and fallback runs.
+- `--record-replay --fixture-dir <path>` records prompts and responses.
+- `--use-replay --fixture-dir <path>` replays recorded fixtures without network
+  calls.
+
+The CLI auto-loads a repo-root `.env` without overriding existing environment
+variables, so `OPENROUTER_API_KEY` can live there for manual runs.
+
+## Verification
+
+```sh
+bunx tsc --noEmit
+bun test
+git diff --check
+```
+
+For runtime packaging bugs, verify both processed resources and jar contents.
+The Forge 1.20 target must package the common classification resources just as
+NeoForge does; if Forge routes most items to generic sections, inspect
+`data/slot/classification/vanilla-base.json` and `per-mod/index.json` before
+chasing tag-alias theories.

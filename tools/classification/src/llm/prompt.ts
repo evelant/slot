@@ -1,7 +1,9 @@
 import type { ItemExtractRecord } from "../extract/record.ts";
 import { FACETS, type FacetDef } from "../schema/facets.ts";
+import type { PackFacetVocabulary } from "../schema/vocabulary.ts";
+import type { LlmDocumentContext } from "./document_context.ts";
 
-export const PROMPT_VERSION = "stage3-prompt-v6";
+export const PROMPT_VERSION = "stage3-prompt-v8";
 
 const RECIPE_EXAMPLE_LIMIT = 96;
 const LOOT_SOURCE_LIMIT = 64;
@@ -63,6 +65,8 @@ export interface LlmItemPayload {
   recipe_examples_truncated?: boolean;
   /** Model chain from stage 1 — useful for template-shape hints. */
   model_parents: readonly string[];
+  /** Runtime/static creative inventory group ids, when available. */
+  creative_tabs: readonly string[];
   /** Count of loot-table ids that can produce this item. */
   loot_source_count: number;
   /** Bounded representative loot-table ids. */
@@ -78,6 +82,14 @@ export interface LlmItemPayload {
   };
   /** Lore lines from minecraft:lore — big semantic signal when present. */
   lore: readonly string[];
+  /** Tooltip/lang/exported player-facing prose preserved from extraction. */
+  semantic_text?: readonly { source: string; key?: string; text: string }[];
+  /**
+   * Gated guidebook/advancement snippets linked to this runtime item by
+   * actual item ids. Kept separate from direct item prose so the LLM can weigh
+   * broad document context more carefully.
+   */
+  document_context?: readonly LlmDocumentContext[];
   /**
    * Key component values with semantic meaning the LLM can't derive from
    * tags/recipes alone — food nutrition, potion effects, damage resistance
@@ -108,6 +120,11 @@ export interface LlmPromptInput {
    */
   subsystem_vocabulary?: readonly { id: string; rationale?: string }[];
   /**
+   * Accepted pack vocabulary values for vocabulary-backed facets. When present,
+   * Stage 3 must pick from these ids instead of inventing new scoped ids.
+   */
+  facet_vocabulary?: PromptFacetVocabulary;
+  /**
    * Optional verbose-prompt sections.
    *
    * `verbose_facet_disambiguation` (default **ON**) — principle-level
@@ -129,6 +146,16 @@ export interface LlmPromptInput {
     verbose_facet_disambiguation?: boolean;
     verbose_common_misconceptions?: boolean;
   };
+}
+
+export type PromptFacetVocabulary = Record<string, readonly PromptFacetVocabularyValue[]>;
+
+export interface PromptFacetVocabularyValue {
+  id: string;
+  label: string;
+  description?: string;
+  aliases?: readonly string[];
+  parent?: string;
 }
 
 const SYSTEM_PREAMBLE = `You are classifying Minecraft items for the
@@ -164,6 +191,13 @@ reconsider.
 
 # Output rules
 - Only output values from the facet's allowed list, or (for free_text facets) values matching the pattern.
+- Vocabulary-backed facets use stable ids such as \`slot:cooking\`,
+  \`create:mechanical_power\`, \`pack:tfg2/steelmaking\`, or scoped
+  \`pack:tfg2/steelmaking#input\`; never emit display labels like
+  "Steelmaking" as facet values.
+- When the prompt includes a "Pack facet vocabulary" section, vocabulary-backed
+  facets MUST use only the listed accepted ids for that facet. If none fit,
+  omit the facet. Do not invent a syntactically valid id as a substitute.
 - Only emit facets that actually apply to the item. The test: would a player consider this facet meaningful for this item? \`combat_bonus\` on bread, \`biome\` on a crafted-only item — players wouldn't expect a value, so omit. Do not emit \`null\`, empty arrays, or placeholder values to satisfy a target-facet list.
 - Multi-value facets must use \`values: [...]\` even when there is only one
   value. This includes \`organization_group\` and \`mod_subsystem\`; never emit it as a scalar \`value\` facet.
@@ -179,9 +213,9 @@ reconsider.
     judgment calls and emit \`inferred\` — that's correct, not a
     consolation tier.
 
-      • \`named\` — an in-game string explicitly states the value (lore,
-        display name, a tag whose name IS the value) AND a player would
-        agree.
+      • \`named\` — an in-game string explicitly states the value
+        (semantic_text, document_context, lore, display name, a tag whose name
+        IS the value) AND a player would agree.
       • \`pattern\` — a regular id/tag pattern points at the value AND a
         player would agree (e.g. _ingot + *_tool_materials → role=material).
       • \`inferred\` — **the normal case**: you're judging how a player
@@ -202,7 +236,13 @@ reconsider.
 - Be concise, not cryptic: rationales should be ≤80 characters. Use
   \`evidence\` for the tag, recipe id, component, or display-name phrase that
   actually drove a tricky choice.
-- Lore, display_name, and component_highlights are **player-perception signals** — they're strings the player actually reads and forms expectations from. Take them seriously when present.
+- semantic_text, document_context, lore, display_name, creative_tabs, and component_highlights are **player-perception signals** — they're strings or group labels the player actually reads and forms expectations from. Take them seriously when present.
+- document_context contains conservative guidebook/advancement snippets linked
+  to the item by actual runtime item ids. Treat it as supporting context for
+  player-facing purpose, workflow, station, and progression judgments; direct
+  item tooltip/lore still wins when they conflict. \`item_ref_count\` says how
+  many runtime items the document was linked to, and \`related_item_refs\` shows
+  the neighboring items when a low-breadth page covers a small group.
 - If \`minecraft_tags_resolved\` is present, those tags are live runtime membership with unknown directness. Use them as semantic context, but don't treat them as intentional direct-tag evidence.
 - Fields ending in \`_examples\` are bounded evidence. If the matching
   \`*_count\` is larger, do not infer that omitted recipe / loot ids are absent.
@@ -253,6 +293,7 @@ export function buildSplitPrompt(input: LlmPromptInput): { system: string; user:
   const outputShape = renderExpectedOutput(input.target_facets);
   const neighborsNote = renderNeighborsSection(input.neighbors);
   const subsystemHint = renderSubsystemVocabulary(input.subsystem_vocabulary);
+  const facetVocabularyHint = renderPackFacetVocabulary(input.facet_vocabulary, input.target_facets);
   const runtimeInputNotes = renderRuntimeInputNotes(input.items);
 
   // Default-on for `verbose_facet_disambiguation`: A/B testing on the
@@ -279,6 +320,9 @@ export function buildSplitPrompt(input: LlmPromptInput): { system: string; user:
     "# Facet schema",
     schemaDoc,
   ];
+  if (facetVocabularyHint) {
+    sections.push("", facetVocabularyHint);
+  }
   if (includeDisambiguation) {
     sections.push("", FACET_DISAMBIGUATION);
   }
@@ -608,11 +652,11 @@ lapis, amethyst_shard.
 Pick activities the player **actively performs with the item**, not
 activities the item is an ingredient of.
 
-- A pickaxe \`mining\`s. A diamond does not — diamonds are crafted
+- A pickaxe gets \`slot:mining\`. A diamond does not — diamonds are crafted
   INTO pickaxes; the activity belongs to the tool.
 - A feather's activity comes from its downstream use: it becomes an
-  arrow, so → \`combat\`. Crafting itself is never an activity (every
-  item is craftable; the value would be noise).
+  arrow, so → \`slot:combat\`. Crafting itself is never an activity
+  (every item is craftable; the value would be noise).
 - If unsure, omit. One good activity beats three weak ones.
 
 ## organization_group — where would a player put this item?
@@ -824,6 +868,9 @@ function renderSchemaForPrompt(targetFacets: readonly string[]): string {
     lines.push(`- description: ${def.description}`);
     if (def.values) lines.push(`- allowed: ${def.values.join(", ")}`);
     if (def.pattern) lines.push(`- pattern: ${def.pattern.source}`);
+    if (def.vocabulary_backed) {
+      lines.push("- vocabulary-backed: use only accepted ids from the Pack facet vocabulary section when supplied");
+    }
     if (def.examples) lines.push(`- examples: ${def.examples.join(" | ")}`);
     lines.push("");
   }
@@ -924,6 +971,59 @@ function exampleEntryFor(facet: string, def: FacetDef): Record<string, unknown> 
   };
 }
 
+export function buildPromptFacetVocabulary(
+  vocabulary: PackFacetVocabulary | undefined,
+  targetFacets: readonly string[],
+): PromptFacetVocabulary | undefined {
+  if (!vocabulary) return undefined;
+  const target = new Set(targetFacets);
+  const out: PromptFacetVocabulary = {};
+  for (const [facetId, facet] of Object.entries(vocabulary.facets ?? {}).sort(([a], [b]) => a.localeCompare(b))) {
+    if (!target.has(facetId)) continue;
+    const def = FACETS[facetId];
+    if (!def?.vocabulary_backed) continue;
+    const values: PromptFacetVocabularyValue[] = [];
+    for (const [id, value] of Object.entries(facet.values ?? {}).sort(([a], [b]) => a.localeCompare(b))) {
+      if (value.state !== "accepted") continue;
+      values.push({
+        id,
+        label: value.label,
+        ...(value.description ? { description: value.description } : {}),
+        ...(value.aliases?.length ? { aliases: value.aliases } : {}),
+        ...(value.parent ? { parent: value.parent } : {}),
+      });
+    }
+    if (values.length > 0) out[facetId] = values;
+  }
+  return Object.keys(out).length > 0 ? out : undefined;
+}
+
+function renderPackFacetVocabulary(
+  vocabulary: PromptFacetVocabulary | undefined,
+  targetFacets: readonly string[],
+): string {
+  if (!vocabulary || Object.keys(vocabulary).length === 0) return "";
+  const lines: string[] = ["# Pack facet vocabulary"];
+  lines.push(
+    "For vocabulary-backed facets, use only these accepted ids. If no listed id fits an item, omit that facet rather than inventing a new value. Labels/descriptions are guidance; output the id.",
+  );
+  lines.push("");
+  for (const facetId of targetFacets) {
+    const values = vocabulary[facetId];
+    if (!values || values.length === 0) continue;
+    lines.push(`## ${facetId}`);
+    for (const value of values) {
+      const details: string[] = [];
+      if (value.description) details.push(value.description);
+      if (value.aliases?.length) details.push(`aliases: ${value.aliases.join(", ")}`);
+      if (value.parent) details.push(`parent: ${value.parent}`);
+      lines.push(`- \`${value.id}\` — ${value.label}${details.length ? `; ${details.join("; ")}` : ""}`);
+    }
+    lines.push("");
+  }
+  return lines.join("\n").trimEnd();
+}
+
 /**
  * Render the canonical mod_subsystem vocabulary inline in the system prompt.
  * Empty when no vocabulary is supplied — vanilla runs and mods with no
@@ -974,6 +1074,7 @@ function renderNeighborsSection(
 export function buildItemPayload(
   record: ItemExtractRecord,
   stage2Facets: Record<string, unknown>,
+  documentContext?: readonly LlmDocumentContext[],
 ): LlmItemPayload {
   const components = record.component_data ?? {};
   const lore = extractLore(components);
@@ -1030,6 +1131,7 @@ export function buildItemPayload(
       ? { recipe_examples_truncated: true }
       : {}),
     model_parents: record.model_parents,
+    creative_tabs: record.creative_tabs,
     loot_source_count: record.loot_table_sources.length,
     loot_source_examples: lootExamples,
     ...(lootExamples.length < record.loot_table_sources.length
@@ -1037,6 +1139,8 @@ export function buildItemPayload(
       : {}),
     ...(blockContext ? { block_context: blockContext } : {}),
     lore,
+    ...(record.semantic_text?.length ? { semantic_text: semanticTextPayload(record) } : {}),
+    ...(documentContext?.length ? { document_context: documentContext } : {}),
     component_highlights: componentHighlights,
     stage2_facets: stage2Facets,
   };
@@ -1097,6 +1201,25 @@ function extractLore(components: Record<string, unknown>): string[] {
   return raw
     .map((entry) => (typeof entry === "string" ? entry : flattenTranslatable(entry)))
     .filter((s): s is string => typeof s === "string" && s.length > 0);
+}
+
+function semanticTextPayload(record: ItemExtractRecord): NonNullable<LlmItemPayload["semantic_text"]> {
+  const seen = new Set<string>();
+  const out: Array<{ source: string; key?: string; text: string }> = [];
+  for (const entry of record.semantic_text ?? []) {
+    const text = entry.text.trim();
+    if (!text) continue;
+    const key = `${entry.source}\u0000${entry.key ?? ""}\u0000${text}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push({
+      source: entry.source,
+      ...(entry.key ? { key: entry.key } : {}),
+      text: text.length <= 2_000 ? text : `${text.slice(0, 1_997)}...`,
+    });
+    if (out.length >= 64) break;
+  }
+  return out;
 }
 
 /**
