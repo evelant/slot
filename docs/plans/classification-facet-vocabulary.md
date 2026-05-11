@@ -117,6 +117,13 @@ cross-mod material chains. TerraFirmaGreg is only the current test case.
    has a very large context window. Keep prompts structured and auditable, but
    prefer broad semantic coverage over tiny 10k-20k token prompts that omit the
    evidence needed to infer real pack concepts.
+11. **Previous vocabulary is refinement bias, not a clean baseline.** Run the
+   first full proposal for a pack without `--previous-vocabulary` so missing
+   concepts expose evidence, candidate, prompt, or policy gaps. Use previous
+   vocabulary only when an artifact is already nearly satisfactory and the goal
+   is iterative refinement. Previously accepted values are intentionally sticky:
+   they re-enter the candidate set with high synthetic support and should be
+   preserved unless the model or validation policy rejects them.
 
 ## Pipeline Fit
 

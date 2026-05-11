@@ -340,7 +340,7 @@ export function parseProposerResponse(
 }
 
 /**
- * Unwrap the claude -p envelope so we get the model's text. Falls back to the
+ * Unwrap legacy response envelopes so we get the model's text. Falls back to the
  * raw input when the envelope shape isn't recognized.
  */
 function unwrapEnvelope(raw: string): string {

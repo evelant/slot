@@ -1,5 +1,6 @@
 import type { ItemExtractRecord } from "../extract/record.ts";
 import type { LayerFile } from "../deterministic/run.ts";
+import { FACETS } from "../schema/facets.ts";
 import type { PackFacetVocabulary } from "../schema/vocabulary.ts";
 import type { DocumentContextByItem } from "./document_context.ts";
 import type { LlmClient, QueryOptions } from "./client.ts";
@@ -10,10 +11,12 @@ import {
   buildSplitPrompt,
   defaultTargetFacets,
   type LlmItemPayload,
+  type PromptFacetVocabulary,
 } from "./prompt.ts";
 import {
   parseLlmResponse,
   type ParsedFacetEntry,
+  type ParsedItemFacets,
   type SchemaProposal,
   type StageCorrection,
   type StageFillIn,
@@ -26,7 +29,7 @@ export interface Stage3Options {
   stage2Layer: LayerFile;
   /** LLM client (production or replay). */
   client: LlmClient;
-  /** Model id, passed to the client. Default haiku-4-5. */
+  /** OpenRouter model id, passed to the client. */
   model?: string;
   /** Items per LLM call. Default 20 per plan §"Batching". */
   batchSize?: number;
@@ -38,7 +41,7 @@ export interface Stage3Options {
   documentContextByItem?: DocumentContextByItem;
   /** Max parallel in-flight batches. Default 1 (serial). */
   concurrency?: number;
-  /** QueryOptions passthrough (binary path, timeout). */
+  /** QueryOptions passthrough (timeout, abort signal, validator overrides). */
   clientOptions?: Partial<QueryOptions>;
   /** Progress callback — one event per completed batch. */
   onBatch?: (info: BatchProgress) => void;
@@ -117,10 +120,8 @@ export type SubsystemVocabularyByNamespace = Record<
 >;
 
 // Production default: deepseek-v4-flash via OpenRouter pinned to the
-// deepseek provider. Locked in 2026-04-26 after A/B-ing against Claude
-// haiku / sonnet on the 60-item playtest sample: 60/62 hits, no batch
-// dropping, ~20× cheaper than sonnet, ~3× faster than sonnet.
-// Anyone wanting Claude can pass --backend claude-cli --model haiku/sonnet/opus.
+// deepseek provider. Locked in 2026-04-26 after the 60-item playtest sample
+// showed stable coverage, no batch dropping, and low per-pack cost.
 const DEFAULT_MODEL = "deepseek/deepseek-v4-flash";
 const DEFAULT_BATCH_SIZE = 20;
 /**
@@ -180,11 +181,10 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
       return buildItemPayload(record, stage2, options.documentContextByItem?.[record.id]);
     });
 
-    // Prefer split prompt when the client supports it — sends the stable
-    // system content (preamble + schema + disambiguation) via
-    // `claude --system-prompt` and the per-batch item data on stdin. This
-    // maximizes prompt-cache hit rate and keeps Claude Code's default
-    // system prompt from interfering with classification context.
+    // Prefer split prompt when the client supports it: stable system content
+    // (preamble + schema + disambiguation) stays separate from per-batch item
+    // data. This improves provider-side cache reuse and keeps the
+    // classification contract out of volatile batch payloads.
     //
     // Validator: an upstream truncation can produce a non-empty but
     // unparseable response (we hit this on 3 batches of the create
@@ -202,6 +202,13 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
             return {
               ok: false,
               reason: responseMismatchReason(mismatch),
+            };
+          }
+          const vocabularyIssues = responseVocabularyIssues(parsed.items, facetVocabulary);
+          if (vocabularyIssues.length > 0) {
+            return {
+              ok: false,
+              reason: vocabularyMismatchReason(vocabularyIssues),
             };
           }
           return { ok: true };
@@ -249,6 +256,10 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
         elapsedMs: Date.now() - start,
       });
       return;
+    }
+    const vocabularyIssues = dropInvalidVocabularyValues(parsed.items, facetVocabulary);
+    if (vocabularyIssues.length > 0) {
+      parsed.warnings.push(`batch ${i + 1}: ${vocabularyMismatchReason(vocabularyIssues)}; dropped invalid value(s)`);
     }
     warnings.push(...parsed.warnings);
     proposals.push(...parsed.proposals);
@@ -436,6 +447,85 @@ function valuesDisagree(
   const existingVals = Array.isArray(e.values) ? (e.values as unknown[]) : [];
   const existingSet = new Set(existingVals.map((v) => JSON.stringify(v)));
   return llm.values.some((v) => !existingSet.has(JSON.stringify(v)));
+}
+
+function responseVocabularyIssues(
+  items: Map<string, ParsedItemFacets>,
+  vocabulary: PromptFacetVocabulary | undefined,
+): string[] {
+  return enforcePromptVocabulary(items, vocabulary, false);
+}
+
+function dropInvalidVocabularyValues(
+  items: Map<string, ParsedItemFacets>,
+  vocabulary: PromptFacetVocabulary | undefined,
+): string[] {
+  return enforcePromptVocabulary(items, vocabulary, true);
+}
+
+function enforcePromptVocabulary(
+  items: Map<string, ParsedItemFacets>,
+  vocabulary: PromptFacetVocabulary | undefined,
+  mutate: boolean,
+): string[] {
+  if (!vocabulary) return [];
+  const allowedByFacet = new Map(
+    Object.entries(vocabulary).map(([facetId, values]) => [
+      facetId,
+      new Set(values.map((value) => value.id)),
+    ]),
+  );
+  const issues: string[] = [];
+
+  for (const [itemId, item] of items) {
+    for (const [facetId, entry] of Object.entries(item.facets)) {
+      if (!FACETS[facetId]?.vocabulary_backed) continue;
+      const allowed = allowedByFacet.get(facetId);
+      const validString = (value: string | number | boolean | null | undefined): value is string =>
+        typeof value === "string" && !!allowed?.has(value);
+      const values = parsedFacetValues(entry);
+      const invalid = values.filter((value) => !validString(value));
+      if (invalid.length === 0) continue;
+
+      for (const value of invalid) {
+        issues.push(`${itemId} ${facetId}=${JSON.stringify(value)}`);
+      }
+      if (!mutate) continue;
+
+      if (entry.kind === "multi") {
+        const kept = entry.values.filter(validString);
+        if (kept.length > 0) {
+          entry.values = kept;
+        } else {
+          delete item.facets[facetId];
+        }
+        continue;
+      }
+      if (entry.kind === "ambiguous") {
+        const kept = entry.values.filter(validString);
+        if (kept.length === 2) {
+          entry.values = [kept[0]!, kept[1]!];
+        } else {
+          delete item.facets[facetId];
+        }
+        continue;
+      }
+      delete item.facets[facetId];
+    }
+  }
+
+  return issues;
+}
+
+function parsedFacetValues(entry: ParsedFacetEntry): (string | number | boolean | null | undefined)[] {
+  if (entry.kind === "single") return [entry.value];
+  return [...entry.values];
+}
+
+function vocabularyMismatchReason(issues: readonly string[]): string {
+  const shown = issues.slice(0, 5).join("; ");
+  const suffix = issues.length > 5 ? `; +${issues.length - 5} more` : "";
+  return `vocabulary-backed facet value not accepted by prompt vocabulary: ${shown}${suffix}`;
 }
 
 function chunk<T>(arr: readonly T[], size: number): T[][] {

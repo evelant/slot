@@ -63,7 +63,7 @@ product direction.
   runtime item facts, recipe summaries, tag summaries, mod metadata, guide
   pages, quest nodes, advancements, and diagnostics.
 - `src/llm/` runs stage 3 completion, runtime subsystem vocabulary proposal,
-  fixture record/replay, retry repair, and OpenRouter / `claude-cli` backends.
+  fixture record/replay, retry repair, and the OpenRouter live client.
 - `datasets/<source>/` holds committed classification outputs that can be
   synced into runtime resources.
 - `test/fixtures/<run>/` holds recorded LLM prompt/response fixtures.
@@ -96,11 +96,17 @@ bun run src/cli.ts collect-pack-facet-evidence \
   --out out/tfg2 \
   --force
 
+bun run src/cli.ts propose-pack-facet-vocabulary \
+  --evidence out/tfg2/tfg2.facet-evidence.json \
+  --out out/tfg2 \
+  --force
+
 bun run classify:runtime-pack -- \
   --runtime-export modpacks/exports/tfg2.runtime-items.ndjson \
   --summary modpacks/exports/tfg2.runtime-summary.json \
   --mods /path/to/prism/instance-or-minecraft/mods \
   --evidence out/tfg2/tfg2.facet-evidence.json \
+  --facet-vocabulary out/tfg2/tfg2.facet-vocabulary.json \
   --out out/tfg2 \
   --force
 ```
@@ -110,6 +116,8 @@ bun run classify:runtime-pack -- \
 - merges live runtime records with optional static jar facts
 - passes gated guide/advancement snippets into stage 3 as `document_context`
   when `--evidence <pack>.facet-evidence.json` is supplied
+- passes accepted pack vocabulary into stage 3 when `--facet-vocabulary` is
+  supplied; vocabulary-backed facets must use accepted ids from that file
 - generates or reuses runtime `mod_subsystem` vocabulary
 - runs deterministic facets and optional stage 3 completion
 - repairs items that received no LLM-authored facets
@@ -128,14 +136,14 @@ Install the datapack into the test world or pack, reload, then verify:
 
 ## Facet Vocabulary Work
 
-The next classification track is pack-specific semantic vocabulary. Slices 0
-through 2 are implemented:
+Pack-specific semantic vocabulary is now part of the Stage 3 path:
 
 - vocabulary-backed facets and scoped value-id grammar
 - layer validation against a pack vocabulary artifact
 - `validate-vocabulary`
 - `collect-pack-facet-evidence`
 - `propose-pack-facet-vocabulary`
+- `--facet-vocabulary` prompting, retry validation, and final layer validation
 
 Semantic evidence is the point of this pass. Preserve tooltip/lore text,
 guidebook page bodies, quest text, lang-resolved advancement text,
@@ -175,6 +183,15 @@ bun run src/cli.ts propose-pack-facet-vocabulary \
   --force
 ```
 
+Run the first full vocabulary proposal for a pack without
+`--previous-vocabulary`. That clean run is the validation baseline: it shows
+whether the evidence, candidates, prompt, and policy can discover the pack's
+real concepts without carry-forward bias. Use `--previous-vocabulary` only
+after the generated vocabulary is already nearly satisfactory and you are
+iterating on refinements. Previous values are injected back into the candidate
+set; accepted previous values are treated as high-support sticky candidates so
+they are preserved unless the model or policy explicitly rejects them.
+
 Vocabulary ids use stable scoped values:
 
 ```text
@@ -185,9 +202,10 @@ pack:tfg2/steelmaking#input
 ```
 
 The command writes `facet-vocabulary.json` and
-`facet-vocabulary.review.json`. Do not treat a full regenerated pack layer as
-publishable until stage-3 consumes the vocabulary and out-of-vocabulary
-suggestions are routed to review.
+`facet-vocabulary.review.json`. Pass the accepted vocabulary to Stage 3 with
+`--facet-vocabulary`; the prompt lists accepted ids, the live OpenRouter retry
+loop rejects invented vocabulary-backed values, and the final validator checks
+the complete layer against the same artifact.
 
 ## Other Common Commands
 
@@ -272,11 +290,9 @@ them into `common/src/main/resources/data/slot/classification/`.
 
 Stage 3 uses `LlmClient` implementations in `src/llm/`:
 
-- `openrouter` is the default path for production runs. The default model is
-  `deepseek/deepseek-v4-flash`, pinned to the `deepseek` provider unless
+- `OpenRouterClient` is the live path for production runs. The default model
+  is `deepseek/deepseek-v4-flash`, pinned to the `deepseek` provider unless
   overridden.
-- `claude-cli` shells out to `claude -p` and remains useful for comparison,
-  canary work, and fallback runs.
 - `--record-replay --fixture-dir <path>` records prompts and responses.
 - `--use-replay --fixture-dir <path>` replays recorded fixtures without network
   calls.

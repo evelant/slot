@@ -19,7 +19,6 @@
     "ship:vanilla": "bun run reclassify:vanilla && bun run sync:vanilla",
     "ship:test-modset": "bun run reclassify:test-modset && bun run sync:test-modset",
     "ship:all": "bun run reclassify:all && bun run sync",
-    "eval:sonnet": "bash scripts/eval-prompt.sh sonnet",
     "eval:deepseek": "bash scripts/eval-prompt.sh deepseek-v4-flash",
     "eval:deepseek-pro": "bash scripts/eval-prompt.sh deepseek-v4-pro"
   },

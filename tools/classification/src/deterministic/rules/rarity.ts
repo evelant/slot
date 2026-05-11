@@ -5,7 +5,7 @@ import type { Rule } from "../types.ts";
  * vanilla's `minecraft:rarity` component is actually the **display-name color**
  * — it's `common` on everything from cobblestone to ancient_debris. Using it
  * verbatim gave us `rarity=common` on netherite_ingot and ancient_debris,
- * which the sonnet canary correctly flagged as wrong.
+ * which an LLM canary correctly flagged as wrong.
  *
  * Policy:
  *   1. Exact-id overrides (`RARITY_OVERRIDES`) win first — for items where
@@ -20,7 +20,7 @@ import type { Rule } from "../types.ts";
  */
 const RARITY_OVERRIDES: Record<string, string> = {
   // `dragon_head` component is epic, but every End ship has one and there
-  // are many End ships per world. Sonnet-v4 flagged this — emit `rare`
+  // are many End ships per world. LLM canary flagged this — emit `rare`
   // (acquisition tier matching `requires_exploration`) instead of unique.
   "minecraft:dragon_head": "rare",
   // Vanilla v1 canary catches.
@@ -46,7 +46,7 @@ export const rarityRule: Rule = {
           mode: "override-if-null",
           source: "rule:rarity_id_override",
           confidence: 1,
-          rationale: `id-specific override (sonnet-v4 canary catch)`,
+          rationale: `id-specific override (LLM canary catch)`,
         },
       ];
     }

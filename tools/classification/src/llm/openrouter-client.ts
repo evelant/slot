@@ -4,17 +4,13 @@ import type { LlmClient, QueryOptions } from "./client.ts";
 /**
  * OpenRouter-backed {@link LlmClient}. Lets us run stage 3 against any
  * model in the OpenRouter catalog (deepseek/*, openai/*, mistralai/*,
- * google/*, …) instead of going through `claude -p`. Keeps the same
- * input/output contract as {@link ClaudeCliClient} so the rest of the
- * pipeline (record/replay, parse, retry) doesn't change.
+ * google/*, …). Keeps the same input/output contract as the replay and
+ * recording clients so the rest of the pipeline stays backend-agnostic.
  *
  * Auth: reads the API key from `process.env.OPENROUTER_API_KEY`. The
  * caller can override via `OpenRouterClient.fromApiKey(...)`.
  *
- * Claude-specific {@link QueryOptions} fields (`effort`,
- * `thinkingBudget`, `disableAdaptiveThinking`, `claudeBinary`) are
- * silently ignored — they don't translate to OpenRouter's API surface.
- * The `model` field IS used and is the OpenRouter model slug
+ * The `model` field is the OpenRouter model slug
  * (e.g. `deepseek/deepseek-v4-flash`, `openai/gpt-4o-mini`).
  */
 export class OpenRouterClient implements LlmClient {
@@ -92,7 +88,10 @@ export class OpenRouterClient implements LlmClient {
     options: QueryOptions;
   }): Promise<string> {
     const { messages, options } = args;
-    const requestOptions = options.timeoutMs ? { timeoutMs: options.timeoutMs } : undefined;
+    const requestOptions = {
+      ...(options.timeoutMs ? { timeoutMs: options.timeoutMs } : {}),
+      ...(options.signal ? { signal: options.signal } : {}),
+    };
     // `only` pins the request to a specific provider and disables
     // fallbacks — useful for price/caching/throughput/data-policy
     // reasons. Falls back to `ignore` when only-list is empty so the
@@ -108,6 +107,7 @@ export class OpenRouterClient implements LlmClient {
           model: options.model,
           messages,
           stream: false,
+          ...(options.maxTokens ? { maxTokens: options.maxTokens } : {}),
           ...(provider ? { provider } : {}),
         },
       },
@@ -156,7 +156,7 @@ export class OpenRouterClient implements LlmClient {
     let lastErr: unknown;
     while (attempt < maxAttempts) {
       try {
-        const result = await this.client.chat.send(request, options);
+        const result = await this.sendOnce(request, options);
         if (!("choices" in result) || !Array.isArray(result.choices)) {
           throw new EmptyContentError(
             "OpenRouter returned an unexpected shape (no `choices` array). " +
@@ -186,6 +186,9 @@ export class OpenRouterClient implements LlmClient {
         return text;
       } catch (err) {
         lastErr = err;
+        if (err instanceof ClientAbortError || options?.signal?.aborted) {
+          throw err;
+        }
         // OpenRouterError exposes the HTTP status as `statusCode`; fall
         // back to `code` / `status` for non-SDK errors that may bubble
         // up from fetch internals.
@@ -233,17 +236,111 @@ export class OpenRouterClient implements LlmClient {
         console.warn(
           `[openrouter] transient error (${reason}); retrying in ${(backoffMs / 1000).toFixed(0)}s (attempt ${attempt + 2}/${maxAttempts})`,
         );
-        await new Promise((res) => setTimeout(res, backoffMs));
+        await delay(backoffMs, options?.signal ?? undefined);
         attempt++;
       }
     }
     // Unreachable, but keep type-checker happy.
     throw lastErr;
   }
+
+  private async sendOnce(
+    request: Parameters<OpenRouter["chat"]["send"]>[0],
+    options: Parameters<OpenRouter["chat"]["send"]>[1],
+  ): Promise<Awaited<ReturnType<OpenRouter["chat"]["send"]>>> {
+    const timeoutMs = options?.timeoutMs;
+    const callerSignal = options?.signal ?? undefined;
+    if ((!timeoutMs || timeoutMs <= 0) && !callerSignal) {
+      return await this.client.chat.send(request, options);
+    }
+
+    const timeoutController = timeoutMs && timeoutMs > 0 ? new AbortController() : undefined;
+    const timeout = timeoutController
+      ? setTimeout(() => {
+        timeoutController.abort(new ClientTimeoutError(timeoutMs!));
+      }, timeoutMs)
+      : undefined;
+    const signal = combineSignals(callerSignal, timeoutController?.signal);
+    try {
+      return await this.client.chat.send(request, {
+        ...options,
+        ...(signal ? { signal } : {}),
+      });
+    } catch (err) {
+      if (callerSignal?.aborted) {
+        throw new ClientAbortError(abortReason(callerSignal));
+      }
+      if (timeoutController?.signal.aborted) {
+        throw new ClientTimeoutError(timeoutMs!);
+      }
+      if (signal?.aborted) {
+        throw new ClientAbortError(abortReason(signal));
+      }
+      throw err;
+    } finally {
+      if (timeout) clearTimeout(timeout);
+    }
+  }
+}
+
+function combineSignals(
+  ...signals: Array<AbortSignal | undefined>
+): AbortSignal | undefined {
+  const active = signals.filter((signal): signal is AbortSignal => !!signal);
+  if (active.length === 0) return undefined;
+  if (active.length === 1) return active[0];
+  if (typeof AbortSignal.any === "function") return AbortSignal.any(active);
+
+  const controller = new AbortController();
+  const abort = (signal: AbortSignal) => {
+    controller.abort(abortReason(signal));
+    for (const activeSignal of active) {
+      activeSignal.removeEventListener("abort", listeners.get(activeSignal)!);
+    }
+  };
+  const listeners = new Map<AbortSignal, () => void>();
+  for (const signal of active) {
+    if (signal.aborted) {
+      abort(signal);
+      return controller.signal;
+    }
+    const listener = () => abort(signal);
+    listeners.set(signal, listener);
+    signal.addEventListener("abort", listener, { once: true });
+  }
+  return controller.signal;
+}
+
+function abortReason(signal: AbortSignal): unknown {
+  return "reason" in signal ? signal.reason : undefined;
+}
+
+function delay(ms: number, signal: AbortSignal | undefined): Promise<void> {
+  if (signal?.aborted) return Promise.reject(new ClientAbortError(abortReason(signal)));
+  return new Promise((resolve, reject) => {
+    const timeout = setTimeout(done, ms);
+    function done() {
+      cleanup();
+      resolve();
+    }
+    function abort() {
+      cleanup();
+      reject(new ClientAbortError(signal ? abortReason(signal) : undefined));
+    }
+    function cleanup() {
+      clearTimeout(timeout);
+      signal?.removeEventListener("abort", abort);
+    }
+    signal?.addEventListener("abort", abort, { once: true });
+  });
 }
 
 function isTransientNetworkError(err: unknown, message: string): boolean {
   const code = (err as { code?: unknown; errno?: unknown }).code;
+  const name = (err as { name?: unknown }).name;
+  if (name === "TimeoutError" || code === 23) {
+    return true;
+  }
   if (typeof code === "string" && [
     "ECONNRESET",
     "ETIMEDOUT",
@@ -256,7 +353,7 @@ function isTransientNetworkError(err: unknown, message: string): boolean {
   ].includes(code)) {
     return true;
   }
-  return /socket connection was closed|connection reset|network error|fetch failed|terminated/i.test(message);
+  return /socket connection was closed|connection reset|network error|fetch failed|terminated|operation timed out/i.test(message);
 }
 
 /**
@@ -284,6 +381,25 @@ class InvalidContentError extends Error {
   constructor(message: string) {
     super(message);
     this.name = "InvalidContentError";
+  }
+}
+
+class ClientTimeoutError extends Error {
+  readonly code = "ETIMEDOUT";
+
+  constructor(timeoutMs: number) {
+    super(`OpenRouter request timed out after ${timeoutMs}ms`);
+    this.name = "ClientTimeoutError";
+  }
+}
+
+class ClientAbortError extends Error {
+  readonly code = "ABORT_ERR";
+
+  constructor(reason: unknown) {
+    const detail = reason instanceof Error ? reason.message : String(reason ?? "no reason");
+    super(`OpenRouter request aborted by caller: ${detail}`);
+    this.name = "ClientAbortError";
   }
 }
 

@@ -116,6 +116,7 @@ export interface ProposePackFacetVocabularyOptions extends ExtractVocabularyCand
   client?: LlmClient;
   clientOptions?: Partial<QueryOptions>;
   maxCandidatesPerFacet?: number;
+  maxCandidatesPerPrompt?: number;
 }
 
 export interface ProposePackFacetVocabularyResult {
@@ -175,9 +176,11 @@ interface SemanticEvidenceIndex {
 }
 
 const DEFAULT_MAX_CANDIDATES_PER_FACET = 256;
+const DEFAULT_MAX_CANDIDATES_PER_PROMPT = 48;
 const CANDIDATE_EXAMPLE_LIMIT = 64;
 const SEMANTIC_EVIDENCE_LIMIT = 64;
 const VOCABULARY_PROMPT_CHAR_BUDGET = 3_200_000;
+const VOCABULARY_CURATION_TIMEOUT_MS = 1_200_000;
 const PROMPT_SEMANTIC_EVIDENCE_LIMITS = [64, 48, 40, 32, 24, 16, 12, 8, 4, 2, 1, 0] as const;
 const SEMANTIC_TEXT_PROMPT_LIMIT = 1_200;
 const RUNTIME_TOOLTIP_REPEAT_BOILERPLATE_THRESHOLD = 250;
@@ -446,18 +449,25 @@ Rules:
 - Curate from the candidate ids. Do not freely invent accepted ids.
 - New ids without candidate evidence must be state "review" at most.
 - Treat semantic_evidence as the primary signal. It preserves tooltip, guide, quest, advancement, mod-description, and lang-resolved prose.
-- Evaluate the full candidate list. Return exactly one value object for every candidate id in this prompt.
-- Do not omit rejected candidates. Omission means the response is incomplete and will be retried.
+- CRITICAL OUTPUT CONTRACT: evaluate the full candidate list and return exactly one value object for every candidate id in this prompt.
+- Do not omit rejected candidates.
+- Do not summarize, group, abbreviate, use ellipses, or omit rejected candidates. Omission of even one candidate id means the response is invalid and will be retried.
+- Before finalizing, compare your output ids against required_output_contract.required_candidate_ids and add a review/rejected object for any missing id.
 - The previous_accepted list is context only; output decisions only for ids present in candidates.
 - Use "review" for borderline useful values that need human confirmation.
 - Keep "accepted" values evidence-backed, stable, and non-generic.
 - Reject catch-alls like misc, general, materials, components, items, blocks, or broad crafting.
-- For workflow, "accepted" means ONLY a player-facing station/process/task the player would plan inventory around.
+- For workflow, "accepted" means ONLY a player-facing station/process/task the player would plan inventory around or use as a semantic search/task lens.
 - For workflow, a good accepted value answers "what am I doing?" or "what station/process is this for?" Examples: casting, anvil, quern, bloomery, sequenced assembly, drying, alloying, barrel sealed.
-- For workflow, a recipe_type candidate is not automatically a workflow. Accept it only when the id/label/evidence names a real player-facing process/station/task.
+- For workflow, accept recipe_type candidates when the id/label/evidence names a real reusable player-facing process, station, or task, even if semantic_evidence is sparse. Recipe types such as pressing, compacting, milling/crushing, cutting, rolling, filling, deploying, mixing, casting, anvil, quern, oven, barrel, bloomery, blast furnace, centrifugation, hammering, and polishing are valid workflow candidates.
+- For workflow, accepting a process does not create a wall home. Err toward accepting real reusable processes for semantic lookup; use organization_group for conservative wall-home decisions.
 - For workflow, reject implementation/meta recipe mechanics even with high support: shaped, shapeless, no_remainder, damage_inputs, impostor, internal placeholder, synthetic helper recipes, broad vanilla crafting variants.
 - For workflow, reject item/product/component families: frame, component, upgrade, repair, block_mod, colored/material/product lines, or "craft this one item" groups unless evidence clearly describes a reusable process the player plans around.
 - For workflow, reject environmental physics/events unless they are a player workflow: collapse, landslide, falling block, decay, spread, growth ticks.
+- For used_at, "accepted" means a player-facing station, machine, tool, surface, multiblock, or interaction context where items are processed or used.
+- For used_at, recipe_type candidates can be accepted when the id/label names the station/process players recognize, such as anvil, quern, loom, oven, drying, mechanical press/pressing, compacting, macerating/crushing, mixer/mixing, barrel, blast furnace, centrifuge, deployer, filler, or rolling machine.
+- For used_at, reject config labels, keybind text, UI error messages, JEI/EMI internals, jokes, recipe-transfer failures, implementation-only categories, and generic crafting.
+- For used_at, prefer stable station/process ids over item ids unless the station item itself is the recognizable surface.
 - For progression_stage, "accepted" means ONLY a pack/mod gate, tier, age, voltage band, dimension unlock, or major technology/material milestone.
 - For progression_stage, accept broad gates like primitive alloys, steel, bloomery, blast furnace, mechanical power, moon, mars, venus, beneath, rocket tiers, LV/MV/HV, steam/electric ages.
 - For progression_stage, reject ordinary guide topics, indexes, recipe lists, mobs, biomes, flora, equipment, boats, decorative blocks, individual crafted items, and one-off advancements.
@@ -500,6 +510,18 @@ function buildVocabularyCurationUser(
       semantic_evidence_per_candidate: semanticEvidenceLimit,
     },
     candidates: args.candidates.map((candidate) => promptCandidate(candidate, semanticEvidenceLimit)),
+    required_output_contract: {
+      required_values_count: args.candidates.length,
+      required_candidate_ids: args.candidates.map((candidate) => candidate.id),
+      final_instructions: [
+        "Return strict JSON only: one object with a top-level values array.",
+        "The values array must contain exactly one object for every id in required_candidate_ids.",
+        "Every output id must exactly match one candidate id from required_candidate_ids.",
+        "Never omit rejected, low-quality, generic, or uncertain candidates; mark them rejected or review.",
+        "Do not add ids that are not in required_candidate_ids.",
+        "Before responding, count values.length and verify it equals required_values_count.",
+      ],
+    },
   };
 }
 
@@ -573,6 +595,7 @@ export async function proposePackFacetVocabulary(
   const candidates = extractVocabularyCandidates(options.evidence, options);
   const candidatesByFacet = groupCandidates(candidates, options.maxCandidatesPerFacet ?? DEFAULT_MAX_CANDIDATES_PER_FACET);
   const previousAccepted = previousAcceptedByFacet(options.previousVocabulary);
+  const maxCandidatesPerPrompt = options.maxCandidatesPerPrompt ?? DEFAULT_MAX_CANDIDATES_PER_PROMPT;
   const prompts: Record<string, { system: string; user: string }> = {};
   const decisions: Record<string, VocabularyDecision[]> = {};
   const rawResponses: Record<string, string> = {};
@@ -580,21 +603,30 @@ export async function proposePackFacetVocabulary(
 
   for (const facet of facets) {
     const facetCandidates = candidatesByFacet[facet] ?? [];
-    prompts[facet] = buildVocabularyCurationPrompt({
-      facet,
-      packId: options.packId,
-      candidates: facetCandidates,
-      previousAccepted: previousAccepted.get(facet) ?? [],
-      minEvidence: options.minEvidence,
-    });
-    const curated: { raw: string; values: CuratedValue[] } = options.client
-      ? await queryFacetCuration(options.client, prompts[facet]!, options.model, options.clientOptions, facetCandidates.map((candidate) => candidate.id))
-      : { raw: "", values: [] };
-    if (curated.raw) rawResponses[facet] = curated.raw;
+    const candidateChunks = chunkCandidates(facetCandidates, maxCandidatesPerPrompt);
+    const curatedValues: CuratedValue[] = [];
+    for (let index = 0; index < candidateChunks.length; index++) {
+      const chunk = candidateChunks[index]!;
+      const promptKey = candidateChunks.length === 1
+        ? facet
+        : `${facet}.part-${String(index + 1).padStart(2, "0")}-of-${String(candidateChunks.length).padStart(2, "0")}`;
+      prompts[promptKey] = buildVocabularyCurationPrompt({
+        facet,
+        packId: options.packId,
+        candidates: chunk,
+        previousAccepted: previousAccepted.get(facet) ?? [],
+        minEvidence: options.minEvidence,
+      });
+      const curated: { raw: string; values: CuratedValue[] } = options.client
+        ? await queryFacetCuration(options.client, prompts[promptKey]!, options.model, options.clientOptions, chunk.map((candidate) => candidate.id))
+        : { raw: "", values: [] };
+      curatedValues.push(...curated.values);
+      if (curated.raw) rawResponses[promptKey] = curated.raw;
+    }
     decisions[facet] = applyFacetPolicy({
       facet,
       candidates: facetCandidates,
-      curated: curated.values,
+      curated: curatedValues,
       minEvidence: options.minEvidence,
       diagnostics,
     });
@@ -1186,7 +1218,7 @@ function looksLikeProgressionStage(record: FacetEvidenceRecord, label: string): 
   const semanticHaystack = `${label} ${semantic}`.toLowerCase();
   const idPath = splitResourceLocation(record.id)?.path.toLowerCase() ?? record.id.toLowerCase();
   const idTail = idPath.split(/[/.]/).filter(Boolean).at(-1) ?? "";
-  const labelToken = tokenPath(label);
+  const labelToken = tokenPath(label) ?? "";
   const isAdvancement = record.kind === "advancement";
 
   if (/\b(index|tips?|lists?|recipes?|animals?|mobs?|fruits?|crops?|flora|biomes?|damage\s+types?|ores?\s+and\s+minerals|wild\s+animals|wild\s+fruits)\b/.test(semanticHaystack)) {
@@ -1417,6 +1449,11 @@ async function queryFacetCuration(
   const coverageValidator = vocabularyCurationCoverageValidator(expectedCandidateIds);
   const queryOptions: QueryOptions = {
     model: model ?? "deepseek/deepseek-v4-flash",
+    // Do not impose a default completion cap here. Full-pack vocabulary
+    // curation can require large JSON responses, and a too-small local
+    // maxTokens setting becomes a truncation source. Callers may still pass
+    // maxTokens deliberately through clientOptions for provider experiments.
+    timeoutMs: clientOptions?.timeoutMs ?? VOCABULARY_CURATION_TIMEOUT_MS,
     ...clientOptions,
     responseValidator: (content) => {
       const coverage = coverageValidator(content);
@@ -1424,20 +1461,14 @@ async function queryFacetCuration(
       return callerValidator ? callerValidator(content) : { ok: true };
     },
   };
-  let lastReason = "";
-  for (let attempt = 1; attempt <= 3; attempt++) {
-    const raw = client.querySplit
-      ? await client.querySplit(prompt.system, prompt.user, queryOptions)
-      : await client.query(`${prompt.system}\n\n${prompt.user}`, queryOptions);
-    const verdict = queryOptions.responseValidator!(raw);
-    if (verdict.ok) return { raw, values: parseVocabularyCurationResponse(raw) };
-    lastReason = verdict.reason ?? "incomplete response";
-    if (attempt < 3) {
-      // eslint-disable-next-line no-console
-      console.warn(`[facet-vocabulary] incomplete curation response (${lastReason}); retrying ${attempt + 1}/3`);
-    }
+  const raw = client.querySplit
+    ? await client.querySplit(prompt.system, prompt.user, queryOptions)
+    : await client.query(`${prompt.system}\n\n${prompt.user}`, queryOptions);
+  const verdict = queryOptions.responseValidator!(raw);
+  if (!verdict.ok) {
+    throw new Error(`facet vocabulary curation response failed coverage validation: ${verdict.reason ?? "incomplete response"}`);
   }
-  throw new Error(`facet vocabulary curation response failed coverage validation: ${lastReason}`);
+  return { raw, values: parseVocabularyCurationResponse(raw) };
 }
 
 function vocabularyCurationCoverageValidator(
@@ -1639,6 +1670,19 @@ function groupCandidates(
   return out;
 }
 
+function chunkCandidates(
+  candidates: readonly PackVocabularyCandidate[],
+  maxPerPrompt: number,
+): PackVocabularyCandidate[][] {
+  if (candidates.length === 0) return [[]];
+  const size = Math.max(1, Math.floor(maxPerPrompt));
+  const out: PackVocabularyCandidate[][] = [];
+  for (let index = 0; index < candidates.length; index += size) {
+    out.push(candidates.slice(index, index + size));
+  }
+  return out;
+}
+
 function previousAcceptedByFacet(
   previous: PackFacetVocabulary | undefined,
 ): Map<VocabularyFacetId, string[]> {
@@ -1688,8 +1732,8 @@ function compareCandidates(a: PackVocabularyCandidate, b: PackVocabularyCandidat
   return a.facet.localeCompare(b.facet) ||
     originRank(a.origin) - originRank(b.origin) ||
     stateRank(a.suggested_state) - stateRank(b.suggested_state) ||
-    b.semantic_evidence.length - a.semantic_evidence.length ||
     b.support - a.support ||
+    b.semantic_evidence.length - a.semantic_evidence.length ||
     b.confidence - a.confidence ||
     a.id.localeCompare(b.id);
 }

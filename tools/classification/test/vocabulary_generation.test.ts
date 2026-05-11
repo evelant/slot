@@ -48,7 +48,8 @@ describe("pack facet vocabulary generation", () => {
       minEvidence: 2,
     });
     expect(prompt.system).toContain("ONLY a player-facing station/process/task");
-    expect(prompt.system).toContain("Return exactly one value object for every candidate id");
+    expect(prompt.system).toContain("CRITICAL OUTPUT CONTRACT");
+    expect(prompt.system).toContain("return exactly one value object for every candidate id");
     expect(prompt.system).toContain("Do not omit rejected candidates");
     expect(prompt.system).toContain("reject implementation/meta recipe mechanics");
     expect(prompt.system).toContain("reject item/product/component families");
@@ -60,6 +61,11 @@ describe("pack facet vocabulary generation", () => {
         seed_items?: string[];
         reasons?: string[];
       }>;
+      required_output_contract?: {
+        required_values_count?: number;
+        required_candidate_ids?: string[];
+        final_instructions?: string[];
+      };
     };
     const candidate = user.candidates[0]!;
     const serialized = JSON.stringify(candidate);
@@ -77,6 +83,9 @@ describe("pack facet vocabulary generation", () => {
     expect(candidate.reasons).toBeUndefined();
     expect(candidate.semantic_evidence?.some((entry) => entry.item_ref_count === 1)).toBe(true);
     expect(candidate.semantic_evidence?.some((entry) => entry.recipe_ref_count === 1)).toBe(true);
+    expect(user.required_output_contract?.required_values_count).toBe(1);
+    expect(user.required_output_contract?.required_candidate_ids).toEqual(["example:casting"]);
+    expect(user.required_output_contract?.final_instructions?.join(" ")).toContain("values.length");
   });
 
   test("curation prompt trims per-candidate evidence to stay under the prompt budget", () => {
@@ -166,7 +175,7 @@ describe("pack facet vocabulary generation", () => {
     expect(candidates.find((candidate) => candidate.id === "beneath:warped/chest")).toBeUndefined();
   });
 
-  test("parses curation responses from raw JSON and claude-style envelopes", () => {
+  test("parses curation responses from raw JSON and wrapped envelopes", () => {
     const raw = JSON.stringify({
       result: JSON.stringify({
         values: [{
@@ -241,6 +250,40 @@ describe("pack facet vocabulary generation", () => {
     });
 
     expect(client.rejectedMissingCandidateResponse).toBe(true);
+  });
+
+  test("splits large curation prompts without dropping facet candidates", async () => {
+    const evidence = fixtureEvidence();
+    for (let index = 0; index < 5; index++) {
+      evidence.records.push({
+        kind: "recipe_type",
+        id: `example:process_${index}`,
+        label: `Process ${index}`,
+        namespace: "example",
+        source: "runtime-summary",
+        confidence: 0.85,
+        count: 4,
+      });
+    }
+    const client = new PromptSizeProbeSplitClient();
+
+    const result = await proposePackFacetVocabulary({
+      evidence,
+      evidencePath: "/tmp/fixture.facet-evidence.json",
+      packId: "fixture",
+      generatedBy: "test",
+      generatedAt: "2026-05-11T00:00:00.000Z",
+      facets: ["workflow"],
+      minEvidence: 2,
+      client,
+      model: "test-model",
+      maxCandidatesPerPrompt: 2,
+    });
+
+    expect(client.candidateCounts.length).toBeGreaterThan(1);
+    expect(client.candidateCounts.every((count) => count <= 2)).toBe(true);
+    expect(Object.keys(result.prompts).some((key) => key.startsWith("workflow.part-"))).toBe(true);
+    expect(result.review.decisions.workflow?.length).toBe(client.candidateCounts.reduce((sum, count) => sum + count, 0));
   });
 
   test("allows model-accepted single-source progression gates", async () => {
@@ -414,6 +457,22 @@ class CoverageProbeSplitClient implements LlmClient {
   }
 }
 
+class PromptSizeProbeSplitClient implements LlmClient {
+  candidateCounts: number[] = [];
+
+  async query(_prompt: string, _options: QueryOptions): Promise<string> {
+    return JSON.stringify({ values: [] });
+  }
+
+  async querySplit(_system: string, user: string, _options: QueryOptions): Promise<string> {
+    const ids = promptCandidateIds(user);
+    this.candidateCounts.push(ids.length);
+    return JSON.stringify({
+      values: ids.map((id) => ({ id, state: "review" })),
+    });
+  }
+}
+
 function materializeCandidateCoverageResponse(response: unknown, user: string): unknown {
   if (!isRecord(response) || !Array.isArray(response.values)) return response;
   const ids = promptCandidateIds(user);
@@ -421,7 +480,7 @@ function materializeCandidateCoverageResponse(response: unknown, user: string): 
   const byId = new Map(supplied
     .filter((value): value is Record<string, unknown> & { id: string } => typeof value.id === "string")
     .map((value) => [value.id, value]));
-  const values = ids.map((id) => byId.get(id) ?? { id, state: "review" });
+  const values: Record<string, unknown>[] = ids.map((id) => byId.get(id) ?? { id, state: "review" });
   for (const value of supplied) {
     if (typeof value.id === "string" && !ids.includes(value.id)) values.push(value);
   }

@@ -94,7 +94,7 @@ export const SPAWN_INTERACTION_VALUES = [
   "blocks_monster_spawn", "allows_spawning", "damages_entities",
   "mob_transport", "mob_launcher", "suffocates_mobs", "repels_mobs",
   "attracts_mobs",
-  // sonnet-v4 canary
+  // LLM canary
   "spawns_linked_mob",
 ] as const;
 
@@ -103,7 +103,7 @@ export const COMBAT_BONUS_VALUES = [
   "boss:ender_dragon", "boss:warden", "boss:wither", "boss:elder_guardian",
   "inflicts_poison", "inflicts_slowness", "inflicts_weakness", "inflicts_wither",
   "bonus_in_water", "bonus_in_daylight",
-  // sonnet-v4 canary
+  // LLM canary
   "fall_bonus_damage",
   // vanilla v1 canary
   "disables_blocking",  // axes — disable shield 5s on hit
@@ -120,7 +120,7 @@ export const ENVIRONMENTAL_PROPERTY_VALUES = [
   "slippery", "slows_walking", "bounces",
   "emits_light", "emits_light_underwater",
   "waterlogs", "floats", "sinks",
-  // sonnet-v4 canary additions
+  // LLM canary additions
   "gravity_affected",       // anvil/sand/gravel — fall when unsupported
   "piglin_loved",           // gold items — piglins admire/pick up
   "oxidizes_over_time",     // unwaxed copper variants
@@ -204,7 +204,7 @@ export const ORIGIN_VALUES = [
   "jungle_temple", "ocean_monument", "mineshaft",
   "trading", "mob_drop", "archaeology_site", "sniffer_garden",
   "crafted_only",
-  // sonnet-v4 canary
+  // LLM canary
   "fishing",
   // vanilla v1 canary
   "creative_only",  // spawn eggs, debug items, command blocks — no survival origin

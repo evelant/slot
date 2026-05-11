@@ -6,7 +6,7 @@ import type {
   LayerEntry,
   LayerFacetEntry,
 } from "../deterministic/run.ts";
-import type { LlmClient } from "./client.ts";
+import type { LlmClient, QueryOptions } from "./client.ts";
 import {
   runStage3,
   type Stage3Result,
@@ -49,9 +49,9 @@ function itemNeedsRetry(entry: LayerEntry, threshold: number): boolean {
 export interface RetryOptions {
   /** The records that stage 3 originally ran against. */
   records: readonly ItemExtractRecord[];
-  /** The first-pass layer (haiku stage-3 output). */
+  /** The first-pass stage-3 layer. */
   firstPassLayer: LayerFile;
-  /** LLM client configured for the retry pass (usually Sonnet + high effort). */
+  /** LLM client configured for the retry pass. */
   client: LlmClient;
   /** Confidence threshold below which an item is flagged for retry. */
   threshold?: number;
@@ -59,19 +59,13 @@ export interface RetryOptions {
   model?: string;
   /** Same as Stage3Options.documentContextByItem. */
   documentContextByItem?: DocumentContextByItem;
-  /**
-   * Effort level for the retry pass. We deliberately do NOT plumb through
-   * `thinkingBudget` or `disableAdaptiveThinking` here — Sonnet's adaptive
-   * thinking should drive itself, and forcing a fixed budget tends to make
-   * it worse. The retry is the one place where the model gets to "think
-   * hard," so trust it.
-   */
-  effort?: "low" | "medium" | "high" | "xhigh" | "max";
   /** Items per retry batch — typically smaller than first-pass to avoid
    *  output-token truncation with verbose models. Default 8. */
   batchSize?: number;
   /** Optional per-batch progress callback. */
   onBatch?: Parameters<typeof runStage3>[0]["onBatch"];
+  /** QueryOptions passthrough (timeout, abort signal, validator overrides). */
+  clientOptions?: Partial<QueryOptions>;
   /** Same as Stage3Options.subsystemVocabulary; the retry pass should use
    *  the same canonical vocabulary as the first pass to avoid drift. */
   subsystemVocabulary?: readonly SubsystemVocabularyEntry[];
@@ -151,8 +145,8 @@ export async function runStage3Retry(
     model: options.model,
     batchSize: options.batchSize ?? 8,
     only: candidates,
-    clientOptions: options.effort ? { effort: options.effort } : undefined,
     documentContextByItem: options.documentContextByItem,
+    clientOptions: options.clientOptions,
     onBatch: options.onBatch,
     subsystemVocabulary: options.subsystemVocabulary,
     subsystemVocabularyByNamespace: options.subsystemVocabularyByNamespace,

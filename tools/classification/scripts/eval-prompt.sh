@@ -1,20 +1,18 @@
 #!/usr/bin/env bash
 # Runs the canonical 60-item prompt-evaluation sample against a chosen
-# backend + model. Reads the existing stage-1/2 outputs from
+# OpenRouter model. Reads the existing stage-1/2 outputs from
 # tools/classification/out/ (so you don't need an mcmeta clone) and
 # writes its own complete.json + fixtures under /tmp/slot-prompt-eval-$LABEL/.
 #
 # Usage:
-#   scripts/eval-prompt.sh sonnet
 #   scripts/eval-prompt.sh deepseek-v4-flash
-#   scripts/eval-prompt.sh --backend openrouter --model openai/gpt-4o-mini
+#   scripts/eval-prompt.sh --model openai/gpt-4o-mini
 #
 # Presets:
-#   sonnet              — claude-cli backend, model=sonnet
-#   deepseek-v4-flash   — openrouter backend, model=deepseek/deepseek-v4-flash
+#   deepseek-v4-flash   — model=deepseek/deepseek-v4-flash
 #                          (requires OPENROUTER_API_KEY in env)
 #
-# Or pass any --backend / --model combo directly.
+# Or pass --model plus any extra CLI flags directly.
 
 set -euo pipefail
 
@@ -46,25 +44,16 @@ fi
 SAMPLE="minecraft:torch,minecraft:soul_torch,minecraft:lantern,minecraft:soul_lantern,minecraft:sea_lantern,minecraft:redstone_lamp,minecraft:redstone_torch,minecraft:end_rod,minecraft:glowstone,minecraft:jack_o_lantern,minecraft:shroomlight,minecraft:ladder,minecraft:bucket,minecraft:water_bucket,minecraft:lava_bucket,minecraft:milk_bucket,minecraft:powder_snow_bucket,minecraft:axolotl_bucket,minecraft:cod_bucket,minecraft:salmon_bucket,minecraft:tropical_fish_bucket,minecraft:pufferfish_bucket,minecraft:tadpole_bucket,minecraft:white_concrete_powder,minecraft:green_concrete_powder,minecraft:white_concrete,minecraft:green_concrete,minecraft:packed_mud,minecraft:mud,minecraft:clay,minecraft:clay_ball,minecraft:nether_star,minecraft:dragon_egg,minecraft:dragon_head,minecraft:wither_skeleton_skull,minecraft:angler_pottery_sherd,minecraft:archer_pottery_sherd,minecraft:heart_pottery_sherd,minecraft:disc_fragment_5,minecraft:glistering_melon_slice,minecraft:firework_star,minecraft:firework_rocket,minecraft:tipped_arrow,minecraft:bee_spawn_egg,minecraft:music_disc_13,minecraft:dead_fire_coral,minecraft:dead_fire_coral_block,minecraft:tube_coral,minecraft:tube_coral_block,minecraft:iron_ingot,minecraft:diamond_pickaxe,minecraft:oak_planks,minecraft:cobblestone,minecraft:dandelion,minecraft:oak_sapling,minecraft:bread,minecraft:chest,minecraft:furnace,minecraft:jungle_door,minecraft:brown_bed,minecraft:diamond_block,minecraft:rail"
 
 # Resolve preset / explicit flags.
-BACKEND_ARGS=()
+MODEL_ARGS=()
 LABEL=""
 case "${1:-}" in
-  sonnet)
-    # Explicit --backend claude-cli since the CLI now auto-infers
-    # openrouter when model contains a vendor slash. "sonnet" alone is
-    # a Claude alias so the default infers correctly, but pin
-    # explicitly so the preset is robust to future default flips.
-    BACKEND_ARGS=(--backend claude-cli --model sonnet)
-    LABEL="sonnet"
-    ;;
   deepseek-v4-flash)
     : "${OPENROUTER_API_KEY:?OPENROUTER_API_KEY must be set in env to run this preset}"
     # Pin to the official `deepseek` provider — lowest price, best
     # caching, best throughput, and the data-policy is acceptable for
     # this experiment. Avoids upstream rate-limits / format quirks
     # we've hit on third-party providers (deepinfra, siliconflow).
-    BACKEND_ARGS=(
-      --backend openrouter
+    MODEL_ARGS=(
       --model deepseek/deepseek-v4-flash
       --only-provider deepseek
     )
@@ -72,24 +61,22 @@ case "${1:-}" in
     ;;
   deepseek-v4-pro)
     : "${OPENROUTER_API_KEY:?OPENROUTER_API_KEY must be set in env to run this preset}"
-    # Pro variant of v4: higher capability per OpenRouter catalog,
-    # closer in price to flash than to sonnet. Same provider pin as
-    # the flash preset.
-    BACKEND_ARGS=(
-      --backend openrouter
+    # Pro variant of v4: higher capability per OpenRouter catalog. Same
+    # provider pin as the flash preset.
+    MODEL_ARGS=(
       --model deepseek/deepseek-v4-pro
       --only-provider deepseek
     )
     LABEL="deepseek-v4-pro"
     ;;
-  --backend|--model|"")
+  --model|"")
     # User passed flags directly (or no args).
-    BACKEND_ARGS=("$@")
+    MODEL_ARGS=("$@")
     LABEL="custom"
     ;;
   *)
     echo "unknown preset: $1"
-    echo "usage: $0 sonnet | deepseek-v4-flash | --backend X --model Y"
+    echo "usage: $0 deepseek-v4-flash | deepseek-v4-pro | --model MODEL"
     exit 2
     ;;
 esac
@@ -118,4 +105,4 @@ exec bun run src/cli.ts classify \
   --concurrency 4 \
   --record-replay \
   --fixture-dir "$OUT_DIR/fixtures" \
-  "${BACKEND_ARGS[@]}"
+  "${MODEL_ARGS[@]}"

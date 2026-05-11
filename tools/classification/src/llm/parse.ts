@@ -107,7 +107,7 @@ export interface SchemaProposal {
 }
 
 /**
- * claude -p --output-format json wraps the model's response in an envelope:
+ * Some legacy fixtures wrap the model's response in an envelope:
  *   { "type": "result", "result": "<text>", ... }
  * We extract the `result` string, strip any code fences, then JSON.parse the inner.
  * If the raw input is itself a JSON object matching our expected shape, we
@@ -237,16 +237,29 @@ function parseFacetEntry(
   raw: unknown,
   warnings: string[],
 ): ParsedFacetEntry | null {
-  if (!raw || typeof raw !== "object") {
-    warnings.push(`${itemId} ${facetId}: entry must be an object`);
-    return null;
-  }
-  const e = raw as Record<string, unknown>;
   const def = FACETS[facetId]!;
   const isMulti =
     def.kind === "multi_enum" ||
     def.kind === "multi_free_text" ||
     def.kind === "multi_item_ref";
+
+  if (isMulti && Array.isArray(raw)) {
+    const issue = validateMultiValue(facetId, raw);
+    if (issue) {
+      warnings.push(`${itemId} ${facetId}: ${issue.reason}`);
+      return null;
+    }
+    return {
+      kind: "multi",
+      values: raw as (string | number)[],
+    };
+  }
+
+  if (!raw || typeof raw !== "object") {
+    warnings.push(`${itemId} ${facetId}: entry must be an object`);
+    return null;
+  }
+  const e = raw as Record<string, unknown>;
   const rationale = typeof e.rationale === "string" ? e.rationale : undefined;
 
   // Signal drives the final confidence. Evidence is optional context. The
@@ -396,7 +409,7 @@ function unwrapEnvelope(raw: string, warnings: string[]): string {
     ) {
       const type = (obj as { type?: unknown }).type;
       if (type && type !== "result") {
-        warnings.push(`claude envelope type='${type}' (expected 'result'); attempting to use 'result' field anyway`);
+        warnings.push(`LLM envelope type='${type}' (expected 'result'); attempting to use 'result' field anyway`);
       }
       return (obj as { result: string }).result;
     }

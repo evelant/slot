@@ -22,7 +22,6 @@ import {
   type PackFacetVocabulary,
 } from "./schema/vocabulary.ts";
 import {
-  ClaudeCliClient,
   RecordingLlmClient,
   ReplayLlmClient,
   type LlmClient,
@@ -94,48 +93,26 @@ const DEFAULT_STAGE3_CONCURRENCY = 4;
 const DEFAULT_RUNTIME_PACK_BATCH_SIZE = 25;
 const DEFAULT_RUNTIME_PACK_CONCURRENCY = 8;
 const REPO_ROOT = resolve(import.meta.dir, "..", "..", "..");
+const CLI_ABORT_CONTROLLER = new AbortController();
+
+let shutdownSignal: string | undefined;
+for (const signal of ["SIGINT", "SIGTERM"] as const) {
+  process.once(signal, () => {
+    shutdownSignal = signal;
+    console.error(`[slot-classify] received ${signal}; aborting in-flight OpenRouter request(s)`);
+    CLI_ABORT_CONTROLLER.abort(new Error(`received ${signal}`));
+    setTimeout(() => process.exit(signal === "SIGINT" ? 130 : 143), 5_000).unref();
+  });
+}
+
+function cliAbortSignal(): AbortSignal {
+  return CLI_ABORT_CONTROLLER.signal;
+}
 
 interface StageSelection {
   stage1: boolean;
   stage2: boolean;
   stage3: boolean;
-}
-
-/**
- * Assemble the QueryOptions slice the LLM client needs (effort + thinking
- * budget + adaptive-thinking flag). Returns undefined when nothing is set
- * so we don't pass an empty object through the pipeline.
- */
-function buildClientOptions(
-  effort: "low" | "medium" | "high" | "xhigh" | "max" | undefined,
-  thinkingBudget: number | undefined,
-  disableAdaptiveThinking: boolean | undefined,
-): { effort?: "low" | "medium" | "high" | "xhigh" | "max"; thinkingBudget?: number; disableAdaptiveThinking?: boolean } | undefined {
-  const out: ReturnType<typeof buildClientOptions> = {};
-  if (effort) out!.effort = effort;
-  if (thinkingBudget !== undefined) out!.thinkingBudget = thinkingBudget;
-  if (disableAdaptiveThinking) out!.disableAdaptiveThinking = true;
-  return Object.keys(out!).length > 0 ? out : undefined;
-}
-
-function parseEffort(
-  input: string | undefined,
-): "low" | "medium" | "high" | "xhigh" | "max" | undefined {
-  if (!input) return undefined;
-  const allowed = ["low", "medium", "high", "xhigh", "max"] as const;
-  if (!(allowed as readonly string[]).includes(input)) {
-    throw new Error(`unknown --effort value: ${input} (use one of ${allowed.join("|")})`);
-  }
-  return input as "low" | "medium" | "high" | "xhigh" | "max";
-}
-
-function parseBackend(input: string | undefined): "claude-cli" | "openrouter" | undefined {
-  if (!input) return undefined;
-  const allowed = ["claude-cli", "openrouter"] as const;
-  if (!(allowed as readonly string[]).includes(input)) {
-    throw new Error(`unknown --backend value: ${input} (use one of ${allowed.join("|")})`);
-  }
-  return input as "claude-cli" | "openrouter";
 }
 
 function parsePositiveInteger(input: string | undefined, optionName: string): number | undefined {
@@ -199,8 +176,7 @@ function unquoteEnvValue(value: string): string {
 
 function ensureLiveBackendConfigured(opts: Stage3CliOptions, context: string): void {
   if (opts.dryRun || opts.useReplay) return;
-  const backend = opts.backend ?? inferBackend(opts.model);
-  if (backend === "openrouter" && !process.env.OPENROUTER_API_KEY) {
+  if (!process.env.OPENROUTER_API_KEY) {
     throw new Error(
       `${context} requires OPENROUTER_API_KEY. Put it in ${join(REPO_ROOT, ".env")} ` +
         `or export it in the shell before running.`,
@@ -242,14 +218,10 @@ async function main() {
           stages: { type: "string" },
           // stage 3 knobs
           model: { type: "string" },
-          backend: { type: "string" }, // claude-cli (default) | openrouter
           "ignore-provider": { type: "string", multiple: true },
           "only-provider": { type: "string", multiple: true },
           "batch-size": { type: "string" },
           concurrency: { type: "string" },
-          effort: { type: "string" },
-          "thinking-budget": { type: "string" },
-          "disable-adaptive-thinking": { type: "boolean" },
           sample: { type: "string" }, // `canary`, `N`, or comma-separated ids
           "fixture-dir": { type: "string" },
           "use-replay": { type: "boolean" },
@@ -258,7 +230,6 @@ async function main() {
           // stage 3 retry knobs — applied after the first pass on any item
           // whose LLM facets have confidence < retry-threshold or ambiguous:true.
           "retry-model": { type: "string" },
-          "retry-effort": { type: "string" },
           "retry-threshold": { type: "string" },
           "retry-batch-size": { type: "string" },
           "retry-fixture-dir": { type: "string" },
@@ -296,23 +267,16 @@ async function main() {
 
       const stage3CliOpts: Stage3CliOptions = {
         model: args.values.model,
-        backend: parseBackend(args.values.backend),
         ignoredProviders: (args.values["ignore-provider"] as string[] | undefined) ?? undefined,
         onlyProviders: (args.values["only-provider"] as string[] | undefined) ?? undefined,
         batchSize: parsePositiveInteger(args.values["batch-size"], "--batch-size"),
         concurrency: parsePositiveInteger(args.values.concurrency, "--concurrency"),
-        effort: parseEffort(args.values.effort),
-        thinkingBudget: args.values["thinking-budget"]
-          ? parsePositiveInteger(args.values["thinking-budget"], "--thinking-budget")
-          : undefined,
-        disableAdaptiveThinking: args.values["disable-adaptive-thinking"] ?? false,
         sample: args.values.sample,
         fixtureDir: args.values["fixture-dir"],
         useReplay: args.values["use-replay"] ?? false,
         recordReplay: args.values["record-replay"] ?? false,
         dryRun: args.values["dry-run"] ?? false,
         retryModel: args.values["retry-model"],
-        retryEffort: parseEffort(args.values["retry-effort"]),
         retryThreshold: args.values["retry-threshold"]
           ? parseConfidenceThreshold(args.values["retry-threshold"], "--retry-threshold")
           : undefined,
@@ -354,15 +318,11 @@ async function main() {
           stages: { type: "string" },
           // stage 3 knobs (same surface as `classify`).
           model: { type: "string" },
-          backend: { type: "string" },
           "ignore-provider": { type: "string", multiple: true },
           "only-provider": { type: "string", multiple: true },
           "batch-size": { type: "string" },
           concurrency: { type: "string" },
           "mod-concurrency": { type: "string" },
-          effort: { type: "string" },
-          "thinking-budget": { type: "string" },
-          "disable-adaptive-thinking": { type: "boolean" },
           "fixture-dir": { type: "string" },
           "use-replay": { type: "boolean" },
           "record-replay": { type: "boolean" },
@@ -393,16 +353,10 @@ async function main() {
 
       const stage3CliOpts: Stage3CliOptions = {
         model: args.values.model,
-        backend: parseBackend(args.values.backend),
         ignoredProviders: (args.values["ignore-provider"] as string[] | undefined) ?? undefined,
         onlyProviders: (args.values["only-provider"] as string[] | undefined) ?? undefined,
         batchSize: parsePositiveInteger(args.values["batch-size"], "--batch-size"),
         concurrency: parsePositiveInteger(args.values.concurrency, "--concurrency"),
-        effort: parseEffort(args.values.effort),
-        thinkingBudget: args.values["thinking-budget"]
-          ? parsePositiveInteger(args.values["thinking-budget"], "--thinking-budget")
-          : undefined,
-        disableAdaptiveThinking: args.values["disable-adaptive-thinking"] ?? false,
         fixtureDir: args.values["fixture-dir"],
         useReplay: args.values["use-replay"] ?? false,
         recordReplay: args.values["record-replay"] ?? false,
@@ -477,21 +431,16 @@ async function main() {
           force: { type: "boolean" },
           "mod-concurrency": { type: "string" },
           model: { type: "string" },
-          backend: { type: "string" },
           "ignore-provider": { type: "string", multiple: true },
           "only-provider": { type: "string", multiple: true },
           "batch-size": { type: "string" },
           concurrency: { type: "string" },
-          effort: { type: "string" },
-          "thinking-budget": { type: "string" },
-          "disable-adaptive-thinking": { type: "boolean" },
           sample: { type: "string" },
           "fixture-dir": { type: "string" },
           "use-replay": { type: "boolean" },
           "record-replay": { type: "boolean" },
           "dry-run": { type: "boolean" },
           "retry-model": { type: "string" },
-          "retry-effort": { type: "string" },
           "retry-threshold": { type: "string" },
           "retry-batch-size": { type: "string" },
           "retry-fixture-dir": { type: "string" },
@@ -520,23 +469,16 @@ async function main() {
       const stages = parseStages(args.values.stages);
       const stage3CliOpts: Stage3CliOptions = {
         model: args.values.model,
-        backend: parseBackend(args.values.backend),
         ignoredProviders: (args.values["ignore-provider"] as string[] | undefined) ?? undefined,
         onlyProviders: (args.values["only-provider"] as string[] | undefined) ?? undefined,
         batchSize: parsePositiveInteger(args.values["batch-size"], "--batch-size"),
         concurrency: parsePositiveInteger(args.values.concurrency, "--concurrency"),
-        effort: parseEffort(args.values.effort),
-        thinkingBudget: args.values["thinking-budget"]
-          ? parsePositiveInteger(args.values["thinking-budget"], "--thinking-budget")
-          : undefined,
-        disableAdaptiveThinking: args.values["disable-adaptive-thinking"] ?? false,
         sample: args.values.sample,
         fixtureDir: args.values["fixture-dir"],
         useReplay: args.values["use-replay"] ?? false,
         recordReplay: args.values["record-replay"] ?? false,
         dryRun: args.values["dry-run"] ?? false,
         retryModel: args.values["retry-model"],
-        retryEffort: parseEffort(args.values["retry-effort"]),
         retryThreshold: args.values["retry-threshold"]
           ? parseConfidenceThreshold(args.values["retry-threshold"], "--retry-threshold")
           : undefined,
@@ -577,12 +519,8 @@ async function main() {
           "limit-namespaces": { type: "string" },
           "min-items": { type: "string" },
           model: { type: "string" },
-          backend: { type: "string" },
           "ignore-provider": { type: "string", multiple: true },
           "only-provider": { type: "string", multiple: true },
-          effort: { type: "string" },
-          "thinking-budget": { type: "string" },
-          "disable-adaptive-thinking": { type: "boolean" },
           "fixture-dir": { type: "string" },
           "use-replay": { type: "boolean" },
           "record-replay": { type: "boolean" },
@@ -602,14 +540,8 @@ async function main() {
       mkdirSync(outDir, { recursive: true });
       const opts: Stage3CliOptions = {
         model: args.values.model,
-        backend: parseBackend(args.values.backend),
         ignoredProviders: (args.values["ignore-provider"] as string[] | undefined) ?? undefined,
         onlyProviders: (args.values["only-provider"] as string[] | undefined) ?? undefined,
-        effort: parseEffort(args.values.effort),
-        thinkingBudget: args.values["thinking-budget"]
-          ? parsePositiveInteger(args.values["thinking-budget"], "--thinking-budget")
-          : undefined,
-        disableAdaptiveThinking: args.values["disable-adaptive-thinking"] ?? false,
         fixtureDir: args.values["fixture-dir"],
         useReplay: args.values["use-replay"] ?? false,
         recordReplay: args.values["record-replay"] ?? false,
@@ -651,14 +583,10 @@ async function main() {
           "repair-batch-size": { type: "string" },
           "repair-concurrency": { type: "string" },
           model: { type: "string" },
-          backend: { type: "string" },
           "ignore-provider": { type: "string", multiple: true },
           "only-provider": { type: "string", multiple: true },
           "batch-size": { type: "string" },
           concurrency: { type: "string" },
-          effort: { type: "string" },
-          "thinking-budget": { type: "string" },
-          "disable-adaptive-thinking": { type: "boolean" },
           "fixture-dir": { type: "string" },
           "use-replay": { type: "boolean" },
           "record-replay": { type: "boolean" },
@@ -688,16 +616,10 @@ async function main() {
       const stage3FixtureDir = args.values["fixture-dir"] ?? join(outDir, "fixtures", "stage3");
       const stage3CliOpts: Stage3CliOptions = {
         model: args.values.model ?? DEFAULT_STAGE3_MODEL,
-        backend: parseBackend(args.values.backend),
         ignoredProviders: (args.values["ignore-provider"] as string[] | undefined) ?? undefined,
         onlyProviders: (args.values["only-provider"] as string[] | undefined) ?? undefined,
         batchSize: parsePositiveInteger(args.values["batch-size"], "--batch-size") ?? DEFAULT_RUNTIME_PACK_BATCH_SIZE,
         concurrency: parsePositiveInteger(args.values.concurrency, "--concurrency") ?? DEFAULT_RUNTIME_PACK_CONCURRENCY,
-        effort: parseEffort(args.values.effort),
-        thinkingBudget: args.values["thinking-budget"]
-          ? parsePositiveInteger(args.values["thinking-budget"], "--thinking-budget")
-          : undefined,
-        disableAdaptiveThinking: args.values["disable-adaptive-thinking"] ?? false,
         fixtureDir: stage3FixtureDir,
         useReplay,
         recordReplay: useReplay ? false : (args.values["record-replay"] ?? true),
@@ -750,21 +672,16 @@ async function main() {
           "pack-format": { type: "string" },
           force: { type: "boolean" },
           model: { type: "string" },
-          backend: { type: "string" },
           "ignore-provider": { type: "string", multiple: true },
           "only-provider": { type: "string", multiple: true },
           "batch-size": { type: "string" },
           concurrency: { type: "string" },
-          effort: { type: "string" },
-          "thinking-budget": { type: "string" },
-          "disable-adaptive-thinking": { type: "boolean" },
           sample: { type: "string" },
           "fixture-dir": { type: "string" },
           "use-replay": { type: "boolean" },
           "record-replay": { type: "boolean" },
           "dry-run": { type: "boolean" },
           "retry-model": { type: "string" },
-          "retry-effort": { type: "string" },
           "retry-threshold": { type: "string" },
           "retry-batch-size": { type: "string" },
           "retry-fixture-dir": { type: "string" },
@@ -790,23 +707,16 @@ async function main() {
       const stages = parseStages(args.values.stages);
       const stage3CliOpts: Stage3CliOptions = {
         model: args.values.model,
-        backend: parseBackend(args.values.backend),
         ignoredProviders: (args.values["ignore-provider"] as string[] | undefined) ?? undefined,
         onlyProviders: (args.values["only-provider"] as string[] | undefined) ?? undefined,
         batchSize: parsePositiveInteger(args.values["batch-size"], "--batch-size"),
         concurrency: parsePositiveInteger(args.values.concurrency, "--concurrency"),
-        effort: parseEffort(args.values.effort),
-        thinkingBudget: args.values["thinking-budget"]
-          ? parsePositiveInteger(args.values["thinking-budget"], "--thinking-budget")
-          : undefined,
-        disableAdaptiveThinking: args.values["disable-adaptive-thinking"] ?? false,
         sample: args.values.sample,
         fixtureDir: args.values["fixture-dir"],
         useReplay: args.values["use-replay"] ?? false,
         recordReplay: args.values["record-replay"] ?? false,
         dryRun: args.values["dry-run"] ?? false,
         retryModel: args.values["retry-model"],
-        retryEffort: parseEffort(args.values["retry-effort"]),
         retryThreshold: args.values["retry-threshold"]
           ? parseConfidenceThreshold(args.values["retry-threshold"], "--retry-threshold")
           : undefined,
@@ -882,12 +792,8 @@ async function main() {
           "max-candidates-per-facet": { type: "string" },
           force: { type: "boolean" },
           model: { type: "string" },
-          backend: { type: "string" },
           "ignore-provider": { type: "string", multiple: true },
           "only-provider": { type: "string", multiple: true },
-          effort: { type: "string" },
-          "thinking-budget": { type: "string" },
-          "disable-adaptive-thinking": { type: "boolean" },
           "fixture-dir": { type: "string" },
           "use-replay": { type: "boolean" },
           "record-replay": { type: "boolean" },
@@ -916,14 +822,8 @@ async function main() {
         force: args.values.force ?? false,
         opts: {
           model: args.values.model,
-          backend: parseBackend(args.values.backend),
           ignoredProviders: (args.values["ignore-provider"] as string[] | undefined) ?? undefined,
           onlyProviders: (args.values["only-provider"] as string[] | undefined) ?? undefined,
-          effort: parseEffort(args.values.effort),
-          thinkingBudget: args.values["thinking-budget"]
-            ? parsePositiveInteger(args.values["thinking-budget"], "--thinking-budget")
-            : undefined,
-          disableAdaptiveThinking: args.values["disable-adaptive-thinking"] ?? false,
           fixtureDir: args.values["fixture-dir"],
           useReplay: args.values["use-replay"] ?? false,
           recordReplay: args.values["record-replay"] ?? false,
@@ -1003,35 +903,24 @@ async function main() {
 
 interface Stage3CliOptions {
   model?: string;
-  /** Live backend selector. `claude-cli` (default) shells out to
-   *  `claude -p`. `openrouter` calls the OpenRouter SDK with
-   *  `OPENROUTER_API_KEY` from env. Replay mode bypasses both. */
-  backend?: "claude-cli" | "openrouter";
   /** Provider slugs to exclude from OpenRouter routing (e.g.
    *  `["deepinfra"]`). Forwarded as `provider.ignore` per request.
    *  Useful when an upstream provider is rate-limited or returning
-   *  flaky responses for our prompt shape. Ignored on claude-cli. */
+   *  flaky responses for our prompt shape. */
   ignoredProviders?: readonly string[];
   /** Provider slugs to **pin** OpenRouter to (e.g. `["deepseek"]`).
    *  Forwarded as `provider.only` + `allow_fallbacks: false`. Takes
-   *  precedence over ignoredProviders. Ignored on claude-cli. */
+   *  precedence over ignoredProviders. */
   onlyProviders?: readonly string[];
   batchSize?: number;
   concurrency?: number;
-  effort?: "low" | "medium" | "high" | "xhigh" | "max";
-  thinkingBudget?: number;
-  disableAdaptiveThinking?: boolean;
   sample?: string;
   fixtureDir?: string;
   useReplay: boolean;
   recordReplay: boolean;
   dryRun: boolean;
-  /** If set, run a retry pass with this model after the first pass.
-   *  Note: the retry deliberately does NOT inherit thinkingBudget or
-   *  disableAdaptiveThinking — those are first-pass-only knobs. The retry
-   *  uses --retry-effort and lets the retry model drive its own thinking. */
+  /** If set, run a retry pass with this OpenRouter model after the first pass. */
   retryModel?: string;
-  retryEffort?: "low" | "medium" | "high" | "xhigh" | "max";
   retryThreshold?: number;
   retryBatchSize?: number;
   retryFixtureDir?: string;
@@ -1042,8 +931,7 @@ interface Stage3CliOptions {
   retryRecordReplay?: boolean;
   /** When false, skip the mod_subsystem proposer pre-pass.  Default true. */
   proposeSubsystems?: boolean;
-  /** Model id for the proposer call.  Default haiku — it's cheap, the prompt
-   *  is small, and we just want a plausible vocabulary. */
+  /** OpenRouter model id for the proposer call. */
   subsystemsModel?: string;
   /** Load canonical subsystem vocabulary from an existing cache/output file.
    *  Supports both `<modid>.subsystems.json` and runtime
@@ -1065,7 +953,7 @@ interface Stage3CliOptions {
   documentContextStats?: DocumentContextBuildStats;
   /** Verbose-prompt extras. disambiguation defaults ON
    *  (principle-based per-facet reasoning; A/B testing showed it
-   *  carries sonnet from ~50% → ~93% on hard categories). misconceptions
+   *  carries hard-category accuracy substantially). misconceptions
    *  defaults OFF (item-level enumeration kept in reserve for
    *  regressions). CLI: --no-verbose-disambiguation flips disambiguation
    *  off; --verbose-misconceptions flips misconceptions on. */
@@ -1113,16 +1001,13 @@ function attachGenerationMetadata(
 }
 
 function buildPromptMetadata(opts: Stage3CliOptions): Record<string, unknown> {
-  const backend = opts.useReplay ? "replay" : (opts.backend ?? inferBackend(opts.model));
   return {
     version: PROMPT_VERSION,
-    backend,
+    backend: opts.useReplay ? "replay" : "openrouter",
     model: opts.model ?? DEFAULT_STAGE3_MODEL,
     target_facets: defaultTargetFacets(),
     batch_size: opts.batchSize ?? DEFAULT_STAGE3_BATCH_SIZE,
     concurrency: opts.concurrency ?? DEFAULT_STAGE3_CONCURRENCY,
-    effort: opts.effort ?? null,
-    thinking_budget: opts.thinkingBudget ?? null,
     record_replay: opts.recordReplay,
     use_replay: opts.useReplay,
     fixture_dir: opts.fixtureDir ?? null,
@@ -1144,7 +1029,6 @@ function buildPromptMetadata(opts: Stage3CliOptions): Record<string, unknown> {
     retry: opts.retryModel
       ? {
           model: opts.retryModel,
-          effort: opts.retryEffort ?? null,
           threshold: opts.retryThreshold ?? 0.5,
           batch_size: opts.retryBatchSize ?? 8,
           fixture_dir: opts.retryFixtureDir ?? null,
@@ -1750,7 +1634,6 @@ async function runRuntimeSubsystemProposal(
   }
 
   const model = options.opts.model ?? DEFAULT_STAGE3_MODEL;
-  const backend = options.opts.backend ?? inferBackend(model);
 
   if (options.opts.dryRun) {
     const dryRunDir = join(options.outDir, "runtime-subsystems-dry-run");
@@ -1778,7 +1661,7 @@ async function runRuntimeSubsystemProposal(
     return;
   }
 
-  console.log(`[runtime-subsystems] proposing vocabulary with ${model} via ${backend}`);
+  console.log(`[runtime-subsystems] proposing vocabulary with ${model} via openrouter`);
   ensureLiveBackendConfigured(options.opts, "propose-runtime-subsystems");
   const client = buildClient(options.opts);
   const output: RuntimeSubsystemVocabularyFile = {
@@ -1807,11 +1690,7 @@ async function runRuntimeSubsystemProposal(
     const proposal = await proposeRuntimeSubsystems(context, {
       client,
       model,
-      clientOptions: buildClientOptions(
-        options.opts.effort,
-        options.opts.thinkingBudget,
-        options.opts.disableAdaptiveThinking,
-      ),
+      clientOptions: { signal: cliAbortSignal() },
     });
     output.namespaces[context.modNamespace] = {
       modNamespace: context.modNamespace,
@@ -2203,11 +2082,7 @@ async function runProposePackFacetVocabulary(
     maxCandidatesPerFacet: options.maxCandidatesPerFacet,
     model,
     client,
-    clientOptions: buildClientOptions(
-      options.opts.effort,
-      options.opts.thinkingBudget,
-      options.opts.disableAdaptiveThinking,
-    ),
+    clientOptions: { signal: cliAbortSignal() },
   });
 
   if (options.opts.dryRun) {
@@ -3170,13 +3045,8 @@ async function resolveModSubsystems(args: {
     );
     return [];
   }
-  // Pick a sane default proposer model that matches the live backend so
-  // we don't ship a `haiku` alias to OpenRouter (or a vendor-slash slug
-  // to claude-cli). Override with --subsystems-model.
-  const backend = opts.backend ?? inferBackend(opts.model);
-  const proposerModel =
-    opts.subsystemsModel ?? (backend === "openrouter" ? (opts.model ?? "deepseek/deepseek-v4-flash") : "haiku");
-  console.log(`[subsystems] proposing canonical vocabulary for ${modNamespace} (${proposerModel} via ${backend})`);
+  const proposerModel = opts.subsystemsModel ?? opts.model ?? DEFAULT_STAGE3_MODEL;
+  console.log(`[subsystems] proposing canonical vocabulary for ${modNamespace} (${proposerModel} via openrouter)`);
   const meta = extractModMetadata({ modPath, bundle });
   if (
     !meta.readme &&
@@ -3191,6 +3061,7 @@ async function resolveModSubsystems(args: {
   const proposal = await proposeSubsystems(meta, {
     client,
     model: proposerModel,
+    clientOptions: { signal: cliAbortSignal() },
   });
   if (proposal.vocabulary.length === 0) {
     console.warn(
@@ -3361,11 +3232,11 @@ async function executeStage3(
     batchSize: opts.batchSize,
     concurrency: opts.concurrency,
     only,
-    clientOptions: buildClientOptions(opts.effort, opts.thinkingBudget, opts.disableAdaptiveThinking),
     documentContextByItem: opts.documentContextByItem,
     facetVocabulary: opts.facetVocabulary,
     subsystemVocabulary: opts.subsystemVocabulary,
     subsystemVocabularyByNamespace: opts.subsystemVocabularyByNamespace,
+    clientOptions: { signal: cliAbortSignal() },
     promptExtras: {
       verboseFacetDisambiguation: opts.verboseFacetDisambiguation,
       verboseCommonMisconceptions: opts.verboseCommonMisconceptions,
@@ -3412,13 +3283,13 @@ async function executeStage3(
         firstPassLayer: result.layer,
         client: retryClient,
         model: opts.retryModel,
-        effort: opts.retryEffort,
         threshold: opts.retryThreshold,
         batchSize: opts.retryBatchSize,
         documentContextByItem: opts.documentContextByItem,
         facetVocabulary: opts.facetVocabulary,
         subsystemVocabulary: opts.subsystemVocabulary,
         subsystemVocabularyByNamespace: opts.subsystemVocabularyByNamespace,
+        clientOptions: { signal: cliAbortSignal() },
         promptExtras: {
           verboseFacetDisambiguation: opts.verboseFacetDisambiguation,
           verboseCommonMisconceptions: opts.verboseCommonMisconceptions,
@@ -3465,6 +3336,15 @@ async function executeStage3(
 
   // Persist proposals/corrections to dedicated files (only when non-empty,
   // so the report can list exactly what's on disk and what's worth opening).
+  for (const suffix of [
+    ".schema-proposals.json",
+    ".corrections.json",
+    ".fill-ins.json",
+    ".response-mismatches.json",
+    ".warnings.json",
+  ]) {
+    rmSync(completePath.replace(/\.complete\.json$/, suffix), { force: true });
+  }
   const writtenFiles: { path: string; description: string }[] = [];
   writtenFiles.push({ path: completePath, description: "merged layer (stage 2 + stage 3)" });
 
@@ -3730,34 +3610,14 @@ function buildClient(opts: Stage3CliOptions): LlmClient {
 }
 
 function buildLiveClient(opts: Stage3CliOptions): LlmClient {
-  const backend = opts.backend ?? inferBackend(opts.model);
-  switch (backend) {
-    case "claude-cli":
-      return new ClaudeCliClient();
-    case "openrouter":
-      return new OpenRouterClient({
-        ignoredProviders: opts.ignoredProviders,
-        // Auto-pin to the official deepseek upstream when the model
-        // is a deepseek/* slug and the caller didn't override. This
-        // matches the "lock in v4-flash via deepseek" production
-        // recipe without requiring every script to repeat the flag.
-        onlyProviders: opts.onlyProviders ?? inferOnlyProviders(opts.model),
-      });
-    default:
-      throw new Error(`unknown backend: ${backend}`);
-  }
-}
-
-/**
- * Infer the live backend from the model id when --backend wasn't
- * specified. OpenRouter slugs always include a vendor prefix
- * (`vendor/name`); Claude aliases (haiku/sonnet/opus) and full Claude
- * model ids (claude-haiku-4-5, …) don't.
- */
-function inferBackend(model: string | undefined): "claude-cli" | "openrouter" {
-  if (!model) return "openrouter"; // matches DEFAULT_MODEL = "deepseek/deepseek-v4-flash"
-  if (model.includes("/")) return "openrouter";
-  return "claude-cli";
+  return new OpenRouterClient({
+    ignoredProviders: opts.ignoredProviders,
+    // Auto-pin to the official deepseek upstream when the model
+    // is a deepseek/* slug and the caller didn't override. This
+    // matches the "lock in v4-flash via deepseek" production
+    // recipe without requiring every script to repeat the flag.
+    onlyProviders: opts.onlyProviders ?? inferOnlyProviders(opts.model),
+  });
 }
 
 function inferOnlyProviders(model: string | undefined): readonly string[] | undefined {
@@ -3905,7 +3765,10 @@ Commands:
         --facet <id>            Regenerate one facet vocabulary. Repeatable.
         --namespace <id>        Limit evidence to one namespace. Repeatable.
         --previous-vocabulary <path>
-                                Preserve and compare a previous vocabulary.
+                                Refinement-only carry-forward for an already
+                                nearly satisfactory vocabulary. Previous values
+                                are sticky candidates; omit this for clean
+                                baseline validation.
         --min-evidence <n>      Minimum deterministic support for acceptance
                                 (default 2; previous/universal values bypass).
         --max-candidates-per-facet <n>
@@ -3966,15 +3829,7 @@ Stage selection:
   --stages 1,2[,3]          Which stages to run. Default: 1,2 (stage 3 opt-in).
 
 Stage 3 (LLM) knobs — only used when 3 is in --stages:
-  --backend <name>          Live backend: claude-cli or openrouter.
-                            **Default: auto-inferred from --model.** A
-                            vendor-slash slug (e.g. deepseek/deepseek-v4-flash)
-                            routes to openrouter; a plain Claude alias
-                            (haiku/sonnet/opus) or claude-* full id
-                            routes to claude-cli. Pass explicitly to
-                            override. openrouter requires OPENROUTER_API_KEY
-                            in env or repo-root .env. Replay mode ignores this.
-  --only-provider <slug>    (openrouter) Pin routing to a single upstream
+  --only-provider <slug>    Pin routing to a single OpenRouter upstream
                             provider — sends provider.only + allow_fallbacks=false.
                             Repeatable. Falls back to OPENROUTER_ONLY_PROVIDERS
                             env var (CSV) when unset. **Auto-defaults to
@@ -3987,15 +3842,10 @@ Stage 3 (LLM) knobs — only used when 3 is in --stages:
                             back to OPENROUTER_IGNORE_PROVIDERS env var.
                             Overridden by --only-provider when both set.
   --model <id>              Model id. **Default: deepseek/deepseek-v4-flash**
-                            (production recipe — locked in 2026-04-26 after
-                            A/B vs Claude on the 60-item playtest sample).
-                            For claude-cli: aliases (haiku/sonnet/opus) or
-                            full Claude model names. For openrouter: full
-                            slug (e.g. 'deepseek/deepseek-v4-flash',
+                            OpenRouter model slug (e.g.
+                            'deepseek/deepseek-v4-flash',
                             'deepseek/deepseek-v4-pro', 'openai/gpt-4o-mini').
-  --effort <level>          Reasoning effort: low|medium|high|xhigh|max.
-                            claude-cli only — ignored on openrouter.
-  --batch-size <n>          Items per LLM call (default 20 for haiku, try 10 for sonnet).
+  --batch-size <n>          Items per LLM call (default 20).
   --concurrency <n>         Run up to N batches in parallel (default 4).
                             Each parallel batch is an independent LLM call.
                             OpenRouter handles 4-8 comfortably; bump higher
@@ -4016,8 +3866,7 @@ Stage 3 (LLM) knobs — only used when 3 is in --stages:
                             ids from this file and final validation enforces it.
 
 Retry pass (opt-in; runs after the first pass on low-confidence items):
-  --retry-model <id>        Retry model (e.g. sonnet). Enabling this turns on retry.
-  --retry-effort <level>    Effort for the retry pass — 'max' for heaviest thinking.
+  --retry-model <id>        OpenRouter retry model. Enabling this turns on retry.
   --retry-threshold <n>     Retry items with any LLM facet confidence < n or ambiguous:true. Default 0.5.
   --retry-batch-size <n>    Items per retry LLM call. Default 8.
   --retry-fixture-dir <p>   Separate fixture directory for the retry pass.
@@ -4025,9 +3874,8 @@ Retry pass (opt-in; runs after the first pass on low-confidence items):
 Subsystem vocabulary:
   --no-propose-subsystems   Skip the README/metadata pre-pass. Stage 3 then
                             invents mod_subsystem labels per item.
-  --subsystems-model <id>   Model id for the proposer call. Default haiku.
-                            With the OpenRouter default backend, the proposer
-                            uses deepseek/deepseek-v4-flash unless overridden.
+  --subsystems-model <id>   OpenRouter model id for the proposer call.
+                            Defaults to the stage-3 model.
                             Cached at <out>/<modid>.subsystems.json — delete
                             to regenerate.
   --subsystems-file <path>  Load an existing subsystem vocabulary file into
@@ -4057,15 +3905,10 @@ Examples:
   bun run src/cli.ts classify --mod minecraft --source ../mcmeta --stages 3 --sample canary \\
       --record-replay --fixture-dir test/fixtures/stage3-canary
   bun run src/cli.ts classify --mod minecraft --source ../mcmeta --stages 3 --sample canary \\
-      --model haiku --record-replay --fixture-dir test/fixtures/stage3-canary-haiku \\
-      --retry-model sonnet --retry-effort max --retry-threshold 0.6 \\
-      --retry-fixture-dir test/fixtures/stage3-canary-sonnet-retry
-
-  # OpenRouter backend — same prompt, different model family:
-  OPENROUTER_API_KEY=sk-or-... \\
-    bun run src/cli.ts classify --mod minecraft --source ../mcmeta --stages 3 --sample canary \\
-      --backend openrouter --model deepseek/deepseek-v4-flash \\
-      --record-replay --fixture-dir test/fixtures/stage3-canary-deepseek
+      --model deepseek/deepseek-v4-flash --record-replay \\
+      --fixture-dir test/fixtures/stage3-canary-deepseek \\
+      --retry-model openai/gpt-4.1-mini --retry-threshold 0.6 \\
+      --retry-fixture-dir test/fixtures/stage3-canary-retry
 
   # Classify every mod in a modpack manifest (idempotent — re-run to resume):
   OPENROUTER_API_KEY=sk-or-... \\
@@ -4128,15 +3971,18 @@ Examples:
   bun run reclassify:test-modset:full  # also regenerate subsystem vocabularies
 
 Prompt-evaluation presets (60-item playtest sample; reads stage-1/2 from out/):
-  bun run eval:sonnet                  # claude-cli + sonnet (the baseline)
   OPENROUTER_API_KEY=... bun run eval:deepseek
-                                       # openrouter + deepseek/deepseek-v4-flash
-  scripts/eval-prompt.sh --backend openrouter --model openai/gpt-4o-mini
-                                       # any backend/model combo
+                                       # OpenRouter + deepseek/deepseek-v4-flash
+  scripts/eval-prompt.sh --model openai/gpt-4o-mini
+                                       # alternate OpenRouter model
 `);
 }
 
 main().catch((err) => {
+  if (shutdownSignal) {
+    console.error(`[slot-classify] stopped after ${shutdownSignal}`);
+    process.exit(shutdownSignal === "SIGINT" ? 130 : 143);
+  }
   console.error(err);
   process.exit(1);
 });

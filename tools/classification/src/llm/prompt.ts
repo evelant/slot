@@ -130,8 +130,8 @@ export interface LlmPromptInput {
    * `verbose_facet_disambiguation` (default **ON**) — principle-level
    * reasoning per facet: how a player thinks about, uses, and groups
    * items in each category. A/B testing on the 40-item playtest sample
-   * showed adding this carries sonnet from ~50% accuracy (cardinal
-   * rule alone) to ~93% on hard categories. It generalizes to novel
+   * showed adding this substantially improves hard-category accuracy
+   * over the cardinal rule alone. It generalizes to novel
    * items because the rules are reasoning-based, not enumerative.
    * Flip OFF only for experimentation against the lean baseline.
    *
@@ -279,14 +279,12 @@ export function buildBatchPrompt(input: LlmPromptInput): string {
  * Build a split prompt: the `system` section contains the stable
  * classification rules + facet schema + disambiguation + output-shape
  * example (~15KB, identical across batches), and the `user` section carries
- * the per-batch items (~30KB, varies). Pass `system` to `claude --system-prompt`
- * and `user` on stdin.
+ * the per-batch items (~30KB, varies). Pass `system` as the chat system
+ * message and `user` as the chat user message.
  *
- * The split improves prompt-cache hit rate — the system portion is stable
- * across every batch of a run, so Claude Code can cache all of it rather
- * than just the opening preamble. It also avoids mixing our task
- * instructions with Claude Code's default coding-assistant system prompt,
- * which historically caused Sonnet to prepend "Continuing with…" narration.
+ * The split improves provider-side cache hit rate because the system portion
+ * is stable across every batch of a run. It also keeps task instructions
+ * separate from volatile item evidence.
  */
 export function buildSplitPrompt(input: LlmPromptInput): { system: string; user: string } {
   const schemaDoc = renderSchemaForPrompt(input.target_facets);

@@ -52,9 +52,9 @@ const MATCHERS: Matcher[] = [
   { test: (p) => p.startsWith("dispensers/trial_chambers"), origin: "trial_chamber" },
   { test: (p) => p.startsWith("spawners/trial_chamber"), origin: "trial_chamber" },
   // ===== block drops =====
-  // kelp and underwater plants — ocean, not surface (flagged by sonnet canary)
+  // kelp and underwater plants — ocean, not surface (flagged by LLM canary)
   { test: (p) => p === "blocks/kelp" || p === "blocks/kelp_plant" || p === "blocks/seagrass" || p === "blocks/tall_seagrass" || p.startsWith("blocks/sea_pickle") || p.startsWith("blocks/cod") || p.startsWith("blocks/salmon") || p.startsWith("blocks/pufferfish") || p.startsWith("blocks/tropical_fish"), origin: "overworld_ocean" },
-  // amethyst geodes form in overworld caves (flagged by sonnet canary)
+  // amethyst geodes form in overworld caves (flagged by LLM canary)
   { test: (p) => p.startsWith("blocks/amethyst") || p === "blocks/budding_amethyst" || p.startsWith("blocks/small_amethyst_bud") || p.startsWith("blocks/medium_amethyst_bud") || p.startsWith("blocks/large_amethyst_bud"), origin: "overworld_cave" },
   // deep-nether ancient debris
   { test: (p) => p === "blocks/ancient_debris", origin: "nether" },
@@ -83,10 +83,10 @@ const MATCHERS: Matcher[] = [
   { test: (p) => /^blocks\/[a-z_]+_ore$/.test(p), origin: "overworld_cave" },
   // overworld-surface plant drops: leaves/logs/saplings/propagules from surface trees,
   // crops, berries, bamboo, kelp, cactus, flowers, grass, plus snow blocks
-  // (snowballs drop from snow/snow_block — flagged by sonnet-v4 canary).
+  // (snowballs drop from snow/snow_block — flagged by LLM canary).
   // The plant patterns use `^...$` (exact match) so we don't accidentally
   // match `blocks/bamboo_mosaic` (a crafted item) under "bamboo" — also
-  // a sonnet-v4 canary catch.
+  // an LLM canary catch.
   {
     test: (p) =>
       /^blocks\/(oak|birch|spruce|jungle|acacia|dark_oak|pale_oak|mangrove|cherry|azalea|flowering_azalea)_(log|wood|leaves|sapling|propagule)$/.test(p) ||

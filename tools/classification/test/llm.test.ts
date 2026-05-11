@@ -387,7 +387,7 @@ describe("prompt building", () => {
 });
 
 describe("response parsing", () => {
-  test("accepts claude envelope + fenced JSON", () => {
+  test("accepts wrapped envelope + fenced JSON", () => {
     const inner = JSON.stringify({
       items: {
         "minecraft:iron_ingot": {
@@ -447,6 +447,25 @@ describe("response parsing", () => {
     }
     // the wrap is informational — it still pushes a warning for observability
     expect(parsed.warnings.some((w) => w.includes("wrapped as [value]"))).toBe(true);
+  });
+
+  test("bare array for a multi facet is accepted as values", () => {
+    const response = JSON.stringify({
+      items: {
+        "minecraft:iron_ingot": {
+          facets: {
+            primary_uses: ["crafting tools", "anvil repairs"],
+          },
+        },
+      },
+    });
+    const parsed = parseLlmResponse(response);
+    const primaryUses = parsed.items.get("minecraft:iron_ingot")!.facets.primary_uses!;
+    expect(primaryUses.kind).toBe("multi");
+    if (primaryUses.kind === "multi") {
+      expect(primaryUses.values).toEqual(["crafting tools", "anvil repairs"]);
+    }
+    expect(parsed.warnings).toEqual([]);
   });
 
   test("ambiguous two-value shape", () => {
@@ -859,6 +878,132 @@ describe("runStage3", () => {
     expect(result.layer.entries["minecraft:b"]?.facets.role).toBeDefined();
   });
 
+  test("response validator rejects vocabulary-backed values outside accepted prompt vocabulary", async () => {
+    const record = ironIngotRecord();
+    const stage2: LayerFile = {
+      schema_version: 1,
+      layer: "modpack",
+      source: "fixture",
+      entries: {},
+    };
+    const vocabulary: PackFacetVocabulary = {
+      schema_version: 1,
+      kind: "slot-pack-facet-vocabulary",
+      pack_id: "fixture",
+      facets: {
+        workflow: {
+          values: {
+            "tfc:casting": {
+              label: "Casting",
+              origin: "pack_generated",
+              state: "accepted",
+            },
+          },
+        },
+      },
+    };
+
+    let calls = 0;
+    const client = {
+      async query(_prompt: string, options: { responseValidator?: (text: string) => { ok: boolean } }) {
+        calls++;
+        const invented = JSON.stringify({
+          items: {
+            [record.id]: {
+              facets: {
+                workflow: { values: ["tfc:invented"], confidence: 0.8, rationale: "made up" },
+              },
+            },
+          },
+        });
+        if (calls === 1 && options.responseValidator?.(invented).ok === false) {
+          return JSON.stringify({
+            items: {
+              [record.id]: {
+                facets: {
+                  workflow: { values: ["tfc:casting"], confidence: 0.9, rationale: "accepted vocabulary" },
+                },
+              },
+            },
+          });
+        }
+        return invented;
+      },
+    };
+
+    const result = await runStage3({
+      records: [record],
+      stage2Layer: stage2,
+      client,
+      targetFacets: ["workflow"],
+      facetVocabulary: vocabulary,
+    });
+
+    expect(calls).toBe(1);
+    expect(result.warnings).toEqual([]);
+    expect(result.layer.entries[record.id]?.facets.workflow).toMatchObject({
+      values: ["tfc:casting"],
+      source: "llm:stage3",
+    });
+  });
+
+  test("drops invalid vocabulary-backed values from clients that do not honor validators", async () => {
+    const record = ironIngotRecord();
+    const stage2: LayerFile = {
+      schema_version: 1,
+      layer: "modpack",
+      source: "fixture",
+      entries: {},
+    };
+    const vocabulary: PackFacetVocabulary = {
+      schema_version: 1,
+      kind: "slot-pack-facet-vocabulary",
+      pack_id: "fixture",
+      facets: {
+        workflow: {
+          values: {
+            "tfc:casting": {
+              label: "Casting",
+              origin: "pack_generated",
+              state: "accepted",
+            },
+          },
+        },
+      },
+    };
+    const client = {
+      async query() {
+        return JSON.stringify({
+          items: {
+            [record.id]: {
+              facets: {
+                workflow: {
+                  values: ["tfc:casting", "tfc:invented"],
+                  confidence: 0.8,
+                  rationale: "mixed accepted and invented",
+                },
+              },
+            },
+          },
+        });
+      },
+    };
+
+    const result = await runStage3({
+      records: [record],
+      stage2Layer: stage2,
+      client,
+      targetFacets: ["workflow"],
+      facetVocabulary: vocabulary,
+    });
+
+    expect(result.layer.entries[record.id]?.facets.workflow).toMatchObject({
+      values: ["tfc:casting"],
+      source: "llm:stage3",
+    });
+    expect(result.warnings.some((warning) => warning.includes("tfc:invented"))).toBe(true);
+  });
+
   test("only-list restricts execution", async () => {
     const recA: ItemExtractRecord = {
       ...ironIngotRecord(),
@@ -1052,7 +1197,7 @@ describe("RecordingLlmClient resume behaviour", () => {
     const events: Array<{ hit: boolean }> = [];
     const client = new RecordingLlmClient(inner, fixtureDir, (e) => events.push(e));
 
-    const got = await client.query(prompt, { model: "haiku" });
+    const got = await client.query(prompt, { model: "deepseek/deepseek-v4-flash" });
     expect(got).toBe(cachedResponse);
     expect(innerCalled).toBe(false);
     expect(events[0]?.hit).toBe(true);
@@ -1070,11 +1215,11 @@ describe("RecordingLlmClient resume behaviour", () => {
     const client = new RecordingLlmClient(inner, fixtureDir);
 
     const prompt = "fresh prompt";
-    await client.query(prompt, { model: "haiku" });
+    await client.query(prompt, { model: "deepseek/deepseek-v4-flash" });
     expect(innerCalled).toBe(1);
 
     // Second call with same prompt should hit cache
-    await client.query(prompt, { model: "haiku" });
+    await client.query(prompt, { model: "deepseek/deepseek-v4-flash" });
     expect(innerCalled).toBe(1); // unchanged
   });
 
@@ -1090,9 +1235,9 @@ describe("RecordingLlmClient resume behaviour", () => {
     };
     const client = new RecordingLlmClient(inner, fixtureDir);
 
-    await client.querySplit!("SYSTEM", "USER A", { model: "sonnet" });
-    await client.querySplit!("SYSTEM", "USER A", { model: "sonnet" }); // cache hit
-    await client.querySplit!("SYSTEM", "USER B", { model: "sonnet" }); // different user → miss
+    await client.querySplit!("SYSTEM", "USER A", { model: "openai/gpt-4.1-mini" });
+    await client.querySplit!("SYSTEM", "USER A", { model: "openai/gpt-4.1-mini" }); // cache hit
+    await client.querySplit!("SYSTEM", "USER B", { model: "openai/gpt-4.1-mini" }); // different user → miss
 
     expect(innerCalls).toBe(2);
   });
@@ -1199,8 +1344,7 @@ describe("runStage3Retry", () => {
       firstPassLayer,
       client: retryClient,
       threshold: 0.5,
-      model: "sonnet",
-      effort: "max",
+      model: "openai/gpt-4.1-mini",
     });
 
     expect(result.retriedItems).toEqual(["minecraft:mystery"]);

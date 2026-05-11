@@ -24,7 +24,7 @@ const MATCHERS: Matcher[] = [
   { test: (p) => /^[a-z_]+_ore$/.test(p) && !p.startsWith("deepslate_") && !p.startsWith("nether_"), bucket: "underground" },
   // nether-exclusive blocks/items. The previous `p.startsWith("nether_")`
   // rule misfired on `nether_star` (a crafted item from wither drops, not a
-  // nether-surface block) — flagged by sonnet canary 2026-04-24. Be explicit
+  // nether-surface block) — flagged by LLM canary 2026-04-24. Be explicit
   // about which `nether_*` ids actually live in the nether.
   {
     test: (p) =>
