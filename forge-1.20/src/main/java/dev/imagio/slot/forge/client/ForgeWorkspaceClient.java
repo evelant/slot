@@ -5,10 +5,10 @@ import dev.imagio.slot.forge.SlotForge;
 import dev.imagio.slot.forge.network.ForgeWorkspaceViewModelClientCache;
 import dev.imagio.slot.forge.ui.ForgeWorkspaceScreen;
 import dev.imagio.slot.forge.network.SlotForgeNetworking;
+import dev.imagio.slot.ui.workspace.GoalWorkspaceClientState;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.client.event.RenderGuiEvent;
@@ -33,7 +33,7 @@ public final class ForgeWorkspaceClient {
 
     public static final KeyMapping OPEN_VANILLA_INVENTORY = new KeyMapping(
             "key.slot.open_vanilla_inventory",
-            KeyConflictContext.UNIVERSAL,
+            KeyConflictContext.GUI,
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_V,
             CATEGORY
@@ -84,6 +84,14 @@ public final class ForgeWorkspaceClient {
         return wayfindingHudEnabled;
     }
 
+    public static void openWorkspaceScreen() {
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft == null || minecraft.player == null) {
+            return;
+        }
+        minecraft.setScreen(new ForgeWorkspaceScreen());
+    }
+
     @Mod.EventBusSubscriber(modid = SlotForge.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
     public static final class ModBus {
         private ModBus() {
@@ -110,18 +118,12 @@ public final class ForgeWorkspaceClient {
                 return;
             }
             while (OPEN_WORKSPACE_SCREEN.consumeClick()) {
-                Minecraft.getInstance().setScreen(new ForgeWorkspaceScreen());
+                openWorkspaceScreen();
             }
             while (TOGGLE_WAYFINDING_HUD.consumeClick()) {
                 wayfindingHudEnabled = !wayfindingHudEnabled;
             }
             Minecraft minecraft = Minecraft.getInstance();
-            while (OPEN_VANILLA_INVENTORY.consumeClick()) {
-                if (minecraft == null || minecraft.screen != null || minecraft.player == null) {
-                    continue;
-                }
-                minecraft.setScreen(new InventoryScreen(minecraft.player));
-            }
             while (CYCLE_KIT_PAGE.consumeClick()) {
                 if (minecraft == null || minecraft.screen != null) {
                     continue;
@@ -192,6 +194,7 @@ public final class ForgeWorkspaceClient {
         public static void onClientLoggingOut(ClientPlayerNetworkEvent.LoggingOut event) {
             ForgeContainerSidebar.clearClientState();
             ForgeWorkspaceViewModelClientCache.clear();
+            GoalWorkspaceClientState.clear();
         }
     }
 }

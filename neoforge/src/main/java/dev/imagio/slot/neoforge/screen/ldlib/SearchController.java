@@ -61,7 +61,7 @@ final class SearchController {
         return WorkspaceSearchQuery.matchesItem(
                 searchQuery,
                 item,
-                item == null ? null : host.viewModel.island(item.islandId()));
+                item == null ? null : host.currentIsland(item.islandId()));
     }
 
     boolean matchesContentSummary(SlotWorkspaceViewModel.ChestContentSummary summary) {
@@ -230,7 +230,7 @@ final class SearchController {
 
     private List<AtlasSearchIndex.SearchRow> collectRows() {
         ArrayList<AtlasSearchIndex.SearchRow> rows = new ArrayList<>();
-        for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.atlasItems()) {
+        for (SlotWorkspaceViewModel.AtlasItem item : host.currentAtlasItems()) {
             rows.add(new AtlasSearchIndex.SearchRow(
                     item.name(),
                     item.identity().itemId(),
@@ -239,7 +239,7 @@ final class SearchController {
                     0, 0, 0, 0
             ));
         }
-        for (SlotWorkspaceViewModel.AtlasIsland island : host.viewModel.islands()) {
+        for (SlotWorkspaceViewModel.AtlasIsland island : host.currentIslands()) {
             rows.add(new AtlasSearchIndex.SearchRow(
                     island.label(),
                     island.islandId(),

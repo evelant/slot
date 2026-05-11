@@ -108,7 +108,7 @@ final class ContextMenuBuilder {
 
     UIElement contextMenuOverlay() {
         if (host.contextMenuAtlasIdentity != null) {
-            SlotWorkspaceViewModel.AtlasItem item = host.viewModel.atlasItem(host.contextMenuAtlasIdentity);
+            SlotWorkspaceViewModel.AtlasItem item = host.currentAtlasItem(host.contextMenuAtlasIdentity);
             if (item == null) {
                 host.contextMenuAtlasIdentity = null;
                 return null;
@@ -167,6 +167,9 @@ final class ContextMenuBuilder {
     }
 
     UIElement buildAtlasContextMenu(SlotWorkspaceViewModel.AtlasItem item) {
+        if (host.goalTabActive()) {
+            return buildGoalAtlasContextMenu(item);
+        }
         UIElement catcher = contextMenuCatcher(this::closeContextMenu);
         UIElement menu = panel(GLASS).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
@@ -239,6 +242,63 @@ final class ContextMenuBuilder {
                     }
             ));
         }
+
+        UIElement wrapper = new UIElement().layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .left(0).right(0).top(0).bottom(0));
+        wrapper.addChildren(catcher, menu);
+        return wrapper;
+    }
+
+    private UIElement buildGoalAtlasContextMenu(SlotWorkspaceViewModel.AtlasItem item) {
+        UIElement catcher = contextMenuCatcher(this::closeContextMenu);
+        UIElement menu = panel(GLASS).layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .width(164)
+                .paddingAll(4)
+                .gapAll(2)
+                .flexDirection(FlexDirection.COLUMN));
+        anchorPopover(menu, host.contextMenuScreenX, host.contextMenuScreenY, 164, 82);
+        menu.style(style -> style.zIndex(22));
+        menu.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
+
+        menu.addChild(label(shorten(item.name(), 22), ACCENT)
+                .layout(layout -> layout.widthPercent(100).height(12)));
+        menu.addChild(menuButton(
+                "Open recipe in EMI",
+                true,
+                null,
+                () -> {
+                    host.openGoalRecipe(item);
+                    closeContextMenu();
+                }));
+        menu.addChild(menuButton(
+                "Open uses in EMI",
+                true,
+                null,
+                () -> {
+                    host.openGoalUses(item);
+                    closeContextMenu();
+                }));
+        if (host.goalChoiceInvolved(item)) {
+            menu.addChild(menuButton(
+                    "Choose different ingredient",
+                    true,
+                    null,
+                    () -> {
+                        host.openGoalChoiceEditor(item);
+                        closeContextMenu();
+                    }));
+            menu.addChild(menuButton(
+                    "Clear manual choice",
+                    true,
+                    null,
+                    () -> {
+                        host.clearGoalChoice(item);
+                        closeContextMenu();
+                    }));
+        }
+        menu.addChild(menuButton("Close", true, null, this::closeContextMenu));
 
         UIElement wrapper = new UIElement().layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)

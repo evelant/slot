@@ -2,13 +2,15 @@
 
 Last updated: 2026-05-11
 
-Status: proposed; Slice 0 contract spike completed 2026-05-11. This plan owns
-the runtime/UI side of recipe goals: SLOT-side recipe goals captured from EMI
-recipe context become goal tabs, and each tab projects the normal SLOT wall to
-show what the player has, what is known in storage, and what is missing for the
-selected recipe goal. Future EMI favorite/pin ingestion can be added if EMI
-exposes a stable public API for it; the first implementation must not depend on
-internal favorite state.
+Status: in progress; Slice 0 contract spike completed 2026-05-11, Slice 1 common
+projection model landed 2026-05-11, Slice 2 fixture goal-tab UI landed
+2026-05-11, and Slice 3 EMI context integration landed 2026-05-11. This plan
+owns the runtime/UI side of recipe goals: SLOT-side recipe goals captured from
+EMI recipe context become goal tabs, and each tab projects the normal SLOT wall
+to show what the player has, what is known in storage, and what is missing for
+the selected recipe goal. Future EMI
+favorite/pin ingestion can be added if EMI exposes a stable public API for it;
+the first implementation must not depend on internal favorite state.
 
 This plan deliberately does not own vocabulary generation or generic ambient
 task views. See [classification-facet-vocabulary.md](classification-facet-vocabulary.md)
@@ -331,6 +333,23 @@ Exit criteria:
   remainders stay visible instead of being silently flattened
 - loops/depth limits fail closed with diagnostics
 
+Implementation notes (landed 2026-05-11):
+
+- `common/src/main/java/dev/imagio/slot/inventory/goal/` now owns EMI-neutral
+  goal descriptors, recipe/ingredient descriptors, visible-authority counts,
+  projection entries, choice requirements, and a bounded
+  `GoalProjectionService`.
+- The service consumes a SLOT-owned descriptor graph and `GoalVisibleAuthority`
+  counts, subtracts visible carried/storage authority, expands missing
+  craftable requirements, preserves unresolved alternatives as choice cards, and
+  emits goal-scoped desired counts only for unresolved concrete leaves.
+- Common descriptors carry `ItemIdentity`, labels, counts, serialized ingredient
+  text, alternatives, and diagnostics. They do not carry EMI objects or loader
+  classes.
+- `GoalProjectionServiceTest` covers the fixture recipe goal, storage ghosts,
+  missing ghosts, choice indicators/cards, useful desired-count overlays, and
+  fail-closed loop/depth-limit diagnostics.
+
 ### Slice 2: Goal Tab UI Spike
 
 - add a fixture-backed goal tab beside `All`
@@ -353,6 +372,24 @@ Exit criteria:
 - choice cards and choice indicators are visually distinct from normal storage
   pips
 
+Implementation notes (landed 2026-05-11):
+
+- `GoalWorkspaceProjection` adapts the Slice 1 fixture projection into normal
+  `SlotWorkspaceViewModel.AtlasIsland` / `AtlasItem` records so the existing
+  wall/card renderers can show carried requirements, storage-backed ghosts,
+  missing ghosts, unresolved choice cards, goal-scoped `M/N` badges, and choice
+  indicators without changing stored homes.
+- NeoForge LDLib2 and Forge 1.20 both render an `All` tab plus a fixture
+  `Coke Oven` tab. Selecting the goal tab swaps the wall/search/TOC projection
+  locally; selecting `All` returns to the normal view-model projection.
+- Ctrl-scroll on the goal tab or a goal card adjusts the fixture target count.
+  In goal mode, card pickup, hotbar assignment, re-home, gather, and section
+  edit gestures fail closed as browse-only instead of mutating inventory.
+- Goal card tooltips add status, visible authority counts, missing counts,
+  breadcrumbs, diagnostics, and recipe-alternative notes. Slice 2 initially
+  surfaced pending EMI-adapter diagnostics for right-click and `R` / `U`; Slice
+  3 replaced those with EMI delegation where supported.
+
 ### Slice 3: EMI Context Integration
 
 - use the Slice 0 contract decision for explicit EMI recipe-context goal
@@ -369,11 +406,116 @@ Exit criteria:
 - removing a SLOT-side recipe goal removes the corresponding goal tab
 - unsupported EMI data fails closed with diagnostics
 
+Implementation notes (landed 2026-05-11):
+
+- NeoForge and Forge EMI plugins now register an always-visible `SLOT+`
+  overlay button on EMI recipe screens plus a drag/drop goal target for EMI
+  stacks. The recipe-screen button reads the currently displayed EMI recipe
+  group and adapts that recipe through public EMI API (`EmiRecipe`,
+  `EmiRecipeManager`, `EmiIngredientSerializer`) into the common
+  `GoalDescriptor`. Dragging an EMI stack onto the SLOT sidebar, or onto the
+  small `SLOT goal` drop target shown while dragging on non-SLOT screens, uses
+  the same adapter path from EMI recipe context or the first public output
+  recipe. Both paths activate a client-side SLOT goal tab and open the SLOT
+  workspace when needed.
+- `GoalWorkspaceClientState` owns session-local goal tabs, active-tab state,
+  target counts, and removal. The former fixture tab path is no longer shown in
+  normal UI; `All` plus live EMI-created tabs drive both LDLib2 and Forge
+  surfaces.
+- The adapter records item outputs, concrete alternatives, tag/list
+  ingredients, bounded recursive child recipes, non-item output/alternative
+  diagnostics, and recipe-tree support flags. It intentionally bounds recipe
+  depth and alternative expansion instead of trying to solve the whole pack.
+- Goal card context actions and `R` / `U` have partial EMI delegation, but the
+  playtest bugs below are blocking: clicked-card recipe routing, usage routing,
+  and manual ingredient-choice concretization are not yet correct.
+
+## Fresh-Session Handoff: 2026-05-11 Playtest Bugs
+
+Current code state:
+
+- Slices 0-3 are present in the worktree: common goal descriptors/projection,
+  client-side goal tabs, explicit EMI `SLOT+` recipe-screen goal creation, and
+  EMI drag/drop goal creation exist on both loaders.
+- The feature is still a playtest spike, not a ready base for persistence or
+  extra chrome. The next slice should be a root-cause bug pass, not a new
+  surface.
+- Manual ingredient choices are required by this plan. SLOT cannot observe EMI's
+  internal BoM choice state, so goal-scoped recipe-choice state must be
+  SLOT-owned. Do not treat choice controls as dead scope to remove; make them
+  real and honest.
+
+Plan invariants to keep while fixing:
+
+- A goal tab is the normal SLOT wall scoped to the active goal projection. Do
+  not invent recipe-depth sections or a special goal-only layout.
+- Goal projection is more than a filter: it may add storage-backed ghosts,
+  missing ghosts, unresolved choice cards, and goal-scoped desired-count
+  overlays for items absent from the normal wall.
+- Desired counts mean additional amount needed after visible authority is
+  subtracted, and only in the active goal tab.
+- Choice cards represent unresolved tag/list ingredient groups. Concrete
+  authority that satisfies a tag/list should auto-resolve first and get a choice
+  indicator; the player must still be able to concretize or override the choice.
+- EMI remains the recipe explanation and discovery surface. SLOT should delegate
+  recipe/usage/details back to EMI, but SLOT owns projection, authority
+  subtraction, and manual choice state.
+
+Observed bugs and gaps:
+
+- **All goal-only cards are under a synthetic `Goal` section.** The current
+  `GoalWorkspaceProjection` fallback creates `goal.requirements` / `Goal`. This
+  violates the "same wall sections/layout" rule. Existing carried/storage items
+  should stay in their normal section; unseen ghosts need the same normal
+  fallback section behavior the all-wall uses, not a recipe-specific section.
+- **Repeated items appear as separate cards.** The projection/UI currently
+  renders repeated requirement entries literally. Display should aggregate by
+  movable identity for the card surface while keeping raw requirements available
+  for breadcrumbs/logging.
+- **Some cards render blank.** Blank cards are likely unresolved display stacks
+  for synthetic choice identities or descriptors that cannot round-trip to an
+  `ItemStack`. Unsupported or incomplete display data should fail closed with a
+  diagnostic instead of rendering an empty icon.
+- **The choice/question indicator is too low contrast.** The black `?`/choice
+  mark is barely visible against the card art in real play.
+- **Desired-count badges are suspect on intermediate cards.** Playtest showed
+  many `0/N` badges on cards that may be recipe intermediates rather than
+  concrete missing leaves. Verify that UI cards use `desiredCount` as the
+  additional missing amount, not `max(requiredCount, desiredCount)`.
+- **Recipe and usage delegation are clicked-card wrong.** `Open recipe in EMI`
+  currently opens the active goal's focused/final recipe for any card, not the
+  clicked card's producer or relevant choice-group parent recipe. `Open uses in
+  EMI` did nothing in the reported case; log whether the failure is identity
+  resolution, display-stack resolution, or EMI rejection.
+- **Manual choice/concretization is unfinished.** The right-click menu exposes
+  "Choose different ingredient" and "Clear manual choice", but there is no
+  completed goal-scoped manual-choice state or UI flow. "Clear manual choice"
+  appears even when no manual choice exists. "Choose different ingredient" only
+  delegates to the final recipe path, so it does not let the player concretize a
+  tag/list ingredient.
+- **Choice-card details are not enough.** A choice card needs to make the
+  alternative group actionable: show the unresolved group, expose the available
+  alternatives where feasible, record the selected concrete identity in the
+  goal state, recompute projection, and mark cards involved in that choice.
+- **Projection diagnostics are too sparse.** Add structured logs for EMI
+  descriptor capture, serialized ingredient/alternative counts, bounded recipe
+  expansion, visible-authority subtraction, unresolved choice groups, duplicate
+  aggregation, section assignment, display-stack resolution, blank-card skips,
+  and recipe/use/choice delegation failures.
+
+Suggested next slice:
+
+1. Add the structured logging first so the next playtest screenshot has matching
+   log evidence.
+2. Fix the projection/card adapter to reuse normal wall sections, aggregate
+   repeated identities, and fail closed on blank display stacks.
+3. Fix clicked-card EMI delegation for `R`, `U`, and context menu actions.
+4. Implement the minimal SLOT-owned manual choice model for tag/list
+   concretization, then wire "choose different" and "clear manual choice" to
+   real state with menu visibility that reflects whether a manual choice exists.
+
 ## Open Questions
 
-- What is the exact UI affordance for creating a SLOT goal from EMI recipe
-  context: a keybind on hovered EMI output, a SLOT context-menu action, or a
-  small adapter button in EMI recipe screens?
 - Should ctrl-scroll target counts step by recipe output count, stack size, or
   the existing desired-count increment policy?
 - Should SLOT-side recipe goals persist across sessions, or are they workspace

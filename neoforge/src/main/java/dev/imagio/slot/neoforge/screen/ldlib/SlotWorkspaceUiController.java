@@ -17,8 +17,12 @@ import com.lowdragmc.lowdraglib2.gui.ui.event.HoverTooltips;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.neoforge.screen.ldlib.util.Observable;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
+import dev.imagio.slot.inventory.goal.GoalProjectionEntry;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.ui.workspace.GoalWorkspaceClientState;
+import dev.imagio.slot.ui.workspace.GoalWorkspaceIntegration;
+import dev.imagio.slot.ui.workspace.GoalWorkspaceProjection;
 import dev.imagio.slot.ui.workspace.ShiftClickTransferState;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
@@ -166,6 +170,7 @@ final class SlotWorkspaceUiController {
     // the UI dirty; flushRebuildIfPending() in the per-frame tick
     // collapses any number of requests into one actual rebuild per frame.
     boolean rebuildPending;
+    int appliedGoalStateRevision = GoalWorkspaceClientState.revision();
     SlotWorkspaceViewModel.IdentityRef hoveredChestCellIdentity;
     String hoveredChestCellStorageId;
     // Set by drop targets that handle a ChestStackDrag for something OTHER
@@ -326,14 +331,24 @@ final class SlotWorkspaceUiController {
     }
 
     void flushRebuildIfPending() {
+        applyGoalStateIfChanged();
         if (rebuildPending) {
             rebuildNow();
         }
     }
 
+    private void applyGoalStateIfChanged() {
+        int nextRevision = GoalWorkspaceClientState.revision();
+        if (nextRevision == appliedGoalStateRevision) {
+            return;
+        }
+        appliedGoalStateRevision = nextRevision;
+        rebuild();
+    }
+
     void rebuildNow() {
         rebuildPending = false;
-        if (hoveredAtlasIdentity != null && viewModel.atlasItem(hoveredAtlasIdentity) == null) {
+        if (hoveredAtlasIdentity != null && currentAtlasItem(hoveredAtlasIdentity) == null) {
             hoveredAtlasIdentity = null;
         }
         if (hoveredHotbarIndex >= 0
@@ -630,7 +645,7 @@ final class SlotWorkspaceUiController {
 
 
     SlotWorkspaceViewModel.AtlasItem hoveredAtlasItem() {
-        return viewModel.atlasItem(hoveredAtlasIdentity);
+        return currentAtlasItem(hoveredAtlasIdentity);
     }
 
     SlotWorkspaceViewModel.AtlasItem focusedAtlasItem() {
@@ -638,10 +653,151 @@ final class SlotWorkspaceUiController {
     }
 
     SlotWorkspaceViewModel.IdentityRef currentMapFocusIdentity() {
-        if (hoveredAtlasIdentity != null && viewModel.atlasItem(hoveredAtlasIdentity) != null) {
+        if (hoveredAtlasIdentity != null && currentAtlasItem(hoveredAtlasIdentity) != null) {
             return hoveredAtlasIdentity;
         }
         return null;
+    }
+
+    boolean goalTabActive() {
+        return GoalWorkspaceClientState.hasActiveGoal();
+    }
+
+    GoalWorkspaceProjection goalProjection() {
+        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
+        return active == null ? null : GoalWorkspaceProjection.fromGoal(viewModel, active.descriptor(), active.targetCount());
+    }
+
+    List<SlotWorkspaceViewModel.AtlasIsland> currentIslands() {
+        GoalWorkspaceProjection goal = goalProjection();
+        return goal == null ? viewModel.islands() : goal.islands();
+    }
+
+    SlotWorkspaceViewModel.AtlasIsland currentIsland(String islandId) {
+        if (islandId == null || islandId.isBlank()) {
+            return null;
+        }
+        for (SlotWorkspaceViewModel.AtlasIsland island : currentIslands()) {
+            if (islandId.equals(island.islandId())) {
+                return island;
+            }
+        }
+        return null;
+    }
+
+    List<SlotWorkspaceViewModel.AtlasItem> currentAtlasItems() {
+        GoalWorkspaceProjection goal = goalProjection();
+        return goal == null ? viewModel.atlasItems() : goal.atlasItems();
+    }
+
+    SlotWorkspaceViewModel.AtlasItem currentAtlasItem(SlotWorkspaceViewModel.IdentityRef identity) {
+        if (identity == null) {
+            return null;
+        }
+        GoalWorkspaceProjection goal = goalProjection();
+        return goal == null ? viewModel.atlasItem(identity) : goal.atlasItem(identity);
+    }
+
+    boolean goalChoiceInvolved(SlotWorkspaceViewModel.AtlasItem item) {
+        GoalWorkspaceProjection goal = goalProjection();
+        return goal != null && goal.choiceInvolved(item);
+    }
+
+    boolean goalChoiceCard(SlotWorkspaceViewModel.AtlasItem item) {
+        GoalWorkspaceProjection goal = goalProjection();
+        return goal != null && goal.choiceCard(item);
+    }
+
+    List<Component> goalTooltipLines(SlotWorkspaceViewModel.AtlasItem item) {
+        GoalWorkspaceProjection goal = goalProjection();
+        return goal == null
+                ? dev.imagio.slot.ui.workspace.WorkspaceItemTooltipBuilder.slotLines(item)
+                : goal.tooltipLines(item);
+    }
+
+    String goalChoiceGroupId(SlotWorkspaceViewModel.AtlasItem item) {
+        GoalWorkspaceProjection goal = goalProjection();
+        if (goal == null) {
+            return "";
+        }
+        GoalProjectionEntry entry = goal.entry(item);
+        return entry == null ? "" : entry.choiceGroupId();
+    }
+
+    void selectAllTab() {
+        GoalWorkspaceClientState.selectAll();
+        localStatus.set("showing all items");
+        rebuild();
+    }
+
+    void selectGoalTab(String goalId) {
+        if (!GoalWorkspaceClientState.selectGoal(goalId)) {
+            localStatus.set("goal tab no longer exists");
+            rebuild();
+            return;
+        }
+        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
+        localStatus.set("showing " + (active == null ? "goal" : active.label()));
+        rebuild();
+    }
+
+    void removeGoalTab(String goalId) {
+        if (!GoalWorkspaceClientState.removeGoal(goalId)) {
+            localStatus.set("goal tab no longer exists");
+            return;
+        }
+        localStatus.set(GoalWorkspaceClientState.hasActiveGoal() ? "removed goal" : "showing all items");
+        rebuild();
+    }
+
+    void adjustGoalTargetCount(String goalId, int delta) {
+        if (!GoalWorkspaceClientState.adjustTargetCount(goalId, delta)) {
+            return;
+        }
+        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
+        localStatus.set(active == null ? "updated goal" : active.label() + " x" + active.targetCount());
+        rebuild();
+    }
+
+    void openGoalRecipe(SlotWorkspaceViewModel.AtlasItem item) {
+        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
+        if (active == null) {
+            localStatus.set("no active goal");
+        } else if (GoalWorkspaceIntegration.openRecipe(active.descriptor())) {
+            localStatus.set("opened recipe in EMI");
+        } else {
+            localStatus.set("EMI recipe display unavailable");
+        }
+        rebuild();
+    }
+
+    void openGoalUses(SlotWorkspaceViewModel.AtlasItem item) {
+        if (item == null || item.identity().toIdentity() == null) {
+            localStatus.set("goal item unavailable");
+        } else if (GoalWorkspaceIntegration.openUses(item.identity().toIdentity())) {
+            localStatus.set("opened uses in EMI");
+        } else {
+            localStatus.set("EMI usage display unavailable");
+        }
+        rebuild();
+    }
+
+    void openGoalChoiceEditor(SlotWorkspaceViewModel.AtlasItem item) {
+        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
+        String choiceGroupId = goalChoiceGroupId(item);
+        if (active == null || choiceGroupId.isBlank()) {
+            localStatus.set("goal choice unavailable");
+        } else if (GoalWorkspaceIntegration.openChoiceEditor(active.descriptor(), choiceGroupId)) {
+            localStatus.set("opened choice recipe in EMI");
+        } else {
+            localStatus.set("EMI choice display unavailable");
+        }
+        rebuild();
+    }
+
+    void clearGoalChoice(SlotWorkspaceViewModel.AtlasItem item) {
+        localStatus.set("manual goal choices are not active");
+        rebuild();
     }
 
     /**

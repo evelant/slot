@@ -13,6 +13,7 @@ import net.minecraftforge.client.event.ScreenEvent;
 public final class ForgeContainerSidebar {
     private static Screen activeHostScreen;
     private static ForgeWorkspaceSurface activeSurface;
+    private static boolean bypassNextInventorySidebar;
 
     private ForgeContainerSidebar() {
     }
@@ -36,6 +37,16 @@ public final class ForgeContainerSidebar {
 
     public static void clearClientState() {
         release();
+        bypassNextInventorySidebar = false;
+    }
+
+    public static void openVanillaInventory() {
+        net.minecraft.client.Minecraft minecraft = net.minecraft.client.Minecraft.getInstance();
+        if (minecraft == null || minecraft.player == null) {
+            return;
+        }
+        bypassNextInventorySidebar = true;
+        minecraft.setScreen(new InventoryScreen(minecraft.player));
     }
 
     public static void onScreenInit(ScreenEvent.Init.Post event) {
@@ -46,7 +57,12 @@ public final class ForgeContainerSidebar {
             return;
         }
         if (screen instanceof InventoryScreen) {
-            return;
+            if (bypassNextInventorySidebar) {
+                bypassNextInventorySidebar = false;
+                return;
+            }
+        } else {
+            bypassNextInventorySidebar = false;
         }
         String className = screen.getClass().getName();
         if (className.startsWith("dev.imagio.slot.")) {

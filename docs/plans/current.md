@@ -13,45 +13,19 @@ see [../status.md](../status.md). For shipped plans, see
 Minecraft 1.20.1 Forge target while keeping the modern 1.21.1
 NeoForge + LDLib2 build.** ADR
 [`0006`](../decisions/0006-cross-loader-legacy-forge.md) records the
-platform decision. Phase 0 renderer viability is validated and the
-throwaway spike source has been deleted; current work is Phase
-2. The shared probe now compiles the whole common
-`dev.imagio.slot` tree against Forge 1.20.1 / Java 17, backed by
-`SlotStackAccess` and `SlotResourceAccess` loader seams; Forge `main`
-now consumes that common tree with production Forge 1.20 platform
-adapters. Phase 1 has a shared workspace action catalog/channel, packet
-codec, and session/menu envelope in common; NeoForge LDLib2 RPC
-registration and sends validate against it, and Forge 1.20 now has a
-production `SimpleChannel` payload that decodes the same packet codec and
-validates session/menu envelopes against a server-side Forge session
-registry. Forge now owns a workflow runtime, projects carried player
-inventory through the common `SlotWorkspaceViewModel` pipeline with
-bounded auto-home, syncs that view-model to the direct Taffy/GuiGraphics
-`G` screen, and routes safe metadata actions through
-`SlotWorkspaceCommandService`. Forge also installs carried/world storage
-accessors and binds the first guarded `TRANSFER` path for built-in
-main/hotbar targets through the common executor, plus identity-to-hotbar,
-hotbar-return, hotbar-to-section, kit, desired-count, chest metadata,
-deposit/take, cursor, active-kit gather, and cross-surface Forge
-adapters for the first belt/workflow interactions. Active-kit gather and
-kit-page cycle now live in common services shared by NeoForge and Forge
-transports. Forge `/slot test populate <profile>` and
-`/slot test clear` are available for carried-inventory/workflow/chest testing, with
-chest ids stored in Forge persistent block-entity data and claimed chest
-contents feeding the common projection. Manual chest-close deposit
-observation and chest-claim persistence reconciliation now use shared
-helpers with loader-specific storage-id readers. Phase 2 has the main
-wall section/card shells, shared fallback card details, Recents strip,
-hotbar belt, active chest strip, and non-drag kit rack rendered through
-the first narrow UI SPI + LDLib2/backend-specific renderers. A tested
-compact storage-chip builder exists but is intentionally hidden to match
-NeoForge's current product surface. Forge also has HUD/in-world
-wayfinding driven by the same common view-model projection, plus hotkey
-parity for vanilla inventory, active-kit page cycle, active-kit gather,
-the wayfinding HUD toggle, and shared classification diagnostics /
-runtime-export / rehome commands on both loaders. The next risks are
-migrating remaining richer modern-only affordances without reintroducing
-panel-by-panel backend semantics.
+platform decision. Phase 2 remains active: Forge now consumes the common
+tree with production adapters, shared action packet/session envelopes,
+common workspace projection, carried/world storage accessors, guarded
+metadata/transfer/hotbar/kit/chest/cursor/gather/wayfinding actions, and
+the direct Taffy/GuiGraphics `G` screen plus mounted sidebar. NeoForge
+remains the semantic oracle; the next risk is migrating richer
+modern-only affordances without reintroducing backend-specific semantics.
+
+Sidecar product slice: [`emi-goal-projections.md`](emi-goal-projections.md)
+has landed Slices 0-3 through explicit EMI recipe-screen and drag/drop goal
+creation on both loaders, but playtest exposed projection and choice-flow
+blockers. Do the Queue item 1 bug pass before promoting persistence, extra
+goal chrome, or broader goal UX.
 
 Previously active
 [`single-column-workspace.md`](single-column-workspace.md) is paused
@@ -78,6 +52,10 @@ Thin log; full detail lives in `git log` and the linked archived
 plans. Older entries are deleted — `git log` and `done/<plan>.md`
 hold the rest.
 
+- **2026-05-11** — EMI recipe goal projections landed through Slice 3:
+  the common goal/projection model, goal-tab wall projection, browse-only
+  goal mode, client-side recipe-goal tabs, and explicit EMI recipe-screen /
+  drag/drop goal creation/delegation now exist on NeoForge and Forge.
 - **2026-05-11** — classification pack-layer work landed installed
   `mods/` scanning, jar-backed static extraction, OpenRouter-only live
   LLM runs, runtime subsystem vocabulary, Forge/NeoForge runtime export,
@@ -105,11 +83,12 @@ hold the rest.
 - **2026-05-05** — backpack-first shift-click routing, ghost-block
   rendering, carried-count badge fix, and docs cleanup landed;
   list-view + cursor-pickup were closed and archived to `done/`.
+
 ## Known issues
 
 Operational bugs not currently tied to a plan. Items from the
 2026-05-01 cursor + desired-counts batch live under [Queue](#queue)
-item 1; this section is the leftover pile.
+item 2; this section is the leftover pile.
 
 - **Kit drag-edit doesn't auto-apply to the active belt.** Dragging
   a home onto an *active* kit's slot updates the kit definition
@@ -124,7 +103,20 @@ item 1; this section is the leftover pile.
 Roughly ordered by playtest signal. Pull from the top when the active
 track lands.
 
-1. **Cursor + desired-counts playtest bug pass — remainder.** Three
+1. **EMI goal projection playtest bug pass**
+   ([emi-goal-projections.md](emi-goal-projections.md)). Slices 0-3 exist, but
+   the real-recipe UI is not ready to build on. Fix the handoff bugs captured
+   in the plan: goal tabs must reuse normal wall sections instead of a synthetic
+   `Goal` section; duplicate and blank cards need root-cause fixes; desired
+   overlays must mean additional missing amount only; the choice/question
+   indicator needs readable contrast; `R` / `U` and context-menu actions must
+   target the clicked card or relevant choice group, not always the final goal;
+   and SLOT-owned manual ingredient choice needs an end-to-end concretization
+   path for tag/list alternatives. Add structured logging around EMI descriptor
+   capture, projection expansion, authority subtraction, display-stack
+   resolution, section assignment, and EMI delegation failures.
+
+2. **Cursor + desired-counts playtest bug pass — remainder.** Three
    items still open from the original 2026-05-01 batch (the wayfinding
    nav and kit-carry want-vs-have items shipped 2026-05-02 and are
    gone from this list). Likely best taken as one batch since #1 + #3
@@ -201,14 +193,14 @@ track lands.
      once the deposit UX is stable — currently they're useful for
      bug triage but will eventually be log-spam.
 
-2. **Learned-storage residual polish**
+3. **Learned-storage residual polish**
    ([learned-storage.md](learned-storage.md)). Sticky cluster
    ordinals across split / merge (today, single-chest churn keeps
    chips stable but multi-chest topology changes can renumber
    labels); per-row "→ suggested home" preview on the loot-chest
    panel; atlas-deposit take-back guard (only revisit if playtest
    shows stuck affinity).
-3. **Classification full-pack vocabulary validation**
+4. **Classification full-pack vocabulary validation**
    ([classification-facet-vocabulary.md](classification-facet-vocabulary.md)).
    Slices 0-3 are implemented for the TypeScript toolchain: the registry has
    vocabulary-backed semantic facets, scoped value-id grammar, layer and
@@ -222,19 +214,19 @@ track lands.
    vocabulary proposal made without `--previous-vocabulary`, review the
    generated layer/report/prompts, then tune deterministic domain facets or
    validation reports only from observed quality gaps.
-4. **Runtime-crawl deterministic fallback**
+5. **Runtime-crawl deterministic fallback**
    ([item-classification.md § Runtime discovery](item-classification.md#runtime-discovery)).
    Walks the live registry to derive deterministic facets
    (`material_family`, `form`, `processing_in`) for mods we don't
    have LLM data for. Defer until the full vocabulary-backed pack run shows
    which deterministic gaps remain after richer pack semantics are in play.
-5. **Item-classification stage-4 NN priming + confidence-band
+6. **Item-classification stage-4 NN priming + confidence-band
    ranking + acceptance-rate logging**
    ([item-classification.md § Integration sequence](item-classification.md#integration-sequence-next-concrete-work)
    step 6). Now that the FacetIndex-driven populate path playtests
    clean, this is the next layer of suggestion-quality work that
    sits above facet-driven-suggestions.
-6. **Kit-holdout deposit + explicit withdraw verb.** Two pieces of
+7. **Kit-holdout deposit + explicit withdraw verb.** Two pieces of
    open work that the retired storage-prototype plan tracked under
    Slices 4b / 5; they need re-planning against the current chip /
    affinity model.
@@ -247,12 +239,12 @@ track lands.
      reachable Kit-needed identities from proximate chests in one
      click. A general-purpose withdraw verb (independent of an active
      Kit) hasn't been planned. Defer until playtest signals demand.
-7. **Kit prototype slice 4** ([kit-prototype.md](kit-prototype.md)).
-8. **Single-column workspace width pass**
+8. **Kit prototype slice 4** ([kit-prototype.md](kit-prototype.md)).
+9. **Single-column workspace width pass**
    ([single-column-workspace.md](single-column-workspace.md)). Paused
    while the cross-loader/platform boundary is active. Resume once the
    Forge 1.20.1 shared compile gate and UI SPI direction are stable.
-9. **Workspace projection caching.** `SlotWorkspaceViewModel`
+10. **Workspace projection caching.** `SlotWorkspaceViewModel`
    re-projects carried / proximate / elsewhere / kit-needed identities
    every server tick while open. Add cache invalidators for inventory
    deltas, chest content, kit changes, and chest-proximity movement;

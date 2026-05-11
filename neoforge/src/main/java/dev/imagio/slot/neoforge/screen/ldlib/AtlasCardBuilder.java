@@ -120,7 +120,9 @@ final class AtlasCardBuilder {
         }
         installCardClickHandlers(button, item);
         host.drag.installAtlasHoverTooltip(button, item);
-        host.drag.installAtlasItemDragSource(button, item);
+        if (!host.goalTabActive()) {
+            host.drag.installAtlasItemDragSource(button, item);
+        }
         installChestHoverPaint(button, item);
     }
 
@@ -228,11 +230,14 @@ final class AtlasCardBuilder {
         if (status.wantsBorder()) {
             addStatusBorder(body, status);
         }
-        if (host.viewModel.depositableIdentities().contains(item.identity())) {
+        if (!host.goalTabActive() && host.viewModel.depositableIdentities().contains(item.identity())) {
             addDepositPreviewOutline(body);
         }
-        if (WorkspaceGatherUiSupport.isGatherableItem(item)) {
+        if (!host.goalTabActive() && WorkspaceGatherUiSupport.isGatherableItem(item)) {
             addGatherPreviewOutline(body);
+        }
+        if (host.goalChoiceInvolved(item)) {
+            addChoiceIndicator(body, item);
         }
         if (!host.searchController.normalizedQuery().isBlank()) {
             int storedCount = proximateCount;
@@ -389,6 +394,29 @@ final class AtlasCardBuilder {
                 .textAlignHorizontal(Horizontal.CENTER)
                 .textAlignVertical(Vertical.CENTER));
         pip.addChild(count);
+        body.addChild(pip);
+    }
+
+    private void addChoiceIndicator(UIElement body, SlotWorkspaceViewModel.AtlasItem item) {
+        int color = host.goalChoiceCard(item) ? 0xE0FFB86B : 0xD0B486FF;
+        UIElement pip = panel(color).layout(layout -> layout
+                .positionType(TaffyPosition.ABSOLUTE)
+                .left(6)
+                .top(0)
+                .width(5)
+                .height(5));
+        pip.style(style -> style.zIndex(270));
+        pip.setAllowHitTest(false);
+        Label mark = label("?", 0xFF0B1117);
+        mark.layout(layout -> layout.widthPercent(100).heightPercent(100));
+        mark.setAllowHitTest(false);
+        mark.textStyle(style -> style
+                .textColor(0xFF0B1117)
+                .textShadow(false)
+                .fontSize(5)
+                .textAlignHorizontal(Horizontal.CENTER)
+                .textAlignVertical(Vertical.CENTER));
+        pip.addChild(mark);
         body.addChild(pip);
     }
 
@@ -696,6 +724,16 @@ final class AtlasCardBuilder {
         // Plain left-click pickup runs on UIEvents.CLICK (below), which
         // fires on mouseReleased only when no drag started.
         button.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+            if (host.goalTabActive()) {
+                event.stopPropagation();
+                if (event.button == 1 && !WorkspaceCursorState.isCarrying()) {
+                    host.menu.openContextMenuForAtlas(item, event.x, event.y);
+                } else if (WorkspaceCursorState.isCarrying()) {
+                    host.localStatus.set("goal tab is browse only");
+                    host.rebuild();
+                }
+                return;
+            }
             WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.pointerDown(
                     cardGestureContext(item, event.button, Screen.hasShiftDown(), Screen.hasControlDown()));
             if (dispatchCardGestureDecision(item, decision)) {
@@ -714,6 +752,11 @@ final class AtlasCardBuilder {
                 return;
             }
             event.stopPropagation();
+            if (host.goalTabActive()) {
+                host.localStatus.set(item.name() + " in active goal");
+                host.rebuild();
+                return;
+            }
             SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
             WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.click(
                     cardGestureContext(target, event.button, Screen.hasShiftDown(), Screen.hasControlDown()));
@@ -722,6 +765,9 @@ final class AtlasCardBuilder {
             }
         });
         button.addEventListener(UIEvents.MOUSE_DOWN, event -> {
+            if (host.goalTabActive()) {
+                return;
+            }
             if (event.button == 1) {
                 if (WorkspaceCursorState.isCarrying()) {
                     return;
@@ -733,6 +779,18 @@ final class AtlasCardBuilder {
         float[] scrollAccumulator = {0f};
         float[] desiredScrollAccumulator = {0f};
         button.addEventListener(UIEvents.MOUSE_WHEEL, event -> {
+            if (host.goalTabActive()) {
+                if (!Screen.hasControlDown() || WorkspaceCursorState.isCarrying()) {
+                    return;
+                }
+                float delta = event.deltaY != 0f ? event.deltaY : event.deltaX;
+                if (delta == 0f) {
+                    return;
+                }
+                event.stopPropagation();
+                host.adjustGoalTargetCount("", delta > 0f ? 1 : -1);
+                return;
+            }
             if (Screen.hasControlDown()) {
                 if (WorkspaceCursorState.isCarrying()) {
                     return;
@@ -764,7 +822,7 @@ final class AtlasCardBuilder {
         if (item == null || host.viewModel == null) {
             return item;
         }
-        SlotWorkspaceViewModel.AtlasItem fresh = host.viewModel.atlasItem(item.identity());
+        SlotWorkspaceViewModel.AtlasItem fresh = host.currentAtlasItem(item.identity());
         return fresh != null ? fresh : item;
     }
 
@@ -867,6 +925,21 @@ final class AtlasCardBuilder {
             if (identity != null && identity.equals(host.hoveredAtlasIdentity)) {
                 host.hoveredAtlasIdentity = null;
             }
+        }
+
+        @Override
+        public java.util.List<Component> tooltipLines(SlotWorkspaceViewModel.AtlasItem item) {
+            return host.goalTooltipLines(item);
+        }
+
+        @Override
+        public boolean choiceInvolved(SlotWorkspaceViewModel.AtlasItem item) {
+            return host.goalChoiceInvolved(item);
+        }
+
+        @Override
+        public boolean choiceCard(SlotWorkspaceViewModel.AtlasItem item) {
+            return host.goalChoiceCard(item);
         }
     }
 

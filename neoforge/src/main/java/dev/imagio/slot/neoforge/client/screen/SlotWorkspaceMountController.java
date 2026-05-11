@@ -56,6 +56,17 @@ public final class SlotWorkspaceMountController {
         minecraft.setScreen(new InventoryScreen(minecraft.player));
     }
 
+    public static void openSlotWorkspace() {
+        Minecraft minecraft = Minecraft.getInstance();
+        if (minecraft == null || minecraft.player == null) {
+            return;
+        }
+        if (minecraft.player.containerMenu != minecraft.player.inventoryMenu) {
+            minecraft.player.closeContainer();
+        }
+        minecraft.setScreen(new InventoryScreen(minecraft.player));
+    }
+
     private static void onScreenOpening(ScreenEvent.Opening event) {
         Screen candidate = event.getNewScreen();
         if (!(candidate instanceof AbstractContainerScreen<?> containerScreen)) {

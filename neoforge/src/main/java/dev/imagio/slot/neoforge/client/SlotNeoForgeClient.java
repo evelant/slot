@@ -51,13 +51,7 @@ public final class SlotNeoForgeClient {
         runtimeInitialized = true;
     }
 
-    // Drain every queued click on the "Open Vanilla Inventory" mapping each
-    // tick; each consumeClick() returns true once per press, so a loop
-    // handles held/repeated presses without re-firing.
     private static void onClientTick(ClientTickEvent.Post event) {
-        while (SlotAtlasKeyMappings.openVanillaInventoryMapping().consumeClick()) {
-            SlotWorkspaceMountController.openVanillaInventory();
-        }
         // In-world kit-page cycle. The SLOT atlas's HotkeyRouter handles
         // the same key when the workspace screen is mounted; this loop
         // covers the in-world case so the player can swap kit pages

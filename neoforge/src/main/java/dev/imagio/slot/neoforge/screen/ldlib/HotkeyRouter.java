@@ -24,6 +24,7 @@ final class HotkeyRouter {
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCursorCancelKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleBeltHotkey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, host.searchController::handleKeyDown, true);
+        host.root.addEventListener(UIEvents.KEY_DOWN, this::handleGoalRecipeKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCycleKitPageKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleGatherActiveKitKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleUndoRedoKey, true);
@@ -56,6 +57,12 @@ final class HotkeyRouter {
         if (digit < 1 || digit > 9) {
             return;
         }
+        if (host.goalTabActive()) {
+            event.stopPropagation();
+            host.localStatus.set("goal tab is browse only");
+            host.rebuild();
+            return;
+        }
         event.stopPropagation();
         SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
         if (target == null) {
@@ -74,6 +81,28 @@ final class HotkeyRouter {
         }
         UIElement focused = mui.getFocusedElement();
         return focused != null && focused != host.root && focused instanceof TextField;
+    }
+
+    void handleGoalRecipeKey(UIEvent event) {
+        if (!host.goalTabActive() || isTextInputFocused() || host.searchController.modalActive()
+                || Screen.hasControlDown()) {
+            return;
+        }
+        if (event.keyCode != GLFW.GLFW_KEY_R && event.keyCode != GLFW.GLFW_KEY_U) {
+            return;
+        }
+        event.stopPropagation();
+        SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
+        if (target == null) {
+            host.localStatus.set("hover a goal card for recipe or usage details");
+            host.rebuild();
+            return;
+        }
+        if (event.keyCode == GLFW.GLFW_KEY_R) {
+            host.openGoalRecipe(target);
+        } else {
+            host.openGoalUses(target);
+        }
     }
 
     void handleCycleKitPageKey(UIEvent event) {
@@ -104,6 +133,12 @@ final class HotkeyRouter {
         }
         if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings
                 .matchesGatherActiveKit(event.keyCode, event.scanCode)) {
+            return;
+        }
+        if (host.goalTabActive()) {
+            event.stopPropagation();
+            host.localStatus.set("goal tab is browse only");
+            host.rebuild();
             return;
         }
         if (!anyGatherableIdentity()) {
@@ -142,11 +177,9 @@ final class HotkeyRouter {
     }
 
     /**
-     * In-screen handler for the "open vanilla inventory" binding. The
-     * {@code consumeClick} loop in {@code SlotNeoForgeClient.onClientTick}
-     * only fires when no screen is open; while the SLOT atlas is up,
-     * keyboard events are routed to the screen first, so we re-check the
-     * binding here and bail out to vanilla on match.
+     * In-screen handler for the "open vanilla inventory" binding. The key is
+     * intentionally scoped to SLOT surfaces instead of being consumed from the
+     * global client tick.
      *
      * <p>Context-sensitive: when a loot chest panel is showing (i.e.
      * the player walked up to / right-clicked an unclaimed chest and

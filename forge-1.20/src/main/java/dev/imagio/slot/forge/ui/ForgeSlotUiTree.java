@@ -247,6 +247,7 @@ public final class ForgeSlotUiTree {
                     (float) mouseX,
                     (float) mouseY,
                     shiftDown,
+                    Screen.hasControlDown(),
                     (float) delta);
             bubble(hit, event);
             if (event.propagationStopped()) {

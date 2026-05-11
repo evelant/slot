@@ -56,11 +56,11 @@ final class TocPanelBuilder {
 
     private java.util.List<SlotWorkspaceViewModel.AtlasIsland> visibleEntries() {
         java.util.Map<String, Integer> counts = new java.util.HashMap<>();
-        for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.atlasItems()) {
+        for (SlotWorkspaceViewModel.AtlasItem item : host.currentAtlasItems()) {
             counts.merge(item.islandId(), 1, Integer::sum);
         }
         java.util.List<SlotWorkspaceViewModel.AtlasIsland> entries = new java.util.ArrayList<>();
-        for (SlotWorkspaceViewModel.AtlasIsland island : host.viewModel.islands()) {
+        for (SlotWorkspaceViewModel.AtlasIsland island : host.currentIslands()) {
             if (island.kind() == VisualAtlasIslandKind.TRIAGE) {
                 continue;
             }
@@ -114,7 +114,7 @@ final class TocPanelBuilder {
 
     private int countItemsInIsland(String islandId) {
         int count = 0;
-        for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.atlasItems()) {
+        for (SlotWorkspaceViewModel.AtlasItem item : host.currentAtlasItems()) {
             if (islandId.equals(item.islandId())) {
                 count++;
             }
@@ -141,7 +141,7 @@ final class TocPanelBuilder {
             return false;
         }
         SlotWorkspaceViewModel.IdentityRef hovered = host.currentMapFocusIdentity();
-        for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.atlasItems()) {
+        for (SlotWorkspaceViewModel.AtlasItem item : host.currentAtlasItems()) {
             if (!island.islandId().equals(item.islandId())) {
                 continue;
             }

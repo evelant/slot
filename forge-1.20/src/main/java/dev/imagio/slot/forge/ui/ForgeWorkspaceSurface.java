@@ -1,11 +1,13 @@
 package dev.imagio.slot.forge.ui;
 
 import dev.imagio.slot.forge.client.ForgeWorkspaceClient;
+import dev.imagio.slot.forge.client.ForgeContainerSidebar;
 import dev.imagio.slot.forge.network.ForgeWorkspaceActionChannel;
 import dev.imagio.slot.forge.network.ForgeWorkspaceOpenMessage;
 import dev.imagio.slot.forge.network.ForgeWorkspaceRefreshMessage;
 import dev.imagio.slot.forge.network.ForgeWorkspaceViewModelClientCache;
 import dev.imagio.slot.forge.network.SlotForgeNetworking;
+import dev.imagio.slot.inventory.goal.GoalProjectionEntry;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WorkspaceSearchQuery;
@@ -16,6 +18,10 @@ import dev.imagio.slot.ui.spi.SlotUiEventKind;
 import dev.imagio.slot.ui.spi.SlotUiLayout;
 import dev.imagio.slot.ui.spi.SlotUiTextStyle;
 import dev.imagio.slot.ui.workspace.ActiveChestStripUiBuilder;
+import dev.imagio.slot.ui.workspace.GoalTabsUiBuilder;
+import dev.imagio.slot.ui.workspace.GoalWorkspaceClientState;
+import dev.imagio.slot.ui.workspace.GoalWorkspaceIntegration;
+import dev.imagio.slot.ui.workspace.GoalWorkspaceProjection;
 import dev.imagio.slot.ui.workspace.HotbarBeltUiBuilder;
 import dev.imagio.slot.ui.workspace.KitRackUiBuilder;
 import dev.imagio.slot.ui.workspace.RecentsStripUiBuilder;
@@ -26,6 +32,7 @@ import dev.imagio.slot.ui.workspace.WallSectionHeaderUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionUiBuilder;
 import dev.imagio.slot.ui.workspace.WayfindingDisplay;
 import dev.imagio.slot.ui.workspace.WorkspaceGatherUiSupport;
+import dev.imagio.slot.ui.workspace.WorkspaceCountFormat;
 import dev.imagio.slot.ui.workspace.WorkspaceSearchInputPolicy;
 import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
 import dev.imagio.slot.ui.workspace.WorkspaceUiPalette;
@@ -33,7 +40,6 @@ import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.gui.screens.inventory.InventoryScreen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import org.lwjgl.glfw.GLFW;
@@ -87,6 +93,7 @@ public final class ForgeWorkspaceSurface {
     private String status;
     private boolean openSessionRequested;
     private boolean rebuildRequested = true;
+    private int appliedGoalStateRevision = GoalWorkspaceClientState.revision();
     private boolean kitRackOpen;
     private SlotWorkspaceViewModel.IdentityRef contextMenuIdentity;
     private String contextMenuKitId;
@@ -135,6 +142,7 @@ public final class ForgeWorkspaceSurface {
     public void tick(int width, int height) {
         shiftClickTransferState.observeShiftDown(Screen.hasShiftDown());
         openSessionIfNeeded();
+        applyGoalStateIfChanged();
         boolean pointerActive = tree != null && tree.hasActivePointerGesture();
         if (!pointerActive) {
             requestViewRefreshIfDue();
@@ -183,10 +191,10 @@ public final class ForgeWorkspaceSurface {
         boolean hadActivePointerGesture = tree.hasActivePointerGesture();
         SlotWorkspaceViewModel.AtlasIsland releaseIsland = sectionAt(mouseX, mouseY);
         boolean handled = tree.mouseReleased(mouseX, mouseY, button, Screen.hasShiftDown());
-        if (completePendingHomeDrag(releaseIsland)) {
+        if (!goalTabActive() && completePendingHomeDrag(releaseIsland)) {
             return true;
         }
-        if (!hadActivePointerGesture && button == 0 && isCursorCarrying()
+        if (!goalTabActive() && !hadActivePointerGesture && button == 0 && isCursorCarrying()
                 && assignCursorHomeToSection(releaseIsland)) {
             return true;
         }
@@ -219,6 +227,9 @@ public final class ForgeWorkspaceSurface {
         }
         if (Screen.hasControlDown() && keyCode == GLFW.GLFW_KEY_Y) {
             sendAction(WorkspaceActionId.REDO, "redo requested");
+            return true;
+        }
+        if (handleGoalRecipeKey(keyCode)) {
             return true;
         }
         if (keyCode == GLFW.GLFW_KEY_ESCAPE && isCursorCarrying()) {
@@ -260,7 +271,27 @@ public final class ForgeWorkspaceSurface {
             rebuildRequested = true;
             return true;
         }
-        minecraft.setScreen(new InventoryScreen(minecraft.player));
+        ForgeContainerSidebar.openVanillaInventory();
+        return true;
+    }
+
+    private boolean handleGoalRecipeKey(int keyCode) {
+        if (!goalTabActive() || searchActive || wantsKeyboardInput() || Screen.hasControlDown()) {
+            return false;
+        }
+        if (keyCode != GLFW.GLFW_KEY_R && keyCode != GLFW.GLFW_KEY_U) {
+            return false;
+        }
+        if (hoveredIdentity == null || !byIdentity.containsKey(hoveredIdentity)) {
+            setStatus("hover a goal card for recipe or usage details");
+            return true;
+        }
+        SlotWorkspaceViewModel.AtlasItem target = byIdentity.get(hoveredIdentity);
+        if (keyCode == GLFW.GLFW_KEY_R) {
+            openGoalRecipe(target);
+        } else {
+            openGoalUses(target);
+        }
         return true;
     }
 
@@ -276,6 +307,11 @@ public final class ForgeWorkspaceSurface {
     }
 
     private boolean gatherActiveKitFromKey() {
+        if (goalTabActive()) {
+            status = "goal tab is browse only";
+            rebuildRequested = true;
+            return true;
+        }
         if (!anyGatherableIdentity()) {
             status = "nothing to gather";
             rebuildRequested = true;
@@ -350,22 +386,55 @@ public final class ForgeWorkspaceSurface {
 
     private void applyViewModel(SlotWorkspaceViewModel synced) {
         viewModel = synced == null ? SlotWorkspaceViewModel.empty() : synced;
-        islands.clear();
-        islands.addAll(viewModel.islands());
-        items.clear();
-        items.addAll(viewModel.atlasItems());
-        byIdentity.clear();
-        for (SlotWorkspaceViewModel.AtlasItem item : items) {
-            byIdentity.put(item.identity(), item);
-        }
-        for (SlotWorkspaceViewModel.AtlasItem item : viewModel.triageItems()) {
-            byIdentity.putIfAbsent(item.identity(), item);
-        }
         recents.clear();
         recents.addAll(viewModel.recentIdentities());
         hotbarSlots.clear();
         hotbarSlots.addAll(viewModel.hotbarSlots());
         offhand = viewModel.offhand();
+        refreshPresentedItems();
+    }
+
+    private void refreshPresentedItems() {
+        islands.clear();
+        items.clear();
+        byIdentity.clear();
+        if (goalTabActive()) {
+            GoalWorkspaceProjection goal = goalProjection();
+            if (goal != null) {
+                islands.addAll(goal.islands());
+                items.addAll(goal.atlasItems());
+            }
+        } else {
+            islands.addAll(viewModel.islands());
+            items.addAll(viewModel.atlasItems());
+        }
+        for (SlotWorkspaceViewModel.AtlasItem item : items) {
+            byIdentity.put(item.identity(), item);
+        }
+        if (!goalTabActive()) {
+            for (SlotWorkspaceViewModel.AtlasItem item : viewModel.triageItems()) {
+                byIdentity.putIfAbsent(item.identity(), item);
+            }
+        }
+    }
+
+    private void applyGoalStateIfChanged() {
+        int nextRevision = GoalWorkspaceClientState.revision();
+        if (nextRevision == appliedGoalStateRevision) {
+            return;
+        }
+        appliedGoalStateRevision = nextRevision;
+        refreshPresentedItems();
+        rebuildRequested = true;
+    }
+
+    private GoalWorkspaceProjection goalProjection() {
+        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
+        return active == null ? null : GoalWorkspaceProjection.fromGoal(viewModel, active.descriptor(), active.targetCount());
+    }
+
+    private boolean goalTabActive() {
+        return GoalWorkspaceClientState.hasActiveGoal();
     }
 
     private SlotUiElement buildRoot() {
@@ -423,6 +492,7 @@ public final class ForgeWorkspaceSurface {
                 column.addChild(activeChestStrip.layout(layout -> layout.width(WIDTH)));
             }
         }
+        column.addChild(goalTabs(sidebarMode));
         column.addChild(recents(sidebarMode));
         column.addChild(wallArea(sidebarMode));
         if (kitRackOpen) {
@@ -435,6 +505,16 @@ public final class ForgeWorkspaceSurface {
             column.addChild(overlay);
         }
         return column;
+    }
+
+    private SlotUiElement goalTabs(boolean sidebarMode) {
+        SlotUiElement tabs = new GoalTabsUiBuilder(new GoalTabsContext()).tabs();
+        if (sidebarMode) {
+            return tabs;
+        }
+        return SlotUiElement.element()
+                .layout(layout -> layout.width(WIDTH))
+                .addChild(tabs);
     }
 
     private SlotUiElement titleRow(boolean sidebarMode) {
@@ -865,6 +945,9 @@ public final class ForgeWorkspaceSurface {
             contextMenuIdentity = null;
             return null;
         }
+        if (goalTabActive()) {
+            return goalItemContextOverlay(item);
+        }
         SlotUiElement overlay = overlayRoot();
         SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, 174);
         panel.addChild(menuLabel(shorten(item.name(), 30), WorkspaceUiPalette.TEXT));
@@ -936,6 +1019,38 @@ public final class ForgeWorkspaceSurface {
         if (targetCount == 0) {
             panel.addChild(menuLabel("No other sections", WorkspaceUiPalette.MUTED));
         }
+        overlay.addChild(panel);
+        return overlay;
+    }
+
+    private SlotUiElement goalItemContextOverlay(SlotWorkspaceViewModel.AtlasItem item) {
+        SlotUiElement overlay = overlayRoot();
+        SlotUiElement panel = overlayPanel(contextMenuX, contextMenuY, 178);
+        panel.addChild(menuLabel(shorten(item.name(), 30), WorkspaceUiPalette.ACCENT));
+        panel.addChild(menuButton(
+                "Open recipe in EMI",
+                true,
+                "Delegate recipe details to EMI",
+                closeThen(() -> openGoalRecipe(item))));
+        panel.addChild(menuButton(
+                "Open uses in EMI",
+                true,
+                "Delegate usage details to EMI",
+                closeThen(() -> openGoalUses(item))));
+        GoalWorkspaceProjection goal = goalProjection();
+        if (goal != null && goal.choiceInvolved(item)) {
+            panel.addChild(menuButton(
+                    "Choose different ingredient",
+                    true,
+                    "Change this recipe alternative through the EMI adapter",
+                    closeThen(() -> openGoalChoiceEditor(item))));
+            panel.addChild(menuButton(
+                    "Clear manual choice",
+                    true,
+                    "Clear a manual recipe alternative through the EMI adapter",
+                    closeThen(() -> clearGoalChoice())));
+        }
+        panel.addChild(menuButton("Close", true, "Close", this::closeOverlays));
         overlay.addChild(panel);
         return overlay;
     }
@@ -1210,6 +1325,16 @@ public final class ForgeWorkspaceSurface {
         for (SlotWorkspaceViewModel.AtlasItem item : islandItems) {
             SlotUiElement card = cardBuilder.card(item);
             card.on(SlotUiEventKind.MOUSE_DOWN, event -> {
+                if (goalTabActive()) {
+                    event.stopPropagation();
+                    SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
+                    if (event.button() == 1 && !isCursorCarrying()) {
+                        openItemContextMenu(target, event.x(), event.y());
+                    } else if (isCursorCarrying()) {
+                        setStatus("goal tab is browse only");
+                    }
+                    return;
+                }
                 if (event.button() == 0) {
                     beginHomeDragCandidate(freshItem(item));
                     event.stopPropagation();
@@ -1232,13 +1357,30 @@ public final class ForgeWorkspaceSurface {
                     return;
                 }
                 event.stopPropagation();
+                if (goalTabActive()) {
+                    SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
+                    setStatus((target == null ? "goal card" : target.name()) + " in active goal");
+                    return;
+                }
                 SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
                 WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.click(
                         cardGestureContext(target, event.button(), event.shiftDown()));
                 dispatchCardGestureDecision(target, decision);
             });
             card.on(SlotUiEventKind.MOUSE_WHEEL, event -> {
-                boolean controlDown = Screen.hasControlDown();
+                boolean controlDown = event.controlDown() || Screen.hasControlDown();
+                if (goalTabActive()) {
+                    if (!controlDown || isCursorCarrying()) {
+                        return;
+                    }
+                    float delta = event.wheelDelta();
+                    if (delta == 0f) {
+                        return;
+                    }
+                    event.stopPropagation();
+                    adjustGoalTargetCount("", delta > 0f ? 1 : -1);
+                    return;
+                }
                 if (!event.shiftDown() && !controlDown) {
                     return;
                 }
@@ -1272,6 +1414,9 @@ public final class ForgeWorkspaceSurface {
         if (target == null || island == null || island.kind() == VisualAtlasIslandKind.TRIAGE) {
             return;
         }
+        if (goalTabActive()) {
+            return;
+        }
         target.on(SlotUiEventKind.MOUSE_DOWN, event -> {
             if (event.propagationStopped() || event.button() != 0 || !isCursorCarrying()) {
                 return;
@@ -1285,7 +1430,7 @@ public final class ForgeWorkspaceSurface {
         if (item == null || viewModel == null) {
             return item;
         }
-        SlotWorkspaceViewModel.AtlasItem fresh = viewModel.atlasItem(item.identity());
+        SlotWorkspaceViewModel.AtlasItem fresh = byIdentity.get(item.identity());
         return fresh == null ? item : fresh;
     }
 
@@ -1343,6 +1488,9 @@ public final class ForgeWorkspaceSurface {
     }
 
     private boolean anyGatherableIdentity() {
+        if (goalTabActive()) {
+            return false;
+        }
         for (SlotWorkspaceViewModel.AtlasItem item : items) {
             if (WorkspaceGatherUiSupport.isGatherableItem(item)) {
                 return true;
@@ -1729,6 +1877,10 @@ public final class ForgeWorkspaceSurface {
     }
 
     private void handleHotbarKey(int hotbarIndex) {
+        if (goalTabActive()) {
+            setStatus("goal tab is browse only");
+            return;
+        }
         SlotWorkspaceViewModel.IdentityRef identity = hoveredIdentity;
         if (identity == null) {
             applySearchDecision(WorkspaceSearchInputPolicy.confirmForHotbar(searchActive, searchQuery));
@@ -1798,6 +1950,86 @@ public final class ForgeWorkspaceSurface {
     private void setStatus(String nextStatus) {
         status = nextStatus == null || nextStatus.isBlank() ? "ready" : nextStatus;
         rebuildRequested = true;
+    }
+
+    private void selectAllTab() {
+        GoalWorkspaceClientState.selectAll();
+        refreshPresentedItems();
+        setStatus("showing all items");
+    }
+
+    private void selectGoalTab(String goalId) {
+        if (!GoalWorkspaceClientState.selectGoal(goalId)) {
+            setStatus("goal tab no longer exists");
+            return;
+        }
+        refreshPresentedItems();
+        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
+        setStatus("showing " + (active == null ? "goal" : active.label()));
+    }
+
+    private void removeGoalTab(String goalId) {
+        if (!GoalWorkspaceClientState.removeGoal(goalId)) {
+            setStatus("goal tab no longer exists");
+            return;
+        }
+        refreshPresentedItems();
+        setStatus(goalTabActive() ? "removed goal" : "showing all items");
+    }
+
+    private void adjustGoalTargetCount(String goalId, int delta) {
+        if (!GoalWorkspaceClientState.adjustTargetCount(goalId, delta)) {
+            return;
+        }
+        refreshPresentedItems();
+        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
+        setStatus(active == null ? "updated goal" : active.label() + " x" + active.targetCount());
+    }
+
+    private void openGoalRecipe(SlotWorkspaceViewModel.AtlasItem item) {
+        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
+        if (active == null) {
+            setStatus("no active goal");
+        } else if (GoalWorkspaceIntegration.openRecipe(active.descriptor())) {
+            setStatus("opened recipe in EMI");
+        } else {
+            setStatus("EMI recipe display unavailable");
+        }
+    }
+
+    private void openGoalUses(SlotWorkspaceViewModel.AtlasItem item) {
+        if (item == null || item.identity().toIdentity() == null) {
+            setStatus("goal item unavailable");
+        } else if (GoalWorkspaceIntegration.openUses(item.identity().toIdentity())) {
+            setStatus("opened uses in EMI");
+        } else {
+            setStatus("EMI usage display unavailable");
+        }
+    }
+
+    private void openGoalChoiceEditor(SlotWorkspaceViewModel.AtlasItem item) {
+        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
+        String choiceGroupId = goalChoiceGroupId(item);
+        if (active == null || choiceGroupId.isBlank()) {
+            setStatus("goal choice unavailable");
+        } else if (GoalWorkspaceIntegration.openChoiceEditor(active.descriptor(), choiceGroupId)) {
+            setStatus("opened choice recipe in EMI");
+        } else {
+            setStatus("EMI choice display unavailable");
+        }
+    }
+
+    private void clearGoalChoice() {
+        setStatus("manual goal choices are not active");
+    }
+
+    private String goalChoiceGroupId(SlotWorkspaceViewModel.AtlasItem item) {
+        GoalWorkspaceProjection goal = goalProjection();
+        if (goal == null) {
+            return "";
+        }
+        GoalProjectionEntry entry = goal.entry(item);
+        return entry == null ? "" : entry.choiceGroupId();
     }
 
     private void repeat(int count, Runnable action) {
@@ -2070,6 +2302,52 @@ public final class ForgeWorkspaceSurface {
         SIDEBAR
     }
 
+    private final class GoalTabsContext implements GoalTabsUiBuilder.Context {
+        @Override
+        public boolean goalActive() {
+            return goalTabActive();
+        }
+
+        @Override
+        public List<GoalTabsUiBuilder.GoalTab> goalTabs() {
+            ArrayList<GoalTabsUiBuilder.GoalTab> tabs = new ArrayList<>();
+            for (GoalWorkspaceClientState.GoalTab tab : GoalWorkspaceClientState.goalTabs()) {
+                String status = "";
+                if (tab.active()) {
+                    GoalWorkspaceProjection projection = goalProjection();
+                    status = projection == null ? "" : projection.projection().status().name();
+                }
+                tabs.add(new GoalTabsUiBuilder.GoalTab(
+                        tab.goalId(),
+                        tab.label(),
+                        tab.targetCount(),
+                        status,
+                        tab.active()));
+            }
+            return List.copyOf(tabs);
+        }
+
+        @Override
+        public void selectAll() {
+            selectAllTab();
+        }
+
+        @Override
+        public void selectGoal(String goalId) {
+            selectGoalTab(goalId);
+        }
+
+        @Override
+        public void removeGoal(String goalId) {
+            removeGoalTab(goalId);
+        }
+
+        @Override
+        public void adjustGoalTargetCount(String goalId, int delta) {
+            ForgeWorkspaceSurface.this.adjustGoalTargetCount(goalId, delta);
+        }
+    }
+
     private final class ActiveChestContext implements ActiveChestStripUiBuilder.Context {
         @Override
         public void claimChestAt(SlotWorkspaceViewModel.ActiveChestPanel panel) {
@@ -2104,6 +2382,10 @@ public final class ForgeWorkspaceSurface {
     private final class HeaderContext implements WallSectionHeaderUiBuilder.Context {
         @Override
         public void beginIslandEdit(SlotWorkspaceViewModel.AtlasIsland island, float screenX, float screenY) {
+            if (goalTabActive()) {
+                setStatus("goal tab is browse only");
+                return;
+            }
             ForgeWorkspaceSurface.this.beginIslandEdit(island, screenX, screenY);
         }
     }
@@ -2270,6 +2552,9 @@ public final class ForgeWorkspaceSurface {
             if (entry == null) {
                 return WayfindingDisplay.CardText.unavailable();
             }
+            if (entry.storageId() != null && entry.storageId().startsWith("goal:")) {
+                return new WayfindingDisplay.CardText(">", WorkspaceCountFormat.compact(entry.count()));
+            }
             Minecraft minecraft = Minecraft.getInstance();
             if (minecraft.player == null || minecraft.level == null) {
                 return WayfindingDisplay.CardText.unavailable();
@@ -2283,6 +2568,26 @@ public final class ForgeWorkspaceSurface {
                     minecraft.player.getY(),
                     minecraft.player.getZ(),
                     minecraft.player.getYRot());
+        }
+
+        @Override
+        public List<Component> tooltipLines(SlotWorkspaceViewModel.AtlasItem item) {
+            GoalWorkspaceProjection goal = goalProjection();
+            return goal == null
+                    ? WallCardUiBuilder.Context.super.tooltipLines(item)
+                    : goal.tooltipLines(item);
+        }
+
+        @Override
+        public boolean choiceInvolved(SlotWorkspaceViewModel.AtlasItem item) {
+            GoalWorkspaceProjection goal = goalProjection();
+            return goal != null && goal.choiceInvolved(item);
+        }
+
+        @Override
+        public boolean choiceCard(SlotWorkspaceViewModel.AtlasItem item) {
+            GoalWorkspaceProjection goal = goalProjection();
+            return goal != null && goal.choiceCard(item);
         }
     }
 

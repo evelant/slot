@@ -41,13 +41,12 @@ public final class SlotAtlasKeyMappings {
             CATEGORY
     );
 
-    // Escape hatch to the vanilla inventory screen — works both in a GUI and
-    // in-world. V is rare enough in vanilla to be a safe default; rebindable
-    // through the Controls menu, and discoverable via the "Vanilla" pill in
-    // the atlas top-right action cluster.
+    // Escape hatch from the SLOT GUI to the vanilla inventory screen.
+    // Intentionally not consumed from the global client tick: outside SLOT,
+    // the binding must not behave like a second inventory key.
     private static final KeyMapping OPEN_VANILLA_INVENTORY = new KeyMapping(
             "key.slot.open_vanilla_inventory",
-            KeyConflictContext.UNIVERSAL,
+            KeyConflictContext.GUI,
             InputConstants.Type.KEYSYM,
             GLFW.GLFW_KEY_V,
             CATEGORY
@@ -162,10 +161,6 @@ public final class SlotAtlasKeyMappings {
 
     public static void setWayfindingHudEnabled(boolean enabled) {
         wayfindingHudEnabled = enabled;
-    }
-
-    public static KeyMapping openVanillaInventoryMapping() {
-        return OPEN_VANILLA_INVENTORY;
     }
 
     public static KeyMapping cycleKitPageMapping() {

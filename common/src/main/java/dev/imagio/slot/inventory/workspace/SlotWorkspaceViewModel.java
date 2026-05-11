@@ -1432,6 +1432,10 @@ public record SlotWorkspaceViewModel(
         }
     }
 
+    public static ItemStack displayStackForIdentity(ItemIdentity identity) {
+        return resolveGhostStack(identity);
+    }
+
     /**
      * Substring match for the search-as-find ghost-synthesis filter:
      * lowercase {@code itemId} or display name contains the query.

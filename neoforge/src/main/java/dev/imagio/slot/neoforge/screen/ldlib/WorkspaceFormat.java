@@ -287,8 +287,15 @@ final class WorkspaceFormat {
     }
 
     static List<Component> atlasTooltipLines(SlotWorkspaceViewModel.AtlasItem item) {
+        return atlasTooltipLines(item, WorkspaceItemTooltipBuilder.slotLines(item));
+    }
+
+    static List<Component> atlasTooltipLines(
+            SlotWorkspaceViewModel.AtlasItem item,
+            List<Component> extraLines
+    ) {
         List<Component> vanilla = vanillaAtlasTooltipLines(item);
-        List<Component> slot = styledSlotTooltipLines(WorkspaceItemTooltipBuilder.slotLines(item));
+        List<Component> slot = styledSlotTooltipLines(extraLines);
         if (slot.isEmpty()) {
             return vanilla;
         }

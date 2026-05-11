@@ -11,6 +11,8 @@ import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.neoforge.screen.ldlib.util.Observable;
 import dev.imagio.slot.ui.spi.SlotUiElement;
+import dev.imagio.slot.ui.workspace.GoalTabsUiBuilder;
+import dev.imagio.slot.ui.workspace.GoalWorkspaceClientState;
 import dev.imagio.slot.ui.workspace.WallCardUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionHeaderUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionUiBuilder;
@@ -19,6 +21,7 @@ import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -75,12 +78,14 @@ final class ListWallPanelBuilder {
     private final WallSectionHeaderUiBuilder sectionHeaderBuilder;
     private final WallSectionUiBuilder sectionBuilder;
     private final LdlibSlotUiRenderer sectionRenderer;
+    private final LdlibSlotUiRenderer tabsRenderer;
 
     ListWallPanelBuilder(SlotWorkspaceUiController host) {
         this.host = host;
         this.sectionHeaderBuilder = new WallSectionHeaderUiBuilder(new WallSectionHeaderContext());
         this.sectionBuilder = new WallSectionUiBuilder(sectionHeaderBuilder);
         this.sectionRenderer = new LdlibSlotUiRenderer(this::installSectionInteractions);
+        this.tabsRenderer = new LdlibSlotUiRenderer((model, element) -> { });
     }
 
     UIElement body() {
@@ -171,6 +176,7 @@ final class ListWallPanelBuilder {
             topRow.addChild(host.topRightActionsElement);
             panel.addChild(topRow);
         }
+        panel.addChild(tabsRenderer.render(new GoalTabsUiBuilder(new GoalTabsContext()).tabs()));
         // Active-chest control strip — only when the host screen is a
         // chest screen. Shows above the recents strip so the chest
         // controls stay close to the action row, with recents (which is
@@ -241,7 +247,7 @@ final class ListWallPanelBuilder {
     void buildSections(ScrollerView scroller) {
         boolean filtering = !host.searchController.normalizedQuery().isBlank();
         boolean anyVisibleSection = false;
-        for (SlotWorkspaceViewModel.AtlasIsland island : host.viewModel.islands()) {
+        for (SlotWorkspaceViewModel.AtlasIsland island : host.currentIslands()) {
             if (island.kind() == VisualAtlasIslandKind.TRIAGE) {
                 continue;
             }
@@ -252,7 +258,7 @@ final class ListWallPanelBuilder {
             scroller.addScrollViewChild(section);
             anyVisibleSection = true;
         }
-        if (!anyVisibleSection && host.viewModel.atlasItems().isEmpty()) {
+        if (!anyVisibleSection && host.currentAtlasItems().isEmpty()) {
             Label empty = label("No main inventory stacks visible", MUTED);
             empty.layout(layout -> layout
                     .widthPercent(100)
@@ -272,7 +278,7 @@ final class ListWallPanelBuilder {
     UIElement sectionBlock(SlotWorkspaceViewModel.AtlasIsland island, boolean filtering) {
         java.util.ArrayList<SlotWorkspaceViewModel.AtlasItem> visibleCards = new java.util.ArrayList<>();
         int totalCards = 0;
-        for (SlotWorkspaceViewModel.AtlasItem item : host.viewModel.atlasItems()) {
+        for (SlotWorkspaceViewModel.AtlasItem item : host.currentAtlasItems()) {
             if (!island.islandId().equals(item.islandId())) {
                 continue;
             }
@@ -301,7 +307,9 @@ final class ListWallPanelBuilder {
             if (island == null) {
                 return;
             }
-            host.drag.installSectionDropTarget(element, island);
+            if (!host.goalTabActive()) {
+                host.drag.installSectionDropTarget(element, island);
+            }
             List<?> cards = model.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class);
             if (cards == null || cards.isEmpty()) {
                 return;
@@ -324,10 +332,12 @@ final class ListWallPanelBuilder {
         if (island == null || !(element instanceof Button header)) {
             return;
         }
-        if (island.kind() == VisualAtlasIslandKind.PLAYER) {
+        if (!host.goalTabActive() && island.kind() == VisualAtlasIslandKind.PLAYER) {
             host.drag.installSectionHeaderDragSource(header, island);
         }
-        host.drag.installSectionHeaderDropTarget(header, island);
+        if (!host.goalTabActive()) {
+            host.drag.installSectionHeaderDropTarget(header, island);
+        }
     }
 
     private final class WallSectionHeaderContext implements WallSectionHeaderUiBuilder.Context {
@@ -337,7 +347,58 @@ final class ListWallPanelBuilder {
                 float screenX,
                 float screenY
         ) {
+            if (host.goalTabActive()) {
+                host.localStatus.set("goal tab is browse only");
+                host.rebuild();
+                return;
+            }
             host.menu.beginIslandEdit(island, screenX, screenY);
+        }
+    }
+
+    private final class GoalTabsContext implements GoalTabsUiBuilder.Context {
+        @Override
+        public boolean goalActive() {
+            return host.goalTabActive();
+        }
+
+        @Override
+        public List<GoalTabsUiBuilder.GoalTab> goalTabs() {
+            ArrayList<GoalTabsUiBuilder.GoalTab> tabs = new ArrayList<>();
+            for (GoalWorkspaceClientState.GoalTab tab : GoalWorkspaceClientState.goalTabs()) {
+                String status = "";
+                if (tab.active()) {
+                    var projection = host.goalProjection();
+                    status = projection == null ? "" : projection.projection().status().name();
+                }
+                tabs.add(new GoalTabsUiBuilder.GoalTab(
+                        tab.goalId(),
+                        tab.label(),
+                        tab.targetCount(),
+                        status,
+                        tab.active()));
+            }
+            return List.copyOf(tabs);
+        }
+
+        @Override
+        public void selectAll() {
+            host.selectAllTab();
+        }
+
+        @Override
+        public void selectGoal(String goalId) {
+            host.selectGoalTab(goalId);
+        }
+
+        @Override
+        public void removeGoal(String goalId) {
+            host.removeGoalTab(goalId);
+        }
+
+        @Override
+        public void adjustGoalTargetCount(String goalId, int delta) {
+            host.adjustGoalTargetCount(goalId, delta);
         }
     }
 }

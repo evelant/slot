@@ -5,6 +5,7 @@ import dev.imagio.slot.ui.spi.SlotUiElement;
 import dev.imagio.slot.ui.spi.SlotUiEventKind;
 import dev.imagio.slot.ui.spi.SlotUiLayout;
 import dev.imagio.slot.ui.spi.SlotUiTextStyle;
+import net.minecraft.network.chat.Component;
 
 import java.util.List;
 
@@ -45,7 +46,7 @@ public final class WallCardUiBuilder {
                 .noText()
                 .zIndex(2)
                 .tooltipStack(item.displayStack())
-                .tooltipLines(WorkspaceItemTooltipBuilder.slotLines(item))
+                .tooltipLines(context.tooltipLines(item))
                 .attach(WorkspaceUiAttachments.WALL_CARD, Boolean.TRUE)
                 .attach(WorkspaceUiAttachments.ATLAS_ITEM, item)
                 .layout(layout -> layout
@@ -100,6 +101,7 @@ public final class WallCardUiBuilder {
         addCountBadge(body, item);
         addProximatePip(body, item);
         addSearchStoredPip(body, item, activeSearchMatch);
+        addChoiceIndicator(body, item);
         addDesiredMarker(body, item);
         addWayfindingStrip(body);
     }
@@ -275,6 +277,31 @@ public final class WallCardUiBuilder {
                         .height(5)));
     }
 
+    private void addChoiceIndicator(SlotUiElement body, SlotWorkspaceViewModel.AtlasItem item) {
+        if (!context.choiceInvolved(item)) {
+            return;
+        }
+        int color = context.choiceCard(item) ? 0xE0FFB86B : 0xD0B486FF;
+        SlotUiElement pip = SlotUiElement.panel(color)
+                .allowHitTest(false)
+                .zIndex(324)
+                .layout(layout -> layout
+                        .positionType(SlotUiLayout.PositionType.ABSOLUTE)
+                        .left(6)
+                        .top(0)
+                        .width(5)
+                        .height(5));
+        pip.addChild(SlotUiElement.label("?", 0xFF0B1117)
+                .allowHitTest(false)
+                .layout(layout -> layout.widthPercent(100).heightPercent(100))
+                .textStyle(style -> style
+                        .color(0xFF0B1117)
+                        .fontSize(5)
+                        .horizontal(SlotUiTextStyle.Horizontal.CENTER)
+                        .vertical(SlotUiTextStyle.Vertical.CENTER)));
+        body.addChild(pip);
+    }
+
     private void addWayfindingStrip(SlotUiElement body) {
         SlotWorkspaceViewModel.ChestPresenceEntry entry = body.attachment(
                 WorkspaceUiAttachments.WALL_CARD_WAYFINDING_ENTRY,
@@ -370,6 +397,18 @@ public final class WallCardUiBuilder {
 
         default WayfindingDisplay.CardText wayfindingText(SlotWorkspaceViewModel.ChestPresenceEntry entry) {
             return null;
+        }
+
+        default List<Component> tooltipLines(SlotWorkspaceViewModel.AtlasItem item) {
+            return WorkspaceItemTooltipBuilder.slotLines(item);
+        }
+
+        default boolean choiceInvolved(SlotWorkspaceViewModel.AtlasItem item) {
+            return false;
+        }
+
+        default boolean choiceCard(SlotWorkspaceViewModel.AtlasItem item) {
+            return false;
         }
     }
 }

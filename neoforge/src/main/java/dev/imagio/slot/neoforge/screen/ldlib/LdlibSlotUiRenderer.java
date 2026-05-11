@@ -211,6 +211,11 @@ final class LdlibSlotUiRenderer {
                             event -> dispatch(binding, model, element, event),
                             binding.includeChildren());
                     break;
+                case MOUSE_WHEEL:
+                    element.addEventListener(UIEvents.MOUSE_WHEEL,
+                            event -> dispatch(binding, model, element, event),
+                            binding.includeChildren());
+                    break;
                 case TICK:
                     element.addEventListener(UIEvents.TICK,
                             event -> dispatch(binding, model, element, event),
@@ -233,7 +238,9 @@ final class LdlibSlotUiRenderer {
                 nativeEvent.button,
                 nativeEvent.x,
                 nativeEvent.y,
-                Screen.hasShiftDown()
+                Screen.hasShiftDown(),
+                Screen.hasControlDown(),
+                nativeEvent.deltaY != 0f ? nativeEvent.deltaY : nativeEvent.deltaX
         );
         binding.handler().handle(event);
         applyMutableState(element, model);

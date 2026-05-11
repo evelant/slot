@@ -86,8 +86,8 @@ Plans:
   — active pack semantic-vocabulary, evidence, and stage-3 integration plan
   for better classification data.
 - [docs/plans/emi-goal-projections.md](docs/plans/emi-goal-projections.md)
-  — proposed EMI-pinned recipe goal tabs with normal wall cards, ghosts,
-  pips, and goal-scoped desired counts.
+  — EMI recipe goal tabs with normal wall cards, ghosts, pips, and
+  goal-scoped desired counts.
 - [docs/plans/ambient-task-views.md](docs/plans/ambient-task-views.md)
   — deferred/research plan for generic task views such as Cooking,
   Exploration, Mining, Cleanup, and Ore Processing.

@@ -15,38 +15,39 @@ is deleted; production Forge renders direct Taffy on vanilla `Screen`,
 and `:forge-1.20:compileSharedProbeJava` compiles the whole common tree
 against Forge 1.20.1 / Java 17 with real platform adapters.
 
-Phase 1 has the shared action catalog/channel, packet codec,
-session/menu envelope, Forge transport/runtime, and session-backed
-common projection. Forge routes metadata, transfer, hotbar, kit,
+Phase 1 has shared action transport, Forge runtime, session-backed
+projection, and common-service routing for metadata, transfer, hotbar, kit,
 desired-count, chest, deposit/take, cursor, active-kit gather, and
-cross-surface actions through common services/executors for vanilla
-carried sources and claimed chests. Active-kit gather and kit-page cycle
-are common services; Forge `/slot test populate <profile>` and
-`/slot test clear` cover carried inventory, workflow state, and claimed
-chests.
+cross-surface actions. Forge `/slot test populate <profile>` and
+`/slot test clear` cover carried inventory, workflow state, and claimed chests.
 
 Phase 2 has the wall/card shells, fallback card details, Recents, hotbar,
 active chest strip, and non-drag kit rack through the first common UI
 SPI. Forge full-screen and sidebar hosts share `ForgeWorkspaceSurface`
 and common view-model/search/wall/Recents/kit/active-chest/hotbar
 builders plus tooltip metadata. Forge key parity covers vanilla
-inventory, kit page cycle, gather, and the wayfinding HUD toggle. Modern
-drag/drop, richer LDLib2 card/kit affordances, and richer chest panels
-remain backend hooks, not common UI semantics.
+inventory, kit page cycle, gather, and the wayfinding HUD toggle; normal
+Forge player inventory now mounts the SLOT sidebar so EMI and SLOT can
+coexist on the carried-inventory surface. Modern drag/drop, richer LDLib2
+card/kit affordances, and richer chest panels remain backend hooks, not
+common UI semantics.
 
 Classification now has a pack-authoring path for large modpacks: installed
 `mods/` scanning, jar extraction, OpenRouter-backed stage 3, runtime export,
-runtime subsystem vocabulary, pack facet-vocabulary evidence collection,
-accepted/review/rejected vocabulary proposal, stage-3 `document_context`,
-accepted vocabulary prompting via `--facet-vocabulary`, and drop-in datapack
-layer output. Semantic text is the highest-value input for this path; preserve
-tooltip/lore prose, guidebook and quest text, lang-resolved descriptions,
-KubeJS/datapack overlays, Ponder/category labels, stack groups, resource-pack
-lang overrides, and mod descriptions instead of reducing prompts to item ids.
-Runtime auto-home uses bundled/datapack facets plus count-gated dynamic
-organization groups (`organization_group`) and subsystem cohorts
-(`mod_subsystem`); both loaders expose `inspect`, `export`, and `rehome` /
-`recompute` commands.
+pack facet-vocabulary evidence/proposal, accepted-vocabulary prompting via
+`--facet-vocabulary`, and drop-in datapack output. Preserve rich semantic text
+(tooltips, guide/quest/lang/Ponder/category prose, KubeJS/datapack overlays,
+stack groups, resource-pack lang, and mod descriptions) rather than reducing
+prompts to item ids. Runtime auto-home uses bundled/datapack facets plus
+count-gated dynamic organization groups (`organization_group`) and subsystem
+cohorts (`mod_subsystem`); both loaders expose `inspect`, `export`, and
+`rehome` / `recompute` commands.
+
+EMI goal projections now create session-local SLOT goal tabs from explicit EMI
+recipe-screen and drag/drop goal targets on both loaders, but the playtest
+handoff in [plans/emi-goal-projections.md](plans/emi-goal-projections.md)
+tracks the blocking projection and manual-choice gaps before that work should
+grow new scope.
 
 ### Production wall shape (post-list-view)
 

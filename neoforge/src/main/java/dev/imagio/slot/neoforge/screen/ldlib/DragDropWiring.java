@@ -112,7 +112,9 @@ final class DragDropWiring {
                 return;
             }
             event.hoverTooltips = new HoverTooltips(
-                    WorkspaceFormat.atlasTooltipLines(item),
+                    host.goalTabActive()
+                            ? WorkspaceFormat.atlasTooltipLines(item, host.goalTooltipLines(item))
+                            : WorkspaceFormat.atlasTooltipLines(item),
                     item.displayStack().getTooltipImage().orElse(null),
                     null,
                     item.displayStack()
@@ -141,7 +143,7 @@ final class DragDropWiring {
         if (identity == null) {
             return null;
         }
-        for (SlotWorkspaceViewModel.AtlasItem candidate : host.viewModel.atlasItems()) {
+        for (SlotWorkspaceViewModel.AtlasItem candidate : host.currentAtlasItems()) {
             if (candidate.identity().equals(identity)) {
                 return candidate;
             }
