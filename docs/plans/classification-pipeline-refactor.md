@@ -2,10 +2,17 @@
 
 Last updated: 2026-05-12
 
-Status: queued / next classification work. This plan owns the refactor that
-must happen before another full pack vocabulary or full Stage 3 classification
-run. The existing vocabulary feature plan remains the design reference for why
-pack vocabulary matters; this plan is the implementation cleanup path.
+Status: active, implementation gate passed. Slices 0 through 4 are implemented:
+the vocabulary generator is split into focused modules, `organization_group`
+and `mod_subsystem` candidate logic are isolated, Stage 3 has a
+`vocabulary_proposals` review path, deterministic ore/log gaps found by the
+canary are patched, and the mixed Stage 3 canaries validate. The remaining
+decision is operational: refresh/regenerate the accepted vocabulary once more
+so new generic defaults such as `slot:open` are present, then run the full
+`classify-runtime-pack`, or run full classification against the current policy5
+vocabulary and accept that missing values will be omitted/reviewed. The
+existing vocabulary feature plan remains the design reference for why pack
+vocabulary matters; this plan is the implementation cleanup path.
 
 Related docs:
 
@@ -272,6 +279,24 @@ Exit criteria:
 - vocabulary output does not look like deterministic workstation/tag leakage
 - Stage 3 canary validates and produces useful review proposals instead of
   silent drops for missing values
+
+Current validation snapshot:
+
+- `out/tfg-refactor-vocabulary-20260512-generic-512-policy5/tfg.facet-vocabulary.json`
+  validates with 723 accepted values and no legacy separate `mod_subsystem`
+  path.
+- `out/tfg-refactor-stage3-canary-20260512/policy5-prompt-v11-sample101-live/`
+  parsed 101/101 mixed TFG sample items and validated against the accepted
+  vocabulary.
+- The 101-item run surfaced deterministic gaps for processed ore material
+  families and bare log form; those are patched in `material_family` and
+  `form` rules and covered by tests. A focused v11 rerun over the earlier
+  prompt/integration failure items is clean.
+- Remaining non-blocking signal: the current policy5 vocabulary predates the
+  generic `slot:open` use affordance default and still lacks some vanilla
+  station ids such as `minecraft:smoker`. Stage 3 drops those rather than
+  writing invalid ids, but a final vocabulary refresh is cleaner before a full
+  run.
 
 ## Test Plan
 

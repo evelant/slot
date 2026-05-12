@@ -20,6 +20,7 @@ import {
   type SchemaProposal,
   type StageCorrection,
   type StageFillIn,
+  type VocabularyProposal,
 } from "./parse.ts";
 
 export interface Stage3Options {
@@ -77,6 +78,8 @@ export interface Stage3Result {
   coverageAdded: Record<string, number>;
   /** Aggregated schema proposals for curator review. */
   proposals: SchemaProposal[];
+  /** Aggregated missing-vocabulary proposals for accepted vocabulary refinement. */
+  vocabularyProposals: VocabularyProposal[];
   /** Aggregated stage-2 corrections the LLM suggested (NOT auto-merged). */
   corrections: StageCorrection[];
   /** Aggregated stage-2 fill-ins the LLM noticed (deterministic facets
@@ -133,6 +136,7 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
   const concurrency = Math.max(1, options.concurrency ?? DEFAULT_BATCH_CONCURRENCY);
   const warnings: string[] = [];
   const proposals: SchemaProposal[] = [];
+  const vocabularyProposals: VocabularyProposal[] = [];
   const corrections: StageCorrection[] = [];
   const fillIns: StageFillIn[] = [];
   const coverageAdded: Record<string, number> = {};
@@ -231,6 +235,7 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
     }
     warnings.push(...parsed.warnings);
     proposals.push(...parsed.proposals);
+    vocabularyProposals.push(...parsed.vocabularyProposals);
     corrections.push(...parsed.corrections);
     fillIns.push(...parsed.fillIns);
 
@@ -328,7 +333,17 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
     generated_at: new Date().toISOString(),
   };
 
-  return { layer, filledItems, coverageAdded, proposals, corrections, fillIns, warnings, responseMismatches };
+  return {
+    layer,
+    filledItems,
+    coverageAdded,
+    proposals,
+    vocabularyProposals,
+    corrections,
+    fillIns,
+    warnings,
+    responseMismatches,
+  };
 }
 
 function batchResponseMismatch(

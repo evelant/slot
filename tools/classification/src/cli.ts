@@ -1775,19 +1775,31 @@ async function runProposePackFacetVocabulary(
       rmSync(dryRunDir, { recursive: true, force: true });
     }
     mkdirSync(dryRunDir, { recursive: true });
-    const summary: Array<{ facet: string; system: string; user: string; candidates: number; chars: number; approxTokens: number }> = [];
+    const summary: Array<{
+      facet: string;
+      system: string;
+      user: string;
+      candidates: number;
+      candidates_without_semantic_evidence: number;
+      evidence_kinds: Record<string, number>;
+      chars: number;
+      approxTokens: number;
+    }> = [];
     for (const [facet, prompt] of Object.entries(result.prompts).sort(([a], [b]) => a.localeCompare(b))) {
       const systemPath = join(dryRunDir, `${facet}.system.md`);
       const userPath = join(dryRunDir, `${facet}.user.json`);
       writeFileSync(systemPath, prompt.system);
       writeFileSync(userPath, prompt.user);
       const parsedUser = JSON.parse(prompt.user) as { candidates?: unknown[] };
+      const promptCandidates = Array.isArray(parsedUser.candidates) ? parsedUser.candidates : [];
       const chars = prompt.system.length + prompt.user.length;
       summary.push({
         facet,
         system: systemPath,
         user: userPath,
-        candidates: Array.isArray(parsedUser.candidates) ? parsedUser.candidates.length : 0,
+        candidates: promptCandidates.length,
+        candidates_without_semantic_evidence: countCandidatesWithoutSemanticEvidence(promptCandidates),
+        evidence_kinds: countCandidateEvidenceKinds(promptCandidates),
         chars,
         approxTokens: Math.round(chars / 4),
       });
@@ -1823,6 +1835,31 @@ async function runProposePackFacetVocabulary(
     .filter((decision) => decision.state !== "accepted").length;
   console.log(`[facet-vocabulary] review/rejected decision(s): ${reviewCount}`);
   console.log(`done in ${((Date.now() - start) / 1000).toFixed(2)}s`);
+}
+
+function countCandidatesWithoutSemanticEvidence(candidates: readonly unknown[]): number {
+  return candidates.filter((candidate) => {
+    if (!candidate || typeof candidate !== "object") return true;
+    const semantic = (candidate as { semantic_evidence?: unknown }).semantic_evidence;
+    return !Array.isArray(semantic) || semantic.length === 0;
+  }).length;
+}
+
+function countCandidateEvidenceKinds(candidates: readonly unknown[]): Record<string, number> {
+  const counts: Record<string, number> = {};
+  for (const candidate of candidates) {
+    if (!candidate || typeof candidate !== "object") continue;
+    const evidence = (candidate as { evidence?: unknown }).evidence;
+    if (!Array.isArray(evidence)) continue;
+    const seen = new Set<string>();
+    for (const ref of evidence) {
+      if (!ref || typeof ref !== "object") continue;
+      const kind = (ref as { kind?: unknown }).kind;
+      if (typeof kind === "string") seen.add(kind);
+    }
+    for (const kind of seen) counts[kind] = (counts[kind] ?? 0) + 1;
+  }
+  return Object.fromEntries(Object.entries(counts).sort(([a], [b]) => a.localeCompare(b)));
 }
 
 function buildVocabularyClient(opts: Stage3CliOptions): LlmClient {
@@ -2318,6 +2355,7 @@ function writeRuntimePackReports(args: {
       corrections: countJsonArrayFile(args.run.completePath.replace(/\.complete\.json$/, ".corrections.json")),
       fill_ins: countJsonArrayFile(args.run.completePath.replace(/\.complete\.json$/, ".fill-ins.json")),
       schema_proposals: countJsonArrayFile(args.run.completePath.replace(/\.complete\.json$/, ".schema-proposals.json")),
+      vocabulary_proposals: countJsonArrayFile(args.run.completePath.replace(/\.complete\.json$/, ".vocabulary-proposals.json")),
       warnings: countJsonArrayFile(args.run.completePath.replace(/\.complete\.json$/, ".warnings.json")),
       response_mismatches: countJsonArrayFile(args.run.completePath.replace(/\.complete\.json$/, ".response-mismatches.json")),
     },
@@ -2368,6 +2406,7 @@ function formatRuntimePackMarkdownReport(report: Record<string, unknown>): strin
     `- Corrections: \`${review.corrections}\``,
     `- Fill-ins: \`${review.fill_ins}\``,
     `- Schema proposals: \`${review.schema_proposals}\``,
+    `- Vocabulary proposals: \`${review.vocabulary_proposals}\``,
     `- Warnings: \`${review.warnings}\``,
     `- Response mismatches: \`${review.response_mismatches}\``,
     ``,
@@ -2795,6 +2834,7 @@ async function executeStage3(
       result.layer = retryResult.layer;
       result.warnings.push(...retryResult.warnings);
       result.proposals.push(...retryResult.proposals);
+      result.vocabularyProposals.push(...retryResult.vocabularyProposals);
       result.corrections.push(...retryResult.corrections);
       result.fillIns.push(...retryResult.fillIns);
       result.responseMismatches.push(...retryResult.responseMismatches);
@@ -2827,6 +2867,7 @@ async function executeStage3(
   // so the report can list exactly what's on disk and what's worth opening).
   for (const suffix of [
     ".schema-proposals.json",
+    ".vocabulary-proposals.json",
     ".corrections.json",
     ".fill-ins.json",
     ".response-mismatches.json",
@@ -2843,6 +2884,14 @@ async function executeStage3(
     writtenFiles.push({
       path: proposalsPath,
       description: `${result.proposals.length} schema proposal(s) — values/facets the LLM wanted but couldn't find in the schema`,
+    });
+  }
+  if (result.vocabularyProposals.length) {
+    const vocabularyProposalsPath = completePath.replace(/\.complete\.json$/, ".vocabulary-proposals.json");
+    writeFileSync(vocabularyProposalsPath, JSON.stringify(result.vocabularyProposals, null, 2) + "\n");
+    writtenFiles.push({
+      path: vocabularyProposalsPath,
+      description: `${result.vocabularyProposals.length} vocabulary proposal(s) — accepted pack vocabulary was missing a useful value`,
     });
   }
   if (result.corrections.length) {
@@ -2928,6 +2977,16 @@ async function executeStage3(
         return JSON.stringify(p);
       }),
       path: completePath.replace(/\.complete\.json$/, ".schema-proposals.json"),
+    });
+  }
+  if (result.vocabularyProposals.length) {
+    reviewItems.push({
+      kind: "VOCABULARY PROPOSALS",
+      summary: `${result.vocabularyProposals.length} proposal(s) — accepted pack vocabulary was missing a useful value`,
+      detail: result.vocabularyProposals.slice(0, 10).map((p) =>
+        `${p.item} ${p.facet}: '${p.label}'${p.proposed_id ? ` (${p.proposed_id})` : ""} — ${p.rationale}`,
+      ),
+      path: completePath.replace(/\.complete\.json$/, ".vocabulary-proposals.json"),
     });
   }
   if (result.fillIns.length) {
@@ -3234,7 +3293,7 @@ Commands:
         --min-evidence <n>      Minimum deterministic support for acceptance
                                 (default 2; previous/universal values bypass).
         --max-candidates-per-facet <n>
-                                Bound prompt size per facet (default 256).
+                                Bound prompt size per facet (default 512).
         --dry-run               Write prompt pairs only.
         --force                 Overwrite vocabulary/review outputs.
 

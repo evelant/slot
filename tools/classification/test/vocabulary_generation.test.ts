@@ -10,6 +10,7 @@ import {
   proposePackFacetVocabulary,
   type PackVocabularyCandidate,
 } from "../src/vocabulary/pack_vocabulary.ts";
+import { selectPromptCandidates } from "../src/vocabulary/selection.ts";
 
 describe("pack facet vocabulary generation", () => {
   test("extracts universal defaults and evidence-backed workflow candidates", () => {
@@ -17,10 +18,11 @@ describe("pack facet vocabulary generation", () => {
     const candidates = extractVocabularyCandidates(evidence, {
       packId: "fixture",
       minEvidence: 2,
-      facets: ["activity", "workflow", "workflow_role", "organization_group", "food_category"],
+      facets: ["activity", "workflow", "workflow_role", "organization_group", "food_category", "use_affordance"],
     });
 
     expect(candidates.find((candidate) => candidate.facet === "activity" && candidate.id === "slot:cooking")?.suggested_state).toBe("accepted");
+    expect(candidates.find((candidate) => candidate.facet === "use_affordance" && candidate.id === "slot:open")?.suggested_state).toBe("accepted");
     expect(candidates.find((candidate) => candidate.facet === "workflow" && candidate.id === "example:casting")?.suggested_state).toBe("accepted");
     expect(candidates.find((candidate) => candidate.facet === "workflow" && candidate.id === "example:casting")?.semantic_evidence.some((entry) =>
       entry.text?.includes("Reusable mold")
@@ -137,6 +139,17 @@ describe("pack facet vocabulary generation", () => {
         confidence: 0.75,
         count: 12,
         item_refs: ["tfc:seeds/wheat"],
+      },
+      {
+        kind: "mod_metadata",
+        id: "create",
+        label: "Create",
+        namespace: "create",
+        source: "mods.toml",
+        confidence: 0.75,
+        count: 100,
+        description: "Aesthetic technology that empowers the player with mechanical automation.",
+        semantic_text: [{ source: "mod-description", text: "Aesthetic technology that empowers the player with mechanical automation." }],
       },
       {
         kind: "runtime_item",
@@ -579,6 +592,182 @@ describe("pack facet vocabulary generation", () => {
     expect(result.vocabulary.facets.workflow?.values["create:using/the/deployer"]).toBeUndefined();
   });
 
+  test("downgrades document-only used_at page titles that are too granular", async () => {
+    const evidence = fixtureEvidence();
+    evidence.records.push({
+      kind: "guide_page",
+      id: "greate:ponder/millstone",
+      label: "Processing Items in the Millstone",
+      namespace: "greate",
+      source: "ponder",
+      confidence: 0.7,
+      count: 5,
+      semantic_text: [{ source: "ponder", text: "The millstone grinds items into powders and other outputs." }],
+    });
+    const client = new StaticSplitClient({
+      values: [{
+        id: "greate:processing/items/in/the/millstone",
+        label: "Processing Items in the Millstone",
+        state: "accepted",
+        confidence: 0.7,
+        evidence: [{ kind: "guide_page", id: "greate:ponder/millstone", confidence: 0.7 }],
+      }],
+    });
+
+    const result = await proposePackFacetVocabulary({
+      evidence,
+      evidencePath: "/tmp/fixture.facet-evidence.json",
+      packId: "fixture",
+      generatedBy: "test",
+      generatedAt: "2026-05-11T00:00:00.000Z",
+      facets: ["used_at"],
+      minEvidence: 2,
+      client,
+      model: "test-model",
+    });
+
+    const decision = result.review.decisions.used_at?.find((value) => value.id === "greate:processing/items/in/the/millstone");
+    expect(decision?.state).toBe("review");
+    expect(decision?.policy_notes).toContain("guide/quest/advancement used_at title is too granular; prefer a reusable station/process id");
+    expect(result.vocabulary.facets.used_at?.values["greate:processing/items/in/the/millstone"]).toBeUndefined();
+  });
+
+  test("downgrades atomic organization groups from material tags", async () => {
+    const evidence = fixtureEvidence();
+    evidence.records.push({
+      kind: "item_tag",
+      id: "forge:ingots/copper",
+      label: "Copper",
+      namespace: "forge",
+      source: "runtime-summary",
+      confidence: 0.75,
+      count: 12,
+      item_refs: ["example:copper_ingot"],
+    });
+    const client = new StaticSplitClient({
+      values: [{
+        id: "pack:fixture/copper",
+        label: "Copper",
+        state: "accepted",
+        confidence: 0.8,
+        evidence: [{ kind: "item_tag", id: "forge:ingots/copper", confidence: 0.75 }],
+      }],
+    });
+
+    const result = await proposePackFacetVocabulary({
+      evidence,
+      evidencePath: "/tmp/fixture.facet-evidence.json",
+      packId: "fixture",
+      generatedBy: "test",
+      generatedAt: "2026-05-11T00:00:00.000Z",
+      facets: ["organization_group"],
+      minEvidence: 2,
+      client,
+      model: "test-model",
+    });
+
+    const decision = result.review.decisions.organization_group?.find((value) => value.id === "pack:fixture/copper");
+    expect(decision?.state).toBe("review");
+    expect(decision?.policy_notes).toContain(
+      "organization_group is too atomic; prefer broader player storage/workflow buckets over material, form, or tool-class labels",
+    );
+    expect(result.vocabulary.facets.organization_group?.values["pack:fixture/copper"]).toBeUndefined();
+  });
+
+  test("downgrades atomic organization groups from tool and form tags", async () => {
+    const evidence = fixtureEvidence();
+    evidence.records.push({
+      kind: "item_tag",
+      id: "minecraft:axes",
+      label: "Axes",
+      namespace: "minecraft",
+      source: "runtime-summary",
+      confidence: 0.75,
+      count: 8,
+      item_refs: ["minecraft:iron_axe"],
+    });
+    const client = new StaticSplitClient({
+      values: [{
+        id: "pack:fixture/axes",
+        label: "Axes",
+        state: "accepted",
+        confidence: 0.8,
+        evidence: [{ kind: "item_tag", id: "minecraft:axes", confidence: 0.75 }],
+      }],
+    });
+
+    const result = await proposePackFacetVocabulary({
+      evidence,
+      evidencePath: "/tmp/fixture.facet-evidence.json",
+      packId: "fixture",
+      generatedBy: "test",
+      generatedAt: "2026-05-11T00:00:00.000Z",
+      facets: ["organization_group"],
+      minEvidence: 2,
+      client,
+      model: "test-model",
+    });
+
+    const decision = result.review.decisions.organization_group?.find((value) => value.id === "pack:fixture/axes");
+    expect(decision?.state).toBe("review");
+    expect(result.vocabulary.facets.organization_group?.values["pack:fixture/axes"]).toBeUndefined();
+  });
+
+  test("downgrades slash-form document aliases when a recipe-backed station id exists", async () => {
+    const evidence = fixtureEvidence();
+    evidence.records.push(
+      {
+        kind: "recipe_type",
+        id: "example:blast_furnace",
+        label: "Blast Furnace",
+        namespace: "example",
+        source: "runtime-summary",
+        confidence: 0.85,
+        count: 5,
+      },
+      {
+        kind: "guide_page",
+        id: "example:guide/blast_furnace",
+        label: "Blast Furnace",
+        namespace: "example",
+        source: "guide",
+        confidence: 0.7,
+        count: 5,
+        semantic_text: [{ source: "guide-page", text: "The blast furnace processes ore into high-tier metals." }],
+      },
+    );
+    const client = new StaticSplitClient({
+      values: [{
+        id: "example:blast/furnace",
+        label: "Blast Furnace",
+        state: "accepted",
+        confidence: 0.7,
+        evidence: [{ kind: "guide_page", id: "example:guide/blast_furnace", confidence: 0.7 }],
+      }],
+    });
+
+    const result = await proposePackFacetVocabulary({
+      evidence,
+      evidencePath: "/tmp/fixture.facet-evidence.json",
+      packId: "fixture",
+      generatedBy: "test",
+      generatedAt: "2026-05-11T00:00:00.000Z",
+      facets: ["workflow", "used_at"],
+      minEvidence: 2,
+      client,
+      model: "test-model",
+    });
+
+    const workflow = result.review.decisions.workflow?.find((value) => value.id === "example:blast/furnace");
+    const usedAt = result.review.decisions.used_at?.find((value) => value.id === "example:blast/furnace");
+    expect(workflow?.state).toBe("review");
+    expect(usedAt?.state).toBe("review");
+    expect(workflow?.policy_notes).toContain("document-title alias duplicates a recipe-backed station/process id");
+    expect(usedAt?.policy_notes).toContain("document-title alias duplicates a recipe-backed station/process id");
+    expect(result.vocabulary.facets.workflow?.values["example:blast/furnace"]).toBeUndefined();
+    expect(result.vocabulary.facets.used_at?.values["example:blast/furnace"]).toBeUndefined();
+  });
+
   test("downgrades advancement-title progression phrases that are not canonical gates", async () => {
     const evidence = fixtureEvidence();
     evidence.records.push({
@@ -614,8 +803,132 @@ describe("pack facet vocabulary generation", () => {
 
     const decision = result.review.decisions.progression_stage?.find((value) => value.id === "ad_astra:one/small/step");
     expect(decision?.state).toBe("review");
-    expect(decision?.policy_notes).toContain("advancement-title progression value is too phrase-like; prefer a canonical gate/tier/dimension id");
+    expect(decision?.policy_notes).toContain("progression value is too phrase-like; prefer a canonical gate/tier/dimension id");
     expect(result.vocabulary.facets.progression_stage?.values["ad_astra:one/small/step"]).toBeUndefined();
+  });
+
+  test("downgrades document workflow aliases without process signal", async () => {
+    const evidence = fixtureEvidence();
+    evidence.records.push({
+      kind: "guide_page",
+      id: "example:guide/making_steel",
+      label: "Making Steel",
+      namespace: "example",
+      source: "guide",
+      confidence: 0.7,
+      count: 4,
+      semantic_text: [{ source: "guide-page", text: "Steel is a major gate for advanced equipment." }],
+    });
+    const client = new StaticSplitClient({
+      values: [{
+        id: "example:making/steel",
+        label: "Making Steel",
+        state: "accepted",
+        confidence: 0.7,
+        evidence: [{ kind: "guide_page", id: "example:guide/making_steel", confidence: 0.7 }],
+      }],
+    });
+
+    const result = await proposePackFacetVocabulary({
+      evidence,
+      evidencePath: "/tmp/fixture.facet-evidence.json",
+      packId: "fixture",
+      generatedBy: "test",
+      generatedAt: "2026-05-11T00:00:00.000Z",
+      facets: ["workflow"],
+      minEvidence: 2,
+      client,
+      model: "test-model",
+    });
+
+    const decision = result.review.decisions.workflow?.find((value) => value.id === "example:making/steel");
+    expect(decision?.state).toBe("review");
+    expect(decision?.policy_notes).toContain(
+      "guide/quest/advancement workflow title is too granular; prefer a reusable process/station id",
+    );
+    expect(result.vocabulary.facets.workflow?.values["example:making/steel"]).toBeUndefined();
+  });
+
+  test("downgrades nested document used_at aliases even when they mention a station", async () => {
+    const evidence = fixtureEvidence();
+    evidence.records.push({
+      kind: "guide_page",
+      id: "example:guide/blast_furnace_tips",
+      label: "Blast Furnace Tips",
+      namespace: "example",
+      source: "guide",
+      confidence: 0.7,
+      count: 4,
+      semantic_text: [{ source: "guide-page", text: "Tips for operating a blast furnace." }],
+    });
+    const client = new StaticSplitClient({
+      values: [{
+        id: "example:blast/furnace/tips",
+        label: "Blast Furnace Tips",
+        state: "accepted",
+        confidence: 0.7,
+        evidence: [{ kind: "guide_page", id: "example:guide/blast_furnace_tips", confidence: 0.7 }],
+      }],
+    });
+
+    const result = await proposePackFacetVocabulary({
+      evidence,
+      evidencePath: "/tmp/fixture.facet-evidence.json",
+      packId: "fixture",
+      generatedBy: "test",
+      generatedAt: "2026-05-11T00:00:00.000Z",
+      facets: ["used_at"],
+      minEvidence: 2,
+      client,
+      model: "test-model",
+    });
+
+    const decision = result.review.decisions.used_at?.find((value) => value.id === "example:blast/furnace/tips");
+    expect(decision?.state).toBe("review");
+    expect(decision?.policy_notes).toContain(
+      "guide/quest/advancement used_at title is too granular; prefer a reusable station/process id",
+    );
+    expect(result.vocabulary.facets.used_at?.values["example:blast/furnace/tips"]).toBeUndefined();
+  });
+
+  test("downgrades verbose progression aliases when a canonical gate token exists", async () => {
+    const evidence = fixtureEvidence();
+    evidence.records.push({
+      kind: "quest_node",
+      id: "pack:quests/progression/ev",
+      label: "ev_extreme_voltage",
+      namespace: "ftbquests",
+      source: "ftbquests",
+      confidence: 0.65,
+      count: 5,
+      semantic_text: [{ source: "quest", key: "title", text: "EV extreme voltage is a progression tier." }],
+    });
+    const client = new StaticSplitClient({
+      values: [{
+        id: "pack:fixture/ev_extreme_voltage",
+        label: "EV Extreme Voltage",
+        state: "accepted",
+        confidence: 0.7,
+        evidence: [{ kind: "quest_node", id: "pack:quests/progression/ev", confidence: 0.65 }],
+      }],
+    });
+
+    const result = await proposePackFacetVocabulary({
+      evidence,
+      evidencePath: "/tmp/fixture.facet-evidence.json",
+      packId: "fixture",
+      generatedBy: "test",
+      generatedAt: "2026-05-11T00:00:00.000Z",
+      facets: ["progression_stage"],
+      minEvidence: 2,
+      client,
+      model: "test-model",
+    });
+
+    const decision = result.review.decisions.progression_stage?.find((value) => value.id === "pack:fixture/ev_extreme_voltage");
+    expect(decision?.state).toBe("review");
+    expect(decision?.policy_notes).toContain("progression value is too phrase-like; prefer a canonical gate/tier/dimension id");
+    expect(result.vocabulary.facets.progression_stage?.values["pack:fixture/ev_extreme_voltage"]).toBeUndefined();
   });
 
   test("rejects legacy pack-scoped mod_subsystem values during vocabulary policy", async () => {
@@ -718,6 +1031,40 @@ describe("pack facet vocabulary generation", () => {
     expect(client.candidateCounts.every((count) => count <= 2)).toBe(true);
     expect(Object.keys(result.prompts).some((key) => key.startsWith("workflow.part-"))).toBe(true);
     expect(result.review.decisions.workflow?.length).toBe(client.candidateCounts.reduce((sum, count) => sum + count, 0));
+  });
+
+  test("prompt selection does not starve strong candidates in crowded buckets", () => {
+    const candidates: PackVocabularyCandidate[] = [
+      selectionCandidate("example:very_strong_process", { support: 100, semanticCount: 0 }),
+      ...Array.from({ length: 10 }, (_, index) =>
+        selectionCandidate(`example:related_process_${index}`, { support: 99 - index, semanticCount: 0 })),
+      ...Array.from({ length: 50 }, (_, index) =>
+        selectionCandidate(`mod_${index}:one_off_process`, { support: 2, semanticCount: 0 })),
+    ].sort((a, b) =>
+      b.support - a.support ||
+      a.id.localeCompare(b.id)
+    );
+
+    const selected = selectPromptCandidates(candidates, 12).map((candidate) => candidate.id);
+
+    expect(selected).toContain("example:very_strong_process");
+    expect(selected).toContain("example:related_process_0");
+  });
+
+  test("prompt selection reserves room for rich semantic candidates", () => {
+    const candidates: PackVocabularyCandidate[] = [
+      ...Array.from({ length: 40 }, (_, index) =>
+        selectionCandidate(`high_support_${index}:process`, { support: 100 - index, semanticCount: 0 })),
+      selectionCandidate("example:semantically_named_process", { support: 2, semanticCount: 64 }),
+    ].sort((a, b) =>
+      b.support - a.support ||
+      b.semantic_evidence.length - a.semantic_evidence.length ||
+      a.id.localeCompare(b.id)
+    );
+
+    const selected = selectPromptCandidates(candidates, 16).map((candidate) => candidate.id);
+
+    expect(selected).toContain("example:semantically_named_process");
   });
 
   test("allows model-accepted single-source progression gates", async () => {
@@ -934,4 +1281,29 @@ function isRecord(value: unknown): value is Record<string, unknown> {
 
 export function splitFixtureHash(system: string, user: string): string {
   return createHash("sha256").update(`${system}\n\n---\n\n${user}`).digest("hex").slice(0, 16);
+}
+
+function selectionCandidate(
+  id: string,
+  options: { support: number; semanticCount: number },
+): PackVocabularyCandidate {
+  return {
+    facet: "workflow",
+    id,
+    label: id,
+    origin: "namespace_generated",
+    suggested_state: "review",
+    confidence: 0.7,
+    support: options.support,
+    evidence: [{ kind: "recipe_type", id, confidence: 0.7 }],
+    semantic_evidence: Array.from({ length: options.semanticCount }, (_, index) => ({
+      kind: "guide_page",
+      id: `${id}/semantic/${index}`,
+      source: "guide",
+      text: `Semantic evidence ${index} for ${id}.`,
+    })),
+    seed_items: [],
+    aliases: [],
+    reasons: ["recipe type names a repeated process"],
+  };
 }

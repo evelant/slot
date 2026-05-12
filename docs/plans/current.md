@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-05-11
+Last updated: 2026-05-12
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -207,17 +207,19 @@ track lands.
    labels); per-row "→ suggested home" preview on the loot-chest
    panel; atlas-deposit take-back guard (only revisit if playtest
    shows stuck affinity).
-3. **Classification pipeline refactor before full-pack vocabulary validation**
+3. **Classification dry-run/canary after pipeline refactor**
    ([classification-pipeline-refactor.md](classification-pipeline-refactor.md),
    with design history in
    [classification-facet-vocabulary.md](classification-facet-vocabulary.md)).
-   The TypeScript toolchain has the core vocabulary-backed path wired, but
-   iteration left semantic evidence over-filtering, hardcoded validation-pack
-   concepts, workflow-derived `organization_group` candidates, legacy
-   `mod_subsystem` handling, and an oversized `pack_vocabulary.ts`. Refactor
-   the pipeline, preserve rich semantic input, add missing-vocabulary review
-   proposals for Stage 3, then dry-run/canary before any full vocabulary or
-   `classify-runtime-pack` pass.
+   The refactor split `pack_vocabulary.ts` into focused vocabulary modules,
+   folded `mod_subsystem` into the normal vocabulary artifact, repaired
+   `organization_group` candidate/prompt leakage, added Stage 3
+   `vocabulary_proposals`, and patched deterministic ore/log gaps found by
+   canaries. The policy5 vocabulary validates and the mixed 101-item Stage 3
+   canary validates. Next classification step is an operator decision: do a
+   final vocabulary refresh so new generic defaults such as `slot:open` are in
+   the artifact, then run full `classify-runtime-pack`, or run full
+   classification against policy5 and let missing values stay omitted/reviewed.
 4. **Runtime-crawl deterministic fallback**
    ([item-classification.md § Runtime discovery](item-classification.md#runtime-discovery)).
    Walks the live registry to derive deterministic facets

@@ -11,6 +11,10 @@ import {
 export interface ParsedLlmResponse {
   items: Map<string, ParsedItemFacets>;
   proposals: SchemaProposal[];
+  /** Missing accepted-vocabulary values the model wanted for a
+   * vocabulary-backed facet. These are review-only and never merged into the
+   * final layer automatically. */
+  vocabularyProposals: VocabularyProposal[];
   /** Flags from the LLM that a stage-2 facet looks wrong. These are never
    *  merged into the layer automatically — they surface for human review. */
   corrections: StageCorrection[];
@@ -106,6 +110,15 @@ export interface SchemaProposal {
   example_items?: string[];
 }
 
+export interface VocabularyProposal {
+  item: string;
+  facet: string;
+  label: string;
+  proposed_id?: string;
+  rationale: string;
+  evidence?: string[];
+}
+
 /**
  * Some legacy fixtures wrap the model's response in an envelope:
  *   { "type": "result", "result": "<text>", ... }
@@ -127,6 +140,7 @@ export function parseLlmResponse(raw: string): ParsedLlmResponse {
 
   const rootItems = (parsed as { items?: unknown }).items;
   const rootProposals = (parsed as { schema_proposals?: unknown }).schema_proposals;
+  const rootVocabularyProposals = (parsed as { vocabulary_proposals?: unknown }).vocabulary_proposals;
   const rootCorrections = (parsed as { corrections?: unknown }).corrections;
   const rootFillIns = (parsed as { fill_ins?: unknown }).fill_ins;
 
@@ -142,6 +156,42 @@ export function parseLlmResponse(raw: string): ParsedLlmResponse {
   if (Array.isArray(rootProposals)) {
     for (const prop of rootProposals) {
       if (prop && typeof prop === "object") proposals.push(prop as SchemaProposal);
+    }
+  }
+
+  const vocabularyProposals: VocabularyProposal[] = [];
+  if (Array.isArray(rootVocabularyProposals)) {
+    for (const raw of rootVocabularyProposals) {
+      if (!raw || typeof raw !== "object") continue;
+      const proposal = raw as Record<string, unknown>;
+      if (
+        typeof proposal.item !== "string" ||
+        typeof proposal.facet !== "string" ||
+        typeof proposal.label !== "string" ||
+        typeof proposal.rationale !== "string"
+      ) {
+        warnings.push(`vocabulary_proposal missing required field(s): ${JSON.stringify(raw).slice(0, 120)}`);
+        continue;
+      }
+      const def = FACETS[proposal.facet];
+      if (!def) {
+        warnings.push(`vocabulary_proposal for ${proposal.item} ${proposal.facet}: unknown facet`);
+        continue;
+      }
+      if (!def.vocabulary_backed) {
+        warnings.push(`vocabulary_proposal for ${proposal.item} ${proposal.facet}: facet is not vocabulary-backed`);
+        continue;
+      }
+      vocabularyProposals.push({
+        item: proposal.item,
+        facet: proposal.facet,
+        label: proposal.label,
+        ...(typeof proposal.proposed_id === "string" ? { proposed_id: proposal.proposed_id } : {}),
+        rationale: proposal.rationale,
+        ...(Array.isArray(proposal.evidence)
+          ? { evidence: proposal.evidence.filter((value): value is string => typeof value === "string") }
+          : {}),
+      });
     }
   }
 
@@ -210,7 +260,7 @@ export function parseLlmResponse(raw: string): ParsedLlmResponse {
     }
   }
 
-  return { items, proposals, corrections, fillIns, warnings };
+  return { items, proposals, vocabularyProposals, corrections, fillIns, warnings };
 }
 
 function parseItemEntry(

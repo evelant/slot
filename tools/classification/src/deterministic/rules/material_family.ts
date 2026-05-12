@@ -92,6 +92,45 @@ const TOOL_ARMOR_MATERIAL_PREFIX: Record<string, string> = {
   turtle: "scute", // turtle_helmet
 };
 
+const ORE_HOST_PREFIXES = [
+  "black_sand",
+  "brown_sand",
+  "green_sand",
+  "yellow_sand",
+  "red_sand",
+  "moon_deepslate",
+  "moon_stone",
+  "mars_stone",
+  "mercury_stone",
+  "glacio_stone",
+  "deepslate",
+  "andesite",
+  "granite",
+  "diorite",
+  "basalt",
+  "gabbro",
+  "rhyolite",
+  "dacite",
+  "chalk",
+  "chert",
+  "claystone",
+  "conglomerate",
+  "dolomite",
+  "dripstone",
+  "gneiss",
+  "limestone",
+  "marble",
+  "phyllite",
+  "moon",
+  "mars",
+  "mercury",
+  "venus",
+  "glacio",
+] as const;
+
+const ORE_GRADE_PREFIXES = ["small_native_", "small_", "poor_", "normal_", "rich_", "native_"] as const;
+const ORE_PROCESS_PREFIXES = ["dusty_raw_", "crushed_", "purified_", "impure_", "pure_", "raw_"] as const;
+
 /**
  * Per-namespace prefix overrides. Checked BEFORE the generic
  * `ID_PREFIX_TO_FAMILY` table so mod-specific naming conventions win over
@@ -246,6 +285,48 @@ const EXACT_ID_TO_FAMILY: Record<string, string> = {
   "minecraft:pointed_dripstone": "dripstone",
 };
 
+function materialFamilyFromOrePath(path: string): string | null {
+  const leaf = path.split("/").at(-1) ?? path;
+
+  if (path.startsWith("ore/")) {
+    return stripOreGradePrefix(leaf);
+  }
+
+  if (!leaf.endsWith("_ore")) return null;
+  let base = leaf.slice(0, -"_ore".length);
+  if (!base) return null;
+
+  for (const host of ORE_HOST_PREFIXES) {
+    const prefix = `${host}_`;
+    if (base.startsWith(prefix) && base.length > prefix.length) {
+      base = base.slice(prefix.length);
+      break;
+    }
+  }
+
+  return stripOreProcessPrefix(base);
+}
+
+function materialFamilyFromBloomPath(path: string): string | null {
+  const leaf = path.split("/").at(-1) ?? path;
+  const match = /^(?:raw_|refined_)?([a-z0-9_]+)_bloom$/.exec(leaf);
+  return match?.[1] ?? null;
+}
+
+function stripOreGradePrefix(value: string): string | null {
+  for (const prefix of ORE_GRADE_PREFIXES) {
+    if (value.startsWith(prefix) && value.length > prefix.length) return value.slice(prefix.length);
+  }
+  return value || null;
+}
+
+function stripOreProcessPrefix(value: string): string | null {
+  for (const prefix of ORE_PROCESS_PREFIXES) {
+    if (value.startsWith(prefix) && value.length > prefix.length) return value.slice(prefix.length);
+  }
+  return value || null;
+}
+
 export const materialFamilyRule: Rule = {
   id: "material_family",
   facets: ["material_family"],
@@ -318,6 +399,34 @@ export const materialFamilyRule: Rule = {
           },
         ];
       }
+    }
+
+    const oreFamily = materialFamilyFromOrePath(record.path);
+    if (oreFamily) {
+      return [
+        {
+          facet: "material_family",
+          kind: "single",
+          value: oreFamily,
+          source: "rule:material_family_from_ore_id",
+          confidence: 1,
+          rationale: `ore id ${record.path}`,
+        },
+      ];
+    }
+
+    const bloomFamily = materialFamilyFromBloomPath(record.path);
+    if (bloomFamily) {
+      return [
+        {
+          facet: "material_family",
+          kind: "single",
+          value: bloomFamily,
+          source: "rule:material_family_from_bloom_id",
+          confidence: 1,
+          rationale: `bloom id ${record.path}`,
+        },
+      ];
     }
 
     const nsOverrides = NAMESPACE_PREFIX_OVERRIDES[record.namespace];

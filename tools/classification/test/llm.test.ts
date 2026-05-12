@@ -250,6 +250,7 @@ describe("prompt building", () => {
     expect(prompt.system).toContain("`pack:fixture/lv_low_voltage`");
     expect(prompt.system).not.toContain("tfc:maybe");
     expect(prompt.system).toContain("Do not invent a syntactically valid id");
+    expect(prompt.user).toContain("Do not move ids across vocabulary-backed facets");
   });
 
   test("split prompt repeats hard output constraints at the end of the user message", () => {
@@ -260,6 +261,9 @@ describe("prompt building", () => {
 
     expect(prompt.user).toContain("# Final response checklist");
     expect(prompt.user).toContain("Include every item id from `items` exactly once");
+    expect(prompt.user).toContain("top-level arrays only");
+    expect(prompt.user).toContain("Never put them inside `<item_id>.facets`");
+    expect(prompt.user).toContain("Use `ambiguous: true` only for single-value enum/free_text facets");
     expect(prompt.user).toContain("Machine parts, machine components, hulls, casings, pumps");
     expect(prompt.user).toContain("Omit `mod_subsystem`; no accepted subsystem vocabulary is supplied");
     expect(prompt.user.trim().endsWith("Optional low-evidence facets are better omitted than guessed.")).toBe(true);
@@ -627,6 +631,33 @@ describe("response parsing", () => {
     expect(parsed.proposals[0]!.kind).toBe("add_value");
   });
 
+  test("vocabulary_proposals flow through for vocabulary-backed facets", () => {
+    const response = JSON.stringify({
+      items: {},
+      vocabulary_proposals: [
+        {
+          item: "minecraft:iron_ingot",
+          facet: "organization_group",
+          label: "Metal Stock",
+          proposed_id: "pack:test/metal_stock",
+          rationale: "No accepted organization group covers ingots and plates.",
+          evidence: ["display name: Iron Ingot"],
+        },
+      ],
+    });
+    const parsed = parseLlmResponse(response);
+    expect(parsed.vocabularyProposals).toEqual([
+      {
+        item: "minecraft:iron_ingot",
+        facet: "organization_group",
+        label: "Metal Stock",
+        proposed_id: "pack:test/metal_stock",
+        rationale: "No accepted organization group covers ingots and plates.",
+        evidence: ["display name: Iron Ingot"],
+      },
+    ]);
+  });
+
   test("corrections at >= 0.7 confidence are retained", () => {
     const response = JSON.stringify({
       items: {},
@@ -946,6 +977,15 @@ describe("runStage3", () => {
               },
             },
           },
+          vocabulary_proposals: [
+            {
+              item: record.id,
+              facet: "workflow",
+              label: "Invented",
+              proposed_id: "tfc:invented",
+              rationale: "Fixture wants a missing workflow value.",
+            },
+          ],
         });
         expect(options.responseValidator?.(invented).ok).toBe(true);
         return invented;
@@ -962,6 +1002,8 @@ describe("runStage3", () => {
 
     expect(calls).toBe(1);
     expect(result.layer.entries[record.id]?.facets.workflow).toBeUndefined();
+    expect(result.vocabularyProposals).toHaveLength(1);
+    expect(result.vocabularyProposals[0]!.proposed_id).toBe("tfc:invented");
     expect(result.warnings.some((warning) => warning.includes("tfc:invented"))).toBe(true);
   });
 

@@ -62,6 +62,9 @@ product direction.
 - `src/evidence/` assembles pack-level evidence for facet vocabulary work:
   runtime item facts, recipe summaries, tag summaries, mod metadata, guide
   pages, quest nodes, advancements, and diagnostics.
+- `src/vocabulary/` proposes and curates pack facet vocabulary; candidate
+  modules keep source-specific extraction and semantic-evidence handling
+  separate from pipeline orchestration.
 - `src/llm/` runs stage 3 completion, fixture record/replay, retry repair, and
   the OpenRouter live client.
 - `datasets/<source>/` holds committed classification outputs that can be
@@ -73,6 +76,7 @@ Primary docs:
 - [classification tool guide](../../docs/design/classification/tool-guide.md)
 - [classification system overview](../../docs/design/classification/README.md)
 - [facet vocabulary plan](../../docs/plans/classification-facet-vocabulary.md)
+- [classification pipeline refactor plan](../../docs/plans/classification-pipeline-refactor.md)
 - [item classification plan](../../docs/plans/item-classification.md)
 
 ## Recommended Pack Workflow
@@ -206,6 +210,11 @@ The command writes `facet-vocabulary.json` and
 invented vocabulary-backed values after parsing, and the final validator checks
 the complete layer against the same artifact. Malformed or missing-item
 responses still retry while the provider prompt cache is warm.
+
+The proposer defaults to a broad candidate budget (`--max-candidates-per-facet
+512`) and then chunks prompts per facet. Keep the default for baseline runs so
+low-support but semantically important values reach the curation stage; reduce
+it only for local prompt-shape debugging.
 
 ## Other Common Commands
 
