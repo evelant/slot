@@ -1,0 +1,781 @@
+{
+  "values": [
+    {
+      "id": "beneath:storage",
+      "label": "Storage",
+      "state": "rejected",
+      "description": "Generic storage concept, not a mod subsystem.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "create:chest_mounted_storage",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "lootr:storage",
+      "label": "Storage",
+      "state": "rejected",
+      "description": "Generic storage concept, not a mod subsystem.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "create:chest_mounted_storage",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "tfc:storage",
+      "label": "Storage",
+      "state": "rejected",
+      "description": "Generic storage concept, not a TFC subsystem.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "create:chest_mounted_storage",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "greate:cogwheel",
+      "label": "Cogwheel",
+      "state": "rejected",
+      "description": "Component type, not a subsystem within Greate.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "greate:ponder/cogwheel",
+          "confidence": 0.7
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:cogwheels",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "greate:belt",
+      "label": "Belt",
+      "state": "rejected",
+      "description": "Component type, not a subsystem within Greate.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "greate:ponder/belt_connector",
+          "confidence": 0.7
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:belt_connectors",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "megacells:storage",
+      "label": "Storage",
+      "state": "rejected",
+      "description": "Generic storage type, not a subsystem within MEGA Cells.",
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "megacells:recipes/misc/cells/standard/fluid_storage_cell_16m",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "morered:cable",
+      "label": "Cable",
+      "state": "rejected",
+      "description": "Component type, not a subsystem within Morered.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "morered:network_cables",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "morered:network",
+      "label": "Network",
+      "state": "review",
+      "description": "Possible subsystem for redstone networking, but semantic evidence is empty.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "morered:network_cables",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "greate:pump",
+      "label": "Pump",
+      "state": "rejected",
+      "description": "Component type, not a subsystem within Greate.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "greate:ponder/mechanical_pump_flow",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:belt",
+      "label": "Belt",
+      "state": "rejected",
+      "description": "Specific machine type, not a subsystem within Create.",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/belt_connector",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "gtceu:turbine",
+      "label": "Turbine",
+      "state": "rejected",
+      "description": "Machine type, not a subsystem within GregTech.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:turbine_blades",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "create:interface",
+      "label": "Interface",
+      "state": "rejected",
+      "description": "Specific machine type, not a subsystem within Create.",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create:portable_storage_interface",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "create_connected:fan",
+      "label": "Fan",
+      "state": "rejected",
+      "description": "Component type, not a subsystem in Create Connected.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create_connected:recipes/crafting/kinetics/empty_fan_catalyst",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "megacells:fluid",
+      "label": "Fluid",
+      "state": "rejected",
+      "description": "Generic fluid type, not a subsystem within MEGA Cells.",
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "megacells:recipes/misc/cells/mega_fluid_cell_housing",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "framedblocks:rail",
+      "label": "Rail",
+      "state": "rejected",
+      "description": "Decorative block type, not a subsystem within FramedBlocks.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "framedblocks:recipes/building_blocks/framed_activator_rail_slope",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "create:crafter",
+      "label": "Crafter",
+      "state": "rejected",
+      "description": "Specific machine type, not a subsystem within Create.",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create:mechanical_crafter",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/mechanical_crafter",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "ae2:cell",
+      "label": "Cell",
+      "state": "accepted",
+      "description": "Storage cells form a core subsystem in Applied Energistics 2.",
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "ae2:cell_component_16k",
+          "confidence": 1
+        },
+        {
+          "kind": "runtime_item",
+          "id": "ae2:fluid_storage_cell_1k",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "mcw_tfc_aio:rail",
+      "label": "Rail",
+      "state": "rejected",
+      "description": "Decorative bridge/rail type, not a subsystem.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "mcw_tfc_aio:rail_bridges",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "tfc:fluid",
+      "label": "Fluid",
+      "state": "rejected",
+      "description": "Generic fluid concept, not a TFC subsystem.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:fluid_item_ingredient_empty_containers",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "create:assembler",
+      "label": "Assembler",
+      "state": "rejected",
+      "description": "Specific machine type (cart assembler), not a subsystem.",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create:recipes/misc/crafting/kinetics/cart_assembler",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/cart_assembler",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "wan_ancient_beasts:charger",
+      "label": "Charger",
+      "state": "rejected",
+      "description": "Armor type, not a subsystem within Wan's Ancient Beasts.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "wan_ancient_beasts:recipes/combat/black_charger_armor",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "create:chute",
+      "label": "Chute",
+      "state": "rejected",
+      "description": "Specific machine type, not a subsystem within Create.",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create:chute",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/chute",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:tank",
+      "label": "Tank",
+      "state": "rejected",
+      "description": "Specific block type, not a subsystem within Create.",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create:recipes/misc/crafting/kinetics/fluid_tank",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/fluid_tank_storage",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "greate:fan",
+      "label": "Fan",
+      "state": "rejected",
+      "description": "Component type, not a subsystem within Greate.",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "greate:ponder/fan_direction",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:rocket",
+      "label": "Rocket",
+      "state": "accepted",
+      "description": "Rockets are a core subsystem of Ad Astra for space travel.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "ad_astra:tier_1_rocket",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "ad_astra:astrodux/en_us/entries/the_first_launch/your_first_rocket",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:engine",
+      "label": "Engine",
+      "state": "rejected",
+      "description": "Specific machine type (steam engine), not a subsystem.",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create:steam_engine",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/steam_engine",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:fan",
+      "label": "Fan",
+      "state": "rejected",
+      "description": "Specific machine type, not a subsystem within Create.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create:encased_fan",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/fan_direction",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:rail",
+      "label": "Rail",
+      "state": "rejected",
+      "description": "Specific block type, not a subsystem within Create.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create:recipes/misc/crafting/kinetics/controller_rail",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "create:cogwheel",
+      "label": "Cogwheel",
+      "state": "rejected",
+      "description": "Component type, not a subsystem within Create.",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create:recipes/misc/crafting/kinetics/cogwheel",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/cogwheel",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "greate:shaft",
+      "label": "Shaft",
+      "state": "rejected",
+      "description": "Component type, not a subsystem within Greate.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "greate:ponder/shaft",
+          "confidence": 0.7
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:shafts",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "create:pump",
+      "label": "Pump",
+      "state": "rejected",
+      "description": "Specific machine type, not a subsystem within Create.",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create:mechanical_pump_0",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/mechanical_pump_flow",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "gtceu:generator",
+      "label": "Generator",
+      "state": "rejected",
+      "description": "Machine type, not a subsystem within GregTech.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "gtceu:field_generators",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "gtceu:bus",
+      "label": "Bus",
+      "state": "rejected",
+      "description": "Component type, not a subsystem within GregTech.",
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "gtceu:ev_input_bus",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "tfc:power",
+      "label": "Power",
+      "state": "accepted",
+      "description": "Mechanical power system is a subsystem of TFC.",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/mechanical_power",
+          "confidence": 0.7
+        },
+        {
+          "kind": "advancement",
+          "id": "tfc:story/water_wheel",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:fluid",
+      "label": "Fluid",
+      "state": "rejected",
+      "description": "Generic fluid concept, not a subsystem within Vintage Improvements.",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "vintageimprovements:ponder/centrifuge",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "gtceu:pump",
+      "label": "Pump",
+      "state": "rejected",
+      "description": "Machine type, not a subsystem within GregTech.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "gtceu:electric_pumps",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "gtceu:cover",
+      "label": "Cover",
+      "state": "accepted",
+      "description": "Covers form a functional subsystem within GregTech.",
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "gtceu:activity_detector_cover",
+          "confidence": 1
+        },
+        {
+          "kind": "runtime_item",
+          "id": "gtceu:advanced_activity_detector_cover",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "create_connected:battery",
+      "label": "Battery",
+      "state": "rejected",
+      "description": "Specific machine (kinetic battery), not a subsystem.",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create_connected:kinetic_battery",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "create_connected:ponder/kinetic_battery",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:shaft",
+      "label": "Shaft",
+      "state": "rejected",
+      "description": "Component type, not a subsystem within Create.",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create:recipes/misc/crafting/kinetics/shaft",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/shaft",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create_factory_logistics:logistics",
+      "label": "Logistics",
+      "state": "accepted",
+      "description": "Logistics system (packaging, networking) is a subsystem in Create Factory Logistics.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create_factory_logistics:recipes/misc/network_link",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "create_factory_logistics:ponder/mixer_upkeep",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "gtceu:assembler",
+      "label": "Assembler",
+      "state": "rejected",
+      "description": "Machine type, not a subsystem within GregTech.",
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "gtceu:ev_assembler",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:oxygen",
+      "label": "Oxygen",
+      "state": "accepted",
+      "description": "Oxygen system is a subsystem of Ad Astra for space survival.",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "ad_astra:oxygen_distributor",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "ad_astra:astrodux/en_us/entries/the_first_launch/oxygen",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "gtceu:power",
+      "label": "Power",
+      "state": "accepted",
+      "description": "Energy/power system is a core subsystem of GregTech.",
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "gtceu:ev_power_unit",
+          "confidence": 1
+        },
+        {
+          "kind": "runtime_item",
+          "id": "gtceu:ev_transformer_16a",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "expatternprovider:bus",
+      "label": "Bus",
+      "state": "review",
+      "description": "Extended buses form a possible subsystem, but semantic evidence is weak.",
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "expatternprovider:recipes/misc/mod_export_bus",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "gtceu:tank",
+      "label": "Tank",
+      "state": "rejected",
+      "description": "Machine type, not a subsystem within GregTech.",
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "gtceu:bronze_multiblock_tank",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "gtceu:conveyor",
+      "label": "Conveyor",
+      "state": "rejected",
+      "description": "Component type, not a subsystem within GregTech.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "gtceu:conveyor_modules",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "createdeco:storage",
+      "label": "Storage",
+      "state": "rejected",
+      "description": "Generic storage concept, not a subsystem.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "createdeco:chest_mounted_storage",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "create:conveyor",
+      "label": "Conveyor",
+      "state": "rejected",
+      "description": "Specific machine type (chain conveyor), not a subsystem.",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create:recipes/misc/crafting/kinetics/chain_conveyor",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/chain_conveyor",
+          "confidence": 0.7
+        }
+      ]
+    }
+  ]
+}

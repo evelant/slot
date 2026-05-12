@@ -1,0 +1,609 @@
+{
+  "values": [
+    {
+      "id": "beneath:storage",
+      "label": "Storage",
+      "state": "rejected",
+      "description": "Generic cross-mod concept, not a distinct subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "lootr:storage",
+      "label": "Storage",
+      "state": "rejected",
+      "description": "Generic cross-mod concept, not a distinct subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "tfc:storage",
+      "label": "Storage",
+      "state": "rejected",
+      "description": "Generic cross-mod concept, not a distinct subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "greate:cogwheel",
+      "label": "Cogwheel",
+      "state": "rejected",
+      "description": "Component family, not a broad identity subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "greate:belt",
+      "label": "Belt",
+      "state": "rejected",
+      "description": "Component family, not a broad identity subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "megacells:storage",
+      "label": "Storage",
+      "state": "review",
+      "description": "MEGA Cells storage system for AE2; namespace-scoped identity.",
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "megacells:bulk_item_cell",
+          "confidence": 1
+        },
+        {
+          "kind": "runtime_item",
+          "id": "megacells:fluid_storage_cell_16m",
+          "confidence": 1
+        }
+      ],
+      "parent": null,
+      "related_activity": [
+        "slot:ae2"
+      ]
+    },
+    {
+      "id": "morered:cable",
+      "label": "Cable",
+      "state": "rejected",
+      "description": "Specific component, not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "morered:network",
+      "label": "Network",
+      "state": "accepted",
+      "description": "MoreRed's redstone networking system, including cables and posts.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "morered:network_cables",
+          "confidence": 0.75
+        },
+        {
+          "kind": "runtime_item",
+          "id": "morered:bundled_network_cable",
+          "confidence": 1
+        }
+      ],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "greate:pump",
+      "label": "Pump",
+      "state": "rejected",
+      "description": "Component family, not a broad subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "create:belt",
+      "label": "Belt",
+      "state": "rejected",
+      "description": "Single component type, not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "gtceu:turbine",
+      "label": "Turbine",
+      "state": "review",
+      "description": "GTCEu turbine machines and blades; a power generation category.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "gtceu:hv_gas_turbine",
+          "confidence": 1
+        },
+        {
+          "kind": "runtime_item",
+          "id": "gtceu:hsss_turbine_blade",
+          "confidence": 1
+        }
+      ],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "create:interface",
+      "label": "Interface",
+      "state": "rejected",
+      "description": "Single machine (portable storage interface), not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "create_connected:fan",
+      "label": "Fan",
+      "state": "rejected",
+      "description": "Single component/processing method, not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "megacells:fluid",
+      "label": "Fluid",
+      "state": "rejected",
+      "description": "Part of megacells storage, not a separate subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "framedblocks:rail",
+      "label": "Rail",
+      "state": "rejected",
+      "description": "Decorative/functional block type, not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "create:crafter",
+      "label": "Crafter",
+      "state": "rejected",
+      "description": "Single machine (mechanical crafter), not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "ae2:cell",
+      "label": "Cell",
+      "state": "review",
+      "description": "AE2 storage cells; a core identity subsystem of Applied Energistics.",
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "ae2:cell_component_1k",
+          "confidence": 1
+        },
+        {
+          "kind": "runtime_item",
+          "id": "ae2:fluid_storage_cell_16k",
+          "confidence": 1
+        }
+      ],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "mcw_tfc_aio:rail",
+      "label": "Rail",
+      "state": "rejected",
+      "description": "Decorative bridge rail, not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "tfc:fluid",
+      "label": "Fluid",
+      "state": "rejected",
+      "description": "Cross-mod concept, not a distinct TFC subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "create:assembler",
+      "label": "Assembler",
+      "state": "rejected",
+      "description": "Single machine (cart assembler), not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "wan_ancient_beasts:charger",
+      "label": "Charger",
+      "state": "rejected",
+      "description": "Armor set, not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "create:chute",
+      "label": "Chute",
+      "state": "rejected",
+      "description": "Single component, not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "create:tank",
+      "label": "Tank",
+      "state": "rejected",
+      "description": "Single block, not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "greate:fan",
+      "label": "Fan",
+      "state": "rejected",
+      "description": "Component family, not a broad subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "ad_astra:rocket",
+      "label": "Rocket",
+      "state": "accepted",
+      "description": "Ad Astra space travel system: rockets, engines, NASA workbench.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "ad_astra:tier_1_rocket",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "ad_astra:astrodux/en_us/entries/the_first_launch/your_first_rocket",
+          "confidence": 0.7
+        }
+      ],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "create:engine",
+      "label": "Engine",
+      "state": "rejected",
+      "description": "Single machine (steam engine), not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "create:fan",
+      "label": "Fan",
+      "state": "rejected",
+      "description": "Single machine, not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "create:rail",
+      "label": "Rail",
+      "state": "rejected",
+      "description": "Single block variant, not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "create:cogwheel",
+      "label": "Cogwheel",
+      "state": "rejected",
+      "description": "Single component, not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "greate:shaft",
+      "label": "Shaft",
+      "state": "rejected",
+      "description": "Component family, not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "create:pump",
+      "label": "Pump",
+      "state": "rejected",
+      "description": "Single machine, not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "gtceu:generator",
+      "label": "Generator",
+      "state": "review",
+      "description": "GTCEu generator machines (combustion, turbine, field generator) – a power generation category.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "gtceu:lv_combustion",
+          "confidence": 1
+        },
+        {
+          "kind": "runtime_item",
+          "id": "gtceu:hv_gas_turbine",
+          "confidence": 1
+        }
+      ],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "gtceu:bus",
+      "label": "Bus",
+      "state": "rejected",
+      "description": "Component of multiblock system, not a standalone subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "tfc:power",
+      "label": "Power",
+      "state": "accepted",
+      "description": "TFC mechanical power system (water wheels, windmills, axles).",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/mechanical_power",
+          "confidence": 0.7
+        },
+        {
+          "kind": "advancement",
+          "id": "tfc:story/water_wheel",
+          "confidence": 0.65
+        }
+      ],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "vintageimprovements:fluid",
+      "label": "Fluid",
+      "state": "rejected",
+      "description": "Generic fluid processing, not a distinct subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "gtceu:pump",
+      "label": "Pump",
+      "state": "rejected",
+      "description": "Specific cover type, not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "gtceu:cover",
+      "label": "Cover",
+      "state": "review",
+      "description": "GTCEu cover system (detectors, voiders, pumps, etc.) as a functional family.",
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "gtceu:activity_detector_cover",
+          "confidence": 1
+        },
+        {
+          "kind": "runtime_item",
+          "id": "gtceu:advanced_fluid_voiding_cover",
+          "confidence": 1
+        }
+      ],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "create_connected:battery",
+      "label": "Battery",
+      "state": "rejected",
+      "description": "Single machine (kinetic battery), not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "create:shaft",
+      "label": "Shaft",
+      "state": "rejected",
+      "description": "Single component, not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "create_factory_logistics:logistics",
+      "label": "Logistics",
+      "state": "accepted",
+      "description": "Create Factory Logistics package/network system.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "create_factory_logistics:jar_packager",
+          "confidence": 1
+        },
+        {
+          "kind": "runtime_item",
+          "id": "create_factory_logistics:network_link",
+          "confidence": 1
+        }
+      ],
+      "parent": null,
+      "related_activity": [
+        "slot:create"
+      ]
+    },
+    {
+      "id": "gtceu:assembler",
+      "label": "Assembler",
+      "state": "rejected",
+      "description": "Single machine type, not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "ad_astra:oxygen",
+      "label": "Oxygen",
+      "state": "accepted",
+      "description": "Ad Astra life support system: oxygen distributors, loaders, gear.",
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "ad_astra:oxygen_distributor",
+          "confidence": 0.65
+        },
+        {
+          "kind": "runtime_item",
+          "id": "ad_astra:oxygen_loader",
+          "confidence": 1
+        }
+      ],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "gtceu:power",
+      "label": "Power",
+      "state": "review",
+      "description": "GTCEu power transformation and storage (transformers, power units, substation).",
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "gtceu:ev_transformer_16a",
+          "confidence": 1
+        },
+        {
+          "kind": "runtime_item",
+          "id": "gtceu:hv_power_unit",
+          "confidence": 1
+        }
+      ],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "expatternprovider:bus",
+      "label": "Bus",
+      "state": "rejected",
+      "description": "Specific component type (extended buses), not a broad subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "gtceu:tank",
+      "label": "Tank",
+      "state": "rejected",
+      "description": "Single machine type, not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "gtceu:conveyor",
+      "label": "Conveyor",
+      "state": "rejected",
+      "description": "Specific cover type, not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "createdeco:storage",
+      "label": "Storage",
+      "state": "rejected",
+      "description": "Decorative chests, not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    },
+    {
+      "id": "create:conveyor",
+      "label": "Conveyor",
+      "state": "rejected",
+      "description": "Single machine (chain conveyor), not a subsystem.",
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": []
+    }
+  ]
+}

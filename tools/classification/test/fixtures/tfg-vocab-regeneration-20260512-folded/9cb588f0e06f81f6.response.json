@@ -1,0 +1,84 @@
+{
+  "values": [
+    {
+      "id": "slot:accepts_contents",
+      "label": "Accepts Contents",
+      "state": "rejected",
+      "description": "Generic capability phrase; not a distinct container state.",
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "slot:empty_container",
+      "label": "Empty Container",
+      "state": "review",
+      "description": "Container that currently contains no items. Needs human review and evidence.",
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "slot:energy_container",
+      "label": "Energy Container",
+      "state": "review",
+      "description": "Container for stored energy (e.g., battery, capacitor). Needs evidence.",
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "slot:filled_container",
+      "label": "Filled Container",
+      "state": "review",
+      "description": "Container that contains at least one item. Needs human review.",
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "slot:fluid_container",
+      "label": "Fluid Container",
+      "state": "review",
+      "description": "Container designed to hold fluids. Needs evidence.",
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "slot:gas_container",
+      "label": "Gas Container",
+      "state": "review",
+      "description": "Container designed to hold gases. Needs evidence.",
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "slot:has_contents",
+      "label": "Has Contents",
+      "state": "rejected",
+      "description": "Generic state; not a specific container behavior or state.",
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "slot:pattern_template",
+      "label": "Pattern Template",
+      "state": "review",
+      "description": "Container that holds a crafting pattern/schematic. Needs evidence.",
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "slot:reusable_mold",
+      "label": "Reusable Mold",
+      "state": "review",
+      "description": "Mold that can be used multiple times. Needs evidence.",
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "slot:single_use_mold",
+      "label": "Single Use Mold",
+      "state": "review",
+      "description": "Mold that breaks after one use. Needs evidence.",
+      "confidence": 0,
+      "evidence": []
+    }
+  ]
+}

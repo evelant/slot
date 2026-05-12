@@ -1,0 +1,796 @@
+{
+  "values": [
+    {
+      "id": "greate:milling",
+      "label": "Milling",
+      "state": "accepted",
+      "description": "Player-facing station for milling items (e.g., Millstone).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:milling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/smelting",
+      "label": "Smelting",
+      "state": "accepted",
+      "description": "Vanilla furnace smelting station.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "smelting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/blasting",
+      "label": "Blasting",
+      "state": "accepted",
+      "description": "Vanilla blast furnace station.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "blasting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/stonecutting",
+      "label": "Stonecutting",
+      "state": "accepted",
+      "description": "Vanilla stonecutter station.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "stonecutting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:cutting",
+      "label": "Cutting",
+      "state": "accepted",
+      "description": "Player-facing station for cutting items (e.g., Mechanical Saw).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:cutting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:heating",
+      "label": "Heating Recipe",
+      "state": "accepted",
+      "description": "Player-facing station for heating items (firepit, forge, etc.).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:heating",
+          "confidence": 0.65
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:chisel",
+      "label": "Chisel",
+      "state": "accepted",
+      "description": "Tool used for chiseling blocks.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:chisel",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:collapse",
+      "label": "Collapse",
+      "state": "rejected",
+      "description": "Environmental event, not a player-facing station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:pressing",
+      "label": "Pressing",
+      "state": "accepted",
+      "description": "Player-facing station for pressing items (Mechanical Press).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:pressing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:splashing",
+      "label": "Splashing",
+      "state": "accepted",
+      "description": "Player-facing station/water flow for splashing items.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:splashing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:landslide",
+      "label": "Landslide",
+      "state": "rejected",
+      "description": "Environmental event, not a player-facing station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:anvil",
+      "label": "Anvil",
+      "state": "accepted",
+      "description": "TFC anvil station for smithing.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:anvil",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:barrel_sealed",
+      "label": "Barrel Sealed",
+      "state": "accepted",
+      "description": "TFC barrel station for sealed recipes (fermentation, etc.).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:barrel_sealed",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:damage_inputs_shapeless_crafting",
+      "label": "Damage Inputs Shapeless Crafting",
+      "state": "rejected",
+      "description": "Implementation recipe mechanic, not a player-facing station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfg:item_repair",
+      "label": "Equipment Repair",
+      "state": "rejected",
+      "description": "Generic repair category, not a distinct station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:compacting",
+      "label": "Compacting",
+      "state": "accepted",
+      "description": "Player-facing station for compacting (Mechanical Press).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:compacting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:quern",
+      "label": "Quern Recipe",
+      "state": "accepted",
+      "description": "TFC quern station for grinding items.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:quern",
+          "confidence": 0.65
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:mixing",
+      "label": "Mixing",
+      "state": "accepted",
+      "description": "Player-facing station for mixing (Mechanical Mixer).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:mixing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:barrel_instant",
+      "label": "Barrel Instant",
+      "state": "accepted",
+      "description": "TFC barrel station for instant recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:barrel_instant",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:filling",
+      "label": "Filling",
+      "state": "accepted",
+      "description": "Player-facing station for filling items (Spout).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:filling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "ae2:transform",
+      "label": "Transform",
+      "state": "rejected",
+      "description": "AE2 transformation process, not a clear player-facing station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "rnr:mattock",
+      "label": "Mattock",
+      "state": "accepted",
+      "description": "Tool used for road building and related tasks.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "rnr:mattock",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:curving",
+      "label": "Curving",
+      "state": "accepted",
+      "description": "Player-facing station for curving items (Vintage Improvements).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:curving",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:item_application",
+      "label": "Item Application",
+      "state": "accepted",
+      "description": "Player-facing station for applying items (Deployer).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:item_application",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:advanced_shapeless_crafting",
+      "label": "Advanced Shapeless Crafting",
+      "state": "rejected",
+      "description": "Implementation recipe mechanic, not a player-facing station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "rnr:block_mod",
+      "label": "Block Mod",
+      "state": "rejected",
+      "description": "Implementation for road block modifications, not a player-facing station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:sandpaper_polishing",
+      "label": "Sandpaper Polishing",
+      "state": "accepted",
+      "description": "Tool/player action for polishing with sandpaper.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:sandpaper_polishing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:polishing",
+      "label": "Polishing",
+      "state": "accepted",
+      "description": "Player-facing station for polishing (Vintage Improvements).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:polishing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:deploying",
+      "label": "Deploying",
+      "state": "accepted",
+      "description": "Player-facing station for deploying items (Deployer).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:deploying",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:sequenced_assembly",
+      "label": "Sequenced Assembly",
+      "state": "accepted",
+      "description": "Player-facing multi-step assembly process (Create).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:sequenced_assembly",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "kubejs:shaped",
+      "label": "Shaped",
+      "state": "rejected",
+      "description": "Generic shaped crafting, not a specific station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:centrifugation",
+      "label": "Centrifugation",
+      "state": "accepted",
+      "description": "Player-facing station for centrifugation (Centrifuge).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:centrifugation",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:hammering",
+      "label": "Hammering",
+      "state": "accepted",
+      "description": "Player-facing station for hammering (Vintage Improvements).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:hammering",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "createaddition:rolling",
+      "label": "Rolling",
+      "state": "accepted",
+      "description": "Player-facing station for rolling (Rolling Mill).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "createaddition:rolling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:casting",
+      "label": "Casting",
+      "state": "accepted",
+      "description": "TFC casting station (molds).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:casting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "framedblocks:frame",
+      "label": "Frame",
+      "state": "rejected",
+      "description": "Implementation for framed block variants, not a player-facing station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:brewing",
+      "label": "Brewing",
+      "state": "accepted",
+      "description": "Player-facing station for brewing (Create Brewing).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:brewing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:pot",
+      "label": "Pot",
+      "state": "accepted",
+      "description": "TFC cooking pot station.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:pot",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:advanced_shaped_crafting",
+      "label": "Advanced Shaped Crafting",
+      "state": "rejected",
+      "description": "Implementation recipe mechanic, not a player-facing station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:welding",
+      "label": "Welding",
+      "state": "accepted",
+      "description": "TFC welding process (done on anvil).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:welding",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:damage_inputs_shaped_crafting",
+      "label": "Damage Inputs Shaped Crafting",
+      "state": "rejected",
+      "description": "Implementation recipe mechanic, not a player-facing station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:coiling",
+      "label": "Coiling",
+      "state": "accepted",
+      "description": "Player-facing station for coiling (Vintage Improvements).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:coiling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:knapping",
+      "label": "Knapping",
+      "state": "accepted",
+      "description": "Player-facing station/tool for knapping stone/clay.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:knapping",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:vibrating",
+      "label": "Vibrating",
+      "state": "accepted",
+      "description": "Player-facing station for vibrating (Vibrating Table).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:vibrating",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "kubejs:shapeless",
+      "label": "Shapeless",
+      "state": "rejected",
+      "description": "Generic shapeless crafting, not a specific station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "domum_ornamentum:architects_cutter",
+      "label": "Architects Cutter",
+      "state": "accepted",
+      "description": "Station for cutting decorative blocks (Architect's Cutter).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "domum_ornamentum:architects_cutter",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "firmalife:vat",
+      "label": "Vat",
+      "state": "accepted",
+      "description": "Firmalife vat station for fermentation and processing.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:vat",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:pot_jam",
+      "label": "Pot Jam",
+      "state": "accepted",
+      "description": "TFC jam-making process using a pot.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:pot_jam",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    }
+  ]
+}

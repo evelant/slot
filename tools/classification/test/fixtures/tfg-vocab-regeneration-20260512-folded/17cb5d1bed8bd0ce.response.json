@@ -1,0 +1,448 @@
+{
+  "values": [
+    {
+      "id": "tfc:red/steel/slab",
+      "label": "Red Steel Slab",
+      "state": "rejected",
+      "description": "Decorative block variant, not a progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfc:red/steel/stairs",
+      "label": "Red Steel Stairs",
+      "state": "rejected",
+      "description": "Decorative block variant, not a progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfc:the/copper/age",
+      "label": "The Copper Age",
+      "state": "accepted",
+      "description": "First metal age, major progression gate in TFC.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:story/copper_age",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "tfc:the/iron/age",
+      "label": "The Iron Age",
+      "state": "accepted",
+      "description": "Major progression gate, unlocking iron tools and advanced smithing.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:story/iron_age",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "tfcgroomer:bismuth/bronze/grooming/station",
+      "label": "Bismuth Bronze Grooming Station",
+      "state": "rejected",
+      "description": "Addon station item, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfcgroomer:black/bronze/grooming/station",
+      "label": "Black Bronze Grooming Station",
+      "state": "rejected",
+      "description": "Addon station item, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfcgroomer:black/steel/grooming/station",
+      "label": "Black Steel Grooming Station",
+      "state": "rejected",
+      "description": "Addon station item, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfcgroomer:blue/steel/grooming/station",
+      "label": "Blue Steel Grooming Station",
+      "state": "rejected",
+      "description": "Addon station item, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfcgroomer:bronze/grooming/station",
+      "label": "Bronze Grooming Station",
+      "state": "rejected",
+      "description": "Addon station item, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfcgroomer:red/steel/grooming/station",
+      "label": "Red Steel Grooming Station",
+      "state": "rejected",
+      "description": "Addon station item, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfcgroomer:steel/grooming/station",
+      "label": "Steel Grooming Station",
+      "state": "rejected",
+      "description": "Addon station item, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "firmalife:stainless/steel/slab",
+      "label": "Stainless Steel Slab",
+      "state": "rejected",
+      "description": "Decorative block variant, not a progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "firmalife:stainless/steel/stairs",
+      "label": "Stainless Steel Stairs",
+      "state": "rejected",
+      "description": "Decorative block variant, not a progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "sns:steel",
+      "label": "Steel",
+      "state": "rejected",
+      "description": "Material label with only horseshoe context; not a broad progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfc:steel/slab",
+      "label": "Steel Slab",
+      "state": "rejected",
+      "description": "Decorative block variant, not a progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfc:steel/stairs",
+      "label": "Steel Stairs",
+      "state": "rejected",
+      "description": "Decorative block variant, not a progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfcscraping:bismuth/bronze",
+      "label": "Bismuth Bronze",
+      "state": "rejected",
+      "description": "Metal name from scraping knife recipe, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfcscraping:black/bronze",
+      "label": "Black Bronze",
+      "state": "rejected",
+      "description": "Metal name from scraping knife recipe, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfcscraping:black/steel",
+      "label": "Black Steel",
+      "state": "rejected",
+      "description": "Metal name from scraping knife recipe, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfcscraping:blue/steel",
+      "label": "Blue Steel",
+      "state": "rejected",
+      "description": "Metal name from scraping knife recipe, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfcscraping:bronze",
+      "label": "Bronze",
+      "state": "rejected",
+      "description": "Metal name from scraping knife recipe, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfcscraping:red/steel",
+      "label": "Red Steel",
+      "state": "rejected",
+      "description": "Metal name from scraping knife recipe, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfcscraping:steel",
+      "label": "Steel",
+      "state": "rejected",
+      "description": "Metal name from scraping knife recipe, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:calorite/ingot/from/blasting/venus/calorite/ore",
+      "label": "Calorite Ingot From Blasting Venus Calorite Ore",
+      "state": "rejected",
+      "description": "Specific single recipe, not a progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:calorite/ingot/from/smelting/venus/calorite/ore",
+      "label": "Calorite Ingot From Smelting Venus Calorite Ore",
+      "state": "rejected",
+      "description": "Specific single recipe, not a progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:cheese/from/blasting/moon/cheese/ore",
+      "label": "Cheese From Blasting Moon Cheese Ore",
+      "state": "rejected",
+      "description": "Specific single recipe, not a progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:cheese/from/smelting/moon/cheese/ore",
+      "label": "Cheese From Smelting Moon Cheese Ore",
+      "state": "rejected",
+      "description": "Specific single recipe, not a progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:chiseled/mars/stone/bricks",
+      "label": "Chiseled Mars Stone Bricks",
+      "state": "rejected",
+      "description": "Decorative block, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:chiseled/mars/stone/bricks/from/mars/stone/bricks/stonecutting",
+      "label": "Chiseled Mars Stone Bricks From Mars Stone Bricks Stonecutting",
+      "state": "rejected",
+      "description": "Stonecutting recipe, not a progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:chiseled/mars/stone/bricks/from/mars/stone/stonecutting",
+      "label": "Chiseled Mars Stone Bricks From Mars Stone Stonecutting",
+      "state": "rejected",
+      "description": "Stonecutting recipe, not a progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:chiseled/mars/stone/slab",
+      "label": "Chiseled Mars Stone Slab",
+      "state": "rejected",
+      "description": "Decorative block slab, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:chiseled/mars/stone/slab/from/chiseled/mars/stone/bricks/stonecutting",
+      "label": "Chiseled Mars Stone Slab From Chiseled Mars Stone Bricks Stonecutting",
+      "state": "rejected",
+      "description": "Stonecutting recipe, not a progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:chiseled/mars/stone/stairs",
+      "label": "Chiseled Mars Stone Stairs",
+      "state": "rejected",
+      "description": "Decorative block stairs, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:chiseled/mars/stone/stairs/from/chiseled/mars/stone/bricks/stonecutting",
+      "label": "Chiseled Mars Stone Stairs From Chiseled Mars Stone Bricks Stonecutting",
+      "state": "rejected",
+      "description": "Stonecutting recipe, not a progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:chiseled/mercury/stone/bricks",
+      "label": "Chiseled Mercury Stone Bricks",
+      "state": "rejected",
+      "description": "Decorative block, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:chiseled/mercury/stone/bricks/from/mercury/stone/bricks/stonecutting",
+      "label": "Chiseled Mercury Stone Bricks From Mercury Stone Bricks Stonecutting",
+      "state": "rejected",
+      "description": "Stonecutting recipe, not a progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:chiseled/mercury/stone/bricks/from/mercury/stone/stonecutting",
+      "label": "Chiseled Mercury Stone Bricks From Mercury Stone Stonecutting",
+      "state": "rejected",
+      "description": "Stonecutting recipe, not a progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:chiseled/mercury/stone/slab",
+      "label": "Chiseled Mercury Stone Slab",
+      "state": "rejected",
+      "description": "Decorative block slab, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:chiseled/mercury/stone/slab/from/chiseled/mercury/stone/bricks/stonecutting",
+      "label": "Chiseled Mercury Stone Slab From Chiseled Mercury Stone Bricks Stonecutting",
+      "state": "rejected",
+      "description": "Stonecutting recipe, not a progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:chiseled/mercury/stone/stairs",
+      "label": "Chiseled Mercury Stone Stairs",
+      "state": "rejected",
+      "description": "Decorative block stairs, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:chiseled/mercury/stone/stairs/from/chiseled/mercury/stone/bricks/stonecutting",
+      "label": "Chiseled Mercury Stone Stairs From Chiseled Mercury Stone Bricks Stonecutting",
+      "state": "rejected",
+      "description": "Stonecutting recipe, not a progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:chiseled/moon/stone/bricks",
+      "label": "Chiseled Moon Stone Bricks",
+      "state": "rejected",
+      "description": "Decorative block, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:chiseled/moon/stone/bricks/from/moon/stone/stonecutting",
+      "label": "Chiseled Moon Stone Bricks From Moon Stone Stonecutting",
+      "state": "rejected",
+      "description": "Stonecutting recipe, not a progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:chiseled/moon/stone/slab",
+      "label": "Chiseled Moon Stone Slab",
+      "state": "rejected",
+      "description": "Decorative block slab, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:chiseled/moon/stone/slab/from/chiseled/moon/stone/bricks/stonecutting",
+      "label": "Chiseled Moon Stone Slab From Chiseled Moon Stone Bricks Stonecutting",
+      "state": "rejected",
+      "description": "Stonecutting recipe, not a progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:chiseled/moon/stone/stairs",
+      "label": "Chiseled Moon Stone Stairs",
+      "state": "rejected",
+      "description": "Decorative block stairs, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:chiseled/moon/stone/stairs/from/chiseled/moon/stone/bricks/stonecutting",
+      "label": "Chiseled Moon Stone Stairs From Chiseled Moon Stone Bricks Stonecutting",
+      "state": "rejected",
+      "description": "Stonecutting recipe, not a progression gate.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:chiseled/venus/stone/bricks",
+      "label": "Chiseled Venus Stone Bricks",
+      "state": "rejected",
+      "description": "Decorative block, not a progression stage.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    }
+  ]
+}

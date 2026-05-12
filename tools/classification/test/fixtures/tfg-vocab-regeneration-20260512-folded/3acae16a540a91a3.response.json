@@ -1,0 +1,842 @@
+{
+  "values": [
+    {
+      "id": "greate:milling#input",
+      "label": "Milling Input",
+      "state": "accepted",
+      "description": "Item input slot for the greate milling process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:milling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "greate:milling"
+    },
+    {
+      "id": "greate:milling#output",
+      "label": "Milling Output",
+      "state": "accepted",
+      "description": "Item output slot for the greate milling process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:milling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "greate:milling"
+    },
+    {
+      "id": "pack:tfg/smelting#input",
+      "label": "Smelting Input",
+      "state": "accepted",
+      "description": "Item input slot for smelting furnace recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "smelting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "pack:tfg/smelting"
+    },
+    {
+      "id": "pack:tfg/smelting#output",
+      "label": "Smelting Output",
+      "state": "accepted",
+      "description": "Item output slot for smelting furnace recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "smelting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "pack:tfg/smelting"
+    },
+    {
+      "id": "pack:tfg/blasting#input",
+      "label": "Blasting Input",
+      "state": "accepted",
+      "description": "Item input slot for blasting furnace recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "blasting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "pack:tfg/blasting"
+    },
+    {
+      "id": "pack:tfg/blasting#output",
+      "label": "Blasting Output",
+      "state": "accepted",
+      "description": "Item output slot for blasting furnace recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "blasting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "pack:tfg/blasting"
+    },
+    {
+      "id": "pack:tfg/stonecutting#input",
+      "label": "Stonecutting Input",
+      "state": "accepted",
+      "description": "Item input slot for stonecutter recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "stonecutting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "pack:tfg/stonecutting"
+    },
+    {
+      "id": "pack:tfg/stonecutting#output",
+      "label": "Stonecutting Output",
+      "state": "accepted",
+      "description": "Item output slot for stonecutter recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "stonecutting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "pack:tfg/stonecutting"
+    },
+    {
+      "id": "greate:cutting#input",
+      "label": "Cutting Input",
+      "state": "accepted",
+      "description": "Item input slot for the greate cutting process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:cutting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "greate:cutting"
+    },
+    {
+      "id": "greate:cutting#output",
+      "label": "Cutting Output",
+      "state": "accepted",
+      "description": "Item output slot for the greate cutting process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:cutting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "greate:cutting"
+    },
+    {
+      "id": "tfc:heating#input",
+      "label": "Heating Input",
+      "state": "accepted",
+      "description": "Item input slot for TFC heating recipes (firepit, pit kiln, forge).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/heating",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:heating",
+          "confidence": 0.65
+        }
+      ],
+      "parent": "tfc:heating"
+    },
+    {
+      "id": "tfc:heating#output",
+      "label": "Heating Output",
+      "state": "accepted",
+      "description": "Item output slot for TFC heating recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/heating",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:heating",
+          "confidence": 0.65
+        }
+      ],
+      "parent": "tfc:heating"
+    },
+    {
+      "id": "tfc:chisel#input",
+      "label": "Chisel Input",
+      "state": "accepted",
+      "description": "Block input for TFC chisel recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/chisel",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:chisel",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:chisel"
+    },
+    {
+      "id": "tfc:chisel#output",
+      "label": "Chisel Output",
+      "state": "accepted",
+      "description": "Block output for TFC chisel recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/chisel",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:chisel",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:chisel"
+    },
+    {
+      "id": "tfc:collapse#input",
+      "label": "Collapse Input",
+      "state": "rejected",
+      "description": "Parent workflow rejected: environmental collapse event, not a player workflow.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:collapse",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:collapse"
+    },
+    {
+      "id": "tfc:collapse#output",
+      "label": "Collapse Output",
+      "state": "rejected",
+      "description": "Parent workflow rejected: environmental collapse event, not a player workflow.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:collapse",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:collapse"
+    },
+    {
+      "id": "greate:pressing#input",
+      "label": "Pressing Input",
+      "state": "accepted",
+      "description": "Item input slot for greate pressing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:pressing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "greate:pressing"
+    },
+    {
+      "id": "greate:pressing#output",
+      "label": "Pressing Output",
+      "state": "accepted",
+      "description": "Item output slot for greate pressing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:pressing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "greate:pressing"
+    },
+    {
+      "id": "greate:splashing#input",
+      "label": "Splashing Input",
+      "state": "accepted",
+      "description": "Item input slot for greate splashing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:splashing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "greate:splashing"
+    },
+    {
+      "id": "greate:splashing#output",
+      "label": "Splashing Output",
+      "state": "accepted",
+      "description": "Item output slot for greate splashing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:splashing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "greate:splashing"
+    },
+    {
+      "id": "tfc:landslide#input",
+      "label": "Landslide Input",
+      "state": "rejected",
+      "description": "Parent workflow rejected: environmental landslide event, not a player workflow.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:landslide",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:landslide"
+    },
+    {
+      "id": "tfc:landslide#output",
+      "label": "Landslide Output",
+      "state": "rejected",
+      "description": "Parent workflow rejected: environmental landslide event, not a player workflow.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:landslide",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:landslide"
+    },
+    {
+      "id": "tfc:anvil#input",
+      "label": "Anvil Input",
+      "state": "accepted",
+      "description": "Item input slot for TFC anvil smithing recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/armor",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:anvil",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:anvil"
+    },
+    {
+      "id": "tfc:anvil#output",
+      "label": "Anvil Output",
+      "state": "accepted",
+      "description": "Item output slot for TFC anvil smithing recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/armor",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:anvil",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:anvil"
+    },
+    {
+      "id": "tfc:barrel_sealed#input",
+      "label": "Barrel Sealed Input",
+      "state": "accepted",
+      "description": "Item/fluid input slot for TFC sealed barrel recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:barrel_sealed",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:barrel_sealed"
+    },
+    {
+      "id": "tfc:barrel_sealed#output",
+      "label": "Barrel Sealed Output",
+      "state": "accepted",
+      "description": "Item/fluid output slot for TFC sealed barrel recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:barrel_sealed",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:barrel_sealed"
+    },
+    {
+      "id": "tfc:damage_inputs_shapeless_crafting#input",
+      "label": "Damage Inputs Shapeless Crafting Input",
+      "state": "rejected",
+      "description": "Parent workflow rejected: meta implementation recipe (damage inputs shapeless).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:damage_inputs_shapeless_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:damage_inputs_shapeless_crafting"
+    },
+    {
+      "id": "tfc:damage_inputs_shapeless_crafting#output",
+      "label": "Damage Inputs Shapeless Crafting Output",
+      "state": "rejected",
+      "description": "Parent workflow rejected: meta implementation recipe (damage inputs shapeless).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:damage_inputs_shapeless_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:damage_inputs_shapeless_crafting"
+    },
+    {
+      "id": "tfg:item_repair#input",
+      "label": "Equipment Repair Input",
+      "state": "accepted",
+      "description": "Item input slot for equipment repair recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfg:item_repair",
+          "confidence": 0.65
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfg:item_repair",
+          "source": "file:minecraft/lang-overlays",
+          "text": "Equipment Repair",
+          "key": "recipe-category-lang:emi.category.tfg.item_repair",
+          "label": "Equipment Repair",
+          "recipe_type": "tfg:item_repair",
+          "count": 1
+        }
+      ],
+      "parent": "tfg:item_repair"
+    },
+    {
+      "id": "tfg:item_repair#output",
+      "label": "Equipment Repair Output",
+      "state": "accepted",
+      "description": "Item output slot for equipment repair recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfg:item_repair",
+          "confidence": 0.65
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfg:item_repair",
+          "source": "file:minecraft/lang-overlays",
+          "text": "Equipment Repair",
+          "key": "recipe-category-lang:emi.category.tfg.item_repair",
+          "label": "Equipment Repair",
+          "recipe_type": "tfg:item_repair",
+          "count": 1
+        }
+      ],
+      "parent": "tfg:item_repair"
+    },
+    {
+      "id": "tfc:quern#input",
+      "label": "Quern Input",
+      "state": "accepted",
+      "description": "Item input slot for TFC quern grinding recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/quern",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/quern",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:quern",
+          "confidence": 0.65
+        }
+      ],
+      "parent": "tfc:quern"
+    },
+    {
+      "id": "tfc:quern#output",
+      "label": "Quern Output",
+      "state": "accepted",
+      "description": "Item output slot for TFC quern grinding recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/quern",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/quern",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:quern",
+          "confidence": 0.65
+        }
+      ],
+      "parent": "tfc:quern"
+    },
+    {
+      "id": "greate:compacting#input",
+      "label": "Compacting Input",
+      "state": "accepted",
+      "description": "Item/fluid input slot for greate compacting process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:compacting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "greate:compacting"
+    },
+    {
+      "id": "greate:compacting#output",
+      "label": "Compacting Output",
+      "state": "accepted",
+      "description": "Item output slot for greate compacting process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:compacting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "greate:compacting"
+    },
+    {
+      "id": "greate:mixing#input",
+      "label": "Mixing Input",
+      "state": "accepted",
+      "description": "Item/fluid input slot for greate mixing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:mixing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "greate:mixing"
+    },
+    {
+      "id": "greate:mixing#output",
+      "label": "Mixing Output",
+      "state": "accepted",
+      "description": "Item/fluid output slot for greate mixing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:mixing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "greate:mixing"
+    },
+    {
+      "id": "tfc:barrel_instant#input",
+      "label": "Barrel Instant Input",
+      "state": "accepted",
+      "description": "Item/fluid input slot for TFC instant barrel recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:barrel_instant",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:barrel_instant"
+    },
+    {
+      "id": "tfc:barrel_instant#output",
+      "label": "Barrel Instant Output",
+      "state": "accepted",
+      "description": "Item/fluid output slot for TFC instant barrel recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:barrel_instant",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:barrel_instant"
+    },
+    {
+      "id": "create:filling#input",
+      "label": "Filling Input",
+      "state": "accepted",
+      "description": "Item input slot for Create filling recipes (deployer filling).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:filling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:filling"
+    },
+    {
+      "id": "create:filling#output",
+      "label": "Filling Output",
+      "state": "accepted",
+      "description": "Item output slot for Create filling recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:filling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:filling"
+    },
+    {
+      "id": "ae2:transform#input",
+      "label": "Transform Input",
+      "state": "accepted",
+      "description": "Item input slot for AE2 transformation recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ae2:transform",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "ae2:transform"
+    },
+    {
+      "id": "ae2:transform#output",
+      "label": "Transform Output",
+      "state": "accepted",
+      "description": "Item output slot for AE2 transformation recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ae2:transform",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "ae2:transform"
+    },
+    {
+      "id": "rnr:mattock#input",
+      "label": "Mattock Input",
+      "state": "rejected",
+      "description": "Parent workflow rejected: tool-specific recipe, not a reusable player workflow.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "rnr:mattock",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "rnr:mattock"
+    },
+    {
+      "id": "rnr:mattock#output",
+      "label": "Mattock Output",
+      "state": "rejected",
+      "description": "Parent workflow rejected: tool-specific recipe, not a reusable player workflow.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "rnr:mattock",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "rnr:mattock"
+    },
+    {
+      "id": "vintageimprovements:curving#input",
+      "label": "Curving Input",
+      "state": "accepted",
+      "description": "Item input slot for Vintage Improvements curving process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:curving",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "vintageimprovements:curving"
+    },
+    {
+      "id": "vintageimprovements:curving#output",
+      "label": "Curving Output",
+      "state": "accepted",
+      "description": "Item output slot for Vintage Improvements curving process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:curving",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "vintageimprovements:curving"
+    },
+    {
+      "id": "create:item_application#input",
+      "label": "Item Application Input",
+      "state": "accepted",
+      "description": "Item input slot for Create item application recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:item_application",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:item_application"
+    },
+    {
+      "id": "create:item_application#output",
+      "label": "Item Application Output",
+      "state": "accepted",
+      "description": "Item output slot for Create item application recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:item_application",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:item_application"
+    }
+  ]
+}

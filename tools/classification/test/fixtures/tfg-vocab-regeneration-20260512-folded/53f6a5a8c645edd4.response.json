@@ -1,0 +1,898 @@
+{
+  "values": [
+    {
+      "id": "greate:milling",
+      "label": "Milling",
+      "state": "accepted",
+      "description": "Grinding materials into powders or particles.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:milling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/smelting",
+      "label": "Smelting",
+      "state": "accepted",
+      "description": "Furnace smelting of ores, foods, and materials.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "smelting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/blasting",
+      "label": "Blasting",
+      "state": "accepted",
+      "description": "Blast furnace smelting for faster processing.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "blasting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "pack:tfg/stonecutting",
+      "label": "Stonecutting",
+      "state": "accepted",
+      "description": "Stonecutter recipes for decorative blocks.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "stonecutting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:cutting",
+      "label": "Cutting",
+      "state": "accepted",
+      "description": "Sawing or cutting materials into smaller pieces.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:cutting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:heating",
+      "label": "Heating",
+      "state": "accepted",
+      "description": "Heating items in firepit, forge, or kiln for transformation.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/heating",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:heating",
+          "confidence": 0.65
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:chisel",
+      "label": "Chisel",
+      "state": "accepted",
+      "description": "Shaping blocks into slabs, stairs, or smooth variants.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/chisel",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:chisel",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:collapse",
+      "label": "Collapse",
+      "state": "rejected",
+      "description": "Environmental block collapse event, not a player workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:collapse",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:pressing",
+      "label": "Pressing",
+      "state": "accepted",
+      "description": "Pressing items into plates or shapes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:pressing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:splashing",
+      "label": "Splashing",
+      "state": "accepted",
+      "description": "Washing items with water to transform them.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:splashing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:landslide",
+      "label": "Landslide",
+      "state": "rejected",
+      "description": "Environmental block movement event, not a player workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:landslide",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:anvil",
+      "label": "Anvil",
+      "state": "accepted",
+      "description": "Smithing on an anvil to shape metal items.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:anvil",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:barrel_sealed",
+      "label": "Barrel Sealed",
+      "state": "accepted",
+      "description": "Processing items in a sealed barrel over time.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:barrel_sealed",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:damage_inputs_shapeless_crafting",
+      "label": "Damage Inputs Shapeless Crafting",
+      "state": "rejected",
+      "description": "Internal recipe implementation, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:damage_inputs_shapeless_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfg:item_repair",
+      "label": "Equipment Repair",
+      "state": "accepted",
+      "description": "Repairing damaged tools and equipment.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfg:item_repair",
+          "confidence": 0.65
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:quern",
+      "label": "Quern",
+      "state": "accepted",
+      "description": "Grinding ores, grains, and dyes using a quern.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/quern",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/quern",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:quern",
+          "confidence": 0.65
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:compacting",
+      "label": "Compacting",
+      "state": "accepted",
+      "description": "Compressing materials into blocks or denser forms.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:compacting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:mixing",
+      "label": "Mixing",
+      "state": "accepted",
+      "description": "Combining ingredients in a mixer.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:mixing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:barrel_instant",
+      "label": "Barrel Instant",
+      "state": "accepted",
+      "description": "Instant barrel recipes like mixing or dyeing.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:barrel_instant",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:filling",
+      "label": "Filling",
+      "state": "accepted",
+      "description": "Filling containers with fluids using a spout.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:filling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "ae2:transform",
+      "label": "Transform",
+      "state": "accepted",
+      "description": "In-world transformation recipes for materials.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ae2:transform",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "rnr:mattock",
+      "label": "Mattock",
+      "state": "rejected",
+      "description": "Tool name, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "rnr:mattock",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:curving",
+      "label": "Curving",
+      "state": "accepted",
+      "description": "Bending or curving metal sheets.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:curving",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:item_application",
+      "label": "Item Application",
+      "state": "accepted",
+      "description": "Applying an item to a block using a deployer.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:item_application",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:advanced_shapeless_crafting",
+      "label": "Advanced Shapeless Crafting",
+      "state": "rejected",
+      "description": "Internal recipe implementation, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:advanced_shapeless_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "rnr:block_mod",
+      "label": "Block Mod",
+      "state": "rejected",
+      "description": "Generic block modification category, not a specific process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "rnr:block_mod",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:sandpaper_polishing",
+      "label": "Sandpaper Polishing",
+      "state": "accepted",
+      "description": "Polishing items with sandpaper.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:sandpaper_polishing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:polishing",
+      "label": "Polishing",
+      "state": "accepted",
+      "description": "Polishing items for smoother finish.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:polishing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:deploying",
+      "label": "Deploying",
+      "state": "accepted",
+      "description": "Using a deployer to place or apply items.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:deploying",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "create:sequenced_assembly",
+      "label": "Sequenced Assembly",
+      "state": "accepted",
+      "description": "Multi-step assembly process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:sequenced_assembly",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "kubejs:shaped",
+      "label": "Shaped",
+      "state": "rejected",
+      "description": "Internal shaped crafting recipe type, not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "kubejs:shaped",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:centrifugation",
+      "label": "Centrifugation",
+      "state": "accepted",
+      "description": "Spinning materials in a centrifuge to separate components.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:centrifugation",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:hammering",
+      "label": "Hammering",
+      "state": "accepted",
+      "description": "Hitting materials with a hammer to shape them.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:hammering",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "createaddition:rolling",
+      "label": "Rolling",
+      "state": "accepted",
+      "description": "Rolling ingots into wires.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "createaddition:rolling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:casting",
+      "label": "Casting",
+      "state": "accepted",
+      "description": "Pouring molten metal into molds.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:casting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "framedblocks:frame",
+      "label": "Frame",
+      "state": "rejected",
+      "description": "Generic recipe category for framed blocks, not a reusable process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "framedblocks:frame",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "greate:brewing",
+      "label": "Brewing",
+      "state": "accepted",
+      "description": "Brewing potions or similar liquids.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:brewing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:pot",
+      "label": "Pot",
+      "state": "accepted",
+      "description": "Cooking in a pot (soup, stew, etc.).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:pot",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:advanced_shaped_crafting",
+      "label": "Advanced Shaped Crafting",
+      "state": "rejected",
+      "description": "Internal recipe implementation, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:advanced_shaped_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:welding",
+      "label": "Welding",
+      "state": "accepted",
+      "description": "Welding metal pieces together on an anvil.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:welding",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:damage_inputs_shaped_crafting",
+      "label": "Damage Inputs Shaped Crafting",
+      "state": "rejected",
+      "description": "Internal recipe implementation, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:damage_inputs_shaped_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:coiling",
+      "label": "Coiling",
+      "state": "accepted",
+      "description": "Coiling metal into springs or coils.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:coiling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:knapping",
+      "label": "Knapping",
+      "state": "accepted",
+      "description": "Shaping stone or clay by knapping.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:knapping",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "vintageimprovements:vibrating",
+      "label": "Vibrating",
+      "state": "accepted",
+      "description": "Using vibration to process items.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:vibrating",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "tfc:glassworking",
+      "label": "Glassworking",
+      "state": "accepted",
+      "description": "Crafting glass items using blowpipe and tools.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/glassworking",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:glassworking",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "kubejs:shapeless",
+      "label": "Shapeless",
+      "state": "rejected",
+      "description": "Internal shapeless crafting recipe type, not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "kubejs:shapeless",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "domum_ornamentum:architects_cutter",
+      "label": "Architects Cutter",
+      "state": "accepted",
+      "description": "Using an architect's cutter to shape decorative blocks.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "domum_ornamentum:architects_cutter",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "firmalife:vat",
+      "label": "Vat",
+      "state": "accepted",
+      "description": "Processing items in a vat (e.g., fermentation, curing).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "firmalife:crafting/vat",
+          "confidence": 0.65
+        },
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:vat",
+          "confidence": 0.85
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    }
+  ]
+}

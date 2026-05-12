@@ -1,0 +1,280 @@
+{
+  "values": [
+    {
+      "id": "greate:processing/items/on/the/mechanical/saw",
+      "label": "Processing Items on the Mechanical Saw",
+      "state": "accepted",
+      "description": "Player-facing process for using a mechanical saw to process items.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "greate:ponder/mechanical_saw_processing",
+          "confidence": 0.7
+        }
+      ],
+      "related_activity": [
+        "slot:automation"
+      ]
+    },
+    {
+      "id": "greate:throughput/of/mechanical/pumps",
+      "label": "Throughput of Mechanical Pumps",
+      "state": "rejected",
+      "description": "Not a player-facing process; describes pump performance mechanics.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "greate:ponder/mechanical_pump_speed",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:beekeeping",
+      "label": "Beekeeping",
+      "state": "accepted",
+      "description": "Player-facing activity of beekeeping, including hives, frames, and honey.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/beekeeping",
+          "confidence": 0.7
+        }
+      ],
+      "related_activity": [
+        "slot:agriculture"
+      ]
+    },
+    {
+      "id": "tfc:bread",
+      "label": "Bread",
+      "state": "accepted",
+      "description": "Process of making bread, including yeast, dough, and baking.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/bread",
+          "confidence": 0.7
+        }
+      ],
+      "related_activity": [
+        "slot:cooking"
+      ]
+    },
+    {
+      "id": "tfc:oven/appliances",
+      "label": "Oven Appliances",
+      "state": "accepted",
+      "description": "Processes related to oven modular appliances: hopper, ashtray, vat, jarring station.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/oven_appliances",
+          "confidence": 0.7
+        }
+      ],
+      "related_activity": [
+        "slot:cooking"
+      ]
+    },
+    {
+      "id": "tfc:pits/of/fire",
+      "label": "Pits of Fire",
+      "state": "accepted",
+      "description": "Player-facing process of creating and using firepits for cooking and heating.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/getting_started/firepit",
+          "confidence": 0.7
+        }
+      ],
+      "related_activity": [
+        "slot:survival"
+      ]
+    },
+    {
+      "id": "buildinggadgets2:copy/paste/gadget",
+      "label": "Copy Paste Gadget",
+      "state": "accepted",
+      "description": "Using the copy-paste gadget to replicate structures.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "buildinggadgets2:buildinggadgets2book/en_us/entries/copypaste",
+          "confidence": 0.7
+        }
+      ],
+      "related_activity": [
+        "slot:building"
+      ]
+    },
+    {
+      "id": "tfc:advanced/materials",
+      "label": "Advanced Materials",
+      "state": "rejected",
+      "description": "Catch-all material category, not a process or task.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/advanced_building_materials",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:ancient/altars",
+      "label": "Ancient Altars",
+      "state": "accepted",
+      "description": "Player-facing interaction with ancient altars for sacrifices in the Beneath.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/beneath/ancient_altar",
+          "confidence": 0.7
+        }
+      ],
+      "related_activity": [
+        "slot:exploration"
+      ]
+    },
+    {
+      "id": "tfc:calendar/and/climate",
+      "label": "Calendar and Climate",
+      "state": "rejected",
+      "description": "Informational UI about calendar and climate, not a process.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/the_world/climate",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:pets",
+      "label": "Pets",
+      "state": "rejected",
+      "description": "Pet mechanics, not a player-facing production or task workflow.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/pets",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:weaving",
+      "label": "Weaving",
+      "state": "accepted",
+      "description": "Player-facing process of weaving cloth using spindle and loom.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/weaving",
+          "confidence": 0.7
+        }
+      ],
+      "related_activity": [
+        "slot:crafting"
+      ]
+    },
+    {
+      "id": "create_connected:using/linked/transmitters",
+      "label": "Using Linked Transmitters",
+      "state": "accepted",
+      "description": "Player-facing process of setting up wireless redstone with linked transmitters.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create_connected:ponder/linked_transmitter",
+          "confidence": 0.7
+        }
+      ],
+      "related_activity": [
+        "slot:redstone"
+      ]
+    },
+    {
+      "id": "create_hypertube:hypertube/entrances",
+      "label": "Hypertube Entrances",
+      "state": "accepted",
+      "description": "Player-facing process of using hypertube entrances for high-speed travel.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create_hypertube:ponder/entrance",
+          "confidence": 0.7
+        }
+      ],
+      "related_activity": [
+        "slot:transport"
+      ]
+    },
+    {
+      "id": "create:assembling/windmills/using/sails",
+      "label": "Assembling Windmills using Sails",
+      "state": "accepted",
+      "description": "Player-facing process of building windmills with sails.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/sail",
+          "confidence": 0.7
+        }
+      ],
+      "related_activity": [
+        "slot:power"
+      ]
+    },
+    {
+      "id": "create:attaching/blocks/using/the/sticker",
+      "label": "Attaching blocks using the Sticker",
+      "state": "accepted",
+      "description": "Player-facing process of using stickers to attach blocks in contraptions.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/sticker",
+          "confidence": 0.7
+        }
+      ],
+      "related_activity": [
+        "slot:mechanics"
+      ]
+    }
+  ]
+}

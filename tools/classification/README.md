@@ -62,8 +62,11 @@ product direction.
 - `src/evidence/` assembles pack-level evidence for facet vocabulary work:
   runtime item facts, recipe summaries, tag summaries, mod metadata, guide
   pages, quest nodes, advancements, and diagnostics.
-- `src/llm/` runs stage 3 completion, runtime subsystem vocabulary proposal,
-  fixture record/replay, retry repair, and the OpenRouter live client.
+- `src/vocabulary/` proposes and curates pack facet vocabulary; candidate
+  modules keep source-specific extraction and semantic-evidence handling
+  separate from pipeline orchestration.
+- `src/llm/` runs stage 3 completion, fixture record/replay, retry repair, and
+  the OpenRouter live client.
 - `datasets/<source>/` holds committed classification outputs that can be
   synced into runtime resources.
 - `test/fixtures/<run>/` holds recorded LLM prompt/response fixtures.
@@ -73,6 +76,7 @@ Primary docs:
 - [classification tool guide](../../docs/design/classification/tool-guide.md)
 - [classification system overview](../../docs/design/classification/README.md)
 - [facet vocabulary plan](../../docs/plans/classification-facet-vocabulary.md)
+- [classification pipeline refactor plan](../../docs/plans/classification-pipeline-refactor.md)
 - [item classification plan](../../docs/plans/item-classification.md)
 
 ## Recommended Pack Workflow
@@ -118,7 +122,6 @@ bun run classify:runtime-pack -- \
   when `--evidence <pack>.facet-evidence.json` is supplied
 - passes accepted pack vocabulary into stage 3 when `--facet-vocabulary` is
   supplied; vocabulary-backed facets must use accepted ids from that file
-- generates or reuses runtime `mod_subsystem` vocabulary
 - runs deterministic facets and optional stage 3 completion
 - repairs items that received no LLM-authored facets
 - validates the final layer
@@ -203,9 +206,15 @@ pack:tfg2/steelmaking#input
 
 The command writes `facet-vocabulary.json` and
 `facet-vocabulary.review.json`. Pass the accepted vocabulary to Stage 3 with
-`--facet-vocabulary`; the prompt lists accepted ids, the live OpenRouter retry
-loop rejects invented vocabulary-backed values, and the final validator checks
-the complete layer against the same artifact.
+`--facet-vocabulary`; the prompt lists accepted ids, Stage 3 drops and reports
+invented vocabulary-backed values after parsing, and the final validator checks
+the complete layer against the same artifact. Malformed or missing-item
+responses still retry while the provider prompt cache is warm.
+
+The proposer defaults to a broad candidate budget (`--max-candidates-per-facet
+512`) and then chunks prompts per facet. Keep the default for baseline runs so
+low-support but semantically important values reach the curation stage; reduce
+it only for local prompt-shape debugging.
 
 ## Other Common Commands
 
@@ -234,7 +243,7 @@ bun run src/cli.ts generate-pack-layer \
   --summary modpacks/exports/tfg2.runtime-summary.json \
   --mods /path/to/prism/instance-or-minecraft/mods \
   --evidence out/tfg2/tfg2.facet-evidence.json \
-  --subsystems-file out/tfg2.runtime-subsystems.json \
+  --facet-vocabulary out/tfg2/tfg2.facet-vocabulary.json \
   --out out/tfg2 \
   --stages 1,2,3 \
   --datapack \
@@ -266,10 +275,11 @@ Working outputs are gitignored under `out/`:
 - `<source>.items.ndjson` and `<source>.items.meta.json`: stage-1 records.
 - `<source>.facets.partial.json`: deterministic stage-2 layer.
 - `<source>.facets.complete.json`: stage-2 plus stage-3 completion.
-- `<source>.subsystems.json`: per-mod `mod_subsystem` vocabulary cache.
-- `<pack>.runtime-subsystems.json`: namespace-scoped subsystem vocabulary from
-  a runtime export.
 - `<pack>.facet-evidence.json`: pack-level evidence for vocabulary generation.
+- `<pack>.facet-vocabulary.json`: pack-level vocabulary for vocabulary-backed
+  semantic facets, including `mod_subsystem`.
+- `<pack>.facet-vocabulary.review.json`: curation decisions and diagnostics for
+  the vocabulary artifact.
 - `<pack>.pack.items.ndjson`: runtime records enriched with static jar facts.
 - `<pack>.pack.facets.partial.json` / `.complete.json`: generated modpack
   classification layer.

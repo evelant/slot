@@ -1,0 +1,792 @@
+{
+  "values": [
+    {
+      "id": "tfc:animal/husbandry#input",
+      "label": "Animal Husbandry Input",
+      "state": "review",
+      "description": "Items consumed by animal husbandry processes.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/animal_husbandry",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:animal/husbandry"
+    },
+    {
+      "id": "tfc:animal/husbandry#output",
+      "label": "Animal Husbandry Output",
+      "state": "review",
+      "description": "Items produced by animal husbandry processes.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/animal_husbandry",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:animal/husbandry"
+    },
+    {
+      "id": "tfc:papermaking#input",
+      "label": "Papermaking Input",
+      "state": "review",
+      "description": "Items consumed by papermaking processes.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/papermaking",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:papermaking"
+    },
+    {
+      "id": "tfc:papermaking#output",
+      "label": "Papermaking Output",
+      "state": "review",
+      "description": "Items produced by papermaking processes.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/papermaking",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:papermaking"
+    },
+    {
+      "id": "create:using/the/elevator/pulley#input",
+      "label": "Using the Elevator Pulley Input",
+      "state": "review",
+      "description": "Items consumed by elevator pulley operation.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/elevator_pulley",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:using/the/elevator/pulley"
+    },
+    {
+      "id": "create:using/the/elevator/pulley#output",
+      "label": "Using the Elevator Pulley Output",
+      "state": "review",
+      "description": "Items produced by elevator pulley operation.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/elevator_pulley",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:using/the/elevator/pulley"
+    },
+    {
+      "id": "create:automated/recipes/with/factory/gauges#input",
+      "label": "Automated Recipes with Factory Gauges Input",
+      "state": "review",
+      "description": "Items consumed by automated recipe processing.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/factory_gauge_recipe",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:automated/recipes/with/factory/gauges"
+    },
+    {
+      "id": "create:automated/recipes/with/factory/gauges#output",
+      "label": "Automated Recipes with Factory Gauges Output",
+      "state": "review",
+      "description": "Items produced by automated recipe processing.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/factory_gauge_recipe",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:automated/recipes/with/factory/gauges"
+    },
+    {
+      "id": "tfc:earth/tree/index#input",
+      "label": "Earth Tree Index Input",
+      "state": "review",
+      "description": "Items consumed by earth tree index lookup.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/arborfirmacraft/earth_tree_index",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:earth/tree/index"
+    },
+    {
+      "id": "tfc:earth/tree/index#output",
+      "label": "Earth Tree Index Output",
+      "state": "review",
+      "description": "Items produced by earth tree index lookup.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/arborfirmacraft/earth_tree_index",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:earth/tree/index"
+    },
+    {
+      "id": "tfc:anvils#input",
+      "label": "Anvils Input",
+      "state": "review",
+      "description": "Items consumed by anvil working and welding.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/anvils",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:anvils"
+    },
+    {
+      "id": "tfc:anvils#output",
+      "label": "Anvils Output",
+      "state": "review",
+      "description": "Items produced by anvil working and welding.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/anvils",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:anvils"
+    },
+    {
+      "id": "tfc:extraterrestrial/fauna#input",
+      "label": "Extraterrestrial Fauna Input",
+      "state": "review",
+      "description": "Items consumed by extraterrestrial fauna interactions.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_tips/space_fauna",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:extraterrestrial/fauna"
+    },
+    {
+      "id": "tfc:extraterrestrial/fauna#output",
+      "label": "Extraterrestrial Fauna Output",
+      "state": "review",
+      "description": "Items produced by extraterrestrial fauna interactions.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_tips/space_fauna",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:extraterrestrial/fauna"
+    },
+    {
+      "id": "tfc:glass/products#input",
+      "label": "Glass Products Input",
+      "state": "review",
+      "description": "Items consumed by glass product creation.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/glassworking_applications",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:glass/products"
+    },
+    {
+      "id": "tfc:glass/products#output",
+      "label": "Glass Products Output",
+      "state": "review",
+      "description": "Items produced by glass product creation.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/glassworking_applications",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:glass/products"
+    },
+    {
+      "id": "create:assembling/trains#input",
+      "label": "Assembling Trains Input",
+      "state": "review",
+      "description": "Items consumed by train assembly.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/train_assembly",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:assembling/trains"
+    },
+    {
+      "id": "create:assembling/trains#output",
+      "label": "Assembling Trains Output",
+      "state": "review",
+      "description": "Items produced by train assembly.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/train_assembly",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:assembling/trains"
+    },
+    {
+      "id": "create:using/the/deployer#input",
+      "label": "Using the Deployer Input",
+      "state": "review",
+      "description": "Items consumed by the deployer.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/deployer",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:using/the/deployer"
+    },
+    {
+      "id": "create:using/the/deployer#output",
+      "label": "Using the Deployer Output",
+      "state": "review",
+      "description": "Items produced by the deployer.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/deployer",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:using/the/deployer"
+    },
+    {
+      "id": "tfc:anvil/working/guide#input",
+      "label": "Anvil Working Guide Input",
+      "state": "review",
+      "description": "Items consumed by anvil working (guide context).",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_tips/anvil_working_guide",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:anvil/working/guide"
+    },
+    {
+      "id": "tfc:anvil/working/guide#output",
+      "label": "Anvil Working Guide Output",
+      "state": "review",
+      "description": "Items produced by anvil working (guide context).",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_tips/anvil_working_guide",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:anvil/working/guide"
+    },
+    {
+      "id": "tfc:steel#input",
+      "label": "Steel Input",
+      "state": "review",
+      "description": "Items consumed by steel production.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/metal/anvil/steel",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/steel",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:steel"
+    },
+    {
+      "id": "tfc:steel#output",
+      "label": "Steel Output",
+      "state": "review",
+      "description": "Items produced by steel production.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/metal/anvil/steel",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/steel",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:steel"
+    },
+    {
+      "id": "create:transporting/packages/between/frogports#input",
+      "label": "Transporting packages between Frogports Input",
+      "state": "review",
+      "description": "Items consumed by frogport package transport.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/package_frogport",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:transporting/packages/between/frogports"
+    },
+    {
+      "id": "create:transporting/packages/between/frogports#output",
+      "label": "Transporting packages between Frogports Output",
+      "state": "review",
+      "description": "Items produced by frogport package transport.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/package_frogport",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:transporting/packages/between/frogports"
+    },
+    {
+      "id": "tfc:hazardous/materials#input",
+      "label": "Hazardous Materials Input",
+      "state": "review",
+      "description": "Items consumed by hazardous material handling.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/hazards",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:hazardous/materials"
+    },
+    {
+      "id": "tfc:hazardous/materials#output",
+      "label": "Hazardous Materials Output",
+      "state": "review",
+      "description": "Items produced by hazardous material handling.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/hazards",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:hazardous/materials"
+    },
+    {
+      "id": "create:setting/up/steam/engines#input",
+      "label": "Setting up Steam Engines Input",
+      "state": "review",
+      "description": "Items consumed by steam engine setup.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/steam_engine",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:setting/up/steam/engines"
+    },
+    {
+      "id": "create:setting/up/steam/engines#output",
+      "label": "Setting up Steam Engines Output",
+      "state": "review",
+      "description": "Items produced by steam engine setup.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/steam_engine",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:setting/up/steam/engines"
+    },
+    {
+      "id": "tfc:sloops#input",
+      "label": "Sloops Input",
+      "state": "review",
+      "description": "Items consumed by sloop construction.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmaciv/sloop",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:sloops"
+    },
+    {
+      "id": "tfc:sloops#output",
+      "label": "Sloops Output",
+      "state": "review",
+      "description": "Items produced by sloop construction.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmaciv/sloop",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:sloops"
+    },
+    {
+      "id": "create:distribution/modes/of/the/brass/tunnel#input",
+      "label": "Distribution Modes of the Brass Tunnel Input",
+      "state": "review",
+      "description": "Items consumed by brass tunnel distribution.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/brass_tunnel_modes",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:distribution/modes/of/the/brass/tunnel"
+    },
+    {
+      "id": "create:distribution/modes/of/the/brass/tunnel#output",
+      "label": "Distribution Modes of the Brass Tunnel Output",
+      "state": "review",
+      "description": "Items produced by brass tunnel distribution.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/brass_tunnel_modes",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:distribution/modes/of/the/brass/tunnel"
+    },
+    {
+      "id": "create:selling/items/with/table/cloths#input",
+      "label": "Selling items with Table Cloths Input",
+      "state": "review",
+      "description": "Items consumed by table cloth selling.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/table_cloth",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:selling/items/with/table/cloths"
+    },
+    {
+      "id": "create:selling/items/with/table/cloths#output",
+      "label": "Selling items with Table Cloths Output",
+      "state": "review",
+      "description": "Items produced by table cloth selling.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/table_cloth",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:selling/items/with/table/cloths"
+    },
+    {
+      "id": "tfc:blast/furnace#input",
+      "label": "Blast Furnace Input",
+      "state": "review",
+      "description": "Items consumed by blast furnace operation.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/blast_furnace",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/blast_furnace",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:blast/furnace"
+    },
+    {
+      "id": "tfc:blast/furnace#output",
+      "label": "Blast Furnace Output",
+      "state": "review",
+      "description": "Items produced by blast furnace operation.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/blast_furnace",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/blast_furnace",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:blast/furnace"
+    },
+    {
+      "id": "tfc:introduction#input",
+      "label": "Introduction Input",
+      "state": "review",
+      "description": "Items consumed in introductory progression.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/getting_started/introduction",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:introduction"
+    },
+    {
+      "id": "tfc:introduction#output",
+      "label": "Introduction Output",
+      "state": "review",
+      "description": "Items produced in introductory progression.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/getting_started/introduction",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:introduction"
+    },
+    {
+      "id": "create:ordering/items/with/stock/tickers#input",
+      "label": "Ordering items with Stock tickers Input",
+      "state": "review",
+      "description": "Items consumed by stock ticker ordering.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/stock_ticker",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:ordering/items/with/stock/tickers"
+    },
+    {
+      "id": "create:ordering/items/with/stock/tickers#output",
+      "label": "Ordering items with Stock tickers Output",
+      "state": "review",
+      "description": "Items produced by stock ticker ordering.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/stock_ticker",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:ordering/items/with/stock/tickers"
+    },
+    {
+      "id": "create:restocking/with/factory/gauges#input",
+      "label": "Restocking with Factory Gauges Input",
+      "state": "review",
+      "description": "Items consumed by factory gauge restocking.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/factory_gauge_restocker",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:restocking/with/factory/gauges"
+    },
+    {
+      "id": "create:restocking/with/factory/gauges#output",
+      "label": "Restocking with Factory Gauges Output",
+      "state": "review",
+      "description": "Items produced by factory gauge restocking.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/factory_gauge_restocker",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:restocking/with/factory/gauges"
+    },
+    {
+      "id": "create:using/weighted/ejectors#input",
+      "label": "Using Weighted Ejectors Input",
+      "state": "review",
+      "description": "Items consumed by weighted ejectors.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/weighted_ejector",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:using/weighted/ejectors"
+    },
+    {
+      "id": "create:using/weighted/ejectors#output",
+      "label": "Using Weighted Ejectors Output",
+      "state": "review",
+      "description": "Items produced by weighted ejectors.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/weighted_ejector",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "create:using/weighted/ejectors"
+    },
+    {
+      "id": "tfc:ores/metal/and/casting#input",
+      "label": "Ores, Metal, and Casting Input",
+      "state": "review",
+      "description": "Items consumed by ore processing and casting.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/getting_started/finding_ores",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:ores/metal/and/casting"
+    },
+    {
+      "id": "tfc:ores/metal/and/casting#output",
+      "label": "Ores, Metal, and Casting Output",
+      "state": "review",
+      "description": "Items produced by ore processing and casting.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/getting_started/finding_ores",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:ores/metal/and/casting"
+    }
+  ]
+}

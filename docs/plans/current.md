@@ -1,6 +1,6 @@
 # SLOT Current Implementation Plan
 
-Last updated: 2026-05-11
+Last updated: 2026-05-12
 
 Single-page entry for the active plan + queue. For the operational
 handoff (project structure, working rules, verification commands),
@@ -58,15 +58,14 @@ hold the rest.
   drag/drop goal creation/delegation now exist on NeoForge and Forge.
 - **2026-05-11** — classification pack-layer work landed installed
   `mods/` scanning, jar-backed static extraction, OpenRouter-only live
-  LLM runs, runtime subsystem vocabulary, Forge/NeoForge runtime export,
-  datapack generation, dynamic organization/subsystem auto-home cohorts,
-  `/slot classification inspect` / `rehome`, vocabulary-backed facet
-  schema validation, rich `facet-evidence.json` assembly, clean
-  no-previous-vocabulary pack vocabulary proposal, stage-3
-  `document_context`, accepted-vocabulary prompting/validation, longer
-  OpenRouter timeouts, and abort-aware in-flight request handling; deposit
-  routing was tightened back to explicit chest signals (learned affinity or
-  existing matching contents).
+  LLM runs, Forge/NeoForge runtime export, datapack generation, dynamic
+  organization/subsystem auto-home cohorts, `/slot classification inspect` /
+  `rehome`, vocabulary-backed facet schema validation, rich
+  `facet-evidence.json` assembly, clean no-previous-vocabulary pack vocabulary
+  proposal, stage-3 `document_context`, accepted-vocabulary
+  prompting/validation, longer OpenRouter timeouts, and abort-aware in-flight
+  request handling; deposit routing was tightened back to explicit chest
+  signals (learned affinity or existing matching contents).
 - **2026-05-07** — Forge parity pass moved active-kit gather and
   in-world kit-page cycle into shared common services, registered
   `GATHER_ACTIVE_KIT`, wired in-screen gather through catalog actions
@@ -200,20 +199,19 @@ track lands.
    labels); per-row "→ suggested home" preview on the loot-chest
    panel; atlas-deposit take-back guard (only revisit if playtest
    shows stuck affinity).
-4. **Classification full-pack vocabulary validation**
-   ([classification-facet-vocabulary.md](classification-facet-vocabulary.md)).
-   Slices 0-3 are implemented for the TypeScript toolchain: the registry has
-   vocabulary-backed semantic facets, scoped value-id grammar, layer and
-   vocabulary artifact validation, parser/prompt coverage, rich
-   `collect-pack-facet-evidence`, `propose-pack-facet-vocabulary`,
-   stage-3 `document_context`, accepted vocabulary prompting via
-   `--facet-vocabulary`, response validation for missing items and
-   out-of-vocabulary values, retry propagation, and metadata that records the
-   vocabulary/evidence inputs. Next slice is not more plumbing: run a full
-   `classify-runtime-pack` pass against the fresh runtime export plus a clean
-   vocabulary proposal made without `--previous-vocabulary`, review the
-   generated layer/report/prompts, then tune deterministic domain facets or
-   validation reports only from observed quality gaps.
+4. **Classification dry-run/canary after pipeline refactor**
+   ([classification-pipeline-refactor.md](classification-pipeline-refactor.md),
+   with design history in
+   [classification-facet-vocabulary.md](classification-facet-vocabulary.md)).
+   The refactor split `pack_vocabulary.ts` into focused vocabulary modules,
+   folded `mod_subsystem` into the normal vocabulary artifact, repaired
+   `organization_group` candidate/prompt leakage, added Stage 3
+   `vocabulary_proposals`, and patched deterministic ore/log gaps found by
+   canaries. The policy5 vocabulary validates and the mixed 101-item Stage 3
+   canary validates. Next classification step is an operator decision: do a
+   final vocabulary refresh so new generic defaults such as `slot:open` are in
+   the artifact, then run full `classify-runtime-pack`, or run full
+   classification against policy5 and let missing values stay omitted/reviewed.
 5. **Runtime-crawl deterministic fallback**
    ([item-classification.md § Runtime discovery](item-classification.md#runtime-discovery)).
    Walks the live registry to derive deterministic facets

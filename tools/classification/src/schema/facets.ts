@@ -528,10 +528,10 @@ export const FACETS: Record<string, FacetDef> = {
   organization_group: {
     kind: "multi_free_text",
     pattern: VOCABULARY_VALUE_ID_PATTERN,
-    description: "Vocabulary-backed player-facing storage/workflow group for auto-home (`tfc:casting`, `pack:tfg2/steelmaking`).",
+    description: "Vocabulary-backed human storage or wall-home group such as ores, crops, woodworking, or mod component families.",
     llm_authored: true,
     vocabulary_backed: true,
-    examples: ["tfc:casting", "tfc:masonry", "pack:tfg2/steelmaking"],
+    examples: ["pack:tfg2/unprocessed_ores", "pack:tfg2/crops", "create:logistics"],
   },
   mod_subsystem: {
     kind: "multi_free_text",

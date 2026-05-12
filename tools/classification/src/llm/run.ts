@@ -20,6 +20,7 @@ import {
   type SchemaProposal,
   type StageCorrection,
   type StageFillIn,
+  type VocabularyProposal,
 } from "./parse.ts";
 
 export interface Stage3Options {
@@ -45,20 +46,8 @@ export interface Stage3Options {
   clientOptions?: Partial<QueryOptions>;
   /** Progress callback — one event per completed batch. */
   onBatch?: (info: BatchProgress) => void;
-  /**
-   * Pre-proposed canonical vocabulary for `mod_subsystem`. Forwarded into the
-   * system prompt so the LLM picks consistent labels across items in this run.
-   * Omit for vanilla / mods with no meaningful subsystem groupings.
-   */
-  subsystemVocabulary?: readonly SubsystemVocabularyEntry[];
   /** Accepted pack vocabulary for vocabulary-backed facets. */
   facetVocabulary?: PackFacetVocabulary;
-  /**
-   * Namespace-scoped canonical vocabulary for mixed-namespace inputs, such as
-   * runtime exports from a loaded modpack. Each batch receives only entries
-   * whose namespace appears in that batch.
-   */
-  subsystemVocabularyByNamespace?: SubsystemVocabularyByNamespace;
   /**
    * Verbose-prompt extras. Defaults align with {@link LlmPromptInput.prompt_extras}:
    * disambiguation ON (principle-based, generalizes well), misconceptions
@@ -89,6 +78,8 @@ export interface Stage3Result {
   coverageAdded: Record<string, number>;
   /** Aggregated schema proposals for curator review. */
   proposals: SchemaProposal[];
+  /** Aggregated missing-vocabulary proposals for accepted vocabulary refinement. */
+  vocabularyProposals: VocabularyProposal[];
   /** Aggregated stage-2 corrections the LLM suggested (NOT auto-merged). */
   corrections: StageCorrection[];
   /** Aggregated stage-2 fill-ins the LLM noticed (deterministic facets
@@ -108,16 +99,6 @@ export interface BatchResponseMismatch {
   missing: readonly string[];
   extra: readonly string[];
 }
-
-export interface SubsystemVocabularyEntry {
-  id: string;
-  rationale?: string;
-}
-
-export type SubsystemVocabularyByNamespace = Record<
-  string,
-  readonly SubsystemVocabularyEntry[]
->;
 
 // Production default: deepseek-v4-flash via OpenRouter pinned to the
 // deepseek provider. Locked in 2026-04-26 after the 60-item playtest sample
@@ -155,6 +136,7 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
   const concurrency = Math.max(1, options.concurrency ?? DEFAULT_BATCH_CONCURRENCY);
   const warnings: string[] = [];
   const proposals: SchemaProposal[] = [];
+  const vocabularyProposals: VocabularyProposal[] = [];
   const corrections: StageCorrection[] = [];
   const fillIns: StageFillIn[] = [];
   const coverageAdded: Record<string, number> = {};
@@ -190,7 +172,9 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
     // unparseable response (we hit this on 3 batches of the create
     // modpack run, losing 60 items). When the client supports it
     // (currently only OpenRouterClient), we hand it a `parseLlmResponse`
-    // shim so it can re-ask while the prompt cache is still warm.
+    // shim so it can re-ask while the prompt cache is still warm. Vocabulary
+    // misses are handled after parsing so a mostly useful response is not
+    // retried wholesale just because one closed-set value needs to be dropped.
     const queryOptions: Partial<QueryOptions> & { model: string } = {
       model,
       ...options.clientOptions,
@@ -204,13 +188,6 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
               reason: responseMismatchReason(mismatch),
             };
           }
-          const vocabularyIssues = responseVocabularyIssues(parsed.items, facetVocabulary);
-          if (vocabularyIssues.length > 0) {
-            return {
-              ok: false,
-              reason: vocabularyMismatchReason(vocabularyIssues),
-            };
-          }
           return { ok: true };
         } catch (err) {
           return { ok: false, reason: (err as Error).message.slice(0, 120) };
@@ -221,11 +198,6 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
     const promptInput = {
       items: payloads,
       target_facets: targetFacets,
-      subsystem_vocabulary: selectSubsystemVocabularyForRecords(
-        batch,
-        options.subsystemVocabulary,
-        options.subsystemVocabularyByNamespace,
-      ),
       facet_vocabulary: facetVocabulary,
       prompt_extras: options.promptExtras
         ? {
@@ -263,6 +235,7 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
     }
     warnings.push(...parsed.warnings);
     proposals.push(...parsed.proposals);
+    vocabularyProposals.push(...parsed.vocabularyProposals);
     corrections.push(...parsed.corrections);
     fillIns.push(...parsed.fillIns);
 
@@ -360,7 +333,17 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
     generated_at: new Date().toISOString(),
   };
 
-  return { layer, filledItems, coverageAdded, proposals, corrections, fillIns, warnings, responseMismatches };
+  return {
+    layer,
+    filledItems,
+    coverageAdded,
+    proposals,
+    vocabularyProposals,
+    corrections,
+    fillIns,
+    warnings,
+    responseMismatches,
+  };
 }
 
 function batchResponseMismatch(
@@ -389,30 +372,6 @@ function responseMismatchReason(mismatch: Omit<BatchResponseMismatch, "batchInde
   return `response coverage mismatch: ${parts.join("; ")}`;
 }
 
-export function selectSubsystemVocabularyForRecords(
-  records: readonly ItemExtractRecord[],
-  globalVocabulary: readonly SubsystemVocabularyEntry[] | undefined,
-  byNamespace: SubsystemVocabularyByNamespace | undefined,
-): readonly SubsystemVocabularyEntry[] | undefined {
-  const out: SubsystemVocabularyEntry[] = [];
-  const seen = new Set<string>();
-  const add = (entry: SubsystemVocabularyEntry) => {
-    if (seen.has(entry.id)) return;
-    seen.add(entry.id);
-    out.push(entry);
-  };
-
-  for (const entry of globalVocabulary ?? []) add(entry);
-
-  if (byNamespace) {
-    const namespaces = new Set(records.map((record) => record.namespace));
-    for (const namespace of [...namespaces].sort()) {
-      for (const entry of byNamespace[namespace] ?? []) add(entry);
-    }
-  }
-
-  return out.length > 0 ? out : undefined;
-}
 
 /** Compact string summary of a layer entry for warning text. */
 function describeEntry(entry: unknown): string {
@@ -447,13 +406,6 @@ function valuesDisagree(
   const existingVals = Array.isArray(e.values) ? (e.values as unknown[]) : [];
   const existingSet = new Set(existingVals.map((v) => JSON.stringify(v)));
   return llm.values.some((v) => !existingSet.has(JSON.stringify(v)));
-}
-
-function responseVocabularyIssues(
-  items: Map<string, ParsedItemFacets>,
-  vocabulary: PromptFacetVocabulary | undefined,
-): string[] {
-  return enforcePromptVocabulary(items, vocabulary, false);
 }
 
 function dropInvalidVocabularyValues(

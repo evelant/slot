@@ -80,6 +80,7 @@ export function validateVocabularyArtifact(obj: unknown): VocabularyValidateResu
     errors.push("/facets must be an object");
   } else {
     validateVocabularyFacets(obj.facets, errors);
+    validateWorkflowRoleParentReferences(obj.facets, errors);
   }
 
   return errors.length === 0
@@ -150,6 +151,30 @@ function validateVocabularyFacets(
       continue;
     }
     validateVocabularyValues(facetId, def, rawFacet.values, errors);
+  }
+}
+
+function validateWorkflowRoleParentReferences(
+  facets: Record<string, unknown>,
+  errors: string[],
+): void {
+  const workflowFacet = facets.workflow;
+  const workflowRoleFacet = facets.workflow_role;
+  if (!isRecord(workflowRoleFacet) || !isRecord(workflowRoleFacet.values)) return;
+  const acceptedWorkflows = new Set<string>();
+  if (isRecord(workflowFacet) && isRecord(workflowFacet.values)) {
+    for (const [valueId, rawValue] of Object.entries(workflowFacet.values)) {
+      if (isRecord(rawValue) && rawValue.state === "accepted") {
+        acceptedWorkflows.add(valueId);
+      }
+    }
+  }
+  for (const [valueId, rawValue] of Object.entries(workflowRoleFacet.values)) {
+    if (!isRecord(rawValue) || rawValue.state !== "accepted") continue;
+    const parent = typeof rawValue.parent === "string" ? rawValue.parent : valueId.split("#")[0] ?? "";
+    if (!parent || !acceptedWorkflows.has(parent)) {
+      errors.push(`/facets/workflow_role/values/${valueId}/parent references missing accepted workflow '${parent}'`);
+    }
   }
 }
 

@@ -1,0 +1,598 @@
+{
+  "values": [
+    {
+      "id": "create:controlling/rotational/speed/with/chain/gearshifts",
+      "label": "Controlling rotational speed with Chain Gearshifts",
+      "state": "rejected",
+      "description": "Specific mechanism for speed control, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:filling/items/using/a/spout",
+      "label": "Filling Items using a Spout",
+      "state": "accepted",
+      "description": "Process using a Spout to fill fluid-holding items.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/spout_filling",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:fluid/transportation/using/mechanical/pumps",
+      "label": "Fluid Transportation using Mechanical Pumps",
+      "state": "accepted",
+      "description": "Process of moving fluids through pipes using Mechanical Pumps.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/mechanical_pump_flow",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:precise/rotation/using/valve/handles",
+      "label": "Precise rotation using Valve Handles",
+      "state": "rejected",
+      "description": "Specific mechanic for precise rotation, not a process players plan around.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:rose/quartz/lamps",
+      "label": "Rose Quartz Lamps",
+      "state": "rejected",
+      "description": "Block description, not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:setting/up/steam/whistles",
+      "label": "Setting up Steam Whistles",
+      "state": "rejected",
+      "description": "Specific building task, not a reusable process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:stations/and/scheduling",
+      "label": "Stations & Scheduling",
+      "state": "accepted",
+      "description": "Process of managing train schedules and stations.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/auto_schedule",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:using/contraption/controls",
+      "label": "Using Contraption Controls",
+      "state": "rejected",
+      "description": "Mechanic for toggling actors on contraptions, not a standalone process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:using/display/boards",
+      "label": "Using Display Boards",
+      "state": "rejected",
+      "description": "Decorative/UI block usage, not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:using/empty/blaze/burners",
+      "label": "Using Empty Blaze Burners",
+      "state": "accepted",
+      "description": "Process of capturing Blazes for heat sources.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/empty_blaze_burner",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:using/mechanical/belts",
+      "label": "Using Mechanical Belts",
+      "state": "accepted",
+      "description": "Process of connecting shafts and transporting items via belts.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/belt_connector",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:using/redstone/links",
+      "label": "Using Redstone Links",
+      "state": "rejected",
+      "description": "Wireless redstone tool, not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:using/train/schedules",
+      "label": "Using Train Schedules",
+      "state": "accepted",
+      "description": "Process of programming and assigning train schedules.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/train_schedule",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:valid/orientations/for/mechanical/belts",
+      "label": "Valid Orientations for Mechanical Belts",
+      "state": "rejected",
+      "description": "Information about belt placement, not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "greate:fluid/transportation/using/mechanical/pumps",
+      "label": "Fluid Transportation using Mechanical Pumps",
+      "state": "accepted",
+      "description": "Process of moving fluids through pipes using Mechanical Pumps (Greate variant).",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "greate:ponder/mechanical_pump_flow",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "greate:using/mechanical/belts",
+      "label": "Using Mechanical Belts",
+      "state": "accepted",
+      "description": "Process of connecting shafts and transporting items via belts (Greate variant).",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "greate:ponder/belt_connector",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "greate:valid/orientations/for/mechanical/belts",
+      "label": "Valid Orientations for Mechanical Belts",
+      "state": "rejected",
+      "description": "Information about belt placement, not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "railways:using/a/coupler",
+      "label": "Using a Coupler",
+      "state": "accepted",
+      "description": "Process of coupling/decoupling trains using Train Coupler.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "railways:ponder/train_coupler",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:processing/items/and/fluids/in/the/centrifuge",
+      "label": "Processing Items & Fluids in the Centrifuge",
+      "state": "accepted",
+      "description": "Process of using a Centrifuge to process items and fluids.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "vintageimprovements:ponder/centrifuge",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:processing/items/with/the/laser",
+      "label": "Processing Items with the Laser",
+      "state": "accepted",
+      "description": "Process of using a Laser to process items.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "vintageimprovements:ponder/laser",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:fire/clay",
+      "label": "Fire Clay",
+      "state": "rejected",
+      "description": "Material description, not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfc:irrigation",
+      "label": "Irrigation",
+      "state": "accepted",
+      "description": "Process of setting up sprinklers and pipes for automated watering.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/irrigation",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:beneath/crops",
+      "label": "Beneath Crops",
+      "state": "rejected",
+      "description": "Crop list and requirements, not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfc:food/and/water",
+      "label": "Food and Water",
+      "state": "rejected",
+      "description": "General nutrition and thirst mechanics, not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfc:greenhouse",
+      "label": "Greenhouse",
+      "state": "accepted",
+      "description": "Process of building and using a Greenhouse multiblock for year-round crops.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/greenhouse",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:preservation",
+      "label": "Preservation",
+      "state": "accepted",
+      "description": "Process of preserving food using vessels, salting, vinegar, etc.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/decay",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:venus/vein/index",
+      "label": "Venus Vein Index",
+      "state": "rejected",
+      "description": "Reference index of Venus ore veins, not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create_hypertube:creating/a/hypertube",
+      "label": "Creating a Hypertube",
+      "state": "accepted",
+      "description": "Process of connecting hypertubes for item/fluid transport.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create_hypertube:ponder/simple_tube",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:connecting/gauges/to/other/blocks",
+      "label": "Connecting Gauges to other Blocks",
+      "state": "rejected",
+      "description": "Specific gauge configuration, not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:controlling/rotational/speed/using/sequenced/gearshifts",
+      "label": "Controlling Rotational Speed using Sequenced Gearshifts",
+      "state": "rejected",
+      "description": "Specific mechanism for timed speed control, not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:controlling/signals/using/pulse/extenders",
+      "label": "Controlling signals using Pulse Extenders",
+      "state": "rejected",
+      "description": "Redstone component usage, not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:creating/and/unwrapping/packages",
+      "label": "Creating and unwrapping packages",
+      "state": "accepted",
+      "description": "Process of packaging and unpacking items.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/packager",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:direction/of/transfer",
+      "label": "Direction of Transfer",
+      "state": "rejected",
+      "description": "Information about funnel placement, not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:draining/and/filling/fluid/containers",
+      "label": "Draining and Filling fluid containers",
+      "state": "accepted",
+      "description": "Process of using pipes to drain/fill fluid containers.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/fluid_pipe_interaction",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:emptying/fluid/containers/using/item/drains",
+      "label": "Emptying Fluid Containers using Item Drains",
+      "state": "accepted",
+      "description": "Process of using Item Drains to empty fluid containers.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/item_drain",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:fill/and/drain/level/of/hose/pulleys",
+      "label": "Fill and Drain level of Hose Pulleys",
+      "state": "accepted",
+      "description": "Process of using Hose Pulley to fill/drain fluid bodies.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/hose_pulley_level",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:filling/terrain/with/the/roller",
+      "label": "Filling terrain with the Roller",
+      "state": "accepted",
+      "description": "Process of using Mechanical Roller to fill terrain gaps.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/mechanical_roller_fill",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:generating/rotational/force/using/large/water/wheels",
+      "label": "Generating Rotational Force using Large Water Wheels",
+      "state": "accepted",
+      "description": "Process of generating rotational power with Large Water Wheels.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/large_water_wheel",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:placing/train/signals",
+      "label": "Placing Train Signals",
+      "state": "rejected",
+      "description": "Specific building task, not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:processing/items/in/the/millstone",
+      "label": "Processing Items in the Millstone",
+      "state": "accepted",
+      "description": "Process of grinding items in a Millstone.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/millstone",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:processing/items/on/the/mechanical/saw",
+      "label": "Processing Items on the Mechanical Saw",
+      "state": "accepted",
+      "description": "Process of cutting items on a Mechanical Saw.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/mechanical_saw_processing",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:redstone/output/of/the/pulse/timer",
+      "label": "Redstone output of the Pulse Timer",
+      "state": "rejected",
+      "description": "Redstone component behavior, not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:relaying/rotational/force/using/chain/conveyors",
+      "label": "Relaying rotational force using Chain Conveyors",
+      "state": "accepted",
+      "description": "Process of using Chain Conveyors to relay rotational power.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/chain_conveyor",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:splitting/item/stacks/using/weighted/ejectors",
+      "label": "Splitting item stacks using Weighted Ejectors",
+      "state": "accepted",
+      "description": "Process of splitting item stacks using Weighted Ejectors and Brass Tunnels.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/weighted_ejector_tunnel",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:storing/fluids/in/fluid/tanks",
+      "label": "Storing Fluids in Fluid Tanks",
+      "state": "accepted",
+      "description": "Process of storing fluids in Fluid Tanks.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/fluid_tank_storage",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:throughput/of/mechanical/pumps",
+      "label": "Throughput of Mechanical Pumps",
+      "state": "rejected",
+      "description": "Information about pump performance, not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:traversing/unloaded/chunks",
+      "label": "Traversing unloaded Chunks",
+      "state": "rejected",
+      "description": "Behavior of trains in unloaded chunks, not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "greate:processing/items/in/the/millstone",
+      "label": "Processing Items in the Millstone",
+      "state": "accepted",
+      "description": "Process of grinding items in a Millstone (Greate variant).",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "greate:ponder/millstone",
+          "confidence": 0.7
+        }
+      ]
+    }
+  ]
+}

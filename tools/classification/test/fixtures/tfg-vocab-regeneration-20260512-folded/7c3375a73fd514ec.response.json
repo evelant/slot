@@ -1,0 +1,802 @@
+{
+  "values": [
+    {
+      "id": "tfc:pumpkin_knapping",
+      "label": "Pumpkin Knapping",
+      "state": "review",
+      "description": "Possible player interaction (knapping on surface), but not a dedicated station. Requires human confirmation.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:pumpkin_knapping",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "tfc:sealed_barrel",
+      "label": "Sealed Barrel Recipe",
+      "state": "rejected",
+      "description": "JEI recipe category label, not a player-facing station or context.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:sealed_barrel",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "tfc:soup_pot",
+      "label": "Soup Pot",
+      "state": "accepted",
+      "description": "Player-facing station block used for cooking soups.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:soup_pot",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "tfc:transfer/error/anvil_forging_tier_too_low",
+      "label": "Anvil tier is too low to work",
+      "state": "rejected",
+      "description": "UI error message, not a station or process.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:transfer.error.anvil_forging_tier_too_low",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "tfc:transfer/error/anvil_welding_tier_too_low",
+      "label": "Anvil tier too low to weld that",
+      "state": "rejected",
+      "description": "UI error message, not a station or process.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:transfer.error.anvil_welding_tier_too_low",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "tfc:transfer/error/pot_missing_fluid_and_items",
+      "label": "Missing Items and Fluid",
+      "state": "rejected",
+      "description": "UI error message, not a station or process.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:transfer.error.pot_missing_fluid_and_items",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "tfc:transfer/error/pot_no_fluid",
+      "label": "No fluid in pot. Expecting %smb of any of the following [%s]",
+      "state": "rejected",
+      "description": "UI error message, not a station or process.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:transfer.error.pot_no_fluid",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "tfc:transfer/error/pot_not_enough_fluid",
+      "label": "Not enough fluid, missing %smb of %s",
+      "state": "rejected",
+      "description": "UI error message, not a station or process.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:transfer.error.pot_not_enough_fluid",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "tfc:transfer/error/pot_started",
+      "label": "Recipe already in progress",
+      "state": "rejected",
+      "description": "UI error message, not a station or process.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:transfer.error.pot_started",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "tfc:transfer/error/pot_wrong_fluid",
+      "label": "Wrong fluid of type %s",
+      "state": "rejected",
+      "description": "UI error message, not a station or process.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:transfer.error.pot_wrong_fluid",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "tfc:tree_tap",
+      "label": "Tree Tapping",
+      "state": "accepted",
+      "description": "Player-facing interaction tool/process: placing a tap on a tree to collect sap.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:tree_tap",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "vintageimprovements:text/auto_smithing/text1",
+      "label": "Using the Helve",
+      "state": "rejected",
+      "description": "JEI text label fragment, not a station or context.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:text.auto_smithing.text1",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "vintageimprovements:text/auto_smithing/text2",
+      "label": "Hammer on a",
+      "state": "rejected",
+      "description": "JEI text label fragment.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:text.auto_smithing.text2",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "vintageimprovements:text/auto_smithing/text3",
+      "label": "Smithing Table",
+      "state": "rejected",
+      "description": "JEI text label fragment (part of description), not a station id. The station 'smithing table' exists but this id is not a station reference.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:text.auto_smithing.text3",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "vintageimprovements:text/auto_smithing/text4",
+      "label": "will process",
+      "state": "rejected",
+      "description": "JEI text label fragment.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:text.auto_smithing.text4",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "vintageimprovements:text/auto_smithing/text5",
+      "label": "smithing recipes",
+      "state": "rejected",
+      "description": "JEI text label fragment.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:text.auto_smithing.text5",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "vintageimprovements:text/curving_head_damage",
+      "label": "Head Damage",
+      "state": "rejected",
+      "description": "JEI tooltip label, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:text.curving_head_damage",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "vintageimprovements:text/energy",
+      "label": "Energy costs:",
+      "state": "rejected",
+      "description": "JEI label, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:text.energy",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "vintageimprovements:text/fragile",
+      "label": "Fragile. Ingredient will be destroyed on wrong speed",
+      "state": "rejected",
+      "description": "JEI tooltip, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:text.fragile",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "vintageimprovements:text/hammer_blows",
+      "label": "Hammer Blows:",
+      "state": "rejected",
+      "description": "JEI label, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:text.hammer_blows",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "vintageimprovements:text/leaves_vibrating/text1",
+      "label": "You can vibrate",
+      "state": "rejected",
+      "description": "JEI text fragment, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:text.leaves_vibrating.text1",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "vintageimprovements:text/leaves_vibrating/text2",
+      "label": "any leaves to get",
+      "state": "rejected",
+      "description": "JEI text fragment.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:text.leaves_vibrating.text2",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "vintageimprovements:text/leaves_vibrating/text3",
+      "label": "it's normal drops.",
+      "state": "rejected",
+      "description": "JEI text fragment.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:text.leaves_vibrating.text3",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "vintageimprovements:text/leaves_vibrating/text4",
+      "label": "Drops are the",
+      "state": "rejected",
+      "description": "JEI text fragment.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:text.leaves_vibrating.text4",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "vintageimprovements:text/leaves_vibrating/text5",
+      "label": "same as using a",
+      "state": "rejected",
+      "description": "JEI text fragment.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:text.leaves_vibrating.text5",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "vintageimprovements:text/leaves_vibrating/text6",
+      "label": "Fortune III Hoe.",
+      "state": "rejected",
+      "description": "JEI text fragment.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:text.leaves_vibrating.text6",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "vintageimprovements:text/minimal_rpm",
+      "label": "Minimal RPM:",
+      "state": "rejected",
+      "description": "JEI label, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:text.minimal_rpm",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "vintageimprovements:text/processing_duration",
+      "label": "Processing duration: %s",
+      "state": "rejected",
+      "description": "JEI label, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:text.processing_duration",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "vintageimprovements:text/required_speed",
+      "label": "Required Speed:",
+      "state": "rejected",
+      "description": "JEI label, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:text.required_speed",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "vintageimprovements:text/secondary_fluid_ingredient",
+      "label": "This fluid is secondary ingredient, and must be insreted inside the Compressor to craft",
+      "state": "rejected",
+      "description": "JEI tooltip, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:text.secondary_fluid_ingredient",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "vintageimprovements:text/secondary_fluid_result",
+      "label": "This fluid is secondary result, and appears inside the Compressor after crafting",
+      "state": "rejected",
+      "description": "JEI tooltip, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:text.secondary_fluid_result",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "exposure:photograph_copying",
+      "label": "Photograph Copying",
+      "state": "rejected",
+      "description": "Crafting interaction, but no dedicated station block identified.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "exposure:photograph_copying",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "waterflasks:heal_flask",
+      "label": "Heal Flask",
+      "state": "rejected",
+      "description": "Item-specific recipe, not a station or context.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "waterflasks:heal_flask",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "computercraft:impostor_shapeless",
+      "label": "Impostor Shapeless",
+      "state": "rejected",
+      "description": "Internal implementation category, not player-facing.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "exposure:film_developing",
+      "label": "Film Developing",
+      "state": "rejected",
+      "description": "Crafting interaction, no dedicated station block identified.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "firmalife:smoking",
+      "label": "Smoking",
+      "state": "review",
+      "description": "Possible player-facing smoking process/station (smoker block). Needs human confirmation.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "description:wooden/door/value_1",
+      "label": "Wooden doors allow you to block monsters from entering your building. Testing sentences.",
+      "state": "rejected",
+      "description": "Guide description text, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "description:wooden.door.1",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "ali:archaeology_loot",
+      "label": "Archaeology Loot",
+      "state": "rejected",
+      "description": "Loot table category, not a process or station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ali:archaeology_loot",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "ali:block_loot",
+      "label": "Block Drops",
+      "state": "rejected",
+      "description": "Loot table category.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ali:block_loot",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "ali:cat_morning_gift",
+      "label": "Cat Morning Gift",
+      "state": "rejected",
+      "description": "Loot table category.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ali:cat_morning_gift",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "ali:chest_loot",
+      "label": "Chest Loot",
+      "state": "rejected",
+      "description": "Loot table category.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ali:chest_loot",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "ali:entity_loot",
+      "label": "Entity Drops",
+      "state": "rejected",
+      "description": "Loot table category.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ali:entity_loot",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "ali:fishing_loot",
+      "label": "Fishing Loot",
+      "state": "rejected",
+      "description": "Loot table category.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ali:fishing_loot",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "ali:gameplay_loot",
+      "label": "Gameplay Loot",
+      "state": "rejected",
+      "description": "Loot table category.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ali:gameplay_loot",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "ali:hero_loot",
+      "label": "Hero of the Village Loot",
+      "state": "rejected",
+      "description": "Loot table category.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ali:hero_loot",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "ali:piglin_bartering",
+      "label": "Piglin Bartering",
+      "state": "rejected",
+      "description": "Loot table category (entity interaction), not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ali:piglin_bartering",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "ali:plant_loot",
+      "label": "Plant Drops",
+      "state": "rejected",
+      "description": "Loot table category.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ali:plant_loot",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    },
+    {
+      "id": "ali:sniffer_digging",
+      "label": "Sniffer Digging",
+      "state": "rejected",
+      "description": "Loot table category (entity interaction), not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ali:sniffer_digging",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [],
+      "default_organization_group": ""
+    }
+  ]
+}

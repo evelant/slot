@@ -87,6 +87,62 @@ describe("materialFamilyRule", () => {
     expect(out[0]!).toMatchObject({ value: "deepslate" });
   });
 
+  test("ore ids use the resource material instead of the host stone", () => {
+    const hosted = materialFamilyRule.run(ctx(record({
+      id: "gtceu:andesite_copper_ore",
+      namespace: "gtceu",
+      path: "andesite_copper_ore",
+    })));
+    expect(hosted[0]!).toMatchObject({ value: "copper", source: "rule:material_family_from_ore_id" });
+
+    const deepslate = materialFamilyRule.run(ctx(record({
+      id: "minecraft:deepslate_iron_ore",
+      path: "deepslate_iron_ore",
+    })));
+    expect(deepslate[0]!).toMatchObject({ value: "iron" });
+  });
+
+  test("processed ore ids strip process stage prefixes", () => {
+    const crushed = materialFamilyRule.run(ctx(record({
+      id: "gtceu:crushed_iron_ore",
+      namespace: "gtceu",
+      path: "crushed_iron_ore",
+    })));
+    expect(crushed[0]!).toMatchObject({ value: "iron" });
+
+    const purified = materialFamilyRule.run(ctx(record({
+      id: "gtceu:purified_iron_ore",
+      namespace: "gtceu",
+      path: "purified_iron_ore",
+    })));
+    expect(purified[0]!).toMatchObject({ value: "iron" });
+  });
+
+  test("TFC ore paths strip grade prefixes", () => {
+    const poor = materialFamilyRule.run(ctx(record({
+      id: "tfc:ore/poor_hematite",
+      namespace: "tfc",
+      path: "ore/poor_hematite",
+    })));
+    expect(poor[0]!).toMatchObject({ value: "hematite" });
+
+    const native = materialFamilyRule.run(ctx(record({
+      id: "tfc:ore/small_native_copper",
+      namespace: "tfc",
+      path: "ore/small_native_copper",
+    })));
+    expect(native[0]!).toMatchObject({ value: "copper" });
+  });
+
+  test("bloom ids use the bloom metal family", () => {
+    const out = materialFamilyRule.run(ctx(record({
+      id: "tfc:raw_iron_bloom",
+      namespace: "tfc",
+      path: "raw_iron_bloom",
+    })));
+    expect(out[0]!).toMatchObject({ value: "iron", source: "rule:material_family_from_bloom_id" });
+  });
+
   test("no signal → no output", () => {
     const out = materialFamilyRule.run(ctx(record({
       id: "minecraft:mystery",
@@ -112,6 +168,14 @@ describe("formRule", () => {
       path: "stripped_oak_log",
     })));
     expect(out[0]!).toMatchObject({ value: "stripped_log" });
+  });
+
+  test("log suffix", () => {
+    const out = formRule.run(ctx(record({
+      id: "minecraft:oak_log",
+      path: "oak_log",
+    })));
+    expect(out[0]!).toMatchObject({ value: "log" });
   });
 
   test("ingot suffix", () => {

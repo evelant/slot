@@ -1,0 +1,397 @@
+{
+  "values": [
+    {
+      "id": "slot:fruit",
+      "label": "Fruit",
+      "state": "accepted",
+      "description": "Edible plant fruits, including berries, tree fruits, and wild fruits.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/fruits",
+          "confidence": 0.75
+        },
+        {
+          "kind": "block_tag",
+          "id": "tfc:fruit_tree_leaves",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:foods/citrus_fruits",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:meat",
+      "label": "Meat",
+      "state": "accepted",
+      "description": "Animal flesh used as food, raw or cooked.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/meats",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/raw_meats",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/cooked_meats",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:egg",
+      "label": "Egg",
+      "state": "accepted",
+      "description": "Edible eggs from birds and other creatures.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:eggs",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "firmalife:foods/raw_eggs",
+          "confidence": 0.75
+        },
+        {
+          "kind": "block_tag",
+          "id": "minecraft:sniffer_egg_hatch_boost",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:preserve",
+      "label": "Preserve",
+      "state": "accepted",
+      "description": "Preserved fruits and vegetables, such as jams and pickled items.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/preserves",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/sealed_preserves",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:cheese",
+      "label": "Cheese",
+      "state": "accepted",
+      "description": "Dairy product made from curdled milk, aged or fresh.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfg:foods/cheeses",
+          "confidence": 0.75
+        },
+        {
+          "kind": "block_tag",
+          "id": "firmalife:cheese_wheels",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:foods/cheese_curds",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:vegetable",
+      "label": "Vegetable",
+      "state": "accepted",
+      "description": "Edible plant parts like roots, leaves, stems, and tubers.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/vegetables",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:fish",
+      "label": "Fish",
+      "state": "accepted",
+      "description": "Fish and seafood used as food, raw or cooked.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "firmalife:foods/raw_fish",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "firmalife:foods/cooked_fish",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:bread",
+      "label": "Bread",
+      "state": "accepted",
+      "description": "Baked goods made from dough, including loaves and rolls.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/breads",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:sandwich_bread",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:dairy",
+      "label": "Dairy",
+      "state": "accepted",
+      "description": "Milk and milk-based products, excluding cheese and butter as separate.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/dairy",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:grain",
+      "label": "Grain",
+      "state": "accepted",
+      "description": "Cereal grains and seeds used for flour and animal feed.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/grains",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc_gourmet:foods/kvass_grains",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:dough",
+      "label": "Dough",
+      "state": "accepted",
+      "description": "Unbaked dough mixture, ready to be shaped and cooked.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/dough",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "firmalife:foods/extra_dough",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:bowl",
+      "label": "Bowl",
+      "state": "rejected",
+      "description": "Container used for soups, salads, and other prepared meals, not a food category.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:spice",
+      "label": "Spice",
+      "state": "accepted",
+      "description": "Flavoring agents from plants, used to season food.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfg:foods/spices",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:foods/spice_plants",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:flour",
+      "label": "Flour",
+      "state": "accepted",
+      "description": "Ground grains or other dry powdery food ingredients.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/flour",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "firmalife:foods/egg_noodle_flour",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:sweetener",
+      "label": "Sweetener",
+      "state": "accepted",
+      "description": "Substances used to sweeten food and drinks, such as sugar and honey.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:sweetener",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:drink",
+      "label": "Drink",
+      "state": "accepted",
+      "description": "Beverages and liquid consumables.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "create:deployable_drink",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:fat_oil",
+      "label": "Fat Oil",
+      "state": "review",
+      "description": "Edible fats and oils used for cooking or as ingredients.",
+      "aliases": [],
+      "confidence": 0.8,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:prepared_meal",
+      "label": "Prepared Meal",
+      "state": "review",
+      "description": "Ready-to-eat or finished dishes, such as stews, sandwiches, and salads.",
+      "aliases": [],
+      "confidence": 0.8,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:sauce",
+      "label": "Sauce",
+      "state": "review",
+      "description": "Liquid or semi-liquid condiments used to enhance flavor.",
+      "aliases": [],
+      "confidence": 0.8,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    }
+  ]
+}

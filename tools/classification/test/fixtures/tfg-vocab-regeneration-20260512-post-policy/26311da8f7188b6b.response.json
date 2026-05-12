@@ -1,0 +1,227 @@
+{
+  "values": [
+    {
+      "id": "slot:ore",
+      "label": "Ore",
+      "state": "accepted",
+      "description": "Raw unprocessed ore from mining.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "forge:ores",
+          "confidence": 0.75
+        },
+        {
+          "kind": "block_tag",
+          "id": "forge:ore_bearing_ground/stone",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:dust",
+      "label": "Dust",
+      "state": "accepted",
+      "description": "Finely ground material, often from crushing or milling.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:dusts",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:ingot",
+      "label": "Ingot",
+      "state": "accepted",
+      "description": "Standard cast metal ingot.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:plate",
+      "label": "Plate",
+      "state": "accepted",
+      "description": "Flat metal plate from pressing or hammering.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:plates",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:alloy",
+      "label": "Alloy",
+      "state": "accepted",
+      "description": "Combination of two or more metals.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:alloys",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:rod",
+      "label": "Rod",
+      "state": "accepted",
+      "description": "Long cylindrical metal rod.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:rods",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:sheet",
+      "label": "Sheet",
+      "state": "accepted",
+      "description": "Thin metal sheet from rolling or hammering.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:sheets",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:nugget",
+      "label": "Nugget",
+      "state": "accepted",
+      "description": "Small piece of metal, often from recycling.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:nuggets",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:mold",
+      "label": "Mold",
+      "state": "accepted",
+      "description": "Casting mold for shaping molten metal.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:molds",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "gtceu:molds",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:bloom",
+      "label": "Bloom",
+      "state": "accepted",
+      "description": "Spongy iron mass from bloomery.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:blooms",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:billet",
+      "label": "Billet",
+      "state": "review",
+      "description": "Intermediate metal form, needs evidence.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": []
+    },
+    {
+      "id": "slot:crushed_ore",
+      "label": "Crushed Ore",
+      "state": "review",
+      "description": "Ore after initial crushing, needs evidence.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": []
+    },
+    {
+      "id": "slot:double_ingot",
+      "label": "Double Ingot",
+      "state": "review",
+      "description": "Two ingots combined, needs evidence.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": []
+    },
+    {
+      "id": "slot:double_sheet",
+      "label": "Double Sheet",
+      "state": "review",
+      "description": "Two sheets combined, needs evidence.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": []
+    },
+    {
+      "id": "slot:molten",
+      "label": "Molten",
+      "state": "review",
+      "description": "Liquid metal state, needs evidence.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": []
+    },
+    {
+      "id": "slot:purified_ore",
+      "label": "Purified Ore",
+      "state": "review",
+      "description": "Ore after purification, needs evidence.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": []
+    },
+    {
+      "id": "slot:tiny_dust",
+      "label": "Tiny Dust",
+      "state": "review",
+      "description": "Very small dust pile, needs evidence.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": []
+    }
+  ]
+}

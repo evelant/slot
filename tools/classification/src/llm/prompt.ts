@@ -3,7 +3,7 @@ import { FACETS, type FacetDef } from "../schema/facets.ts";
 import type { PackFacetVocabulary } from "../schema/vocabulary.ts";
 import type { LlmDocumentContext } from "./document_context.ts";
 
-export const PROMPT_VERSION = "stage3-prompt-v8";
+export const PROMPT_VERSION = "stage3-prompt-v11";
 
 const RECIPE_EXAMPLE_LIMIT = 96;
 const LOOT_SOURCE_LIMIT = 64;
@@ -110,16 +110,6 @@ export interface LlmPromptInput {
    *  Empty during milestone 5 (stage 4 fills this later). */
   neighbors?: Record<string, readonly string[]>;
   /**
-   * Pre-proposed canonical vocabulary for the `mod_subsystem` facet, derived
-   * from the mod's README/metadata in a separate pass. When present, the LLM
-   * is told to prefer these labels over inventing new ones — keeps subsystem
-   * names consistent across items in a single mod run.
-   *
-   * Each entry is a fully-qualified id (`<modnamespace>:<token>`) optionally
-   * paired with a short rationale describing which kinds of items it covers.
-   */
-  subsystem_vocabulary?: readonly { id: string; rationale?: string }[];
-  /**
    * Accepted pack vocabulary values for vocabulary-backed facets. When present,
    * Stage 3 must pick from these ids instead of inventing new scoped ids.
    */
@@ -192,16 +182,21 @@ reconsider.
 # Output rules
 - Only output values from the facet's allowed list, or (for free_text facets) values matching the pattern.
 - Vocabulary-backed facets use stable ids such as \`slot:cooking\`,
-  \`create:mechanical_power\`, \`pack:tfg2/steelmaking\`, or scoped
-  \`pack:tfg2/steelmaking#input\`; never emit display labels like
+  \`modid:mechanical_power\`, \`pack:example/steelmaking\`, or scoped
+  \`pack:example/steelmaking#input\`; never emit display labels like
   "Steelmaking" as facet values.
 - When the prompt includes a "Pack facet vocabulary" section, vocabulary-backed
   facets MUST use only the listed accepted ids for that facet. If none fit,
-  omit the facet. Do not invent a syntactically valid id as a substitute.
+  omit the facet and, when a useful missing value is clear, add a top-level
+  \`vocabulary_proposals\` entry for review. If a vocabulary-backed target
+  facet has no listed values in the Pack facet vocabulary section, omit that
+  facet entirely. Do not invent a syntactically valid id as a substitute in
+  \`facets\`, and copy accepted ids exactly as printed instead of normalizing
+  separators or path segments.
 - Only emit facets that actually apply to the item. The test: would a player consider this facet meaningful for this item? \`combat_bonus\` on bread, \`biome\` on a crafted-only item — players wouldn't expect a value, so omit. Do not emit \`null\`, empty arrays, or placeholder values to satisfy a target-facet list.
 - Multi-value facets must use \`values: [...]\` even when there is only one
   value. This includes \`organization_group\` and \`mod_subsystem\`; never emit it as a scalar \`value\` facet.
-- For single-value enum facets where two values could apply with similar confidence, emit a two-element \`values\` array AND set \`ambiguous: true\`. Downstream reviewers see both.
+- For single-value enum facets where two values could apply with similar confidence, emit a two-element \`values\` array AND set \`ambiguous: true\`. Downstream reviewers see both. Never set \`ambiguous\` on multi-value facets; for multi-value facets emit the applicable \`values\` without \`ambiguous\`, or omit the facet if evidence is too weak.
 - **Each facet entry MUST include a \`signal\` field** — a marker for
     downstream review tools, NOT a quality grade. All four levels are
     valid answers. Format:
@@ -246,7 +241,9 @@ reconsider.
 - If \`minecraft_tags_resolved\` is present, those tags are live runtime membership with unknown directness. Use them as semantic context, but don't treat them as intentional direct-tag evidence.
 - Fields ending in \`_examples\` are bounded evidence. If the matching
   \`*_count\` is larger, do not infer that omitted recipe / loot ids are absent.
-- If you want to use a value that isn't in the schema, DO NOT emit the facet; instead add an entry to \`schema_proposals\` at the top level.
+- If you want to use a value that isn't in the fixed schema, DO NOT emit the facet; instead add an entry to \`schema_proposals\` at the top level.
+- If you want to use a value for a vocabulary-backed facet that is not listed in Pack facet vocabulary, DO NOT emit the facet; add \`{item, facet, label, proposed_id, rationale, evidence}\` to top-level \`vocabulary_proposals\` instead.
+- \`schema_proposals\`, \`vocabulary_proposals\`, \`corrections\`, and \`fill_ins\` are top-level arrays only, siblings of \`items\`. Never put these keys inside an individual item's \`facets\` object; inside \`facets\`, every key must be a real facet id.
 - Emit a best \`role\` for every item unless the data is genuinely unusable.
   If two roles are close, use the ambiguous two-value shape.
 - Emit \`primary_uses\` for every item unless the data is genuinely unusable:
@@ -290,7 +287,6 @@ export function buildSplitPrompt(input: LlmPromptInput): { system: string; user:
   const schemaDoc = renderSchemaForPrompt(input.target_facets);
   const outputShape = renderExpectedOutput(input.target_facets);
   const neighborsNote = renderNeighborsSection(input.neighbors);
-  const subsystemHint = renderSubsystemVocabulary(input.subsystem_vocabulary);
   const facetVocabularyHint = renderPackFacetVocabulary(input.facet_vocabulary, input.target_facets);
   const runtimeInputNotes = renderRuntimeInputNotes(input.items);
 
@@ -327,7 +323,7 @@ export function buildSplitPrompt(input: LlmPromptInput): { system: string; user:
   if (includeMisconceptions) {
     sections.push("", "# Common misconceptions to avoid", COMMON_MISCONCEPTIONS);
   }
-  sections.push("", subsystemHint, "# Expected output shape", outputShape);
+  sections.push("", "# Expected output shape", outputShape);
   const system = sections.filter((section) => section.length > 0).join("\n");
 
   const user = [
@@ -335,12 +331,47 @@ export function buildSplitPrompt(input: LlmPromptInput): { system: string; user:
     "# Items to classify",
     JSON.stringify({ items: input.items }, null, 2),
     "",
-    "Respond with a single JSON object matching the expected output shape above. No other text.",
+    renderFinalUserChecklist(input),
   ]
     .filter((section) => section.length > 0)
     .join("\n");
 
   return { system, user };
+}
+
+function renderFinalUserChecklist(input: LlmPromptInput): string {
+  const hasFacetVocabulary = !!input.facet_vocabulary && Object.keys(input.facet_vocabulary).length > 0;
+  const hasSubsystemVocabulary = !!input.facet_vocabulary?.mod_subsystem?.length;
+  const lines = [
+    "# Final response checklist",
+    "- Respond with one strict JSON object matching the expected output shape above. No markdown, no prose, no comments.",
+    "- Include every item id from `items` exactly once. If output gets long, shorten rationales instead of dropping items.",
+    "- `schema_proposals`, `vocabulary_proposals`, `corrections`, and `fill_ins` are top-level arrays only. Never put them inside `<item_id>.facets`; every key inside `facets` must be a real facet id.",
+    "- Use `ambiguous: true` only for single-value enum/free_text facets. Never put `ambiguous` on multi-value facets such as `origin`, `activity`, `organization_group`, or `mod_subsystem`.",
+    "- Pick `role` from the player's storage-home mental model, not from recipe participation. Machine parts, machine components, hulls, casings, pumps, presses, pipes, cables, and placed processing parts are mechanisms or functional blocks, not generic materials, even when they are ingredients.",
+    "- Keep high-value inventory semantics first: `role`, `primary_uses`, `carry_frequency`, and `rarity` should be present unless the item data is genuinely unusable.",
+    "- Do not re-emit `stage2_facets` in `facets`. Use `corrections` only for clearly wrong stage-2 values; use `fill_ins` only for missing deterministic facets and only with values allowed by the schema.",
+  ];
+  if (hasFacetVocabulary) {
+    lines.push(
+      "- Vocabulary-backed facets may use only ids listed for that exact facet in `Pack facet vocabulary`. If that facet has no section, or no listed id fits, omit the facet and add `vocabulary_proposals` when a useful missing value is clear. Copy accepted ids exactly as printed; do not rewrite slashes, underscores, namespace, or pack prefix.",
+      "- Do not move ids across vocabulary-backed facets. A good `mod_subsystem` id such as `modid:kinetics` is not an `organization_group` unless that exact id is listed under `organization_group`; use the subsystem facet, omit the organization group, or add a vocabulary proposal for the missing storage bucket.",
+      "- For `organization_group`, use an accepted storage-bucket id when one clearly matches the item's manual storage family. Do not omit an obvious bucket such as molds, unprocessed ores, seeds, logs, cloth, or voltage components just because `role`, `form`, or `material_family` is already present.",
+    );
+  }
+  if (!hasSubsystemVocabulary) {
+    lines.push(
+      "- Omit `mod_subsystem`; no accepted subsystem vocabulary is supplied for this batch.",
+    );
+  } else {
+    lines.push(
+      "- Emit `mod_subsystem` only when the item itself belongs to a listed subsystem. Never assign it just because the item is consumed or produced by a subsystem recipe.",
+    );
+  }
+  lines.push(
+    "- Optional low-evidence facets are better omitted than guessed.",
+  );
+  return lines.join("\n");
 }
 
 function renderRuntimeInputNotes(items: readonly LlmItemPayload[]): string {
@@ -573,9 +604,8 @@ small accumulating stash of them.
   bolt, flow). Even though trim templates come in many varieties,
   the player's mental model is "my upgrade stash for smithing-table
   use," not "a display set." → \`upgrade\`.
-- Tool / armor enhancement modules from mods (sophisticatedbackpacks
-  upgrade modules, sophisticatedstorage upgrade modules,
-  netherite-style tier-bump items).
+- Tool / armor / storage enhancement modules from mods (upgrade modules,
+  socketed upgrade items, netherite-style tier-bump items).
 - Test: *does the player put this item into another item's UI to
   enhance it?* If yes → \`upgrade\`. If they only look at it / display
   it / read it → \`curiosity\`. If they wear / wield / consume it
@@ -657,6 +687,24 @@ activities the item is an ingredient of.
   (every item is craftable; the value would be noise).
 - If unsure, omit. One good activity beats three weak ones.
 
+## workflow, used_at, and workflow_role — process semantics
+
+These three facets answer different questions:
+
+- \`workflow\`: which recognizable player-facing process this item
+  participates in.
+- \`used_at\`: where the player uses, inserts, processes, places, or
+  operates this item. Prefer the downstream / next-use station for
+  intermediate items.
+- \`workflow_role\`: the item's role inside that workflow, scoped as
+  \`<workflow>#input\` or \`<workflow>#output\`.
+
+Do not set \`used_at\` to the recipe/process that only produced the
+item. If an item is made by process A and then fired, inserted, worked,
+or consumed by process B, \`used_at\` is B. The fact that process A
+produced the item belongs in \`workflow\` and \`workflow_role\` only
+when that relationship is useful to the player.
+
 ## organization_group — where would a player put this item?
 
 The \`organization_group\` facet is the direct SLOT auto-home signal for
@@ -666,11 +714,11 @@ large modpacks. It answers:
 > workflow/storage section would this item belong in?"
 
 Use it for coherent groups that cut across broad roles when the group
-is how players actually store the items: TFC casting molds and molten-
-metal helpers → \`tfc:casting\`; bricks, mortar, clay masonry inputs →
-\`tfc:masonry\`; hides, scraped hides, soaked hides, and leatherworking
-tools → \`tfc:leatherworking\`; looms, cloth, thread, and textile inputs
-→ \`tfc:textiles\`.
+is how players actually store the items: casting molds and molten-metal
+helpers → \`pack:example/casting_molds\`; bricks, mortar, and masonry
+inputs → \`pack:example/masonry_supplies\`; hides, prepared hides, and
+leatherworking tools → \`pack:example/leatherworking\`; looms, cloth,
+thread, and textile inputs → \`pack:example/textiles\`.
 
 This facet is intentionally different from \`mod_subsystem\`.
 \`organization_group\` is allowed on materials, utility items,
@@ -688,26 +736,35 @@ when the workflow pile is the more useful manual-storage destination.
 Omit it when the universal section really is where a player would put
 the item, or when no useful group has enough sibling items.
 
+Role, form, and material_family do not replace organization_group. If
+the accepted vocabulary contains a bucket a player would actually use
+for this item family — molds, unprocessed ores, refined ores, seeds,
+logs, cloth, cooking tools, voltage components, backpack items — emit
+that accepted organization_group id. If the useful bucket is missing,
+omit the facet and add a top-level vocabulary proposal instead of
+copying a workflow or subsystem id.
+
 Concrete anchors:
-- \`tfc:ceramic/ingot_mold\` → organization_group=\`tfc:casting\`.
-- \`tfc:ceramic/unfired_ingot_mold\` → organization_group=\`tfc:casting\`.
-- \`tfc:mortar\` → organization_group=\`tfc:masonry\`.
-- \`tfc:large_raw_hide\` → organization_group=\`tfc:leatherworking\`.
-- \`minecraft:iron_ingot\` → no organization_group; the Ingots section wins.
+- A fired ingot mold item → organization_group=\`pack:example/casting_molds\`.
+- An unfired/prepared mold item → organization_group=\`pack:example/casting_molds\`.
+- Mortar or masonry-specific inputs → organization_group=\`pack:example/masonry_supplies\`.
+- Prepared hides and leatherworking tools → organization_group=\`pack:example/leatherworking\`.
+- A plain metal ingot with no workflow-specific storage expectation → no
+  organization_group; the general ingots/materials section wins.
 
 ## mod_subsystem — what part of the mod IS this item
 
 The \`mod_subsystem\` facet groups items by the **functional sub-area
-of the mod they themselves belong to** — Create's mechanical-power
-network, Create's logistics network, Sophisticated Backpacks' upgrade
-modules. The question is **identity**, not **interaction graph**.
+of the mod they themselves belong to** — a mechanical-power network, a
+logistics network, a storage-upgrade module set. The question is
+**identity**, not **interaction graph**.
 \`mod_subsystem\` is optional and high-precision; bad subsystem labels
 are worse than omission because they fragment inventory homes.
 
 The single biggest failure mode here is assigning a subsystem based on
 which recipes the item appears in. A \`golden_sheet\` is *processed by*
-Create's mechanical_press (so it appears in \`create:processing\`
-recipes), but it IS a refined metal sheet — a \`material\` in the
+some mod's press (so it appears in that mod's processing recipes), but
+it IS a refined metal sheet — a \`material\` in the
 player's inventory, NOT a processing machine. Its mod_subsystem is
 omitted entirely.
 
@@ -737,23 +794,23 @@ more conservative: emit \`mod_subsystem\` only for a broad, unmistakable
 system that would group many mechanism / workstation / logistics /
 transport / redstone items. Do NOT coin narrow one-off labels for
 equipment sets, material families, machine hulls/casings, tool families,
-jetpacks, space suits, or mining hammers. Use \`role\`, \`tier\`,
+or individual equipment lines. Use \`role\`, \`tier\`,
 \`material_family\`, and \`primary_uses\` for those instead.
 
 Concrete anchors:
-- \`create:cogwheel\` IS a mechanical_power part the player chains into
-  contraptions. → mod_subsystem=create:mechanical_power.
-- \`create:mechanical_press\` IS a processing machine. →
-  mod_subsystem=create:processing.
-- \`create:golden_sheet\` is a refined material output by the
-  mechanical_press. → no mod_subsystem; role=material.
-- \`create:honeyed_apple\` is a food consumable. → no mod_subsystem;
-  role=consumable.
-- \`create:metal_girder\` is a building_block (the player builds with
-  it as part of an industrial-aesthetic structure). → no
+- \`examplemod:cogwheel\` IS a mechanical_power part the player chains
+  into contraptions. → mod_subsystem=examplemod:mechanical_power.
+- \`examplemod:mechanical_press\` IS a processing machine. →
+  mod_subsystem=examplemod:processing.
+- \`examplemod:golden_sheet\` is a refined material output by the press.
+  → no mod_subsystem; role=material.
+- \`examplemod:honeyed_apple\` is a food consumable. → no
+  mod_subsystem; role=consumable.
+- \`examplemod:metal_girder\` is a building_block (the player builds
+  with it as part of an industrial-aesthetic structure). → no
   mod_subsystem; role=building_block.
-- \`sophisticatedstorage:diamond_barrel\` is a storage_block sibling of
-  vanilla chests. → no mod_subsystem; role=storage_block.
+- \`examplemod:diamond_barrel\` is a storage_block sibling of ordinary
+  chests. → no mod_subsystem; role=storage_block.
 - A smithing-style upgrade module from a storage mod: → no
   mod_subsystem; role=upgrade.
 `;
@@ -827,9 +884,8 @@ const COMMON_MISCONCEPTIONS = `These factual errors recur in LLM output — avoi
 - **Smithing templates (every variant — netherite_upgrade and every
   armor-trim template)**: role=\`upgrade\`, not \`curiosity\`. The player
   applies them in the smithing table to upgrade gear; they're consumed
-  in a UI, not displayed as a collection. Storage mod
-  upgrade-modules (sophisticatedbackpacks / sophisticatedstorage
-  *_upgrade items) are also \`upgrade\`.
+  in a UI, not displayed as a collection. Storage/backpack mod
+  *_upgrade items are also \`upgrade\`.
 - **Storage-network parts (tom's storage \`storage_terminal\` /
   \`storage_output\` / \`inventory_proxy\` / \`inventory_connector\`,
   Sophisticated Storage controllers and links, Applied Energistics ME
@@ -888,6 +944,7 @@ function renderExpectedOutput(targetFacets: readonly string[]): string {
       },
     },
     schema_proposals: [],
+    vocabulary_proposals: [],
     corrections: [],
     fill_ins: [],
   };
@@ -898,10 +955,12 @@ function renderExpectedOutput(targetFacets: readonly string[]): string {
     "Field rules:",
     "- Single-value facets (enum / free_text / boolean): `value: <scalar>`.",
     "- Multi-value facets (multi_enum / multi_free_text): `values: [<scalar>, ...]`.",
-    "- Ambiguous single-value (enum / free_text only): `values: [a, b]` AND `ambiguous: true`.",
+    "- Ambiguous single-value (enum / free_text only): `values: [a, b]` AND `ambiguous: true`. Never use `ambiguous` on multi-value facets.",
     "- `schema_proposals` (optional top-level array, default `[]`): use when you want a value the schema doesn't include. Each entry is `{kind: 'add_value', facet, value, rationale}` or `{kind: 'add_facet', name, suggested_kind, rationale}`.",
+    "- `vocabulary_proposals` (optional top-level array, default `[]`): use when a vocabulary-backed facet has no accepted id that fits. Each entry is `{item, facet, label, proposed_id, rationale, evidence}`. Do not emit the proposed id inside `facets`.",
     "- `corrections` (optional top-level array, default `[]`): use when a stage 2 facet is clearly wrong. Each entry is `{item, facet, current, suggested, rationale, confidence}` — confidence ≥ 0.7 required.",
     "- `fill_ins` (optional top-level array, default `[]`): use when a stage-2 deterministic facet is *missing* but the item obviously has a value. Each entry is `{item, facet, value, rationale}`. Only the deterministic facets (`form`, `material_family`, `dye_color`, `required_tool`, `required_tool_tier`, `is_fuel`, `emits_light`) — NOT llm-authored facets like role/activity/carry_frequency.",
+    "- The only allowed top-level keys are `items`, `schema_proposals`, `vocabulary_proposals`, `corrections`, and `fill_ins`; do not nest those review arrays under an item.",
   ].join("\n");
 }
 
@@ -1003,7 +1062,7 @@ function renderPackFacetVocabulary(
   if (!vocabulary || Object.keys(vocabulary).length === 0) return "";
   const lines: string[] = ["# Pack facet vocabulary"];
   lines.push(
-    "For vocabulary-backed facets, use only these accepted ids. If no listed id fits an item, omit that facet rather than inventing a new value. Labels/descriptions are guidance; output the id.",
+    "For vocabulary-backed facets, use only these accepted ids for the matching facet. If a target facet has no section here, omit that facet entirely. If no listed id fits an item, omit the facet and add a top-level vocabulary_proposals entry when a useful missing value is clear. Labels/descriptions are guidance; output accepted ids exactly as printed.",
   );
   lines.push("");
   for (const facetId of targetFacets) {
@@ -1020,35 +1079,6 @@ function renderPackFacetVocabulary(
     lines.push("");
   }
   return lines.join("\n").trimEnd();
-}
-
-/**
- * Render the canonical mod_subsystem vocabulary inline in the system prompt.
- * Empty when no vocabulary is supplied — vanilla runs and mods with no
- * meaningful subsystem groupings simply omit the section.
- *
- * Lives in the system prompt (not the per-batch user message) because the
- * vocabulary is identical across every batch of a single mod run; keeping it
- * stable maximizes prompt-cache reuse.
- */
-function renderSubsystemVocabulary(
-  vocab: readonly { id: string; rationale?: string }[] | undefined,
-): string {
-  if (!vocab || vocab.length === 0) return "";
-  const lines: string[] = ["# Suggested mod_subsystem vocabulary"];
-  lines.push(
-    "Prefer these canonical labels for the `mod_subsystem` facet over inventing new names. Pick zero or more per item; only use labels whose namespace prefix matches the item's namespace. If none fit, omit the facet rather than coining a synonym.",
-  );
-  lines.push("");
-  for (const entry of vocab) {
-    if (entry.rationale) {
-      lines.push(`- \`${entry.id}\` — ${entry.rationale}`);
-    } else {
-      lines.push(`- \`${entry.id}\``);
-    }
-  }
-  lines.push("");
-  return lines.join("\n");
 }
 
 function renderNeighborsSection(

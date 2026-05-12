@@ -137,6 +137,8 @@ const ID_SUFFIX_TO_FORM: Array<[suffix: string, form: string]> = [
   ["_lantern", "lantern"],
   ["_torch", "torch"],
   ["_sign", "sign"],
+  ["_stem", "log"],
+  ["_log", "log"],
   ["_bed", "bed"],
   ["_ladder", "ladder"],
   ["_bars", "bars"],

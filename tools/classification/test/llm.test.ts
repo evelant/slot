@@ -10,17 +10,9 @@ import {
   defaultTargetFacets,
 } from "../src/llm/prompt.ts";
 import { parseLlmResponse } from "../src/llm/parse.ts";
-import {
-  runStage3,
-  selectSubsystemVocabularyForRecords,
-} from "../src/llm/run.ts";
+import { runStage3 } from "../src/llm/run.ts";
 import { selectRetryCandidates, runStage3Retry } from "../src/llm/retry.ts";
 import { ReplayLlmClient, RecordingLlmClient, fixtureHash } from "../src/llm/client.ts";
-import {
-  buildRuntimeProposerPrompt,
-  buildRuntimeSubsystemContexts,
-  loadSubsystemVocabularyFile,
-} from "../src/llm/runtime_subsystems.ts";
 import { buildDocumentContextByItem } from "../src/llm/document_context.ts";
 import type { FacetEvidenceArtifact } from "../src/evidence/facet_evidence.ts";
 import type { ItemExtractRecord } from "../src/extract/record.ts";
@@ -78,6 +70,7 @@ function runtimeRecord(args: {
   outputOf?: string[];
   components?: Record<string, unknown>;
   isBlock?: boolean;
+  semanticText?: string[];
 }): ItemExtractRecord {
   const [namespace, path] = args.id.split(":") as [string, string];
   return {
@@ -98,6 +91,7 @@ function runtimeRecord(args: {
     model_parents: [],
     loot_table_sources: [],
     creative_tabs: [],
+    semantic_text: (args.semanticText ?? []).map((text) => ({ source: "test", text })),
     component_data: args.components ?? { "minecraft:max_stack_size": 64 },
     extractor_meta: {
       extractor: "slot-runtime-export",
@@ -256,6 +250,23 @@ describe("prompt building", () => {
     expect(prompt.system).toContain("`pack:fixture/lv_low_voltage`");
     expect(prompt.system).not.toContain("tfc:maybe");
     expect(prompt.system).toContain("Do not invent a syntactically valid id");
+    expect(prompt.user).toContain("Do not move ids across vocabulary-backed facets");
+  });
+
+  test("split prompt repeats hard output constraints at the end of the user message", () => {
+    const prompt = buildSplitPrompt({
+      items: [buildItemPayload(ironIngotRecord(), {})],
+      target_facets: ["role", "primary_uses", "carry_frequency", "rarity", "mod_subsystem"],
+    });
+
+    expect(prompt.user).toContain("# Final response checklist");
+    expect(prompt.user).toContain("Include every item id from `items` exactly once");
+    expect(prompt.user).toContain("top-level arrays only");
+    expect(prompt.user).toContain("Never put them inside `<item_id>.facets`");
+    expect(prompt.user).toContain("Use `ambiguous: true` only for single-value enum/free_text facets");
+    expect(prompt.user).toContain("Machine parts, machine components, hulls, casings, pumps");
+    expect(prompt.user).toContain("Omit `mod_subsystem`; no accepted subsystem vocabulary is supplied");
+    expect(prompt.user.trim().endsWith("Optional low-evidence facets are better omitted than guessed.")).toBe(true);
   });
 
   test("payload carries block context and semantic runtime components", () => {
@@ -620,6 +631,33 @@ describe("response parsing", () => {
     expect(parsed.proposals[0]!.kind).toBe("add_value");
   });
 
+  test("vocabulary_proposals flow through for vocabulary-backed facets", () => {
+    const response = JSON.stringify({
+      items: {},
+      vocabulary_proposals: [
+        {
+          item: "minecraft:iron_ingot",
+          facet: "organization_group",
+          label: "Metal Stock",
+          proposed_id: "pack:test/metal_stock",
+          rationale: "No accepted organization group covers ingots and plates.",
+          evidence: ["display name: Iron Ingot"],
+        },
+      ],
+    });
+    const parsed = parseLlmResponse(response);
+    expect(parsed.vocabularyProposals).toEqual([
+      {
+        item: "minecraft:iron_ingot",
+        facet: "organization_group",
+        label: "Metal Stock",
+        proposed_id: "pack:test/metal_stock",
+        rationale: "No accepted organization group covers ingots and plates.",
+        evidence: ["display name: Iron Ingot"],
+      },
+    ]);
+  });
+
   test("corrections at >= 0.7 confidence are retained", () => {
     const response = JSON.stringify({
       items: {},
@@ -703,6 +741,30 @@ describe("response parsing", () => {
     const parsed = parseLlmResponse(response);
     expect(parsed.fillIns.length).toBe(0);
     expect(parsed.warnings.some((w) => w.includes("llm-authored"))).toBe(true);
+  });
+
+  test("fill_ins with values outside deterministic facet enums are dropped", () => {
+    const response = JSON.stringify({
+      items: {},
+      fill_ins: [
+        {
+          item: "create:mechanical_press",
+          facet: "form",
+          value: "block",
+          rationale: "placed in world",
+        },
+        {
+          item: "gtceu:lv_machine_hull",
+          facet: "required_tool",
+          value: "wrench",
+          rationale: "mineable with wrench",
+        },
+      ],
+    });
+    const parsed = parseLlmResponse(response);
+    expect(parsed.fillIns.length).toBe(0);
+    expect(parsed.warnings.some((w) => w.includes("value 'block' not in enum"))).toBe(true);
+    expect(parsed.warnings.some((w) => w.includes("value 'wrench' not in enum"))).toBe(true);
   });
 });
 
@@ -878,7 +940,7 @@ describe("runStage3", () => {
     expect(result.layer.entries["minecraft:b"]?.facets.role).toBeDefined();
   });
 
-  test("response validator rejects vocabulary-backed values outside accepted prompt vocabulary", async () => {
+  test("response validator accepts out-of-vocabulary values so the parser can drop and report them", async () => {
     const record = ironIngotRecord();
     const stage2: LayerFile = {
       schema_version: 1,
@@ -915,18 +977,17 @@ describe("runStage3", () => {
               },
             },
           },
-        });
-        if (calls === 1 && options.responseValidator?.(invented).ok === false) {
-          return JSON.stringify({
-            items: {
-              [record.id]: {
-                facets: {
-                  workflow: { values: ["tfc:casting"], confidence: 0.9, rationale: "accepted vocabulary" },
-                },
-              },
+          vocabulary_proposals: [
+            {
+              item: record.id,
+              facet: "workflow",
+              label: "Invented",
+              proposed_id: "tfc:invented",
+              rationale: "Fixture wants a missing workflow value.",
             },
-          });
-        }
+          ],
+        });
+        expect(options.responseValidator?.(invented).ok).toBe(true);
         return invented;
       },
     };
@@ -940,11 +1001,10 @@ describe("runStage3", () => {
     });
 
     expect(calls).toBe(1);
-    expect(result.warnings).toEqual([]);
-    expect(result.layer.entries[record.id]?.facets.workflow).toMatchObject({
-      values: ["tfc:casting"],
-      source: "llm:stage3",
-    });
+    expect(result.layer.entries[record.id]?.facets.workflow).toBeUndefined();
+    expect(result.vocabularyProposals).toHaveLength(1);
+    expect(result.vocabularyProposals[0]!.proposed_id).toBe("tfc:invented");
+    expect(result.warnings.some((warning) => warning.includes("tfc:invented"))).toBe(true);
   });
 
   test("drops invalid vocabulary-backed values from clients that do not honor validators", async () => {
@@ -1036,148 +1096,6 @@ describe("runStage3", () => {
       client,
       only: ["minecraft:a"],
     });
-  });
-});
-
-describe("runtime subsystem vocabulary", () => {
-  test("builds namespace-scoped evidence from runtime export records", () => {
-    const records = [
-      runtimeRecord({
-        id: "create:mechanical_press",
-        displayName: "Mechanical Press",
-        tags: ["create:wrench_pickup"],
-        blockTags: ["create:stress_impact"],
-        ingredientCounts: { "create:pressing": 4 },
-        outputCounts: { crafting_shaped: 1 },
-        ingredientOf: ["tfg:create/pressing/iron_plate"],
-        outputOf: ["create:crafting/mechanical_press"],
-        isBlock: true,
-      }),
-      runtimeRecord({
-        id: "create:fluid_pipe",
-        displayName: "Fluid Pipe",
-        tags: ["create:pipes"],
-        blockTags: ["create:fluid_pipe"],
-        ingredientCounts: { crafting_shaped: 3 },
-        outputCounts: { crafting_shaped: 1 },
-        isBlock: true,
-      }),
-      runtimeRecord({
-        id: "gtceu:lv_transformer",
-        displayName: "LV Transformer",
-        tags: ["gtceu:machines"],
-        blockTags: ["gtceu:machines"],
-        ingredientCounts: { "gtceu:machine": 2 },
-        outputCounts: { crafting_shaped: 1 },
-        isBlock: true,
-      }),
-    ];
-    const contexts = buildRuntimeSubsystemContexts({
-      records,
-      minItems: 1,
-      summary: {
-        pack_id: "sample_pack",
-        loader: "forge",
-        minecraft_version: "1.20.1",
-        item_tag_members: {
-          "create:pipes": ["create:fluid_pipe"],
-          "gtceu:machines": ["gtceu:lv_transformer"],
-        },
-        block_tag_members: {
-          "create:stress_impact": ["create:mechanical_press"],
-          "gtceu:machines": ["gtceu:lv_transformer"],
-        },
-      },
-    });
-
-    const create = contexts.find((context) => context.modNamespace === "create")!;
-    expect(create.packId).toBe("sample_pack");
-    expect(create.componentCounts.block_items).toBe(2);
-    expect(create.tokenClusters.some((cluster) => cluster.id === "press")).toBe(true);
-    expect(create.itemTagSummaries.some((tag) => tag.tag === "create:pipes")).toBe(true);
-    expect(create.blockTagSummaries.some((tag) => tag.tag === "create:stress_impact")).toBe(true);
-    expect(create.recipeFamilyCandidates.some((row) => row.id === "create:pressing")).toBe(true);
-    expect(create.recipeIdNamespaces.some((row) => row.id === "tfg")).toBe(true);
-
-    const prompt = buildRuntimeProposerPrompt(create);
-    expect(prompt.system).toContain("Pick **0 to 8** entries");
-    expect(prompt.system).toContain("Prominent namespace-owned recipe families");
-    expect(prompt.user).toContain("KubeJS/datapack recipe and tag edits");
-    expect(prompt.user).toContain("Candidate namespace workflow recipe families");
-    expect(prompt.user).toContain("Mod namespace: create");
-    expect(prompt.user).toContain("create:mechanical_press");
-  });
-
-  test("surfaces namespace recipe families for survival workflow mods", () => {
-    const records = [
-      runtimeRecord({
-        id: "tfc:ceramic/ingot_mold",
-        displayName: "Ingot Mold",
-        outputCounts: { "tfc:casting": 12, "tfc:advanced_shapeless_crafting": 50 },
-        outputOf: ["tfc:casting/copper_ingot"],
-      }),
-      runtimeRecord({
-        id: "tfc:metal/anvil/wrought_iron",
-        displayName: "Wrought Iron Anvil",
-        outputCounts: { "tfc:anvil": 8, "tfc:welding": 3 },
-        outputOf: ["tfc:anvil/double_ingot", "tfc:welding/wrought_iron_anvil"],
-        isBlock: true,
-      }),
-      runtimeRecord({
-        id: "tfc:barrel",
-        displayName: "Barrel",
-        ingredientCounts: { "tfc:barrel_sealed": 5 },
-        outputCounts: { crafting_shaped: 1 },
-        isBlock: true,
-      }),
-    ];
-    const contexts = buildRuntimeSubsystemContexts({ records, minItems: 1 });
-    const tfc = contexts.find((context) => context.modNamespace === "tfc")!;
-
-    expect(tfc.recipeFamilyCandidates.map((row) => row.id)).toContain("tfc:casting");
-    expect(tfc.recipeFamilyCandidates.map((row) => row.id)).toContain("tfc:anvil");
-    expect(tfc.recipeFamilyCandidates.map((row) => row.id)).toContain("tfc:barrel_sealed");
-    expect(tfc.recipeFamilyCandidates.map((row) => row.id)).not.toContain("tfc:advanced_shapeless_crafting");
-
-    const prompt = buildRuntimeProposerPrompt(tfc);
-    expect(prompt.system).toContain("casting");
-    expect(prompt.system).toContain("smithing");
-    expect(prompt.user).toContain("tfc:casting");
-    expect(prompt.user).toContain("tfc:barrel_sealed");
-  });
-
-  test("loads runtime vocabulary maps and filters them per batch namespace", () => {
-    const fixtureDir = mkdtempSync(join(tmpdir(), "slot-runtime-vocab-"));
-    const path = join(fixtureDir, "pack.runtime-subsystems.json");
-    writeFileSync(path, JSON.stringify({
-      kind: "slot-runtime-subsystem-vocabulary",
-      namespaces: {
-        create: {
-          vocabulary: [{ id: "create:processing", rationale: "processing machines" }],
-        },
-        gtceu: {
-          vocabulary: [{ id: "gtceu:energy_net", rationale: "power transfer" }],
-        },
-        ae2: {
-          vocabulary: [{ id: "ae2:me_network", rationale: "ME network" }],
-        },
-      },
-    }));
-
-    const loaded = loadSubsystemVocabularyFile(path);
-    const selected = selectSubsystemVocabularyForRecords(
-      [
-        runtimeRecord({ id: "create:mechanical_press", displayName: "Mechanical Press" }),
-        runtimeRecord({ id: "gtceu:lv_transformer", displayName: "LV Transformer" }),
-      ],
-      undefined,
-      loaded.byNamespace,
-    );
-
-    expect(selected?.map((entry) => entry.id).sort()).toEqual([
-      "create:processing",
-      "gtceu:energy_net",
-    ]);
   });
 });
 

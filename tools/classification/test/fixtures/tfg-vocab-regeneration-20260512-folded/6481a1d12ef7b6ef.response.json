@@ -1,0 +1,628 @@
+{
+  "values": [
+    {
+      "id": "create:attaching/blocks/using/linear/chassis",
+      "label": "Attaching blocks using Linear Chassis",
+      "state": "rejected",
+      "description": "Specific building technique for contraptions, not a general player workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:contraption/fluid/exchange",
+      "label": "Contraption Fluid Exchange",
+      "state": "accepted",
+      "description": "Using Portable Fluid Interface to exchange fluids with moving contraptions.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/portable_fluid_interface",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:contraption/storage/exchange",
+      "label": "Contraption Storage Exchange",
+      "state": "accepted",
+      "description": "Using Portable Storage Interface to exchange items with moving contraptions.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/portable_storage_interface",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:controlling/trains",
+      "label": "Controlling Trains",
+      "state": "accepted",
+      "description": "Driving and controlling train contraptions.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/train_controls",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:logistics/networks/and/the/stock/link",
+      "label": "Logistics Networks and the Stock Link",
+      "state": "accepted",
+      "description": "Setting up stock link networks for logistics.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/stock_link",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:merging/packages/from/a/request",
+      "label": "Merging packages from a request",
+      "state": "accepted",
+      "description": "Using repackagers to merge package fragments from logistics requests.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/repackager",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:placing/train/tracks",
+      "label": "Placing Train Tracks",
+      "state": "accepted",
+      "description": "Laying train tracks for railways.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/track_placement",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:processing/items/using/encased/fans",
+      "label": "Processing Items using Encased Fans",
+      "state": "accepted",
+      "description": "Using encased fans with lava/water for smelting, washing, etc.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/fan_processing",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:setting/up/display/links",
+      "label": "Setting up Display Links",
+      "state": "accepted",
+      "description": "Configuring display links to show dynamic information.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/display_link",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:setting/up/mechanical/arms",
+      "label": "Setting up Mechanical Arms",
+      "state": "accepted",
+      "description": "Configuring mechanical arms for item transfer.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/mechanical_arm",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:setting/up/mechanical/crafters",
+      "label": "Setting up Mechanical Crafters",
+      "state": "accepted",
+      "description": "Setting up arrays of mechanical crafters for automated crafting.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/mechanical_crafter",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:using/brass/tunnels",
+      "label": "Using Brass Tunnels",
+      "state": "accepted",
+      "description": "Using brass tunnels for filtering and distributing items on belts.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/brass_tunnel",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "createhorsepower:using/horse/crank",
+      "label": "Using Horse Crank",
+      "state": "accepted",
+      "description": "Using horse cranks to generate rotational force with mobs.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "createhorsepower:ponder/horse_crank",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "greate:processing/items/using/encased/fans",
+      "label": "Processing Items using Encased Fans",
+      "state": "accepted",
+      "description": "Using encased fans with lava/water for processing, with speed affecting processing speed.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "greate:ponder/fan_processing",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "railways:visualizing/signal/states/using/semaphores",
+      "label": "Visualizing Signal states using Semaphores",
+      "state": "accepted",
+      "description": "Using semaphores to visualize train signal states.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "railways:ponder/train_semaphore",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:processing/items/with/the/lathe",
+      "label": "Processing Items with the Lathe",
+      "state": "accepted",
+      "description": "Using the lathe to process items.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "vintageimprovements:ponder/lathe",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:support/beams/and/collapses",
+      "label": "Support Beams & Collapses",
+      "state": "rejected",
+      "description": "Preventing rock collapses, not a player process or station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfc:barrels",
+      "label": "Barrels",
+      "state": "accepted",
+      "description": "Using barrels for mixing, aging, and fluid/item processing.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/barrels",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:drink/effects",
+      "label": "Drink Effects",
+      "state": "rejected",
+      "description": "Information about drink buffs, not a crafting/processing workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfc:ovens",
+      "label": "Ovens",
+      "state": "accepted",
+      "description": "Using ovens (multiblock) to cook food with improved preservation.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/ovens",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:planters",
+      "label": "Planters",
+      "state": "accepted",
+      "description": "Using greenhouse planters to grow crops.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/planters",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:clearing/and/paving/with/the/roller",
+      "label": "Clearing and Paving with the Roller",
+      "state": "accepted",
+      "description": "Using mechanical rollers to clear terrain and pave surfaces.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/mechanical_roller_pave",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:distribution/modes/of/the/mechanical/arm",
+      "label": "Distribution modes of the Mechanical Arm",
+      "state": "rejected",
+      "description": "Detail about arm distribution settings, not a primary process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:generating/rotational/force/using/windmill/bearings",
+      "label": "Generating Rotational Force using Windmill Bearings",
+      "state": "accepted",
+      "description": "Using windmill bearings to generate rotational power from wind.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/windmill_source",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:moving/fluids/using/copper/pipes",
+      "label": "Moving Fluids using Copper Pipes",
+      "state": "accepted",
+      "description": "Using copper pipes and mechanical pumps to transport fluids.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/fluid_pipe_flow",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:redstone/control",
+      "label": "Redstone Control",
+      "state": "rejected",
+      "description": "Generic redstone control of create components, not a specific process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:source/filling/and/draining/using/hose/pulleys",
+      "label": "Source Filling and Draining using Hose Pulleys",
+      "state": "accepted",
+      "description": "Using hose pulleys to fill or drain large fluid bodies.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/hose_pulley",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:synchronised/pulley/movement",
+      "label": "Synchronised Pulley Movement",
+      "state": "rejected",
+      "description": "Cosmetic synchronization of pulley ropes, not a functional process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "railways:door/modes",
+      "label": "Door Modes",
+      "state": "rejected",
+      "description": "Configuration modes for doors on contraptions, not a standalone process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "railways:using/track/switches",
+      "label": "Using Track Switches",
+      "state": "accepted",
+      "description": "Using track switches to direct train routes.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "railways:ponder/train_switch",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:processing/items/on/the/vibrating/table",
+      "label": "Processing Items on the Vibrating Table",
+      "state": "accepted",
+      "description": "Using vibrating table to process items (unpacking, leaf shaking, etc.).",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "vintageimprovements:ponder/vibrating_table",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:processing/items/with/the/curving/press",
+      "label": "Processing Items with the Curving Press",
+      "state": "accepted",
+      "description": "Using curving press with different heads to shape items.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "vintageimprovements:ponder/curving_press",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:copper",
+      "label": "Copper",
+      "state": "rejected",
+      "description": "A material, not a player workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfc:bismuth/bronze",
+      "label": "Bismuth Bronze",
+      "state": "rejected",
+      "description": "A material, not a player workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfc:black/bronze",
+      "label": "Black Bronze",
+      "state": "rejected",
+      "description": "A material, not a player workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfc:black/steel",
+      "label": "Black Steel",
+      "state": "rejected",
+      "description": "A material, not a player workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfc:blue/steel",
+      "label": "Blue Steel",
+      "state": "rejected",
+      "description": "A material, not a player workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfc:bronze",
+      "label": "Bronze",
+      "state": "rejected",
+      "description": "A material, not a player workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfc:red/steel",
+      "label": "Red Steel",
+      "state": "rejected",
+      "description": "A material, not a player workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfc:wrought/iron",
+      "label": "Wrought Iron",
+      "state": "rejected",
+      "description": "A material, not a player workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfc:composter",
+      "label": "Composter",
+      "state": "accepted",
+      "description": "Using composters to produce fertilizer.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/composter",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:geology",
+      "label": "Geology",
+      "state": "rejected",
+      "description": "Informational guide about world rock layers, not a process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfc:primitive/anvils",
+      "label": "Primitive Anvils",
+      "state": "accepted",
+      "description": "Using rock anvils for early game metal working and welding.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/getting_started/primitive_anvils",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:winemaking",
+      "label": "Winemaking",
+      "state": "accepted",
+      "description": "Process of making wine from grapes using trellises, stomping barrel, and barrel press.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/wine",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:advanced/detection/with/smart/observers",
+      "label": "Advanced detection with Smart Observers",
+      "state": "accepted",
+      "description": "Using smart observers to detect items, fluids, or block states.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/smart_observer",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:animating/structures/using/clockwork/bearings",
+      "label": "Animating Structures using Clockwork Bearings",
+      "state": "accepted",
+      "description": "Using clockwork bearings to create animated time-based structures.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/clockwork_bearing",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:attaching/blocks/using/super/glue",
+      "label": "Attaching blocks using Super Glue",
+      "state": "accepted",
+      "description": "Using super glue to group blocks into moving contraptions.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/super_glue",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:automated/orders/with/redstone/requesters",
+      "label": "Automated orders with Redstone Requesters",
+      "state": "accepted",
+      "description": "Using redstone requesters to automate item ordering from logistics networks.",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/redstone_requester",
+          "confidence": 0.7
+        }
+      ]
+    }
+  ]
+}

@@ -235,7 +235,8 @@ function formatEnvelope(raw: string): string {
  *      OpenRouter path — `OpenRouterClient.send` already unwraps
  *      `message.content` for us so the recorder receives the raw model
  *      text, not an OpenRouter HTTP envelope). Recognized by the presence
- *      of any of `items` / `schema_proposals` / `corrections` at the top
+ *      of any of `items` / `schema_proposals` / `vocabulary_proposals` /
+ *      `corrections` at the top
  *      level — those are the canonical classification-output keys.
  *
  * Returns null when neither shape applies (the raw envelope is still
@@ -282,7 +283,7 @@ function extractParsedContent(raw: string): string | null {
 function looksLikeClassificationOutput(value: unknown): boolean {
   if (!value || typeof value !== "object") return false;
   const obj = value as Record<string, unknown>;
-  return "items" in obj || "schema_proposals" in obj || "corrections" in obj;
+  return "items" in obj || "schema_proposals" in obj || "vocabulary_proposals" in obj || "corrections" in obj;
 }
 
 function stripFence(text: string): string {

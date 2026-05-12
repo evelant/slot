@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-05-11. Operational handoff. Read after
+Last updated: 2026-05-12. Operational handoff. Read after
 [../README.md](../README.md). For active work + queue see
 [plans/current.md](plans/current.md); for architecture see
 [architecture/overview.md](architecture/overview.md).
@@ -34,14 +34,17 @@ common UI semantics.
 
 Classification now has a pack-authoring path for large modpacks: installed
 `mods/` scanning, jar extraction, OpenRouter-backed stage 3, runtime export,
-pack facet-vocabulary evidence/proposal, accepted-vocabulary prompting via
-`--facet-vocabulary`, and drop-in datapack output. Preserve rich semantic text
-(tooltips, guide/quest/lang/Ponder/category prose, KubeJS/datapack overlays,
-stack groups, resource-pack lang, and mod descriptions) rather than reducing
-prompts to item ids. Runtime auto-home uses bundled/datapack facets plus
-count-gated dynamic organization groups (`organization_group`) and subsystem
-cohorts (`mod_subsystem`); both loaders expose `inspect`, `export`, and
-`rehome` / `recompute` commands.
+pack facet-vocabulary evidence collection, accepted/review/rejected vocabulary
+proposal including `mod_subsystem`, stage-3 `document_context`, accepted
+vocabulary prompting via `--facet-vocabulary`, and drop-in datapack layer
+output. Semantic text is the highest-value input for this path; preserve
+tooltip/lore prose, guidebook and quest text, lang-resolved descriptions,
+KubeJS/datapack overlays, Ponder/category labels, stack groups, resource-pack
+lang overrides, and mod descriptions instead of reducing prompts to item ids.
+Runtime auto-home uses bundled/datapack facets plus count-gated dynamic
+organization groups (`organization_group`) and subsystem cohorts
+(`mod_subsystem`); both loaders expose `inspect`, `export`, and `rehome` /
+`recompute` commands.
 
 EMI goal projections now create session-local SLOT goal tabs from explicit EMI
 recipe-screen and drag/drop goal targets on both loaders, but the playtest
