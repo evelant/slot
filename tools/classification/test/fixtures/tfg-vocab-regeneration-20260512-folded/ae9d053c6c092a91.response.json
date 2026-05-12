@@ -1,0 +1,648 @@
+{
+  "values": [
+    {
+      "id": "tfc:pot_jam",
+      "label": "Pot Jam",
+      "state": "accepted",
+      "description": "Cooking jam in a pot is a player-facing food preservation process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:pot_jam",
+          "confidence": 0.85
+        },
+        {
+          "kind": "runtime_item",
+          "id": "firmalife:jar/fig",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "tfg:artisan",
+      "label": "Artisan",
+      "state": "rejected",
+      "description": "Vague catch-all label; no specific player-facing process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfg:artisan",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "firmalife:mixing_bowl",
+      "label": "Mixing Bowl",
+      "state": "accepted",
+      "description": "Mixing ingredients in a mixing bowl is a player-facing process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:mixing_bowl",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "firmalife:bowl_pot",
+      "label": "Bowl Pot",
+      "state": "accepted",
+      "description": "Bowl pot cooking is a player-facing process for certain recipes.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:bowl_pot",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "kubejs_tfc:advanced_shapeless_crafting",
+      "label": "Advanced Shapeless Crafting",
+      "state": "rejected",
+      "description": "Meta recipe mechanic variant; not a standalone player process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "kubejs_tfc:advanced_shapeless_crafting",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:extra_products_shapeless_crafting",
+      "label": "Extra Products Shapeless Crafting",
+      "state": "rejected",
+      "description": "Meta recipe mechanic variant; not a standalone player process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:extra_products_shapeless_crafting",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:sewing",
+      "label": "Sewing",
+      "state": "accepted",
+      "description": "Sewing is a player-facing process using a sewing table or similar.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:sewing",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "create:mixing",
+      "label": "Mixing",
+      "state": "accepted",
+      "description": "Mechanical mixing is a player-facing Create process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:mixing",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "firmalife:drying",
+      "label": "Drying",
+      "state": "accepted",
+      "description": "Drying items on a drying mat is a player-facing process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:drying",
+          "confidence": 0.85
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/firmalife/drying",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "firmalife:oven",
+      "label": "Oven",
+      "state": "accepted",
+      "description": "Oven cooking is a player-facing process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:oven",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:vacuumizing",
+      "label": "Vacuumizing",
+      "state": "accepted",
+      "description": "Vacuumizing is a machine process from Vintage Improvements.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:vacuumizing",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "diggerhelmet:helmet_repair",
+      "label": "Digger Helmet Repair",
+      "state": "rejected",
+      "description": "Specific item repair process; not a general player workflow.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "diggerhelmet:helmet_repair",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "tfc:barrel_instant_fluid",
+      "label": "Barrel Instant Fluid",
+      "state": "accepted",
+      "description": "Barrel fluid interaction is a player-facing process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:barrel_instant_fluid",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "afc:tree_tapping",
+      "label": "Tree Tapping",
+      "state": "accepted",
+      "description": "Tree tapping is a player-facing process from ArborFirmCraft.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "afc:tree_tapping",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "create:mechanical_crafting",
+      "label": "Mechanical Crafting",
+      "state": "accepted",
+      "description": "Mechanical crafting with the Mechanical Crafter is a player process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:mechanical_crafting",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/smithing_trim",
+      "label": "Smithing Trim",
+      "state": "accepted",
+      "description": "Applying armor trims at the smithing table is a player process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "smithing_trim",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:alloy",
+      "label": "Alloy",
+      "state": "accepted",
+      "description": "Alloying metals is a player-facing process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:alloy",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:loom",
+      "label": "Loom",
+      "state": "accepted",
+      "description": "Weaving cloth on a loom is a player-facing process.",
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/vanilla/loom",
+          "confidence": 0.65
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:loom",
+          "confidence": 0.85
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/weaving",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:scraping",
+      "label": "Scraping Recipe",
+      "state": "accepted",
+      "description": "Scraping items (on a log) is a player process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:scraping",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "create:milling",
+      "label": "Milling",
+      "state": "accepted",
+      "description": "Milling with a millstone is a player process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:milling",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "diggerhelmet:helmet_upgrade",
+      "label": "Digger Helmet Upgrade",
+      "state": "rejected",
+      "description": "Specific item upgrade; not a general player workflow.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "diggerhelmet:helmet_upgrade",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "firmalife:stomping",
+      "label": "Stomping",
+      "state": "accepted",
+      "description": "Stomping in a barrel is a player-facing process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:stomping",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "create:pressing",
+      "label": "Pressing",
+      "state": "accepted",
+      "description": "Mechanical pressing is a player-facing Create process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:pressing",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "deafission:component_fr",
+      "label": "Fission Reactor Components",
+      "state": "rejected",
+      "description": "Component category; not a player-facing process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "deafission:component_fr",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:oxygen_loading",
+      "label": "Oxygen Loading",
+      "state": "accepted",
+      "description": "Loading oxygen canisters at the oxygen loader is a player process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ad_astra:oxygen_loading",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:space_station_recipe",
+      "label": "Space Station Recipe",
+      "state": "accepted",
+      "description": "Building a space station is a player process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ad_astra:space_station_recipe",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:no_remainder_shaped_crafting",
+      "label": "No Remainder Shaped Crafting",
+      "state": "rejected",
+      "description": "Meta recipe mechanic variant; not a standalone player process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:no_remainder_shaped_crafting",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "sophisticatedbackpacks:backpack_upgrade",
+      "label": "Backpack Upgrade",
+      "state": "rejected",
+      "description": "Specific item upgrade line; not a general workflow.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "sophisticatedbackpacks:backpack_upgrade",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "greate:haunting",
+      "label": "Haunting",
+      "state": "accepted",
+      "description": "Haunting is a player-facing process from Greate.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:haunting",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "deafission:component_hb",
+      "label": "Heat Battery Components",
+      "state": "rejected",
+      "description": "Component category; not a player-facing process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "deafission:component_hb",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "ae2wtlib:upgrade",
+      "label": "Upgrade",
+      "state": "rejected",
+      "description": "Generic upgrade category; not a specific process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ae2wtlib:upgrade",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "create_factory_logistics:network_link_qualification",
+      "label": "Network Link Qualification",
+      "state": "rejected",
+      "description": "Implementation-specific mechanic; not a general player workflow.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create_factory_logistics:network_link_qualification",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "firmalife:stinky_soup",
+      "label": "Stinky Soup",
+      "state": "rejected",
+      "description": "Specific food recipe; not a general process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:stinky_soup",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:pot_soup",
+      "label": "Pot Soup",
+      "state": "accepted",
+      "description": "Cooking soup in a pot is a player-facing food process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:pot_soup",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:pressurizing",
+      "label": "Pressurizing",
+      "state": "accepted",
+      "description": "Pressurizing is a machine process from Vintage Improvements.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:pressurizing",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "exposure:photograph_copying",
+      "label": "Photograph Copying",
+      "state": "accepted",
+      "description": "Copying photographs is a player process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "exposure:photograph_copying",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "waterflasks:heal_flask",
+      "label": "Heal Flask",
+      "state": "rejected",
+      "description": "Specific flask repair/refill; not a general workflow.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "waterflasks:heal_flask",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "computercraft:impostor_shapeless",
+      "label": "Impostor Shapeless",
+      "state": "rejected",
+      "description": "Meta recipe mechanic; not a player process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "computercraft:impostor_shapeless",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "exposure:film_developing",
+      "label": "Film Developing",
+      "state": "accepted",
+      "description": "Developing film is a player process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "exposure:film_developing",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "firmalife:smoking",
+      "label": "Smoking",
+      "state": "accepted",
+      "description": "Smoking food is a player-facing process.",
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:smoking",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:earth/vein/index",
+      "label": "Earth Vein Index",
+      "state": "rejected",
+      "description": "Guide page index; not a player-facing process.",
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/earth_vein_index",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:the/beneath/vein/index",
+      "label": "The Beneath Vein Index",
+      "state": "rejected",
+      "description": "Guide page index; not a player-facing process.",
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/nether_vein_index",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:mars/vein/index",
+      "label": "Mars Vein Index",
+      "state": "rejected",
+      "description": "Guide page index; not a player-facing process.",
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/mars_vein_index",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:moon/vein/index",
+      "label": "Moon Vein Index",
+      "state": "rejected",
+      "description": "Guide page index; not a player-facing process.",
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/moon_vein_index",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:crops",
+      "label": "Crops",
+      "state": "rejected",
+      "description": "Guide page topic; not a player-facing process.",
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/crops",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:wild/animals",
+      "label": "Wild Animals",
+      "state": "rejected",
+      "description": "Guide page topic; not a player-facing process.",
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/the_world/wild_animals",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:ores/and/minerals",
+      "label": "Ores and Minerals",
+      "state": "rejected",
+      "description": "Guide page topic; not a player-facing process.",
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/the_world/ores_and_minerals",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "tfc:wild/fruits",
+      "label": "Wild Fruits",
+      "state": "rejected",
+      "description": "Guide page topic; not a player-facing process.",
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/the_world/wild_fruits",
+          "confidence": 0.7
+        }
+      ]
+    }
+  ]
+}

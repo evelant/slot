@@ -1,0 +1,772 @@
+{
+  "values": [
+    {
+      "id": "ad_astra:oxygen_loading#input",
+      "label": "Oxygen Loading Input",
+      "state": "accepted",
+      "description": "Items input for oxygen loading process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ad_astra:oxygen_loading",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "ad_astra:oxygen_loading"
+    },
+    {
+      "id": "ad_astra:oxygen_loading#output",
+      "label": "Oxygen Loading Output",
+      "state": "accepted",
+      "description": "Items output from oxygen loading.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ad_astra:oxygen_loading",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "ad_astra:oxygen_loading"
+    },
+    {
+      "id": "ad_astra:space_station_recipe#input",
+      "label": "Space Station Recipe Input",
+      "state": "accepted",
+      "description": "Items required to craft a space station.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ad_astra:space_station_recipe",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "ad_astra:space_station_recipe"
+    },
+    {
+      "id": "ad_astra:space_station_recipe#output",
+      "label": "Space Station Recipe Output",
+      "state": "accepted",
+      "description": "Result of space station recipe.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ad_astra:space_station_recipe",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "ad_astra:space_station_recipe"
+    },
+    {
+      "id": "tfc:no_remainder_shaped_crafting#input",
+      "label": "No Remainder Shaped Crafting Input",
+      "state": "rejected",
+      "description": "Rejected: meta recipe mechanic for shaped crafting without remainder; not a player-facing workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:no_remainder_shaped_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:no_remainder_shaped_crafting"
+    },
+    {
+      "id": "tfc:no_remainder_shaped_crafting#output",
+      "label": "No Remainder Shaped Crafting Output",
+      "state": "rejected",
+      "description": "Rejected: meta recipe mechanic not a valid workflow role.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:no_remainder_shaped_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:no_remainder_shaped_crafting"
+    },
+    {
+      "id": "sophisticatedbackpacks:backpack_upgrade#input",
+      "label": "Backpack Upgrade Input",
+      "state": "accepted",
+      "description": "Items used to upgrade a backpack.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "sophisticatedbackpacks:backpack_upgrade",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "sophisticatedbackpacks:backpack_upgrade"
+    },
+    {
+      "id": "sophisticatedbackpacks:backpack_upgrade#output",
+      "label": "Backpack Upgrade Output",
+      "state": "accepted",
+      "description": "Resulting upgraded backpack.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "sophisticatedbackpacks:backpack_upgrade",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "sophisticatedbackpacks:backpack_upgrade"
+    },
+    {
+      "id": "greate:haunting#input",
+      "label": "Haunting Input",
+      "state": "accepted",
+      "description": "Items input for the haunting process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:haunting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "greate:haunting"
+    },
+    {
+      "id": "greate:haunting#output",
+      "label": "Haunting Output",
+      "state": "accepted",
+      "description": "Result of haunting.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:haunting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "greate:haunting"
+    },
+    {
+      "id": "deafission:component_hb#input",
+      "label": "Heat Battery Components Input",
+      "state": "accepted",
+      "description": "Materials for crafting heat battery components.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "deafission:component_hb",
+          "confidence": 0.65
+        }
+      ],
+      "parent": "deafission:component_hb"
+    },
+    {
+      "id": "deafission:component_hb#output",
+      "label": "Heat Battery Components Output",
+      "state": "accepted",
+      "description": "Crafted heat battery component.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "deafission:component_hb",
+          "confidence": 0.65
+        }
+      ],
+      "parent": "deafission:component_hb"
+    },
+    {
+      "id": "ae2wtlib:upgrade#input",
+      "label": "Upgrade Input",
+      "state": "accepted",
+      "description": "Items used to upgrade AE2 wireless terminal.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ae2wtlib:upgrade",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "ae2wtlib:upgrade"
+    },
+    {
+      "id": "ae2wtlib:upgrade#output",
+      "label": "Upgrade Output",
+      "state": "accepted",
+      "description": "Upgraded wireless terminal.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ae2wtlib:upgrade",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "ae2wtlib:upgrade"
+    },
+    {
+      "id": "create_factory_logistics:network_link_qualification#input",
+      "label": "Network Link Qualification Input",
+      "state": "accepted",
+      "description": "Items required to qualify a network link.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create_factory_logistics:network_link_qualification",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create_factory_logistics:network_link_qualification"
+    },
+    {
+      "id": "create_factory_logistics:network_link_qualification#output",
+      "label": "Network Link Qualification Output",
+      "state": "accepted",
+      "description": "Result of network link qualification.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create_factory_logistics:network_link_qualification",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create_factory_logistics:network_link_qualification"
+    },
+    {
+      "id": "firmalife:stinky_soup#input",
+      "label": "Stinky Soup Input",
+      "state": "rejected",
+      "description": "Rejected: single-item product recipe, not a reusable workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:stinky_soup",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "firmalife:stinky_soup"
+    },
+    {
+      "id": "firmalife:stinky_soup#output",
+      "label": "Stinky Soup Output",
+      "state": "rejected",
+      "description": "Rejected: not a valid workflow role.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:stinky_soup",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "firmalife:stinky_soup"
+    },
+    {
+      "id": "tfc:pot_soup#input",
+      "label": "Pot Soup Input",
+      "state": "accepted",
+      "description": "Ingredients for TFC pot soup.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:pot_soup",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:pot_soup"
+    },
+    {
+      "id": "tfc:pot_soup#output",
+      "label": "Pot Soup Output",
+      "state": "accepted",
+      "description": "Resulting pot soup.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:pot_soup",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:pot_soup"
+    },
+    {
+      "id": "vintageimprovements:pressurizing#input",
+      "label": "Pressurizing Input",
+      "state": "accepted",
+      "description": "Items to be pressurized.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:pressurizing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "vintageimprovements:pressurizing"
+    },
+    {
+      "id": "vintageimprovements:pressurizing#output",
+      "label": "Pressurizing Output",
+      "state": "accepted",
+      "description": "Result of pressurizing.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:pressurizing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "vintageimprovements:pressurizing"
+    },
+    {
+      "id": "exposure:photograph_copying#input",
+      "label": "Photograph Copying Input",
+      "state": "accepted",
+      "description": "Items needed to copy a photograph.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "exposure:photograph_copying",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "exposure:photograph_copying"
+    },
+    {
+      "id": "exposure:photograph_copying#output",
+      "label": "Photograph Copying Output",
+      "state": "accepted",
+      "description": "Copy of a photograph.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "exposure:photograph_copying",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "exposure:photograph_copying"
+    },
+    {
+      "id": "waterflasks:heal_flask#input",
+      "label": "Heal Flask Input",
+      "state": "rejected",
+      "description": "Rejected: single-item recipe for heal flask, not a reusable process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "waterflasks:heal_flask",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "waterflasks:heal_flask"
+    },
+    {
+      "id": "waterflasks:heal_flask#output",
+      "label": "Heal Flask Output",
+      "state": "rejected",
+      "description": "Rejected: not a valid workflow role.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "waterflasks:heal_flask",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "waterflasks:heal_flask"
+    },
+    {
+      "id": "computercraft:impostor_shapeless#input",
+      "label": "Impostor Shapeless Input",
+      "state": "rejected",
+      "description": "Rejected: meta recipe type for ComputerCraft; not a player-facing process.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "computercraft:impostor_shapeless",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "computercraft:impostor_shapeless"
+    },
+    {
+      "id": "computercraft:impostor_shapeless#output",
+      "label": "Impostor Shapeless Output",
+      "state": "rejected",
+      "description": "Rejected: not a valid workflow role.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "computercraft:impostor_shapeless",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "computercraft:impostor_shapeless"
+    },
+    {
+      "id": "exposure:film_developing#input",
+      "label": "Film Developing Input",
+      "state": "accepted",
+      "description": "Items needed to develop film.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "exposure:film_developing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "exposure:film_developing"
+    },
+    {
+      "id": "exposure:film_developing#output",
+      "label": "Film Developing Output",
+      "state": "accepted",
+      "description": "Developed film or photograph.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "exposure:film_developing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "exposure:film_developing"
+    },
+    {
+      "id": "firmalife:smoking#input",
+      "label": "Smoking Input",
+      "state": "accepted",
+      "description": "Items to be smoked.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:smoking",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "firmalife:smoking"
+    },
+    {
+      "id": "firmalife:smoking#output",
+      "label": "Smoking Output",
+      "state": "accepted",
+      "description": "Smoked product.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:smoking",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "firmalife:smoking"
+    },
+    {
+      "id": "tfc:earth/vein/index#input",
+      "label": "Earth Vein Index Input",
+      "state": "rejected",
+      "description": "Rejected: guide page for ore veins, not a player-facing workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/earth_vein_index",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:earth/vein/index"
+    },
+    {
+      "id": "tfc:earth/vein/index#output",
+      "label": "Earth Vein Index Output",
+      "state": "rejected",
+      "description": "Rejected: not a valid workflow role.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/earth_vein_index",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:earth/vein/index"
+    },
+    {
+      "id": "tfc:the/beneath/vein/index#input",
+      "label": "The Beneath Vein Index Input",
+      "state": "rejected",
+      "description": "Rejected: guide page for ore veins, not a player-facing workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/nether_vein_index",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:the/beneath/vein/index"
+    },
+    {
+      "id": "tfc:the/beneath/vein/index#output",
+      "label": "The Beneath Vein Index Output",
+      "state": "rejected",
+      "description": "Rejected: not a valid workflow role.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/nether_vein_index",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:the/beneath/vein/index"
+    },
+    {
+      "id": "tfc:mars/vein/index#input",
+      "label": "Mars Vein Index Input",
+      "state": "rejected",
+      "description": "Rejected: guide page for ore veins, not a player-facing workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/mars_vein_index",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:mars/vein/index"
+    },
+    {
+      "id": "tfc:mars/vein/index#output",
+      "label": "Mars Vein Index Output",
+      "state": "rejected",
+      "description": "Rejected: not a valid workflow role.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/mars_vein_index",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:mars/vein/index"
+    },
+    {
+      "id": "tfc:moon/vein/index#input",
+      "label": "Moon Vein Index Input",
+      "state": "rejected",
+      "description": "Rejected: guide page for ore veins, not a player-facing workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/moon_vein_index",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:moon/vein/index"
+    },
+    {
+      "id": "tfc:moon/vein/index#output",
+      "label": "Moon Vein Index Output",
+      "state": "rejected",
+      "description": "Rejected: not a valid workflow role.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/tfg_ores/moon_vein_index",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:moon/vein/index"
+    },
+    {
+      "id": "tfc:crops#input",
+      "label": "Crops Input",
+      "state": "rejected",
+      "description": "Rejected: guide topic for crops, not a player-facing workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/beneath/crops",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:crops"
+    },
+    {
+      "id": "tfc:crops#output",
+      "label": "Crops Output",
+      "state": "rejected",
+      "description": "Rejected: not a valid workflow role.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/beneath/crops",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:crops"
+    },
+    {
+      "id": "tfc:wild/animals#input",
+      "label": "Wild Animals Input",
+      "state": "rejected",
+      "description": "Rejected: guide topic for wild animals, not a player-facing workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/the_world/wild_animals",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:wild/animals"
+    },
+    {
+      "id": "tfc:wild/animals#output",
+      "label": "Wild Animals Output",
+      "state": "rejected",
+      "description": "Rejected: not a valid workflow role.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/the_world/wild_animals",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:wild/animals"
+    },
+    {
+      "id": "tfc:ores/and/minerals#input",
+      "label": "Ores and Minerals Input",
+      "state": "rejected",
+      "description": "Rejected: guide topic for ores and minerals, not a player-facing workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/beneath/ores_and_minerals",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:ores/and/minerals"
+    },
+    {
+      "id": "tfc:ores/and/minerals#output",
+      "label": "Ores and Minerals Output",
+      "state": "rejected",
+      "description": "Rejected: not a valid workflow role.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/beneath/ores_and_minerals",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:ores/and/minerals"
+    },
+    {
+      "id": "tfc:wild/fruits#input",
+      "label": "Wild Fruits Input",
+      "state": "rejected",
+      "description": "Rejected: guide topic for wild fruits, not a player-facing workflow.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/the_world/wild_fruits",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:wild/fruits"
+    },
+    {
+      "id": "tfc:wild/fruits#output",
+      "label": "Wild Fruits Output",
+      "state": "rejected",
+      "description": "Rejected: not a valid workflow role.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/the_world/wild_fruits",
+          "confidence": 0.7
+        }
+      ],
+      "parent": "tfc:wild/fruits"
+    }
+  ]
+}

@@ -28,11 +28,6 @@ import {
 } from "./llm/client.ts";
 import { OpenRouterClient } from "./llm/openrouter-client.ts";
 import { runStage3 } from "./llm/run.ts";
-import {
-  selectSubsystemVocabularyForRecords,
-  type SubsystemVocabularyByNamespace,
-  type SubsystemVocabularyEntry,
-} from "./llm/run.ts";
 import { runStage3Retry, selectRetryCandidates } from "./llm/retry.ts";
 import {
   buildDocumentContextByItem,
@@ -48,22 +43,11 @@ import {
 } from "./llm/prompt.ts";
 import { VANILLA_CANARY_ITEMS } from "./llm/canary.ts";
 import {
-  extractModMetadata,
-  proposeSubsystems,
-  type SubsystemEntry,
-} from "./llm/mod_metadata.ts";
-import {
-  buildRuntimeProposerPrompt,
-  buildRuntimeSubsystemContexts,
-  contextEvidence,
   defaultRuntimeSummaryPath,
-  loadSubsystemVocabularyFile,
-  proposeRuntimeSubsystems,
   readRuntimeExportRecords,
   readRuntimeExportSummary,
   type RuntimeExportSummary,
-  type RuntimeSubsystemVocabularyFile,
-} from "./llm/runtime_subsystems.ts";
+} from "./extract/runtime_export.ts";
 import {
   buildFacetEvidenceArtifact,
   collectExternalFacetEvidence,
@@ -235,11 +219,6 @@ async function main() {
           "retry-fixture-dir": { type: "string" },
           "retry-use-replay": { type: "boolean" },
           "retry-record-replay": { type: "boolean" },
-          // mod-only: bootstrap a canonical mod_subsystem vocabulary from the
-          // mod's README/metadata before stage 3 runs.
-          "no-propose-subsystems": { type: "boolean" },
-          "subsystems-model": { type: "string" },
-          "subsystems-file": { type: "string" },
           "facet-vocabulary": { type: "string" },
           // verbose prompt extras. disambiguation defaults ON (principle-
           // based per-facet reasoning; carries production accuracy on hard
@@ -286,9 +265,6 @@ async function main() {
         retryFixtureDir: args.values["retry-fixture-dir"],
         retryUseReplay: args.values["retry-use-replay"],
         retryRecordReplay: args.values["retry-record-replay"],
-        proposeSubsystems: !(args.values["no-propose-subsystems"] ?? false),
-        subsystemsModel: args.values["subsystems-model"],
-        subsystemsFile: args.values["subsystems-file"],
         facetVocabularyFile: args.values["facet-vocabulary"],
         // disambiguation defaults ON; --no-verbose-disambiguation flips off.
         // --verbose-disambiguation is a no-op (always-on by default) — kept
@@ -327,15 +303,11 @@ async function main() {
           "use-replay": { type: "boolean" },
           "record-replay": { type: "boolean" },
           "dry-run": { type: "boolean" },
-          "no-propose-subsystems": { type: "boolean" },
-          "subsystems-model": { type: "string" },
-          "subsystems-file": { type: "string" },
           "facet-vocabulary": { type: "string" },
           "verbose-disambiguation": { type: "boolean" },
           "no-verbose-disambiguation": { type: "boolean" },
           "verbose-misconceptions": { type: "boolean" },
           force: { type: "boolean" },
-          "force-subsystems": { type: "boolean" },
         },
         allowPositionals: true,
         strict: true,
@@ -361,9 +333,6 @@ async function main() {
         useReplay: args.values["use-replay"] ?? false,
         recordReplay: args.values["record-replay"] ?? false,
         dryRun: args.values["dry-run"] ?? false,
-        proposeSubsystems: !(args.values["no-propose-subsystems"] ?? false),
-        subsystemsModel: args.values["subsystems-model"],
-        subsystemsFile: args.values["subsystems-file"],
         facetVocabularyFile: args.values["facet-vocabulary"],
         verboseFacetDisambiguation: args.values["no-verbose-disambiguation"]
           ? false
@@ -373,7 +342,6 @@ async function main() {
 
       const modpackOpts: ModpackRunOptions = {
         force: args.values.force ?? false,
-        forceSubsystems: args.values["force-subsystems"] ?? false,
         modConcurrency: args.values["mod-concurrency"]
           ? parsePositiveInteger(args.values["mod-concurrency"], "--mod-concurrency")
           : 1,
@@ -446,9 +414,6 @@ async function main() {
           "retry-fixture-dir": { type: "string" },
           "retry-use-replay": { type: "boolean" },
           "retry-record-replay": { type: "boolean" },
-          "no-propose-subsystems": { type: "boolean" },
-          "subsystems-model": { type: "string" },
-          "subsystems-file": { type: "string" },
           "facet-vocabulary": { type: "string" },
           "verbose-disambiguation": { type: "boolean" },
           "no-verbose-disambiguation": { type: "boolean" },
@@ -488,9 +453,6 @@ async function main() {
         retryFixtureDir: args.values["retry-fixture-dir"],
         retryUseReplay: args.values["retry-use-replay"],
         retryRecordReplay: args.values["retry-record-replay"],
-        proposeSubsystems: !(args.values["no-propose-subsystems"] ?? false),
-        subsystemsModel: args.values["subsystems-model"],
-        subsystemsFile: args.values["subsystems-file"],
         facetVocabularyFile: args.values["facet-vocabulary"],
         verboseFacetDisambiguation: args.values["no-verbose-disambiguation"]
           ? false
@@ -504,58 +466,6 @@ async function main() {
         includeCovered: args.values["include-covered"] ?? false,
         force: args.values.force ?? false,
         modConcurrency: parsePositiveInteger(args.values["mod-concurrency"], "--mod-concurrency") ?? 1,
-      });
-      return;
-    }
-
-    case "propose-runtime-subsystems": {
-      const args = parseArgs({
-        args: rest,
-        options: {
-          "runtime-export": { type: "string" },
-          summary: { type: "string" },
-          out: { type: "string" },
-          namespace: { type: "string", multiple: true },
-          "limit-namespaces": { type: "string" },
-          "min-items": { type: "string" },
-          model: { type: "string" },
-          "ignore-provider": { type: "string", multiple: true },
-          "only-provider": { type: "string", multiple: true },
-          "fixture-dir": { type: "string" },
-          "use-replay": { type: "boolean" },
-          "record-replay": { type: "boolean" },
-          "dry-run": { type: "boolean" },
-          force: { type: "boolean" },
-        },
-        allowPositionals: false,
-        strict: true,
-      });
-      const runtimeExportPath = args.values["runtime-export"];
-      if (!runtimeExportPath) {
-        console.error("usage: propose-runtime-subsystems --runtime-export <pack.runtime-items.ndjson> [options]");
-        process.exit(2);
-        return;
-      }
-      const outDir = resolve(args.values.out ?? "out");
-      mkdirSync(outDir, { recursive: true });
-      const opts: Stage3CliOptions = {
-        model: args.values.model,
-        ignoredProviders: (args.values["ignore-provider"] as string[] | undefined) ?? undefined,
-        onlyProviders: (args.values["only-provider"] as string[] | undefined) ?? undefined,
-        fixtureDir: args.values["fixture-dir"],
-        useReplay: args.values["use-replay"] ?? false,
-        recordReplay: args.values["record-replay"] ?? false,
-        dryRun: args.values["dry-run"] ?? false,
-      };
-      await runRuntimeSubsystemProposal({
-        runtimeExportPath,
-        summaryPath: args.values.summary,
-        outDir,
-        namespaces: (args.values.namespace as string[] | undefined) ?? [],
-        limitNamespaces: parsePositiveInteger(args.values["limit-namespaces"], "--limit-namespaces"),
-        minItems: parsePositiveInteger(args.values["min-items"], "--min-items") ?? 4,
-        force: args.values.force ?? false,
-        opts,
       });
       return;
     }
@@ -578,7 +488,6 @@ async function main() {
           zip: { type: "boolean" },
           "no-zip": { type: "boolean" },
           force: { type: "boolean" },
-          "force-subsystems": { type: "boolean" },
           "no-repair": { type: "boolean" },
           "repair-batch-size": { type: "string" },
           "repair-concurrency": { type: "string" },
@@ -591,10 +500,7 @@ async function main() {
           "use-replay": { type: "boolean" },
           "record-replay": { type: "boolean" },
           "dry-run": { type: "boolean" },
-          "subsystems-file": { type: "string" },
           "facet-vocabulary": { type: "string" },
-          "limit-namespaces": { type: "string" },
-          "min-items": { type: "string" },
           "verbose-disambiguation": { type: "boolean" },
           "no-verbose-disambiguation": { type: "boolean" },
           "verbose-misconceptions": { type: "boolean" },
@@ -624,8 +530,6 @@ async function main() {
         useReplay,
         recordReplay: useReplay ? false : (args.values["record-replay"] ?? true),
         dryRun: args.values["dry-run"] ?? false,
-        proposeSubsystems: false,
-        subsystemsFile: args.values["subsystems-file"],
         facetVocabularyFile: args.values["facet-vocabulary"],
         documentContextFile: args.values.evidence,
         verboseFacetDisambiguation: args.values["no-verbose-disambiguation"]
@@ -646,12 +550,9 @@ async function main() {
         packFormat: parsePositiveInteger(args.values["pack-format"], "--pack-format"),
         zipDatapack: !(args.values["no-zip"] ?? false) && (args.values.zip ?? true),
         force: args.values.force ?? false,
-        forceSubsystems: args.values["force-subsystems"] ?? false,
         repairMissing: !(args.values["no-repair"] ?? false),
         repairBatchSize: parsePositiveInteger(args.values["repair-batch-size"], "--repair-batch-size") ?? 25,
         repairConcurrency: parsePositiveInteger(args.values["repair-concurrency"], "--repair-concurrency") ?? 8,
-        limitNamespaces: parsePositiveInteger(args.values["limit-namespaces"], "--limit-namespaces"),
-        minItems: parsePositiveInteger(args.values["min-items"], "--min-items") ?? 4,
       });
       return;
     }
@@ -687,7 +588,6 @@ async function main() {
           "retry-fixture-dir": { type: "string" },
           "retry-use-replay": { type: "boolean" },
           "retry-record-replay": { type: "boolean" },
-          "subsystems-file": { type: "string" },
           "facet-vocabulary": { type: "string" },
           "verbose-disambiguation": { type: "boolean" },
           "no-verbose-disambiguation": { type: "boolean" },
@@ -726,8 +626,6 @@ async function main() {
         retryFixtureDir: args.values["retry-fixture-dir"],
         retryUseReplay: args.values["retry-use-replay"],
         retryRecordReplay: args.values["retry-record-replay"],
-        proposeSubsystems: false,
-        subsystemsFile: args.values["subsystems-file"],
         facetVocabularyFile: args.values["facet-vocabulary"],
         documentContextFile: args.values.evidence,
         verboseFacetDisambiguation: args.values["no-verbose-disambiguation"]
@@ -929,19 +827,6 @@ interface Stage3CliOptions {
    *  fixtures pre-populated. */
   retryUseReplay?: boolean;
   retryRecordReplay?: boolean;
-  /** When false, skip the mod_subsystem proposer pre-pass.  Default true. */
-  proposeSubsystems?: boolean;
-  /** OpenRouter model id for the proposer call. */
-  subsystemsModel?: string;
-  /** Load canonical subsystem vocabulary from an existing cache/output file.
-   *  Supports both `<modid>.subsystems.json` and runtime
-   *  `<pack>.runtime-subsystems.json` namespace maps. */
-  subsystemsFile?: string;
-  /** Pre-resolved canonical vocabulary, plumbed through to stage 3. Set
-   *  inside `runMod` after the proposer runs; consumed by `executeStage3`. */
-  subsystemVocabulary?: readonly { id: string; rationale?: string }[];
-  /** Namespace-scoped vocabulary for mixed-namespace runtime-export batches. */
-  subsystemVocabularyByNamespace?: SubsystemVocabularyByNamespace;
   /** Accepted pack facet vocabulary for vocabulary-backed semantic facets. */
   facetVocabularyFile?: string;
   facetVocabulary?: PackFacetVocabulary;
@@ -1017,15 +902,6 @@ function buildPromptMetadata(opts: Stage3CliOptions): Record<string, unknown> {
     document_context_items: opts.documentContextStats?.items_with_context ?? 0,
     document_context_links: opts.documentContextStats?.context_count ?? 0,
     facet_vocabulary_file: opts.facetVocabularyFile ?? null,
-    subsystem_vocabulary: opts.subsystemVocabulary?.map((entry) => entry.id) ?? [],
-    subsystem_vocabulary_by_namespace: opts.subsystemVocabularyByNamespace
-      ? Object.fromEntries(
-          Object.entries(opts.subsystemVocabularyByNamespace)
-            .map(([namespace, entries]) => [namespace, entries.map((entry) => entry.id)])
-            .filter(([, entries]) => (entries as string[]).length > 0),
-        )
-      : {},
-    subsystem_vocabulary_file: opts.subsystemsFile ?? null,
     retry: opts.retryModel
       ? {
           model: opts.retryModel,
@@ -1252,22 +1128,7 @@ async function runMod(
   }
 
   if (stages.stage3 && stage2Layer) {
-    let modOpts = stage3Opts;
-    if (stage3Opts.proposeSubsystems !== false) {
-      const vocab = await resolveModSubsystems({
-        modPath,
-        bundle,
-        outDir,
-        modNamespace,
-        opts: stage3Opts,
-        // dry-run + no cached file: skip the live LLM call but keep going
-        skipLiveCall: stage3Opts.dryRun,
-      });
-      if (vocab.length > 0) {
-        modOpts = { ...stage3Opts, subsystemVocabulary: vocab };
-      }
-    }
-    await executeStage3(records, stage2Layer, completePath, modOpts);
+    await executeStage3(records, stage2Layer, completePath, stage3Opts);
   }
 
   console.log(`done in ${((Date.now() - start) / 1000).toFixed(2)}s`);
@@ -1291,13 +1152,8 @@ async function runMod(
 export interface ModpackRunOptions {
   /** Delete `<modid>.facets.complete.json` for every non-skipped mod
    *  before processing, so the run reclassifies every mod from
-   *  scratch instead of resuming. Subsystem vocabulary caches stay
-   *  intact (they're stable across LLM runs). */
+   *  scratch instead of resuming. */
   force?: boolean;
-  /** Also delete `<modid>.subsystems.json` so the subsystem proposer
-   *  re-runs and the canonical vocabulary is regenerated. Slower; use
-   *  when the proposer prompt itself has changed. */
-  forceSubsystems?: boolean;
   /** Process this many mods in parallel. Each mod independently runs
    *  its own batch-level worker pool (see {@link Stage3CliOptions#concurrency}),
    *  so the total in-flight LLM call count is roughly
@@ -1324,20 +1180,14 @@ async function runModpack(
   const batchConcurrency = stage3Opts.concurrency ?? 4;
   console.log(
     `[modpack] settings: mod-concurrency=${modConcurrency} batch-concurrency=${batchConcurrency}` +
-      (modpackOpts.force ? ` force=true` : ``) +
-      (modpackOpts.forceSubsystems ? ` force-subsystems=true` : ``),
+      (modpackOpts.force ? ` force=true` : ``),
   );
 
   // Cache-clear pass — runs before planModpack so the planner sees
   // post-clean state and routes every non-skipped mod to "process".
-  if (modpackOpts.force || modpackOpts.forceSubsystems) {
-    const cleared = clearModpackCaches(resolved, outDir, {
-      facets: modpackOpts.force ?? false,
-      subsystems: modpackOpts.forceSubsystems ?? false,
-    });
-    console.log(
-      `[modpack] cleared caches: ${cleared.facets} facets-complete, ${cleared.subsystems} subsystems`,
-    );
+  if (modpackOpts.force) {
+    const cleared = clearModpackCaches(resolved, outDir);
+    console.log(`[modpack] cleared caches: ${cleared} facets-complete`);
   }
 
   const decisions = planModpack(resolved, outDir);
@@ -1418,28 +1268,17 @@ async function runModpack(
 function clearModpackCaches(
   resolved: ResolvedModpack,
   outDir: string,
-  what: { facets: boolean; subsystems: boolean },
-): { facets: number; subsystems: number } {
+): number {
   let facets = 0;
-  let subsystems = 0;
   for (const entry of resolved.pack.mods) {
     if (entry.skip) continue;
-    if (what.facets) {
-      const completePath = resolve(outDir, `${entry.namespace}.facets.complete.json`);
-      if (existsSync(completePath)) {
-        rmSync(completePath);
-        facets++;
-      }
-    }
-    if (what.subsystems) {
-      const subsystemsPath = resolve(outDir, `${entry.namespace}.subsystems.json`);
-      if (existsSync(subsystemsPath)) {
-        rmSync(subsystemsPath);
-        subsystems++;
-      }
+    const completePath = resolve(outDir, `${entry.namespace}.facets.complete.json`);
+    if (existsSync(completePath)) {
+      rmSync(completePath);
+      facets++;
     }
   }
-  return { facets, subsystems };
+  return facets;
 }
 
 interface ModsFolderClassificationOptions {
@@ -1580,139 +1419,6 @@ function shouldProcessScannedMod(
   return explicitlyTargeted && mod.item_candidate_count > 0;
 }
 
-interface RuntimeSubsystemProposalOptions {
-  runtimeExportPath: string;
-  summaryPath?: string;
-  outDir: string;
-  namespaces: readonly string[];
-  limitNamespaces?: number;
-  minItems: number;
-  force: boolean;
-  opts: Stage3CliOptions;
-}
-
-async function runRuntimeSubsystemProposal(
-  options: RuntimeSubsystemProposalOptions,
-): Promise<void> {
-  const start = Date.now();
-  const runtimeItemsPath = resolve(options.runtimeExportPath);
-  const summaryPath = resolve(options.summaryPath ?? defaultRuntimeSummaryPath(runtimeItemsPath));
-  const records = readRuntimeExportRecords(runtimeItemsPath);
-  let summary: RuntimeExportSummary | null = null;
-  if (existsSync(summaryPath)) {
-    summary = readRuntimeExportSummary(summaryPath);
-  } else if (options.summaryPath) {
-    throw new Error(`runtime summary not found: ${summaryPath}`);
-  } else {
-    console.warn(`[runtime-subsystems] summary not found at ${summaryPath}; continuing with item records only`);
-  }
-
-  const packId = summary?.pack_id ?? summary?.requested_pack_id ?? packIdFromRuntimeItemsPath(runtimeItemsPath);
-  const outputPath = join(options.outDir, `${safeFileComponent(packId)}.runtime-subsystems.json`);
-  if (existsSync(outputPath) && !options.force && !options.opts.dryRun) {
-    console.error(`[runtime-subsystems] output already exists: ${outputPath}`);
-    console.error(`[runtime-subsystems] pass --force to regenerate it`);
-    process.exit(1);
-    return;
-  }
-
-  let contexts = buildRuntimeSubsystemContexts({
-    records,
-    summary,
-    namespaces: options.namespaces,
-    minItems: options.minItems,
-  });
-  if (options.limitNamespaces) contexts = contexts.slice(0, options.limitNamespaces);
-
-  console.log(
-    `[runtime-subsystems] ${records.length} runtime item record(s), ` +
-      `${contexts.length} namespace context(s), pack=${packId}`,
-  );
-  if (contexts.length === 0) {
-    console.log(`[runtime-subsystems] no namespaces matched --namespace/--min-items filters`);
-    return;
-  }
-
-  const model = options.opts.model ?? DEFAULT_STAGE3_MODEL;
-
-  if (options.opts.dryRun) {
-    const dryRunDir = join(options.outDir, "runtime-subsystems-dry-run");
-    mkdirSync(dryRunDir, { recursive: true });
-    const promptSummary: Array<{ namespace: string; system: string; user: string; chars: number; approxTokens: number }> = [];
-    for (const context of contexts) {
-      const prompt = buildRuntimeProposerPrompt(context);
-      const systemPath = join(dryRunDir, `${context.modNamespace}.system.md`);
-      const userPath = join(dryRunDir, `${context.modNamespace}.user.md`);
-      writeFileSync(systemPath, prompt.system);
-      writeFileSync(userPath, prompt.user);
-      const chars = prompt.system.length + prompt.user.length;
-      promptSummary.push({
-        namespace: context.modNamespace,
-        system: systemPath,
-        user: userPath,
-        chars,
-        approxTokens: Math.round(chars / 4),
-      });
-    }
-    const summaryFile = join(dryRunDir, "summary.json");
-    writeFileSync(summaryFile, JSON.stringify(promptSummary, null, 2) + "\n");
-    console.log(`[runtime-subsystems] dry run: wrote ${contexts.length} prompt pair(s) to ${dryRunDir}`);
-    console.log(`[runtime-subsystems] summary → ${summaryFile}`);
-    return;
-  }
-
-  console.log(`[runtime-subsystems] proposing vocabulary with ${model} via openrouter`);
-  ensureLiveBackendConfigured(options.opts, "propose-runtime-subsystems");
-  const client = buildClient(options.opts);
-  const output: RuntimeSubsystemVocabularyFile = {
-    schema_version: 1,
-    kind: "slot-runtime-subsystem-vocabulary",
-    pack_id: packId,
-    generated_by: TOOL_VERSION,
-    generated_at: new Date().toISOString(),
-    model,
-    source: {
-      runtime_items: runtimeItemsPath,
-      ...(existsSync(summaryPath) ? { runtime_summary: summaryPath } : {}),
-      ...(summary?.loader ? { loader: summary.loader } : {}),
-      ...(summary?.minecraft_version ? { minecraft_version: summary.minecraft_version } : {}),
-      ...(summary?.item_count ? { item_count: summary.item_count } : { item_count: records.length }),
-    },
-    namespaces: {},
-  };
-
-  for (let i = 0; i < contexts.length; i++) {
-    const context = contexts[i]!;
-    console.log(
-      `[runtime-subsystems] ${i + 1}/${contexts.length} ${context.modNamespace} ` +
-        `(${context.itemCount} items)`,
-    );
-    const proposal = await proposeRuntimeSubsystems(context, {
-      client,
-      model,
-      clientOptions: { signal: cliAbortSignal() },
-    });
-    output.namespaces[context.modNamespace] = {
-      modNamespace: context.modNamespace,
-      item_count: context.itemCount,
-      evidence: contextEvidence(context),
-      vocabulary: proposal.vocabulary,
-      raw_response: proposal.raw,
-    };
-    if (proposal.vocabulary.length === 0) {
-      console.log(`  (no vocabulary entries)`);
-    } else {
-      for (const entry of proposal.vocabulary) {
-        console.log(`  ${entry.id.padEnd(40)}${entry.rationale ? " " + entry.rationale : ""}`);
-      }
-    }
-  }
-
-  writeFileSync(outputPath, JSON.stringify(output, null, 2) + "\n");
-  console.log(`[runtime-subsystems] wrote ${Object.keys(output.namespaces).length} namespace(s) → ${outputPath}`);
-  console.log(`done in ${((Date.now() - start) / 1000).toFixed(2)}s`);
-}
-
 interface ClassifyRuntimePackOptions {
   runtimeExportPath: string;
   summaryPath?: string;
@@ -1726,12 +1432,9 @@ interface ClassifyRuntimePackOptions {
   packFormat?: number;
   zipDatapack: boolean;
   force: boolean;
-  forceSubsystems: boolean;
   repairMissing: boolean;
   repairBatchSize: number;
   repairConcurrency: number;
-  limitNamespaces?: number;
-  minItems: number;
 }
 
 async function runClassifyRuntimePack(options: ClassifyRuntimePackOptions): Promise<void> {
@@ -1739,35 +1442,10 @@ async function runClassifyRuntimePack(options: ClassifyRuntimePackOptions): Prom
   console.log(`[runtime-pack] pack=${options.packId}`);
   console.log(`[runtime-pack] out=${options.outDir}`);
   const stage3Enabled = options.stages.stage3;
-  const subsystemPath = join(options.outDir, `${options.packId}.runtime-subsystems.json`);
 
   let stage3Opts = { ...options.stage3Opts };
   if (stage3Enabled) {
     ensureLiveBackendConfigured(stage3Opts, "classify-runtime-pack");
-    if (!stage3Opts.subsystemsFile) {
-      if (!existsSync(subsystemPath) || options.forceSubsystems) {
-        console.log(`[runtime-pack] generating runtime subsystem vocabulary`);
-        await runRuntimeSubsystemProposal({
-          runtimeExportPath: options.runtimeExportPath,
-          summaryPath: options.summaryPath,
-          outDir: options.outDir,
-          namespaces: [],
-          limitNamespaces: options.limitNamespaces,
-          minItems: options.minItems,
-          force: true,
-          opts: {
-            ...stage3Opts,
-            fixtureDir: join(options.outDir, "fixtures", "runtime-subsystems"),
-            recordReplay: stage3Opts.useReplay ? false : true,
-          },
-        });
-      } else {
-        console.log(`[runtime-pack] using cached runtime subsystem vocabulary: ${subsystemPath}`);
-      }
-      if (existsSync(subsystemPath)) {
-        stage3Opts = { ...stage3Opts, subsystemsFile: subsystemPath };
-      }
-    }
   }
 
   const run = await runGeneratePackLayer(
@@ -2942,17 +2620,7 @@ async function runJarMod(
   }
 
   if (stages.stage3 && stage2Layer) {
-    let modOpts = stage3Opts;
-    if (stage3Opts.proposeSubsystems !== false) {
-      const cached = readCachedSubsystems(outDir, mod.id);
-      if (cached.length > 0) {
-        console.log(`[subsystems] using cached vocabulary (${cached.length} entries) for jar-backed run`);
-        modOpts = { ...stage3Opts, subsystemVocabulary: cached };
-      } else {
-        console.log(`[subsystems] jar-backed run has no source README; stage 3 will run without canonical vocabulary.`);
-      }
-    }
-    await executeStage3(records, stage2Layer, completePath, modOpts);
+    await executeStage3(records, stage2Layer, completePath, stage3Opts);
   }
 
   console.log(`done in ${((Date.now() - start) / 1000).toFixed(2)}s`);
@@ -2970,180 +2638,6 @@ function jarInputMetadata(mod: InputManifestMod): Record<string, unknown> {
     namespaces: mod.namespaces,
     ...(mod.platform_ids ? { platform_ids: mod.platform_ids } : {}),
   };
-}
-
-function readCachedSubsystems(outDir: string, modNamespace: string): SubsystemEntry[] {
-  const cachePath = join(outDir, `${modNamespace}.subsystems.json`);
-  if (!existsSync(cachePath)) return [];
-  try {
-    const data = JSON.parse(readFileSync(cachePath, "utf8")) as {
-      vocabulary?: SubsystemEntry[];
-    };
-    return Array.isArray(data.vocabulary) ? data.vocabulary : [];
-  } catch {
-    return [];
-  }
-}
-
-/**
- * Resolve the canonical `mod_subsystem` vocabulary for a mod run. Uses an
- * on-disk cache (`<outDir>/<modid>.subsystems.json`) so the proposer LLM call
- * only fires once per mod — subsequent runs read the saved vocabulary.
- *
- * The cache is content-agnostic: edits to README/mods.toml don't auto-bust it.
- * Delete the file to regenerate.
- */
-async function resolveModSubsystems(args: {
-  modPath: string;
-  /** Source bundle for the live proposer call. Optional — when omitted
-   *  (e.g. stage-3-only runs against pre-extracted ndjson), only the
-   *  cached `<modid>.subsystems.json` will be consulted; if that's
-   *  missing the proposer is skipped. */
-  bundle: import("./extract/mod/source.ts").ModSourceBundle | null;
-  outDir: string;
-  modNamespace: string;
-  opts: Stage3CliOptions;
-  /** When true, only read the cache; never fire a live LLM call. */
-  skipLiveCall?: boolean;
-}): Promise<SubsystemEntry[]> {
-  const { modPath, bundle, outDir, modNamespace, opts, skipLiveCall } = args;
-  const cachePath = join(outDir, `${modNamespace}.subsystems.json`);
-  if (existsSync(cachePath)) {
-    try {
-      const data = JSON.parse(readFileSync(cachePath, "utf8")) as {
-        vocabulary?: SubsystemEntry[];
-      };
-      if (Array.isArray(data.vocabulary) && data.vocabulary.length > 0) {
-        console.log(
-          `[subsystems] using cached vocabulary (${data.vocabulary.length} entries) from ${cachePath}`,
-        );
-        return data.vocabulary;
-      }
-    } catch (err) {
-      console.warn(`[subsystems] failed to read cache ${cachePath}: ${(err as Error).message}`);
-    }
-  }
-
-  if (skipLiveCall) {
-    console.log(
-      `[subsystems] no cache and live call disabled; stage 3 will run without canonical vocabulary.`,
-    );
-    return [];
-  }
-  if (opts.useReplay && !opts.recordReplay) {
-    // Replay-only mode: don't fire a live LLM call to populate the cache;
-    // the user has explicitly asked for offline behavior.
-    console.log(
-      `[subsystems] no cache and --use-replay set; skipping proposer (stage 3 will run without canonical vocabulary).`,
-    );
-    return [];
-  }
-
-  if (!bundle) {
-    console.log(
-      `[subsystems] no cache and no source bundle (stage-3-only run); skipping proposer (stage 3 will run without canonical vocabulary).`,
-    );
-    return [];
-  }
-  const proposerModel = opts.subsystemsModel ?? opts.model ?? DEFAULT_STAGE3_MODEL;
-  console.log(`[subsystems] proposing canonical vocabulary for ${modNamespace} (${proposerModel} via openrouter)`);
-  const meta = extractModMetadata({ modPath, bundle });
-  if (
-    !meta.readme &&
-    !meta.description &&
-    meta.modRecipeTypes.length === 0 &&
-    meta.itemDisplayNames.length === 0
-  ) {
-    console.log(`[subsystems] no metadata signals; skipping proposer`);
-    return [];
-  }
-  const client = buildClient(opts);
-  const proposal = await proposeSubsystems(meta, {
-    client,
-    model: proposerModel,
-    clientOptions: { signal: cliAbortSignal() },
-  });
-  if (proposal.vocabulary.length === 0) {
-    console.warn(
-      `[subsystems] proposer returned no usable vocabulary entries; raw response saved alongside cache`,
-    );
-  }
-  writeFileSync(
-    cachePath,
-    JSON.stringify(
-      {
-        modNamespace: proposal.modNamespace,
-        generated_at: new Date().toISOString(),
-        generated_by: TOOL_VERSION,
-        vocabulary: proposal.vocabulary,
-      },
-      null,
-      2,
-    ) + "\n",
-  );
-  console.log(
-    `[subsystems] wrote ${proposal.vocabulary.length} entr(y/ies) → ${cachePath}`,
-  );
-  for (const entry of proposal.vocabulary) {
-    console.log(`  ${entry.id.padEnd(40)}${entry.rationale ? " " + entry.rationale : ""}`);
-  }
-  return proposal.vocabulary;
-}
-
-function resolveStage3SubsystemVocabulary(opts: Stage3CliOptions): Stage3CliOptions {
-  if (!opts.subsystemsFile) return opts;
-  const resolvedPath = resolve(opts.subsystemsFile);
-  const loaded = loadSubsystemVocabularyFile(resolvedPath);
-  const globalVocabulary = mergeSubsystemEntries(
-    opts.subsystemVocabulary,
-    loaded.vocabulary,
-  );
-  const byNamespace = mergeSubsystemMaps(
-    opts.subsystemVocabularyByNamespace,
-    loaded.byNamespace,
-  );
-  const globalCount = globalVocabulary.length;
-  const namespaceCount = byNamespace ? Object.keys(byNamespace).length : 0;
-  console.log(
-    `[subsystems] loaded vocabulary file ${resolvedPath} ` +
-      `(${globalCount} global entr(y/ies), ${namespaceCount} namespace map entr(y/ies))`,
-  );
-  return {
-    ...opts,
-    subsystemVocabulary: globalCount > 0 ? globalVocabulary : undefined,
-    subsystemVocabularyByNamespace: byNamespace,
-  };
-}
-
-function mergeSubsystemEntries(
-  a: readonly SubsystemVocabularyEntry[] | undefined,
-  b: readonly SubsystemVocabularyEntry[] | undefined,
-): SubsystemVocabularyEntry[] {
-  const out: SubsystemVocabularyEntry[] = [];
-  const seen = new Set<string>();
-  for (const entry of [...(a ?? []), ...(b ?? [])]) {
-    if (seen.has(entry.id)) continue;
-    seen.add(entry.id);
-    out.push(entry);
-  }
-  return out;
-}
-
-function mergeSubsystemMaps(
-  a: SubsystemVocabularyByNamespace | undefined,
-  b: SubsystemVocabularyByNamespace | undefined,
-): SubsystemVocabularyByNamespace | undefined {
-  const namespaces = new Set([
-    ...Object.keys(a ?? {}),
-    ...Object.keys(b ?? {}),
-  ]);
-  if (namespaces.size === 0) return undefined;
-  const out: SubsystemVocabularyByNamespace = {};
-  for (const namespace of namespaces) {
-    const merged = mergeSubsystemEntries(a?.[namespace], b?.[namespace]);
-    if (merged.length > 0) out[namespace] = merged;
-  }
-  return Object.keys(out).length > 0 ? out : undefined;
 }
 
 function resolveStage3DocumentContext(
@@ -3206,7 +2700,6 @@ async function executeStage3(
   opts: Stage3CliOptions,
 ) {
   opts = resolveStage3FacetVocabulary(opts);
-  opts = resolveStage3SubsystemVocabulary(opts);
   opts = resolveStage3DocumentContext(opts, records);
   const only = resolveSample(opts.sample, records);
   if (only && only.length === 0) {
@@ -3234,8 +2727,6 @@ async function executeStage3(
     only,
     documentContextByItem: opts.documentContextByItem,
     facetVocabulary: opts.facetVocabulary,
-    subsystemVocabulary: opts.subsystemVocabulary,
-    subsystemVocabularyByNamespace: opts.subsystemVocabularyByNamespace,
     clientOptions: { signal: cliAbortSignal() },
     promptExtras: {
       verboseFacetDisambiguation: opts.verboseFacetDisambiguation,
@@ -3287,8 +2778,6 @@ async function executeStage3(
         batchSize: opts.retryBatchSize,
         documentContextByItem: opts.documentContextByItem,
         facetVocabulary: opts.facetVocabulary,
-        subsystemVocabulary: opts.subsystemVocabulary,
-        subsystemVocabularyByNamespace: opts.subsystemVocabularyByNamespace,
         clientOptions: { signal: cliAbortSignal() },
         promptExtras: {
           verboseFacetDisambiguation: opts.verboseFacetDisambiguation,
@@ -3529,11 +3018,6 @@ async function dryRunStage3(
     const prompt = buildBatchPrompt({
       items: payloads,
       target_facets: targetFacets,
-      subsystem_vocabulary: selectSubsystemVocabularyForRecords(
-        batch,
-        opts.subsystemVocabulary,
-        opts.subsystemVocabularyByNamespace,
-      ),
       facet_vocabulary: opts.facetVocabulary
         ? buildPromptFacetVocabulary(opts.facetVocabulary, targetFacets)
         : undefined,
@@ -3682,34 +3166,12 @@ Commands:
         --force                Delete <modid>.facets.complete.json
                                for every non-skipped mod before
                                processing, forcing a full rerun.
-                               Subsystem vocabulary stays cached
-                               (it's stable across runs).
-        --force-subsystems     Also delete <modid>.subsystems.json
-                               so the proposer regenerates the
-                               canonical mod_subsystem vocabulary.
-                               Use when the proposer prompt has
-                               changed.
         --mod-concurrency <n>  Process N mods in parallel (default 1).
                                Each mod runs its own batch worker
                                pool, so total in-flight LLM calls
                                ≈ mod-concurrency × concurrency.
                                OpenRouter handles dozens comfortably;
                                recommend 3-4 for fast wall-time.
-
-  propose-runtime-subsystems --runtime-export <pack.runtime-items.ndjson> [options]
-      Build a pack-specific canonical mod_subsystem vocabulary from a live
-      runtime export. Reads the matching <pack>.runtime-summary.json by
-      default, proposes 0-8 labels per namespace, and writes
-      <out>/<pack>.runtime-subsystems.json. Use --namespace <id> to target
-      specific mods and --dry-run to write prompts without an LLM call.
-
-      Runtime-subsystem flags:
-        --summary <path>        Explicit runtime-summary.json path.
-        --namespace <id>        Target one namespace. Repeatable.
-        --limit-namespaces <n>  Process only the N largest matched namespaces.
-        --min-items <n>         Skip auto-selected namespaces below N items
-                                (default 4; explicit --namespace bypasses it).
-        --force                 Overwrite an existing runtime-subsystems file.
 
   generate-pack-layer --runtime-export <pack.runtime-items.ndjson> [options]
       Generate a pack-specific classification layer from a live runtime export.
@@ -3778,11 +3240,11 @@ Commands:
 
   classify-runtime-pack --runtime-export <pack.runtime-items.ndjson> [options]
       Recommended one-command workflow for a real modpack runtime export.
-      Combines runtime records, optional static jar enrichment, namespace
-      subsystem vocabulary generation, stage 3 semantic completion, missing-LLM
-      repair, validation, datapack packaging, datapack zip creation, and a
-      machine/human run report. Defaults are tuned for the cheap OpenRouter
-      deepseek/deepseek-v4-flash path and record replay fixtures.
+      Combines runtime records, optional static jar enrichment, stage 3 semantic
+      completion, missing-LLM repair, validation, datapack packaging, datapack
+      zip creation, and a machine/human run report. Defaults are tuned for the
+      cheap OpenRouter deepseek/deepseek-v4-flash path and record replay
+      fixtures.
 
       Runtime-pack flags:
         --summary <path>        Explicit runtime-summary.json path.
@@ -3802,7 +3264,6 @@ Commands:
         --pack-format <n>       Datapack pack_format.
         --no-zip                Skip datapack zip output.
         --force                 Overwrite existing generated outputs.
-        --force-subsystems      Regenerate <pack>.runtime-subsystems.json.
         --no-repair             Skip the missing-LLM repair pass.
         --repair-batch-size <n> Items per repair batch (default 25).
         --repair-concurrency <n>
@@ -3871,18 +3332,6 @@ Retry pass (opt-in; runs after the first pass on low-confidence items):
   --retry-batch-size <n>    Items per retry LLM call. Default 8.
   --retry-fixture-dir <p>   Separate fixture directory for the retry pass.
 
-Subsystem vocabulary:
-  --no-propose-subsystems   Skip the README/metadata pre-pass. Stage 3 then
-                            invents mod_subsystem labels per item.
-  --subsystems-model <id>   OpenRouter model id for the proposer call.
-                            Defaults to the stage-3 model.
-                            Cached at <out>/<modid>.subsystems.json — delete
-                            to regenerate.
-  --subsystems-file <path>  Load an existing subsystem vocabulary file into
-                            stage 3. Supports single-mod <modid>.subsystems.json
-                            and runtime <pack>.runtime-subsystems.json
-                            namespace maps.
-
 Prompt extras (defaults: disambiguation ON, misconceptions OFF):
   --no-verbose-disambiguation
                             Drop the principle-based per-facet reasoning
@@ -3920,18 +3369,12 @@ Examples:
     bun run src/cli.ts classify-folder --mods /path/to/prism/instance --mod createaddition \\
       --out out --stages 1,2,3 --record-replay --fixture-dir test/fixtures/createaddition-jar
 
-  # Propose subsystem vocabulary from a live runtime export:
-  bun run src/cli.ts propose-runtime-subsystems \\
-      --runtime-export modpacks/exports/tfg2.runtime-items.ndjson \\
-      --summary modpacks/exports/tfg2.runtime-summary.json \\
-      --namespace create --namespace gtceu --dry-run
-
   # Generate a static+runtime pack layer and package it as a datapack:
   bun run src/cli.ts generate-pack-layer \\
       --runtime-export modpacks/exports/tfg2.runtime-items.ndjson \\
       --summary modpacks/exports/tfg2.runtime-summary.json \\
       --mods /path/to/TerraFirmaGreg-Modern \\
-      --subsystems-file out/tfg2.runtime-subsystems.json \\
+      --facet-vocabulary out/tfg2/tfg2.facet-vocabulary.json \\
       --stages 1,2,3 --datapack
 
   # Collect pack-level facet evidence before proposing a vocabulary:
@@ -3968,7 +3411,7 @@ Examples:
 
   # Convenience aliases (same as the FAST recipe above):
   bun run reclassify:test-modset       # reclassify only what changed
-  bun run reclassify:test-modset:full  # also regenerate subsystem vocabularies
+  bun run reclassify:test-modset:full  # force full stage outputs
 
 Prompt-evaluation presets (60-item playtest sample; reads stage-1/2 from out/):
   OPENROUTER_API_KEY=... bun run eval:deepseek

@@ -1,0 +1,244 @@
+{
+  "values": [
+    {
+      "id": "ali:trade_loot",
+      "label": "Trading Loot",
+      "state": "rejected",
+      "description": "Not a station/machine/tool/surface; it is a recipe category for loot tables.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ali:trade_loot",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "cloth-config:testing",
+      "label": "Config Demo",
+      "state": "rejected",
+      "description": "Debug/testing category, not a player-facing station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "cloth-config:testing",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "deafission:fission_reactor_coolant",
+      "label": "Fission Reactor Cooling",
+      "state": "accepted",
+      "description": "Player-facing task: loading coolant into the fission reactor machine.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "deafission:fission_reactor_coolant",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "deafission:fission_reactor_fuel",
+      "label": "Fission Reactor Fuel",
+      "state": "accepted",
+      "description": "Player-facing task: loading fuel into the fission reactor machine.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "deafission:fission_reactor_fuel",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "deafission:fission_reactor_processing",
+      "label": "Fission Reactor Material Holder",
+      "state": "accepted",
+      "description": "Player-facing task: processing materials in the fission reactor.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "deafission:fission_reactor_processing",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "description:debug/formatting/value_1",
+      "label": "Testing %s formatting replacements.",
+      "state": "rejected",
+      "description": "Debug/testing info category, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "description:debug.formatting.1",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "description:debug/formatting/value_2",
+      "label": "Testing %s %s formatting replacements.",
+      "state": "rejected",
+      "description": "Debug/testing info category, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "description:debug.formatting.2",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "description:debug/formatting/value_3",
+      "label": "%s nested",
+      "state": "rejected",
+      "description": "Debug/testing info category, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "description:debug.formatting.3",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "description:wooden/door/value_2",
+      "label": "Clicking on a door changes its state from open to closed and vice versa.",
+      "state": "rejected",
+      "description": "Info description, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "description:wooden.door.2",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "description:wooden/door/value_3",
+      "label": "Wooden doors can be opened/closed via redstone circuits.",
+      "state": "rejected",
+      "description": "Info description, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "description:wooden.door.3",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "do_a_barrel_roll:do_a_barrel_roll",
+      "label": "Do a Barrel Roll",
+      "state": "rejected",
+      "description": "Movement ability, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "do_a_barrel_roll:do_a_barrel_roll",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "do_a_barrel_roll.do_a_barrel_roll:movement",
+      "label": "Do a Barrel Roll Movement",
+      "state": "rejected",
+      "description": "Movement ability category, not a station.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "do_a_barrel_roll.do_a_barrel_roll:movement",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "exposure:info/photograph_frame",
+      "label": "Has three sizes: 1x1, 2x2 and 3x3. Placed like a Painting, but can be placed on floors and ceilings as well. Glow Ink Sac will make it glow.",
+      "state": "rejected",
+      "description": "Item description, not a station or surface for processing.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "exposure:info.photograph_frame",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "gtceu:bedrock_fluid/heavy_ammoniacal_water",
+      "label": "Martian Heavy Ammoniacal Water Deposit",
+      "state": "rejected",
+      "description": "Natural resource deposit, not a player-built station or machine.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "gtceu:bedrock_fluid.heavy_ammoniacal_water",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "gtceu:bedrock_fluid/liquid_carbon_dioxide",
+      "label": "Martian Liquid Carbon Dioxide Deposit",
+      "state": "rejected",
+      "description": "Natural resource deposit, not a player-built station or machine.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "gtceu:bedrock_fluid.liquid_carbon_dioxide",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "gtceu:bedrock_fluid/liquid_ice",
+      "label": "Martian Ice Deposit",
+      "state": "rejected",
+      "description": "Natural resource deposit, not a player-built station or machine.",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "gtceu:bedrock_fluid.liquid_ice",
+          "confidence": 0.65
+        }
+      ]
+    }
+  ]
+}

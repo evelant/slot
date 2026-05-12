@@ -1,0 +1,772 @@
+{
+  "values": [
+    {
+      "id": "tfc:advanced_shapeless_crafting#input",
+      "label": "Advanced Shapeless Crafting Input",
+      "state": "rejected",
+      "description": "Workflow is an implementation recipe type, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:advanced_shapeless_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:advanced_shapeless_crafting"
+    },
+    {
+      "id": "tfc:advanced_shapeless_crafting#output",
+      "label": "Advanced Shapeless Crafting Output",
+      "state": "rejected",
+      "description": "Workflow is an implementation recipe type, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:advanced_shapeless_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:advanced_shapeless_crafting"
+    },
+    {
+      "id": "rnr:block_mod#input",
+      "label": "Block Mod Input",
+      "state": "rejected",
+      "description": "Workflow is an implementation recipe type, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "rnr:block_mod",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "rnr:block_mod"
+    },
+    {
+      "id": "rnr:block_mod#output",
+      "label": "Block Mod Output",
+      "state": "rejected",
+      "description": "Workflow is an implementation recipe type, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "rnr:block_mod",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "rnr:block_mod"
+    },
+    {
+      "id": "create:sandpaper_polishing#input",
+      "label": "Sandpaper Polishing Input",
+      "state": "accepted",
+      "description": "Items processed by sandpaper polishing in Create.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:sandpaper_polishing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:sandpaper_polishing"
+    },
+    {
+      "id": "create:sandpaper_polishing#output",
+      "label": "Sandpaper Polishing Output",
+      "state": "accepted",
+      "description": "Items produced by sandpaper polishing in Create.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:sandpaper_polishing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:sandpaper_polishing"
+    },
+    {
+      "id": "vintageimprovements:polishing#input",
+      "label": "Polishing Input",
+      "state": "accepted",
+      "description": "Items used as input in Vintage Improvements polishing.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:polishing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "vintageimprovements:polishing"
+    },
+    {
+      "id": "vintageimprovements:polishing#output",
+      "label": "Polishing Output",
+      "state": "accepted",
+      "description": "Items produced by Vintage Improvements polishing.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:polishing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "vintageimprovements:polishing"
+    },
+    {
+      "id": "create:deploying#input",
+      "label": "Deploying Input",
+      "state": "accepted",
+      "description": "Items used as input in Create deploying (Deployer).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:deploying",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:deploying"
+    },
+    {
+      "id": "create:deploying#output",
+      "label": "Deploying Output",
+      "state": "accepted",
+      "description": "Items produced by Create deploying.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:deploying",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:deploying"
+    },
+    {
+      "id": "create:sequenced_assembly#input",
+      "label": "Sequenced Assembly Input",
+      "state": "accepted",
+      "description": "Items used in Create sequenced assembly.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:sequenced_assembly",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:sequenced_assembly"
+    },
+    {
+      "id": "create:sequenced_assembly#output",
+      "label": "Sequenced Assembly Output",
+      "state": "accepted",
+      "description": "Items produced by Create sequenced assembly.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:sequenced_assembly",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:sequenced_assembly"
+    },
+    {
+      "id": "kubejs:shaped#input",
+      "label": "Shaped Input",
+      "state": "rejected",
+      "description": "Workflow is an implementation recipe type, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "kubejs:shaped",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "kubejs:shaped"
+    },
+    {
+      "id": "kubejs:shaped#output",
+      "label": "Shaped Output",
+      "state": "rejected",
+      "description": "Workflow is an implementation recipe type, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "kubejs:shaped",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "kubejs:shaped"
+    },
+    {
+      "id": "vintageimprovements:centrifugation#input",
+      "label": "Centrifugation Input",
+      "state": "accepted",
+      "description": "Items used in Vintage Improvements centrifugation.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:centrifugation",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "vintageimprovements:centrifugation"
+    },
+    {
+      "id": "vintageimprovements:centrifugation#output",
+      "label": "Centrifugation Output",
+      "state": "accepted",
+      "description": "Items produced by Vintage Improvements centrifugation.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:centrifugation",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "vintageimprovements:centrifugation"
+    },
+    {
+      "id": "vintageimprovements:hammering#input",
+      "label": "Hammering Input",
+      "state": "accepted",
+      "description": "Items used in Vintage Improvements hammering.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:hammering",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "vintageimprovements:hammering"
+    },
+    {
+      "id": "vintageimprovements:hammering#output",
+      "label": "Hammering Output",
+      "state": "accepted",
+      "description": "Items produced by Vintage Improvements hammering.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:hammering",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "vintageimprovements:hammering"
+    },
+    {
+      "id": "createaddition:rolling#input",
+      "label": "Rolling Input",
+      "state": "accepted",
+      "description": "Items used in Create Addition rolling.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "createaddition:rolling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "createaddition:rolling"
+    },
+    {
+      "id": "createaddition:rolling#output",
+      "label": "Rolling Output",
+      "state": "accepted",
+      "description": "Items produced by Create Addition rolling.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "createaddition:rolling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "createaddition:rolling"
+    },
+    {
+      "id": "tfc:casting#input",
+      "label": "Casting Input",
+      "state": "accepted",
+      "description": "Items used as input in TFC casting.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:casting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:casting"
+    },
+    {
+      "id": "tfc:casting#output",
+      "label": "Casting Output",
+      "state": "accepted",
+      "description": "Items produced by TFC casting.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:casting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:casting"
+    },
+    {
+      "id": "framedblocks:frame#input",
+      "label": "Frame Input",
+      "state": "rejected",
+      "description": "Workflow is an implementation recipe type, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "framedblocks:frame",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "framedblocks:frame"
+    },
+    {
+      "id": "framedblocks:frame#output",
+      "label": "Frame Output",
+      "state": "rejected",
+      "description": "Workflow is an implementation recipe type, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "framedblocks:frame",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "framedblocks:frame"
+    },
+    {
+      "id": "greate:brewing#input",
+      "label": "Brewing Input",
+      "state": "accepted",
+      "description": "Items used in brewing (Greate).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:brewing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "greate:brewing"
+    },
+    {
+      "id": "greate:brewing#output",
+      "label": "Brewing Output",
+      "state": "accepted",
+      "description": "Items produced by brewing (Greate).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:brewing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "greate:brewing"
+    },
+    {
+      "id": "tfc:pot#input",
+      "label": "Pot Input",
+      "state": "accepted",
+      "description": "Items used in TFC pot cooking.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:pot",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:pot"
+    },
+    {
+      "id": "tfc:pot#output",
+      "label": "Pot Output",
+      "state": "accepted",
+      "description": "Items produced by TFC pot cooking.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:pot",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:pot"
+    },
+    {
+      "id": "tfc:advanced_shaped_crafting#input",
+      "label": "Advanced Shaped Crafting Input",
+      "state": "rejected",
+      "description": "Workflow is an implementation recipe type, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:advanced_shaped_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:advanced_shaped_crafting"
+    },
+    {
+      "id": "tfc:advanced_shaped_crafting#output",
+      "label": "Advanced Shaped Crafting Output",
+      "state": "rejected",
+      "description": "Workflow is an implementation recipe type, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:advanced_shaped_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:advanced_shaped_crafting"
+    },
+    {
+      "id": "tfc:welding#input",
+      "label": "Welding Input",
+      "state": "accepted",
+      "description": "Items used in TFC welding (anvil).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:welding",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:welding"
+    },
+    {
+      "id": "tfc:welding#output",
+      "label": "Welding Output",
+      "state": "accepted",
+      "description": "Items produced by TFC welding.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:welding",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:welding"
+    },
+    {
+      "id": "tfc:damage_inputs_shaped_crafting#input",
+      "label": "Damage Inputs Shaped Crafting Input",
+      "state": "rejected",
+      "description": "Workflow is an implementation recipe type, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:damage_inputs_shaped_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:damage_inputs_shaped_crafting"
+    },
+    {
+      "id": "tfc:damage_inputs_shaped_crafting#output",
+      "label": "Damage Inputs Shaped Crafting Output",
+      "state": "rejected",
+      "description": "Workflow is an implementation recipe type, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:damage_inputs_shaped_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:damage_inputs_shaped_crafting"
+    },
+    {
+      "id": "vintageimprovements:coiling#input",
+      "label": "Coiling Input",
+      "state": "accepted",
+      "description": "Items used in Vintage Improvements coiling.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:coiling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "vintageimprovements:coiling"
+    },
+    {
+      "id": "vintageimprovements:coiling#output",
+      "label": "Coiling Output",
+      "state": "accepted",
+      "description": "Items produced by Vintage Improvements coiling.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:coiling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "vintageimprovements:coiling"
+    },
+    {
+      "id": "tfc:knapping#input",
+      "label": "Knapping Input",
+      "state": "accepted",
+      "description": "Items used in TFC knapping.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:knapping",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:knapping"
+    },
+    {
+      "id": "tfc:knapping#output",
+      "label": "Knapping Output",
+      "state": "accepted",
+      "description": "Items produced by TFC knapping.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:knapping",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:knapping"
+    },
+    {
+      "id": "vintageimprovements:vibrating#input",
+      "label": "Vibrating Input",
+      "state": "accepted",
+      "description": "Items used in Vintage Improvements vibrating.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:vibrating",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "vintageimprovements:vibrating"
+    },
+    {
+      "id": "vintageimprovements:vibrating#output",
+      "label": "Vibrating Output",
+      "state": "accepted",
+      "description": "Items produced by Vintage Improvements vibrating.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:vibrating",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "vintageimprovements:vibrating"
+    },
+    {
+      "id": "tfc:glassworking#input",
+      "label": "Glassworking Input",
+      "state": "accepted",
+      "description": "Items used in TFC glassworking.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:glassworking",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:glassworking"
+    },
+    {
+      "id": "tfc:glassworking#output",
+      "label": "Glassworking Output",
+      "state": "accepted",
+      "description": "Items produced by TFC glassworking.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:glassworking",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:glassworking"
+    },
+    {
+      "id": "kubejs:shapeless#input",
+      "label": "Shapeless Input",
+      "state": "rejected",
+      "description": "Workflow is an implementation recipe type, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "kubejs:shapeless",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "kubejs:shapeless"
+    },
+    {
+      "id": "kubejs:shapeless#output",
+      "label": "Shapeless Output",
+      "state": "rejected",
+      "description": "Workflow is an implementation recipe type, not a player-facing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "kubejs:shapeless",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "kubejs:shapeless"
+    },
+    {
+      "id": "domum_ornamentum:architects_cutter#input",
+      "label": "Architects Cutter Input",
+      "state": "accepted",
+      "description": "Items used in Architect's Cutter (Domum Ornamentum).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "domum_ornamentum:architects_cutter",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "domum_ornamentum:architects_cutter"
+    },
+    {
+      "id": "domum_ornamentum:architects_cutter#output",
+      "label": "Architects Cutter Output",
+      "state": "accepted",
+      "description": "Items produced by Architect's Cutter (Domum Ornamentum).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "domum_ornamentum:architects_cutter",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "domum_ornamentum:architects_cutter"
+    },
+    {
+      "id": "firmalife:vat#input",
+      "label": "Vat Input",
+      "state": "accepted",
+      "description": "Items used in Firmalife vat.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:vat",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "firmalife:vat"
+    },
+    {
+      "id": "firmalife:vat#output",
+      "label": "Vat Output",
+      "state": "accepted",
+      "description": "Items produced by Firmalife vat.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:vat",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "firmalife:vat"
+    }
+  ]
+}

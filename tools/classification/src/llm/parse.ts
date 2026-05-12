@@ -188,8 +188,17 @@ export function parseLlmResponse(raw: string): ParsedLlmResponse {
       // Only deterministic facets — llm-authored facets should be in
       // `facets`, not `fill_ins`.
       const def = FACETS[f.facet];
-      if (def && def.llm_authored && !def.deterministic) {
+      if (!def) {
+        warnings.push(`fill_in for ${f.item} ${f.facet}: unknown facet`);
+        continue;
+      }
+      if (def.llm_authored && !def.deterministic) {
         warnings.push(`fill_in for ${f.item} ${f.facet}: facet is llm-authored, emit in facets block instead`);
+        continue;
+      }
+      const issue = validateSingleValue(f.facet, value);
+      if (issue) {
+        warnings.push(`fill_in for ${f.item} ${f.facet}: ${issue.reason}; dropped`);
         continue;
       }
       fillIns.push({

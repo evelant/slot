@@ -1,0 +1,524 @@
+{
+  "values": [
+    {
+      "id": "gtceu:pipe",
+      "label": "Pipe",
+      "state": "rejected",
+      "description": "Component of fluid transport, not a mod subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:cover",
+      "label": "Cover",
+      "state": "rejected",
+      "description": "Decorative block, not a mod subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "gtceu:fluid",
+      "label": "Fluid",
+      "state": "rejected",
+      "description": "Material type, not a mod subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "gtceu:storage",
+      "label": "Storage",
+      "state": "rejected",
+      "description": "Generic material storage blocks, not a mod subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "gtceu:cable",
+      "label": "Cable",
+      "state": "rejected",
+      "description": "Component of energy transport, not a mod subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:storage",
+      "label": "Storage",
+      "state": "rejected",
+      "description": "Too generic; Create storage is part of mechanical system but not a distinct subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:storage",
+      "label": "Storage",
+      "state": "rejected",
+      "description": "Generic material storage blocks, not a mod subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "greate:storage",
+      "label": "Storage",
+      "state": "rejected",
+      "description": "Generic material storage blocks, not a mod subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "railways:track",
+      "label": "Track",
+      "state": "rejected",
+      "description": "Component of railway system, not a subsystem itself.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:pipe",
+      "label": "Pipe",
+      "state": "rejected",
+      "description": "Component of fluid transport system, not a subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:pipe",
+      "label": "Pipe",
+      "state": "rejected",
+      "description": "Component of fluid transport, not a mod subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ae2:storage",
+      "label": "Storage",
+      "state": "accepted",
+      "description": "ME Storage system - core AE2 subsystem for digital item/fluid storage.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "ae2:16k_crafting_storage",
+          "confidence": 1
+        },
+        {
+          "kind": "runtime_item",
+          "id": "ae2:cell_component_16k",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "ae2:pipe",
+      "label": "Pipe",
+      "state": "rejected",
+      "description": "Mislabel; AE2 does not have pipes.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "beneath:pipe",
+      "label": "Pipe",
+      "state": "rejected",
+      "description": "Mislabel; Beneath does not have pipes.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "betterend:pipe",
+      "label": "Pipe",
+      "state": "rejected",
+      "description": "Mislabel; BetterEnd does not have pipes.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:track",
+      "label": "Track",
+      "state": "rejected",
+      "description": "Component of railway system, not a subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "betterend:power",
+      "label": "Power",
+      "state": "rejected",
+      "description": "BetterEnd does not have a power system; misattributed tag.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:fan",
+      "label": "Fan",
+      "state": "rejected",
+      "description": "Single machine, not a broad functional system.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "afc:fan",
+      "label": "Fan",
+      "state": "rejected",
+      "description": "Single block, not a mod subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:contraption",
+      "label": "Contraption",
+      "state": "accepted",
+      "description": "Create's moving structure system (bearings, drillers, harvesters, etc.).",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create:clockwork_bearing",
+          "confidence": 0.65
+        },
+        {
+          "kind": "advancement",
+          "id": "create:contraption_actors",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "railways:train",
+      "label": "Train",
+      "state": "accepted",
+      "description": "Steam Rails train system - locomotives, cars, couplers.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "railways:ponder/train_coupler",
+          "confidence": 0.7
+        },
+        {
+          "kind": "runtime_item",
+          "id": "railways:knuckle_coupler",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "gtceu:hatch",
+      "label": "Hatch",
+      "state": "rejected",
+      "description": "Multiblock component, not a mod subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ae2:cable",
+      "label": "Cable",
+      "state": "rejected",
+      "description": "Component of ME network, not a subsystem itself.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:logistics",
+      "label": "Logistics",
+      "state": "accepted",
+      "description": "Create's item/fluid logistics system (chutes, funnels, stock links, packages).",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create:chute",
+          "confidence": 0.65
+        },
+        {
+          "kind": "advancement",
+          "id": "create:factory_gauge",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "gtceu:battery",
+      "label": "Battery",
+      "state": "rejected",
+      "description": "Component (energy storage item), not a mod subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "railways:contraption",
+      "label": "Contraption",
+      "state": "rejected",
+      "description": "Reuses Create's contraption system; not a separate subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:fluid",
+      "label": "Fluid",
+      "state": "accepted",
+      "description": "Create's fluid handling system (pipes, tanks, pumps, hose pulley).",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create:copper_casing",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/fluid_pipe_flow",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "create:package",
+      "label": "Package",
+      "state": "rejected",
+      "description": "Component of logistics system, not a subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:train",
+      "label": "Train",
+      "state": "accepted",
+      "description": "Create's train system (locomotives, schedules, signals).",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create:train_casing_00",
+          "confidence": 0.65
+        },
+        {
+          "kind": "advancement",
+          "id": "create:long_train",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "tfc:logistics",
+      "label": "Logistics",
+      "state": "rejected",
+      "description": "TFC chests only, not a broad subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfc:network",
+      "label": "Network",
+      "state": "rejected",
+      "description": "TFC chests only, not a network system.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:kinetics",
+      "label": "Kinetics",
+      "state": "accepted",
+      "description": "Create's kinetic power system (shafts, gears, belts, etc.).",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "create:speed_controller",
+          "confidence": 0.65
+        },
+        {
+          "kind": "runtime_item",
+          "id": "create:cogwheel",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "megacells:cell",
+      "label": "Cell",
+      "state": "rejected",
+      "description": "Extension of AE2 storage component, not a standalone subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "greate:contraption",
+      "label": "Contraption",
+      "state": "rejected",
+      "description": "Reuses Create's contraption system; not a separate subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:network",
+      "label": "Network",
+      "state": "accepted",
+      "description": "Create's stock network system (stock links, wireless redstone coupling).",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "create:ponder/stock_link",
+          "confidence": 0.7
+        },
+        {
+          "kind": "runtime_item",
+          "id": "create:stock_link",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "gtceu:energy",
+      "label": "Energy",
+      "state": "rejected",
+      "description": "Generic concept, not a named subsystem; energy is handled by cables/batteries.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "afc:logistics",
+      "label": "Logistics",
+      "state": "rejected",
+      "description": "AFC chests only, not a broad subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "afc:network",
+      "label": "Network",
+      "state": "rejected",
+      "description": "AFC chests only, not a network system.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "copycats:contraption",
+      "label": "Contraption",
+      "state": "rejected",
+      "description": "Adds to Create's contraption system; not a distinct subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create_connected:kinetics",
+      "label": "Kinetics",
+      "state": "rejected",
+      "description": "Extension of Create's kinetics system; not a separate subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "beneath:logistics",
+      "label": "Logistics",
+      "state": "rejected",
+      "description": "Chests only, not a broad subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "beneath:network",
+      "label": "Network",
+      "state": "rejected",
+      "description": "Chests only, not a network system.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "framedblocks:logistics",
+      "label": "Logistics",
+      "state": "rejected",
+      "description": "Single framed chest, not a broad subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "framedblocks:network",
+      "label": "Network",
+      "state": "rejected",
+      "description": "Single framed chest, not a network system.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "gtceu:rocket",
+      "label": "Rocket",
+      "state": "rejected",
+      "description": "Materials for rockets, not the rocket system itself; insufficient evidence.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "framedblocks:storage",
+      "label": "Storage",
+      "state": "rejected",
+      "description": "Single framed chest, not a mod subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:deployer",
+      "label": "Deployer",
+      "state": "rejected",
+      "description": "Single machine, not a broad functional system.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "afc:storage",
+      "label": "Storage",
+      "state": "rejected",
+      "description": "Chests only, not a mod subsystem.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    }
+  ]
+}

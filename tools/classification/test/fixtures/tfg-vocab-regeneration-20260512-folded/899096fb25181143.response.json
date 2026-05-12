@@ -1,0 +1,331 @@
+{
+  "values": [
+    {
+      "id": "slot:fuel",
+      "label": "Fuel",
+      "state": "accepted",
+      "description": "Items usable as fuel for furnaces, firepits, forges, bloomeries, and other heat sources.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "create:blaze_burner_fuel/regular",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "create:blaze_burner_fuel/special",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "deafission:fuels",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "firmalife:oven_fuel",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "firmalife:smoking_fuel",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:enchanting_fuels",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:blast_furnace_fuel",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:firepit_fuel",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:forge_fuel",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:bloomery_basic_fuels",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:fill",
+      "label": "Fill",
+      "state": "accepted",
+      "description": "Items that can be used to fill containers or fill areas (e.g., with fluid or blocks).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "ad_astra:passes_flood_fill",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:place",
+      "label": "Place",
+      "state": "accepted",
+      "description": "Items that can be placed as blocks or in specific compartments (e.g., ship compartments).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "minecraft:dead_bush_may_place_on",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "alekiships:can_place_in_compartments",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:launch",
+      "label": "Launch",
+      "state": "accepted",
+      "description": "Items that serve as launch pads or have restrictions on being launched (e.g., by railgun).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "ad_astra:launch_pads",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:cannot_launch_in_railgun",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:eat",
+      "label": "Eat",
+      "state": "accepted",
+      "description": "Items that can be consumed as food (including mob-specific eats).",
+      "aliases": [],
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "species:cruncher_eats",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:auto_eat_blacklist",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:empty",
+      "label": "Empty",
+      "state": "accepted",
+      "description": "Items that represent empty containers or can be emptied (e.g., bottles, jars, syringes).",
+      "aliases": [],
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "firmalife:empty_wine_bottles",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:empty_jar_with_lid",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:fluid_item_ingredient_empty_containers",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:empty_dna_syringes",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:preserve",
+      "label": "Preserve",
+      "state": "accepted",
+      "description": "Items used for food preservation (e.g., sealed preserves, jars).",
+      "aliases": [],
+      "confidence": 0.9,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/preserves",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/preserves_2",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/sealed_preserves",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:repair",
+      "label": "Repair",
+      "state": "accepted",
+      "description": "Materials used for repairing tools and equipment via repair kits.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:repair_kit_materials",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:unfired_repair_kit_materials",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "railways:paint_brush_repair_items",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:harvest",
+      "label": "Harvest",
+      "state": "accepted",
+      "description": "Items that enable harvesting (e.g., tools) or affect harvest behavior.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "quark:simple_harvest_blacklisted",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:silk_harvest_ice",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:cast",
+      "label": "Cast",
+      "state": "rejected",
+      "description": "Evidence only supports 'cast iron' as a material, not a direct casting affordance. Rejected as material category.",
+      "aliases": [],
+      "confidence": 0.3,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "forge:double_ingots/cast_iron",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:ingots/cast_iron",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:plates/cast_iron",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:wires/cast_iron",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:metal_item/cast_iron",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "vintageimprovements:small_springs/cast_iron",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "vintageimprovements:springs/cast_iron",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:drink",
+      "label": "Drink",
+      "state": "accepted",
+      "description": "Items that can be consumed as drink (e.g., deployable drink, paint blockers).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "create:deployable_drink",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "railways:paint_drink_blockers",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:configure",
+      "label": "Configure",
+      "state": "rejected",
+      "description": "No evidence tags or semantic evidence supporting a direct configure affordance. Rejected as unsupported.",
+      "aliases": [],
+      "confidence": 0.2,
+      "evidence": []
+    },
+    {
+      "id": "slot:equip",
+      "label": "Equip",
+      "state": "rejected",
+      "description": "No evidence tags or semantic evidence supporting equip affordance. Rejected as unsupported.",
+      "aliases": [],
+      "confidence": 0.2,
+      "evidence": []
+    },
+    {
+      "id": "slot:scan",
+      "label": "Scan",
+      "state": "rejected",
+      "description": "No evidence tags or semantic evidence supporting scan affordance. Rejected as unsupported.",
+      "aliases": [],
+      "confidence": 0.2,
+      "evidence": []
+    }
+  ]
+}

@@ -1,0 +1,608 @@
+{
+  "values": [
+    {
+      "id": "slot:fruit",
+      "label": "Fruit",
+      "state": "accepted",
+      "description": "Edible fruits, including tree fruits, berries, and wild fruits.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "firmalife:drops_fruit_leaf",
+          "confidence": 0.75
+        },
+        {
+          "kind": "block_tag",
+          "id": "firmalife:fruit_tree_sapling",
+          "confidence": 0.75
+        },
+        {
+          "kind": "block_tag",
+          "id": "tfc:fruit_tree_leaves",
+          "confidence": 0.75
+        },
+        {
+          "kind": "block_tag",
+          "id": "tfc:fruit_tree_sapling",
+          "confidence": 0.75
+        },
+        {
+          "kind": "block_tag",
+          "id": "tfc:spreading_fruit_grows_on",
+          "confidence": 0.75
+        },
+        {
+          "kind": "block_tag",
+          "id": "tfc:wild_fruits",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc_gourmet:compote_fruits",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/fruits",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:fruit_tree_leaves",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:wild_fruits",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:dried_fruit",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:foods/citrus_fruits",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:meat",
+      "label": "Meat",
+      "state": "accepted",
+      "description": "Raw and cooked meats from animals.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "firmalife:foods/cooked_meats_and_substitutes",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:dusts/meat",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:small_dusts/meat",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:tiny_dusts/meat",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/cooked_meats",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/meats",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/raw_meats",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:foods/burger_meats",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:raw_dinosaur_meat",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "wan_ancient_beasts:meat_food",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:egg",
+      "label": "Egg",
+      "state": "accepted",
+      "description": "Eggs, including bird and ancient eggs.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "minecraft:sniffer_egg_hatch_boost",
+          "confidence": 0.75
+        },
+        {
+          "kind": "block_tag",
+          "id": "species:petrified_egg_hatch",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "balm:eggs",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "firmalife:foods/egg_noodle_flour",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "firmalife:foods/raw_eggs",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:eggs",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:martian_eggs",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "wan_ancient_beasts:ancient_eggs",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:preserve",
+      "label": "Preserve",
+      "state": "accepted",
+      "description": "Preserved foods such as jams, pickles, and sealed preserves.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/preserves",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/preserves_2",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/sealed_preserves",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:cheese",
+      "label": "Cheese",
+      "state": "accepted",
+      "description": "Cheese wheels and cheese curds.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "firmalife:cheese_wheels",
+          "confidence": 0.75
+        },
+        {
+          "kind": "block_tag",
+          "id": "tfc_gourmet:cheese_wheels",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "firmalife:cheese_wheels",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "firmalife:foods/cheeses",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc_gourmet:cheese_wheels",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:foods/cheese_curds",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:foods/cheeses",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:vegetable",
+      "label": "Vegetable",
+      "state": "accepted",
+      "description": "Edible vegetables.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/vegetables",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:fish",
+      "label": "Fish",
+      "state": "accepted",
+      "description": "Fish as food, raw and cooked.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "firmalife:foods/cooked_fish",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "firmalife:foods/raw_fish",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:fish_hooks",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:fish_hooks/bismuth_bronze",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:fish_hooks/black_bronze",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:fish_hooks/black_steel",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:fish_hooks/blue_steel",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:fish_hooks/bronze",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:fish_hooks/copper",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:fish_hooks/red_steel",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:fish_hooks/steel",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "forge:fish_hooks/wrought_iron",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:advanced_fish_food",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:bread",
+      "label": "Bread",
+      "state": "accepted",
+      "description": "Baked breads and sandwich bread.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/breads",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:sandwich_bread",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:dairy",
+      "label": "Dairy",
+      "state": "accepted",
+      "description": "Dairy products such as milk and cream.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/dairy",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:grain",
+      "label": "Grain",
+      "state": "accepted",
+      "description": "Grain foods like wheat, barley, and rye.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc_gourmet:foods/kvass_grains",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/grains",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:dough",
+      "label": "Dough",
+      "state": "accepted",
+      "description": "Unbaked dough for bread and other goods.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "firmalife:foods/extra_dough",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/dough",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:bowl",
+      "label": "Bowl",
+      "state": "rejected",
+      "description": "Bowls are containers, not a food category. Rejected as not a food family.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:bowls",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:dynamic_bowl_items",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:salad_bowls",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:soup_bowls",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:spice",
+      "label": "Spice",
+      "state": "accepted",
+      "description": "Spices used to flavor food.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfg:foods/spice_plants",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:foods/spices",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:flour",
+      "label": "Flour",
+      "state": "accepted",
+      "description": "Milled flour for baking and cooking.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "firmalife:foods/egg_noodle_flour",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/flour",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:sweetener",
+      "label": "Sweetener",
+      "state": "accepted",
+      "description": "Sweeteners like honey, sugar, and syrup.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:sweetener",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:drink",
+      "label": "Drink",
+      "state": "accepted",
+      "description": "Beverages for consumption.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "create:deployable_drink",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "railways:paint_drink_blockers",
+          "confidence": 0.75
+        }
+      ],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:fat_oil",
+      "label": "Fat Oil",
+      "state": "review",
+      "description": "Fats and oils used in cooking. No direct tag evidence; need human review.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:prepared_meal",
+      "label": "Prepared Meal",
+      "state": "review",
+      "description": "Complete prepared meals. No direct tag evidence; need human review.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    },
+    {
+      "id": "slot:sauce",
+      "label": "Sauce",
+      "state": "review",
+      "description": "Sauces and condiments. No direct tag evidence; need human review.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [],
+      "parent": null,
+      "related_activity": [],
+      "default_organization_group": null
+    }
+  ]
+}

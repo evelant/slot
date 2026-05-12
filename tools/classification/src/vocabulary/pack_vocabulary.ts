@@ -182,6 +182,8 @@ const SEMANTIC_EVIDENCE_LIMIT = 64;
 const VOCABULARY_PROMPT_CHAR_BUDGET = 3_200_000;
 const VOCABULARY_CURATION_TIMEOUT_MS = 1_200_000;
 const PROMPT_SEMANTIC_EVIDENCE_LIMITS = [64, 48, 40, 32, 24, 16, 12, 8, 4, 2, 1, 0] as const;
+const MOD_SUBSYSTEM_PROMPT_SEMANTIC_EVIDENCE_LIMITS = [12, 8, 4, 2, 1, 0] as const;
+const MOD_SUBSYSTEM_PROMPT_EVIDENCE_LIMIT = 16;
 const SEMANTIC_TEXT_PROMPT_LIMIT = 1_200;
 const RUNTIME_TOOLTIP_REPEAT_BOILERPLATE_THRESHOLD = 250;
 const GENERIC_TOKENS = new Set([
@@ -205,6 +207,150 @@ const GENERIC_TOKENS = new Set([
   "machine",
   "machines",
 ]);
+
+const MOD_SUBSYSTEM_STOP_TOKENS = new Set([
+  ...GENERIC_TOKENS,
+  "armor",
+  "armour",
+  "block",
+  "bucket",
+  "clothing",
+  "component",
+  "components",
+  "dust",
+  "equipment",
+  "gear",
+  "ingot",
+  "item",
+  "material",
+  "nugget",
+  "ore",
+  "plate",
+  "resource",
+  "resources",
+  "rod",
+  "screw",
+  "suit",
+  "tool",
+  "tools",
+  "weapon",
+  "weapons",
+  "wire",
+]);
+
+const MOD_SUBSYSTEM_SIGNAL_TOKENS = new Set([
+  "assembler",
+  "automation",
+  "battery",
+  "batteries",
+  "belt",
+  "bus",
+  "buses",
+  "cable",
+  "cables",
+  "cell",
+  "cells",
+  "charger",
+  "chargers",
+  "chute",
+  "chutes",
+  "cogwheel",
+  "contraption",
+  "conveyor",
+  "cover",
+  "crafter",
+  "deployer",
+  "duct",
+  "energy",
+  "engine",
+  "export",
+  "fan",
+  "fission",
+  "fluid",
+  "generator",
+  "hatch",
+  "interface",
+  "kinetic",
+  "kinetics",
+  "logistics",
+  "mechanical_power",
+  "power",
+  "multiblock",
+  "network",
+  "oxygen",
+  "package",
+  "pipe",
+  "pipes",
+  "pump",
+  "rail",
+  "reactor",
+  "rocket",
+  "schematic",
+  "shaft",
+  "storage",
+  "tank",
+  "terminal",
+  "track",
+  "train",
+  "trains",
+  "transport",
+  "turbine",
+]);
+
+const MOD_SUBSYSTEM_CANONICAL_TOKENS = new Map([
+  ["batteries", "battery"],
+  ["buses", "bus"],
+  ["cables", "cable"],
+  ["cells", "cell"],
+  ["chargers", "charger"],
+  ["chutes", "chute"],
+  ["kinetic", "kinetics"],
+  ["pipes", "pipe"],
+  ["trains", "train"],
+]);
+
+const ORGANIZATION_GROUP_STOP_TOKENS = new Set([
+  "anvil",
+  "barrel",
+  "blasting",
+  "compacting",
+  "crafting",
+  "cutting",
+  "default",
+  "deploying",
+  "filling",
+  "milling",
+  "mixing",
+  "oven",
+  "pot",
+  "pressing",
+  "quern",
+  "smelting",
+  "stonecutting",
+]);
+
+const VOLTAGE_COMPONENT_TOKENS = new Set([
+  "battery",
+  "cable",
+  "circuit",
+  "component",
+  "components",
+  "conveyor",
+  "cover",
+  "electric",
+  "emitter",
+  "field",
+  "generator",
+  "hatch",
+  "hull",
+  "motor",
+  "piston",
+  "pump",
+  "robot",
+  "sensor",
+]);
+
+const VOLTAGE_TIERS = ["ulv", "lv", "mv", "hv", "ev", "iv", "luv", "zpm", "uv", "uhv"] as const;
 
 const UNIVERSAL_DEFAULTS: Record<string, Array<{ id: string; label: string; description?: string; aliases?: string[] }>> = {
   activity: ([
@@ -363,11 +509,11 @@ const UNIVERSAL_DEFAULTS: Record<string, Array<{ id: string; label: string; desc
 
 const FACET_POLICIES: Partial<Record<VocabularyFacetId, string>> = {
   activity: "Broad player activities. Prefer universal slot:* defaults. Reject recipe-internal verbs.",
-  workflow: "Player-facing process/task contexts. Use recipe, guide, quest, or advancement evidence. Reject catch-alls.",
+  workflow: "Player-facing process/task contexts. Use recipe, guide, quest, or advancement evidence. Reject catch-alls and one-off tutorial/advancement titles.",
   workflow_role: "Scoped role values only, formatted as <workflow>#<role>. Parent must be an accepted workflow candidate.",
   used_at: "Player-facing station, machine, tool, or surface. Preserve raw recipe type evidence separately.",
   progression_stage: "Pack/mod progression gates, tiers, ages, voltages, dimensions. Conservative; reject item/product topics and one-off advancements.",
-  organization_group: "Direct wall-home candidate. Conservative because it affects auto-home.",
+  organization_group: "Direct wall-home candidate: human storage/section groupings, not stations or recipe workflows.",
   mod_subsystem: "Identity-oriented mod subsystem. Do not assign from recipe participation alone.",
 };
 
@@ -410,7 +556,6 @@ export function extractVocabularyCandidates(
     addCandidatesFromEvidence(acc, record, options.packId, facets, options.minEvidence, semanticIndex);
   }
   addWorkflowRoleCandidates(acc, options.minEvidence);
-  addOrganizationGroupCandidates(acc, options.minEvidence);
 
   return [...acc.values()]
     .map(finalizeCandidate)
@@ -461,6 +606,7 @@ Rules:
 - For workflow, a good accepted value answers "what am I doing?" or "what station/process is this for?" Examples: casting, anvil, quern, bloomery, sequenced assembly, drying, alloying, barrel sealed.
 - For workflow, accept recipe_type candidates when the id/label/evidence names a real reusable player-facing process, station, or task, even if semantic_evidence is sparse. Recipe types such as pressing, compacting, milling/crushing, cutting, rolling, filling, deploying, mixing, casting, anvil, quern, oven, barrel, bloomery, blast furnace, centrifugation, hammering, and polishing are valid workflow candidates.
 - For workflow, accepting a process does not create a wall home. Err toward accepting real reusable processes for semantic lookup; use organization_group for conservative wall-home decisions.
+- For workflow, reject guide/Ponder/quest/advancement titles that read like tutorial steps or one-off tasks: "using the deployer", "setting up display links", "addressing a stock ticker order", "processing items with the laser". Prefer the simpler reusable station/process candidate when it exists.
 - For workflow, reject implementation/meta recipe mechanics even with high support: shaped, shapeless, no_remainder, damage_inputs, impostor, internal placeholder, synthetic helper recipes, broad vanilla crafting variants.
 - For workflow, reject item/product/component families: frame, component, upgrade, repair, block_mod, colored/material/product lines, or "craft this one item" groups unless evidence clearly describes a reusable process the player plans around.
 - For workflow, reject environmental physics/events unless they are a player workflow: collapse, landslide, falling block, decay, spread, growth ticks.
@@ -471,14 +617,26 @@ Rules:
 - For progression_stage, "accepted" means ONLY a pack/mod gate, tier, age, voltage band, dimension unlock, or major technology/material milestone.
 - For progression_stage, accept broad gates like primitive alloys, steel, bloomery, blast furnace, mechanical power, moon, mars, venus, beneath, rocket tiers, LV/MV/HV, steam/electric ages.
 - For progression_stage, reject ordinary guide topics, indexes, recipe lists, mobs, biomes, flora, equipment, boats, decorative blocks, individual crafted items, and one-off advancements.
+- For progression_stage, reject advancement-title prose as accepted ids when the candidate id is the phrase itself, such as "one/small/step", "quite/the/sun/tan", or "back/in/black". Accept only canonical gate/tier/dimension/material ids backed by evidence.
 - For progression_stage, a dimension word in a namespace/path is not enough. The label or semantic evidence must describe the dimension/unlock/gate itself.
 - For progression_stage, material names are accepted only when they gate broad progression; reject isolated material variants or product lines.
+- For organization_group, "accepted" means a human player storage section or mental bucket for items, not a workstation, recipe type, or process.
+- For organization_group, good accepted examples include unprocessed ores, refined ores, cooking tools, Create items, ULV components, woodworking, decorative, animal husbandry, weaving/cloth, dirt and rocks, seeds, inedible plants, and crops. These examples are illustrative, not a closed list.
+- For organization_group, accept any candidate that names a plausible player storage section with evidence, even if it is not listed in the examples.
+- For organization_group, reject workstation/process labels such as anvil, quern, pot, barrel, smelting, blasting, milling, pressing, cutting, and mixing unless the candidate itself names a broader storage group like cooking_tools or woodworking.
+- For organization_group, do not accept a value solely because the same id is a good workflow or used_at value. Wall-home groups must be item groupings a player would plausibly keep together.
+- For mod_subsystem, "accepted" means ONLY a namespace-scoped identity system inside a mod: network, transport, automation, storage, multiblock, power, train, rocket, oxygen, or another broad functional family whose own items belong to that system.
+- For mod_subsystem, reject pack-scoped ids, universal ids, process/task labels, one-off station labels, equipment/tool/armor sets, material families, decorative families, tiers, machine hulls/casings, and labels based only on recipe participation.
+- For mod_subsystem, use workflow/used_at for "where/how is this processed?" and organization_group for wall-home concepts. Subsystem values should answer "what mod system is this item itself part of?"
 - Prefer preserving previous accepted ids.
 - For workflow_role, every id must be <workflow>#<role> and parent must equal the workflow id.
 - Only output JSON.`;
 
-  const lastLimit = PROMPT_SEMANTIC_EVIDENCE_LIMITS[PROMPT_SEMANTIC_EVIDENCE_LIMITS.length - 1]!;
-  for (const semanticEvidenceLimit of PROMPT_SEMANTIC_EVIDENCE_LIMITS) {
+  const semanticLimits = args.facet === "mod_subsystem"
+    ? MOD_SUBSYSTEM_PROMPT_SEMANTIC_EVIDENCE_LIMITS
+    : PROMPT_SEMANTIC_EVIDENCE_LIMITS;
+  const lastLimit = semanticLimits[semanticLimits.length - 1]!;
+  for (const semanticEvidenceLimit of semanticLimits) {
     const user = JSON.stringify(buildVocabularyCurationUser(args, semanticEvidenceLimit), null, 2);
     if (system.length + user.length <= VOCABULARY_PROMPT_CHAR_BUDGET || semanticEvidenceLimit === lastLimit) {
       return { system, user };
@@ -508,8 +666,11 @@ function buildVocabularyCurationUser(
     prompt_budget: {
       max_chars: VOCABULARY_PROMPT_CHAR_BUDGET,
       semantic_evidence_per_candidate: semanticEvidenceLimit,
+      evidence_refs_per_candidate: args.facet === "mod_subsystem"
+        ? MOD_SUBSYSTEM_PROMPT_EVIDENCE_LIMIT
+        : CANDIDATE_EXAMPLE_LIMIT,
     },
-    candidates: args.candidates.map((candidate) => promptCandidate(candidate, semanticEvidenceLimit)),
+    candidates: args.candidates.map((candidate) => promptCandidate(candidate, semanticEvidenceLimit, args.facet)),
     required_output_contract: {
       required_values_count: args.candidates.length,
       required_candidate_ids: args.candidates.map((candidate) => candidate.id),
@@ -525,18 +686,26 @@ function buildVocabularyCurationUser(
   };
 }
 
-function promptCandidate(candidate: PackVocabularyCandidate, semanticEvidenceLimit: number): Record<string, unknown> {
+function promptCandidate(
+  candidate: PackVocabularyCandidate,
+  semanticEvidenceLimit: number,
+  facet: VocabularyFacetId,
+): Record<string, unknown> {
   const semanticEvidence = candidate.semantic_evidence
     .slice(0, semanticEvidenceLimit)
     .map(promptSemanticEvidence);
   const omitted = Math.max(0, candidate.semantic_evidence.length - semanticEvidence.length);
+  const evidenceLimit = facet === "mod_subsystem" ? MOD_SUBSYSTEM_PROMPT_EVIDENCE_LIMIT : CANDIDATE_EXAMPLE_LIMIT;
+  const evidence = candidate.evidence.slice(0, evidenceLimit);
+  const evidenceOmitted = Math.max(0, candidate.evidence.length - evidence.length);
   return {
     id: candidate.id,
     label: candidate.label,
     origin: candidate.origin,
     confidence: round(candidate.confidence),
     support: candidate.support,
-    evidence: candidate.evidence,
+    evidence,
+    ...(evidenceOmitted > 0 ? { evidence_omitted: evidenceOmitted } : {}),
     semantic_evidence: semanticEvidence,
     ...(omitted > 0 ? { semantic_evidence_omitted: omitted } : {}),
     aliases: candidate.aliases,
@@ -593,8 +762,11 @@ export async function proposePackFacetVocabulary(
   const generatedAt = options.generatedAt ?? new Date().toISOString();
   const facets = [...facetSet(options.facets)].sort();
   const candidates = extractVocabularyCandidates(options.evidence, options);
-  const candidatesByFacet = groupCandidates(candidates, options.maxCandidatesPerFacet ?? DEFAULT_MAX_CANDIDATES_PER_FACET);
+  const maxCandidatesPerFacet = options.maxCandidatesPerFacet ?? DEFAULT_MAX_CANDIDATES_PER_FACET;
+  const candidatesByFacet = groupCandidates(candidates, maxCandidatesPerFacet);
+  const rawCandidatesByFacet = groupCandidates(candidates, Number.MAX_SAFE_INTEGER);
   const previousAccepted = previousAcceptedByFacet(options.previousVocabulary);
+  const acceptedWorkflowIds = new Set(previousAccepted.get("workflow") ?? []);
   const maxCandidatesPerPrompt = options.maxCandidatesPerPrompt ?? DEFAULT_MAX_CANDIDATES_PER_PROMPT;
   const prompts: Record<string, { system: string; user: string }> = {};
   const decisions: Record<string, VocabularyDecision[]> = {};
@@ -602,7 +774,12 @@ export async function proposePackFacetVocabulary(
   const diagnostics: VocabularyDiagnostic[] = [];
 
   for (const facet of facets) {
-    const facetCandidates = candidatesByFacet[facet] ?? [];
+    const facetCandidates = facet === "workflow_role"
+      ? selectPromptCandidates(
+        workflowRoleCandidatesForAcceptedWorkflows(rawCandidatesByFacet[facet] ?? [], acceptedWorkflowIds),
+        maxCandidatesPerFacet,
+      )
+      : candidatesByFacet[facet] ?? [];
     const candidateChunks = chunkCandidates(facetCandidates, maxCandidatesPerPrompt);
     const curatedValues: CuratedValue[] = [];
     for (let index = 0; index < candidateChunks.length; index++) {
@@ -629,7 +806,13 @@ export async function proposePackFacetVocabulary(
       curated: curatedValues,
       minEvidence: options.minEvidence,
       diagnostics,
+      acceptedWorkflowIds: facet === "workflow_role" ? acceptedWorkflowIds : undefined,
     });
+    if (facet === "workflow") {
+      for (const value of decisions[facet] ?? []) {
+        if (value.state === "accepted") acceptedWorkflowIds.add(value.id);
+      }
+    }
   }
 
   const vocabulary: PackFacetVocabulary = {
@@ -774,14 +957,20 @@ function addCandidatesFromEvidence(
     }
     case "guide_page": {
       addDocumentCandidates(acc, record, packId, facets, "namespace", "guide page title", semanticIndex);
+      addOrganizationGroupEvidenceCandidates(acc, record, packId, facets, semanticIndex);
+      addModSubsystemDocumentCandidate(acc, record, packId, facets, semanticIndex);
       break;
     }
     case "quest_node": {
       addDocumentCandidates(acc, record, packId, facets, "pack", "quest title", semanticIndex);
+      addOrganizationGroupEvidenceCandidates(acc, record, packId, facets, semanticIndex);
       break;
     }
     case "advancement": {
-      addDocumentCandidates(acc, record, packId, facets, "namespace", "advancement title", semanticIndex);
+      addDocumentCandidates(acc, record, packId, facets, "namespace", "advancement title", semanticIndex, {
+        requireWorkflowSignal: true,
+      });
+      addModSubsystemDocumentCandidate(acc, record, packId, facets, semanticIndex);
       break;
     }
     case "stack_group": {
@@ -791,14 +980,23 @@ function addCandidatesFromEvidence(
     case "item_tag":
     case "block_tag": {
       addTagDomainCandidates(acc, record, facets, semanticIndex);
+      addOrganizationGroupEvidenceCandidates(acc, record, packId, facets, semanticIndex);
+      addModSubsystemTagCandidates(acc, record, packId, facets, semanticIndex);
       break;
     }
     case "existing_vocab":
     case "kubejs_tooltip":
-    case "runtime_item":
     case "recipe_role_summary":
-    case "mod_metadata":
       break;
+    case "mod_metadata": {
+      addModSubsystemDocumentCandidate(acc, record, packId, facets, semanticIndex);
+      break;
+    }
+    case "runtime_item": {
+      addOrganizationGroupEvidenceCandidates(acc, record, packId, facets, semanticIndex);
+      addModSubsystemRuntimeItemCandidates(acc, record, packId, facets, semanticIndex);
+      break;
+    }
   }
 }
 
@@ -810,6 +1008,7 @@ function addDocumentCandidates(
   scope: "namespace" | "pack",
   reason: string,
   semanticIndex: SemanticEvidenceIndex,
+  options: { requireWorkflowSignal?: boolean } = {},
 ): void {
   const label = record.label ?? record.title ?? labelFromId(record.id);
   const token = tokenPath(label);
@@ -817,16 +1016,28 @@ function addDocumentCandidates(
   const namespace = scope === "namespace" ? record.namespace : undefined;
   const id = scope === "pack" || !namespace ? `pack:${packId}/${token}` : `${namespace}:${token}`;
   const count = record.count ?? 1;
-  addEvidenceCandidate(acc, {
-    facet: "workflow",
-    id,
-    record,
-    count,
-    facets,
-    state: "review",
-    reason,
-    semanticIndex,
-  });
+  if (!options.requireWorkflowSignal || documentLooksLikeWorkflowOrUseContext(record, label)) {
+    addEvidenceCandidate(acc, {
+      facet: "workflow",
+      id,
+      record,
+      count,
+      facets,
+      state: "review",
+      reason,
+      semanticIndex,
+    });
+    addEvidenceCandidate(acc, {
+      facet: "used_at",
+      id,
+      record,
+      count,
+      facets,
+      state: "review",
+      reason: `${reason} may name a station, tool, surface, or interaction context`,
+      semanticIndex,
+    });
+  }
   if (looksLikeProgressionStage(record, label)) {
     addEvidenceCandidate(acc, {
       facet: "progression_stage",
@@ -838,6 +1049,19 @@ function addDocumentCandidates(
       reason: `${reason} names a likely progression gate`,
       semanticIndex,
     });
+    for (const canonicalId of canonicalProgressionIds(record, packId, scope)) {
+      if (canonicalId === id) continue;
+      addEvidenceCandidate(acc, {
+        facet: "progression_stage",
+        id: canonicalId,
+        record,
+        count,
+        facets,
+        state: "review",
+        reason: `${reason} resource path names a canonical progression gate`,
+        semanticIndex,
+      });
+    }
   }
 }
 
@@ -862,6 +1086,7 @@ function addTagDomainCandidates(
         confidence: Math.max(0.8, record.confidence),
         support: record.count ?? 1,
         evidence: [evidenceRef(record)],
+        semanticEvidence: semanticEvidenceForCandidate(record, semanticIndex),
         seedItems: runtimeItemRefs(record.item_refs ?? record.examples, semanticIndex),
         reason: `${record.kind} token matches universal ${facet} value`,
       });
@@ -894,6 +1119,127 @@ function addStackGroupCandidate(
   });
 }
 
+function addModSubsystemDocumentCandidate(
+  acc: Map<string, CandidateAccumulator>,
+  record: FacetEvidenceRecord,
+  packId: string,
+  facets: ReadonlySet<VocabularyFacetId>,
+  semanticIndex: SemanticEvidenceIndex,
+): void {
+  if (!facets.has("mod_subsystem") || !isModSubsystemNamespace(record.namespace, packId)) return;
+  const label = record.label ?? record.title ?? "";
+  const tokens = modSubsystemSignalTokens([
+    record.id,
+    label,
+    ...(record.kind === "mod_metadata" ? [record.description ?? ""] : []),
+  ]);
+  for (const value of tokens) {
+    const id = modSubsystemId(record.namespace, value);
+    if (!id || isGenericValueId(id) || modSubsystemIdLooksRejected(id)) continue;
+    addModSubsystemCandidate(acc, {
+      id,
+      record,
+      facets,
+      count: record.count ?? record.item_refs?.length ?? 1,
+      state: "review",
+      confidence: Math.max(0.45, Math.min(0.75, record.confidence)),
+      semanticIndex,
+      reason: `${record.kind} may name a mod-owned subsystem`,
+    });
+  }
+}
+
+function addModSubsystemRuntimeItemCandidates(
+  acc: Map<string, CandidateAccumulator>,
+  record: FacetEvidenceRecord,
+  packId: string,
+  facets: ReadonlySet<VocabularyFacetId>,
+  semanticIndex: SemanticEvidenceIndex,
+): void {
+  if (!facets.has("mod_subsystem") || !isModSubsystemNamespace(record.namespace, packId)) return;
+  const tokens = modSubsystemSignalTokens([
+    record.id,
+    record.label ?? "",
+    ...ownedNamespaceValues(record.namespace, record.tags),
+    ...ownedNamespaceValues(record.namespace, record.direct_tags),
+    ...ownedNamespaceValues(record.namespace, record.model_parents),
+    ...ownedNamespaceValues(record.namespace, record.creative_tabs),
+  ]);
+  for (const value of tokens) {
+    const id = modSubsystemId(record.namespace, value);
+    if (!id) continue;
+    addModSubsystemCandidate(acc, {
+      id,
+      record,
+      facets,
+      count: 1,
+      state: "review",
+      confidence: 0.55,
+      semanticIndex,
+      reason: "runtime item id/tag/model token suggests subsystem identity",
+    });
+  }
+}
+
+function addModSubsystemTagCandidates(
+  acc: Map<string, CandidateAccumulator>,
+  record: FacetEvidenceRecord,
+  packId: string,
+  facets: ReadonlySet<VocabularyFacetId>,
+  semanticIndex: SemanticEvidenceIndex,
+): void {
+  if (!facets.has("mod_subsystem")) return;
+  if (!isModSubsystemNamespace(record.namespace, packId)) return;
+  const tokens = modSubsystemSignalTokens([record.id, record.label ?? ""]);
+  if (tokens.length === 0) return;
+  const count = Math.max(1, record.count ?? record.item_refs?.length ?? record.examples?.length ?? 1);
+  for (const value of tokens) {
+    const id = modSubsystemId(record.namespace, value);
+    if (!id) continue;
+    addModSubsystemCandidate(acc, {
+      id,
+      record,
+      facets,
+      count,
+      state: "review",
+      confidence: Math.max(0.5, Math.min(0.8, record.confidence)),
+      semanticIndex,
+      reason: `${record.kind} is a mod-owned subsystem-like tag`,
+    });
+  }
+}
+
+function addModSubsystemCandidate(
+  acc: Map<string, CandidateAccumulator>,
+  args: {
+    id: string;
+    record: FacetEvidenceRecord;
+    facets: ReadonlySet<VocabularyFacetId>;
+    count: number;
+    state: VocabularyState;
+    confidence: number;
+    semanticIndex: SemanticEvidenceIndex;
+    reason: string;
+  },
+): void {
+  if (!args.facets.has("mod_subsystem")) return;
+  if (isGenericValueId(args.id) || modSubsystemIdLooksRejected(args.id)) return;
+  addCandidate(acc, {
+    facet: "mod_subsystem",
+    id: args.id,
+    label: labelFromId(args.id),
+    origin: "namespace_generated",
+    suggestedState: args.state,
+    confidence: args.confidence,
+    support: args.count,
+    evidence: [evidenceRef(args.record)],
+    semanticEvidence: semanticEvidenceForCandidate(args.record, args.semanticIndex),
+    seedItems: runtimeItemRefs(args.record.item_refs ?? args.record.examples, args.semanticIndex),
+    aliases: args.record.examples?.filter((value) => !looksLikeResourceLocation(value)),
+    reason: args.reason,
+  });
+}
+
 function addWorkflowRoleCandidates(
   acc: Map<string, CandidateAccumulator>,
   minEvidence: number,
@@ -921,28 +1267,301 @@ function addWorkflowRoleCandidates(
   }
 }
 
-function addOrganizationGroupCandidates(
+function addOrganizationGroupEvidenceCandidates(
   acc: Map<string, CandidateAccumulator>,
-  minEvidence: number,
+  record: FacetEvidenceRecord,
+  packId: string,
+  facets: ReadonlySet<VocabularyFacetId>,
+  semanticIndex: SemanticEvidenceIndex,
 ): void {
-  for (const workflow of [...acc.values()].filter((candidate) =>
-    candidate.facet === "workflow" && candidate.support >= minEvidence * 2 && candidate.suggested_state === "accepted"
-  )) {
+  if (!facets.has("organization_group")) return;
+  const seeds = organizationGroupSeedsForRecord(record, packId);
+  if (seeds.length === 0) return;
+  const support = Math.max(1, record.count ?? record.item_refs?.length ?? record.examples?.length ?? 1);
+  for (const seed of seeds) {
     addCandidate(acc, {
       facet: "organization_group",
-      id: workflow.id,
-      label: workflow.label,
-      origin: workflow.origin === "universal_default" ? "universal_default" : "pack_generated",
+      id: seed.id,
+      label: seed.label,
+      description: seed.description,
+      origin: seed.id.startsWith("pack:") ? "pack_generated" : "namespace_generated",
       suggestedState: "review",
-      confidence: Math.min(0.75, workflow.confidence),
-      support: workflow.support,
-      evidence: workflow.evidence,
-      semanticEvidence: workflow.semantic_evidence,
-      seedItems: workflow.seed_items,
-      aliases: workflow.aliases,
-      reason: "derived from accepted workflow candidate",
+      confidence: Math.max(seed.confidence, Math.min(0.78, record.confidence)),
+      support,
+      evidence: [evidenceRef(record)],
+      semanticEvidence: semanticEvidenceForCandidate(record, semanticIndex),
+      seedItems: runtimeItemRefs(record.item_refs ?? record.examples, semanticIndex),
+      aliases: seed.aliases,
+      reason: seed.reason,
     });
   }
+}
+
+interface OrganizationGroupSeed {
+  id: string;
+  label: string;
+  confidence: number;
+  reason: string;
+  description?: string;
+  aliases?: readonly string[];
+}
+
+function organizationGroupSeedsForRecord(
+  record: FacetEvidenceRecord,
+  packId: string,
+): OrganizationGroupSeed[] {
+  const fields = organizationGroupSignalFields(record);
+  if (fields.length === 0) return [];
+  const tokens = tokenSet(fields.join(" "));
+  const identityTokens = tokenSet(organizationGroupIdentityFields(record).join(" "));
+  const haystack = fields.join(" ").toLowerCase();
+  const out = new Map<string, OrganizationGroupSeed>();
+  const addPack = (
+    value: string,
+    label: string,
+    description: string,
+    reason: string,
+    confidence = 0.55,
+    aliases?: readonly string[],
+  ) => {
+    addOrganizationGroupSeed(out, {
+      id: packOrganizationGroupId(packId, value),
+      label,
+      description,
+      confidence,
+      aliases,
+      reason,
+    });
+  };
+  const addScoped = (
+    namespace: string,
+    value: string,
+    label: string,
+    description: string,
+    reason: string,
+    confidence = 0.55,
+    aliases?: readonly string[],
+  ) => {
+    addOrganizationGroupSeed(out, {
+      id: `${namespace}:${token(value)}`,
+      label,
+      description,
+      confidence,
+      aliases,
+      reason,
+    });
+  };
+
+  const broad = broadOrganizationGroupSeed(record, packId);
+  if (broad) addOrganizationGroupSeed(out, broad);
+
+  if (
+    hasAnyToken(tokens, ["ore", "ores", "raw_ore"]) &&
+    !hasAnyToken(tokens, ["crushed", "purified", "dust", "dusts", "ingot", "ingots", "nugget", "nuggets", "plate", "plates", "rod", "rods", "wire", "wires"])
+  ) {
+    addPack("unprocessed_ores", "Unprocessed Ores", "Ore blocks, raw ores, and mine output awaiting processing.", "ore/raw ore evidence suggests a player storage group", 0.62, ["raw ores"]);
+  }
+  if (hasAnyToken(tokens, ["crushed", "crushed_ore", "purified", "purified_ore", "dust", "dusts", "ingot", "ingots", "nugget", "nuggets", "plate", "plates", "rod", "rods", "bolt", "bolts", "wire", "wires"])) {
+    addPack("refined_ores", "Refined Ores", "Processed mineral outputs such as crushed ores, dusts, ingots, plates, rods, and wires.", "processed ore/material evidence suggests a player storage group", 0.6, ["processed ores", "refined metals"]);
+  }
+  if (hasAnyToken(tokens, ["seed", "seeds"])) {
+    addPack("seeds", "Seeds", "Seeds and seed-like planting starts.", "seed evidence suggests a player storage group", 0.62);
+  }
+  if (hasAnyToken(tokens, ["crop", "crops", "grain", "grains", "vegetable", "vegetables"]) || /\b(cabbage|maize|oat|potato|rye|tomato|wheat)\b/.test(haystack)) {
+    addPack("crops", "Crops", "Harvested crops and field produce.", "crop evidence suggests a player storage group", 0.58);
+  }
+  if (hasAnyToken(tokens, ["plant", "plants", "flower", "flowers", "flora", "sapling", "saplings", "leaf", "leaves"]) && !hasAnyToken(tokens, ["seed", "seeds", "crop", "crops", "food", "foods"])) {
+    addPack("inedible_plants", "Inedible Plants", "Plants, flowers, leaves, and other non-food botanical items.", "plant/flora evidence suggests a player storage group", 0.55, ["plants"]);
+  }
+  if (hasAnyToken(tokens, ["dirt", "rock", "rocks", "stone", "stones", "cobble", "cobblestone", "gravel", "sand", "silt", "clay", "mud", "soil"])) {
+    addPack("dirt_and_rocks", "Dirt and Rocks", "Terrain rubble such as dirt, stone, gravel, sand, clay, and loose rocks.", "terrain material evidence suggests a player storage group", 0.58, ["rubble"]);
+  }
+  if (hasAnyToken(tokens, ["decorative", "decoration", "decorations", "decor", "ornament", "ornaments", "furniture", "framed", "frame", "lamp", "lantern"])) {
+    addPack("decorative", "Decorative", "Blocks and items primarily kept for decoration or building detail.", "decorative evidence suggests a player storage group", 0.58, ["decorations"]);
+  }
+  if (hasAnyToken(tokens, ["wood", "woods", "wooden", "log", "logs", "plank", "planks", "lumber", "board", "boards", "beam", "beams", "sawdust", "carpentry", "saw"])) {
+    addPack("woodworking", "Woodworking", "Wood, lumber, planks, carpentry supplies, and wood-working outputs.", "woodworking evidence suggests a player storage group", 0.58);
+  }
+  if (hasAnyToken(tokens, ["animal", "animals", "husbandry", "hide", "hides", "leather", "wool", "milk", "egg", "eggs", "feed", "livestock", "cow", "cows", "sheep", "pig", "pigs", "chicken", "chickens"])) {
+    addPack("animal_husbandry", "Animal Husbandry", "Animal products, livestock supplies, feed, hides, wool, milk, and eggs.", "animal/livestock evidence suggests a player storage group", 0.58);
+  }
+  if (hasAnyToken(tokens, ["weaving", "cloth", "fabric", "textile", "textiles", "thread", "threads", "string", "strings", "yarn", "loom", "sewing", "needle"])) {
+    addPack("weaving_cloth", "Weaving and Cloth", "Cloth, fabric, thread, string, weaving, and sewing supplies.", "cloth/weaving evidence suggests a player storage group", 0.6, ["cloth", "textiles"]);
+  }
+  if (record.kind === "runtime_item" && hasAnyToken(identityTokens, ["pot", "pan", "skillet", "bowl", "bowls", "oven", "grill", "kitchen", "cooking", "cookware"]) && !hasAnyToken(identityTokens, ["food", "foods", "crop", "crops", "seed", "seeds"])) {
+    addPack("cooking_tools", "Cooking Tools", "Reusable utensils, cookware, bowls, pots, knives, and food-prep tools.", "runtime item names a cooking tool or utensil", 0.57, ["cookware"]);
+  }
+  if (record.namespace === "create") {
+    addPack("create_items", "Create Items", "Create mod blocks, components, and logistics/kinetics items a player may keep together.", "Create namespace evidence suggests a player storage group", 0.54);
+  }
+
+  if (record.kind === "item_tag" || record.kind === "block_tag" || record.kind === "runtime_item") {
+    for (const tier of VOLTAGE_TIERS) {
+      if (!tokens.has(tier)) continue;
+      if (!hasAnyToken(tokens, VOLTAGE_COMPONENT_TOKENS)) continue;
+      const label = `${tier.toUpperCase()} Components`;
+      addScoped("gtceu", `${tier}_components`, label, `${tier.toUpperCase()} GregTech electrical components and machine parts.`, "voltage-tier component evidence suggests a player storage group", 0.6);
+    }
+  }
+
+  return [...out.values()]
+    .filter((seed) => !organizationGroupIdLooksLikeStation(seed.id))
+    .sort((a, b) => a.id.localeCompare(b.id));
+}
+
+function broadOrganizationGroupSeed(
+  record: FacetEvidenceRecord,
+  packId: string,
+): OrganizationGroupSeed | null {
+  if (
+    record.kind !== "item_tag" &&
+    record.kind !== "guide_page" &&
+    record.kind !== "quest_node" &&
+    record.kind !== "stack_group"
+  ) {
+    return null;
+  }
+  const label = record.label ?? record.title ?? labelFromId(record.id);
+  const candidateToken = organizationGroupBroadToken(record, label);
+  if (!candidateToken) return null;
+  const id = packOrganizationGroupId(packId, candidateToken);
+  if (isGenericValueId(id) || organizationGroupIdLooksLikeStation(id)) return null;
+  return {
+    id,
+    label,
+    confidence: Math.max(0.42, Math.min(0.68, record.confidence)),
+    reason: `${record.kind} label/tag may name a player organization group`,
+    description: "Candidate player storage section inferred from pack evidence; accept only if it is a useful way to group items.",
+  };
+}
+
+function organizationGroupBroadToken(record: FacetEvidenceRecord, label: string): string | null {
+  if (organizationGroupRecordLooksTechnical(record, label)) return null;
+  const labelToken = tokenPath(label);
+  if (labelToken && !organizationGroupTokenLooksTechnical(labelToken)) return labelToken;
+  const split = splitResourceLocation(record.id);
+  const raw = split?.path ?? record.id;
+  const parts = raw.split(/[\/_.-]+/).map(token).filter(Boolean);
+  while (parts.length > 0 && ORGANIZATION_GROUP_PREFIX_STOP_TOKENS.has(parts[0]!)) parts.shift();
+  while (parts.length > 0 && ORGANIZATION_GROUP_SUFFIX_STOP_TOKENS.has(parts[parts.length - 1]!)) parts.pop();
+  const pathToken = parts.join("/");
+  if (!pathToken || organizationGroupTokenLooksTechnical(pathToken)) return null;
+  return pathToken;
+}
+
+function organizationGroupRecordLooksTechnical(record: FacetEvidenceRecord, label: string): boolean {
+  const split = splitResourceLocation(record.id);
+  const path = tokenPath(split?.path ?? record.id)?.replace(/\//g, "_") ?? "";
+  const labelToken = tokenPath(label)?.replace(/\//g, "_") ?? "";
+  const haystack = `${path} ${labelToken}`;
+  if (/(^|_)(mineable|needs|incorrect|destroyed|replaceable|replacements|whitelisted|blacklisted|prevented|allowed|completes)(_|$)/.test(path)) {
+    return true;
+  }
+  if (/(^|_)(can|cannot|must|valid|invalid|requires?|trigger|start|stops?|deals|damages?|allows?|disallows?)(_|$)/.test(path)) {
+    return true;
+  }
+  if (/(^|_)(spawnable|spawns?|holdable|harvestable|slowed|speed_booster|pickup|tutorial|whitelist|blacklist)(_|$)/.test(haystack)) {
+    return true;
+  }
+  if (/(^|_)(collapse|landslide|powderkeg|enderman|monster|mob|entity|pathfind|wrench_pickup|prospectable|plantable_on|scraping_surface)(_|$)/.test(haystack)) {
+    return true;
+  }
+  if (/(^|_)(usable_on|usable_in|breaks?|ignore|deny|transparent|index|p2p)(_|$)/.test(haystack)) return true;
+  if (record.kind === "block_tag" && /(^|_)(pickaxe|axe|shovel|hoe|sickle|paxel|hammer|tool)(_or_|_|$)/.test(path)) {
+    return true;
+  }
+  return false;
+}
+
+const ORGANIZATION_GROUP_PREFIX_STOP_TOKENS = new Set([
+  "block",
+  "blocks",
+  "item",
+  "items",
+  "tag",
+  "tags",
+  "whitelisted",
+  "blacklisted",
+  "mineable",
+  "needs",
+  "incorrect",
+  "replaceable",
+  "replacements",
+  "runtime",
+  "generated",
+  "compat",
+  "completes",
+]);
+
+const ORGANIZATION_GROUP_SUFFIX_STOP_TOKENS = new Set([
+  "replaceable",
+  "replaceables",
+  "whitelisted",
+  "blacklisted",
+  "pickup",
+  "tutorial",
+]);
+
+function organizationGroupTokenLooksTechnical(value: string): boolean {
+  const normalized = value.replace(/\//g, "_");
+  if (GENERIC_TOKENS.has(normalized) || ORGANIZATION_GROUP_STOP_TOKENS.has(normalized)) return true;
+  if (/^(destroyed|mineable|needs|incorrect|whitelisted|blacklisted|replaceable|wrench|runtime|generated|prevented|allowed|completes)(_|\/|$)/.test(normalized)) return true;
+  if (/(^|_)(recipes?|recipe|advancement|root|story|crafting|shaped|shapeless|misc|internal|placeholder)(_|$)/.test(normalized)) return true;
+  if (/(^|_)(can|cannot|must|valid|invalid|requires?|trigger|start|stops?|deals|damages?|allows?|disallows?)(_|$)/.test(normalized)) return true;
+  if (/(^|_)(spawnable|spawns?|holdable|harvestable|slowed|speed_booster|pickup|tutorial|whitelist|blacklist)(_|$)/.test(normalized)) return true;
+  if (/(^|_)(collapse|landslide|powderkeg|enderman|monster|mob|entity|pathfind|wrench_pickup|prospectable|plantable_on|scraping_surface)(_|$)/.test(normalized)) return true;
+  if (/(^|_)(usable_on|usable_in|breaks?|ignore|deny|transparent|index|p2p)(_|$)/.test(normalized)) return true;
+  return false;
+}
+
+function addOrganizationGroupSeed(out: Map<string, OrganizationGroupSeed>, seed: OrganizationGroupSeed): void {
+  const issue = validateMultiValue("organization_group", [seed.id]);
+  if (issue) return;
+  const existing = out.get(seed.id);
+  if (!existing || seed.confidence > existing.confidence) out.set(seed.id, seed);
+}
+
+function organizationGroupSignalFields(record: FacetEvidenceRecord): string[] {
+  return [
+    record.id,
+    record.label,
+    record.title,
+    record.description,
+    record.namespace,
+    ...(record.tags ?? []),
+    ...(record.direct_tags ?? []),
+    ...(record.creative_tabs ?? []),
+    ...(record.model_parents ?? []),
+    ...(record.semantic_text ?? []).slice(0, 16).map((entry) => entry.text),
+  ].filter((value): value is string => typeof value === "string" && value.trim().length > 0);
+}
+
+function organizationGroupIdentityFields(record: FacetEvidenceRecord): string[] {
+  return [
+    record.id,
+    record.label,
+    record.title,
+    record.namespace,
+    ...(record.direct_tags ?? []),
+    ...(record.creative_tabs ?? []),
+    ...(record.model_parents ?? []),
+  ].filter((value): value is string => typeof value === "string" && value.trim().length > 0);
+}
+
+function packOrganizationGroupId(packId: string, value: string): string {
+  return `pack:${packId}/${token(value)}`;
+}
+
+function hasAnyToken(tokens: ReadonlySet<string>, values: Iterable<string>): boolean {
+  for (const value of values) {
+    if (tokens.has(value)) return true;
+  }
+  return false;
+}
+
+function organizationGroupIdLooksLikeStation(id: string): boolean {
+  const tail = resourcePathTail(id);
+  return !!tail && ORGANIZATION_GROUP_STOP_TOKENS.has(tail);
 }
 
 function addEvidenceCandidate(
@@ -1247,6 +1866,24 @@ function looksLikeProgressionStage(record: FacetEvidenceRecord, label: string): 
     /\b(tier_[0-9]+_rocket)\b/.test(labelToken);
 }
 
+function documentLooksLikeWorkflowOrUseContext(record: FacetEvidenceRecord, label: string): boolean {
+  const semantic = (record.semantic_text ?? [])
+    .slice(0, 8)
+    .map((entry) => entry.text)
+    .join(" ");
+  const haystack = tokenPath([
+    record.id,
+    label,
+    record.description,
+    semantic,
+  ].filter((value): value is string => typeof value === "string" && value.length > 0).join(" ")) ?? "";
+  if (!haystack) return false;
+  if (/\b(ui|config|options?|keybinds?|errors?|recipe_transfer|tooltip|message|subtitle|sound|screen|screenhandler)\b/.test(haystack)) {
+    return false;
+  }
+  return /\b(anvil|barrel|blast|bloomery|boiling|brewing|casting|centrifuge|compressor|compacting|cooking|crucible|crushing|cutting|deployer|deploying|distillery|drying|extruder|filling|forge|furnace|hammering|lathe|loom|machine|macerator|milling|mixer|mixing|oven|polishing|press|pressing|processor|quern|rolling|sawmill|separator|smeltery|smelting|station|washer|workbench)\b/.test(haystack);
+}
+
 function canUseItemSemanticJoin(record: FacetEvidenceRecord): boolean {
   return record.kind !== "recipe_type" &&
     record.kind !== "recipe_id_family" &&
@@ -1500,6 +2137,7 @@ function applyFacetPolicy(args: {
   curated: readonly CuratedValue[];
   minEvidence: number;
   diagnostics: VocabularyDiagnostic[];
+  acceptedWorkflowIds?: ReadonlySet<string>;
 }): VocabularyDecision[] {
   const candidateById = new Map(args.candidates.map((candidate) => [candidate.id, candidate]));
   const curatedById = new Map<string, CuratedValue>();
@@ -1520,13 +2158,38 @@ function applyFacetPolicy(args: {
     let state = curated?.state ?? base.suggested_state;
     let origin = base.origin;
     let confidence = curated?.confidence ?? base.confidence;
-    const evidence = curated?.evidence?.length ? curated.evidence : base.evidence;
-    const seedItems = curated?.seed_items?.length ? curated.seed_items : base.seed_items;
+    let label = curated?.label ?? base.label;
+    let description = curated?.description ?? base.description;
+    let aliases = sortedLimited([...(curated?.aliases ?? []), ...base.aliases], CANDIDATE_EXAMPLE_LIMIT);
+    let evidence = curated?.evidence?.length ? curated.evidence : base.evidence;
+    let seedItems = curated?.seed_items?.length ? curated.seed_items : base.seed_items;
+    let defaultOrganizationGroup = curated?.default_organization_group ?? base.default_organization_group;
+    let relatedActivity = sortedLimited(
+      [...(curated?.related_activity ?? []), ...(base.related_activity ?? [])],
+      CANDIDATE_EXAMPLE_LIMIT,
+    );
 
     const issue = validateMultiValue(args.facet, [id]);
     if (issue) {
       state = "rejected";
       notes.push(issue.reason);
+    }
+    if (!issue && candidate?.origin === "universal_default" && state !== "accepted") {
+      state = "accepted";
+      origin = "universal_default";
+      confidence = Math.max(confidence, candidate.confidence);
+      notes.push("universal default kept accepted by policy");
+    }
+    if (!issue && candidate?.origin === "universal_default" && state === "accepted") {
+      label = candidate.label;
+      description = candidate.description;
+      aliases = candidate.aliases;
+      evidence = candidate.evidence;
+      seedItems = candidate.seed_items;
+      defaultOrganizationGroup = candidate.default_organization_group;
+      relatedActivity = candidate.related_activity ?? [];
+      origin = "universal_default";
+      confidence = Math.max(confidence, candidate.confidence);
     }
     if (!candidate && state === "accepted") {
       state = "review";
@@ -1552,12 +2215,32 @@ function applyFacetPolicy(args: {
       state = "rejected";
       notes.push("generic catch-all value rejected by policy");
     }
+    if (args.facet === "mod_subsystem" && modSubsystemIdLooksRejected(id)) {
+      state = "rejected";
+      notes.push("mod_subsystem must be a namespace-scoped identity value, not pack/universal/generic");
+    }
     if (args.facet === "workflow_role") {
       const parent = id.split("#")[0] ?? "";
       if (!parent || (curated?.parent && curated.parent !== parent)) {
         state = "rejected";
         notes.push("workflow_role parent must equal id prefix before #");
       }
+      if (state === "accepted" && parent && args.acceptedWorkflowIds && !args.acceptedWorkflowIds.has(parent)) {
+        state = "rejected";
+        notes.push("workflow_role parent is not an accepted workflow value");
+      }
+    }
+    if (state === "accepted" && args.facet === "workflow" && workflowCandidateLooksTooGranular(id, candidate)) {
+      state = "review";
+      notes.push("guide/quest/advancement workflow title is too granular; prefer a reusable process/station id");
+    }
+    if (state === "accepted" && args.facet === "progression_stage" && progressionCandidateLooksTooGranular(id, candidate)) {
+      state = "review";
+      notes.push("advancement-title progression value is too phrase-like; prefer a canonical gate/tier/dimension id");
+    }
+    if (state === "accepted" && args.facet === "organization_group" && organizationGroupIdLooksLikeStation(id)) {
+      state = "review";
+      notes.push("organization_group must be a human storage group, not a workstation/process label");
     }
     if (state === "accepted" && evidence.length === 0 && origin !== "universal_default" && origin !== "previous") {
       state = "review";
@@ -1575,23 +2258,17 @@ function applyFacetPolicy(args: {
     decisions.push({
       facet: args.facet,
       id,
-      label: curated?.label ?? base.label,
+      label,
       state,
       origin,
       confidence: round(confidence),
       evidence: evidence.slice(0, CANDIDATE_EXAMPLE_LIMIT),
       seed_items: sortedLimited(seedItems, CANDIDATE_EXAMPLE_LIMIT),
-      ...(curated?.aliases?.length || base.aliases.length
-        ? { aliases: sortedLimited([...(curated?.aliases ?? []), ...base.aliases], CANDIDATE_EXAMPLE_LIMIT) }
-        : {}),
-      ...(curated?.description ?? base.description ? { description: curated?.description ?? base.description } : {}),
+      ...(aliases.length ? { aliases } : {}),
+      ...(description ? { description } : {}),
       ...(args.facet === "workflow_role" ? { parent: curated?.parent ?? base.parent ?? id.split("#")[0]! } : {}),
-      ...(curated?.default_organization_group ?? base.default_organization_group
-        ? { default_organization_group: curated?.default_organization_group ?? base.default_organization_group }
-        : {}),
-      ...(curated?.related_activity?.length || base.related_activity?.length
-        ? { related_activity: sortedLimited([...(curated?.related_activity ?? []), ...(base.related_activity ?? [])], CANDIDATE_EXAMPLE_LIMIT) }
-        : {}),
+      ...(defaultOrganizationGroup ? { default_organization_group: defaultOrganizationGroup } : {}),
+      ...(relatedActivity.length ? { related_activity: relatedActivity } : {}),
       policy_notes: notes,
     });
   }
@@ -1607,6 +2284,138 @@ function allowsLowSupportAcceptedValue(
   if (curated?.state !== "accepted") return false;
   if (candidate.evidence.length === 0) return false;
   return (curated.confidence ?? candidate.confidence) >= 0.6;
+}
+
+function canonicalProgressionIds(
+  record: FacetEvidenceRecord,
+  packId: string,
+  scope: "namespace" | "pack",
+): string[] {
+  const namespace = scope === "namespace" ? record.namespace : undefined;
+  const owner = scope === "pack" || !namespace ? `pack:${packId}/` : `${namespace}:`;
+  const rawValues = [
+    record.id,
+    record.label,
+    record.title,
+    record.description,
+    ...(record.semantic_text ?? []).slice(0, 8).map((entry) => entry.text),
+  ].filter((value): value is string => typeof value === "string" && value.length > 0);
+  const tokens = new Set<string>();
+  for (const raw of rawValues) {
+    const normalized = tokenPath(raw)?.replace(/\//g, "_") ?? "";
+    for (const value of canonicalProgressionTokens(normalized)) {
+      tokens.add(value);
+    }
+  }
+  return [...tokens]
+    .sort((a, b) => progressionTokenRank(a) - progressionTokenRank(b) || a.localeCompare(b))
+    .slice(0, 4)
+    .map((value) => `${owner}${value}`);
+}
+
+function canonicalProgressionTokens(value: string): string[] {
+  const out = new Set<string>();
+  const parts = value.split(/_+/).filter(Boolean);
+  const joined = parts.join("_");
+  for (const tier of VOLTAGE_TIERS) {
+    if (parts.includes(tier)) out.add(tier);
+  }
+  for (const candidate of [
+    "black_steel",
+    "red_steel",
+    "blue_steel",
+    "wrought_iron",
+    "bismuth_bronze",
+    "black_bronze",
+    "blast_furnace",
+    "mechanical_power",
+    "primitive_alloys",
+    "steam_age",
+    "electric_age",
+  ]) {
+    if (joined.includes(candidate)) out.add(candidate);
+  }
+  for (const candidate of ["moon", "mars", "venus", "mercury", "nether", "beneath", "space", "orbit", "steel", "bronze", "bloomery", "crucible"]) {
+    if (parts.includes(candidate)) out.add(candidate);
+  }
+  const rocket = joined.match(/tier_([0-9]+)_rocket/);
+  if (rocket) out.add(`tier_${rocket[1]}_rocket`);
+  return [...out].filter(isCanonicalProgressionPath);
+}
+
+function progressionTokenRank(value: string): number {
+  if (VOLTAGE_TIERS.includes(value as typeof VOLTAGE_TIERS[number])) return 0;
+  if (/^tier_[0-9]+_rocket$/.test(value)) return 1;
+  if (["moon", "mars", "venus", "mercury", "nether", "beneath", "space", "orbit"].includes(value)) return 2;
+  if (value.includes("steel") || value.includes("bronze") || value === "wrought_iron") return 3;
+  return 4;
+}
+
+function workflowCandidateLooksTooGranular(
+  id: string,
+  candidate: PackVocabularyCandidate | undefined,
+): boolean {
+  if (!candidate || candidate.evidence.length === 0) return false;
+  if (candidate.evidence.some((evidence) => evidence.kind === "recipe_type")) return false;
+  if (!candidate.evidence.every((evidence) =>
+    evidence.kind === "guide_page" || evidence.kind === "quest_node" || evidence.kind === "advancement"
+  )) {
+    return false;
+  }
+  const path = valueIdPath(id);
+  const parts = path.split("/").filter(Boolean);
+  if (parts.length >= 3) return true;
+  return /\b(using|setting|addressing|processing|generating|controlling|placing|moving|routing|displaying|automating|advanced)\b/.test(
+    parts.join(" "),
+  );
+}
+
+function progressionCandidateLooksTooGranular(
+  id: string,
+  candidate: PackVocabularyCandidate | undefined,
+): boolean {
+  if (!candidate || candidate.evidence.length === 0) return false;
+  if (!candidate.evidence.every((evidence) => evidence.kind === "advancement")) return false;
+  const path = valueIdPath(id);
+  const parts = path.split("/").filter(Boolean);
+  if (parts.length <= 1) return false;
+  return !isCanonicalProgressionPath(parts.join("_"));
+}
+
+function isCanonicalProgressionPath(value: string): boolean {
+  if (VOLTAGE_TIERS.includes(value as typeof VOLTAGE_TIERS[number])) return true;
+  if (/^tier_[0-9]+_rocket$/.test(value)) return true;
+  return new Set([
+    "moon",
+    "mars",
+    "venus",
+    "mercury",
+    "nether",
+    "beneath",
+    "space",
+    "orbit",
+    "steel",
+    "black_steel",
+    "red_steel",
+    "blue_steel",
+    "wrought_iron",
+    "bronze",
+    "bismuth_bronze",
+    "black_bronze",
+    "bloomery",
+    "blast_furnace",
+    "crucible",
+    "mechanical_power",
+    "primitive_alloys",
+    "steam_age",
+    "electric_age",
+  ]).has(value);
+}
+
+function valueIdPath(id: string): string {
+  const base = id.includes("#") ? id.slice(0, id.indexOf("#")) : id;
+  const split = splitResourceLocation(base);
+  return split?.path ?? base;
 }
 
 function decisionsToAcceptedVocabulary(
@@ -1662,12 +2471,78 @@ function groupCandidates(
   candidates: readonly PackVocabularyCandidate[],
   maxPerFacet: number,
 ): Record<string, PackVocabularyCandidate[]> {
-  const out: Record<string, PackVocabularyCandidate[]> = {};
+  const grouped = new Map<string, PackVocabularyCandidate[]>();
   for (const candidate of candidates) {
-    const group = out[candidate.facet] ??= [];
-    if (group.length < maxPerFacet) group.push(candidate);
+    const group = grouped.get(candidate.facet) ?? [];
+    group.push(candidate);
+    grouped.set(candidate.facet, group);
+  }
+  const out: Record<string, PackVocabularyCandidate[]> = {};
+  for (const [facet, values] of grouped) {
+    out[facet] = selectPromptCandidates(values, maxPerFacet);
   }
   return out;
+}
+
+function workflowRoleCandidatesForAcceptedWorkflows(
+  candidates: readonly PackVocabularyCandidate[],
+  acceptedWorkflowIds: ReadonlySet<string>,
+): PackVocabularyCandidate[] {
+  return candidates.filter((candidate) => {
+    if (candidate.origin === "previous") return true;
+    const parent = candidate.parent ?? candidate.id.split("#")[0] ?? "";
+    return acceptedWorkflowIds.has(parent);
+  });
+}
+
+function selectPromptCandidates(
+  candidates: readonly PackVocabularyCandidate[],
+  maxCandidates: number,
+): PackVocabularyCandidate[] {
+  const max = Math.max(1, Math.floor(maxCandidates));
+  if (candidates.length <= max) return [...candidates];
+
+  const selected = new Map<string, PackVocabularyCandidate>();
+  const add = (candidate: PackVocabularyCandidate) => {
+    if (selected.size >= max) return;
+    selected.set(candidate.id, candidate);
+  };
+
+  for (const candidate of candidates) {
+    if (candidate.origin === "previous" || candidate.origin === "universal_default") add(candidate);
+  }
+
+  const buckets = new Map<string, PackVocabularyCandidate[]>();
+  for (const candidate of candidates) {
+    if (selected.has(candidate.id)) continue;
+    const key = promptCandidateBucket(candidate);
+    const bucket = buckets.get(key) ?? [];
+    bucket.push(candidate);
+    buckets.set(key, bucket);
+  }
+
+  while (selected.size < max && buckets.size > 0) {
+    let progressed = false;
+    for (const [key, bucket] of [...buckets]) {
+      const candidate = bucket.shift();
+      if (candidate) {
+        add(candidate);
+        progressed = true;
+      }
+      if (bucket.length === 0) buckets.delete(key);
+      if (selected.size >= max) break;
+    }
+    if (!progressed) break;
+  }
+
+  return [...selected.values()].sort(compareCandidates);
+}
+
+function promptCandidateBucket(candidate: PackVocabularyCandidate): string {
+  const evidenceKind = candidate.evidence[0]?.kind ?? "none";
+  const reason = candidate.reasons[0] ?? "";
+  const namespace = splitResourceLocation(candidate.id)?.namespace ?? "pack";
+  return `${candidate.facet}\u0000${candidate.origin}\u0000${candidate.suggested_state}\u0000${evidenceKind}\u0000${reason}\u0000${namespace}`;
 }
 
 function chunkCandidates(
@@ -1799,6 +2674,61 @@ function normalizeScopedResourceId(
   if (!path) return null;
   if (fallback === "pack") return `pack:${packId}/${path}`;
   return `${split.namespace}:${path}`;
+}
+
+function modSubsystemId(namespace: string, value: string): string | null {
+  const normalizedNamespace = namespace.match(/^[a-z0-9_.-]+$/) ? namespace : null;
+  if (!normalizedNamespace) return null;
+  const normalizedToken = token(value);
+  if (!normalizedToken || MOD_SUBSYSTEM_STOP_TOKENS.has(normalizedToken)) return null;
+  return `${normalizedNamespace}:${normalizedToken}`;
+}
+
+function modSubsystemSignalTokens(values: readonly string[]): string[] {
+  const out = new Set<string>();
+  for (const value of values) {
+    for (const raw of value.toLowerCase().split(/[^a-z0-9]+/)) {
+      if (!raw || MOD_SUBSYSTEM_STOP_TOKENS.has(raw)) continue;
+      const singular = raw.endsWith("s") && raw.length > 4 ? raw.slice(0, -1) : raw;
+      addModSubsystemSignalToken(out, raw);
+      addModSubsystemSignalToken(out, singular);
+    }
+    const tail = resourcePathTail(value);
+    if (tail && !MOD_SUBSYSTEM_STOP_TOKENS.has(tail) && MOD_SUBSYSTEM_SIGNAL_TOKENS.has(tail)) {
+      addModSubsystemSignalToken(out, tail);
+    }
+  }
+  return [...out].sort();
+}
+
+function ownedNamespaceValues(namespace: string, values: readonly string[] | undefined): string[] {
+  if (!values?.length) return [];
+  return values.filter((value) => splitResourceLocation(value)?.namespace === namespace);
+}
+
+function addModSubsystemSignalToken(out: Set<string>, value: string): void {
+  if (!MOD_SUBSYSTEM_SIGNAL_TOKENS.has(value)) return;
+  out.add(MOD_SUBSYSTEM_CANONICAL_TOKENS.get(value) ?? value);
+}
+
+function resourcePathTail(value: string): string | null {
+  const split = splitResourceLocation(value);
+  const raw = split?.path ?? value;
+  const parts = raw.split(/[\/_.\s-]+/).filter(Boolean);
+  if (parts.length === 0) return null;
+  return token(parts[parts.length - 1]!);
+}
+
+function isModSubsystemNamespace(namespace: string | undefined, packId?: string): namespace is string {
+  return !!namespace && namespace !== packId && !["c", "forge", "minecraft"].includes(namespace);
+}
+
+function modSubsystemIdLooksRejected(id: string): boolean {
+  const split = splitResourceLocation(id);
+  if (!split) return true;
+  if (split.namespace === "slot" || split.namespace === "pack" || !isModSubsystemNamespace(split.namespace)) return true;
+  const tail = resourcePathTail(id);
+  return !tail || MOD_SUBSYSTEM_STOP_TOKENS.has(tail);
 }
 
 function tokenPath(value: string): string | null {

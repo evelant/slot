@@ -3,7 +3,7 @@ import { FACETS, type FacetDef } from "../schema/facets.ts";
 import type { PackFacetVocabulary } from "../schema/vocabulary.ts";
 import type { LlmDocumentContext } from "./document_context.ts";
 
-export const PROMPT_VERSION = "stage3-prompt-v8";
+export const PROMPT_VERSION = "stage3-prompt-v9";
 
 const RECIPE_EXAMPLE_LIMIT = 96;
 const LOOT_SOURCE_LIMIT = 64;
@@ -110,16 +110,6 @@ export interface LlmPromptInput {
    *  Empty during milestone 5 (stage 4 fills this later). */
   neighbors?: Record<string, readonly string[]>;
   /**
-   * Pre-proposed canonical vocabulary for the `mod_subsystem` facet, derived
-   * from the mod's README/metadata in a separate pass. When present, the LLM
-   * is told to prefer these labels over inventing new ones — keeps subsystem
-   * names consistent across items in a single mod run.
-   *
-   * Each entry is a fully-qualified id (`<modnamespace>:<token>`) optionally
-   * paired with a short rationale describing which kinds of items it covers.
-   */
-  subsystem_vocabulary?: readonly { id: string; rationale?: string }[];
-  /**
    * Accepted pack vocabulary values for vocabulary-backed facets. When present,
    * Stage 3 must pick from these ids instead of inventing new scoped ids.
    */
@@ -197,7 +187,8 @@ reconsider.
   "Steelmaking" as facet values.
 - When the prompt includes a "Pack facet vocabulary" section, vocabulary-backed
   facets MUST use only the listed accepted ids for that facet. If none fit,
-  omit the facet. Do not invent a syntactically valid id as a substitute.
+  omit the facet. If a vocabulary-backed target facet has no listed values in
+  the Pack facet vocabulary section, omit that facet entirely. Do not invent a syntactically valid id as a substitute, and copy ids exactly as printed instead of normalizing separators or path segments.
 - Only emit facets that actually apply to the item. The test: would a player consider this facet meaningful for this item? \`combat_bonus\` on bread, \`biome\` on a crafted-only item — players wouldn't expect a value, so omit. Do not emit \`null\`, empty arrays, or placeholder values to satisfy a target-facet list.
 - Multi-value facets must use \`values: [...]\` even when there is only one
   value. This includes \`organization_group\` and \`mod_subsystem\`; never emit it as a scalar \`value\` facet.
@@ -290,7 +281,6 @@ export function buildSplitPrompt(input: LlmPromptInput): { system: string; user:
   const schemaDoc = renderSchemaForPrompt(input.target_facets);
   const outputShape = renderExpectedOutput(input.target_facets);
   const neighborsNote = renderNeighborsSection(input.neighbors);
-  const subsystemHint = renderSubsystemVocabulary(input.subsystem_vocabulary);
   const facetVocabularyHint = renderPackFacetVocabulary(input.facet_vocabulary, input.target_facets);
   const runtimeInputNotes = renderRuntimeInputNotes(input.items);
 
@@ -327,7 +317,7 @@ export function buildSplitPrompt(input: LlmPromptInput): { system: string; user:
   if (includeMisconceptions) {
     sections.push("", "# Common misconceptions to avoid", COMMON_MISCONCEPTIONS);
   }
-  sections.push("", subsystemHint, "# Expected output shape", outputShape);
+  sections.push("", "# Expected output shape", outputShape);
   const system = sections.filter((section) => section.length > 0).join("\n");
 
   const user = [
@@ -335,12 +325,43 @@ export function buildSplitPrompt(input: LlmPromptInput): { system: string; user:
     "# Items to classify",
     JSON.stringify({ items: input.items }, null, 2),
     "",
-    "Respond with a single JSON object matching the expected output shape above. No other text.",
+    renderFinalUserChecklist(input),
   ]
     .filter((section) => section.length > 0)
     .join("\n");
 
   return { system, user };
+}
+
+function renderFinalUserChecklist(input: LlmPromptInput): string {
+  const hasFacetVocabulary = !!input.facet_vocabulary && Object.keys(input.facet_vocabulary).length > 0;
+  const hasSubsystemVocabulary = !!input.facet_vocabulary?.mod_subsystem?.length;
+  const lines = [
+    "# Final response checklist",
+    "- Respond with one strict JSON object matching the expected output shape above. No markdown, no prose, no comments.",
+    "- Include every item id from `items` exactly once. If output gets long, shorten rationales instead of dropping items.",
+    "- Pick `role` from the player's storage-home mental model, not from recipe participation. Machine parts, machine components, hulls, casings, pumps, presses, pipes, cables, and placed processing parts are mechanisms or functional blocks, not generic materials, even when they are ingredients.",
+    "- Keep high-value inventory semantics first: `role`, `primary_uses`, `carry_frequency`, and `rarity` should be present unless the item data is genuinely unusable.",
+    "- Do not re-emit `stage2_facets` in `facets`. Use `corrections` only for clearly wrong stage-2 values; use `fill_ins` only for missing deterministic facets and only with values allowed by the schema.",
+  ];
+  if (hasFacetVocabulary) {
+    lines.push(
+      "- Vocabulary-backed facets may use only ids listed for that exact facet in `Pack facet vocabulary`. If that facet has no section, or no listed id fits, omit the facet. Copy ids exactly as printed; do not rewrite slashes, underscores, namespace, or pack prefix.",
+    );
+  }
+  if (!hasSubsystemVocabulary) {
+    lines.push(
+      "- Omit `mod_subsystem`; no accepted subsystem vocabulary is supplied for this batch.",
+    );
+  } else {
+    lines.push(
+      "- Emit `mod_subsystem` only when the item itself belongs to a listed subsystem. Never assign it just because the item is consumed or produced by a subsystem recipe.",
+    );
+  }
+  lines.push(
+    "- Optional low-evidence facets are better omitted than guessed.",
+  );
+  return lines.join("\n");
 }
 
 function renderRuntimeInputNotes(items: readonly LlmItemPayload[]): string {
@@ -1003,7 +1024,7 @@ function renderPackFacetVocabulary(
   if (!vocabulary || Object.keys(vocabulary).length === 0) return "";
   const lines: string[] = ["# Pack facet vocabulary"];
   lines.push(
-    "For vocabulary-backed facets, use only these accepted ids. If no listed id fits an item, omit that facet rather than inventing a new value. Labels/descriptions are guidance; output the id.",
+    "For vocabulary-backed facets, use only these accepted ids for the matching facet. If a target facet has no section here, omit that facet entirely. If no listed id fits an item, omit the facet rather than inventing a new value. Labels/descriptions are guidance; output the id exactly as printed.",
   );
   lines.push("");
   for (const facetId of targetFacets) {
@@ -1020,35 +1041,6 @@ function renderPackFacetVocabulary(
     lines.push("");
   }
   return lines.join("\n").trimEnd();
-}
-
-/**
- * Render the canonical mod_subsystem vocabulary inline in the system prompt.
- * Empty when no vocabulary is supplied — vanilla runs and mods with no
- * meaningful subsystem groupings simply omit the section.
- *
- * Lives in the system prompt (not the per-batch user message) because the
- * vocabulary is identical across every batch of a single mod run; keeping it
- * stable maximizes prompt-cache reuse.
- */
-function renderSubsystemVocabulary(
-  vocab: readonly { id: string; rationale?: string }[] | undefined,
-): string {
-  if (!vocab || vocab.length === 0) return "";
-  const lines: string[] = ["# Suggested mod_subsystem vocabulary"];
-  lines.push(
-    "Prefer these canonical labels for the `mod_subsystem` facet over inventing new names. Pick zero or more per item; only use labels whose namespace prefix matches the item's namespace. If none fit, omit the facet rather than coining a synonym.",
-  );
-  lines.push("");
-  for (const entry of vocab) {
-    if (entry.rationale) {
-      lines.push(`- \`${entry.id}\` — ${entry.rationale}`);
-    } else {
-      lines.push(`- \`${entry.id}\``);
-    }
-  }
-  lines.push("");
-  return lines.join("\n");
 }
 
 function renderNeighborsSection(

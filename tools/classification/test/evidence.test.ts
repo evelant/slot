@@ -7,7 +7,7 @@ import {
   buildFacetEvidenceArtifact,
   collectExternalFacetEvidence,
 } from "../src/evidence/facet_evidence.ts";
-import type { RuntimeExportSummary } from "../src/llm/runtime_subsystems.ts";
+import type { RuntimeExportSummary } from "../src/extract/runtime_export.ts";
 
 describe("facet evidence assembly", () => {
   test("builds runtime recipe, role, family, and tag evidence", () => {

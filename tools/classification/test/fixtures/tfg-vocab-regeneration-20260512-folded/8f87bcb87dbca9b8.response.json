@@ -1,0 +1,881 @@
+{
+  "values": [
+    {
+      "id": "greate:milling",
+      "label": "Milling",
+      "state": "rejected",
+      "description": "Process-oriented, not a specific wall-home block; too generic for organization group.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:milling",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "pack:tfg/smelting",
+      "label": "Smelting",
+      "state": "rejected",
+      "description": "Generic cooking process, not a wall-home station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "smelting",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "pack:tfg/blasting",
+      "label": "Blasting",
+      "state": "rejected",
+      "description": "Generic process, not a wall-home station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "blasting",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "pack:tfg/stonecutting",
+      "label": "Stonecutting",
+      "state": "rejected",
+      "description": "Generic process, not a wall-home station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "stonecutting",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "greate:cutting",
+      "label": "Cutting",
+      "state": "rejected",
+      "description": "Process-oriented, not a specific wall-home block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:cutting",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "tfc:heating",
+      "label": "Heating",
+      "state": "rejected",
+      "description": "Heating is a process that occurs in multiple devices; not a single wall-home station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/heating",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:heating",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "tfc:chisel",
+      "label": "Chisel",
+      "state": "rejected",
+      "description": "Chisel is a tool, not a wall-home block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/chisel",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:chisel",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "tfc:collapse",
+      "label": "Collapse",
+      "state": "rejected",
+      "description": "Environmental event, not a wall-home concept.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:collapse",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "greate:pressing",
+      "label": "Pressing",
+      "state": "rejected",
+      "description": "Process-oriented, not a specific wall-home block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:pressing",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "greate:splashing",
+      "label": "Splashing",
+      "state": "rejected",
+      "description": "Process-oriented, not a specific wall-home block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:splashing",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "tfc:landslide",
+      "label": "Landslide",
+      "state": "rejected",
+      "description": "Environmental event, not a wall-home concept.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:landslide",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "tfc:anvil",
+      "label": "Anvil",
+      "state": "accepted",
+      "description": "Primary smithing station; a clear wall-home block.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:anvil",
+          "confidence": 0.85
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/bloomery",
+          "confidence": 0.7
+        }
+      ],
+      "related_activity": [
+        "slot:smithing"
+      ]
+    },
+    {
+      "id": "tfc:barrel_sealed",
+      "label": "Barrel Sealed",
+      "state": "accepted",
+      "description": "Barrel for sealed processing (pickling, aging); a defined wall-home block.",
+      "aliases": [
+        "Barrel"
+      ],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:barrel_sealed",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": [
+        "slot:barrel"
+      ]
+    },
+    {
+      "id": "tfc:damage_inputs_shapeless_crafting",
+      "label": "Damage Inputs Shapeless Crafting",
+      "state": "rejected",
+      "description": "Crafting mechanic, not a wall-home station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:damage_inputs_shapeless_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "tfg:item_repair",
+      "label": "Equipment Repair",
+      "state": "rejected",
+      "description": "Repair mechanic, not a specific wall-home station (could be anvil or workbench).",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfg:item_repair",
+          "confidence": 0.65
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfg:item_repair",
+          "source": "file:minecraft/lang-overlays",
+          "text": "Equipment Repair",
+          "key": "recipe-category-lang:emi.category.tfg.item_repair",
+          "label": "Equipment Repair",
+          "recipe_type": "tfg:item_repair",
+          "count": 1
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "tfc:quern",
+      "label": "Quern",
+      "state": "accepted",
+      "description": "Manual grinding station; a definitive wall-home block.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/quern",
+          "confidence": 0.65
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/quern",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:quern",
+          "confidence": 0.65
+        }
+      ],
+      "related_activity": [
+        "slot:grinding"
+      ]
+    },
+    {
+      "id": "greate:compacting",
+      "label": "Compacting",
+      "state": "rejected",
+      "description": "Process-oriented, not a specific wall-home block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:compacting",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "greate:mixing",
+      "label": "Mixing",
+      "state": "rejected",
+      "description": "Process-oriented, not a specific wall-home block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:mixing",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "tfc:barrel_instant",
+      "label": "Barrel Instant",
+      "state": "rejected",
+      "description": "Same wall-home as barrel_sealed; duplicate group concept.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:barrel_instant",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "create:filling",
+      "label": "Filling",
+      "state": "rejected",
+      "description": "Process-oriented, not a specific wall-home block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:filling",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "ae2:transform",
+      "label": "Transform",
+      "state": "rejected",
+      "description": "AE2 matter transformation, not a physical wall-home block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ae2:transform",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "rnr:mattock",
+      "label": "Mattock",
+      "state": "rejected",
+      "description": "Tool, not a wall-home station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "rnr:mattock",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "vintageimprovements:curving",
+      "label": "Curving",
+      "state": "rejected",
+      "description": "Process-oriented, not a specific wall-home block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:curving",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "create:item_application",
+      "label": "Item Application",
+      "state": "rejected",
+      "description": "Process-oriented, not a specific wall-home block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:item_application",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "tfc:advanced_shapeless_crafting",
+      "label": "Advanced Shapeless Crafting",
+      "state": "rejected",
+      "description": "Crafting mechanic, not a wall-home station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:advanced_shapeless_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "rnr:block_mod",
+      "label": "Block Mod",
+      "state": "rejected",
+      "description": "Recipe type for modifying blocks, not a specific wall-home station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "rnr:block_mod",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "create:sandpaper_polishing",
+      "label": "Sandpaper Polishing",
+      "state": "rejected",
+      "description": "Process-oriented, not a specific wall-home block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:sandpaper_polishing",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "vintageimprovements:polishing",
+      "label": "Polishing",
+      "state": "rejected",
+      "description": "Process-oriented, not a specific wall-home block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:polishing",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "create:deploying",
+      "label": "Deploying",
+      "state": "rejected",
+      "description": "Process-oriented, not a specific wall-home block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:deploying",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "create:sequenced_assembly",
+      "label": "Sequenced Assembly",
+      "state": "rejected",
+      "description": "Multi-step process, not a single wall-home station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:sequenced_assembly",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "kubejs:shaped",
+      "label": "Shaped",
+      "state": "rejected",
+      "description": "Generic crafting mechanic, not a wall-home station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "kubejs:shaped",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "vintageimprovements:centrifugation",
+      "label": "Centrifugation",
+      "state": "rejected",
+      "description": "Process-oriented, not a specific wall-home block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:centrifugation",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "vintageimprovements:hammering",
+      "label": "Hammering",
+      "state": "rejected",
+      "description": "Process-oriented, not a specific wall-home block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:hammering",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "createaddition:rolling",
+      "label": "Rolling",
+      "state": "rejected",
+      "description": "Process-oriented, not a specific wall-home block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "createaddition:rolling",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "tfc:casting",
+      "label": "Casting",
+      "state": "rejected",
+      "description": "Process using crucible and molds, not a single wall-home block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:casting",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "framedblocks:frame",
+      "label": "Frame",
+      "state": "rejected",
+      "description": "Recipe type for crafting framed blocks, not a wall-home station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "framedblocks:frame",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "greate:brewing",
+      "label": "Brewing",
+      "state": "rejected",
+      "description": "Process-oriented, not a specific wall-home block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:brewing",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "tfc:pot",
+      "label": "Pot",
+      "state": "accepted",
+      "description": "Small cooking vessel; a defined wall-home block for stews and soups.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:pot",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": [
+        "slot:cooking"
+      ]
+    },
+    {
+      "id": "tfc:advanced_shaped_crafting",
+      "label": "Advanced Shaped Crafting",
+      "state": "rejected",
+      "description": "Crafting mechanic, not a wall-home station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:advanced_shaped_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "tfc:welding",
+      "label": "Welding",
+      "state": "rejected",
+      "description": "Process performed on anvil; duplicates anvil wall-home.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:welding",
+          "confidence": 0.85
+        },
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/glassworking",
+          "confidence": 0.7
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "tfc:damage_inputs_shaped_crafting",
+      "label": "Damage Inputs Shaped Crafting",
+      "state": "rejected",
+      "description": "Crafting mechanic, not a wall-home station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:damage_inputs_shaped_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "vintageimprovements:coiling",
+      "label": "Coiling",
+      "state": "rejected",
+      "description": "Process-oriented, not a specific wall-home block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:coiling",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "tfc:knapping",
+      "label": "Knapping",
+      "state": "review",
+      "description": "Knapping is done on a knapping block; evidence limited to recipe type, but could be a wall-home station.",
+      "aliases": [],
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:knapping",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "vintageimprovements:vibrating",
+      "label": "Vibrating",
+      "state": "rejected",
+      "description": "Process-oriented, not a specific wall-home block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:vibrating",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "tfc:glassworking",
+      "label": "Glassworking",
+      "state": "rejected",
+      "description": "Process using multiple tools, not a single wall-home block.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "tfc:field_guide/en_us/entries/mechanics/glassworking",
+          "confidence": 0.7
+        },
+        {
+          "kind": "recipe_type",
+          "id": "tfc:glassworking",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "kubejs:shapeless",
+      "label": "Shapeless",
+      "state": "rejected",
+      "description": "Generic crafting mechanic, not a wall-home station.",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "kubejs:shapeless",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": []
+    },
+    {
+      "id": "domum_ornamentum:architects_cutter",
+      "label": "Architects Cutter",
+      "state": "accepted",
+      "description": "Station block for cutting architectural blocks; clearly a wall-home.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "domum_ornamentum:architects_cutter",
+          "confidence": 0.85
+        },
+        {
+          "kind": "runtime_item",
+          "id": "domum_ornamentum:blockpaperwall",
+          "source": "runtime-items",
+          "text": "Crafted in the Architect's Cutter",
+          "key": "runtime-tooltip",
+          "label": "Glass Framed Pane",
+          "item_ref_count": 1
+        },
+        {
+          "kind": "runtime_item",
+          "id": "domum_ornamentum:blockpillar",
+          "source": "runtime-items",
+          "text": "Crafted in the Architect's Cutter",
+          "key": "runtime-tooltip",
+          "label": "Round Reconstituted Stone Bricks Pillar",
+          "item_ref_count": 1
+        },
+        {
+          "kind": "runtime_item",
+          "id": "domum_ornamentum:blocktiledpaperwall",
+          "source": "runtime-items",
+          "text": "Crafted in the Architect's Cutter",
+          "key": "runtime-tooltip",
+          "label": "Glass Tiled Pane",
+          "item_ref_count": 1
+        },
+        {
+          "kind": "runtime_item",
+          "id": "domum_ornamentum:blockypillar",
+          "source": "runtime-items",
+          "text": "Crafted in the Architect's Cutter",
+          "key": "runtime-tooltip",
+          "label": "Voxel Reconstituted Stone Bricks Pillar",
+          "item_ref_count": 1
+        },
+        {
+          "kind": "runtime_item",
+          "id": "domum_ornamentum:center_light",
+          "source": "runtime-items",
+          "text": "Crafted in the Architect's Cutter",
+          "key": "runtime-tooltip",
+          "label": "Framed Glowstone",
+          "item_ref_count": 1
+        }
+      ],
+      "related_activity": [
+        "slot:construction"
+      ]
+    },
+    {
+      "id": "firmalife:vat",
+      "label": "Vat",
+      "state": "accepted",
+      "description": "Station block for fluid processing; a clear wall-home.",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "firmalife:crafting/vat",
+          "confidence": 0.65
+        },
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:vat",
+          "confidence": 0.85
+        }
+      ],
+      "related_activity": [
+        "slot:fluid_processing"
+      ]
+    }
+  ]
+}

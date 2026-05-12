@@ -80,15 +80,14 @@ hold the rest.
 
 - **2026-05-11** — classification pack-layer work landed installed
   `mods/` scanning, jar-backed static extraction, OpenRouter-only live
-  LLM runs, runtime subsystem vocabulary, Forge/NeoForge runtime export,
-  datapack generation, dynamic organization/subsystem auto-home cohorts,
-  `/slot classification inspect` / `rehome`, vocabulary-backed facet
-  schema validation, rich `facet-evidence.json` assembly, clean
-  no-previous-vocabulary pack vocabulary proposal, stage-3
-  `document_context`, accepted-vocabulary prompting/validation, longer
-  OpenRouter timeouts, and abort-aware in-flight request handling; deposit
-  routing was tightened back to explicit chest signals (learned affinity or
-  existing matching contents).
+  LLM runs, Forge/NeoForge runtime export, datapack generation, dynamic
+  organization/subsystem auto-home cohorts, `/slot classification inspect` /
+  `rehome`, vocabulary-backed facet schema validation, rich
+  `facet-evidence.json` assembly, clean no-previous-vocabulary pack vocabulary
+  proposal, stage-3 `document_context`, accepted-vocabulary
+  prompting/validation, longer OpenRouter timeouts, and abort-aware in-flight
+  request handling; deposit routing was tightened back to explicit chest
+  signals (learned affinity or existing matching contents).
 - **2026-05-07** — Forge parity pass moved active-kit gather and
   in-world kit-page cycle into shared common services, registered
   `GATHER_ACTIVE_KIT`, wired in-screen gather through catalog actions
@@ -208,20 +207,17 @@ track lands.
    labels); per-row "→ suggested home" preview on the loot-chest
    panel; atlas-deposit take-back guard (only revisit if playtest
    shows stuck affinity).
-3. **Classification full-pack vocabulary validation**
-   ([classification-facet-vocabulary.md](classification-facet-vocabulary.md)).
-   Slices 0-3 are implemented for the TypeScript toolchain: the registry has
-   vocabulary-backed semantic facets, scoped value-id grammar, layer and
-   vocabulary artifact validation, parser/prompt coverage, rich
-   `collect-pack-facet-evidence`, `propose-pack-facet-vocabulary`,
-   stage-3 `document_context`, accepted vocabulary prompting via
-   `--facet-vocabulary`, response validation for missing items and
-   out-of-vocabulary values, retry propagation, and metadata that records the
-   vocabulary/evidence inputs. Next slice is not more plumbing: run a full
-   `classify-runtime-pack` pass against the fresh runtime export plus a clean
-   vocabulary proposal made without `--previous-vocabulary`, review the
-   generated layer/report/prompts, then tune deterministic domain facets or
-   validation reports only from observed quality gaps.
+3. **Classification pipeline refactor before full-pack vocabulary validation**
+   ([classification-pipeline-refactor.md](classification-pipeline-refactor.md),
+   with design history in
+   [classification-facet-vocabulary.md](classification-facet-vocabulary.md)).
+   The TypeScript toolchain has the core vocabulary-backed path wired, but
+   iteration left semantic evidence over-filtering, hardcoded validation-pack
+   concepts, workflow-derived `organization_group` candidates, legacy
+   `mod_subsystem` handling, and an oversized `pack_vocabulary.ts`. Refactor
+   the pipeline, preserve rich semantic input, add missing-vocabulary review
+   proposals for Stage 3, then dry-run/canary before any full vocabulary or
+   `classify-runtime-pack` pass.
 4. **Runtime-crawl deterministic fallback**
    ([item-classification.md § Runtime discovery](item-classification.md#runtime-discovery)).
    Walks the live registry to derive deterministic facets

@@ -2,7 +2,7 @@ import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { basename, join, relative, resolve } from "node:path";
 import type { ItemExtractRecord, SemanticTextEvidence } from "../extract/record.ts";
 import { cleanSemanticText, dedupeSemanticText, splitSemanticText } from "../extract/semantic_text.ts";
-import type { RuntimeExportSummary } from "../llm/runtime_subsystems.ts";
+import type { RuntimeExportSummary } from "../extract/runtime_export.ts";
 import type { InputManifestV2, InputManifestMod } from "../input/manifest.ts";
 import { resolveModsFolder, scanModsFolder } from "../scan/mods_folder.ts";
 import { ZipArchive } from "../scan/zip.ts";

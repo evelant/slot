@@ -1,0 +1,782 @@
+{
+  "values": [
+    {
+      "id": "tfc:pot_jam#input",
+      "label": "Pot Jam Input",
+      "state": "accepted",
+      "description": "Input role for jam-making in a pot.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:pot_jam",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:pot_jam"
+    },
+    {
+      "id": "tfc:pot_jam#output",
+      "label": "Pot Jam Output",
+      "state": "accepted",
+      "description": "Output role for jam-making in a pot.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:pot_jam",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:pot_jam"
+    },
+    {
+      "id": "tfg:artisan#input",
+      "label": "Artisan Input",
+      "state": "review",
+      "description": "Input role for artisan recipes; needs human confirmation as the workflow may be too generic.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfg:artisan",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfg:artisan"
+    },
+    {
+      "id": "tfg:artisan#output",
+      "label": "Artisan Output",
+      "state": "review",
+      "description": "Output role for artisan recipes; needs human confirmation.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfg:artisan",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfg:artisan"
+    },
+    {
+      "id": "firmalife:mixing_bowl#input",
+      "label": "Mixing Bowl Input",
+      "state": "accepted",
+      "description": "Input role for mixing bowl recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:mixing_bowl",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "firmalife:mixing_bowl"
+    },
+    {
+      "id": "firmalife:mixing_bowl#output",
+      "label": "Mixing Bowl Output",
+      "state": "accepted",
+      "description": "Output role for mixing bowl recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:mixing_bowl",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "firmalife:mixing_bowl"
+    },
+    {
+      "id": "firmalife:bowl_pot#input",
+      "label": "Bowl Pot Input",
+      "state": "review",
+      "description": "Input role for bowl pot recipes; uncertain if this is a player-facing process, needs review.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:bowl_pot",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "firmalife:bowl_pot"
+    },
+    {
+      "id": "firmalife:bowl_pot#output",
+      "label": "Bowl Pot Output",
+      "state": "review",
+      "description": "Output role for bowl pot recipes; needs review.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:bowl_pot",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "firmalife:bowl_pot"
+    },
+    {
+      "id": "kubejs_tfc:advanced_shapeless_crafting#input",
+      "label": "Advanced Shapeless Crafting Input",
+      "state": "rejected",
+      "description": "Meta/implementation crafting mechanic; not a player-facing workflow.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "kubejs_tfc:advanced_shapeless_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "kubejs_tfc:advanced_shapeless_crafting"
+    },
+    {
+      "id": "kubejs_tfc:advanced_shapeless_crafting#output",
+      "label": "Advanced Shapeless Crafting Output",
+      "state": "rejected",
+      "description": "Meta/implementation crafting mechanic; rejected.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "kubejs_tfc:advanced_shapeless_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "kubejs_tfc:advanced_shapeless_crafting"
+    },
+    {
+      "id": "tfc:extra_products_shapeless_crafting#input",
+      "label": "Extra Products Shapeless Crafting Input",
+      "state": "rejected",
+      "description": "Meta/implementation crafting mechanic; not a player-facing workflow.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:extra_products_shapeless_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:extra_products_shapeless_crafting"
+    },
+    {
+      "id": "tfc:extra_products_shapeless_crafting#output",
+      "label": "Extra Products Shapeless Crafting Output",
+      "state": "rejected",
+      "description": "Meta/implementation crafting mechanic; rejected.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:extra_products_shapeless_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:extra_products_shapeless_crafting"
+    },
+    {
+      "id": "tfc:sewing#input",
+      "label": "Sewing Input",
+      "state": "accepted",
+      "description": "Input role for sewing recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:sewing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:sewing"
+    },
+    {
+      "id": "tfc:sewing#output",
+      "label": "Sewing Output",
+      "state": "accepted",
+      "description": "Output role for sewing recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:sewing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:sewing"
+    },
+    {
+      "id": "create:mixing#input",
+      "label": "Mixing Input",
+      "state": "accepted",
+      "description": "Input role for Create mixing recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:mixing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:mixing"
+    },
+    {
+      "id": "create:mixing#output",
+      "label": "Mixing Output",
+      "state": "accepted",
+      "description": "Output role for Create mixing recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:mixing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:mixing"
+    },
+    {
+      "id": "firmalife:drying#input",
+      "label": "Drying Input",
+      "state": "accepted",
+      "description": "Input role for drying recipes on a drying mat.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:drying",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "firmalife:drying"
+    },
+    {
+      "id": "firmalife:drying#output",
+      "label": "Drying Output",
+      "state": "accepted",
+      "description": "Output role for drying recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:drying",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "firmalife:drying"
+    },
+    {
+      "id": "firmalife:oven#input",
+      "label": "Oven Input",
+      "state": "accepted",
+      "description": "Input role for oven recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:oven",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "firmalife:oven"
+    },
+    {
+      "id": "firmalife:oven#output",
+      "label": "Oven Output",
+      "state": "accepted",
+      "description": "Output role for oven recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:oven",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "firmalife:oven"
+    },
+    {
+      "id": "vintageimprovements:vacuumizing#input",
+      "label": "Vacuumizing Input",
+      "state": "accepted",
+      "description": "Input role for vacuumizing recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:vacuumizing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "vintageimprovements:vacuumizing"
+    },
+    {
+      "id": "vintageimprovements:vacuumizing#output",
+      "label": "Vacuumizing Output",
+      "state": "accepted",
+      "description": "Output role for vacuumizing recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:vacuumizing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "vintageimprovements:vacuumizing"
+    },
+    {
+      "id": "diggerhelmet:helmet_repair#input",
+      "label": "Digger Helmet Repair Input",
+      "state": "accepted",
+      "description": "Input role for repairing digger helmets.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "diggerhelmet:helmet_repair",
+          "confidence": 0.65
+        }
+      ],
+      "parent": "diggerhelmet:helmet_repair"
+    },
+    {
+      "id": "diggerhelmet:helmet_repair#output",
+      "label": "Digger Helmet Repair Output",
+      "state": "accepted",
+      "description": "Output role for repairing digger helmets.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "diggerhelmet:helmet_repair",
+          "confidence": 0.65
+        }
+      ],
+      "parent": "diggerhelmet:helmet_repair"
+    },
+    {
+      "id": "tfc:barrel_instant_fluid#input",
+      "label": "Barrel Instant Fluid Input",
+      "state": "accepted",
+      "description": "Input role for instant barrel fluid recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:barrel_instant_fluid",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:barrel_instant_fluid"
+    },
+    {
+      "id": "tfc:barrel_instant_fluid#output",
+      "label": "Barrel Instant Fluid Output",
+      "state": "accepted",
+      "description": "Output role for instant barrel fluid recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:barrel_instant_fluid",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:barrel_instant_fluid"
+    },
+    {
+      "id": "afc:tree_tapping#input",
+      "label": "Tree Tapping Input",
+      "state": "accepted",
+      "description": "Input role for tree tapping recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "afc:tree_tapping",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "afc:tree_tapping"
+    },
+    {
+      "id": "afc:tree_tapping#output",
+      "label": "Tree Tapping Output",
+      "state": "accepted",
+      "description": "Output role for tree tapping recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "afc:tree_tapping",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "afc:tree_tapping"
+    },
+    {
+      "id": "create:mechanical_crafting#input",
+      "label": "Mechanical Crafting Input",
+      "state": "accepted",
+      "description": "Input role for mechanical crafting recipes (Create Mechanical Crafter).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:mechanical_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:mechanical_crafting"
+    },
+    {
+      "id": "create:mechanical_crafting#output",
+      "label": "Mechanical Crafting Output",
+      "state": "accepted",
+      "description": "Output role for mechanical crafting recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:mechanical_crafting",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:mechanical_crafting"
+    },
+    {
+      "id": "pack:tfg/smithing_trim#input",
+      "label": "Smithing Trim Input",
+      "state": "accepted",
+      "description": "Input role for smithing trim recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "smithing_trim",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "pack:tfg/smithing_trim"
+    },
+    {
+      "id": "pack:tfg/smithing_trim#output",
+      "label": "Smithing Trim Output",
+      "state": "accepted",
+      "description": "Output role for smithing trim recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "smithing_trim",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "pack:tfg/smithing_trim"
+    },
+    {
+      "id": "tfc:alloy#input",
+      "label": "Alloy Input",
+      "state": "accepted",
+      "description": "Input role for alloying recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:alloy",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:alloy"
+    },
+    {
+      "id": "tfc:alloy#output",
+      "label": "Alloy Output",
+      "state": "accepted",
+      "description": "Output role for alloying recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:alloy",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "tfc:alloy"
+    },
+    {
+      "id": "tfc:loom#input",
+      "label": "Loom Input",
+      "state": "accepted",
+      "description": "Input role for loom recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:loom",
+          "confidence": 0.85
+        },
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/vanilla/loom",
+          "confidence": 0.65
+        }
+      ],
+      "parent": "tfc:loom"
+    },
+    {
+      "id": "tfc:loom#output",
+      "label": "Loom Output",
+      "state": "accepted",
+      "description": "Output role for loom recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:loom",
+          "confidence": 0.85
+        },
+        {
+          "kind": "advancement",
+          "id": "tfc:crafting/vanilla/loom",
+          "confidence": 0.65
+        }
+      ],
+      "parent": "tfc:loom"
+    },
+    {
+      "id": "tfc:scraping#input",
+      "label": "Scraping Recipe Input",
+      "state": "accepted",
+      "description": "Input role for scraping recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:scraping",
+          "confidence": 0.65
+        }
+      ],
+      "parent": "tfc:scraping"
+    },
+    {
+      "id": "tfc:scraping#output",
+      "label": "Scraping Recipe Output",
+      "state": "accepted",
+      "description": "Output role for scraping recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:scraping",
+          "confidence": 0.65
+        }
+      ],
+      "parent": "tfc:scraping"
+    },
+    {
+      "id": "create:milling#input",
+      "label": "Milling Input",
+      "state": "accepted",
+      "description": "Input role for Create milling recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:milling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:milling"
+    },
+    {
+      "id": "create:milling#output",
+      "label": "Milling Output",
+      "state": "accepted",
+      "description": "Output role for Create milling recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:milling",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:milling"
+    },
+    {
+      "id": "diggerhelmet:helmet_upgrade#input",
+      "label": "Digger Helmet Upgrade Input",
+      "state": "accepted",
+      "description": "Input role for upgrading digger helmets.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "diggerhelmet:helmet_upgrade",
+          "confidence": 0.65
+        }
+      ],
+      "parent": "diggerhelmet:helmet_upgrade"
+    },
+    {
+      "id": "diggerhelmet:helmet_upgrade#output",
+      "label": "Digger Helmet Upgrade Output",
+      "state": "accepted",
+      "description": "Output role for upgrading digger helmets.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "diggerhelmet:helmet_upgrade",
+          "confidence": 0.65
+        }
+      ],
+      "parent": "diggerhelmet:helmet_upgrade"
+    },
+    {
+      "id": "firmalife:stomping#input",
+      "label": "Stomping Input",
+      "state": "accepted",
+      "description": "Input role for stomping recipes (stomping barrel).",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:stomping",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "firmalife:stomping"
+    },
+    {
+      "id": "firmalife:stomping#output",
+      "label": "Stomping Output",
+      "state": "accepted",
+      "description": "Output role for stomping recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:stomping",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "firmalife:stomping"
+    },
+    {
+      "id": "create:pressing#input",
+      "label": "Pressing Input",
+      "state": "accepted",
+      "description": "Input role for Create pressing recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:pressing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:pressing"
+    },
+    {
+      "id": "create:pressing#output",
+      "label": "Pressing Output",
+      "state": "accepted",
+      "description": "Output role for Create pressing recipes.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:pressing",
+          "confidence": 0.85
+        }
+      ],
+      "parent": "create:pressing"
+    },
+    {
+      "id": "deafission:component_fr#input",
+      "label": "Fission Reactor Components Input",
+      "state": "rejected",
+      "description": "Recipe category for crafting components; not a player-facing process.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "deafission:component_fr",
+          "confidence": 0.65
+        }
+      ],
+      "parent": "deafission:component_fr"
+    },
+    {
+      "id": "deafission:component_fr#output",
+      "label": "Fission Reactor Components Output",
+      "state": "rejected",
+      "description": "Recipe category for crafting components; rejected.",
+      "aliases": [],
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "deafission:component_fr",
+          "confidence": 0.65
+        }
+      ],
+      "parent": "deafission:component_fr"
+    }
+  ]
+}

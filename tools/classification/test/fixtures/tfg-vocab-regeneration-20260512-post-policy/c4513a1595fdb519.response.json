@@ -1,0 +1,592 @@
+{
+  "values": [
+    {
+      "id": "ae2wtlib:terminal",
+      "label": "Terminal",
+      "state": "accepted",
+      "description": "Wireless terminal system for AE2 networks",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "ae2wtlib:wireless_universal_terminal",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "createaddition:energy",
+      "label": "Energy",
+      "state": "accepted",
+      "description": "Electrical energy generation and transfer for Create",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "guide_page",
+          "id": "createaddition:ponder/alternator",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "greate:fluid",
+      "label": "Fluid",
+      "state": "rejected",
+      "description": "Too broad; refers to fluid transport mechanic, not a cohesive subsystem",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "vintageimprovements:belt",
+      "label": "Belt",
+      "state": "rejected",
+      "description": "Refers to a single machine (belt grinder) and its belt, not a subsystem",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "expatternprovider:assembler",
+      "label": "Assembler",
+      "state": "accepted",
+      "description": "Extended assembler matrix and molecular assembler subsystem",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "expatternprovider:assembler_matrix_crafter",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "create:cover",
+      "label": "Cover",
+      "state": "rejected",
+      "description": "Single item type for mechanical crafter cover, not a subsystem",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ae2:fluid",
+      "label": "Fluid",
+      "state": "accepted",
+      "description": "Fluid storage cells and fluid interaction in AE2",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "ae2:fluid_storage_cell_16k",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "create_connected:generator",
+      "label": "Generator",
+      "state": "rejected",
+      "description": "Single machine (sequenced pulse generator), not a subsystem",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "createaddition:belt",
+      "label": "Belt",
+      "state": "rejected",
+      "description": "Items are food items, not a cohesive subsystem; 'belt' refers to transport tag",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "expatternprovider:interface",
+      "label": "Interface",
+      "state": "accepted",
+      "description": "Extended interfaces and oversize interfaces for AE2",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "expatternprovider:oversize_interface",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "gtceu:reactor",
+      "label": "Reactor",
+      "state": "accepted",
+      "description": "Chemical reactors and fusion reactors in GTCEu",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "gtceu:ev_chemical_reactor",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "sns:belt",
+      "label": "Belt",
+      "state": "accepted",
+      "description": "Belt-worn containers (sacks and pouches) from Sacks 'N Such",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "sns:leather_sack",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "create_factory_logistics:network",
+      "label": "Network",
+      "state": "accepted",
+      "description": "Network link system for factory logistics in Create",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "create_factory_logistics:network_link",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "gtceu:cell",
+      "label": "Cell",
+      "state": "rejected",
+      "description": "Mix of fluid containers and electrolytic cell machine; not a coherent subsystem",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "gtceu:charger",
+      "label": "Charger",
+      "state": "accepted",
+      "description": "Chargers for GTCEu machines",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "gtceu:ev_charger_4x",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "gtmutils:charger",
+      "label": "Charger",
+      "state": "accepted",
+      "description": "Auto chargers from GTMUtils",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "gtmutils:ev_auto_charger_4x",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:automation",
+      "label": "Automation",
+      "state": "rejected",
+      "description": "Guide topic on lathe automation, not a subsystem",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "tfc:fan",
+      "label": "Fan",
+      "state": "rejected",
+      "description": "Decorative coral fans, not a subsystem",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ae2:energy",
+      "label": "Energy",
+      "state": "accepted",
+      "description": "Energy storage and transfer for AE2",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "ae2:energy_cell",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "tfc:hatch",
+      "label": "Hatch",
+      "state": "rejected",
+      "description": "Only a block tag for petrified egg hatch, not a subsystem",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "expatternprovider:export",
+      "label": "Export",
+      "state": "accepted",
+      "description": "Extended export buses for AE2",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "expatternprovider:ex_export_bus_part",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:engine",
+      "label": "Engine",
+      "state": "accepted",
+      "description": "Rocket engines for Ad Astra",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "ad_astra:steel_engine",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:cable",
+      "label": "Cable",
+      "state": "accepted",
+      "description": "Cables for energy transfer in Ad Astra",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "ad_astra:desh_cable",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "megacells:energy",
+      "label": "Energy",
+      "state": "accepted",
+      "description": "Energy storage upgrades for MegaCells",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "megacells:mega_energy_cell",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "toolbelt:belt",
+      "label": "Belt",
+      "state": "accepted",
+      "description": "Toolbelt system for holding tools",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "toolbelt:belt",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "create:schematic",
+      "label": "Schematic",
+      "state": "accepted",
+      "description": "Schematic system for saving and placing structures",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "create:schematic",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "createaddition:contraption",
+      "label": "Contraption",
+      "state": "rejected",
+      "description": "Guide topic on contraption energy exchange, not a subsystem",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create_connected:cogwheel",
+      "label": "Cogwheel",
+      "state": "rejected",
+      "description": "Specific cogwheel variant, not a subsystem",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "ad_astra:tank",
+      "label": "Tank",
+      "state": "accepted",
+      "description": "Rocket fuel tanks and gas tanks for Ad Astra",
+      "aliases": [],
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "ad_astra:gas_tank",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:fluid",
+      "label": "Fluid",
+      "state": "accepted",
+      "description": "Fluid pipes and ducts for fluid transport in Ad Astra",
+      "aliases": [],
+      "confidence": 0.7,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "ad_astra:desh_fluid_pipe",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "tfc:pump",
+      "label": "Pump",
+      "state": "rejected",
+      "description": "Single machine (steel pump), not a subsystem",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "buildinggadgets2:fluid",
+      "label": "Fluid",
+      "state": "rejected",
+      "description": "Feature of Building Gadgets, not a cohesive subsystem",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "expatternprovider:storage",
+      "label": "Storage",
+      "state": "accepted",
+      "description": "Extended storage buses for AE2",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "expatternprovider:mod_storage_bus",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "ae2:terminal",
+      "label": "Terminal",
+      "state": "accepted",
+      "description": "Terminals for interacting with AE2 network",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "ae2:terminal",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "sophisticatedbackpacks:pump",
+      "label": "Pump",
+      "state": "rejected",
+      "description": "Upgrade type, not a broad subsystem",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create_connected:automation",
+      "label": "Automation",
+      "state": "rejected",
+      "description": "Guide topic, not a subsystem",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create_connected:energy",
+      "label": "Energy",
+      "state": "rejected",
+      "description": "Guide topic, not a subsystem",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:power",
+      "label": "Power",
+      "state": "rejected",
+      "description": "Guide topic on gantry power, not a subsystem",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "create:transport",
+      "label": "Transport",
+      "state": "rejected",
+      "description": "Guide topic on belt transport, not a subsystem",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "greate:logistics",
+      "label": "Logistics",
+      "state": "rejected",
+      "description": "Guide topic on belt transport, not a subsystem",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "greate:transport",
+      "label": "Transport",
+      "state": "rejected",
+      "description": "Guide topic on belt transport, not a subsystem",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "megacells:network",
+      "label": "Network",
+      "state": "accepted",
+      "description": "Network components (cell dock, interfaces, providers) for MegaCells",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "advancement",
+          "id": "megacells:recipes/misc/network/cell_dock",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "megacells:interface",
+      "label": "Interface",
+      "state": "accepted",
+      "description": "MEGA interfaces and pattern providers for MegaCells",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "megacells:mega_interface",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "ae2:bus",
+      "label": "Bus",
+      "state": "accepted",
+      "description": "Cable buses for AE2 (import, export, storage, etc.)",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "ae2:cable_bus",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "createdeco:rail",
+      "label": "Rail",
+      "state": "rejected",
+      "description": "Decorative catwalk railings, not a subsystem",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "createdeco:train",
+      "label": "Train",
+      "state": "rejected",
+      "description": "Decorative train hulls, not a subsystem",
+      "aliases": [],
+      "confidence": 0,
+      "evidence": []
+    },
+    {
+      "id": "expatternprovider:terminal",
+      "label": "Terminal",
+      "state": "accepted",
+      "description": "Extended crafting and pattern terminals for AE2",
+      "aliases": [],
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "expatternprovider:ex_crafting_terminal",
+          "confidence": 1
+        }
+      ]
+    },
+    {
+      "id": "gtceu:engine",
+      "label": "Engine",
+      "state": "accepted",
+      "description": "Combustion engines and engine casings for GTCEu power generation",
+      "aliases": [],
+      "confidence": 0.55,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "gtceu:extreme_combustion_engine",
+          "confidence": 1
+        }
+      ]
+    }
+  ]
+}

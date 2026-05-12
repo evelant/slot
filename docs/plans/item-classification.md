@@ -14,8 +14,9 @@ SLOT now also loads bundled per-mod layers and datapack
 diagnostics, and uses facet data for template chips plus dynamic
 organization/subsystem auto-home sections. The tool can scan installed `mods/`
 folders, classify jar resources, run OpenRouter-backed stage 3, derive
-runtime subsystem vocabularies, ingest Forge/NeoForge running-instance
-exports, and emit a drop-in datapack layer. Last updated: 2026-05-10.
+pack facet vocabularies including `mod_subsystem`, ingest Forge/NeoForge
+running-instance exports, and emit a drop-in datapack layer. Last updated:
+2026-05-12.
 
 ## Reading order for a fresh session
 

@@ -125,9 +125,9 @@ queues, not automatic truth.
 Before stage 3, the tool can validate a pack facet vocabulary artifact.
 Vocabulary-backed facets use stable ids (`slot:cooking`,
 `create:mechanical_power`, `pack:tfg2/steelmaking`, and scoped
-`pack:tfg2/steelmaking#input`) rather than display labels. The older
-`mod_subsystem` vocabulary pre-pass still exists; the broader
-`facet-vocabulary.json` generation command is the next pipeline slice.
+`pack:tfg2/steelmaking#input`) rather than display labels. `mod_subsystem`
+is part of the same `facet-vocabulary.json` artifact; there is no separate
+runtime subsystem vocabulary pre-pass.
 
 `organization_group` is the stronger auto-home signal for large packs.
 It answers "where would a skilled player put this item?" and can split
@@ -270,22 +270,6 @@ bun run src/cli.ts classify-modpack \
   --stages 1,2,3
 ```
 
-Generate pack-specific subsystem vocabulary from a runtime export:
-
-```sh
-bun run src/cli.ts propose-runtime-subsystems \
-  --runtime-export exports/pack.runtime-items.ndjson \
-  --summary exports/pack.runtime-summary.json \
-  --out out \
-  --namespace create \
-  --namespace gtceu
-```
-
-Use `--dry-run` to inspect prompts before spending tokens. The command
-writes `out/<pack>.runtime-subsystems.json`; stage 3 can consume that
-file with `--subsystems-file <path>`, filtering labels by item namespace
-for mixed runtime batches.
-
 Generate a pack-specific layer from both loaded runtime facts and static
 jar facts, then package it as a datapack:
 
@@ -294,7 +278,7 @@ bun run src/cli.ts generate-pack-layer \
   --runtime-export exports/pack.runtime-items.ndjson \
   --summary exports/pack.runtime-summary.json \
   --mods /path/to/prism/instance-or-minecraft/mods \
-  --subsystems-file out/pack.runtime-subsystems.json \
+  --facet-vocabulary out/pack/pack.facet-vocabulary.json \
   --out out \
   --stages 1,2,3 \
   --datapack
@@ -338,8 +322,8 @@ Use `--dry-run` to inspect the per-facet curation prompts, `--facet <id>` to
 iterate on one vocabulary-backed facet, `--namespace <id>` to limit evidence,
 and `--previous-vocabulary <path>` to preserve earlier accepted ids.
 The command writes `facet-vocabulary.json` plus
-`facet-vocabulary.review.json`; stage 3 consumes the accepted values in the
-next integration slice.
+`facet-vocabulary.review.json`; stage 3 consumes the accepted values through
+`--facet-vocabulary`.
 
 For a real pack run, prefer the one-command wrapper:
 
@@ -352,14 +336,12 @@ bun run classify:runtime-pack -- \
   --force
 ```
 
-`classify-runtime-pack` runs the same static+runtime layer generation, but
-also generates or reuses runtime subsystem vocabulary, defaults stage 3 to
-the OpenRouter `deepseek/deepseek-v4-flash` path, records replay fixtures,
-checks for items that received no LLM facets, runs a focused repair pass,
-validates the final layer and datapack layer, writes a datapack zip, and
-emits `run-report.json` plus `run-report.md`. The CLI auto-loads a
-repo-root `.env`, so `OPENROUTER_API_KEY=...` can live there for manual
-runs.
+`classify-runtime-pack` runs the same static+runtime layer generation, defaults
+stage 3 to the OpenRouter `deepseek/deepseek-v4-flash` path, records replay
+fixtures, checks for items that received no LLM facets, runs a focused repair
+pass, validates the final layer and datapack layer, writes a datapack zip, and
+emits `run-report.json` plus `run-report.md`. The CLI auto-loads a repo-root
+`.env`, so `OPENROUTER_API_KEY=...` can live there for manual runs.
 
 Check a loaded server or singleplayer instance:
 
@@ -394,9 +376,6 @@ bun run sync:test-modset
 - Jar-backed extraction is static. It sees resources shipped in jars, but
   not live registry mutations, KubeJS recipe/tag edits, generated runtime
   items, or datapack changes.
-- The jar-backed stage-3 path does not have source README context for the
-  `mod_subsystem` proposer unless a cached `<modid>.subsystems.json`
-  already exists.
 - Hand-authored modpack manifests still point at cloned source
   repositories; installed pack folders use `classify-folder` instead.
 - Existing resume behavior is strongest in `classify-runtime-pack`, which
@@ -421,7 +400,8 @@ slot-classify scan --mods /path/to/instance/mods
 slot-classify fetch-public --mods /path/to/instance/mods
 slot-classify classify-folder --mods /path/to/instance/mods --stages 1,2
 slot-classify generate-missing --mods /path/to/instance/mods --stages 1,2,3
-slot-classify propose-runtime-subsystems --runtime-export exports/pack.runtime-items.ndjson
+slot-classify collect-pack-facet-evidence --runtime-export exports/pack.runtime-items.ndjson --mods /path/to/instance
+slot-classify propose-pack-facet-vocabulary --evidence out/pack/pack.facet-evidence.json
 slot-classify classify-runtime-pack --runtime-export exports/pack.runtime-items.ndjson --mods /path/to/instance
 ```
 

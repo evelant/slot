@@ -13,6 +13,17 @@ strings, KubeJS/datapack overlays, Ponder/category labels, stack groups,
 resource-pack lang overrides, and mod descriptions before asking the LLM to
 derive vocabulary or classify items.
 
+Partial Stage 3 canaries against the first clean TFG vocabulary are promising
+but not full-run ready yet. The classifier now completes vocabulary-grounded
+batches without retrying whole responses for invented closed-set values, and it
+drops invalid vocabulary/fill-in values with audit warnings. The canaries also
+showed two concrete gates before a full pack run: regenerate the vocabulary
+with sticky accepted universal defaults (`slot:fill`, `slot:cast`,
+`slot:preserve`, etc.) and run another canary to check role quality before
+spending a full `classify-runtime-pack` pass. A 17-item v9 canary with the
+final user-message checklist restored the GTCEu pump/hull role anchors and
+validated cleanly; a broader canary is still needed before the full run.
+
 This plan owns the generic modpack-classification workflow: pack vocabulary,
 evidence extraction, vocabulary-backed semantic facets, and pack-layer
 regeneration. TerraFirmaGreg is the first deep validation fixture because it
@@ -134,7 +145,8 @@ Current pipeline:
 
 1. Stage 1 extracts item records from source trees, jars, or runtime exports.
 2. Stage 2 derives deterministic facets.
-3. A runtime `mod_subsystem` proposer can produce namespace-scoped vocabulary.
+3. Pack facet vocabulary generation proposes vocabulary-backed semantic values,
+   including namespace-scoped `mod_subsystem` values.
 4. Stage 3 fills LLM-authored facets and writes a complete layer.
 5. `classify-runtime-pack` can package the layer as a datapack.
 
@@ -147,8 +159,8 @@ This plan inserts two generic steps:
 
 Stage 3 then consumes both:
 
-- existing or regenerated `mod_subsystem` vocabulary for identity-oriented
-  subsystem labels
+- accepted `mod_subsystem` values from the same pack vocabulary artifact used
+  by every other vocabulary-backed semantic facet
 - vocabulary-backed values for activity, workflow, workflow roles, station
   context, food/use domains, stock/container behavior, equipment effects,
   progression stages, loadout contexts, and use affordances
@@ -959,16 +971,22 @@ toolchain now supports:
 - `--facet-vocabulary` on stage-3 pack runs so prompts contain only accepted
   pack vocabulary values for vocabulary-backed facets
 - conservative per-item `document_context` from evidence artifacts
-- response validators that retry missing-item or out-of-vocabulary outputs, then
-  drop invalid vocabulary values rather than writing them into the layer
+- response validators that retry malformed or missing-item outputs; accepted
+  responses then drop/report invalid vocabulary values rather than retrying the
+  whole batch or writing bad values into the layer
+- fill-in validation that drops invalid deterministic enum suggestions such as
+  `form=block` or `required_tool=wrench` before final layer validation
 - metadata recording the evidence/vocabulary files used for stage 3
 
-The next slice is full-pack quality validation: run `classify-runtime-pack`
-against the fresh runtime export, static jars, `facet-evidence.json`, and a
-clean vocabulary proposal generated without `--previous-vocabulary`; inspect
-the final layer, run report, prompt fixtures, warnings, and runtime
-`/slot classification inspect` output; tune deterministic domain facets or
-validation reports only from the observed gaps.
+The next slice is still quality validation, but not yet a full pack run:
+regenerate the clean TFG vocabulary under the current policy, include runtime
+`mod_subsystem` vocabulary, rerun a broader canary, and inspect role quality,
+review reports, prompt fixtures, warnings, and runtime `/slot classification
+inspect` output. Only move to a full `classify-runtime-pack` run once the
+canary has no fatal validation failures and no obvious role regressions on
+known anchors. The current Stage 3 prompt repeats the hard output/vocabulary
+rules at the end of the user message so those constraints sit immediately next
+to the batch evidence.
 
 Do not use `--previous-vocabulary` for a first baseline run. It is intentionally
 biased refinement input for a vocabulary that is already nearly satisfactory.
@@ -1081,7 +1099,7 @@ Exit criteria:
 - accepted vocabulary ids are stable, correctly scoped, and evidence-backed
 - initial evidence thresholds are conservative guesses and are surfaced in the
   review report for tuning
-- uncertain candidates are not included in runtime vocabulary
+- uncertain candidates are not included in accepted vocabulary
 - duplicate/synonym candidates are visible in review output
 - universal defaults and pack-generated values are distinguishable in output
 - replay fixtures prove the same evidence + previous vocabulary produces stable
@@ -1117,7 +1135,8 @@ Exit criteria:
 - layer metadata records the facet vocabulary source
 - out-of-vocabulary suggestions trigger retry or warnings and are not layer data
 - stage 3 never receives `review` or `rejected` vocabulary values
-- existing `mod_subsystem` vocabulary behavior still works
+- `mod_subsystem` uses accepted pack vocabulary values instead of a separate
+  runtime proposer/cache
 
 ### Slice 4: Deterministic Domain Facets
 

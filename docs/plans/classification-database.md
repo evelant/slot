@@ -1,12 +1,13 @@
 # Classification Database And Pack UX Plan
 
-Last updated: 2026-05-10
+Last updated: 2026-05-12
 
 Status: partially implemented. Installed-pack scanning, jar-backed
-classification, runtime export, runtime subsystem vocabulary, datapack
-pack-layer generation, and in-game classifier diagnostics are now
-implemented. Public database distribution, review/diff/publish tooling,
-runtime-crawl, and persistent server/player facet layers remain planned.
+classification, runtime export, pack facet vocabulary generation including
+`mod_subsystem`, datapack pack-layer generation, and in-game classifier
+diagnostics are now implemented. Public database distribution,
+review/diff/publish tooling, runtime-crawl, and persistent server/player facet
+layers remain planned.
 This plan turns item classification from a local one-off generation tool
 into shared mod metadata that normal SLOT users consume automatically.
 It does not replace
@@ -868,7 +869,7 @@ first running-instance pack-layer workflow:
 - implement `scan --mods`
 - implement jar-backed stages 1 and 2
 - implement runtime export
-- implement runtime subsystem vocabulary
+- implement pack facet vocabulary generation including `mod_subsystem`
 - implement `generate-pack-layer --runtime-export --mods --datapack`
 - implement in-game inspect/rehome diagnostics
 

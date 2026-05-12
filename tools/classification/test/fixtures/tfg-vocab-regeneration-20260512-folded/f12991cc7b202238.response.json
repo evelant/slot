@@ -1,0 +1,323 @@
+{
+  "values": [
+    {
+      "id": "advancedperipherals:energy",
+      "label": "Energy",
+      "state": "rejected",
+      "description": "Peripheral-specific label, not a mod subsystem."
+    },
+    {
+      "id": "advancedperipherals:storage",
+      "label": "Storage",
+      "state": "rejected",
+      "description": "Peripheral-specific label, not a mod subsystem."
+    },
+    {
+      "id": "gtceu:duct",
+      "label": "Duct",
+      "state": "rejected",
+      "description": "Specific pipe variant, not a mod subsystem."
+    },
+    {
+      "id": "vintageimprovements:storage",
+      "label": "Storage",
+      "state": "rejected",
+      "description": "Material storage block family, not a mod subsystem."
+    },
+    {
+      "id": "arthropocolypse:energy",
+      "label": "Energy",
+      "state": "rejected",
+      "description": "Single food item, not a mod subsystem."
+    },
+    {
+      "id": "create_factory_logistics:fluid",
+      "label": "Fluid",
+      "state": "rejected",
+      "description": "Process/component label, not a mod subsystem."
+    },
+    {
+      "id": "gtmutils:hatch",
+      "label": "Hatch",
+      "state": "rejected",
+      "description": "Multiblock component type, not a mod subsystem."
+    },
+    {
+      "id": "immersive_aircraft:engine",
+      "label": "Engine",
+      "state": "rejected",
+      "description": "Aircraft upgrade component, not a mod subsystem."
+    },
+    {
+      "id": "create_connected:fluid",
+      "label": "Fluid",
+      "state": "rejected",
+      "description": "Process/component label, not a mod subsystem."
+    },
+    {
+      "id": "railways:transport",
+      "label": "Transport",
+      "state": "rejected",
+      "description": "Generic process label, not a mod subsystem."
+    },
+    {
+      "id": "copycats:cogwheel",
+      "label": "Cogwheel",
+      "state": "rejected",
+      "description": "Specific machine component, not a mod subsystem."
+    },
+    {
+      "id": "ae2:interface",
+      "label": "Interface",
+      "state": "rejected",
+      "description": "Single block type, not a mod subsystem."
+    },
+    {
+      "id": "ad_astra:energy",
+      "label": "Energy",
+      "state": "rejected",
+      "description": "Generic power generation concept, not a mod subsystem."
+    },
+    {
+      "id": "deafission:fission",
+      "label": "Fission",
+      "state": "accepted",
+      "description": "Nuclear fission reactor system from DeaFission mod.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "deafission:fission_reactor_mk1",
+          "confidence": 1
+        },
+        {
+          "kind": "runtime_item",
+          "id": "deafission:fission_reactor_mk2",
+          "confidence": 1
+        },
+        {
+          "kind": "quest_node",
+          "id": "pack:ftbquests/chapters/ev__extreme_voltage",
+          "confidence": 0.7
+        }
+      ]
+    },
+    {
+      "id": "deafission:reactor",
+      "label": "Reactor",
+      "state": "rejected",
+      "description": "Specific multiblock, not a mod subsystem (subsystem is fission)."
+    },
+    {
+      "id": "gtmutils:bus",
+      "label": "Bus",
+      "state": "rejected",
+      "description": "Multiblock component type, not a mod subsystem."
+    },
+    {
+      "id": "deafission:cell",
+      "label": "Cell",
+      "state": "rejected",
+      "description": "Fuel cell component, not a mod subsystem."
+    },
+    {
+      "id": "gtceu:multiblock",
+      "label": "Multiblock",
+      "state": "rejected",
+      "description": "Generic machine category, not a mod subsystem."
+    },
+    {
+      "id": "gtceu:oxygen",
+      "label": "Oxygen",
+      "state": "rejected",
+      "description": "Material/fluid, not a mod subsystem."
+    },
+    {
+      "id": "species:hatch",
+      "label": "Hatch",
+      "state": "rejected",
+      "description": "Process label (hatching), not a mod subsystem."
+    },
+    {
+      "id": "expatternprovider:cell",
+      "label": "Cell",
+      "state": "rejected",
+      "description": "Storage component type, not a mod subsystem."
+    },
+    {
+      "id": "firmalife:pipe",
+      "label": "Pipe",
+      "state": "rejected",
+      "description": "Pipe component, not a mod subsystem."
+    },
+    {
+      "id": "expatternprovider:cable",
+      "label": "Cable",
+      "state": "rejected",
+      "description": "Cable part type, not a mod subsystem."
+    },
+    {
+      "id": "createdeco:fluid",
+      "label": "Fluid",
+      "state": "rejected",
+      "description": "Decorative marking, not a mod subsystem."
+    },
+    {
+      "id": "deafission:battery",
+      "label": "Battery",
+      "state": "rejected",
+      "description": "Heat battery component, not a mod subsystem."
+    },
+    {
+      "id": "firmalife:tank",
+      "label": "Tank",
+      "state": "rejected",
+      "description": "Irrigation tank component, not a mod subsystem."
+    },
+    {
+      "id": "ad_astra:generator",
+      "label": "Generator",
+      "state": "rejected",
+      "description": "Single machine block, not a mod subsystem."
+    },
+    {
+      "id": "create:hatch",
+      "label": "Hatch",
+      "state": "rejected",
+      "description": "Single block, not a mod subsystem."
+    },
+    {
+      "id": "ad_astra:duct",
+      "label": "Duct",
+      "state": "rejected",
+      "description": "Cable/pipe covering, not a mod subsystem."
+    },
+    {
+      "id": "copycats:fluid",
+      "label": "Fluid",
+      "state": "rejected",
+      "description": "Copycat pipe label, not a mod subsystem."
+    },
+    {
+      "id": "copycats:pipe",
+      "label": "Pipe",
+      "state": "rejected",
+      "description": "Single pipe type, not a mod subsystem."
+    },
+    {
+      "id": "create_hypertube:cogwheel",
+      "label": "Cogwheel",
+      "state": "rejected",
+      "description": "Machine component, not a mod subsystem."
+    },
+    {
+      "id": "railways:tank",
+      "label": "Tank",
+      "state": "rejected",
+      "description": "Fuel tank component, not a mod subsystem."
+    },
+    {
+      "id": "sophisticatedbackpacks:battery",
+      "label": "Battery",
+      "state": "rejected",
+      "description": "Backpack upgrade component, not a mod subsystem."
+    },
+    {
+      "id": "sophisticatedbackpacks:tank",
+      "label": "Tank",
+      "state": "rejected",
+      "description": "Backpack upgrade component, not a mod subsystem."
+    },
+    {
+      "id": "ags_modernmarkings:fluid",
+      "label": "Fluid",
+      "state": "rejected",
+      "description": "Decorative wall marking, not a mod subsystem."
+    },
+    {
+      "id": "ags_modernmarkings:storage",
+      "label": "Storage",
+      "state": "rejected",
+      "description": "Decorative wall marking, not a mod subsystem."
+    },
+    {
+      "id": "gtmutils:power",
+      "label": "Power",
+      "state": "rejected",
+      "description": "Battery item, not a mod subsystem."
+    },
+    {
+      "id": "merequester:terminal",
+      "label": "Terminal",
+      "state": "rejected",
+      "description": "Single block, not a mod subsystem."
+    },
+    {
+      "id": "megacells:cable",
+      "label": "Cable",
+      "state": "rejected",
+      "description": "Cable part type, not a mod subsystem."
+    },
+    {
+      "id": "ad_astra:cell",
+      "label": "Cell",
+      "state": "rejected",
+      "description": "Solar cell component, not a mod subsystem."
+    },
+    {
+      "id": "expatternprovider:charger",
+      "label": "Charger",
+      "state": "rejected",
+      "description": "Single block, not a mod subsystem."
+    },
+    {
+      "id": "expatternprovider:crafter",
+      "label": "Crafter",
+      "state": "rejected",
+      "description": "Single block, not a mod subsystem."
+    },
+    {
+      "id": "railways:interface",
+      "label": "Interface",
+      "state": "rejected",
+      "description": "Fuel interface block, not a mod subsystem."
+    },
+    {
+      "id": "create_factory_logistics:package",
+      "label": "Package",
+      "state": "rejected",
+      "description": "Item type, not a mod subsystem."
+    },
+    {
+      "id": "etched:cover",
+      "label": "Cover",
+      "state": "rejected",
+      "description": "Album cover item, not a mod subsystem."
+    },
+    {
+      "id": "deafission:hatch",
+      "label": "Hatch",
+      "state": "rejected",
+      "description": "Multiblock component, not a mod subsystem."
+    },
+    {
+      "id": "gtceu:network",
+      "label": "Network",
+      "state": "accepted",
+      "description": "Computation network subsystem for GTCEu multiblocks.",
+      "confidence": 0.75,
+      "evidence": [
+        {
+          "kind": "runtime_item",
+          "id": "gtceu:network_switch",
+          "confidence": 1
+        },
+        {
+          "kind": "quest_node",
+          "id": "pack:ftbquests/chapters/uv__ultimate_voltage",
+          "confidence": 0.7
+        }
+      ]
+    }
+  ]
+}

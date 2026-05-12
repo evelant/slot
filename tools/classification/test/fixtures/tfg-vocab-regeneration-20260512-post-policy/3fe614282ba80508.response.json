@@ -1,0 +1,244 @@
+{
+  "values": [
+    {
+      "id": "slot:ingredient",
+      "label": "Ingredient",
+      "state": "accepted",
+      "description": "Item used as an ingredient in food recipes or potion brewing",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "firmalife:foods/pizza_ingredients",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "minecraft:decorated_pot_ingredients",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:fluid_item_ingredient_empty_containers",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:absorption_ingredients",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:antipoison_ingredients",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:fire_resistance_ingredients",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:haste_ingredients",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:instant_health_ingredients",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:invisibility_ingredients",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:jump_boost_ingredients",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:luck_ingredients",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:night_vision_ingredients",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:poison_ingredients",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:regeneration_ingredients",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:resistance_ingredients",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:slow_fall_ingredients",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:slowness_ingredients",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:speed_ingredients",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:strength_ingredients",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:water_breathing_ingredients",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:weakness_ingredients",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:preserve",
+      "label": "Preserve",
+      "state": "accepted",
+      "description": "Item that is a preserved food, often sealed in jars",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/preserves",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/preserves_2",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfc:foods/sealed_preserves",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:spice",
+      "label": "Spice",
+      "state": "accepted",
+      "description": "Item used as a spice to add flavor or nutrition variety",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfg:foods/spice_plants",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:foods/spices",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:sweetener",
+      "label": "Sweetener",
+      "state": "accepted",
+      "description": "Item used to sweeten foods or beverages",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:sweetener",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:drink",
+      "label": "Drink",
+      "state": "accepted",
+      "description": "Consumable liquid beverage",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "create:deployable_drink",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "railways:paint_drink_blockers",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:animal_feed",
+      "label": "Animal Feed",
+      "state": "review",
+      "description": "Item fed to animals; no direct evidence but plausible",
+      "aliases": [],
+      "confidence": 0.5,
+      "evidence": []
+    },
+    {
+      "id": "slot:buff_food",
+      "label": "Buff Food",
+      "state": "review",
+      "description": "Food that provides temporary status effects; no direct evidence",
+      "aliases": [],
+      "confidence": 0.5,
+      "evidence": []
+    },
+    {
+      "id": "slot:cooking_fat",
+      "label": "Cooking Fat",
+      "state": "review",
+      "description": "Fat used in cooking; no direct evidence",
+      "aliases": [],
+      "confidence": 0.5,
+      "evidence": []
+    },
+    {
+      "id": "slot:eat_now",
+      "label": "Eat Now",
+      "state": "review",
+      "description": "Item best consumed immediately; no direct evidence",
+      "aliases": [],
+      "confidence": 0.5,
+      "evidence": []
+    },
+    {
+      "id": "slot:meal_component",
+      "label": "Meal Component",
+      "state": "review",
+      "description": "Component used in meal preparation; no direct evidence",
+      "aliases": [],
+      "confidence": 0.5,
+      "evidence": []
+    }
+  ]
+}

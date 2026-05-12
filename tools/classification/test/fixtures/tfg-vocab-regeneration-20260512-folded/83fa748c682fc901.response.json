@@ -1,0 +1,136 @@
+{
+  "values": [
+    {
+      "id": "slot:pressure",
+      "label": "Pressure",
+      "state": "accepted",
+      "description": "Protection against environmental pressure, such as underwater or in space.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "minecraft:pressure_plates",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "minecraft:pressure_plates",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:fall",
+      "label": "Fall",
+      "state": "accepted",
+      "description": "Protection against fall damage.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "block_tag",
+          "id": "minecraft:fall_damage_resetting",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:slow_fall_ingredients",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:poison",
+      "label": "Poison",
+      "state": "accepted",
+      "description": "Protection against poison effects.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfc:compost_poisons",
+          "confidence": 0.75
+        },
+        {
+          "kind": "item_tag",
+          "id": "tfg:poison_ingredients",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:cold",
+      "label": "Cold",
+      "state": "accepted",
+      "description": "Protection against cold temperatures and freezing.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfg:cold_protection_equipment",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:fire",
+      "label": "Fire",
+      "state": "accepted",
+      "description": "Protection against fire and burning.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "tfg:fire_resistance_ingredients",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:heat",
+      "label": "Heat",
+      "state": "accepted",
+      "description": "Protection against high temperatures, such as solar heat or lava proximity.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": [
+        {
+          "kind": "item_tag",
+          "id": "ad_astra:heat_resistant_armor",
+          "confidence": 0.75
+        }
+      ]
+    },
+    {
+      "id": "slot:magic",
+      "label": "Magic",
+      "state": "accepted",
+      "description": "Protection against magical damage and effects.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": []
+    },
+    {
+      "id": "slot:radiation",
+      "label": "Radiation",
+      "state": "accepted",
+      "description": "Protection against radiation, typically in space or hazardous environments.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": []
+    },
+    {
+      "id": "slot:vacuum",
+      "label": "Vacuum",
+      "state": "accepted",
+      "description": "Protection against vacuum exposure in space.",
+      "aliases": [],
+      "confidence": 0.95,
+      "evidence": []
+    }
+  ]
+}

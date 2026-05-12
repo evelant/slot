@@ -1,0 +1,676 @@
+{
+  "values": [
+    {
+      "id": "tfg:artisan",
+      "label": "Artisan",
+      "state": "accepted",
+      "description": "A player-facing station for artisan crafting.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfg:artisan",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "firmalife:mixing_bowl",
+      "label": "Mixing Bowl",
+      "state": "accepted",
+      "description": "A mixing bowl station for combining ingredients.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:mixing_bowl",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:glassworking",
+      "label": "Glassworking",
+      "state": "accepted",
+      "description": "Glassworking station for shaping glass with tools.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:glassworking",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "firmalife:bowl_pot",
+      "label": "Bowl Pot",
+      "state": "accepted",
+      "description": "A bowl pot used for cooking or processing.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:bowl_pot",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "kubejs_tfc:advanced_shapeless_crafting",
+      "label": "Advanced Shapeless Crafting",
+      "state": "rejected",
+      "description": "Implementation recipe type, not a player-facing station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "kubejs_tfc:advanced_shapeless_crafting",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:extra_products_shapeless_crafting",
+      "label": "Extra Products Shapeless Crafting",
+      "state": "rejected",
+      "description": "Implementation recipe type, not a station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:extra_products_shapeless_crafting",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:sewing",
+      "label": "Sewing",
+      "state": "accepted",
+      "description": "Sewing station for fabric-related crafting.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:sewing",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "create:mixing",
+      "label": "Mixing",
+      "state": "accepted",
+      "description": "Mechanical mixer station for combining items/fluids.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:mixing",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "firmalife:drying",
+      "label": "Drying",
+      "state": "accepted",
+      "description": "Drying mat or solar drier station for dehydrating items.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:drying",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "firmalife:oven",
+      "label": "Oven",
+      "state": "accepted",
+      "description": "Oven station for baking or heating.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:oven",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:vacuumizing",
+      "label": "Vacuumizing",
+      "state": "accepted",
+      "description": "Vacuum chamber station for vacuum processing.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:vacuumizing",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "diggerhelmet:helmet_repair",
+      "label": "Digger Helmet Repair",
+      "state": "rejected",
+      "description": "Repair recipe type, not a station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "diggerhelmet:helmet_repair",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "tfc:barrel_instant_fluid",
+      "label": "Barrel Instant Fluid",
+      "state": "accepted",
+      "description": "Barrel station for instant fluid interactions.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:barrel_instant_fluid",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "afc:tree_tapping",
+      "label": "Tree Tapping",
+      "state": "accepted",
+      "description": "Tree tapping process for collecting sap.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "afc:tree_tapping",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "create:mechanical_crafting",
+      "label": "Mechanical Crafting",
+      "state": "accepted",
+      "description": "Mechanical crafter station for automated crafting.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:mechanical_crafting",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "pack:tfg/smithing_trim",
+      "label": "Smithing Trim",
+      "state": "accepted",
+      "description": "Smithing table station for applying trims.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "smithing_trim",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:alloy",
+      "label": "Alloy",
+      "state": "accepted",
+      "description": "Crucible or alloying station for mixing metals.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:alloy",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:scraping",
+      "label": "Scraping Recipe",
+      "state": "accepted",
+      "description": "Scraping process on a log or surface.",
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:scraping",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "create:milling",
+      "label": "Milling",
+      "state": "accepted",
+      "description": "Millstone station for grinding.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:milling",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:loom",
+      "label": "Loom",
+      "state": "accepted",
+      "description": "Loom station for weaving cloth.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:loom",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "diggerhelmet:helmet_upgrade",
+      "label": "Digger Helmet Upgrade",
+      "state": "rejected",
+      "description": "Upgrade recipe type, not a station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "diggerhelmet:helmet_upgrade",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "firmalife:stomping",
+      "label": "Stomping",
+      "state": "accepted",
+      "description": "Stomping barrel or mat for pressing.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:stomping",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "create:pressing",
+      "label": "Pressing",
+      "state": "accepted",
+      "description": "Mechanical press station for pressing items.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create:pressing",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "deafission:component_fr",
+      "label": "Fission Reactor Components",
+      "state": "rejected",
+      "description": "Component assembly category, not a station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "deafission:component_fr",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:oxygen_loading",
+      "label": "Oxygen Loading",
+      "state": "accepted",
+      "description": "Oxygen loader station for filling tanks.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ad_astra:oxygen_loading",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "ad_astra:space_station_recipe",
+      "label": "Space Station Recipe",
+      "state": "rejected",
+      "description": "One-time construction recipe, not a reusable station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ad_astra:space_station_recipe",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:no_remainder_shaped_crafting",
+      "label": "No Remainder Shaped Crafting",
+      "state": "rejected",
+      "description": "Implementation variant of shaped crafting, not a station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:no_remainder_shaped_crafting",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "sophisticatedbackpacks:backpack_upgrade",
+      "label": "Backpack Upgrade",
+      "state": "rejected",
+      "description": "Upgrade recipe, not a station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "sophisticatedbackpacks:backpack_upgrade",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "greate:haunting",
+      "label": "Haunting",
+      "state": "accepted",
+      "description": "Haunting process for transforming items.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:haunting",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:blast_furnace",
+      "label": "Blast Furnace",
+      "state": "accepted",
+      "description": "Blast furnace station for steelmaking.",
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:blast_furnace",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "deafission:component_hb",
+      "label": "Heat Battery Components",
+      "state": "rejected",
+      "description": "Component assembly category, not a station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "deafission:component_hb",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "ae2wtlib:upgrade",
+      "label": "Upgrade",
+      "state": "rejected",
+      "description": "Upgrade recipe type, not a station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "ae2wtlib:upgrade",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "create_factory_logistics:network_link_qualification",
+      "label": "Network Link Qualification",
+      "state": "rejected",
+      "description": "Not a player-facing station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "create_factory_logistics:network_link_qualification",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "firmalife:stinky_soup",
+      "label": "Stinky Soup",
+      "state": "rejected",
+      "description": "Soup recipe type, not a station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmalife:stinky_soup",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:pot_soup",
+      "label": "Pot Soup",
+      "state": "rejected",
+      "description": "Soup recipe type, not a station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:pot_soup",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "vintageimprovements:pressurizing",
+      "label": "Pressurizing",
+      "state": "accepted",
+      "description": "Pressurizing chamber station for pressure processing.",
+      "confidence": 0.85,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "vintageimprovements:pressurizing",
+          "confidence": 0.85
+        }
+      ]
+    },
+    {
+      "id": "tfc:clay_knapping",
+      "label": "Clay Knapping Recipe",
+      "state": "rejected",
+      "description": "Hand knapping action, not a fixed station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:clay_knapping",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "tfc:rock_knapping",
+      "label": "Rock Knapping Recipe",
+      "state": "rejected",
+      "description": "Hand knapping action, not a fixed station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:rock_knapping",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "tfc:fire_clay_knapping",
+      "label": "Fire Clay Knapping Recipe",
+      "state": "rejected",
+      "description": "Hand knapping action, not a fixed station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:fire_clay_knapping",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "tfc:leather_knapping",
+      "label": "Leather Knapping Recipe",
+      "state": "rejected",
+      "description": "Hand knapping action, not a fixed station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "tfc:leather_knapping",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "block.simplylight.edge_light_top:info",
+      "label": "Will morph depending on the blocks present around itself on placement. Shape will persist afterward, letting you make shapes using temporary blocks.",
+      "state": "rejected",
+      "description": "Block information category, not a station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "block.simplylight.edge_light_top:info",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "block.simplylight.edge_light:info",
+      "label": "Will morph depending on the blocks present around itself on placement. Shape will persist afterward, letting you make shapes using temporary blocks.",
+      "state": "rejected",
+      "description": "Block information category, not a station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "block.simplylight.edge_light:info",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "deathpunishment:penalties",
+      "label": "Death Penalties",
+      "state": "rejected",
+      "description": "Game mechanic category, not a station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "deathpunishment:penalties",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "emi:anvil_repairing",
+      "label": "Anvil Repairing",
+      "state": "accepted",
+      "description": "Anvil station for repairing items.",
+      "confidence": 0.65,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "emi:anvil_repairing",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "emi:world_interaction",
+      "label": "World Interaction",
+      "state": "rejected",
+      "description": "Generic interaction category, not a specific station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "emi:world_interaction",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "firmaciv:transfer/error/barrel_sealed",
+      "label": "Barrel is currently sealed",
+      "state": "rejected",
+      "description": "Error message, not a station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "firmaciv:transfer.error.barrel_sealed",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "greate:byproducts",
+      "label": "Byproducts from HS+",
+      "state": "rejected",
+      "description": "Information category, not a station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:byproducts",
+          "confidence": 0.65
+        }
+      ]
+    },
+    {
+      "id": "greate:recipe_tier",
+      "label": "Recipe Tier:",
+      "state": "rejected",
+      "description": "Information category, not a station.",
+      "confidence": 0.5,
+      "evidence": [
+        {
+          "kind": "recipe_type",
+          "id": "greate:recipe_tier",
+          "confidence": 0.65
+        }
+      ]
+    }
+  ]
+}
