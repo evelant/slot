@@ -24,7 +24,7 @@ public final class WallSectionUiBuilder {
             int totalCards,
             boolean filtering
     ) {
-        List<SlotWorkspaceViewModel.AtlasItem> cards = visibleCards == null ? List.of() : List.copyOf(visibleCards);
+        WallSectionItemSorter.Groups cards = WallSectionItemSorter.groupAndSort(visibleCards);
         SlotUiElement section = SlotUiElement.element()
                 .id(island.islandId())
                 .layout(layout -> layout
@@ -36,7 +36,23 @@ public final class WallSectionUiBuilder {
         if (filtering && cards.isEmpty()) {
             return section;
         }
-        section.addChild(SlotUiElement.element()
+        if (!cards.carried().isEmpty()) {
+            section.addChild(grid(island, cards.carried()));
+        }
+        if (!cards.ghosts().isEmpty()) {
+            section.addChild(grid(island, cards.ghosts()));
+        }
+        if (cards.isEmpty()) {
+            section.addChild(grid(island, List.of()));
+        }
+        return section;
+    }
+
+    private static SlotUiElement grid(
+            SlotWorkspaceViewModel.AtlasIsland island,
+            List<SlotWorkspaceViewModel.AtlasItem> cards
+    ) {
+        return SlotUiElement.element()
                 .attach(WorkspaceUiAttachments.WALL_SECTION_GRID, Boolean.TRUE)
                 .attach(WorkspaceUiAttachments.ATLAS_ISLAND, island)
                 .attach(WorkspaceUiAttachments.ATLAS_ITEMS, cards)
@@ -47,7 +63,6 @@ public final class WallSectionUiBuilder {
                         .flexDirection(SlotUiLayout.FlexDirection.ROW)
                         .flexWrap(SlotUiLayout.FlexWrap.WRAP)
                         .alignItems(SlotUiLayout.AlignItems.FLEX_START)
-                        .alignContent(SlotUiLayout.AlignContent.FLEX_START)));
-        return section;
+                        .alignContent(SlotUiLayout.AlignContent.FLEX_START));
     }
 }

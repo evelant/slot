@@ -151,7 +151,7 @@ final class TocPanelBuilder {
             if (searching && host.searchController.matchesItem(item)) {
                 return true;
             }
-            if (item.kitNeeded()) {
+            if (item.kitNeeded() || item.wanted()) {
                 return true;
             }
         }

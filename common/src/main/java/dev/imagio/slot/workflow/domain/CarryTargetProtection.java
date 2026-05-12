@@ -10,29 +10,28 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- * Cleanup-protection overlay backed by the player-global desired count
- * map. Any identity the player has marked as "always keep N" is protected
- * from trash/void/cleanup flows regardless of the active kit. Composes
- * with the base policy and with {@link KitActiveProtection}; does not
- * replace either. Empty when no global desired counts are set.
+ * Cleanup-protection overlay backed by a carried-count target map.
+ *
+ * <p>Used for both desired counts and wanted counts without collapsing those
+ * concepts into one store. The caller chooses which target map to compose.
  */
-public final class DesiredCountProtection implements ProtectionPolicy {
+public final class CarryTargetProtection implements ProtectionPolicy {
     private final ProtectionPolicy base;
     private final Set<ItemIdentity> protectedIdentities;
 
-    public DesiredCountProtection(ProtectionPolicy base, Set<ItemIdentity> protectedIdentities) {
+    public CarryTargetProtection(ProtectionPolicy base, Set<ItemIdentity> protectedIdentities) {
         this.base = base == null ? ProtectionPolicy.allowAll() : base;
         this.protectedIdentities = protectedIdentities == null
                 ? Set.of()
                 : Set.copyOf(new LinkedHashSet<>(protectedIdentities));
     }
 
-    public static Set<ItemIdentity> identitiesFor(Map<ItemIdentity, Integer> playerDesiredCounts) {
-        if (playerDesiredCounts == null || playerDesiredCounts.isEmpty()) {
+    public static Set<ItemIdentity> identitiesFor(Map<ItemIdentity, Integer> targetCounts) {
+        if (targetCounts == null || targetCounts.isEmpty()) {
             return Set.of();
         }
         LinkedHashSet<ItemIdentity> identities = new LinkedHashSet<>();
-        for (Map.Entry<ItemIdentity, Integer> entry : playerDesiredCounts.entrySet()) {
+        for (Map.Entry<ItemIdentity, Integer> entry : targetCounts.entrySet()) {
             if (entry.getKey() != null && entry.getValue() != null && entry.getValue() > 0) {
                 identities.add(entry.getKey());
             }
@@ -40,12 +39,12 @@ public final class DesiredCountProtection implements ProtectionPolicy {
         return Set.copyOf(identities);
     }
 
-    public static ProtectionPolicy compose(ProtectionPolicy base, Map<ItemIdentity, Integer> playerDesiredCounts) {
-        Set<ItemIdentity> identities = identitiesFor(playerDesiredCounts);
+    public static ProtectionPolicy compose(ProtectionPolicy base, Map<ItemIdentity, Integer> targetCounts) {
+        Set<ItemIdentity> identities = identitiesFor(targetCounts);
         if (identities.isEmpty()) {
             return base == null ? ProtectionPolicy.allowAll() : base;
         }
-        return new DesiredCountProtection(base, identities);
+        return new CarryTargetProtection(base, identities);
     }
 
     public Set<ItemIdentity> protectedIdentities() {
@@ -88,7 +87,7 @@ public final class DesiredCountProtection implements ProtectionPolicy {
         if (this == other) {
             return true;
         }
-        if (!(other instanceof DesiredCountProtection that)) {
+        if (!(other instanceof CarryTargetProtection that)) {
             return false;
         }
         return Objects.equals(base, that.base)

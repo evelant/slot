@@ -63,6 +63,14 @@ public final class ForgeWorkspaceClient {
             CATEGORY
     );
 
+    public static final KeyMapping MARK_WANTED = new KeyMapping(
+            "key.slot.mark_wanted_modifier",
+            KeyConflictContext.GUI,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_LEFT_ALT,
+            CATEGORY
+    );
+
     private static boolean wayfindingHudEnabled = true;
 
     private ForgeWorkspaceClient() {
@@ -78,6 +86,14 @@ public final class ForgeWorkspaceClient {
 
     public static boolean matchesGatherActiveKit(int keyCode, int scanCode) {
         return GATHER_ACTIVE_KIT.matches(keyCode, scanCode);
+    }
+
+    public static boolean matchesMarkWanted(int keyCode, int scanCode) {
+        return MARK_WANTED.matches(keyCode, scanCode);
+    }
+
+    public static boolean markWantedDown() {
+        return MARK_WANTED.isDown();
     }
 
     public static boolean wayfindingHudEnabled() {
@@ -104,6 +120,7 @@ public final class ForgeWorkspaceClient {
             event.register(CYCLE_KIT_PAGE);
             event.register(GATHER_ACTIVE_KIT);
             event.register(TOGGLE_WAYFINDING_HUD);
+            event.register(MARK_WANTED);
         }
     }
 

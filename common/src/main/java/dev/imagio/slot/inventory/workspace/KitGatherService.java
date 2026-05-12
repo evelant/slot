@@ -32,11 +32,11 @@ import java.util.Set;
  * Server-side "gather desired carried items from nearby chests" action shared
  * by every loader/transport.
  *
- * <p>Resolves missing identities as the union of player-global desired counts
- * plus, when a kit is active, active kit-page slots and kit-scoped desired
- * counts. Each missing identity walks proximate claimed chests in
- * affinity-score order until the gap closes or no chest can provide another
- * matching stack.
+ * <p>Resolves missing identities as the union of player-global desired counts,
+ * player-global wanted counts, and, when a kit is active, active kit-page
+ * slots and kit-scoped desired counts. Each missing identity walks proximate
+ * claimed chests in affinity-score order until the gap closes or no chest can
+ * provide another matching stack.
  */
 public final class KitGatherService {
     public record Outcome(
@@ -73,10 +73,11 @@ public final class KitGatherService {
             return Outcome.empty("no_host");
         }
         InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(player, host);
+        SlotWorkspaceCommandService.clearSatisfiedWantedCounts(runtime, authority);
 
         Map<ItemIdentity, Integer> targets = gatherTargets(runtime, kitMap, activation);
         if (targets.isEmpty()) {
-            return Outcome.empty("no_desired_counts");
+            return Outcome.empty("no_target_counts");
         }
 
         ChestAffinityMap affinityMap = snapshot.chestAffinityMap();
@@ -133,6 +134,10 @@ public final class KitGatherService {
         String reason = totalItemsPulled > 0
                 ? "ok"
                 : (unreachable > 0 ? "all_short" : "all_satisfied");
+        SlotWorkspaceCommandService.clearSatisfiedWantedCounts(
+                runtime,
+                InventoryAuthorityReadService.serverAuthority(player, host)
+        );
         return new Outcome(identitiesPulled, totalItemsPulled, unreachable, reason);
     }
 
@@ -143,6 +148,9 @@ public final class KitGatherService {
     ) {
         Map<ItemIdentity, Integer> targets = new LinkedHashMap<>();
         for (Map.Entry<ItemIdentity, Integer> entry : runtime.desiredCountWorkflow().allPlayer().entrySet()) {
+            mergePositiveTarget(targets, entry.getKey(), entry.getValue());
+        }
+        for (Map.Entry<ItemIdentity, Integer> entry : runtime.wantedCountWorkflow().allPlayer().entrySet()) {
             mergePositiveTarget(targets, entry.getKey(), entry.getValue());
         }
         if (activation == null || !activation.isActive()) {

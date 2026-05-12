@@ -76,4 +76,8 @@ public record WorkflowDomainSnapshot(
     public java.util.Map<String, java.util.Map<dev.imagio.slot.inventory.core.ItemIdentity, Integer>> kitDesiredCounts() {
         return workflowProjection.kitDesiredCounts();
     }
+
+    public java.util.Map<dev.imagio.slot.inventory.core.ItemIdentity, Integer> playerWantedCounts() {
+        return workflowProjection.playerWantedCounts();
+    }
 }

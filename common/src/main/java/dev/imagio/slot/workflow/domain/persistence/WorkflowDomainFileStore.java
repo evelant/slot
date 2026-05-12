@@ -389,6 +389,7 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 Map.of(),
                 KitMap.empty(),
                 Map.of(),
+                Map.of(),
                 Map.of()
         );
 
@@ -466,6 +467,10 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                         kitDesiredCounts.add(new KitDesiredCountData(kitId, identity(identity), count))
                 )
         );
+        ArrayList<PlayerWantedCountData> playerWantedCounts = new ArrayList<>();
+        resolved.playerWantedCounts().forEach((identity, count) ->
+                playerWantedCounts.add(new PlayerWantedCountData(identity(identity), count))
+        );
         return new WorkflowCheckpointData(
                 collections,
                 memberships,
@@ -492,7 +497,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 kitDefinitions,
                 activationData,
                 playerDesiredCounts,
-                kitDesiredCounts
+                kitDesiredCounts,
+                playerWantedCounts
         );
     }
 
@@ -716,6 +722,19 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
         LinkedHashMap<String, Map<ItemIdentity, Integer>> kitDesiredCountsFrozen = new LinkedHashMap<>();
         kitDesiredCounts.forEach((kitId, counts) -> kitDesiredCountsFrozen.put(kitId, Map.copyOf(counts)));
 
+        LinkedHashMap<ItemIdentity, Integer> playerWantedCounts = new LinkedHashMap<>();
+        if (data.playerWantedCounts != null) {
+            for (PlayerWantedCountData counted : data.playerWantedCounts) {
+                if (counted == null) {
+                    continue;
+                }
+                ItemIdentity identity = decodeIdentity(counted.identity);
+                if (identity != null && counted.count > 0) {
+                    playerWantedCounts.put(identity, counted.count);
+                }
+            }
+        }
+
         return new WorkflowProjection.Snapshot(
                 collections,
                 memberships,
@@ -730,7 +749,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 Map.of(),
                 kitMap,
                 playerDesiredCounts,
-                kitDesiredCountsFrozen
+                kitDesiredCountsFrozen,
+                playerWantedCounts
         );
     }
 
@@ -1068,6 +1088,11 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                 data.identity = identity(event.identity());
                 data.desiredCount = event.count();
             }
+        else if (workflowEvent instanceof WorkflowEvent.PlayerWantedCountSet event) {
+                data.kind = "PlayerWantedCountSet";
+                data.identity = identity(event.identity());
+                data.count = event.count();
+            }
         return data;
     }
 
@@ -1178,6 +1203,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
                     decodeIdentity(data.identity), Math.max(0, data.desiredCount));
             case "KitDesiredCountSet" -> blank(data.kitId) ? null : new WorkflowEvent.KitDesiredCountSet(
                     data.kitId, decodeIdentity(data.identity), Math.max(0, data.desiredCount));
+            case "PlayerWantedCountSet" -> new WorkflowEvent.PlayerWantedCountSet(
+                    decodeIdentity(data.identity), Math.max(0, data.count));
             default -> null;
         };
         return event == null ? null : new WorkflowEventRecord(envelope, event);
@@ -1719,7 +1746,8 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
             List<KitDefinitionData> kits,
             KitActivationData kitActivation,
             List<PlayerDesiredCountData> playerDesiredCounts,
-            List<KitDesiredCountData> kitDesiredCounts
+            List<KitDesiredCountData> kitDesiredCounts,
+            List<PlayerWantedCountData> playerWantedCounts
     ) {
     }
 
@@ -1727,6 +1755,9 @@ public final class WorkflowDomainFileStore implements WorkflowDomainPersistenceP
     }
 
     private record KitDesiredCountData(String kitId, IdentityData identity, int count) {
+    }
+
+    private record PlayerWantedCountData(IdentityData identity, int count) {
     }
 
     private record KitDefinitionData(

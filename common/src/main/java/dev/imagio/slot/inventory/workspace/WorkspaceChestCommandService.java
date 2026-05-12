@@ -704,7 +704,8 @@ public final class WorkspaceChestCommandService {
                     identity,
                     kitMap,
                     activeKitDesired,
-                    snapshot.playerDesiredCounts());
+                    snapshot.playerDesiredCounts(),
+                    snapshot.playerWantedCounts());
         };
     }
 

@@ -64,6 +64,8 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
     RPCEmitter takeOneByIdentityEmitter;
     RPCEmitter takeDesiredGapOrStackByIdentityEmitter;
     RPCEmitter takeStackByIdentityEmitter;
+    RPCEmitter toggleWantedItemEmitter;
+    RPCEmitter adjustWantedCountEmitter;
     RPCEmitter assignHomeToHotbarOnlyEmitter;
     RPCEmitter assignIdentityToHotbarSlotEmitter;
     RPCEmitter depositHomeToLinkedChestEmitter;
@@ -394,6 +396,19 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
                 String.class,
                 String.class,
                 host.session::takeStackByIdentity
+        ));
+        toggleWantedItemEmitter = add(WorkspaceActionId.TOGGLE_WANTED_ITEM, RPCEventBuilder.simple(
+                String.class,
+                String.class,
+                String.class,
+                host.session::toggleWantedItem
+        ));
+        adjustWantedCountEmitter = add(WorkspaceActionId.ADJUST_WANTED_COUNT, RPCEventBuilder.simple(
+                String.class,
+                String.class,
+                String.class,
+                Integer.class,
+                host.session::adjustWantedCount
         ));
         assignHomeToHotbarOnlyEmitter = add(WorkspaceActionId.ASSIGN_HOME_TO_HOTBAR_ONLY, RPCEventBuilder.simple(
                 String.class,
@@ -782,7 +797,7 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
 
     /**
      * Smart-deposit: route the cursor stack through the deposit cascade
-     * (desired-count gap → proximate chest with affinity or matching
+     * (desired/wanted-count gap → proximate chest with affinity or matching
      * contents → home → Triage). Bound to the root-level left-click
      * handler when carrying and no specific drop target handles the click.
      */
@@ -1050,6 +1065,32 @@ final class WorkspaceRpcDispatcher implements WorkspaceActionChannel {
                 identity.itemId(), identity.comparisonMode(), identity.componentFingerprint());
         if (!sent) {
             host.localStatus.set("take unavailable");
+            host.rebuild();
+        }
+    }
+
+    void sendToggleWantedItem(SlotWorkspaceViewModel.IdentityRef identity) {
+        if (toggleWantedItemEmitter == null || identity == null) {
+            return;
+        }
+        boolean sent = send(WorkspaceActionId.TOGGLE_WANTED_ITEM,
+                identity.itemId(), identity.comparisonMode(), identity.componentFingerprint());
+        host.localStatus.set(sent ? "wanted item updated" : "wanted item unavailable");
+        host.rebuild();
+    }
+
+    void sendAdjustWantedCount(SlotWorkspaceViewModel.IdentityRef identity, int delta) {
+        if (adjustWantedCountEmitter == null || identity == null || delta == 0) {
+            return;
+        }
+        boolean sent = send(WorkspaceActionId.ADJUST_WANTED_COUNT,
+                identity.itemId(),
+                identity.comparisonMode(),
+                identity.componentFingerprint(),
+                delta
+        );
+        if (!sent) {
+            host.localStatus.set("wanted count update unavailable");
             host.rebuild();
         }
     }

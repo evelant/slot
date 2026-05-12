@@ -1578,6 +1578,45 @@ final class SlotWorkspaceUiSession {
         ));
     }
 
+    void toggleWantedItem(String itemId, String comparisonMode, String componentFingerprint) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        InventoryHostDescriptor host = resolveHost(serverPlayer);
+        if (host == null) {
+            reject("host_resolution_failed");
+            return;
+        }
+        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.toggleWantedCount(
+                workflowRuntime(serverPlayer),
+                authority,
+                itemId,
+                comparisonMode,
+                componentFingerprint
+        ));
+    }
+
+    void adjustWantedCount(String itemId, String comparisonMode, String componentFingerprint, Integer deltaBoxed) {
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        InventoryHostDescriptor host = resolveHost(serverPlayer);
+        if (host == null) {
+            reject("host_resolution_failed");
+            return;
+        }
+        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
+        applyOutcome(serverPlayer, SlotWorkspaceCommandService.adjustWantedCount(
+                workflowRuntime(serverPlayer),
+                authority,
+                itemId,
+                comparisonMode,
+                componentFingerprint,
+                deltaBoxed == null ? 0 : deltaBoxed
+        ));
+    }
+
     /**
      * Take one item of {@code identity} from the highest-affinity proximate
      * chest that contains it. Replaces slot-precise client-side take so
@@ -1673,6 +1712,14 @@ final class SlotWorkspaceUiSession {
             return null;
         }
         return new SlotWorkspaceViewModel.IdentityRef(itemId, comparisonMode, componentFingerprint).toIdentity();
+    }
+
+    private void clearSatisfiedWantedCounts(InventoryAuthoritySnapshot authority) {
+        if (player instanceof ServerPlayer serverPlayer) {
+            SlotWorkspaceCommandService.clearSatisfiedWantedCounts(
+                    workflowRuntime(serverPlayer),
+                    authority);
+        }
     }
 
     private static final Function<InventoryEntrySnapshot, ItemIdentity> KIT_IDENTITY_RESOLVER =
@@ -1787,6 +1834,7 @@ final class SlotWorkspaceUiSession {
         SlotWorkspaceViewModel.LootChestSource lootChestSource = resolveLootChestSource(serverPlayer, claimedChestMap);
         SlotWorkspaceViewModel.ActiveChestPanel activeChestPanel = resolveActiveChestPanel(
                 serverPlayer, runtime, claimedChestMap);
+        clearSatisfiedWantedCounts(authority);
         SlotWorkspaceViewModel projected = SlotWorkspaceViewModel.project(
                 authority,
                 runtime.snapshot(),

@@ -53,7 +53,8 @@ public sealed interface WorkflowEvent permits
         WorkflowEvent.KitDeactivated,
         WorkflowEvent.KitPageSwitched,
         WorkflowEvent.PlayerDesiredCountSet,
-        WorkflowEvent.KitDesiredCountSet {
+        WorkflowEvent.KitDesiredCountSet,
+        WorkflowEvent.PlayerWantedCountSet {
 
     record CollectionCreated(
             String collectionId,
@@ -420,6 +421,18 @@ public sealed interface WorkflowEvent permits
     record KitDesiredCountSet(String kitId, ItemIdentity identity, int count) implements WorkflowEvent {
         public KitDesiredCountSet {
             kitId = kitId == null ? "" : kitId;
+            count = Math.max(0, count);
+        }
+    }
+
+    /**
+     * Player-scoped wanted count: a persisted fetch target that clears once
+     * the player carries at least {@code count}. {@code count == 0} clears
+     * the entry. This is intentionally separate from desired counts so a
+     * future desired-count rule cannot accidentally consume wanted state.
+     */
+    record PlayerWantedCountSet(ItemIdentity identity, int count) implements WorkflowEvent {
+        public PlayerWantedCountSet {
             count = Math.max(0, count);
         }
     }

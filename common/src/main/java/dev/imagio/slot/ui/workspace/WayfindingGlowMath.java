@@ -31,7 +31,7 @@ public final class WayfindingGlowMath {
     }
 
     public static int scopeRgb(WayfindingTarget target) {
-        return target != null && target.scope() == WayfindingTarget.Scope.KIT
+        return target != null && target.hasKitMissing()
                 ? KIT_RGB
                 : PLAYER_RGB;
     }

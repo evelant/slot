@@ -12,6 +12,7 @@ import org.lwjgl.glfw.GLFW;
 
 final class HotkeyRouter {
     private final SlotWorkspaceUiController host;
+    private boolean markWantedKeyConsumed;
 
     HotkeyRouter(SlotWorkspaceUiController host) {
         this.host = host;
@@ -23,6 +24,7 @@ final class HotkeyRouter {
         host.root.addEventListener(UIEvents.MUI_CHANGED, event -> host.root.focus());
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCursorCancelKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleBeltHotkey, true);
+        host.root.addEventListener(UIEvents.KEY_DOWN, this::handleMarkWantedKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, host.searchController::handleKeyDown, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleGoalRecipeKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCycleKitPageKey, true);
@@ -39,6 +41,11 @@ final class HotkeyRouter {
         host.root.addEventListener(UIEvents.TICK, event -> host.flushRebuildIfPending());
         host.root.addEventListener(UIEvents.TICK, event -> host.searchController.tickIdleTimer());
         host.root.addEventListener(UIEvents.TICK, event -> host.shiftClickTransferState.observeShiftDown(Screen.hasShiftDown()));
+        host.root.addEventListener(UIEvents.TICK, event -> {
+            if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings.markWantedDown()) {
+                markWantedKeyConsumed = false;
+            }
+        });
     }
 
     void handleCursorCancelKey(UIEvent event) {
@@ -103,6 +110,33 @@ final class HotkeyRouter {
         } else {
             host.openGoalUses(target);
         }
+    }
+
+    void handleMarkWantedKey(UIEvent event) {
+        if (isTextInputFocused() || host.searchController.modalActive() || Screen.hasControlDown()) {
+            return;
+        }
+        if (!dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings
+                .matchesMarkWanted(event.keyCode, event.scanCode)) {
+            return;
+        }
+        event.stopPropagation();
+        if (markWantedKeyConsumed) {
+            return;
+        }
+        markWantedKeyConsumed = true;
+        if (host.goalTabActive()) {
+            host.localStatus.set("goal tab is browse only");
+            host.rebuild();
+            return;
+        }
+        SlotWorkspaceViewModel.AtlasItem target = host.hoveredAtlasItem();
+        if (target == null) {
+            host.localStatus.set("hover an item to mark wanted");
+            host.rebuild();
+            return;
+        }
+        host.rpc.sendToggleWantedItem(target.identity());
     }
 
     void handleCycleKitPageKey(UIEvent event) {

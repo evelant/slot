@@ -113,6 +113,7 @@ public final class ForgeWorkspaceSurface {
     private String desiredCountDraft = "";
     private SlotWorkspaceViewModel.IdentityRef pendingHomeDragIdentity;
     private String pendingHomeDragOriginIslandId;
+    private boolean markWantedKeyConsumed;
 
     public ForgeWorkspaceSurface(Mode mode) {
         this.mode = mode == null ? Mode.STANDALONE : mode;
@@ -141,6 +142,9 @@ public final class ForgeWorkspaceSurface {
 
     public void tick(int width, int height) {
         shiftClickTransferState.observeShiftDown(Screen.hasShiftDown());
+        if (!ForgeWorkspaceClient.markWantedDown()) {
+            markWantedKeyConsumed = false;
+        }
         openSessionIfNeeded();
         applyGoalStateIfChanged();
         boolean pointerActive = tree != null && tree.hasActivePointerGesture();
@@ -229,6 +233,9 @@ public final class ForgeWorkspaceSurface {
             sendAction(WorkspaceActionId.REDO, "redo requested");
             return true;
         }
+        if (handleMarkWantedKey(keyCode, scanCode)) {
+            return true;
+        }
         if (handleGoalRecipeKey(keyCode)) {
             return true;
         }
@@ -292,6 +299,30 @@ public final class ForgeWorkspaceSurface {
         } else {
             openGoalUses(target);
         }
+        return true;
+    }
+
+    private boolean handleMarkWantedKey(int keyCode, int scanCode) {
+        if (searchActive || wantsKeyboardInput() || Screen.hasControlDown()) {
+            return false;
+        }
+        if (!ForgeWorkspaceClient.matchesMarkWanted(keyCode, scanCode)) {
+            return false;
+        }
+        if (markWantedKeyConsumed) {
+            return true;
+        }
+        markWantedKeyConsumed = true;
+        if (goalTabActive()) {
+            setStatus("goal tab is browse only");
+            return true;
+        }
+        SlotWorkspaceViewModel.IdentityRef identity = hoveredIdentity;
+        if (identity == null || !byIdentity.containsKey(identity)) {
+            setStatus("hover an item to mark wanted");
+            return true;
+        }
+        sendIdentityRefAction(WorkspaceActionId.TOGGLE_WANTED_ITEM, identity, "wanted item updated");
         return true;
     }
 
@@ -623,7 +654,7 @@ public final class ForgeWorkspaceSurface {
                         true,
                         color,
                         enabled ? WorkspaceUiPalette.TEXT : WorkspaceUiPalette.MUTED,
-                        "Pull desired-count gaps and active-kit needs from nearby chests.")
+                        "Pull target-count gaps and active-kit needs from nearby chests.")
                 .on(SlotUiEventKind.CLICK, event -> {
                     if (event.button() != 0) {
                         return;
@@ -815,7 +846,7 @@ public final class ForgeWorkspaceSurface {
             if (searching && matchesSearch(item)) {
                 return true;
             }
-            if (item.kitNeeded()) {
+            if (item.kitNeeded() || item.wanted()) {
                 return true;
             }
         }
@@ -847,8 +878,7 @@ public final class ForgeWorkspaceSurface {
                     .filter(item -> !filtering || matchesSearch(item))
                     .toList();
             content.addChild(enrichSection(
-                    sectionBuilder.section(island, visibleItems, islandItems.size(), filtering),
-                    visibleItems));
+                    sectionBuilder.section(island, visibleItems, islandItems.size(), filtering)));
         }
         viewport.addChild(content);
         return viewport;
@@ -1295,12 +1325,9 @@ public final class ForgeWorkspaceSurface {
         };
     }
 
-    private SlotUiElement enrichSection(
-            SlotUiElement section,
-            List<SlotWorkspaceViewModel.AtlasItem> islandItems
-    ) {
+    private SlotUiElement enrichSection(SlotUiElement section) {
         SlotUiElement header = null;
-        SlotUiElement grid = null;
+        ArrayList<SlotUiElement> grids = new ArrayList<>();
         SlotWorkspaceViewModel.AtlasIsland island = null;
         for (SlotUiElement child : section.children()) {
             if (child.hasAttachment(WorkspaceUiAttachments.WALL_SECTION_HEADER)) {
@@ -1308,7 +1335,7 @@ public final class ForgeWorkspaceSurface {
                 island = child.attachment(WorkspaceUiAttachments.ATLAS_ISLAND, SlotWorkspaceViewModel.AtlasIsland.class);
             }
             if (child.hasAttachment(WorkspaceUiAttachments.WALL_SECTION_GRID)) {
-                grid = child;
+                grids.add(child);
                 if (island == null) {
                     island = child.attachment(
                             WorkspaceUiAttachments.ATLAS_ISLAND,
@@ -1317,74 +1344,77 @@ public final class ForgeWorkspaceSurface {
             }
         }
         installSectionHomeTarget(header, island);
-        installSectionHomeTarget(grid, island);
-        if (grid == null) {
+        if (grids.isEmpty()) {
             return section;
         }
         WallCardUiBuilder cardBuilder = new WallCardUiBuilder(new CardContext());
-        for (SlotWorkspaceViewModel.AtlasItem item : islandItems) {
-            SlotUiElement card = cardBuilder.card(item);
-            card.on(SlotUiEventKind.MOUSE_DOWN, event -> {
-                if (goalTabActive()) {
-                    event.stopPropagation();
-                    SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
-                    if (event.button() == 1 && !isCursorCarrying()) {
-                        openItemContextMenu(target, event.x(), event.y());
-                    } else if (isCursorCarrying()) {
-                        setStatus("goal tab is browse only");
-                    }
-                    return;
+        for (SlotUiElement grid : grids) {
+            SlotWorkspaceViewModel.AtlasIsland gridIsland = grid.attachment(
+                    WorkspaceUiAttachments.ATLAS_ISLAND,
+                    SlotWorkspaceViewModel.AtlasIsland.class);
+            installSectionHomeTarget(grid, gridIsland == null ? island : gridIsland);
+            List<?> gridItems = grid.attachment(WorkspaceUiAttachments.ATLAS_ITEMS, List.class);
+            if (gridItems == null || gridItems.isEmpty()) {
+                continue;
+            }
+            for (Object gridItem : gridItems) {
+                if (gridItem instanceof SlotWorkspaceViewModel.AtlasItem item) {
+                    grid.addChild(enrichCard(cardBuilder.card(item), item));
                 }
-                if (event.button() == 0) {
-                    beginHomeDragCandidate(freshItem(item));
-                    event.stopPropagation();
-                    return;
-                }
-                if (event.button() == 1 && !isCursorCarrying()) {
-                    event.stopPropagation();
-                    openItemContextMenu(freshItem(item), event.x(), event.y());
-                    return;
-                }
-                SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
-                WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.pointerDown(
-                        cardGestureContext(target, event.button(), event.shiftDown()));
-                if (dispatchCardGestureDecision(target, decision)) {
-                    event.stopPropagation();
-                }
-            });
-            card.on(SlotUiEventKind.CLICK, event -> {
-                if (event.button() != 0) {
-                    return;
-                }
+            }
+        }
+        return section;
+    }
+
+    private SlotUiElement enrichCard(SlotUiElement card, SlotWorkspaceViewModel.AtlasItem item) {
+        card.on(SlotUiEventKind.MOUSE_DOWN, event -> {
+            if (goalTabActive()) {
                 event.stopPropagation();
-                if (goalTabActive()) {
-                    SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
-                    setStatus((target == null ? "goal card" : target.name()) + " in active goal");
-                    return;
-                }
                 SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
-                WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.click(
-                        cardGestureContext(target, event.button(), event.shiftDown()));
-                dispatchCardGestureDecision(target, decision);
-            });
-            card.on(SlotUiEventKind.MOUSE_WHEEL, event -> {
-                boolean controlDown = event.controlDown() || Screen.hasControlDown();
-                if (goalTabActive()) {
-                    if (!controlDown || isCursorCarrying()) {
-                        return;
-                    }
-                    float delta = event.wheelDelta();
-                    if (delta == 0f) {
-                        return;
-                    }
-                    event.stopPropagation();
-                    adjustGoalTargetCount("", delta > 0f ? 1 : -1);
-                    return;
+                if (event.button() == 1 && !isCursorCarrying()) {
+                    openItemContextMenu(target, event.x(), event.y());
+                } else if (isCursorCarrying()) {
+                    setStatus("goal tab is browse only");
                 }
-                if (!event.shiftDown() && !controlDown) {
-                    return;
-                }
-                if (isCursorCarrying()) {
+                return;
+            }
+            if (event.button() == 0) {
+                beginHomeDragCandidate(freshItem(item));
+                event.stopPropagation();
+                return;
+            }
+            if (event.button() == 1 && !isCursorCarrying()) {
+                event.stopPropagation();
+                openItemContextMenu(freshItem(item), event.x(), event.y());
+                return;
+            }
+            SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
+            WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.pointerDown(
+                    cardGestureContext(target, event.button(), event.shiftDown()));
+            if (dispatchCardGestureDecision(target, decision)) {
+                event.stopPropagation();
+            }
+        });
+        card.on(SlotUiEventKind.CLICK, event -> {
+            if (event.button() != 0) {
+                return;
+            }
+            event.stopPropagation();
+            if (goalTabActive()) {
+                SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
+                setStatus((target == null ? "goal card" : target.name()) + " in active goal");
+                return;
+            }
+            SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
+            WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.click(
+                    cardGestureContext(target, event.button(), event.shiftDown()));
+            dispatchCardGestureDecision(target, decision);
+        });
+        card.on(SlotUiEventKind.MOUSE_WHEEL, event -> {
+            boolean controlDown = event.controlDown() || Screen.hasControlDown();
+            boolean wantedAdjustDown = ForgeWorkspaceClient.markWantedDown();
+            if (goalTabActive()) {
+                if (!controlDown || isCursorCarrying()) {
                     return;
                 }
                 float delta = event.wheelDelta();
@@ -1392,19 +1422,31 @@ public final class ForgeWorkspaceSurface {
                     return;
                 }
                 event.stopPropagation();
-                SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
-                int steps = wheelSteps(target == null ? null : target.identity(), delta, controlDown);
-                if (steps == 0) {
-                    return;
-                }
-                WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.wheel(
-                        cardGestureContext(target, 0, event.shiftDown(), controlDown),
-                        steps);
-                dispatchCardGestureDecision(target, decision);
-            });
-            grid.addChild(card);
-        }
-        return section;
+                adjustGoalTargetCount("", delta > 0f ? 1 : -1);
+                return;
+            }
+            if (!event.shiftDown() && !controlDown && !wantedAdjustDown) {
+                return;
+            }
+            if (isCursorCarrying()) {
+                return;
+            }
+            float delta = event.wheelDelta();
+            if (delta == 0f) {
+                return;
+            }
+            event.stopPropagation();
+            SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
+            int steps = wheelSteps(target == null ? null : target.identity(), delta, controlDown || wantedAdjustDown);
+            if (steps == 0) {
+                return;
+            }
+            WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.wheel(
+                    cardGestureContext(target, 0, event.shiftDown(), controlDown, wantedAdjustDown),
+                    steps);
+            dispatchCardGestureDecision(target, decision);
+        });
+        return card;
     }
 
     private void installSectionHomeTarget(
@@ -2053,6 +2095,16 @@ public final class ForgeWorkspaceSurface {
             boolean shiftDown,
             boolean controlDown
     ) {
+        return cardGestureContext(item, button, shiftDown, controlDown, false);
+    }
+
+    private WallCardTransferGesturePolicy.Context cardGestureContext(
+            SlotWorkspaceViewModel.AtlasItem item,
+            int button,
+            boolean shiftDown,
+            boolean controlDown,
+            boolean wantedAdjustDown
+    ) {
         return new WallCardTransferGesturePolicy.Context(
                 item,
                 button,
@@ -2063,6 +2115,7 @@ public final class ForgeWorkspaceSurface {
                 mode == Mode.SIDEBAR,
                 carriedFreeSlotCount(),
                 anyChestProximate(),
+                wantedAdjustDown,
                 shiftClickTransferState.continuingTake(
                         item == null ? null : item.identity(),
                         shiftDown));
@@ -2168,6 +2221,11 @@ public final class ForgeWorkspaceSurface {
                     WorkspaceActionId.ADJUST_PLAYER_DESIRED_COUNT,
                     item,
                     "desired count updated",
+                    count);
+            case ADJUST_WANTED_COUNT -> sendIdentityAction(
+                    WorkspaceActionId.ADJUST_WANTED_COUNT,
+                    item,
+                    "wanted count updated",
                     count);
         }
         shiftClickTransferState.record(decision, item == null ? null : item.identity(), Screen.hasShiftDown());

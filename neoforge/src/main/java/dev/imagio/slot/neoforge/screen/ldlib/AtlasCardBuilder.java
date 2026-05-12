@@ -301,13 +301,13 @@ final class AtlasCardBuilder {
      */
     private void addCarriedCountBadge(UIElement body, SlotWorkspaceViewModel.AtlasItem item, AtlasCardStatus status) {
         int carried = status.carriedCount();
-        int desired = status.desiredCount();
-        if (carried <= 0 && desired <= 0) {
+        int target = status.targetCount();
+        if (carried <= 0 && target <= 0) {
             return;
         }
         String text;
-        if (desired > 0) {
-            text = WorkspaceFormat.compactCount(carried) + "/" + WorkspaceFormat.compactCount(desired);
+        if (target > 0) {
+            text = WorkspaceFormat.compactCount(carried) + "/" + WorkspaceFormat.compactCount(target);
         } else if (carried > 0) {
             text = WorkspaceFormat.compactCount(carried);
         } else {
@@ -779,6 +779,7 @@ final class AtlasCardBuilder {
         float[] scrollAccumulator = {0f};
         float[] desiredScrollAccumulator = {0f};
         button.addEventListener(UIEvents.MOUSE_WHEEL, event -> {
+            boolean wantedAdjustDown = dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings.markWantedDown();
             if (host.goalTabActive()) {
                 if (!Screen.hasControlDown() || WorkspaceCursorState.isCarrying()) {
                     return;
@@ -795,7 +796,7 @@ final class AtlasCardBuilder {
                 if (WorkspaceCursorState.isCarrying()) {
                     return;
                 }
-            } else if (!Screen.hasShiftDown() || WorkspaceCursorState.isCarrying()) {
+            } else if (!wantedAdjustDown && (!Screen.hasShiftDown() || WorkspaceCursorState.isCarrying())) {
                 return;
             }
             float delta = event.deltaY != 0f ? event.deltaY : event.deltaX;
@@ -803,7 +804,9 @@ final class AtlasCardBuilder {
                 return;
             }
             event.stopPropagation();
-            float[] accumulator = Screen.hasControlDown() ? desiredScrollAccumulator : scrollAccumulator;
+            float[] accumulator = (Screen.hasControlDown() || wantedAdjustDown)
+                    ? desiredScrollAccumulator
+                    : scrollAccumulator;
             accumulator[0] += delta;
             int steps = (int) accumulator[0];
             if (steps == 0) {
@@ -812,7 +815,7 @@ final class AtlasCardBuilder {
             accumulator[0] -= steps;
             SlotWorkspaceViewModel.AtlasItem target = freshItem(item);
             WallCardTransferGesturePolicy.Decision decision = WallCardTransferGesturePolicy.wheel(
-                    cardGestureContext(target, 0, Screen.hasShiftDown(), Screen.hasControlDown()),
+                    cardGestureContext(target, 0, Screen.hasShiftDown(), Screen.hasControlDown(), wantedAdjustDown),
                     steps);
             dispatchCardGestureDecision(target, decision);
         });
@@ -832,6 +835,16 @@ final class AtlasCardBuilder {
             boolean shiftDown,
             boolean controlDown
     ) {
+        return cardGestureContext(item, button, shiftDown, controlDown, false);
+    }
+
+    private WallCardTransferGesturePolicy.Context cardGestureContext(
+            SlotWorkspaceViewModel.AtlasItem item,
+            int button,
+            boolean shiftDown,
+            boolean controlDown,
+            boolean wantedAdjustDown
+    ) {
         int freeSlots = host.viewModel == null ? 0 : host.viewModel.carriedFreeSlotCount();
         return new WallCardTransferGesturePolicy.Context(
                 item,
@@ -843,6 +856,7 @@ final class AtlasCardBuilder {
                 SlotSidebarClientUi.isActive(),
                 freeSlots,
                 host.anyChestProximate(),
+                wantedAdjustDown,
                 host.shiftClickTransferState.continuingTake(
                         item == null ? null : item.identity(),
                         shiftDown));
@@ -882,6 +896,7 @@ final class AtlasCardBuilder {
             case DEPOSIT_ONE_HOME_TO_LINKED_CHEST -> repeat(count, () -> host.rpc.sendDepositOneHomeToLinkedChest(item));
             case CROSS_SURFACE_QUICK_MOVE -> host.rpc.sendCrossSurfaceQuickMove(item.identity(), count);
             case ADJUST_PLAYER_DESIRED_COUNT -> host.rpc.sendAdjustPlayerDesiredCount(item.identity(), count);
+            case ADJUST_WANTED_COUNT -> host.rpc.sendAdjustWantedCount(item.identity(), count);
         }
         host.shiftClickTransferState.record(decision, item == null ? null : item.identity(), Screen.hasShiftDown());
         return true;

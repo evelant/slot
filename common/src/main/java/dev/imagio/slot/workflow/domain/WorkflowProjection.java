@@ -46,6 +46,7 @@ public final class WorkflowProjection {
         for (Map.Entry<String, Map<ItemIdentity, Integer>> entry : current.kitDesiredCounts().entrySet()) {
             kitDesiredCounts.put(entry.getKey(), new LinkedHashMap<>(entry.getValue()));
         }
+        LinkedHashMap<ItemIdentity, Integer> playerWantedCounts = new LinkedHashMap<>(current.playerWantedCounts());
 
         WorkflowEvent workflowEvent = record.event();
         if (workflowEvent instanceof WorkflowEvent.CollectionCreated event) {
@@ -446,6 +447,15 @@ public final class WorkflowProjection {
                     }
                 }
             }
+        else if (workflowEvent instanceof WorkflowEvent.PlayerWantedCountSet event) {
+                if (event.identity() != null) {
+                    if (event.count() <= 0) {
+                        playerWantedCounts.remove(event.identity());
+                    } else {
+                        playerWantedCounts.put(event.identity(), event.count());
+                    }
+                }
+            }
 
         LinkedHashMap<String, Map<ItemIdentity, Integer>> kitDesiredCountsCopy = new LinkedHashMap<>();
         for (Map.Entry<String, Map<ItemIdentity, Integer>> entry : kitDesiredCounts.entrySet()) {
@@ -465,7 +475,8 @@ public final class WorkflowProjection {
                 Map.copyOf(clusterLabels),
                 kitMap,
                 Map.copyOf(playerDesiredCounts),
-                Map.copyOf(kitDesiredCountsCopy)
+                Map.copyOf(kitDesiredCountsCopy),
+                Map.copyOf(playerWantedCounts)
         );
     }
 
@@ -597,7 +608,8 @@ public final class WorkflowProjection {
             Map<String, String> clusterLabels,
             KitMap kitMap,
             Map<ItemIdentity, Integer> playerDesiredCounts,
-            Map<String, Map<ItemIdentity, Integer>> kitDesiredCounts
+            Map<String, Map<ItemIdentity, Integer>> kitDesiredCounts,
+            Map<ItemIdentity, Integer> playerWantedCounts
     ) {
         public Snapshot {
             userCollections = userCollections == null ? List.of() : List.copyOf(userCollections);
@@ -614,6 +626,7 @@ public final class WorkflowProjection {
             kitMap = kitMap == null ? KitMap.empty() : kitMap;
             playerDesiredCounts = playerDesiredCounts == null ? Map.of() : Map.copyOf(playerDesiredCounts);
             kitDesiredCounts = kitDesiredCounts == null ? Map.of() : Map.copyOf(kitDesiredCounts);
+            playerWantedCounts = playerWantedCounts == null ? Map.of() : Map.copyOf(playerWantedCounts);
         }
 
         public static Snapshot empty() {
@@ -630,6 +643,7 @@ public final class WorkflowProjection {
                     ChestAffinityMap.empty(),
                     Map.of(),
                     KitMap.empty(),
+                    Map.of(),
                     Map.of(),
                     Map.of()
             );

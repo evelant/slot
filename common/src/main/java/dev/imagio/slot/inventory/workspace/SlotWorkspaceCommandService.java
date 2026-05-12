@@ -1081,6 +1081,81 @@ public final class SlotWorkspaceCommandService {
         return WorkspaceCommandOutcome.accepted("desired_count_" + scopeTag + "_" + now, "");
     }
 
+    /**
+     * Toggle a wanted target. Wanted counts are persisted player state, but
+     * remain separate from desired counts and clear automatically when the
+     * carried count satisfies them.
+     */
+    public static WorkspaceCommandOutcome toggleWantedCount(
+            WorkflowDomainRuntime runtime,
+            InventoryAuthoritySnapshot authority,
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint
+    ) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_wanted_runtime");
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_identity");
+        }
+        if (runtime.wantedCountWorkflow().getPlayer(identity) > 0) {
+            runtime.wantedCountWorkflow().clearPlayer(identity);
+            return WorkspaceCommandOutcome.accepted("wanted cleared", identity.itemId());
+        }
+        int target = SlotWorkspaceViewModel.carriedMovableCount(authority, identity) + 1;
+        runtime.wantedCountWorkflow().setPlayer(identity, target);
+        return WorkspaceCommandOutcome.accepted("wanted", identity.itemId() + " target=" + target);
+    }
+
+    /**
+     * Adjust a wanted target. Scroll cannot clear the target; it
+     * clamps to carried count + 1 so an explicit keypress remains the only
+     * way to remove the marker.
+     */
+    public static WorkspaceCommandOutcome adjustWantedCount(
+            WorkflowDomainRuntime runtime,
+            InventoryAuthoritySnapshot authority,
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            int delta
+    ) {
+        if (runtime == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_wanted_runtime");
+        }
+        ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
+        if (identity == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_identity");
+        }
+        if (delta == 0) {
+            return WorkspaceCommandOutcome.accepted("wanted unchanged", identity.itemId());
+        }
+        int minimum = SlotWorkspaceViewModel.carriedMovableCount(authority, identity) + 1;
+        int current = Math.max(minimum, runtime.wantedCountWorkflow().getPlayer(identity));
+        int target = Math.max(minimum, current + delta);
+        runtime.wantedCountWorkflow().setPlayer(identity, target);
+        return WorkspaceCommandOutcome.accepted("wanted count updated", identity.itemId() + " target=" + target);
+    }
+
+    public static void clearSatisfiedWantedCounts(
+            WorkflowDomainRuntime runtime,
+            InventoryAuthoritySnapshot authority
+    ) {
+        if (runtime == null) {
+            return;
+        }
+        for (Map.Entry<ItemIdentity, Integer> entry : runtime.wantedCountWorkflow().allPlayer().entrySet()) {
+            ItemIdentity identity = entry.getKey();
+            Integer target = entry.getValue();
+            if (identity == null || target == null || target <= 0
+                    || SlotWorkspaceViewModel.carriedMovableCount(authority, identity) >= target) {
+                runtime.wantedCountWorkflow().clearPlayer(identity);
+            }
+        }
+    }
+
     public static WorkspaceCommandOutcome swapKitSlots(
             WorkflowDomainRuntime runtime,
             String kitId,

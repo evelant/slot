@@ -123,6 +123,7 @@ class SlotWorkspaceViewModelDepositTest {
                 Map.of(),
                 KitMap.empty(),
                 Map.of(),
+                Map.of(),
                 Map.of()
         );
         return new WorkflowDomainSnapshot(1L, projection, null, null, null, null, null);

@@ -1,6 +1,7 @@
 package dev.imagio.slot.ui.workspace;
 
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.inventory.workspace.WorkspaceItemTargets;
 
 public final class WorkspaceGatherUiSupport {
     private WorkspaceGatherUiSupport() {
@@ -13,6 +14,7 @@ public final class WorkspaceGatherUiSupport {
         if (item.kitNeeded()) {
             return true;
         }
-        return item.desiredCount() > 0 && item.totalCount() < item.desiredCount();
+        int carried = item.carried() ? Math.max(0, item.totalCount()) : 0;
+        return WorkspaceItemTargets.from(item).hasAnyGap(carried);
     }
 }

@@ -245,6 +245,11 @@ final class ForgeWorkspaceSession {
                 reapplyActiveKitAfterCarryAcquisition(player, chestOutcome);
                 yield chestOutcome;
             }
+            case TOGGLE_WANTED_ITEM -> toggleWantedItem(player, identityArg(args, 0));
+            case ADJUST_WANTED_COUNT -> adjustWantedCount(
+                    player,
+                    identityArg(args, 0),
+                    integerArg(args, 3) == null ? 0 : integerArg(args, 3));
             case DEPOSIT_HOME_TO_LINKED_CHEST -> WorkspaceChestCommandService.depositIdentityToLinkedChest(
                     player,
                     runtime,
@@ -521,6 +526,7 @@ final class ForgeWorkspaceSession {
         SlotWorkspaceViewModel.LootChestSource lootChestSource = resolveLootChestSource(player, claimedChestMap);
         SlotWorkspaceViewModel.ActiveChestPanel activeChestPanel =
                 resolveActiveChestPanel(player, claimedChestMap);
+        clearSatisfiedWantedCounts(authority);
         return SlotWorkspaceViewModel.project(
                 authority,
                 snapshot,
@@ -539,6 +545,50 @@ final class ForgeWorkspaceSession {
                 gameTime,
                 activeChestPanel
         );
+    }
+
+    private WorkspaceCommandOutcome toggleWantedItem(ServerPlayer player, ItemIdentity identity) {
+        if (identity == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_identity");
+        }
+        InventoryHostDescriptor host = resolveHost(player);
+        if (host == null) {
+            return WorkspaceCommandOutcome.rejected("host_resolution_failed");
+        }
+        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(player, host);
+        SlotWorkspaceViewModel.IdentityRef ref = SlotWorkspaceViewModel.IdentityRef.from(identity);
+        return SlotWorkspaceCommandService.toggleWantedCount(
+                runtime,
+                authority,
+                ref.itemId(),
+                ref.comparisonMode(),
+                ref.componentFingerprint());
+    }
+
+    private WorkspaceCommandOutcome adjustWantedCount(ServerPlayer player, ItemIdentity identity, int delta) {
+        if (identity == null) {
+            return WorkspaceCommandOutcome.rejected("invalid_identity");
+        }
+        if (delta == 0) {
+            return WorkspaceCommandOutcome.accepted("wanted unchanged", identity.itemId());
+        }
+        InventoryHostDescriptor host = resolveHost(player);
+        if (host == null) {
+            return WorkspaceCommandOutcome.rejected("host_resolution_failed");
+        }
+        InventoryAuthoritySnapshot authority = InventoryAuthorityReadService.serverAuthority(player, host);
+        SlotWorkspaceViewModel.IdentityRef ref = SlotWorkspaceViewModel.IdentityRef.from(identity);
+        return SlotWorkspaceCommandService.adjustWantedCount(
+                runtime,
+                authority,
+                ref.itemId(),
+                ref.comparisonMode(),
+                ref.componentFingerprint(),
+                delta);
+    }
+
+    private void clearSatisfiedWantedCounts(InventoryAuthoritySnapshot authority) {
+        SlotWorkspaceCommandService.clearSatisfiedWantedCounts(runtime, authority);
     }
 
     private WorkspaceCommandOutcome claimChestAtPos(
@@ -819,7 +869,9 @@ final class ForgeWorkspaceSession {
     }
 
     private WorkspaceCommandOutcome gatherActiveKit(ServerPlayer player) {
-        return KitGatherService.toWorkspaceOutcome(gatherActiveKitAndReapply(player, runtime));
+        KitGatherService.Outcome outcome = KitGatherService.gatherActiveKit(player, runtime);
+        reapplyActiveKitFromCarry(player, runtime);
+        return KitGatherService.toWorkspaceOutcome(outcome);
     }
 
     private WorkspaceCommandOutcome setKitSlotIdentity(

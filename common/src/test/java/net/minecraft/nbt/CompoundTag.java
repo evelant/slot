@@ -43,6 +43,19 @@ public class CompoundTag extends Tag {
         return value instanceof Boolean bool && bool;
     }
 
+    public boolean contains(String key) {
+        return values.containsKey(key);
+    }
+
+    public boolean contains(String key, int type) {
+        Object value = values.get(key);
+        return switch (type) {
+            case Tag.TAG_INT -> value instanceof Number;
+            case Tag.TAG_COMPOUND -> value instanceof CompoundTag;
+            default -> values.containsKey(key);
+        };
+    }
+
     public Tag put(String key, Tag tag) {
         Object previous = values.put(key, tag == null ? new Tag() : tag);
         return previous instanceof Tag previousTag ? previousTag : null;

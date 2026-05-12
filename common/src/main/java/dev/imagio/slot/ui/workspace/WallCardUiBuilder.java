@@ -1,6 +1,7 @@
 package dev.imagio.slot.ui.workspace;
 
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.inventory.workspace.WorkspaceItemTargets;
 import dev.imagio.slot.ui.spi.SlotUiElement;
 import dev.imagio.slot.ui.spi.SlotUiEventKind;
 import dev.imagio.slot.ui.spi.SlotUiLayout;
@@ -174,7 +175,8 @@ public final class WallCardUiBuilder {
         if (item.kitNeeded()) {
             return true;
         }
-        return item.desiredCount() > 0 && item.totalCount() < item.desiredCount();
+        int carried = carriedCount(item);
+        return WorkspaceItemTargets.from(item).hasAnyGap(carried);
     }
 
     private static void addCountBadge(SlotUiElement body, SlotWorkspaceViewModel.AtlasItem item) {
@@ -355,13 +357,17 @@ public final class WallCardUiBuilder {
     }
 
     private static String countBadgeText(SlotWorkspaceViewModel.AtlasItem item) {
-        int carried = Math.max(0, item.totalCount());
-        int desired = Math.max(0, item.desiredCount());
-        if (desired > 0) {
+        int carried = carriedCount(item);
+        int target = WorkspaceItemTargets.from(item).displayTargetCount();
+        if (target > 0) {
             return (carried <= 0 ? "0" : WorkspaceCountFormat.compact(carried))
-                    + "/" + WorkspaceCountFormat.compact(desired);
+                    + "/" + WorkspaceCountFormat.compact(target);
         }
-        return WorkspaceCountFormat.compact(carried);
+        return WorkspaceCountFormat.compact(Math.max(0, item.totalCount()));
+    }
+
+    private static int carriedCount(SlotWorkspaceViewModel.AtlasItem item) {
+        return item != null && item.carried() ? Math.max(0, item.totalCount()) : 0;
     }
 
     private static int presenceCount(List<SlotWorkspaceViewModel.ChestPresenceEntry> entries) {

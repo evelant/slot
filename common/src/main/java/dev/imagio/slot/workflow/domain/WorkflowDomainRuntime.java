@@ -18,6 +18,7 @@ public final class WorkflowDomainRuntime {
     private final ChestClaimWorkflowDomainService chestClaimWorkflow;
     private final KitWorkflowDomainService kitWorkflow;
     private final DesiredCountWorkflowDomainService desiredCountWorkflow;
+    private final WantedCountWorkflowDomainService wantedCountWorkflow;
     private final InventoryBrowsePreferencesStore browsePreferences;
     private final InventoryBrowseSessionStateStore browseSessionState;
     private final UndoStack undoStack;
@@ -35,6 +36,7 @@ public final class WorkflowDomainRuntime {
         this.chestClaimWorkflow = new ChestClaimWorkflowDomainService(repository, this::saveNow);
         this.kitWorkflow = new KitWorkflowDomainService(repository, this::saveNow);
         this.desiredCountWorkflow = new DesiredCountWorkflowDomainService(repository, this::saveNow);
+        this.wantedCountWorkflow = new WantedCountWorkflowDomainService(repository, this::saveNow);
         this.undoStack = new UndoStack();
     }
 
@@ -62,6 +64,10 @@ public final class WorkflowDomainRuntime {
         return desiredCountWorkflow;
     }
 
+    public WantedCountWorkflowDomainService wantedCountWorkflow() {
+        return wantedCountWorkflow;
+    }
+
     public WorkflowProjection.Snapshot workflowProjection() {
         return repository.workflowProjection();
     }
@@ -72,15 +78,19 @@ public final class WorkflowDomainRuntime {
 
     public ProtectionPolicy protection() {
         WorkflowProjection.Snapshot projection = repository.workflowProjection();
-        // Stack: base → player-global desired counts → kit-active.
+        // Stack: base → player-global desired counts → player-global wanted counts → kit-active.
         // Each layer adds cleanup protection; lookups OR through the
         // chain so any layer that protects an identity wins.
-        ProtectionPolicy withGlobalDesired = DesiredCountProtection.compose(
+        ProtectionPolicy withGlobalDesired = CarryTargetProtection.compose(
                 projection.protection(),
                 projection.playerDesiredCounts()
         );
-        return KitActiveProtection.compose(
+        ProtectionPolicy withWanted = CarryTargetProtection.compose(
                 withGlobalDesired,
+                projection.playerWantedCounts()
+        );
+        return KitActiveProtection.compose(
+                withWanted,
                 projection.kitMap(),
                 projection.kitDesiredCounts()
         );

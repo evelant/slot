@@ -1,6 +1,7 @@
 package dev.imagio.slot.neoforge.screen.ldlib;
 
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.inventory.workspace.WorkspaceItemTargets;
 
 /**
  * Card-level fulfillment status derived from the projection's per-item
@@ -12,11 +13,11 @@ import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
  * relevance modulates the colour saturation rather than introducing a
  * separate axis.
  */
-record AtlasCardStatus(Level level, boolean kitRelevant, int carriedCount, int storedCount, int desiredCount) {
+record AtlasCardStatus(Level level, boolean kitRelevant, int carriedCount, int storedCount, int targetCount) {
     enum Level {
-        /** No desired count, or carried &gt;= desired. No status signal. */
+        /** No target count. No status signal. */
         NEUTRAL,
-        /** Carried &gt;= desired — explicit fulfilled signal (only when desired &gt; 0). */
+        /** Carried &gt;= target — explicit fulfilled signal (only when target &gt; 0). */
         FULFILLED,
         /** Gap fully covered by storage; player just needs to walk to a chest. */
         STORED,
@@ -38,22 +39,23 @@ record AtlasCardStatus(Level level, boolean kitRelevant, int carriedCount, int s
         for (SlotWorkspaceViewModel.ChestPresenceEntry entry : item.elsewhere()) {
             stored += entry.count();
         }
-        int desired = item.desiredCount();
+        WorkspaceItemTargets targets = WorkspaceItemTargets.from(item);
+        int target = targets.displayTargetCount();
         boolean kitRelevant = item.desiredCountFromKit() || item.kitNeeded();
         // Kit page slots (binary "kit wants one of this") don't carry an
         // explicit desired count, but they're functionally desired=1 for
         // status purposes — without this fallback the old kit-star case
         // would render NEUTRAL and lose all signal.
-        if (desired <= 0 && item.kitNeeded()) {
-            desired = 1;
+        if (target <= 0 && item.kitNeeded()) {
+            target = 1;
         }
-        if (desired <= 0) {
+        if (target <= 0) {
             return new AtlasCardStatus(Level.NEUTRAL, kitRelevant, carried, stored, 0);
         }
-        if (carried >= desired) {
-            return new AtlasCardStatus(Level.FULFILLED, kitRelevant, carried, stored, desired);
+        if (carried >= target) {
+            return new AtlasCardStatus(Level.FULFILLED, kitRelevant, carried, stored, target);
         }
-        int gap = desired - carried;
+        int gap = target - carried;
         Level level;
         if (stored <= 0) {
             level = Level.CRAFT;
@@ -62,7 +64,7 @@ record AtlasCardStatus(Level level, boolean kitRelevant, int carriedCount, int s
         } else {
             level = Level.MIXED;
         }
-        return new AtlasCardStatus(level, kitRelevant, carried, stored, desired);
+        return new AtlasCardStatus(level, kitRelevant, carried, stored, target);
     }
 
     /** Status colour for borders, count text, and the progress bar's gap segment. */

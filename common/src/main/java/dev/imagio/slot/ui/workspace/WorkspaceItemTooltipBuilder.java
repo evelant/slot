@@ -38,6 +38,12 @@ public final class WorkspaceItemTooltipBuilder {
         if (desired > 0) {
             String source = item.desiredCountFromKit() ? " kit" : "";
             lines.add(Component.literal("Desired badge: " + carried + "/" + desired + source));
+            if (item.wantedCount() <= 0) {
+                return;
+            }
+        }
+        if (item.wantedCount() > 0) {
+            lines.add(Component.literal("Wanted: " + carried + "/" + item.wantedCount()));
             return;
         }
         if (item.kitNeeded()) {
@@ -46,7 +52,7 @@ public final class WorkspaceItemTooltipBuilder {
     }
 
     private static void addCarriedLine(ArrayList<Component> lines, SlotWorkspaceViewModel.AtlasItem item) {
-        if (!item.carried() || item.desiredCount() > 0 || item.totalCount() <= 1) {
+        if (!item.carried() || item.desiredCount() > 0 || item.wantedCount() > 0 || item.totalCount() <= 1) {
             return;
         }
         lines.add(Component.literal("Carried count: " + item.totalCount()));

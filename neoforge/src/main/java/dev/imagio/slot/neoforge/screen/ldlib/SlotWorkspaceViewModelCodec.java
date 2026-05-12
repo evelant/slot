@@ -280,23 +280,18 @@ public final class SlotWorkspaceViewModelCodec {
         tag.putInt("worldZ", target.worldZ());
         tag.putInt("totalMissingCount", target.totalMissingCount());
         tag.putString("scope", target.scope().name());
-        ListTag identityTags = new ListTag();
-        for (ItemIdentity identity : target.missingIdentities()) {
-            identityTags.add(encodeIdentity(SlotWorkspaceViewModel.IdentityRef.from(identity)));
-        }
-        tag.put("missingIdentities", identityTags);
+        tag.put("missingIdentities", encodeIdentitySet(target.missingIdentities()));
+        tag.put("kitMissingIdentities", encodeIdentitySet(target.kitMissingIdentities()));
+        tag.put("desiredMissingIdentities", encodeIdentitySet(target.desiredMissingIdentities()));
+        tag.put("wantedMissingIdentities", encodeIdentitySet(target.wantedMissingIdentities()));
         return tag;
     }
 
     private static WayfindingTarget decodeWayfindingTarget(CompoundTag tag) {
-        java.util.LinkedHashSet<ItemIdentity> identities = new java.util.LinkedHashSet<>();
-        ListTag identityTags = tag.getList("missingIdentities", Tag.TAG_COMPOUND);
-        for (int i = 0; i < identityTags.size(); i++) {
-            ItemIdentity identity = decodeIdentity(identityTags.getCompound(i)).toIdentity();
-            if (identity != null) {
-                identities.add(identity);
-            }
-        }
+        java.util.LinkedHashSet<ItemIdentity> identities = decodeIdentitySet(tag, "missingIdentities");
+        java.util.LinkedHashSet<ItemIdentity> kitIdentities = decodeIdentitySet(tag, "kitMissingIdentities");
+        java.util.LinkedHashSet<ItemIdentity> desiredIdentities = decodeIdentitySet(tag, "desiredMissingIdentities");
+        java.util.LinkedHashSet<ItemIdentity> wantedIdentities = decodeIdentitySet(tag, "wantedMissingIdentities");
         WayfindingTarget.Scope scope;
         try {
             String raw = tag.getString("scope");
@@ -313,9 +308,36 @@ public final class SlotWorkspaceViewModelCodec {
                 tag.getInt("worldY"),
                 tag.getInt("worldZ"),
                 identities,
+                kitIdentities,
+                desiredIdentities,
+                wantedIdentities,
                 tag.getInt("totalMissingCount"),
                 scope
         );
+    }
+
+    private static ListTag encodeIdentitySet(java.util.Set<ItemIdentity> identities) {
+        ListTag tags = new ListTag();
+        if (identities != null) {
+            for (ItemIdentity identity : identities) {
+                if (identity != null) {
+                    tags.add(encodeIdentity(SlotWorkspaceViewModel.IdentityRef.from(identity)));
+                }
+            }
+        }
+        return tags;
+    }
+
+    private static java.util.LinkedHashSet<ItemIdentity> decodeIdentitySet(CompoundTag tag, String key) {
+        java.util.LinkedHashSet<ItemIdentity> identities = new java.util.LinkedHashSet<>();
+        ListTag identityTags = tag.getList(key, Tag.TAG_COMPOUND);
+        for (int i = 0; i < identityTags.size(); i++) {
+            ItemIdentity identity = decodeIdentity(identityTags.getCompound(i)).toIdentity();
+            if (identity != null) {
+                identities.add(identity);
+            }
+        }
+        return identities;
     }
 
     private static CompoundTag encodeKitCard(SlotWorkspaceViewModel.KitCard card, HolderLookup.Provider provider) {
@@ -530,6 +552,8 @@ public final class SlotWorkspaceViewModelCodec {
         tag.putBoolean("kitNeeded", item.kitNeeded());
         tag.putInt("desiredCount", item.desiredCount());
         tag.putBoolean("desiredCountFromKit", item.desiredCountFromKit());
+        tag.putInt("wantedCount", item.wantedCount());
+        tag.putBoolean("wanted", item.wanted());
         tag.putString("largestCarriedSourceId", item.largestCarriedSourceId());
         tag.putInt("largestCarriedSlotIndex", item.largestCarriedSlotIndex());
         tag.putInt("largestCarriedSlotCount", item.largestCarriedSlotCount());
@@ -597,10 +621,18 @@ public final class SlotWorkspaceViewModelCodec {
                 tag.getBoolean("kitNeeded"),
                 tag.getInt("desiredCount"),
                 tag.getBoolean("desiredCountFromKit"),
+                decodeWantedCount(tag),
                 tag.getString("largestCarriedSourceId"),
                 decodedSlotIndex,
                 tag.getInt("largestCarriedSlotCount")
         );
+    }
+
+    private static int decodeWantedCount(CompoundTag tag) {
+        if (tag.contains("wantedCount", Tag.TAG_INT)) {
+            return tag.getInt("wantedCount");
+        }
+        return tag.getBoolean("wanted") ? 1 : 0;
     }
 
     private static CompoundTag encodeChip(ChipSuggestion chip) {

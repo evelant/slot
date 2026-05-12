@@ -82,6 +82,42 @@ class WorkspaceItemTooltipBuilderTest {
         assertTrue(WorkspaceItemTooltipBuilder.slotLines(item).isEmpty());
     }
 
+    @Test
+    void wantedItemsReadAsTemporaryCountTargets() {
+        SlotWorkspaceViewModel.AtlasItem item = new SlotWorkspaceViewModel.AtlasItem(
+                identity("minecraft:lantern"),
+                new ItemStack("minecraft:lantern", 4, 64),
+                "Lantern",
+                4,
+                0,
+                "lighting",
+                false,
+                true,
+                false,
+                true,
+                4,
+                List.of(),
+                List.of(new SlotWorkspaceViewModel.ChestPresenceEntry("a", "Supplies", 4)),
+                List.of(),
+                false,
+                0,
+                0,
+                false,
+                0,
+                false,
+                5,
+                "",
+                -1,
+                0);
+
+        List<String> text = WorkspaceItemTooltipBuilder.slotLines(item).stream()
+                .map(Component::getString)
+                .toList();
+
+        assertTrue(text.contains("Wanted: 0/5"));
+        assertTrue(WorkspaceGatherUiSupport.isGatherableItem(item));
+    }
+
     private static SlotWorkspaceViewModel.IdentityRef identity(String itemId) {
         return new SlotWorkspaceViewModel.IdentityRef(
                 itemId,

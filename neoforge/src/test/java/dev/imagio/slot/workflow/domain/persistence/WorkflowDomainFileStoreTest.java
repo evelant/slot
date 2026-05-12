@@ -57,6 +57,7 @@ class WorkflowDomainFileStoreTest {
         // Player-scoped desired count (collection-scoped variant retired
         // alongside the kits replacement of collections).
         runtime.desiredCountWorkflow().setPlayer(ItemIdentity.of("minecraft:torch"), 48);
+        runtime.wantedCountWorkflow().setPlayer(ItemIdentity.of("minecraft:arrow"), 16);
         QuickAccessLoadoutDefinition loadout = runtime.collectionWorkflow().createLoadout(
                 exploration.id(),
                 "Caving",

@@ -8,20 +8,33 @@ import dev.imagio.slot.inventory.action.InventoryActionRequest;
 import dev.imagio.slot.inventory.action.InventoryActionScope;
 import dev.imagio.slot.inventory.action.InventoryActionStatus;
 import dev.imagio.slot.inventory.action.InventoryCommandReasonCode;
+import dev.imagio.slot.inventory.core.BuiltinInventoryDescriptors;
+import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.HostInstanceKey;
+import dev.imagio.slot.inventory.core.InventoryHostDescriptor;
+import dev.imagio.slot.inventory.core.InventoryStackSnapshot;
+import dev.imagio.slot.inventory.core.InventoryTopologyDescriptor;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.core.PlayerRuntimeStateDescriptor;
 import dev.imagio.slot.inventory.core.ServerMenuRef;
+import dev.imagio.slot.inventory.integration.InventoryHostObservationHints;
+import dev.imagio.slot.inventory.integration.InventoryHostSession;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
+import dev.imagio.slot.testsupport.InventoryAuthorityFixtures;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
 import dev.imagio.slot.workflow.domain.KitDefinition;
 import dev.imagio.slot.workflow.domain.ProtectionPolicy;
 import dev.imagio.slot.workflow.domain.WorkflowDomainRuntime;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.ItemStack;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Function;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -201,12 +214,104 @@ class SlotWorkspaceKitCommandServiceTest {
         assertEquals(7, runtime.desiredCountWorkflow().getPlayer(ItemIdentity.of("minecraft:arrow")));
     }
 
+    @Test
+    void wantedCountSeedsFromCarriedCountAndTogglesClear() {
+        WorkflowDomainRuntime runtime = runtime();
+        InventoryAuthoritySnapshot authority = carriedAuthority("minecraft:torch", 3);
+
+        WorkspaceCommandOutcome set = SlotWorkspaceCommandService.toggleWantedCount(
+                runtime, authority, "minecraft:torch", "", "");
+
+        assertTrue(set.success());
+        assertEquals(4, runtime.wantedCountWorkflow().getPlayer(ItemIdentity.of("minecraft:torch")));
+
+        WorkspaceCommandOutcome clear = SlotWorkspaceCommandService.toggleWantedCount(
+                runtime, authority, "minecraft:torch", "", "");
+
+        assertTrue(clear.success());
+        assertEquals(0, runtime.wantedCountWorkflow().getPlayer(ItemIdentity.of("minecraft:torch")));
+    }
+
+    @Test
+    void wantedCountAdjustClampsAboveCarriedAndClearsWhenSatisfied() {
+        WorkflowDomainRuntime runtime = runtime();
+        ItemIdentity identity = ItemIdentity.of("minecraft:torch");
+        InventoryAuthoritySnapshot carriedThree = carriedAuthority("minecraft:torch", 3);
+        runtime.wantedCountWorkflow().setPlayer(identity, 8);
+
+        WorkspaceCommandOutcome adjusted = SlotWorkspaceCommandService.adjustWantedCount(
+                runtime, carriedThree, "minecraft:torch", "", "", -99);
+
+        assertTrue(adjusted.success());
+        assertEquals(4, runtime.wantedCountWorkflow().getPlayer(identity));
+
+        SlotWorkspaceCommandService.clearSatisfiedWantedCounts(runtime, carriedThree);
+        assertEquals(4, runtime.wantedCountWorkflow().getPlayer(identity));
+
+        SlotWorkspaceCommandService.clearSatisfiedWantedCounts(runtime, carriedAuthority("minecraft:torch", 4));
+        assertEquals(0, runtime.wantedCountWorkflow().getPlayer(identity));
+    }
+
+    @Test
+    void wantedCountsDoNotWritePersistentDesiredCounts() {
+        WorkflowDomainRuntime runtime = runtime();
+        InventoryAuthoritySnapshot authority = carriedAuthority("minecraft:arrow", 2);
+        SlotWorkspaceCommandService.setPlayerDesiredCount(runtime, "minecraft:arrow", "", "", 12);
+
+        SlotWorkspaceCommandService.toggleWantedCount(runtime, authority, "minecraft:arrow", "", "");
+        SlotWorkspaceCommandService.adjustWantedCount(runtime, authority, "minecraft:arrow", "", "", 3);
+
+        ItemIdentity identity = ItemIdentity.of("minecraft:arrow");
+        assertEquals(12, runtime.desiredCountWorkflow().getPlayer(identity));
+        assertEquals(6, runtime.wantedCountWorkflow().getPlayer(identity));
+    }
+
     private static WorkflowDomainRuntime runtime() {
         return new WorkflowDomainRuntime(new InMemoryWorkflowDomainStateRepository(), null);
     }
 
+    private static InventoryAuthoritySnapshot carriedAuthority(String itemId, int count) {
+        InventoryHostDescriptor host = host();
+        return InventoryAuthorityFixtures.authority(
+                host,
+                Map.of(BuiltinInventoryIds.PLAYER_MAIN,
+                        List.of(new InventoryStackSnapshot(0, new ItemStack(itemId, count, 64), count))),
+                Map.of(BuiltinInventoryIds.PLAYER_MAIN, 27));
+    }
+
+    private static InventoryHostDescriptor host() {
+        TestMenu menu = new TestMenu();
+        return new InventoryHostDescriptor(
+                new HostInstanceKey(TestMenu.class.getName(), 0, "workspace-command.test", ""),
+                InventoryHostDescriptor.serverMenuRef(menu),
+                "workspace-command.test",
+                Component.literal("Workspace Command Test"),
+                menu,
+                InventoryTopologyDescriptor.empty(),
+                InventoryHostSession.empty(),
+                List.of(),
+                PlayerRuntimeStateDescriptor.vanilla(0),
+                List.of(BuiltinInventoryDescriptors.playerMain(InventoryTopologyDescriptor.empty())),
+                BuiltinInventoryDescriptors.builtInQuickAccessLanes(),
+                BuiltinInventoryDescriptors.builtInEquipmentGroups(),
+                List.of(),
+                InventoryHostObservationHints.defaults(),
+                "");
+    }
+
     private static final Function<InventoryEntrySnapshot, ItemIdentity> IDENTITY_RESOLVER =
             entry -> entry == null ? null : ItemIdentity.of(entry.stack().itemId());
+
+    private static final class TestMenu extends AbstractContainerMenu {
+        private TestMenu() {
+            super(null, 0);
+        }
+
+        @Override
+        public boolean stillValid(Player player) {
+            return true;
+        }
+    }
 
     private static final class RecordingActionExecutor implements Function<InventoryActionRequest, InventoryActionOutcome> {
         final List<InventoryActionRequest> requests = new ArrayList<>();

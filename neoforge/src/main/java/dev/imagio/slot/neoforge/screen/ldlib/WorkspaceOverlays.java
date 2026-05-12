@@ -144,12 +144,12 @@ final class WorkspaceOverlays {
                     host.viewModel.activeKit() == null ? "<none>" : host.viewModel.activeKit().kitId(),
                     anyGatherableIdentity());
             host.rpc.send(WorkspaceActionId.GATHER_ACTIVE_KIT);
-            host.localStatus.set("gathering desired items from nearby chests");
+            host.localStatus.set("gathering target items from nearby chests");
             host.rebuild();
         });
         host.installKeybindTooltip(
                 gatherButton,
-                "Pull every item with a desired-count gap from nearby chests",
+                "Pull every item with a desired or wanted-count gap from nearby chests",
                 () -> dev.imagio.slot.neoforge.client.input.SlotAtlasKeyMappings
                         .gatherActiveKitMapping().getTranslatedKeyMessage().getString()
         );
@@ -228,7 +228,7 @@ final class WorkspaceOverlays {
     }
 
     /**
-     * True iff any atlas identity has a positive desired-count gap (or
+     * True iff any atlas identity has a positive desired/wanted-count gap (or
      * is kit-needed) AND is reachable from a proximate chest. Drives
      * the post-Phase-6 Gather button visibility, replacing the
      * active-kit-only gate.

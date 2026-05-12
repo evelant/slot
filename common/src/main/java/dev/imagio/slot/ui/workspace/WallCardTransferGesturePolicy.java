@@ -88,6 +88,9 @@ public final class WallCardTransferGesturePolicy {
         }
         SlotWorkspaceViewModel.AtlasItem item = context.item();
         int magnitude = Math.abs(wheelSteps);
+        if (context.wantedAdjustDown()) {
+            return Decision.action(Action.ADJUST_WANTED_COUNT, wheelSteps);
+        }
         if (context.controlDown()) {
             return Decision.action(Action.ADJUST_PLAYER_DESIRED_COUNT, wheelSteps);
         }
@@ -146,7 +149,8 @@ public final class WallCardTransferGesturePolicy {
         DEPOSIT_HOME_TO_LINKED_CHEST,
         DEPOSIT_ONE_HOME_TO_LINKED_CHEST,
         CROSS_SURFACE_QUICK_MOVE,
-        ADJUST_PLAYER_DESIRED_COUNT
+        ADJUST_PLAYER_DESIRED_COUNT,
+        ADJUST_WANTED_COUNT
     }
 
     public record Decision(Action action, int count, String status) {
@@ -186,6 +190,7 @@ public final class WallCardTransferGesturePolicy {
             boolean sidebarActive,
             int carriedFreeSlotCount,
             boolean anyChestProximate,
+            boolean wantedAdjustDown,
             boolean continuingShiftTake
     ) {
         public Context {
@@ -213,7 +218,34 @@ public final class WallCardTransferGesturePolicy {
                     sidebarActive,
                     carriedFreeSlotCount,
                     anyChestProximate,
+                    false,
                     false);
+        }
+
+        public Context(
+                SlotWorkspaceViewModel.AtlasItem item,
+                int button,
+                boolean shiftDown,
+                boolean controlDown,
+                SlotWorkspaceViewModel.IdentityRef cursorIdentity,
+                boolean cursorCarrying,
+                boolean sidebarActive,
+                int carriedFreeSlotCount,
+                boolean anyChestProximate,
+                boolean continuingShiftTake
+        ) {
+            this(
+                    item,
+                    button,
+                    shiftDown,
+                    controlDown,
+                    cursorIdentity,
+                    cursorCarrying,
+                    sidebarActive,
+                    carriedFreeSlotCount,
+                    anyChestProximate,
+                    false,
+                    continuingShiftTake);
         }
     }
 }

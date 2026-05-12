@@ -76,6 +76,43 @@ class WayfindingTargetTest {
         assertEquals(WayfindingTarget.Scope.PLAYER, target.scope());
         assertEquals(32, target.totalMissingCount());
         assertTrue(target.missingIdentities().contains(REDSTONE));
+        assertTrue(target.desiredMissingIdentities().contains(REDSTONE));
+        assertTrue(target.wantedMissingIdentities().isEmpty());
+    }
+
+    @Test
+    void wantedOnlyTargetKeepsWantedSourceSeparate() {
+        SlotWorkspaceViewModel projected = projectWith(
+                Map.of(),
+                Map.of(DIAMOND, 2),
+                noKit(),
+                Map.of(),
+                Map.of(CHEST_OVERWORLD, snapshotOf(stack("minecraft:diamond", 1))),
+                anchorOverworld(10, 64, 20, CHEST_OVERWORLD)
+        );
+        assertEquals(1, projected.wayfindingTargets().size());
+        WayfindingTarget target = projected.wayfindingTargets().get(0);
+        assertEquals(WayfindingTarget.Scope.WANTED, target.scope());
+        assertTrue(target.wantedMissingIdentities().contains(DIAMOND));
+        assertTrue(target.desiredMissingIdentities().isEmpty());
+        assertTrue(target.kitMissingIdentities().isEmpty());
+    }
+
+    @Test
+    void desiredAndWantedCanCoexistForSameIdentity() {
+        SlotWorkspaceViewModel projected = projectWith(
+                Map.of(REDSTONE, 16),
+                Map.of(REDSTONE, 64),
+                noKit(),
+                Map.of(),
+                Map.of(CHEST_OVERWORLD, snapshotOf(stack("minecraft:redstone", 32))),
+                anchorOverworld(10, 64, 20, CHEST_OVERWORLD)
+        );
+        assertEquals(1, projected.wayfindingTargets().size());
+        WayfindingTarget target = projected.wayfindingTargets().get(0);
+        assertTrue(target.missingIdentities().contains(REDSTONE));
+        assertTrue(target.desiredMissingIdentities().contains(REDSTONE));
+        assertTrue(target.wantedMissingIdentities().contains(REDSTONE));
     }
 
     @Test
@@ -238,6 +275,23 @@ class WayfindingTargetTest {
             Map<UUID, SlotWorkspaceViewModel.ChestContentsSnapshot> contentsByChest,
             List<AnchorSpec> anchors
     ) {
+        return projectWith(
+                playerDesiredCounts,
+                Map.of(),
+                kitMap,
+                kitDesiredCounts,
+                contentsByChest,
+                anchors);
+    }
+
+    private static SlotWorkspaceViewModel projectWith(
+            Map<ItemIdentity, Integer> playerDesiredCounts,
+            Map<ItemIdentity, Integer> playerWantedCounts,
+            KitMap kitMap,
+            Map<String, Map<ItemIdentity, Integer>> kitDesiredCounts,
+            Map<UUID, SlotWorkspaceViewModel.ChestContentsSnapshot> contentsByChest,
+            List<AnchorSpec> anchors
+    ) {
         ClaimedChestMap claimedChestMap = claimedChestMap(anchors);
         WorkflowProjection.Snapshot projection = new WorkflowProjection.Snapshot(
                 List.of(),
@@ -253,7 +307,8 @@ class WayfindingTargetTest {
                 Map.of(),
                 kitMap,
                 playerDesiredCounts,
-                kitDesiredCounts
+                kitDesiredCounts,
+                playerWantedCounts
         );
         WorkflowDomainSnapshot snapshot = new WorkflowDomainSnapshot(
                 1L,

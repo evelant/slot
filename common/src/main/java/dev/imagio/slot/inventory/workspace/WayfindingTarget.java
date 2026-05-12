@@ -24,23 +24,96 @@ public record WayfindingTarget(
         int worldY,
         int worldZ,
         Set<ItemIdentity> missingIdentities,
+        Set<ItemIdentity> kitMissingIdentities,
+        Set<ItemIdentity> desiredMissingIdentities,
+        Set<ItemIdentity> wantedMissingIdentities,
         int totalMissingCount,
         Scope scope
 ) {
+    public WayfindingTarget(
+            String storageId,
+            String dimensionId,
+            int worldX,
+            int worldY,
+            int worldZ,
+            Set<ItemIdentity> missingIdentities,
+            int totalMissingCount,
+            Scope scope
+    ) {
+        this(
+                storageId,
+                dimensionId,
+                worldX,
+                worldY,
+                worldZ,
+                missingIdentities,
+                scope == Scope.KIT ? missingIdentities : Set.of(),
+                scope == Scope.PLAYER ? missingIdentities : Set.of(),
+                scope == Scope.WANTED ? missingIdentities : Set.of(),
+                totalMissingCount,
+                scope);
+    }
+
     public WayfindingTarget {
         storageId = storageId == null ? "" : storageId;
         dimensionId = dimensionId == null ? "" : dimensionId;
-        missingIdentities = missingIdentities == null
-                ? Set.of()
-                : Set.copyOf(new LinkedHashSet<>(missingIdentities));
+        kitMissingIdentities = copyIdentitySet(kitMissingIdentities);
+        desiredMissingIdentities = copyIdentitySet(desiredMissingIdentities);
+        wantedMissingIdentities = copyIdentitySet(wantedMissingIdentities);
+        LinkedHashSet<ItemIdentity> allMissing = new LinkedHashSet<>();
+        if (missingIdentities != null) {
+            allMissing.addAll(missingIdentities);
+        }
+        allMissing.addAll(kitMissingIdentities);
+        allMissing.addAll(desiredMissingIdentities);
+        allMissing.addAll(wantedMissingIdentities);
+        missingIdentities = copyIdentitySet(allMissing);
         totalMissingCount = Math.max(0, totalMissingCount);
-        scope = scope == null ? Scope.PLAYER : scope;
+        scope = scope == null
+                ? inferScope(kitMissingIdentities, desiredMissingIdentities, wantedMissingIdentities)
+                : scope;
+    }
+
+    public boolean hasKitMissing() {
+        return !kitMissingIdentities.isEmpty();
+    }
+
+    public boolean hasDesiredMissing() {
+        return !desiredMissingIdentities.isEmpty();
+    }
+
+    public boolean hasWantedMissing() {
+        return !wantedMissingIdentities.isEmpty();
+    }
+
+    private static Scope inferScope(
+            Set<ItemIdentity> kitMissingIdentities,
+            Set<ItemIdentity> desiredMissingIdentities,
+            Set<ItemIdentity> wantedMissingIdentities
+    ) {
+        if (kitMissingIdentities != null && !kitMissingIdentities.isEmpty()) {
+            return Scope.KIT;
+        }
+        if ((desiredMissingIdentities == null || desiredMissingIdentities.isEmpty())
+                && wantedMissingIdentities != null && !wantedMissingIdentities.isEmpty()) {
+            return Scope.WANTED;
+        }
+        return Scope.PLAYER;
+    }
+
+    private static Set<ItemIdentity> copyIdentitySet(Set<ItemIdentity> source) {
+        if (source == null || source.isEmpty()) {
+            return Set.of();
+        }
+        return Set.copyOf(new LinkedHashSet<>(source));
     }
 
     public enum Scope {
         /** At least one missing identity is driven by the active kit. */
         KIT,
         /** All missing identities are player-global desired-count gaps. */
-        PLAYER
+        PLAYER,
+        /** All missing identities are player-global wanted-count gaps. */
+        WANTED
     }
 }

@@ -31,6 +31,7 @@ import dev.imagio.slot.workflow.domain.WorkflowDomainSnapshot;
 import net.minecraft.world.item.ItemStack;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -395,6 +396,7 @@ public record SlotWorkspaceViewModel(
     ) {
         InventoryAuthoritySnapshot resolvedAuthority = authority == null ? InventoryAuthoritySnapshot.empty() : authority;
         WorkflowDomainSnapshot resolvedWorkflow = workflow == null ? WorkflowDomainSnapshot.empty() : workflow;
+        Map<ItemIdentity, Integer> wantedCounts = activeWantedCounts(resolvedAuthority, resolvedWorkflow.playerWantedCounts());
         RecentView recents = resolvedWorkflow.recents();
         VisualHomeMap visualHomeMap = resolvedWorkflow.visualHomeMap();
         ClaimedChestMap claimedChestMap = resolvedWorkflow.claimedChestMap();
@@ -485,6 +487,29 @@ public record SlotWorkspaceViewModel(
             accumulators.add(AtlasItemAccumulator.ghost(identity, stack, 0));
             ghostIdentities.add(identity);
         }
+        // Wanted items behave like persisted fetch targets: surface a ghost
+        // card on the item's home even when the item only exists in a remote
+        // claimed chest, and let the normal wayfinding projection point at
+        // that chest until the carried target is met.
+        for (ItemIdentity identity : wantedCounts.keySet()) {
+            if (identity == null || ghostIdentities.contains(identity)) {
+                continue;
+            }
+            ItemStack stack = ghosts.displayStackByIdentity().get(identity);
+            int total = ghosts.totalsByIdentity().getOrDefault(identity, 0);
+            if (stack == null || stack.isEmpty()) {
+                stack = elsewhereGhosts.displayStackByIdentity().get(identity);
+                total = elsewhereGhosts.totalsByIdentity().getOrDefault(identity, 0);
+            }
+            if (stack == null || stack.isEmpty()) {
+                stack = resolveGhostStack(identity);
+            }
+            if (stack == null || stack.isEmpty()) {
+                continue;
+            }
+            accumulators.add(AtlasItemAccumulator.ghost(identity, stack, total));
+            ghostIdentities.add(identity);
+        }
         // Search-as-find: synthesize ghost accumulators for identities
         // that live ONLY in non-proximate claimed chests (no carry, no
         // proximate ghost, no kit-needed entry) — but ONLY while the
@@ -567,6 +592,7 @@ public record SlotWorkspaceViewModel(
             int playerDesired = playerDesiredCounts.getOrDefault(accumulator.identity(), 0);
             int desiredCount = kitDesired > 0 ? kitDesired : playerDesired;
             boolean desiredCountFromKit = kitDesired > 0;
+            int wantedCount = wantedCounts.getOrDefault(accumulator.identity(), 0);
 
             if (assignment == null) {
                 List<ChipSuggestion> chipSuggestions = List.of();
@@ -616,6 +642,7 @@ public record SlotWorkspaceViewModel(
                                 kitNeeded,
                                 desiredCount,
                                 desiredCountFromKit,
+                                wantedCount,
                                 accumulator.largestCarriedSourceId(),
                                 accumulator.largestCarriedSlotIndex(),
                                 accumulator.largestCarriedSlotCount()
@@ -644,6 +671,7 @@ public record SlotWorkspaceViewModel(
                         kitNeeded,
                         desiredCount,
                         desiredCountFromKit,
+                        wantedCount,
                         accumulator.largestCarriedSourceId(),
                         accumulator.largestCarriedSlotIndex(),
                         accumulator.largestCarriedSlotCount()
@@ -681,6 +709,7 @@ public record SlotWorkspaceViewModel(
                         kitNeeded,
                         desiredCount,
                         desiredCountFromKit,
+                        wantedCount,
                         accumulator.largestCarriedSourceId(),
                         accumulator.largestCarriedSlotIndex(),
                         accumulator.largestCarriedSlotCount()
@@ -708,6 +737,7 @@ public record SlotWorkspaceViewModel(
                     kitNeeded,
                     desiredCount,
                     desiredCountFromKit,
+                    wantedCount,
                     accumulator.largestCarriedSourceId(),
                     accumulator.largestCarriedSlotIndex(),
                     accumulator.largestCarriedSlotCount()
@@ -735,13 +765,15 @@ public record SlotWorkspaceViewModel(
                 claimedChestMap,
                 chestContentsResolver,
                 kitNeededIdentities,
+                wantedCounts,
                 activeKitDesiredCounts,
                 playerDesiredCounts);
         java.util.function.ToIntFunction<ItemIdentity> reservedCountResolver = identity -> reservedCarryCount(
                 identity,
                 resolvedWorkflow.kitMap(),
                 activeKitDesiredCounts,
-                playerDesiredCounts);
+                playerDesiredCounts,
+                wantedCounts);
         Set<IdentityRef> depositableIdentities = depositableIdentities(
                 atlasItems,
                 claimedChestMap,
@@ -793,10 +825,34 @@ public record SlotWorkspaceViewModel(
         return List.copyOf(refs);
     }
 
+    public static Map<ItemIdentity, Integer> activeWantedCounts(
+            InventoryAuthoritySnapshot authority,
+            Map<ItemIdentity, Integer> playerWantedCounts
+    ) {
+        if (playerWantedCounts == null || playerWantedCounts.isEmpty()) {
+            return Map.of();
+        }
+        LinkedHashMap<ItemIdentity, Integer> active = new LinkedHashMap<>();
+        for (Map.Entry<ItemIdentity, Integer> entry : playerWantedCounts.entrySet()) {
+            ItemIdentity identity = entry.getKey();
+            if (identity == null) {
+                continue;
+            }
+            int target = entry.getValue() == null ? 0 : Math.max(0, entry.getValue());
+            if (target <= 0) {
+                continue;
+            }
+            if (carriedMovableCount(authority, identity) < target) {
+                active.put(identity, target);
+            }
+        }
+        return active.isEmpty() ? Map.of() : Collections.unmodifiableMap(active);
+    }
+
     /**
      * Items the player must keep in carry: at least one of each active
      * kit-page slot identity, plus the resolved desired count (kit
-     * scope > player scope). The deposit planner caps the depositable
+     * scope > player scope), plus active wanted count. The deposit planner caps the depositable
      * total at {@code totalCarried - reserved}, and the deposit-preview
      * uses the same cap so the highlighted set matches what would
      * actually move.
@@ -805,7 +861,8 @@ public record SlotWorkspaceViewModel(
             ItemIdentity identity,
             KitMap kitMap,
             Map<ItemIdentity, Integer> activeKitDesiredCounts,
-            Map<ItemIdentity, Integer> playerDesiredCounts
+            Map<ItemIdentity, Integer> playerDesiredCounts,
+            Map<ItemIdentity, Integer> playerWantedCounts
     ) {
         if (identity == null) {
             return 0;
@@ -814,11 +871,13 @@ public record SlotWorkspaceViewModel(
                 : activeKitDesiredCounts.getOrDefault(identity, 0);
         int playerDesired = playerDesiredCounts == null ? 0
                 : playerDesiredCounts.getOrDefault(identity, 0);
+        int playerWanted = playerWantedCounts == null ? 0
+                : playerWantedCounts.getOrDefault(identity, 0);
         // Mirror DesiredCountWorkflowDomainService.resolved: kit scope wins
         // when active and non-zero, else player scope.
         int desired = kitDesired > 0 ? kitDesired : playerDesired;
         int kitSlotCount = activeKitPageSlotCount(kitMap, identity);
-        return Math.max(desired, kitSlotCount);
+        return Math.max(Math.max(desired, playerWanted), kitSlotCount);
     }
 
     private static int activeKitPageSlotCount(KitMap kitMap, ItemIdentity identity) {
@@ -1246,33 +1305,34 @@ public record SlotWorkspaceViewModel(
     /**
      * Build per-chest wayfinding targets: chests holding at least one
      * identity the player still needs (active kit page slot, kit-scoped
-     * desired-count gap, or player-global desired-count gap). Drives the
-     * client-side wayfinding HUD + atlas chip + in-world chest glow.
+     * desired-count gap, player-global desired-count gap, or active
+     * wanted-count gap). Drives the client-side wayfinding HUD + atlas chip +
+     * in-world chest glow.
      *
      * <p>The "missing identity" set unions kit-needed (already
-     * carry-aware) with player-global gaps where {@code carriedCount <
-     * playerDesired}. KIT scope wins over PLAYER when both apply to the
-     * same chest, so the chip palette stays unambiguous.
+     * carry-aware) with desired and wanted gaps where {@code carriedCount}
+     * has not reached the relevant target. Source-specific sets remain
+     * separate on {@link WayfindingTarget}.
      */
     private static List<WayfindingTarget> wayfindingTargets(
             InventoryAuthoritySnapshot authority,
             ClaimedChestMap claimedChestMap,
             Function<String, ChestContentsSnapshot> chestContentsResolver,
             Set<ItemIdentity> kitNeededIdentities,
+            Map<ItemIdentity, Integer> wantedCounts,
             Map<ItemIdentity, Integer> activeKitDesiredCounts,
             Map<ItemIdentity, Integer> playerDesiredCounts
     ) {
         if (claimedChestMap == null || claimedChestMap.chests().isEmpty() || chestContentsResolver == null) {
             return List.of();
         }
-        // Build the missing-identity scope map in one pass. Kit page slots
-        // (kitNeededIdentities) and active-kit desired counts mark KIT;
-        // player-global gaps mark PLAYER. Kit wins on collision so the
-        // chip color never flickers between scopes for the same identity.
-        LinkedHashMap<ItemIdentity, WayfindingTarget.Scope> missingScope = new LinkedHashMap<>();
+        // Build the missing-identity source map in one pass. Desired and
+        // wanted state stay distinct here; display code may collapse them,
+        // but downstream logic can still tell why a chest is being surfaced.
+        LinkedHashMap<ItemIdentity, WayfindingNeedSources> missingSources = new LinkedHashMap<>();
         for (ItemIdentity identity : kitNeededIdentities) {
             if (identity != null) {
-                missingScope.put(identity, WayfindingTarget.Scope.KIT);
+                missingSources.computeIfAbsent(identity, ignored -> new WayfindingNeedSources()).kit = true;
             }
         }
         if (activeKitDesiredCounts != null) {
@@ -1283,7 +1343,10 @@ public record SlotWorkspaceViewModel(
                     continue;
                 }
                 if (carriedMovableCount(authority, identity) < target) {
-                    missingScope.put(identity, WayfindingTarget.Scope.KIT);
+                    WayfindingNeedSources sources =
+                            missingSources.computeIfAbsent(identity, ignored -> new WayfindingNeedSources());
+                    sources.kit = true;
+                    sources.desired = true;
                 }
             }
         }
@@ -1303,11 +1366,21 @@ public record SlotWorkspaceViewModel(
                     continue;
                 }
                 if (carriedMovableCount(authority, identity) < target) {
-                    missingScope.putIfAbsent(identity, WayfindingTarget.Scope.PLAYER);
+                    missingSources.computeIfAbsent(identity, ignored -> new WayfindingNeedSources()).desired = true;
                 }
             }
         }
-        if (missingScope.isEmpty()) {
+        if (wantedCounts != null) {
+            for (Map.Entry<ItemIdentity, Integer> entry : wantedCounts.entrySet()) {
+                ItemIdentity identity = entry.getKey();
+                Integer target = entry.getValue();
+                if (identity != null && target != null && target > 0
+                        && carriedMovableCount(authority, identity) < target) {
+                    missingSources.computeIfAbsent(identity, ignored -> new WayfindingNeedSources()).wanted = true;
+                }
+            }
+        }
+        if (missingSources.isEmpty()) {
             return List.of();
         }
         ArrayList<WayfindingTarget> targets = new ArrayList<>();
@@ -1321,22 +1394,31 @@ public record SlotWorkspaceViewModel(
                 continue;
             }
             LinkedHashSet<ItemIdentity> matched = new LinkedHashSet<>();
+            LinkedHashSet<ItemIdentity> kitMatched = new LinkedHashSet<>();
+            LinkedHashSet<ItemIdentity> desiredMatched = new LinkedHashSet<>();
+            LinkedHashSet<ItemIdentity> wantedMatched = new LinkedHashSet<>();
             int totalMissingCount = 0;
-            boolean kitWins = false;
             for (ItemStack stack : snapshot.contents()) {
                 if (stack == null || stack.isEmpty()) {
                     continue;
                 }
-                for (Map.Entry<ItemIdentity, WayfindingTarget.Scope> entry : missingScope.entrySet()) {
+                for (Map.Entry<ItemIdentity, WayfindingNeedSources> entry : missingSources.entrySet()) {
                     ItemIdentity needed = entry.getKey();
                     if (!ItemIdentityMatcher.matchesMovable(stack, needed)) {
                         continue;
                     }
+                    WayfindingNeedSources sources = entry.getValue();
                     matched.add(needed);
-                    totalMissingCount += stack.getCount();
-                    if (entry.getValue() == WayfindingTarget.Scope.KIT) {
-                        kitWins = true;
+                    if (sources.kit) {
+                        kitMatched.add(needed);
                     }
+                    if (sources.desired) {
+                        desiredMatched.add(needed);
+                    }
+                    if (sources.wanted) {
+                        wantedMatched.add(needed);
+                    }
+                    totalMissingCount += stack.getCount();
                     break;
                 }
             }
@@ -1351,11 +1433,35 @@ public record SlotWorkspaceViewModel(
                     primary.y(),
                     primary.z(),
                     matched,
+                    kitMatched,
+                    desiredMatched,
+                    wantedMatched,
                     totalMissingCount,
-                    kitWins ? WayfindingTarget.Scope.KIT : WayfindingTarget.Scope.PLAYER
+                    wayfindingScope(kitMatched, desiredMatched, wantedMatched)
             ));
         }
         return List.copyOf(targets);
+    }
+
+    private static WayfindingTarget.Scope wayfindingScope(
+            Set<ItemIdentity> kitMatched,
+            Set<ItemIdentity> desiredMatched,
+            Set<ItemIdentity> wantedMatched
+    ) {
+        if (kitMatched != null && !kitMatched.isEmpty()) {
+            return WayfindingTarget.Scope.KIT;
+        }
+        if ((desiredMatched == null || desiredMatched.isEmpty())
+                && wantedMatched != null && !wantedMatched.isEmpty()) {
+            return WayfindingTarget.Scope.WANTED;
+        }
+        return WayfindingTarget.Scope.PLAYER;
+    }
+
+    private static final class WayfindingNeedSources {
+        private boolean kit;
+        private boolean desired;
+        private boolean wanted;
     }
 
     /**
@@ -1386,7 +1492,7 @@ public record SlotWorkspaceViewModel(
      * have indicator: targetCount comes from kit-scoped desired counts,
      * presentCount comes from this walk.
      */
-    private static int carriedMovableCount(InventoryAuthoritySnapshot authority, ItemIdentity identity) {
+    public static int carriedMovableCount(InventoryAuthoritySnapshot authority, ItemIdentity identity) {
         if (authority == null || identity == null) {
             return 0;
         }
@@ -1866,6 +1972,7 @@ public record SlotWorkspaceViewModel(
             boolean kitNeeded,
             int desiredCount,
             boolean desiredCountFromKit,
+            int wantedCount,
             String largestCarriedSourceId,
             int largestCarriedSlotIndex,
             int largestCarriedSlotCount
@@ -1887,9 +1994,21 @@ public record SlotWorkspaceViewModel(
             desiredCount = Math.max(0, desiredCount);
             // desiredCountFromKit only meaningful when desiredCount > 0; force false otherwise so equality + hashing stay deterministic.
             desiredCountFromKit = desiredCount > 0 && desiredCountFromKit;
+            wantedCount = Math.max(0, wantedCount);
+            // Wanted is a persisted fetch target that auto-clears once
+            // satisfied. Projection normally clears satisfied entries before
+            // construction; this guard keeps manually built carried test
+            // cards from reporting already-satisfied wants.
+            if (carried && totalCount >= wantedCount) {
+                wantedCount = 0;
+            }
             largestCarriedSourceId = largestCarriedSourceId == null ? "" : largestCarriedSourceId;
             largestCarriedSlotIndex = Math.max(-1, largestCarriedSlotIndex);
             largestCarriedSlotCount = Math.max(0, largestCarriedSlotCount);
+        }
+
+        public boolean wanted() {
+            return wantedCount > 0;
         }
 
         /**
@@ -1923,7 +2042,7 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, List.of(), isCarriedContainer, containerFreeSlotCount, containerSlotCapacity, false, 0,
-                    false, "", -1, 0);
+                    false, 0, "", -1, 0);
         }
 
         /** Backward-compat constructor: defaults kitNeeded/desiredCount/largestCarriedSlot. */
@@ -1949,7 +2068,7 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, elsewhere, isCarriedContainer, containerFreeSlotCount, containerSlotCapacity, false, 0,
-                    false, "", -1, 0);
+                    false, 0, "", -1, 0);
         }
 
         /** Backward-compat constructor: defaults desiredCount/largestCarriedSlot. */
@@ -1976,7 +2095,7 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, elsewhere, isCarriedContainer, containerFreeSlotCount, containerSlotCapacity, kitNeeded, 0,
-                    false, "", -1, 0);
+                    false, 0, "", -1, 0);
         }
 
         /** Backward-compat constructor: defaults largestCarriedSlot only. */
@@ -2004,7 +2123,74 @@ public record SlotWorkspaceViewModel(
             this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
                     recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
                     presence, elsewhere, isCarriedContainer, containerFreeSlotCount, containerSlotCapacity,
-                    kitNeeded, desiredCount, false, "", -1, 0);
+                    kitNeeded, desiredCount, false, 0, "", -1, 0);
+        }
+
+        /** Backward-compat constructor: defaults wantedCount only. */
+        public AtlasItem(
+                IdentityRef identity,
+                ItemStack displayStack,
+                String name,
+                int totalCount,
+                int firstSlotIndex,
+                String islandId,
+                boolean recent,
+                boolean playerPlaced,
+                boolean carried,
+                boolean ghost,
+                int proximateCount,
+                List<ChipSuggestion> chipSuggestions,
+                List<ChestPresenceEntry> presence,
+                List<ChestPresenceEntry> elsewhere,
+                boolean isCarriedContainer,
+                int containerFreeSlotCount,
+                int containerSlotCapacity,
+                boolean kitNeeded,
+                int desiredCount,
+                boolean desiredCountFromKit,
+                String largestCarriedSourceId,
+                int largestCarriedSlotIndex,
+                int largestCarriedSlotCount
+        ) {
+            this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
+                    recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
+                    presence, elsewhere, isCarriedContainer, containerFreeSlotCount, containerSlotCapacity,
+                    kitNeeded, desiredCount, desiredCountFromKit, 0,
+                    largestCarriedSourceId, largestCarriedSlotIndex, largestCarriedSlotCount);
+        }
+
+        /** Backward-compat constructor: maps the previous boolean wanted flag to a one-item target. */
+        public AtlasItem(
+                IdentityRef identity,
+                ItemStack displayStack,
+                String name,
+                int totalCount,
+                int firstSlotIndex,
+                String islandId,
+                boolean recent,
+                boolean playerPlaced,
+                boolean carried,
+                boolean ghost,
+                int proximateCount,
+                List<ChipSuggestion> chipSuggestions,
+                List<ChestPresenceEntry> presence,
+                List<ChestPresenceEntry> elsewhere,
+                boolean isCarriedContainer,
+                int containerFreeSlotCount,
+                int containerSlotCapacity,
+                boolean kitNeeded,
+                int desiredCount,
+                boolean desiredCountFromKit,
+                boolean wanted,
+                String largestCarriedSourceId,
+                int largestCarriedSlotIndex,
+                int largestCarriedSlotCount
+        ) {
+            this(identity, displayStack, name, totalCount, firstSlotIndex, islandId,
+                    recent, playerPlaced, carried, ghost, proximateCount, chipSuggestions,
+                    presence, elsewhere, isCarriedContainer, containerFreeSlotCount, containerSlotCapacity,
+                    kitNeeded, desiredCount, desiredCountFromKit, wanted ? 1 : 0,
+                    largestCarriedSourceId, largestCarriedSlotIndex, largestCarriedSlotCount);
         }
 
         /**

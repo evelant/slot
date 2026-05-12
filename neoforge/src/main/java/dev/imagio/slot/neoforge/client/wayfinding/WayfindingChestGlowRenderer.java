@@ -23,9 +23,9 @@ import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
  * Layer 1 of the wayfinding plan — see
  * docs/plans/wayfinding.md § Phase 2. Draws a soft wireframe AABB on
  * every claimed chest in the current dimension that holds a missing
- * (kit-needed or desired-count gap) identity.
+     * (kit-needed, desired-count gap, or wanted-count gap) identity.
  *
- * <p>Color tracks {@link WayfindingTarget#scope()}; alpha pulses with
+     * <p>Color tracks the target sources; alpha pulses with
  * {@code sin(tickPhase)} and falls off with distance + line-of-sight.
  * No work happens past {@link WayfindingGlowMath#MAX_GLOW_RADIUS} so a base 200 blocks
  * away never costs render time.

@@ -111,7 +111,7 @@ public final class SlotAtlasKeyMappings {
             CATEGORY
     );
 
-    // One-press gather for desired-count gaps and active-kit needs from
+    // One-press gather for desired/wanted-count gaps and active-kit needs from
     // nearby chests. Works from inside the SLOT atlas AND in-world.
     // Unbound by default — the action is a small button-click away
     // inside the atlas, and the in-world hotkey is opt-in for power
@@ -121,6 +121,18 @@ public final class SlotAtlasKeyMappings {
             KeyConflictContext.UNIVERSAL,
             InputConstants.Type.KEYSYM,
             InputConstants.UNKNOWN.getValue(),
+            CATEGORY
+    );
+
+    // Modifier-style default so holding it for wanted-count scroll adjust
+    // does not generate text-key repeat toggles. The translation id changed
+    // from the original A-key binding so existing dev-profile options do not
+    // preserve the repeat-prone default.
+    private static final KeyMapping MARK_WANTED = new KeyMapping(
+            "key.slot.mark_wanted_modifier",
+            KeyConflictContext.GUI,
+            InputConstants.Type.KEYSYM,
+            GLFW.GLFW_KEY_LEFT_ALT,
             CATEGORY
     );
 
@@ -141,6 +153,7 @@ public final class SlotAtlasKeyMappings {
         event.register(RELEVANCE_DEBUG_OVERLAY);
         event.register(TOGGLE_WAYFINDING_HUD);
         event.register(GATHER_ACTIVE_KIT);
+        event.register(MARK_WANTED);
     }
 
     public static KeyMapping gatherActiveKitMapping() {
@@ -149,6 +162,14 @@ public final class SlotAtlasKeyMappings {
 
     public static boolean matchesGatherActiveKit(int keyCode, int scanCode) {
         return keyMatches(GATHER_ACTIVE_KIT, keyCode, scanCode);
+    }
+
+    public static boolean matchesMarkWanted(int keyCode, int scanCode) {
+        return keyMatches(MARK_WANTED, keyCode, scanCode);
+    }
+
+    public static boolean markWantedDown() {
+        return MARK_WANTED.isDown();
     }
 
     public static KeyMapping toggleWayfindingHudMapping() {
