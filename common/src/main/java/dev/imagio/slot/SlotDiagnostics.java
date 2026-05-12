@@ -57,15 +57,16 @@ public final class SlotDiagnostics {
         // Re-resolves on every projection tick; dedupe so the log
         // shows actual host transitions (open / switch / close)
         // instead of one entry per 50 ms.
-        String signature = clean(origin)
+        String cleanOrigin = clean(origin);
+        String signature = cleanOrigin
                 + "|" + hostId(host)
                 + "|" + (host == null ? 0 : Objects.hashCode(host.diagnostics()));
-        if (!shouldEmitChange("hostResolved", signature)) {
+        if (!shouldEmitChange("hostResolved:" + cleanOrigin, signature)) {
             return;
         }
         SlotCommon.LOGGER.info(
                 "[SLOT] Host resolved origin={} host={} menu={} sources={} topology={} diagnostics='{}'",
-                clean(origin),
+                cleanOrigin,
                 hostId(host),
                 menuSummary(host == null ? null : host.menu()),
                 sourceSummary(host),

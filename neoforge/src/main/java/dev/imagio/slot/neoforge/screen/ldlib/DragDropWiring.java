@@ -111,13 +111,17 @@ final class DragDropWiring {
             if (item == null || item.displayStack().isEmpty()) {
                 return;
             }
+            boolean goalTooltipOnly = host.goalTabActive() && host.goalSuppressVanillaTooltip(item);
+            ItemStack tooltipStack = goalTooltipOnly ? ItemStack.EMPTY : item.displayStack();
             event.hoverTooltips = new HoverTooltips(
-                    host.goalTabActive()
+                    goalTooltipOnly
+                            ? host.goalTooltipLines(item)
+                            : host.goalTabActive()
                             ? WorkspaceFormat.atlasTooltipLines(item, host.goalTooltipLines(item))
                             : WorkspaceFormat.atlasTooltipLines(item),
-                    item.displayStack().getTooltipImage().orElse(null),
+                    tooltipStack.isEmpty() ? null : tooltipStack.getTooltipImage().orElse(null),
                     null,
-                    item.displayStack()
+                    tooltipStack
             );
         });
     }

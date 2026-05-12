@@ -1,5 +1,6 @@
 package dev.imagio.slot.inventory.goal;
 
+import dev.imagio.slot.SlotDebugLog;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
 
@@ -12,7 +13,7 @@ import java.util.Set;
 
 public final class GoalProjectionService {
     public GoalProjection project(GoalDescriptor goal, GoalVisibleAuthority authority) {
-        return project(goal, authority, GoalProjectionOptions.defaults(), GoalChoiceResolution.empty());
+        return project(goal, authority, GoalProjectionOptions.defaults(), GoalChoiceResolution.empty(), GoalRecipeDefaults.empty());
     }
 
     public GoalProjection project(
@@ -20,7 +21,7 @@ public final class GoalProjectionService {
             GoalVisibleAuthority authority,
             GoalProjectionOptions options
     ) {
-        return project(goal, authority, options, GoalChoiceResolution.empty());
+        return project(goal, authority, options, GoalChoiceResolution.empty(), GoalRecipeDefaults.empty());
     }
 
     public GoalProjection project(
@@ -29,11 +30,22 @@ public final class GoalProjectionService {
             GoalProjectionOptions options,
             GoalChoiceResolution manualChoices
     ) {
+        return project(goal, authority, options, manualChoices, GoalRecipeDefaults.empty());
+    }
+
+    public GoalProjection project(
+            GoalDescriptor goal,
+            GoalVisibleAuthority authority,
+            GoalProjectionOptions options,
+            GoalChoiceResolution manualChoices,
+            GoalRecipeDefaults recipeDefaults
+    ) {
         return new ProjectionRun(
                 goal,
                 authority == null ? GoalVisibleAuthority.empty() : authority,
                 options == null ? GoalProjectionOptions.defaults() : options,
-                manualChoices == null ? GoalChoiceResolution.empty() : manualChoices
+                manualChoices == null ? GoalChoiceResolution.empty() : manualChoices,
+                recipeDefaults == null ? GoalRecipeDefaults.empty() : recipeDefaults
         ).project();
     }
 
@@ -42,13 +54,15 @@ public final class GoalProjectionService {
         private final GoalVisibleAuthority authority;
         private final GoalProjectionOptions options;
         private final GoalChoiceResolution manualChoices;
+        private final GoalRecipeDefaults recipeDefaults;
         private final LinkedHashMap<ItemIdentity, MutableAuthorityCount> remainingCounts = new LinkedHashMap<>();
         private final LinkedHashMap<String, GoalRecipeDescriptor> recipesById = new LinkedHashMap<>();
         private final LinkedHashMap<ItemIdentity, GoalRecipeDescriptor> recipesByOutput = new LinkedHashMap<>();
+        private final LinkedHashMap<ItemIdentity, List<String>> producerIdsByOutput = new LinkedHashMap<>();
         private final ArrayList<GoalRequirement> requirements = new ArrayList<>();
         private final ArrayList<GoalChoiceRequirement> choices = new ArrayList<>();
         private final ArrayList<GoalProjectionEntry> entries = new ArrayList<>();
-        private final LinkedHashMap<ItemIdentity, Integer> desiredCounts = new LinkedHashMap<>();
+        private final LinkedHashMap<ItemIdentity, Integer> wantedCounts = new LinkedHashMap<>();
         private final LinkedHashSet<String> diagnostics = new LinkedHashSet<>();
         private boolean blocked;
         private int sequence;
@@ -57,12 +71,14 @@ public final class GoalProjectionService {
                 GoalDescriptor goal,
                 GoalVisibleAuthority authority,
                 GoalProjectionOptions options,
-                GoalChoiceResolution manualChoices
+                GoalChoiceResolution manualChoices,
+                GoalRecipeDefaults recipeDefaults
         ) {
             this.goal = goal;
             this.authority = authority;
             this.options = options;
             this.manualChoices = manualChoices;
+            this.recipeDefaults = recipeDefaults;
             seedAuthority();
             seedRecipes();
         }
@@ -85,6 +101,16 @@ public final class GoalProjectionService {
                 blocked = true;
                 return build(goal.goalId(), goal.label(), resolvedTargetCount(targetOutput));
             }
+            trace(
+                    "start goal={} label={} target={} targetIdentity={} focusedRecipe={} rootRecipe={} recipes={} authority={}",
+                    goal.goalId(),
+                    goal.label(),
+                    resolvedTargetCount(targetOutput),
+                    targetOutput.identity().itemId(),
+                    goal.focusedRecipeId(),
+                    root.recipeId(),
+                    recipesById.size(),
+                    authorityToken());
             expandRecipe(
                     root,
                     targetOutput.identity(),
@@ -102,6 +128,16 @@ public final class GoalProjectionService {
                     : diagnostics.isEmpty()
                     ? GoalProjectionStatus.READY
                     : GoalProjectionStatus.READY_WITH_DIAGNOSTICS;
+            SlotDebugLog.verboseLog(
+                    "[goal] projected goal={} target={} status={} requirements={} entries={} choices={} wanted={} diagnostics={}",
+                    goalId,
+                    targetCount,
+                    status,
+                    requirements.size(),
+                    entries.size(),
+                    choices.size(),
+                    wantedCounts.size(),
+                    diagnostics);
             return new GoalProjection(
                     goalId,
                     label,
@@ -110,7 +146,7 @@ public final class GoalProjectionService {
                     requirements,
                     choices,
                     entries,
-                    desiredCounts,
+                    wantedCounts,
                     List.copyOf(diagnostics)
             );
         }
@@ -124,6 +160,7 @@ public final class GoalProjectionService {
                         count.elsewhereStorageCount()
                 ));
             }
+            trace("seeded authority identities={} counts={}", remainingCounts.size(), authorityToken());
         }
 
         private void seedRecipes() {
@@ -141,8 +178,27 @@ public final class GoalProjectionService {
                 if (recipe.outputs().size() > 1) {
                     diagnostic("recipe_has_multiple_outputs", recipe.recipeId());
                 }
+                trace(
+                        "seed recipe={} category={} tree={} outputs={} inputs={} catalysts={} diagnostics={}",
+                        recipe.recipeId(),
+                        recipe.categoryId(),
+                        recipe.supportsTree(),
+                        stackTokens(recipe.outputs()),
+                        ingredientTokens(recipe.inputs()),
+                        ingredientTokens(recipe.catalysts()),
+                        recipe.diagnostics());
                 for (GoalStackDescriptor output : recipe.outputs()) {
-                    recipesByOutput.putIfAbsent(output.identity(), recipe);
+                    GoalRecipeDescriptor previous = recipesByOutput.putIfAbsent(output.identity(), recipe);
+                    producerIdsByOutput
+                            .computeIfAbsent(output.identity(), ignored -> new ArrayList<>())
+                            .add(recipe.recipeId());
+                    if (previous != null && !previous.recipeId().equals(recipe.recipeId())) {
+                        trace(
+                                "producer collision output={} kept={} ignored={}",
+                                output.identity().itemId(),
+                                previous.recipeId(),
+                                recipe.recipeId());
+                    }
                 }
             }
         }
@@ -159,19 +215,140 @@ public final class GoalProjectionService {
         }
 
         private GoalRecipeDescriptor recipeProducing(ItemIdentity outputIdentity) {
+            List<GoalRecipeDescriptor> producers = recipesProducing(outputIdentity);
+            return producers.isEmpty() ? null : producers.get(0);
+        }
+
+        private List<GoalRecipeDescriptor> recipesProducing(ItemIdentity outputIdentity) {
             if (outputIdentity == null) {
-                return null;
+                return List.of();
             }
-            GoalRecipeDescriptor exact = recipesByOutput.get(outputIdentity);
-            if (exact != null) {
-                return exact;
+            LinkedHashSet<String> producerIds = new LinkedHashSet<>();
+            List<String> exactIds = producerIdsByOutput.get(outputIdentity);
+            if (exactIds != null) {
+                producerIds.addAll(exactIds);
             }
-            for (Map.Entry<ItemIdentity, GoalRecipeDescriptor> entry : recipesByOutput.entrySet()) {
+            for (Map.Entry<ItemIdentity, List<String>> entry : producerIdsByOutput.entrySet()) {
                 if (ItemIdentityMatcher.matchesMovable(entry.getKey(), outputIdentity)) {
-                    return entry.getValue();
+                    producerIds.addAll(entry.getValue());
                 }
             }
+            LinkedHashMap<String, GoalRecipeDescriptor> result = new LinkedHashMap<>();
+            for (String producerId : producerIds) {
+                GoalRecipeDescriptor recipe = recipesById.get(producerId);
+                if (recipe != null) {
+                    result.putIfAbsent(recipe.recipeId(), recipe);
+                }
+            }
+            return List.copyOf(result.values());
+        }
+
+        private GoalRecipeDescriptor selectProducerRecipe(
+                ItemIdentity outputIdentity,
+                List<GoalRecipeDescriptor> producers,
+                String choiceGroupId
+        ) {
+            if (producers == null || producers.isEmpty()) {
+                return null;
+            }
+            String manualRecipeId = manualChoices.recipeChoiceFor(choiceGroupId);
+            if (!manualRecipeId.isBlank()) {
+                for (GoalRecipeDescriptor producer : producers) {
+                    if (manualRecipeId.equals(producer.recipeId())) {
+                        trace(
+                                "manual producer choice output={} choice={} recipe={}",
+                                outputIdentity == null ? "" : outputIdentity.itemId(),
+                                choiceGroupId,
+                                manualRecipeId);
+                        return producer;
+                    }
+                }
+                diagnostic("manual_recipe_choice_not_producer", choiceGroupId + ":" + manualRecipeId);
+                trace(
+                        "manual producer choice rejected output={} choice={} recipe={} producers={}",
+                        outputIdentity == null ? "" : outputIdentity.itemId(),
+                        choiceGroupId,
+                        manualRecipeId,
+                        recipeIds(producers));
+                return null;
+            }
+            String defaultRecipeId = recipeDefaults.recipeChoiceFor(outputIdentity);
+            if (!defaultRecipeId.isBlank()) {
+                for (GoalRecipeDescriptor producer : producers) {
+                    if (defaultRecipeId.equals(producer.recipeId())) {
+                        trace(
+                                "remembered producer default output={} choice={} recipe={}",
+                                outputIdentity == null ? "" : outputIdentity.itemId(),
+                                choiceGroupId,
+                                defaultRecipeId);
+                        return producer;
+                    }
+                }
+                trace(
+                        "remembered producer default not available output={} choice={} recipe={} producers={}",
+                        outputIdentity == null ? "" : outputIdentity.itemId(),
+                        choiceGroupId,
+                        defaultRecipeId,
+                        recipeIds(producers));
+            }
+            if (producers.size() == 1) {
+                return producers.get(0);
+            }
+            ArrayList<GoalRecipeDescriptor> accessible = new ArrayList<>();
+            for (GoalRecipeDescriptor producer : producers) {
+                if (recipeInputsVisible(producer)) {
+                    accessible.add(producer);
+                }
+            }
+            if (accessible.size() == 1) {
+                return accessible.get(0);
+            }
+            trace(
+                    "producer selection unresolved output={} producers={} accessible={}",
+                    outputIdentity == null ? "" : outputIdentity.itemId(),
+                    recipeIds(producers),
+                    recipeIds(accessible));
             return null;
+        }
+
+        private boolean recipeInputsVisible(GoalRecipeDescriptor recipe) {
+            if (recipe == null || recipe.inputs().isEmpty()) {
+                return false;
+            }
+            for (GoalIngredientDescriptor ingredient : recipe.inputs()) {
+                if (!ingredientHasVisibleAlternative(ingredient)) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private boolean ingredientHasVisibleAlternative(GoalIngredientDescriptor ingredient) {
+            if (ingredient == null || ingredient.alternatives().isEmpty()) {
+                return false;
+            }
+            for (GoalStackDescriptor alternative : ingredient.alternatives()) {
+                if (visibleCount(alternative.identity()) > 0) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private int visibleCount(ItemIdentity identity) {
+            if (identity == null) {
+                return 0;
+            }
+            MutableAuthorityCount exact = remainingCounts.get(identity);
+            if (exact != null) {
+                return exact.total();
+            }
+            for (Map.Entry<ItemIdentity, MutableAuthorityCount> entry : remainingCounts.entrySet()) {
+                if (ItemIdentityMatcher.matchesMovable(entry.getKey(), identity)) {
+                    return entry.getValue().total();
+                }
+            }
+            return 0;
         }
 
         private int resolvedTargetCount(GoalStackDescriptor targetOutput) {
@@ -214,12 +391,23 @@ public final class GoalProjectionService {
             if (batches <= 0) {
                 return true;
             }
+            trace(
+                    "expand depth={} recipe={} requestedOutput={} requested={} outputCount={} batches={} breadcrumbs={}",
+                    depth,
+                    recipe.recipeId(),
+                    requestedOutput == null ? "" : requestedOutput.itemId(),
+                    requestedCount,
+                    outputCount,
+                    batches,
+                    breadcrumbs);
             LinkedHashSet<ItemIdentity> nextPath = new LinkedHashSet<>(outputPath);
             if (requestedOutput != null) {
                 nextPath.add(requestedOutput);
             }
             for (GoalIngredientDescriptor ingredient : recipe.inputs()) {
-                int required = multiplySaturated(ingredient.quantity(), batches);
+                int required = ingredient.consumed()
+                        ? multiplySaturated(ingredient.quantity(), batches)
+                        : Math.max(0, ingredient.quantity());
                 handleIngredient(recipe, ingredient, required, breadcrumbs, nextPath, depth);
             }
             return true;
@@ -236,6 +424,16 @@ public final class GoalProjectionService {
             if (ingredient == null || requiredCount <= 0) {
                 return;
             }
+            trace(
+                    "ingredient recipe={} id={} label={} required={} quantity={} alternatives={} choiceRequired={} diagnostics={}",
+                    recipe.recipeId(),
+                    ingredient.ingredientId(),
+                    ingredient.label(),
+                    requiredCount,
+                    ingredient.quantity(),
+                    stackTokens(ingredient.alternatives()),
+                    ingredient.choiceRequired(),
+                    ingredient.diagnostics());
             for (String diagnostic : ingredient.diagnostics()) {
                 diagnostic("ingredient_diagnostic", recipe.recipeId() + ":" + ingredient.ingredientId() + ":" + diagnostic);
             }
@@ -245,9 +443,10 @@ public final class GoalProjectionService {
             if (ingredient.alternatives().isEmpty()) {
                 diagnostic("ingredient_has_no_alternatives", recipe.recipeId() + ":" + ingredient.ingredientId());
                 blocked = true;
-                addChoiceRequirement(recipe, ingredient, requiredCount, List.of(), breadcrumbs, List.of(
-                        "ingredient_has_no_alternatives"
-                ));
+                ArrayList<String> localDiagnostics = new ArrayList<>();
+                localDiagnostics.add("ingredient_has_no_alternatives");
+                localDiagnostics.addAll(ingredient.diagnostics());
+                addChoiceRequirement(recipe, ingredient, requiredCount, List.of(), breadcrumbs, localDiagnostics);
                 return;
             }
             if (ingredient.choiceRequired() || ingredient.alternatives().size() > 1) {
@@ -275,9 +474,15 @@ public final class GoalProjectionService {
                 Set<ItemIdentity> outputPath,
                 int depth
         ) {
-            String choiceGroupId = choiceGroupId(recipe, ingredient);
+            String choiceGroupId = GoalChoiceKeys.ingredientChoiceGroupId(recipe.recipeId(), ingredient.ingredientId());
             ItemIdentity manual = manualChoices.choiceFor(ingredient.ingredientId(), choiceGroupId);
             if (manual != null) {
+                trace(
+                        "manual choice recipe={} choice={} selected={} required={}",
+                        recipe.recipeId(),
+                        choiceGroupId,
+                        manual.itemId(),
+                        requiredCount);
                 GoalStackDescriptor selected = findAlternative(ingredient.alternatives(), manual);
                 if (selected == null) {
                     diagnostic("manual_choice_not_in_ingredient", choiceGroupId + ":" + manual.itemId());
@@ -305,9 +510,33 @@ public final class GoalProjectionService {
                 addConcreteRequirement(recipe, ingredient, alternative, allocation, true, choiceGroupId, breadcrumbs, outputPath, depth);
                 resolved.add(new GoalResolvedChoice(choiceGroupId, alternative.identity(), alternative.displayName(), allocation, false));
                 unresolved -= allocation;
+                trace(
+                        "auto choice allocation recipe={} choice={} alternative={} available={} allocated={} remaining={}",
+                        recipe.recipeId(),
+                        choiceGroupId,
+                        alternative.identity().itemId(),
+                        available,
+                        allocation,
+                        unresolved);
             }
             if (unresolved > 0) {
-                addChoiceRequirement(recipe, ingredient, unresolved, resolved, breadcrumbs, List.of());
+                trace(
+                        "choice unresolved recipe={} choice={} required={} unresolved={} alternatives={} resolved={}",
+                        recipe.recipeId(),
+                        choiceGroupId,
+                        requiredCount,
+                        unresolved,
+                        stackTokens(ingredient.alternatives()),
+                        resolved);
+                addChoiceRequirement(recipe, ingredient, unresolved, resolved, breadcrumbs, ingredient.diagnostics());
+            } else if (!resolved.isEmpty()) {
+                SlotDebugLog.verboseLog(
+                        "[goal] auto-resolved choice goal={} choice={} required={} resolved={} recipe={}",
+                        goal == null ? "" : goal.goalId(),
+                        choiceGroupId,
+                        requiredCount,
+                        resolved,
+                        recipe.recipeId());
             }
         }
 
@@ -323,15 +552,35 @@ public final class GoalProjectionService {
                 int depth
         ) {
             MutableAuthorityCount count = remainingCount(stack.identity());
-            GoalAuthorityCount consumed = count.consume(requiredCount);
+            GoalAuthorityCount consumed = ingredient.consumed()
+                    ? count.consume(requiredCount)
+                    : count.peek(requiredCount);
             int visible = consumed.totalCount();
             int missing = Math.max(0, requiredCount - visible);
             List<String> requirementBreadcrumbs = appendBreadcrumb(breadcrumbs, stack.displayName());
-            int desiredCount = missing;
-            GoalRecipeDescriptor childRecipe = null;
+            int wantedCount = missing <= 0 ? 0 : consumed.carriedCount() + missing;
+            List<GoalRecipeDescriptor> producerRecipes = recipesProducing(stack.identity());
+            String producerChoiceGroupId = GoalChoiceKeys.producerChoiceGroupId(
+                    recipe.recipeId(),
+                    ingredient.ingredientId(),
+                    stack.identity());
+            GoalRecipeDescriptor childRecipe = selectProducerRecipe(stack.identity(), producerRecipes, producerChoiceGroupId);
+            ArrayList<String> localDiagnostics = new ArrayList<>(ingredient.diagnostics());
+            List<String> producerIds = recipeIds(producerRecipes);
+            boolean manualProducerChoice = !manualChoices.recipeChoiceFor(producerChoiceGroupId).isBlank();
+            boolean defaultProducerChoice = recipeDefaults.hasRecipeChoice(stack.identity());
+            if (producerIds.size() > 1) {
+                localDiagnostics.add("producer_candidates=" + producerIds.size()
+                        + ":selected=" + (childRecipe == null ? "" : childRecipe.recipeId()));
+                if (childRecipe == null) {
+                    localDiagnostics.add("producer_choice_required");
+                }
+            }
+            if (!ingredient.consumed()) {
+                localDiagnostics.add("ingredient_not_consumed");
+            }
             boolean expandMissing = false;
             if (missing > 0) {
-                childRecipe = recipeProducing(stack.identity());
                 if (childRecipe != null) {
                     if (depth >= options.maxDepth()) {
                         diagnostic("goal_depth_limit_exceeded", chainToken(requirementBreadcrumbs, stack.identity()));
@@ -343,15 +592,35 @@ public final class GoalProjectionService {
                         diagnostic("recipe_output_missing", childRecipe.recipeId());
                         blocked = true;
                     } else {
-                        desiredCount = 0;
+                        wantedCount = 0;
                         expandMissing = true;
                     }
                 }
             }
+            boolean producerChoiceRequired = missing > 0 && childRecipe == null && producerIds.size() > 1;
+            trace(
+                    "requirement recipe={} ingredient={} identity={} required={} consumed={} missing={} wanted={} childRecipe={} expandMissing={} choice={} breadcrumbs={} diagnostics={}",
+                    recipe.recipeId(),
+                    ingredient.ingredientId(),
+                    stack.identity().itemId(),
+                    requiredCount,
+                    visible,
+                    missing,
+                    wantedCount,
+                    childRecipe == null ? "" : childRecipe.recipeId(),
+                    expandMissing,
+                    choiceInvolved ? choiceGroupId : "",
+                    requirementBreadcrumbs,
+                    localDiagnostics);
+            boolean anyChoiceInvolved = choiceInvolved || producerChoiceRequired;
+            String resolvedChoiceGroupId = choiceInvolved && !choiceGroupId.isBlank()
+                    ? choiceGroupId
+                    : (producerChoiceRequired || manualProducerChoice || defaultProducerChoice) ? producerChoiceGroupId : "";
             GoalRequirement requirement = new GoalRequirement(
                     "goal_requirement_" + (++sequence),
                     recipe.recipeId(),
                     ingredient.ingredientId(),
+                    childRecipe == null ? "" : childRecipe.recipeId(),
                     GoalRequirementKind.CONCRETE,
                     stack.identity(),
                     stack.displayName(),
@@ -360,20 +629,62 @@ public final class GoalProjectionService {
                     consumed.proximateStorageCount(),
                     consumed.elsewhereStorageCount(),
                     missing,
-                    desiredCount,
-                    choiceInvolved,
-                    choiceGroupId,
+                    wantedCount,
+                    anyChoiceInvolved,
+                    resolvedChoiceGroupId,
                     requirementBreadcrumbs,
-                    List.of()
+                    localDiagnostics
             );
             requirements.add(requirement);
             entries.add(GoalProjectionEntry.fromRequirement(requirement));
-            if (desiredCount > 0) {
-                desiredCounts.merge(stack.identity(), desiredCount, Integer::sum);
+            if (wantedCount > 0) {
+                wantedCounts.merge(stack.identity(), wantedCount, Integer::sum);
+            }
+            if (producerChoiceRequired) {
+                addProducerChoiceRequirement(recipe, ingredient, stack, missing, requirementBreadcrumbs, producerRecipes);
             }
             if (expandMissing) {
                 expandRecipe(childRecipe, stack.identity(), missing, requirementBreadcrumbs, outputPath, depth + 1);
             }
+        }
+
+        private void addProducerChoiceRequirement(
+                GoalRecipeDescriptor parentRecipe,
+                GoalIngredientDescriptor ingredient,
+                GoalStackDescriptor stack,
+                int unresolvedCount,
+                List<String> breadcrumbs,
+                List<GoalRecipeDescriptor> producerRecipes
+        ) {
+            String choiceGroupId = GoalChoiceKeys.producerChoiceGroupId(
+                    parentRecipe.recipeId(),
+                    ingredient.ingredientId(),
+                    stack.identity());
+            ArrayList<String> localDiagnostics = new ArrayList<>();
+            localDiagnostics.add("producer_choice_required");
+            localDiagnostics.add("producer_candidates=" + String.join(",", recipeIds(producerRecipes)));
+            GoalChoiceRequirement choice = new GoalChoiceRequirement(
+                    choiceGroupId,
+                    parentRecipe.recipeId(),
+                    ingredient.ingredientId(),
+                    "",
+                    "Choose recipe for " + stack.displayName(),
+                    unresolvedCount,
+                    unresolvedCount,
+                    stack.identity(),
+                    List.of(),
+                    List.of(),
+                    breadcrumbs,
+                    localDiagnostics
+            );
+            choices.add(choice);
+            trace(
+                    "producer choice unresolved recipe={} ingredient={} output={} unresolved={} producers={}",
+                    parentRecipe.recipeId(),
+                    ingredient.ingredientId(),
+                    stack.identity().itemId(),
+                    unresolvedCount,
+                    recipeIds(producerRecipes));
         }
 
         private void addChoiceRequirement(
@@ -384,15 +695,17 @@ public final class GoalProjectionService {
                 List<String> breadcrumbs,
                 List<String> localDiagnostics
         ) {
-            String choiceGroupId = choiceGroupId(recipe, ingredient);
+            String choiceGroupId = GoalChoiceKeys.ingredientChoiceGroupId(recipe.recipeId(), ingredient.ingredientId());
             List<String> choiceBreadcrumbs = appendBreadcrumb(breadcrumbs, ingredient.label());
             GoalChoiceRequirement choice = new GoalChoiceRequirement(
                     choiceGroupId,
                     recipe.recipeId(),
                     ingredient.ingredientId(),
+                    ingredient.serializedIngredient(),
                     ingredient.label(),
                     unresolvedCount,
                     unresolvedCount,
+                    null,
                     ingredient.alternatives(),
                     resolved,
                     choiceBreadcrumbs,
@@ -400,10 +713,6 @@ public final class GoalProjectionService {
             );
             choices.add(choice);
             entries.add(GoalProjectionEntry.fromChoice(choice));
-        }
-
-        private String choiceGroupId(GoalRecipeDescriptor recipe, GoalIngredientDescriptor ingredient) {
-            return recipe.recipeId() + "#" + ingredient.ingredientId();
         }
 
         private GoalStackDescriptor findAlternative(List<GoalStackDescriptor> alternatives, ItemIdentity identity) {
@@ -460,6 +769,19 @@ public final class GoalProjectionService {
             return false;
         }
 
+        private List<String> recipeIds(List<GoalRecipeDescriptor> recipes) {
+            if (recipes == null || recipes.isEmpty()) {
+                return List.of();
+            }
+            ArrayList<String> ids = new ArrayList<>();
+            for (GoalRecipeDescriptor recipe : recipes) {
+                if (recipe != null) {
+                    ids.add(recipe.recipeId());
+                }
+            }
+            return List.copyOf(ids);
+        }
+
         private List<String> appendBreadcrumb(List<String> breadcrumbs, String label) {
             ArrayList<String> result = new ArrayList<>();
             if (breadcrumbs != null) {
@@ -479,6 +801,63 @@ public final class GoalProjectionService {
             String cleanCode = code == null || code.isBlank() ? "goal_projection_diagnostic" : code.trim();
             String cleanDetail = detail == null ? "" : detail.trim();
             diagnostics.add(cleanDetail.isBlank() ? cleanCode : cleanCode + ":" + cleanDetail);
+            SlotDebugLog.verboseLog(
+                    "[goal] diagnostic goal={} code={} detail={}",
+                    goal == null ? "" : goal.goalId(),
+                    cleanCode,
+                    cleanDetail);
+        }
+
+        private void trace(String message, Object... args) {
+            SlotDebugLog.verboseLog("[goal][resolve] " + message, args);
+        }
+
+        private String authorityToken() {
+            if (remainingCounts.isEmpty()) {
+                return "[]";
+            }
+            ArrayList<String> tokens = new ArrayList<>();
+            for (Map.Entry<ItemIdentity, MutableAuthorityCount> entry : remainingCounts.entrySet()) {
+                MutableAuthorityCount count = entry.getValue();
+                tokens.add(entry.getKey().itemId() + "="
+                        + count.carried + "/" + count.proximate + "/" + count.elsewhere);
+            }
+            return tokens.toString();
+        }
+
+        private String stackTokens(List<GoalStackDescriptor> stacks) {
+            if (stacks == null || stacks.isEmpty()) {
+                return "[]";
+            }
+            ArrayList<String> tokens = new ArrayList<>();
+            for (GoalStackDescriptor stack : stacks) {
+                if (stack == null || stack.identity() == null) {
+                    continue;
+                }
+                tokens.add(stack.identity().itemId() + "x" + stack.count());
+            }
+            return tokens.toString();
+        }
+
+        private String ingredientTokens(List<GoalIngredientDescriptor> ingredients) {
+            if (ingredients == null || ingredients.isEmpty()) {
+                return "[]";
+            }
+            ArrayList<String> tokens = new ArrayList<>();
+            for (GoalIngredientDescriptor ingredient : ingredients) {
+                if (ingredient == null) {
+                    continue;
+                }
+                tokens.add(ingredient.ingredientId() + "{label=" + ingredient.label()
+                        + ",qty=" + ingredient.quantity()
+                        + ",alts=" + ingredient.alternatives().size()
+                        + ",choice=" + ingredient.choiceRequired()
+                        + ",consumed=" + ingredient.consumed()
+                        + ",tag=" + ingredient.tagOrListLabel()
+                        + ",diagnostics=" + ingredient.diagnostics()
+                        + "}");
+            }
+            return tokens.toString();
         }
 
         private String outputToken(ItemIdentity output, GoalRecipeDescriptor recipe) {
@@ -537,6 +916,16 @@ public final class GoalProjectionService {
             remaining -= fromProximate;
             int fromElsewhere = Math.min(elsewhere, remaining);
             elsewhere -= fromElsewhere;
+            return new GoalAuthorityCount(fromCarried, fromProximate, fromElsewhere);
+        }
+
+        private GoalAuthorityCount peek(int requested) {
+            int remaining = Math.max(0, requested);
+            int fromCarried = Math.min(carried, remaining);
+            remaining -= fromCarried;
+            int fromProximate = Math.min(proximate, remaining);
+            remaining -= fromProximate;
+            int fromElsewhere = Math.min(elsewhere, remaining);
             return new GoalAuthorityCount(fromCarried, fromProximate, fromElsewhere);
         }
     }

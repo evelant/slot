@@ -6,6 +6,8 @@ import dev.imagio.slot.inventory.core.InventorySourceDescriptor;
 import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.ItemIdentityMatcher;
+import dev.imagio.slot.inventory.goal.GoalPlanState;
+import dev.imagio.slot.inventory.goal.GoalRecipeDefaults;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.query.InventoryEntrySnapshot;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
@@ -70,7 +72,9 @@ public record SlotWorkspaceViewModel(
         List<WayfindingTarget> wayfindingTargets,
         Set<IdentityRef> depositableIdentities,
         List<IdentityRef> recentIdentities,
-        ActiveChestPanel activeChestPanel
+        ActiveChestPanel activeChestPanel,
+        GoalRecipeDefaults goalRecipeDefaults,
+        List<GoalPlanState> goalPlans
 ) {
     public SlotWorkspaceViewModel {
         status = status == null || status.isBlank() ? "ready" : status;
@@ -95,6 +99,113 @@ public record SlotWorkspaceViewModel(
                 : Set.copyOf(new LinkedHashSet<>(depositableIdentities));
         recentIdentities = recentIdentities == null ? List.of() : List.copyOf(recentIdentities);
         activeChestPanel = activeChestPanel == null ? ActiveChestPanel.empty() : activeChestPanel;
+        goalRecipeDefaults = goalRecipeDefaults == null ? GoalRecipeDefaults.empty() : goalRecipeDefaults;
+        goalPlans = goalPlans == null ? List.of() : List.copyOf(goalPlans);
+    }
+
+    public SlotWorkspaceViewModel(
+            long revision,
+            String status,
+            String diagnostics,
+            int pendingCount,
+            int selectedQuickAccessSlot,
+            int canvasWidth,
+            int canvasHeight,
+            int carriedFreeSlotCount,
+            int carriedSlotCapacity,
+            List<AtlasIsland> islands,
+            List<AtlasItem> atlasItems,
+            List<AtlasItem> triageItems,
+            List<ChestChip> chestChips,
+            List<ChestClusterDescriptor> chestClusters,
+            List<HotbarSlot> hotbarSlots,
+            OffhandSlot offhand,
+            List<KitCard> kits,
+            LootChestPanel lootChestPanel,
+            List<WayfindingTarget> wayfindingTargets,
+            Set<IdentityRef> depositableIdentities,
+            List<IdentityRef> recentIdentities,
+            ActiveChestPanel activeChestPanel
+    ) {
+        this(
+                revision,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                canvasWidth,
+                canvasHeight,
+                carriedFreeSlotCount,
+                carriedSlotCapacity,
+                islands,
+                atlasItems,
+                triageItems,
+                chestChips,
+                chestClusters,
+                hotbarSlots,
+                offhand,
+                kits,
+                lootChestPanel,
+                wayfindingTargets,
+                depositableIdentities,
+                recentIdentities,
+                activeChestPanel,
+                GoalRecipeDefaults.empty(),
+                List.of()
+        );
+    }
+
+    public SlotWorkspaceViewModel(
+            long revision,
+            String status,
+            String diagnostics,
+            int pendingCount,
+            int selectedQuickAccessSlot,
+            int canvasWidth,
+            int canvasHeight,
+            int carriedFreeSlotCount,
+            int carriedSlotCapacity,
+            List<AtlasIsland> islands,
+            List<AtlasItem> atlasItems,
+            List<AtlasItem> triageItems,
+            List<ChestChip> chestChips,
+            List<ChestClusterDescriptor> chestClusters,
+            List<HotbarSlot> hotbarSlots,
+            OffhandSlot offhand,
+            List<KitCard> kits,
+            LootChestPanel lootChestPanel,
+            List<WayfindingTarget> wayfindingTargets,
+            Set<IdentityRef> depositableIdentities,
+            List<IdentityRef> recentIdentities,
+            ActiveChestPanel activeChestPanel,
+            GoalRecipeDefaults goalRecipeDefaults
+    ) {
+        this(
+                revision,
+                status,
+                diagnostics,
+                pendingCount,
+                selectedQuickAccessSlot,
+                canvasWidth,
+                canvasHeight,
+                carriedFreeSlotCount,
+                carriedSlotCapacity,
+                islands,
+                atlasItems,
+                triageItems,
+                chestChips,
+                chestClusters,
+                hotbarSlots,
+                offhand,
+                kits,
+                lootChestPanel,
+                wayfindingTargets,
+                depositableIdentities,
+                recentIdentities,
+                activeChestPanel,
+                goalRecipeDefaults,
+                List.of()
+        );
     }
 
     /** Backwards-compatible constructor: defaults chestClusters + lootChestPanel. */
@@ -804,7 +915,9 @@ public record SlotWorkspaceViewModel(
                 wayfindingTargets,
                 depositableIdentities,
                 recentIdentitiesList,
-                activeChestPanel == null ? ActiveChestPanel.empty() : activeChestPanel
+                activeChestPanel == null ? ActiveChestPanel.empty() : activeChestPanel,
+                new GoalRecipeDefaults(resolvedWorkflow.goalRecipeDefaults()),
+                resolvedWorkflow.goalPlans()
         );
     }
 
@@ -1530,12 +1643,44 @@ public record SlotWorkspaceViewModel(
         if (identity == null) {
             return ItemStack.EMPTY;
         }
+        ItemStack stack = resolveGhostStackItem(identity.itemId());
+        if (!stack.isEmpty()) {
+            return stack;
+        }
+        String fallbackItemId = syntheticGoalDisplayItem(identity.itemId());
+        if (!fallbackItemId.isBlank()) {
+            return resolveGhostStackItem(fallbackItemId);
+        }
+        return ItemStack.EMPTY;
+    }
+
+    private static ItemStack resolveGhostStackItem(String itemId) {
         try {
-            ItemStack stack = ghostStackResolver.apply(identity.itemId());
+            ItemStack stack = ghostStackResolver.apply(itemId);
             return stack == null ? ItemStack.EMPTY : stack;
         } catch (RuntimeException | LinkageError ignored) {
             return ItemStack.EMPTY;
         }
+    }
+
+    private static String syntheticGoalDisplayItem(String itemId) {
+        if (itemId == null || !itemId.startsWith("slot:emi/")) {
+            return "";
+        }
+        String normalized = itemId.toLowerCase(Locale.ROOT);
+        if (normalized.contains("limewater")) {
+            return "minecraft:barrel";
+        }
+        if (normalized.contains("water")) {
+            return "minecraft:water_bucket";
+        }
+        if (normalized.contains("lava")) {
+            return "minecraft:lava_bucket";
+        }
+        if (normalized.contains("fluid") || normalized.contains("liquid")) {
+            return "minecraft:bucket";
+        }
+        return "";
     }
 
     public static ItemStack displayStackForIdentity(ItemIdentity identity) {
@@ -1618,7 +1763,9 @@ public record SlotWorkspaceViewModel(
                 wayfindingTargets,
                 depositableIdentities,
                 recentIdentities,
-                activeChestPanel
+                activeChestPanel,
+                goalRecipeDefaults,
+                goalPlans
         );
     }
 
@@ -1645,7 +1792,9 @@ public record SlotWorkspaceViewModel(
                 wayfindingTargets,
                 depositableIdentities,
                 recentIdentities,
-                activeChestPanel
+                activeChestPanel,
+                goalRecipeDefaults,
+                goalPlans
         );
     }
 

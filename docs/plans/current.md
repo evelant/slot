@@ -25,10 +25,12 @@ migrating richer modern-only affordances without reintroducing
 backend-specific semantics.
 
 Sidecar product slice: [`emi-goal-projections.md`](emi-goal-projections.md)
-has landed Slices 0-3 through explicit EMI recipe-screen and drag/drop goal
-creation on both loaders, but playtest exposed projection and choice-flow
-blockers. Do the Queue item 1 bug pass before promoting persistence, extra
-goal chrome, or broader goal UX.
+has landed Slices 0-3 plus the first playtest stabilization passes: explicit
+EMI recipe-screen and drag/drop goal creation, server-persisted goal tabs,
+server-persisted producer recipe defaults, manual recipe-choice capture through
+EMI, visible-authority auto-resolution, quiet projection caching/logging, and
+synthetic non-item/fluid display fallbacks. Keep this as a playtest refinement
+track before adding broader goal chrome or pack-guide UX.
 
 Previously active
 [`single-column-workspace.md`](single-column-workspace.md) is paused
@@ -65,9 +67,15 @@ hold the rest.
   SLOT deposit/take semantics inside container screens, and Forge sidebar
   rendering isolates depth so host inventory item icons cannot float over
   the Kit panel.
+- **2026-05-12** — EMI goal projection playtest stabilization moved goal plans
+  and producer recipe defaults into server workflow state, added EMI recipe
+  capture for producer choices, reused visible carried/storage authority to
+  resolve choice ingredients, omitted empty crafting slots, handled reusable
+  tools, restored non-item producer recursion, and added named synthetic fluid
+  display fallbacks.
 - **2026-05-11** — EMI recipe goal projections landed through Slice 3:
   the common goal/projection model, goal-tab wall projection, browse-only
-  goal mode, client-side recipe-goal tabs, and explicit EMI recipe-screen /
+  goal mode, initial recipe-goal tabs, and explicit EMI recipe-screen /
   drag/drop goal creation/delegation now exist on NeoForge and Forge.
 - **2026-05-11** — classification pack-layer work landed installed
   `mods/` scanning, jar extraction, OpenRouter live runs, runtime export,
@@ -88,9 +96,6 @@ hold the rest.
   workflow persistence, session-backed projection, common wall/card/
   Recents/belt/kit/active-chest builders, sidebar host, tooltips,
   parked storage-chip builder, and HUD/world wayfinding.
-- **2026-05-05** — backpack-first shift-click routing, ghost-block
-  rendering, carried-count badge fix, and docs cleanup landed;
-  list-view + cursor-pickup were closed and archived to `done/`.
 
 ## Known issues
 
@@ -112,17 +117,19 @@ Roughly ordered by playtest signal. Pull from the top when the active
 track lands.
 
 1. **EMI goal projection playtest bug pass**
-   ([emi-goal-projections.md](emi-goal-projections.md)). Slices 0-3 exist, but
-   the real-recipe UI is not ready to build on. Fix the handoff bugs captured
-   in the plan: goal tabs must reuse normal wall sections instead of a synthetic
-   `Goal` section; duplicate and blank cards need root-cause fixes; desired
-   overlays must mean additional missing amount only; the choice/question
-   indicator needs readable contrast; `R` / `U` and context-menu actions must
-   target the clicked card or relevant choice group, not always the final goal;
-   and SLOT-owned manual ingredient choice needs an end-to-end concretization
-   path for tag/list alternatives. Add structured logging around EMI descriptor
-   capture, projection expansion, authority subtraction, display-stack
-   resolution, section assignment, and EMI delegation failures.
+   ([emi-goal-projections.md](emi-goal-projections.md)). The first
+   stabilization passes are in place: normal wall sections, duplicate
+   aggregation, readable choice badges, placeholder labels, wanted-count
+   projection, clicked-card EMI delegation, SLOT-owned manual choices,
+   server-persisted goals, server-persisted producer recipe defaults, quiet
+   projection caching/logging, breadth-first producer collection, reusable-tool
+   handling, empty-slot omission, visible-storage choice enrichment, and
+   synthetic display fallbacks for fluid-like requirements. Next pass is
+   validation, not new chrome: replay Blackwood Barrel Press and similar real
+   goals, confirm tracked-storage tools auto-fill choices, verify downstream
+   metal/glue/fluid recursion, confirm persisted goals/defaults survive
+   reconnect, and refine fluid/source-acquisition placeholders only from that
+   evidence.
 
 2. **Cursor + desired/wanted-counts playtest bug pass — remainder.**
    Active-scope desired counts, player wanted counts, unified gap chrome,

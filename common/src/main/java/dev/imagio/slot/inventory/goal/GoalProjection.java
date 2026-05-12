@@ -16,7 +16,7 @@ public record GoalProjection(
         List<GoalRequirement> requirements,
         List<GoalChoiceRequirement> choices,
         List<GoalProjectionEntry> entries,
-        Map<ItemIdentity, Integer> desiredCounts,
+        Map<ItemIdentity, Integer> wantedCounts,
         List<String> diagnostics
 ) {
     public GoalProjection {
@@ -27,7 +27,7 @@ public record GoalProjection(
         requirements = copyRequirements(requirements);
         choices = copyChoices(choices);
         entries = copyEntries(entries);
-        desiredCounts = copyDesiredCounts(desiredCounts);
+        wantedCounts = copyWantedCounts(wantedCounts);
         diagnostics = copyStrings(diagnostics);
         if (!diagnostics.isEmpty() && status == GoalProjectionStatus.READY) {
             status = GoalProjectionStatus.READY_WITH_DIAGNOSTICS;
@@ -77,7 +77,7 @@ public record GoalProjection(
         return List.copyOf(copy);
     }
 
-    private static Map<ItemIdentity, Integer> copyDesiredCounts(Map<ItemIdentity, Integer> source) {
+    private static Map<ItemIdentity, Integer> copyWantedCounts(Map<ItemIdentity, Integer> source) {
         LinkedHashMap<ItemIdentity, Integer> copy = new LinkedHashMap<>();
         if (source != null) {
             for (Map.Entry<ItemIdentity, Integer> entry : source.entrySet()) {

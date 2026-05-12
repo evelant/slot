@@ -19,6 +19,8 @@ public final class WorkflowDomainRuntime {
     private final KitWorkflowDomainService kitWorkflow;
     private final DesiredCountWorkflowDomainService desiredCountWorkflow;
     private final WantedCountWorkflowDomainService wantedCountWorkflow;
+    private final GoalPlanWorkflowDomainService goalPlanWorkflow;
+    private final GoalRecipeDefaultWorkflowDomainService goalRecipeDefaultWorkflow;
     private final InventoryBrowsePreferencesStore browsePreferences;
     private final InventoryBrowseSessionStateStore browseSessionState;
     private final UndoStack undoStack;
@@ -37,6 +39,8 @@ public final class WorkflowDomainRuntime {
         this.kitWorkflow = new KitWorkflowDomainService(repository, this::saveNow);
         this.desiredCountWorkflow = new DesiredCountWorkflowDomainService(repository, this::saveNow);
         this.wantedCountWorkflow = new WantedCountWorkflowDomainService(repository, this::saveNow);
+        this.goalPlanWorkflow = new GoalPlanWorkflowDomainService(repository, this::saveNow);
+        this.goalRecipeDefaultWorkflow = new GoalRecipeDefaultWorkflowDomainService(repository, this::saveNow);
         this.undoStack = new UndoStack();
     }
 
@@ -66,6 +70,14 @@ public final class WorkflowDomainRuntime {
 
     public WantedCountWorkflowDomainService wantedCountWorkflow() {
         return wantedCountWorkflow;
+    }
+
+    public GoalRecipeDefaultWorkflowDomainService goalRecipeDefaultWorkflow() {
+        return goalRecipeDefaultWorkflow;
+    }
+
+    public GoalPlanWorkflowDomainService goalPlanWorkflow() {
+        return goalPlanWorkflow;
     }
 
     public WorkflowProjection.Snapshot workflowProjection() {

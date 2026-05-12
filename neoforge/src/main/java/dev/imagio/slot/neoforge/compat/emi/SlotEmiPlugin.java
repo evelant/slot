@@ -9,8 +9,12 @@ import dev.emi.emi.api.widget.Bounds;
 import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.goal.GoalDescriptor;
+import dev.imagio.slot.inventory.goal.GoalProjectionEntry;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.neoforge.network.SlotGoalPlanPayload;
 import dev.imagio.slot.neoforge.client.screen.SlotWorkspaceMountController;
 import dev.imagio.slot.neoforge.client.screen.SlotContainerSidebar;
+import dev.imagio.slot.ui.workspace.GoalWorkspaceClientState;
 import dev.imagio.slot.ui.workspace.GoalWorkspaceIntegration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -18,6 +22,7 @@ import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.neoforged.neoforge.client.event.ScreenEvent;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 /**
  * Tells EMI which parts of the screen SLOT is rendering so EMI's panel
@@ -61,6 +66,11 @@ public final class SlotEmiPlugin implements EmiPlugin {
             }
 
             @Override
+            public boolean openRecipe(GoalDescriptor goal, GoalProjectionEntry entry) {
+                return SlotEmiGoalAdapter.openRecipe(goal, entry);
+            }
+
+            @Override
             public boolean openUses(ItemIdentity identity) {
                 return SlotEmiGoalAdapter.openUses(identity);
             }
@@ -71,9 +81,31 @@ public final class SlotEmiPlugin implements EmiPlugin {
             }
 
             @Override
+            public boolean openChoiceEditor(GoalDescriptor goal, GoalProjectionEntry entry) {
+                return SlotEmiGoalAdapter.openChoiceEditor(goal, entry);
+            }
+
+            @Override
             public boolean openWorkspace() {
                 SlotWorkspaceMountController.openSlotWorkspace();
                 return true;
+            }
+
+            @Override
+            public boolean persistGoal(GoalWorkspaceClientState.GoalTab goal) {
+                PacketDistributor.sendToServer(SlotGoalPlanPayload.save(GoalWorkspaceClientState.planState(goal)));
+                return true;
+            }
+
+            @Override
+            public boolean removePersistedGoal(String goalId) {
+                PacketDistributor.sendToServer(SlotGoalPlanPayload.remove(goalId));
+                return true;
+            }
+
+            @Override
+            public GoalDescriptor enrichVisibleAlternatives(GoalDescriptor goal, SlotWorkspaceViewModel source) {
+                return SlotEmiGoalAdapter.enrichVisibleAlternatives(goal, source);
             }
         });
         registry.addRecipeDecorator((recipe, widgets) ->

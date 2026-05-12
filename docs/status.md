@@ -43,9 +43,11 @@ input; preserve tooltip/lore prose, guidebook/quest text, lang descriptions,
 KubeJS/datapack overlays, Ponder/category labels, stack groups, resource-pack
 overrides, and mod descriptions instead of reducing prompts to item ids.
 
-EMI goal projections create session-local SLOT goal tabs from explicit recipe
-screen and drag/drop targets on both loaders; playtest blockers remain in
-[plans/emi-goal-projections.md](plans/emi-goal-projections.md).
+EMI goal projections now create server-persisted SLOT goal tabs from explicit
+EMI recipe-screen and drag/drop goal targets on both loaders. The current
+playtest pass in [plans/emi-goal-projections.md](plans/emi-goal-projections.md)
+stabilizes recipe choices, visible-storage auto-resolution, wanted-count
+projection, and non-item/fluid placeholders before broader goal UX grows.
 
 ### Production wall shape (post-list-view)
 

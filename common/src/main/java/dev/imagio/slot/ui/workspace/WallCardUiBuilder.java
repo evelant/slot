@@ -45,7 +45,7 @@ public final class WallCardUiBuilder {
                         cardChromeColor(selected, searchMatch, item.recent(), item.carried(), filtering))
                 .noText()
                 .zIndex(2)
-                .tooltipStack(item.displayStack())
+                .tooltipStack(context.suppressVanillaTooltip(item) ? null : item.displayStack())
                 .tooltipLines(context.tooltipLines(item))
                 .attach(WorkspaceUiAttachments.WALL_CARD, Boolean.TRUE)
                 .attach(WorkspaceUiAttachments.ATLAS_ITEM, item)
@@ -281,25 +281,33 @@ public final class WallCardUiBuilder {
         if (!context.choiceInvolved(item)) {
             return;
         }
-        int color = context.choiceCard(item) ? 0xE0FFB86B : 0xD0B486FF;
-        SlotUiElement pip = SlotUiElement.panel(color)
+        int fillColor = context.choiceCard(item) ? 0xFFFFD166 : 0xFFE7D9FF;
+        int markColor = 0xFF071017;
+        SlotUiElement frame = SlotUiElement.panel(0xF0071017)
                 .allowHitTest(false)
-                .zIndex(324)
+                .zIndex(430)
                 .layout(layout -> layout
                         .positionType(SlotUiLayout.PositionType.ABSOLUTE)
-                        .left(6)
+                        .left(0)
                         .top(0)
-                        .width(5)
-                        .height(5));
-        pip.addChild(SlotUiElement.label("?", 0xFF0B1117)
+                        .width(10)
+                        .height(10)
+                        .paddingAll(1));
+        SlotUiElement pip = SlotUiElement.panel(fillColor)
+                .allowHitTest(false)
+                .layout(layout -> layout
+                        .widthPercent(100)
+                        .heightPercent(100));
+        pip.addChild(SlotUiElement.label("?", markColor)
                 .allowHitTest(false)
                 .layout(layout -> layout.widthPercent(100).heightPercent(100))
                 .textStyle(style -> style
-                        .color(0xFF0B1117)
-                        .fontSize(5)
+                        .color(markColor)
+                        .fontSize(8)
                         .horizontal(SlotUiTextStyle.Horizontal.CENTER)
                         .vertical(SlotUiTextStyle.Vertical.CENTER)));
-        body.addChild(pip);
+        frame.addChild(pip);
+        body.addChild(frame);
     }
 
     private void addWayfindingStrip(SlotUiElement body) {
@@ -412,6 +420,10 @@ public final class WallCardUiBuilder {
         }
 
         default boolean choiceCard(SlotWorkspaceViewModel.AtlasItem item) {
+            return false;
+        }
+
+        default boolean suppressVanillaTooltip(SlotWorkspaceViewModel.AtlasItem item) {
             return false;
         }
     }

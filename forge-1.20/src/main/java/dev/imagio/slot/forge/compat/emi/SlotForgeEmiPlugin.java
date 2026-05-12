@@ -9,9 +9,13 @@ import dev.emi.emi.api.widget.Bounds;
 import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.forge.client.ForgeWorkspaceClient;
 import dev.imagio.slot.forge.client.ForgeContainerSidebar;
+import dev.imagio.slot.forge.network.SlotForgeNetworking;
 import dev.imagio.slot.forge.ui.ForgeWorkspaceScreen;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.goal.GoalDescriptor;
+import dev.imagio.slot.inventory.goal.GoalProjectionEntry;
+import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.ui.workspace.GoalWorkspaceClientState;
 import dev.imagio.slot.ui.workspace.GoalWorkspaceIntegration;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -42,6 +46,11 @@ public final class SlotForgeEmiPlugin implements EmiPlugin {
             }
 
             @Override
+            public boolean openRecipe(GoalDescriptor goal, GoalProjectionEntry entry) {
+                return SlotForgeEmiGoalAdapter.openRecipe(goal, entry);
+            }
+
+            @Override
             public boolean openUses(ItemIdentity identity) {
                 return SlotForgeEmiGoalAdapter.openUses(identity);
             }
@@ -52,9 +61,29 @@ public final class SlotForgeEmiPlugin implements EmiPlugin {
             }
 
             @Override
+            public boolean openChoiceEditor(GoalDescriptor goal, GoalProjectionEntry entry) {
+                return SlotForgeEmiGoalAdapter.openChoiceEditor(goal, entry);
+            }
+
+            @Override
             public boolean openWorkspace() {
                 ForgeWorkspaceClient.openWorkspaceScreen();
                 return true;
+            }
+
+            @Override
+            public boolean persistGoal(GoalWorkspaceClientState.GoalTab goal) {
+                return SlotForgeNetworking.saveGoalPlan(GoalWorkspaceClientState.planState(goal));
+            }
+
+            @Override
+            public boolean removePersistedGoal(String goalId) {
+                return SlotForgeNetworking.removeGoalPlan(goalId);
+            }
+
+            @Override
+            public GoalDescriptor enrichVisibleAlternatives(GoalDescriptor goal, SlotWorkspaceViewModel source) {
+                return SlotForgeEmiGoalAdapter.enrichVisibleAlternatives(goal, source);
             }
         });
         registry.addRecipeDecorator((recipe, widgets) ->

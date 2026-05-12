@@ -3,6 +3,7 @@ package dev.imagio.slot.forge.network;
 import dev.imagio.slot.SlotCommon;
 import dev.imagio.slot.forge.storage.ForgeCarriedActivityTracker;
 import dev.imagio.slot.forge.workflow.ForgePlayerWorkflowRuntimeService;
+import dev.imagio.slot.inventory.goal.GoalPlanState;
 import dev.imagio.slot.inventory.workspace.KitGatherService;
 import dev.imagio.slot.inventory.workspace.KitPageCycleService;
 import dev.imagio.slot.ui.action.WorkspaceActionEnvelope;
@@ -66,6 +67,16 @@ public final class SlotForgeNetworking {
                 .encoder(ForgeKitPageCycleMessage::encode)
                 .decoder(ForgeKitPageCycleMessage::decode)
                 .consumerMainThread(SlotForgeNetworking::handleKitPageCycle)
+                .add();
+        channel.messageBuilder(ForgeGoalRecipeDefaultMessage.class, 6, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(ForgeGoalRecipeDefaultMessage::encode)
+                .decoder(ForgeGoalRecipeDefaultMessage::decode)
+                .consumerMainThread(SlotForgeNetworking::handleGoalRecipeDefault)
+                .add();
+        channel.messageBuilder(ForgeGoalPlanMessage.class, 7, NetworkDirection.PLAY_TO_SERVER)
+                .encoder(ForgeGoalPlanMessage::encode)
+                .decoder(ForgeGoalPlanMessage::decode)
+                .consumerMainThread(SlotForgeNetworking::handleGoalPlan)
                 .add();
     }
 
@@ -135,6 +146,48 @@ public final class SlotForgeNetworking {
             return true;
         } catch (RuntimeException exception) {
             SlotCommon.LOGGER.warn("Failed to send Forge kit page cycle packet", exception);
+            return false;
+        }
+    }
+
+    public static boolean rememberGoalRecipeDefault(String outputItemId, String recipeId) {
+        if (channel == null) {
+            SlotCommon.LOGGER.warn("Cannot remember Forge goal recipe default before network channel registration");
+            return false;
+        }
+        try {
+            channel.sendToServer(new ForgeGoalRecipeDefaultMessage(outputItemId, recipeId));
+            return true;
+        } catch (RuntimeException exception) {
+            SlotCommon.LOGGER.warn("Failed to send Forge goal recipe default packet", exception);
+            return false;
+        }
+    }
+
+    public static boolean saveGoalPlan(GoalPlanState goal) {
+        if (channel == null) {
+            SlotCommon.LOGGER.warn("Cannot save Forge goal plan before network channel registration");
+            return false;
+        }
+        try {
+            channel.sendToServer(ForgeGoalPlanMessage.save(goal));
+            return true;
+        } catch (RuntimeException exception) {
+            SlotCommon.LOGGER.warn("Failed to send Forge goal plan save packet", exception);
+            return false;
+        }
+    }
+
+    public static boolean removeGoalPlan(String goalId) {
+        if (channel == null) {
+            SlotCommon.LOGGER.warn("Cannot remove Forge goal plan before network channel registration");
+            return false;
+        }
+        try {
+            channel.sendToServer(ForgeGoalPlanMessage.remove(goalId));
+            return true;
+        } catch (RuntimeException exception) {
+            SlotCommon.LOGGER.warn("Failed to send Forge goal plan remove packet", exception);
             return false;
         }
     }
@@ -292,6 +345,63 @@ public final class SlotForgeNetworking {
                 direction,
                 outcome.status(),
                 outcome.diagnostics());
+    }
+
+    private static void handleGoalRecipeDefault(
+            ForgeGoalRecipeDefaultMessage message,
+            Supplier<NetworkEvent.Context> contextSupplier
+    ) {
+        ServerPlayer player = contextSupplier.get().getSender();
+        if (player == null || message == null) {
+            return;
+        }
+        boolean changed = ForgePlayerWorkflowRuntimeService.runtime(player)
+                .goalRecipeDefaultWorkflow()
+                .set(message.outputItemId(), message.recipeId());
+        if (changed) {
+            ForgeWorkspaceSession session = ForgeWorkspaceSessionRegistry.session(player);
+            if (session != null) {
+                sendViewToPlayer(player, session, true);
+            }
+        }
+        SlotCommon.LOGGER.info(
+                "[SLOT] remembered Forge goal recipe default: player={} output={} recipe={} changed={}",
+                playerName(player),
+                message.outputItemId(),
+                message.recipeId(),
+                changed);
+    }
+
+    private static void handleGoalPlan(
+            ForgeGoalPlanMessage message,
+            Supplier<NetworkEvent.Context> contextSupplier
+    ) {
+        ServerPlayer player = contextSupplier.get().getSender();
+        if (player == null || message == null) {
+            return;
+        }
+        boolean changed;
+        if (ForgeGoalPlanMessage.ACTION_REMOVE.equals(message.action())) {
+            changed = ForgePlayerWorkflowRuntimeService.runtime(player)
+                    .goalPlanWorkflow()
+                    .remove(message.goalId());
+        } else {
+            changed = ForgePlayerWorkflowRuntimeService.runtime(player)
+                    .goalPlanWorkflow()
+                    .save(message.goal());
+        }
+        if (changed) {
+            ForgeWorkspaceSession session = ForgeWorkspaceSessionRegistry.session(player);
+            if (session != null) {
+                sendViewToPlayer(player, session, true);
+            }
+        }
+        SlotCommon.LOGGER.info(
+                "[SLOT] persisted Forge goal plan: player={} action={} goal={} changed={}",
+                playerName(player),
+                message.action(),
+                message.goalId(),
+                changed);
     }
 
     private static void sendViewToPlayer(ServerPlayer player, ForgeWorkspaceSession session, boolean logViewSend) {

@@ -16,6 +16,7 @@ import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvent;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
+import dev.imagio.slot.inventory.goal.GoalStackDescriptor;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
@@ -258,7 +259,7 @@ final class ContextMenuBuilder {
                 .paddingAll(4)
                 .gapAll(2)
                 .flexDirection(FlexDirection.COLUMN));
-        anchorPopover(menu, host.contextMenuScreenX, host.contextMenuScreenY, 164, 82);
+        anchorPopover(menu, host.contextMenuScreenX, host.contextMenuScreenY, 180, 120);
         menu.style(style -> style.zIndex(22));
         menu.addEventListener(UIEvents.MOUSE_DOWN, event -> event.stopPropagation());
 
@@ -280,23 +281,40 @@ final class ContextMenuBuilder {
                     host.openGoalUses(item);
                     closeContextMenu();
                 }));
-        if (host.goalChoiceInvolved(item)) {
+        if (host.goalHasChoiceControls(item)) {
+            List<GoalStackDescriptor> alternatives = host.goalChoiceAlternatives(item);
+            if (!alternatives.isEmpty()) {
+                menu.addChild(label("Use ingredient", MUTED)
+                        .layout(layout -> layout.widthPercent(100).height(10)));
+                for (GoalStackDescriptor alternative : alternatives.stream().limit(8).toList()) {
+                    menu.addChild(menuButton(
+                            shorten(alternative.displayName(), 24),
+                            true,
+                            null,
+                            () -> {
+                                host.chooseGoalAlternative(item, alternative);
+                                closeContextMenu();
+                            }));
+                }
+            }
             menu.addChild(menuButton(
-                    "Choose different ingredient",
+                    alternatives.isEmpty() ? "Choose recipe in EMI" : "Browse in EMI",
                     true,
                     null,
                     () -> {
                         host.openGoalChoiceEditor(item);
                         closeContextMenu();
                     }));
-            menu.addChild(menuButton(
-                    "Clear manual choice",
-                    true,
-                    null,
-                    () -> {
-                        host.clearGoalChoice(item);
-                        closeContextMenu();
-                    }));
+            if (host.goalHasManualChoice(item)) {
+                menu.addChild(menuButton(
+                        "Clear manual choice",
+                        true,
+                        null,
+                        () -> {
+                            host.clearGoalChoice(item);
+                            closeContextMenu();
+                        }));
+            }
         }
         menu.addChild(menuButton("Close", true, null, this::closeContextMenu));
 

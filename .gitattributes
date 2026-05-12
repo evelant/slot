@@ -1,0 +1,8 @@
+tools/classification/archives/**/*.ndjson filter=lfs diff=lfs merge=lfs -text
+tools/classification/archives/**/*.zip filter=lfs diff=lfs merge=lfs -text
+tools/classification/archives/**/tfg.*.json filter=lfs diff=lfs merge=lfs -text
+tools/classification/archives/**/data/slot/classification/layers/*.json filter=lfs diff=lfs merge=lfs -text
+tools/classification/out/**/*.ndjson filter=lfs diff=lfs merge=lfs -text
+tools/classification/out/**/*.zip filter=lfs diff=lfs merge=lfs -text
+tools/classification/out/**/tfg.*.json filter=lfs diff=lfs merge=lfs -text
+tools/classification/out/**/data/slot/classification/layers/*.json filter=lfs diff=lfs merge=lfs -text
