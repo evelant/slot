@@ -9,6 +9,7 @@ public record GoalRequirement(
         String requirementId,
         String recipeId,
         String ingredientId,
+        String producerRecipeId,
         GoalRequirementKind kind,
         ItemIdentity identity,
         String label,
@@ -17,7 +18,7 @@ public record GoalRequirement(
         int proximateStorageCount,
         int elsewhereStorageCount,
         int missingCount,
-        int desiredCount,
+        int wantedCount,
         boolean choiceInvolved,
         String choiceGroupId,
         List<String> breadcrumbs,
@@ -27,6 +28,7 @@ public record GoalRequirement(
         requirementId = requirementId == null || requirementId.isBlank() ? "requirement" : requirementId.trim();
         recipeId = recipeId == null ? "" : recipeId.trim();
         ingredientId = ingredientId == null ? "" : ingredientId.trim();
+        producerRecipeId = producerRecipeId == null ? "" : producerRecipeId.trim();
         kind = kind == null ? GoalRequirementKind.CONCRETE : kind;
         label = label == null || label.isBlank()
                 ? (identity == null ? ingredientId : identity.itemId())
@@ -36,7 +38,7 @@ public record GoalRequirement(
         proximateStorageCount = Math.max(0, proximateStorageCount);
         elsewhereStorageCount = Math.max(0, elsewhereStorageCount);
         missingCount = Math.max(0, missingCount);
-        desiredCount = Math.max(0, desiredCount);
+        wantedCount = Math.max(0, wantedCount);
         choiceGroupId = choiceGroupId == null ? "" : choiceGroupId.trim();
         choiceInvolved = choiceInvolved && !choiceGroupId.isBlank();
         breadcrumbs = copyStrings(breadcrumbs);

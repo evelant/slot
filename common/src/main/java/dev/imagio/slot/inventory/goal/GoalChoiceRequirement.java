@@ -1,5 +1,7 @@
 package dev.imagio.slot.inventory.goal;
 
+import dev.imagio.slot.inventory.core.ItemIdentity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,9 +9,11 @@ public record GoalChoiceRequirement(
         String choiceGroupId,
         String recipeId,
         String ingredientId,
+        String serializedIngredient,
         String label,
         int requiredCount,
         int unresolvedCount,
+        ItemIdentity targetIdentity,
         List<GoalStackDescriptor> alternatives,
         List<GoalResolvedChoice> autoResolved,
         List<String> breadcrumbs,
@@ -19,6 +23,7 @@ public record GoalChoiceRequirement(
         choiceGroupId = clean(choiceGroupId);
         recipeId = clean(recipeId);
         ingredientId = clean(ingredientId);
+        serializedIngredient = clean(serializedIngredient);
         label = label == null || label.isBlank() ? ingredientId : label.trim();
         requiredCount = Math.max(0, requiredCount);
         unresolvedCount = Math.max(0, Math.min(requiredCount, unresolvedCount));

@@ -80,4 +80,12 @@ public record WorkflowDomainSnapshot(
     public java.util.Map<dev.imagio.slot.inventory.core.ItemIdentity, Integer> playerWantedCounts() {
         return workflowProjection.playerWantedCounts();
     }
+
+    public java.util.List<dev.imagio.slot.inventory.goal.GoalPlanState> goalPlans() {
+        return workflowProjection.goalPlans();
+    }
+
+    public java.util.Map<String, String> goalRecipeDefaults() {
+        return workflowProjection.goalRecipeDefaults();
+    }
 }

@@ -1,6 +1,7 @@
 package dev.imagio.slot.ui.workspace;
 
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.goal.GoalChoiceKeys;
 import dev.imagio.slot.inventory.goal.GoalDescriptor;
 import dev.imagio.slot.inventory.goal.GoalIngredientDescriptor;
 import dev.imagio.slot.inventory.goal.GoalRecipeDescriptor;
@@ -43,6 +44,55 @@ class GoalWorkspaceClientStateTest {
         assertTrue(GoalWorkspaceClientState.removeGoal(added.goalId()));
         assertNull(GoalWorkspaceClientState.activeGoal());
         assertTrue(GoalWorkspaceClientState.goalTabs().isEmpty());
+    }
+
+    @Test
+    void manualRecipeChoiceIsRememberedAsOutputDefault() {
+        GoalWorkspaceClientState.GoalTab tab = GoalWorkspaceClientState.addOrActivate(goal("slot:recipe/press", "Press", 1));
+        ItemIdentity glue = ItemIdentity.of("tfg:glue");
+        String producerChoice = GoalChoiceKeys.producerChoiceGroupId("slot:recipe/press", "glue", glue);
+
+        assertTrue(GoalWorkspaceClientState.applyManualRecipeChoice(
+                tab.goalId(),
+                "",
+                null,
+                producerChoice,
+                "slot:recipe/glue_from_barrel",
+                List.of()));
+
+        assertEquals(
+                "slot:recipe/glue_from_barrel",
+                GoalWorkspaceClientState.rememberedRecipeDefaults().recipeChoiceFor(glue));
+        assertTrue(GoalWorkspaceClientState.activeGoal().choiceResolution().hasChoice(producerChoice));
+    }
+
+    @Test
+    void manualRecipeChoiceMergesSelectedAlternativeIntoIngredient() {
+        GoalWorkspaceClientState.GoalTab tab = GoalWorkspaceClientState.addOrActivate(goal("slot:recipe/press", "Press", 1));
+        ItemIdentity copperCutter = ItemIdentity.of("tfc:metal/tool/copper_wire_cutter");
+        GoalStackDescriptor selected = new GoalStackDescriptor(copperCutter, "Copper Wire Cutter", 1);
+        String ingredientChoice = "slot:recipe/press#input";
+        String producerChoice = GoalChoiceKeys.producerChoiceGroupId("slot:recipe/press", "input", copperCutter);
+
+        assertTrue(GoalWorkspaceClientState.applyManualRecipeChoice(
+                tab.goalId(),
+                ingredientChoice,
+                copperCutter,
+                producerChoice,
+                "tfc:crafting/copper_wire_cutter",
+                List.of(),
+                selected));
+
+        GoalIngredientDescriptor ingredient = GoalWorkspaceClientState.activeGoal()
+                .descriptor()
+                .recipes()
+                .get(0)
+                .inputs()
+                .get(0);
+        assertTrue(ingredient.alternatives().stream()
+                .anyMatch(alternative -> alternative.identity().equals(copperCutter)));
+        assertTrue(GoalWorkspaceClientState.activeGoal().choiceResolution().hasChoice(ingredientChoice));
+        assertTrue(GoalWorkspaceClientState.activeGoal().choiceResolution().hasChoice(producerChoice));
     }
 
     private static GoalDescriptor goal(String recipeId, String label, int count) {

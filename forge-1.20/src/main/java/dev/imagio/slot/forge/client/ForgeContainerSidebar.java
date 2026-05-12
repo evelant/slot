@@ -45,6 +45,7 @@ public final class ForgeContainerSidebar {
         if (minecraft == null || minecraft.player == null) {
             return;
         }
+        ForgeWorkspaceClient.closeActiveContainerForScreenSwap(minecraft);
         bypassNextInventorySidebar = true;
         minecraft.setScreen(new InventoryScreen(minecraft.player));
     }

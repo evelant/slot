@@ -22,7 +22,7 @@ class GoalProjectionServiceTest {
     private final GoalProjectionService service = new GoalProjectionService();
 
     @Test
-    void projectsFixtureGoalWithDesiredCountsGhostsAndChoiceCards() {
+    void projectsFixtureGoalWithWantedCountsGhostsAndChoiceCards() {
         GoalProjection projection = service.project(
                 cokeOvenGoal(),
                 GoalVisibleAuthority.fromCounts(
@@ -38,28 +38,28 @@ class GoalProjectionServiceTest {
 
         assertEquals(GoalProjectionStatus.READY, projection.status());
         assertTrue(projection.diagnostics().isEmpty());
-        assertEquals(3, projection.desiredCounts().get(SAND));
-        assertEquals(5, projection.desiredCounts().get(WATER_BUCKET));
-        assertFalse(projection.desiredCounts().containsKey(COKE_BRICK_BLOCK));
-        assertFalse(projection.desiredCounts().containsKey(COKE_BRICK));
+        assertEquals(5, projection.wantedCounts().get(SAND));
+        assertEquals(5, projection.wantedCounts().get(WATER_BUCKET));
+        assertFalse(projection.wantedCounts().containsKey(COKE_BRICK_BLOCK));
+        assertFalse(projection.wantedCounts().containsKey(COKE_BRICK));
 
         GoalProjectionEntry block = entryFor(projection, COKE_BRICK_BLOCK);
         assertEquals(GoalProjectionEntryKind.STORAGE_GHOST, block.kind());
         assertEquals(3, block.requiredCount());
         assertEquals(1, block.storageCount());
         assertEquals(2, block.missingCount());
-        assertEquals(0, block.desiredCount());
+        assertEquals(0, block.wantedCount());
 
         GoalProjectionEntry sand = entryFor(projection, SAND);
         assertEquals(GoalProjectionEntryKind.REAL_CARD, sand.kind());
         assertEquals(5, sand.requiredCount());
         assertEquals(2, sand.carriedCount());
-        assertEquals(3, sand.desiredCount());
+        assertEquals(5, sand.wantedCount());
 
         GoalProjectionEntry water = entryFor(projection, WATER_BUCKET);
         assertEquals(GoalProjectionEntryKind.MISSING_GHOST, water.kind());
         assertEquals(5, water.requiredCount());
-        assertEquals(5, water.desiredCount());
+        assertEquals(5, water.wantedCount());
         assertEquals(List.of("Coke Oven", "Coke Brick Block", "Coke Brick", "Water Bucket"), water.breadcrumbs());
 
         GoalProjectionEntry clay = entryFor(projection, CLAY_BALL);
@@ -80,6 +80,31 @@ class GoalProjectionServiceTest {
                 .orElseThrow();
         assertEquals("Any clay binder", choiceCard.label());
         assertEquals(3, choiceCard.missingCount());
+    }
+
+    @Test
+    void visibleAuthorityFullySatisfyingChoiceDoesNotEmitChoiceCard() {
+        GoalProjection projection = service.project(
+                cokeOvenGoal(),
+                GoalVisibleAuthority.fromCounts(
+                        Map.of(
+                                COKE_BRICK, 3,
+                                SAND, 5,
+                                WATER_BUCKET, 5,
+                                CLAY_BALL, 5
+                        ),
+                        Map.of(COKE_BRICK_BLOCK, 1),
+                        Map.of()
+                )
+        );
+
+        assertTrue(projection.choices().isEmpty());
+        assertTrue(projection.entries().stream()
+                .noneMatch(entry -> entry.kind() == GoalProjectionEntryKind.CHOICE_CARD));
+        GoalProjectionEntry clay = entryFor(projection, CLAY_BALL);
+        assertTrue(clay.choiceIndicator());
+        assertEquals(5, clay.carriedCount());
+        assertEquals(0, clay.missingCount());
     }
 
     @Test
@@ -105,6 +130,260 @@ class GoalProjectionServiceTest {
         assertEquals(GoalProjectionStatus.BLOCKED, projection.status());
         assertTrue(projection.diagnostics().stream()
                 .anyMatch(diagnostic -> diagnostic.startsWith("goal_recipe_loop_detected:")));
+    }
+
+    @Test
+    void multipleProducerRecipesWithoutVisibleInputsStayAChoice() {
+        ItemIdentity press = ItemIdentity.of("firmalife:wood/barrel_press/blackwood");
+        ItemIdentity glue = ItemIdentity.of("tfg:glue");
+        ItemIdentity slime = ItemIdentity.of("minecraft:slime_ball");
+        ItemIdentity limewater = ItemIdentity.of("tfc:limewater_bucket");
+        ItemIdentity bonemeal = ItemIdentity.of("minecraft:bone_meal");
+
+        GoalProjection projection = service.project(
+                new GoalDescriptor(
+                        "goal:press",
+                        "Blackwood Barrel Press",
+                        List.of(stack(press, "Blackwood Barrel Press", 1)),
+                        1,
+                        "slot:recipe/press",
+                        "slot:test",
+                        List.of(
+                                recipe("slot:recipe/press", stack(press, "Blackwood Barrel Press", 1),
+                                        GoalIngredientDescriptor.concrete("glue", stack(glue, "Glue", 1), 1)),
+                                recipe("slot:recipe/glue_from_slime", stack(glue, "Glue", 1),
+                                        GoalIngredientDescriptor.concrete("slime", stack(slime, "Slimeball", 1), 1)),
+                                recipe("slot:recipe/glue_from_barrel", stack(glue, "Glue", 1),
+                                        GoalIngredientDescriptor.concrete("limewater", stack(limewater, "Limewater", 1), 1),
+                                        GoalIngredientDescriptor.concrete("bonemeal", stack(bonemeal, "Bone Meal", 1), 1))
+                        )
+                ),
+                GoalVisibleAuthority.empty()
+        );
+
+        GoalProjectionEntry glueEntry = entryFor(projection, glue);
+        String producerChoice = GoalChoiceKeys.producerChoiceGroupId("slot:recipe/press", "glue", glue);
+        assertEquals("", glueEntry.producerRecipeId());
+        assertTrue(glueEntry.choiceIndicator());
+        assertEquals(producerChoice, glueEntry.choiceGroupId());
+        assertTrue(glueEntry.diagnostics().contains("producer_choice_required"));
+        assertTrue(projection.entries().stream()
+                .noneMatch(entry -> slime.equals(entry.identity()) || bonemeal.equals(entry.identity())));
+        assertTrue(projection.entries().stream()
+                .noneMatch(entry -> entry.kind() == GoalProjectionEntryKind.CHOICE_CARD));
+        GoalChoiceRequirement choice = projection.choices().stream()
+                .filter(entry -> producerChoice.equals(entry.choiceGroupId()))
+                .findFirst()
+                .orElseThrow();
+        assertEquals("Choose recipe for Glue", choice.label());
+        assertTrue(choice.diagnostics().contains("producer_choice_required"));
+    }
+
+    @Test
+    void multipleProducerRecipesUseSingleRouteWithVisibleInputs() {
+        ItemIdentity press = ItemIdentity.of("firmalife:wood/barrel_press/blackwood");
+        ItemIdentity glue = ItemIdentity.of("tfg:glue");
+        ItemIdentity slime = ItemIdentity.of("minecraft:slime_ball");
+        ItemIdentity limewater = ItemIdentity.of("tfc:limewater_bucket");
+        ItemIdentity bonemeal = ItemIdentity.of("minecraft:bone_meal");
+
+        GoalProjection projection = service.project(
+                new GoalDescriptor(
+                        "goal:press",
+                        "Blackwood Barrel Press",
+                        List.of(stack(press, "Blackwood Barrel Press", 1)),
+                        1,
+                        "slot:recipe/press",
+                        "slot:test",
+                        List.of(
+                                recipe("slot:recipe/press", stack(press, "Blackwood Barrel Press", 1),
+                                        GoalIngredientDescriptor.concrete("glue", stack(glue, "Glue", 1), 1)),
+                                recipe("slot:recipe/glue_from_slime", stack(glue, "Glue", 1),
+                                        GoalIngredientDescriptor.concrete("slime", stack(slime, "Slimeball", 1), 1)),
+                                recipe("slot:recipe/glue_from_barrel", stack(glue, "Glue", 1),
+                                        GoalIngredientDescriptor.concrete("limewater", stack(limewater, "Limewater", 1), 1),
+                                        GoalIngredientDescriptor.concrete("bonemeal", stack(bonemeal, "Bone Meal", 1), 1))
+                        )
+                ),
+                GoalVisibleAuthority.fromCounts(Map.of(slime, 1), Map.of(), Map.of())
+        );
+
+        GoalProjectionEntry glueEntry = entryFor(projection, glue);
+        assertEquals("slot:recipe/glue_from_slime", glueEntry.producerRecipeId());
+        assertFalse(glueEntry.choiceIndicator());
+        assertTrue(projection.entries().stream()
+                .noneMatch(entry -> entry.kind() == GoalProjectionEntryKind.CHOICE_CARD));
+        GoalProjectionEntry slimeEntry = entryFor(projection, slime);
+        assertEquals(1, slimeEntry.carriedCount());
+        assertEquals(0, slimeEntry.missingCount());
+        assertTrue(projection.entries().stream().noneMatch(entry -> bonemeal.equals(entry.identity())));
+    }
+
+    @Test
+    void manualProducerRecipeChoiceExpandsSelectedRouteWithoutVisibleInputs() {
+        ItemIdentity press = ItemIdentity.of("firmalife:wood/barrel_press/blackwood");
+        ItemIdentity glue = ItemIdentity.of("tfg:glue");
+        ItemIdentity slime = ItemIdentity.of("minecraft:slime_ball");
+        ItemIdentity limewater = ItemIdentity.of("tfc:limewater_bucket");
+        ItemIdentity bonemeal = ItemIdentity.of("minecraft:bone_meal");
+
+        GoalDescriptor goal = new GoalDescriptor(
+                "goal:press",
+                "Blackwood Barrel Press",
+                List.of(stack(press, "Blackwood Barrel Press", 1)),
+                1,
+                "slot:recipe/press",
+                "slot:test",
+                List.of(
+                        recipe("slot:recipe/press", stack(press, "Blackwood Barrel Press", 1),
+                                GoalIngredientDescriptor.concrete("glue", stack(glue, "Glue", 1), 1)),
+                        recipe("slot:recipe/glue_from_slime", stack(glue, "Glue", 1),
+                                GoalIngredientDescriptor.concrete("slime", stack(slime, "Slimeball", 1), 1)),
+                        recipe("slot:recipe/glue_from_barrel", stack(glue, "Glue", 1),
+                                GoalIngredientDescriptor.concrete("limewater", stack(limewater, "Limewater", 1), 1),
+                                GoalIngredientDescriptor.concrete("bonemeal", stack(bonemeal, "Bone Meal", 1), 1))
+                )
+        );
+
+        GoalProjection projection = service.project(
+                goal,
+                GoalVisibleAuthority.empty(),
+                GoalProjectionOptions.defaults(),
+                GoalChoiceResolution.empty().withRecipeChoice(
+                        GoalChoiceKeys.producerChoiceGroupId("slot:recipe/press", "glue", glue),
+                        "slot:recipe/glue_from_barrel")
+        );
+
+        GoalProjectionEntry glueEntry = entryFor(projection, glue);
+        String producerChoice = GoalChoiceKeys.producerChoiceGroupId("slot:recipe/press", "glue", glue);
+        assertEquals("slot:recipe/glue_from_barrel", glueEntry.producerRecipeId());
+        assertFalse(glueEntry.choiceIndicator());
+        assertEquals(producerChoice, glueEntry.choiceGroupId());
+        assertTrue(projection.entries().stream()
+                .noneMatch(entry -> entry.kind() == GoalProjectionEntryKind.CHOICE_CARD));
+        assertTrue(projection.entries().stream().noneMatch(entry -> slime.equals(entry.identity())));
+        assertEquals(1, entryFor(projection, limewater).wantedCount());
+        assertEquals(1, entryFor(projection, bonemeal).wantedCount());
+    }
+
+    @Test
+    void rememberedProducerRecipeDefaultExpandsSelectedRouteWithoutVisibleInputs() {
+        ItemIdentity press = ItemIdentity.of("firmalife:wood/barrel_press/blackwood");
+        ItemIdentity glue = ItemIdentity.of("tfg:glue");
+        ItemIdentity slime = ItemIdentity.of("minecraft:slime_ball");
+        ItemIdentity limewater = ItemIdentity.of("tfc:limewater_bucket");
+        ItemIdentity bonemeal = ItemIdentity.of("minecraft:bone_meal");
+        GoalDescriptor goal = new GoalDescriptor(
+                "goal:press",
+                "Blackwood Barrel Press",
+                List.of(stack(press, "Blackwood Barrel Press", 1)),
+                1,
+                "slot:recipe/press",
+                "slot:test",
+                List.of(
+                        recipe("slot:recipe/press", stack(press, "Blackwood Barrel Press", 1),
+                                GoalIngredientDescriptor.concrete("glue", stack(glue, "Glue", 1), 1)),
+                        recipe("slot:recipe/glue_from_slime", stack(glue, "Glue", 1),
+                                GoalIngredientDescriptor.concrete("slime", stack(slime, "Slimeball", 1), 1)),
+                        recipe("slot:recipe/glue_from_barrel", stack(glue, "Glue", 1),
+                                GoalIngredientDescriptor.concrete("limewater", stack(limewater, "Limewater", 1), 1),
+                                GoalIngredientDescriptor.concrete("bonemeal", stack(bonemeal, "Bone Meal", 1), 1))
+                )
+        );
+
+        GoalProjection projection = service.project(
+                goal,
+                GoalVisibleAuthority.empty(),
+                GoalProjectionOptions.defaults(),
+                GoalChoiceResolution.empty(),
+                GoalRecipeDefaults.empty().withRecipeChoice(glue, "slot:recipe/glue_from_barrel")
+        );
+
+        GoalProjectionEntry glueEntry = entryFor(projection, glue);
+        String producerChoice = GoalChoiceKeys.producerChoiceGroupId("slot:recipe/press", "glue", glue);
+        assertEquals("slot:recipe/glue_from_barrel", glueEntry.producerRecipeId());
+        assertFalse(glueEntry.choiceIndicator());
+        assertEquals(producerChoice, glueEntry.choiceGroupId());
+        assertTrue(projection.entries().stream().noneMatch(entry -> slime.equals(entry.identity())));
+        assertEquals(1, entryFor(projection, limewater).wantedCount());
+        assertEquals(1, entryFor(projection, bonemeal).wantedCount());
+    }
+
+    @Test
+    void reusableToolRequirementDoesNotScaleWithRecipeBatches() {
+        ItemIdentity planks = ItemIdentity.of("tfc:wood/planks/blackwood");
+        ItemIdentity log = ItemIdentity.of("tfc:wood/log/blackwood");
+        ItemIdentity saw = ItemIdentity.of("tfc:metal/saw/wrought_iron");
+
+        GoalProjection projection = service.project(
+                new GoalDescriptor(
+                        "goal:planks",
+                        "Blackwood Planks",
+                        List.of(stack(planks, "Blackwood Planks", 1)),
+                        10,
+                        "slot:recipe/planks",
+                        "slot:test",
+                        List.of(recipe(
+                                "slot:recipe/planks",
+                                stack(planks, "Blackwood Planks", 1),
+                                GoalIngredientDescriptor.concrete("log", stack(log, "Blackwood Log", 1), 1),
+                                GoalIngredientDescriptor.reusable("saw", stack(saw, "Wrought Iron Saw", 1), 1)
+                        ))
+                ),
+                GoalVisibleAuthority.fromCounts(Map.of(saw, 1), Map.of(), Map.of())
+        );
+
+        GoalProjectionEntry logEntry = entryFor(projection, log);
+        assertEquals(10, logEntry.requiredCount());
+        assertEquals(10, logEntry.wantedCount());
+
+        GoalProjectionEntry sawEntry = entryFor(projection, saw);
+        assertEquals(1, sawEntry.requiredCount());
+        assertEquals(1, sawEntry.carriedCount());
+        assertEquals(0, sawEntry.missingCount());
+        assertEquals(0, sawEntry.wantedCount());
+    }
+
+    @Test
+    void choiceIngredientAutoResolvesFromProximateStorage() {
+        ItemIdentity planks = ItemIdentity.of("tfc:wood/planks/blackwood");
+        ItemIdentity log = ItemIdentity.of("tfc:wood/log/blackwood");
+        ItemIdentity wroughtIronSaw = ItemIdentity.of("tfc:metal/saw/wrought_iron");
+        ItemIdentity steelSaw = ItemIdentity.of("tfc:metal/saw/steel");
+        ItemIdentity exactStoredSteelSaw = ItemIdentity.exact("tfc:metal/saw/steel", "damage=12");
+
+        GoalProjection projection = service.project(
+                new GoalDescriptor(
+                        "goal:planks",
+                        "Blackwood Planks",
+                        List.of(stack(planks, "Blackwood Planks", 1)),
+                        1,
+                        "slot:recipe/planks",
+                        "slot:test",
+                        List.of(recipe(
+                                "slot:recipe/planks",
+                                stack(planks, "Blackwood Planks", 1),
+                                GoalIngredientDescriptor.concrete("log", stack(log, "Blackwood Log", 1), 1),
+                                GoalIngredientDescriptor.choice(
+                                        "saw",
+                                        "#item:forge:tools/saws",
+                                        1,
+                                        "#item:forge:tools/saws",
+                                        List.of(
+                                                stack(wroughtIronSaw, "Wrought Iron Saw", 1),
+                                                stack(steelSaw, "Steel Saw", 1)
+                                        ))
+                        ))
+                ),
+                GoalVisibleAuthority.fromCounts(Map.of(), Map.of(exactStoredSteelSaw, 1), Map.of())
+        );
+
+        GoalProjectionEntry sawEntry = entryFor(projection, steelSaw);
+        assertEquals(GoalProjectionEntryKind.STORAGE_GHOST, sawEntry.kind());
+        assertEquals(1, sawEntry.storageCount());
+        assertEquals(0, sawEntry.missingCount());
+        assertTrue(projection.entries().stream()
+                .noneMatch(entry -> entry.kind() == GoalProjectionEntryKind.CHOICE_CARD));
     }
 
     private static GoalProjectionEntry entryFor(GoalProjection projection, ItemIdentity identity) {

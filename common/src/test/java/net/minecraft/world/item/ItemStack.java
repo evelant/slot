@@ -13,6 +13,7 @@ public class ItemStack {
     private final int maxStackSize;
     private final boolean immutableEmpty;
     private int count;
+    private Component hoverName;
 
     public ItemStack() {
         this("", "", 0, 64, false);
@@ -35,7 +36,12 @@ public class ItemStack {
     }
 
     public ItemStack copy() {
-        return isEmpty() ? EMPTY : new ItemStack(itemId, componentFingerprint, count, maxStackSize);
+        if (isEmpty()) {
+            return EMPTY;
+        }
+        ItemStack copy = new ItemStack(itemId, componentFingerprint, count, maxStackSize);
+        copy.hoverName = hoverName;
+        return copy;
     }
 
     public void setCount(int count) {
@@ -77,7 +83,14 @@ public class ItemStack {
     }
 
     public Component getHoverName() {
-        return Component.literal(itemId);
+        return hoverName == null ? Component.literal(itemId) : hoverName;
+    }
+
+    public ItemStack setHoverName(Component hoverName) {
+        if (!immutableEmpty) {
+            this.hoverName = hoverName;
+        }
+        return this;
     }
 
     public Tag saveOptional(HolderLookup.Provider provider) {

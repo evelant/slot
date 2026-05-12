@@ -9,11 +9,15 @@ public record GoalProjectionEntry(
         GoalProjectionEntryKind kind,
         ItemIdentity identity,
         String label,
+        String recipeId,
+        String ingredientId,
+        String serializedIngredient,
+        String producerRecipeId,
         int requiredCount,
         int carriedCount,
         int storageCount,
         int missingCount,
-        int desiredCount,
+        int wantedCount,
         boolean choiceIndicator,
         String choiceGroupId,
         List<GoalStackDescriptor> alternatives,
@@ -25,11 +29,15 @@ public record GoalProjectionEntry(
         label = label == null || label.isBlank()
                 ? (identity == null ? "" : identity.itemId())
                 : label.trim();
+        recipeId = recipeId == null ? "" : recipeId.trim();
+        ingredientId = ingredientId == null ? "" : ingredientId.trim();
+        serializedIngredient = serializedIngredient == null ? "" : serializedIngredient.trim();
+        producerRecipeId = producerRecipeId == null ? "" : producerRecipeId.trim();
         requiredCount = Math.max(0, requiredCount);
         carriedCount = Math.max(0, carriedCount);
         storageCount = Math.max(0, storageCount);
         missingCount = Math.max(0, missingCount);
-        desiredCount = Math.max(0, desiredCount);
+        wantedCount = Math.max(0, wantedCount);
         choiceGroupId = choiceGroupId == null ? "" : choiceGroupId.trim();
         alternatives = copyStacks(alternatives);
         breadcrumbs = copyStrings(breadcrumbs);
@@ -47,11 +55,15 @@ public record GoalProjectionEntry(
                 kind,
                 requirement.identity(),
                 requirement.label(),
+                requirement.recipeId(),
+                requirement.ingredientId(),
+                "",
+                requirement.producerRecipeId(),
                 requirement.requiredCount(),
                 requirement.carriedCount(),
                 requirement.storageCount(),
                 requirement.missingCount(),
-                requirement.desiredCount(),
+                requirement.wantedCount(),
                 requirement.choiceInvolved(),
                 requirement.choiceGroupId(),
                 List.of(),
@@ -63,8 +75,12 @@ public record GoalProjectionEntry(
     public static GoalProjectionEntry fromChoice(GoalChoiceRequirement choice) {
         return new GoalProjectionEntry(
                 GoalProjectionEntryKind.CHOICE_CARD,
-                null,
+                choice.targetIdentity(),
                 choice.label(),
+                choice.recipeId(),
+                choice.ingredientId(),
+                choice.serializedIngredient(),
+                "",
                 choice.requiredCount(),
                 0,
                 0,

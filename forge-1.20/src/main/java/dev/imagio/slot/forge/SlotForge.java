@@ -1,6 +1,7 @@
 package dev.imagio.slot.forge;
 
 import dev.imagio.slot.SlotCommon;
+import dev.imagio.slot.SlotDebugLog;
 import dev.imagio.slot.compat.sophisticated.SophisticatedBackpacksCarriedProvider;
 import dev.imagio.slot.forge.compat.sacks.SacksNSuchCarriedProvider;
 import dev.imagio.slot.forge.compat.sacks.SacksNSuchInventoryIntegrationProvider;
@@ -18,6 +19,8 @@ public final class SlotForge {
     public static final String MOD_ID = SlotCommon.MOD_ID;
 
     public SlotForge(FMLJavaModLoadingContext context) {
+        SlotDebugLog.setEnabledSupplier(() -> Boolean.parseBoolean(System.getProperty("slot.debugLogging", "true")));
+        SlotDebugLog.setVerboseSupplier(() -> Boolean.parseBoolean(System.getProperty("slot.verboseLogging", "false")));
         Forge120Platform.bootstrap();
         CarriedProviderRegistry.register(new SophisticatedBackpacksCarriedProvider());
         CarriedProviderRegistry.register(new SacksNSuchCarriedProvider());

@@ -1,6 +1,6 @@
 # SLOT Project Status
 
-Last updated: 2026-05-11. Operational handoff. Read after
+Last updated: 2026-05-12. Operational handoff. Read after
 [../README.md](../README.md). For active work + queue see
 [plans/current.md](plans/current.md); for architecture see
 [architecture/overview.md](architecture/overview.md).
@@ -43,11 +43,11 @@ count-gated dynamic organization groups (`organization_group`) and subsystem
 cohorts (`mod_subsystem`); both loaders expose `inspect`, `export`, and
 `rehome` / `recompute` commands.
 
-EMI goal projections now create session-local SLOT goal tabs from explicit EMI
-recipe-screen and drag/drop goal targets on both loaders, but the playtest
-handoff in [plans/emi-goal-projections.md](plans/emi-goal-projections.md)
-tracks the blocking projection and manual-choice gaps before that work should
-grow new scope.
+EMI goal projections now create server-persisted SLOT goal tabs from explicit
+EMI recipe-screen and drag/drop goal targets on both loaders. The current
+playtest pass in [plans/emi-goal-projections.md](plans/emi-goal-projections.md)
+stabilizes recipe choices, visible-storage auto-resolution, wanted-count
+projection, and non-item/fluid placeholders before broader goal UX grows.
 
 ### Production wall shape (post-list-view)
 

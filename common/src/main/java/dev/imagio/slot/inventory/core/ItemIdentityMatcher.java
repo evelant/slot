@@ -3,6 +3,7 @@ package dev.imagio.slot.inventory.core;
 import dev.imagio.slot.platform.SlotStackAccess;
 import net.minecraft.world.item.ItemStack;
 
+import java.util.Locale;
 import java.util.Set;
 
 public final class ItemIdentityMatcher {
@@ -72,7 +73,7 @@ public final class ItemIdentityMatcher {
         }
         int separatorIndex = itemId.indexOf(':');
         String path = separatorIndex >= 0 ? itemId.substring(separatorIndex + 1) : itemId;
-        String normalizedPath = "_" + path + "_";
+        String normalizedPath = "_" + path.toLowerCase(Locale.ROOT).replaceAll("[^a-z0-9]+", "_") + "_";
         for (String token : STABLE_IDENTITY_TOKENS) {
             if (normalizedPath.contains("_" + token + "_")) {
                 return true;

@@ -11,6 +11,7 @@ public record GoalIngredientDescriptor(
         String serializedIngredient,
         List<GoalStackDescriptor> alternatives,
         boolean choiceRequired,
+        boolean consumed,
         String tagOrListLabel,
         List<String> diagnostics
 ) {
@@ -28,6 +29,31 @@ public record GoalIngredientDescriptor(
         diagnostics = copyStrings(diagnostics);
     }
 
+    public GoalIngredientDescriptor(
+            String ingredientId,
+            String label,
+            int quantity,
+            double chance,
+            String serializedIngredient,
+            List<GoalStackDescriptor> alternatives,
+            boolean choiceRequired,
+            String tagOrListLabel,
+            List<String> diagnostics
+    ) {
+        this(
+                ingredientId,
+                label,
+                quantity,
+                chance,
+                serializedIngredient,
+                alternatives,
+                choiceRequired,
+                true,
+                tagOrListLabel,
+                diagnostics
+        );
+    }
+
     public static GoalIngredientDescriptor concrete(
             String ingredientId,
             GoalStackDescriptor alternative,
@@ -41,8 +67,28 @@ public record GoalIngredientDescriptor(
                 "",
                 alternative == null ? List.of() : List.of(alternative),
                 false,
+                true,
                 "",
                 List.of()
+        );
+    }
+
+    public static GoalIngredientDescriptor reusable(
+            String ingredientId,
+            GoalStackDescriptor alternative,
+            int quantity
+    ) {
+        return new GoalIngredientDescriptor(
+                ingredientId,
+                alternative == null ? ingredientId : alternative.displayName(),
+                quantity,
+                1.0D,
+                "",
+                alternative == null ? List.of() : List.of(alternative),
+                false,
+                false,
+                "",
+                List.of("ingredient_not_consumed")
         );
     }
 
@@ -60,6 +106,7 @@ public record GoalIngredientDescriptor(
                 1.0D,
                 "",
                 alternatives,
+                true,
                 true,
                 tagOrListLabel,
                 List.of()

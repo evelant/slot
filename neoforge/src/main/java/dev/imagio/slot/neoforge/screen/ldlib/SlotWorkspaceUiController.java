@@ -16,13 +16,16 @@ import com.lowdragmc.lowdraglib2.gui.ui.elements.ScrollerView;
 import com.lowdragmc.lowdraglib2.gui.ui.event.HoverTooltips;
 import com.lowdragmc.lowdraglib2.gui.ui.event.UIEvents;
 import dev.imagio.slot.neoforge.screen.ldlib.util.Observable;
+import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.triage.ChipSuggestion;
 import dev.imagio.slot.inventory.goal.GoalProjectionEntry;
+import dev.imagio.slot.inventory.goal.GoalStackDescriptor;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceAtlasLayout;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.ui.workspace.GoalWorkspaceClientState;
 import dev.imagio.slot.ui.workspace.GoalWorkspaceIntegration;
 import dev.imagio.slot.ui.workspace.GoalWorkspaceProjection;
+import dev.imagio.slot.ui.workspace.GoalWorkspaceProjectionCache;
 import dev.imagio.slot.ui.workspace.ShiftClickTransferState;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
@@ -94,6 +97,7 @@ final class SlotWorkspaceUiController {
     float contextMenuScreenX;
     float contextMenuScreenY;
     final ArrayDeque<String> recentRehomeIslandIds = new ArrayDeque<>();
+    final GoalWorkspaceProjectionCache goalProjectionCache = new GoalWorkspaceProjectionCache();
     static final int RECENT_REHOME_MAX_DISPLAYED = 3;
     static final int RECENT_REHOME_CAPACITY = 6;
     String editingIslandId = null;
@@ -184,6 +188,9 @@ final class SlotWorkspaceUiController {
         this.session = session;
         this.player = player;
         this.viewModel = session.viewModel();
+        if (GoalWorkspaceClientState.hydratePersistedGoalsIfEmpty(viewModel.goalPlans())) {
+            appliedGoalStateRevision = GoalWorkspaceClientState.revision();
+        }
         // Root is transparent so the vanilla screen backdrop (dimmed
         // world / panorama) shows through everywhere we don't explicitly
         // paint a panel. Same idea as the vanilla inventory: chrome is
@@ -317,6 +324,10 @@ final class SlotWorkspaceUiController {
                 .remoteSetter(tag -> {
                     session.acceptRemoteView(tag);
                     viewModel = session.viewModel();
+                    if (GoalWorkspaceClientState.hydratePersistedGoalsIfEmpty(viewModel.goalPlans())) {
+                        appliedGoalStateRevision = GoalWorkspaceClientState.revision();
+                    }
+                    goalProjectionCache.invalidate();
                     dev.imagio.slot.neoforge.client.SlotClientWorkspaceCache.update(viewModel);
                     localStatus.set("");
                     rebuild();
@@ -664,8 +675,7 @@ final class SlotWorkspaceUiController {
     }
 
     GoalWorkspaceProjection goalProjection() {
-        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
-        return active == null ? null : GoalWorkspaceProjection.fromGoal(viewModel, active.descriptor(), active.targetCount());
+        return goalProjectionCache.get(viewModel);
     }
 
     List<SlotWorkspaceViewModel.AtlasIsland> currentIslands() {
@@ -708,6 +718,11 @@ final class SlotWorkspaceUiController {
         return goal != null && goal.choiceCard(item);
     }
 
+    boolean goalSuppressVanillaTooltip(SlotWorkspaceViewModel.AtlasItem item) {
+        GoalWorkspaceProjection goal = goalProjection();
+        return goal != null && goal.suppressVanillaTooltip(item);
+    }
+
     List<Component> goalTooltipLines(SlotWorkspaceViewModel.AtlasItem item) {
         GoalWorkspaceProjection goal = goalProjection();
         return goal == null
@@ -746,6 +761,7 @@ final class SlotWorkspaceUiController {
             localStatus.set("goal tab no longer exists");
             return;
         }
+        GoalWorkspaceIntegration.removePersistedGoal(goalId);
         localStatus.set(GoalWorkspaceClientState.hasActiveGoal() ? "removed goal" : "showing all items");
         rebuild();
     }
@@ -755,15 +771,17 @@ final class SlotWorkspaceUiController {
             return;
         }
         GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
+        GoalWorkspaceIntegration.persistGoal(active);
         localStatus.set(active == null ? "updated goal" : active.label() + " x" + active.targetCount());
         rebuild();
     }
 
     void openGoalRecipe(SlotWorkspaceViewModel.AtlasItem item) {
         GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
+        GoalProjectionEntry entry = goalEntry(item);
         if (active == null) {
             localStatus.set("no active goal");
-        } else if (GoalWorkspaceIntegration.openRecipe(active.descriptor())) {
+        } else if (GoalWorkspaceIntegration.openRecipe(active.descriptor(), entry)) {
             localStatus.set("opened recipe in EMI");
         } else {
             localStatus.set("EMI recipe display unavailable");
@@ -772,9 +790,11 @@ final class SlotWorkspaceUiController {
     }
 
     void openGoalUses(SlotWorkspaceViewModel.AtlasItem item) {
-        if (item == null || item.identity().toIdentity() == null) {
+        GoalWorkspaceProjection goal = goalProjection();
+        ItemIdentity identity = goal == null ? (item == null ? null : item.identity().toIdentity()) : goal.delegationIdentity(item);
+        if (identity == null) {
             localStatus.set("goal item unavailable");
-        } else if (GoalWorkspaceIntegration.openUses(item.identity().toIdentity())) {
+        } else if (GoalWorkspaceIntegration.openUses(identity)) {
             localStatus.set("opened uses in EMI");
         } else {
             localStatus.set("EMI usage display unavailable");
@@ -785,10 +805,11 @@ final class SlotWorkspaceUiController {
     void openGoalChoiceEditor(SlotWorkspaceViewModel.AtlasItem item) {
         GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
         String choiceGroupId = goalChoiceGroupId(item);
+        GoalProjectionEntry entry = goalEntry(item);
         if (active == null || choiceGroupId.isBlank()) {
             localStatus.set("goal choice unavailable");
-        } else if (GoalWorkspaceIntegration.openChoiceEditor(active.descriptor(), choiceGroupId)) {
-            localStatus.set("opened choice recipe in EMI");
+        } else if (GoalWorkspaceIntegration.openChoiceEditor(active.descriptor(), entry)) {
+            localStatus.set("choose recipe in EMI");
         } else {
             localStatus.set("EMI choice display unavailable");
         }
@@ -796,8 +817,51 @@ final class SlotWorkspaceUiController {
     }
 
     void clearGoalChoice(SlotWorkspaceViewModel.AtlasItem item) {
-        localStatus.set("manual goal choices are not active");
+        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
+        String choiceGroupId = goalChoiceGroupId(item);
+        if (active == null || choiceGroupId.isBlank()) {
+            localStatus.set("goal choice unavailable");
+        } else if (GoalWorkspaceClientState.clearManualChoice(active.goalId(), choiceGroupId)) {
+            localStatus.set("cleared goal choice");
+            GoalWorkspaceIntegration.persistGoal(GoalWorkspaceClientState.goalTab(active.goalId()));
+        } else {
+            localStatus.set("no manual choice to clear");
+        }
         rebuild();
+    }
+
+    void chooseGoalAlternative(SlotWorkspaceViewModel.AtlasItem item, GoalStackDescriptor alternative) {
+        GoalWorkspaceClientState.GoalTab active = GoalWorkspaceClientState.activeGoal();
+        String choiceGroupId = goalChoiceGroupId(item);
+        if (active == null || choiceGroupId.isBlank() || alternative == null) {
+            localStatus.set("goal choice unavailable");
+        } else if (GoalWorkspaceClientState.setManualChoice(active.goalId(), choiceGroupId, alternative.identity())) {
+            localStatus.set("using " + alternative.displayName());
+            GoalWorkspaceIntegration.persistGoal(GoalWorkspaceClientState.goalTab(active.goalId()));
+        } else {
+            localStatus.set("could not update goal choice");
+        }
+        rebuild();
+    }
+
+    List<GoalStackDescriptor> goalChoiceAlternatives(SlotWorkspaceViewModel.AtlasItem item) {
+        GoalWorkspaceProjection goal = goalProjection();
+        return goal == null ? List.of() : goal.choiceAlternatives(item);
+    }
+
+    boolean goalHasManualChoice(SlotWorkspaceViewModel.AtlasItem item) {
+        GoalWorkspaceProjection goal = goalProjection();
+        return goal != null && goal.hasManualChoice(item);
+    }
+
+    boolean goalHasChoiceControls(SlotWorkspaceViewModel.AtlasItem item) {
+        GoalWorkspaceProjection goal = goalProjection();
+        return goal != null && goal.hasChoiceControls(item);
+    }
+
+    private GoalProjectionEntry goalEntry(SlotWorkspaceViewModel.AtlasItem item) {
+        GoalWorkspaceProjection goal = goalProjection();
+        return goal == null ? null : goal.entry(item);
     }
 
     /**

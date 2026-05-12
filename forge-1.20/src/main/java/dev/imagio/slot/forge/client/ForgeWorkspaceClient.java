@@ -105,7 +105,17 @@ public final class ForgeWorkspaceClient {
         if (minecraft == null || minecraft.player == null) {
             return;
         }
+        closeActiveContainerForScreenSwap(minecraft);
         minecraft.setScreen(new ForgeWorkspaceScreen());
+    }
+
+    static void closeActiveContainerForScreenSwap(Minecraft minecraft) {
+        if (minecraft == null || minecraft.player == null) {
+            return;
+        }
+        if (minecraft.player.containerMenu != minecraft.player.inventoryMenu) {
+            minecraft.player.closeContainer();
+        }
     }
 
     @Mod.EventBusSubscriber(modid = SlotForge.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)

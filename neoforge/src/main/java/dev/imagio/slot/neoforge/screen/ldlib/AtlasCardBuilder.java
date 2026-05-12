@@ -398,22 +398,23 @@ final class AtlasCardBuilder {
     }
 
     private void addChoiceIndicator(UIElement body, SlotWorkspaceViewModel.AtlasItem item) {
-        int color = host.goalChoiceCard(item) ? 0xE0FFB86B : 0xD0B486FF;
+        int color = 0xE00B1117;
+        int markColor = host.goalChoiceCard(item) ? 0xFFFFD27A : 0xFFE7D9FF;
         UIElement pip = panel(color).layout(layout -> layout
                 .positionType(TaffyPosition.ABSOLUTE)
                 .left(6)
                 .top(0)
-                .width(5)
-                .height(5));
+                .width(6)
+                .height(6));
         pip.style(style -> style.zIndex(270));
         pip.setAllowHitTest(false);
-        Label mark = label("?", 0xFF0B1117);
+        Label mark = label("?", markColor);
         mark.layout(layout -> layout.widthPercent(100).heightPercent(100));
         mark.setAllowHitTest(false);
         mark.textStyle(style -> style
-                .textColor(0xFF0B1117)
+                .textColor(markColor)
                 .textShadow(false)
-                .fontSize(5)
+                .fontSize(6)
                 .textAlignHorizontal(Horizontal.CENTER)
                 .textAlignVertical(Vertical.CENTER));
         pip.addChild(mark);

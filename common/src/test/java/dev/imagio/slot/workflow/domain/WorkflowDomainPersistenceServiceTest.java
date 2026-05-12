@@ -13,12 +13,19 @@ import dev.imagio.slot.inventory.browse.InventoryBrowseSubjectRef;
 import dev.imagio.slot.inventory.core.BuiltinInventoryIds;
 import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.core.InventoryPaneMembership;
+import dev.imagio.slot.inventory.goal.GoalChoiceResolution;
+import dev.imagio.slot.inventory.goal.GoalDescriptor;
+import dev.imagio.slot.inventory.goal.GoalIngredientDescriptor;
+import dev.imagio.slot.inventory.goal.GoalPlanState;
+import dev.imagio.slot.inventory.goal.GoalRecipeDescriptor;
+import dev.imagio.slot.inventory.goal.GoalStackDescriptor;
 import dev.imagio.slot.workflow.domain.persistence.WorkflowDomainFileStore;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -34,6 +41,8 @@ class WorkflowDomainPersistenceServiceTest {
         runtime.collectionWorkflow().toggleCollectionMembership(ItemIdentity.of("minecraft:torch"), exploration.id());
         // Player-scoped desired counts (collection-scoped variant retired).
         runtime.desiredCountWorkflow().setPlayer(ItemIdentity.of("minecraft:torch"), 32);
+        runtime.goalRecipeDefaultWorkflow().set("tfc:glue", "toomanyrecipeviewers:/tfc/barrel/glue");
+        runtime.goalPlanWorkflow().save(goalPlan());
         QuickAccessLoadoutDefinition loadout = runtime.collectionWorkflow().createLoadout(
                 exploration.id(),
                 "Mining",
@@ -112,6 +121,12 @@ class WorkflowDomainPersistenceServiceTest {
         );
         assertTrue(restored.workflowProjection().protection().protects(ItemIdentity.of("minecraft:shield"), null));
         assertTrue(restored.workflowProjection().protection().protectsPortableContainers());
+        assertEquals(
+                "toomanyrecipeviewers:/tfc/barrel/glue",
+                restored.workflowProjection().goalRecipeDefaults().get("tfc:glue")
+        );
+        assertEquals(1, restored.workflowProjection().goalPlans().size());
+        assertEquals("emi:slot:recipe/press", restored.workflowProjection().goalPlans().get(0).goalId());
     }
 
     @Test
@@ -154,5 +169,40 @@ class WorkflowDomainPersistenceServiceTest {
         public void save(WorkflowDomainSnapshot snapshot) {
             this.snapshot = snapshot == null ? WorkflowDomainSnapshot.empty() : snapshot;
         }
+    }
+
+    private static GoalPlanState goalPlan() {
+        ItemIdentity output = ItemIdentity.of("tfc:glue");
+        GoalStackDescriptor outputStack = new GoalStackDescriptor(output, "Glue", 1);
+        GoalDescriptor descriptor = new GoalDescriptor(
+                "emi:slot:recipe/press",
+                "Glue",
+                List.of(outputStack),
+                1,
+                "slot:recipe/press",
+                "slot:test",
+                List.of(new GoalRecipeDescriptor(
+                        "slot:recipe/press",
+                        "slot:test",
+                        true,
+                        List.of(outputStack),
+                        List.of(GoalIngredientDescriptor.choice(
+                                "input",
+                                "#item:forge:tools/wire_cutters",
+                                1,
+                                "#item:forge:tools/wire_cutters",
+                                List.of(GoalStackDescriptor.of("tfc:metal/tool/copper_wire_cutter", "Copper Wire Cutter", 1))
+                        )),
+                        List.of(),
+                        List.of()
+                ))
+        );
+        return new GoalPlanState(
+                descriptor.goalId(),
+                descriptor.label(),
+                descriptor.targetCount(),
+                descriptor,
+                GoalChoiceResolution.empty()
+        );
     }
 }
