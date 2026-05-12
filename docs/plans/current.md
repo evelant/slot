@@ -17,9 +17,12 @@ platform decision. Phase 2 remains active: Forge now consumes the common
 tree with production adapters, shared action packet/session envelopes,
 common workspace projection, carried/world storage accessors, guarded
 metadata/transfer/hotbar/kit/chest/cursor/gather/wayfinding actions, and
-the direct Taffy/GuiGraphics `G` screen plus mounted sidebar. NeoForge
-remains the semantic oracle; the next risk is migrating richer
-modern-only affordances without reintroducing backend-specific semantics.
+the direct Taffy/GuiGraphics `G` screen plus mounted sidebar. The latest
+UI parity pass aligned both loaders on right-side Kits, vanilla-shaped
+Belt, wanted/desired counts, remembered search/scroll, and configurable
+sidebar margins. NeoForge remains the semantic oracle; the next risk is
+migrating richer modern-only affordances without reintroducing
+backend-specific semantics.
 
 Sidecar product slice: [`emi-goal-projections.md`](emi-goal-projections.md)
 has landed Slices 0-3 through explicit EMI recipe-screen and drag/drop goal
@@ -52,20 +55,26 @@ Thin log; full detail lives in `git log` and the linked archived
 plans. Older entries are deleted — `git log` and `done/<plan>.md`
 hold the rest.
 
+- **2026-05-12** — Forge + NeoForge sidebar polish landed: Kits moved
+  from the bottom strip into a right-side vertical rack opened from the
+  `All` row, the Belt now mirrors vanilla with offhand-left layout,
+  active-chest controls hide when no chest is open, search query and wall
+  scroll persist across close/open, Esc clears Forge search before closing,
+  carried card chrome no longer uses unexplained dimming, Cloth Config
+  margin screens integrate with both mod menus, Forge shift-click keeps
+  SLOT deposit/take semantics inside container screens, and Forge sidebar
+  rendering isolates depth so host inventory item icons cannot float over
+  the Kit panel.
 - **2026-05-11** — EMI recipe goal projections landed through Slice 3:
   the common goal/projection model, goal-tab wall projection, browse-only
   goal mode, client-side recipe-goal tabs, and explicit EMI recipe-screen /
   drag/drop goal creation/delegation now exist on NeoForge and Forge.
 - **2026-05-11** — classification pack-layer work landed installed
-  `mods/` scanning, jar-backed static extraction, OpenRouter-only live
-  LLM runs, Forge/NeoForge runtime export, datapack generation, dynamic
-  organization/subsystem auto-home cohorts, `/slot classification inspect` /
-  `rehome`, vocabulary-backed facet schema validation, rich
-  `facet-evidence.json` assembly, clean no-previous-vocabulary pack vocabulary
-  proposal, stage-3 `document_context`, accepted-vocabulary
-  prompting/validation, longer OpenRouter timeouts, and abort-aware in-flight
-  request handling; deposit routing was tightened back to explicit chest
-  signals (learned affinity or existing matching contents).
+  `mods/` scanning, jar extraction, OpenRouter live runs, runtime export,
+  datapack generation, dynamic organization/subsystem auto-home cohorts,
+  inspect/rehome commands, vocabulary-backed evidence/proposals,
+  accepted-vocabulary Stage 3 prompting, and explicit chest-signal
+  deposit routing (learned affinity or existing matching contents).
 - **2026-05-07** — Forge parity pass moved active-kit gather and
   in-world kit-page cycle into shared common services, registered
   `GATHER_ACTIVE_KIT`, wired in-screen gather through catalog actions
@@ -86,7 +95,7 @@ hold the rest.
 ## Known issues
 
 Operational bugs not currently tied to a plan. Items from the
-2026-05-01 cursor + desired-counts batch live under [Queue](#queue)
+2026-05-01 cursor + desired/wanted-counts batch live under [Queue](#queue)
 item 2; this section is the leftover pile.
 
 - **Kit drag-edit doesn't auto-apply to the active belt.** Dragging
@@ -115,11 +124,12 @@ track lands.
    capture, projection expansion, authority subtraction, display-stack
    resolution, section assignment, and EMI delegation failures.
 
-2. **Cursor + desired-counts playtest bug pass — remainder.** Three
-   items still open from the original 2026-05-01 batch (the wayfinding
-   nav and kit-carry want-vs-have items shipped 2026-05-02 and are
-   gone from this list). Likely best taken as one batch since #1 + #3
-   share root causes and #4 unblocks the rest.
+2. **Cursor + desired/wanted-counts playtest bug pass — remainder.**
+   Active-scope desired counts, player wanted counts, unified gap chrome,
+   gather for wanted/desired gaps, and the basic right-click desired-count
+   editor are live. These are the remaining items from the original
+   2026-05-01 batch; likely best taken as one batch since #1 + #3 share
+   root causes and #4 unblocks the rest.
 
    1. **Duplicate chest in proximate panel + chest-locator panel.**
       A nearby chest holding a kit-needed item appears in both
@@ -162,7 +172,7 @@ track lands.
       classification. Prefer `SlotDiagnostics` / `SlotDebugLog` over
       raw `LOGGER.info` so the pattern stays consistent.
 
-   Cursor / desired-counts polish that was deferred from the
+   Cursor / desired/wanted-counts polish that was deferred from the
    2026-05-01 ship and could be folded into this pass if convenient
    (each documented in [`../design/gestures.md`](../design/gestures.md)):
 

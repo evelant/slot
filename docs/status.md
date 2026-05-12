@@ -21,36 +21,31 @@ desired-count, chest, deposit/take, cursor, active-kit gather, and
 cross-surface actions. Forge `/slot test populate <profile>` and
 `/slot test clear` cover carried inventory, workflow state, and claimed chests.
 
-Phase 2 has the wall/card shells, fallback card details, Recents, hotbar,
-active chest strip, and non-drag kit rack through the first common UI
-SPI. Forge full-screen and sidebar hosts share `ForgeWorkspaceSurface`
-and common view-model/search/wall/Recents/kit/active-chest/hotbar
-builders plus tooltip metadata. Forge key parity covers vanilla
-inventory, kit page cycle, gather, and the wayfinding HUD toggle; normal
-Forge player inventory now mounts the SLOT sidebar so EMI and SLOT can
-coexist on the carried-inventory surface. Modern drag/drop, richer LDLib2
-card/kit affordances, and richer chest panels remain backend hooks, not
-common UI semantics.
+Phase 2 has the production wall shell on both loaders: fallback card
+details, Recents, vanilla-shaped Belt, active chest controls only while a
+chest is open, right-side vertical Kit Rack, desired/wanted count card
+chrome, remembered search/scroll state, and configurable sidebar margins.
+Forge full-screen and sidebar hosts share `ForgeWorkspaceSurface` and
+common view-model/search/wall/Recents/kit/active-chest/hotbar builders
+plus tooltip metadata. Forge key parity covers vanilla inventory, kit
+page cycle, gather, wayfinding HUD toggle, search-cancel Esc behavior,
+and wanted-count controls; normal Forge player inventory mounts the SLOT
+sidebar so EMI and SLOT can coexist on the carried-inventory surface.
+Modern drag/drop, richer LDLib2 card/kit affordances, and richer chest
+panels remain backend hooks, not common UI semantics.
 
-Classification now has a pack-authoring path for large modpacks: installed
+Classification has a pack-authoring path for large modpacks: installed
 `mods/` scanning, jar extraction, OpenRouter-backed stage 3, runtime export,
-pack facet-vocabulary evidence collection, accepted/review/rejected vocabulary
-proposal including `mod_subsystem`, stage-3 `document_context`, accepted
-vocabulary prompting via `--facet-vocabulary`, and drop-in datapack layer
-output. Semantic text is the highest-value input for this path; preserve
-tooltip/lore prose, guidebook and quest text, lang-resolved descriptions,
+datapack output, facet-vocabulary evidence/proposals with `document_context`,
+accepted-vocabulary prompting, and dynamic `organization_group` /
+`mod_subsystem` auto-home cohorts. Semantic text remains the highest-value
+input; preserve tooltip/lore prose, guidebook/quest text, lang descriptions,
 KubeJS/datapack overlays, Ponder/category labels, stack groups, resource-pack
-lang overrides, and mod descriptions instead of reducing prompts to item ids.
-Runtime auto-home uses bundled/datapack facets plus count-gated dynamic
-organization groups (`organization_group`) and subsystem cohorts
-(`mod_subsystem`); both loaders expose `inspect`, `export`, and `rehome` /
-`recompute` commands.
+overrides, and mod descriptions instead of reducing prompts to item ids.
 
-EMI goal projections now create session-local SLOT goal tabs from explicit EMI
-recipe-screen and drag/drop goal targets on both loaders, but the playtest
-handoff in [plans/emi-goal-projections.md](plans/emi-goal-projections.md)
-tracks the blocking projection and manual-choice gaps before that work should
-grow new scope.
+EMI goal projections create session-local SLOT goal tabs from explicit recipe
+screen and drag/drop targets on both loaders; playtest blockers remain in
+[plans/emi-goal-projections.md](plans/emi-goal-projections.md).
 
 ### Production wall shape (post-list-view)
 
@@ -64,17 +59,23 @@ sidebar embed sub-plan in
 The workspace mounts in two surfaces with the **same widget tree**:
 standalone (player-inventory key) opens a full-screen
 `ModularUIContainerScreen`; sidebar mounts as a child widget on any
-non-SLOT `AbstractContainerScreen` (chest, crafting, machine). Both
-share `SlotWorkspaceUiController.WORKSPACE_WIDTH_PX = 414` for the
-centered content stack and let belt + kit rack escape to root-level
-full-width sibling slots so the hotbar covers the vanilla one.
-Cross-surface drag (wall → vanilla menu slot) is wired in direction
-A: drag-release, shift+click, and shift+wheel-up all route to the
-host menu when sidebar is active. Direction B (vanilla cursor →
-wall card), wider host coverage past plain chests, hard-custom
-screens (AE2 / RS), mod-observer transparency, and EMI exclusion
-area registration were considered but **dropped from the plan** —
-spin a fresh plan if any gain playtest signal.
+non-SLOT `AbstractContainerScreen` (chest, crafting, machine). Both use
+the same top search/action row, goal row (`All` plus Kit Rack toggle),
+optional active-chest strip, Recents, wall scroller, optional right-side
+Kit Rack, status row, and bottom Belt. The Belt mirrors vanilla: offhand
+on the left, a gap, then the nine hotbar slots. Sidebar placement is
+controlled by client left/top/bottom margin config so packs with FTB
+Chunks, quests, EMI, or other screen buttons can make room.
+
+Cross-surface drag from a wall card to a vanilla menu slot remains wired.
+Shift-click in sidebar/container mode now stays on SLOT's semantic path:
+carried cards deposit to proximate chests by learned affinity or existing
+contents, falling back to the currently open external chest when needed;
+external ghost cards take from proximate storage. Direction B (vanilla
+cursor → wall card), wider host coverage past plain chests, hard-custom
+screens (AE2 / RS), mod-observer transparency, and EMI exclusion area
+registration were considered but **dropped from the plan** — spin a fresh
+plan if any gain playtest signal.
 
 Server-side: `SlotSidebarUiHandle` per-player, attaches the
 sidebar's `ModularUI` to `player.containerMenu` via LDLib2's
@@ -136,8 +137,8 @@ NeoForge module:
 - `neoforge/screen/ldlib`: LDLib2 workspace menu, holder, UI session,
   view-model projection, panel builders (`ListWallPanelBuilder`
   is the wall surface; `TocPanelBuilder` the docked TOC),
-  `AtlasCardBuilder` for single-LOD pixel cards, RPC dispatcher,
-  drag/drop
+  `AtlasCardBuilder` for single-LOD pixel cards, right-side Kit Rack,
+  active-chest / Recents / Belt builders, RPC dispatcher, drag/drop
 - `neoforge/network`: workspace-open + RPC payload definitions
 - `neoforge/storage`: BE `storage_id` attachment, claim orchestrator,
   break-event cleanup, chest contents reader, proximity resolvers,
@@ -146,25 +147,19 @@ NeoForge module:
   `WorldStorageAccess`.
 - `neoforge/triage`: signal extractor + classifier glue
 - `neoforge/workflow`: per-player runtime lifecycle
-- `neoforge/config`: dedicated-test-instance config defaults
+- `neoforge/config`: dedicated-test-instance config defaults plus client
+  sidebar margins surfaced through the NeoForge config screen hook
 
 Forge 1.20 module:
 
-- `forge-1.20`: legacy Forge 1.20.1 target. Current contents are
-  production common-source compilation with Forge 1.20 adapters,
-  direct Taffy + `GuiGraphics` workspace renderer, Forge
-  `SimpleChannel` action transport with server-side validation, Forge
-  workflow persistence, session-backed common projection for carried
-  inventory and claimed chest ghosts, safe metadata command dispatch,
-  carried/world storage accessors, first guarded built-in transfer plus
-  identity-to-hotbar / hotbar-return / hotbar-to-section adapters,
-  kit/desired-count and chest metadata dispatch, Forge-side `/slot test
-  populate` / `clear` commands for carried-inventory and claimed-chest
-  testing, `/slot classification inspect` / `export` / `rehome`
-  commands for classifier diagnostics and pack-layer work, and the
-  Phase 0.5
-  `compileSharedProbeJava` task compiling the shared common source tree
-  plus Forge 1.20 platform probes.
+- `forge-1.20`: legacy Forge 1.20.1 target with production common-source
+  compilation, direct Taffy + `GuiGraphics` workspace renderer,
+  `SimpleChannel` action transport, workflow persistence, session-backed
+  projection, carried/world storage accessors, guarded
+  transfer/hotbar/kit/desired/wanted/chest/cursor/gather/wayfinding
+  actions, sidebar margin config/depth fixes, `/slot test` and
+  classification commands, and the Phase 0.5 `compileSharedProbeJava`
+  shared-source compile gate.
 
 Reference code (read-only): `reference/LDLib2`, `InventoryEssentials`,
 `TrashSlot`, `Applied-Energistics-2`, `SophisticatedBackpacks`,
@@ -203,12 +198,14 @@ to minimize churn — see list-view.md § Naming. **Section** —
 player-facing organizational block (the new presentation of an
 "island"). **Home** — stable section + ordinal owned by one item
 identity. **Recents** — pinned strip of recently picked-up identities
-above the wall. **Kit** — task-shaped unit
-unifying earlier "collection" + "loadout". **Belt** — docked
-hotbar strip at the bottom of the wall. **Authority** — source
-of truth about slot contents (kernel owns it; UI never invents).
-**Projection** — derived read model built from authority for a
-surface.
+above the wall. **Kit** — task-shaped unit unifying earlier
+"collection" + "loadout"; non-hotbar bring targets are kit-scoped
+desired counts. **Belt** — docked hotbar strip at the bottom of the wall
+with vanilla offhand-left layout. **Desired count** — persistent target
+count, player-global or active-kit scoped. **Wanted count** — temporary
+player target that auto-clears when satisfied. **Authority** — source of
+truth about slot contents (kernel owns it; UI never invents).
+**Projection** — derived read model built from authority for a surface.
 
 Expanded definitions in the linked design / architecture docs.
 

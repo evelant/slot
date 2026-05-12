@@ -1,6 +1,6 @@
 # SLOT Product And Behavior Spec
 
-Last updated: 2026-04-14
+Last updated: 2026-05-12
 
 This is the normative behavior specification for SLOT. It describes what the
 mod should do from the player's point of view, while using the minimum core
@@ -19,8 +19,8 @@ SLOT should provide:
 - one coherent browsing model for carried items
 - one coherent compare and transfer model when external storage is open
 - category-first and workflow-first discovery for large modpacks
-- manual collections, favorite/junk tags, recents, cleanup surfaces, and
-  loadouts
+- Kits, desired counts, temporary wanted counts, recents, cleanup surfaces, and
+  wayfinding
 - source-aware, server-authoritative inventory actions
 - conservative safety semantics
 - compatibility with supported modded storage and crafting surfaces
@@ -56,6 +56,19 @@ projection. They are never storage authority.
 
 A visible row may be backed by one or many real authority entries. A merged row
 must retain those backing entries so broad actions resolve to real targets.
+
+### Desired Count
+
+A desired count is a persistent target count for one item identity. It may be
+player-global or scoped to the active Kit. Desired counts create visible gaps,
+wayfinding targets, gather targets, and protection hints, but they are not
+inventory authority.
+
+### Wanted Count
+
+A wanted count is a temporary player target for one item identity. Wanted counts
+share the desired-count gap/gather/wayfinding behavior, but remain separate
+state and auto-clear once the carried count satisfies the target.
 
 ### Pane Destination And Source Destination
 
@@ -104,7 +117,7 @@ Used for:
 Behavior:
 
 - one carried browser
-- unified search, sort, category, collection, and recent views
+- unified search, category, Recent, Kit, desired-count, and wanted-count views
 - carried sources may be merged for browsing, but exact source identity must
   still exist for actions
 
@@ -116,7 +129,7 @@ Behavior:
 
 - carried and external panes stay visually distinct
 - each pane renders only its own sources
-- search, sort, categories, and collection filters are shared
+- search, sort, categories, and planning metadata are shared
 - counts and actions remain pane-aware
 
 ## Browsing And Rows
@@ -126,8 +139,9 @@ Behavior:
 A visible row represents one of:
 
 - a real projected item identity with a real visible count
-- a collection placeholder with zero count
-- a workflow/control row such as a loadout row
+- a planning placeholder with zero count, such as a Kit/desired/wanted/goal
+  target
+- a workflow/control row such as a Kit or goal row
 
 Default row content should stay compact:
 
@@ -158,17 +172,17 @@ pipeline must still retain the three exact backreferences.
 
 ### Placeholder Rows
 
-Collection placeholders must:
+Planning placeholders must:
 
 - be visually distinct
 - show absence clearly
 - support planning/workflow actions only
 - never allow real stack transfer actions
 
-## Search, Sorting, Categories, And Collections
+## Search, Sorting, Categories, Kits, And Counts
 
-Search, sort, category, and collection filters must mean the same thing in
-carried-only and dual-pane modes.
+Search, sort, category, Kit, desired-count, and wanted-count surfaces must mean
+the same thing in carried-only and dual-pane modes.
 
 In dual-pane mode:
 
@@ -176,16 +190,23 @@ In dual-pane mode:
 - counts reflect the local pane
 - filtering is shared, not cross-pane aggregation
 
-Collections must remain orthogonal to categories and support:
+Kits remain orthogonal to categories. Categories explain what an item is; Kits
+describe why the player wants the item ready now. Desired counts and wanted
+counts must support:
 
-- manual membership
-- favorites and junk as workflow tags, not implicit collections
 - placeholders for missing tracked items
-- desired counts as planning metadata
+- visible carried-vs-target gaps
+- gather and wayfinding against proximate known storage
+- no real stack transfer unless a real authority entry exists
 
-## Loadouts
+Wanted counts must clear when satisfied. Desired counts persist until the
+player changes or clears them.
 
-A loadout is a named quick-access template attached to a collection.
+## Kits And Quick Access
+
+A Kit is a named task package with one or more Belt pages, an optional offhand
+assignment, and kit-scoped desired counts for non-Belt carry targets. It
+replaces the earlier user-facing split between collections and loadouts.
 
 Apply is soft:
 
@@ -194,8 +215,13 @@ Apply is soft:
 - unspecified target slots are left alone
 - substitutes are not invented
 
-Loadout-protected items should be protected from broad cleanup unless the player
-explicitly asks to disturb quick access.
+The workspace Belt must mirror vanilla layout: offhand on the left, a gap, then
+the nine hotbar slots. The Kit Rack opens as a vertical right-side list beside
+the wall, from the same header row as `All`, and is closed by default.
+
+Kit-protected items and active kit-scoped desired-count identities should be
+protected from broad cleanup unless the player explicitly asks to disturb the
+active task.
 
 ## Recent
 
@@ -283,8 +309,9 @@ Default generic carried destination behavior:
 Broad actions must respect protection policy for:
 
 - favorites
-- tracked collection items
-- loadout-protected quick-access items
+- active Kit page items
+- active Kit-scoped desired-count identities
+- player-global desired/wanted targets when the action would defeat the target
 - portable containers
 - any other explicitly protected target or identity
 
