@@ -99,7 +99,6 @@ final class BeltPanelBuilder {
             }
         });
         panel.addEventListener(UIEvents.DRAG_PERFORM, UIEvent::stopPropagation);
-        panel.addChild(leftRail());
         UIElement centerRail = new UIElement().layout(layout -> layout
                 .flex(1)
                 .heightPercent(100)
@@ -107,34 +106,14 @@ final class BeltPanelBuilder {
                 .alignItems(AlignItems.CENTER)
                 .flexDirection(FlexDirection.ROW));
         centerRail.addChild(spacer());
-        centerRail.addChild(buildDivider());
+        centerRail.addChild(offhandButton(host.viewModel.offhand()));
+        centerRail.addChild(fixedGap(5));
         for (SlotWorkspaceViewModel.HotbarSlot slot : host.viewModel.hotbarSlots()) {
             centerRail.addChild(slotButton(slot));
         }
-        centerRail.addChild(buildDivider());
-        centerRail.addChild(offhandButton(host.viewModel.offhand()));
         centerRail.addChild(spacer());
         panel.addChild(centerRail);
-        panel.addChild(rightRail());
         return panel;
-    }
-
-    UIElement leftRail() {
-        UIElement rail = new UIElement().layout(layout -> layout
-                .width(KIT_CLUSTER_WIDTH)
-                .heightPercent(100)
-                .alignItems(AlignItems.CENTER)
-                .flexDirection(FlexDirection.ROW));
-        rail.addChild(host.kit.kitCluster());
-        return rail;
-    }
-
-    UIElement rightRail() {
-        UIElement rail = new UIElement().layout(layout -> layout
-                .width(KIT_CLUSTER_WIDTH)
-                .heightPercent(100));
-        rail.setAllowHitTest(false);
-        return rail;
     }
 
     UIElement spacer() {
@@ -143,10 +122,10 @@ final class BeltPanelBuilder {
         return spacer;
     }
 
-    UIElement buildDivider() {
-        UIElement divider = panel(ISLAND_BORDER).layout(layout -> layout.width(1).height(BELT_DIVIDER_HEIGHT));
-        divider.setAllowHitTest(false);
-        return divider;
+    UIElement fixedGap(int width) {
+        UIElement spacer = new UIElement().layout(layout -> layout.width(width).height(1));
+        spacer.setAllowHitTest(false);
+        return spacer;
     }
 
     int slotChromeColor(SlotWorkspaceViewModel.HotbarSlot slot) {

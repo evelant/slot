@@ -20,6 +20,9 @@ public final class SlotClientConfig {
         public final ModConfigSpec.BooleanValue debugLogging;
         public final ModConfigSpec.BooleanValue verboseLogging;
         public final ModConfigSpec.BooleanValue slotEnabled;
+        public final ModConfigSpec.IntValue sidebarLeftMargin;
+        public final ModConfigSpec.IntValue sidebarTopMargin;
+        public final ModConfigSpec.IntValue sidebarBottomMargin;
 
         private Client(ModConfigSpec.Builder builder) {
             builder.comment("Client-side SLOT settings").push("client");
@@ -43,6 +46,21 @@ public final class SlotClientConfig {
                             "vanilla inventory screen."
                     )
                     .define("slotEnabled", true);
+
+            sidebarLeftMargin = builder
+                    .translation("slot.config.sidebar_left_margin")
+                    .comment("Horizontal screen-pixel gap before the SLOT sidebar. Increase this when a pack renders buttons at the top-left edge.")
+                    .defineInRange("sidebarLeftMargin", 0, 0, 400);
+
+            sidebarTopMargin = builder
+                    .translation("slot.config.sidebar_top_margin")
+                    .comment("Screen-pixel gap above the SLOT sidebar. Increase this when a pack renders buttons at the top-left edge.")
+                    .defineInRange("sidebarTopMargin", 0, 0, 400);
+
+            sidebarBottomMargin = builder
+                    .translation("slot.config.sidebar_bottom_margin")
+                    .comment("Screen-pixel gap below the SLOT sidebar. Increase this when recipe viewer controls sit at the bottom-left edge.")
+                    .defineInRange("sidebarBottomMargin", 0, 0, 400);
 
             builder.pop();
         }

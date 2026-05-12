@@ -7,7 +7,6 @@ import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.CARRIED_CHIP_
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.GHOST_CARD_ALPHA;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.MUTED;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.ROW_HOVER;
-import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.ROW_MATCH;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.SELECTED;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.WARNING;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceUi.shorten;
@@ -250,7 +249,7 @@ final class WorkspaceFormat {
             boolean carried,
             boolean searchActive
     ) {
-        int base = cardChromeBaseColor(selected, searchMatch, recent, searchActive);
+        int base = cardChromeBaseColor(selected, searchMatch, searchActive);
         if (!carried && !selected) {
             base = dimAlpha(base, GHOST_CARD_ALPHA);
         }
@@ -260,16 +259,15 @@ final class WorkspaceFormat {
     private static int cardChromeBaseColor(
             boolean selected,
             boolean searchMatch,
-            boolean recent,
             boolean searchActive
     ) {
         if (selected) {
             return SELECTED;
         }
         if (!searchActive) {
-            return recent ? ROW_MATCH : 0xC926313B;
+            return 0xC926313B;
         }
-        return searchMatch ? (recent ? ROW_MATCH : ROW_HOVER) : 0x2824313D;
+        return searchMatch ? ROW_HOVER : 0x2824313D;
     }
 
     static int dimAlpha(int color, float alphaFactor) {

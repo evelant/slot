@@ -6,6 +6,7 @@ import dev.imagio.slot.atlas.AtlasSearchIndex;
 import dev.imagio.slot.inventory.workspace.SlotWorkspaceViewModel;
 import dev.imagio.slot.inventory.workspace.WorkspaceSearchQuery;
 import dev.imagio.slot.ui.workspace.WorkspaceSearchInputPolicy;
+import dev.imagio.slot.ui.workspace.WorkspaceUiSessionMemory;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.ArrayList;
@@ -31,6 +32,10 @@ final class SearchController {
 
     SearchController(SlotWorkspaceUiController host) {
         this.host = host;
+    }
+
+    void restoreRememberedQuery() {
+        this.searchQuery = WorkspaceUiSessionMemory.searchQuery(host.surfaceMemoryKey());
     }
 
     boolean modalActive() {
@@ -148,6 +153,12 @@ final class SearchController {
         host.rebuild();
     }
 
+    void syncRememberedQuery() {
+        if (!searchQuery.isBlank()) {
+            host.rpc.sendSearchQuery(searchQuery);
+        }
+    }
+
     private void openModal() {
         searchModalActive = true;
         searchBuffer = "";
@@ -261,11 +272,13 @@ final class SearchController {
      * identities.
      */
     private void setSearchQuery(String value) {
-        String next = value == null ? "" : value;
+        String next = WorkspaceSearchQuery.cleanInput(value == null ? "" : value);
         if (next.equals(searchQuery)) {
+            WorkspaceUiSessionMemory.setSearchQuery(host.surfaceMemoryKey(), next);
             return;
         }
         searchQuery = next;
+        WorkspaceUiSessionMemory.setSearchQuery(host.surfaceMemoryKey(), searchQuery);
         host.rpc.sendSearchQuery(searchQuery);
     }
 

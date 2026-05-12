@@ -5,6 +5,7 @@ import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceTheme.*;
 import static dev.imagio.slot.neoforge.screen.ldlib.WorkspaceUi.*;
 
 import com.lowdragmc.lowdraglib2.gui.ui.UIElement;
+import com.lowdragmc.lowdraglib2.gui.ui.data.ScrollerMode;
 import com.lowdragmc.lowdraglib2.gui.ui.data.Horizontal;
 import com.lowdragmc.lowdraglib2.gui.ui.data.Vertical;
 import com.lowdragmc.lowdraglib2.gui.ui.elements.Button;
@@ -32,6 +33,7 @@ import java.util.List;
 
 final class KitRackBuilder {
     static final int KIT_CARD_WIDTH = 180;
+    static final int KIT_RACK_PANEL_WIDTH = KIT_CARD_WIDTH + 12;
     static final int KIT_CELL_SIZE = 14;
     static final int KIT_CELL_ICON_SIZE = 11;
 
@@ -137,12 +139,9 @@ final class KitRackBuilder {
     }
 
     UIElement kitRackOverlay() {
-        // In-flow column child sitting above the belt in the wall
-        // panel — same pixel height regardless of surface, full panel
-        // width, no abs anchoring.
         UIElement overlay = panel(GLASS).layout(layout -> layout
-                .widthPercent(100)
-                .height(kitRackHeight())
+                .width(KIT_RACK_PANEL_WIDTH)
+                .heightPercent(100)
                 .paddingAll(6)
                 .gapAll(6)
                 .flexDirection(FlexDirection.COLUMN));
@@ -207,35 +206,13 @@ final class KitRackBuilder {
         return row;
     }
 
-    int kitRackBodyHeight() {
-        int maxPageCount = 1;
-        int maxBringCount = 0;
-        for (SlotWorkspaceViewModel.KitCard card : host.viewModel.kits()) {
-            if (card.pageCount() > maxPageCount) {
-                maxPageCount = card.pageCount();
-            }
-            if (card.bringSlotCount() > maxBringCount) {
-                maxBringCount = card.bringSlotCount();
-            }
-        }
-        return Math.max(44, kitCardHeight(maxPageCount, maxBringCount) + 6);
-    }
-
-    int kitRackHeight() {
-        // padding (6 top + 6 bottom) + header row (14) + gap to body (6) + body height.
-        // Kept as a single computation for any overlay that needs to clear
-        // the rack when it's open.
-        return 12 + 14 + 6 + kitRackBodyHeight();
-    }
-
     UIElement kitRackBody() {
-        int bodyHeight = kitRackBodyHeight();
         if (host.viewModel.kits().isEmpty()) {
             UIElement body = new UIElement().layout(layout -> layout
                     .widthPercent(100)
-                    .height(bodyHeight)
+                    .flex(1)
                     .alignItems(AlignItems.CENTER)
-                    .flexDirection(FlexDirection.ROW));
+                    .flexDirection(FlexDirection.COLUMN));
             Label empty = label("No kits yet. Load your belt, then Save Current Belt.", MUTED);
             empty.layout(layout -> layout.flex(1).height(12));
             empty.textStyle(style -> style
@@ -247,19 +224,18 @@ final class KitRackBuilder {
             body.addChild(empty);
             return body;
         }
-        // Horizontal scroller so a base with many kits doesn't overflow
-        // off the right edge of the screen. ScrollerView wraps the row of
-        // cards in a viewport; the horizontal scroller appears below the
-        // viewport and consumes mouse-wheel input forwarded from the row.
         ScrollerView scroller = new ScrollerView();
         scroller.layout(layout -> layout
                 .widthPercent(100)
-                .height(bodyHeight));
-        scroller.scrollerStyle(style -> style.minScrollPixel(40f).maxScrollPixel(KIT_CARD_WIDTH));
+                .flex(1));
+        scroller.scrollerStyle(style -> style
+                .mode(ScrollerMode.VERTICAL)
+                .minScrollPixel(40f)
+                .maxScrollPixel(KIT_CARD_WIDTH));
         scroller.viewContainer(view -> view.layout(layout -> layout
                 .gapAll(6)
                 .alignItems(AlignItems.FLEX_START)
-                .flexDirection(FlexDirection.ROW)));
+                .flexDirection(FlexDirection.COLUMN)));
         for (SlotWorkspaceViewModel.KitCard card : host.viewModel.kits()) {
             scroller.addScrollViewChild(kitCardButton(card));
         }

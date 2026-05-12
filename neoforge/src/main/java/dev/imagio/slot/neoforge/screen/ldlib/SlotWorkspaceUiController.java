@@ -24,6 +24,7 @@ import dev.imagio.slot.ui.workspace.GoalWorkspaceClientState;
 import dev.imagio.slot.ui.workspace.GoalWorkspaceIntegration;
 import dev.imagio.slot.ui.workspace.GoalWorkspaceProjection;
 import dev.imagio.slot.ui.workspace.ShiftClickTransferState;
+import dev.imagio.slot.ui.workspace.WorkspaceUiSessionMemory;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
 import dev.vfyjxf.taffy.style.TaffyPosition;
@@ -46,14 +47,19 @@ final class SlotWorkspaceUiController {
      * width. Phase 7 of the single-column workspace plan dropped the
      * left column entirely; the sliver carries TOC navigation in ~6 px.
      */
-    static final int WORKSPACE_WIDTH_PX =
+    static final int WORKSPACE_BASE_WIDTH_PX =
             ListWallPanelBuilder.WALL_CONTENT_WIDTH_PX
                     + ListWallPanelBuilder.SECTION_GAP_PX
                     + TocPanelBuilder.SLIVER_WIDTH_PX
                     + 14 * 2;
+    static final int WORKSPACE_WIDTH_PX =
+            WORKSPACE_BASE_WIDTH_PX
+                    + ListWallPanelBuilder.SECTION_GAP_PX
+                    + KitRackBuilder.KIT_RACK_PANEL_WIDTH;
 
     final SlotWorkspaceUiSession session;
     final Player player;
+    final boolean sidebarMode;
     final UIElement root;
     final UIElement content;
     UIElement popoverSlot;
@@ -147,7 +153,6 @@ final class SlotWorkspaceUiController {
      * outside the centered content wrapper so it spans the full screen
      * width when the rack is open. Empty when the rack is closed.
      */
-    UIElement kitRackSlot;
     /**
      * Persistent root-level container for the belt (hotbar). Spans the
      * full screen width regardless of the centered content cap, so it
@@ -173,6 +178,8 @@ final class SlotWorkspaceUiController {
     int appliedGoalStateRevision = GoalWorkspaceClientState.revision();
     SlotWorkspaceViewModel.IdentityRef hoveredChestCellIdentity;
     String hoveredChestCellStorageId;
+    private float pendingWallScrollRestore = Float.NaN;
+    private boolean pendingWallScrollRestoreActive;
     // Set by drop targets that handle a ChestStackDrag for something OTHER
     // than "take the item into inventory" (e.g. island assign-home is a
     // pure metadata op — item stays in the chest). The chest cell's
@@ -181,8 +188,13 @@ final class SlotWorkspaceUiController {
     boolean chestDragDropConsumed;
 
     SlotWorkspaceUiController(SlotWorkspaceUiSession session, Player player) {
+        this(session, player, false);
+    }
+
+    SlotWorkspaceUiController(SlotWorkspaceUiSession session, Player player, boolean sidebarMode) {
         this.session = session;
         this.player = player;
+        this.sidebarMode = sidebarMode;
         this.viewModel = session.viewModel();
         // Root is transparent so the vanilla screen backdrop (dimmed
         // world / panorama) shows through everywhere we don't explicitly
@@ -202,32 +214,36 @@ final class SlotWorkspaceUiController {
         // NaN check instead of layoutHeight). With unbounded height
         // the scroller never scrolls and the belt gets pushed off
         // screen. Keeping root at widthPercent(100) sidesteps this.
-        this.root = new UIElement().layout(layout -> layout
-                .widthPercent(100)
-                .heightPercent(100)
-                .paddingAll(0)
-                .gapAll(0)
-                .alignItems(AlignItems.CENTER)
-                .flexDirection(FlexDirection.COLUMN));
-        // Centered content stack: workspace top + mid + status. Capped
-        // at WORKSPACE_WIDTH_PX so the layout doesn't sprawl on wide
-        // screens; auto horizontal margins center it within the
-        // (full-screen) root. flex(1) so it claims the leftover height
-        // above the belt.
+        this.root = new UIElement().layout(layout -> {
+            layout.widthPercent(100)
+                    .heightPercent(100)
+                    .paddingAll(0)
+                    .gapAll(0)
+                    .alignItems(sidebarMode ? AlignItems.FLEX_START : AlignItems.CENTER)
+                    .flexDirection(FlexDirection.COLUMN);
+            if (sidebarMode) {
+                layout.positionType(TaffyPosition.ABSOLUTE)
+                        .left(dev.imagio.slot.neoforge.config.SlotClientConfig.CLIENT.sidebarLeftMargin.get())
+                        .top(dev.imagio.slot.neoforge.config.SlotClientConfig.CLIENT.sidebarTopMargin.get());
+            }
+        });
+        if (sidebarMode) {
+            this.root.setAllowHitTest(false);
+        }
+        // Content stack: workspace top + mid + status. Standalone
+        // surfaces center it in the full-screen root; sidebar surfaces
+        // pin it to the configured left/top mount.
         this.content = new UIElement().layout(layout -> layout
-                .width(WORKSPACE_WIDTH_PX)
+                .width(contentWidth())
                 .flex(1)
-                .marginHorizontalAuto()
                 .paddingAll(14)
                 .gapAll(8)
                 .flexDirection(FlexDirection.COLUMN));
-        // Belt + kit rack slots: pinned full-width at the bottom of
-        // root, outside the centered content wrapper. The kit rack
-        // slot is empty when the rack is closed (height collapses to
-        // 0 via flex defaults).
-        this.kitRackSlot = new UIElement().layout(layout -> layout
-                .widthPercent(100)
-                .flexDirection(FlexDirection.COLUMN));
+        if (!sidebarMode) {
+            this.content.layout(layout -> layout.marginHorizontalAuto());
+        }
+        // Belt is pinned full-width at the bottom of root, outside the
+        // content wrapper. The kit rack lives beside the wall scroller.
         this.beltSlot = new UIElement().layout(layout -> layout
                 .widthPercent(100)
                 .flexDirection(FlexDirection.COLUMN));
@@ -245,6 +261,7 @@ final class SlotWorkspaceUiController {
         this.popoverSlot.style(style -> style.zIndex(50));
         this.popoverSlot.setAllowHitTest(false);
         clearSelectionOnDirectClick(root);
+        searchController.restoreRememberedQuery();
     }
 
     ModularUI create() {
@@ -272,7 +289,7 @@ final class SlotWorkspaceUiController {
         // optional kit rack (full-width), belt (full-width), cursor
         // overlay (abs, on top of everything). The flex-column flow
         // gives content the leftover height above the bottom slots.
-        root.addChildren(syncBinding(), content, kitRackSlot, beltSlot, popoverSlot);
+        root.addChildren(syncBinding(), content, beltSlot, popoverSlot);
         // Bubble-phase universal handlers for the real menu cursor:
         // rows 1 (right-click cancel) + 8 (left-click smart-deposit) of
         // the universal click table. Reaching root means no specific
@@ -291,6 +308,7 @@ final class SlotWorkspaceUiController {
             }
         });
         rebuildNow();
+        searchController.syncRememberedQuery();
         return ModularUI.of(UI.of(root), player);
     }
 
@@ -328,6 +346,37 @@ final class SlotWorkspaceUiController {
 
     void rebuild() {
         rebuildPending = true;
+    }
+
+    int contentWidth() {
+        return kitRackOpen ? WORKSPACE_WIDTH_PX : WORKSPACE_BASE_WIDTH_PX;
+    }
+
+    String surfaceMemoryKey() {
+        return sidebarMode ? "neoforge.sidebar" : "neoforge.standalone";
+    }
+
+    boolean activeChestOpen() {
+        return viewModel != null
+                && viewModel.activeChestPanel() != null
+                && viewModel.activeChestPanel().isPresent();
+    }
+
+    void rememberWallScroll(float scroll) {
+        WorkspaceUiSessionMemory.setWallScroll(surfaceMemoryKey(), scroll);
+    }
+
+    void requestWallScrollRestore(float scroll) {
+        pendingWallScrollRestore = Float.isFinite(scroll) ? Math.max(0f, scroll) : 0f;
+        pendingWallScrollRestoreActive = true;
+    }
+
+    void applyPendingWallScrollRestore() {
+        if (!pendingWallScrollRestoreActive || wallScroller == null) {
+            return;
+        }
+        pendingWallScrollRestoreActive = false;
+        wallScroller.verticalScroller.setValue(pendingWallScrollRestore);
     }
 
     void flushRebuildIfPending() {
@@ -372,6 +421,7 @@ final class SlotWorkspaceUiController {
             storagePanel.repopulate();
             listWall.wallPanel();
         }
+        content.layout(layout -> layout.width(contentWidth()));
         // Belt + kit rack are root-level siblings of `content` so they
         // span the full screen width (covering the vanilla hotbar in
         // sidebar mode); they're rebuilt each refresh because the kit
@@ -379,10 +429,6 @@ final class SlotWorkspaceUiController {
         // depends on view-model state.
         beltSlot.clearAllChildren();
         beltSlot.addChild(belt.overlay());
-        kitRackSlot.clearAllChildren();
-        if (kitRackOpen) {
-            kitRackSlot.addChild(kit.kitRackOverlay());
-        }
         content.markTaffyStyleDirty();
     }
 

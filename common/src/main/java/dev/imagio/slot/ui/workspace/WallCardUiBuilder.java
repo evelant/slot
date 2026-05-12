@@ -12,7 +12,6 @@ import java.util.List;
 
 import static dev.imagio.slot.ui.workspace.WorkspaceUiPalette.GHOST_CARD_ALPHA;
 import static dev.imagio.slot.ui.workspace.WorkspaceUiPalette.ROW_HOVER;
-import static dev.imagio.slot.ui.workspace.WorkspaceUiPalette.ROW_MATCH;
 import static dev.imagio.slot.ui.workspace.WorkspaceUiPalette.SELECTED;
 import static dev.imagio.slot.ui.workspace.WorkspaceUiPalette.TEXT;
 
@@ -114,7 +113,7 @@ public final class WallCardUiBuilder {
             boolean carried,
             boolean searchActive
     ) {
-        int base = cardChromeBaseColor(selected, searchMatch, recent, searchActive);
+        int base = cardChromeBaseColor(selected, searchMatch, searchActive);
         if (!carried && !selected) {
             base = dimAlpha(base, GHOST_CARD_ALPHA);
         }
@@ -124,16 +123,15 @@ public final class WallCardUiBuilder {
     private static int cardChromeBaseColor(
             boolean selected,
             boolean searchMatch,
-            boolean recent,
             boolean searchActive
     ) {
         if (selected) {
             return SELECTED;
         }
         if (!searchActive) {
-            return recent ? ROW_MATCH : 0xC926313B;
+            return 0xC926313B;
         }
-        return searchMatch ? (recent ? ROW_MATCH : ROW_HOVER) : 0x2824313D;
+        return searchMatch ? ROW_HOVER : 0x2824313D;
     }
 
     private static int dimAlpha(int color, float alphaFactor) {

@@ -27,6 +27,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
+import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
 /**
@@ -169,6 +170,23 @@ public final class WorkspaceChestCommandService {
             DepositQuantity quantity,
             DesiredCountPolicy desiredCountPolicy
     ) {
+        return depositIdentityToLinkedChest(
+                player,
+                runtime,
+                identity,
+                quantity,
+                desiredCountPolicy,
+                (Supplier<ClaimedChest>) null);
+    }
+
+    public static WorkspaceCommandOutcome depositIdentityToLinkedChest(
+            ServerPlayer player,
+            WorkflowDomainRuntime runtime,
+            ItemIdentity identity,
+            DepositQuantity quantity,
+            DesiredCountPolicy desiredCountPolicy,
+            Supplier<ClaimedChest> activeChestFallback
+    ) {
         if (identity == null) {
             return WorkspaceCommandOutcome.rejected("invalid_identity");
         }
@@ -213,6 +231,15 @@ public final class WorkspaceChestCommandService {
                 identity,
                 representativeStack,
                 requested);
+        if (candidates.isEmpty()) {
+            ClaimedChest fallbackChest = activeChestFallback == null ? null : activeChestFallback.get();
+            candidates = activeChestFallbackDepositCandidate(
+                    player,
+                    runtime,
+                    fallbackChest,
+                    representativeStack,
+                    requested);
+        }
         if (candidates.isEmpty()) {
             return WorkspaceCommandOutcome.rejected("no_linked_proximate_chest_with_room");
         }
@@ -468,6 +495,39 @@ public final class WorkspaceChestCommandService {
             }
         }
         return List.copyOf(candidates);
+    }
+
+    private static List<String> activeChestFallbackDepositCandidate(
+            ServerPlayer player,
+            WorkflowDomainRuntime runtime,
+            ClaimedChest fallbackChest,
+            ItemStack sourceStack,
+            int requestedCount
+    ) {
+        if (player == null || runtime == null || fallbackChest == null
+                || sourceStack == null || sourceStack.isEmpty() || requestedCount <= 0) {
+            return List.of();
+        }
+        ClaimedChestMap claimedChestMap = runtime.chestClaimWorkflow().claimedChestMap();
+        if (claimedChestMap.chest(fallbackChest.storageId()) == null) {
+            return List.of();
+        }
+        MinecraftServer server = player.getServer();
+        if (server == null || !StorageAccessRegistry.isInstalled()) {
+            return List.of();
+        }
+        WorldStorageAccess world = StorageAccessRegistry.worldStorageAccess();
+        WorldStorageAccess.Target target = new WorldStorageAccess.Target.Chest(fallbackChest);
+        if (!world.isAccessible(server, target)) {
+            return List.of();
+        }
+        int probeCount = Math.max(1, Math.min(sourceStack.getMaxStackSize(),
+                Math.min(requestedCount, sourceStack.getCount())));
+        ItemStack probe = sourceStack.copy();
+        probe.setCount(probeCount);
+        ItemStack leftover = world.insert(server, target, probe, true);
+        int leftoverCount = leftover == null || leftover.isEmpty() ? 0 : leftover.getCount();
+        return leftoverCount < probeCount ? List.of(fallbackChest.storageId().toString()) : List.of();
     }
 
     static int requestedExplicitDepositCount(

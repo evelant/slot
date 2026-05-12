@@ -52,6 +52,10 @@ subprojects {
             url = uri('https://maven.firstdark.dev/snapshots')
         }
         maven {
+            name = 'Shedaniel'
+            url = uri('https://maven.shedaniel.me')
+        }
+        maven {
             name = 'Modrinth'
             url = uri('https://api.modrinth.com/maven')
             content {

@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.CROSS_SURFACE_QUICK_MOVE;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.CURSOR_CANCEL;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.CURSOR_CANCEL_THEN_PICKUP_TO_CURSOR;
 import static dev.imagio.slot.ui.workspace.WallCardTransferGesturePolicy.Action.ADJUST_PLAYER_DESIRED_COUNT;
@@ -152,12 +151,19 @@ class WallCardTransferGesturePolicyTest {
     }
 
     @Test
-    void shiftClickCarriedInSidebarQuickMovesAllMatchingToHost() {
+    void shiftClickCarriedInSidebarStillDepositsToLinkedChest() {
         var decision = WallCardTransferGesturePolicy.click(new WallCardTransferGesturePolicy.Context(
                 carriedItem(), 0, true, false, null, false, true, 9, true));
 
-        assertEquals(CROSS_SURFACE_QUICK_MOVE, decision.action());
-        assertEquals(WallCardTransferGesturePolicy.PICKUP_MAX, decision.count());
+        assertEquals(DEPOSIT_HOME_TO_LINKED_CHEST, decision.action());
+    }
+
+    @Test
+    void shiftClickCarriedWithOpenChestButNoProximateChestDeposits() {
+        var decision = WallCardTransferGesturePolicy.click(new WallCardTransferGesturePolicy.Context(
+                carriedItem(), 0, true, false, null, false, true, 9, false, true, false, false));
+
+        assertEquals(DEPOSIT_HOME_TO_LINKED_CHEST, decision.action());
     }
 
     @Test

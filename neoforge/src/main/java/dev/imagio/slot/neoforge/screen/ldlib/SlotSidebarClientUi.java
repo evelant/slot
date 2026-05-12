@@ -40,13 +40,9 @@ public final class SlotSidebarClientUi {
     private static ActiveMount activeMount;
 
     /**
-     * Preferred sidebar width (in screen px) for the SLOT sidebar.
-     * Same fixed width that the standalone surface uses — the
-     * workspace renders the same widget tree at the same dimensions
-     * regardless of whether it's mounted as a sidebar inside a vanilla
-     * container screen or opened standalone via the player-inventory
-     * key. The canonical constant lives on
-     * {@link SlotWorkspaceUiController#WORKSPACE_WIDTH_PX}.
+     * Preferred content width (in screen px) for the SLOT sidebar.
+     * This reserves the right-side kit rack width up front so opening
+     * the rack does not resize the LDLib widget while it is mounted.
      */
     public static int preferredSidebarWidth() {
         return SlotWorkspaceUiController.WORKSPACE_WIDTH_PX;
@@ -82,7 +78,7 @@ public final class SlotSidebarClientUi {
             return false;
         }
         SlotWorkspaceUiSession session = new SlotWorkspaceUiSession(player);
-        SlotWorkspaceUiController controller = new SlotWorkspaceUiController(session, player);
+        SlotWorkspaceUiController controller = new SlotWorkspaceUiController(session, player, true);
         ModularUI sidebar = controller.create();
         sidebar.init(sidebarWidth, sidebarHeight);
         ((ScreenInvoker) containerScreen).slot$addRenderableWidget(sidebar.getWidget());

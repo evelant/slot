@@ -88,6 +88,7 @@ dependencies {
     }
 
     implementation "maven.modrinth:embers-text-api:${emberstextapi_version}+forge-${forge_minecraft_version}"
+    implementation fg.deobf("me.shedaniel.cloth:cloth-config-forge:${cloth_config_forge_version}")
 
     compileOnly fg.deobf("dev.emi:emi-forge:${forge_emi_version}:api")
 
@@ -127,6 +128,7 @@ processResources {
             forge_minecraft_version_range: forge_minecraft_version_range,
             forge_loader_version_range   : forge_loader_version_range,
             forge_version_range          : forge_version_range,
+            cloth_config_forge_version   : cloth_config_forge_version,
     ]
     inputs.properties replaceProperties
 

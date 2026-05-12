@@ -119,6 +119,14 @@ class WallSectionHeaderUiBuilderTest {
     }
 
     @Test
+    void carriedCardChromeDoesNotChangeForRecentItems() {
+        int normal = WallCardUiBuilder.cardChromeColor(false, false, false, true, false);
+        int recent = WallCardUiBuilder.cardChromeColor(false, false, true, true, false);
+
+        assertEquals(normal, recent);
+    }
+
+    @Test
     void wallCardDoesNotRenderElsewherePlusBadgeWithoutSearch() {
         RecordingCardContext context = new RecordingCardContext();
         SlotWorkspaceViewModel.AtlasItem item = atlasItem(

@@ -1,7 +1,9 @@
 package dev.imagio.slot.forge.client;
 
+import com.mojang.blaze3d.systems.RenderSystem;
 import dev.imagio.slot.forge.ui.ForgeWorkspaceScreen;
 import dev.imagio.slot.forge.ui.ForgeWorkspaceSurface;
+import dev.imagio.slot.forge.config.SlotForgeClientConfig;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.events.ContainerEventHandler;
 import net.minecraft.client.gui.components.events.GuiEventListener;
@@ -32,7 +34,11 @@ public final class ForgeContainerSidebar {
      * when no sidebar is mounted.
      */
     public static int activeSidebarWidth() {
-        return activeHostScreen == null ? 0 : ForgeWorkspaceSurface.WIDTH;
+        if (activeHostScreen == null) {
+            return 0;
+        }
+        int contentWidth = activeSurface == null ? ForgeWorkspaceSurface.WIDTH : activeSurface.contentWidth();
+        return SlotForgeClientConfig.sidebarLeftMargin() + contentWidth;
     }
 
     public static void clearClientState() {
@@ -91,19 +97,24 @@ public final class ForgeContainerSidebar {
         if (event.getScreen() != activeHostScreen || activeSurface == null) {
             return;
         }
-        activeSurface.render(
-                event.getGuiGraphics(),
-                event.getMouseX(),
-                event.getMouseY(),
-                event.getScreen().width,
-                event.getScreen().height);
+        RenderSystem.disableDepthTest();
+        try {
+            activeSurface.render(
+                    event.getGuiGraphics(),
+                    event.getMouseX(),
+                    event.getMouseY(),
+                    event.getScreen().width,
+                    event.getScreen().height);
+        } finally {
+            RenderSystem.enableDepthTest();
+        }
     }
 
     public static void onMousePressed(ScreenEvent.MouseButtonPressed.Pre event) {
         if (event.getScreen() != activeHostScreen || activeSurface == null) {
             return;
         }
-        if (event.getMouseX() >= ForgeWorkspaceSurface.WIDTH) {
+        if (!insideSidebar(event.getMouseX(), event.getMouseY())) {
             return;
         }
         if (activeSurface.mouseClicked(event.getMouseX(), event.getMouseY(), event.getButton())) {
@@ -116,7 +127,7 @@ public final class ForgeContainerSidebar {
             return;
         }
         boolean handled = activeSurface.mouseReleased(event.getMouseX(), event.getMouseY(), event.getButton());
-        if (event.getMouseX() < ForgeWorkspaceSurface.WIDTH && handled) {
+        if (insideSidebar(event.getMouseX(), event.getMouseY()) && handled) {
             event.setCanceled(true);
         }
     }
@@ -125,7 +136,7 @@ public final class ForgeContainerSidebar {
         if (event.getScreen() != activeHostScreen || activeSurface == null) {
             return;
         }
-        if (event.getMouseX() >= ForgeWorkspaceSurface.WIDTH) {
+        if (!insideSidebar(event.getMouseX(), event.getMouseY())) {
             return;
         }
         if (activeSurface.mouseScrolled(event.getMouseX(), event.getMouseY(), event.getScrollDelta())) {
@@ -177,6 +188,17 @@ public final class ForgeContainerSidebar {
             return isTextInputFocused(container.getFocused());
         }
         return listener.isFocused();
+    }
+
+    private static boolean insideSidebar(double mouseX, double mouseY) {
+        if (activeHostScreen == null || activeSurface == null) {
+            return false;
+        }
+        int left = SlotForgeClientConfig.sidebarLeftMargin();
+        int top = SlotForgeClientConfig.sidebarTopMargin();
+        int right = left + activeSurface.contentWidth();
+        int bottom = activeHostScreen.height - SlotForgeClientConfig.sidebarBottomMargin();
+        return mouseX >= left && mouseX < right && mouseY >= top && mouseY < bottom;
     }
 
     private static void release() {

@@ -82,12 +82,12 @@ public final class SlotContainerSidebar {
     }
 
     /**
-     * Width (in screen px) the sidebar will occupy. Defers to the
+     * Width (in screen px) the sidebar content will occupy. Defers to the
      * sidebar UI's preferred content size (wall + capped left column
      * + padding) so the sidebar consumes only the space its content
      * needs.
      */
-    static int sidebarWidthFor() {
+    static int sidebarContentWidthFor() {
         return Math.max(MIN_SIDEBAR_WIDTH, SlotSidebarClientUi.preferredSidebarWidth());
     }
 
@@ -132,7 +132,12 @@ public final class SlotContainerSidebar {
             activeSidebarWidth = 0;
         }
 
-        int sidebarWidth = sidebarWidthFor();
+        int sidebarContentWidth = sidebarContentWidthFor();
+        int sidebarContentHeight = Math.max(
+                1,
+                screen.height
+                        - SlotClientConfig.CLIENT.sidebarTopMargin.get()
+                        - SlotClientConfig.CLIENT.sidebarBottomMargin.get());
 
         // The host stays in its native centered position. Earlier
         // iterations tried to shift it right (mutate leftPos / re-init
@@ -143,19 +148,23 @@ public final class SlotContainerSidebar {
         // overlap in sidebar mode is the lesser evil; reworking the
         // SLOT UI to fit beside an unshifted host is tracked as a
         // separate design pass.
-        boolean mounted = SlotSidebarClientUi.mount(minecraft.player, screen, sidebarWidth, screen.height);
+        boolean mounted = SlotSidebarClientUi.mount(
+                minecraft.player,
+                screen,
+                sidebarContentWidth,
+                sidebarContentHeight);
         if (!mounted) {
             return;
         }
         activeHostScreen = screen;
-        activeSidebarWidth = sidebarWidth;
+        activeSidebarWidth = SlotClientConfig.CLIENT.sidebarLeftMargin.get() + sidebarContentWidth;
 
         PacketDistributor.sendToServer(new SlotSidebarOpenPayload());
 
         if (SlotDebugLog.enabled()) {
             SlotCommon.LOGGER.info(
                     "[SLOT][sidebar] mounted on {} (sidebarWidth={}, screen={}x{})",
-                    className, sidebarWidth, screen.width, screen.height
+                    className, activeSidebarWidth, screen.width, screen.height
             );
         }
     }

@@ -1,6 +1,7 @@
 package dev.imagio.slot.neoforge;
 
 import dev.imagio.slot.SlotCommon;
+import dev.imagio.slot.neoforge.client.SlotNeoForgeConfigScreens;
 import dev.imagio.slot.neoforge.client.SlotNeoForgeClient;
 import dev.imagio.slot.neoforge.classification.NeoForgeClassificationLayerReloadListener;
 import dev.imagio.slot.neoforge.command.SlotTestCommands;
@@ -54,6 +55,7 @@ public final class SlotNeoForge {
         SlotPickupRouter.init();
 
         if (dist == Dist.CLIENT) {
+            SlotNeoForgeConfigScreens.register(container);
             SlotNeoForgeClient.init(modBus);
         }
     }

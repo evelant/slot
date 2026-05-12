@@ -856,6 +856,7 @@ final class AtlasCardBuilder {
                 SlotSidebarClientUi.isActive(),
                 freeSlots,
                 host.anyChestProximate(),
+                host.activeChestOpen(),
                 wantedAdjustDown,
                 host.shiftClickTransferState.continuingTake(
                         item == null ? null : item.identity(),

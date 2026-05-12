@@ -22,10 +22,10 @@ final class HotkeyRouter {
         host.root.setEnforceFocus(event -> {
         });
         host.root.addEventListener(UIEvents.MUI_CHANGED, event -> host.root.focus());
+        host.root.addEventListener(UIEvents.KEY_DOWN, host.searchController::handleKeyDown, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCursorCancelKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleBeltHotkey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleMarkWantedKey, true);
-        host.root.addEventListener(UIEvents.KEY_DOWN, host.searchController::handleKeyDown, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleGoalRecipeKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleCycleKitPageKey, true);
         host.root.addEventListener(UIEvents.KEY_DOWN, this::handleGatherActiveKitKey, true);
@@ -38,7 +38,10 @@ final class HotkeyRouter {
             }
         }, true);
         host.root.addEventListener(UIEvents.CHAR_TYPED, host.searchController::handleCharTyped, true);
-        host.root.addEventListener(UIEvents.TICK, event -> host.flushRebuildIfPending());
+        host.root.addEventListener(UIEvents.TICK, event -> {
+            host.flushRebuildIfPending();
+            host.applyPendingWallScrollRestore();
+        });
         host.root.addEventListener(UIEvents.TICK, event -> host.searchController.tickIdleTimer());
         host.root.addEventListener(UIEvents.TICK, event -> host.shiftClickTransferState.observeShiftDown(Screen.hasShiftDown()));
         host.root.addEventListener(UIEvents.TICK, event -> {

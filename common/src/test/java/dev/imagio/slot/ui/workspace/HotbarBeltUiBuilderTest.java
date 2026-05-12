@@ -15,10 +15,12 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class HotbarBeltUiBuilderTest {
+    private static final int HOTBAR_CHILD_OFFSET = 2;
+
     @Test
     void shiftClickOccupiedSlotReturnsBeforeAssigningSelection() {
         RecordingContext context = new RecordingContext();
-        SlotUiElement slot = belt(context, hotbar(occupied(1))).children().get(1);
+        SlotUiElement slot = hotbarChild(belt(context, hotbar(occupied(1))), 1);
 
         slot.dispatch(new SlotUiEvent(SlotUiEventKind.CLICK, 0, 0, 0, true));
 
@@ -28,7 +30,7 @@ class HotbarBeltUiBuilderTest {
     @Test
     void emptySlotClickReportsStatusWithoutSelecting() {
         RecordingContext context = new RecordingContext();
-        SlotUiElement slot = belt(context, hotbar()).children().get(3);
+        SlotUiElement slot = hotbarChild(belt(context, hotbar()), 3);
 
         slot.dispatch(new SlotUiEvent(SlotUiEventKind.CLICK, 0, 0, 0, false));
 
@@ -38,7 +40,7 @@ class HotbarBeltUiBuilderTest {
     @Test
     void occupiedPlainClickDoesNotEnterSelectionMode() {
         RecordingContext context = new RecordingContext();
-        SlotUiElement slot = belt(context, hotbar(occupied(2))).children().get(2);
+        SlotUiElement slot = hotbarChild(belt(context, hotbar(occupied(2))), 2);
 
         slot.dispatch(new SlotUiEvent(SlotUiEventKind.CLICK, 0, 0, 0, false));
 
@@ -50,7 +52,7 @@ class HotbarBeltUiBuilderTest {
     void cursorClickDropsCursorAtHotbarSlot() {
         RecordingContext context = new RecordingContext();
         context.cursorCarrying = true;
-        SlotUiElement slot = belt(context, hotbar(occupied(2))).children().get(2);
+        SlotUiElement slot = hotbarChild(belt(context, hotbar(occupied(2))), 2);
 
         slot.dispatch(new SlotUiEvent(SlotUiEventKind.CLICK, 1, 0, 0, false));
 
@@ -66,10 +68,15 @@ class HotbarBeltUiBuilderTest {
         SlotUiElement strip = belt(context, hotbar(occupied));
 
         assertTrue(strip.hasAttachment(WorkspaceUiAttachments.HOTBAR_STRIP));
-        assertSame(occupied, strip.children().get(2).attachment(
+        assertTrue(strip.children().get(0).hasAttachment(WorkspaceUiAttachments.OFFHAND_SLOT));
+        assertEquals(HotbarBeltUiBuilder.VANILLA_OFFHAND_GAP_PX, strip.children().get(1).layout().width());
+        assertSame(occupied, hotbarChild(strip, 2).attachment(
                 WorkspaceUiAttachments.HOTBAR_SLOT,
                 SlotWorkspaceViewModel.HotbarSlot.class));
-        assertTrue(strip.children().get(9).hasAttachment(WorkspaceUiAttachments.OFFHAND_SLOT));
+    }
+
+    private static SlotUiElement hotbarChild(SlotUiElement belt, int hotbarIndex) {
+        return belt.children().get(HOTBAR_CHILD_OFFSET + hotbarIndex);
     }
 
     private static SlotUiElement belt(

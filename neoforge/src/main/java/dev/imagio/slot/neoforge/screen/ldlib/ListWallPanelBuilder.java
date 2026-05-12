@@ -17,6 +17,7 @@ import dev.imagio.slot.ui.workspace.WallCardUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionHeaderUiBuilder;
 import dev.imagio.slot.ui.workspace.WallSectionUiBuilder;
 import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
+import dev.imagio.slot.ui.workspace.WorkspaceUiSessionMemory;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import dev.vfyjxf.taffy.style.AlignItems;
 import dev.vfyjxf.taffy.style.FlexDirection;
@@ -134,6 +135,8 @@ final class ListWallPanelBuilder {
                 .flexDirection(FlexDirection.COLUMN));
         scroller.scrollerStyle(style -> style.minScrollPixel(20f).maxScrollPixel(60f));
         scroller.style(style -> style.backgroundTexture(rect(0xB810171D)).zIndex(0));
+        scroller.verticalScroller.registerValueListener(value ->
+                host.rememberWallScroll(value == null ? 0f : value));
 
         host.wallScroller = scroller;
         host.carriedFreeSlotsChipElement = host.overlays.carriedFreeSlotsChip();
@@ -152,6 +155,9 @@ final class ListWallPanelBuilder {
         panel.clearAllChildren();
         scroller.clearAllScrollViewChildren();
         buildSections(scroller);
+        float rememberedScroll = WorkspaceUiSessionMemory.wallScroll(host.surfaceMemoryKey());
+        scroller.verticalScroller.setValue(rememberedScroll);
+        host.requestWallScrollRestore(rememberedScroll);
 
         // Top row layout. When the search modal isn't active, three
         // content-sized siblings — hint, carried-free chip, actions —
@@ -176,7 +182,16 @@ final class ListWallPanelBuilder {
             topRow.addChild(host.topRightActionsElement);
             panel.addChild(topRow);
         }
-        panel.addChild(tabsRenderer.render(new GoalTabsUiBuilder(new GoalTabsContext()).tabs()));
+        UIElement goalRow = new UIElement().layout(layout -> layout
+                .widthPercent(100)
+                .height(Math.max(GoalTabsUiBuilder.TAB_ROW_HEIGHT_PX, BELT_SLOT_SIZE))
+                .gapAll(SECTION_GAP_PX)
+                .alignItems(AlignItems.CENTER)
+                .flexDirection(FlexDirection.ROW));
+        goalRow.addChild(tabsRenderer.render(new GoalTabsUiBuilder(new GoalTabsContext()).tabs())
+                .layout(layout -> layout.flex(1).height(GoalTabsUiBuilder.TAB_ROW_HEIGHT_PX)));
+        goalRow.addChild(host.kit.kitCluster());
+        panel.addChild(goalRow);
         // Active-chest control strip — only when the host screen is a
         // chest screen. Shows above the recents strip so the chest
         // controls stay close to the action row, with recents (which is
@@ -211,6 +226,9 @@ final class ListWallPanelBuilder {
             midRow.addChild(tocSliver);
         }
         midRow.addChild(scroller);
+        if (host.kitRackOpen) {
+            midRow.addChild(host.kit.kitRackOverlay());
+        }
         panel.addChild(midRow);
         // Status row below the list — the only footer that lives
         // inside the centered content. Kit rack + belt are rendered as

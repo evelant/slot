@@ -255,13 +255,15 @@ final class ForgeWorkspaceSession {
                     runtime,
                     identityArg(args, 0),
                     WorkspaceChestCommandService.DepositQuantity.STACK,
-                    WorkspaceChestCommandService.DesiredCountPolicy.RESPECT);
+                    WorkspaceChestCommandService.DesiredCountPolicy.RESPECT,
+                    () -> activeDepositFallbackChest(player));
             case DEPOSIT_ONE_HOME_TO_LINKED_CHEST -> WorkspaceChestCommandService.depositIdentityToLinkedChest(
                     player,
                     runtime,
                     identityArg(args, 0),
                     WorkspaceChestCommandService.DepositQuantity.ITEM,
-                    WorkspaceChestCommandService.DesiredCountPolicy.IGNORE);
+                    WorkspaceChestCommandService.DesiredCountPolicy.IGNORE,
+                    () -> activeDepositFallbackChest(player));
             case PICKUP_TO_CURSOR -> applyCursorOutcome(player, WorkspaceCursorCommandService.pickupToCursor(
                     player,
                     runtime,
@@ -672,6 +674,27 @@ final class ForgeWorkspaceSession {
                 claimedChestMap,
                 ForgeChestDepositObserver.activeChestPos(player),
                 ForgeChestStorageAnchors::toAnchor);
+    }
+
+    private ClaimedChest activeDepositFallbackChest(ServerPlayer player) {
+        if (player == null || runtime == null) {
+            return null;
+        }
+        BlockPos pos = ForgeChestDepositObserver.activeChestPos(player);
+        if (pos == null) {
+            return null;
+        }
+        ServerLevel level = player.serverLevel();
+        ChestAnchor anchor = ForgeChestStorageAnchors.toAnchor(level, pos);
+        if (anchor == null) {
+            return null;
+        }
+        UUID storageId = ForgeChestDepositObserver.resolveOrCreateClaim(
+                runtime.chestClaimWorkflow(),
+                level,
+                pos,
+                anchor);
+        return storageId == null ? null : runtime.chestClaimWorkflow().claimedChestMap().chest(storageId);
     }
 
     private SlotWorkspaceViewModel.LootChestSource resolveLootChestSource(

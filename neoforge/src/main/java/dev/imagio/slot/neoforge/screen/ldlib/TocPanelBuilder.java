@@ -202,5 +202,6 @@ final class TocPanelBuilder {
         float maxScroll = Math.max(1f, containerHeight - viewportHeight);
         float normalized = Math.max(0f, Math.min(1f, sectionLogicalY / maxScroll));
         host.wallScroller.verticalScroller.setValue(normalized);
+        host.rememberWallScroll(normalized);
     }
 }

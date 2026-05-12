@@ -14,9 +14,9 @@ import static dev.imagio.slot.ui.workspace.WorkspaceUiPalette.ROW_DIM;
 
 public final class HotbarBeltUiBuilder {
     public static final int BELT_HEIGHT_PX = 24;
-    public static final int BELT_WITH_LEADING_HEIGHT_PX = 28;
     public static final int SLOT_SIZE_PX = 20;
     public static final int ICON_SIZE_PX = 16;
+    public static final int VANILLA_OFFHAND_GAP_PX = 5;
 
     private static final int PANEL = 0xC8162029;
     private static final int ROW = 0xC926313B;
@@ -44,31 +44,39 @@ public final class HotbarBeltUiBuilder {
             SlotWorkspaceViewModel.OffhandSlot offhand,
             SlotUiElement leading
     ) {
-        int slotSize = leading == null ? SLOT_SIZE_PX : 16;
-        int iconSize = leading == null ? ICON_SIZE_PX : 14;
         SlotUiElement strip = SlotUiElement.panel(PANEL)
                 .zIndex(6)
                 .attach(WorkspaceUiAttachments.HOTBAR_STRIP, Boolean.TRUE)
                 .layout(layout -> layout
                         .widthPercent(100)
-                        .height(leading == null ? BELT_HEIGHT_PX : BELT_WITH_LEADING_HEIGHT_PX)
+                        .height(BELT_HEIGHT_PX)
                         .paddingAll(3)
-                        .gapAll(leading == null ? 2 : 1)
+                        .gapAll(2)
                         .alignItems(SlotUiLayout.AlignItems.CENTER)
                         .flexDirection(SlotUiLayout.FlexDirection.ROW));
         strip.on(SlotUiEventKind.MOUSE_DOWN, event -> event.stopPropagation());
 
-        if (leading != null) {
-            strip.addChild(leading);
-        }
-        for (SlotWorkspaceViewModel.HotbarSlot slot : safeHotbar(hotbarSlots)) {
-            strip.addChild(slotButton(slot, slotSize, iconSize));
-        }
         strip.addChild(offhandButton(
                 offhand == null ? SlotWorkspaceViewModel.OffhandSlot.empty() : offhand,
-                slotSize,
-                iconSize));
+                SLOT_SIZE_PX,
+                ICON_SIZE_PX));
+        strip.addChild(vanillaOffhandGap());
+        for (SlotWorkspaceViewModel.HotbarSlot slot : safeHotbar(hotbarSlots)) {
+            strip.addChild(slotButton(slot, SLOT_SIZE_PX, ICON_SIZE_PX));
+        }
+        if (leading != null) {
+            strip.addChild(SlotUiElement.element()
+                    .allowHitTest(false)
+                    .layout(layout -> layout.flex(1).height(1)));
+            strip.addChild(leading);
+        }
         return strip;
+    }
+
+    private SlotUiElement vanillaOffhandGap() {
+        return SlotUiElement.element()
+                .allowHitTest(false)
+                .layout(layout -> layout.width(VANILLA_OFFHAND_GAP_PX).height(1));
     }
 
     private SlotUiElement slotButton(SlotWorkspaceViewModel.HotbarSlot slot, int slotSize, int iconSize) {

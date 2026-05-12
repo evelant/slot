@@ -2,6 +2,7 @@ package dev.imagio.slot.forge.ui;
 
 import dev.imagio.slot.forge.client.ForgeWorkspaceClient;
 import dev.imagio.slot.forge.client.ForgeContainerSidebar;
+import dev.imagio.slot.forge.config.SlotForgeClientConfig;
 import dev.imagio.slot.forge.network.ForgeWorkspaceActionChannel;
 import dev.imagio.slot.forge.network.ForgeWorkspaceOpenMessage;
 import dev.imagio.slot.forge.network.ForgeWorkspaceRefreshMessage;
@@ -36,6 +37,7 @@ import dev.imagio.slot.ui.workspace.WorkspaceCountFormat;
 import dev.imagio.slot.ui.workspace.WorkspaceSearchInputPolicy;
 import dev.imagio.slot.ui.workspace.WorkspaceUiAttachments;
 import dev.imagio.slot.ui.workspace.WorkspaceUiPalette;
+import dev.imagio.slot.ui.workspace.WorkspaceUiSessionMemory;
 import dev.imagio.slot.workflow.domain.VisualAtlasIslandKind;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
@@ -58,6 +60,8 @@ import java.util.UUID;
  */
 public final class ForgeWorkspaceSurface {
     public static final int WIDTH = 260;
+    public static final int SIDE_KIT_RACK_WIDTH = 192;
+    public static final int SIDE_KIT_RACK_GAP = 4;
 
     private static final int STANDALONE_BACKGROUND = 0x96060A0E;
     private static final int SIDEBAR_BACKGROUND = 0xD0060A0E;
@@ -125,6 +129,11 @@ public final class ForgeWorkspaceSurface {
         this.status = this.mode == Mode.SIDEBAR
                 ? "opening SLOT sidebar"
                 : "opening SLOT workspace";
+        this.searchQuery = WorkspaceUiSessionMemory.searchQuery(surfaceMemoryKey());
+    }
+
+    public int contentWidth() {
+        return workspaceWidth();
     }
 
     public void openSessionIfNeeded() {
@@ -136,6 +145,7 @@ public final class ForgeWorkspaceSurface {
         status = sent ? openedStatus() : "failed to open SLOT workspace";
         if (sent) {
             lastRefreshGameTime = clientGameTime();
+            syncSearchQuery();
         }
         rebuildRequested = true;
     }
@@ -173,7 +183,7 @@ public final class ForgeWorkspaceSurface {
 
     public void rebuild(int width, int height) {
         rebuildRequested = false;
-        float scrollY = tree == null ? 0f : tree.scrollY();
+        float scrollY = tree == null ? WorkspaceUiSessionMemory.wallScroll(surfaceMemoryKey()) : tree.scrollY();
         tree = ForgeSlotUiTree.build(Minecraft.getInstance(), buildRoot());
         tree.compute(width, height);
         tree.setScrollY(scrollY);
@@ -211,7 +221,11 @@ public final class ForgeWorkspaceSurface {
         if (tree == null) {
             return false;
         }
-        return tree.mouseScrolled(mouseX, mouseY, delta, 22f, Screen.hasShiftDown());
+        boolean handled = tree.mouseScrolled(mouseX, mouseY, delta, 22f, Screen.hasShiftDown());
+        if (handled) {
+            rememberWallScroll();
+        }
+        return handled;
     }
 
     public boolean keyPressed(int keyCode, int scanCode) {
@@ -223,6 +237,13 @@ public final class ForgeWorkspaceSurface {
             return false;
         }
         if (handleEditorKey(keyCode)) {
+            return true;
+        }
+        WorkspaceSearchInputPolicy.ControlKey controlKey = searchControlKey(keyCode);
+        if (controlKey != null && applySearchDecision(WorkspaceSearchInputPolicy.keyPressed(
+                searchActive,
+                searchQuery,
+                controlKey))) {
             return true;
         }
         if (Screen.hasControlDown() && keyCode == GLFW.GLFW_KEY_Z) {
@@ -261,11 +282,7 @@ public final class ForgeWorkspaceSurface {
             handleHotbarKey(hotbarIndex);
             return true;
         }
-        WorkspaceSearchInputPolicy.ControlKey controlKey = searchControlKey(keyCode);
-        return controlKey != null && applySearchDecision(WorkspaceSearchInputPolicy.keyPressed(
-                searchActive,
-                searchQuery,
-                controlKey));
+        return false;
     }
 
     private boolean openVanillaInventory() {
@@ -468,6 +485,26 @@ public final class ForgeWorkspaceSurface {
         return GoalWorkspaceClientState.hasActiveGoal();
     }
 
+    private int workspaceWidth() {
+        return WIDTH + (kitRackOpen ? SIDE_KIT_RACK_GAP + SIDE_KIT_RACK_WIDTH : 0);
+    }
+
+    private SlotUiElement spacer(int width, int height) {
+        return SlotUiElement.element()
+                .allowHitTest(false)
+                .layout(layout -> layout.width(width).height(height));
+    }
+
+    private String surfaceMemoryKey() {
+        return mode == Mode.SIDEBAR ? "forge.sidebar" : "forge.standalone";
+    }
+
+    private void rememberWallScroll() {
+        if (tree != null) {
+            WorkspaceUiSessionMemory.setWallScroll(surfaceMemoryKey(), tree.scrollY());
+        }
+    }
+
     private SlotUiElement buildRoot() {
         if (mode == Mode.SIDEBAR) {
             SlotUiElement root = SlotUiElement.element()
@@ -477,7 +514,26 @@ public final class ForgeWorkspaceSurface {
                             .heightPercent(100)
                             .alignItems(SlotUiLayout.AlignItems.FLEX_START)
                             .flexDirection(SlotUiLayout.FlexDirection.ROW));
-            root.addChild(workspaceColumn(true));
+            int leftMargin = SlotForgeClientConfig.sidebarLeftMargin();
+            if (leftMargin > 0) {
+                root.addChild(spacer(leftMargin, 1));
+            }
+            SlotUiElement sidebarRail = SlotUiElement.element()
+                    .allowHitTest(false)
+                    .layout(layout -> layout
+                            .width(workspaceWidth())
+                            .heightPercent(100)
+                            .flexDirection(SlotUiLayout.FlexDirection.COLUMN));
+            int topMargin = SlotForgeClientConfig.sidebarTopMargin();
+            if (topMargin > 0) {
+                sidebarRail.addChild(spacer(1, topMargin));
+            }
+            sidebarRail.addChild(workspaceColumn(true));
+            int bottomMargin = SlotForgeClientConfig.sidebarBottomMargin();
+            if (bottomMargin > 0) {
+                sidebarRail.addChild(spacer(1, bottomMargin));
+            }
+            root.addChild(sidebarRail);
             return root;
         }
         return workspaceColumn(false);
@@ -487,12 +543,14 @@ public final class ForgeWorkspaceSurface {
         SlotUiElement column = SlotUiElement.panel(sidebarMode ? SIDEBAR_BACKGROUND : STANDALONE_BACKGROUND)
                 .layout(layout -> {
                     if (sidebarMode) {
-                        layout.width(WIDTH);
+                        layout.width(workspaceWidth()).flex(1);
                     } else {
                         layout.widthPercent(100).alignItems(SlotUiLayout.AlignItems.CENTER);
                     }
-                    layout.heightPercent(100)
-                            .paddingAll(8)
+                    if (!sidebarMode) {
+                        layout.heightPercent(100);
+                    }
+                    layout.paddingAll(8)
                             .gapAll(4)
                             .flexDirection(SlotUiLayout.FlexDirection.COLUMN);
                 });
@@ -513,22 +571,21 @@ public final class ForgeWorkspaceSurface {
 
         if (sidebarMode) {
             column.addChild(searchDepositRow(true));
-            column.addChild(activeChestOrEmpty());
+            SlotUiElement activeChestStrip = activeChestStrip(true);
+            if (activeChestStrip != null) {
+                column.addChild(activeChestStrip);
+            }
         } else {
             column.addChild(titleRow(false));
             column.addChild(searchDepositRow(false));
-            SlotUiElement activeChestStrip = new ActiveChestStripUiBuilder(new ActiveChestContext())
-                    .strip(viewModel.activeChestPanel());
+            SlotUiElement activeChestStrip = activeChestStrip(false);
             if (activeChestStrip != null) {
-                column.addChild(activeChestStrip.layout(layout -> layout.width(WIDTH)));
+                column.addChild(activeChestStrip);
             }
         }
         column.addChild(goalTabs(sidebarMode));
         column.addChild(recents(sidebarMode));
         column.addChild(wallArea(sidebarMode));
-        if (kitRackOpen) {
-            column.addChild(kitRack(sidebarMode));
-        }
         column.addChild(statusRow(sidebarMode));
         column.addChild(hotbar(sidebarMode));
         SlotUiElement overlay = activeOverlay();
@@ -539,13 +596,23 @@ public final class ForgeWorkspaceSurface {
     }
 
     private SlotUiElement goalTabs(boolean sidebarMode) {
-        SlotUiElement tabs = new GoalTabsUiBuilder(new GoalTabsContext()).tabs();
-        if (sidebarMode) {
-            return tabs;
-        }
         return SlotUiElement.element()
-                .layout(layout -> layout.width(WIDTH))
-                .addChild(tabs);
+                .layout(layout -> {
+                    if (sidebarMode) {
+                        layout.widthPercent(100);
+                    } else {
+                        layout.width(workspaceWidth());
+                    }
+                    layout.height(Math.max(GoalTabsUiBuilder.TAB_ROW_HEIGHT_PX, KitRackUiBuilder.CLUSTER_HEIGHT_PX))
+                            .gapAll(4)
+                            .alignItems(SlotUiLayout.AlignItems.CENTER)
+                            .flexDirection(SlotUiLayout.FlexDirection.ROW);
+                })
+                .addChild(new GoalTabsUiBuilder(new GoalTabsContext()).tabs()
+                        .layout(layout -> layout.flex(1).height(GoalTabsUiBuilder.TAB_ROW_HEIGHT_PX)))
+                .addChild(new KitRackUiBuilder(new KitContext())
+                        .cluster(viewModel, kitRackOpen, true)
+                        .layout(layout -> layout.height(KitRackUiBuilder.CLUSTER_HEIGHT_PX)));
     }
 
     private SlotUiElement titleRow(boolean sidebarMode) {
@@ -554,7 +621,7 @@ public final class ForgeWorkspaceSurface {
                     if (sidebarMode) {
                         layout.widthPercent(100);
                     } else {
-                        layout.width(WIDTH);
+                        layout.width(workspaceWidth());
                     }
                     layout.height(16)
                             .gapAll(4)
@@ -586,26 +653,16 @@ public final class ForgeWorkspaceSurface {
         return row;
     }
 
-    private SlotUiElement activeChestOrEmpty() {
+    private SlotUiElement activeChestStrip(boolean sidebarMode) {
         SlotUiElement activeChestStrip = new ActiveChestStripUiBuilder(new ActiveChestContext())
                 .strip(viewModel.activeChestPanel());
         if (activeChestStrip != null) {
+            if (!sidebarMode) {
+                activeChestStrip.layout(layout -> layout.width(workspaceWidth()));
+            }
             return activeChestStrip;
         }
-        return SlotUiElement.panel(PANEL)
-                .layout(layout -> layout
-                        .widthPercent(100)
-                        .height(ActiveChestStripUiBuilder.STRIP_HEIGHT_PX)
-                        .paddingHorizontal(4)
-                        .alignItems(SlotUiLayout.AlignItems.CENTER)
-                        .flexDirection(SlotUiLayout.FlexDirection.ROW))
-                .addChild(SlotUiElement.label("No active chest", WorkspaceUiPalette.MUTED)
-                        .layout(layout -> layout.flex(1).heightPercent(100))
-                        .textStyle(style -> style
-                                .color(WorkspaceUiPalette.MUTED)
-                                .fontSize(7)
-                                .horizontal(SlotUiTextStyle.Horizontal.LEFT)
-                                .vertical(SlotUiTextStyle.Vertical.CENTER)));
+        return null;
     }
 
     private SlotUiElement searchDepositRow(boolean sidebarMode) {
@@ -614,7 +671,7 @@ public final class ForgeWorkspaceSurface {
                     if (sidebarMode) {
                         layout.widthPercent(100);
                     } else {
-                        layout.width(WIDTH);
+                        layout.width(workspaceWidth());
                     }
                     layout.height(16)
                             .paddingHorizontal(6)
@@ -707,16 +764,14 @@ public final class ForgeWorkspaceSurface {
     }
 
     private SlotUiElement kitRack(boolean sidebarMode) {
+        SlotUiElement rack = new KitRackUiBuilder(new KitContext()).rack(viewModel)
+                .layout(layout -> layout.widthPercent(100).heightPercent(100));
         return SlotUiElement.element()
-                .layout(layout -> {
-                    if (sidebarMode) {
-                        layout.widthPercent(100);
-                    } else {
-                        layout.width(WIDTH);
-                    }
-                    layout.flexDirection(SlotUiLayout.FlexDirection.COLUMN);
-                })
-                .addChild(new KitRackUiBuilder(new KitContext()).rack(viewModel));
+                .layout(layout -> layout
+                        .width(SIDE_KIT_RACK_WIDTH)
+                        .heightPercent(100)
+                        .flexDirection(SlotUiLayout.FlexDirection.COLUMN))
+                .addChild(rack);
     }
 
     private SlotUiElement recents(boolean sidebarMode) {
@@ -725,7 +780,7 @@ public final class ForgeWorkspaceSurface {
             return strip;
         }
         return SlotUiElement.element()
-                .layout(layout -> layout.width(WIDTH))
+                .layout(layout -> layout.width(workspaceWidth()))
                 .addChild(strip);
     }
 
@@ -735,7 +790,7 @@ public final class ForgeWorkspaceSurface {
                     if (sidebarMode) {
                         layout.widthPercent(100);
                     } else {
-                        layout.width(WIDTH);
+                        layout.width(workspaceWidth());
                     }
                     layout.flex(1)
                             .flexDirection(SlotUiLayout.FlexDirection.COLUMN);
@@ -754,6 +809,9 @@ public final class ForgeWorkspaceSurface {
                         .heightPercent(100)
                         .flexDirection(SlotUiLayout.FlexDirection.COLUMN))
                 .addChild(wallViewport(sidebarMode)));
+        if (kitRackOpen) {
+            row.addChild(kitRack(sidebarMode));
+        }
         area.addChild(row);
         return area;
     }
@@ -792,6 +850,7 @@ public final class ForgeWorkspaceSurface {
                     if (!tree.scrollToElementId(island.islandId())) {
                         tree.scrollToFraction(fraction);
                     }
+                    rememberWallScroll();
                 }
                 setStatus(island.label());
             });
@@ -885,13 +944,10 @@ public final class ForgeWorkspaceSurface {
     }
 
     private SlotUiElement hotbar(boolean sidebarMode) {
-        SlotUiElement kit = new KitRackUiBuilder(new KitContext())
-                .cluster(viewModel, kitRackOpen, true)
-                .layout(layout -> layout.height(KitRackUiBuilder.CLUSTER_HEIGHT_PX));
-        SlotUiElement belt = new HotbarBeltUiBuilder(new HotbarContext()).belt(hotbarSlots, offhand, kit);
+        SlotUiElement belt = new HotbarBeltUiBuilder(new HotbarContext()).belt(hotbarSlots, offhand);
         if (!sidebarMode) {
             return SlotUiElement.element()
-                    .layout(layout -> layout.width(WIDTH))
+                    .layout(layout -> layout.width(workspaceWidth()))
                     .addChild(belt);
         }
         return belt;
@@ -903,7 +959,7 @@ public final class ForgeWorkspaceSurface {
                     if (sidebarMode) {
                         layout.widthPercent(100).height(12).paddingHorizontal(4);
                     } else {
-                        layout.width(WIDTH).height(12).paddingHorizontal(4);
+                        layout.width(workspaceWidth()).height(12).paddingHorizontal(4);
                     }
                     layout.alignItems(SlotUiLayout.AlignItems.CENTER)
                             .flexDirection(SlotUiLayout.FlexDirection.ROW);
@@ -953,7 +1009,7 @@ public final class ForgeWorkspaceSurface {
 
     private SlotUiElement overlayPanel(float screenX, float screenY, float width) {
         float x = mode == Mode.SIDEBAR
-                ? Math.max(4f, Math.min(screenX, WIDTH - width - 4f))
+                ? Math.max(4f, Math.min(screenX, workspaceWidth() - width - 4f))
                 : Math.max(4f, screenX);
         float y = Math.max(8f, screenY - 4f);
         return SlotUiElement.panel(0xF00B1117)
@@ -1875,9 +1931,11 @@ public final class ForgeWorkspaceSurface {
     private void setSearchQuery(String value) {
         String next = WorkspaceSearchQuery.cleanInput(value);
         if (next.equals(searchQuery)) {
+            WorkspaceUiSessionMemory.setSearchQuery(surfaceMemoryKey(), next);
             return;
         }
         searchQuery = next;
+        WorkspaceUiSessionMemory.setSearchQuery(surfaceMemoryKey(), searchQuery);
         syncSearchQuery();
         rebuildRequested = true;
     }
@@ -2115,10 +2173,17 @@ public final class ForgeWorkspaceSurface {
                 mode == Mode.SIDEBAR,
                 carriedFreeSlotCount(),
                 anyChestProximate(),
+                activeChestOpen(),
                 wantedAdjustDown,
                 shiftClickTransferState.continuingTake(
                         item == null ? null : item.identity(),
                         shiftDown));
+    }
+
+    private boolean activeChestOpen() {
+        return viewModel != null
+                && viewModel.activeChestPanel() != null
+                && viewModel.activeChestPanel().isPresent();
     }
 
     private int wheelSteps(
@@ -2555,6 +2620,7 @@ public final class ForgeWorkspaceSurface {
             hoveredIdentity = item == null ? null : item.identity();
             if (item != null && tree != null) {
                 tree.scrollToElementId(item.islandId());
+                rememberWallScroll();
             }
             setStatus(item == null ? "ready" : item.name());
         }

@@ -1479,7 +1479,8 @@ final class SlotWorkspaceUiSession {
                 workflowRuntime(serverPlayer),
                 identity,
                 WorkspaceChestCommandService.DepositQuantity.STACK,
-                WorkspaceChestCommandService.DesiredCountPolicy.RESPECT));
+                WorkspaceChestCommandService.DesiredCountPolicy.RESPECT,
+                () -> activeDepositFallbackChest(serverPlayer)));
     }
 
     void depositCarriedToChest(String itemId, String comparisonMode, String componentFingerprint, String storageIdRaw) {
@@ -1536,7 +1537,8 @@ final class SlotWorkspaceUiSession {
                 workflowRuntime(serverPlayer),
                 identity,
                 WorkspaceChestCommandService.DepositQuantity.ITEM,
-                WorkspaceChestCommandService.DesiredCountPolicy.IGNORE));
+                WorkspaceChestCommandService.DesiredCountPolicy.IGNORE,
+                () -> activeDepositFallbackChest(serverPlayer)));
     }
 
     /**
@@ -1912,6 +1914,28 @@ final class SlotWorkspaceUiSession {
                 claimedChestMap,
                 ChestDepositObserver.activeChestPos(serverPlayer),
                 ChestStorageAnchors::toAnchor);
+    }
+
+    private ClaimedChest activeDepositFallbackChest(ServerPlayer serverPlayer) {
+        if (serverPlayer == null) {
+            return null;
+        }
+        WorkflowDomainRuntime runtime = workflowRuntime(serverPlayer);
+        BlockPos pos = ChestDepositObserver.activeChestPos(serverPlayer);
+        if (pos == null) {
+            return null;
+        }
+        ServerLevel level = serverPlayer.serverLevel();
+        ChestAnchor anchor = ChestStorageAnchors.toAnchor(level, pos);
+        if (anchor == null) {
+            return null;
+        }
+        UUID storageId = ChestDepositObserver.resolveOrCreateClaim(
+                runtime.chestClaimWorkflow(),
+                level,
+                pos,
+                anchor);
+        return storageId == null ? null : runtime.chestClaimWorkflow().claimedChestMap().chest(storageId);
     }
 
     private static SlotWorkspaceViewModel.LootChestSource resolveLootChestSource(
