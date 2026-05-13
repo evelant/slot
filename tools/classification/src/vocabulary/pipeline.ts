@@ -19,16 +19,17 @@ import type {
   PackVocabularyCandidate,
   ProposePackFacetVocabularyOptions,
   ProposePackFacetVocabularyResult,
+  VocabularyReviewSummary,
   SemanticEvidenceIndex,
   VocabularyDecision,
   VocabularyDiagnostic,
   VocabularyFacetId,
+  VocabularyReviewDecision,
   VocabularySemanticEvidence,
 } from "./types.ts";
 import {
   isRecord,
   labelFromId,
-  looksLikeResourceLocation,
   round,
   sortedLimited,
   splitResourceLocation,
@@ -40,12 +41,11 @@ import {
 import {
   CANDIDATE_EXAMPLE_LIMIT,
   DEFAULT_MAX_CANDIDATES_PER_FACET,
-  DEFAULT_MAX_CANDIDATES_PER_PROMPT,
   GENERIC_TOKENS,
   ROLE_TOKENS,
   SEMANTIC_EVIDENCE_LIMIT,
   UNIVERSAL_DEFAULTS,
-  VOLTAGE_TIERS,
+  VOCABULARY_PROMPT_CHAR_BUDGET,
 } from "./constants.ts";
 import {
   buildSemanticEvidenceIndex,
@@ -64,7 +64,6 @@ import {
   addCandidate,
   compareCandidates,
   finalizeCandidate,
-  stripCandidateInternals,
 } from "./candidate_store.ts";
 import {
   chunkCandidates,
@@ -77,6 +76,7 @@ import {
   facetSet,
   isVocabularyFacet,
 } from "./facets.ts";
+import { buildVocabularyPromptOverview } from "./pack_context.ts";
 import {
   evidenceRef,
   namespaceAllowed,
@@ -102,10 +102,12 @@ export type {
   VocabularyDecision,
   VocabularyDiagnostic,
   VocabularyFacetId,
+  VocabularyReviewDecision,
   VocabularySemanticEvidence,
 } from "./types.ts";
 export { buildVocabularyCurationPrompt } from "./prompt.ts";
 export { parseVocabularyCurationResponse } from "./curation.ts";
+export { buildVocabularyPromptOverview } from "./pack_context.ts";
 
 
 export function readFacetEvidenceArtifactFile(path: string): FacetEvidenceArtifact {
@@ -159,43 +161,46 @@ export async function proposePackFacetVocabulary(
   const generatedAt = options.generatedAt ?? new Date().toISOString();
   const facets = [...facetSet(options.facets)].sort();
   const candidates = extractVocabularyCandidates(options.evidence, options);
+  const promptRecords = options.evidence.records.filter((record) =>
+    namespaceAllowed(record, new Set((options.namespaces ?? []).filter(Boolean)))
+  );
   const maxCandidatesPerFacet = options.maxCandidatesPerFacet ?? DEFAULT_MAX_CANDIDATES_PER_FACET;
   const candidatesByFacet = groupCandidates(candidates, maxCandidatesPerFacet);
   const rawCandidatesByFacet = groupCandidates(candidates, Number.MAX_SAFE_INTEGER);
   const previousAccepted = previousAcceptedByFacet(options.previousVocabulary);
   const acceptedWorkflowIds = new Set(previousAccepted.get("workflow") ?? []);
-  const maxCandidatesPerPrompt = options.maxCandidatesPerPrompt ?? DEFAULT_MAX_CANDIDATES_PER_PROMPT;
   const prompts: Record<string, { system: string; user: string }> = {};
   const decisions: Record<string, VocabularyDecision[]> = {};
-  const rawResponses: Record<string, string> = {};
   const diagnostics: VocabularyDiagnostic[] = [];
 
   for (const facet of facets) {
+    const packOverview = buildVocabularyPromptOverview({ facet, records: promptRecords });
     const facetCandidates = facet === "workflow_role"
       ? selectPromptCandidates(
         workflowRoleCandidatesForAcceptedWorkflows(rawCandidatesByFacet[facet] ?? [], acceptedWorkflowIds),
         maxCandidatesPerFacet,
       )
       : candidatesByFacet[facet] ?? [];
-    const candidateChunks = chunkCandidates(facetCandidates, maxCandidatesPerPrompt);
+    const promptChunks = buildFacetPromptChunks({
+      facet,
+      packId: options.packId,
+      candidates: facetCandidates,
+      previousAccepted: previousAccepted.get(facet) ?? [],
+      minEvidence: options.minEvidence,
+      packOverview,
+      maxCandidatesPerPrompt: options.maxCandidatesPerPrompt,
+    });
     const curatedValues: CuratedValue[] = [];
-    for (let index = 0; index < candidateChunks.length; index++) {
-      const chunk = candidateChunks[index]!;
-      const promptKey = candidateChunks.length === 1
+    for (let index = 0; index < promptChunks.length; index++) {
+      const promptChunk = promptChunks[index]!;
+      const promptKey = promptChunks.length === 1
         ? facet
-        : `${facet}.part-${String(index + 1).padStart(2, "0")}-of-${String(candidateChunks.length).padStart(2, "0")}`;
-      prompts[promptKey] = buildVocabularyCurationPrompt({
-        facet,
-        packId: options.packId,
-        candidates: chunk,
-        previousAccepted: previousAccepted.get(facet) ?? [],
-        minEvidence: options.minEvidence,
-      });
+        : `${facet}.part-${String(index + 1).padStart(2, "0")}-of-${String(promptChunks.length).padStart(2, "0")}`;
+      prompts[promptKey] = promptChunk.prompt;
       const curated: { raw: string; values: CuratedValue[] } = options.client
-        ? await queryFacetCuration(options.client, prompts[promptKey]!, options.model, options.clientOptions, chunk.map((candidate) => candidate.id))
+        ? await queryFacetCuration(options.client, prompts[promptKey]!, options.model, options.clientOptions)
         : { raw: "", values: [] };
       curatedValues.push(...curated.values);
-      if (curated.raw) rawResponses[promptKey] = curated.raw;
     }
     decisions[facet] = applyFacetPolicy({
       facet,
@@ -247,15 +252,63 @@ export async function proposePackFacetVocabulary(
       min_evidence: options.minEvidence,
       ...(options.previousVocabularyPath ? { previous_vocabulary: options.previousVocabularyPath } : {}),
     },
-    candidates: Object.fromEntries(
-      Object.entries(candidatesByFacet).map(([facet, values]) => [facet, values.map(stripCandidateInternals)]),
-    ),
-    decisions,
+    summary: summarizeReviewDecisions(decisions),
+    decisions: toReviewDecisions(decisions),
     diagnostics,
-    raw_responses: rawResponses,
   };
 
   return { vocabulary, review, prompts };
+}
+
+interface VocabularyPromptChunk {
+  candidates: PackVocabularyCandidate[];
+  prompt: { system: string; user: string };
+}
+
+function buildFacetPromptChunks(args: {
+  facet: VocabularyFacetId;
+  packId: string;
+  candidates: readonly PackVocabularyCandidate[];
+  previousAccepted: readonly string[];
+  minEvidence: number;
+  packOverview?: ReturnType<typeof buildVocabularyPromptOverview>;
+  maxCandidatesPerPrompt?: number;
+}): VocabularyPromptChunk[] {
+  const initialChunks = args.maxCandidatesPerPrompt
+    ? chunkCandidates(args.candidates, args.maxCandidatesPerPrompt)
+    : [[...args.candidates]];
+  return initialChunks.flatMap((chunk) => splitPromptChunkToBudget({ ...args, candidates: chunk }));
+}
+
+function splitPromptChunkToBudget(args: {
+  facet: VocabularyFacetId;
+  packId: string;
+  candidates: readonly PackVocabularyCandidate[];
+  previousAccepted: readonly string[];
+  minEvidence: number;
+  packOverview?: ReturnType<typeof buildVocabularyPromptOverview>;
+}): VocabularyPromptChunk[] {
+  const candidates = [...args.candidates];
+  const prompt = buildVocabularyCurationPrompt({
+    facet: args.facet,
+    packId: args.packId,
+    candidates,
+    previousAccepted: args.previousAccepted,
+    minEvidence: args.minEvidence,
+    packOverview: args.packOverview,
+  });
+  if (promptSize(prompt) <= VOCABULARY_PROMPT_CHAR_BUDGET || candidates.length <= 1) {
+    return [{ candidates, prompt }];
+  }
+  const midpoint = Math.ceil(candidates.length / 2);
+  return [
+    ...splitPromptChunkToBudget({ ...args, candidates: candidates.slice(0, midpoint) }),
+    ...splitPromptChunkToBudget({ ...args, candidates: candidates.slice(midpoint) }),
+  ];
+}
+
+function promptSize(prompt: { system: string; user: string }): number {
+  return prompt.system.length + prompt.user.length;
 }
 
 function addUniversalDefaults(
@@ -448,19 +501,6 @@ function addDocumentCandidates(
       reason: `${reason} names a likely progression gate`,
       semanticIndex,
     });
-    for (const canonicalId of canonicalProgressionIds(record, packId, scope)) {
-      if (canonicalId === id) continue;
-      addEvidenceCandidate(acc, {
-        facet: "progression_stage",
-        id: canonicalId,
-        record,
-        count,
-        facets,
-        state: "review",
-        reason: `${reason} resource path names a canonical progression gate`,
-        semanticIndex,
-      });
-    }
   }
 }
 
@@ -572,7 +612,6 @@ function addEvidenceCandidate(
     evidence: [evidenceRef(args.record)],
     semanticEvidence: semanticEvidenceForCandidate(args.record, args.semanticIndex),
     seedItems: runtimeItemRefs(args.record.item_refs ?? args.record.examples, args.semanticIndex),
-    aliases: args.record.examples?.filter((value) => !looksLikeResourceLocation(value)),
     reason: args.reason,
   });
 }
@@ -596,7 +635,9 @@ function applyFacetPolicy(args: {
 
   const decisions: VocabularyDecision[] = [];
   const ids = new Set([
-    ...args.candidates.map((candidate) => candidate.id),
+    ...args.candidates
+      .filter((candidate) => candidate.origin === "previous" || candidate.origin === "universal_default")
+      .map((candidate) => candidate.id),
     ...args.curated.map((value) => value.id),
   ]);
   for (const id of [...ids].sort()) {
@@ -609,6 +650,8 @@ function applyFacetPolicy(args: {
     let confidence = curated?.confidence ?? base.confidence;
     let label = curated?.label ?? base.label;
     let description = curated?.description ?? base.description;
+    let rationale = curated?.rationale;
+    let examples = sortedLimited(curated?.examples ?? [], CANDIDATE_EXAMPLE_LIMIT);
     let aliases = sortedLimited([...(curated?.aliases ?? []), ...base.aliases], CANDIDATE_EXAMPLE_LIMIT);
     let evidence = curated?.evidence?.length ? curated.evidence : base.evidence;
     let seedItems = curated?.seed_items?.length ? curated.seed_items : base.seed_items;
@@ -640,14 +683,15 @@ function applyFacetPolicy(args: {
       origin = "universal_default";
       confidence = Math.max(confidence, candidate.confidence);
     }
-    if (!candidate && state === "accepted") {
-      state = "review";
+    if (!candidate) {
       origin = "stage3_proposed";
-      notes.push("model proposed id without deterministic candidate evidence");
+      if (state === "accepted") {
+        notes.push("model-synthesized value accepted from context");
+      }
     }
-    if (!curated && origin !== "previous" && origin !== "universal_default" && state === "accepted") {
-      state = "review";
-      notes.push("candidate was not accepted by curation response");
+    if (!curated && origin !== "previous" && origin !== "universal_default") {
+      state = "rejected";
+      notes.push("context record omitted by synthesis response");
     }
     if (
       candidate &&
@@ -667,6 +711,10 @@ function applyFacetPolicy(args: {
     if (args.facet === "mod_subsystem" && modSubsystemIdLooksRejected(id)) {
       state = "rejected";
       notes.push("mod_subsystem must be a namespace-scoped identity value, not pack/universal/generic");
+    }
+    if (state === "accepted" && args.facet === "organization_group" && customOrganizationGroupNeedsReview(candidate)) {
+      state = "review";
+      notes.push("custom organization_group requires human review before auto-home");
     }
     if (args.facet === "workflow_role") {
       const parent = id.split("#")[0] ?? "";
@@ -697,9 +745,9 @@ function applyFacetPolicy(args: {
     }
     if (state === "accepted" && args.facet === "progression_stage" && progressionCandidateLooksTooGranular(id, candidate)) {
       state = "review";
-      notes.push("progression value is too phrase-like; prefer a canonical gate/tier/dimension id");
+      notes.push("progression value is too phrase-like; prefer a concise gate/tier/dimension id");
     }
-    if (state === "accepted" && evidence.length === 0 && origin !== "universal_default" && origin !== "previous") {
+    if (state === "accepted" && candidate && evidence.length === 0 && origin !== "universal_default" && origin !== "previous") {
       state = "review";
       notes.push("accepted non-default values require evidence");
     }
@@ -723,6 +771,8 @@ function applyFacetPolicy(args: {
       seed_items: sortedLimited(seedItems, CANDIDATE_EXAMPLE_LIMIT),
       ...(aliases.length ? { aliases } : {}),
       ...(description ? { description } : {}),
+      ...(rationale ? { rationale } : {}),
+      ...(examples.length ? { examples } : {}),
       ...(args.facet === "workflow_role" ? { parent: curated?.parent ?? base.parent ?? id.split("#")[0]! } : {}),
       ...(defaultOrganizationGroup ? { default_organization_group: defaultOrganizationGroup } : {}),
       ...(relatedActivity.length ? { related_activity: relatedActivity } : {}),
@@ -743,69 +793,64 @@ function allowsLowSupportAcceptedValue(
   return (curated.confidence ?? candidate.confidence) >= 0.6;
 }
 
-function canonicalProgressionIds(
-  record: FacetEvidenceRecord,
-  packId: string,
-  scope: "namespace" | "pack",
-): string[] {
-  const namespace = scope === "namespace" ? record.namespace : undefined;
-  const owner = scope === "pack" || !namespace ? `pack:${packId}/` : `${namespace}:`;
-  const rawValues = [
-    record.id,
-    record.label,
-    record.title,
-    record.description,
-    ...(record.semantic_text ?? []).slice(0, 8).map((entry) => entry.text),
-  ].filter((value): value is string => typeof value === "string" && value.length > 0);
-  const tokens = new Set<string>();
-  for (const raw of rawValues) {
-    const normalized = tokenPath(raw)?.replace(/\//g, "_") ?? "";
-    for (const value of canonicalProgressionTokens(normalized)) {
-      tokens.add(value);
+function customOrganizationGroupNeedsReview(
+  candidate: PackVocabularyCandidate | undefined,
+): boolean {
+  return !candidate || (candidate.origin !== "previous" && candidate.origin !== "universal_default");
+}
+
+function summarizeReviewDecisions(
+  decisions: Record<string, VocabularyDecision[]>,
+): Record<string, VocabularyReviewSummary> {
+  const out: Record<string, VocabularyReviewSummary> = {};
+  for (const [facet, values] of Object.entries(decisions)) {
+    const summary: VocabularyReviewSummary = {
+      accepted: 0,
+      review: 0,
+      rejected: 0,
+      total: values.length,
+    };
+    for (const value of values) {
+      summary[value.state] += 1;
     }
+    out[facet] = summary;
   }
-  return [...tokens]
-    .sort((a, b) => progressionTokenRank(a) - progressionTokenRank(b) || a.localeCompare(b))
-    .slice(0, 4)
-    .map((value) => `${owner}${value}`);
+  return out;
 }
 
-function canonicalProgressionTokens(value: string): string[] {
-  const out = new Set<string>();
-  const parts = value.split(/_+/).filter(Boolean);
-  const joined = parts.join("_");
-  for (const tier of VOLTAGE_TIERS) {
-    if (parts.includes(tier)) out.add(tier);
+function toReviewDecisions(
+  decisions: Record<string, VocabularyDecision[]>,
+): Record<string, VocabularyReviewDecision[]> {
+  const out: Record<string, VocabularyReviewDecision[]> = {};
+  for (const [facet, values] of Object.entries(decisions)) {
+    out[facet] = values.map(toReviewDecision);
   }
-  for (const candidate of [
-    "black_steel",
-    "red_steel",
-    "blue_steel",
-    "wrought_iron",
-    "bismuth_bronze",
-    "black_bronze",
-    "blast_furnace",
-    "mechanical_power",
-    "primitive_alloys",
-    "steam_age",
-    "electric_age",
-  ]) {
-    if (joined.includes(candidate)) out.add(candidate);
-  }
-  for (const candidate of ["moon", "mars", "venus", "mercury", "nether", "beneath", "space", "orbit", "steel", "bronze", "bloomery", "crucible"]) {
-    if (parts.includes(candidate)) out.add(candidate);
-  }
-  const rocket = joined.match(/tier_([0-9]+)_rocket/);
-  if (rocket) out.add(`tier_${rocket[1]}_rocket`);
-  return [...out].filter(isCanonicalProgressionPath);
+  return out;
 }
 
-function progressionTokenRank(value: string): number {
-  if (VOLTAGE_TIERS.includes(value as typeof VOLTAGE_TIERS[number])) return 0;
-  if (/^tier_[0-9]+_rocket$/.test(value)) return 1;
-  if (["moon", "mars", "venus", "mercury", "nether", "beneath", "space", "orbit"].includes(value)) return 2;
-  if (value.includes("steel") || value.includes("bronze") || value === "wrought_iron") return 3;
-  return 4;
+function toReviewDecision(value: VocabularyDecision): VocabularyReviewDecision {
+  return {
+    facet: value.facet,
+    id: value.id,
+    label: value.label,
+    state: value.state,
+    ...(value.description ? { description: value.description } : {}),
+    ...(value.rationale ? { rationale: value.rationale } : {}),
+    ...(value.examples?.length ? { examples: value.examples } : {}),
+    ...(value.aliases?.length ? { aliases: value.aliases } : {}),
+    ...(value.parent ? { parent: value.parent } : {}),
+    ...(value.default_organization_group ? { default_organization_group: value.default_organization_group } : {}),
+    ...(value.related_activity?.length ? { related_activity: value.related_activity } : {}),
+    ...(value.policy_notes.length ? { policy_notes: value.policy_notes } : {}),
+    ...(value.state === "review" ? {
+      human_review: {
+        decision: "pending",
+        approved_id: value.id,
+        approved_label: value.label,
+        notes: "",
+      },
+    } : {}),
+  };
 }
 
 const WORKFLOW_PROCESS_TOKENS = [
@@ -1026,49 +1071,34 @@ function progressionCandidateLooksTooGranular(
   if (!candidate || candidate.evidence.length === 0) return false;
   const path = valueIdPath(id);
   const parts = path.split("/").filter(Boolean);
-  const canonicalAlias = canonicalProgressionAlias(path);
-  if (canonicalAlias && canonicalAlias !== path) return true;
-  if (parts.length > 1 && (parts.includes("and") || isCanonicalProgressionPath(parts.join("_")))) return true;
-  if (!candidate.evidence.every((evidence) => evidence.kind === "advancement")) return false;
-  if (parts.length <= 1) return false;
-  return !isCanonicalProgressionPath(parts.join("_"));
-}
-
-function canonicalProgressionAlias(value: string): string | null {
-  const normalized = value.replace(/\//g, "_");
-  const tokens = canonicalProgressionTokens(normalized)
-    .sort((a, b) => progressionTokenRank(a) - progressionTokenRank(b) || b.length - a.length || a.localeCompare(b));
-  return tokens[0] ?? null;
-}
-
-function isCanonicalProgressionPath(value: string): boolean {
-  if (VOLTAGE_TIERS.includes(value as typeof VOLTAGE_TIERS[number])) return true;
-  if (/^tier_[0-9]+_rocket$/.test(value)) return true;
-  return new Set([
-    "moon",
-    "mars",
-    "venus",
-    "mercury",
-    "nether",
-    "beneath",
-    "space",
-    "orbit",
-    "steel",
-    "black_steel",
-    "red_steel",
-    "blue_steel",
-    "wrought_iron",
-    "bronze",
-    "bismuth_bronze",
-    "black_bronze",
-    "bloomery",
-    "blast_furnace",
-    "crucible",
-    "mechanical_power",
-    "primitive_alloys",
-    "steam_age",
-    "electric_age",
-  ]).has(value);
+  if (parts.length >= 3) return true;
+  if (parts.includes("and")) return true;
+  if (!candidate.evidence.every((evidence) =>
+    evidence.kind === "guide_page" || evidence.kind === "quest_node" || evidence.kind === "advancement"
+  )) {
+    return false;
+  }
+  const flatParts = path.split(/[\/_]+/).filter(Boolean);
+  const phraseTokens = new Set([
+    "a",
+    "advanced",
+    "after",
+    "before",
+    "crafting",
+    "first",
+    "getting",
+    "how",
+    "intro",
+    "making",
+    "processing",
+    "quest",
+    "step",
+    "the",
+    "to",
+    "using",
+    "welcome",
+  ]);
+  return flatParts.some((part) => phraseTokens.has(part));
 }
 
 function valueIdPath(id: string): string {
@@ -1126,7 +1156,7 @@ function curatedToCandidate(facet: VocabularyFacetId, curated: CuratedValue): Pa
     ...(curated.parent ? { parent: curated.parent } : {}),
     ...(curated.default_organization_group ? { default_organization_group: curated.default_organization_group } : {}),
     ...(curated.related_activity ? { related_activity: curated.related_activity } : {}),
-    reasons: ["model-proposed value not present in deterministic candidates"],
+    reasons: ["model-synthesized value not present as a context record id"],
   };
 }
 function normalizeScopedResourceId(

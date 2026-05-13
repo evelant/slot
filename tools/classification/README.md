@@ -154,8 +154,10 @@ KubeJS/datapack overlays, Ponder lang text, recipe-category lang labels,
 KubeJS client tooltip mappings, stack-group names, zipped resource-pack lang
 overrides, and mod descriptions as structured prompt evidence. Do not reduce
 vocabulary generation to a few `seed_items` or terse recipe ids. The target
-model is cheap and has a very large context window, so prefer rich auditable
-context over over-compressed prompts.
+model is cheap and has a large context window, but spend that space on semantic
+detail rather than provenance scaffolding: keep prompts free of jar/file paths,
+source-ref lists, candidate scores, and other metadata that does not help the
+model synthesize human-usable vocabulary.
 
 Collect evidence before proposing vocabulary:
 
@@ -204,17 +206,52 @@ pack:tfg2/steelmaking
 pack:tfg2/steelmaking#input
 ```
 
-The command writes `facet-vocabulary.json` and
-`facet-vocabulary.review.json`. Pass the accepted vocabulary to Stage 3 with
+The command writes `facet-vocabulary.json` and a concise
+`facet-vocabulary.review.json` for manual approve/reject/rename decisions. Pass
+the accepted vocabulary to Stage 3 with
 `--facet-vocabulary`; the prompt lists accepted ids, Stage 3 drops and reports
 invented vocabulary-backed values after parsing, and the final validator checks
 the complete layer against the same artifact. Malformed or missing-item
 responses still retry while the provider prompt cache is warm.
 
-The proposer defaults to a broad candidate budget (`--max-candidates-per-facet
-512`) and then chunks prompts per facet. Keep the default for baseline runs so
-low-support but semantically important values reach the curation stage; reduce
-it only for local prompt-shape debugging.
+To approve reviewed vocabulary interactively, run:
+
+```sh
+bun run src/cli.ts review-pack-facet-vocabulary \
+  --vocabulary out/tfg2/tfg2.facet-vocabulary.json \
+  --review out/tfg2/tfg2.facet-vocabulary.review.json \
+  --out out/tfg2/tfg2.facet-vocabulary.approved.json \
+  --review-out out/tfg2/tfg2.facet-vocabulary.reviewed.json \
+  --force
+```
+
+The reviewer shows only the vocabulary generator's decision output: label,
+description, rationale, examples, aliases, parent links, and policy notes. It
+does not walk evidence refs, source provenance, context records, or deterministic
+candidate dumps. Press `y` to accept, `n` to decline, Enter to skip, or `q` to
+stop. By default it reviews pending/review values; pass `--all` to force y/n
+review of already accepted values too.
+
+For non-interactive review, edit each pending `human_review` entry in
+`facet-vocabulary.review.json` to `approve`, `reject`, or `rename`; for rename,
+edit `approved_id` and/or `approved_label`. Then apply the review:
+
+```sh
+bun run src/cli.ts apply-pack-facet-vocabulary-review \
+  --vocabulary out/tfg2/tfg2.facet-vocabulary.json \
+  --review out/tfg2/tfg2.facet-vocabulary.review.json \
+  --out out/tfg2/tfg2.facet-vocabulary.approved.json \
+  --force
+```
+
+Use the approved artifact as the `--facet-vocabulary` input for full stage-3
+classification.
+
+The proposer defaults to a broad context-record budget
+(`--max-candidates-per-facet 5000`) and tries to keep each facet in one prompt.
+It only splits a facet when the prompt would exceed the configured prompt
+budget. Use `--max-candidates-per-prompt <n>` only when deliberately forcing
+smaller chunks for provider experiments or debugging.
 
 ## Other Common Commands
 
@@ -278,8 +315,8 @@ Working outputs are gitignored under `out/`:
 - `<pack>.facet-evidence.json`: pack-level evidence for vocabulary generation.
 - `<pack>.facet-vocabulary.json`: pack-level vocabulary for vocabulary-backed
   semantic facets, including `mod_subsystem`.
-- `<pack>.facet-vocabulary.review.json`: curation decisions and diagnostics for
-  the vocabulary artifact.
+- `<pack>.facet-vocabulary.review.json`: concise curation decisions,
+  diagnostics, and pending human-review fields for the vocabulary artifact.
 - `<pack>.pack.items.ndjson`: runtime records enriched with static jar facts.
 - `<pack>.pack.facets.partial.json` / `.complete.json`: generated modpack
   classification layer.
@@ -291,7 +328,7 @@ Working outputs are gitignored under `out/`:
 - `<source>.facets.response-mismatches.json`: malformed batch response audit.
 - `<source>.facets.warnings.json`: parser and merge warnings.
 - `<pack>.facet-vocabulary.json`: accepted pack semantic vocabulary.
-- `<pack>.facet-vocabulary.review.json`: review/rejected vocabulary candidates.
+- `<pack>.facet-vocabulary.review.json`: review/rejected vocabulary decisions.
 
 Committed outputs live in `datasets/<source>/`, then `bun run sync:*` copies
 them into `common/src/main/resources/data/slot/classification/`.

@@ -1,10 +1,15 @@
 export {
   buildVocabularyCurationPrompt,
+  buildVocabularyPromptOverview,
   extractVocabularyCandidates,
   parseVocabularyCurationResponse,
   proposePackFacetVocabulary,
   readFacetEvidenceArtifactFile,
 } from "./pipeline.ts";
+export {
+  applyVocabularyReviewDecisions,
+  readPackFacetVocabularyReviewFile,
+} from "./review.ts";
 
 export type {
   ExtractVocabularyCandidatesOptions,
@@ -15,5 +20,11 @@ export type {
   VocabularyDecision,
   VocabularyDiagnostic,
   VocabularyFacetId,
+  VocabularyReviewDecision,
   VocabularySemanticEvidence,
 } from "./pipeline.ts";
+export type {
+  ApplyVocabularyReviewOptions,
+  ApplyVocabularyReviewResult,
+  VocabularyReviewChange,
+} from "./review.ts";

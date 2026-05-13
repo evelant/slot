@@ -3,7 +3,7 @@ import type { VocabularyState } from "../../schema/vocabulary.ts";
 import type { CandidateAccumulator, SemanticEvidenceIndex, VocabularyFacetId } from "../types.ts";
 import { MOD_SUBSYSTEM_CANONICAL_TOKENS, MOD_SUBSYSTEM_SIGNAL_TOKENS, MOD_SUBSYSTEM_STOP_TOKENS } from "../constants.ts";
 import { addCandidate } from "../candidate_store.ts";
-import { labelFromId, looksLikeResourceLocation, splitResourceLocation, token } from "../helpers.ts";
+import { labelFromId, splitResourceLocation, token } from "../helpers.ts";
 import { runtimeItemRefs, semanticEvidenceForCandidate } from "../semantic_index.ts";
 import { evidenceRef } from "../records.ts";
 import { isGenericValueId, resourcePathTail } from "../value_ids.ts";
@@ -124,7 +124,6 @@ function addModSubsystemCandidate(
     evidence: [evidenceRef(args.record)],
     semanticEvidence: semanticEvidenceForCandidate(args.record, args.semanticIndex),
     seedItems: runtimeItemRefs(args.record.item_refs ?? args.record.examples, args.semanticIndex),
-    aliases: args.record.examples?.filter((value) => !looksLikeResourceLocation(value)),
     reason: args.reason,
   });
 }

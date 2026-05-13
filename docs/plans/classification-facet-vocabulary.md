@@ -26,12 +26,14 @@ vocabulary under the tightened policy, run a canary, then run a fresh full
 rehome output look human-organized rather than query-generated.
 
 `organization_group` should not rely on post-LLM keyword deny lists to clean up
-bad homes. Query-only groups are blocked by candidate-source policy (raw mod
-metadata and raw item/block tags do not directly mint org-group candidates),
-prompt guidance, review/canary output, and runtime parent ownership. Keyword
-helpers that remain in vocabulary generation should either produce review-only
-candidates from broad human storage concepts or filter technical evidence before
-the prompt, not silently override the curator after it answers.
+bad homes. The prompt receives ranked context records, not an allowed output
+set, and must synthesize human storage values from that evidence. Bad query-like
+groups are handled through prompt guidance, review/canary output, runtime parent
+ownership, and a manual review gate for every custom home group before it can
+become accepted vocabulary.
+Technical helpers that remain in vocabulary generation should rank or filter
+context before the prompt, not silently override the synthesizer after it
+answers.
 
 This plan owns the generic modpack-classification workflow: pack vocabulary,
 evidence extraction, vocabulary-backed semantic facets, and pack-layer
@@ -131,23 +133,26 @@ cross-mod material chains. TerraFirmaGreg is only the current test case.
 7. **Unknown facets fail closed.** The generator must not emit facets the parser
    drops. New facets require TypeScript registry, prompt, parser tests, docs,
    and any Java runtime accessors needed by consumers.
-8. **Evidence must be auditable.** Generated vocabulary and facets should keep
-   short source references so a bad label can be traced back to a tag, recipe
-   type, quest, guide page, item id pattern, or model decision.
+8. **Review output is for human decisions.** The evidence artifact and prompt
+   fixtures remain available for debugging, but the primary vocabulary review
+   artifact should be a concise yes/no/rename surface: value id, label,
+   description, rationale, examples, policy notes, and an editable human-review
+   field. Do not make the model regurgitate source refs as a validation scheme.
 9. **Semantic text is the main LLM input.** Tooltip/lore prose, Patchouli page
    bodies, FTB Quest text, advancement/lang text, KubeJS/datapack overlays, and
    mod descriptions should be preserved as prompt evidence. Do not compress
    them away into a handful of seed item ids before curation.
-10. **Use the model context window.** The target vocabulary model is cheap and
-   has a very large context window. Keep prompts structured and auditable, but
-   prefer broad semantic coverage over tiny 10k-20k token prompts that omit the
-   evidence needed to infer real pack concepts.
+10. **Spend context on semantics, not provenance.** The target vocabulary model
+   is cheap and has a large context window, but that space should carry item
+   names, tooltips, recipes, guide prose, quest text, and other meaning-bearing
+   snippets. Do not flood prompts with file paths, jar paths, support metadata,
+   source refs, or candidate-scoring scaffolding.
 11. **Previous vocabulary is refinement bias, not a clean baseline.** Run the
    first full proposal for a pack without `--previous-vocabulary` so missing
-   concepts expose evidence, candidate, prompt, or policy gaps. Use previous
+   concepts expose evidence, prompt, or policy gaps. Use previous
    vocabulary only when an artifact is already nearly satisfactory and the goal
    is iterative refinement. Previously accepted values are intentionally sticky:
-   they re-enter the candidate set with high synthetic support and should be
+   they re-enter the context record set with high synthetic support and should be
    preserved unless the model or validation policy rejects them.
 
 ## Pipeline Fit
@@ -209,7 +214,8 @@ Each vocabulary-backed facet needs:
 - stable id values
 - display labels and aliases for prompt/search/UI text
 - short descriptions that tell stage 3 when to use the value
-- evidence references
+- short rationales and examples that let a human reviewer approve, reject, or
+  rename the value
 - whether values are universal defaults, pack-proposed, or manually curated
 - whether the value can influence auto-home, task views, search only, or review
   only
@@ -269,7 +275,7 @@ Rules:
 - use `#<role_token>` only for scoped relationship facets such as
   `workflow_role`
 - do not encode display names, spaces, hyphens, capitalization, or item ids into
-  value ids; keep those as labels, aliases, or evidence refs
+  value ids; keep those as labels, aliases, or review examples
 - start strict; loosen the grammar only when an accepted value cannot be
   represented cleanly with aliases or evidence metadata
 
@@ -295,15 +301,15 @@ it should remain namespace-scoped unless manually curated otherwise.
 ### Pattern Validation Strategy
 
 The value grammar and scoping policy above are the V1 starting point. During the
-first implementation, run the candidate extractor against the current deep-pack
-fixture and lint every proposed value:
+first implementation, run the context-record extractor against the current
+deep-pack fixture and lint every proposed value:
 
-1. Generate raw candidates with labels, source evidence, suggested facet, and
-   suggested canonical id.
+1. Generate raw context records with labels, source evidence, suggested facet,
+   and stable source handles. Do not treat those handles as proposed output
+   value ids.
 2. Apply the proposed grammar and report rejected ids, collisions, aliases,
    scope conflicts, and generic catch-alls.
-3. Manually inspect top accepted candidates and top rejected/colliding
-   candidates.
+3. Manually inspect top accepted values and top rejected/colliding values.
 4. Add fixture tests for the grammar and normalization rules.
 5. Tune thresholds and stop-word lists from the review report, not by hardcoding
    fixture namespaces into shared code.
@@ -429,7 +435,7 @@ Rules:
 Both facets should be fed by the vocabulary artifact, but they answer different
 questions:
 
-- `organization_group`: player-facing wall-home candidate. It can be derived
+- `organization_group`: player-facing wall-home value. It can be derived
   from workflow vocabulary only when the vocabulary marks a default home and
   item evidence supports membership. It is a scarce, broad main-wall home
   signal, not a general query facet; reject mod-name buckets, mod subsystem
@@ -458,7 +464,7 @@ Rules:
   playtest proves a broad wall-home bucket is better
 - curation and item prompts should include the protected built-in section list
   and explicitly reject near-duplicates unless the built-in parent is overloaded
-  and the candidate is a broad, player-obvious subset; `Wood` is protected for
+  and the value is a broad, player-obvious subset; `Wood` is protected for
   stock wood such as sticks, logs, planks, boards, and lumber; `Seeds`,
   `Crops`, `Plants`, `Ceramics & Molds`, and `Organic Materials` are protected stock
   sections for their obvious item families; pack-broad groups such as
@@ -780,27 +786,48 @@ every downstream facet gets worse.
 
 The command should be implemented as a pipeline, not one monolithic prompt:
 
-1. **Collect candidates deterministically.** Mine evidence records for possible
-   values: recipe type labels, recipe-id path families, repeated station/item
-   tokens, tag names, guide/quest/advancement titles, mod metadata, existing
-   vocabulary, previous generated layers, and prior `primary_uses` phrases when
-   available.
-2. **Normalize and cluster candidates.** Lowercase/snake-case labels, attach
-   namespace or pack scope, merge obvious aliases, reject generic catch-alls,
-   and group candidates by target facet before any LLM call.
-3. **Ask the LLM to curate, not invent freely.** The prompt should receive the
-   candidate set, evidence counts, examples, and facet policy. It may accept,
-   merge, rename, reject, or propose missing values, but proposed values without
-   evidence go to review by default.
-4. **Apply deterministic policy gates.** Validate ids, value patterns, evidence
-   thresholds, duplicate/synonym conflicts, maximum count guidelines, and
-   previous-vocabulary drift. Accepted values become stage-3 vocabulary; review
-   and rejected values do not.
-5. **Emit review artifacts.** Preserve rejected candidates, merge decisions,
-   low-evidence values, out-of-policy proposals, namespace conflicts, and
-   changes from the previous run.
+1. **Collect semantic context deterministically.** Mine evidence records for
+   useful signal: recipe type labels, recipe-id path families, repeated
+   station/item tokens, tag names, guide/quest/advancement titles, mod metadata,
+   existing vocabulary, previous generated layers, and prior `primary_uses`
+   phrases when available. These deterministic records are source handles and
+   evidence bundles, not proposed vocabulary values.
+2. **Build pack-overview summaries.** For `organization_group`, include
+   pack-wide context that lets the model see the item universe: default-section
+   pressure, runtime item family clusters, tag membership summaries, recipe-use
+   neighborhoods, and human-visible text pools. These summaries are also
+   context only; they must not be converted one-for-one into values.
+3. **Normalize and cluster context records.** Lowercase/snake-case labels,
+   attach namespace or pack scope only for stable source handles, merge obvious
+   aliases, reject generic catch-alls, and group context records by target facet
+   before any LLM call.
+4. **Ask the LLM to synthesize values from context.** The prompt receives
+   compact context records, pack-overview summaries, semantic snippets,
+   examples, and facet policy. These records are not an allowed-value list.
+   `context_id` values are source handles; the model should output an id only
+   after deciding it is the best stable vocabulary id, and should synthesize
+   clearer values when the evidence points at a broader or more human concept.
+   Pack-specific storage families should be scoped as `pack:<pack-id>/...`,
+   not as a mod namespace, unless the value is genuinely owned by one mod.
+   For `organization_group`, the desired output is a small review shortlist
+   when broad pack-specific storage families are evident; an empty result is
+   correct only when protected built-ins already cover every useful family.
+5. **Apply deterministic policy gates.** Validate ids, value patterns, evidence
+   thresholds where they still serve candidate selection, duplicate/synonym
+   conflicts, maximum count guidelines, previous-vocabulary drift, and
+   home-producing safety gates. Accepted values become stage-3 vocabulary;
+   review and rejected values do not.
+6. **Emit review artifacts.** Preserve only the synthesized value decisions a
+   maintainer needs to act on, plus explicit harmful or previous values that
+   should be rejected. Do not bulk-render every ordinary noisy context record as
+   a rejected value, and do not include full candidate dumps or raw LLM
+   responses in the primary review JSON.
+7. **Apply human decisions explicitly.** Maintainers edit `human_review` fields
+   in the review JSON to approve, reject, or rename proposed values, or run the
+   interactive `review-pack-facet-vocabulary` helper to make y/n decisions from
+   the terminal. The result is an approved vocabulary artifact used by stage 3.
 
-### Candidate State
+### Value State
 
 Every generated value should have one lifecycle state:
 
@@ -812,8 +839,9 @@ rejected
 
 Only `accepted` values are rendered into stage-3 prompts. `review` values are
 visible to the maintainer and can become accepted through a later manual or
-previous-vocabulary input. `rejected` values stay in the review artifact so the
-next run can avoid rediscovering the same bad catch-all.
+previous-vocabulary input. `rejected` is reserved for previous values that
+should be retired or specific harmful ids that need a visible block; ordinary
+noisy context records are omitted from the review output.
 
 Every generated value should also carry an origin:
 
@@ -845,7 +873,7 @@ different things for each facet.
 | `progression_stage` | quest/guide chapters, tiers, voltage/age systems, dimension gates | conservative; always vocabulary-backed, never universalized |
 | `loadout_context` | activity vocabulary, guide/quest text, common trip/task phrases, prior uses | medium; useful for kits/search even before dedicated UI |
 | `use_affordance` | item action semantics, components, names, tags, station roles | conservative; direct interaction verbs only |
-| `organization_group` | broad human storage candidates from semantic item/document evidence, stack groups, and curated/manual values | conservative; direct auto-home impact |
+| `organization_group` | broad human storage values synthesized from semantic item/document evidence, stack groups, and curated/manual values | conservative; direct auto-home impact |
 | `mod_subsystem` | mod metadata and identity-owned functional systems | conservative; not recipe participation |
 
 ### Evidence Ranking
@@ -866,14 +894,14 @@ Lower-ranked evidence can propose a value, but should usually leave it in
 ### Stability Rules
 
 - Prefer preserving a previous accepted value id over renaming it for style.
-- If two candidates are synonyms, accept one value and record aliases on it.
+- If two proposed values are synonyms, accept one value and record aliases on it.
 - If a value's scope is unclear, prefer pack scope over guessing a namespace
-  owner; review candidates whose namespace differs from most seed items.
+  owner; review values whose namespace differs from most seed items.
 - Reject generic values such as `misc`, `general`, `materials`, `components`,
   `crafting`, `items`, and `blocks` unless a facet policy explicitly allows the
   value and a consumer needs it.
 - Add a value-count warning when a facet explodes into too many low-evidence
-  values; this usually means the candidate extractor is leaking item families
+  values; this usually means the context extractor is leaking item families
   into semantic vocabulary.
 
 ## Pack Vocabulary Artifact
@@ -945,8 +973,8 @@ Review artifact requirements:
 
 - rejected or uncertain facet values
 - possible duplicates/synonyms
-- low-evidence candidates
-- candidates whose id namespace differs from most seed items
+- low-evidence values
+- values whose id namespace differs from most seed items
 - vocabulary changes compared with a previous run
 - values proposed by stage 3 that were not in the vocabulary it received
 
@@ -1004,9 +1032,9 @@ toolchain now supports:
 - `collect-pack-facet-evidence` for runtime/static/guide/quest/advancement
   evidence plus Ponder/category lang, KubeJS client tooltips, stack groups, and
   zipped resource-pack lang overrides
-- `propose-pack-facet-vocabulary` with large semantic prompts, split candidate
-  batches, fixture record/replay, accepted/review/rejected output, and
-  validated vocabulary artifacts
+- `propose-pack-facet-vocabulary` with large semantic prompts, configurable
+  context batch size, fixture record/replay, accepted/review/rejected output,
+  and validated vocabulary artifacts
 - `--facet-vocabulary` on stage-3 pack runs so prompts contain only accepted
   pack vocabulary values for vocabulary-backed facets
 - conservative per-item `document_context` from evidence artifacts
@@ -1111,9 +1139,12 @@ Exit criteria:
 
 Status: implemented 2026-05-11 for the TypeScript toolchain. The command
 `propose-pack-facet-vocabulary` consumes `facet-evidence.json`, preserves
-previous accepted vocabulary when supplied, builds deterministic candidates,
-writes dry-run prompt pairs, reuses the shared LLM replay/recording clients,
-policy-gates accepted values, and emits `facet-vocabulary.json` plus
+previous accepted vocabulary when supplied, builds ranked context records,
+adds pack-wide overview summaries for `organization_group`, writes dry-run
+prompt pairs, keeps each facet in one prompt when it fits the prompt budget,
+reuses the shared LLM replay/recording clients, asks the LLM to synthesize
+values from context rather than choose from deterministic ids, policy-gates
+accepted values, and emits `facet-vocabulary.json` plus
 `facet-vocabulary.review.json`. Stage 3 consumes the accepted artifact through
 the Slice 3 `--facet-vocabulary` path.
 
@@ -1121,8 +1152,8 @@ the Slice 3 `--facet-vocabulary` path.
 - reuse the existing LLM client, split-prompt, fixture recording, and replay
   infrastructure
 - consume `facet-evidence.json` plus optional existing vocabulary
-- implement deterministic candidate extraction, normalization, alias clustering,
-  LLM curation, and policy-gate steps as separate functions
+- implement deterministic context extraction, normalization, alias clustering,
+  LLM synthesis, and policy-gate steps as separate functions
 - model value lifecycle as `accepted` / `review` / `rejected`
 - emit `out/<pack>.facet-vocabulary.json`
 - emit `out/<pack>.facet-vocabulary.review.json`
@@ -1138,8 +1169,8 @@ Exit criteria:
 - accepted vocabulary ids are stable, correctly scoped, and evidence-backed
 - initial evidence thresholds are conservative guesses and are surfaced in the
   review report for tuning
-- uncertain candidates are not included in accepted vocabulary
-- duplicate/synonym candidates are visible in review output
+- uncertain values are not included in accepted vocabulary
+- duplicate/synonym values are visible in review output
 - universal defaults and pack-generated values are distinguishable in output
 - replay fixtures prove the same evidence + previous vocabulary produces stable
   accepted ids
@@ -1229,7 +1260,7 @@ Exit criteria:
 
 Initial fixture acceptance criteria:
 
-- facet vocabulary has stable, evidence-backed candidates across several major
+- facet vocabulary has stable, evidence-backed values across several major
   namespaces and multiple facet types
 - workflow, station, food, stock, container, equipment/protection, progression,
   loadout, use-affordance, and material/domain facets have non-zero coverage in

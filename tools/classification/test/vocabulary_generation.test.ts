@@ -4,10 +4,12 @@ import type { LlmClient, QueryOptions } from "../src/llm/client.ts";
 import type { FacetEvidenceArtifact } from "../src/evidence/facet_evidence.ts";
 import { validateVocabularyArtifact, type PackFacetVocabulary } from "../src/schema/vocabulary.ts";
 import {
-  buildVocabularyCurationPrompt,
-  extractVocabularyCandidates,
-  parseVocabularyCurationResponse,
-  proposePackFacetVocabulary,
+	  applyVocabularyReviewDecisions,
+	  buildVocabularyCurationPrompt,
+	  buildVocabularyPromptOverview,
+	  extractVocabularyCandidates,
+	  parseVocabularyCurationResponse,
+	  proposePackFacetVocabulary,
   type PackVocabularyCandidate,
 } from "../src/vocabulary/pack_vocabulary.ts";
 import { selectPromptCandidates } from "../src/vocabulary/selection.ts";
@@ -96,6 +98,17 @@ describe("pack facet vocabulary generation", () => {
         count: 12,
         item_refs: ["create:andesite_casing"],
       },
+      {
+        kind: "mod_metadata",
+        id: "railways",
+        label: "Steam 'n' Rails",
+        namespace: "railways",
+        source: "mods-folder-scan",
+        confidence: 0.6,
+        count: 20,
+        description: "Adds railway tracks, conductors, and train logistics.",
+        examples: ["minecraft", "forge", "railways"],
+      },
     );
 
     const candidates = extractVocabularyCandidates(evidence, {
@@ -109,12 +122,14 @@ describe("pack facet vocabulary generation", () => {
     expect(ids).toContain("create:belt");
     expect(ids).toContain("create:pipe");
     expect(ids).toContain("create:fluid");
+    expect(ids).toContain("railways:rail");
     expect(ids).not.toContain("create:pipes");
     expect(ids).not.toContain("create:kinetic");
     expect(ids).not.toContain("create:press");
     expect(ids).not.toContain("create:storage");
     expect(ids).not.toContain("create:using_mechanical_belts");
     expect(ids).not.toContain("pack:fixture/kinetics");
+    expect(candidates.find((candidate) => candidate.id === "railways:rail")?.aliases).toEqual([]);
   });
 
   test("extracts player-facing organization groups from item evidence instead of workflows", () => {
@@ -209,6 +224,78 @@ describe("pack facet vocabulary generation", () => {
         count: 8,
         item_refs: ["example:ingot_mold"],
       },
+      {
+        kind: "guide_page",
+        id: "firmalife:guide/beekeeping",
+        label: "Beekeeping",
+        title: "Beekeeping",
+        namespace: "firmalife",
+        source: "guide",
+        confidence: 0.82,
+        count: 10,
+        item_refs: ["firmalife:beehive", "firmalife:honey_jar"],
+        semantic_text: [{ source: "guide", text: "Keep bees in hives and collect honey, wax, and honeycomb." }],
+      },
+      {
+        kind: "guide_page",
+        id: "tfc:guide/glass_products",
+        label: "Glass Products",
+        title: "Glass Products",
+        namespace: "tfc",
+        source: "guide",
+        confidence: 0.82,
+        count: 12,
+        item_refs: ["tfc:glass_batch", "tfc:glass_bottle"],
+        semantic_text: [{ source: "guide", text: "Shape glass into panes, bottles, vials, and other glassware." }],
+      },
+      {
+        kind: "guide_page",
+        id: "minecraft:guide/item_containers",
+        label: "Item Containers",
+        title: "Item Containers",
+        namespace: "minecraft",
+        source: "guide",
+        confidence: 0.82,
+        count: 8,
+        item_refs: ["minecraft:chest", "minecraft:barrel"],
+        semantic_text: [{ source: "guide", text: "Containers store items." }],
+      },
+      {
+        kind: "guide_page",
+        id: "minecraft:guide/lamps",
+        label: "Lamps",
+        title: "Lamps",
+        namespace: "minecraft",
+        source: "guide",
+        confidence: 0.82,
+        count: 8,
+        item_refs: ["minecraft:lantern", "minecraft:redstone_lamp"],
+        semantic_text: [{ source: "guide", text: "Lamps and lanterns light an area." }],
+      },
+      {
+        kind: "guide_page",
+        id: "minecraft:guide/pottery",
+        label: "Pottery",
+        title: "Pottery",
+        namespace: "minecraft",
+        source: "guide",
+        confidence: 0.82,
+        count: 8,
+        item_refs: ["minecraft:brick", "minecraft:flower_pot"],
+        semantic_text: [{ source: "guide", text: "Clay, bricks, and pots." }],
+      },
+      {
+        kind: "guide_page",
+        id: "minecraft:guide/redstone",
+        label: "Redstone",
+        title: "Redstone",
+        namespace: "minecraft",
+        source: "guide",
+        confidence: 0.82,
+        count: 8,
+        item_refs: ["minecraft:redstone", "minecraft:repeater"],
+        semantic_text: [{ source: "guide", text: "Redstone dust and circuit components." }],
+      },
     );
 
     const candidates = extractVocabularyCandidates(evidence, {
@@ -218,9 +305,15 @@ describe("pack facet vocabulary generation", () => {
     });
     const ids = candidates.filter((candidate) => candidate.facet === "organization_group").map((candidate) => candidate.id);
 
+    expect(ids).toContain("pack:fixture/beekeeping");
+    expect(ids).toContain("pack:fixture/glass_products");
     expect(ids).not.toContain("pack:fixture/seeds");
     expect(ids).not.toContain("pack:fixture/crops");
     expect(ids).not.toContain("pack:fixture/inedible_plants");
+    expect(ids).not.toContain("pack:fixture/item_containers");
+    expect(ids).not.toContain("pack:fixture/lamps");
+    expect(ids).not.toContain("pack:fixture/pottery");
+    expect(ids).not.toContain("pack:fixture/redstone");
     expect(ids).not.toContain("example:casting");
     expect(ids).not.toContain("pack:fixture/unprocessed_ores");
     expect(ids).not.toContain("pack:fixture/refined_ores");
@@ -261,10 +354,10 @@ describe("pack facet vocabulary generation", () => {
       minEvidence: 2,
     });
 
-    expect(prompt.system).toContain("namespace-scoped identity system inside a mod");
-    expect(prompt.system).toContain("accepting a value does not create a wall home");
-    expect(prompt.system).toContain("use workflow/used_at");
-    expect(prompt.system).toContain("what mod system is this item itself part of");
+    expect(prompt.system).toContain("namespace-scoped identity systems inside a mod");
+    expect(prompt.system).toContain("not a wall-home source");
+    expect(prompt.system).toContain("The item itself must belong to the subsystem");
+    expect(prompt.system).toContain("Do not assign a subsystem merely because the item is consumed by a subsystem recipe");
     expect(JSON.stringify(JSON.parse(prompt.user))).toContain("create:kinetics");
   });
 
@@ -296,25 +389,130 @@ describe("pack facet vocabulary generation", () => {
       previousAccepted: [],
       minEvidence: 2,
     });
-    const user = JSON.parse(prompt.user) as { policy?: string };
+    const user = JSON.parse(prompt.user) as {
+      policy?: string;
+      context_records?: Array<{ context_id?: string }>;
+      pack_item_overview?: unknown;
+      synthesis_contract?: { final_instructions?: string[] };
+      candidates?: unknown;
+    };
 
+    expect(prompt.system).toContain("context_records and may contain pack_item_overview");
+    expect(prompt.system).toContain("Do not output one value per context record");
+    expect(prompt.system).toContain("Synthesize the vocabulary values the pack actually needs");
+    expect(prompt.system).not.toContain("Curate from the candidate ids");
     expect(prompt.system).toContain(
-      "the #1 rule is: would a human player spend one of a small number of main-wall sections on this broad item type, so these items and their obvious siblings stay together?",
+      "The #1 rule is: would a human player spend one of a small number of main inventory sections on this broad item type",
     );
-    expect(prompt.system).toContain("only about 15-20 human-named organization sections total");
-    expect(prompt.system).toContain("group primarily by broad item type/role");
-    expect(prompt.system).toContain("the protected built-in wall sections are Food, Tools, Weapons, Armor, Lighting");
-    expect(prompt.system).toContain("Raw Materials, Wood, Seeds, Crops, Plants, Clay & Pottery, Mob Drops, Storage");
-    expect(prompt.system).toContain("Wood is the built-in home for sticks, logs, planks, boards, lumber");
-    expect(prompt.system).toContain("Seeds, Crops, Plants, Clay & Pottery, and Mob Drops are built-in homes");
-    expect(prompt.system).toContain("Materials exists as a runtime fallback, but it is intentionally not protected");
-    expect(prompt.system).toContain("roughly 3-6 broad, useful storage sections");
-    expect(prompt.system).toContain("closely duplicate a protected built-in section");
-    expect(prompt.system).toContain("the built-in parent is too overloaded");
-    expect(prompt.system).toContain("not a hard required list");
-    expect(prompt.system).toContain("one mod's mechanical power line, stackable plates, or anvil smithing");
-    expect(prompt.system).toContain("stable main-wall storage section a player would actually maintain");
+    expect(prompt.system).toContain("accepted + review custom groups should be human-sized");
+    expect(prompt.system).toContain("Do not be so conservative that you output nothing");
+    expect(prompt.system).toContain("usually 3-10 values");
+    expect(prompt.system).toContain("Pack-specific storage families should use pack:fixture/");
+    expect(prompt.system).toContain("Group primarily by broad item type or role");
+    expect(prompt.system).toContain("Protected built-in wall sections are good homes");
+    expect(prompt.system).toContain("Ores & Raw Stock, Metal Stock, Gems & Crystals, Dusts & Powders, Wood, Seeds, Crops, Plants, Ceramics & Molds, Organic Materials, Storage");
+    expect(prompt.system).toContain("Item containers belong to Storage");
+    expect(prompt.system).toContain("lamps/light sources to Lighting");
+    expect(prompt.system).toContain("beekeeping, glass products, cooking supplies");
+    expect(prompt.system).toContain("not a hard list");
+    expect(prompt.system).toContain("material form/state such as stackable or pileable");
+    expect(prompt.system).toContain("rock/geology taxonomy");
+    expect(prompt.system).toContain("broad storage family a player would actually maintain");
     expect(user.policy).toContain("scarce, broad sections a human player would maintain primarily by item type/role");
+    expect(user.context_records?.[0]?.context_id).toBe("pack:fixture/casting_molds");
+    expect(user.pack_item_overview).toBeUndefined();
+    expect("candidates" in user).toBe(false);
+    expect(user.synthesis_contract?.final_instructions?.join(" ")).toContain("not proposed values");
+  });
+
+  test("organization_group prompt can include pack-wide item overview without candidate ids", () => {
+    const evidence = fixtureEvidence();
+    evidence.records.push(
+      runtimeItemRecord("example:glass_bottle", "Glass Bottle", {
+        tags: ["c:glass", "c:bottles"],
+        ingredientTypes: { "example:glassworking": 3 },
+        semantic: "A reusable bottle made from worked glass.",
+      }),
+      runtimeItemRecord("example:glass_pane", "Glass Pane", {
+        tags: ["c:glass", "minecraft:impermeable"],
+        ingredientTypes: { "example:glassworking": 2 },
+        semantic: "Thin glass sheet used for windows.",
+      }),
+      runtimeItemRecord("example:clear_glass", "Clear Glass", {
+        tags: ["c:glass"],
+        outputTypes: { "example:glassworking": 4 },
+        semantic: "Transparent glass block.",
+      }),
+      runtimeItemRecord("example:glass_vial", "Glass Vial", {
+        tags: ["c:glass", "c:vials"],
+        ingredientTypes: { "example:glassworking": 5 },
+        semantic: "Small glass vessel for liquids.",
+      }),
+      runtimeItemRecord("example:oak_log", "Oak Log", {
+        tags: ["minecraft:logs", "minecraft:wooden"],
+        semantic: "Stock wood used for planks and boards.",
+      }),
+      {
+        kind: "item_tag",
+        id: "c:glass",
+        label: "Glass",
+        namespace: "c",
+        source: "runtime-summary",
+        confidence: 0.75,
+        count: 4,
+        item_refs: ["example:glass_bottle", "example:glass_pane", "example:clear_glass", "example:glass_vial"],
+      },
+      {
+        kind: "recipe_type",
+        id: "example:glassworking",
+        label: "Glassworking",
+        namespace: "example",
+        source: "runtime-summary",
+        confidence: 0.85,
+        count: 8,
+        item_refs: ["example:glass_bottle", "example:glass_pane", "example:clear_glass", "example:glass_vial"],
+        semantic_text: [{ source: "recipe-category-lang", text: "Glassworking shapes glass into bottles, panes, and vials." }],
+      },
+      {
+        kind: "kubejs_tooltip",
+        id: "kubejs:glass_tips/0",
+        label: "Glassware",
+        namespace: "kubejs",
+        source: "file:/tmp/glass_tips.js",
+        confidence: 0.8,
+        item_refs: ["example:glass_bottle", "example:glass_vial"],
+        semantic_text: [{ source: "kubejs-tooltip", text: "Glassware is fragile but reusable in fluid recipes." }],
+      },
+    );
+
+    const overview = buildVocabularyPromptOverview({
+      facet: "organization_group",
+      records: evidence.records,
+    });
+    expect(overview?.default_section_pressure?.some((entry) => entry.section === "Wood")).toBe(true);
+    expect(overview?.runtime_item_family_clusters?.some((entry) => entry.term === "glass")).toBe(true);
+    expect(overview?.tag_membership_summaries?.some((entry) => entry.tag_id === "c:glass")).toBe(true);
+    expect(overview?.recipe_use_neighborhoods?.some((entry) => entry.recipe_type === "example:glassworking")).toBe(true);
+    expect(overview?.human_visible_text_pools?.some((entry) => entry.topic === "kubejs tooltip text")).toBe(true);
+
+    const prompt = buildVocabularyCurationPrompt({
+      facet: "organization_group",
+      packId: "fixture",
+      candidates: [],
+      previousAccepted: [],
+      minEvidence: 2,
+      packOverview: overview,
+    });
+    const user = JSON.parse(prompt.user) as {
+      pack_item_overview?: {
+        runtime_item_family_clusters?: Array<{ term?: string }>;
+      };
+      synthesis_contract?: { final_instructions?: string[] };
+    };
+
+    expect(user.pack_item_overview?.runtime_item_family_clusters?.some((entry) => entry.term === "glass")).toBe(true);
+    expect(prompt.system).toContain("Context ids are source handles, not candidate ids");
+    expect(user.synthesis_contract?.final_instructions?.join(" ")).toContain("context_id values are source handles");
   });
 
   test("curation prompt keeps semantic prose but omits boilerplate and opaque ref lists", () => {
@@ -333,28 +531,30 @@ describe("pack facet vocabulary generation", () => {
       previousAccepted: [],
       minEvidence: 2,
     });
-    expect(prompt.system).toContain("ONLY a player-facing station/process/task");
-    expect(prompt.system).toContain("CRITICAL OUTPUT CONTRACT");
-    expect(prompt.system).toContain("return exactly one value object for every candidate id");
-    expect(prompt.system).toContain("Do not omit rejected candidates");
-    expect(prompt.system).toContain("reject implementation/meta recipe mechanics");
-    expect(prompt.system).toContain("reject item/product/component families");
-    expect(prompt.system).toContain("reject environmental physics/events");
+    expect(prompt.system).toContain("Synthesize reusable player-facing tasks, processes, or station workflows");
+    expect(prompt.system).toContain("Prefer canonical process/station names over tutorial titles");
+    expect(prompt.system).not.toContain("CRITICAL OUTPUT CONTRACT");
+    expect(prompt.system).not.toContain("return exactly one value object for every candidate id");
+    expect(prompt.system).toContain("Reject implementation recipe mechanics");
+    expect(prompt.system).toContain("item families");
+    expect(prompt.system).toContain("environmental events");
     const user = JSON.parse(prompt.user) as {
-      candidates: Array<{
-        semantic_evidence?: Array<Record<string, unknown>>;
+      context_records: Array<{
+        context_id?: string;
+        semantic_context?: string[];
         sample_item_ids?: string[];
         seed_items?: string[];
         reasons?: string[];
       }>;
-      required_output_contract?: {
-        required_values_count?: number;
-        required_candidate_ids?: string[];
+      synthesis_contract?: {
+        context_record_count?: number;
         final_instructions?: string[];
       };
+      candidates?: unknown;
+      required_output_contract?: unknown;
     };
-    const candidate = user.candidates[0]!;
-    const serialized = JSON.stringify(candidate);
+    const contextRecord = user.context_records[0]!;
+    const serialized = JSON.stringify(contextRecord);
 
     expect(serialized).toContain("Reusable mold");
     expect(serialized).toContain("Use molds to cast molten metal");
@@ -364,17 +564,21 @@ describe("pack facet vocabulary generation", () => {
     expect(serialized).not.toContain("item_refs");
     expect(serialized).not.toContain("recipe_refs");
     expect(serialized).not.toContain("suggested_state");
-    expect(candidate.seed_items).toBeUndefined();
-    expect(candidate.sample_item_ids).toBeUndefined();
-    expect(candidate.reasons).toBeUndefined();
-    expect(candidate.semantic_evidence?.some((entry) => entry.item_ref_count === 1)).toBe(true);
-    expect(candidate.semantic_evidence?.some((entry) => entry.recipe_ref_count === 1)).toBe(true);
-    expect(user.required_output_contract?.required_values_count).toBe(1);
-    expect(user.required_output_contract?.required_candidate_ids).toEqual(["example:casting"]);
-    expect(user.required_output_contract?.final_instructions?.join(" ")).toContain("values.length");
+    expect(contextRecord.context_id).toBe("example:casting");
+    expect(contextRecord.seed_items).toBeUndefined();
+    expect(contextRecord.sample_item_ids).toContain("example:ingot_mold");
+    expect(contextRecord.reasons).toBeUndefined();
+    expect(contextRecord.semantic_context?.some((entry) => entry.includes("Item: Ingot Mold"))).toBe(true);
+    expect(serialized).not.toContain("item_ref_count");
+    expect(serialized).not.toContain("recipe_ref_count");
+    expect(user.synthesis_contract?.context_record_count).toBe(1);
+    expect(user.synthesis_contract?.final_instructions?.join(" ")).toContain("Output only synthesized vocabulary values");
+    expect(user.synthesis_contract?.final_instructions?.join(" ")).toContain("Do not output provenance metadata");
+    expect("candidates" in user).toBe(false);
+    expect(user.required_output_contract).toBeUndefined();
   });
 
-  test("curation prompt trims per-candidate evidence to stay under the prompt budget", () => {
+  test("curation prompt trims per-context-record evidence to stay under the prompt budget", () => {
     const candidates: PackVocabularyCandidate[] = Array.from({ length: 60 }, (_, candidateIndex) => ({
       facet: "workflow",
       id: `example:workflow_${candidateIndex}`,
@@ -405,19 +609,19 @@ describe("pack facet vocabulary generation", () => {
       minEvidence: 2,
     });
     const user = JSON.parse(prompt.user) as {
-      prompt_budget?: { semantic_evidence_per_candidate?: number };
-      candidates: Array<{
-        semantic_evidence?: Array<{ source?: string; text?: string }>;
-        semantic_evidence_omitted?: number;
+      context_records: Array<{
+        semantic_context?: string[];
+        semantic_context_omitted?: number;
       }>;
     };
-    const candidate = user.candidates[0]!;
+    const contextRecord = user.context_records[0]!;
 
     expect(prompt.system.length + prompt.user.length).toBeLessThanOrEqual(3_200_000);
-    expect(user.prompt_budget?.semantic_evidence_per_candidate).toBeLessThan(64);
-    expect(candidate.semantic_evidence?.[0]?.text).toContain("Semantic evidence 0.0");
-    expect(candidate.semantic_evidence?.[0]?.source).toBe("file:minecraft/kubejs/assets/example/patchouli_books/guide/en_us/entries/0/0.json");
-    expect(candidate.semantic_evidence_omitted).toBeGreaterThan(0);
+    expect(contextRecord.semantic_context?.length).toBeLessThan(64);
+    expect(contextRecord.semantic_context?.[0]).toContain("Semantic evidence 0.0");
+    expect(JSON.stringify(contextRecord)).not.toContain("file:");
+    expect(JSON.stringify(contextRecord)).not.toContain("source");
+    expect(contextRecord.semantic_context_omitted).toBeGreaterThan(0);
   });
 
   test("progression candidates reject namespace-only dimension noise", () => {
@@ -449,6 +653,56 @@ describe("pack facet vocabulary generation", () => {
           text: "Warped Chest",
         }],
       },
+      {
+        kind: "advancement",
+        id: "tfc:metal/horse_armor/black_steel",
+        label: "Black Steel Horse Armor",
+        namespace: "tfc",
+        source: "jar:tfc.jar!data/tfc/advancements/metal/horse_armor/black_steel.json",
+        confidence: 0.65,
+        semantic_text: [{
+          source: "advancement",
+          key: "title",
+          text: "Black Steel Horse Armor",
+        }],
+      },
+      {
+        kind: "guide_page",
+        id: "tfc:field_guide/en_us/entries/firmaciv/canoe",
+        label: "Dugout Canoes",
+        namespace: "tfc",
+        source: "jar:firmaciv.jar!assets/tfc/patchouli_books/field_guide/en_us/entries/firmaciv/canoe.json",
+        confidence: 0.7,
+        semantic_text: [{
+          source: "guide-page",
+          key: "pages.0.text",
+          text: "The Dugout Canoe will likely be the first step on your aquatic journey. If you're in the copper age, you can probably build a canoe.",
+        }],
+      },
+      {
+        kind: "quest_node",
+        id: "pack:ftbquests/chapters/applied_energistics_2",
+        label: "applied_energistics_2",
+        namespace: "fixture",
+        source: "config/ftbquests/quests/chapters/applied_energistics_2.snbt",
+        confidence: 0.7,
+        semantic_text: [{
+          source: "quest-snbt",
+          text: "Gather Certus Quartz from the Moon so you can progress through AE2.",
+        }],
+      },
+      {
+        kind: "quest_node",
+        id: "pack:ftbquests/chapters/space",
+        label: "Eager to launch into the final frontier? Preparation is key to survival or you will end up back in the stone age.",
+        namespace: "fixture",
+        source: "config/ftbquests/quests/chapters/space.snbt",
+        confidence: 0.7,
+        semantic_text: [{
+          source: "quest-snbt",
+          text: "Gather oxygen and fuel before launching a rocket.",
+        }],
+      },
     );
 
     const candidates = extractVocabularyCandidates(evidence, {
@@ -459,6 +713,11 @@ describe("pack facet vocabulary generation", () => {
 
     expect(candidates.find((candidate) => candidate.id === "ad_astra:moon")).toBeDefined();
     expect(candidates.find((candidate) => candidate.id === "beneath:warped/chest")).toBeUndefined();
+    expect(candidates.find((candidate) => candidate.id === "tfc:black_steel")).toBeUndefined();
+    expect(candidates.find((candidate) => candidate.id === "tfc:steel")).toBeUndefined();
+    expect(candidates.find((candidate) => candidate.id === "tfc:dugout/canoes")).toBeUndefined();
+    expect(candidates.find((candidate) => candidate.id === "pack:fixture/applied_energistics_2")).toBeUndefined();
+    expect(candidates.find((candidate) => candidate.id?.startsWith("pack:fixture/eager/to/launch"))).toBeUndefined();
   });
 
   test("parses curation responses from raw JSON and wrapped envelopes", () => {
@@ -480,7 +739,7 @@ describe("pack facet vocabulary generation", () => {
     expect(parsed[0]?.state).toBe("accepted");
   });
 
-  test("curates accepted values and downgrades unsupported model inventions to review", async () => {
+  test("curates accepted values and allows synthesized vocabulary without candidate coverage", async () => {
     const evidence = fixtureEvidence();
     const client = new StaticSplitClient({
       values: [
@@ -497,6 +756,8 @@ describe("pack facet vocabulary generation", () => {
           id: "example:invented",
           label: "Invented",
           state: "accepted",
+          rationale: "The model synthesized this as a compact workflow value from context.",
+          examples: ["example:item"],
           confidence: 0.9,
         },
       ],
@@ -515,9 +776,11 @@ describe("pack facet vocabulary generation", () => {
     });
 
     expect(result.vocabulary.facets.workflow?.values["example:casting"]?.state).toBe("accepted");
-    expect(result.vocabulary.facets.workflow?.values["example:invented"]).toBeUndefined();
-    expect(result.review.decisions.workflow?.find((decision) => decision.id === "example:invented")?.state).toBe("review");
-    expect(result.review.diagnostics.find((diagnostic) => diagnostic.id === "example:invented")?.message).toContain("downgraded");
+    expect(result.vocabulary.facets.workflow?.values["example:invented"]?.state).toBe("accepted");
+    const invented = result.review.decisions.workflow?.find((decision) => decision.id === "example:invented");
+    expect(invented?.state).toBe("accepted");
+    expect(invented?.rationale).toContain("compact workflow");
+    expect(invented?.examples).toContain("example:item");
   });
 
   test("keeps universal defaults accepted even when curation downgrades them", async () => {
@@ -706,7 +969,7 @@ describe("pack facet vocabulary generation", () => {
     expect(result.vocabulary.facets.used_at?.values["greate:processing/items/in/the/millstone"]).toBeUndefined();
   });
 
-  test("downgrades unsupported model-invented organization groups from material tags", async () => {
+  test("downgrades unsupported model-synthesized organization groups from material tags", async () => {
     const evidence = fixtureEvidence();
     evidence.records.push({
       kind: "item_tag",
@@ -743,12 +1006,12 @@ describe("pack facet vocabulary generation", () => {
     const decision = result.review.decisions.organization_group?.find((value) => value.id === "pack:fixture/copper");
     expect(decision?.state).toBe("review");
     expect(decision?.policy_notes).toContain(
-      "model proposed id without deterministic candidate evidence",
+      "custom organization_group requires human review before auto-home",
     );
     expect(result.vocabulary.facets.organization_group?.values["pack:fixture/copper"]).toBeUndefined();
   });
 
-  test("downgrades model-invented organization groups from tool and form tags", async () => {
+  test("downgrades model-synthesized organization groups without enough org evidence", async () => {
     const evidence = fixtureEvidence();
     evidence.records.push({
       kind: "item_tag",
@@ -784,10 +1047,105 @@ describe("pack facet vocabulary generation", () => {
 
     const decision = result.review.decisions.organization_group?.find((value) => value.id === "pack:fixture/axes");
     expect(decision?.state).toBe("review");
+    expect(decision?.policy_notes).toContain(
+      "custom organization_group requires human review before auto-home",
+    );
     expect(result.vocabulary.facets.organization_group?.values["pack:fixture/axes"]).toBeUndefined();
   });
 
-  test("downgrades query-only organization groups that were not deterministic candidates", async () => {
+  test("records synthesized value rationale and examples without requiring evidence refs", async () => {
+    const client = new StaticSplitClient({
+      values: [{
+        id: "example:casting_supplies",
+        label: "Casting Supplies",
+        state: "accepted",
+        confidence: 0.82,
+        description: "Reusable supplies for casting molten materials into item forms.",
+        rationale: "Players commonly gather molds and molten-metal tools together before casting.",
+        examples: ["Ingot Mold", "example:ingot_mold"],
+      }],
+    });
+
+    const result = await proposePackFacetVocabulary({
+      evidence: fixtureEvidence(),
+      evidencePath: "/tmp/fixture.facet-evidence.json",
+      packId: "fixture",
+      generatedBy: "test",
+      generatedAt: "2026-05-11T00:00:00.000Z",
+      facets: ["workflow"],
+      minEvidence: 2,
+      client,
+      model: "test-model",
+    });
+
+    const decision = result.review.decisions.workflow?.find((value) => value.id === "example:casting_supplies");
+    expect(decision?.state).toBe("accepted");
+    expect(decision?.policy_notes).toContain("model-synthesized value accepted from context");
+    expect(decision?.rationale).toContain("molds");
+    expect(decision?.examples).toContain("Ingot Mold");
+    expect(result.vocabulary.facets.workflow?.values["example:casting_supplies"]).toBeDefined();
+  });
+
+  test("applies manual approve and rename decisions from the concise review artifact", async () => {
+    const client = new StaticSplitClient({
+      values: [{
+        id: "pack:fixture/casting_molds",
+        label: "Casting Molds",
+        state: "accepted",
+        description: "Reusable molds and casting supplies.",
+        rationale: "Players gather molds together when preparing casting work.",
+        examples: ["Ingot Mold"],
+      }],
+    });
+
+    const result = await proposePackFacetVocabulary({
+      evidence: fixtureEvidence(),
+      evidencePath: "/tmp/fixture.facet-evidence.json",
+      packId: "fixture",
+      generatedBy: "test",
+      generatedAt: "2026-05-11T00:00:00.000Z",
+      facets: ["organization_group"],
+      minEvidence: 2,
+      client,
+      model: "test-model",
+    });
+    const decision = result.review.decisions.organization_group?.find((value) => value.id === "pack:fixture/casting_molds");
+    expect(decision?.state).toBe("review");
+    expect(decision?.human_review?.decision).toBe("pending");
+    expect(result.vocabulary.facets.organization_group?.values["pack:fixture/casting_molds"]).toBeUndefined();
+
+    decision!.human_review = {
+      decision: "rename",
+      approved_id: "pack:fixture/casting_supplies",
+      approved_label: "Casting Supplies",
+      notes: "Molds alone is a bit too narrow.",
+    };
+
+    const applied = applyVocabularyReviewDecisions({
+      vocabulary: result.vocabulary,
+      review: result.review,
+      generatedBy: "test",
+      generatedAt: "2026-05-11T01:00:00.000Z",
+      reviewPath: "/tmp/fixture.facet-vocabulary.review.json",
+    });
+
+    expect(applied.errors).toEqual([]);
+    expect(applied.changes).toContainEqual({
+      facet: "organization_group",
+      id: "pack:fixture/casting_molds",
+      action: "rename",
+      approved_id: "pack:fixture/casting_supplies",
+    });
+    expect(applied.vocabulary.facets.organization_group?.values["pack:fixture/casting_supplies"]).toMatchObject({
+      label: "Casting Supplies",
+      origin: "manual",
+      state: "accepted",
+      description: "Reusable molds and casting supplies.",
+    });
+    expect(applied.vocabulary.facets.organization_group?.values["pack:fixture/casting_molds"]).toBeUndefined();
+  });
+
+  test("downgrades query-only organization groups without enough org evidence", async () => {
     const evidence = fixtureEvidence();
     evidence.records.push(
       {
@@ -863,7 +1221,7 @@ describe("pack facet vocabulary generation", () => {
       const decision = result.review.decisions.organization_group?.find((value) => value.id === id);
       expect(decision?.state).toBe("review");
       expect(decision?.policy_notes).toContain(
-        "model proposed id without deterministic candidate evidence",
+        "custom organization_group requires human review before auto-home",
       );
       expect(result.vocabulary.facets.organization_group?.values[id]).toBeUndefined();
     }
@@ -947,7 +1305,7 @@ describe("pack facet vocabulary generation", () => {
     expect(result.vocabulary.facets.used_at?.values["example:blast/furnace"]).toBeUndefined();
   });
 
-  test("downgrades advancement-title progression phrases that are not canonical gates", async () => {
+  test("downgrades advancement-title progression phrases that are not concise gates", async () => {
     const evidence = fixtureEvidence();
     evidence.records.push({
       kind: "advancement",
@@ -982,7 +1340,7 @@ describe("pack facet vocabulary generation", () => {
 
     const decision = result.review.decisions.progression_stage?.find((value) => value.id === "ad_astra:one/small/step");
     expect(decision?.state).toBe("review");
-    expect(decision?.policy_notes).toContain("progression value is too phrase-like; prefer a canonical gate/tier/dimension id");
+    expect(decision?.policy_notes).toContain("progression value is too phrase-like; prefer a concise gate/tier/dimension id");
     expect(result.vocabulary.facets.progression_stage?.values["ad_astra:one/small/step"]).toBeUndefined();
   });
 
@@ -1070,7 +1428,7 @@ describe("pack facet vocabulary generation", () => {
     expect(result.vocabulary.facets.used_at?.values["example:blast/furnace/tips"]).toBeUndefined();
   });
 
-  test("downgrades verbose progression aliases when a canonical gate token exists", async () => {
+  test("allows model judgment for non-phrase progression labels without hardcoded canonical aliases", async () => {
     const evidence = fixtureEvidence();
     evidence.records.push({
       kind: "quest_node",
@@ -1105,9 +1463,9 @@ describe("pack facet vocabulary generation", () => {
     });
 
     const decision = result.review.decisions.progression_stage?.find((value) => value.id === "pack:fixture/ev_extreme_voltage");
-    expect(decision?.state).toBe("review");
-    expect(decision?.policy_notes).toContain("progression value is too phrase-like; prefer a canonical gate/tier/dimension id");
-    expect(result.vocabulary.facets.progression_stage?.values["pack:fixture/ev_extreme_voltage"]).toBeUndefined();
+    expect(decision?.state).toBe("accepted");
+    expect(decision?.policy_notes ?? []).not.toContain("progression value is too phrase-like; prefer a concise gate/tier/dimension id");
+    expect(result.vocabulary.facets.progression_stage?.values["pack:fixture/ev_extreme_voltage"]).toBeDefined();
   });
 
   test("rejects legacy pack-scoped mod_subsystem values during vocabulary policy", async () => {
@@ -1160,8 +1518,8 @@ describe("pack facet vocabulary generation", () => {
     expect(result.vocabulary.facets.mod_subsystem?.values["pack:fixture/wall"]).toBeUndefined();
   });
 
-  test("passes a coverage validator so omitted candidate ids are retried", async () => {
-    const client = new CoverageProbeSplitClient();
+  test("accepts compact synthesized curation responses without context-record coverage", async () => {
+    const client = new CompactResponseProbeSplitClient();
 
     await proposePackFacetVocabulary({
       evidence: fixtureEvidence(),
@@ -1175,10 +1533,10 @@ describe("pack facet vocabulary generation", () => {
       model: "test-model",
     });
 
-    expect(client.rejectedMissingCandidateResponse).toBe(true);
+    expect(client.acceptedCompactResponse).toBe(true);
   });
 
-  test("splits large curation prompts without dropping facet candidates", async () => {
+  test("splits large curation prompts without dropping context records", async () => {
     const evidence = fixtureEvidence();
     for (let index = 0; index < 5; index++) {
       evidence.records.push({
@@ -1206,10 +1564,41 @@ describe("pack facet vocabulary generation", () => {
       maxCandidatesPerPrompt: 2,
     });
 
-    expect(client.candidateCounts.length).toBeGreaterThan(1);
-    expect(client.candidateCounts.every((count) => count <= 2)).toBe(true);
+    expect(client.contextRecordCounts.length).toBeGreaterThan(1);
+    expect(client.contextRecordCounts.every((count) => count <= 2)).toBe(true);
     expect(Object.keys(result.prompts).some((key) => key.startsWith("workflow.part-"))).toBe(true);
-    expect(result.review.decisions.workflow?.length).toBe(client.candidateCounts.reduce((sum, count) => sum + count, 0));
+    expect(result.review.decisions.workflow?.length).toBe(client.contextRecordCounts.reduce((sum, count) => sum + count, 0));
+  });
+
+  test("keeps vocabulary facets in one prompt by default when they fit the prompt budget", async () => {
+    const evidence = fixtureEvidence();
+    for (let index = 0; index < 5; index++) {
+      evidence.records.push({
+        kind: "recipe_type",
+        id: `example:process_${index}`,
+        label: `Process ${index}`,
+        namespace: "example",
+        source: "runtime-summary",
+        confidence: 0.85,
+        count: 4,
+      });
+    }
+    const client = new PromptSizeProbeSplitClient();
+
+    const result = await proposePackFacetVocabulary({
+      evidence,
+      evidencePath: "/tmp/fixture.facet-evidence.json",
+      packId: "fixture",
+      generatedBy: "test",
+      generatedAt: "2026-05-11T00:00:00.000Z",
+      facets: ["workflow"],
+      minEvidence: 2,
+      client,
+      model: "test-model",
+    });
+
+    expect(client.contextRecordCounts).toHaveLength(1);
+    expect(Object.keys(result.prompts)).toEqual(["workflow"]);
   });
 
   test("prompt selection does not starve strong candidates in crowded buckets", () => {
@@ -1385,6 +1774,40 @@ function fixtureEvidence(): FacetEvidenceArtifact {
   };
 }
 
+function runtimeItemRecord(
+  id: string,
+  label: string,
+  options: {
+    tags?: string[];
+    ingredientTypes?: Record<string, number>;
+    outputTypes?: Record<string, number>;
+    semantic?: string;
+  } = {},
+): FacetEvidenceArtifact["records"][number] {
+  const ingredientTypes = options.ingredientTypes ?? {};
+  const outputTypes = options.outputTypes ?? {};
+  return {
+    kind: "runtime_item",
+    id,
+    label,
+    namespace: id.split(":")[0] ?? "example",
+    source: "runtime-items",
+    confidence: 1,
+    item_refs: [id],
+    tags: options.tags ?? [],
+    direct_tags: options.tags ?? [],
+    recipe_roles: {
+      in_degree: Object.values(ingredientTypes).reduce((sum, value) => sum + value, 0),
+      out_degree: Object.values(outputTypes).reduce((sum, value) => sum + value, 0),
+      ingredient_types: ingredientTypes,
+      output_types: outputTypes,
+      ingredient_examples: [],
+      output_examples: [],
+    },
+    ...(options.semantic ? { semantic_text: [{ source: "runtime-tooltip", text: options.semantic }] } : {}),
+  };
+}
+
 class StaticSplitClient implements LlmClient {
   constructor(private readonly response: unknown) {}
 
@@ -1392,70 +1815,58 @@ class StaticSplitClient implements LlmClient {
     return JSON.stringify(this.response);
   }
 
-  async querySplit(_system: string, user: string, _options: QueryOptions): Promise<string> {
-    return JSON.stringify(materializeCandidateCoverageResponse(this.response, user));
+  async querySplit(_system: string, _user: string, _options: QueryOptions): Promise<string> {
+    return JSON.stringify(this.response);
   }
 }
 
-class CoverageProbeSplitClient implements LlmClient {
-  rejectedMissingCandidateResponse = false;
+class CompactResponseProbeSplitClient implements LlmClient {
+  acceptedCompactResponse = false;
 
   async query(_prompt: string, _options: QueryOptions): Promise<string> {
     return JSON.stringify({ values: [] });
   }
 
-  async querySplit(_system: string, user: string, options: QueryOptions): Promise<string> {
-    const ids = promptCandidateIds(user);
-    const missingOne = JSON.stringify({
-      values: ids.slice(0, -1).map((id) => ({ id, state: "review" })),
+  async querySplit(_system: string, _user: string, options: QueryOptions): Promise<string> {
+    const compact = JSON.stringify({
+      values: [{ id: "example:synthesized_process", label: "Synthesized Process", state: "review" }],
     });
-    const verdict = options.responseValidator?.(missingOne);
-    this.rejectedMissingCandidateResponse = verdict?.ok === false;
-    return JSON.stringify({
-      values: ids.map((id) => ({ id, state: "review" })),
-    });
+    const verdict = options.responseValidator?.(compact);
+    this.acceptedCompactResponse = verdict?.ok === true;
+    return compact;
   }
 }
 
 class PromptSizeProbeSplitClient implements LlmClient {
-  candidateCounts: number[] = [];
+  contextRecordCounts: number[] = [];
 
   async query(_prompt: string, _options: QueryOptions): Promise<string> {
     return JSON.stringify({ values: [] });
   }
 
   async querySplit(_system: string, user: string, _options: QueryOptions): Promise<string> {
-    const ids = promptCandidateIds(user);
-    this.candidateCounts.push(ids.length);
+    const ids = promptContextRecordIds(user);
+    this.contextRecordCounts.push(ids.length);
     return JSON.stringify({
       values: ids.map((id) => ({ id, state: "review" })),
     });
   }
 }
 
-function materializeCandidateCoverageResponse(response: unknown, user: string): unknown {
-  if (!isRecord(response) || !Array.isArray(response.values)) return response;
-  const ids = promptCandidateIds(user);
-  const supplied = response.values.filter(isRecord);
-  const byId = new Map(supplied
-    .filter((value): value is Record<string, unknown> & { id: string } => typeof value.id === "string")
-    .map((value) => [value.id, value]));
-  const values: Record<string, unknown>[] = ids.map((id) => byId.get(id) ?? { id, state: "review" });
-  for (const value of supplied) {
-    if (typeof value.id === "string" && !ids.includes(value.id)) values.push(value);
+function promptContextRecordIds(user: string): string[] {
+  const parsed = JSON.parse(user) as {
+    context_records?: Array<{ context_id?: unknown }>;
+    candidates?: Array<{ id?: unknown }>;
+  };
+  const contextRecords = Array.isArray(parsed.context_records) ? parsed.context_records : undefined;
+  if (contextRecords) {
+    return contextRecords
+      .map((record) => record.context_id)
+      .filter((id): id is string => typeof id === "string");
   }
-  return { ...response, values };
-}
-
-function promptCandidateIds(user: string): string[] {
-  const parsed = JSON.parse(user) as { candidates?: Array<{ id?: unknown }> };
   return (parsed.candidates ?? [])
-    .map((candidate) => candidate.id)
+    .map((record) => record.id)
     .filter((id): id is string => typeof id === "string");
-}
-
-function isRecord(value: unknown): value is Record<string, unknown> {
-  return !!value && typeof value === "object" && !Array.isArray(value);
 }
 
 export function splitFixtureHash(system: string, user: string): string {

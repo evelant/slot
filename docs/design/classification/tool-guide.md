@@ -344,6 +344,35 @@ The command writes `facet-vocabulary.json` plus
 `facet-vocabulary.review.json`; stage 3 consumes the accepted values through
 `--facet-vocabulary`.
 
+Review the generator output before using a new pack vocabulary for a full
+classification run:
+
+```sh
+bun run src/cli.ts review-pack-facet-vocabulary \
+  --vocabulary out/pack/pack.facet-vocabulary.json \
+  --review out/pack/pack.facet-vocabulary.review.json \
+  --out out/pack/pack.facet-vocabulary.approved.json \
+  --review-out out/pack/pack.facet-vocabulary.reviewed.json
+```
+
+The reviewer iterates over vocabulary decisions, not input provenance or
+context records. It prints the label, description, rationale, examples, aliases,
+parent links, and policy notes; press `y` to accept, `n` to decline, Enter to
+skip, or `q` to stop. The approved artifact is the file to pass as
+`--facet-vocabulary`.
+
+For vocabulary generation, `context_records` and `pack_item_overview` are
+evidence context, not candidate ids. In particular, the `organization_group`
+prompt includes pack-wide summaries for default-section pressure, runtime item
+families, tag memberships, recipe-use neighborhoods, and human-visible text so
+the model can synthesize the few broad storage sections a player would actually
+maintain. Pack-specific storage families should remain `pack:<pack-id>/...`
+values rather than looking like mod-owned ids.
+
+Vocabulary prompts are budget-driven: the proposer tries to send one prompt per
+facet and splits only when that prompt would exceed the configured budget. Use
+`--max-candidates-per-prompt` only to force smaller chunks deliberately.
+
 For a real pack run, prefer the one-command wrapper:
 
 ```sh

@@ -6,10 +6,11 @@ import { join, resolve } from "node:path";
 
 const TOOL_ROOT = resolve(import.meta.dir, "..");
 
-function runCli(args: string[]) {
+function runCli(args: string[], input?: string) {
   return Bun.spawnSync({
     cmd: [process.execPath, "run", "src/cli.ts", ...args],
     cwd: TOOL_ROOT,
+    ...(input !== undefined ? { stdin: new Blob([input]) } : {}),
     stdout: "pipe",
     stderr: "pipe",
   });
@@ -51,6 +52,19 @@ describe("cli option validation", () => {
 
     expect(result.exitCode).not.toBe(0);
     expect(result.stderr.toString()).toContain("--mod-concurrency must be a positive integer");
+  });
+
+  test("rejects zero vocabulary prompt chunk size", () => {
+    const result = runCli([
+      "propose-pack-facet-vocabulary",
+      "--evidence",
+      "does-not-matter",
+      "--max-candidates-per-prompt",
+      "0",
+    ]);
+
+    expect(result.exitCode).not.toBe(0);
+    expect(result.stderr.toString()).toContain("--max-candidates-per-prompt must be a positive integer");
   });
 
   test("validate-vocabulary accepts scoped pack vocabulary artifacts", () => {
@@ -431,6 +445,101 @@ description="fixture"
 
       expect(result.exitCode).not.toBe(0);
       expect(result.stderr.toString()).toContain("unknown vocabulary facet");
+    });
+  });
+
+  test("review-pack-facet-vocabulary records interactive approvals into classifier vocabulary", () => {
+    withTempDir((dir) => {
+      const vocabularyPath = join(dir, "fixture.facet-vocabulary.json");
+      const reviewPath = join(dir, "fixture.facet-vocabulary.review.json");
+      const reviewedPath = join(dir, "fixture.facet-vocabulary.reviewed.json");
+      const outPath = join(dir, "approved.facet-vocabulary.json");
+      writeFileSync(vocabularyPath, JSON.stringify({
+        schema_version: 1,
+        kind: "slot-pack-facet-vocabulary",
+        pack_id: "fixture",
+        generated_by: "test",
+        generated_at: "2026-05-13T00:00:00.000Z",
+        source: {},
+        facets: {},
+      }));
+      writeFileSync(reviewPath, JSON.stringify({
+        schema_version: 1,
+        kind: "slot-pack-facet-vocabulary-review",
+        pack_id: "fixture",
+        generated_by: "test",
+        generated_at: "2026-05-13T00:00:00.000Z",
+        source: {},
+        filters: {
+          facets: ["workflow"],
+          namespaces: [],
+          min_evidence: 2,
+        },
+        summary: {
+          workflow: { accepted: 0, review: 2, rejected: 0, total: 2 },
+        },
+        decisions: {
+          workflow: [
+            {
+              facet: "workflow",
+              id: "example:casting",
+              label: "Casting",
+              state: "review",
+              description: "Casting molten materials into item forms.",
+              rationale: "Players plan molds and molten material handling around casting.",
+              examples: ["Ingot Mold", "Casting Basin"],
+              human_review: {
+                decision: "pending",
+                approved_id: "example:casting",
+                approved_label: "Casting",
+                notes: "",
+              },
+            },
+            {
+              facet: "workflow",
+              id: "example:single_item",
+              label: "Single Item",
+              state: "review",
+              description: "Too narrow.",
+              rationale: "This is included to verify rejection.",
+              examples: ["One Item"],
+              human_review: {
+                decision: "pending",
+                approved_id: "example:single_item",
+                approved_label: "Single Item",
+                notes: "",
+              },
+            },
+          ],
+        },
+        diagnostics: [],
+      }));
+
+      const result = runCli([
+        "review-pack-facet-vocabulary",
+        "--vocabulary",
+        vocabularyPath,
+        "--review",
+        reviewPath,
+        "--out",
+        outPath,
+        "--review-out",
+        reviewedPath,
+      ], "y\nn\n");
+
+      expect(result.exitCode).toBe(0);
+      expect(result.stdout.toString()).toContain("Casting molten materials");
+      expect(result.stdout.toString()).toContain("approved=1, rejected=1");
+      const approved = JSON.parse(readFileSync(outPath, "utf8")) as {
+        facets?: { workflow?: { values?: Record<string, unknown> } };
+      };
+      expect(approved.facets?.workflow?.values?.["example:casting"]).toBeDefined();
+      expect(approved.facets?.workflow?.values?.["example:single_item"]).toBeUndefined();
+      const reviewed = JSON.parse(readFileSync(reviewedPath, "utf8")) as {
+        decisions?: { workflow?: Array<{ id?: string; human_review?: { decision?: string } }> };
+      };
+      expect(reviewed.decisions?.workflow?.find((decision) => decision.id === "example:casting")?.human_review?.decision).toBe("approve");
+      expect(reviewed.decisions?.workflow?.find((decision) => decision.id === "example:single_item")?.human_review?.decision).toBe("reject");
     });
   });
 

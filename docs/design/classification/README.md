@@ -98,8 +98,11 @@ for search, task views, and future projections. Section-outcome review applies
 to home-producing facets, currently `organization_group`; other
 vocabulary-backed facets, including `mod_subsystem`, are judged by semantic
 usefulness. `organization_group` remains the intended player-facing home
-candidate once re-enabled, but it must stay scarce and broad: mostly item
+signal once re-enabled, but it must stay scarce and broad: mostly item
 type/role, with use case or material state only as secondary refinement.
+Custom `organization_group` values stay in review until a human explicitly
+accepts them; the generator should not turn a newly synthesized custom group
+directly into a section-producing accepted value.
 Query-only slices like mod name, rock taxonomy, material form/state, per-tag
 variants, and mod subsystem names are search/filter/within-section signals,
 not main wall homes.
@@ -113,6 +116,21 @@ Storage, lamps/light sources in Lighting, crops in Crops, pottery/molds in
 Ceramics & Molds, and redstone components in Redstone. Pack-broad families such as
 Beekeeping or Glass Products can still be useful custom groups when they have
 enough siblings and do not merely rename a default section.
+
+The vocabulary prompt must remain a synthesis prompt, not a deterministic
+candidate-picker. `context_records` carry source handles and semantic snippets;
+`pack_item_overview` summarizes default-section pressure, runtime item family
+clusters, tag memberships, recipe-use neighborhoods, and human-visible text
+pools. Neither shape is an allowed-value list. The model is expected to judge
+what broad player-facing sections the pack actually needs, synthesize stable
+ids for those values, and omit ordinary noisy context. Pack-specific storage
+families use `pack:<pack-id>/...` ids unless a value is genuinely owned by one
+mod. It should still emit a small review shortlist when the pack clearly has
+broad custom storage families; empty `organization_group` output is only
+correct when protected built-ins already cover every useful family.
+Vocabulary proposal is budget-driven rather than fixed-size chunked: send one
+prompt per facet when it fits, and split only when the prompt exceeds the budget
+or a caller explicitly requests a smaller `--max-candidates-per-prompt`.
 
 ## Tool Layout
 
@@ -304,7 +322,7 @@ diagnostics.
 Then propose the accepted/review/rejected vocabulary. Run the first full
 proposal for a pack without `--previous-vocabulary`; that option is for
 refining a nearly satisfactory vocabulary and intentionally biases the
-candidate set toward previous accepted values.
+context records toward previous accepted values.
 
 ```sh
 bun run src/cli.ts propose-pack-facet-vocabulary \

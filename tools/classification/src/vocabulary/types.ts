@@ -60,10 +60,39 @@ export interface PackFacetVocabularyReview {
     min_evidence: number;
     previous_vocabulary?: string;
   };
-  candidates: Record<string, PackVocabularyCandidate[]>;
-  decisions: Record<string, VocabularyDecision[]>;
+  summary: Record<string, VocabularyReviewSummary>;
+  decisions: Record<string, VocabularyReviewDecision[]>;
   diagnostics: VocabularyDiagnostic[];
-  raw_responses: Record<string, string>;
+}
+
+export interface VocabularyReviewSummary {
+  accepted: number;
+  review: number;
+  rejected: number;
+  total: number;
+}
+
+export interface VocabularyReviewDecision {
+  facet: VocabularyFacetId;
+  id: string;
+  label: string;
+  state: VocabularyState;
+  description?: string;
+  rationale?: string;
+  examples?: string[];
+  aliases?: string[];
+  parent?: string;
+  default_organization_group?: string;
+  related_activity?: string[];
+  policy_notes?: string[];
+  human_review?: VocabularyHumanReview;
+}
+
+export interface VocabularyHumanReview {
+  decision: "pending" | "approve" | "reject" | "rename";
+  approved_id?: string;
+  approved_label?: string;
+  notes?: string;
 }
 
 export interface VocabularyDecision {
@@ -77,6 +106,8 @@ export interface VocabularyDecision {
   seed_items: string[];
   aliases?: string[];
   description?: string;
+  rationale?: string;
+  examples?: string[];
   parent?: string;
   default_organization_group?: string;
   related_activity?: string[];
@@ -117,6 +148,60 @@ export interface ProposePackFacetVocabularyResult {
   prompts: Record<string, { system: string; user: string }>;
 }
 
+export interface VocabularyPromptOverview {
+  purpose: string;
+  runtime_item_count?: number;
+  default_section_pressure?: VocabularyDefaultSectionPressure[];
+  runtime_item_family_clusters?: VocabularyItemFamilyCluster[];
+  tag_membership_summaries?: VocabularyTagMembershipSummary[];
+  recipe_use_neighborhoods?: VocabularyRecipeUseNeighborhood[];
+  human_visible_text_pools?: VocabularyHumanVisibleTextPool[];
+}
+
+export interface VocabularyDefaultSectionPressure {
+  section: string;
+  protected_builtin: boolean;
+  note?: string;
+  item_count: number;
+  sample_items: string[];
+  common_terms?: string[];
+}
+
+export interface VocabularyItemFamilyCluster {
+  term: string;
+  item_count: number;
+  sample_items: string[];
+  related_terms?: string[];
+  top_recipe_uses?: string[];
+  semantic_context?: string[];
+}
+
+export interface VocabularyTagMembershipSummary {
+  tag_id: string;
+  label: string;
+  kind: FacetEvidenceKind;
+  member_count: number;
+  sample_items: string[];
+  top_namespaces?: string[];
+}
+
+export interface VocabularyRecipeUseNeighborhood {
+  recipe_type: string;
+  label: string;
+  recipe_count?: number;
+  input_item_count: number;
+  output_item_count: number;
+  sample_inputs: string[];
+  sample_outputs: string[];
+  semantic_context?: string[];
+}
+
+export interface VocabularyHumanVisibleTextPool {
+  topic: string;
+  record_count: number;
+  snippets: string[];
+}
+
 export interface CandidateAccumulator extends PackVocabularyCandidate {
   evidenceKeys: Set<string>;
   semanticEvidenceKeys: Set<string>;
@@ -149,6 +234,8 @@ export interface CuratedValue {
   label?: string;
   state?: VocabularyState;
   description?: string;
+  rationale?: string;
+  examples?: string[];
   aliases?: string[];
   confidence?: number;
   evidence?: VocabularyEvidenceRef[];

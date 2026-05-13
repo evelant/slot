@@ -72,6 +72,45 @@ const EQUIPMENT_SLOT_TOKENS = new Set([
   "wrist",
 ]);
 
+const DEFAULT_OWNED_ORGANIZATION_GROUP_TOKENS = new Set([
+  "armor",
+  "armour",
+  "crop",
+  "crops",
+  "clay",
+  "clay_and_pottery",
+  "clay_pottery",
+  "container",
+  "containers",
+  "decor",
+  "decoration",
+  "decorations",
+  "decorative",
+  "decorative_blocks",
+  "food",
+  "foods",
+  "gem",
+  "gems",
+  "item_containers",
+  "lantern",
+  "lanterns",
+  "lamp",
+  "lamps",
+  "light_sources",
+  "lighting_blocks",
+  "lighting",
+  "mob_drops",
+  "plant",
+  "plants",
+  "pottery",
+  "redstone",
+  "redstone_components",
+  "seed",
+  "seeds",
+  "storage",
+  "wood",
+]);
+
 function organizationGroupSeedsForRecord(
   record: FacetEvidenceRecord,
   packId: string,
@@ -101,13 +140,16 @@ function organizationGroupSeedsForRecord(
   const broad = broadOrganizationGroupSeed(record, packId);
   if (broad) addOrganizationGroupSeed(out, broad);
 
-  // Seeds, Crops, and Plants are protected built-in homes. Do not generate
-  // pack-scoped duplicates and ask curation to reject our own noise.
-  if (hasAnyToken(tokens, ["dirt", "rock", "rocks", "stone", "stones", "cobble", "cobblestone", "gravel", "sand", "silt", "clay", "mud", "soil"])) {
-    addPack("dirt_and_rocks", "Dirt and Rocks", "Terrain rubble such as dirt, stone, gravel, sand, clay, and loose rocks.", "terrain material evidence suggests a player storage group", 0.58, ["rubble"]);
+  // Default-owned sections are good homes, but not pack-scoped vocabulary.
+  // Generate only broad pack-specific buckets that can live beside them.
+  if (hasAnyToken(tokens, ["bee", "bees", "beekeeping", "hive", "hives", "honey", "honeycomb", "wax", "beeswax", "apiary"])) {
+    addPack("beekeeping", "Beekeeping", "Bee, hive, honey, wax, and apiary supplies.", "beekeeping evidence suggests a broad pack storage group", 0.62, ["bees"]);
   }
-  if (hasAnyToken(tokens, ["decorative", "decoration", "decorations", "decor", "ornament", "ornaments", "furniture", "framed", "frame", "lamp", "lantern"])) {
-    addPack("decorative", "Decorative", "Blocks and items primarily kept for decoration or building detail.", "decorative evidence suggests a player storage group", 0.58, ["decorations"]);
+  if (hasAnyToken(tokens, ["glass", "glassware", "glassworking", "pane", "panes", "bottle", "bottles", "vial", "vials"])) {
+    addPack("glass_products", "Glass Products", "Glass blocks, panes, bottles, vials, and glassware.", "glass evidence suggests a broad pack storage group", 0.62, ["glassware"]);
+  }
+  if (hasAnyToken(tokens, ["dirt", "rock", "rocks", "stone", "stones", "cobble", "cobblestone", "gravel", "sand", "silt", "mud", "soil"])) {
+    addPack("dirt_and_rocks", "Dirt and Rocks", "Loose terrain materials such as dirt, stone, gravel, sand, mud, soil, and rocks.", "terrain material evidence suggests a player storage group", 0.58, ["rubble"]);
   }
   if (hasAnyToken(tokens, ["woodworking", "carpentry", "sawmill", "sawdust", "beam", "beams", "saw"])) {
     addPack("woodworking", "Woodworking", "Carpentry supplies and wood-working outputs beyond stock wood.", "woodworking evidence suggests a player storage group", 0.58);
@@ -160,14 +202,17 @@ function broadOrganizationGroupSeed(
 function organizationGroupBroadToken(record: FacetEvidenceRecord, label: string): string | null {
   if (organizationGroupRecordLooksTechnical(record, label)) return null;
   const labelToken = tokenPath(label);
-  if (labelToken && !organizationGroupTokenLooksTechnical(labelToken)) return labelToken;
+  if (labelToken) {
+    if (organizationGroupTokenLooksDefaultOwned(labelToken)) return null;
+    if (!organizationGroupTokenLooksTechnical(labelToken)) return labelToken;
+  }
   const split = splitResourceLocation(record.id);
   const raw = split?.path ?? record.id;
   const parts = raw.split(/[\/_.-]+/).map(token).filter(Boolean);
   while (parts.length > 0 && ORGANIZATION_GROUP_PREFIX_STOP_TOKENS.has(parts[0]!)) parts.shift();
   while (parts.length > 0 && ORGANIZATION_GROUP_SUFFIX_STOP_TOKENS.has(parts[parts.length - 1]!)) parts.pop();
   const pathToken = parts.join("/");
-  if (!pathToken || organizationGroupTokenLooksTechnical(pathToken)) return null;
+  if (!pathToken || organizationGroupTokenLooksTechnical(pathToken) || organizationGroupTokenLooksDefaultOwned(pathToken)) return null;
   return pathToken;
 }
 
@@ -226,6 +271,37 @@ function organizationGroupTokenLooksTechnical(value: string): boolean {
   if (/(^|_)(collapse|landslide|powderkeg|enderman|monster|mob|entity|pathfind|wrench_pickup|prospectable|plantable_on|scraping_surface)(_|$)/.test(normalized)) return true;
   if (/(^|_)(usable_on|usable_in|breaks?|ignore|deny|transparent|index|p2p)(_|$)/.test(normalized)) return true;
   return false;
+}
+
+function organizationGroupTokenLooksDefaultOwned(value: string): boolean {
+  const normalized = value.replace(/\//g, "_");
+  if (normalized === "cooked_food" || normalized === "uncooked_food") return false;
+  if (DEFAULT_OWNED_ORGANIZATION_GROUP_TOKENS.has(normalized)) return true;
+  const parts = normalized.split("_").filter(Boolean);
+  return parts.includes("armor") ||
+    parts.includes("armour") ||
+    parts.includes("container") ||
+    parts.includes("containers") ||
+    parts.includes("crop") ||
+    parts.includes("crops") ||
+    parts.includes("decorative") ||
+    parts.includes("decoration") ||
+    parts.includes("decorations") ||
+    parts.includes("gem") ||
+    parts.includes("gems") ||
+    parts.includes("lamp") ||
+    parts.includes("lamps") ||
+    parts.includes("lantern") ||
+    parts.includes("lanterns") ||
+    parts.includes("lighting") ||
+    parts.includes("plant") ||
+    parts.includes("plants") ||
+    parts.includes("pottery") ||
+    parts.includes("redstone") ||
+    parts.includes("seed") ||
+    parts.includes("seeds") ||
+    parts.includes("storage") ||
+    parts.includes("wood");
 }
 
 function addOrganizationGroupSeed(out: Map<string, OrganizationGroupSeed>, seed: OrganizationGroupSeed): void {

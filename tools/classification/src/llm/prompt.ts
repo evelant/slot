@@ -3,7 +3,7 @@ import { FACETS, type FacetDef } from "../schema/facets.ts";
 import type { PackFacetVocabulary } from "../schema/vocabulary.ts";
 import type { LlmDocumentContext } from "./document_context.ts";
 
-export const PROMPT_VERSION = "stage3-prompt-v12";
+export const PROMPT_VERSION = "stage3-prompt-v13";
 
 const RECIPE_EXAMPLE_LIMIT = 96;
 const LOOT_SOURCE_LIMIT = 64;
@@ -356,7 +356,7 @@ function renderFinalUserChecklist(input: LlmPromptInput): string {
     lines.push(
       "- Vocabulary-backed facets may use only ids listed for that exact facet in `Pack facet vocabulary`. If that facet has no section, or no listed id fits, omit the facet and add `vocabulary_proposals` when a useful missing value is clear. Copy accepted ids exactly as printed; do not rewrite slashes, underscores, namespace, or pack prefix.",
       "- Do not move ids across vocabulary-backed facets. A good `mod_subsystem` id such as `modid:kinetics` is not an `organization_group` unless that exact id is listed under `organization_group`; use the subsystem facet, omit the organization group, or add a vocabulary proposal for the missing storage bucket.",
-      "- For `organization_group`, use an accepted storage-bucket id only when it is a scarce, broad item-type section clearly better than the built-in section. Do not duplicate protected built-in wall sections unless the built-in parent is overloaded and the group is a broad, player-obvious subset. Treat Wood, Seeds, Crops, Plants, Clay & Pottery, and Mob Drops as stock built-ins, and Materials as an overloaded fallback that should split into a few useful broad groups. Do not use organization groups as mod filters, rock/material taxonomy, material form/state splits, workstation-specific processes, or other query-only views.",
+      "- For `organization_group`, use an accepted storage-bucket id only when it is a scarce, broad item-type section clearly better than the built-in section. Protected built-ins are good player homes, not bad categories: item containers belong to Storage, lamps/light sources to Lighting, crops to Crops, pottery/molds to Ceramics & Molds, and redstone components to Redstone unless a broad overloaded-parent split is clearly better. Treat Ores & Raw Stock, Metal Stock, Gems & Crystals, Dusts & Powders, Wood, Seeds, Crops, Plants, Ceramics & Molds, and Organic Materials as stock built-ins, and Materials as an overloaded fallback that should split into a few useful broad groups. Do not use organization groups as mod filters, rock/material taxonomy, material form/state splits, workstation-specific processes, or other query-only views.",
     );
   }
   if (!hasSubsystemVocabulary) {
@@ -716,9 +716,10 @@ large modpacks. It answers:
 
 Use it for broad, stable storage sections a player would actually
 maintain. Think primarily in terms of item type or role: equipment,
-cooked food, uncooked food, cooking supplies, workbenches, decorations,
-molds, metalworking supplies, fiber/cloth materials, masonry supplies,
-reagents. Those examples are illustrative, not a hard list. Use case,
+cooked food, uncooked food, cooking supplies, workbenches, molds,
+beekeeping, glass products, metalworking supplies, fiber/cloth materials,
+masonry supplies, reagents. Those examples are illustrative, not a hard
+list. Use case,
 material state, or workflow context can refine a broad type, but must
 not become the main reason to split related items.
 
@@ -728,8 +729,9 @@ sections before it becomes worse than unsorted storage. Emit
 would deserve one of those scarce slots across the pack.
 
 Protected built-in wall sections are Food, Tools, Weapons, Armor,
-Lighting, Ingots, Gems, Raw Materials, Wood, Seeds, Crops, Plants,
-Clay & Pottery, Mob Drops, Storage, Stairs, Slabs, Walls, Doors,
+Lighting, Ores & Raw Stock, Metal Stock, Gems & Crystals,
+Dusts & Powders, Wood, Seeds, Crops, Plants, Ceramics & Molds,
+Organic Materials, Storage, Stairs, Slabs, Walls, Doors,
 Fences, Windows, Building Blocks, Decoration, Natural, Workbenches,
 Mechanisms, Redstone, Upgrades, Transport, Utility, Curiosities, and
 Miscellaneous. Do not emit an accepted
@@ -737,14 +739,24 @@ Miscellaneous. Do not emit an accepted
 sections, or that splits items a player expects to scan together within
 one of these.
 
+Protected built-ins are good player homes, not bad categories. Rejecting
+a custom group like \`crops\`, \`pottery\`, \`redstone\`,
+\`item_containers\`, or \`lamps\` means "already handled by the default
+wall section", not "players would not organize this way". Item containers
+belong to Storage, lamps and light sources belong to Lighting, crops
+belong to Crops, pottery/molds belong to Ceramics & Molds, and redstone
+components belong to Redstone unless the accepted vocabulary names a
+broader overloaded-parent split that is clearly better.
+
 \`Wood\` is the built-in home for sticks, logs, planks, boards, lumber,
 and close stock-wood siblings. Do not emit a custom wood
 \`organization_group\` unless the proposal is a distinct broad
 non-stock woodcraft bucket that would not split those obvious siblings.
 
-\`Seeds\`, \`Crops\`, \`Plants\`, \`Clay & Pottery\`, and \`Mob Drops\` are
+\`Seeds\`, \`Crops\`, \`Plants\`, \`Ceramics & Molds\`, and \`Organic Materials\` are
 built-in homes for seed stock, field produce, non-crop botanical stock,
-clay/brick/terracotta/pottery stock, and common mob/animal drops. Do not
+clay/brick/terracotta/pottery/mold stock, and organic stock such as string,
+fiber, leather, wool, bone, slime, and hides. Do not
 emit custom groups that merely rename or split those stock sections.
 
 \`Materials\` still exists as a runtime fallback, but it is intentionally
@@ -757,6 +769,9 @@ other broad item-type groups.
 Use a custom group near a built-in parent only when the parent would be
 too overloaded and the custom group is a broad player-obvious subset:
 for example cooking supplies out of Food/Utility.
+Beekeeping and glass products can be valid custom groups in packs where
+they cover broad families with enough siblings and do not merely rename
+a built-in section.
 
 The main wall is not a faceted search result. Do NOT emit
 \`organization_group\` for categories that merely answer a query such
@@ -796,10 +811,18 @@ Concrete anchors:
 - A fired ingot mold item → organization_group=\`pack:example/casting_molds\`.
 - An unfired/prepared mold item → organization_group=\`pack:example/casting_molds\`.
 - Mortar or masonry-specific inputs → organization_group=\`pack:example/masonry_supplies\`.
+- Bee, hive, honey, wax, or apiary supplies in a beekeeping-heavy pack →
+  organization_group=\`pack:example/beekeeping\`.
+- Glass blocks, panes, bottles, vials, and glassware in a glass-heavy pack →
+  organization_group=\`pack:example/glass_products\`.
+- Portable or placeable item containers → no organization_group; Storage wins.
+- Lamps, lanterns, and light-source blocks → no organization_group; Lighting wins.
+- Crop produce, pottery/mold stock, or redstone components → no organization_group;
+  Crops / Ceramics & Molds / Redstone are already good homes.
 - A plain metal ingot with no workflow-specific storage expectation → no
-  organization_group; the general ingots/materials section wins.
+  organization_group; the general Metal Stock/Materials section wins.
 - A material state, block-form variant, or individual rock-type subgroup →
-  no organization_group; the existing Ingots / Raw Materials / Stairs /
+  no organization_group; the existing Metal Stock / Ores & Raw Stock / Stairs /
   Building section or a broad custom materials group wins.
 - A bucket named after one mod or one mod's mechanical-power subsystem →
   no organization_group; use role, activity, mod_namespace, mod_subsystem,

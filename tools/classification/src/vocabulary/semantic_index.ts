@@ -73,6 +73,38 @@ function semanticEvidenceFromRecord(
 ): VocabularySemanticEvidence[] {
   if (record.kind === "recipe_role_summary") return [];
   const out: VocabularySemanticEvidence[] = [];
+  if (record.kind === "runtime_item" && record.label) {
+    out.push({
+      kind: record.kind,
+      id: record.id,
+      source: record.source,
+      text: `Item: ${record.label} (${record.id})`,
+      key: "item",
+      label: record.label,
+    });
+  }
+  const recipeRoleSummary = runtimeItemRecipeRoleSummary(record);
+  if (recipeRoleSummary) {
+    out.push({
+      kind: record.kind,
+      id: record.id,
+      source: record.source,
+      text: recipeRoleSummary,
+      key: "recipe_roles",
+      ...(record.label ? { label: record.label } : {}),
+    });
+  }
+  if (record.kind === "recipe_type" && record.label) {
+    out.push({
+      kind: record.kind,
+      id: record.id,
+      source: record.source,
+      text: `Recipe type: ${record.label} (${record.id})`,
+      key: "recipe_type",
+      label: record.label,
+      ...(record.count !== undefined ? { count: record.count } : {}),
+    });
+  }
   for (const entry of record.semantic_text ?? []) {
     const text = clipSemanticPromptText(entry.text.trim());
     if (!text) continue;
@@ -105,6 +137,26 @@ function semanticEvidenceFromRecord(
   return limitedSemanticEvidence(out);
 }
 
+function runtimeItemRecipeRoleSummary(record: FacetEvidenceRecord): string | undefined {
+  if (record.kind !== "runtime_item") return undefined;
+  const roles = record.recipe_roles;
+  if (!roles) return undefined;
+  const usedIn = topRecordKeys(roles.ingredient_types, 5);
+  const producedBy = topRecordKeys(roles.output_types, 5);
+  if (usedIn.length === 0 && producedBy.length === 0) return undefined;
+  return [
+    usedIn.length ? `used in ${usedIn.join(", ")}` : "",
+    producedBy.length ? `produced by ${producedBy.join(", ")}` : "",
+  ].filter(Boolean).join("; ");
+}
+
+function topRecordKeys(values: Record<string, number> | undefined, limit: number): string[] {
+  return Object.entries(values ?? {})
+    .sort(([, a], [, b]) => b - a)
+    .slice(0, limit)
+    .map(([key]) => key);
+}
+
 function clipSemanticPromptText(value: string): string {
   const normalized = value.replace(/\s+/g, " ").trim();
   return normalized.length <= SEMANTIC_TEXT_PROMPT_LIMIT
@@ -112,50 +164,8 @@ function clipSemanticPromptText(value: string): string {
     : `${normalized.slice(0, SEMANTIC_TEXT_PROMPT_LIMIT - 3)}...`;
 }
 
-export function promptSemanticEvidence(evidence: VocabularySemanticEvidence): VocabularySemanticEvidence {
-  return {
-    kind: evidence.kind,
-    id: evidence.id,
-    source: promptEvidenceSource(evidence.source),
-    ...(evidence.text ? { text: evidence.text } : {}),
-    ...(evidence.key ? { key: evidence.key } : {}),
-    ...(evidence.label ? { label: evidence.label } : {}),
-    ...(evidence.item_ref_count !== undefined ? { item_ref_count: evidence.item_ref_count } : {}),
-    ...(evidence.recipe_ref_count !== undefined ? { recipe_ref_count: evidence.recipe_ref_count } : {}),
-    ...(evidence.role ? { role: evidence.role } : {}),
-    ...(evidence.recipe_type ? { recipe_type: evidence.recipe_type } : {}),
-    ...(evidence.count !== undefined ? { count: evidence.count } : {}),
-  };
-}
-
-function promptEvidenceSource(source: string): string {
-  if (source.startsWith("jar:")) {
-    const jarSource = source.slice("jar:".length);
-    const bang = jarSource.indexOf("!");
-    if (bang >= 0) {
-      return `jar:${lastPathSegment(jarSource.slice(0, bang))}!${jarSource.slice(bang + 1)}`;
-    }
-    return `jar:${lastPathSegment(jarSource)}`;
-  }
-  if (source.startsWith("file:")) {
-    const fileSource = source.slice("file:".length).replace(/\\/g, "/");
-    const marker = "/minecraft/";
-    const markerIndex = fileSource.lastIndexOf(marker);
-    if (markerIndex >= 0) {
-      return `file:minecraft/${fileSource.slice(markerIndex + marker.length)}`;
-    }
-    return `file:${tailPath(fileSource, 4)}`;
-  }
-  return source.length <= 200 ? source : `.../${tailPath(source.replace(/\\/g, "/"), 4)}`;
-}
-
-function lastPathSegment(path: string): string {
-  return path.replace(/\\/g, "/").split("/").filter(Boolean).at(-1) ?? path;
-}
-
-function tailPath(path: string, segments: number): string {
-  const parts = path.split("/").filter(Boolean);
-  return parts.slice(-segments).join("/");
+export function promptSemanticEvidence(evidence: VocabularySemanticEvidence): string {
+  return evidence.text ?? "";
 }
 
 export function runtimeItemRefs(
@@ -243,36 +253,53 @@ export function looksLikeProgressionStage(record: FacetEvidenceRecord, label: st
     .slice(0, 8)
     .map((entry) => entry.text)
     .join(" ");
+  const labelHaystack = `${label} ${record.title ?? ""}`.toLowerCase();
   const semanticHaystack = `${label} ${semantic}`.toLowerCase();
   const idPath = splitResourceLocation(record.id)?.path.toLowerCase() ?? record.id.toLowerCase();
   const idTail = idPath.split(/[/.]/).filter(Boolean).at(-1) ?? "";
   const labelToken = tokenPath(label) ?? "";
+  const labelParts = labelToken.split("/").filter(Boolean);
   const isAdvancement = record.kind === "advancement";
 
-  if (/\b(index|tips?|lists?|recipes?|animals?|mobs?|fruits?|crops?|flora|biomes?|damage\s+types?|ores?\s+and\s+minerals|wild\s+animals|wild\s+fruits)\b/.test(semanticHaystack)) {
+  if (label.length > 96 || labelParts.length > 8) {
     return false;
   }
-  if (/\b(boots?|horseshoes?|trophies?|minecarts?|boats?|sloops?|cannons?|blocks?|logs?|lumber|chests?|doors?|fences?|fence\s+gates?|bookshelves?|trapdoors?|buttons?|pressure\s+plates?)\b/.test(semanticHaystack)) {
+  if (labelParts.includes("tips") || /(^|[/_])tips($|[/_])/.test(labelToken)) {
     return false;
   }
-  if (isAdvancement && /\b(crafting|recipes?)\b/.test(idPath) && !/\b(rocket|moon|mars|venus|mercury|steel|bronze|anvil|bloomery|blast_furnace|crucible)\b/.test(`${idPath} ${semanticHaystack}`)) {
+  if (/\b(index|tips?|lists?|recipes?|animals?|mobs?|fruits?|crops?|flora|biomes?|damage\s+types?|ores?\s+and\s+minerals|wild\s+animals|wild\s+fruits)\b/.test(labelHaystack)) {
+    return false;
+  }
+  if (/\b(armor|boots?|horseshoes?|trophies?|minecarts?|boats?|sloops?|cannons?|blocks?|logs?|lumber|chests?|doors?|fences?|fence\s+gates?|bookshelves?|trapdoors?|buttons?|pressure\s+plates?|suits?|helmets?|pants?|jackets?|panels?|lamps?|nets?|syrups?|fuels?|oxygen|upgrades?|downgrades?)\b/.test(labelHaystack)) {
+    return false;
+  }
+  if (isAdvancement && /\b(crafting|recipes?)\b/.test(idPath) && !/\b(progression|unlock(?:s|ed|ing)?|gated|milestone|age|tier|voltage|dimension|chapter|questline)\b/.test(semanticHaystack)) {
     return false;
   }
 
-  if (/\b(age|tier|voltage|primitive|steam|electric|lv|mv|hv|ev|iv|luv|zpm|uv|uhv)\b/.test(semanticHaystack)) {
+  const stageLabel = /\b(progression|unlock(?:s|ed|ing)?|gated|milestone|age|tier|voltage|dimension|chapter|questline|stage|phase|era)\b/.test(labelHaystack) ||
+    /\b(first|next|early|mid|late|endgame)\s+(step|stage|phase|era|age|tier|rocket|launch|frontier)\b/.test(labelHaystack) ||
+    /\b(tier_[0-9]+|chapter_[0-9]+|stage_[0-9]+)\b/.test(idTail) ||
+    /\b(tier_[0-9]+|chapter_[0-9]+|stage_[0-9]+)\b/.test(labelToken);
+  if (stageLabel) {
     return true;
   }
-  if (/\b(moon|mars|venus|mercury|space|rocket|launch|orbit|proxima|beneath|nether)\b/.test(semanticHaystack)) {
+  if (/\b(progression|unlock(?:s|ed|ing)?|gated|milestone|questline|prerequisite)\b/.test(semanticHaystack)) {
     return true;
   }
-  if (/\b(blast\s+furnace|bloomery|mechanical\s+power|primitive\s+alloys?|primitive\s+anvils?|hellforge|ancient\s+altars?|crucible|making\s+steel)\b/.test(semanticHaystack)) {
+  if (/\b(requires?|before|after)\b.{0,80}\b(progression|unlock|gated|milestone|dimension|questline)\b/.test(semanticHaystack)) {
     return true;
   }
-  if (/\b(steel|black\s+steel|red\s+steel|blue\s+steel|wrought\s+iron|bronze|bismuth\s+bronze|black\s+bronze)\b/.test(semanticHaystack)) {
+  if (/\b(progression|unlock|gated|milestone|dimension|questline)\b.{0,80}\b(requires?|before|after)\b/.test(semanticHaystack)) {
     return true;
   }
-  return /\b(tier_[0-9]+_rocket|rocket|moon|mars|venus|mercury|steel|bronze)\b/.test(idTail) ||
-    /\b(tier_[0-9]+_rocket)\b/.test(labelToken);
+  if (/\b(land|reach|visit|travel|launch|fly|go)\b.{0,80}\b(moon|planet|planets|orbit|space|dimension|world|solar\s+system)\b/.test(semanticHaystack)) {
+    return true;
+  }
+  if (/\b(moon|planet|planets|orbit|space|dimension|world|solar\s+system)\b.{0,80}\b(land|reach|visit|travel|launch|fly|go)\b/.test(semanticHaystack)) {
+    return true;
+  }
+  return false;
 }
 
 export function documentLooksLikeWorkflowOrUseContext(record: FacetEvidenceRecord, label: string): boolean {
@@ -384,16 +411,51 @@ function pushSemantic(
 
 function limitedSemanticEvidence(values: readonly VocabularySemanticEvidence[]): VocabularySemanticEvidence[] {
   const seen = new Set<string>();
-  const out: VocabularySemanticEvidence[] = [];
+  const buckets = new Map<number, VocabularySemanticEvidence[]>();
   for (const value of values) {
     const text = value.text ?? "";
     const key = `${value.kind}\u0000${value.id}\u0000${value.source}\u0000${value.key ?? ""}\u0000${text}`;
     if (seen.has(key)) continue;
     seen.add(key);
+    const bucket = semanticEvidenceBucket(value);
+    const bucketValues = buckets.get(bucket) ?? [];
+    bucketValues.push(value);
+    buckets.set(bucket, bucketValues);
+  }
+  const out: VocabularySemanticEvidence[] = [];
+  const bucketOrder = [...buckets.keys()].sort((a, b) => a - b);
+  for (const bucket of bucketOrder) {
+    const value = buckets.get(bucket)?.shift();
+    if (!value) continue;
     out.push(value);
-    if (out.length >= SEMANTIC_EVIDENCE_LIMIT) break;
+    if (out.length >= SEMANTIC_EVIDENCE_LIMIT) return out;
+  }
+  while (out.length < SEMANTIC_EVIDENCE_LIMIT) {
+    let added = false;
+    for (const bucket of bucketOrder) {
+      const value = buckets.get(bucket)?.shift();
+      if (!value) continue;
+      out.push(value);
+      added = true;
+      if (out.length >= SEMANTIC_EVIDENCE_LIMIT) return out;
+    }
+    if (!added) break;
   }
   return out;
+}
+
+function semanticEvidenceBucket(value: VocabularySemanticEvidence): number {
+  if (value.kind === "runtime_item") {
+    if (value.key === "item") return 0;
+    if (value.key === "recipe_roles") return 1;
+    return 2;
+  }
+  if (value.kind === "recipe_type" || value.kind === "recipe_id_family") return 3;
+  if (value.kind === "item_tag" || value.kind === "block_tag" || value.kind === "stack_group") return 4;
+  if (value.kind === "guide_page" || value.kind === "quest_node" || value.kind === "advancement") return 5;
+  if (value.kind === "kubejs_tooltip") return 6;
+  if (value.kind === "mod_metadata") return 7;
+  return 8;
 }
 
 function recipeTypeFromRecipeRef(recipe: string): string | null {

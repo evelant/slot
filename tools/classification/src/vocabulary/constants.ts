@@ -1,14 +1,13 @@
 import type { VocabularyFacetId } from "./types.ts";
 import { defaultTuple, slotDefault } from "./helpers.ts";
 
-export const DEFAULT_MAX_CANDIDATES_PER_FACET = 512;
-export const DEFAULT_MAX_CANDIDATES_PER_PROMPT = 48;
+export const DEFAULT_MAX_CANDIDATES_PER_FACET = 5_000;
 export const CANDIDATE_EXAMPLE_LIMIT = 64;
 export const SEMANTIC_EVIDENCE_LIMIT = 64;
 export const VOCABULARY_PROMPT_CHAR_BUDGET = 3_200_000;
 export const VOCABULARY_CURATION_TIMEOUT_MS = 1_200_000;
-export const PROMPT_SEMANTIC_EVIDENCE_LIMITS = [64, 48, 40, 32, 24, 16, 12, 8, 4, 2, 1, 0] as const;
-export const MOD_SUBSYSTEM_PROMPT_SEMANTIC_EVIDENCE_LIMITS = [12, 8, 4, 2, 1, 0] as const;
+export const PROMPT_SEMANTIC_EVIDENCE_LIMITS = [16, 12, 8, 4, 2, 1, 0] as const;
+export const MOD_SUBSYSTEM_PROMPT_SEMANTIC_EVIDENCE_LIMITS = [8, 4, 2, 1, 0] as const;
 export const MOD_SUBSYSTEM_PROMPT_EVIDENCE_LIMIT = 16;
 export const SEMANTIC_TEXT_PROMPT_LIMIT = 1_200;
 export const RUNTIME_TOOLTIP_REPEAT_BOILERPLATE_THRESHOLD = 250;
@@ -159,8 +158,6 @@ export const ORGANIZATION_GROUP_STOP_TOKENS = new Set([
   "smelting",
   "stonecutting",
 ]);
-
-export const VOLTAGE_TIERS = ["ulv", "lv", "mv", "hv", "ev", "iv", "luv", "zpm", "uv", "uhv"] as const;
 
 export const UNIVERSAL_DEFAULTS: Record<string, Array<{ id: string; label: string; description?: string; aliases?: string[] }>> = {
   activity: ([
@@ -321,10 +318,10 @@ export const UNIVERSAL_DEFAULTS: Record<string, Array<{ id: string; label: strin
 export const FACET_POLICIES: Partial<Record<VocabularyFacetId, string>> = {
   activity: "Broad player activities. Prefer universal slot:* defaults. Reject recipe-internal verbs.",
   workflow: "Player-facing process/task contexts. Use recipe, guide, quest, or advancement evidence. Reject catch-alls and one-off tutorial/advancement titles.",
-  workflow_role: "Scoped role values only, formatted as <workflow>#<role>. Parent must be an accepted workflow candidate.",
+  workflow_role: "Scoped role values only, formatted as <workflow>#<role>. Parent must be an accepted workflow value.",
   used_at: "Player-facing station, machine, tool, or surface. Preserve raw recipe type evidence separately.",
   progression_stage: "Pack/mod progression gates, tiers, ages, voltages, dimensions. Conservative; reject item/product topics and one-off advancements.",
-  organization_group: "Direct wall-home candidate. Accept only scarce, broad sections a human player would maintain primarily by item type/role, with use or state as secondary; not stations, recipe workflows, mod names, narrow material properties, or query filters.",
+  organization_group: "Direct wall-home value. Accept only scarce, broad sections a human player would maintain primarily by item type/role, with use or state as secondary; not stations, recipe workflows, mod names, narrow material properties, or query filters.",
   mod_subsystem: "Identity-oriented mod subsystem. Do not assign from recipe participation alone.",
 };
 

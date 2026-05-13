@@ -1,5 +1,6 @@
 import { copyFileSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { basename, dirname, join, relative, resolve } from "node:path";
+import { createInterface } from "node:readline/promises";
 import { parseArgs } from "node:util";
 import { deflateRawSync } from "node:zlib";
 import {
@@ -55,8 +56,12 @@ import {
   type FacetEvidenceDiagnostic,
 } from "./evidence/facet_evidence.ts";
 import {
+  applyVocabularyReviewDecisions,
   proposePackFacetVocabulary,
   readFacetEvidenceArtifactFile,
+  readPackFacetVocabularyReviewFile,
+  type PackFacetVocabularyReview,
+  type VocabularyReviewDecision,
 } from "./vocabulary/pack_vocabulary.ts";
 import {
   loadModpackManifest,
@@ -689,6 +694,7 @@ async function main() {
           namespace: { type: "string", multiple: true },
           "min-evidence": { type: "string" },
           "max-candidates-per-facet": { type: "string" },
+          "max-candidates-per-prompt": { type: "string" },
           force: { type: "boolean" },
           model: { type: "string" },
           "ignore-provider": { type: "string", multiple: true },
@@ -718,6 +724,7 @@ async function main() {
         namespaces: (args.values.namespace as string[] | undefined) ?? [],
         minEvidence: parsePositiveInteger(args.values["min-evidence"], "--min-evidence") ?? 2,
         maxCandidatesPerFacet: parsePositiveInteger(args.values["max-candidates-per-facet"], "--max-candidates-per-facet"),
+        maxCandidatesPerPrompt: parsePositiveInteger(args.values["max-candidates-per-prompt"], "--max-candidates-per-prompt"),
         force: args.values.force ?? false,
         opts: {
           model: args.values.model,
@@ -728,6 +735,70 @@ async function main() {
           recordReplay: args.values["record-replay"] ?? false,
           dryRun: args.values["dry-run"] ?? false,
         },
+      });
+      return;
+    }
+
+    case "apply-pack-facet-vocabulary-review": {
+      const args = parseArgs({
+        args: rest,
+        options: {
+          vocabulary: { type: "string" },
+          review: { type: "string" },
+          out: { type: "string" },
+          force: { type: "boolean" },
+        },
+        allowPositionals: false,
+        strict: true,
+      });
+      const vocabularyPath = args.values.vocabulary;
+      const reviewPath = args.values.review;
+      const outPath = args.values.out;
+      if (!vocabularyPath || !reviewPath || !outPath) {
+        console.error("usage: apply-pack-facet-vocabulary-review --vocabulary <pack.facet-vocabulary.json> --review <pack.facet-vocabulary.review.json> --out <approved.facet-vocabulary.json>");
+        process.exit(2);
+        return;
+      }
+      runApplyPackFacetVocabularyReview({
+        vocabularyPath,
+        reviewPath,
+        outPath,
+        force: args.values.force ?? false,
+      });
+      return;
+    }
+
+    case "review-pack-facet-vocabulary": {
+      const args = parseArgs({
+        args: rest,
+        options: {
+          vocabulary: { type: "string" },
+          review: { type: "string" },
+          out: { type: "string" },
+          "review-out": { type: "string" },
+          facet: { type: "string", multiple: true },
+          all: { type: "boolean" },
+          force: { type: "boolean" },
+        },
+        allowPositionals: false,
+        strict: true,
+      });
+      const vocabularyPath = args.values.vocabulary;
+      const reviewPath = args.values.review;
+      const outPath = args.values.out;
+      if (!vocabularyPath || !reviewPath || !outPath) {
+        console.error("usage: review-pack-facet-vocabulary --vocabulary <pack.facet-vocabulary.json> --review <pack.facet-vocabulary.review.json> --out <approved.facet-vocabulary.json> [--review-out <reviewed.json>]");
+        process.exit(2);
+        return;
+      }
+      await runInteractivePackFacetVocabularyReview({
+        vocabularyPath,
+        reviewPath,
+        outPath,
+        reviewOutPath: args.values["review-out"],
+        facets: (args.values.facet as string[] | undefined) ?? [],
+        includeAccepted: args.values.all ?? false,
+        force: args.values.force ?? false,
       });
       return;
     }
@@ -1603,6 +1674,7 @@ interface ProposePackFacetVocabularyCliOptions {
   namespaces: readonly string[];
   minEvidence: number;
   maxCandidatesPerFacet?: number;
+  maxCandidatesPerPrompt?: number;
   force: boolean;
   opts: Stage3CliOptions;
 }
@@ -1759,6 +1831,7 @@ async function runProposePackFacetVocabulary(
     namespaces: options.namespaces,
     minEvidence: options.minEvidence,
     maxCandidatesPerFacet: options.maxCandidatesPerFacet,
+    maxCandidatesPerPrompt: options.maxCandidatesPerPrompt,
     model,
     client,
     clientOptions: { signal: cliAbortSignal() },
@@ -1780,9 +1853,9 @@ async function runProposePackFacetVocabulary(
       facet: string;
       system: string;
       user: string;
-      candidates: number;
-      candidates_without_semantic_evidence: number;
-      evidence_kinds: Record<string, number>;
+      context_records: number;
+      context_records_without_semantic_context: number;
+      semantic_context_entries: number;
       chars: number;
       approxTokens: number;
     }> = [];
@@ -1791,16 +1864,20 @@ async function runProposePackFacetVocabulary(
       const userPath = join(dryRunDir, `${facet}.user.json`);
       writeFileSync(systemPath, prompt.system);
       writeFileSync(userPath, prompt.user);
-      const parsedUser = JSON.parse(prompt.user) as { candidates?: unknown[] };
-      const promptCandidates = Array.isArray(parsedUser.candidates) ? parsedUser.candidates : [];
+      const parsedUser = JSON.parse(prompt.user) as { context_records?: unknown[]; candidates?: unknown[] };
+      const promptContextRecords = Array.isArray(parsedUser.context_records)
+        ? parsedUser.context_records
+        : Array.isArray(parsedUser.candidates)
+          ? parsedUser.candidates
+          : [];
       const chars = prompt.system.length + prompt.user.length;
       summary.push({
         facet,
         system: systemPath,
         user: userPath,
-        candidates: promptCandidates.length,
-        candidates_without_semantic_evidence: countCandidatesWithoutSemanticEvidence(promptCandidates),
-        evidence_kinds: countCandidateEvidenceKinds(promptCandidates),
+        context_records: promptContextRecords.length,
+        context_records_without_semantic_context: countContextRecordsWithoutSemanticContext(promptContextRecords),
+        semantic_context_entries: countSemanticContextEntries(promptContextRecords),
         chars,
         approxTokens: Math.round(chars / 4),
       });
@@ -1837,6 +1914,232 @@ async function runProposePackFacetVocabulary(
     .filter((decision) => decision.state !== "accepted").length;
   console.log(`[facet-vocabulary] review/rejected decision(s): ${reviewCount}`);
   console.log(`done in ${((Date.now() - start) / 1000).toFixed(2)}s`);
+}
+
+function runApplyPackFacetVocabularyReview(options: {
+  vocabularyPath: string;
+  reviewPath: string;
+  outPath: string;
+  force: boolean;
+}): void {
+  const vocabularyPath = resolve(options.vocabularyPath);
+  const reviewPath = resolve(options.reviewPath);
+  const outPath = resolve(options.outPath);
+  if (existsSync(outPath) && !options.force) {
+    console.error(`[facet-vocabulary-review] output already exists: ${outPath}`);
+    console.error("[facet-vocabulary-review] pass --force to overwrite it");
+    process.exit(1);
+    return;
+  }
+
+  const loaded = validateVocabularyArtifactFile(vocabularyPath);
+  if (!loaded.ok || !loaded.vocabulary) {
+    console.error(`[facet-vocabulary-review] invalid vocabulary: ${vocabularyPath}`);
+    for (const error of loaded.errors) console.error(`  ${error}`);
+    process.exit(1);
+    return;
+  }
+  let review: ReturnType<typeof readPackFacetVocabularyReviewFile>;
+  try {
+    review = readPackFacetVocabularyReviewFile(reviewPath);
+  } catch (err) {
+    console.error(`[facet-vocabulary-review] invalid review: ${(err as Error).message}`);
+    process.exit(1);
+    return;
+  }
+
+  const result = applyVocabularyReviewDecisions({
+    vocabulary: loaded.vocabulary,
+    review,
+    generatedBy: TOOL_VERSION,
+    generatedAt: new Date().toISOString(),
+    reviewPath,
+  });
+  if (result.errors.length > 0) {
+    console.error("[facet-vocabulary-review] review application failed");
+    for (const error of result.errors.slice(0, 20)) console.error(`  ${error}`);
+    process.exit(1);
+    return;
+  }
+
+  mkdirSync(dirname(outPath), { recursive: true });
+  writeFileSync(outPath, JSON.stringify(result.vocabulary, null, 2) + "\n");
+  console.log(`[facet-vocabulary-review] wrote ${outPath}`);
+  console.log(`[facet-vocabulary-review] applied ${result.changes.length} human decision(s)`);
+  const counts = result.changes.reduce<Record<string, number>>((acc, change) => {
+    acc[change.action] = (acc[change.action] ?? 0) + 1;
+    return acc;
+  }, {});
+  for (const [action, count] of Object.entries(counts).sort(([a], [b]) => a.localeCompare(b))) {
+    console.log(`  ${action.padEnd(8)} ${String(count).padStart(4)}`);
+  }
+}
+
+async function runInteractivePackFacetVocabularyReview(options: {
+  vocabularyPath: string;
+  reviewPath: string;
+  outPath: string;
+  reviewOutPath?: string;
+  facets: string[];
+  includeAccepted: boolean;
+  force: boolean;
+}): Promise<void> {
+  const vocabularyPath = resolve(options.vocabularyPath);
+  const reviewPath = resolve(options.reviewPath);
+  const outPath = resolve(options.outPath);
+  const reviewOutPath = options.reviewOutPath ? resolve(options.reviewOutPath) : undefined;
+  for (const path of [outPath, reviewOutPath].filter((path): path is string => !!path)) {
+    if (existsSync(path) && !options.force) {
+      console.error(`[facet-vocabulary-review] output already exists: ${path}`);
+      console.error("[facet-vocabulary-review] pass --force to overwrite it");
+      process.exit(1);
+      return;
+    }
+  }
+
+  const loaded = validateVocabularyArtifactFile(vocabularyPath);
+  if (!loaded.ok || !loaded.vocabulary) {
+    console.error(`[facet-vocabulary-review] invalid vocabulary: ${vocabularyPath}`);
+    for (const error of loaded.errors) console.error(`  ${error}`);
+    process.exit(1);
+    return;
+  }
+  let review: PackFacetVocabularyReview;
+  try {
+    review = readPackFacetVocabularyReviewFile(reviewPath);
+  } catch (err) {
+    console.error(`[facet-vocabulary-review] invalid review: ${(err as Error).message}`);
+    process.exit(1);
+    return;
+  }
+
+  const selectedFacets = new Set(options.facets.filter(Boolean));
+  const decisions = reviewableVocabularyDecisions(review, {
+    selectedFacets,
+    includeAccepted: options.includeAccepted,
+  });
+
+  console.log(`[facet-vocabulary-review] pack=${review.pack_id}`);
+  console.log(
+    `[facet-vocabulary-review] reviewing ${decisions.length} value(s) ` +
+      `${selectedFacets.size > 0 ? `for ${[...selectedFacets].join(",")}` : "across all facets"}`,
+  );
+  if (!options.includeAccepted) {
+    console.log("[facet-vocabulary-review] default mode reviews pending/review values only; pass --all to force y/n on accepted values too.");
+  }
+
+  const scriptedAnswers = process.stdin.isTTY ? undefined : readFileSync(0, "utf8").split(/\r?\n/);
+  const rl = scriptedAnswers ? undefined : createInterface({ input: process.stdin });
+  const counts = { approve: 0, reject: 0, skip: 0 };
+  let quit = false;
+  try {
+    for (let index = 0; index < decisions.length; index++) {
+      const decision = decisions[index]!;
+      printVocabularyReviewDecision(decision, index + 1, decisions.length);
+      process.stdout.write("Accept this value? [y/n, Enter skip, q quit] ");
+      const answer = (scriptedAnswers
+        ? scriptedAnswers.shift() ?? ""
+        : await rl!.question("")
+      ).trim().toLowerCase();
+      if (scriptedAnswers) process.stdout.write("\n");
+      if (answer === "q" || answer === "quit") {
+        quit = true;
+        break;
+      }
+      if (answer === "y" || answer === "yes") {
+        decision.human_review = {
+          decision: "approve",
+          approved_id: decision.human_review?.approved_id || decision.id,
+          approved_label: decision.human_review?.approved_label || decision.label,
+          notes: decision.human_review?.notes ?? "",
+        };
+        counts.approve += 1;
+        continue;
+      }
+      if (answer === "n" || answer === "no") {
+        decision.human_review = {
+          decision: "reject",
+          notes: decision.human_review?.notes ?? "",
+        };
+        counts.reject += 1;
+        continue;
+      }
+      counts.skip += 1;
+    }
+
+    const result = applyVocabularyReviewDecisions({
+      vocabulary: loaded.vocabulary,
+      review,
+      generatedBy: TOOL_VERSION,
+      generatedAt: new Date().toISOString(),
+      reviewPath: reviewOutPath ?? reviewPath,
+    });
+    if (result.errors.length > 0) {
+      console.error("[facet-vocabulary-review] review application failed");
+      for (const error of result.errors.slice(0, 20)) console.error(`  ${error}`);
+      process.exit(1);
+      return;
+    }
+
+    mkdirSync(dirname(outPath), { recursive: true });
+    writeFileSync(outPath, JSON.stringify(result.vocabulary, null, 2) + "\n");
+    if (reviewOutPath) {
+      mkdirSync(dirname(reviewOutPath), { recursive: true });
+      writeFileSync(reviewOutPath, JSON.stringify(review, null, 2) + "\n");
+    }
+
+    console.log(`[facet-vocabulary-review] wrote approved vocabulary ${outPath}`);
+    if (reviewOutPath) console.log(`[facet-vocabulary-review] wrote reviewed decisions ${reviewOutPath}`);
+    console.log(
+      `[facet-vocabulary-review] decisions: ` +
+        `approved=${counts.approve}, rejected=${counts.reject}, skipped=${counts.skip}` +
+        `${quit ? " (quit early)" : ""}`,
+    );
+    console.log(`[facet-vocabulary-review] applied ${result.changes.length} human decision(s)`);
+  } finally {
+    rl?.close();
+  }
+}
+
+function reviewableVocabularyDecisions(
+  review: PackFacetVocabularyReview,
+  options: {
+    selectedFacets: ReadonlySet<string>;
+    includeAccepted: boolean;
+  },
+): VocabularyReviewDecision[] {
+  const out: VocabularyReviewDecision[] = [];
+  for (const [facet, values] of Object.entries(review.decisions).sort(([a], [b]) => a.localeCompare(b))) {
+    if (options.selectedFacets.size > 0 && !options.selectedFacets.has(facet)) continue;
+    for (const decision of values) {
+      if (decision.state === "rejected") continue;
+      const humanDecision = decision.human_review?.decision;
+      if (humanDecision && humanDecision !== "pending") continue;
+      if (options.includeAccepted || decision.state === "review" || humanDecision === "pending") {
+        out.push(decision);
+      }
+    }
+  }
+  return out;
+}
+
+function printVocabularyReviewDecision(
+  decision: VocabularyReviewDecision,
+  index: number,
+  total: number,
+): void {
+  console.log("");
+  console.log(`[${index}/${total}] ${decision.facet}: ${decision.label}`);
+  console.log(`id: ${decision.id}`);
+  console.log(`state: ${decision.state}`);
+  if (decision.description) console.log(`description: ${decision.description}`);
+  if (decision.rationale) console.log(`rationale: ${decision.rationale}`);
+  if (decision.examples?.length) console.log(`examples: ${decision.examples.slice(0, 8).join(", ")}`);
+  if (decision.aliases?.length) console.log(`aliases: ${decision.aliases.slice(0, 8).join(", ")}`);
+  if (decision.parent) console.log(`parent: ${decision.parent}`);
+  if (decision.related_activity?.length) console.log(`related_activity: ${decision.related_activity.join(", ")}`);
+  if (decision.default_organization_group) console.log(`default_organization_group: ${decision.default_organization_group}`);
+  if (decision.policy_notes?.length) console.log(`policy_notes: ${decision.policy_notes.join(" | ")}`);
 }
 
 function printVocabularyHomeImpactAudit(vocabulary: PackFacetVocabulary): void {
@@ -1877,29 +2180,22 @@ function formatVocabularyEntrySample(
     .join(", ");
 }
 
-function countCandidatesWithoutSemanticEvidence(candidates: readonly unknown[]): number {
-  return candidates.filter((candidate) => {
-    if (!candidate || typeof candidate !== "object") return true;
-    const semantic = (candidate as { semantic_evidence?: unknown }).semantic_evidence;
+function countContextRecordsWithoutSemanticContext(contextRecords: readonly unknown[]): number {
+  return contextRecords.filter((contextRecord) => {
+    if (!contextRecord || typeof contextRecord !== "object") return true;
+    const semantic = (contextRecord as { semantic_context?: unknown }).semantic_context;
     return !Array.isArray(semantic) || semantic.length === 0;
   }).length;
 }
 
-function countCandidateEvidenceKinds(candidates: readonly unknown[]): Record<string, number> {
-  const counts: Record<string, number> = {};
-  for (const candidate of candidates) {
-    if (!candidate || typeof candidate !== "object") continue;
-    const evidence = (candidate as { evidence?: unknown }).evidence;
-    if (!Array.isArray(evidence)) continue;
-    const seen = new Set<string>();
-    for (const ref of evidence) {
-      if (!ref || typeof ref !== "object") continue;
-      const kind = (ref as { kind?: unknown }).kind;
-      if (typeof kind === "string") seen.add(kind);
-    }
-    for (const kind of seen) counts[kind] = (counts[kind] ?? 0) + 1;
+function countSemanticContextEntries(contextRecords: readonly unknown[]): number {
+  let count = 0;
+  for (const contextRecord of contextRecords) {
+    if (!contextRecord || typeof contextRecord !== "object") continue;
+    const semantic = (contextRecord as { semantic_context?: unknown }).semantic_context;
+    if (Array.isArray(semantic)) count += semantic.length;
   }
-  return Object.fromEntries(Object.entries(counts).sort(([a], [b]) => a.localeCompare(b)));
+  return count;
 }
 
 function buildVocabularyClient(opts: Stage3CliOptions): LlmClient {
@@ -3316,8 +3612,8 @@ Commands:
 
   propose-pack-facet-vocabulary --evidence <pack.facet-evidence.json> [options]
       Propose a pack-specific vocabulary for vocabulary-backed semantic facets.
-      Reads <pack>.facet-evidence.json, builds deterministic candidates,
-      optionally asks the configured LLM to curate them, and writes
+      Reads <pack>.facet-evidence.json, builds ranked context records,
+      optionally asks the configured LLM to synthesize values from them, and writes
       <out>/<pack>.facet-vocabulary.json plus
       <out>/<pack>.facet-vocabulary.review.json. Use --dry-run to write prompt
       pairs without spending tokens. Completed runs print a home-impact audit
@@ -3330,14 +3626,32 @@ Commands:
         --previous-vocabulary <path>
                                 Refinement-only carry-forward for an already
                                 nearly satisfactory vocabulary. Previous values
-                                are sticky candidates; omit this for clean
+                                are sticky context records; omit this for clean
                                 baseline validation.
         --min-evidence <n>      Minimum deterministic support for acceptance
                                 (default 2; previous/universal values bypass).
         --max-candidates-per-facet <n>
-                                Bound prompt size per facet (default 512).
+                                Bound prompt context records per facet (default 5000).
+        --max-candidates-per-prompt <n>
+                                Optional hard cap per prompt chunk. By default
+                                each facet uses one prompt when it fits the
+                                prompt budget, and splits only when needed.
         --dry-run               Write prompt pairs only.
         --force                 Overwrite vocabulary/review outputs.
+
+  apply-pack-facet-vocabulary-review --vocabulary <pack.facet-vocabulary.json> --review <pack.facet-vocabulary.review.json> --out <approved.facet-vocabulary.json>
+      Apply manual human_review decisions from a concise review JSON. Set
+      human_review.decision to approve, reject, or rename; for rename, edit
+      approved_id and/or approved_label. Pending decisions are ignored.
+      Approved/renamed values are written as manual accepted vocabulary.
+
+  review-pack-facet-vocabulary --vocabulary <pack.facet-vocabulary.json> --review <pack.facet-vocabulary.review.json> --out <approved.facet-vocabulary.json>
+      Interactively review vocabulary generator output. Shows each pending
+      review value with description, rationale, examples, and policy notes;
+      press y to accept, n to decline, Enter to skip, or q to stop. Writes the
+      approved vocabulary artifact for stage 3 --facet-vocabulary. Use
+      --review-out <path> to also save the recorded human decisions, --facet to
+      limit facets, and --all to force y/n review of accepted values too.
 
   classify-runtime-pack --runtime-export <pack.runtime-items.ndjson> [options]
       Recommended one-command workflow for a real modpack runtime export.

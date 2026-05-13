@@ -693,19 +693,19 @@ class RealisticAtlasGeneratorTest {
 
     @Test
     void dyedItemsClusterByStemThenCanonicalColorOrder() {
-        // Two stems (carpet, wool) × three dye colors each (white, gray,
+        // Two decoration stems (carpet, concrete) × three dye colors each (white, gray,
         // black). Comparator must:
-        //   1. Group all carpets before all wools (id stem, "carpet" <
-        //      "wool" alphabetically).
+        //   1. Group all carpets before all concrete (id stem, "carpet" <
+        //      "concrete" alphabetically).
         //   2. Within each stem, order colors as Minecraft's dye wheel:
         //      white → gray → black, NOT alphabetical (black, gray, white).
         DescriptorPool pool = new DescriptorPool();
-        pool.addDyedDecoration("modded:black_wool", "black");
-        pool.addDyedDecoration("modded:white_wool", "white");
+        pool.addDyedDecoration("modded:black_concrete", "black");
+        pool.addDyedDecoration("modded:white_concrete", "white");
         pool.addDyedDecoration("modded:gray_carpet", "gray");
         pool.addDyedDecoration("modded:white_carpet", "white");
         pool.addDyedDecoration("modded:black_carpet", "black");
-        pool.addDyedDecoration("modded:gray_wool", "gray");
+        pool.addDyedDecoration("modded:gray_concrete", "gray");
 
         RealisticAtlasPlan plan = RealisticAtlasGenerator.generateWithDescriptors(
                 pool.stacks(),
@@ -725,9 +725,9 @@ class RealisticAtlasGeneratorTest {
                 "modded:white_carpet",
                 "modded:gray_carpet",
                 "modded:black_carpet",
-                "modded:white_wool",
-                "modded:gray_wool",
-                "modded:black_wool"
+                "modded:white_concrete",
+                "modded:gray_concrete",
+                "modded:black_concrete"
         ), ordered);
     }
 
@@ -828,7 +828,7 @@ class RealisticAtlasGeneratorTest {
     @Test
     void originTierOrdersEarlyOverworldAheadOfLateNetherAndCreative() {
         // Five MATERIALS items spanning the origin tiers. Pure id-alpha
-        // would put creative_dust first ("c" before "i" / "n" / "o"),
+        // would put creative_token first ("c" before "i" / "n" / "o"),
         // but origin clustering pulls early items to the top, late
         // items down, and creative_only to the very bottom regardless
         // of name.
@@ -836,7 +836,7 @@ class RealisticAtlasGeneratorTest {
         pool.addMaterialWithOrigin("modded:netherite_chunk", "nether");
         pool.addMaterialWithOrigin("modded:iron_filings", "overworld_cave");
         pool.addMaterialWithOrigin("modded:end_shard", "end");
-        pool.addMaterialWithOrigin("modded:creative_dust", "creative_only");
+        pool.addMaterialWithOrigin("modded:creative_token", "creative_only");
         pool.addMaterialWithOrigin("modded:village_token", "village");
         pool.addMaterialWithOrigin("modded:ancient_relic", "ancient_city");
 
@@ -860,7 +860,7 @@ class RealisticAtlasGeneratorTest {
                 "modded:ancient_relic",     // mid   ('b' ancient_city)
                 "modded:end_shard",         // late  ('c' end)
                 "modded:netherite_chunk",   // late  ('c' nether)
-                "modded:creative_dust"      // creative ('z')
+                "modded:creative_token"     // creative ('z')
         ), ordered);
     }
 

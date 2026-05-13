@@ -1,8 +1,10 @@
 import { FACETS } from "../schema/facets.ts";
-import type { PackVocabularyCandidate, VocabularyFacetId } from "./types.ts";
-import { CANDIDATE_EXAMPLE_LIMIT, FACET_POLICIES, MOD_SUBSYSTEM_PROMPT_EVIDENCE_LIMIT, MOD_SUBSYSTEM_PROMPT_SEMANTIC_EVIDENCE_LIMITS, PROMPT_SEMANTIC_EVIDENCE_LIMITS, VOCABULARY_PROMPT_CHAR_BUDGET } from "./constants.ts";
-import { round } from "./helpers.ts";
+import type { PackVocabularyCandidate, VocabularyFacetId, VocabularyPromptOverview } from "./types.ts";
+import { FACET_POLICIES, MOD_SUBSYSTEM_PROMPT_SEMANTIC_EVIDENCE_LIMITS, PROMPT_SEMANTIC_EVIDENCE_LIMITS, VOCABULARY_PROMPT_CHAR_BUDGET } from "./constants.ts";
+import { sortedLimited } from "./helpers.ts";
 import { promptSemanticEvidence } from "./semantic_index.ts";
+
+const PROMPT_SAMPLE_ITEM_LIMIT = 12;
 
 export function buildVocabularyCurationPrompt(args: {
   facet: VocabularyFacetId;
@@ -10,78 +12,9 @@ export function buildVocabularyCurationPrompt(args: {
   candidates: readonly PackVocabularyCandidate[];
   previousAccepted: readonly string[];
   minEvidence: number;
+  packOverview?: VocabularyPromptOverview;
 }): { system: string; user: string } {
-  const system = `You curate one SLOT pack facet vocabulary.
-
-Output strict JSON only:
-{
-  "values": [
-    {
-      "id": "stable value id",
-      "label": "Display label",
-      "state": "accepted|review|rejected",
-      "description": "short usage guidance",
-      "aliases": ["optional alias"],
-      "confidence": 0.0,
-      "evidence": [{"kind": "recipe_type", "id": "example:casting", "confidence": 0.8}],
-      "parent": "workflow id, only for workflow_role",
-      "related_activity": ["slot:automation"],
-      "default_organization_group": "value id, only when explicitly justified"
-    }
-  ]
-}
-
-Rules:
-- Curate from the candidate ids. Do not freely invent accepted ids.
-- New ids without candidate evidence must be state "review" at most.
-- Treat semantic_evidence as the primary signal. It preserves tooltip, guide, quest, advancement, mod-description, and lang-resolved prose.
-- CRITICAL OUTPUT CONTRACT: evaluate the full candidate list and return exactly one value object for every candidate id in this prompt.
-- Do not omit rejected candidates.
-- Do not summarize, group, abbreviate, use ellipses, or omit rejected candidates. Omission of even one candidate id means the response is invalid and will be retried.
-- Before finalizing, compare your output ids against required_output_contract.required_candidate_ids and add a review/rejected object for any missing id.
-- The previous_accepted list is context only; output decisions only for ids present in candidates.
-- Use "review" for borderline useful values that need human confirmation.
-- Keep "accepted" values evidence-backed, stable, and non-generic.
-- Reject catch-alls like misc, general, materials, components, items, blocks, or broad crafting.
-- For workflow, "accepted" means ONLY a player-facing station/process/task the player would plan inventory around or use as a semantic search/task lens.
-- For workflow, a good accepted value answers "what am I doing?" or "what station/process is this for?" Examples: casting, anvil, quern, bloomery, sequenced assembly, drying, alloying, barrel sealed.
-- For workflow, accept recipe_type candidates when the id/label/evidence names a real reusable player-facing process, station, or task, even if semantic_evidence is sparse. Recipe types such as pressing, compacting, milling/crushing, cutting, rolling, filling, deploying, mixing, casting, anvil, quern, oven, barrel, bloomery, blast furnace, centrifugation, hammering, and polishing are valid workflow candidates.
-- For workflow, accepting a process does not create a wall home. Err toward accepting real reusable processes for semantic lookup; use organization_group for conservative wall-home decisions.
-- For workflow, reject guide/Ponder/quest/advancement titles that read like tutorial steps or one-off tasks: "using the deployer", "setting up display links", "addressing a stock ticker order", "processing items with the laser". Prefer the simpler reusable station/process candidate when it exists.
-- For workflow, reject implementation/meta recipe mechanics even with high support: shaped, shapeless, no_remainder, damage_inputs, impostor, internal placeholder, synthetic helper recipes, broad vanilla crafting variants.
-- For workflow, reject item/product/component families: frame, component, upgrade, repair, block_mod, colored/material/product lines, or "craft this one item" groups unless evidence clearly describes a reusable process the player plans around.
-- For workflow, reject environmental physics/events unless they are a player workflow: collapse, landslide, falling block, decay, spread, growth ticks.
-- For used_at, "accepted" means a player-facing station, machine, tool, surface, multiblock, or interaction context where items are processed or used.
-- For used_at, recipe_type candidates can be accepted when the id/label names the station/process players recognize, such as anvil, quern, loom, oven, drying, mechanical press/pressing, compacting, macerating/crushing, mixer/mixing, barrel, blast furnace, centrifuge, deployer, filler, or rolling machine.
-- For used_at, reject config labels, keybind text, UI error messages, JEI/EMI internals, jokes, recipe-transfer failures, implementation-only categories, and generic crafting.
-- For used_at, prefer stable station/process ids over item ids unless the station item itself is the recognizable surface.
-- For progression_stage, "accepted" means ONLY a pack/mod gate, tier, age, voltage band, dimension unlock, or major technology/material milestone.
-- For progression_stage, accept broad gates like primitive alloys, steel, bloomery, blast furnace, mechanical power, moon, mars, venus, beneath, rocket tiers, LV/MV/HV, steam/electric ages.
-- For progression_stage, reject ordinary guide topics, indexes, recipe lists, mobs, biomes, flora, equipment, boats, decorative blocks, individual crafted items, and one-off advancements.
-- For progression_stage, reject advancement-title prose as accepted ids when the candidate id is the phrase itself, such as "one/small/step", "quite/the/sun/tan", or "back/in/black". Accept only canonical gate/tier/dimension/material ids backed by evidence.
-- For progression_stage, a dimension word in a namespace/path is not enough. The label or semantic evidence must describe the dimension/unlock/gate itself.
-- For progression_stage, material names are accepted only when they gate broad progression; reject isolated material variants or product lines.
-- For organization_group, the #1 rule is: would a human player spend one of a small number of main-wall sections on this broad item type, so these items and their obvious siblings stay together?
-- For organization_group, imagine the whole pack can sustain only about 15-20 human-named organization sections total, including built-in sections. Be stingy; accept a custom value only if it would deserve one of those scarce slots.
-- For organization_group, group primarily by broad item type/role. Use case, material state, or workflow context can refine a broad type, but must not become the main reason to split related items.
-- For organization_group, "accepted" means a stable main-wall storage section a player would actually maintain, not a workstation, recipe type, process, provenance label, or query/view.
-- For organization_group, broad examples include equipment, cooked food, uncooked food, cooking supplies, workbenches, decorations, molds, metalworking supplies, fiber/cloth materials, masonry supplies, and reagents. These are illustrative examples, not a hard required list.
-- For organization_group, the protected built-in wall sections are Food, Tools, Weapons, Armor, Lighting, Ingots, Gems, Raw Materials, Wood, Seeds, Crops, Plants, Clay & Pottery, Mob Drops, Storage, Stairs, Slabs, Walls, Doors, Fences, Windows, Building Blocks, Decoration, Natural, Workbenches, Mechanisms, Redstone, Upgrades, Transport, Utility, Curiosities, and Miscellaneous.
-- For organization_group, Wood is the built-in home for sticks, logs, planks, boards, lumber, and close stock-wood siblings. Do not emit a custom wood organization group unless the proposal is a distinct broad non-stock woodcraft bucket that would not split those obvious siblings.
-- For organization_group, Seeds, Crops, Plants, Clay & Pottery, and Mob Drops are built-in homes for seed stock, field produce, non-crop botanical stock, clay/brick/terracotta/pottery stock, and common mob/animal drops. Do not emit custom groups that merely rename or split those stock sections.
-- For organization_group, Materials exists as a runtime fallback, but it is intentionally not protected here because it becomes too large in real packs. Prefer splitting would-be Materials items into roughly 3-6 broad, useful storage sections when evidence supports them, such as fiber/cloth materials, chemicals/reagents, molds, masonry supplies, ore/metal-related supplies, or other broad item-type groups.
-- For organization_group, reject candidates that closely duplicate a protected built-in section or split items a player expects to scan together in one protected built-in section. Accept a near-built-in custom section only when the built-in parent is too overloaded and the candidate carves out a broad, player-obvious subset, such as cooking supplies out of Food/Utility.
-- For organization_group, reject values that merely slice by mod name, tag taxonomy, material property such as stackable/pileable, material form/state, individual rock/geology type, recipe mechanic, workstation-specific process, color/style family, or other filters players may search for but would not keep as a primary storage section.
-- For organization_group, reject groups too narrow for a main wall section, such as one mod's mechanical power line, stackable plates, or anvil smithing; keep those as mod_subsystem/workflow/used_at/search evidence instead.
-- For organization_group, accept any candidate that passes the #1 rule with evidence, even if it is not listed in the examples.
-- For organization_group, do not accept a value solely because the same id is a good workflow or used_at value. Wall-home groups must be item groupings a player would plausibly keep together.
-- For mod_subsystem, "accepted" means ONLY a namespace-scoped identity system inside a mod: network, transport, automation, storage, multiblock, power, train, rocket, oxygen, or another broad functional family whose own items belong to that system.
-- For mod_subsystem, reject pack-scoped ids, universal ids, process/task labels, one-off station labels, equipment/tool/armor sets, material families, decorative families, tiers, machine hulls/casings, and labels based only on recipe participation.
-- For mod_subsystem, accepting a value does not create a wall home. It is semantic/query identity evidence.
-- For mod_subsystem, use workflow/used_at for "where/how is this processed?" and organization_group for wall-home concepts. Subsystem values should answer "what mod system is this item itself part of?"
-- Prefer preserving previous accepted ids.
-- For workflow_role, every id must be <workflow>#<role> and parent must equal the workflow id.
-- Only output JSON.`;
+  const system = buildVocabularySynthesisSystem(args.facet, args.packId);
 
   const semanticLimits = args.facet === "mod_subsystem"
     ? MOD_SUBSYSTEM_PROMPT_SEMANTIC_EVIDENCE_LIMITS
@@ -97,6 +30,110 @@ Rules:
   throw new Error("unreachable vocabulary prompt budget selection");
 }
 
+function buildVocabularySynthesisSystem(facet: VocabularyFacetId, packId: string): string {
+  return `You synthesize one SLOT pack facet vocabulary from evidence.
+
+SLOT uses this vocabulary later when classifying individual Minecraft items.
+Your job is to create a compact, useful set of stable semantic values for the
+requested facet. Think like a player and pack author, not like a string matcher.
+
+Output strict JSON only:
+{
+  "values": [
+    {
+      "id": "stable value id",
+      "label": "Display label",
+      "state": "accepted|review|rejected",
+      "description": "short usage guidance for future item classification",
+      "rationale": "one sentence explaining why this value helps players",
+      "examples": ["short item names or ids that help a human reviewer judge it"],
+      "aliases": ["optional alias"],
+      "parent": "workflow id, only for workflow_role",
+      "related_activity": ["slot:automation"],
+      "default_organization_group": "value id, only when explicitly justified"
+    }
+  ]
+}
+
+Core contract:
+- The user payload contains context_records and may contain pack_item_overview. They are concise context for synthesis, not proposed values and not an allowed-value list.
+- Do not output one value per context record. Omit ordinary rejected/noisy context records entirely.
+- Synthesize the vocabulary values the pack actually needs. Context ids are source handles, not candidate ids; only output an id after deciding it is the best stable vocabulary id.
+- Use id grammar exactly: slot:<token_path> for universal concepts, <namespace>:<token_path> for mod-owned concepts, and pack:${packId}/<token_path> for pack-wide concepts. Use lowercase words joined by underscores and slash path segments; do not emit display labels as ids.
+- Optimize for human review. Output concise labels, descriptions, rationales, and examples that make yes/no/rename decisions easy.
+- Do not output provenance scaffolding, file paths, context record ids, evidence refs, confidence scores, or source counts. Your job is to synthesize useful vocabulary.
+- "accepted" means the value is ready for this pack. "review" means the value is plausible but needs a human yes/no or rename. "rejected" is only for previous accepted values that should be retired, or for a specific harmful value that must be blocked; do not list routine rejected context.
+- Preserve previous_accepted values when they still fit. If a previous value is now clearly wrong, output it as rejected with a description explaining why.
+- Prefer fewer, clearer values over comprehensive taxonomies. Reject catch-alls such as misc, general, materials, components, items, blocks, recipes, crafting, or things.
+- semantic_context and pack_item_overview are the primary signals. They preserve item names/ids, tooltip/lore, recipe roles/stations, guide/quest/advancement prose, stack groups, tag membership summaries, default-section pressure, and mod descriptions in compact form.
+- Context text describes the pack; vocabulary values describe reusable concepts. Do not copy tutorial titles, prose sentences, URLs, UI labels, or implementation detail into ids.
+
+${facetSynthesisRules(facet, packId)}
+
+Final response checklist:
+- Return strict JSON only: one object with a top-level values array.
+- The values array contains only synthesized vocabulary values worth accepting or reviewing, plus explicit rejected previous values when needed.
+- Each accepted/review value should include a short rationale and 1-5 useful examples when available.
+- Do not include a value merely because it appears many times. Ask whether it is a reusable player-facing vocabulary value for the requested facet.
+- Make every id stable, concise, and valid for the requested facet.
+- Only output JSON.`;
+}
+
+function facetSynthesisRules(facet: VocabularyFacetId, packId: string): string {
+  switch (facet) {
+    case "organization_group":
+      return `Facet-specific rules for organization_group:
+- This facet is a direct main-wall storage/home signal. The #1 rule is: would a human player spend one of a small number of main inventory sections on this broad item type so obvious siblings stay together?
+- The pack should usually need only a small number of custom organization groups because many homes are built in. accepted + review custom groups should be human-sized, not hundreds; if more than about 15 seem plausible, keep only the broadest and most useful.
+- Do not be so conservative that you output nothing when the evidence clearly supports broad pack-specific storage families. Empty output is appropriate only when every useful broad family is already covered by protected built-ins.
+- When broad pack-specific families are supported, emit a concise shortlist for human review, usually 3-10 values. Use state=review for plausible custom wall sections unless the value is a preserved accepted default.
+- Pack-specific storage families should use pack:${packId}/<token_path> ids. Use a mod namespace only for a concept that is genuinely owned by one mod rather than the pack's cross-mod item universe.
+- Group primarily by broad item type or role. Use case and material state may refine a broad type, but must not be the main reason to split related items.
+- Good custom groups are broad families a player would maintain: beekeeping, glass products, cooking supplies, dyes, fertilizers, weaving/cloth, masonry supplies, reagents, or similar pack-wide storage buckets. These are examples, not a hard list.
+- Protected built-in wall sections are good homes, not bad categories: Food, Tools, Weapons, Armor, Lighting, Ores & Raw Stock, Metal Stock, Gems & Crystals, Dusts & Powders, Wood, Seeds, Crops, Plants, Ceramics & Molds, Organic Materials, Storage, Stairs, Slabs, Walls, Doors, Fences, Windows, Building Blocks, Decoration, Natural, Workbenches, Mechanisms, Redstone, Upgrades, Transport, Utility, Curiosities, and Miscellaneous.
+- Do not synthesize custom groups that merely rename or split a protected built-in section. Item containers belong to Storage, lamps/light sources to Lighting, crops to Crops, pottery and molds to Ceramics & Molds, redstone components to Redstone, stock wood to Wood, and common organic stock to Organic Materials.
+- Do not create groups from mod names, guide/tutorial/Ponder titles, individual machines, workstation-specific processes, recipe mechanics, UI modes, geometric/layout words, material form/state such as stackable or pileable, rock/geology taxonomy, color/style families, or one-off items.
+- Workflow or station evidence is useful context for how items are used, but workflow names are not organization groups unless they describe a broad storage family a player would actually maintain.`;
+    case "workflow":
+      return `Facet-specific rules for workflow:
+- Synthesize reusable player-facing tasks, processes, or station workflows that a player plans inventory around or uses as a semantic task lens.
+- Good values answer "what am I doing?" or "what process/station is this for?" Examples in a generic modpack include casting, alloying, crushing, pressing, drying, brewing, enchanting, farming, or assembling.
+- Prefer canonical process/station names over tutorial titles. Convert "Processing Items with the Press" into a concise workflow like a press/pressing value only when the process itself is broadly reusable.
+- Reject implementation recipe mechanics, synthetic helper recipes, one-off craft-this-item topics, item families, UI/config labels, and environmental events that are not player workflows.
+- Accept recipe-type context when it names a real process players recognize, even if prose evidence is sparse.`;
+    case "workflow_role":
+      return `Facet-specific rules for workflow_role:
+- Synthesize scoped roles inside already-accepted workflows only. Every id must be <workflow>#<role>, and parent must exactly equal the workflow id before #.
+- Roles should be reusable positions such as input, output, catalyst, mold, container, fuel, tool, or byproduct when the workflow evidence supports them.
+- Do not invent parent workflows here. If the parent workflow is not established by context or previous accepted vocabulary, omit the role.`;
+    case "used_at":
+      return `Facet-specific rules for used_at:
+- Synthesize player-facing stations, machines, tools, surfaces, multiblocks, or interaction contexts where items are processed or used.
+- Prefer stable station/tool names over tutorial prose. "Using the Deployer" should become a deployer value only if deployer is a real reusable surface.
+- Reject config labels, keybind text, UI errors, recipe-viewer internals, jokes, recipe-transfer failures, implementation-only categories, and generic crafting.`;
+    case "progression_stage":
+      return `Facet-specific rules for progression_stage:
+- Synthesize only real pack/mod gates: named ages, tiers, dimensions, major material unlocks, tool tiers, machine tiers, or technology/magic milestones.
+- A stage must change what the player can do, craft, visit, automate, or safely survive. Ordinary guide topics, recipe lists, mobs, biomes, decorative blocks, equipment families, and one-off achievements are not stages.
+- Do not copy advancement-title prose as ids. Use a concise stable gate id backed by evidence.
+- Avoid assuming any particular pack's progression model. Let the evidence define the gates.`;
+    case "mod_subsystem":
+      return `Facet-specific rules for mod_subsystem:
+- Synthesize namespace-scoped identity systems inside a mod: transport networks, automation lines, storage networks, multiblocks, power systems, trains, magic schools, or similar broad functional families.
+- This is semantic/query identity evidence, not a wall-home source. Do not use pack-scoped ids for subsystem values.
+- The item itself must belong to the subsystem. Do not assign a subsystem merely because the item is consumed by a subsystem recipe.
+- Reject equipment/tool/armor sets, material families, decorative families, tiers, machine casings, one-off stations, and process/task labels.`;
+    default: {
+      const policy = FACET_POLICIES[facet] ?? FACETS[facet]?.description ?? "";
+      return `Facet-specific rules for ${facet}:
+- ${policy}
+- Synthesize a concise closed vocabulary for this facet from the evidence.
+- Prefer reusable player-facing concepts over raw technical ids.
+- Use universal slot:* ids only for concepts that are broadly applicable beyond this pack; use pack-scoped or namespace-scoped ids for pack/mod-specific concepts.`;
+    }
+  }
+}
+
 function buildVocabularyCurationUser(
   args: {
     facet: VocabularyFacetId;
@@ -104,6 +141,7 @@ function buildVocabularyCurationUser(
     candidates: readonly PackVocabularyCandidate[];
     previousAccepted: readonly string[];
     minEvidence: number;
+    packOverview?: VocabularyPromptOverview;
   },
   semanticEvidenceLimit: number,
 ): Record<string, unknown> {
@@ -112,26 +150,18 @@ function buildVocabularyCurationUser(
     pack_id: args.packId,
     facet: args.facet,
     policy,
-    min_evidence: args.minEvidence,
     previous_accepted: args.previousAccepted,
-    prompt_budget: {
-      max_chars: VOCABULARY_PROMPT_CHAR_BUDGET,
-      semantic_evidence_per_candidate: semanticEvidenceLimit,
-      evidence_refs_per_candidate: args.facet === "mod_subsystem"
-        ? MOD_SUBSYSTEM_PROMPT_EVIDENCE_LIMIT
-        : CANDIDATE_EXAMPLE_LIMIT,
-    },
-    candidates: args.candidates.map((candidate) => promptCandidate(candidate, semanticEvidenceLimit, args.facet)),
-    required_output_contract: {
-      required_values_count: args.candidates.length,
-      required_candidate_ids: args.candidates.map((candidate) => candidate.id),
+    ...(args.packOverview ? { pack_item_overview: args.packOverview } : {}),
+    context_records: args.candidates.map((candidate) => promptCandidate(candidate, semanticEvidenceLimit, args.facet)),
+    synthesis_contract: {
+      context_record_count: args.candidates.length,
       final_instructions: [
         "Return strict JSON only: one object with a top-level values array.",
-        "The values array must contain exactly one object for every id in required_candidate_ids.",
-        "Every output id must exactly match one candidate id from required_candidate_ids.",
-        "Never omit rejected, low-quality, generic, or uncertain candidates; mark them rejected or review.",
-        "Do not add ids that are not in required_candidate_ids.",
-        "Before responding, count values.length and verify it equals required_values_count.",
+        "context_records and pack_item_overview are context, not proposed values. Do not output one value per context_record or overview entry.",
+        "Output only synthesized vocabulary values worth accepting or reviewing.",
+        "context_id values are source handles, not candidate ids. Only output an id after deciding it is the best stable vocabulary id.",
+        "Omit routine rejected/noisy context_records. Use state=rejected only for previous accepted values that should be retired or specific harmful ids that need a visible block.",
+        "Do not output provenance metadata. Include concise rationale and examples for human review.",
       ],
     },
   };
@@ -146,21 +176,14 @@ function promptCandidate(
     .slice(0, semanticEvidenceLimit)
     .map(promptSemanticEvidence);
   const omitted = Math.max(0, candidate.semantic_evidence.length - semanticEvidence.length);
-  const evidenceLimit = facet === "mod_subsystem" ? MOD_SUBSYSTEM_PROMPT_EVIDENCE_LIMIT : CANDIDATE_EXAMPLE_LIMIT;
-  const evidence = candidate.evidence.slice(0, evidenceLimit);
-  const evidenceOmitted = Math.max(0, candidate.evidence.length - evidence.length);
   return {
-    id: candidate.id,
+    context_id: candidate.id,
     label: candidate.label,
-    origin: candidate.origin,
-    confidence: round(candidate.confidence),
-    support: candidate.support,
-    evidence,
-    ...(evidenceOmitted > 0 ? { evidence_omitted: evidenceOmitted } : {}),
-    semantic_evidence: semanticEvidence,
-    ...(omitted > 0 ? { semantic_evidence_omitted: omitted } : {}),
-    aliases: candidate.aliases,
-    description: candidate.description,
+    ...(candidate.description ? { note: candidate.description } : {}),
+    ...(candidate.aliases.length ? { aliases: candidate.aliases } : {}),
+    ...(candidate.seed_items.length ? { sample_item_ids: sortedLimited(candidate.seed_items, PROMPT_SAMPLE_ITEM_LIMIT) } : {}),
+    semantic_context: semanticEvidence,
+    ...(omitted > 0 ? { semantic_context_omitted: omitted } : {}),
     parent: candidate.parent,
     default_organization_group: candidate.default_organization_group,
     related_activity: candidate.related_activity,
