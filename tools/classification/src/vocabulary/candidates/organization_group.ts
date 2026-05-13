@@ -47,6 +47,31 @@ interface OrganizationGroupSeed {
   aliases?: readonly string[];
 }
 
+const EQUIPMENT_SLOT_TAG_NAMESPACES = new Set(["accessories", "curios", "trinkets"]);
+const EQUIPMENT_SLOT_TOKENS = new Set([
+  "back",
+  "belt",
+  "body",
+  "cape",
+  "charm",
+  "chest",
+  "curio",
+  "curios",
+  "face",
+  "feet",
+  "foot",
+  "hand",
+  "hands",
+  "head",
+  "legs",
+  "neck",
+  "ring",
+  "rings",
+  "trinket",
+  "trinkets",
+  "wrist",
+]);
+
 function organizationGroupSeedsForRecord(
   record: FacetEvidenceRecord,
   packId: string,
@@ -226,9 +251,11 @@ function organizationGroupBroadToken(record: FacetEvidenceRecord, label: string)
 
 function organizationGroupRecordLooksTechnical(record: FacetEvidenceRecord, label: string): boolean {
   const split = splitResourceLocation(record.id);
+  const namespace = split?.namespace ?? record.namespace;
   const path = tokenPath(split?.path ?? record.id)?.replace(/\//g, "_") ?? "";
   const labelToken = tokenPath(label)?.replace(/\//g, "_") ?? "";
   const haystack = `${path} ${labelToken}`;
+  if (organizationGroupRecordLooksLikeEquipmentSlotTag(record, namespace, path, labelToken)) return true;
   if (/(^|_)(mineable|needs|incorrect|destroyed|replaceable|replacements|whitelisted|blacklisted|prevented|allowed|completes)(_|$)/.test(path)) {
     return true;
   }
@@ -246,6 +273,24 @@ function organizationGroupRecordLooksTechnical(record: FacetEvidenceRecord, labe
     return true;
   }
   return false;
+}
+
+function organizationGroupRecordLooksLikeEquipmentSlotTag(
+  record: FacetEvidenceRecord,
+  namespace: string | undefined,
+  path: string,
+  labelToken: string,
+): boolean {
+  if (record.kind !== "item_tag") return false;
+  const terminalPath = path.split("_").filter(Boolean).at(-1) ?? path;
+  const terminalLabel = labelToken.split("_").filter(Boolean).at(-1) ?? labelToken;
+  const namesEquipmentSlot = EQUIPMENT_SLOT_TOKENS.has(path) ||
+    EQUIPMENT_SLOT_TOKENS.has(labelToken) ||
+    EQUIPMENT_SLOT_TOKENS.has(terminalPath) ||
+    EQUIPMENT_SLOT_TOKENS.has(terminalLabel);
+  if (!namesEquipmentSlot) return false;
+  if (namespace && EQUIPMENT_SLOT_TAG_NAMESPACES.has(namespace)) return true;
+  return (record.semantic_text ?? []).some((entry) => /^slot:/i.test(entry.text.trim()));
 }
 
 

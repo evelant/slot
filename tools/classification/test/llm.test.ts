@@ -940,6 +940,49 @@ describe("runStage3", () => {
     expect(result.layer.entries["minecraft:b"]?.facets.role).toBeDefined();
   });
 
+  test("records a batch failure and continues when the client exhausts retries", async () => {
+    const records: ItemExtractRecord[] = [
+      { ...ironIngotRecord(), id: "minecraft:a", path: "a" },
+      { ...ironIngotRecord(), id: "minecraft:b", path: "b" },
+      { ...ironIngotRecord(), id: "minecraft:c", path: "c" },
+    ];
+    const stage2: LayerFile = {
+      schema_version: 1,
+      layer: "vanilla-base",
+      source: "minecraft",
+      entries: {},
+    };
+    const client = {
+      async query(prompt: string) {
+        if (prompt.includes("minecraft:a")) {
+          throw new Error("response coverage mismatch: missing 1/2 requested item(s)");
+        }
+        return JSON.stringify({
+          items: {
+            "minecraft:c": {
+              facets: { role: { value: "material", signal: "named", evidence: "test" } },
+            },
+          },
+        });
+      },
+    };
+
+    const result = await runStage3({
+      records,
+      stage2Layer: stage2,
+      client,
+      batchSize: 2,
+      concurrency: 1,
+    });
+
+    expect(result.warnings.some((warning) => warning.includes("query failed after retries"))).toBe(true);
+    expect(result.responseMismatches).toHaveLength(1);
+    expect(result.responseMismatches[0]!.missing).toEqual(["minecraft:a", "minecraft:b"]);
+    expect(result.layer.entries["minecraft:a"]?.facets.role).toBeUndefined();
+    expect(result.layer.entries["minecraft:b"]?.facets.role).toBeUndefined();
+    expect(result.layer.entries["minecraft:c"]?.facets.role).toBeDefined();
+  });
+
   test("response validator accepts out-of-vocabulary values so the parser can drop and report them", async () => {
     const record = ironIngotRecord();
     const stage2: LayerFile = {

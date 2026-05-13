@@ -206,12 +206,35 @@ export async function runStage3(options: Stage3Options): Promise<Stage3Result> {
           }
         : undefined,
     };
-    if (options.client.querySplit) {
-      const { system, user } = buildSplitPrompt(promptInput);
-      responseText = await options.client.querySplit(system, user, queryOptions);
-    } else {
-      const prompt = buildBatchPrompt(promptInput);
-      responseText = await options.client.query(prompt, queryOptions);
+    try {
+      if (options.client.querySplit) {
+        const { system, user } = buildSplitPrompt(promptInput);
+        responseText = await options.client.querySplit(system, user, queryOptions);
+      } else {
+        const prompt = buildBatchPrompt(promptInput);
+        responseText = await options.client.query(prompt, queryOptions);
+      }
+    } catch (err) {
+      const requested = batch.map((record) => record.id);
+      const message = err instanceof Error ? err.message : String(err);
+      const warning = `batch ${i + 1}: query failed after retries: ${message.slice(0, 240)}`;
+      warnings.push(warning);
+      responseMismatches.push({
+        batchIndex: i,
+        requested,
+        parsed: [],
+        missing: requested,
+        extra: [],
+      });
+      options.onBatch?.({
+        batchIndex: i,
+        batchCount: batches.length,
+        items: requested,
+        warnings: [warning],
+        parsed: 0,
+        elapsedMs: Date.now() - start,
+      });
+      return;
     }
 
     let parsed;

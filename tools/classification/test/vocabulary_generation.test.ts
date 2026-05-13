@@ -713,6 +713,29 @@ describe("pack facet vocabulary generation", () => {
     expect(result.vocabulary.facets.organization_group?.values["pack:fixture/axes"]).toBeUndefined();
   });
 
+  test("does not propose equipment slot tags as organization groups", () => {
+    const evidence = fixtureEvidence();
+    evidence.records.push({
+      kind: "item_tag",
+      id: "accessories:back",
+      label: "Back",
+      namespace: "accessories",
+      source: "runtime-summary",
+      confidence: 0.75,
+      count: 8,
+      item_refs: ["example:backpack"],
+      semantic_text: [{ source: "runtime-tooltip", text: "Slot: Back" }],
+    });
+
+    const candidates = extractVocabularyCandidates(evidence, {
+      packId: "fixture",
+      minEvidence: 2,
+      facets: ["organization_group"],
+    });
+
+    expect(candidates.find((candidate) => candidate.facet === "organization_group" && candidate.id === "pack:fixture/back")).toBeUndefined();
+  });
+
   test("downgrades slash-form document aliases when a recipe-backed station id exists", async () => {
     const evidence = fixtureEvidence();
     evidence.records.push(
