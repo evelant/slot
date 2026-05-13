@@ -68,11 +68,36 @@ public final class SlotWorkspaceCommandService {
             String islandId,
             Integer ordinal
     ) {
+        return assignHome(
+                runtime,
+                viewModel,
+                learnedRules,
+                signalExtractor,
+                null,
+                itemId,
+                comparisonMode,
+                componentFingerprint,
+                islandId,
+                ordinal);
+    }
+
+    public static WorkspaceCommandOutcome assignHome(
+            WorkflowDomainRuntime runtime,
+            SlotWorkspaceViewModel viewModel,
+            LearnedIslandRuleStore learnedRules,
+            Function<ItemStack, IslandSignalDescriptor> signalExtractor,
+            InventoryAuthoritySnapshot authority,
+            String itemId,
+            String comparisonMode,
+            String componentFingerprint,
+            String islandId,
+            Integer ordinal
+    ) {
         ItemIdentity identity = resolveIdentity(itemId, comparisonMode, componentFingerprint);
         if (identity == null || islandId == null || islandId.isBlank()) {
             return WorkspaceCommandOutcome.rejected("invalid_home_assignment");
         }
-        if (!visibleInAtlas(viewModel, identity)) {
+        if (!visibleInAtlasOrCursor(viewModel, authority, identity)) {
             return WorkspaceCommandOutcome.rejected("selected_item_not_visible");
         }
         final ItemIdentity targetIdentity = identity;
@@ -2048,6 +2073,24 @@ public final class SlotWorkspaceCommandService {
             }
         }
         return false;
+    }
+
+    private static boolean visibleInAtlasOrCursor(
+            SlotWorkspaceViewModel viewModel,
+            InventoryAuthoritySnapshot authority,
+            ItemIdentity identity
+    ) {
+        return visibleInAtlas(viewModel, identity) || cursorCarries(authority, identity);
+    }
+
+    private static boolean cursorCarries(InventoryAuthoritySnapshot authority, ItemIdentity identity) {
+        if (authority == null
+                || authority.cursorState() == null
+                || !authority.cursorState().present()
+                || identity == null) {
+            return false;
+        }
+        return ItemIdentityMatcher.matchesMovable(authority.cursorState().stack(), identity);
     }
 
     private static String namespaceOf(String itemId) {

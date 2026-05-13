@@ -2,9 +2,13 @@ package dev.imagio.slot.inventory.workspace;
 
 import dev.imagio.slot.classification.FacetIndex;
 import dev.imagio.slot.classification.FacetIndexHolder;
+import dev.imagio.slot.inventory.core.ItemComparisonMode;
 import dev.imagio.slot.inventory.core.ItemIdentity;
+import dev.imagio.slot.inventory.query.CursorStateSnapshot;
+import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
 import dev.imagio.slot.inventory.triage.IslandTemplateMatch;
+import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
 import dev.imagio.slot.workflow.domain.DomainEventMetadata;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
 import dev.imagio.slot.workflow.domain.VisualHomeAssignment;
@@ -15,12 +19,78 @@ import org.junit.jupiter.api.Test;
 
 import java.io.StringReader;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class SlotWorkspaceCommandServiceRehomeTest {
+
+    @Test
+    void assignHomeAllowsIdentityCurrentlyOnMenuCursor() {
+        WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(
+                new InMemoryWorkflowDomainStateRepository(),
+                null
+        );
+        ItemIdentity apple = ItemIdentity.of("minecraft:apple");
+        runtime.visualAtlasWorkflow().createIslandWithId(
+                "food",
+                "Food",
+                0,
+                0,
+                0xAA8844,
+                apple,
+                DomainEventMetadata.origin("test.food"));
+        runtime.visualAtlasWorkflow().createIslandWithId(
+                "building",
+                "Building",
+                0,
+                0,
+                0x6688AA,
+                null,
+                DomainEventMetadata.origin("test.building"));
+        runtime.visualAtlasWorkflow().assignHome(
+                apple,
+                "food",
+                0,
+                VisualHomeOrigin.PLAYER_PLACED,
+                true,
+                DomainEventMetadata.origin("test.old_home"));
+
+        InventoryAuthoritySnapshot authority = new InventoryAuthoritySnapshot(
+                null,
+                Map.of(),
+                new CursorStateSnapshot(new ItemStack("minecraft:apple", 1, 64), ""));
+        SlotWorkspaceViewModel viewModel = SlotWorkspaceViewModel.project(
+                authority,
+                runtime.snapshot(),
+                "ready",
+                "",
+                0,
+                0,
+                1);
+        assertNull(viewModel.atlasItem(SlotWorkspaceViewModel.IdentityRef.from(apple)));
+
+        WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.assignHome(
+                runtime,
+                viewModel,
+                new LearnedIslandRuleStore(),
+                stack -> null,
+                authority,
+                apple.itemId(),
+                ItemComparisonMode.ITEM_ID.name(),
+                "",
+                "building",
+                null);
+
+        assertTrue(outcome.success());
+        VisualHomeAssignment assignment = runtime.visualAtlasWorkflow().visualHomeMap().assignment(apple);
+        assertNotNull(assignment);
+        assertEquals("building", assignment.islandId());
+    }
 
     @Test
     void reclassifyHomesIgnoresSubsystemSectionsAndReassignsToParentTemplate() {

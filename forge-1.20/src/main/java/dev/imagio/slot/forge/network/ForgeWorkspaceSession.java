@@ -303,12 +303,13 @@ final class ForgeWorkspaceSession {
                     player,
                     integerArg(args, 0));
             case ASSIGN_HOME -> {
-                refreshViewBeforeCommand(player);
+                InventoryAuthoritySnapshot authority = refreshViewBeforeCommand(player);
                 yield SlotWorkspaceCommandService.assignHome(
                         runtime,
                         viewModel,
                         learnedRules,
                         Forge120IslandSignalExtractor::extract,
+                        authority,
                         stringArg(args, 0),
                         stringArg(args, 1),
                         stringArg(args, 2),
@@ -1110,10 +1111,15 @@ final class ForgeWorkspaceSession {
         }
     }
 
-    private void refreshViewBeforeCommand(ServerPlayer player) {
+    private InventoryAuthoritySnapshot refreshViewBeforeCommand(ServerPlayer player) {
         if (player != null) {
             project(player);
+            InventoryHostDescriptor host = resolveHost(player);
+            return host == null
+                    ? InventoryAuthoritySnapshot.empty()
+                    : InventoryAuthorityReadService.serverAuthority(player, host);
         }
+        return InventoryAuthoritySnapshot.empty();
     }
 
     private WorkspaceCommandOutcome applyOutcome(WorkspaceCommandOutcome outcome) {
