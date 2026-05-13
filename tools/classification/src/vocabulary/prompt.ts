@@ -1,6 +1,12 @@
 import { FACETS } from "../schema/facets.ts";
 import type { PackVocabularyCandidate, VocabularyFacetId, VocabularyPromptOverview } from "./types.ts";
-import { FACET_POLICIES, MOD_SUBSYSTEM_PROMPT_SEMANTIC_EVIDENCE_LIMITS, PROMPT_SEMANTIC_EVIDENCE_LIMITS, VOCABULARY_PROMPT_CHAR_BUDGET } from "./constants.ts";
+import {
+  FACET_POLICIES,
+  MOD_SUBSYSTEM_PROMPT_SEMANTIC_EVIDENCE_LIMITS,
+  PROMPT_SEMANTIC_EVIDENCE_LIMITS,
+  UNIVERSAL_DEFAULTS,
+  VOCABULARY_PROMPT_CHAR_BUDGET,
+} from "./constants.ts";
 import { sortedLimited } from "./helpers.ts";
 import { promptSemanticEvidence } from "./semantic_index.ts";
 
@@ -64,6 +70,8 @@ Core contract:
 - Do not output provenance scaffolding, file paths, context record ids, evidence refs, confidence scores, or source counts. Your job is to synthesize useful vocabulary.
 - "accepted" means the value is ready for this pack. "review" means the value is plausible but needs a human yes/no or rename. "rejected" is only for previous accepted values that should be retired, or for a specific harmful value that must be blocked; do not list routine rejected context.
 - Preserve previous_accepted values when they still fit. If a previous value is now clearly wrong, output it as rejected with a description explaining why.
+- When universal_default_values is present, those values are already accepted built-ins for this facet. You do not need to repeat them in values.
+- Do not synthesize pack/mod/slot values that duplicate, rename, or narrowly split universal_default_values. Use the default concept instead; only emit an additional value when it adds a genuinely distinct reusable concept that the defaults do not cover.
 - Prefer fewer, clearer values over comprehensive taxonomies. Reject catch-alls such as misc, general, materials, components, items, blocks, recipes, crafting, or things.
 - semantic_context and pack_item_overview are the primary signals. They preserve item names/ids, tooltip/lore, recipe roles/stations, guide/quest/advancement prose, stack groups, tag membership summaries, default-section pressure, and mod descriptions in compact form.
 - Context text describes the pack; vocabulary values describe reusable concepts. Do not copy tutorial titles, prose sentences, URLs, UI labels, or implementation detail into ids.
@@ -146,17 +154,23 @@ function buildVocabularyCurationUser(
   semanticEvidenceLimit: number,
 ): Record<string, unknown> {
   const policy = FACET_POLICIES[args.facet] ?? FACETS[args.facet]?.description ?? "";
+  const defaultValues = universalDefaultPromptValues(args.facet);
+  const contextRecords = args.candidates
+    .filter((candidate) => candidate.origin !== "universal_default")
+    .map((candidate) => promptCandidate(candidate, semanticEvidenceLimit, args.facet));
   return {
     pack_id: args.packId,
     facet: args.facet,
     policy,
+    ...(defaultValues.length ? { universal_default_values: defaultValues } : {}),
     previous_accepted: args.previousAccepted,
     ...(args.packOverview ? { pack_item_overview: args.packOverview } : {}),
-    context_records: args.candidates.map((candidate) => promptCandidate(candidate, semanticEvidenceLimit, args.facet)),
+    context_records: contextRecords,
     synthesis_contract: {
-      context_record_count: args.candidates.length,
+      context_record_count: contextRecords.length,
       final_instructions: [
         "Return strict JSON only: one object with a top-level values array.",
+        "universal_default_values are already accepted built-ins for this facet. Do not emit pack/mod/slot near-duplicates, synonyms, or narrow splits of those defaults.",
         "context_records and pack_item_overview are context, not proposed values. Do not output one value per context_record or overview entry.",
         "Output only synthesized vocabulary values worth accepting or reviewing.",
         "context_id values are source handles, not candidate ids. Only output an id after deciding it is the best stable vocabulary id.",
@@ -165,6 +179,17 @@ function buildVocabularyCurationUser(
       ],
     },
   };
+}
+
+function universalDefaultPromptValues(
+  facet: VocabularyFacetId,
+): Array<{ id: string; label: string; description?: string; aliases?: string[] }> {
+  return (UNIVERSAL_DEFAULTS[facet] ?? []).map((value) => ({
+    id: value.id,
+    label: value.label,
+    ...(value.description ? { description: value.description } : {}),
+    ...(value.aliases?.length ? { aliases: value.aliases } : {}),
+  }));
 }
 
 function promptCandidate(

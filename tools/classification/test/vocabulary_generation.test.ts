@@ -515,6 +515,40 @@ describe("pack facet vocabulary generation", () => {
     expect(user.synthesis_contract?.final_instructions?.join(" ")).toContain("context_id values are source handles");
   });
 
+  test("curation prompt renders universal defaults as protected defaults for every defaulted facet", () => {
+    const candidates = extractVocabularyCandidates(fixtureEvidence(), {
+      packId: "fixture",
+      minEvidence: 2,
+      facets: ["use_affordance"],
+    });
+
+    const prompt = buildVocabularyCurationPrompt({
+      facet: "use_affordance",
+      packId: "fixture",
+      candidates,
+      previousAccepted: [],
+      minEvidence: 2,
+    });
+    const user = JSON.parse(prompt.user) as {
+      universal_default_values?: Array<{ id?: string; label?: string; description?: string; aliases?: string[] }>;
+      context_records?: Array<{ context_id?: string }>;
+      synthesis_contract?: { context_record_count?: number; final_instructions?: string[] };
+    };
+
+    expect(prompt.system).toContain("universal_default_values is present");
+    expect(prompt.system).toContain("already accepted built-ins for this facet");
+    expect(prompt.system).toContain("Do not synthesize pack/mod/slot values that duplicate");
+    expect(user.universal_default_values?.some((value) =>
+      value.id === "slot:launch" && value.description?.includes("launch")
+    )).toBe(true);
+    expect(user.universal_default_values?.some((value) =>
+      value.id === "slot:fuel" && value.aliases?.includes("burn")
+    )).toBe(true);
+    expect(user.context_records?.some((record) => record.context_id === "slot:launch")).toBe(false);
+    expect(user.synthesis_contract?.context_record_count).toBe(user.context_records?.length);
+    expect(user.synthesis_contract?.final_instructions?.join(" ")).toContain("near-duplicates, synonyms, or narrow splits");
+  });
+
   test("curation prompt keeps semantic prose but omits boilerplate and opaque ref lists", () => {
     const candidates = extractVocabularyCandidates(fixtureEvidence(), {
       packId: "fixture",

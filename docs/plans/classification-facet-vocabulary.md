@@ -895,6 +895,10 @@ Lower-ranked evidence can propose a value, but should usually leave it in
 
 - Prefer preserving a previous accepted value id over renaming it for style.
 - If two proposed values are synonyms, accept one value and record aliases on it.
+- For every facet with universal defaults, render those defaults into the
+  vocabulary-generation prompt as protected accepted values. The LLM should not
+  propose pack/mod/slot synonyms or narrow splits of those defaults; add a new
+  value only when it is a genuinely distinct reusable concept.
 - If a value's scope is unclear, prefer pack scope over guessing a namespace
   owner; review values whose namespace differs from most seed items.
 - Reject generic values such as `misc`, `general`, `materials`, `components`,
@@ -1140,7 +1144,8 @@ Exit criteria:
 Status: implemented 2026-05-11 for the TypeScript toolchain. The command
 `propose-pack-facet-vocabulary` consumes `facet-evidence.json`, preserves
 previous accepted vocabulary when supplied, builds ranked context records,
-adds pack-wide overview summaries for `organization_group`, writes dry-run
+adds pack-wide overview summaries for `organization_group`, renders universal
+defaults as protected accepted values for every defaulted facet, writes dry-run
 prompt pairs, keeps each facet in one prompt when it fits the prompt budget,
 reuses the shared LLM replay/recording clients, asks the LLM to synthesize
 values from context rather than choose from deterministic ids, policy-gates
