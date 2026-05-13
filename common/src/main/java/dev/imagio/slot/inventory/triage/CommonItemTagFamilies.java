@@ -17,6 +17,13 @@ public final class CommonItemTagFamilies {
     public enum Family {
         INGOTS("ingots"),
         GEMS("gems"),
+        NUGGETS("nuggets"),
+        PLATES("plates"),
+        RODS("rods"),
+        WIRES("wires"),
+        GEARS("gears"),
+        DUSTS("dusts"),
+        POWDERS("powders"),
         RAW_MATERIALS("raw_materials"),
         ORES("ores");
 

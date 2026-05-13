@@ -365,10 +365,10 @@ public final class RealisticAtlasGenerator {
             case WEAPONS -> "weapon";
             case ARMOR -> "armor";
             case LIGHTING -> null;
-            case INGOTS, GEMS, RAW_MATERIALS, WOOD -> null;
+            case METAL_STOCK, GEMS_CRYSTALS, ORES_RAW_STOCK, DUSTS_POWDERS, WOOD -> null;
             case SEEDS, PLANTS -> null;
             case CROPS -> "natural_resource";
-            case MOB_DROPS, CLAY_POTTERY -> "material";
+            case ORGANIC_MATERIALS, CERAMICS_MOLDS -> "material";
             case MATERIALS -> "material";
             case STORAGE -> "storage_block";
             case STAIRS, SLABS, WALLS, DOORS, FENCES, WINDOWS -> null;
@@ -388,12 +388,14 @@ public final class RealisticAtlasGenerator {
 
     private static java.util.Set<String> tagTriggerFor(IslandSuggestionTemplate template) {
         return switch (template) {
-            case INGOTS -> java.util.Set.of(
+            case METAL_STOCK -> java.util.Set.of(
                     CommonItemTagFamilies.canonicalRootTag(CommonItemTagFamilies.Family.INGOTS));
-            case GEMS -> java.util.Set.of(
+            case GEMS_CRYSTALS -> java.util.Set.of(
                     CommonItemTagFamilies.canonicalRootTag(CommonItemTagFamilies.Family.GEMS));
-            case RAW_MATERIALS -> java.util.Set.of(
+            case ORES_RAW_STOCK -> java.util.Set.of(
                     CommonItemTagFamilies.canonicalRootTag(CommonItemTagFamilies.Family.RAW_MATERIALS));
+            case DUSTS_POWDERS -> java.util.Set.of(
+                    CommonItemTagFamilies.canonicalRootTag(CommonItemTagFamilies.Family.DUSTS));
             case WOOD -> java.util.Set.of("minecraft:logs");
             case PLANTS -> java.util.Set.of("minecraft:saplings");
             default -> java.util.Set.of();
@@ -1088,8 +1090,8 @@ public final class RealisticAtlasGenerator {
         IslandSuggestionTemplate t = template == null ? IslandSuggestionTemplate.MISC : template;
         return switch (t) {
             case TOOLS, WEAPONS, ARMOR, WORKBENCHES, UPGRADES, TRANSPORT -> 1;
-            case INGOTS, GEMS, RAW_MATERIALS, WOOD,
-                    SEEDS, CROPS, PLANTS, CLAY_POTTERY, MOB_DROPS,
+            case METAL_STOCK, GEMS_CRYSTALS, ORES_RAW_STOCK, DUSTS_POWDERS, WOOD,
+                    SEEDS, CROPS, PLANTS, CERAMICS_MOLDS, ORGANIC_MATERIALS,
                     MATERIALS, BUILDING,
                     STAIRS, SLABS, WALLS, DOORS, FENCES, WINDOWS,
                     NATURAL, MECHANISMS -> {
@@ -1365,11 +1367,11 @@ public final class RealisticAtlasGenerator {
         // depending on classification). Trophies and curiosities are
         // rare loot; staircases and decorative blocks aren't.
         double bias = switch (t.template()) {
-            case RAW_MATERIALS, INGOTS, GEMS, WOOD, MOB_DROPS -> 6.0;
+            case ORES_RAW_STOCK, METAL_STOCK, GEMS_CRYSTALS, DUSTS_POWDERS, WOOD, ORGANIC_MATERIALS -> 6.0;
             case CROPS, PLANTS -> 4.0;
             case NATURAL -> 4.0;
             case MISC -> 2.5;
-            case FOOD, SEEDS, CLAY_POTTERY -> 2.0;
+            case FOOD, SEEDS, CERAMICS_MOLDS -> 2.0;
             case BUILDING -> 1.5;
             case MATERIALS, LIGHTING -> 1.2;
             case STAIRS, SLABS, WALLS, DOORS, FENCES, WINDOWS -> 0.6;

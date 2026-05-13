@@ -138,11 +138,17 @@ sections such as `pack:tfg/casting_molds`, `pack:tfg/masonry_supplies`, or
 that group. Runtime `organization_group` homing is temporarily disabled while
 the next vocabulary refresh is validated, so `rehome` currently falls through to
 the built-in templates instead of materializing `group:*` sections. Generic
-sections like Ingots, Wood, Seeds, Crops, Plants, Clay & Pottery, Mob Drops,
+sections like Ores & Raw Stock, Metal Stock, Gems & Crystals, Dusts & Powders,
+Wood, Seeds, Crops, Plants, Ceramics & Molds, Organic Materials,
 Stairs, Slabs, Food, Tools, and Storage remain the home even when the generated
 data has a tempting query-style group. Wood covers stock wood
-such as sticks, logs, planks, boards, and lumber; Seeds, Crops, Plants, Clay &
-Pottery, and Mob Drops cover their matching stock families.
+such as sticks, logs, planks, boards, and lumber; Seeds, Crops, Plants,
+Ceramics & Molds, and Organic Materials cover their matching stock families. That default
+ownership means "already a good home", not "bad grouping": item containers
+belong in Storage, lamps/light sources in Lighting, crops in Crops, pottery/molds in
+Ceramics & Molds, and redstone components in Redstone. Pack-broad families such
+as Beekeeping or Glass Products can still be valid custom sections when they
+have enough sibling items and do not merely rename a default.
 Do not use `organization_group` for "Mod Name Items", mod subsystem labels, rock
 taxonomy, stackable/pileable material properties, material form/state,
 workstation-specific processes, or other slices that belong in search, filters,

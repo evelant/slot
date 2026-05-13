@@ -790,7 +790,7 @@ class SlotWorkspaceLdlibModelTest {
         VisualAtlasIsland materials = runtime.visualAtlasWorkflow().createIsland(
                 "Materials", 500, 200, 0xCC6E5A3C, ItemIdentity.of("minecraft:stone"));
         VisualAtlasIsland gems = runtime.visualAtlasWorkflow().createIsland(
-                "Gems", 900, 200, 0xCC3C5A6E, ItemIdentity.of("minecraft:diamond"));
+                "Gems & Crystals", 900, 200, 0xCC3C5A6E, ItemIdentity.of("minecraft:diamond"));
         runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:stone"), materials.id(), 0);
         runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:cobblestone"), materials.id(), 1);
         runtime.visualAtlasWorkflow().assignHome(ItemIdentity.of("minecraft:diamond"), gems.id(), 0);

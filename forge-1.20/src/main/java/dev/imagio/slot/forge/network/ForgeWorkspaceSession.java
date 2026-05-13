@@ -1113,11 +1113,12 @@ final class ForgeWorkspaceSession {
 
     private InventoryAuthoritySnapshot refreshViewBeforeCommand(ServerPlayer player) {
         if (player != null) {
-            project(player);
             InventoryHostDescriptor host = resolveHost(player);
-            return host == null
+            InventoryAuthoritySnapshot authority = host == null
                     ? InventoryAuthoritySnapshot.empty()
                     : InventoryAuthorityReadService.serverAuthority(player, host);
+            project(player);
+            return authority;
         }
         return InventoryAuthoritySnapshot.empty();
     }

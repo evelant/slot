@@ -51,30 +51,36 @@ class IslandSuggestionTemplateTest {
     void materialsFamilyTagsRouteToDedicatedTemplates() {
         // c:ingots / c:gems / c:raw_materials / c:ores and stock families
         // split out into their own templates so common ingredients (sticks,
-        // seeds, clay, mob drops) cluster separately from refined output.
+        // seeds, ceramics, organics, dusts) cluster separately from refined output.
         // Generic role=material remains the MATERIALS catch-all.
-        assertTrue(IslandSuggestionTemplate.INGOTS.matches(
+        assertTrue(IslandSuggestionTemplate.METAL_STOCK.matches(
                 descriptor("minecraft:iron_ingot", Set.of(), Set.of("c:ingots"))
         ));
-        assertTrue(IslandSuggestionTemplate.INGOTS.matches(
+        assertTrue(IslandSuggestionTemplate.METAL_STOCK.matches(
                 descriptor("minecraft:iron_ingot", Set.of(), Set.of("forge:ingots"))
         ));
-        assertTrue(IslandSuggestionTemplate.INGOTS.matches(
+        assertTrue(IslandSuggestionTemplate.METAL_STOCK.matches(
                 descriptor("tfc:metal/ingot/copper", Set.of(), Set.of("forge:ingots/copper"))
         ));
-        assertTrue(IslandSuggestionTemplate.GEMS.matches(
+        assertTrue(IslandSuggestionTemplate.METAL_STOCK.matches(
+                descriptor("tfc:metal/rod/copper", Set.of(), Set.of("forge:rods/copper"))
+        ));
+        assertTrue(IslandSuggestionTemplate.GEMS_CRYSTALS.matches(
                 descriptor("minecraft:diamond", Set.of(), Set.of("c:gems"))
         ));
-        assertTrue(IslandSuggestionTemplate.GEMS.matches(
+        assertTrue(IslandSuggestionTemplate.GEMS_CRYSTALS.matches(
                 descriptor("minecraft:diamond", Set.of(), Set.of("forge:gems/diamond"))
         ));
-        assertTrue(IslandSuggestionTemplate.RAW_MATERIALS.matches(
+        assertTrue(IslandSuggestionTemplate.ORES_RAW_STOCK.matches(
                 descriptor("minecraft:raw_iron", Set.of(), Set.of("c:raw_materials"))
         ));
-        assertTrue(IslandSuggestionTemplate.RAW_MATERIALS.matches(
+        assertTrue(IslandSuggestionTemplate.ORES_RAW_STOCK.matches(
                 descriptor("tfc:ore/normal_native_copper", Set.of(), Set.of("forge:raw_materials/copper"))
         ));
-        assertFalse(IslandSuggestionTemplate.INGOTS.matches(
+        assertTrue(IslandSuggestionTemplate.DUSTS_POWDERS.matches(
+                descriptor("gtceu:copper_dust", Set.of(), Set.of("forge:dusts/copper"))
+        ));
+        assertFalse(IslandSuggestionTemplate.METAL_STOCK.matches(
                 descriptor("modded:compressed_resource", Set.of(), Set.of("balm:ingots"))
         ));
         assertFalse(IslandSuggestionTemplate.MATERIALS.matches(
@@ -87,14 +93,18 @@ class IslandSuggestionTemplateTest {
 
     @Test
     void materialPathSegmentsRouteForgeStyleCommodityItems() {
-        assertEquals(IslandSuggestionTemplate.INGOTS,
+        assertEquals(IslandSuggestionTemplate.METAL_STOCK,
                 IslandSuggestionTemplate.firstMatch(roleDescriptor("tfc:metal/ingot/copper", "material")));
-        assertEquals(IslandSuggestionTemplate.RAW_MATERIALS,
+        assertEquals(IslandSuggestionTemplate.METAL_STOCK,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("immersiveengineering:wire_copper", "material")));
+        assertEquals(IslandSuggestionTemplate.ORES_RAW_STOCK,
                 IslandSuggestionTemplate.firstMatch(roleDescriptor("tfc:ore/normal_native_copper", "material")));
-        assertEquals(IslandSuggestionTemplate.RAW_MATERIALS,
+        assertEquals(IslandSuggestionTemplate.ORES_RAW_STOCK,
                 IslandSuggestionTemplate.firstMatch(roleDescriptor("gtceu:purified_copper_ore", "material")));
+        assertEquals(IslandSuggestionTemplate.DUSTS_POWDERS,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("gtceu:impure_copper_dust", "material")));
 
-        assertEquals(IslandSuggestionTemplate.UTILITY,
+        assertEquals(IslandSuggestionTemplate.CERAMICS_MOLDS,
                 IslandSuggestionTemplate.firstMatch(roleDescriptor("tfc:ceramic/ingot_mold", "utility")));
     }
 
@@ -123,7 +133,7 @@ class IslandSuggestionTemplateTest {
     }
 
     @Test
-    void seedCropPlantClayAndMobStockRouteToDedicatedTemplates() {
+    void seedCropPlantCeramicAndOrganicStockRouteToDedicatedTemplates() {
         assertEquals(IslandSuggestionTemplate.SEEDS,
                 IslandSuggestionTemplate.firstMatch(formDescriptor("minecraft:wheat_seeds", "natural_resource", "seed")));
         assertEquals(IslandSuggestionTemplate.SEEDS,
@@ -147,28 +157,31 @@ class IslandSuggestionTemplateTest {
         assertEquals(IslandSuggestionTemplate.NATURAL,
                 IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:grass_block", "natural_resource")));
 
-        assertEquals(IslandSuggestionTemplate.CLAY_POTTERY,
+        assertEquals(IslandSuggestionTemplate.CERAMICS_MOLDS,
                 IslandSuggestionTemplate.firstMatch(materialDescriptor("minecraft:clay_ball", "material", null, "clay")));
-        assertEquals(IslandSuggestionTemplate.CLAY_POTTERY,
+        assertEquals(IslandSuggestionTemplate.CERAMICS_MOLDS,
                 IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:brick", "material")));
-        assertEquals(IslandSuggestionTemplate.CLAY_POTTERY,
+        assertEquals(IslandSuggestionTemplate.CERAMICS_MOLDS,
                 IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:decorated_pot", "decorative_block")));
+        assertEquals(IslandSuggestionTemplate.CERAMICS_MOLDS,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("tfc:ceramic/ingot_mold", "utility")));
         assertEquals(IslandSuggestionTemplate.BUILDING,
                 IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:stone_bricks", "building_block")));
         assertEquals(IslandSuggestionTemplate.STAIRS,
                 IslandSuggestionTemplate.firstMatch(formDescriptor("minecraft:brick_stairs", "building_block", "stairs")));
 
-        assertEquals(IslandSuggestionTemplate.MOB_DROPS,
+        assertEquals(IslandSuggestionTemplate.ORGANIC_MATERIALS,
                 IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:string", "material")));
-        assertEquals(IslandSuggestionTemplate.MOB_DROPS,
+        assertEquals(IslandSuggestionTemplate.ORGANIC_MATERIALS,
                 IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:leather", "material")));
-        assertEquals(IslandSuggestionTemplate.MOB_DROPS,
+        assertEquals(IslandSuggestionTemplate.DUSTS_POWDERS,
                 IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:gunpowder", "material")));
-        assertEquals(IslandSuggestionTemplate.MOB_DROPS,
-                IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:ender_pearl", "utility")));
-        assertEquals(IslandSuggestionTemplate.MOB_DROPS,
+        assertEquals(IslandSuggestionTemplate.ORGANIC_MATERIALS,
                 IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:rotten_flesh", "consumable")));
-        assertFalse(IslandSuggestionTemplate.MOB_DROPS.matches(
+        assertEquals(IslandSuggestionTemplate.ORGANIC_MATERIALS,
+                IslandSuggestionTemplate.firstMatch(
+                        materialDescriptor("minecraft:white_wool", "material", "whole_block", "wool")));
+        assertTrue(IslandSuggestionTemplate.ORGANIC_MATERIALS.matches(
                 materialDescriptor("minecraft:white_wool", "material", "whole_block", "wool")
         ));
     }

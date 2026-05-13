@@ -293,12 +293,17 @@ final class SlotWorkspaceUiSession {
         if (!(player instanceof ServerPlayer serverPlayer)) {
             return;
         }
+        InventoryHostDescriptor host = resolveHost(serverPlayer);
+        InventoryAuthoritySnapshot authority = host == null
+                ? InventoryAuthoritySnapshot.empty()
+                : InventoryAuthorityReadService.serverAuthority(serverPlayer, host);
         refreshServerView(serverPlayer);
         WorkspaceCommandOutcome outcome = SlotWorkspaceCommandService.assignHome(
                 workflowRuntime(serverPlayer),
                 viewModel,
                 learnedRules,
                 IslandSignalExtractor::extract,
+                authority,
                 itemId,
                 comparisonMode,
                 componentFingerprint,

@@ -34,10 +34,10 @@ public enum IslandSuggestionTemplate {
             Set.of("slot:farming", "slot:gathering"),
             Set.of()
     ),
-    MOB_DROPS(
-            "template.mob_drops",
-            "Mob Drops",
-            0xCC6A3F3A,
+    ORGANIC_MATERIALS(
+            "template.organic_materials",
+            "Organic Materials",
+            0xCC6A4E35,
             2, 1,
             Set.of(),
             Set.of(),
@@ -119,14 +119,14 @@ public enum IslandSuggestionTemplate {
             Set.of()
     ),
     // Materials family — split by tag/form/id so common stock (wood,
-    // seeds, crops, plant stock, pottery/clay, mob drops, ingots, gems,
-    // raw chunks) does not collapse into one giant Materials pile.
-    // Players grab "a stick", "wheat seeds", or "an iron ingot"
-    // distinctly; a single Materials pile lumps the lot and pushes
-    // ingredients halfway down.
-    INGOTS(
-            "template.ingots",
-            "Ingots",
+    // seeds, crops, plant stock, ceramics/molds, organic materials,
+    // metal stock, gems/crystals, ore stock, and dusts/powders) does not
+    // collapse into one giant Materials pile. Players grab "a stick",
+    // "wheat seeds", or "an iron plate" distinctly; a single Materials
+    // pile lumps the lot and pushes ingredients halfway down.
+    METAL_STOCK(
+            "template.metal_stock",
+            "Metal Stock",
             0xCC3D6E5A,
             2, 0,
             Set.of(),
@@ -135,9 +135,9 @@ public enum IslandSuggestionTemplate {
             Set.of(),
             Set.of()
     ),
-    GEMS(
-            "template.gems",
-            "Gems",
+    GEMS_CRYSTALS(
+            "template.gems_crystals",
+            "Gems & Crystals",
             0xCC3D6E70,
             2, 0,
             Set.of(),
@@ -146,10 +146,21 @@ public enum IslandSuggestionTemplate {
             Set.of(),
             Set.of()
     ),
-    RAW_MATERIALS(
-            "template.raw_materials",
-            "Raw Materials",
+    ORES_RAW_STOCK(
+            "template.ores_raw_stock",
+            "Ores & Raw Stock",
             0xCC3D5C4A,
+            2, 0,
+            Set.of(),
+            Set.of(),
+            Set.of(),
+            Set.of(),
+            Set.of()
+    ),
+    DUSTS_POWDERS(
+            "template.dusts_powders",
+            "Dusts & Powders",
+            0xCC6E6A5A,
             2, 0,
             Set.of(),
             Set.of(),
@@ -179,9 +190,9 @@ public enum IslandSuggestionTemplate {
             Set.of("slot:farming", "slot:gathering", "slot:decorating"),
             Set.of()
     ),
-    CLAY_POTTERY(
-            "template.clay_pottery",
-            "Clay & Pottery",
+    CERAMICS_MOLDS(
+            "template.ceramics_molds",
+            "Ceramics & Molds",
             0xCC8A6042,
             2, 1,
             Set.of(),
@@ -484,8 +495,8 @@ public enum IslandSuggestionTemplate {
      * player would manually put the item in a large modpack ("Casting Molds",
      * "Masonry Supplies", "Leatherworking"). Because this facet creates main
      * wall homes, only broad parents allow it to split; high-specificity
-     * sections like Ingots, Food, Tools, and Storage keep ownership even when
-     * the layer carries a tempting query-style group.
+     * sections like Metal Stock, Food, Tools, and Storage keep ownership even
+     * when the layer carries a tempting query-style group.
      */
     public boolean allowsOrganizationGrouping() {
         return switch (this) {
@@ -504,8 +515,9 @@ public enum IslandSuggestionTemplate {
      * facet is a much more confident signal than "the player just
      * homed two other Create blocks somewhere". LIGHTING fires on the
      * narrow {@code emits_light} facet, also strong. Specific
-     * commodity templates (INGOTS / GEMS / RAW_MATERIALS / WOOD /
-     * SEEDS / CROPS / PLANTS / CLAY_POTTERY / MOB_DROPS / STORAGE)
+     * commodity templates (METAL_STOCK / GEMS_CRYSTALS /
+     * ORES_RAW_STOCK / DUSTS_POWDERS / WOOD / SEEDS / CROPS /
+     * PLANTS / CERAMICS_MOLDS / ORGANIC_MATERIALS / STORAGE)
      * key on stable forms, tags, or ids that map cleanly to a player's mental
      * model. Class-signal templates (TOOLS / WEAPONS / ARMOR / FOOD)
      * key on Minecraft subclasses, which the player thinks of as
@@ -522,8 +534,8 @@ public enum IslandSuggestionTemplate {
         return switch (this) {
             case STAIRS, SLABS, WALLS, DOORS, FENCES, WINDOWS,
                     LIGHTING,
-                    INGOTS, GEMS, RAW_MATERIALS, WOOD,
-                    SEEDS, CROPS, PLANTS, CLAY_POTTERY, MOB_DROPS,
+                    METAL_STOCK, GEMS_CRYSTALS, ORES_RAW_STOCK, DUSTS_POWDERS, WOOD,
+                    SEEDS, CROPS, PLANTS, CERAMICS_MOLDS, ORGANIC_MATERIALS,
                     STORAGE,
                     TOOLS, WEAPONS, ARMOR, FOOD -> true;
             default -> false;
@@ -589,7 +601,7 @@ public enum IslandSuggestionTemplate {
         if (this == CROPS && matchesCropStock(descriptor)) {
             return true;
         }
-        if (this == MOB_DROPS && matchesMobDrop(descriptor)) {
+        if (this == ORGANIC_MATERIALS && matchesOrganicMaterials(descriptor)) {
             return true;
         }
         if (this == WOOD && matchesWoodStock(descriptor)) {
@@ -598,25 +610,25 @@ public enum IslandSuggestionTemplate {
         if (this == PLANTS && matchesPlantStock(descriptor)) {
             return true;
         }
-        if (this == CLAY_POTTERY && matchesClayPottery(descriptor)) {
+        if (this == CERAMICS_MOLDS && matchesCeramicsMolds(descriptor)) {
             return true;
         }
         if (matchesCommodityFormOrPath(descriptor)) {
             return true;
         }
-        // RAW_MATERIALS id-suffix fallback: "Block of X" items
+        // ORES_RAW_STOCK id-suffix fallback: "Block of X" items
         // (raw_iron_block, iron_block, gold_block, diamond_block,
         // copper_block, netherite_block, etc.) cluster with raw chunks
-        // and ingots in the player's "ore stockpile" mental model. The
-        // c:ingots / c:gems / c:raw_materials tags don't catch them
+        // in the player's "ore stockpile" mental model. The
+        // c:raw_materials / c:ores tags don't catch compressed blocks
         // (they sit in c:storage_blocks alongside chests, which we
         // don't want to share an island with), so route by id pattern.
-        if (this == RAW_MATERIALS) {
+        if (this == ORES_RAW_STOCK) {
             String itemId = descriptor.identity() == null ? "" : descriptor.identity().itemId();
             if (itemId != null) {
                 int colon = itemId.indexOf(':');
                 String path = colon >= 0 ? itemId.substring(colon + 1) : itemId;
-                if (RAW_MATERIALS_BLOCK_IDS.contains(path)
+                if (ORE_STOCK_BLOCK_IDS.contains(path)
                         || path.startsWith("raw_") && path.endsWith("_block")) {
                     return true;
                 }
@@ -626,47 +638,92 @@ public enum IslandSuggestionTemplate {
     }
 
     private boolean matchesCommodityFormOrPath(IslandSignalDescriptor descriptor) {
-        if (this != INGOTS && this != GEMS && this != RAW_MATERIALS) {
-            return false;
-        }
+        return switch (this) {
+            case METAL_STOCK -> matchesMetalStock(descriptor);
+            case GEMS_CRYSTALS -> matchesGemsCrystals(descriptor);
+            case ORES_RAW_STOCK -> matchesOresRawStock(descriptor);
+            case DUSTS_POWDERS -> matchesDustsPowders(descriptor);
+            default -> false;
+        };
+    }
+
+    private static boolean matchesMetalStock(IslandSignalDescriptor descriptor) {
         if (!allowsCommodityPathMatch(descriptor)) {
             return false;
         }
-        if (this == INGOTS
-                && CommonItemTagFamilies.hasFamily(descriptor.itemTags(), CommonItemTagFamilies.Family.INGOTS)) {
-            return true;
-        }
-        if (this == GEMS
-                && CommonItemTagFamilies.hasFamily(descriptor.itemTags(), CommonItemTagFamilies.Family.GEMS)) {
-            return true;
-        }
-        if (this == RAW_MATERIALS
-                && (CommonItemTagFamilies.hasFamily(descriptor.itemTags(), CommonItemTagFamilies.Family.RAW_MATERIALS)
-                || CommonItemTagFamilies.hasFamily(descriptor.itemTags(), CommonItemTagFamilies.Family.ORES))) {
+        if (CommonItemTagFamilies.hasFamily(descriptor.itemTags(), CommonItemTagFamilies.Family.INGOTS)
+                || CommonItemTagFamilies.hasFamily(descriptor.itemTags(), CommonItemTagFamilies.Family.NUGGETS)
+                || CommonItemTagFamilies.hasFamily(descriptor.itemTags(), CommonItemTagFamilies.Family.PLATES)
+                || CommonItemTagFamilies.hasFamily(descriptor.itemTags(), CommonItemTagFamilies.Family.RODS)
+                || CommonItemTagFamilies.hasFamily(descriptor.itemTags(), CommonItemTagFamilies.Family.WIRES)
+                || CommonItemTagFamilies.hasFamily(descriptor.itemTags(), CommonItemTagFamilies.Family.GEARS)) {
             return true;
         }
         String form = descriptor.form();
-        if (form != null) {
-            if (this == INGOTS && "ingot".equals(form)) {
-                return true;
-            }
-            if (this == GEMS && ("gem".equals(form) || "crystal".equals(form))) {
-                return true;
-            }
-            if (this == RAW_MATERIALS && ("raw".equals(form) || "ore".equals(form))) {
-                return true;
-            }
+        if (form != null && METAL_STOCK_FORMS.contains(form)) {
+            return true;
         }
         String path = identityPath(descriptor);
-        if (path.isBlank()) {
+        if (path.isBlank() || hasAnyPathToken(path, METAL_STOCK_BLOCKED_PATH_TOKENS)) {
             return false;
         }
-        return switch (this) {
-            case INGOTS -> hasPathToken(path, "ingot");
-            case GEMS -> hasPathToken(path, "gem") || hasPathToken(path, "crystal");
-            case RAW_MATERIALS -> hasPathToken(path, "raw") || hasPathToken(path, "ore");
-            default -> false;
-        };
+        return hasAnyPathToken(path, METAL_STOCK_PATH_TOKENS)
+                || (hasPathToken(path, "metal") && hasAnyPathToken(path, METAL_PART_PATH_TOKENS));
+    }
+
+    private static boolean matchesGemsCrystals(IslandSignalDescriptor descriptor) {
+        if (!allowsCommodityPathMatch(descriptor)) {
+            return false;
+        }
+        if (CommonItemTagFamilies.hasFamily(descriptor.itemTags(), CommonItemTagFamilies.Family.GEMS)) {
+            return true;
+        }
+        String form = descriptor.form();
+        if (form != null && ("gem".equals(form) || "crystal".equals(form))) {
+            return true;
+        }
+        String path = identityPath(descriptor);
+        return !path.isBlank()
+                && (hasPathToken(path, "gem")
+                || hasPathToken(path, "gems")
+                || hasPathToken(path, "crystal")
+                || hasPathToken(path, "crystals"));
+    }
+
+    private static boolean matchesOresRawStock(IslandSignalDescriptor descriptor) {
+        if (!allowsCommodityPathMatch(descriptor)) {
+            return false;
+        }
+        if (CommonItemTagFamilies.hasFamily(descriptor.itemTags(), CommonItemTagFamilies.Family.RAW_MATERIALS)
+                || CommonItemTagFamilies.hasFamily(descriptor.itemTags(), CommonItemTagFamilies.Family.ORES)) {
+            return true;
+        }
+        String form = descriptor.form();
+        if (form != null && ORE_STOCK_FORMS.contains(form)) {
+            return true;
+        }
+        String path = identityPath(descriptor);
+        if (path.isBlank() || matchesDustPowderPath(path)) {
+            return false;
+        }
+        return hasAnyPathToken(path, ORE_STOCK_PATH_TOKENS);
+    }
+
+    private static boolean matchesDustsPowders(IslandSignalDescriptor descriptor) {
+        if (!allowsCommodityPathMatch(descriptor)) {
+            return false;
+        }
+        if (CommonItemTagFamilies.hasFamily(descriptor.itemTags(), CommonItemTagFamilies.Family.DUSTS)
+                || CommonItemTagFamilies.hasFamily(descriptor.itemTags(), CommonItemTagFamilies.Family.POWDERS)) {
+            return true;
+        }
+        String form = descriptor.form();
+        if (form != null && DUST_POWDER_FORMS.contains(form)) {
+            return true;
+        }
+        String path = identityPath(descriptor);
+        return !path.isBlank()
+                && (DUST_POWDER_EXACT_PATHS.contains(path) || matchesDustPowderPath(path));
     }
 
     private static boolean allowsCommodityPathMatch(IslandSignalDescriptor descriptor) {
@@ -718,22 +775,22 @@ public enum IslandSuggestionTemplate {
                 || hasPathToken(path, "crops");
     }
 
-    private static boolean matchesMobDrop(IslandSignalDescriptor descriptor) {
+    private static boolean matchesOrganicMaterials(IslandSignalDescriptor descriptor) {
         String path = identityPath(descriptor);
-        if (!path.isBlank() && MOB_DROP_EXACT_PATHS.contains(path)) {
+        if (!path.isBlank() && ORGANIC_EXACT_PATHS.contains(path)) {
             return true;
         }
-        if (!rolesWithin(descriptor, MOB_DROP_ALLOWED_ROLES)) {
+        if (!rolesWithin(descriptor, ORGANIC_ALLOWED_ROLES)) {
             return false;
         }
         String materialFamily = descriptor.materialFamily();
-        if (materialFamily != null && MOB_DROP_MATERIAL_FAMILIES.contains(materialFamily)) {
+        if (materialFamily != null && ORGANIC_MATERIAL_FAMILIES.contains(materialFamily)) {
             return true;
         }
-        if (path.isBlank() || hasAnyPathToken(path, MOB_DROP_BLOCKED_PATH_TOKENS)) {
+        if (path.isBlank() || hasAnyPathToken(path, ORGANIC_BLOCKED_PATH_TOKENS)) {
             return false;
         }
-        return hasAnyPathToken(path, MOB_DROP_PATH_TOKENS);
+        return hasAnyPathToken(path, ORGANIC_PATH_TOKENS);
     }
 
     private static boolean matchesPlantStock(IslandSignalDescriptor descriptor) {
@@ -770,24 +827,24 @@ public enum IslandSuggestionTemplate {
                 || path.endsWith("_roots");
     }
 
-    private static boolean matchesClayPottery(IslandSignalDescriptor descriptor) {
-        if (!rolesWithin(descriptor, CLAY_POTTERY_ALLOWED_ROLES)) {
+    private static boolean matchesCeramicsMolds(IslandSignalDescriptor descriptor) {
+        if (!rolesWithin(descriptor, CERAMICS_MOLDS_ALLOWED_ROLES)) {
             return false;
         }
         String form = descriptor.form();
-        if (form != null && CLAY_POTTERY_BLOCKED_FORMS.contains(form)) {
+        if (form != null && CERAMICS_MOLDS_BLOCKED_FORMS.contains(form)) {
             return false;
         }
         String path = identityPath(descriptor);
-        if (path.isBlank() || hasAnyPathToken(path, CLAY_POTTERY_BLOCKED_PATH_TOKENS)) {
+        if (path.isBlank() || hasAnyPathToken(path, CERAMICS_MOLDS_BLOCKED_PATH_TOKENS)) {
             return false;
         }
-        if (CLAY_POTTERY_EXACT_PATHS.contains(path)
-                || hasAnyPathToken(path, CLAY_POTTERY_STRONG_PATH_TOKENS)) {
+        if (CERAMICS_MOLDS_EXACT_PATHS.contains(path)
+                || hasAnyPathToken(path, CERAMICS_MOLDS_STRONG_PATH_TOKENS)) {
             return true;
         }
-        return hasAnyPathToken(path, CLAY_POTTERY_CONTEXTUAL_PATH_TOKENS)
-                && hasClayPotteryContext(path, descriptor);
+        return hasAnyPathToken(path, CERAMICS_MOLDS_CONTEXTUAL_PATH_TOKENS)
+                && hasCeramicsMoldsContext(path, descriptor);
     }
 
     private static boolean matchesWoodStock(IslandSignalDescriptor descriptor) {
@@ -885,15 +942,15 @@ public enum IslandSuggestionTemplate {
         return false;
     }
 
-    private static boolean hasClayPotteryContext(String path, IslandSignalDescriptor descriptor) {
-        if (hasAnyPathToken(path, CLAY_POTTERY_STRONG_PATH_TOKENS)
+    private static boolean hasCeramicsMoldsContext(String path, IslandSignalDescriptor descriptor) {
+        if (hasAnyPathToken(path, CERAMICS_MOLDS_STRONG_PATH_TOKENS)
                 || hasPathToken(path, "mud")
                 || hasPathToken(path, "adobe")
                 || hasPathToken(path, "fire")) {
             return true;
         }
         String materialFamily = descriptor.materialFamily();
-        return materialFamily != null && CLAY_POTTERY_MATERIAL_FAMILIES.contains(materialFamily);
+        return materialFamily != null && CERAMICS_MOLDS_MATERIAL_FAMILIES.contains(materialFamily);
     }
 
     private static boolean rolesWithin(IslandSignalDescriptor descriptor, Set<String> allowedRoles) {
@@ -953,6 +1010,15 @@ public enum IslandSuggestionTemplate {
         return false;
     }
 
+    private static boolean matchesDustPowderPath(String path) {
+        return DUST_POWDER_EXACT_PATHS.contains(path)
+                || hasAnyPathToken(path, DUST_POWDER_PATH_TOKENS)
+                || path.endsWith("_dust")
+                || path.endsWith("_dusts")
+                || path.endsWith("_powder")
+                || path.endsWith("_powders");
+    }
+
     private static String identityPath(IslandSignalDescriptor descriptor) {
         if (descriptor == null || descriptor.identity() == null || descriptor.identity().itemId() == null) {
             return "";
@@ -963,12 +1029,12 @@ public enum IslandSuggestionTemplate {
     }
 
     /**
-     * Specific id paths that route to RAW_MATERIALS via the "ore
+     * Specific id paths that route to Ores & Raw Stock via the "ore
      * stockpile" id-fallback. Vanilla compressed material blocks plus
      * common modded equivalents. Anything matching {@code raw_*_block}
      * is also caught by a startsWith/endsWith check.
      */
-    private static final Set<String> RAW_MATERIALS_BLOCK_IDS = Set.of(
+    private static final Set<String> ORE_STOCK_BLOCK_IDS = Set.of(
             "iron_block",
             "gold_block",
             "diamond_block",
@@ -979,6 +1045,109 @@ public enum IslandSuggestionTemplate {
             "amethyst_block",
             "quartz_block",
             "redstone_block"
+    );
+
+    private static final Set<String> METAL_STOCK_FORMS = Set.of(
+            "ingot",
+            "nugget",
+            "plate",
+            "rod",
+            "wire",
+            "gear",
+            "sheet",
+            "foil",
+            "bolt",
+            "screw",
+            "ring"
+    );
+
+    private static final Set<String> METAL_STOCK_PATH_TOKENS = Set.of(
+            "ingot",
+            "ingots",
+            "nugget",
+            "nuggets",
+            "plate",
+            "plates",
+            "rod",
+            "rods",
+            "wire",
+            "wires",
+            "gear",
+            "gears",
+            "sheet",
+            "sheets",
+            "foil",
+            "foils",
+            "bolt",
+            "bolts",
+            "screw",
+            "screws",
+            "ring",
+            "rings"
+    );
+
+    private static final Set<String> METAL_PART_PATH_TOKENS = Set.of(
+            "part",
+            "parts",
+            "component",
+            "components"
+    );
+
+    private static final Set<String> METAL_STOCK_BLOCKED_PATH_TOKENS = Set.of(
+            "wood",
+            "wooden",
+            "stick",
+            "sticks",
+            "stone",
+            "clay",
+            "ceramic",
+            "bone",
+            "blaze",
+            "dust",
+            "dusts",
+            "powder",
+            "powders",
+            "ore",
+            "ores",
+            "raw"
+    );
+
+    private static final Set<String> ORE_STOCK_FORMS = Set.of(
+            "raw",
+            "ore",
+            "crushed_ore",
+            "impure_ore",
+            "purified_ore"
+    );
+
+    private static final Set<String> ORE_STOCK_PATH_TOKENS = Set.of(
+            "raw",
+            "ore",
+            "ores",
+            "crushed",
+            "impure",
+            "purified"
+    );
+
+    private static final Set<String> DUST_POWDER_FORMS = Set.of(
+            "dust",
+            "powder",
+            "ground"
+    );
+
+    private static final Set<String> DUST_POWDER_EXACT_PATHS = Set.of(
+            "gunpowder",
+            "blaze_powder",
+            "glowstone_dust"
+    );
+
+    private static final Set<String> DUST_POWDER_PATH_TOKENS = Set.of(
+            "dust",
+            "dusts",
+            "powder",
+            "powders",
+            "ground",
+            "grit"
     );
 
     private static final Set<String> SEED_ALLOWED_ROLES = Set.of(
@@ -1053,12 +1222,15 @@ public enum IslandSuggestionTemplate {
             "blocks"
     );
 
-    private static final Set<String> MOB_DROP_ALLOWED_ROLES = Set.of(
+    private static final Set<String> ORGANIC_ALLOWED_ROLES = Set.of(
             "material",
-            "natural_resource"
+            "natural_resource",
+            "building_block",
+            "decorative_block",
+            "consumable"
     );
 
-    private static final Set<String> MOB_DROP_EXACT_PATHS = Set.of(
+    private static final Set<String> ORGANIC_EXACT_PATHS = Set.of(
             "string",
             "leather",
             "rabbit_hide",
@@ -1069,15 +1241,9 @@ public enum IslandSuggestionTemplate {
             "slime_ball",
             "magma_cream",
             "rotten_flesh",
-            "gunpowder",
             "spider_eye",
             "ghast_tear",
             "phantom_membrane",
-            "blaze_rod",
-            "blaze_powder",
-            "ender_pearl",
-            "prismarine_shard",
-            "prismarine_crystals",
             "ink_sac",
             "glow_ink_sac",
             "turtle_scute",
@@ -1085,31 +1251,41 @@ public enum IslandSuggestionTemplate {
             "egg"
     );
 
-    private static final Set<String> MOB_DROP_MATERIAL_FAMILIES = Set.of(
+    private static final Set<String> ORGANIC_MATERIAL_FAMILIES = Set.of(
             "leather",
             "bone",
             "slime",
-            "scute"
+            "scute",
+            "wool",
+            "fiber",
+            "fibre"
     );
 
-    private static final Set<String> MOB_DROP_PATH_TOKENS = Set.of(
+    private static final Set<String> ORGANIC_PATH_TOKENS = Set.of(
             "string",
             "leather",
             "hide",
+            "hides",
+            "fiber",
+            "fibers",
+            "fibre",
+            "fibres",
+            "wool",
             "feather",
             "bone",
             "slime",
             "scute",
-            "gunpowder",
             "flesh",
-            "drop",
-            "drops"
+            "sinew",
+            "tendon",
+            "membrane",
+            "sac",
+            "egg"
     );
 
-    private static final Set<String> MOB_DROP_BLOCKED_PATH_TOKENS = Set.of(
+    private static final Set<String> ORGANIC_BLOCKED_PATH_TOKENS = Set.of(
             "block",
             "blocks",
-            "wool",
             "carpet",
             "bed",
             "banner",
@@ -1368,45 +1544,55 @@ public enum IslandSuggestionTemplate {
             "moss_block"
     );
 
-    private static final Set<String> CLAY_POTTERY_ALLOWED_ROLES = Set.of(
+    private static final Set<String> CERAMICS_MOLDS_ALLOWED_ROLES = Set.of(
             "material",
             "natural_resource",
             "building_block",
-            "decorative_block"
+            "decorative_block",
+            "utility"
     );
 
-    private static final Set<String> CLAY_POTTERY_EXACT_PATHS = Set.of(
+    private static final Set<String> CERAMICS_MOLDS_EXACT_PATHS = Set.of(
             "clay",
             "clay_ball",
             "brick",
             "bricks",
             "terracotta",
             "flower_pot",
-            "decorated_pot"
+            "decorated_pot",
+            "vessel"
     );
 
-    private static final Set<String> CLAY_POTTERY_MATERIAL_FAMILIES = Set.of(
+    private static final Set<String> CERAMICS_MOLDS_MATERIAL_FAMILIES = Set.of(
             "clay",
             "ceramic",
-            "terracotta"
+            "terracotta",
+            "pottery"
     );
 
-    private static final Set<String> CLAY_POTTERY_STRONG_PATH_TOKENS = Set.of(
+    private static final Set<String> CERAMICS_MOLDS_STRONG_PATH_TOKENS = Set.of(
             "clay",
             "ceramic",
             "terracotta",
             "pottery",
-            "sherd"
+            "sherd",
+            "mold",
+            "molds",
+            "mould",
+            "moulds",
+            "vessel",
+            "vessels"
     );
 
-    private static final Set<String> CLAY_POTTERY_CONTEXTUAL_PATH_TOKENS = Set.of(
+    private static final Set<String> CERAMICS_MOLDS_CONTEXTUAL_PATH_TOKENS = Set.of(
             "brick",
             "bricks",
             "pot",
-            "pots"
+            "pots",
+            "unfired"
     );
 
-    private static final Set<String> CLAY_POTTERY_BLOCKED_FORMS = Set.of(
+    private static final Set<String> CERAMICS_MOLDS_BLOCKED_FORMS = Set.of(
             "stairs",
             "slab",
             "wall",
@@ -1427,7 +1613,7 @@ public enum IslandSuggestionTemplate {
             "armor_piece"
     );
 
-    private static final Set<String> CLAY_POTTERY_BLOCKED_PATH_TOKENS = Set.of(
+    private static final Set<String> CERAMICS_MOLDS_BLOCKED_PATH_TOKENS = Set.of(
             "stairs",
             "stair",
             "slab",

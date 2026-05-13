@@ -44,36 +44,36 @@ class IslandSuggestionTemplateSubsystemTest {
     }
 
     @Test
-    void broadUtilityAndMaterialParentsIgnoreSubsystems() {
+    void specificStockParentsIgnoreSubsystems() {
         IslandTemplateMatch casting = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
                 subsystemDescriptor("tfc:ceramic/ingot_mold", "utility", List.of("tfc:casting"), List.of()),
                 id -> "tfc:casting".equals(id));
         assertFalse(casting.isSubsystem());
-        assertEquals(IslandSuggestionTemplate.UTILITY, casting.parentTemplate());
+        assertEquals(IslandSuggestionTemplate.CERAMICS_MOLDS, casting.parentTemplate());
 
         IslandTemplateMatch weaving = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
                 subsystemDescriptor("tfc:fiber/linen_thread", "material", List.of("tfc:weaving"), List.of()),
                 id -> "tfc:weaving".equals(id));
         assertFalse(weaving.isSubsystem());
-        assertEquals(IslandSuggestionTemplate.MATERIALS, weaving.parentTemplate());
+        assertEquals(IslandSuggestionTemplate.ORGANIC_MATERIALS, weaving.parentTemplate());
     }
 
     @Test
     void organizationGroupWinsOverBroadTemplateAndSubsystem() {
         IslandSignalDescriptor descriptor = organizationDescriptor(
-                "tfc:ceramic/ingot_mold",
+                "tfc:casting_tool",
                 "utility",
                 List.of("tfc:metalworking"),
-                List.of("tfc:molds")
+                List.of("tfc:casting_tools")
         );
         IslandTemplateMatch match = IslandSuggestionTemplate.firstMatchExtendedOrMisc(
                 descriptor,
                 id -> "tfc:metalworking".equals(id),
-                id -> "tfc:molds".equals(id));
+                id -> "tfc:casting_tools".equals(id));
         assertTrue(match.isOrganizationGroup());
         assertFalse(match.isSubsystem());
-        assertEquals("group:tfc:molds", match.islandId());
-        assertEquals("Tfc — Molds", match.label());
+        assertEquals("group:tfc:casting_tools", match.islandId());
+        assertEquals("Tfc — Casting Tools", match.label());
         assertEquals(IslandSuggestionTemplate.UTILITY, match.parentTemplate());
     }
 
@@ -107,8 +107,8 @@ class IslandSuggestionTemplateSubsystemTest {
                 id -> false,
                 id -> true);
         assertFalse(match.isOrganizationGroup());
-        assertEquals(IslandSuggestionTemplate.INGOTS.defaultIslandId(), match.islandId());
-        assertEquals(IslandSuggestionTemplate.INGOTS, match.parentTemplate());
+        assertEquals(IslandSuggestionTemplate.METAL_STOCK.defaultIslandId(), match.islandId());
+        assertEquals(IslandSuggestionTemplate.METAL_STOCK, match.parentTemplate());
     }
 
     @Test

@@ -1635,7 +1635,7 @@ public final class ForgeWorkspaceSurface {
         if (goalTabActive()) {
             return;
         }
-        target.on(SlotUiEventKind.MOUSE_DOWN, event -> {
+        target.on(SlotUiEventKind.CLICK, event -> {
             if (event.propagationStopped() || event.button() != 0 || !isCursorCarrying()) {
                 return;
             }

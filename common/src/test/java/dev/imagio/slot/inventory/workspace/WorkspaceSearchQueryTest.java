@@ -27,7 +27,7 @@ class WorkspaceSearchQueryTest {
         SlotWorkspaceViewModel.AtlasItem item = item("minecraft:oak_log", "Oak Log", "materials");
         SlotWorkspaceViewModel.AtlasIsland island = new SlotWorkspaceViewModel.AtlasIsland(
                 "materials",
-                "Raw Materials",
+                "Ores & Raw Stock",
                 VisualAtlasIslandKind.PLAYER,
                 0,
                 0,

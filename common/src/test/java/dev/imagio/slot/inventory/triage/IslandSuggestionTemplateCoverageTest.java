@@ -102,18 +102,18 @@ class IslandSuggestionTemplateCoverageTest {
         expected.put("minecraft:iron_trapdoor", IslandSuggestionTemplate.DOORS);
         expected.put("minecraft:oak_fence_gate", IslandSuggestionTemplate.DOORS);
         // Beds → DECORATION (was functional_block). Decorated pots now
-        // live in the Clay & Pottery stock bucket.
+        // live in the Ceramics & Molds stock bucket.
         expected.put("minecraft:brown_bed", IslandSuggestionTemplate.DECORATION);
         expected.put("minecraft:red_bed", IslandSuggestionTemplate.DECORATION);
-        expected.put("minecraft:decorated_pot", IslandSuggestionTemplate.CLAY_POTTERY);
-        // Compressed material blocks → RAW_MATERIALS (the player's
+        expected.put("minecraft:decorated_pot", IslandSuggestionTemplate.CERAMICS_MOLDS);
+        // Compressed material blocks → ORES_RAW_STOCK (the player's
         // "ore stockpile" island; they live with raw_iron / raw_copper /
         // raw_gold rather than the broader Materials catch-all).
-        expected.put("minecraft:diamond_block", IslandSuggestionTemplate.RAW_MATERIALS);
-        expected.put("minecraft:iron_block", IslandSuggestionTemplate.RAW_MATERIALS);
-        expected.put("minecraft:gold_block", IslandSuggestionTemplate.RAW_MATERIALS);
-        expected.put("minecraft:emerald_block", IslandSuggestionTemplate.RAW_MATERIALS);
-        expected.put("minecraft:copper_block", IslandSuggestionTemplate.RAW_MATERIALS);
+        expected.put("minecraft:diamond_block", IslandSuggestionTemplate.ORES_RAW_STOCK);
+        expected.put("minecraft:iron_block", IslandSuggestionTemplate.ORES_RAW_STOCK);
+        expected.put("minecraft:gold_block", IslandSuggestionTemplate.ORES_RAW_STOCK);
+        expected.put("minecraft:emerald_block", IslandSuggestionTemplate.ORES_RAW_STOCK);
+        expected.put("minecraft:copper_block", IslandSuggestionTemplate.ORES_RAW_STOCK);
         // Rails → TRANSPORT (was functional_block / redstone_component).
         expected.put("minecraft:rail", IslandSuggestionTemplate.TRANSPORT);
         expected.put("minecraft:powered_rail", IslandSuggestionTemplate.TRANSPORT);
@@ -123,21 +123,21 @@ class IslandSuggestionTemplateCoverageTest {
         expected.put("minecraft:bee_spawn_egg", IslandSuggestionTemplate.CURIOSITY);
         expected.put("minecraft:zombie_spawn_egg", IslandSuggestionTemplate.CURIOSITY);
         // Universal stock sections keep these out of the broad Materials pile.
-        expected.put("minecraft:blaze_rod", IslandSuggestionTemplate.MOB_DROPS);
-        expected.put("minecraft:string", IslandSuggestionTemplate.MOB_DROPS);
-        expected.put("minecraft:leather", IslandSuggestionTemplate.MOB_DROPS);
-        expected.put("minecraft:feather", IslandSuggestionTemplate.MOB_DROPS);
-        expected.put("minecraft:bone", IslandSuggestionTemplate.MOB_DROPS);
-        expected.put("minecraft:slime_ball", IslandSuggestionTemplate.MOB_DROPS);
+        expected.put("minecraft:blaze_powder", IslandSuggestionTemplate.DUSTS_POWDERS);
+        expected.put("minecraft:string", IslandSuggestionTemplate.ORGANIC_MATERIALS);
+        expected.put("minecraft:leather", IslandSuggestionTemplate.ORGANIC_MATERIALS);
+        expected.put("minecraft:feather", IslandSuggestionTemplate.ORGANIC_MATERIALS);
+        expected.put("minecraft:bone", IslandSuggestionTemplate.ORGANIC_MATERIALS);
+        expected.put("minecraft:slime_ball", IslandSuggestionTemplate.ORGANIC_MATERIALS);
         expected.put("minecraft:wheat_seeds", IslandSuggestionTemplate.SEEDS);
         expected.put("minecraft:wheat", IslandSuggestionTemplate.CROPS);
         expected.put("minecraft:carrot", IslandSuggestionTemplate.CROPS);
         expected.put("minecraft:oak_sapling", IslandSuggestionTemplate.PLANTS);
-        expected.put("minecraft:clay_ball", IslandSuggestionTemplate.CLAY_POTTERY);
-        expected.put("minecraft:brick", IslandSuggestionTemplate.CLAY_POTTERY);
-        expected.put("minecraft:flower_pot", IslandSuggestionTemplate.CLAY_POTTERY);
-        // Raw ores → RAW_MATERIALS, not the broad MATERIALS pile.
-        expected.put("minecraft:raw_iron", IslandSuggestionTemplate.RAW_MATERIALS);
+        expected.put("minecraft:clay_ball", IslandSuggestionTemplate.CERAMICS_MOLDS);
+        expected.put("minecraft:brick", IslandSuggestionTemplate.CERAMICS_MOLDS);
+        expected.put("minecraft:flower_pot", IslandSuggestionTemplate.CERAMICS_MOLDS);
+        // Raw ores → ORES_RAW_STOCK, not the broad MATERIALS pile.
+        expected.put("minecraft:raw_iron", IslandSuggestionTemplate.ORES_RAW_STOCK);
 
         Map<String, String> rolesByItemId = loadVanillaRoles();
         for (Map.Entry<String, IslandSuggestionTemplate> e : expected.entrySet()) {

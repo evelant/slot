@@ -32,8 +32,9 @@ The wall needs a trustworthy signal for questions like:
 - which material, form, tier, color, or environment does it belong to?
 - should a large pack split this item into a player-facing section such as
   `pack:tfg/casting_molds` or `pack:tfg/masonry_supplies`?
-- is this a broad role-only item that belongs in the generic Wood, Seeds,
-  Crops, Plants, Clay & Pottery, Mob Drops, Materials, Building, Food,
+- is this a broad role-only item that belongs in the generic Ores & Raw Stock,
+  Metal Stock, Gems & Crystals, Dusts & Powders, Wood, Seeds, Crops, Plants,
+  Ceramics & Molds, Organic Materials, Materials, Building, Food,
   Tooling, or Utility sections?
 - why did `/slot classification inspect` or `/slot classification rehome`
   choose a particular template, group, or subsystem?
@@ -104,9 +105,14 @@ variants, and mod subsystem names are search/filter/within-section signals,
 not main wall homes.
 Stock wood such as sticks, logs, planks, boards, and lumber is a protected
 built-in Wood section rather than an LLM-proposed organization group. The
-same protection applies to Seeds, Crops, Plants, Clay & Pottery, and Mob Drops:
+same protection applies to Seeds, Crops, Plants, Ceramics & Molds, and Organic Materials:
 they are default homes for common stock families, not pack-scoped vocabulary
-values unless a future design deliberately changes that.
+values unless a future design deliberately changes that. These protected
+sections are good player homes, not bad categories: item containers belong in
+Storage, lamps/light sources in Lighting, crops in Crops, pottery/molds in
+Ceramics & Molds, and redstone components in Redstone. Pack-broad families such as
+Beekeeping or Glass Products can still be useful custom groups when they have
+enough siblings and do not merely rename a default section.
 
 ## Tool Layout
 

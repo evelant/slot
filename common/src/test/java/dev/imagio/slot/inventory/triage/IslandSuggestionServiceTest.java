@@ -40,10 +40,10 @@ class IslandSuggestionServiceTest {
 
     @Test
     void specificTemplateLeadsLearnedChipWhenBothFire() {
-        // INGOTS is a high-specificity template (specific c:ingots
+        // METAL_STOCK is a high-specificity template (specific c:ingots
         // tag trigger), so it leads when it fires — the learned chip
         // for "Mining" follows. Players grabbing a copper_ingot are
-        // typically looking for the INGOTS pile first, with their
+        // typically looking for the Metal Stock pile first, with their
         // historical Mining drop as a second option.
         LearnedIslandRuleStore rules = new LearnedIslandRuleStore();
         rules.recordAssignment(descriptor("minecraft:iron_ingot", Set.of(), Set.of("c:ingots")), "island.mining", 1L);
@@ -58,7 +58,7 @@ class IslandSuggestionServiceTest {
 
         assertEquals(2, chips.size());
         assertEquals(ChipSuggestion.ChipKind.TEMPLATE, chips.get(0).kind());
-        assertEquals(IslandSuggestionTemplate.INGOTS, chips.get(0).template());
+        assertEquals(IslandSuggestionTemplate.METAL_STOCK, chips.get(0).template());
         assertEquals(ChipSuggestion.ChipKind.LEARNED, chips.get(1).kind());
         assertEquals("island.mining", chips.get(1).islandId());
     }
@@ -66,7 +66,7 @@ class IslandSuggestionServiceTest {
     @Test
     void specificTemplateAndTwoLearnedRulesAllSurface() {
         // Three chips total now (raised cap). Specific template
-        // (INGOTS) leads, then both learned rules. Old behavior
+        // (METAL_STOCK) leads, then both learned rules. Old behavior
         // suppressed the template entirely under the 2-chip cap; the
         // new ordering keeps the most-confident signal visible.
         LearnedIslandRuleStore rules = new LearnedIslandRuleStore();
@@ -86,7 +86,7 @@ class IslandSuggestionServiceTest {
 
         assertEquals(3, chips.size());
         assertEquals(ChipSuggestion.ChipKind.TEMPLATE, chips.get(0).kind());
-        assertEquals(IslandSuggestionTemplate.INGOTS, chips.get(0).template());
+        assertEquals(IslandSuggestionTemplate.METAL_STOCK, chips.get(0).template());
         assertEquals(ChipSuggestion.ChipKind.LEARNED, chips.get(1).kind());
         assertEquals(ChipSuggestion.ChipKind.LEARNED, chips.get(2).kind());
     }
@@ -117,7 +117,7 @@ class IslandSuggestionServiceTest {
     void tagAdjacencyOutranksNamespaceWithinLearnedChips() {
         // Among the LEARNED chips (which now sort behind a specific
         // template chip when one fires), TAG-priority rules still beat
-        // NAMESPACE-priority. INGOTS template leads via the c:ingots
+        // NAMESPACE-priority. METAL_STOCK template leads via the c:ingots
         // tag; "Metals" (TAG-driven) is the next chip; "Dump"
         // (NAMESPACE-driven) trails.
         LearnedIslandRuleStore rules = new LearnedIslandRuleStore();
@@ -135,9 +135,9 @@ class IslandSuggestionServiceTest {
                 )
         );
 
-        // chips[0] = INGOTS template (high-specificity leader)
+        // chips[0] = METAL_STOCK template (high-specificity leader)
         assertEquals(ChipSuggestion.ChipKind.TEMPLATE, chips.get(0).kind());
-        assertEquals(IslandSuggestionTemplate.INGOTS, chips.get(0).template());
+        assertEquals(IslandSuggestionTemplate.METAL_STOCK, chips.get(0).template());
         // chips[1] = TAG-driven Metals beats NAMESPACE-driven Dump
         assertEquals(ChipSuggestion.ChipKind.LEARNED, chips.get(1).kind());
         assertEquals("island.metals", chips.get(1).islandId());
@@ -270,7 +270,7 @@ class IslandSuggestionServiceTest {
     }
 
     @Test
-    void unqualifiedSubsystemFallsBackToBroadParentTemplate() {
+    void unqualifiedSubsystemFallsBackToSpecificStockTemplate() {
         List<ChipSuggestion> chips = IslandSuggestionService.suggest(
                 subsystemDescriptor("tfc:ceramic/ingot_mold", "utility", "tfc:casting"),
                 new LearnedIslandRuleStore(),
@@ -281,7 +281,7 @@ class IslandSuggestionServiceTest {
 
         assertEquals(1, chips.size());
         assertEquals(ChipSuggestion.ChipKind.TEMPLATE, chips.get(0).kind());
-        assertEquals(IslandSuggestionTemplate.UTILITY, chips.get(0).template());
+        assertEquals(IslandSuggestionTemplate.CERAMICS_MOLDS, chips.get(0).template());
     }
 
     @Test
