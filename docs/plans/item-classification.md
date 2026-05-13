@@ -404,15 +404,14 @@ Examples:
 - TFC casting molds, unfired molds, and molten-metal helpers:
   `tfc:casting`
 - Bricks, mortar, clay masonry inputs: `tfc:masonry`
-- Hides, scraped/soaked hides, leatherworking tools: `tfc:leatherworking`
 - Thread, cloth, looms, textile inputs: `tfc:textiles`
 
 This is deliberately different from `mod_subsystem`. `mod_subsystem`
 describes what part of a mod the item itself belongs to; `organization_group`
 describes the broad storage bucket that removes player sorting tedium.
 `mod_subsystem` remains semantic/query evidence and does not create main-wall
-sections. Narrow universal sections like Ingots, Raw Materials, Stairs, Tools,
-Food, and Armor win by omission: the classifier should leave
+sections. Narrow universal sections like Ingots, Raw Materials, Wood, Seeds,
+Crops, Plants, Clay & Pottery, Mob Drops, Stairs, Tools, Food, and Armor win by omission: the classifier should leave
 `organization_group` empty when that generic section is the better manual home,
 not rely on runtime code to veto a stronger workflow signal.
 
@@ -1181,7 +1180,8 @@ without building the inverted-index query API:
 3. **Map roles → islands.** Add a small `Role → IslandId` table next to the existing
    bucket map. The 19 roles in [`ROLE_VALUES`](../../tools/classification/src/schema/facets.ts)
    already align with the seed islands the atlas materializes (Food, Tools, Weapons,
-   Armor, Materials, Storage, …). Anything new (e.g. `mechanism`, `transport`, `magic`)
+   Armor, Wood, Seeds, Crops, Plants, Clay & Pottery, Mob Drops, Materials, Storage, …).
+   Anything new (e.g. `mechanism`, `transport`, `magic`)
    gets a placeholder island id; islands themselves don't need to be pre-created since
    the atlas materializes them on first item placement.
 4. **Wire `FacetIndex` into the homing + chip call sites.** Replace

@@ -37,9 +37,11 @@ panels remain backend hooks, not common UI semantics.
 Classification has a pack-authoring path for large modpacks: installed
 `mods/` scanning, jar extraction, OpenRouter-backed stage 3, runtime export,
 datapack output, facet-vocabulary evidence/proposals with `document_context`,
-accepted-vocabulary prompting, and dynamic `organization_group` /
-auto-home cohorts guarded by main-wall section policy. `mod_subsystem`
-remains semantic/query evidence and does not create main-wall sections.
+accepted-vocabulary prompting, and runtime `organization_group` evidence.
+`organization_group` homing is temporarily disabled in the mod while the next
+vocabulary refresh is validated, so rehome falls through to built-in default
+sections. `mod_subsystem` remains semantic/query evidence and does not create
+main-wall sections.
 Semantic text remains the highest-value input; preserve tooltip/lore prose,
 guidebook/quest text, lang descriptions, KubeJS/datapack overlays,
 Ponder/category labels, stack groups, resource-pack overrides, and mod

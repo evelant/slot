@@ -31,9 +31,10 @@ The wall needs a trustworthy signal for questions like:
   container?
 - which material, form, tier, color, or environment does it belong to?
 - should a large pack split this item into a player-facing section such as
-  `create:mechanical_power` or `pack:tfg2/steelmaking`?
-- is this a broad role-only item that belongs in the generic Materials,
-  Building, Food, Tooling, or Utility sections?
+  `pack:tfg/casting_molds` or `pack:tfg/masonry_supplies`?
+- is this a broad role-only item that belongs in the generic Wood, Seeds,
+  Crops, Plants, Clay & Pottery, Mob Drops, Materials, Building, Food,
+  Tooling, or Utility sections?
 - why did `/slot classification inspect` or `/slot classification rehome`
   choose a particular template, group, or subsystem?
 
@@ -80,23 +81,32 @@ KubeJS, and mod integrations have finished mutating registry/tag/recipe state.
 `rehome` recomputes classifier-owned homes for carried items and accessible
 claimed chests without moving physical stacks.
 
-Auto-home uses:
+Auto-home currently uses:
 
-1. count-qualified `organization_group` when the layer gives a strong
-   player-facing wall-home signal and the built-in parent is broad enough to
-   split
-2. built-in fallback templates from role/material/form/tag signals
-3. Triage for unsupported or ambiguous cases
+1. built-in fallback templates from role/material/form/tag signals
+2. Triage for unsupported or ambiguous cases
+
+`organization_group` homing is temporarily disabled in the mod while the next
+vocabulary refresh is validated. Runtime still loads the facet, reports group
+counts in `inspect`, and can use the data for audit/search work, but
+`/slot classification rehome` will not materialize `group:*` homes until
+`DynamicHomeCohortPolicy.ORGANIZATION_GROUP_HOMING_ENABLED` is restored.
 
 `workflow` is not a wall section by itself. It describes process/task context
 for search, task views, and future projections. Section-outcome review applies
 to home-producing facets, currently `organization_group`; other
 vocabulary-backed facets, including `mod_subsystem`, are judged by semantic
-usefulness. `organization_group` remains the direct auto-home signal, but it
-must stay scarce and broad: mostly item type/role, with use case or material
-state only as secondary refinement. Query-only slices like mod name, rock
-taxonomy, material form/state, per-tag variants, and mod subsystem names are
-search/filter/within-section signals, not main wall homes.
+usefulness. `organization_group` remains the intended player-facing home
+candidate once re-enabled, but it must stay scarce and broad: mostly item
+type/role, with use case or material state only as secondary refinement.
+Query-only slices like mod name, rock taxonomy, material form/state, per-tag
+variants, and mod subsystem names are search/filter/within-section signals,
+not main wall homes.
+Stock wood such as sticks, logs, planks, boards, and lumber is a protected
+built-in Wood section rather than an LLM-proposed organization group. The
+same protection applies to Seeds, Crops, Plants, Clay & Pottery, and Mob Drops:
+they are default homes for common stock families, not pack-scoped vocabulary
+values unless a future design deliberately changes that.
 
 ## Tool Layout
 

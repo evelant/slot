@@ -218,7 +218,9 @@ describe("pack facet vocabulary generation", () => {
     });
     const ids = candidates.filter((candidate) => candidate.facet === "organization_group").map((candidate) => candidate.id);
 
-    expect(ids).toContain("pack:fixture/seeds");
+    expect(ids).not.toContain("pack:fixture/seeds");
+    expect(ids).not.toContain("pack:fixture/crops");
+    expect(ids).not.toContain("pack:fixture/inedible_plants");
     expect(ids).not.toContain("example:casting");
     expect(ids).not.toContain("pack:fixture/unprocessed_ores");
     expect(ids).not.toContain("pack:fixture/refined_ores");
@@ -301,6 +303,14 @@ describe("pack facet vocabulary generation", () => {
     );
     expect(prompt.system).toContain("only about 15-20 human-named organization sections total");
     expect(prompt.system).toContain("group primarily by broad item type/role");
+    expect(prompt.system).toContain("the protected built-in wall sections are Food, Tools, Weapons, Armor, Lighting");
+    expect(prompt.system).toContain("Raw Materials, Wood, Seeds, Crops, Plants, Clay & Pottery, Mob Drops, Storage");
+    expect(prompt.system).toContain("Wood is the built-in home for sticks, logs, planks, boards, lumber");
+    expect(prompt.system).toContain("Seeds, Crops, Plants, Clay & Pottery, and Mob Drops are built-in homes");
+    expect(prompt.system).toContain("Materials exists as a runtime fallback, but it is intentionally not protected");
+    expect(prompt.system).toContain("roughly 3-6 broad, useful storage sections");
+    expect(prompt.system).toContain("closely duplicate a protected built-in section");
+    expect(prompt.system).toContain("the built-in parent is too overloaded");
     expect(prompt.system).toContain("not a hard required list");
     expect(prompt.system).toContain("one mod's mechanical power line, stackable plates, or anvil smithing");
     expect(prompt.system).toContain("stable main-wall storage section a player would actually maintain");

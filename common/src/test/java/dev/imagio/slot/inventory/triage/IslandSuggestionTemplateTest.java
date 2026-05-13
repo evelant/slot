@@ -49,10 +49,10 @@ class IslandSuggestionTemplateTest {
 
     @Test
     void materialsFamilyTagsRouteToDedicatedTemplates() {
-        // c:ingots / c:gems / c:raw_materials / c:ores split out into
-        // their own templates (INGOTS / GEMS / RAW_MATERIALS) so common
-        // ingredients (sticks, leather) cluster separately from refined
-        // output. Generic role=material is the MATERIALS catch-all.
+        // c:ingots / c:gems / c:raw_materials / c:ores and stock families
+        // split out into their own templates so common ingredients (sticks,
+        // seeds, clay, mob drops) cluster separately from refined output.
+        // Generic role=material remains the MATERIALS catch-all.
         assertTrue(IslandSuggestionTemplate.INGOTS.matches(
                 descriptor("minecraft:iron_ingot", Set.of(), Set.of("c:ingots"))
         ));
@@ -80,7 +80,7 @@ class IslandSuggestionTemplateTest {
         assertFalse(IslandSuggestionTemplate.MATERIALS.matches(
                 descriptor("modded:wire", Set.of(), Set.of("mod:wires"))
         ));
-        assertTrue(IslandSuggestionTemplate.MATERIALS.matches(
+        assertTrue(IslandSuggestionTemplate.WOOD.matches(
                 roleDescriptor("minecraft:stick", "material")
         ));
     }
@@ -96,6 +96,81 @@ class IslandSuggestionTemplateTest {
 
         assertEquals(IslandSuggestionTemplate.UTILITY,
                 IslandSuggestionTemplate.firstMatch(roleDescriptor("tfc:ceramic/ingot_mold", "utility")));
+    }
+
+    @Test
+    void woodStockRoutesToWoodWithoutStealingShapedOrToolItems() {
+        assertEquals(IslandSuggestionTemplate.WOOD,
+                IslandSuggestionTemplate.firstMatch(formDescriptor("minecraft:oak_log", "natural_resource", "log")));
+        assertEquals(IslandSuggestionTemplate.WOOD,
+                IslandSuggestionTemplate.firstMatch(formDescriptor("minecraft:stripped_oak_wood", "natural_resource", "wood")));
+        assertEquals(IslandSuggestionTemplate.WOOD,
+                IslandSuggestionTemplate.firstMatch(taggedFormDescriptor(
+                        "minecraft:oak_planks", "building_block", "whole_block", Set.of("minecraft:planks"))));
+        assertEquals(IslandSuggestionTemplate.WOOD,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("tfc:wood/lumber/oak", "material")));
+        assertEquals(IslandSuggestionTemplate.WOOD,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("afc:wood/boards/baobab", "material")));
+
+        assertEquals(IslandSuggestionTemplate.STAIRS,
+                IslandSuggestionTemplate.firstMatch(formDescriptor("minecraft:oak_stairs", "building_block", "stairs")));
+        assertEquals(IslandSuggestionTemplate.DOORS,
+                IslandSuggestionTemplate.firstMatch(formDescriptor("minecraft:oak_door", "building_block", "door")));
+        assertEquals(IslandSuggestionTemplate.TOOLS,
+                IslandSuggestionTemplate.firstMatch(formDescriptor("minecraft:wooden_pickaxe", "tool", "tool")));
+        assertEquals(IslandSuggestionTemplate.MATERIALS,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("modded:circuit_board", "material")));
+    }
+
+    @Test
+    void seedCropPlantClayAndMobStockRouteToDedicatedTemplates() {
+        assertEquals(IslandSuggestionTemplate.SEEDS,
+                IslandSuggestionTemplate.firstMatch(formDescriptor("minecraft:wheat_seeds", "natural_resource", "seed")));
+        assertEquals(IslandSuggestionTemplate.SEEDS,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:pitcher_pod", "natural_resource")));
+        assertEquals(IslandSuggestionTemplate.MATERIALS,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("modded:seed_oil", "material")));
+
+        assertEquals(IslandSuggestionTemplate.CROPS,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:wheat", "material")));
+        assertEquals(IslandSuggestionTemplate.CROPS,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:carrot", "consumable")));
+        assertEquals(IslandSuggestionTemplate.FOOD,
+                IslandSuggestionTemplate.firstMatch(formDescriptor("minecraft:baked_potato", "consumable", "food_cooked")));
+        assertEquals(IslandSuggestionTemplate.FOOD,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:pumpkin_pie", "consumable")));
+
+        assertEquals(IslandSuggestionTemplate.PLANTS,
+                IslandSuggestionTemplate.firstMatch(formDescriptor("minecraft:oak_sapling", "natural_resource", "sapling")));
+        assertEquals(IslandSuggestionTemplate.PLANTS,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:dandelion", "natural_resource")));
+        assertEquals(IslandSuggestionTemplate.NATURAL,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:grass_block", "natural_resource")));
+
+        assertEquals(IslandSuggestionTemplate.CLAY_POTTERY,
+                IslandSuggestionTemplate.firstMatch(materialDescriptor("minecraft:clay_ball", "material", null, "clay")));
+        assertEquals(IslandSuggestionTemplate.CLAY_POTTERY,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:brick", "material")));
+        assertEquals(IslandSuggestionTemplate.CLAY_POTTERY,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:decorated_pot", "decorative_block")));
+        assertEquals(IslandSuggestionTemplate.BUILDING,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:stone_bricks", "building_block")));
+        assertEquals(IslandSuggestionTemplate.STAIRS,
+                IslandSuggestionTemplate.firstMatch(formDescriptor("minecraft:brick_stairs", "building_block", "stairs")));
+
+        assertEquals(IslandSuggestionTemplate.MOB_DROPS,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:string", "material")));
+        assertEquals(IslandSuggestionTemplate.MOB_DROPS,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:leather", "material")));
+        assertEquals(IslandSuggestionTemplate.MOB_DROPS,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:gunpowder", "material")));
+        assertEquals(IslandSuggestionTemplate.MOB_DROPS,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:ender_pearl", "utility")));
+        assertEquals(IslandSuggestionTemplate.MOB_DROPS,
+                IslandSuggestionTemplate.firstMatch(roleDescriptor("minecraft:rotten_flesh", "consumable")));
+        assertFalse(IslandSuggestionTemplate.MOB_DROPS.matches(
+                materialDescriptor("minecraft:white_wool", "material", "whole_block", "wool")
+        ));
     }
 
     @Test
@@ -217,10 +292,39 @@ class IslandSuggestionTemplateTest {
     }
 
     private static IslandSignalDescriptor formDescriptor(String itemId, String role, String form) {
+        return taggedFormDescriptor(itemId, role, form, Set.of());
+    }
+
+    private static IslandSignalDescriptor materialDescriptor(
+            String itemId,
+            String role,
+            String form,
+            String materialFamily
+    ) {
         return new IslandSignalDescriptor(
                 ItemIdentity.of(itemId),
                 Set.of(),
                 Set.of(),
+                itemId.contains(":") ? itemId.substring(0, itemId.indexOf(':')) : "",
+                "",
+                role,
+                null,
+                materialFamily,
+                java.util.List.of(),
+                java.util.List.of(),
+                java.util.List.of(),
+                null, null, null, null, null,
+                java.util.List.of(),
+                form,
+                false
+        );
+    }
+
+    private static IslandSignalDescriptor taggedFormDescriptor(String itemId, String role, String form, Set<String> tags) {
+        return new IslandSignalDescriptor(
+                ItemIdentity.of(itemId),
+                Set.of(),
+                tags,
                 itemId.contains(":") ? itemId.substring(0, itemId.indexOf(':')) : "",
                 "",
                 role,

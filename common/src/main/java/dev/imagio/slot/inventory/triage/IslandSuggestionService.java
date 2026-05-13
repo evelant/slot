@@ -64,7 +64,8 @@ public final class IslandSuggestionService {
 
         // Phase 1: a *high-specificity* template chip leads when one
         // fires (STAIRS / SLABS / WALLS / DOORS / FENCES / WINDOWS /
-        // LIGHTING / INGOTS / GEMS / RAW_MATERIALS / STORAGE / TOOLS /
+        // LIGHTING / INGOTS / GEMS / RAW_MATERIALS / WOOD / SEEDS /
+        // CROPS / PLANTS / CLAY_POTTERY / MOB_DROPS / STORAGE / TOOLS /
         // WEAPONS / ARMOR / FOOD, plus the trophy shunt). These keys
         // are narrower signals than NAMESPACE / CREATIVE_TAB learned
         // rules, so a "_wall" form facet should beat "you also homed

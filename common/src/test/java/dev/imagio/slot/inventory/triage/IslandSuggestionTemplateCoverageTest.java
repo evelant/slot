@@ -101,10 +101,11 @@ class IslandSuggestionTemplateCoverageTest {
         expected.put("minecraft:oak_trapdoor", IslandSuggestionTemplate.DOORS);
         expected.put("minecraft:iron_trapdoor", IslandSuggestionTemplate.DOORS);
         expected.put("minecraft:oak_fence_gate", IslandSuggestionTemplate.DOORS);
-        // Beds + decorated_pot → DECORATION (was functional_block).
+        // Beds → DECORATION (was functional_block). Decorated pots now
+        // live in the Clay & Pottery stock bucket.
         expected.put("minecraft:brown_bed", IslandSuggestionTemplate.DECORATION);
         expected.put("minecraft:red_bed", IslandSuggestionTemplate.DECORATION);
-        expected.put("minecraft:decorated_pot", IslandSuggestionTemplate.DECORATION);
+        expected.put("minecraft:decorated_pot", IslandSuggestionTemplate.CLAY_POTTERY);
         // Compressed material blocks → RAW_MATERIALS (the player's
         // "ore stockpile" island; they live with raw_iron / raw_copper /
         // raw_gold rather than the broader Materials catch-all).
@@ -121,13 +122,20 @@ class IslandSuggestionTemplateCoverageTest {
         // Spawn eggs → CURIOSITY (was utility / admin).
         expected.put("minecraft:bee_spawn_egg", IslandSuggestionTemplate.CURIOSITY);
         expected.put("minecraft:zombie_spawn_egg", IslandSuggestionTemplate.CURIOSITY);
-        // Mob drops → MATERIALS (was natural_resource).
-        expected.put("minecraft:blaze_rod", IslandSuggestionTemplate.MATERIALS);
-        expected.put("minecraft:string", IslandSuggestionTemplate.MATERIALS);
-        expected.put("minecraft:leather", IslandSuggestionTemplate.MATERIALS);
-        expected.put("minecraft:feather", IslandSuggestionTemplate.MATERIALS);
-        expected.put("minecraft:bone", IslandSuggestionTemplate.MATERIALS);
-        expected.put("minecraft:slime_ball", IslandSuggestionTemplate.MATERIALS);
+        // Universal stock sections keep these out of the broad Materials pile.
+        expected.put("minecraft:blaze_rod", IslandSuggestionTemplate.MOB_DROPS);
+        expected.put("minecraft:string", IslandSuggestionTemplate.MOB_DROPS);
+        expected.put("minecraft:leather", IslandSuggestionTemplate.MOB_DROPS);
+        expected.put("minecraft:feather", IslandSuggestionTemplate.MOB_DROPS);
+        expected.put("minecraft:bone", IslandSuggestionTemplate.MOB_DROPS);
+        expected.put("minecraft:slime_ball", IslandSuggestionTemplate.MOB_DROPS);
+        expected.put("minecraft:wheat_seeds", IslandSuggestionTemplate.SEEDS);
+        expected.put("minecraft:wheat", IslandSuggestionTemplate.CROPS);
+        expected.put("minecraft:carrot", IslandSuggestionTemplate.CROPS);
+        expected.put("minecraft:oak_sapling", IslandSuggestionTemplate.PLANTS);
+        expected.put("minecraft:clay_ball", IslandSuggestionTemplate.CLAY_POTTERY);
+        expected.put("minecraft:brick", IslandSuggestionTemplate.CLAY_POTTERY);
+        expected.put("minecraft:flower_pot", IslandSuggestionTemplate.CLAY_POTTERY);
         // Raw ores → RAW_MATERIALS, not the broad MATERIALS pile.
         expected.put("minecraft:raw_iron", IslandSuggestionTemplate.RAW_MATERIALS);
 
@@ -145,7 +153,7 @@ class IslandSuggestionTemplateCoverageTest {
     }
 
     @Test
-    void naturalResourceRoutesToNaturalNotMaterials() {
+    void woodStockRoutesToWoodNotBroadNaturalOrMaterials() {
         IslandSignalDescriptor descriptor = new IslandSignalDescriptor(
                 ItemIdentity.of("minecraft:birch_wood"),
                 Set.of(),
@@ -157,10 +165,9 @@ class IslandSuggestionTemplateCoverageTest {
         );
         IslandSuggestionTemplate match = IslandSuggestionTemplate.firstMatch(descriptor);
         assertNotNull(match);
-        // Regression: prior to the overlap fix, MATERIALS captured every
-        // natural_resource item because it was listed in both MATERIALS
-        // and NATURAL roleTriggers. NATURAL must win now.
-        org.junit.jupiter.api.Assertions.assertEquals(IslandSuggestionTemplate.NATURAL, match);
+        // Wood stock is a first-order material bucket. It should not fall
+        // into the broad Natural or Materials catch-alls.
+        org.junit.jupiter.api.Assertions.assertEquals(IslandSuggestionTemplate.WOOD, match);
     }
 
     @Test

@@ -218,11 +218,11 @@ track lands.
    `vocabulary_proposals`, and patched deterministic ore/log gaps found by
    canaries. The first full TFG server rehome exposed over-fragmented main
    wall sections from mod-name, material-state, rock-taxonomy, and
-   high-specificity form buckets. The current policy keeps those as
-   search/filter/within-section signals instead of main homes. The next
-   classification step is a fresh vocabulary refresh, an `organization_group`
-   home-impact audit, and a canary before another full `classify-runtime-pack`
-   run.
+   high-specificity form buckets. Runtime `organization_group` homing is
+   temporarily disabled so server rehome falls back to default sections while
+   the vocabulary/prompt fixes are validated. The next classification step is a
+   fresh vocabulary refresh, an `organization_group` home-impact audit, and a
+   canary before another full `classify-runtime-pack` run.
 5. **Runtime-crawl deterministic fallback**
    ([item-classification.md § Runtime discovery](item-classification.md#runtime-discovery)).
    Walks the live registry to derive deterministic facets

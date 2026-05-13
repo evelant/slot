@@ -21,6 +21,10 @@ import java.util.function.Predicate;
  */
 public final class DynamicHomeCohortPolicy {
     public static final int DEFAULT_MIN_SUBSYSTEM_ITEMS = 10;
+    // Temporary safety valve while the next vocabulary refresh is validated.
+    // Keep counting groups for inspect/audit, but don't let stale generated
+    // organization_group values materialize main-wall homes during rehome.
+    public static final boolean ORGANIZATION_GROUP_HOMING_ENABLED = false;
 
     private static final Object CACHE_LOCK = new Object();
     private static volatile FacetIndex cachedIndex;
@@ -108,6 +112,9 @@ public final class DynamicHomeCohortPolicy {
     }
 
     public boolean organizationGroupQualifies(String groupId) {
+        if (!ORGANIZATION_GROUP_HOMING_ENABLED) {
+            return false;
+        }
         return organizationGroupCount(groupId) >= minSubsystemItems;
     }
 

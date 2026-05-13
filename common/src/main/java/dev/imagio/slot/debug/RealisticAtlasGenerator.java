@@ -365,7 +365,10 @@ public final class RealisticAtlasGenerator {
             case WEAPONS -> "weapon";
             case ARMOR -> "armor";
             case LIGHTING -> null;
-            case INGOTS, GEMS, RAW_MATERIALS -> null;
+            case INGOTS, GEMS, RAW_MATERIALS, WOOD -> null;
+            case SEEDS, PLANTS -> null;
+            case CROPS -> "natural_resource";
+            case MOB_DROPS, CLAY_POTTERY -> "material";
             case MATERIALS -> "material";
             case STORAGE -> "storage_block";
             case STAIRS, SLABS, WALLS, DOORS, FENCES, WINDOWS -> null;
@@ -391,6 +394,8 @@ public final class RealisticAtlasGenerator {
                     CommonItemTagFamilies.canonicalRootTag(CommonItemTagFamilies.Family.GEMS));
             case RAW_MATERIALS -> java.util.Set.of(
                     CommonItemTagFamilies.canonicalRootTag(CommonItemTagFamilies.Family.RAW_MATERIALS));
+            case WOOD -> java.util.Set.of("minecraft:logs");
+            case PLANTS -> java.util.Set.of("minecraft:saplings");
             default -> java.util.Set.of();
         };
     }
@@ -403,6 +408,8 @@ public final class RealisticAtlasGenerator {
             case DOORS -> "door";
             case FENCES -> "fence";
             case WINDOWS -> "pane";
+            case SEEDS -> "seed";
+            case PLANTS -> "sapling";
             default -> null;
         };
     }
@@ -1081,7 +1088,9 @@ public final class RealisticAtlasGenerator {
         IslandSuggestionTemplate t = template == null ? IslandSuggestionTemplate.MISC : template;
         return switch (t) {
             case TOOLS, WEAPONS, ARMOR, WORKBENCHES, UPGRADES, TRANSPORT -> 1;
-            case INGOTS, GEMS, RAW_MATERIALS, MATERIALS, BUILDING,
+            case INGOTS, GEMS, RAW_MATERIALS, WOOD,
+                    SEEDS, CROPS, PLANTS, CLAY_POTTERY, MOB_DROPS,
+                    MATERIALS, BUILDING,
                     STAIRS, SLABS, WALLS, DOORS, FENCES, WINDOWS,
                     NATURAL, MECHANISMS -> {
                 int floor = Math.min(16, max);
@@ -1356,10 +1365,11 @@ public final class RealisticAtlasGenerator {
         // depending on classification). Trophies and curiosities are
         // rare loot; staircases and decorative blocks aren't.
         double bias = switch (t.template()) {
-            case RAW_MATERIALS, INGOTS, GEMS -> 6.0;
+            case RAW_MATERIALS, INGOTS, GEMS, WOOD, MOB_DROPS -> 6.0;
+            case CROPS, PLANTS -> 4.0;
             case NATURAL -> 4.0;
             case MISC -> 2.5;
-            case FOOD -> 2.0;
+            case FOOD, SEEDS, CLAY_POTTERY -> 2.0;
             case BUILDING -> 1.5;
             case MATERIALS, LIGHTING -> 1.2;
             case STAIRS, SLABS, WALLS, DOORS, FENCES, WINDOWS -> 0.6;

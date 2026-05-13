@@ -7,7 +7,6 @@ import dev.imagio.slot.inventory.core.ItemIdentity;
 import dev.imagio.slot.inventory.query.CursorStateSnapshot;
 import dev.imagio.slot.inventory.query.InventoryAuthoritySnapshot;
 import dev.imagio.slot.inventory.triage.IslandSignalDescriptor;
-import dev.imagio.slot.inventory.triage.IslandTemplateMatch;
 import dev.imagio.slot.inventory.triage.LearnedIslandRuleStore;
 import dev.imagio.slot.workflow.domain.DomainEventMetadata;
 import dev.imagio.slot.workflow.domain.InMemoryWorkflowDomainStateRepository;
@@ -142,7 +141,7 @@ class SlotWorkspaceCommandServiceRehomeTest {
     }
 
     @Test
-    void reclassifyHomesPrefersQualifiedOrganizationGroup() {
+    void reclassifyHomesIgnoresOrganizationGroupWhileGroupHomingDisabled() {
         FacetIndexHolder.install(FacetIndex.load(new StringReader(layerWithMasonryGroupCohort())));
         try {
             WorkflowDomainRuntime runtime = new WorkflowDomainRuntime(
@@ -162,7 +161,7 @@ class SlotWorkspaceCommandServiceRehomeTest {
             assertEquals(1, result.islandsCreated());
             VisualHomeAssignment assignment = runtime.visualAtlasWorkflow().visualHomeMap().assignment(mortar);
             assertNotNull(assignment);
-            assertEquals(IslandTemplateMatch.ORGANIZATION_GROUP_ISLAND_PREFIX + "tfc:masonry", assignment.islandId());
+            assertEquals("materials", assignment.islandId());
             assertEquals(VisualHomeOrigin.AUTO_HOMED, assignment.origin());
         } finally {
             FacetIndexHolder.reset();

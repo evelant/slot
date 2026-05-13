@@ -12,6 +12,39 @@ public enum IslandSuggestionTemplate {
     // break, different row = ISLAND_CLUSTER_ROW_GAP. The five logical
     // groups: row 0 player gear, row 1 building, row 2 materials,
     // row 3 machinery, row 4 decoration/curio/misc.
+    SEEDS(
+            "template.seeds",
+            "Seeds",
+            0xCC7A6A2E,
+            2, 1,
+            Set.of(),
+            Set.of(),
+            Set.of(),
+            Set.of("slot:farming", "slot:gathering"),
+            Set.of()
+    ),
+    CROPS(
+            "template.crops",
+            "Crops",
+            0xCC5F7A35,
+            2, 1,
+            Set.of(),
+            Set.of(),
+            Set.of(),
+            Set.of("slot:farming", "slot:gathering"),
+            Set.of()
+    ),
+    MOB_DROPS(
+            "template.mob_drops",
+            "Mob Drops",
+            0xCC6A3F3A,
+            2, 1,
+            Set.of(),
+            Set.of(),
+            Set.of(),
+            Set.of("slot:combat", "slot:gathering"),
+            Set.of()
+    ),
     FOOD(
             "template.food",
             "Food",
@@ -85,10 +118,11 @@ public enum IslandSuggestionTemplate {
             Set.of(),
             Set.of()
     ),
-    // Materials family — split by tag so common ingredients (sticks,
-    // string, leather) cluster separately from refined output (ingots,
-    // gems, raw chunks). Players grab "a stick" or "an iron ingot"
-    // distinctly; a single Materials pile lumps the two and pushes
+    // Materials family — split by tag/form/id so common stock (wood,
+    // seeds, crops, plant stock, pottery/clay, mob drops, ingots, gems,
+    // raw chunks) does not collapse into one giant Materials pile.
+    // Players grab "a stick", "wheat seeds", or "an iron ingot"
+    // distinctly; a single Materials pile lumps the lot and pushes
     // ingredients halfway down.
     INGOTS(
             "template.ingots",
@@ -121,6 +155,39 @@ public enum IslandSuggestionTemplate {
             Set.of(),
             Set.of(),
             Set.of(),
+            Set.of()
+    ),
+    WOOD(
+            "template.wood",
+            "Wood",
+            0xCC6B4A2E,
+            2, 0,
+            Set.of(),
+            Set.of(),
+            Set.of(),
+            Set.of(),
+            Set.of()
+    ),
+    PLANTS(
+            "template.plants",
+            "Plants",
+            0xCC3F7A45,
+            2, 1,
+            Set.of(),
+            Set.of(),
+            Set.of(),
+            Set.of("slot:farming", "slot:gathering", "slot:decorating"),
+            Set.of()
+    ),
+    CLAY_POTTERY(
+            "template.clay_pottery",
+            "Clay & Pottery",
+            0xCC8A6042,
+            2, 1,
+            Set.of(),
+            Set.of(),
+            Set.of(),
+            Set.of("slot:crafting", "slot:building", "slot:decorating"),
             Set.of()
     ),
     MATERIALS(
@@ -437,8 +504,9 @@ public enum IslandSuggestionTemplate {
      * facet is a much more confident signal than "the player just
      * homed two other Create blocks somewhere". LIGHTING fires on the
      * narrow {@code emits_light} facet, also strong. Specific
-     * commodity templates (INGOTS / GEMS / RAW_MATERIALS / STORAGE)
-     * key on {@code c:*} tags that map cleanly to a player's mental
+     * commodity templates (INGOTS / GEMS / RAW_MATERIALS / WOOD /
+     * SEEDS / CROPS / PLANTS / CLAY_POTTERY / MOB_DROPS / STORAGE)
+     * key on stable forms, tags, or ids that map cleanly to a player's mental
      * model. Class-signal templates (TOOLS / WEAPONS / ARMOR / FOOD)
      * key on Minecraft subclasses, which the player thinks of as
      * "this IS a sword / armor piece / food", not "this is a thing in
@@ -454,7 +522,9 @@ public enum IslandSuggestionTemplate {
         return switch (this) {
             case STAIRS, SLABS, WALLS, DOORS, FENCES, WINDOWS,
                     LIGHTING,
-                    INGOTS, GEMS, RAW_MATERIALS, STORAGE,
+                    INGOTS, GEMS, RAW_MATERIALS, WOOD,
+                    SEEDS, CROPS, PLANTS, CLAY_POTTERY, MOB_DROPS,
+                    STORAGE,
                     TOOLS, WEAPONS, ARMOR, FOOD -> true;
             default -> false;
         };
@@ -511,6 +581,24 @@ public enum IslandSuggestionTemplate {
             }
         }
         if (hasMatchingTag(descriptor.itemTags(), itemTagTriggers)) {
+            return true;
+        }
+        if (this == SEEDS && matchesSeedStock(descriptor)) {
+            return true;
+        }
+        if (this == CROPS && matchesCropStock(descriptor)) {
+            return true;
+        }
+        if (this == MOB_DROPS && matchesMobDrop(descriptor)) {
+            return true;
+        }
+        if (this == WOOD && matchesWoodStock(descriptor)) {
+            return true;
+        }
+        if (this == PLANTS && matchesPlantStock(descriptor)) {
+            return true;
+        }
+        if (this == CLAY_POTTERY && matchesClayPottery(descriptor)) {
             return true;
         }
         if (matchesCommodityFormOrPath(descriptor)) {
@@ -594,6 +682,236 @@ public enum IslandSuggestionTemplate {
         return false;
     }
 
+    private static boolean matchesSeedStock(IslandSignalDescriptor descriptor) {
+        if (!rolesWithin(descriptor, SEED_ALLOWED_ROLES)) {
+            return false;
+        }
+        String form = descriptor.form();
+        if ("seed".equals(form)) {
+            return true;
+        }
+        String path = identityPath(descriptor);
+        if (path.isBlank() || hasAnyPathToken(path, SEED_BLOCKED_PATH_TOKENS)) {
+            return false;
+        }
+        return path.endsWith("_seed")
+                || path.endsWith("_seeds")
+                || path.endsWith("/seed")
+                || path.endsWith("/seeds")
+                || SEED_EXACT_PATHS.contains(path);
+    }
+
+    private static boolean matchesCropStock(IslandSignalDescriptor descriptor) {
+        if (!rolesWithin(descriptor, CROP_ALLOWED_ROLES)) {
+            return false;
+        }
+        String form = descriptor.form();
+        if (form != null && CROP_BLOCKED_FORMS.contains(form)) {
+            return false;
+        }
+        String path = identityPath(descriptor);
+        if (path.isBlank() || hasAnyPathToken(path, CROP_BLOCKED_PATH_TOKENS)) {
+            return false;
+        }
+        return CROP_EXACT_PATHS.contains(path)
+                || hasPathToken(path, "crop")
+                || hasPathToken(path, "crops");
+    }
+
+    private static boolean matchesMobDrop(IslandSignalDescriptor descriptor) {
+        String path = identityPath(descriptor);
+        if (!path.isBlank() && MOB_DROP_EXACT_PATHS.contains(path)) {
+            return true;
+        }
+        if (!rolesWithin(descriptor, MOB_DROP_ALLOWED_ROLES)) {
+            return false;
+        }
+        String materialFamily = descriptor.materialFamily();
+        if (materialFamily != null && MOB_DROP_MATERIAL_FAMILIES.contains(materialFamily)) {
+            return true;
+        }
+        if (path.isBlank() || hasAnyPathToken(path, MOB_DROP_BLOCKED_PATH_TOKENS)) {
+            return false;
+        }
+        return hasAnyPathToken(path, MOB_DROP_PATH_TOKENS);
+    }
+
+    private static boolean matchesPlantStock(IslandSignalDescriptor descriptor) {
+        if (!rolesWithin(descriptor, PLANT_ALLOWED_ROLES)) {
+            return false;
+        }
+        String form = descriptor.form();
+        if (form != null) {
+            if (PLANT_STOCK_FORMS.contains(form)) {
+                return true;
+            }
+            if (PLANT_BLOCKED_FORMS.contains(form)) {
+                return false;
+            }
+        }
+        if (hasPlantStockTag(descriptor.itemTags())) {
+            return true;
+        }
+        String path = identityPath(descriptor);
+        if (path.isBlank() || hasAnyPathToken(path, PLANT_BLOCKED_PATH_TOKENS)) {
+            return false;
+        }
+        if (PLANT_EXACT_PATHS.contains(path)) {
+            return true;
+        }
+        return path.endsWith("_sapling")
+                || path.endsWith("_propagule")
+                || path.endsWith("_leaves")
+                || path.endsWith("_flower")
+                || path.endsWith("_flowers")
+                || path.endsWith("_vines")
+                || path.endsWith("_vine")
+                || path.endsWith("_fungus")
+                || path.endsWith("_roots");
+    }
+
+    private static boolean matchesClayPottery(IslandSignalDescriptor descriptor) {
+        if (!rolesWithin(descriptor, CLAY_POTTERY_ALLOWED_ROLES)) {
+            return false;
+        }
+        String form = descriptor.form();
+        if (form != null && CLAY_POTTERY_BLOCKED_FORMS.contains(form)) {
+            return false;
+        }
+        String path = identityPath(descriptor);
+        if (path.isBlank() || hasAnyPathToken(path, CLAY_POTTERY_BLOCKED_PATH_TOKENS)) {
+            return false;
+        }
+        if (CLAY_POTTERY_EXACT_PATHS.contains(path)
+                || hasAnyPathToken(path, CLAY_POTTERY_STRONG_PATH_TOKENS)) {
+            return true;
+        }
+        return hasAnyPathToken(path, CLAY_POTTERY_CONTEXTUAL_PATH_TOKENS)
+                && hasClayPotteryContext(path, descriptor);
+    }
+
+    private static boolean matchesWoodStock(IslandSignalDescriptor descriptor) {
+        if (!allowsWoodStockMatch(descriptor)) {
+            return false;
+        }
+        String form = descriptor.form();
+        if (form != null) {
+            if (WOOD_STOCK_FORMS.contains(form)) {
+                return true;
+            }
+            if (WOOD_BLOCKED_FORMS.contains(form)) {
+                return false;
+            }
+        }
+        if (hasWoodStockTag(descriptor.itemTags())) {
+            return true;
+        }
+        String path = identityPath(descriptor);
+        if (path.isBlank() || hasAnyPathToken(path, WOOD_BLOCKED_PATH_TOKENS)) {
+            return false;
+        }
+        if (path.endsWith("_wood") || path.endsWith("/wood")
+                || path.endsWith("_hyphae") || path.endsWith("/hyphae")) {
+            return true;
+        }
+        if (hasAnyPathToken(path, WOOD_STOCK_PATH_TOKENS)) {
+            return true;
+        }
+        return hasAnyPathToken(path, WOOD_CONTEXTUAL_STOCK_PATH_TOKENS)
+                && hasWoodContext(path, descriptor);
+    }
+
+    private static boolean allowsWoodStockMatch(IslandSignalDescriptor descriptor) {
+        List<String> roles = descriptor.roleAlternatives();
+        if (roles == null || roles.isEmpty()) {
+            return true;
+        }
+        for (String role : roles) {
+            if (role == null || role.isBlank()) {
+                continue;
+            }
+            if (!WOOD_ALLOWED_ROLES.contains(role)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean hasWoodStockTag(Set<String> tags) {
+        if (tags == null || tags.isEmpty()) {
+            return false;
+        }
+        for (String tag : tags) {
+            if (tag == null || tag.isBlank()) {
+                continue;
+            }
+            if (WOOD_STOCK_TAGS.contains(tag)
+                    || tag.startsWith("minecraft:") && (tag.endsWith("_logs") || tag.endsWith("_stems"))
+                    || tag.equals("c:rods/wooden")
+                    || tag.equals("forge:rods/wooden")
+                    || tag.equals("c:sticks/wooden")
+                    || tag.equals("forge:sticks/wooden")
+                    || tag.equals("c:lumber")
+                    || tag.equals("forge:lumber")
+                    || tag.equals("c:boards")
+                    || tag.equals("forge:boards")) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean hasWoodContext(String path, IslandSignalDescriptor descriptor) {
+        if (hasPathToken(path, "wood") || hasPathToken(path, "wooden")) {
+            return true;
+        }
+        String materialFamily = descriptor.materialFamily();
+        return materialFamily != null && (materialFamily.equals("wood") || materialFamily.startsWith("wood_"));
+    }
+
+    private static boolean hasPlantStockTag(Set<String> tags) {
+        if (tags == null || tags.isEmpty()) {
+            return false;
+        }
+        for (String tag : tags) {
+            if (tag == null || tag.isBlank()) {
+                continue;
+            }
+            if (PLANT_STOCK_TAGS.contains(tag)
+                    || tag.startsWith("minecraft:") && (tag.endsWith("_flowers") || tag.endsWith("_leaves"))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean hasClayPotteryContext(String path, IslandSignalDescriptor descriptor) {
+        if (hasAnyPathToken(path, CLAY_POTTERY_STRONG_PATH_TOKENS)
+                || hasPathToken(path, "mud")
+                || hasPathToken(path, "adobe")
+                || hasPathToken(path, "fire")) {
+            return true;
+        }
+        String materialFamily = descriptor.materialFamily();
+        return materialFamily != null && CLAY_POTTERY_MATERIAL_FAMILIES.contains(materialFamily);
+    }
+
+    private static boolean rolesWithin(IslandSignalDescriptor descriptor, Set<String> allowedRoles) {
+        List<String> roles = descriptor.roleAlternatives();
+        if (roles == null || roles.isEmpty()) {
+            return true;
+        }
+        for (String role : roles) {
+            if (role == null || role.isBlank()) {
+                continue;
+            }
+            if (!allowedRoles.contains(role)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     private static boolean hasMatchingTag(Set<String> actualTags, Set<String> triggerTags) {
         if (actualTags == null || actualTags.isEmpty() || triggerTags == null || triggerTags.isEmpty()) {
             return false;
@@ -617,6 +935,18 @@ public enum IslandSuggestionTemplate {
         }
         for (String part : path.split("[/_.-]+")) {
             if (token.equals(part)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean hasAnyPathToken(String path, Set<String> tokens) {
+        if (path == null || path.isBlank() || tokens == null || tokens.isEmpty()) {
+            return false;
+        }
+        for (String part : path.split("[/_.-]+")) {
+            if (tokens.contains(part)) {
                 return true;
             }
         }
@@ -649,6 +979,479 @@ public enum IslandSuggestionTemplate {
             "amethyst_block",
             "quartz_block",
             "redstone_block"
+    );
+
+    private static final Set<String> SEED_ALLOWED_ROLES = Set.of(
+            "material",
+            "natural_resource",
+            "consumable"
+    );
+
+    private static final Set<String> SEED_EXACT_PATHS = Set.of(
+            "pitcher_pod"
+    );
+
+    private static final Set<String> SEED_BLOCKED_PATH_TOKENS = Set.of(
+            "oil",
+            "cake",
+            "meal"
+    );
+
+    private static final Set<String> CROP_ALLOWED_ROLES = Set.of(
+            "material",
+            "natural_resource",
+            "consumable"
+    );
+
+    private static final Set<String> CROP_EXACT_PATHS = Set.of(
+            "wheat",
+            "carrot",
+            "carrots",
+            "potato",
+            "potatoes",
+            "poisonous_potato",
+            "beetroot",
+            "beetroots",
+            "melon",
+            "melon_slice",
+            "pumpkin",
+            "sugar_cane",
+            "cactus",
+            "kelp",
+            "bamboo",
+            "cocoa_beans",
+            "nether_wart",
+            "sweet_berries",
+            "glow_berries"
+    );
+
+    private static final Set<String> CROP_BLOCKED_FORMS = Set.of(
+            "seed",
+            "food_cooked",
+            "bottle",
+            "bucket",
+            "storage_block",
+            "tool",
+            "weapon",
+            "armor_piece"
+    );
+
+    private static final Set<String> CROP_BLOCKED_PATH_TOKENS = Set.of(
+            "seed",
+            "seeds",
+            "baked",
+            "golden",
+            "glistering",
+            "dried",
+            "pie",
+            "soup",
+            "stew",
+            "bread",
+            "cookie",
+            "cake",
+            "block",
+            "blocks"
+    );
+
+    private static final Set<String> MOB_DROP_ALLOWED_ROLES = Set.of(
+            "material",
+            "natural_resource"
+    );
+
+    private static final Set<String> MOB_DROP_EXACT_PATHS = Set.of(
+            "string",
+            "leather",
+            "rabbit_hide",
+            "rabbit_foot",
+            "feather",
+            "bone",
+            "bone_meal",
+            "slime_ball",
+            "magma_cream",
+            "rotten_flesh",
+            "gunpowder",
+            "spider_eye",
+            "ghast_tear",
+            "phantom_membrane",
+            "blaze_rod",
+            "blaze_powder",
+            "ender_pearl",
+            "prismarine_shard",
+            "prismarine_crystals",
+            "ink_sac",
+            "glow_ink_sac",
+            "turtle_scute",
+            "armadillo_scute",
+            "egg"
+    );
+
+    private static final Set<String> MOB_DROP_MATERIAL_FAMILIES = Set.of(
+            "leather",
+            "bone",
+            "slime",
+            "scute"
+    );
+
+    private static final Set<String> MOB_DROP_PATH_TOKENS = Set.of(
+            "string",
+            "leather",
+            "hide",
+            "feather",
+            "bone",
+            "slime",
+            "scute",
+            "gunpowder",
+            "flesh",
+            "drop",
+            "drops"
+    );
+
+    private static final Set<String> MOB_DROP_BLOCKED_PATH_TOKENS = Set.of(
+            "block",
+            "blocks",
+            "wool",
+            "carpet",
+            "bed",
+            "banner",
+            "armor",
+            "helmet",
+            "chestplate",
+            "leggings",
+            "boots",
+            "horse",
+            "wolf",
+            "painting",
+            "frame"
+    );
+
+    private static final Set<String> WOOD_ALLOWED_ROLES = Set.of(
+            "material",
+            "natural_resource",
+            "building_block"
+    );
+
+    private static final Set<String> WOOD_STOCK_FORMS = Set.of(
+            "log",
+            "stripped_log",
+            "wood"
+    );
+
+    private static final Set<String> WOOD_BLOCKED_FORMS = Set.of(
+            "stairs",
+            "slab",
+            "wall",
+            "fence",
+            "fence_gate",
+            "door",
+            "trapdoor",
+            "pane",
+            "bars",
+            "button",
+            "pressure_plate",
+            "ladder",
+            "sign",
+            "hanging_sign",
+            "vehicle",
+            "bed",
+            "banner",
+            "carpet",
+            "candle",
+            "torch",
+            "lantern",
+            "storage_block",
+            "tool",
+            "weapon",
+            "armor_piece",
+            "projectile",
+            "bucket",
+            "bottle",
+            "seed",
+            "sapling",
+            "special"
+    );
+
+    private static final Set<String> WOOD_STOCK_TAGS = Set.of(
+            "minecraft:logs",
+            "minecraft:planks",
+            "minecraft:bamboo_blocks"
+    );
+
+    private static final Set<String> WOOD_STOCK_PATH_TOKENS = Set.of(
+            "stick",
+            "sticks",
+            "twig",
+            "twigs",
+            "log",
+            "logs",
+            "stem",
+            "stems",
+            "hyphae",
+            "plank",
+            "planks"
+    );
+
+    private static final Set<String> WOOD_CONTEXTUAL_STOCK_PATH_TOKENS = Set.of(
+            "board",
+            "boards",
+            "lumber",
+            "timber"
+    );
+
+    private static final Set<String> WOOD_BLOCKED_PATH_TOKENS = Set.of(
+            "stairs",
+            "stair",
+            "slabs",
+            "slab",
+            "walls",
+            "wall",
+            "fences",
+            "fence",
+            "gate",
+            "gates",
+            "doors",
+            "door",
+            "trapdoors",
+            "trapdoor",
+            "windows",
+            "window",
+            "panes",
+            "pane",
+            "bars",
+            "button",
+            "buttons",
+            "pressure",
+            "plate",
+            "plates",
+            "ladders",
+            "ladder",
+            "sign",
+            "signs",
+            "boat",
+            "boats",
+            "minecart",
+            "minecarts",
+            "bed",
+            "beds",
+            "banner",
+            "banners",
+            "carpet",
+            "carpets",
+            "chest",
+            "chests",
+            "barrel",
+            "barrels",
+            "axe",
+            "pickaxe",
+            "sword",
+            "shovel",
+            "hoe",
+            "helmet",
+            "chestplate",
+            "leggings",
+            "boots"
+    );
+
+    private static final Set<String> PLANT_ALLOWED_ROLES = Set.of(
+            "material",
+            "natural_resource",
+            "building_block",
+            "decorative_block"
+    );
+
+    private static final Set<String> PLANT_STOCK_FORMS = Set.of(
+            "sapling",
+            "bulb"
+    );
+
+    private static final Set<String> PLANT_BLOCKED_FORMS = Set.of(
+            "seed",
+            "food_raw",
+            "food_cooked",
+            "storage_block",
+            "stairs",
+            "slab",
+            "wall",
+            "fence",
+            "fence_gate",
+            "door",
+            "trapdoor",
+            "pane",
+            "bars",
+            "button",
+            "pressure_plate",
+            "ladder",
+            "sign",
+            "hanging_sign",
+            "vehicle",
+            "pot",
+            "tool",
+            "weapon",
+            "armor_piece",
+            "projectile",
+            "bucket",
+            "bottle",
+            "special"
+    );
+
+    private static final Set<String> PLANT_STOCK_TAGS = Set.of(
+            "minecraft:saplings",
+            "minecraft:flowers",
+            "minecraft:small_flowers",
+            "minecraft:tall_flowers",
+            "minecraft:leaves"
+    );
+
+    private static final Set<String> PLANT_EXACT_PATHS = Set.of(
+            "short_grass",
+            "tall_grass",
+            "fern",
+            "large_fern",
+            "dead_bush",
+            "vine",
+            "vines",
+            "weeping_vines",
+            "twisting_vines",
+            "lily_pad",
+            "spore_blossom",
+            "hanging_roots",
+            "big_dripleaf",
+            "small_dripleaf",
+            "glow_lichen",
+            "seagrass",
+            "sea_pickle",
+            "dandelion",
+            "poppy",
+            "blue_orchid",
+            "allium",
+            "azure_bluet",
+            "red_tulip",
+            "orange_tulip",
+            "white_tulip",
+            "pink_tulip",
+            "oxeye_daisy",
+            "cornflower",
+            "lily_of_the_valley",
+            "sunflower",
+            "lilac",
+            "rose_bush",
+            "peony",
+            "wildflowers",
+            "torchflower",
+            "pitcher_plant",
+            "brown_mushroom",
+            "red_mushroom",
+            "crimson_fungus",
+            "warped_fungus",
+            "crimson_roots",
+            "warped_roots",
+            "nether_sprouts"
+    );
+
+    private static final Set<String> PLANT_BLOCKED_PATH_TOKENS = Set.of(
+            "seed",
+            "seeds",
+            "crop",
+            "crops",
+            "pot",
+            "potted",
+            "flowerpot",
+            "flower_pot",
+            "plank",
+            "planks",
+            "log",
+            "logs",
+            "wood",
+            "stem",
+            "stems",
+            "hyphae",
+            "grass_block",
+            "moss_block"
+    );
+
+    private static final Set<String> CLAY_POTTERY_ALLOWED_ROLES = Set.of(
+            "material",
+            "natural_resource",
+            "building_block",
+            "decorative_block"
+    );
+
+    private static final Set<String> CLAY_POTTERY_EXACT_PATHS = Set.of(
+            "clay",
+            "clay_ball",
+            "brick",
+            "bricks",
+            "terracotta",
+            "flower_pot",
+            "decorated_pot"
+    );
+
+    private static final Set<String> CLAY_POTTERY_MATERIAL_FAMILIES = Set.of(
+            "clay",
+            "ceramic",
+            "terracotta"
+    );
+
+    private static final Set<String> CLAY_POTTERY_STRONG_PATH_TOKENS = Set.of(
+            "clay",
+            "ceramic",
+            "terracotta",
+            "pottery",
+            "sherd"
+    );
+
+    private static final Set<String> CLAY_POTTERY_CONTEXTUAL_PATH_TOKENS = Set.of(
+            "brick",
+            "bricks",
+            "pot",
+            "pots"
+    );
+
+    private static final Set<String> CLAY_POTTERY_BLOCKED_FORMS = Set.of(
+            "stairs",
+            "slab",
+            "wall",
+            "fence",
+            "fence_gate",
+            "door",
+            "trapdoor",
+            "pane",
+            "bars",
+            "button",
+            "pressure_plate",
+            "ladder",
+            "sign",
+            "hanging_sign",
+            "storage_block",
+            "tool",
+            "weapon",
+            "armor_piece"
+    );
+
+    private static final Set<String> CLAY_POTTERY_BLOCKED_PATH_TOKENS = Set.of(
+            "stairs",
+            "stair",
+            "slab",
+            "slabs",
+            "wall",
+            "walls",
+            "fence",
+            "fences",
+            "door",
+            "doors",
+            "trapdoor",
+            "trapdoors",
+            "button",
+            "buttons",
+            "pressure",
+            "plate",
+            "plates",
+            "nether",
+            "stone",
+            "deepslate",
+            "blackstone",
+            "prismarine",
+            "quartz",
+            "end"
     );
 
     /**

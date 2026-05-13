@@ -40,6 +40,9 @@ public final class ClassificationInspectFormatter {
                 : ""));
         lines.add("  auto_home_target=" + dynamicMatch.islandId()
                 + " label=" + dynamicMatch.label()
+                + " group_homing=" + (DynamicHomeCohortPolicy.ORGANIZATION_GROUP_HOMING_ENABLED
+                        ? "enabled"
+                        : "disabled")
                 + " group_counts=" + summarizeGroupCounts(descriptor.organizationGroups(), cohortPolicy));
         lines.add("  matching_templates=" + summarize(matchingTemplates));
         lines.add("  role=" + noneIfBlank(descriptor.role())

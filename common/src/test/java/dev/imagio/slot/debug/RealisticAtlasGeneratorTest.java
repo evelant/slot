@@ -733,7 +733,7 @@ class RealisticAtlasGeneratorTest {
 
     @Test
     void palettedItemsClusterByPrimaryToneNotIdAlpha() {
-        // Six warm-toned wood blocks across three "species" — pure id
+        // Six warm-toned wood stock blocks across three "species" — pure id
         // alphabetical would interleave them as acacia, jungle, mangrove,
         // but palette clustering pulls all three wood_red items into one
         // block and all three wood_medium items into another, regardless
@@ -753,9 +753,9 @@ class RealisticAtlasGeneratorTest {
                 pool::describe
         );
 
-        String buildingIslandId = IslandSuggestionTemplate.BUILDING.defaultIslandId();
+        String woodIslandId = IslandSuggestionTemplate.WOOD.defaultIslandId();
         List<String> ordered = plan.assignments().values().stream()
-                .filter(a -> buildingIslandId.equals(a.islandId()))
+                .filter(a -> woodIslandId.equals(a.islandId()))
                 .sorted((a, b) -> Integer.compare(a.ordinal(), b.ordinal()))
                 .map(a -> a.identity().itemId())
                 .toList();
@@ -805,14 +805,24 @@ class RealisticAtlasGeneratorTest {
         assertTrue(ordered.contains("modded:white_concrete"));
         assertTrue(ordered.contains("modded:oak_plank"));
         assertTrue(ordered.contains("modded:plain_brick"));
-        // BUILDING island: palette before plain.
+        // WOOD island: palette before plain stock wood. The plain brick
+        // remains in BUILDING now that stock planks have a first-order
+        // Wood material bucket.
+        String woodId = IslandSuggestionTemplate.WOOD.defaultIslandId();
+        List<String> woodOrder = plan.assignments().values().stream()
+                .filter(a -> woodId.equals(a.islandId()))
+                .sorted((a, b) -> Integer.compare(a.ordinal(), b.ordinal()))
+                .map(a -> a.identity().itemId())
+                .toList();
+        assertEquals(List.of("modded:oak_plank"), woodOrder);
+
         String buildingId = IslandSuggestionTemplate.BUILDING.defaultIslandId();
         List<String> buildingOrder = plan.assignments().values().stream()
                 .filter(a -> buildingId.equals(a.islandId()))
                 .sorted((a, b) -> Integer.compare(a.ordinal(), b.ordinal()))
                 .map(a -> a.identity().itemId())
                 .toList();
-        assertEquals(List.of("modded:oak_plank", "modded:plain_brick"), buildingOrder);
+        assertEquals(List.of("modded:plain_brick"), buildingOrder);
     }
 
     @Test

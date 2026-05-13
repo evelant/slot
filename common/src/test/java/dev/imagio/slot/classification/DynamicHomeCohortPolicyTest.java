@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class DynamicHomeCohortPolicyTest {
 
     @Test
-    void qualifiesOnlyOrganizationGroupCohortsAtThreshold() {
+    void countsOrganizationGroupCohortsButDoesNotQualifyWhileHomingDisabled() {
         ArrayList<String> entries = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             entries.add(entry("tfc:ceramic/casting_mold_" + i, "utility", "tfc:casting"));
@@ -43,9 +43,10 @@ class DynamicHomeCohortPolicyTest {
         assertFalse(policy.qualifies("tfc:tiny_mechanic"));
         assertFalse(policy.qualifies("create:decoration"));
         assertEquals(0, policy.count("create:decoration"));
-        assertTrue(policy.organizationGroupQualifies("tfc:masonry"));
-        assertTrue(policy.organizationGroupQualifies("tfc:masonry_decor"));
         assertEquals(10, policy.organizationGroupCount("tfc:masonry"));
+        assertEquals(10, policy.organizationGroupCount("tfc:masonry_decor"));
+        assertFalse(policy.organizationGroupQualifies("tfc:masonry"));
+        assertFalse(policy.organizationGroupQualifies("tfc:masonry_decor"));
         assertFalse(policy.organizationGroupQualifies("tfc:tiny_group"));
     }
 

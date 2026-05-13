@@ -134,14 +134,20 @@ runtime subsystem vocabulary pre-pass.
 It answers "where would a skilled player put this item if the whole wall only
 had roughly 15-20 broad sections?" and can split broad roles into storage
 sections such as `pack:tfg/casting_molds`, `pack:tfg/masonry_supplies`, or
-`pack:tfg/leatherworking` once the loaded layer has enough sibling items for
-that group. Generic sections like Ingots, Stairs, Slabs, Food, Tools, and
-Storage remain the home even when the generated data has a tempting query-style
-group. Do not use `organization_group` for "Mod Name Items", mod subsystem
-labels, rock taxonomy, stackable/pileable material properties, material
-form/state, workstation-specific processes, or other slices that belong in
-search, filters, task views, or within-section ordering. `mod_subsystem` stays
-semantic/query evidence; it does not auto-create main-wall sections.
+`pack:tfg/textiles` once the loaded layer has enough sibling items for
+that group. Runtime `organization_group` homing is temporarily disabled while
+the next vocabulary refresh is validated, so `rehome` currently falls through to
+the built-in templates instead of materializing `group:*` sections. Generic
+sections like Ingots, Wood, Seeds, Crops, Plants, Clay & Pottery, Mob Drops,
+Stairs, Slabs, Food, Tools, and Storage remain the home even when the generated
+data has a tempting query-style group. Wood covers stock wood
+such as sticks, logs, planks, boards, and lumber; Seeds, Crops, Plants, Clay &
+Pottery, and Mob Drops cover their matching stock families.
+Do not use `organization_group` for "Mod Name Items", mod subsystem labels, rock
+taxonomy, stackable/pileable material properties, material form/state,
+workstation-specific processes, or other slices that belong in search, filters,
+task views, or within-section ordering. `mod_subsystem` stays semantic/query
+evidence; it does not auto-create main-wall sections.
 
 ## Layer Outputs
 

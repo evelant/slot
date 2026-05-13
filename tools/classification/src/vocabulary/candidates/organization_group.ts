@@ -80,7 +80,6 @@ function organizationGroupSeedsForRecord(
   if (fields.length === 0) return [];
   const tokens = tokenSet(fields.join(" "));
   const identityTokens = tokenSet(organizationGroupIdentityFields(record).join(" "));
-  const haystack = fields.join(" ").toLowerCase();
   const out = new Map<string, OrganizationGroupSeed>();
   const addPack = (
     value: string,
@@ -102,26 +101,19 @@ function organizationGroupSeedsForRecord(
   const broad = broadOrganizationGroupSeed(record, packId);
   if (broad) addOrganizationGroupSeed(out, broad);
 
-  if (hasAnyToken(tokens, ["seed", "seeds"])) {
-    addPack("seeds", "Seeds", "Seeds and seed-like planting starts.", "seed evidence suggests a player storage group", 0.62);
-  }
-  if (hasAnyToken(tokens, ["crop", "crops", "grain", "grains", "vegetable", "vegetables"]) || /\b(cabbage|maize|oat|potato|rye|tomato|wheat)\b/.test(haystack)) {
-    addPack("crops", "Crops", "Harvested crops and field produce.", "crop evidence suggests a player storage group", 0.58);
-  }
-  if (hasAnyToken(tokens, ["plant", "plants", "flower", "flowers", "flora", "sapling", "saplings", "leaf", "leaves"]) && !hasAnyToken(tokens, ["seed", "seeds", "crop", "crops", "food", "foods"])) {
-    addPack("inedible_plants", "Inedible Plants", "Plants, flowers, leaves, and other non-food botanical items.", "plant/flora evidence suggests a player storage group", 0.55, ["plants"]);
-  }
+  // Seeds, Crops, and Plants are protected built-in homes. Do not generate
+  // pack-scoped duplicates and ask curation to reject our own noise.
   if (hasAnyToken(tokens, ["dirt", "rock", "rocks", "stone", "stones", "cobble", "cobblestone", "gravel", "sand", "silt", "clay", "mud", "soil"])) {
     addPack("dirt_and_rocks", "Dirt and Rocks", "Terrain rubble such as dirt, stone, gravel, sand, clay, and loose rocks.", "terrain material evidence suggests a player storage group", 0.58, ["rubble"]);
   }
   if (hasAnyToken(tokens, ["decorative", "decoration", "decorations", "decor", "ornament", "ornaments", "furniture", "framed", "frame", "lamp", "lantern"])) {
     addPack("decorative", "Decorative", "Blocks and items primarily kept for decoration or building detail.", "decorative evidence suggests a player storage group", 0.58, ["decorations"]);
   }
-  if (hasAnyToken(tokens, ["wood", "woods", "wooden", "log", "logs", "plank", "planks", "lumber", "board", "boards", "beam", "beams", "sawdust", "carpentry", "saw"])) {
-    addPack("woodworking", "Woodworking", "Wood, lumber, planks, carpentry supplies, and wood-working outputs.", "woodworking evidence suggests a player storage group", 0.58);
+  if (hasAnyToken(tokens, ["woodworking", "carpentry", "sawmill", "sawdust", "beam", "beams", "saw"])) {
+    addPack("woodworking", "Woodworking", "Carpentry supplies and wood-working outputs beyond stock wood.", "woodworking evidence suggests a player storage group", 0.58);
   }
-  if (hasAnyToken(tokens, ["animal", "animals", "husbandry", "hide", "hides", "leather", "wool", "milk", "egg", "eggs", "feed", "livestock", "cow", "cows", "sheep", "pig", "pigs", "chicken", "chickens"])) {
-    addPack("animal_husbandry", "Animal Husbandry", "Animal products, livestock supplies, feed, hides, wool, milk, and eggs.", "animal/livestock evidence suggests a player storage group", 0.58);
+  if (hasAnyToken(tokens, ["animal", "animals", "husbandry", "feed", "livestock", "cow", "cows", "sheep", "pig", "pigs", "chicken", "chickens"])) {
+    addPack("animal_husbandry", "Animal Husbandry", "Livestock supplies, feed, and animal-care items.", "animal/livestock evidence suggests a player storage group", 0.58);
   }
   if (hasAnyToken(tokens, ["weaving", "cloth", "fabric", "textile", "textiles", "thread", "threads", "string", "strings", "yarn", "loom", "sewing", "needle"])) {
     addPack("weaving_cloth", "Weaving and Cloth", "Cloth, fabric, thread, string, weaving, and sewing supplies.", "cloth/weaving evidence suggests a player storage group", 0.6, ["cloth", "textiles"]);
